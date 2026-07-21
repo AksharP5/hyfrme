@@ -1,0 +1,46 @@
+{
+  "slug": "micro-scale-fade",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/micro-scale-fade/index.tsx",
+    "config": "registry/remocn/micro-scale-fade/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 60,
+    "props": {
+      "text": "Welcome to motion.",
+      "scaleFrom": 0.96,
+      "fontSize": 72,
+      "color": "#171717",
+      "fontWeight": "600",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 60,
+    "meanSsim": 0.998099,
+    "minSsim": 0.997938,
+    "p05Ssim": 0.997983,
+    "p95Ssim": 0.998694,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/micro-scale-fade/remocn.mp4",
+    "hyperframesVideo": "public/previews/micro-scale-fade/hyperframes.mp4",
+    "summary": "parity/micro-scale-fade-diff/summary.json"
+  }
+}

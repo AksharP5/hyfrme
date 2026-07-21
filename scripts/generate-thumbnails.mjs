@@ -6,6 +6,10 @@ const root = resolve(import.meta.dirname, "..");
 const registry = JSON.parse(
   await readFile(resolve(root, "registry", "registry.json"), "utf8"),
 );
+const iconFixtures = JSON.parse(
+  await readFile(resolve(root, "catalog", "icon-fixtures.json"), "utf8"),
+);
+const iconNames = new Set(iconFixtures.map((entry) => entry.slug));
 
 const run = (args) =>
   new Promise((accept, reject) => {
@@ -29,9 +33,10 @@ for (const [index, item] of registry.items.entries()) {
     "-0.05",
     "-i",
     resolve(previewDirectory, "hyperframes.mp4"),
-    ...(item.name === "soft-blur-in"
-      ? []
-      : ["-vf", "scale=192:192:flags=lanczos"]),
+    "-vf",
+    iconNames.has(item.name)
+      ? "scale=192:192:flags=lanczos"
+      : "scale=384:216:flags=lanczos",
     "-frames:v",
     "1",
     resolve(previewDirectory, "thumbnail.png"),

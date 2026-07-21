@@ -1,0 +1,46 @@
+{
+  "slug": "focus-blur-resolve",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/focus-blur-resolve/index.tsx",
+    "config": "registry/remocn/focus-blur-resolve/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "text": "Focus resolves clearly.",
+      "blur": 14,
+      "fontSize": 72,
+      "color": "#171717",
+      "fontWeight": "600",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.998045,
+    "minSsim": 0.997125,
+    "p05Ssim": 0.997727,
+    "p95Ssim": 0.999532,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/focus-blur-resolve/remocn.mp4",
+    "hyperframesVideo": "public/previews/focus-blur-resolve/hyperframes.mp4",
+    "summary": "parity/focus-blur-resolve-diff/summary.json"
+  }
+}

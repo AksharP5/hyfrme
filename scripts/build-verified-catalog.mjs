@@ -2,10 +2,17 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
-const fixtures = JSON.parse(
+const iconFixtures = JSON.parse(
   await readFile(resolve(root, "catalog", "icon-fixtures.json"), "utf8"),
 );
-const orderedNames = ["soft-blur-in", ...fixtures.map((entry) => entry.slug)];
+const textFixtures = JSON.parse(
+  await readFile(resolve(root, "catalog", "text-fixtures.json"), "utf8"),
+);
+const orderedNames = [
+  "soft-blur-in",
+  ...textFixtures.map((entry) => entry.slug),
+  ...iconFixtures.map((entry) => entry.slug),
+];
 const items = [];
 
 for (const name of orderedNames) {

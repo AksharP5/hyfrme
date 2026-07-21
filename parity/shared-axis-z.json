@@ -1,0 +1,46 @@
+{
+  "slug": "shared-axis-z",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/shared-axis-z/index.tsx",
+    "config": "registry/remocn/shared-axis-z/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "fromText": "Zooming between states.",
+      "toText": "Elevate and settle.",
+      "fontSize": 72,
+      "color": "#171717",
+      "fontWeight": "600",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.998057,
+    "minSsim": 0.99746,
+    "p05Ssim": 0.997688,
+    "p95Ssim": 0.998183,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/shared-axis-z/remocn.mp4",
+    "hyperframesVideo": "public/previews/shared-axis-z/hyperframes.mp4",
+    "summary": "parity/shared-axis-z-diff/summary.json"
+  }
+}

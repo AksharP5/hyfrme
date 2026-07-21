@@ -1,6 +1,7 @@
 import { build } from "esbuild";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, relative, resolve } from "node:path";
+import { interpolationSource, remocnMitBanner } from "./hyfrme-frame-math.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const upstream = resolve(root, ".work", "remocn");
@@ -57,24 +58,12 @@ const booleanDefault = (source, control, fallback) => {
 const escapeInlineScript = (source) =>
   source.replaceAll("</script", "<\\/script");
 
-const remotionNoReactEntry = resolve(
-  upstream,
-  "node_modules",
-  "remotion",
-  "dist",
-  "esm",
-  "no-react.mjs",
-);
-
 const compatibilityPlugin = {
   name: "hyfrme-remotion-clock",
   setup(buildApi) {
     buildApi.onResolve({ filter: /^remotion$/ }, () => ({
       path: "remotion",
       namespace: "hyfrme-remotion",
-    }));
-    buildApi.onResolve({ filter: /^hyfrme-interpolate-actual$/ }, () => ({
-      path: remotionNoReactEntry,
     }));
     buildApi.onResolve({ filter: /^react\/jsx-runtime$/ }, () => ({
       path: "react/jsx-runtime",
@@ -83,7 +72,7 @@ const compatibilityPlugin = {
     buildApi.onLoad({ filter: /.*/, namespace: "hyfrme-remotion" }, () => ({
       loader: "js",
       contents: `
-          import {interpolate} from "hyfrme-interpolate-actual";
+          ${interpolationSource}
           let currentFrame = 0;
           let videoConfig = {fps: 30, width: 48, height: 48, durationInFrames: 75};
 
@@ -465,6 +454,7 @@ for (const icon of icons) {
     },
     target: ["chrome120"],
     tsconfig: resolve(upstream, "tsconfig.json"),
+    banner: { js: remocnMitBanner },
     write: false,
   });
   const bundle = result.outputFiles[0].text;

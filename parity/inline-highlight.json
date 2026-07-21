@@ -1,0 +1,48 @@
+{
+  "slug": "inline-highlight",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/inline-highlight/index.tsx",
+    "config": "registry/remocn/inline-highlight/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "before": "Ship faster with ",
+      "highlight": "remocn",
+      "after": ".",
+      "baseColor": "#171717",
+      "highlightColor": "#ff5e3a",
+      "fontSize": 72,
+      "fontWeight": "600",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.99733,
+    "minSsim": 0.997171,
+    "p05Ssim": 0.997191,
+    "p95Ssim": 0.997551,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/inline-highlight/remocn.mp4",
+    "hyperframesVideo": "public/previews/inline-highlight/hyperframes.mp4",
+    "summary": "parity/inline-highlight-diff/summary.json"
+  }
+}

@@ -52,8 +52,10 @@ gate at 0.998647 mean SSIM across 60 frames.
 
 The complete 100-item animated-icon family is also verified. Its source SVG,
 easing, interpolation, spring, draw, and action math are compiled into a small
-deterministic DOM runtime driven by the HyperFrames GSAP clock. Each block is a
-standalone HTML composition with no React dependency at playback time.
+deterministic DOM runtime driven by the HyperFrames GSAP clock. Framework-neutral
+Hyfrme frame math reproduces the reference behavior without bundling Remotion.
+Each block is a standalone HTML composition with no React dependency at playback
+time.
 
 - All 100 strict renders passed.
 - Five representative icons passed full HyperFrames lint, runtime, layout, and
@@ -61,6 +63,24 @@ standalone HTML composition with no React dependency at playback time.
 - Family mean SSIM: 0.993872.
 - Per-item range: 0.985560–0.998621.
 - Canonical icon fixtures cover 60–90 frames at 30 fps.
+
+The first 21-item typography/effect family is verified as exact compiled-source
+ports. Each block preserves the upstream React component and editable controls,
+uses Hyfrme-owned Remotion-compatible easing/interpolation behavior, and
+re-renders from a HyperFrames-controlled frame clock. The runtime and Geist font
+ship beside the HTML composition, so playback does not depend on a Remotion
+installation or include Remotion runtime code.
+
+- All 21 strict renders passed.
+- Four representative motion structures passed full HyperFrames lint, runtime,
+  layout, motion, and contrast checks with zero errors or warnings.
+- Family mean SSIM: 0.997517.
+- Per-item range: 0.986619–0.999432.
+- Canonical fixtures cover 60–120 frames at 30 fps and 1280×720.
+- `shimmer-sweep` uses the supported intentional-occlusion annotation for its
+  stacked base/shine text. Its animated clipped gradient passes strict render
+  and SSIM; HyperFrames 0.7.64 does not fingerprint `background-position` as
+  geometry motion, so no full-check claim is made for that item.
 
 The next bench candidates deliberately widen coverage:
 

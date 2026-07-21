@@ -149,6 +149,7 @@ export function App() {
   const blockUrl = `${githubUrl}/blob/main/registry/blocks/${selected.item.name}/${selected.item.name}.html`;
   const upstreamUrl = `https://github.com/Remocn/remocn/blob/${selected.parity.origin.commit}/${selected.parity.origin.source}`;
   const isIcon = selected.item.tags.includes("icon");
+  const isCompiled = selected.parity.classification === "compiled-source-port";
 
   return (
     <div className="page-shell">
@@ -335,12 +336,16 @@ export function App() {
               <h3>
                 {isIcon
                   ? "Same paths. Same frame math."
-                  : "Same motion. Native timeline."}
+                  : isCompiled
+                    ? "Same component. Same frame math."
+                    : "Same motion. Native timeline."}
               </h3>
               <p>
                 {isIcon
                   ? "The original SVG paths, props, easing, interpolation, spring behavior, and action timing are compiled into a deterministic HyperFrames-controlled block. The canonical render is measured across every source frame."
-                  : "Per-character timing, blur, vertical travel, typography, and the source cubic Bézier are rebuilt in a seek-safe GSAP timeline and measured across the complete fixture."}
+                  : isCompiled
+                    ? "The original React component, editable controls, Remotion frame math, typography, and source timing are bundled into a deterministic runtime driven by the HyperFrames GSAP clock. The canonical render is measured across every source frame."
+                    : "Per-character timing, blur, vertical travel, typography, and the source cubic Bézier are rebuilt in a seek-safe GSAP timeline and measured across the complete fixture."}
               </p>
               <a href={upstreamUrl} target="_blank" rel="noreferrer">
                 Inspect the pinned Remocn source <ArrowIcon />

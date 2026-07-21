@@ -1,0 +1,46 @@
+{
+  "slug": "mask-reveal-up",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/mask-reveal-up/index.tsx",
+    "config": "registry/remocn/mask-reveal-up/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "text": "Designed to move.\nBuilt to focus.",
+      "distance": 30,
+      "fontSize": 72,
+      "color": "#171717",
+      "fontWeight": "600",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.997136,
+    "minSsim": 0.995963,
+    "p05Ssim": 0.996616,
+    "p95Ssim": 0.999621,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/mask-reveal-up/remocn.mp4",
+    "hyperframesVideo": "public/previews/mask-reveal-up/hyperframes.mp4",
+    "summary": "parity/mask-reveal-up-diff/summary.json"
+  }
+}

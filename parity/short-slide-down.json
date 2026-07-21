@@ -1,0 +1,46 @@
+{
+  "slug": "short-slide-down",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/short-slide-down/index.tsx",
+    "config": "registry/remocn/short-slide-down/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 60,
+    "props": {
+      "text": "Build from above.",
+      "entryOffset": 28,
+      "fontSize": 72,
+      "color": "#171717",
+      "fontWeight": "600",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 60,
+    "meanSsim": 0.998689,
+    "minSsim": 0.997737,
+    "p05Ssim": 0.998055,
+    "p95Ssim": 0.999664,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/short-slide-down/remocn.mp4",
+    "hyperframesVideo": "public/previews/short-slide-down/hyperframes.mp4",
+    "summary": "parity/short-slide-down-diff/summary.json"
+  }
+}

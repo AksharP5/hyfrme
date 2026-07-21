@@ -18,6 +18,7 @@ const fullCheck =
   fullCheckIndex === -1
     ? new Set()
     : new Set(process.argv[fullCheckIndex + 1].split(","));
+const reuseReference = process.argv.includes("--reuse-reference");
 
 if (requested && selected.length !== requested.size) {
   throw new Error(
@@ -44,16 +45,18 @@ const run = (command, args, options = {}) =>
     });
   });
 
-await run("node", ["scripts/generate-icon-reference.mjs"]);
-await run(
-  "bun",
-  [
-    "scripts/hyfrme-render-icons.mts",
-    "--only",
-    selected.map((entry) => entry.slug).join(","),
-  ],
-  { cwd: resolve(root, ".work", "remocn") },
-);
+if (!reuseReference) {
+  await run("node", ["scripts/generate-icon-reference.mjs"]);
+  await run(
+    "bun",
+    [
+      "scripts/hyfrme-render-icons.mts",
+      "--only",
+      selected.map((entry) => entry.slug).join(","),
+    ],
+    { cwd: resolve(root, ".work", "remocn") },
+  );
+}
 
 await mkdir(workbench, { recursive: true });
 await writeFile(

@@ -1,0 +1,46 @@
+{
+  "slug": "shimmer-sweep",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/shimmer-sweep/index.tsx",
+    "config": "registry/remocn/shimmer-sweep/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "text": "Generating",
+      "baseColor": "#3f3f46",
+      "shineColor": "#fafafa",
+      "fontSize": 96,
+      "fontWeight": "700",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.986619,
+    "minSsim": 0.986122,
+    "p05Ssim": 0.986146,
+    "p95Ssim": 0.987203,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/shimmer-sweep/remocn.mp4",
+    "hyperframesVideo": "public/previews/shimmer-sweep/hyperframes.mp4",
+    "summary": "parity/shimmer-sweep-diff/summary.json"
+  }
+}

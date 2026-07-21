@@ -1,0 +1,45 @@
+{
+  "slug": "scale-down-fade",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/scale-down-fade/index.tsx",
+    "config": "registry/remocn/scale-down-fade/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "text": "Quietly refined.",
+      "fontSize": 72,
+      "color": "#171717",
+      "fontWeight": "600",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.998361,
+    "minSsim": 0.9981,
+    "p05Ssim": 0.998208,
+    "p95Ssim": 0.998581,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/scale-down-fade/remocn.mp4",
+    "hyperframesVideo": "public/previews/scale-down-fade/hyperframes.mp4",
+    "summary": "parity/scale-down-fade-diff/summary.json"
+  }
+}
