@@ -1,0 +1,43 @@
+{
+  "slug": "soft-blur-in",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/soft-blur-in/index.tsx",
+    "config": "registry/remocn/soft-blur-in/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 60,
+    "props": {
+      "text": "Think different.",
+      "blur": 12,
+      "fontSize": 72,
+      "color": "#171717",
+      "fontWeight": 600,
+      "speed": 1
+    }
+  },
+  "classification": "mechanical-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 60,
+    "meanSsim": 0.998647,
+    "minSsim": 0.997987,
+    "p05Ssim": 0.998076,
+    "p95Ssim": 0.999938,
+    "pass": true
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/soft-blur-in/remocn.mp4",
+    "hyperframesVideo": "public/previews/soft-blur-in/hyperframes.mp4",
+    "summary": "parity/soft-blur-in-diff/summary.json",
+    "frameStrip": "parity/soft-blur-in-strip/strip.png"
+  }
+}

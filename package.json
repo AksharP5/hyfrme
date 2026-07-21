@@ -1,0 +1,29 @@
+{
+  "name": "hyfrme",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "predev": "npm run sync:registry",
+    "dev": "vite",
+    "prebuild": "npm run sync:registry",
+    "build": "tsc --noEmit && vite build",
+    "check": "npm run validate && tsc --noEmit",
+    "validate": "node scripts/validate-catalog.mjs",
+    "sync:registry": "node scripts/sync-registry.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "6.0.3",
+    "prettier": "3.9.5",
+    "typescript": "7.0.2",
+    "vite": "8.1.5"
+  }
+}
