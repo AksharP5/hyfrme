@@ -1,0 +1,48 @@
+{
+  "slug": "typewriter",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/typewriter/index.tsx",
+    "config": "registry/remocn/typewriter/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "text": "console.log('hello, world')",
+      "cursor": true,
+      "charsPerSecond": 22,
+      "fontSize": 72,
+      "color": "#171717",
+      "cursorColor": "#171717",
+      "fontWeight": "600",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.997724,
+    "minSsim": 0.997246,
+    "p05Ssim": 0.997251,
+    "p95Ssim": 0.999652,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/typewriter/remocn.mp4",
+    "hyperframesVideo": "public/previews/typewriter/hyperframes.mp4",
+    "summary": "parity/typewriter-diff/summary.json"
+  }
+}

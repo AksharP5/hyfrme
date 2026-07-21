@@ -45,8 +45,16 @@ const coreNames = [
   "live-code-compilation",
   "infinite-bento-pan",
   "infinite-marquee",
+  "terminal-simulator",
 ];
-const names = [...textNames, ...coreNames];
+const primitiveNames = [
+  "caret",
+  "skeleton-block",
+  "spinner",
+  "typing-indicator",
+  "typewriter",
+];
+const names = [...textNames, ...coreNames, ...primitiveNames];
 const familyIndex = process.argv.indexOf("--family");
 const family = familyIndex === -1 ? null : process.argv[familyIndex + 1];
 const familyNames =
@@ -54,9 +62,11 @@ const familyNames =
     ? textNames
     : family === "core"
       ? coreNames
-      : family === null
-        ? names
-        : null;
+      : family === "primitive"
+        ? primitiveNames
+        : family === null
+          ? names
+          : null;
 if (!familyNames) throw new Error(`Unknown compiled family: ${family}`);
 const onlyIndex = process.argv.indexOf("--only");
 const only =
@@ -80,13 +90,26 @@ const remotionPlugin = {
     }));
     buildApi.onLoad({ filter: /.*/, namespace: "hyfrme-remotion" }, () => ({
       loader: "js",
+      resolveDir: upstream,
       contents: `
+          import React, {createContext, useContext} from "react";
           ${frameMathSource}
           let currentFrame = 0;
           let videoConfig = {fps: 30, width: 1280, height: 720, durationInFrames: 60};
+          const LocalFrameContext = createContext(null);
           export {Easing, interpolate, interpolateColors};
-          export const useCurrentFrame = () => currentFrame;
+          export const useCurrentFrame = () => useContext(LocalFrameContext) ?? currentFrame;
           export const useVideoConfig = () => videoConfig;
+          export const Sequence = ({from = 0, durationInFrames = Infinity, children, layout, style, className}) => {
+            const localFrame = useCurrentFrame() - from;
+            if (localFrame < 0 || localFrame >= durationInFrames) return null;
+            const content = React.createElement(LocalFrameContext.Provider, {value: localFrame}, children);
+            if (layout === "none") return content;
+            return React.createElement("div", {
+              className,
+              style: {position: "absolute", inset: 0, ...style},
+            }, content);
+          };
           export const __setHyfrmeFrame = (frame, config) => {
             currentFrame = frame;
             videoConfig = config;
@@ -110,6 +133,9 @@ const loadConfig = async (path) => {
   const exports = await import(url);
   return Object.values(exports)[0];
 };
+
+const escapeHtmlAttribute = (value) =>
+  value.replaceAll("&", "&amp;").replaceAll("'", "&#39;");
 
 const fixtures = [];
 const fontSource = resolve(
@@ -195,7 +221,11 @@ for (const name of selectedNames) {
     write: false,
   });
   const runtime = result.outputFiles[0].text;
-  const catalogFamily = coreNames.includes(name) ? "core" : "text";
+  const catalogFamily = textNames.includes(name)
+    ? "text"
+    : primitiveNames.includes(name)
+      ? "primitive"
+      : "core";
   const duration = fixture.durationInFrames / fixture.fps;
   const variables = Object.entries(config.controls).map(([id, control]) => ({
     id,
@@ -215,7 +245,7 @@ for (const name of selectedNames) {
     variables.push({ id: "speed", type: "number", label: "Speed", default: 1 });
   }
   const html = `<!doctype html>
-<html lang="en" data-composition-variables='${JSON.stringify(variables)}'>
+<html lang="en" data-composition-variables='${escapeHtmlAttribute(JSON.stringify(variables))}'>
   <head>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
@@ -266,7 +296,9 @@ for (const name of selectedNames) {
         tags:
           catalogFamily === "text"
             ? ["typography", "effect", "remocn-port"]
-            : ["composition", "data", "remocn-port"],
+            : catalogFamily === "primitive"
+              ? ["ui", "primitive", "remocn-port"]
+              : ["composition", "data", "remocn-port"],
         author: "Hyfrme",
         authorUrl: "https://github.com/AksharP5/hyfrme",
         license: "MIT",
@@ -330,6 +362,17 @@ if (!only && (family === null || family === "core")) {
     resolve(root, "catalog", "core-fixtures.json"),
     `${JSON.stringify(
       fixtures.filter((entry) => entry.catalogFamily === "core"),
+      null,
+      2,
+    )}\n`,
+  );
+}
+
+if (!only && (family === null || family === "primitive")) {
+  await writeFile(
+    resolve(root, "catalog", "primitive-fixtures.json"),
+    `${JSON.stringify(
+      fixtures.filter((entry) => entry.catalogFamily === "primitive"),
       null,
       2,
     )}\n`,

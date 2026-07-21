@@ -1,0 +1,143 @@
+[
+  {
+    "slug": "caret",
+    "catalogFamily": "primitive",
+    "title": "UI Caret",
+    "description": "A blinking text caret — a controlled vertical bar, or a pure motion atom that blinks deterministically from useCurrentFrame.",
+    "componentName": "Caret",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn-ui/caret/index.tsx",
+      "config": "registry/remocn-ui/caret/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 120,
+      "props": {
+        "height": 28,
+        "width": 3,
+        "radius": 1,
+        "blink": true,
+        "blinkPerSecond": 1,
+        "color": "#1F1E1D",
+        "speed": 1
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "skeleton-block",
+    "catalogFamily": "primitive",
+    "title": "UI Skeleton Block",
+    "description": "A shimmer placeholder block — a motion atom (spinner pattern). A directional highlight gradient sweeps across deterministically from useCurrentFrame() and loops seamlessly. Configurable width/height/radius/speed and base/highlight colors.",
+    "componentName": "SkeletonBlock",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn-ui/skeleton-block/index.tsx",
+      "config": "registry/remocn-ui/skeleton-block/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 120,
+      "props": {
+        "width": 240,
+        "height": 20,
+        "radius": 6,
+        "speed": 1
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "spinner",
+    "catalogFamily": "primitive",
+    "title": "UI Spinner",
+    "description": "A deterministic spinning arc that loops on the Remotion frame — a pure motion atom with no state.",
+    "componentName": "Spinner",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn-ui/spinner/index.tsx",
+      "config": "registry/remocn-ui/spinner/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 120,
+      "props": {
+        "size": 20,
+        "strokeWidth": 2.5,
+        "speed": 1
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "typing-indicator",
+    "catalogFamily": "primitive",
+    "title": "UI Typing Indicator",
+    "description": "A continuous typing animation: N dots bounce with a staggered sine wave. A motion atom — it reads the frame and takes color, size, gap, and speed props, defaulting to currentColor so it inherits the bubble it sits in.",
+    "componentName": "TypingIndicator",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn-ui/typing-indicator/index.tsx",
+      "config": "registry/remocn-ui/typing-indicator/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 90,
+      "props": {
+        "dotCount": 3,
+        "size": 8,
+        "amplitude": 5,
+        "speed": 1
+      },
+      "background": "oklch(1 0 0)"
+    }
+  },
+  {
+    "slug": "typewriter",
+    "catalogFamily": "primitive",
+    "title": "Typewriter",
+    "description": "Character-by-character text reveal with a deterministic blinking cursor.",
+    "componentName": "Typewriter",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/typewriter/index.tsx",
+      "config": "registry/remocn/typewriter/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 120,
+      "props": {
+        "text": "console.log('hello, world')",
+        "cursor": true,
+        "charsPerSecond": 22,
+        "fontSize": 72,
+        "color": "#171717",
+        "cursorColor": "#171717",
+        "fontWeight": "600",
+        "speed": 1
+      },
+      "background": "#ffffff"
+    }
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "slug": "typing-indicator",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn-ui/typing-indicator/index.tsx",
+    "config": "registry/remocn-ui/typing-indicator/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "dotCount": 3,
+      "size": 8,
+      "amplitude": 5,
+      "speed": 1
+    },
+    "background": "oklch(1 0 0)"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.999742,
+    "minSsim": 0.999709,
+    "p05Ssim": 0.999713,
+    "p95Ssim": 0.999776,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/typing-indicator/remocn.mp4",
+    "hyperframesVideo": "public/previews/typing-indicator/hyperframes.mp4",
+    "summary": "parity/typing-indicator-diff/summary.json"
+  }
+}

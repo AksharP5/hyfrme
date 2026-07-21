@@ -1,0 +1,47 @@
+{
+  "slug": "caret",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn-ui/caret/index.tsx",
+    "config": "registry/remocn-ui/caret/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "height": 28,
+      "width": 3,
+      "radius": 1,
+      "blink": true,
+      "blinkPerSecond": 1,
+      "color": "#1F1E1D",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.999995,
+    "minSsim": 0.999994,
+    "p05Ssim": 0.999994,
+    "p95Ssim": 0.999995,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/caret/remocn.mp4",
+    "hyperframesVideo": "public/previews/caret/hyperframes.mp4",
+    "summary": "parity/caret-diff/summary.json"
+  }
+}

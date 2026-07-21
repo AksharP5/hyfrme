@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type ViewMode = "side-by-side" | "wipe";
 
@@ -17,6 +17,7 @@ export function ComparisonPlayer({
 }: ComparisonPlayerProps) {
   const referenceRef = useRef<HTMLVideoElement>(null);
   const portRef = useRef<HTMLVideoElement>(null);
+  const syncFrameRef = useRef<number | null>(null);
   const [view, setView] = useState<ViewMode>("side-by-side");
   const [playing, setPlaying] = useState(false);
   const [duration, setDuration] = useState(2);
@@ -30,8 +31,48 @@ export function ComparisonPlayer({
     setCurrentTime(boundedTime);
   };
 
+  const waitForPlayable = (video: HTMLVideoElement) => {
+    if (video.readyState >= 3) return Promise.resolve();
+    return new Promise<void>((resolve) => {
+      video.addEventListener("canplay", () => resolve(), { once: true });
+    });
+  };
+
+  const seekVideo = (video: HTMLVideoElement, time: number) => {
+    if (Math.abs(video.currentTime - time) < 0.002) return Promise.resolve();
+    return new Promise<void>((resolve) => {
+      video.addEventListener("seeked", () => resolve(), { once: true });
+      video.currentTime = time;
+    });
+  };
+
+  const stopSyncLoop = () => {
+    if (syncFrameRef.current === null) return;
+    cancelAnimationFrame(syncFrameRef.current);
+    syncFrameRef.current = null;
+  };
+
+  const syncPlayback = () => {
+    const reference = referenceRef.current;
+    const port = portRef.current;
+    if (!reference || !port || port.paused) {
+      syncFrameRef.current = null;
+      return;
+    }
+
+    const drift = reference.currentTime - port.currentTime;
+    if (Math.abs(drift) < 0.004) {
+      reference.playbackRate = 1;
+    } else {
+      reference.playbackRate = Math.min(1.25, Math.max(0.75, 1 - drift * 6));
+    }
+    syncFrameRef.current = requestAnimationFrame(syncPlayback);
+  };
+
   const pauseBoth = () => {
+    stopSyncLoop();
     referenceRef.current?.pause();
+    if (referenceRef.current) referenceRef.current.playbackRate = 1;
     portRef.current?.pause();
     setPlaying(false);
   };
@@ -51,12 +92,19 @@ export function ComparisonPlayer({
       return;
     }
 
-    if (currentTime >= duration - 0.02) setBothTimes(0);
-    reference.currentTime = port.currentTime;
+    const targetTime = currentTime >= duration - 0.02 ? 0 : currentTime;
 
     try {
+      await Promise.all([waitForPlayable(reference), waitForPlayable(port)]);
+      await Promise.all([
+        seekVideo(reference, targetTime),
+        seekVideo(port, targetTime),
+      ]);
+      setCurrentTime(targetTime);
       await Promise.all([reference.play(), port.play()]);
       setPlaying(true);
+      stopSyncLoop();
+      syncFrameRef.current = requestAnimationFrame(syncPlayback);
     } catch {
       pauseBoth();
     }
@@ -68,10 +116,16 @@ export function ComparisonPlayer({
     if (!reference || !port) return;
 
     setCurrentTime(port.currentTime);
-    if (Math.abs(reference.currentTime - port.currentTime) > 0.05) {
-      reference.currentTime = port.currentTime;
-    }
   };
+
+  useEffect(
+    () => () => {
+      if (syncFrameRef.current !== null) {
+        cancelAnimationFrame(syncFrameRef.current);
+      }
+    },
+    [],
+  );
 
   const handleLoadedMetadata = () => {
     const referenceDuration = referenceRef.current?.duration;
@@ -97,7 +151,7 @@ export function ComparisonPlayer({
       src={kind === "reference" ? referenceSrc : portSrc}
       muted
       playsInline
-      preload="metadata"
+      preload="auto"
       onLoadedMetadata={handleLoadedMetadata}
       onTimeUpdate={kind === "port" ? handlePortTimeUpdate : undefined}
       onEnded={kind === "port" ? pauseBoth : undefined}

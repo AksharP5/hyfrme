@@ -1,0 +1,43 @@
+{
+  "slug": "spinner",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn-ui/spinner/index.tsx",
+    "config": "registry/remocn-ui/spinner/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "size": 20,
+      "strokeWidth": 2.5,
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.999989,
+    "minSsim": 0.999978,
+    "p05Ssim": 0.999982,
+    "p95Ssim": 0.999992,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/spinner/remocn.mp4",
+    "hyperframesVideo": "public/previews/spinner/hyperframes.mp4",
+    "summary": "parity/spinner-diff/summary.json"
+  }
+}

@@ -33,6 +33,12 @@ const coreFixtures = await readFile(
 )
   .then(JSON.parse)
   .catch(() => []);
+const primitiveFixtures = await readFile(
+  resolve(root, "catalog", "primitive-fixtures.json"),
+  "utf8",
+)
+  .then(JSON.parse)
+  .catch(() => []);
 
 const familyFromPath = (path) => {
   if (path.startsWith("registry/remocn-icons/")) return "icons";
@@ -163,6 +169,10 @@ const coreNames = new Set(coreFixtures.map((item) => item.slug));
 const publishedCoreCount =
   publishedRegistry.items?.filter((item) => coreNames.has(item.name)).length ??
   0;
+const primitiveNames = new Set(primitiveFixtures.map((item) => item.slug));
+const publishedPrimitiveCount =
+  publishedRegistry.items?.filter((item) => primitiveNames.has(item.name))
+    .length ?? 0;
 const blockerRows = items
   .filter((item) => item.lint.blockers > 0)
   .map(
@@ -196,6 +206,7 @@ registry manifest and the official Remotion-to-HyperFrames source linter.
 - ${publishedIconCount}/100 animated icons published.
 - ${publishedTextCount}/${textFixtures.length} typography/effect ports published.
 - ${publishedCoreCount}/${coreFixtures.length} composition/data ports published.
+- ${publishedPrimitiveCount}/${primitiveFixtures.length} UI primitive ports published.
 - ${Math.max(0, summary.visualItems - publishedCount)} visual items remain.
 
 | Translation class | Count |

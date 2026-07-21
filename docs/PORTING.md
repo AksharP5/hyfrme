@@ -82,24 +82,38 @@ installation or include Remotion runtime code.
   and SSIM; HyperFrames 0.7.64 does not fingerprint `background-position` as
   geometry motion, so no full-check claim is made for that item.
 
-Six longer composition/data scenes are verified with the same compiled-source
+Seven longer composition/data scenes are verified with the same compiled-source
 runtime: `chat-to-preview-layout`, `data-flow-pipes`, `perspective-marquee`,
-`live-code-compilation`, `infinite-bento-pan`, and `infinite-marquee`.
+`live-code-compilation`, `infinite-bento-pan`, `infinite-marquee`, and
+`terminal-simulator`.
 
-- All six strict renders passed.
+- All seven strict renders passed.
 - `data-flow-pipes` passed the full HyperFrames check with zero errors or
   warnings.
-- Family mean SSIM: 0.983063.
+- Family mean SSIM: 0.985311.
 - Per-item range: 0.952963–0.999109.
 - Canonical fixtures cover 120–300 frames at 30 fps and 1280×720.
 - The continuous text marquees are the lower-scoring members because subpixel
   text movement changes raster antialiasing; their exact scores remain above
   the 0.95 gate and are published per item.
+- `terminal-simulator` preserves the upstream dim chrome title exactly. Its
+  strict render passes at 0.998785 mean SSIM; no full-check claim is made
+  because the source title color measures 3.6:1 contrast.
+
+Five direct UI primitives are verified: `caret`, `skeleton-block`, `spinner`,
+`typing-indicator`, and `typewriter`.
+
+- All five strict renders passed.
+- `typing-indicator` and `typewriter` passed full HyperFrames checks with zero
+  errors or warnings.
+- Family mean SSIM: 0.999486.
+- Per-item range: 0.997724–0.999995.
+- Canonical fixtures cover 90–120 frames at 30 fps and 1280×720.
 
 The next bench candidates deliberately widen coverage:
 
 - `number-wheel`: data-driven numbers and custom easing.
-- `terminal-simulator`: longer deterministic step timing and text reveal.
+- `rolling-number`: place-value motion and bundled monospace typography.
 - `focus-pull`: paired-scene transition semantics.
 - `button`: shared UI dependency and lifecycle states.
 

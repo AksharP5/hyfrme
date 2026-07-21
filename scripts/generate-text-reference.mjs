@@ -3,7 +3,11 @@ import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const upstream = resolve(root, ".work", "remocn");
-const fixtureFiles = ["text-fixtures.json", "core-fixtures.json"];
+const fixtureFiles = [
+  "text-fixtures.json",
+  "core-fixtures.json",
+  "primitive-fixtures.json",
+];
 const fixtures = (
   await Promise.all(
     fixtureFiles.map((file) =>
