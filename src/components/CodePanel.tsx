@@ -4,6 +4,8 @@ type CodePanelProps = {
   source: string;
   installCommand: string;
   sourceUrl: string;
+  filename: string;
+  fileCount: number;
 };
 
 type CopiedValue = "source" | "install" | null;
@@ -12,6 +14,8 @@ export function CodePanel({
   source,
   installCommand,
   sourceUrl,
+  filename,
+  fileCount,
 }: CodePanelProps) {
   const [copied, setCopied] = useState<CopiedValue>(null);
 
@@ -27,7 +31,8 @@ export function CodePanel({
         <div>
           <span className="section-kicker">Install manually</span>
           <p>
-            Two files, no registry switching. Run from a HyperFrames project.
+            {fileCount === 1 ? "One standalone file" : `${fileCount} files`}, no
+            registry switching. Run from a HyperFrames project.
           </p>
         </div>
         <button type="button" onClick={() => copy(installCommand, "install")}>
@@ -42,7 +47,7 @@ export function CodePanel({
         <summary>
           <span>
             <span className="source-dot" aria-hidden="true" />
-            soft-blur-in.html
+            {filename}
           </span>
           <span>View source</span>
         </summary>

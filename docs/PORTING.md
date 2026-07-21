@@ -44,11 +44,23 @@ code.
 5. Gate simple and medium ports at 0.95 mean SSIM.
 6. Publish the source attribution, metrics, and any documented gap.
 
-## Current vertical slice
+## Verified catalog
 
-The first `soft-blur-in` port exercises per-character timing, blur, an exact
+The native `soft-blur-in` port exercises per-character timing, blur, an exact
 cubic Bézier, bundled typography, and HyperFrames variables. It passes the 0.95
-gate at 0.998647 mean SSIM across 60 frames; its worst frame is 0.997987.
+gate at 0.998647 mean SSIM across 60 frames.
+
+The complete 100-item animated-icon family is also verified. Its source SVG,
+easing, interpolation, spring, draw, and action math are compiled into a small
+deterministic DOM runtime driven by the HyperFrames GSAP clock. Each block is a
+standalone HTML composition with no React dependency at playback time.
+
+- All 100 strict renders passed.
+- Five representative icons passed full HyperFrames lint, runtime, layout, and
+  motion checks with zero errors or warnings.
+- Family mean SSIM: 0.993872.
+- Per-item range: 0.985560–0.998621.
+- Canonical icon fixtures cover 60–90 frames at 30 fps.
 
 The next bench candidates deliberately widen coverage:
 
@@ -56,15 +68,14 @@ The next bench candidates deliberately widen coverage:
 - `terminal-simulator`: longer deterministic step timing and text reveal.
 - `focus-pull`: paired-scene transition semantics.
 - `button`: shared UI dependency and lifecycle states.
-- `icon-check-circle`: SVG path drawing and reusable icon infrastructure.
 
 ## Rollout order
 
 1. Typography and simple effects.
-2. UI blocks and number/data components.
-3. Timeline-driven UI primitives and flows.
-4. Animated icons using a shared HyperFrames icon core.
-5. Transitions and native shader rewrites.
+2. Number and data components.
+3. UI primitives and flows.
+4. Transitions.
+5. Native shader rewrites.
 6. Social components with documented state/runtime gaps.
 
 Upstream changes should open a review issue; they must never overwrite a

@@ -5,6 +5,7 @@ type ViewMode = "side-by-side" | "wipe";
 type ComparisonPlayerProps = {
   referenceSrc: string;
   portSrc: string;
+  square?: boolean;
 };
 
 const formatTime = (seconds: number) => `${seconds.toFixed(2)}s`;
@@ -12,6 +13,7 @@ const formatTime = (seconds: number) => `${seconds.toFixed(2)}s`;
 export function ComparisonPlayer({
   referenceSrc,
   portSrc,
+  square = false,
 }: ComparisonPlayerProps) {
   const referenceRef = useRef<HTMLVideoElement>(null);
   const portRef = useRef<HTMLVideoElement>(null);
@@ -108,7 +110,7 @@ export function ComparisonPlayer({
   );
 
   return (
-    <div className="comparison-player">
+    <div className={`comparison-player${square ? " is-square" : ""}`}>
       <div className="comparison-toolbar">
         <div className="segmented-control" aria-label="Comparison view">
           <button

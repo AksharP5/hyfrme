@@ -2,8 +2,10 @@
 
 ## Remocn source reference
 
-The `soft-blur-in` HyperFrames port is derived from the Remocn implementation
-at `registry/remocn/soft-blur-in/index.tsx`, pinned in the parity manifest.
+The `soft-blur-in` port and the 100 `icon-*` ports are derived from Remocn
+implementations pinned at commit
+`ea730a20b4ab09430ee7292aebc847c002375151`. Every port names its exact source
+file and fixture in its parity manifest.
 
 Copyright (c) 2026 Remocn
 

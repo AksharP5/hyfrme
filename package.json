@@ -10,6 +10,12 @@
     "build": "tsc --noEmit && vite build",
     "check": "npm run validate && tsc --noEmit",
     "validate": "node scripts/validate-catalog.mjs",
+    "audit:upstream": "node scripts/audit-upstream.mjs",
+    "generate:icons": "node scripts/generate-icon-ports.mjs",
+    "generate:icon-reference": "node scripts/generate-icon-reference.mjs",
+    "verify:icons": "node scripts/verify-icon-ports.mjs",
+    "build:catalog": "node scripts/build-verified-catalog.mjs",
+    "generate:thumbnails": "node scripts/generate-thumbnails.mjs",
     "sync:registry": "node scripts/sync-registry.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
@@ -22,6 +28,7 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "6.0.3",
+    "esbuild": "0.28.1",
     "prettier": "3.9.5",
     "typescript": "7.0.2",
     "vite": "8.1.5"

@@ -1,22 +1,80 @@
-<!DOCTYPE html>
-<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"Think different."},{"id":"blur","type":"number","label":"Blur","default":12},{"id":"fontSize","type":"number","label":"Font size","default":72},{"id":"color","type":"color","label":"Color","default":"#171717"},{"id":"fontWeight","type":"number","label":"Font weight","default":600},{"id":"speed","type":"number","label":"Speed","default":1}]'>
+<!doctype html>
+<html
+  lang="en"
+  data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"Think different."},{"id":"blur","type":"number","label":"Blur","default":12},{"id":"fontSize","type":"number","label":"Font size","default":72},{"id":"color","type":"color","label":"Color","default":"#171717"},{"id":"fontWeight","type":"number","label":"Font weight","default":600},{"id":"speed","type":"number","label":"Speed","default":1}]'
+>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/CustomEase.min.js"></script>
     <style>
-      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
-      * { box-sizing: border-box; }
-      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #ffffff; }
-      #soft-blur-in-stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-      #soft-blur-in-text { color: #171717; font: 600 72px "Geist", -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: -0.05em; }
-      .soft-blur-in-character { display: inline-block; white-space: pre; backface-visibility: hidden; transform-origin: 50% 55%; will-change: transform, opacity, filter; }
+      @font-face {
+        font-family: "Geist";
+        src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2");
+        font-style: normal;
+        font-weight: 600;
+        font-display: block;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1280px;
+        height: 720px;
+        margin: 0;
+        overflow: hidden;
+        background: #ffffff;
+      }
+      #soft-blur-in-stage {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #soft-blur-in-text {
+        color: #171717;
+        font:
+          600 72px "Geist",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        letter-spacing: -0.05em;
+      }
+      .soft-blur-in-character {
+        display: inline-block;
+        white-space: pre;
+        backface-visibility: hidden;
+        transform-origin: 50% 55%;
+        will-change: transform, opacity, filter;
+      }
     </style>
   </head>
   <body>
-    <div data-hf-id="hf-n2ly" id="root" data-composition-id="soft-blur-in" data-start="0" data-duration="2" data-fps="30" data-width="1280" data-height="720">
-      <div data-hf-id="hf-1sp9" id="soft-blur-in-stage" class="clip" data-start="0" data-duration="2" data-track-index="0">
-        <span data-hf-id="hf-k1qe" id="soft-blur-in-text" aria-label="Think different."></span>
+    <div
+      data-hf-id="hf-n2ly"
+      id="root"
+      data-composition-id="soft-blur-in"
+      data-start="0"
+      data-duration="2"
+      data-fps="30"
+      data-width="1280"
+      data-height="720"
+    >
+      <div
+        data-hf-id="hf-1sp9"
+        id="soft-blur-in-stage"
+        class="clip"
+        data-start="0"
+        data-duration="2"
+        data-track-index="0"
+      >
+        <span
+          data-hf-id="hf-k1qe"
+          id="soft-blur-in-text"
+          aria-label="Think different."
+        ></span>
       </div>
     </div>
     <script>
@@ -40,13 +98,22 @@
         textElement.appendChild(span);
         return span;
       });
-      const ease = CustomEase.create("remocn-soft-blur-in", "M0,0 C0.22,1 0.36,1 1,1");
+      const ease = CustomEase.create(
+        "remocn-soft-blur-in",
+        "M0,0 C0.22,1 0.36,1 1,1",
+      );
       const timeline = gsap.timeline({ paused: true });
       characters.forEach((character, index) => {
         timeline.fromTo(
           character,
           { opacity: 0, y: 16, filter: `blur(${blur}px)` },
-          { opacity: 1, y: 0, filter: "blur(0px)", duration: 27 / (30 * speed), ease },
+          {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 27 / (30 * speed),
+            ease,
+          },
           index / (30 * speed),
         );
       });

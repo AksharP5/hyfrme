@@ -1,17 +1,21 @@
 # Hyfrme
 
 Hyfrme ports open-source [Remocn](https://github.com/Remocn/remocn)
-components to native [HyperFrames](https://hyperframes.heygen.com/) blocks and
-publishes the source, fixture, and measured visual comparison for each port.
+components to standalone [HyperFrames](https://hyperframes.heygen.com/) blocks
+and publishes the source, fixture, and measured visual comparison for each
+port.
 
-The catalog is intentionally small at first. A port is public only after it
-passes the fidelity contract in [`docs/PORTING.md`](docs/PORTING.md).
+A port is public only after it passes the fidelity contract in
+[`docs/PORTING.md`](docs/PORTING.md).
 
 ## Available ports
 
-| Block          | Classification | Frames | Mean SSIM | Status   |
-| -------------- | -------------- | -----: | --------: | -------- |
-| `soft-blur-in` | Mechanical     |     60 |  0.998647 | Verified |
+- `soft-blur-in`: native mechanical port, 60 frames, 0.998647 mean SSIM.
+- 100 animated icons: compiled source ports, 60–90 frames each, 0.985560–0.998621
+  mean SSIM (0.993872 family mean).
+
+That is 101 verified blocks from the pinned Remocn commit. The exact score and
+fixture for every item live under `parity/` and are visible in the catalog.
 
 ## Run the catalog locally
 
@@ -24,7 +28,7 @@ Then open the local URL printed by Vite. The catalog uses synchronized,
 pre-rendered MP4s for comparison so visitors do not need either framework
 runtime in their browser.
 
-## Install the first block
+## Install a block
 
 Run these commands from a HyperFrames project:
 
@@ -34,9 +38,15 @@ curl -fsSL https://raw.githubusercontent.com/AksharP5/hyfrme/main/registry/block
 curl -fsSL https://raw.githubusercontent.com/AksharP5/hyfrme/main/registry/blocks/soft-blur-in/Geist-SemiBold.woff2 -o assets/fonts/Geist-SemiBold.woff2
 ```
 
-The manual install is deliberate for the first release: it does not replace a
-project's configured HyperFrames registry. A small Hyfrme installer can be
-added once the catalog shape is stable.
+For an icon, the block is one standalone HTML file:
+
+```bash
+mkdir -p compositions
+curl -fsSL https://raw.githubusercontent.com/AksharP5/hyfrme/main/registry/blocks/icon-check-circle/icon-check-circle.html -o compositions/icon-check-circle.html
+```
+
+Manual installation does not replace a project's configured HyperFrames
+registry. The website generates the exact command for every selected block.
 
 ## Repository map
 
@@ -57,6 +67,16 @@ npm run build
 attribution, previews, and a passing parity manifest. Composition-level
 HyperFrames checks and frame comparisons are run while producing each port;
 their results are committed under `parity/`.
+
+The repeatable icon pipeline is exposed as:
+
+```bash
+npm run audit:upstream
+npm run generate:icons
+npm run verify:icons
+npm run build:catalog
+npm run generate:thumbnails
+```
 
 ## Attribution
 

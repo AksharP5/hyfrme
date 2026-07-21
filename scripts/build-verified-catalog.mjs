@@ -1,0 +1,33 @@
+import { readFile, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
+
+const root = resolve(import.meta.dirname, "..");
+const fixtures = JSON.parse(
+  await readFile(resolve(root, "catalog", "icon-fixtures.json"), "utf8"),
+);
+const orderedNames = ["soft-blur-in", ...fixtures.map((entry) => entry.slug)];
+const items = [];
+
+for (const name of orderedNames) {
+  const parity = JSON.parse(
+    await readFile(resolve(root, "parity", `${name}.json`), "utf8"),
+  );
+  if (parity.status !== "verified" || parity.result?.pass !== true) continue;
+  items.push({ name, type: "hyperframes:block" });
+}
+
+await writeFile(
+  resolve(root, "registry", "registry.json"),
+  `${JSON.stringify(
+    {
+      $schema: "https://hyperframes.heygen.com/schema/registry.json",
+      name: "hyfrme",
+      homepage: "https://hyfrme.vercel.app",
+      items,
+    },
+    null,
+    2,
+  )}\n`,
+);
+
+console.log(`Published ${items.length} verified block(s) to registry.json.`);
