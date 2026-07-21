@@ -1,0 +1,45 @@
+{
+  "slug": "shader-swirl",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/shader-swirl/index.tsx",
+    "config": "registry/remocn/shader-swirl/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "bandCount": 4,
+      "twist": 0.1,
+      "softness": 0.2,
+      "colorBack": "#12121a"
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.998099,
+    "minSsim": 0.997919,
+    "p05Ssim": 0.997993,
+    "p95Ssim": 0.998234,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/shader-swirl/remocn.mp4",
+    "hyperframesVideo": "public/previews/shader-swirl/hyperframes.mp4",
+    "summary": "parity/shader-swirl-diff/summary.json"
+  }
+}

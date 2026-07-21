@@ -1,0 +1,44 @@
+{
+  "slug": "blur-in",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn-ui/blur-in/index.tsx",
+    "entry": "components/docs/examples/blur-in-example.tsx",
+    "config": "registry/remocn-ui/blur-in/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 40,
+    "props": {
+      "blur": 8,
+      "distance": 12,
+      "direction": "up"
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 40,
+    "meanSsim": 0.999916,
+    "minSsim": 0.999516,
+    "p05Ssim": 0.999867,
+    "p95Ssim": 0.999995,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/blur-in/remocn.mp4",
+    "hyperframesVideo": "public/previews/blur-in/hyperframes.mp4",
+    "summary": "parity/blur-in-diff/summary.json"
+  }
+}

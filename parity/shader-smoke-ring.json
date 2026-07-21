@@ -1,0 +1,45 @@
+{
+  "slug": "shader-smoke-ring",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/shader-smoke-ring/index.tsx",
+    "config": "registry/remocn/shader-smoke-ring/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "radius": 0.25,
+      "thickness": 0.65,
+      "scale": 0.8,
+      "colorBack": "#12121a"
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.989817,
+    "minSsim": 0.988171,
+    "p05Ssim": 0.989172,
+    "p95Ssim": 0.990438,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/shader-smoke-ring/remocn.mp4",
+    "hyperframesVideo": "public/previews/shader-smoke-ring/hyperframes.mp4",
+    "summary": "parity/shader-smoke-ring-diff/summary.json"
+  }
+}

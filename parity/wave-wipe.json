@@ -1,0 +1,46 @@
+{
+  "slug": "wave-wipe",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/wave-wipe/index.tsx",
+    "entry": "components/docs/examples/wave-wipe-example.tsx",
+    "config": "registry/remocn/wave-wipe/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 116,
+    "props": {
+      "intensity": 0.2,
+      "softness": 0.7,
+      "noise": 0.4,
+      "colorBack": "#141318",
+      "speed": 1
+    },
+    "background": "#141318"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 116,
+    "meanSsim": 0.981779,
+    "minSsim": 0.954358,
+    "p05Ssim": 0.961174,
+    "p95Ssim": 0.997602,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/wave-wipe/remocn.mp4",
+    "hyperframesVideo": "public/previews/wave-wipe/hyperframes.mp4",
+    "summary": "parity/wave-wipe-diff/summary.json"
+  }
+}

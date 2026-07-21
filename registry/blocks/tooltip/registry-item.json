@@ -1,0 +1,42 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "tooltip",
+  "type": "hyperframes:block",
+  "title": "UI Tooltip",
+  "description": "A tooltip whose hidden/visible state is a pure function of the timeline. The Tooltip renderer is a pure function of a TooltipStyle (opacity, scale, translate); useTooltipTransition eases both the show and the hide. The static `side` prop sets the enter translate axis and the arrow placement. Compiled for deterministic HyperFrames playback by Hyfrme.",
+  "tags": [
+    "ui",
+    "primitive",
+    "remocn-port"
+  ],
+  "author": "Hyfrme",
+  "authorUrl": "https://github.com/AksharP5/hyfrme",
+  "license": "MIT",
+  "dimensions": {
+    "width": 1280,
+    "height": 720
+  },
+  "duration": 4,
+  "files": [
+    {
+      "path": "tooltip.html",
+      "target": "compositions/tooltip.html",
+      "type": "hyperframes:composition"
+    },
+    {
+      "path": "tooltip.runtime.js",
+      "target": "compositions/tooltip.runtime.js",
+      "type": "hyperframes:asset"
+    },
+    {
+      "path": "Geist-SemiBold.woff2",
+      "target": "assets/fonts/Geist-SemiBold.woff2",
+      "type": "hyperframes:asset"
+    },
+    {
+      "path": "licenses/Geist-OFL.txt",
+      "target": "THIRD_PARTY_LICENSES/Geist-OFL.txt",
+      "type": "hyperframes:asset"
+    }
+  ]
+}

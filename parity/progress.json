@@ -1,0 +1,42 @@
+{
+  "slug": "progress",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn-ui/progress/index.tsx",
+    "entry": "components/docs/examples/progress-example.tsx",
+    "config": "registry/remocn-ui/progress/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 160,
+    "props": {
+      "showLabel": true
+    },
+    "background": "oklch(1 0 0)"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 160,
+    "meanSsim": 0.99997,
+    "minSsim": 0.999964,
+    "p05Ssim": 0.999965,
+    "p95Ssim": 0.999973,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/progress/remocn.mp4",
+    "hyperframesVideo": "public/previews/progress/hyperframes.mp4",
+    "summary": "parity/progress-diff/summary.json"
+  }
+}

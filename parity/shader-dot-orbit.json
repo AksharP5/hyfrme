@@ -1,0 +1,44 @@
+{
+  "slug": "shader-dot-orbit",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/shader-dot-orbit/index.tsx",
+    "config": "registry/remocn/shader-dot-orbit/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "size": 1,
+      "spreading": 1,
+      "colorBack": "#12121a"
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.996831,
+    "minSsim": 0.996638,
+    "p05Ssim": 0.996659,
+    "p95Ssim": 0.997053,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/shader-dot-orbit/remocn.mp4",
+    "hyperframesVideo": "public/previews/shader-dot-orbit/hyperframes.mp4",
+    "summary": "parity/shader-dot-orbit-diff/summary.json"
+  }
+}

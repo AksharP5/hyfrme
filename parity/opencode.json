@@ -1,0 +1,47 @@
+{
+  "slug": "opencode",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/opencode/index.tsx",
+    "config": "registry/remocn/opencode/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "placeholder": "Ask anything... ",
+      "query": "\"What is the tech stack of this project?\"",
+      "agentName": "Build",
+      "modelName": "Kimi K2.5",
+      "provider": "Moonshot AI",
+      "accentColor": "#2B7FFF",
+      "speed": 1
+    },
+    "background": "#000000"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.99883,
+    "minSsim": 0.996498,
+    "p05Ssim": 0.998599,
+    "p95Ssim": 0.999864,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/opencode/remocn.mp4",
+    "hyperframesVideo": "public/previews/opencode/hyperframes.mp4",
+    "summary": "parity/opencode-diff/summary.json"
+  }
+}

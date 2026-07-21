@@ -96,7 +96,15 @@ class Easing {
   static step0(value) { return value > 0 ? 1 : 0; }
   static step1(value) { return value >= 1 ? 1 : 0; }
   static linear(value) { return value; }
+  static quad(value) { return value * value; }
   static cubic(value) { return value * value * value; }
+  static ease(value) { return hyfrmeBezier(0.42, 0, 1, 1)(value); }
+  static elastic(bounciness = 1) {
+    const period = bounciness * Math.PI;
+    return (value) => 1 - Math.cos(value * Math.PI / 2) ** 3 * Math.cos(value * period);
+  }
+  static sin(value) { return 1 - Math.cos(value * Math.PI / 2); }
+  static poly(power) { return (value) => value ** power; }
   static in(easing) { return easing; }
   static out(easing) { return (value) => 1 - easing(1 - value); }
   static inOut(easing) {
@@ -189,5 +197,28 @@ const spring = ({
     : frame * hyfrmeMeasureSpring(fps, config, durationRestThreshold) / durationInFrames;
   const progress = hyfrmeSpringUnit(scaledFrame, fps, config);
   return from + (to - from) * progress;
+};
+
+const hyfrmeMulberry32 = (seed) => {
+  let value = seed + 0x6d2b79f5;
+  value = Math.imul(value ^ (value >>> 15), value | 1);
+  value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+  return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+};
+
+const hyfrmeHashCode = (input) => {
+  let hash = 0;
+  for (let index = 0; index < input.length; index += 1) {
+    hash = (hash << 5) - hash + input.charCodeAt(index);
+    hash |= 0;
+  }
+  return hash;
+};
+
+const random = (seed) => {
+  if (seed === null) return Math.random();
+  if (typeof seed === "string") return hyfrmeMulberry32(hyfrmeHashCode(seed));
+  if (typeof seed === "number") return hyfrmeMulberry32(seed * 10000000000);
+  throw new Error("Hyfrme random() requires a number or string seed");
 };
 `;

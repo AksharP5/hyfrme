@@ -1,0 +1,45 @@
+{
+  "slug": "shader-water",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/shader-water/index.tsx",
+    "config": "registry/remocn/shader-water/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "waves": 0.3,
+      "caustic": 0.08,
+      "highlights": 0.06,
+      "colorBack": "#16202b"
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.998967,
+    "minSsim": 0.998765,
+    "p05Ssim": 0.998797,
+    "p95Ssim": 0.9992,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/shader-water/remocn.mp4",
+    "hyperframesVideo": "public/previews/shader-water/hyperframes.mp4",
+    "summary": "parity/shader-water-diff/summary.json"
+  }
+}

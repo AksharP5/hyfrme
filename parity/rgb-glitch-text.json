@@ -1,0 +1,49 @@
+{
+  "slug": "rgb-glitch-text",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/rgb-glitch-text/index.tsx",
+    "config": "registry/remocn/rgb-glitch-text/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "text": "GLITCH",
+      "fontSize": 96,
+      "color": "#171717",
+      "fontWeight": "700",
+      "glitchAt": 20,
+      "glitchDuration": 8,
+      "intensity": 6,
+      "seed": "glitch",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.993592,
+    "minSsim": 0.98936,
+    "p05Ssim": 0.98993,
+    "p95Ssim": 0.994022,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/rgb-glitch-text/remocn.mp4",
+    "hyperframesVideo": "public/previews/rgb-glitch-text/hyperframes.mp4",
+    "summary": "parity/rgb-glitch-text-diff/summary.json"
+  }
+}

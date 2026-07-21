@@ -1,0 +1,45 @@
+{
+  "slug": "shader-neuro-noise",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/shader-neuro-noise/index.tsx",
+    "config": "registry/remocn/shader-neuro-noise/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "brightness": 0.05,
+      "contrast": 0.3,
+      "colorBack": "#12121a",
+      "colorMid": "#4a4a68"
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.995704,
+    "minSsim": 0.99554,
+    "p05Ssim": 0.99558,
+    "p95Ssim": 0.995831,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/shader-neuro-noise/remocn.mp4",
+    "hyperframesVideo": "public/previews/shader-neuro-noise/hyperframes.mp4",
+    "summary": "parity/shader-neuro-noise-diff/summary.json"
+  }
+}

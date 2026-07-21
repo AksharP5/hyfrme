@@ -1,0 +1,48 @@
+{
+  "slug": "backdrop",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/backdrop/index.tsx",
+    "entry": "components/docs/examples/backdrop-demo.tsx",
+    "config": "registry/remocn/backdrop/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "fillType": "gradient",
+      "color": "#6366f1",
+      "gradient": "linear-gradient(135deg, #6366f1 0%, #a855f7 100%)",
+      "image": "/hero.png",
+      "padding": 4,
+      "radius": 1,
+      "shadow": "0 20px 60px rgba(0,0,0,0.4)"
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.997588,
+    "minSsim": 0.997508,
+    "p05Ssim": 0.997587,
+    "p95Ssim": 0.997589,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/backdrop/remocn.mp4",
+    "hyperframesVideo": "public/previews/backdrop/hyperframes.mp4",
+    "summary": "parity/backdrop-diff/summary.json"
+  }
+}

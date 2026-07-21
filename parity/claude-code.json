@@ -1,0 +1,48 @@
+{
+  "slug": "claude-code",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/claude-code/index.tsx",
+    "config": "registry/remocn/claude-code/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 160,
+    "props": {
+      "title": "Claude Code v2.0.0",
+      "userName": "Remocn",
+      "model": "Opus 4.8 • Max 20x",
+      "cwd": "/users/remocn/code/apps",
+      "placeholder": "Try \"edit <filepath> to ...\"",
+      "prompt": "edit src/theme.ts to add a dark mode toggle",
+      "accentColor": "#D97757",
+      "speed": 1
+    },
+    "background": "#2B2A28"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 160,
+    "meanSsim": 0.996336,
+    "minSsim": 0.995888,
+    "p05Ssim": 0.995917,
+    "p95Ssim": 0.999038,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/claude-code/remocn.mp4",
+    "hyperframesVideo": "public/previews/claude-code/hyperframes.mp4",
+    "summary": "parity/claude-code-diff/summary.json"
+  }
+}

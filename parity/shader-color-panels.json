@@ -1,0 +1,44 @@
+{
+  "slug": "shader-color-panels",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/shader-color-panels/index.tsx",
+    "config": "registry/remocn/shader-color-panels/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "density": 3,
+      "length": 1.1,
+      "colorBack": "#12121a"
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.997339,
+    "minSsim": 0.997023,
+    "p05Ssim": 0.99715,
+    "p95Ssim": 0.997501,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/shader-color-panels/remocn.mp4",
+    "hyperframesVideo": "public/previews/shader-color-panels/hyperframes.mp4",
+    "summary": "parity/shader-color-panels-diff/summary.json"
+  }
+}

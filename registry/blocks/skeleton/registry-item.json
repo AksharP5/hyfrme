@@ -1,0 +1,42 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "skeleton",
+  "type": "hyperframes:block",
+  "title": "UI Skeleton",
+  "description": "A skeleton→content crossfade whose loading/loaded state is a pure function of the timeline. The Skeleton renderer is pure (reads no frame); only the composed SkeletonBlock shimmer reads it. SkeletonStyle opacities sum to 1 so the box never dims; real children sit in normal flow and the placeholder (a lines/card layout or a custom node) is an absolute overlay. Compiled for deterministic HyperFrames playback by Hyfrme.",
+  "tags": [
+    "ui",
+    "primitive",
+    "remocn-port"
+  ],
+  "author": "Hyfrme",
+  "authorUrl": "https://github.com/AksharP5/hyfrme",
+  "license": "MIT",
+  "dimensions": {
+    "width": 1280,
+    "height": 720
+  },
+  "duration": 7.333333333333333,
+  "files": [
+    {
+      "path": "skeleton.html",
+      "target": "compositions/skeleton.html",
+      "type": "hyperframes:composition"
+    },
+    {
+      "path": "skeleton.runtime.js",
+      "target": "compositions/skeleton.runtime.js",
+      "type": "hyperframes:asset"
+    },
+    {
+      "path": "Geist-SemiBold.woff2",
+      "target": "assets/fonts/Geist-SemiBold.woff2",
+      "type": "hyperframes:asset"
+    },
+    {
+      "path": "licenses/Geist-OFL.txt",
+      "target": "THIRD_PARTY_LICENSES/Geist-OFL.txt",
+      "type": "hyperframes:asset"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "slug": "dialog",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn-ui/dialog/index.tsx",
+    "entry": "components/docs/examples/dialog-example.tsx",
+    "config": "registry/remocn-ui/dialog/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "title": "Edit profile",
+      "description": "Make changes to your profile here. Click save when you're done.",
+      "actionLabel": "Save changes",
+      "cancelLabel": "Cancel"
+    },
+    "background": "oklch(1 0 0)"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.999513,
+    "minSsim": 0.998629,
+    "p05Ssim": 0.998644,
+    "p95Ssim": 0.999904,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/dialog/remocn.mp4",
+    "hyperframesVideo": "public/previews/dialog/hyperframes.mp4",
+    "summary": "parity/dialog-diff/summary.json"
+  }
+}

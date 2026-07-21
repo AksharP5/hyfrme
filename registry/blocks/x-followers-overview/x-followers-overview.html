@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"totalFollowers","type":"number","label":"Total followers","default":1709},{"id":"handle","type":"string","label":"Handle","default":"remocn"},{"id":"avatarUrl","type":"string","label":"Avatar URL","default":"/assets/social/logo.svg"},{"id":"accentColor","type":"color","label":"Accent","default":"#1d9bf0"},{"id":"orientation","type":"string","label":"Orientation","default":"horizontal"},{"id":"speed","type":"number","label":"Speed","default":1}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
+
+
+      @font-face { font-family: "Manrope"; src: url("../assets/fonts/Manrope-Latin.woff2") format("woff2"); font-style: normal; font-weight: 200 800; font-display: block; }
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #ffffff; }
+      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="x-followers-overview" data-start="0" data-duration="12" data-fps="30" data-width="1280" data-height="720">
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="12" data-track-index="0">
+        <div id="hyfrme-source-root"></div>
+      </div>
+    </div>
+    <script src="./x-followers-overview.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const clock = { frame: 0 };
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to(clock, {
+        frame: 360,
+        duration: 12,
+        ease: "none",
+        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(359, Math.round(clock.frame)))),
+      });
+      window.__timelines["x-followers-overview"] = timeline;
+    </script>
+  </body>
+</html>

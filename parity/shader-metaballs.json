@@ -1,0 +1,44 @@
+{
+  "slug": "shader-metaballs",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/shader-metaballs/index.tsx",
+    "config": "registry/remocn/shader-metaballs/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "count": 10,
+      "size": 0.83,
+      "colorBack": "#12121a"
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.998611,
+    "minSsim": 0.998398,
+    "p05Ssim": 0.998423,
+    "p95Ssim": 0.99874,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/shader-metaballs/remocn.mp4",
+    "hyperframesVideo": "public/previews/shader-metaballs/hyperframes.mp4",
+    "summary": "parity/shader-metaballs-diff/summary.json"
+  }
+}

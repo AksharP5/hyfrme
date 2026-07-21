@@ -1,0 +1,42 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "context-menu",
+  "type": "hyperframes:block",
+  "title": "UI Context Menu",
+  "description": "A right-click context menu whose opened/closed state is a pure function of the timeline; the panel scales from its top-left corner (the click point) with a fade + lift. No trigger — the caller positions it. Rows reuse the DropdownMenuItem row; items are plain string labels. Compiled for deterministic HyperFrames playback by Hyfrme.",
+  "tags": [
+    "ui",
+    "primitive",
+    "remocn-port"
+  ],
+  "author": "Hyfrme",
+  "authorUrl": "https://github.com/AksharP5/hyfrme",
+  "license": "MIT",
+  "dimensions": {
+    "width": 1280,
+    "height": 720
+  },
+  "duration": 4.5,
+  "files": [
+    {
+      "path": "context-menu.html",
+      "target": "compositions/context-menu.html",
+      "type": "hyperframes:composition"
+    },
+    {
+      "path": "context-menu.runtime.js",
+      "target": "compositions/context-menu.runtime.js",
+      "type": "hyperframes:asset"
+    },
+    {
+      "path": "Geist-SemiBold.woff2",
+      "target": "assets/fonts/Geist-SemiBold.woff2",
+      "type": "hyperframes:asset"
+    },
+    {
+      "path": "licenses/Geist-OFL.txt",
+      "target": "THIRD_PARTY_LICENSES/Geist-OFL.txt",
+      "type": "hyperframes:asset"
+    }
+  ]
+}

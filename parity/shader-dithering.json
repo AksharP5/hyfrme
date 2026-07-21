@@ -1,0 +1,44 @@
+{
+  "slug": "shader-dithering",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/shader-dithering/index.tsx",
+    "config": "registry/remocn/shader-dithering/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "size": 2,
+      "colorBack": "#12121a",
+      "colorFront": "#6a6a85"
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.988275,
+    "minSsim": 0.987866,
+    "p05Ssim": 0.987898,
+    "p95Ssim": 0.988579,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/shader-dithering/remocn.mp4",
+    "hyperframesVideo": "public/previews/shader-dithering/hyperframes.mp4",
+    "summary": "parity/shader-dithering-diff/summary.json"
+  }
+}

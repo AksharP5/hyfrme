@@ -1,0 +1,45 @@
+{
+  "slug": "rolling-number",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/rolling-number/index.tsx",
+    "config": "registry/remocn/rolling-number/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "from": 0,
+      "to": 24813,
+      "fontSize": 120,
+      "color": "#171717",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.998289,
+    "minSsim": 0.997803,
+    "p05Ssim": 0.997953,
+    "p95Ssim": 0.998606,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/rolling-number/remocn.mp4",
+    "hyperframesVideo": "public/previews/rolling-number/hyperframes.mp4",
+    "summary": "parity/rolling-number-diff/summary.json"
+  }
+}

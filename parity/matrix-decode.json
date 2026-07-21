@@ -1,0 +1,47 @@
+{
+  "slug": "matrix-decode",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/matrix-decode/index.tsx",
+    "config": "registry/remocn/matrix-decode/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "text": "DECRYPTED",
+      "charset": "!@#$%^&*()_+-=<>?/\\|",
+      "fontSize": 72,
+      "color": "#22c55e",
+      "fontWeight": "600",
+      "revealDuration": 60,
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.997824,
+    "minSsim": 0.997355,
+    "p05Ssim": 0.997533,
+    "p95Ssim": 0.998199,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/matrix-decode/remocn.mp4",
+    "hyperframesVideo": "public/previews/matrix-decode/hyperframes.mp4",
+    "summary": "parity/matrix-decode-diff/summary.json"
+  }
+}

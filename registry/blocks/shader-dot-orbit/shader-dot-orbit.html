@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"speed","type":"number","label":"Speed","default":1},{"id":"size","type":"number","label":"Size","default":1},{"id":"spreading","type":"number","label":"Spreading","default":1},{"id":"colorBack","type":"color","label":"Background","default":"#12121a"}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #ffffff; }
+      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="shader-dot-orbit" data-start="0" data-duration="5" data-fps="30" data-width="1280" data-height="720">
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="5" data-track-index="0">
+        <div id="hyfrme-source-root"></div>
+      </div>
+    </div>
+    <script src="./shader-dot-orbit.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const clock = { frame: 0 };
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to(clock, {
+        frame: 150,
+        duration: 5,
+        ease: "none",
+        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(149, Math.round(clock.frame)))),
+      });
+      window.__timelines["shader-dot-orbit"] = timeline;
+    </script>
+  </body>
+</html>

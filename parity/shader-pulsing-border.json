@@ -1,0 +1,45 @@
+{
+  "slug": "shader-pulsing-border",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/shader-pulsing-border/index.tsx",
+    "config": "registry/remocn/shader-pulsing-border/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "thickness": 0.1,
+      "roundness": 0.25,
+      "intensity": 0.2,
+      "colorBack": "#12121a"
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.998918,
+    "minSsim": 0.998765,
+    "p05Ssim": 0.998811,
+    "p95Ssim": 0.999044,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/shader-pulsing-border/remocn.mp4",
+    "hyperframesVideo": "public/previews/shader-pulsing-border/hyperframes.mp4",
+    "summary": "parity/shader-pulsing-border-diff/summary.json"
+  }
+}

@@ -14,46 +14,46 @@ registry manifest and the official Remotion-to-HyperFrames source linter.
 
 ## Verified progress
 
-- 146 visual ports published in the local verified registry.
+- 234 visual ports published in the local verified registry.
 - 100/100 animated icons published.
 - 24/24 typography/effect ports published.
-- 16/16 composition/data ports published.
-- 5/5 UI primitive ports published.
-- 88 visual items remain.
+- 64/64 composition/data ports published.
+- 45/45 UI primitive ports published.
+- 0 visual items remain.
 
-| Translation class         | Count |
-| ------------------------- | ----: |
-| interop-or-native-rewrite |    22 |
-| manual-review             |    33 |
-| mechanical-candidate      |   179 |
-| shared-runtime            |     2 |
+| Translation class | Count |
+| --- | ---: |
+| interop-or-native-rewrite | 22 |
+| manual-review | 33 |
+| mechanical-candidate | 179 |
+| shared-runtime | 2 |
 
 ## Source-lint blockers
 
 Blockers are not failed ports. They require a native deterministic rewrite or a
 documented runtime adapter before parity grading.
 
-| Item                    | Family | Rule                           |
-| ----------------------- | ------ | ------------------------------ |
-| `shader-mesh-gradient`  | core   | r2hf/use-state                 |
-| `shader-grain-gradient` | core   | r2hf/use-state                 |
-| `shader-warp`           | core   | r2hf/use-state                 |
-| `shader-swirl`          | core   | r2hf/use-state                 |
-| `shader-water`          | core   | r2hf/use-state                 |
-| `shader-spiral`         | core   | r2hf/use-state                 |
-| `shader-liquid-metal`   | core   | r2hf/use-state                 |
-| `shader-color-panels`   | core   | r2hf/use-state                 |
-| `shader-neuro-noise`    | core   | r2hf/use-state                 |
-| `shader-perlin-noise`   | core   | r2hf/use-state                 |
-| `shader-simplex-noise`  | core   | r2hf/use-state                 |
-| `shader-voronoi`        | core   | r2hf/use-state                 |
-| `shader-dot-orbit`      | core   | r2hf/use-state                 |
-| `shader-dithering`      | core   | r2hf/use-state                 |
-| `shader-god-rays`       | core   | r2hf/use-state                 |
-| `shader-smoke-ring`     | core   | r2hf/use-state                 |
-| `shader-metaballs`      | core   | r2hf/use-state                 |
-| `shader-pulsing-border` | core   | r2hf/use-state                 |
-| `github-sponsors`       | core   | r2hf/use-state                 |
-| `github-stars`          | core   | r2hf/use-state                 |
-| `x-follow-card`         | core   | r2hf/use-state, r2hf/use-state |
-| `x-followers-overview`  | core   | r2hf/use-state                 |
+| Item | Family | Rule |
+| --- | --- | --- |
+| `shader-mesh-gradient` | core | r2hf/use-state |
+| `shader-grain-gradient` | core | r2hf/use-state |
+| `shader-warp` | core | r2hf/use-state |
+| `shader-swirl` | core | r2hf/use-state |
+| `shader-water` | core | r2hf/use-state |
+| `shader-spiral` | core | r2hf/use-state |
+| `shader-liquid-metal` | core | r2hf/use-state |
+| `shader-color-panels` | core | r2hf/use-state |
+| `shader-neuro-noise` | core | r2hf/use-state |
+| `shader-perlin-noise` | core | r2hf/use-state |
+| `shader-simplex-noise` | core | r2hf/use-state |
+| `shader-voronoi` | core | r2hf/use-state |
+| `shader-dot-orbit` | core | r2hf/use-state |
+| `shader-dithering` | core | r2hf/use-state |
+| `shader-god-rays` | core | r2hf/use-state |
+| `shader-smoke-ring` | core | r2hf/use-state |
+| `shader-metaballs` | core | r2hf/use-state |
+| `shader-pulsing-border` | core | r2hf/use-state |
+| `github-sponsors` | core | r2hf/use-state |
+| `github-stars` | core | r2hf/use-state |
+| `x-follow-card` | core | r2hf/use-state, r2hf/use-state |
+| `x-followers-overview` | core | r2hf/use-state |

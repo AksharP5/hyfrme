@@ -1,0 +1,45 @@
+{
+  "slug": "input",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn-ui/input/index.tsx",
+    "entry": "components/docs/examples/input-example.tsx",
+    "config": "registry/remocn-ui/input/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "placeholder": "you@example.com",
+      "value": "remotion@remocn.dev",
+      "size": "default",
+      "primary": "#171717"
+    },
+    "background": "oklch(1 0 0)"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.999876,
+    "minSsim": 0.999731,
+    "p05Ssim": 0.999765,
+    "p95Ssim": 0.99995,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/input/remocn.mp4",
+    "hyperframesVideo": "public/previews/input/hyperframes.mp4",
+    "summary": "parity/input-diff/summary.json"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "smoke-dissolve",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/smoke-dissolve/index.tsx",
+    "entry": "components/docs/examples/smoke-dissolve-example.tsx",
+    "config": "registry/remocn/smoke-dissolve/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 116,
+    "props": {
+      "ringColor": "#8f88ae",
+      "colorBack": "#141318",
+      "speed": 1
+    },
+    "background": "#141318"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 116,
+    "meanSsim": 0.995176,
+    "minSsim": 0.991117,
+    "p05Ssim": 0.991581,
+    "p95Ssim": 0.997669,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/smoke-dissolve/remocn.mp4",
+    "hyperframesVideo": "public/previews/smoke-dissolve/hyperframes.mp4",
+    "summary": "parity/smoke-dissolve-diff/summary.json"
+  }
+}

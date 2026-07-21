@@ -1,0 +1,45 @@
+{
+  "slug": "dither-dissolve",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/dither-dissolve/index.tsx",
+    "entry": "components/docs/examples/dither-dissolve-example.tsx",
+    "config": "registry/remocn/dither-dissolve/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 100,
+    "props": {
+      "shape": "simplex",
+      "colorBack": "#141318",
+      "colorFront": "#8f88ae",
+      "speed": 1
+    },
+    "background": "#141318"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 100,
+    "meanSsim": 0.991858,
+    "minSsim": 0.958778,
+    "p05Ssim": 0.97884,
+    "p95Ssim": 0.997598,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/dither-dissolve/remocn.mp4",
+    "hyperframesVideo": "public/previews/dither-dissolve/hyperframes.mp4",
+    "summary": "parity/dither-dissolve-diff/summary.json"
+  }
+}

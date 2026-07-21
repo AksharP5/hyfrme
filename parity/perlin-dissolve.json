@@ -1,0 +1,45 @@
+{
+  "slug": "perlin-dissolve",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/perlin-dissolve/index.tsx",
+    "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+    "config": "registry/remocn/perlin-dissolve/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 116,
+    "props": {
+      "colorFront": "#8f88ae",
+      "colorBack": "#141318",
+      "softness": 0.1,
+      "speed": 1
+    },
+    "background": "#141318"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 116,
+    "meanSsim": 0.997436,
+    "minSsim": 0.985678,
+    "p05Ssim": 0.989241,
+    "p95Ssim": 0.999992,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/perlin-dissolve/remocn.mp4",
+    "hyperframesVideo": "public/previews/perlin-dissolve/hyperframes.mp4",
+    "summary": "parity/perlin-dissolve-diff/summary.json"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "slug": "shader-liquid-metal",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/shader-liquid-metal/index.tsx",
+    "config": "registry/remocn/shader-liquid-metal/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "distortion": 0.1,
+      "repetition": 1.5,
+      "contour": 0.4,
+      "colorBack": "#2a2a30",
+      "colorTint": "#8a8a95"
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.995583,
+    "minSsim": 0.995008,
+    "p05Ssim": 0.995083,
+    "p95Ssim": 0.996246,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/shader-liquid-metal/remocn.mp4",
+    "hyperframesVideo": "public/previews/shader-liquid-metal/hyperframes.mp4",
+    "summary": "parity/shader-liquid-metal-diff/summary.json"
+  }
+}

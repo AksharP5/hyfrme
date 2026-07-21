@@ -1,0 +1,45 @@
+{
+  "slug": "shader-grain-gradient",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/shader-grain-gradient/index.tsx",
+    "config": "registry/remocn/shader-grain-gradient/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "softness": 0.6,
+      "intensity": 0.2,
+      "noise": 0.15,
+      "colorBack": "#12121a"
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.983005,
+    "minSsim": 0.975071,
+    "p05Ssim": 0.975281,
+    "p95Ssim": 0.990999,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/shader-grain-gradient/remocn.mp4",
+    "hyperframesVideo": "public/previews/shader-grain-gradient/hyperframes.mp4",
+    "summary": "parity/shader-grain-gradient-diff/summary.json"
+  }
+}

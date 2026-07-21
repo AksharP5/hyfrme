@@ -1,0 +1,44 @@
+{
+  "slug": "message-bubble",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn-ui/message-bubble/index.tsx",
+    "entry": "components/docs/examples/message-bubble-example.tsx",
+    "config": "registry/remocn-ui/message-bubble/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "text": "Yep, pushing it live now",
+      "variant": "incoming",
+      "reaction": "🔥"
+    },
+    "background": "oklch(1 0 0)"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.99991,
+    "minSsim": 0.99984,
+    "p05Ssim": 0.999842,
+    "p95Ssim": 0.999995,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/message-bubble/remocn.mp4",
+    "hyperframesVideo": "public/previews/message-bubble/hyperframes.mp4",
+    "summary": "parity/message-bubble-diff/summary.json"
+  }
+}

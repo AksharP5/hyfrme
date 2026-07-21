@@ -1,0 +1,45 @@
+{
+  "slug": "chat-gpt",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/chat-gpt/index.tsx",
+    "config": "registry/remocn/chat-gpt/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "greeting": "What's on your mind today?",
+      "placeholder": "Ask anything",
+      "prompt": "Make a sunset over a calm ocean",
+      "accentColor": "#2F6FED",
+      "speed": 1
+    },
+    "background": "#FFFFFF"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.993339,
+    "minSsim": 0.991674,
+    "p05Ssim": 0.991682,
+    "p95Ssim": 0.996624,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/chat-gpt/remocn.mp4",
+    "hyperframesVideo": "public/previews/chat-gpt/hyperframes.mp4",
+    "summary": "parity/chat-gpt-diff/summary.json"
+  }
+}

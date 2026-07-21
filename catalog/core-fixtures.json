@@ -455,5 +455,1355 @@
       },
       "background": "radial-gradient(ellipse at center, #14101e 0%, #05030a 75%)"
     }
+  },
+  {
+    "slug": "matrix-decode",
+    "catalogFamily": "core",
+    "title": "Matrix Decode",
+    "description": "Random scramble resolves left-to-right into the target text.",
+    "componentName": "MatrixDecode",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/matrix-decode/index.tsx",
+      "config": "registry/remocn/matrix-decode/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 90,
+      "props": {
+        "text": "DECRYPTED",
+        "charset": "!@#$%^&*()_+-=<>?/\\|",
+        "fontSize": 72,
+        "color": "#22c55e",
+        "fontWeight": "600",
+        "revealDuration": 60,
+        "speed": 1
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "rgb-glitch-text",
+    "catalogFamily": "core",
+    "title": "RGB Glitch Text",
+    "description": "Three RGB-offset text copies jitter for a brief glitch window.",
+    "componentName": "RGBGlitchText",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/rgb-glitch-text/index.tsx",
+      "config": "registry/remocn/rgb-glitch-text/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 90,
+      "props": {
+        "text": "GLITCH",
+        "fontSize": 96,
+        "color": "#171717",
+        "fontWeight": "700",
+        "glitchAt": 20,
+        "glitchDuration": 8,
+        "intensity": 6,
+        "seed": "glitch",
+        "speed": 1
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "confetti",
+    "catalogFamily": "core",
+    "title": "Confetti",
+    "description": "Deterministic confetti burst for Remotion — seeded particles with gravity, spin, and flutter so every render is identical. Fire it on any frame as a celebratory overlay.",
+    "componentName": "Confetti",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/confetti/index.tsx",
+      "config": "registry/remocn/confetti/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 90,
+      "props": {
+        "particleCount": 140,
+        "power": 17,
+        "gravity": 0.45,
+        "size": 13,
+        "seed": 1,
+        "speed": 1
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "backdrop",
+    "catalogFamily": "core",
+    "title": "Backdrop",
+    "description": "Configurable full-frame background (color / gradient / image / live component) with Screen Studio-style padding and a rounded, shadowed content frame.",
+    "componentName": "BackdropDemo",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/backdrop/index.tsx",
+      "entry": "components/docs/examples/backdrop-demo.tsx",
+      "config": "registry/remocn/backdrop/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "fillType": "gradient",
+        "color": "#6366f1",
+        "gradient": "linear-gradient(135deg, #6366f1 0%, #a855f7 100%)",
+        "image": "/hero.png",
+        "padding": 4,
+        "radius": 1,
+        "shadow": "0 20px 60px rgba(0,0,0,0.4)"
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "drift",
+    "catalogFamily": "core",
+    "title": "Drift",
+    "description": "A slow linear camera push-in wrapper that scales its scene from 1 to 1+grow across the sequence so no frame is ever static.",
+    "componentName": "DriftExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/drift/index.tsx",
+      "entry": "components/docs/examples/drift-example.tsx",
+      "config": "registry/remocn/drift/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 90,
+      "props": {
+        "grow": 0.035
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "rolodex-flip",
+    "catalogFamily": "core",
+    "title": "Rolodex Flip",
+    "description": "Cycles a word through a list of values with a 3D rolodex card flip while an invisible sizer keeps the line width and baseline stable.",
+    "componentName": "RolodexFlipExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/rolodex-flip/index.tsx",
+      "entry": "components/docs/examples/rolodex-flip-example.tsx",
+      "config": "registry/remocn/rolodex-flip/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 110,
+      "props": {
+        "interval": 20,
+        "flipDuration": 10
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "value-swap",
+    "catalogFamily": "core",
+    "title": "Value Swap",
+    "description": "Swaps a value in place with a vertical slide — the old value exits up as the new one enters from below while an invisible sizer keeps the width stable.",
+    "componentName": "ValueSwapExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/value-swap/index.tsx",
+      "entry": "components/docs/examples/value-swap-example.tsx",
+      "config": "registry/remocn/value-swap/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 100,
+      "props": {
+        "duration": 10,
+        "distance": 12,
+        "direction": "up"
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "number-wheel",
+    "catalogFamily": "core",
+    "title": "Number Wheel",
+    "description": "Mechanical odometer that rolls an integer up or down to its target, direction inferred from the values.",
+    "componentName": "NumberWheel",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/number-wheel/index.tsx",
+      "config": "registry/remocn/number-wheel/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 112,
+      "props": {
+        "from": 0,
+        "to": 24813,
+        "fontSize": 120,
+        "color": "#171717",
+        "speed": 1
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "rolling-number",
+    "catalogFamily": "core",
+    "title": "Rolling Number",
+    "description": "Odometer where every place rolls at its own speed, new places rising into view, settling exactly on the target value.",
+    "componentName": "RollingNumber",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/rolling-number/index.tsx",
+      "config": "registry/remocn/rolling-number/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "from": 0,
+        "to": 24813,
+        "fontSize": 120,
+        "color": "#171717",
+        "speed": 1
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "swirl-dissolve",
+    "catalogFamily": "core",
+    "title": "Swirl Dissolve",
+    "description": "A swirl shader transition that unwinds open and winds shut to reveal the next scene.",
+    "componentName": "SwirlDissolveExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/swirl-dissolve/index.tsx",
+      "entry": "components/docs/examples/swirl-dissolve-example.tsx",
+      "config": "registry/remocn/swirl-dissolve/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 116,
+      "props": {
+        "bandCount": 10,
+        "softness": 0.35,
+        "colorBack": "#141318",
+        "speed": 1
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "dither-dissolve",
+    "catalogFamily": "core",
+    "title": "Dither Dissolve",
+    "description": "A dithering shader transition that dissolves one scene into the next.",
+    "componentName": "DitherDissolveExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/dither-dissolve/index.tsx",
+      "entry": "components/docs/examples/dither-dissolve-example.tsx",
+      "config": "registry/remocn/dither-dissolve/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 100,
+      "props": {
+        "shape": "simplex",
+        "colorBack": "#141318",
+        "colorFront": "#8f88ae",
+        "speed": 1
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "perlin-dissolve",
+    "catalogFamily": "core",
+    "title": "Perlin Dissolve",
+    "description": "A perlin-noise shader transition that sweeps its noise threshold to dissolve one scene into the next.",
+    "componentName": "PerlinDissolveExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/perlin-dissolve/index.tsx",
+      "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+      "config": "registry/remocn/perlin-dissolve/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 116,
+      "props": {
+        "colorFront": "#8f88ae",
+        "colorBack": "#141318",
+        "softness": 0.1,
+        "speed": 1
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "smoke-dissolve",
+    "catalogFamily": "core",
+    "title": "Smoke Dissolve",
+    "description": "A smoke-ring shader transition that expands the ring outward to reveal the next scene.",
+    "componentName": "SmokeDissolveExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/smoke-dissolve/index.tsx",
+      "entry": "components/docs/examples/smoke-dissolve-example.tsx",
+      "config": "registry/remocn/smoke-dissolve/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 116,
+      "props": {
+        "ringColor": "#8f88ae",
+        "colorBack": "#141318",
+        "speed": 1
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "wave-wipe",
+    "catalogFamily": "core",
+    "title": "Wave Wipe",
+    "description": "A grain-gradient wave that sweeps up across the frame, covering the outgoing scene and revealing the next one from below.",
+    "componentName": "WaveWipeExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/wave-wipe/index.tsx",
+      "entry": "components/docs/examples/wave-wipe-example.tsx",
+      "config": "registry/remocn/wave-wipe/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 116,
+      "props": {
+        "intensity": 0.2,
+        "softness": 0.7,
+        "noise": 0.4,
+        "colorBack": "#141318",
+        "speed": 1
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "ripple-zoom",
+    "catalogFamily": "core",
+    "title": "Ripple Zoom",
+    "description": "A grain-gradient ripple transition that flies the camera through the center of the rings while the next scene approaches from the depth.",
+    "componentName": "RippleZoomExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/ripple-zoom/index.tsx",
+      "entry": "components/docs/examples/ripple-zoom-example.tsx",
+      "config": "registry/remocn/ripple-zoom/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 116,
+      "props": {
+        "zoom": 4,
+        "intensity": 0.5,
+        "softness": 0.5,
+        "colorBack": "#141318",
+        "speed": 1
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "grain-dissolve",
+    "catalogFamily": "core",
+    "title": "Grain Dissolve",
+    "description": "A grain-gradient shader transition that disintegrates the outgoing scene into soft grainy shapes and condenses the next scene out of the noise.",
+    "componentName": "GrainDissolveExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/grain-dissolve/index.tsx",
+      "entry": "components/docs/examples/grain-dissolve-example.tsx",
+      "config": "registry/remocn/grain-dissolve/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 116,
+      "props": {
+        "shape": "blob",
+        "noise": 0.3,
+        "zoom": 2,
+        "colorBack": "#141318",
+        "speed": 1
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "warp-dissolve",
+    "catalogFamily": "core",
+    "title": "Warp Dissolve",
+    "description": "A domain-warp shader transition that melts the outgoing scene into a folding color field and straightens back out into the next.",
+    "componentName": "WarpDissolveExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/warp-dissolve/index.tsx",
+      "entry": "components/docs/examples/warp-dissolve-example.tsx",
+      "config": "registry/remocn/warp-dissolve/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 116,
+      "props": {
+        "distortion": 0.8,
+        "swirl": 0.6,
+        "softness": 1,
+        "speed": 1
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "whip-pan",
+    "catalogFamily": "core",
+    "title": "Whip Pan",
+    "description": "A whip-pan transition that flies both scenes through the frame in one move with velocity-based motion blur.",
+    "componentName": "WhipPanExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/whip-pan/index.tsx",
+      "entry": "components/docs/examples/whip-pan-example.tsx",
+      "config": "registry/remocn/whip-pan/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 114,
+      "props": {
+        "direction": "left",
+        "blur": 24
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "push-through",
+    "catalogFamily": "core",
+    "title": "Push Through",
+    "description": "A dolly transition that blows the outgoing scene past the camera while the next one approaches from the depth.",
+    "componentName": "PushThroughExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/push-through/index.tsx",
+      "entry": "components/docs/examples/push-through-example.tsx",
+      "config": "registry/remocn/push-through/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 112,
+      "props": {
+        "zoom": 2.4,
+        "blur": 14
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "focus-pull",
+    "catalogFamily": "core",
+    "title": "Focus Pull",
+    "description": "A rack-focus transition that defocuses the outgoing scene into a bright blur and resolves the next one into focus.",
+    "componentName": "FocusPullExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/focus-pull/index.tsx",
+      "entry": "components/docs/examples/focus-pull-example.tsx",
+      "config": "registry/remocn/focus-pull/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 114,
+      "props": {
+        "blur": 16
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "zoom-blur",
+    "catalogFamily": "core",
+    "title": "Zoom Blur",
+    "description": "A depth punch-in transition that pushes the outgoing scene through the viewer while the incoming one resolves out of blur.",
+    "componentName": "ZoomBlurExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/zoom-blur/index.tsx",
+      "entry": "components/docs/examples/zoom-blur-example.tsx",
+      "config": "registry/remocn/zoom-blur/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 114,
+      "props": {
+        "blur": 16,
+        "rise": 0
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "claude-chat",
+    "catalogFamily": "core",
+    "title": "Claude Chat",
+    "description": "Animated Claude chat input — types a prompt character-by-character and the waveform button morphs into a terracotta send button the moment text appears. Warm light/dark themes.",
+    "componentName": "ClaudeChat",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/claude-chat/index.tsx",
+      "config": "registry/remocn/claude-chat/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "greeting": "Back at it, Dima",
+        "placeholder": "Try: draft an email · summarize a doc · plan your week",
+        "prompt": "Draft a launch tweet for our new release",
+        "modelName": "Opus 4.8",
+        "modelTier": "Max",
+        "accentColor": "#D97757",
+        "speed": 1
+      },
+      "background": "#F5F4EF"
+    }
+  },
+  {
+    "slug": "chat-gpt",
+    "catalogFamily": "core",
+    "title": "ChatGPT",
+    "description": "Animated ChatGPT composer — types a prompt into the pill input, the blue voice button morphs into a send button, and the suggestion chips fade out. Light/dark themes.",
+    "componentName": "ChatGpt",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/chat-gpt/index.tsx",
+      "config": "registry/remocn/chat-gpt/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "greeting": "What's on your mind today?",
+        "placeholder": "Ask anything",
+        "prompt": "Make a sunset over a calm ocean",
+        "accentColor": "#2F6FED",
+        "speed": 1
+      },
+      "background": "#FFFFFF"
+    }
+  },
+  {
+    "slug": "v0",
+    "catalogFamily": "core",
+    "title": "v0",
+    "description": "Animated Vercel v0 composer — types a prompt into the dark textarea and the mic button morphs into a send button. Dark/light themes.",
+    "componentName": "V0",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/v0/index.tsx",
+      "config": "registry/remocn/v0/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "greeting": "What do you want to create?",
+        "placeholder": "Ask v0 to build…",
+        "prompt": "a landing page for my SaaS with pricing and testimonials",
+        "modelName": "v0 Max",
+        "projectName": "Project",
+        "speed": 1
+      },
+      "background": "#000000"
+    }
+  },
+  {
+    "slug": "claude-code",
+    "catalogFamily": "core",
+    "title": "Claude Code",
+    "description": "Animated Claude Code CLI welcome screen — terminal window with a dashed welcome box, recent activity and what's new panels, and a prompt line that types a command with a block cursor. Dark/light themes.",
+    "componentName": "ClaudeCode",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/claude-code/index.tsx",
+      "config": "registry/remocn/claude-code/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 160,
+      "props": {
+        "title": "Claude Code v2.0.0",
+        "userName": "Remocn",
+        "model": "Opus 4.8 • Max 20x",
+        "cwd": "/users/remocn/code/apps",
+        "placeholder": "Try \"edit <filepath> to ...\"",
+        "prompt": "edit src/theme.ts to add a dark mode toggle",
+        "accentColor": "#D97757",
+        "speed": 1
+      },
+      "background": "#2B2A28"
+    }
+  },
+  {
+    "slug": "opencode",
+    "catalogFamily": "core",
+    "title": "OpenCode",
+    "description": "Animated OpenCode TUI welcome screen — two-tone wordmark, an input box with a blue accent bar that types a query, a model status line, and command hints. Dark/light themes.",
+    "componentName": "OpenCode",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/opencode/index.tsx",
+      "config": "registry/remocn/opencode/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "placeholder": "Ask anything... ",
+        "query": "\"What is the tech stack of this project?\"",
+        "agentName": "Build",
+        "modelName": "Kimi K2.5",
+        "provider": "Moonshot AI",
+        "accentColor": "#2B7FFF",
+        "speed": 1
+      },
+      "background": "#000000"
+    }
+  },
+  {
+    "slug": "github-sponsors",
+    "catalogFamily": "core",
+    "title": "GitHub Sponsors",
+    "description": "Self-drawing Sponsors heart that docks to a header, every sponsor avatar blur-staggering into a grid, then a thank-you headline and a CTA. Single seek-safe timeline, 270 frames at 30fps.",
+    "componentName": "GitHubSponsors",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/github-sponsors/index.tsx",
+      "config": "registry/remocn/github-sponsors/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 270,
+      "props": {
+        "account": "remocn",
+        "accentColor": "#db61a2",
+        "theme": "light",
+        "speed": 1
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "github-stars",
+    "catalogFamily": "core",
+    "title": "GitHub Stars",
+    "description": "Inertial fly-through of a repo's stargazers with a synced count-up odometer that locks on the total. Horizontal 16:9 or vertical 9:16.",
+    "componentName": "GitHubStars",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/github-stars/index.tsx",
+      "config": "registry/remocn/github-stars/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 120,
+      "props": {
+        "repo": "Remocn/remocn",
+        "totalStars": 24813,
+        "orientation": "horizontal",
+        "accentColor": "#ffbb00",
+        "theme": "light",
+        "speed": 1
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "x-follow-card",
+    "catalogFamily": "core",
+    "title": "X Follow Card",
+    "description": "Animated X profile follow card — spring bounce-in, staggered blur-in, a synthetic cursor that clicks Follow and flips it to Following. Light/dark, horizontal or vertical.",
+    "componentName": "XFollowCard",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/x-follow-card/index.tsx",
+      "config": "registry/remocn/x-follow-card/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 165,
+      "props": {
+        "name": "remocn",
+        "handle": "remocn",
+        "bio": "Production-ready components for Remotion - text animations, backgrounds, transitions, UI blocks, and full scene compositions",
+        "avatarUrl": "/assets/social/logo.svg",
+        "coverUrl": "/assets/social/imgs/x-cover.png",
+        "location": "Ukraine",
+        "website": "remocn.dev",
+        "joined": "January 2024",
+        "verified": true,
+        "accentColor": "#1d9bf0",
+        "orientation": "horizontal",
+        "speed": 1
+      },
+      "background": "#f5f7f9"
+    }
+  },
+  {
+    "slug": "x-followers-overview",
+    "catalogFamily": "core",
+    "title": "X Followers Overview",
+    "description": "X follow notifications cycle through as 3D flipping text — '<name> followed you · 7h' — then the total follower count pops in with a confetti burst. Hardcoded sample list (X API ready). Light/dark, horizontal or vertical.",
+    "componentName": "XFollowersOverview",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/x-followers-overview/index.tsx",
+      "config": "registry/remocn/x-followers-overview/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 360,
+      "props": {
+        "totalFollowers": 1709,
+        "handle": "remocn",
+        "avatarUrl": "/assets/social/logo.svg",
+        "accentColor": "#1d9bf0",
+        "orientation": "horizontal",
+        "speed": 1
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-mesh-gradient",
+    "catalogFamily": "core",
+    "title": "Shader Mesh Gradient",
+    "description": "WebGL mesh gradient backdrop driven per-frame for deterministic Remotion renders.",
+    "componentName": "ShaderMeshGradient",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-mesh-gradient/index.tsx",
+      "config": "registry/remocn/shader-mesh-gradient/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "distortion": 0.6,
+        "swirl": 0.1
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-grain-gradient",
+    "catalogFamily": "core",
+    "title": "Shader Grain Gradient",
+    "description": "Grainy multi-stop gradient that drifts slowly with film-grain texture over the blend.",
+    "componentName": "ShaderGrainGradient",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-grain-gradient/index.tsx",
+      "config": "registry/remocn/shader-grain-gradient/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "softness": 0.6,
+        "intensity": 0.2,
+        "noise": 0.15,
+        "colorBack": "#12121a"
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-warp",
+    "catalogFamily": "core",
+    "title": "Shader Warp",
+    "description": "Domain-warped color field that folds and stretches like liquid.",
+    "componentName": "ShaderWarp",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-warp/index.tsx",
+      "config": "registry/remocn/shader-warp/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "distortion": 0.2,
+        "swirl": 0.4,
+        "softness": 1,
+        "proportion": 0.5
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-swirl",
+    "catalogFamily": "core",
+    "title": "Shader Swirl",
+    "description": "Concentric bands swirling around a center point.",
+    "componentName": "ShaderSwirl",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-swirl/index.tsx",
+      "config": "registry/remocn/shader-swirl/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "bandCount": 4,
+        "twist": 0.1,
+        "softness": 0.2,
+        "colorBack": "#12121a"
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-water",
+    "catalogFamily": "core",
+    "title": "Shader Water",
+    "description": "Caustic water-surface ripples with subtle refraction.",
+    "componentName": "ShaderWater",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-water/index.tsx",
+      "config": "registry/remocn/shader-water/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "waves": 0.3,
+        "caustic": 0.08,
+        "highlights": 0.06,
+        "colorBack": "#16202b"
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-spiral",
+    "catalogFamily": "core",
+    "title": "Shader Spiral",
+    "description": "Rotating spiral arms radiating from the center.",
+    "componentName": "ShaderSpiral",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-spiral/index.tsx",
+      "config": "registry/remocn/shader-spiral/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "density": 1,
+        "strokeWidth": 0.5,
+        "softness": 0.2,
+        "colorBack": "#12121a"
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-liquid-metal",
+    "catalogFamily": "core",
+    "title": "Shader Liquid Metal",
+    "description": "Molten metallic surface with flowing specular highlights.",
+    "componentName": "ShaderLiquidMetal",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-liquid-metal/index.tsx",
+      "config": "registry/remocn/shader-liquid-metal/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "distortion": 0.1,
+        "repetition": 1.5,
+        "contour": 0.4,
+        "colorBack": "#2a2a30",
+        "colorTint": "#8a8a95"
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-color-panels",
+    "catalogFamily": "core",
+    "title": "Shader Color Panels",
+    "description": "Overlapping translucent color panels sliding past each other.",
+    "componentName": "ShaderColorPanels",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-color-panels/index.tsx",
+      "config": "registry/remocn/shader-color-panels/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "density": 3,
+        "length": 1.1,
+        "colorBack": "#12121a"
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-neuro-noise",
+    "catalogFamily": "core",
+    "title": "Shader Neuro Noise",
+    "description": "Organic neural-web noise field that slowly morphs.",
+    "componentName": "ShaderNeuroNoise",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-neuro-noise/index.tsx",
+      "config": "registry/remocn/shader-neuro-noise/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "brightness": 0.05,
+        "contrast": 0.3,
+        "colorBack": "#12121a",
+        "colorMid": "#4a4a68"
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-perlin-noise",
+    "catalogFamily": "core",
+    "title": "Shader Perlin Noise",
+    "description": "Classic Perlin noise clouds drifting across the frame.",
+    "componentName": "ShaderPerlinNoise",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-perlin-noise/index.tsx",
+      "config": "registry/remocn/shader-perlin-noise/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "proportion": 0.35,
+        "softness": 0.1,
+        "colorBack": "#12121a",
+        "colorFront": "#6a6a85"
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-simplex-noise",
+    "catalogFamily": "core",
+    "title": "Shader Simplex Noise",
+    "description": "Simplex noise flow field, smoother than Perlin.",
+    "componentName": "ShaderSimplexNoise",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-simplex-noise/index.tsx",
+      "config": "registry/remocn/shader-simplex-noise/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "stepsPerColor": 2,
+        "softness": 0.1
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-voronoi",
+    "catalogFamily": "core",
+    "title": "Shader Voronoi",
+    "description": "Animated Voronoi cells shifting and re-tessellating.",
+    "componentName": "ShaderVoronoi",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-voronoi/index.tsx",
+      "config": "registry/remocn/shader-voronoi/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "distortion": 0.4,
+        "gap": 0.04,
+        "glow": 0,
+        "colorGap": "#12121a"
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-dot-orbit",
+    "catalogFamily": "core",
+    "title": "Shader Dot Orbit",
+    "description": "Dots orbiting on concentric paths across the frame.",
+    "componentName": "ShaderDotOrbit",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-dot-orbit/index.tsx",
+      "config": "registry/remocn/shader-dot-orbit/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "size": 1,
+        "spreading": 1,
+        "colorBack": "#12121a"
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-dithering",
+    "catalogFamily": "core",
+    "title": "Shader Dithering",
+    "description": "Ordered-dither shading over an animated gradient field.",
+    "componentName": "ShaderDithering",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-dithering/index.tsx",
+      "config": "registry/remocn/shader-dithering/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "size": 2,
+        "colorBack": "#12121a",
+        "colorFront": "#6a6a85"
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-god-rays",
+    "catalogFamily": "core",
+    "title": "Shader God Rays",
+    "description": "Volumetric light rays radiating from an off-screen source.",
+    "componentName": "ShaderGodRays",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-god-rays/index.tsx",
+      "config": "registry/remocn/shader-god-rays/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "intensity": 0.8,
+        "density": 0.3,
+        "bloom": 0.4,
+        "colorBack": "#12121a"
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-smoke-ring",
+    "catalogFamily": "core",
+    "title": "Shader Smoke Ring",
+    "description": "Soft smoke ring curling and dissipating in place.",
+    "componentName": "ShaderSmokeRing",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-smoke-ring/index.tsx",
+      "config": "registry/remocn/shader-smoke-ring/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "radius": 0.25,
+        "thickness": 0.65,
+        "scale": 0.8,
+        "colorBack": "#12121a"
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-metaballs",
+    "catalogFamily": "core",
+    "title": "Shader Metaballs",
+    "description": "Organic blobs merging and splitting like lava.",
+    "componentName": "ShaderMetaballs",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-metaballs/index.tsx",
+      "config": "registry/remocn/shader-metaballs/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "count": 10,
+        "size": 0.83,
+        "colorBack": "#12121a"
+      },
+      "background": "#ffffff"
+    }
+  },
+  {
+    "slug": "shader-pulsing-border",
+    "catalogFamily": "core",
+    "title": "Shader Pulsing Border",
+    "description": "Glowing border frame that pulses around the edges.",
+    "componentName": "ShaderPulsingBorder",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/shader-pulsing-border/index.tsx",
+      "config": "registry/remocn/shader-pulsing-border/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "speed": 1,
+        "thickness": 0.1,
+        "roundness": 0.25,
+        "intensity": 0.2,
+        "colorBack": "#12121a"
+      },
+      "background": "#ffffff"
+    }
   }
 ]

@@ -1,5 +1,5 @@
 import { spawn } from "node:child_process";
-import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
+import { cp, copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
@@ -62,7 +62,11 @@ const run = (command, args, options = {}) =>
   });
 
 if (!reuseReference) {
-  await run("node", ["scripts/generate-text-reference.mjs"]);
+  await run("node", [
+    "scripts/generate-text-reference.mjs",
+    "--only",
+    selected.map((entry) => entry.slug).join(","),
+  ]);
   await run(
     "bun",
     [
@@ -78,6 +82,29 @@ await mkdir(resolve(workbench, "assets", "fonts"), { recursive: true });
 await copyFile(
   resolve(root, "registry", "blocks", "soft-blur-in", "Geist-SemiBold.woff2"),
   resolve(workbench, "assets", "fonts", "Geist-SemiBold.woff2"),
+);
+await copyFile(
+  resolve(root, "assets", "fonts", "JetBrainsMono-Latin.woff2"),
+  resolve(workbench, "assets", "fonts", "JetBrainsMono-Latin.woff2"),
+);
+await copyFile(
+  resolve(root, "assets", "fonts", "Inter-Latin.woff2"),
+  resolve(workbench, "assets", "fonts", "Inter-Latin.woff2"),
+);
+await copyFile(
+  resolve(root, "assets", "fonts", "Manrope-Latin.woff2"),
+  resolve(workbench, "assets", "fonts", "Manrope-Latin.woff2"),
+);
+await copyFile(
+  resolve(root, "assets", "fonts", "GeistMono-Latin.woff2"),
+  resolve(workbench, "assets", "fonts", "GeistMono-Latin.woff2"),
+);
+await cp(
+  resolve(root, "assets", "social"),
+  resolve(workbench, "assets", "social"),
+  {
+    recursive: true,
+  },
 );
 await writeFile(
   resolve(workbench, "package.json"),

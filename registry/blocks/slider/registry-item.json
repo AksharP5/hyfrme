@@ -1,0 +1,42 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "slider",
+  "type": "hyperframes:block",
+  "title": "UI Slider",
+  "description": "A slider whose fill is a numeric value channel plus a thumb idle/hover/press channel (dual-channel value-channel deviation). The Slider renderer is pure (clamped 0–100 value, thumb scale, grab-ring opacity); useSliderTransition reads the frame and eases both channels — value as a numeric lerp, the thumb visual from its state presets. Muted track + primary range + bordered thumb with a derived grab ring. Compiled for deterministic HyperFrames playback by Hyfrme.",
+  "tags": [
+    "ui",
+    "primitive",
+    "remocn-port"
+  ],
+  "author": "Hyfrme",
+  "authorUrl": "https://github.com/AksharP5/hyfrme",
+  "license": "MIT",
+  "dimensions": {
+    "width": 1280,
+    "height": 720
+  },
+  "duration": 4,
+  "files": [
+    {
+      "path": "slider.html",
+      "target": "compositions/slider.html",
+      "type": "hyperframes:composition"
+    },
+    {
+      "path": "slider.runtime.js",
+      "target": "compositions/slider.runtime.js",
+      "type": "hyperframes:asset"
+    },
+    {
+      "path": "Geist-SemiBold.woff2",
+      "target": "assets/fonts/Geist-SemiBold.woff2",
+      "type": "hyperframes:asset"
+    },
+    {
+      "path": "licenses/Geist-OFL.txt",
+      "target": "THIRD_PARTY_LICENSES/Geist-OFL.txt",
+      "type": "hyperframes:asset"
+    }
+  ]
+}

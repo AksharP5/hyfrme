@@ -1,0 +1,42 @@
+{
+  "slug": "combobox",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn-ui/combobox/index.tsx",
+    "entry": "components/docs/examples/combobox-example.tsx",
+    "config": "registry/remocn-ui/combobox/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "placeholder": "Select a fruit…"
+    },
+    "background": "oklch(1 0 0)"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.999864,
+    "minSsim": 0.999709,
+    "p05Ssim": 0.999751,
+    "p95Ssim": 0.99998,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/combobox/remocn.mp4",
+    "hyperframesVideo": "public/previews/combobox/hyperframes.mp4",
+    "summary": "parity/combobox-diff/summary.json"
+  }
+}

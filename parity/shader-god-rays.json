@@ -1,0 +1,45 @@
+{
+  "slug": "shader-god-rays",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/shader-god-rays/index.tsx",
+    "config": "registry/remocn/shader-god-rays/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "intensity": 0.8,
+      "density": 0.3,
+      "bloom": 0.4,
+      "colorBack": "#12121a"
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.993987,
+    "minSsim": 0.993083,
+    "p05Ssim": 0.993427,
+    "p95Ssim": 0.994358,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/shader-god-rays/remocn.mp4",
+    "hyperframesVideo": "public/previews/shader-god-rays/hyperframes.mp4",
+    "summary": "parity/shader-god-rays-diff/summary.json"
+  }
+}

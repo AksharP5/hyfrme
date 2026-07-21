@@ -1,14 +1,19 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const upstream = resolve(root, ".work", "remocn");
+await cp(
+  resolve(root, "assets", "social"),
+  resolve(upstream, "public", "assets", "social"),
+  { recursive: true },
+);
 const fixtureFiles = [
   "text-fixtures.json",
   "core-fixtures.json",
   "primitive-fixtures.json",
 ];
-const fixtures = (
+const allFixtures = (
   await Promise.all(
     fixtureFiles.map((file) =>
       readFile(resolve(root, "catalog", file), "utf8")
@@ -17,11 +22,22 @@ const fixtures = (
     ),
   )
 ).flat();
+const onlyIndex = process.argv.indexOf("--only");
+const requested =
+  onlyIndex === -1 ? null : new Set(process.argv[onlyIndex + 1].split(","));
+const fixtures = requested
+  ? allFixtures.filter((entry) => requested.has(entry.slug))
+  : allFixtures;
+if (requested && fixtures.length !== requested.size) {
+  throw new Error(
+    `Expected ${requested.size} fixtures, found ${fixtures.length}`,
+  );
+}
 
 const imports = fixtures
   .map(
     (entry) =>
-      `import { ${entry.componentName} } from "@/${entry.origin.source.replace(/^registry\//, "registry/").replace(/\/index\.tsx$/, "")}";`,
+      `import { ${entry.componentName} } from "@/${(entry.origin.entry ?? entry.origin.source).replace(/^registry\//, "registry/").replace(/\/index\.tsx$/, "")}";`,
   )
   .join("\n");
 const fixtureComponents = fixtures
@@ -76,7 +92,7 @@ function HyfrmeTextRoot() {
 registerRoot(HyfrmeTextRoot);
 `;
 
-const rendererSource = `import {mkdirSync} from "node:fs";
+const rendererSource = `import {cpSync, mkdirSync} from "node:fs";
 import path from "node:path";
 import {fileURLToPath} from "node:url";
 import {bundle} from "@remotion/bundler";
@@ -93,6 +109,7 @@ await ensureBrowser();
 const aliases = tsconfigWebpackAlias(upstream);
 const serveUrl = await bundle({
   entryPoint: path.join(upstream, "src", "remotion", "hyfrme-text-root.tsx"),
+  publicDir: path.join(upstream, "public"),
   webpackOverride: (config) => ({
     ...config,
     resolve: {
@@ -108,7 +125,12 @@ const serveUrl = await bundle({
     },
   }),
 });
-let compositions = await getCompositions(serveUrl);
+cpSync(path.join(upstream, "public", "assets"), path.join(serveUrl, "assets"), {
+  recursive: true,
+});
+let compositions = await getCompositions(serveUrl, {
+  chromiumOptions: {gl: "angle"},
+});
 if (only) compositions = compositions.filter((entry) => only.has(entry.id));
 if (only && compositions.length !== only.size) {
   throw new Error(\`Expected \${only.size} compositions, found \${compositions.length}\`);
@@ -127,6 +149,7 @@ for (const [index, composition] of compositions.entries()) {
     outputLocation: output,
     overwrite: true,
     concurrency: 4,
+    chromiumOptions: {gl: "angle"},
   });
   process.stdout.write("done\\n");
 }

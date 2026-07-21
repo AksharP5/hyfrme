@@ -1,0 +1,47 @@
+{
+  "slug": "claude-chat",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/claude-chat/index.tsx",
+    "config": "registry/remocn/claude-chat/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "greeting": "Back at it, Dima",
+      "placeholder": "Try: draft an email · summarize a doc · plan your week",
+      "prompt": "Draft a launch tweet for our new release",
+      "modelName": "Opus 4.8",
+      "modelTier": "Max",
+      "accentColor": "#D97757",
+      "speed": 1
+    },
+    "background": "#F5F4EF"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.995137,
+    "minSsim": 0.993006,
+    "p05Ssim": 0.993321,
+    "p95Ssim": 0.999112,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/claude-chat/remocn.mp4",
+    "hyperframesVideo": "public/previews/claude-chat/hyperframes.mp4",
+    "summary": "parity/claude-chat-diff/summary.json"
+  }
+}

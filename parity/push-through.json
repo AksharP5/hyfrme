@@ -1,0 +1,43 @@
+{
+  "slug": "push-through",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/push-through/index.tsx",
+    "entry": "components/docs/examples/push-through-example.tsx",
+    "config": "registry/remocn/push-through/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 112,
+    "props": {
+      "zoom": 2.4,
+      "blur": 14
+    },
+    "background": "#141318"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 112,
+    "meanSsim": 0.997501,
+    "minSsim": 0.996383,
+    "p05Ssim": 0.99664,
+    "p95Ssim": 0.999159,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/push-through/remocn.mp4",
+    "hyperframesVideo": "public/previews/push-through/hyperframes.mp4",
+    "summary": "parity/push-through-diff/summary.json"
+  }
+}

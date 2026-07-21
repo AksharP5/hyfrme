@@ -1,0 +1,45 @@
+{
+  "slug": "swirl-dissolve",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/swirl-dissolve/index.tsx",
+    "entry": "components/docs/examples/swirl-dissolve-example.tsx",
+    "config": "registry/remocn/swirl-dissolve/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 116,
+    "props": {
+      "bandCount": 10,
+      "softness": 0.35,
+      "colorBack": "#141318",
+      "speed": 1
+    },
+    "background": "#141318"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 116,
+    "meanSsim": 0.997783,
+    "minSsim": 0.995526,
+    "p05Ssim": 0.995773,
+    "p95Ssim": 0.99999,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/swirl-dissolve/remocn.mp4",
+    "hyperframesVideo": "public/previews/swirl-dissolve/hyperframes.mp4",
+    "summary": "parity/swirl-dissolve-diff/summary.json"
+  }
+}

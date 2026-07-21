@@ -85,67 +85,49 @@ installation or include Remotion runtime code.
   and SSIM; HyperFrames 0.7.64 does not fingerprint `background-position` as
   geometry motion, so no full-check claim is made for that item.
 
-Sixteen composition/data scenes are verified with the same compiled-source runtime:
-`chat-to-preview-layout`, `data-flow-pipes`, `perspective-marquee`,
-`live-code-compilation`, `infinite-bento-pan`, `infinite-marquee`,
-`terminal-simulator`, `terminal-cursor-zoom`, `glass-code-block`, and
-`glass-code-walk`, plus `animated-line-chart`, `animated-bar-chart`,
-`progress-steps`, `simulated-cursor`, `logo-enter`, and
-`ecosystem-constellation`.
+All 64 remaining composition/data items are verified with the same
+compiled-source runtime.
 
-- All sixteen strict renders passed.
-- `data-flow-pipes`, both animated charts, `simulated-cursor`, `logo-enter`,
-  and `ecosystem-constellation` passed the full HyperFrames check with zero
-  errors or warnings.
-- Family mean SSIM: 0.991883.
-- Per-item range: 0.952963–0.999421.
-- Canonical fixtures cover 90–300 frames at 30 fps and 1280×720.
-- Hyfrme's framework-neutral spring implementation and Remotion-compatible
-  flex defaults for `AbsoluteFill` are exercised by this family without
-  bundling the Remotion runtime.
-- `progress-steps` passes strict render at 0.999196 mean SSIM. The full checker
-  reports its intentionally adjacent step labels as overlapping, so no
-  full-check claim is made for that item.
-- The continuous text marquees are the lower-scoring members because subpixel
-  text movement changes raster antialiasing; their exact scores remain above
-  the 0.95 gate and are published per item.
-- `terminal-simulator` preserves the upstream dim chrome title exactly. Its
-  strict render passes at 0.998785 mean SSIM; no full-check claim is made
-  because the source title color measures 3.6:1 contrast.
-- The local-frame `Sequence` and `AbsoluteFill` adapters are also exercised by
-  the three nested scenes. Their strict-render scores are 0.997342 for
-  `terminal-cursor-zoom`, 0.997421 for `glass-code-block`, and 0.994818 for
-  `glass-code-walk`.
+- All 64 strict renders passed.
+- Family mean SSIM: 0.993820.
+- Per-item range: 0.952963–0.999601.
+- Canonical fixtures cover 90–360 frames at 30 fps.
+- Twelve overlapping-scene transitions use a Hyfrme-owned `TransitionSeries`
+  timing adapter. Their mean is 0.992226, with a 0.971219–0.997838 range.
+- Eighteen Paper shader scenes use frame-driven WebGL and remove Remotion's
+  stateful render-gate handle. Their mean is 0.994955, with a
+  0.983005–0.999021 range.
+- Five AI-product scenes bundle only the normal Latin Inter or JetBrains Mono
+  variable font they use. Their mean is 0.994679.
+- Four social scenes package their default logo, cover, and GitHub avatars;
+  image-error state is compiled out because the pinned files install with the
+  block. Their mean is 0.991273.
+- The Paper shader dependency retains its PolyForm Shield 1.0.0 terms. Every
+  affected registry item declares the mixed license and installs the complete
+  third-party license alongside the block.
+- `progress-steps`, number wheels, intentional overlay scenes, and static
+  backdrops retain strict-render-only claims where the full checker reports
+  known heuristic false positives. Per-item manifests state the exact result.
 
-Five direct UI primitives are verified: `caret`, `skeleton-block`, `spinner`,
-`typing-indicator`, and `typewriter`.
+All 45 UI primitives and flows are verified.
 
-- All five strict renders passed.
-- `caret`, `spinner`, `typing-indicator`, and `typewriter` passed full
-  HyperFrames checks with zero errors or warnings.
-- Family mean SSIM: 0.999486.
-- Per-item range: 0.997724–0.999995.
-- Canonical fixtures cover 90–120 frames at 30 fps and 1280×720.
-- `skeleton-block` preserves an animated gradient sweep and passes strict render
-  plus SSIM. HyperFrames 0.7.64 does not fingerprint `background-position` as
-  geometry motion, so no full-check claim is made for it.
+- All 45 strict renders passed.
+- Family mean SSIM: 0.999585.
+- Per-item range: 0.995265–0.999995.
+- Canonical fixtures cover 40–380 frames at 30 fps, including 432×768 chat
+  flows and 1280×720 desktop scenes.
+- Eight complete flows average 0.998608 and use the official Remocn showcase
+  wrappers and durations.
+- The static `field` family uses a Hyfrme verification wrapper composed only
+  from the pinned Remocn Field exports; its strict score is 0.999856.
+- Alert Dialog and Combobox retain strict-render-only claims because the full
+  checker flags their intentional overlay and ghost-text layering.
 
-The next bench candidates deliberately widen coverage:
+## Coverage status
 
-- `matrix-decode` and `rgb-glitch-text`: deterministic random parity.
-- `number-wheel`: data-driven numbers and custom easing.
-- `rolling-number`: place-value motion and bundled monospace typography.
-- `focus-pull`: paired-scene transition semantics.
-- `button`: shared UI dependency and lifecycle states.
-
-## Rollout order
-
-1. Typography and simple effects.
-2. Number and data components.
-3. UI primitives and flows.
-4. Transitions.
-5. Native shader rewrites.
-6. Social components with documented state/runtime gaps.
+The pinned visual inventory is complete: 234/234 ports have passing parity
+manifests. The two non-visual upstream registry libraries are reference/runtime
+helpers rather than catalog blocks.
 
 Upstream changes should open a review issue; they must never overwrite a
 passing port automatically.
