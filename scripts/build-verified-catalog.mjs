@@ -8,9 +8,13 @@ const iconFixtures = JSON.parse(
 const textFixtures = JSON.parse(
   await readFile(resolve(root, "catalog", "text-fixtures.json"), "utf8"),
 );
+const coreFixtures = JSON.parse(
+  await readFile(resolve(root, "catalog", "core-fixtures.json"), "utf8"),
+);
 const orderedNames = [
   "soft-blur-in",
   ...textFixtures.map((entry) => entry.slug),
+  ...coreFixtures.map((entry) => entry.slug),
   ...iconFixtures.map((entry) => entry.slug),
 ];
 const items = [];

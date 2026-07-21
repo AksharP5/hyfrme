@@ -2,8 +2,8 @@
 
 ## Remocn source reference
 
-The `soft-blur-in` port, 21 typography/effect ports, and 100 `icon-*` ports are
-derived from Remocn implementations pinned at commit
+The `soft-blur-in` port, 21 typography/effect ports, six composition/data ports,
+and 100 `icon-*` ports are derived from Remocn implementations pinned at commit
 `ea730a20b4ab09430ee7292aebc847c002375151`. Every port names its exact source
 file and fixture in its parity manifest.
 
@@ -17,7 +17,8 @@ contains derived source.
 
 ## React and ReactDOM
 
-The compiled typography/effect runtimes bundle React and ReactDOM 19.2.4.
+The compiled typography/effect and composition/data runtimes bundle React and
+ReactDOM 19.2.4.
 
 Copyright (c) Meta Platforms, Inc. and affiliates.
 

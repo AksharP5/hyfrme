@@ -82,6 +82,20 @@ installation or include Remotion runtime code.
   and SSIM; HyperFrames 0.7.64 does not fingerprint `background-position` as
   geometry motion, so no full-check claim is made for that item.
 
+Six longer composition/data scenes are verified with the same compiled-source
+runtime: `chat-to-preview-layout`, `data-flow-pipes`, `perspective-marquee`,
+`live-code-compilation`, `infinite-bento-pan`, and `infinite-marquee`.
+
+- All six strict renders passed.
+- `data-flow-pipes` passed the full HyperFrames check with zero errors or
+  warnings.
+- Family mean SSIM: 0.983063.
+- Per-item range: 0.952963–0.999109.
+- Canonical fixtures cover 120–300 frames at 30 fps and 1280×720.
+- The continuous text marquees are the lower-scoring members because subpixel
+  text movement changes raster antialiasing; their exact scores remain above
+  the 0.95 gate and are published per item.
+
 The next bench candidates deliberately widen coverage:
 
 - `number-wheel`: data-driven numbers and custom easing.

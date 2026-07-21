@@ -1,0 +1,48 @@
+{
+  "slug": "infinite-marquee",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/infinite-marquee/index.tsx",
+    "config": "registry/remocn/infinite-marquee/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 180,
+    "props": {
+      "text": "ship · build · animate · ",
+      "fontSize": 120,
+      "color": "#171717",
+      "fontWeight": "700",
+      "pixelsPerFrame": 4,
+      "stroke": false,
+      "strokeColor": "#171717",
+      "speed": 1
+    },
+    "background": "#fafafa"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 180,
+    "meanSsim": 0.952963,
+    "minSsim": 0.94507,
+    "p05Ssim": 0.946375,
+    "p95Ssim": 0.957304,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/infinite-marquee/remocn.mp4",
+    "hyperframesVideo": "public/previews/infinite-marquee/hyperframes.mp4",
+    "summary": "parity/infinite-marquee-diff/summary.json"
+  }
+}

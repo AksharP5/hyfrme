@@ -3,9 +3,16 @@ import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const upstream = resolve(root, ".work", "remocn");
-const fixtures = JSON.parse(
-  await readFile(resolve(root, "catalog", "text-fixtures.json"), "utf8"),
-);
+const fixtureFiles = ["text-fixtures.json", "core-fixtures.json"];
+const fixtures = (
+  await Promise.all(
+    fixtureFiles.map((file) =>
+      readFile(resolve(root, "catalog", file), "utf8")
+        .then(JSON.parse)
+        .catch(() => []),
+    ),
+  )
+).flat();
 
 const imports = fixtures
   .map(
@@ -133,5 +140,5 @@ await writeFile(
 );
 
 console.log(
-  `Generated one Remotion reference root for ${fixtures.length} text/effect ports.`,
+  `Generated one Remotion reference root for ${fixtures.length} compiled ports.`,
 );

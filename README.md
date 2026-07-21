@@ -13,10 +13,12 @@ A port is public only after it passes the fidelity contract in
 - `soft-blur-in`: native mechanical port, 60 frames, 0.998647 mean SSIM.
 - 21 typography and effect components: compiled source ports, 60–120 frames
   each, 0.986619–0.999432 mean SSIM (0.997517 family mean).
+- 6 composition and data scenes: compiled source ports, 120–300 frames each,
+  0.952963–0.999109 mean SSIM (0.983063 family mean).
 - 100 animated icons: compiled source ports, 60–90 frames each, 0.985560–0.998621
   mean SSIM (0.993872 family mean).
 
-That is 122 verified blocks from the pinned Remocn commit. The exact score and
+That is 128 verified blocks from the pinned Remocn commit. The exact score and
 fixture for every item live under `parity/` and are visible in the catalog.
 
 ## Run the catalog locally
@@ -47,9 +49,9 @@ mkdir -p compositions
 curl -fsSL https://raw.githubusercontent.com/AksharP5/hyfrme/main/registry/blocks/icon-check-circle/icon-check-circle.html -o compositions/icon-check-circle.html
 ```
 
-Compiled typography/effect blocks include the HTML composition, source runtime,
-and bundled font. The catalog generates all three install commands for the
-selected block.
+Compiled typography/effect and composition/data blocks include the HTML
+composition, source runtime, and bundled font. The catalog generates all three
+install commands for the selected block.
 
 Manual installation does not replace a project's configured HyperFrames
 registry. The website generates the exact command for every selected block.
@@ -82,6 +84,8 @@ npm run generate:icons
 npm run verify:icons
 npm run generate:text
 npm run verify:text
+npm run generate:core
+npm run verify:core
 npm run build:catalog
 npm run generate:thumbnails
 ```

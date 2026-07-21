@@ -1,0 +1,43 @@
+{
+  "slug": "chat-to-preview-layout",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/chat-to-preview-layout/index.tsx",
+    "config": "registry/remocn/chat-to-preview-layout/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "startChatRatio": 0.5,
+      "endChatRatio": 0.25,
+      "speed": 1
+    },
+    "background": "#0a0a0a"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.996737,
+    "minSsim": 0.995611,
+    "p05Ssim": 0.996082,
+    "p95Ssim": 0.998531,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/chat-to-preview-layout/remocn.mp4",
+    "hyperframesVideo": "public/previews/chat-to-preview-layout/hyperframes.mp4",
+    "summary": "parity/chat-to-preview-layout-diff/summary.json"
+  }
+}

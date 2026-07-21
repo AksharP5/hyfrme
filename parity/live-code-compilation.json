@@ -1,0 +1,42 @@
+{
+  "slug": "live-code-compilation",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/live-code-compilation/index.tsx",
+    "config": "registry/remocn/live-code-compilation/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 260,
+    "props": {
+      "accentColor": "#3b82f6",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 260,
+    "meanSsim": 0.993461,
+    "minSsim": 0.99263,
+    "p05Ssim": 0.992632,
+    "p95Ssim": 0.994514,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/live-code-compilation/remocn.mp4",
+    "hyperframesVideo": "public/previews/live-code-compilation/hyperframes.mp4",
+    "summary": "parity/live-code-compilation-diff/summary.json"
+  }
+}

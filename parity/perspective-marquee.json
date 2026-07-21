@@ -1,0 +1,49 @@
+{
+  "slug": "perspective-marquee",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/perspective-marquee/index.tsx",
+    "config": "registry/remocn/perspective-marquee/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 240,
+    "props": {
+      "fontSize": 84,
+      "color": "#fafafa",
+      "fontWeight": "700",
+      "pixelsPerFrame": 2,
+      "rotateY": -28,
+      "rotateX": 8,
+      "perspective": 1200,
+      "fadeColor": "#050505",
+      "speed": 1
+    },
+    "background": "#050505"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 240,
+    "meanSsim": 0.96608,
+    "minSsim": 0.96312,
+    "p05Ssim": 0.963455,
+    "p95Ssim": 0.968186,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/perspective-marquee/remocn.mp4",
+    "hyperframesVideo": "public/previews/perspective-marquee/hyperframes.mp4",
+    "summary": "parity/perspective-marquee-diff/summary.json"
+  }
+}

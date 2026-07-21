@@ -294,7 +294,9 @@ export function App() {
                   <span>
                     {entry.item.tags.includes("icon")
                       ? "Animated icon"
-                      : "Typography / entrance"}
+                      : entry.item.tags.includes("typography")
+                        ? "Typography / effect"
+                        : "Composition / data"}
                   </span>
                   <strong>{entry.item.title}</strong>
                 </span>

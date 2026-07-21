@@ -15,7 +15,7 @@ const upstreamRegistry = JSON.parse(
   ),
 );
 const upstreamCommit = upstreamInventory.summary.upstream.commit;
-const names = [
+const textNames = [
   "per-character-rise",
   "bottom-up-letters",
   "top-down-letters",
@@ -38,10 +38,32 @@ const names = [
   "mask-reveal-up",
   "shimmer-sweep",
 ];
+const coreNames = [
+  "chat-to-preview-layout",
+  "data-flow-pipes",
+  "perspective-marquee",
+  "live-code-compilation",
+  "infinite-bento-pan",
+  "infinite-marquee",
+];
+const names = [...textNames, ...coreNames];
+const familyIndex = process.argv.indexOf("--family");
+const family = familyIndex === -1 ? null : process.argv[familyIndex + 1];
+const familyNames =
+  family === "text"
+    ? textNames
+    : family === "core"
+      ? coreNames
+      : family === null
+        ? names
+        : null;
+if (!familyNames) throw new Error(`Unknown compiled family: ${family}`);
 const onlyIndex = process.argv.indexOf("--only");
 const only =
   onlyIndex === -1 ? null : new Set(process.argv[onlyIndex + 1].split(","));
-const selectedNames = only ? names.filter((name) => only.has(name)) : names;
+const selectedNames = only
+  ? familyNames.filter((name) => only.has(name))
+  : familyNames;
 
 if (only && selectedNames.length !== only.size) {
   throw new Error(
@@ -173,6 +195,7 @@ for (const name of selectedNames) {
     write: false,
   });
   const runtime = result.outputFiles[0].text;
+  const catalogFamily = coreNames.includes(name) ? "core" : "text";
   const duration = fixture.durationInFrames / fixture.fps;
   const variables = Object.entries(config.controls).map(([id, control]) => ({
     id,
@@ -240,7 +263,10 @@ for (const name of selectedNames) {
         type: "hyperframes:block",
         title: registryItem.title,
         description: `${registryItem.description} Compiled for deterministic HyperFrames playback by Hyfrme.`,
-        tags: ["typography", "effect", "remocn-port"],
+        tags:
+          catalogFamily === "text"
+            ? ["typography", "effect", "remocn-port"]
+            : ["composition", "data", "remocn-port"],
         author: "Hyfrme",
         authorUrl: "https://github.com/AksharP5/hyfrme",
         license: "MIT",
@@ -270,6 +296,7 @@ for (const name of selectedNames) {
   );
   fixtures.push({
     slug: name,
+    catalogFamily,
     title: registryItem.title,
     description: registryItem.description,
     componentName: config.componentName,
@@ -287,9 +314,24 @@ for (const name of selectedNames) {
   );
 }
 
-if (!only) {
+if (!only && (family === null || family === "text")) {
   await writeFile(
     resolve(root, "catalog", "text-fixtures.json"),
-    `${JSON.stringify(fixtures, null, 2)}\n`,
+    `${JSON.stringify(
+      fixtures.filter((entry) => entry.catalogFamily === "text"),
+      null,
+      2,
+    )}\n`,
+  );
+}
+
+if (!only && (family === null || family === "core")) {
+  await writeFile(
+    resolve(root, "catalog", "core-fixtures.json"),
+    `${JSON.stringify(
+      fixtures.filter((entry) => entry.catalogFamily === "core"),
+      null,
+      2,
+    )}\n`,
   );
 }

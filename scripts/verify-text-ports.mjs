@@ -4,15 +4,27 @@ import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const workbench = resolve(root, ".work", "verify-text");
-const fixtures = JSON.parse(
-  await readFile(resolve(root, "catalog", "text-fixtures.json"), "utf8"),
-);
+const fixtureFiles = ["text-fixtures.json", "core-fixtures.json"];
+const fixtures = (
+  await Promise.all(
+    fixtureFiles.map((file) =>
+      readFile(resolve(root, "catalog", file), "utf8")
+        .then(JSON.parse)
+        .catch(() => []),
+    ),
+  )
+).flat();
+const familyIndex = process.argv.indexOf("--family");
+const family = familyIndex === -1 ? null : process.argv[familyIndex + 1];
+const familyFixtures = family
+  ? fixtures.filter((entry) => entry.catalogFamily === family)
+  : fixtures;
 const onlyIndex = process.argv.indexOf("--only");
 const requested =
   onlyIndex === -1 ? null : new Set(process.argv[onlyIndex + 1].split(","));
 const selected = requested
-  ? fixtures.filter((entry) => requested.has(entry.slug))
-  : fixtures;
+  ? familyFixtures.filter((entry) => requested.has(entry.slug))
+  : familyFixtures;
 const fullCheckIndex = process.argv.indexOf("--full-check");
 const fullCheck =
   fullCheckIndex === -1
@@ -228,4 +240,6 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log(`Verified ${selected.length} text/effect port(s).`);
+console.log(
+  `Verified ${selected.length} compiled ${family ?? "mixed"} port(s).`,
+);
