@@ -82,33 +82,41 @@ installation or include Remotion runtime code.
   and SSIM; HyperFrames 0.7.64 does not fingerprint `background-position` as
   geometry motion, so no full-check claim is made for that item.
 
-Seven longer composition/data scenes are verified with the same compiled-source
-runtime: `chat-to-preview-layout`, `data-flow-pipes`, `perspective-marquee`,
-`live-code-compilation`, `infinite-bento-pan`, `infinite-marquee`, and
-`terminal-simulator`.
+Ten composition/data scenes are verified with the same compiled-source runtime:
+`chat-to-preview-layout`, `data-flow-pipes`, `perspective-marquee`,
+`live-code-compilation`, `infinite-bento-pan`, `infinite-marquee`,
+`terminal-simulator`, `terminal-cursor-zoom`, `glass-code-block`, and
+`glass-code-walk`.
 
-- All seven strict renders passed.
+- All ten strict renders passed.
 - `data-flow-pipes` passed the full HyperFrames check with zero errors or
   warnings.
-- Family mean SSIM: 0.985311.
+- Family mean SSIM: 0.988678.
 - Per-item range: 0.952963–0.999109.
-- Canonical fixtures cover 120–300 frames at 30 fps and 1280×720.
+- Canonical fixtures cover 90–300 frames at 30 fps and 1280×720.
 - The continuous text marquees are the lower-scoring members because subpixel
   text movement changes raster antialiasing; their exact scores remain above
   the 0.95 gate and are published per item.
 - `terminal-simulator` preserves the upstream dim chrome title exactly. Its
   strict render passes at 0.998785 mean SSIM; no full-check claim is made
   because the source title color measures 3.6:1 contrast.
+- The local-frame `Sequence` and `AbsoluteFill` adapters are also exercised by
+  the three nested scenes. Their strict-render scores are 0.997342 for
+  `terminal-cursor-zoom`, 0.997430 for `glass-code-block`, and 0.994836 for
+  `glass-code-walk`.
 
 Five direct UI primitives are verified: `caret`, `skeleton-block`, `spinner`,
 `typing-indicator`, and `typewriter`.
 
 - All five strict renders passed.
-- `typing-indicator` and `typewriter` passed full HyperFrames checks with zero
-  errors or warnings.
+- `caret`, `spinner`, `typing-indicator`, and `typewriter` passed full
+  HyperFrames checks with zero errors or warnings.
 - Family mean SSIM: 0.999486.
 - Per-item range: 0.997724–0.999995.
 - Canonical fixtures cover 90–120 frames at 30 fps and 1280×720.
+- `skeleton-block` preserves an animated gradient sweep and passes strict render
+  plus SSIM. HyperFrames 0.7.64 does not fingerprint `background-position` as
+  geometry motion, so no full-check claim is made for it.
 
 The next bench candidates deliberately widen coverage:
 

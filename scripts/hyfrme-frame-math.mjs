@@ -96,6 +96,14 @@ class Easing {
   static step0(value) { return value > 0 ? 1 : 0; }
   static step1(value) { return value >= 1 ? 1 : 0; }
   static linear(value) { return value; }
+  static cubic(value) { return value * value * value; }
+  static in(easing) { return easing; }
+  static out(easing) { return (value) => 1 - easing(1 - value); }
+  static inOut(easing) {
+    return (value) => value < 0.5
+      ? easing(value * 2) / 2
+      : 1 - easing((1 - value) * 2) / 2;
+  }
   static bezier(x1, y1, x2, y2) { return hyfrmeBezier(x1, y1, x2, y2); }
 }
 

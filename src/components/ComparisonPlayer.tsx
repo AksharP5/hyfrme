@@ -64,7 +64,7 @@ export function ComparisonPlayer({
     if (Math.abs(drift) < 0.004) {
       reference.playbackRate = 1;
     } else {
-      reference.playbackRate = Math.min(1.25, Math.max(0.75, 1 - drift * 6));
+      reference.playbackRate = Math.min(1.5, Math.max(0.5, 1 - drift * 8));
     }
     syncFrameRef.current = requestAnimationFrame(syncPlayback);
   };

@@ -14,12 +14,12 @@ registry manifest and the official Remotion-to-HyperFrames source linter.
 
 ## Verified progress
 
-- 134 visual ports published in the local verified registry.
+- 137 visual ports published in the local verified registry.
 - 100/100 animated icons published.
 - 21/21 typography/effect ports published.
-- 7/7 composition/data ports published.
+- 10/10 composition/data ports published.
 - 5/5 UI primitive ports published.
-- 100 visual items remain.
+- 97 visual items remain.
 
 | Translation class         | Count |
 | ------------------------- | ----: |

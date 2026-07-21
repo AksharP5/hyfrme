@@ -1,0 +1,48 @@
+{
+  "slug": "glass-code-block",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/glass-code-block/index.tsx",
+    "config": "registry/remocn/glass-code-block/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 180,
+    "props": {
+      "title": "hero.tsx",
+      "width": 760,
+      "height": 460,
+      "fontSize": 16,
+      "glassColor": "rgba(10, 10, 10, 0.6)",
+      "staggerFrames": 4,
+      "showTrafficLights": true,
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 180,
+    "meanSsim": 0.99743,
+    "minSsim": 0.997321,
+    "p05Ssim": 0.997322,
+    "p95Ssim": 0.998256,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/glass-code-block/remocn.mp4",
+    "hyperframesVideo": "public/previews/glass-code-block/hyperframes.mp4",
+    "summary": "parity/glass-code-block-diff/summary.json"
+  }
+}

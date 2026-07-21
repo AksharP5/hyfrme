@@ -46,6 +46,9 @@ const coreNames = [
   "infinite-bento-pan",
   "infinite-marquee",
   "terminal-simulator",
+  "terminal-cursor-zoom",
+  "glass-code-block",
+  "glass-code-walk",
 ];
 const primitiveNames = [
   "caret",
@@ -100,6 +103,11 @@ const remotionPlugin = {
           export {Easing, interpolate, interpolateColors};
           export const useCurrentFrame = () => useContext(LocalFrameContext) ?? currentFrame;
           export const useVideoConfig = () => videoConfig;
+          export const AbsoluteFill = ({children, className, style, ...props}) => React.createElement("div", {
+            ...props,
+            className,
+            style: {position: "absolute", inset: 0, width: "100%", height: "100%", ...style},
+          }, children);
           export const Sequence = ({from = 0, durationInFrames = Infinity, children, layout, style, className}) => {
             const localFrame = useCurrentFrame() - from;
             if (localFrame < 0 || localFrame >= durationInFrames) return null;

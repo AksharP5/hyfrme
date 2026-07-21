@@ -1,0 +1,46 @@
+{
+  "slug": "terminal-cursor-zoom",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/terminal-cursor-zoom/index.tsx",
+    "config": "registry/remocn/terminal-cursor-zoom/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "command": "npx shadcn add @remocn/terminal-cursor-zoom",
+      "zoom": 2.8,
+      "fontSize": 20,
+      "prompt": "$",
+      "title": "~/code/remocn-demo",
+      "speed": 1
+    },
+    "background": "#0B0B0C"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.997342,
+    "minSsim": 0.996383,
+    "p05Ssim": 0.996433,
+    "p95Ssim": 0.999281,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/terminal-cursor-zoom/remocn.mp4",
+    "hyperframesVideo": "public/previews/terminal-cursor-zoom/hyperframes.mp4",
+    "summary": "parity/terminal-cursor-zoom-diff/summary.json"
+  }
+}
