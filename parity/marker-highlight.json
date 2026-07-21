@@ -1,0 +1,49 @@
+{
+  "slug": "marker-highlight",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/marker-highlight/index.tsx",
+    "config": "registry/remocn/marker-highlight/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "before": "Made for ",
+      "highlight": "builders",
+      "after": ".",
+      "markerColor": "#facc15",
+      "baseColor": "#171717",
+      "highlightedTextColor": "#171717",
+      "fontSize": 72,
+      "fontWeight": "600",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.997746,
+    "minSsim": 0.997639,
+    "p05Ssim": 0.99766,
+    "p95Ssim": 0.998023,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/marker-highlight/remocn.mp4",
+    "hyperframesVideo": "public/previews/marker-highlight/hyperframes.mp4",
+    "summary": "parity/marker-highlight-diff/summary.json"
+  }
+}

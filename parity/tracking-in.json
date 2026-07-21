@@ -1,0 +1,47 @@
+{
+  "slug": "tracking-in",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/tracking-in/index.tsx",
+    "config": "registry/remocn/tracking-in/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "text": "tracking in",
+      "startTracking": 0.5,
+      "startBlur": 12,
+      "fontSize": 96,
+      "color": "#171717",
+      "fontWeight": "700",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.987158,
+    "minSsim": 0.97866,
+    "p05Ssim": 0.978661,
+    "p95Ssim": 0.998407,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/tracking-in/remocn.mp4",
+    "hyperframesVideo": "public/previews/tracking-in/hyperframes.mp4",
+    "summary": "parity/tracking-in-diff/summary.json"
+  }
+}

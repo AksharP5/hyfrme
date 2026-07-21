@@ -2,7 +2,7 @@
 
 ## Remocn source reference
 
-The `soft-blur-in` port, 21 typography/effect ports, ten composition/data
+The `soft-blur-in` port, 24 typography/effect ports, sixteen composition/data
 ports, five UI primitive ports, and 100 `icon-*` ports are derived from Remocn
 implementations pinned at commit
 `ea730a20b4ab09430ee7292aebc847c002375151`. Every port names its exact source

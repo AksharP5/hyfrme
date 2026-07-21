@@ -37,6 +37,9 @@ const textNames = [
   "staggered-fade-up",
   "mask-reveal-up",
   "shimmer-sweep",
+  "marker-highlight",
+  "tracking-in",
+  "slot-machine-roll",
 ];
 const coreNames = [
   "chat-to-preview-layout",
@@ -49,6 +52,12 @@ const coreNames = [
   "terminal-cursor-zoom",
   "glass-code-block",
   "glass-code-walk",
+  "animated-line-chart",
+  "animated-bar-chart",
+  "progress-steps",
+  "simulated-cursor",
+  "logo-enter",
+  "ecosystem-constellation",
 ];
 const primitiveNames = [
   "caret",
@@ -100,13 +109,13 @@ const remotionPlugin = {
           let currentFrame = 0;
           let videoConfig = {fps: 30, width: 1280, height: 720, durationInFrames: 60};
           const LocalFrameContext = createContext(null);
-          export {Easing, interpolate, interpolateColors};
+          export {Easing, interpolate, interpolateColors, spring};
           export const useCurrentFrame = () => useContext(LocalFrameContext) ?? currentFrame;
           export const useVideoConfig = () => videoConfig;
           export const AbsoluteFill = ({children, className, style, ...props}) => React.createElement("div", {
             ...props,
             className,
-            style: {position: "absolute", inset: 0, width: "100%", height: "100%", ...style},
+            style: {position: "absolute", inset: 0, width: "100%", height: "100%", display: "flex", flexDirection: "column", ...style},
           }, children);
           export const Sequence = ({from = 0, durationInFrames = Infinity, children, layout, style, className}) => {
             const localFrame = useCurrentFrame() - from;
@@ -181,7 +190,8 @@ for (const name of selectedNames) {
     durationInFrames: config.durationInFrames,
     props,
     background:
-      config.previewBackdrop?.type === "color"
+      config.previewBackdrop?.type === "color" ||
+      config.previewBackdrop?.type === "gradient"
         ? config.previewBackdrop.value
         : "#ffffff",
   };
@@ -242,7 +252,9 @@ for (const name of selectedNames) {
         ? "string"
         : control.type === "select"
           ? "string"
-          : control.type,
+          : control.type === "number-input"
+            ? "number"
+            : control.type,
     label: control.label ?? id,
     default: control.default,
   }));

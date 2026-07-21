@@ -1,0 +1,46 @@
+{
+  "slug": "progress-steps",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/progress-steps/index.tsx",
+    "config": "registry/remocn/progress-steps/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "orientation": "horizontal",
+      "activeColor": "#22c55e",
+      "inactiveColor": "#27272a",
+      "textColor": "#ffffff",
+      "stepDuration": 30,
+      "speed": 1
+    },
+    "background": "#0a0a0a"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.999196,
+    "minSsim": 0.999163,
+    "p05Ssim": 0.999165,
+    "p95Ssim": 0.999253,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/progress-steps/remocn.mp4",
+    "hyperframesVideo": "public/previews/progress-steps/hyperframes.mp4",
+    "summary": "parity/progress-steps-diff/summary.json"
+  }
+}

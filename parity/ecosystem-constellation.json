@@ -1,0 +1,44 @@
+{
+  "slug": "ecosystem-constellation",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/ecosystem-constellation/index.tsx",
+    "config": "registry/remocn/ecosystem-constellation/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 240,
+    "props": {
+      "satelliteCount": 6,
+      "centerLabel": "V",
+      "accentColor": "#a855f7",
+      "speed": 1
+    },
+    "background": "radial-gradient(ellipse at center, #14101e 0%, #05030a 75%)"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 240,
+    "meanSsim": 0.99047,
+    "minSsim": 0.970968,
+    "p05Ssim": 0.972272,
+    "p95Ssim": 0.996255,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/ecosystem-constellation/remocn.mp4",
+    "hyperframesVideo": "public/previews/ecosystem-constellation/hyperframes.mp4",
+    "summary": "parity/ecosystem-constellation-diff/summary.json"
+  }
+}

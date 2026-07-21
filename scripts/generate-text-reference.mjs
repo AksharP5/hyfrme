@@ -31,7 +31,7 @@ function Fixture${index}() {
   return (
     <AbsoluteFill
       style={{
-        backgroundColor: ${JSON.stringify(entry.fixture.background)},
+        background: ${JSON.stringify(entry.fixture.background)},
         ["--font-geist-sans" as string]: GEIST,
         fontFamily: GEIST,
       }}

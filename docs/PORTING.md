@@ -64,36 +64,48 @@ time.
 - Per-item range: 0.985560–0.998621.
 - Canonical icon fixtures cover 60–90 frames at 30 fps.
 
-The first 21-item typography/effect family is verified as exact compiled-source
+The first 24-item typography/effect family is verified as exact compiled-source
 ports. Each block preserves the upstream React component and editable controls,
 uses Hyfrme-owned Remotion-compatible easing/interpolation behavior, and
 re-renders from a HyperFrames-controlled frame clock. The runtime and Geist font
 ship beside the HTML composition, so playback does not depend on a Remotion
 installation or include Remotion runtime code.
 
-- All 21 strict renders passed.
-- Four representative motion structures passed full HyperFrames lint, runtime,
+- All 24 strict renders passed.
+- Seven representative motion structures passed full HyperFrames lint, runtime,
   layout, motion, and contrast checks with zero errors or warnings.
-- Family mean SSIM: 0.997517.
+- Family mean SSIM: 0.997021.
 - Per-item range: 0.986619–0.999432.
 - Canonical fixtures cover 60–120 frames at 30 fps and 1280×720.
+- `marker-highlight`, `tracking-in`, and `slot-machine-roll` extend the family
+  with deterministic spring motion; their mean SSIM scores are 0.997746,
+  0.987158, and 0.995761 respectively.
 - `shimmer-sweep` uses the supported intentional-occlusion annotation for its
   stacked base/shine text. Its animated clipped gradient passes strict render
   and SSIM; HyperFrames 0.7.64 does not fingerprint `background-position` as
   geometry motion, so no full-check claim is made for that item.
 
-Ten composition/data scenes are verified with the same compiled-source runtime:
+Sixteen composition/data scenes are verified with the same compiled-source runtime:
 `chat-to-preview-layout`, `data-flow-pipes`, `perspective-marquee`,
 `live-code-compilation`, `infinite-bento-pan`, `infinite-marquee`,
 `terminal-simulator`, `terminal-cursor-zoom`, `glass-code-block`, and
-`glass-code-walk`.
+`glass-code-walk`, plus `animated-line-chart`, `animated-bar-chart`,
+`progress-steps`, `simulated-cursor`, `logo-enter`, and
+`ecosystem-constellation`.
 
-- All ten strict renders passed.
-- `data-flow-pipes` passed the full HyperFrames check with zero errors or
-  warnings.
-- Family mean SSIM: 0.988678.
-- Per-item range: 0.952963–0.999109.
+- All sixteen strict renders passed.
+- `data-flow-pipes`, both animated charts, `simulated-cursor`, `logo-enter`,
+  and `ecosystem-constellation` passed the full HyperFrames check with zero
+  errors or warnings.
+- Family mean SSIM: 0.991883.
+- Per-item range: 0.952963–0.999421.
 - Canonical fixtures cover 90–300 frames at 30 fps and 1280×720.
+- Hyfrme's framework-neutral spring implementation and Remotion-compatible
+  flex defaults for `AbsoluteFill` are exercised by this family without
+  bundling the Remotion runtime.
+- `progress-steps` passes strict render at 0.999196 mean SSIM. The full checker
+  reports its intentionally adjacent step labels as overlapping, so no
+  full-check claim is made for that item.
 - The continuous text marquees are the lower-scoring members because subpixel
   text movement changes raster antialiasing; their exact scores remain above
   the 0.95 gate and are published per item.
@@ -102,7 +114,7 @@ Ten composition/data scenes are verified with the same compiled-source runtime:
   because the source title color measures 3.6:1 contrast.
 - The local-frame `Sequence` and `AbsoluteFill` adapters are also exercised by
   the three nested scenes. Their strict-render scores are 0.997342 for
-  `terminal-cursor-zoom`, 0.997430 for `glass-code-block`, and 0.994836 for
+  `terminal-cursor-zoom`, 0.997421 for `glass-code-block`, and 0.994818 for
   `glass-code-walk`.
 
 Five direct UI primitives are verified: `caret`, `skeleton-block`, `spinner`,
@@ -120,6 +132,7 @@ Five direct UI primitives are verified: `caret`, `skeleton-block`, `spinner`,
 
 The next bench candidates deliberately widen coverage:
 
+- `matrix-decode` and `rgb-glitch-text`: deterministic random parity.
 - `number-wheel`: data-driven numbers and custom easing.
 - `rolling-number`: place-value motion and bundled monospace typography.
 - `focus-pull`: paired-scene transition semantics.

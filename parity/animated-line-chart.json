@@ -1,0 +1,45 @@
+{
+  "slug": "animated-line-chart",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/animated-line-chart/index.tsx",
+    "config": "registry/remocn/animated-line-chart/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "strokeColor": "#22c55e",
+      "strokeWidth": 4,
+      "gridColor": "#27272a",
+      "showDot": true,
+      "speed": 1
+    },
+    "background": "#0a0a0a"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.998238,
+    "minSsim": 0.997508,
+    "p05Ssim": 0.997512,
+    "p95Ssim": 0.999103,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/animated-line-chart/remocn.mp4",
+    "hyperframesVideo": "public/previews/animated-line-chart/hyperframes.mp4",
+    "summary": "parity/animated-line-chart-diff/summary.json"
+  }
+}

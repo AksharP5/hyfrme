@@ -1,0 +1,43 @@
+{
+  "slug": "simulated-cursor",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/simulated-cursor/index.tsx",
+    "config": "registry/remocn/simulated-cursor/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "color": "#ffffff",
+      "size": 32,
+      "speed": 1
+    },
+    "background": "#0a0a0a"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.999421,
+    "minSsim": 0.999354,
+    "p05Ssim": 0.999384,
+    "p95Ssim": 0.999429,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/simulated-cursor/remocn.mp4",
+    "hyperframesVideo": "public/previews/simulated-cursor/hyperframes.mp4",
+    "summary": "parity/simulated-cursor-diff/summary.json"
+  }
+}

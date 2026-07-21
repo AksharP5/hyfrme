@@ -1,0 +1,44 @@
+{
+  "slug": "animated-bar-chart",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "source": "registry/remocn/animated-bar-chart/index.tsx",
+    "config": "registry/remocn/animated-bar-chart/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "barColor": "#0ea5e9",
+      "gap": 16,
+      "staggerFrames": 6,
+      "speed": 1
+    },
+    "background": "#0a0a0a"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.996791,
+    "minSsim": 0.995484,
+    "p05Ssim": 0.995562,
+    "p95Ssim": 0.999372,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/animated-bar-chart/remocn.mp4",
+    "hyperframesVideo": "public/previews/animated-bar-chart/hyperframes.mp4",
+    "summary": "parity/animated-bar-chart-diff/summary.json"
+  }
+}

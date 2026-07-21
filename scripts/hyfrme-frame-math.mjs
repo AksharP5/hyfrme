@@ -135,4 +135,59 @@ const interpolateColors = (input, inputRange, outputRange) => {
   const alpha = interpolate(input, inputRange, colors.map((color) => color[3]), {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
   return \`rgba(\${red}, \${green}, \${blue}, \${alpha})\`;
 };
+
+const hyfrmeSpringUnit = (frame, fps, config = {}) => {
+  if (frame <= 0) return 0;
+  const stiffness = config.stiffness ?? 100;
+  const damping = config.damping ?? 10;
+  const mass = config.mass ?? 1;
+  const velocity = config.velocity ?? 0;
+  const time = frame / fps;
+  const naturalFrequency = Math.sqrt(stiffness / mass);
+  const dampingRatio = damping / (2 * Math.sqrt(stiffness * mass));
+  let value;
+
+  if (dampingRatio >= 1) {
+    const envelope = Math.exp(-naturalFrequency * time);
+    value = 1 - envelope * (1 + (naturalFrequency - velocity) * time);
+  } else {
+    const dampedFrequency = naturalFrequency * Math.sqrt(1 - dampingRatio * dampingRatio);
+    const envelope = Math.exp(-dampingRatio * naturalFrequency * time);
+    value = 1 - envelope * (
+      Math.cos(dampedFrequency * time) +
+      ((dampingRatio * naturalFrequency - velocity) / dampedFrequency) *
+        Math.sin(dampedFrequency * time)
+    );
+  }
+
+  return config.overshootClamping
+    ? Math.min(1, Math.max(0, value))
+    : value;
+};
+
+const hyfrmeMeasureSpring = (fps, config, threshold) => {
+  let lastUnsettledFrame = -1;
+  for (let frame = 0; frame <= fps * 20; frame += 1) {
+    if (Math.abs(1 - hyfrmeSpringUnit(frame, fps, config)) >= threshold) {
+      lastUnsettledFrame = frame;
+    }
+  }
+  return lastUnsettledFrame + 1;
+};
+
+const spring = ({
+  frame,
+  fps,
+  config = {},
+  from = 0,
+  to = 1,
+  durationInFrames,
+  durationRestThreshold = 0.005,
+}) => {
+  const scaledFrame = durationInFrames === undefined
+    ? frame
+    : frame * hyfrmeMeasureSpring(fps, config, durationRestThreshold) / durationInFrames;
+  const progress = hyfrmeSpringUnit(scaledFrame, fps, config);
+  return from + (to - from) * progress;
+};
 `;

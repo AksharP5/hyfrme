@@ -11,16 +11,16 @@ A port is public only after it passes the fidelity contract in
 ## Available ports
 
 - `soft-blur-in`: native mechanical port, 60 frames, 0.998647 mean SSIM.
-- 21 typography and effect components: compiled source ports, 60–120 frames
-  each, 0.986619–0.999432 mean SSIM (0.997517 family mean).
-- 10 composition and data scenes: compiled source ports, 90–300 frames each,
-  0.952963–0.999109 mean SSIM (0.988678 family mean).
+- 24 typography and effect components: compiled source ports, 60–120 frames
+  each, 0.986619–0.999432 mean SSIM (0.997021 family mean).
+- 16 composition and data scenes: compiled source ports, 90–300 frames each,
+  0.952963–0.999421 mean SSIM (0.991883 family mean).
 - 5 UI primitives: compiled source ports, 90–120 frames each,
   0.997724–0.999995 mean SSIM (0.999486 family mean).
 - 100 animated icons: compiled source ports, 60–90 frames each, 0.985560–0.998621
   mean SSIM (0.993872 family mean).
 
-That is 137 verified blocks from the pinned Remocn commit. The exact score and
+That is 146 verified blocks from the pinned Remocn commit. The exact score and
 fixture for every item live under `parity/` and are visible in the catalog.
 
 ## Run the catalog locally
