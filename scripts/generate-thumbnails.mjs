@@ -35,7 +35,7 @@ for (const [index, item] of registry.items.entries()) {
     resolve(previewDirectory, "hyperframes.mp4"),
     "-vf",
     iconNames.has(item.name)
-      ? "scale=192:192:flags=lanczos"
+      ? "scale=384:384:flags=lanczos"
       : "scale=384:216:flags=lanczos",
     "-frames:v",
     "1",

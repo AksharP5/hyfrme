@@ -47,6 +47,23 @@ for (const item of registry.items) {
     );
   }
 
+  if (item.name.startsWith("icon-")) {
+    const showcase = parity.showcase;
+    const hasHighDensityFixture =
+      showcase?.fixture?.width === 384 &&
+      showcase.fixture.height === 384 &&
+      showcase.fixture.scale === 8;
+    const hasPassingShowcase =
+      showcase?.result?.pass === true &&
+      showcase.result.meanSsim >= parity.thresholds.meanSsim;
+
+    if (!hasHighDensityFixture || !hasPassingShowcase) {
+      throw new Error(
+        `${item.name}: icon catalog previews require a passing 384x384 showcase`,
+      );
+    }
+  }
+
   await ensure(
     resolve(root, "public", "previews", item.name, "remocn.mp4"),
     `${item.name} reference preview`,
@@ -54,6 +71,10 @@ for (const item of registry.items) {
   await ensure(
     resolve(root, "public", "previews", item.name, "hyperframes.mp4"),
     `${item.name} HyperFrames preview`,
+  );
+  await ensure(
+    resolve(root, "public", "previews", item.name, "thumbnail.png"),
+    `${item.name} thumbnail`,
   );
 }
 

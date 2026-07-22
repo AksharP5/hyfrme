@@ -65,6 +65,8 @@ const upstream = path.resolve(here, "..");
 const hyfrme = path.resolve(upstream, "..", "..");
 const onlyIndex = process.argv.indexOf("--only");
 const only = onlyIndex === -1 ? null : new Set(process.argv[onlyIndex + 1].split(","));
+const showcase = process.argv.includes("--showcase");
+const showcaseScale = 8;
 
 await ensureBrowser();
 const aliases = tsconfigWebpackAlias(upstream);
@@ -92,9 +94,18 @@ if (only && compositions.length !== only.size) {
 }
 
 for (const [index, composition] of compositions.entries()) {
-  const output = path.join(hyfrme, ".work", "renders", "icons", composition.id, "remocn.mp4");
+  const output = path.join(
+    hyfrme,
+    ".work",
+    "renders",
+    "icons",
+    composition.id,
+    showcase ? "remocn-showcase.mp4" : "remocn.mp4",
+  );
   mkdirSync(path.dirname(output), {recursive: true});
-  process.stdout.write(\`[\${index + 1}/\${compositions.length}] Remocn \${composition.id}… \`);
+  process.stdout.write(
+    \`[\${index + 1}/\${compositions.length}] Remocn \${composition.id}\${showcase ? " showcase" : ""}… \`,
+  );
   await renderMedia({
     serveUrl,
     composition,
@@ -103,7 +114,9 @@ for (const [index, composition] of compositions.entries()) {
     imageFormat: "png",
     outputLocation: output,
     overwrite: true,
-    concurrency: 4,
+    concurrency: showcase ? 2 : 4,
+    scale: showcase ? showcaseScale : 1,
+    timeoutInMilliseconds: showcase ? 120000 : 30000,
   });
   process.stdout.write("done\\n");
 }

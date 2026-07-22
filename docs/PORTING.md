@@ -63,6 +63,9 @@ time.
 - Family mean SSIM: 0.993872.
 - Per-item range: 0.985560–0.998621.
 - Canonical icon fixtures cover 60–90 frames at 30 fps.
+- Website previews are independently rendered and compared at 384×384 (8×
+  the canonical 48×48 fixture), so the vector strokes stay sharp when enlarged
+  without changing the installable block or its canonical parity result.
 
 The first 24-item typography/effect family is verified as exact compiled-source
 ports. Each block preserves the upstream React component and editable controls,

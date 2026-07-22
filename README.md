@@ -87,6 +87,7 @@ The repeatable icon and typography/effect pipelines are exposed as:
 npm run audit:upstream
 npm run generate:icons
 npm run verify:icons
+npm run generate:icon-previews
 npm run generate:text
 npm run verify:text
 npm run generate:core
