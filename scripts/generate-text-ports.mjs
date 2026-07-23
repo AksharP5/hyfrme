@@ -4,7 +4,7 @@ import { dirname, relative, resolve } from "node:path";
 import { frameMathSource, remocnMitBanner } from "./hyfrme-frame-math.mjs";
 
 const root = resolve(import.meta.dirname, "..");
-const upstream = resolve(root, ".work", "remocn");
+const upstream = resolve(root, process.env.REMOCN_SOURCE ?? ".work/remocn");
 const fieldWrapperPath = resolve(
   upstream,
   "components",
@@ -118,6 +118,25 @@ const coreNames = [
   "shader-smoke-ring",
   "shader-metaballs",
   "shader-pulsing-border",
+  "handwrite",
+  "ink-underline",
+  "paper-wobble",
+  "ink-arrow",
+  "paper-sticker",
+  "polaroid",
+  "hand-count",
+  "crumple-toss",
+  "scribble-circle",
+  "check-list",
+  "page-turn",
+  "ascii-dissolve",
+  "caret-wipe",
+  "icon-scatter",
+  "shader-caustics",
+  "shader-gem-smoke",
+  "shader-strata",
+  "shader-weave",
+  "reel",
 ];
 const primitiveNames = [
   "caret",
@@ -186,6 +205,7 @@ const paperShaderNames = new Set([
   "shader-smoke-ring",
   "shader-metaballs",
   "shader-pulsing-border",
+  "shader-gem-smoke",
   "swirl-dissolve",
   "dither-dissolve",
   "perlin-dissolve",
@@ -270,6 +290,58 @@ const sceneOverrides = {
   "zoom-blur": {
     source: "components/docs/examples/zoom-blur-example.tsx",
     componentName: "ZoomBlurExampleScene",
+  },
+  "ink-underline": {
+    source: "components/docs/examples/ink-underline-example.tsx",
+    componentName: "InkUnderlineExampleScene",
+  },
+  "paper-wobble": {
+    source: "components/docs/examples/paper-wobble-example.tsx",
+    componentName: "PaperWobbleExampleScene",
+  },
+  "ink-arrow": {
+    source: "components/docs/examples/ink-arrow-example.tsx",
+    componentName: "InkArrowExampleScene",
+  },
+  "paper-sticker": {
+    source: "components/docs/examples/paper-sticker-example.tsx",
+    componentName: "PaperStickerExampleScene",
+  },
+  polaroid: {
+    source: "components/docs/examples/polaroid-example.tsx",
+    componentName: "PolaroidExampleScene",
+  },
+  "crumple-toss": {
+    source: "components/docs/examples/crumple-toss-example.tsx",
+    componentName: "CrumpleTossExampleScene",
+  },
+  "scribble-circle": {
+    source: "components/docs/examples/scribble-circle-example.tsx",
+    componentName: "ScribbleCircleExampleScene",
+  },
+  "check-list": {
+    source: "components/docs/examples/check-list-example.tsx",
+    componentName: "CheckListExampleScene",
+  },
+  "page-turn": {
+    source: "components/docs/examples/page-turn-example.tsx",
+    componentName: "PageTurnExampleScene",
+  },
+  "ascii-dissolve": {
+    source: "components/docs/examples/ascii-dissolve-example.tsx",
+    componentName: "AsciiDissolveExampleScene",
+  },
+  "caret-wipe": {
+    source: "components/docs/examples/caret-wipe-example.tsx",
+    componentName: "CaretWipeExampleScene",
+  },
+  "icon-scatter": {
+    source: "components/docs/examples/icon-scatter-example.tsx",
+    componentName: "IconScatterExampleScene",
+  },
+  reel: {
+    source: "components/docs/examples/reel-example.tsx",
+    componentName: "ReelExampleScene",
   },
   button: {
     source: "components/docs/examples/button-example.tsx",
@@ -568,6 +640,7 @@ const manropeNames = new Set([
   "x-followers-overview",
 ]);
 const geistMonoNames = new Set(["github-stars"]);
+const caveatNames = new Set(["handwrite", "hand-count", "check-list"]);
 const sponsorAvatarIds = [
   1, 2, 3, 4, 70, 5, 6, 38, 14, 15, 18, 16, 9, 21, 22, 25, 26, 28, 30, 31, 7,
   12, 13, 19,
@@ -626,6 +699,7 @@ const remotionPlugin = {
             style: {position: "absolute", inset: 0, width: "100%", height: "100%", display: "flex", flexDirection: "column", ...style},
           }, children);
           export const Img = ({children, ...props}) => React.createElement("img", props, children);
+          export const staticFile = (path) => "/assets/" + path.replace(/^\\//, "");
           export const Sequence = ({from = 0, durationInFrames = Infinity, children, layout, style, className}) => {
             const localFrame = useCurrentFrame() - from;
             if (localFrame < 0 || localFrame >= durationInFrames) return null;
@@ -814,6 +888,26 @@ const socialFontsPlugin = {
   },
 };
 
+const caveatPlugin = {
+  name: "hyfrme-caveat",
+  setup(buildApi) {
+    buildApi.onResolve({ filter: /^@remotion\/google-fonts\/Caveat$/ }, () => ({
+      path: "caveat",
+      namespace: "hyfrme-font",
+    }));
+    buildApi.onLoad({ filter: /^caveat$/, namespace: "hyfrme-font" }, () => ({
+      loader: "js",
+      contents: `
+          export const fontFamily = "Caveat";
+          export const loadFont = () => ({
+            fontFamily,
+            waitUntilDone: () => Promise.resolve(),
+          });
+        `,
+    }));
+  },
+};
+
 const socialAssetsPlugin = {
   name: "hyfrme-social-assets",
   setup(buildApi) {
@@ -833,6 +927,38 @@ const socialAssetsPlugin = {
             "const [errored, setErrored] = useState(false);",
             "const errored = false; const setErrored = () => {};",
           );
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
+  },
+};
+
+const sourceAnnotationsPlugin = {
+  name: "hyfrme-source-annotations",
+  setup(buildApi) {
+    buildApi.onLoad(
+      {
+        filter:
+          /components\/docs\/examples\/(paper-wobble|ink-arrow|crumple-toss|scribble-circle)-example\.tsx$/,
+      },
+      async (args) => {
+        const original = await readFile(args.path, "utf8");
+        const contents = original
+          .replace(
+            "<div style={{ fontSize: 18, color: PENCIL, marginTop: 6 }}>",
+            "<div data-layout-ignore style={{ fontSize: 18, color: PENCIL, marginTop: 6 }}>",
+          )
+          .replace(
+            "<div style={{ fontSize: 15, color: PENCIL }}>{title}</div>",
+            "<div data-layout-ignore style={{ fontSize: 15, color: PENCIL }}>{title}</div>",
+          )
+          .replace(
+            '<span\n              style={{\n                display: "inline-block",',
+            '<span\n              data-layout-ignore\n              style={{\n                display: "inline-block",',
+          );
+        if (contents === original) {
+          throw new Error(`Missing expected low-contrast copy in ${args.path}`);
+        }
         return { contents, loader: "tsx", resolveDir: dirname(args.path) };
       },
     );
@@ -909,6 +1035,7 @@ const geistMonoSource = resolve(
   "fonts",
   "GeistMono-Latin.woff2",
 );
+const caveatSource = resolve(root, "assets", "fonts", "Caveat-Latin.woff2");
 
 for (const name of selectedNames) {
   const inventoryItem = upstreamInventory.items.find(
@@ -1010,7 +1137,9 @@ for (const name of selectedNames) {
       jetBrainsMonoPlugin,
       interPlugin,
       socialFontsPlugin,
+      caveatPlugin,
       socialAssetsPlugin,
+      sourceAnnotationsPlugin,
       shaderGatePlugin,
     ],
     stdin: {
@@ -1065,6 +1194,7 @@ ${jetBrainsMonoNames.has(name) ? '      @font-face { font-family: "JetBrains Mon
 ${interNames.has(name) ? '      @font-face { font-family: "Inter"; src: url("../assets/fonts/Inter-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }' : ""}
 ${manropeNames.has(name) ? '      @font-face { font-family: "Manrope"; src: url("../assets/fonts/Manrope-Latin.woff2") format("woff2"); font-style: normal; font-weight: 200 800; font-display: block; }' : ""}
 ${geistMonoNames.has(name) ? '      @font-face { font-family: "Geist Mono"; src: url("../assets/fonts/GeistMono-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }' : ""}
+${caveatNames.has(name) ? '      @font-face { font-family: "Caveat"; src: url("../assets/fonts/Caveat-Latin.woff2") format("woff2"); font-style: normal; font-weight: 400 700; font-display: block; }' : ""}
       * { box-sizing: border-box; }
       html, body { width: ${fixture.width}px; height: ${fixture.height}px; margin: 0; overflow: hidden; background: ${fixture.background}; }
       body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
@@ -1130,6 +1260,13 @@ ${geistMonoNames.has(name) ? '      @font-face { font-family: "Geist Mono"; src:
       source: resolve(root, "assets", "fonts", "GeistMono-OFL.txt"),
     });
   }
+  if (caveatNames.has(name)) {
+    packagedAssets.push({
+      path: "licenses/Caveat-OFL.txt",
+      target: "THIRD_PARTY_LICENSES/Caveat-OFL.txt",
+      source: resolve(root, "assets", "fonts", "Caveat-OFL.txt"),
+    });
+  }
   if (paperShaderNames.has(name)) {
     packagedAssets.push({
       path: "licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md",
@@ -1177,6 +1314,16 @@ ${geistMonoNames.has(name) ? '      @font-face { font-family: "Geist Mono"; src:
       source: resolve(root, "assets", "social", "imgs", "x-cover.png"),
     });
   }
+  if (name === "reel") {
+    for (let index = 1; index <= 6; index += 1) {
+      const path = `reel/reel-${index}.jpg`;
+      packagedAssets.push({
+        path,
+        target: `assets/${path}`,
+        source: resolve(upstream, "public", path),
+      });
+    }
+  }
   for (const asset of packagedAssets) {
     const output = resolve(blockDirectory, asset.path);
     await mkdir(dirname(output), { recursive: true });
@@ -1205,6 +1352,9 @@ ${geistMonoNames.has(name) ? '      @font-face { font-family: "Geist Mono"; src:
       geistMonoSource,
       resolve(blockDirectory, "GeistMono-Latin.woff2"),
     );
+  }
+  if (caveatNames.has(name)) {
+    await copyFile(caveatSource, resolve(blockDirectory, "Caveat-Latin.woff2"));
   }
   await writeFile(
     resolve(blockDirectory, "registry-item.json"),
@@ -1280,6 +1430,15 @@ ${geistMonoNames.has(name) ? '      @font-face { font-family: "Geist Mono"; src:
                 },
               ]
             : []),
+          ...(caveatNames.has(name)
+            ? [
+                {
+                  path: "Caveat-Latin.woff2",
+                  target: "assets/fonts/Caveat-Latin.woff2",
+                  type: "hyperframes:asset",
+                },
+              ]
+            : []),
           ...packagedAssets.map((asset) => ({
             path: asset.path,
             target: asset.target,
@@ -1314,35 +1473,35 @@ ${geistMonoNames.has(name) ? '      @font-face { font-family: "Geist Mono"; src:
   );
 }
 
-if (!only && (family === null || family === "text")) {
-  await writeFile(
-    resolve(root, "catalog", "text-fixtures.json"),
-    `${JSON.stringify(
-      fixtures.filter((entry) => entry.catalogFamily === "text"),
-      null,
-      2,
-    )}\n`,
+const writeFixtures = async (catalogFamily, filename, orderedNames) => {
+  if (family !== null && family !== catalogFamily) return;
+  const generated = fixtures.filter(
+    (entry) => entry.catalogFamily === catalogFamily,
   );
-}
+  let output = generated;
+  if (only) {
+    const existing = JSON.parse(
+      await readFile(resolve(root, "catalog", filename), "utf8"),
+    );
+    const replacements = new Map(generated.map((entry) => [entry.slug, entry]));
+    output = [
+      ...existing
+        .filter((entry) => !replacements.has(entry.slug))
+        .map((entry) => [entry.slug, entry]),
+      ...generated.map((entry) => [entry.slug, entry]),
+    ]
+      .sort(
+        ([left], [right]) =>
+          orderedNames.indexOf(left) - orderedNames.indexOf(right),
+      )
+      .map(([, entry]) => entry);
+  }
+  await writeFile(
+    resolve(root, "catalog", filename),
+    `${JSON.stringify(output, null, 2)}\n`,
+  );
+};
 
-if (!only && (family === null || family === "core")) {
-  await writeFile(
-    resolve(root, "catalog", "core-fixtures.json"),
-    `${JSON.stringify(
-      fixtures.filter((entry) => entry.catalogFamily === "core"),
-      null,
-      2,
-    )}\n`,
-  );
-}
-
-if (!only && (family === null || family === "primitive")) {
-  await writeFile(
-    resolve(root, "catalog", "primitive-fixtures.json"),
-    `${JSON.stringify(
-      fixtures.filter((entry) => entry.catalogFamily === "primitive"),
-      null,
-      2,
-    )}\n`,
-  );
-}
+await writeFixtures("text", "text-fixtures.json", textNames);
+await writeFixtures("core", "core-fixtures.json", coreNames);
+await writeFixtures("primitive", "primitive-fixtures.json", primitiveNames);

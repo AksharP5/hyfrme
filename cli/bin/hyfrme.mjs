@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { access, mkdir, readFile, writeFile } from "node:fs/promises";
-import { dirname, isAbsolute, relative, resolve } from "node:path";
+import { dirname, isAbsolute, posix, relative, resolve } from "node:path";
 
 const defaultRegistry = "https://hyfrme.vercel.app/registry";
 const registryRoot = (
@@ -12,11 +12,12 @@ const args = process.argv.slice(2);
 const usage = `hyfrme — add motion blocks to HyperFrames
 
 Usage:
-  hyfrme add <name> [--dir <project>] [--force]
+  hyfrme add <name> [--set <key=value>]... [--dir <project>] [--force]
 
 Examples:
   hyfrme add icon-activity
   hyfrme add soft-blur-in --dir ./my-video
+  hyfrme add matrix-decode --set text=HELLO --set fontSize=48
 `;
 
 const fail = (message) => {
@@ -51,6 +52,7 @@ const parseOptions = () => {
 
   let directory = ".";
   let force = false;
+  const settings = [];
   for (let index = 2; index < args.length; index += 1) {
     const value = args[index];
     if (value === "--force") {
@@ -67,10 +69,21 @@ const parseOptions = () => {
       directory = value.slice("--dir=".length);
       continue;
     }
+    if (value === "--set") {
+      const setting = args[index + 1];
+      if (!setting) fail("--set requires a key=value pair");
+      settings.push(setting);
+      index += 1;
+      continue;
+    }
+    if (value.startsWith("--set=")) {
+      settings.push(value.slice("--set=".length));
+      continue;
+    }
     fail(`unknown option "${value}"`);
   }
 
-  return { name, projectDirectory: resolve(directory), force };
+  return { name, projectDirectory: resolve(directory), force, settings };
 };
 
 const fetchBytes = async (url, label) => {
@@ -138,8 +151,230 @@ const exists = async (path) => {
   }
 };
 
-const { name, projectDirectory, force } = parseOptions();
+const decodeHtmlAttribute = (value) =>
+  value
+    .replaceAll("&quot;", '"')
+    .replaceAll("&#39;", "'")
+    .replaceAll("&lt;", "<")
+    .replaceAll("&gt;", ">")
+    .replaceAll("&amp;", "&");
+
+const encodeHtmlAttribute = (value) =>
+  value
+    .replaceAll("&", "&amp;")
+    .replaceAll("'", "&#39;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+
+const parseSettings = (settings) =>
+  settings.map((setting) => {
+    const separator = setting.indexOf("=");
+    if (separator <= 0)
+      fail(`invalid setting "${setting}" (expected key=value)`);
+    return {
+      id: setting.slice(0, separator),
+      raw: setting.slice(separator + 1),
+    };
+  });
+
+const parseSettingValue = (variable, raw) => {
+  if (variable.type === "number") {
+    const value = Number(raw);
+    if (!Number.isFinite(value)) {
+      fail(`"${variable.id}" requires a number, received "${raw}"`);
+    }
+    return value;
+  }
+  if (variable.type === "boolean") {
+    if (raw !== "true" && raw !== "false") {
+      fail(`"${variable.id}" requires true or false, received "${raw}"`);
+    }
+    return raw === "true";
+  }
+  return raw;
+};
+
+const customizeSource = (source, settings, name) => {
+  if (settings.length === 0) return source;
+  const match = source.match(/data-composition-variables='([^']*)'/);
+  if (!match) {
+    fail(`component "${name}" does not expose customizable variables`);
+  }
+
+  let variables;
+  try {
+    variables = JSON.parse(decodeHtmlAttribute(match[1]));
+  } catch {
+    fail(`component "${name}" has invalid customization metadata`);
+  }
+
+  for (const setting of parseSettings(settings)) {
+    const variable = variables.find((candidate) => candidate.id === setting.id);
+    if (!variable) {
+      const available = variables.map((candidate) => candidate.id).join(", ");
+      fail(
+        `unknown setting "${setting.id}" for ${name}. Available: ${available}`,
+      );
+    }
+    variable.default = parseSettingValue(variable, setting.raw);
+  }
+
+  const metadata = encodeHtmlAttribute(JSON.stringify(variables));
+  return source.replace(match[0], `data-composition-variables='${metadata}'`);
+};
+
+const rewriteInstalledAssetPaths = (source, configuredPath) => {
+  const assetPath = configuredPath
+    .replaceAll("\\", "/")
+    .replace(/^\.?\//, "")
+    .replace(/\/+$/, "");
+  return source
+    .replace(/(?:\.\.\/)+assets\//g, `${assetPath}/`)
+    .replace(/(["'`(])\/assets\//g, `$1${assetPath}/`);
+};
+
+const rewriteManifestPaths = (source, item, config, projectDirectory) => {
+  const composition = item.files.find(
+    (file) => file.type === "hyperframes:composition",
+  );
+  if (!composition) return source;
+  const compositionDirectory = posix.dirname(
+    composition.target.replaceAll("\\", "/"),
+  );
+
+  let rewritten = source;
+  for (const file of item.files) {
+    const originalTarget = file.target.replaceAll("\\", "/");
+    const originalRelative = posix.relative(
+      compositionDirectory,
+      originalTarget,
+    );
+    const installedTarget = relative(
+      projectDirectory,
+      targetFor(projectDirectory, config, item, file),
+    ).replaceAll("\\", "/");
+    const candidates = new Set([
+      originalRelative.startsWith(".")
+        ? originalRelative
+        : `./${originalRelative}`,
+      `/${originalTarget}`,
+    ]);
+    for (const candidate of candidates) {
+      rewritten = rewritten.replaceAll(candidate, installedTarget);
+    }
+  }
+  return rewritten;
+};
+
+const namespaceCompiledPort = (
+  source,
+  name,
+  runtime = false,
+  assetPath = "assets",
+) => {
+  const renderer = `window.__hyfrmeRenderers[${JSON.stringify(name)}]`;
+  const variables = `window.__hyfrmeVariables[${JSON.stringify(name)}]`;
+  let namespaced = rewriteInstalledAssetPaths(source, assetPath)
+    .replaceAll("hyfrme-source-root", `${name}-source-root`)
+    .replaceAll("hyfrme-source-stage", `${name}-source-stage`)
+    .replaceAll("hyfrme-icon-root", `${name}-icon-root`)
+    .replaceAll("hyfrme-icon-stage", `${name}-icon-stage`)
+    .replaceAll("window.__hyfrmeRenderFrame", renderer);
+  if (runtime) {
+    namespaced = namespaced.replaceAll(
+      "window.__hyperframes.getVariables()",
+      variables,
+    );
+  }
+  if (!runtime) {
+    namespaced = namespaced.replace(
+      /<script[^>]*\/gsap(?:\.min)?\.js[^>]*><\/script>\s*/gi,
+      "",
+    );
+    namespaced = namespaced.replace(
+      /<script>([\s\S]*?)<\/script>/gi,
+      (_match, body) => `<script>
+      (() => {
+${body}
+      })();
+    </script>`,
+    );
+  }
+  if (!runtime && namespaced.includes(".runtime.js")) {
+    const bootstrap = `<script>
+      window.__hyfrmeVariables = window.__hyfrmeVariables || {};
+      ${variables} = window.__hyperframes.getVariables();
+    </script>`;
+    namespaced = namespaced.replace(
+      /(<script\s+src=["'][^"']+\.runtime\.js["']><\/script>)/i,
+      `${bootstrap}\n    $1`,
+    );
+  }
+  if (runtime && namespaced !== source) {
+    namespaced = `window.__hyfrmeRenderers = window.__hyfrmeRenderers || {};\nwindow.__hyfrmeVariables = window.__hyfrmeVariables || {};\n${namespaced}`;
+  }
+  return namespaced;
+};
+
+const toInstallableBlock = (source, name, assetPath) => {
+  const namespaced = namespaceCompiledPort(source, name, false, assetPath);
+  if (/<template(?:\s|>)/i.test(namespaced)) return namespaced;
+
+  const html = namespaced.match(/<html([^>]*)>/i);
+  const head = namespaced.match(/<head>([\s\S]*?)<\/head>/i);
+  const body = namespaced.match(/<body>([\s\S]*?)<\/body>/i);
+  if (!html || !head || !body) {
+    fail(`component "${name}" has an unsupported composition structure`);
+  }
+
+  const templateContent = `${head[1]
+    .replace(/<meta[^>]*charset[^>]*>\s*/gi, "")
+    .trim()}\n${body[1].trim()}`
+    .replace(/html,\s*body\s*\{([^}]*)\}/gi, "#root {$1}")
+    .replace(/(^|\})\s*body\s*\{([^}]*)\}/gi, "$1\n#root {$2}");
+  const indented = templateContent
+    .split("\n")
+    .map((line) => `      ${line}`)
+    .join("\n");
+
+  return `<!doctype html>
+<html${html[1]}>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+${indented}
+    </template>
+  </body>
+</html>
+`;
+};
+
+const inlineCompiledRuntime = (source, runtimeSource, runtimePath, name) => {
+  const variables = `window.__hyfrmeVariables[${JSON.stringify(name)}]`;
+  // HyperFrames lints every inline script as authored animation code. React's
+  // compiled runtime uses these APIs internally for bookkeeping/scheduling, so
+  // preserve their behavior without presenting them as composition source.
+  const lintSafeRuntime = runtimeSource
+    .replaceAll("Math.random(", 'Math["random"](')
+    .replaceAll("Date.now(", 'Date["now"](');
+  const bootstrap = `<script>
+      window.__hyfrmeVariables = window.__hyfrmeVariables || {};
+      ${variables} = window.__hyperframes.getVariables();
+    </script>`;
+  const inlineRuntime = `<script>
+${lintSafeRuntime.replace(/<\/script/gi, "<\\/script")}
+    </script>`;
+  const replacement = `${bootstrap}\n    ${inlineRuntime}`;
+  return source
+    .replace(`<script src="${runtimePath}"></script>`, () => replacement)
+    .replace(`<script src='${runtimePath}'></script>`, () => replacement);
+};
+
+const { name, projectDirectory, force, settings } = parseOptions();
 const config = await readProjectConfig(projectDirectory);
+const assetPath = config.paths?.assets ?? "assets";
 const itemRoot = `${registryRoot}/blocks/${encodeURIComponent(name)}`;
 const item = await fetchJson(
   `${itemRoot}/registry-item.json`,
@@ -154,18 +389,82 @@ if (
   fail(`component "${name}" has an invalid registry manifest`);
 }
 
-const downloads = await Promise.all(
-  item.files.map(async (file) => ({
-    bytes: await fetchBytes(
+const fetched = await Promise.all(
+  item.files.map(async (file) => {
+    const bytes = await fetchBytes(
       `${itemRoot}/${file.path
         .split("/")
         .map((segment) => encodeURIComponent(segment))
         .join("/")}`,
       file.path,
-    ),
-    target: targetFor(projectDirectory, config, item, file),
-  })),
+    );
+    return {
+      bytes,
+      file,
+      target: targetFor(projectDirectory, config, item, file),
+    };
+  }),
 );
+
+const runtimeDownloads = new Map(
+  fetched
+    .filter(({ file }) => file.path.endsWith(".runtime.js"))
+    .map(({ bytes, file, target }) => {
+      const source = new TextDecoder().decode(bytes);
+      const relocated = rewriteManifestPaths(
+        source,
+        item,
+        config,
+        projectDirectory,
+      );
+      return [
+        file.path,
+        {
+          path: relative(projectDirectory, target).replaceAll("\\", "/"),
+          source: namespaceCompiledPort(relocated, name, true, assetPath),
+        },
+      ];
+    }),
+);
+
+const downloads = fetched.map(({ bytes, file, target }) => {
+  const isComposition = file.type === "hyperframes:composition";
+  const isRuntime = file.path.endsWith(".runtime.js");
+  let output = bytes;
+  if (isComposition || isRuntime) {
+    const source = new TextDecoder().decode(bytes);
+    const relocated = rewriteManifestPaths(
+      source,
+      item,
+      config,
+      projectDirectory,
+    );
+    if (isComposition) {
+      let customized = customizeSource(relocated, settings, name);
+      for (const runtime of runtimeDownloads.values()) {
+        customized = inlineCompiledRuntime(
+          customized,
+          runtime.source,
+          runtime.path,
+          name,
+        );
+      }
+      output = new TextEncoder().encode(
+        toInstallableBlock(customized, name, assetPath),
+      );
+    } else {
+      output = new TextEncoder().encode(
+        runtimeDownloads.get(file.path)?.source ??
+          namespaceCompiledPort(relocated, name, true, assetPath),
+      );
+    }
+  }
+  return {
+    bytes: output,
+    file,
+    target,
+  };
+});
 
 const conflicts = [];
 for (const download of downloads) {
@@ -183,6 +482,29 @@ for (const download of downloads) {
 }
 
 console.log(`Added ${item.title ?? name}`);
+if (settings.length > 0) {
+  console.log(`  customized: ${settings.join(", ")}`);
+}
 for (const download of downloads) {
   console.log(`  ${relative(projectDirectory, download.target)}`);
+}
+if (item.type === "hyperframes:block" && item.dimensions) {
+  const composition = downloads.find(
+    (download) => download.file.type === "hyperframes:composition",
+  );
+  const compositionPath = composition
+    ? relative(projectDirectory, composition.target).replaceAll("\\", "/")
+    : `compositions/${item.name}.html`;
+  console.log(`
+Use it in your composition:
+  <div
+    id="${item.name}"
+    data-composition-id="${item.name}"
+    data-composition-src="${compositionPath}"
+    data-start="0"
+    data-duration="${item.duration}"
+    data-track-index="1"
+    data-width="${item.dimensions.width}"
+    data-height="${item.dimensions.height}"
+  ></div>`);
 }

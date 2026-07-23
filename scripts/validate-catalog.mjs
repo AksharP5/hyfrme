@@ -47,7 +47,7 @@ for (const item of registry.items) {
     );
   }
 
-  if (item.name.startsWith("icon-")) {
+  if (manifest.tags?.includes("icon")) {
     const showcase = parity.showcase;
     const hasHighDensityFixture =
       showcase?.fixture?.width === 384 &&

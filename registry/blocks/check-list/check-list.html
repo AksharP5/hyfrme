@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"fontSize","type":"number","label":"Font size","default":40},{"id":"itemGap","type":"number","label":"Frames between items","default":18},{"id":"closeGap","type":"number","label":"Frames between ticks","default":9},{"id":"perStep","type":"number","label":"Letters / pose","default":1.6},{"id":"strokeWidth","type":"number","label":"Stroke width","default":3},{"id":"color","type":"color","label":"Label color","default":"#26242c"},{"id":"tickColor","type":"color","label":"Tick color","default":"#6f7f35"},{"id":"step","type":"number","label":"Frames / pose","default":3}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
+
+
+
+
+      @font-face { font-family: "Caveat"; src: url("../assets/fonts/Caveat-Latin.woff2") format("woff2"); font-style: normal; font-weight: 400 700; font-display: block; }
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #f1eee7; }
+      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="check-list" data-start="0" data-duration="12" data-fps="30" data-width="1280" data-height="720">
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="12" data-track-index="0">
+        <div id="hyfrme-source-root"></div>
+      </div>
+    </div>
+    <script src="./check-list.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const clock = { frame: 0 };
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to(clock, {
+        frame: 360,
+        duration: 12,
+        ease: "none",
+        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(359, Math.round(clock.frame)))),
+      });
+      window.__timelines["check-list"] = timeline;
+    </script>
+  </body>
+</html>

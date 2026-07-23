@@ -1,0 +1,49 @@
+{
+  "slug": "scribble-circle",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "source": "registry/remocn/scribble-circle/index.tsx",
+    "entry": "components/docs/examples/scribble-circle-example.tsx",
+    "config": "registry/remocn/scribble-circle/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "laps": 1.15,
+      "strokeWidth": 14,
+      "pressure": 0.2,
+      "grain": 1,
+      "durationSteps": 10,
+      "color": "#6f7f35",
+      "seed": "scribble",
+      "step": 3
+    },
+    "background": "#f1eee7"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.999542,
+    "minSsim": 0.999533,
+    "p05Ssim": 0.999534,
+    "p95Ssim": 0.999599,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/scribble-circle/remocn.mp4",
+    "hyperframesVideo": "public/previews/scribble-circle/hyperframes.mp4",
+    "summary": "parity/scribble-circle-diff/summary.json"
+  }
+}

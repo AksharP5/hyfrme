@@ -2,7 +2,7 @@ import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
-const upstream = resolve(root, ".work", "remocn");
+const upstream = resolve(root, process.env.REMOCN_SOURCE ?? ".work/remocn");
 await cp(
   resolve(root, "assets", "social"),
   resolve(upstream, "public", "assets", "social"),
@@ -101,7 +101,7 @@ import {tsconfigWebpackAlias} from "./tsconfig-webpack-alias.mts";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const upstream = path.resolve(here, "..");
-const hyfrme = path.resolve(upstream, "..", "..");
+const hyfrme = ${JSON.stringify(root)};
 const onlyIndex = process.argv.indexOf("--only");
 const only = onlyIndex === -1 ? null : new Set(process.argv[onlyIndex + 1].split(","));
 

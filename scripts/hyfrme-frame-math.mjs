@@ -105,6 +105,9 @@ class Easing {
   }
   static sin(value) { return 1 - Math.cos(value * Math.PI / 2); }
   static poly(power) { return (value) => value ** power; }
+  static back(overshoot = 1.70158) {
+    return (value) => value * value * ((overshoot + 1) * value - overshoot);
+  }
   static in(easing) { return easing; }
   static out(easing) { return (value) => 1 - easing(1 - value); }
   static inOut(easing) {

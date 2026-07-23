@@ -13,17 +13,17 @@ A port is public only after it passes the fidelity contract in
 - `soft-blur-in`: native mechanical port, 60 frames, 0.998647 mean SSIM.
 - 24 typography and effect components: compiled source ports, 60–120 frames
   each, 0.986619–0.999432 mean SSIM (0.997021 family mean).
-- 64 composition, transition, shader, AI, social, and data scenes: compiled
-  source ports, 90–360 frames each, 0.952963–0.999601 mean SSIM (0.993820
+- 83 composition, transition, shader, AI, social, and data scenes: compiled
+  source ports, 90–360 frames each, 0.952963–0.999848 mean SSIM (0.994263
   family mean).
 - 45 UI primitives and complete flows: compiled source ports, 40–380 frames
   each, 0.995265–0.999995 mean SSIM (0.999585 family mean).
 - 100 animated icons: compiled source ports, 60–90 frames each, 0.985560–0.998621
   mean SSIM (0.993872 family mean).
 
-Together with the native `soft-blur-in` port, that is all 234 visual blocks
-from the pinned Remocn commit. The exact score and fixture for every item live
-under `parity/` and are visible in the catalog.
+Together with the native `soft-blur-in` port, that is all 253 visual blocks
+from the current pinned Remocn commit. The exact score and fixture for every
+item live under `parity/` and are visible in the catalog.
 
 ## Run the catalog locally
 
@@ -47,9 +47,28 @@ npx https://hyfrme.vercel.app/cli add soft-blur-in
 
 The installer reads `hyperframes.json`, respects its configured composition and
 asset paths, and copies every required HTML, runtime, font, image, and license
-file. It does not replace the project's configured HyperFrames registry. Use
-`--dir <project>` to target another directory or `--force` to replace an
-existing installation.
+file. Standalone verified ports are converted into embeddable HyperFrames
+sub-compositions during installation. Compiled runtimes are embedded and
+namespaced per block so several Hyfrme components can mount reliably in the
+same project. It does not replace the project's configured HyperFrames
+registry. Use `--dir <project>` to target another directory or `--force` to
+replace an existing installation.
+
+Every control in the catalog can also become an installed default. The copied
+command adds one `--set key=value` option per changed value:
+
+```bash
+npx https://hyfrme.vercel.app/cli add matrix-decode \
+  --set 'text=HELLO WORLD' \
+  --set 'fontSize=31' \
+  --set 'color=#22c55e'
+```
+
+The CLI validates each setting against the block's embedded variable metadata
+and writes the selected values into the copied composition. It also prints the
+compact `data-composition-src` markup needed to mount the block in
+`index.html`. Per-instance overrides remain available through HyperFrames'
+`data-variable-values` attribute.
 
 ## Repository map
 
@@ -64,6 +83,7 @@ existing installation.
 ```bash
 npm run check
 npm run build
+npm run verify:installer
 ```
 
 `npm run check` validates that every catalog item has its source files,

@@ -1,0 +1,45 @@
+{
+  "slug": "shader-gem-smoke",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "source": "registry/remocn/shader-gem-smoke/index.tsx",
+    "config": "registry/remocn/shader-gem-smoke/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "colorBack": "#0a0a10",
+      "innerDistortion": 0.8,
+      "outerDistortion": 0.6,
+      "size": 0.8
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.996852,
+    "minSsim": 0.996321,
+    "p05Ssim": 0.996459,
+    "p95Ssim": 0.99711,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "strict render passed; full check runtime, motion, and contrast passed, while the layout sweep reported the known sweep_static WebGL-canvas heuristic"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/shader-gem-smoke/remocn.mp4",
+    "hyperframesVideo": "public/previews/shader-gem-smoke/hyperframes.mp4",
+    "summary": "parity/shader-gem-smoke-diff/summary.json"
+  }
+}

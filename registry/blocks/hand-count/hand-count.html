@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"to","type":"number","label":"Count to","default":1284},{"id":"from","type":"number","label":"Count from","default":0},{"id":"durationSteps","type":"number","label":"Poses counting","default":18},{"id":"decimals","type":"number","label":"Decimals","default":0},{"id":"prefix","type":"string","label":"Prefix","default":""},{"id":"suffix","type":"string","label":"Suffix","default":""},{"id":"fontSize","type":"number","label":"Font size","default":96},{"id":"color","type":"color","label":"Color","default":"#26242c"},{"id":"ease","type":"string","label":"Ease","default":"in-out"},{"id":"seed","type":"string","label":"Seed","default":"count"},{"id":"step","type":"number","label":"Frames / pose","default":3}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
+
+
+
+
+      @font-face { font-family: "Caveat"; src: url("../assets/fonts/Caveat-Latin.woff2") format("woff2"); font-style: normal; font-weight: 400 700; font-display: block; }
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #f1eee7; }
+      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="hand-count" data-start="0" data-duration="3" data-fps="30" data-width="1280" data-height="720">
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="3" data-track-index="0">
+        <div id="hyfrme-source-root"></div>
+      </div>
+    </div>
+    <script src="./hand-count.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const clock = { frame: 0 };
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to(clock, {
+        frame: 90,
+        duration: 3,
+        ease: "none",
+        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(89, Math.round(clock.frame)))),
+      });
+      window.__timelines["hand-count"] = timeline;
+    </script>
+  </body>
+</html>

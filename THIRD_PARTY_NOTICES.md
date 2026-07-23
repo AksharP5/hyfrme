@@ -2,9 +2,10 @@
 
 ## Remocn source reference
 
-All 234 visual ports are derived from Remocn implementations pinned at commit
-`ea730a20b4ab09430ee7292aebc847c002375151`. Every port names its exact source
-file and fixture in its parity manifest.
+All 253 visual ports are derived from pinned Remocn implementations. The first
+234 use commit `ea730a20b4ab09430ee7292aebc847c002375151`; the 19 additions use
+commit `32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c`. Every port names its exact
+source file and fixture in its parity manifest.
 
 Copyright (c) 2026 Remocn
 
@@ -16,7 +17,7 @@ contains derived source.
 
 ## Paper Shaders
 
-Twenty-six shader and shader-transition runtimes bundle
+Twenty-seven shader and shader-transition runtimes bundle
 `@paper-design/shaders-react` 0.0.76.
 
 Paper Shaders is licensed under the PolyForm Shield License 1.0.0, not MIT.
@@ -67,6 +68,13 @@ from Google Fonts. Inter, Manrope, and Geist Mono are each licensed under the
 SIL Open Font License, Version 1.1. Their complete terms are preserved at
 `assets/fonts/Inter-OFL.txt`, `assets/fonts/Manrope-OFL.txt`, and
 `assets/fonts/GeistMono-OFL.txt`, and install with each block that uses them.
+
+## Caveat font
+
+The hand-drawn compositions bundle the unmodified normal Latin Caveat variable
+font from Google Fonts. Caveat is licensed under the SIL Open Font License,
+Version 1.1. Its complete terms are preserved at
+`assets/fonts/Caveat-OFL.txt` and install with each block that uses it.
 
 ## date-fns
 

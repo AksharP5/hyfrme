@@ -1,0 +1,47 @@
+{
+  "slug": "handwrite",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "source": "registry/remocn/handwrite/index.tsx",
+    "config": "registry/remocn/handwrite/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "text": "Made by hand",
+      "fontSize": 72,
+      "perStep": 1.6,
+      "weight": "600",
+      "color": "#26242c",
+      "align": "center",
+      "step": 3
+    },
+    "background": "#f1eee7"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.999048,
+    "minSsim": 0.998934,
+    "p05Ssim": 0.998935,
+    "p95Ssim": 0.999746,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/handwrite/remocn.mp4",
+    "hyperframesVideo": "public/previews/handwrite/hyperframes.mp4",
+    "summary": "parity/handwrite-diff/summary.json"
+  }
+}

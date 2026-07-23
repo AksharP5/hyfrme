@@ -1,0 +1,46 @@
+{
+  "slug": "polaroid",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "source": "registry/remocn/polaroid/index.tsx",
+    "entry": "components/docs/examples/polaroid-example.tsx",
+    "config": "registry/remocn/polaroid/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "caption": "first light",
+      "captionAt": 0,
+      "width": 652,
+      "captionSize": 36,
+      "step": 3
+    },
+    "background": "#f1eee7"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.995704,
+    "minSsim": 0.995227,
+    "p05Ssim": 0.995293,
+    "p95Ssim": 0.997769,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/polaroid/remocn.mp4",
+    "hyperframesVideo": "public/previews/polaroid/hyperframes.mp4",
+    "summary": "parity/polaroid-diff/summary.json"
+  }
+}

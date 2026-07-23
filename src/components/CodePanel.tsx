@@ -23,33 +23,16 @@ function useCopy() {
   return { copied, copy };
 }
 
-function Install({ command }: { command: string }) {
-  const { copied, copy } = useCopy();
-
-  return (
-    <aside className="install-card">
-      <span className="section-kicker">Install</span>
-      <h2>Add to HyperFrames</h2>
-      <p>Run this inside your HyperFrames project.</p>
-      <div className="command-row">
-        <code>{command}</code>
-        <button type="button" onClick={() => copy(command, "command")}>
-          {copied === "command" ? "Copied" : "Copy"}
-        </button>
-      </div>
-      <small>The component is copied into your project, so you own it.</small>
-    </aside>
-  );
-}
-
 function Source({
   source,
   sourceUrl,
   filename,
+  copyLabel = "Copy code",
 }: {
   source: string;
-  sourceUrl: string;
+  sourceUrl?: string;
   filename: string;
+  copyLabel?: string;
 }) {
   const { copied, copy } = useCopy();
 
@@ -62,11 +45,13 @@ function Source({
         </span>
         <div>
           <button type="button" onClick={() => copy(source, "source")}>
-            {copied === "source" ? "Copied" : "Copy source"}
+            {copied === "source" ? "Copied" : copyLabel}
           </button>
-          <a href={sourceUrl} target="_blank" rel="noreferrer">
-            GitHub ↗
-          </a>
+          {sourceUrl ? (
+            <a href={sourceUrl} target="_blank" rel="noreferrer">
+              GitHub ↗
+            </a>
+          ) : null}
         </div>
       </div>
       <pre className="source-code">
@@ -76,4 +61,4 @@ function Source({
   );
 }
 
-export const CodePanel = { Install, Source };
+export const CodePanel = { Source };

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"at","type":"number","label":"Crumple starts","default":6},{"id":"crumpleSteps","type":"number","label":"Crush poses","default":4},{"id":"tossSteps","type":"number","label":"Flight poses","default":5},{"id":"direction","type":"number","label":"Throw angle","default":-35},{"id":"distance","type":"number","label":"Arc scale","default":440},{"id":"spin","type":"number","label":"Tumble","default":220},{"id":"segments","type":"number","label":"Paper segments","default":9},{"id":"layers","type":"number","label":"Fold layers","default":2},{"id":"randomness","type":"number","label":"Fold randomness","default":0.6},{"id":"crushTo","type":"number","label":"Wad size","default":0.34},{"id":"seed","type":"string","label":"Seed","default":"toss"},{"id":"step","type":"number","label":"Frames / pose","default":3}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #f1eee7; }
+      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="crumple-toss" data-start="0" data-duration="3" data-fps="30" data-width="1280" data-height="720">
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="3" data-track-index="0">
+        <div id="hyfrme-source-root"></div>
+      </div>
+    </div>
+    <script src="./crumple-toss.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const clock = { frame: 0 };
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to(clock, {
+        frame: 90,
+        duration: 3,
+        ease: "none",
+        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(89, Math.round(clock.frame)))),
+      });
+      window.__timelines["crumple-toss"] = timeline;
+    </script>
+  </body>
+</html>

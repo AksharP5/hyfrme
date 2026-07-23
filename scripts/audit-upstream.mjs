@@ -96,7 +96,9 @@ for (const item of registry.items) {
   }
   const source = sourceChunks.join("\n");
   const family = familyFromPath(item.files?.[0]?.path ?? "");
-  const visual = item.type !== "registry:lib";
+  // `brush` is an internal rendering helper exposed as registry:component
+  // upstream, but it has no public docs/config and is not a standalone visual.
+  const visual = item.type !== "registry:lib" && item.name !== "brush";
   const blockers = lintResult.findings.filter(
     (finding) => finding.severity === "blocker",
   );
@@ -144,7 +146,10 @@ const summary = {
   totalRegistryItems: items.length,
   visualItems: items.filter((item) => item.visual).length,
   sharedRuntimeItems: items.filter((item) => !item.visual).length,
-  byFamily: countBy(items, "family"),
+  byFamily: countBy(
+    items.filter((item) => item.visual),
+    "family",
+  ),
   byTranslationClass: countBy(items, "translationClass"),
   blockerItems: items
     .filter((item) => item.lint.blockers > 0)
@@ -158,9 +163,14 @@ const tableRows = Object.entries(summary.byTranslationClass)
   .map(([classification, count]) => `| ${classification} | ${count} |`)
   .join("\n");
 const publishedCount = publishedRegistry.items?.length ?? 0;
+const iconNames = new Set(
+  items
+    .filter((item) => item.family === "icons" && item.visual)
+    .map((item) => item.name),
+);
 const publishedIconCount =
-  publishedRegistry.items?.filter((item) => item.name.startsWith("icon-"))
-    .length ?? 0;
+  publishedRegistry.items?.filter((item) => iconNames.has(item.name)).length ??
+  0;
 const textNames = new Set(textFixtures.map((item) => item.slug));
 const publishedTextCount =
   publishedRegistry.items?.filter((item) => textNames.has(item.name)).length ??
@@ -203,7 +213,7 @@ registry manifest and the official Remotion-to-HyperFrames source linter.
 ## Verified progress
 
 - ${publishedCount} visual ports published in the local verified registry.
-- ${publishedIconCount}/100 animated icons published.
+- ${publishedIconCount}/${iconNames.size} animated icons published.
 - ${publishedTextCount}/${textFixtures.length} typography/effect ports published.
 - ${publishedCoreCount}/${coreFixtures.length} composition/data ports published.
 - ${publishedPrimitiveCount}/${primitiveFixtures.length} UI primitive ports published.

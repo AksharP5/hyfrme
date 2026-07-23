@@ -1,0 +1,45 @@
+{
+  "slug": "shader-weave",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "source": "registry/remocn/shader-weave/index.tsx",
+    "config": "registry/remocn/shader-weave/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "scale": 22,
+      "warp": 0.03,
+      "accent": "#6733FF",
+      "accentAmount": 0
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.990245,
+    "minSsim": 0.989587,
+    "p05Ssim": 0.98969,
+    "p95Ssim": 0.991089,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/shader-weave/remocn.mp4",
+    "hyperframesVideo": "public/previews/shader-weave/hyperframes.mp4",
+    "summary": "parity/shader-weave-diff/summary.json"
+  }
+}

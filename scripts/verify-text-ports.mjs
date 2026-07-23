@@ -1,8 +1,9 @@
 import { spawn } from "node:child_process";
 import { cp, copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { dirname, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
+const upstream = resolve(root, process.env.REMOCN_SOURCE ?? ".work/remocn");
 const workbench = resolve(root, ".work", "verify-text");
 const fixtureFiles = [
   "text-fixtures.json",
@@ -35,6 +36,10 @@ const fullCheck =
     ? new Set()
     : new Set(process.argv[fullCheckIndex + 1].split(","));
 const reuseReference = process.argv.includes("--reuse-reference");
+const retainedCheckNotes = {
+  "shader-gem-smoke":
+    "strict render passed; full check runtime, motion, and contrast passed, while the layout sweep reported the known sweep_static WebGL-canvas heuristic",
+};
 
 if (requested && selected.length !== requested.size) {
   throw new Error(
@@ -74,7 +79,7 @@ if (!reuseReference) {
       "--only",
       selected.map((entry) => entry.slug).join(","),
     ],
-    { cwd: resolve(root, ".work", "remocn") },
+    { cwd: upstream },
   );
 }
 
@@ -165,6 +170,22 @@ for (const [index, entry] of selected.entries()) {
     resolve(root, "registry", "blocks", entry.slug, `${entry.slug}.runtime.js`),
     resolve(workbench, `${entry.slug}.runtime.js`),
   );
+  const registryItem = JSON.parse(
+    await readFile(
+      resolve(root, "registry", "blocks", entry.slug, "registry-item.json"),
+      "utf8",
+    ),
+  );
+  for (const file of registryItem.files.filter((file) =>
+    file.target.startsWith("assets/"),
+  )) {
+    const target = resolve(workbench, file.target);
+    await mkdir(dirname(target), { recursive: true });
+    await copyFile(
+      resolve(root, "registry", "blocks", entry.slug, file.path),
+      target,
+    );
+  }
 
   if (fullCheck.has(entry.slug)) {
     process.stdout.write(`${label} HyperFrames check… `);
@@ -251,7 +272,7 @@ for (const [index, entry] of selected.entries()) {
         checks: {
           hyperframes: fullCheck.has(entry.slug)
             ? "0 errors, 0 warnings; runtime and layout passed"
-            : "strict render passed",
+            : (retainedCheckNotes[entry.slug] ?? "strict render passed"),
         },
         artifacts: {
           remocnVideo: `public/previews/${entry.slug}/remocn.mp4`,

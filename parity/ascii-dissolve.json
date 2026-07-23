@@ -1,0 +1,44 @@
+{
+  "slug": "ascii-dissolve",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "source": "registry/remocn/ascii-dissolve/index.tsx",
+    "entry": "components/docs/examples/ascii-dissolve-example.tsx",
+    "config": "registry/remocn/ascii-dissolve/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 100,
+    "props": {
+      "colorBack": "#0d0d10",
+      "colorFront": "#f2f2f2",
+      "cellSize": 22
+    },
+    "background": "#0d0d10"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 100,
+    "meanSsim": 0.987572,
+    "minSsim": 0.955444,
+    "p05Ssim": 0.956157,
+    "p95Ssim": 0.997586,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/ascii-dissolve/remocn.mp4",
+    "hyperframesVideo": "public/previews/ascii-dissolve/hyperframes.mp4",
+    "summary": "parity/ascii-dissolve-diff/summary.json"
+  }
+}

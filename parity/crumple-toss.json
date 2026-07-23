@@ -1,0 +1,53 @@
+{
+  "slug": "crumple-toss",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "source": "registry/remocn/crumple-toss/index.tsx",
+    "entry": "components/docs/examples/crumple-toss-example.tsx",
+    "config": "registry/remocn/crumple-toss/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "at": 6,
+      "crumpleSteps": 4,
+      "tossSteps": 5,
+      "direction": -35,
+      "distance": 440,
+      "spin": 220,
+      "segments": 9,
+      "layers": 2,
+      "randomness": 0.6,
+      "crushTo": 0.34,
+      "seed": "toss",
+      "step": 3
+    },
+    "background": "#f1eee7"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.999848,
+    "minSsim": 0.999505,
+    "p05Ssim": 0.99958,
+    "p95Ssim": 0.999916,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/crumple-toss/remocn.mp4",
+    "hyperframesVideo": "public/previews/crumple-toss/hyperframes.mp4",
+    "summary": "parity/crumple-toss-diff/summary.json"
+  }
+}

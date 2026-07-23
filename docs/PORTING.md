@@ -88,12 +88,12 @@ installation or include Remotion runtime code.
   and SSIM; HyperFrames 0.7.64 does not fingerprint `background-position` as
   geometry motion, so no full-check claim is made for that item.
 
-All 64 remaining composition/data items are verified with the same
+All 83 composition/data items are verified with the same
 compiled-source runtime.
 
-- All 64 strict renders passed.
-- Family mean SSIM: 0.993820.
-- Per-item range: 0.952963–0.999601.
+- All 83 strict renders passed.
+- Family mean SSIM: 0.994263.
+- Per-item range: 0.952963–0.999848.
 - Canonical fixtures cover 90–360 frames at 30 fps.
 - Twelve overlapping-scene transitions use a Hyfrme-owned `TransitionSeries`
   timing adapter. Their mean is 0.992226, with a 0.971219–0.997838 range.
@@ -108,6 +108,12 @@ compiled-source runtime.
 - The Paper shader dependency retains its PolyForm Shield 1.0.0 terms. Every
   affected registry item declares the mixed license and installs the complete
   third-party license alongside the block.
+- The current upstream update adds 19 user-facing components: the hand-drawn
+  family, ASCII/Caret/Icon transitions, four shaders, and Reel. All 19 pass
+  strict render parity with a 0.995755 family mean. Eighteen pass the full
+  HyperFrames check; `shader-gem-smoke` passes runtime, motion, and contrast but
+  retains the checker's documented `sweep_static` WebGL-canvas heuristic in its
+  parity manifest.
 - `progress-steps`, number wheels, intentional overlay scenes, and static
   backdrops retain strict-render-only claims where the full checker reports
   known heuristic false positives. Per-item manifests state the exact result.
@@ -128,9 +134,11 @@ All 45 UI primitives and flows are verified.
 
 ## Coverage status
 
-The pinned visual inventory is complete: 234/234 ports have passing parity
-manifests. The two non-visual upstream registry libraries are reference/runtime
-helpers rather than catalog blocks.
+The pinned visual inventory at Remocn
+`32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c` is complete: 253/253 ports have
+passing parity manifests. The four non-visual upstream entries are shared
+runtime helpers, including the internal `brush` dependency, rather than catalog
+blocks.
 
 Upstream changes should open a review issue; they must never overwrite a
 passing port automatically.

@@ -1,0 +1,52 @@
+{
+  "slug": "ink-arrow",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "source": "registry/remocn/ink-arrow/index.tsx",
+    "entry": "components/docs/examples/ink-arrow-example.tsx",
+    "config": "registry/remocn/ink-arrow/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "curvature": 0.35,
+      "strokeWidth": 8,
+      "pressure": 0.2,
+      "release": 1,
+      "grain": 1,
+      "headSize": 24,
+      "drawDur": 36,
+      "headDur": 12,
+      "color": "#26242c",
+      "seed": "arrow",
+      "step": 3
+    },
+    "background": "#f1eee7"
+  },
+  "classification": "compiled-source-port",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 0.999233,
+    "minSsim": 0.999222,
+    "p05Ssim": 0.999223,
+    "p95Ssim": 0.999278,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/ink-arrow/remocn.mp4",
+    "hyperframesVideo": "public/previews/ink-arrow/hyperframes.mp4",
+    "summary": "parity/ink-arrow-diff/summary.json"
+  }
+}
