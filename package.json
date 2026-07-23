@@ -6,7 +6,7 @@
   "scripts": {
     "predev": "npm run sync:registry",
     "dev": "vite",
-    "prebuild": "npm run sync:registry",
+    "prebuild": "npm run sync:registry && npm run build:cli",
     "build": "tsc --noEmit && vite build",
     "check": "npm run validate && tsc --noEmit",
     "validate": "node scripts/validate-catalog.mjs",
@@ -25,6 +25,7 @@
     "build:catalog": "node scripts/build-verified-catalog.mjs",
     "generate:thumbnails": "node scripts/generate-thumbnails.mjs",
     "sync:registry": "node scripts/sync-registry.mjs",
+    "build:cli": "node scripts/build-cli-package.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

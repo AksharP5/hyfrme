@@ -1,68 +1,79 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-type CodePanelProps = {
-  source: string;
-  installCommand: string;
-  sourceUrl: string;
-  filename: string;
-  fileCount: number;
-};
+type CopiedValue = "command" | "source" | null;
 
-type CopiedValue = "source" | "install" | null;
-
-export function CodePanel({
-  source,
-  installCommand,
-  sourceUrl,
-  filename,
-  fileCount,
-}: CodePanelProps) {
+function useCopy() {
   const [copied, setCopied] = useState<CopiedValue>(null);
+  const resetTimer = useRef<number | null>(null);
+
+  useEffect(
+    () => () => {
+      if (resetTimer.current !== null) window.clearTimeout(resetTimer.current);
+    },
+    [],
+  );
 
   const copy = async (value: string, kind: Exclude<CopiedValue, null>) => {
     await navigator.clipboard.writeText(value);
     setCopied(kind);
-    window.setTimeout(() => setCopied(null), 1600);
+    if (resetTimer.current !== null) window.clearTimeout(resetTimer.current);
+    resetTimer.current = window.setTimeout(() => setCopied(null), 1600);
   };
 
-  return (
-    <div className="code-stack">
-      <div className="install-card">
-        <div>
-          <span className="section-kicker">Install manually</span>
-          <p>
-            {fileCount === 1 ? "One standalone file" : `${fileCount} files`}, no
-            registry switching. Run from a HyperFrames project.
-          </p>
-        </div>
-        <button type="button" onClick={() => copy(installCommand, "install")}>
-          {copied === "install" ? "Copied" : "Copy command"}
-        </button>
-        <pre>
-          <code>{installCommand}</code>
-        </pre>
-      </div>
+  return { copied, copy };
+}
 
-      <details className="source-panel">
-        <summary>
-          <span>
-            <span className="source-dot" aria-hidden="true" />
-            {filename}
-          </span>
-          <span>View source</span>
-        </summary>
-        <div className="source-actions">
+function Install({ command }: { command: string }) {
+  const { copied, copy } = useCopy();
+
+  return (
+    <aside className="install-card">
+      <span className="section-kicker">Install</span>
+      <h2>Add to HyperFrames</h2>
+      <p>Run this inside your HyperFrames project.</p>
+      <div className="command-row">
+        <code>{command}</code>
+        <button type="button" onClick={() => copy(command, "command")}>
+          {copied === "command" ? "Copied" : "Copy"}
+        </button>
+      </div>
+      <small>The component is copied into your project, so you own it.</small>
+    </aside>
+  );
+}
+
+function Source({
+  source,
+  sourceUrl,
+  filename,
+}: {
+  source: string;
+  sourceUrl: string;
+  filename: string;
+}) {
+  const { copied, copy } = useCopy();
+
+  return (
+    <div className="source-panel">
+      <div className="source-toolbar">
+        <span>
+          <span className="source-dot" aria-hidden="true" />
+          {filename}
+        </span>
+        <div>
           <button type="button" onClick={() => copy(source, "source")}>
             {copied === "source" ? "Copied" : "Copy source"}
           </button>
           <a href={sourceUrl} target="_blank" rel="noreferrer">
-            Open on GitHub ↗
+            GitHub ↗
           </a>
         </div>
-        <pre className="source-code">
-          <code>{source}</code>
-        </pre>
-      </details>
+      </div>
+      <pre className="source-code">
+        <code>{source}</code>
+      </pre>
     </div>
   );
 }
+
+export const CodePanel = { Install, Source };

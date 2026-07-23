@@ -27,13 +27,9 @@ type Parity = {
     fps: number;
     durationInFrames: number;
   };
-  classification: string;
   result: {
     frameCount: number;
     meanSsim: number;
-    minSsim: number;
-    p05Ssim: number;
-    p95Ssim: number;
     pass: boolean;
   };
 };
@@ -43,6 +39,8 @@ type CatalogEntry = {
   parity: Parity;
   loadSource: () => Promise<string>;
 };
+
+type CatalogCategory = "all" | "icons" | "typography" | "ui" | "scenes";
 
 const registryModules = import.meta.glob(
   "../registry/blocks/*/registry-item.json",
@@ -68,397 +66,373 @@ const catalog = Object.entries(registryModules)
     return parity && loadSource ? { item, parity, loadSource } : null;
   })
   .filter((entry): entry is CatalogEntry => entry !== null)
-  .sort((left, right) => {
-    if (left.item.name === "soft-blur-in") return -1;
-    if (right.item.name === "soft-blur-in") return 1;
-    return left.item.title.localeCompare(right.item.title);
-  });
+  .sort((left, right) => left.item.title.localeCompare(right.item.title));
 
 const githubUrl = "https://github.com/AksharP5/hyfrme";
-const rawRoot =
-  "https://raw.githubusercontent.com/AksharP5/hyfrme/main/registry/blocks";
-const featured = catalog.find((entry) => entry.item.name === "soft-blur-in")!;
+const cliUrl = "https://hyfrme.vercel.app/cli";
+
+const categoryFor = (entry: CatalogEntry): Exclude<CatalogCategory, "all"> => {
+  if (entry.item.tags.includes("icon")) return "icons";
+  if (
+    entry.item.tags.includes("typography") ||
+    entry.item.tags.includes("effect")
+  ) {
+    return "typography";
+  }
+  if (entry.item.tags.includes("ui") || entry.item.tags.includes("primitive")) {
+    return "ui";
+  }
+  return "scenes";
+};
+
+const categoryLabels: Record<CatalogCategory, string> = {
+  all: "All",
+  icons: "Icons",
+  typography: "Typography",
+  ui: "UI",
+  scenes: "Scenes",
+};
+
+const categoryDescription = (category: Exclude<CatalogCategory, "all">) =>
+  ({
+    icons: "Animated icon",
+    typography: "Type & text",
+    ui: "UI primitive",
+    scenes: "Scene & data",
+  })[category];
+
+const cardDescription = (entry: CatalogEntry) =>
+  entry.item.description
+    .replace(
+      / Compiled for deterministic HyperFrames playback by Hyfrme\.$/,
+      "",
+    )
+    .replace(/, ported from Remocn for HyperFrames\.$/, ".");
+
+const slugFromPath = () => {
+  const match = window.location.pathname.match(/^\/components\/([^/]+)\/?$/);
+  return match ? decodeURIComponent(match[1]) : null;
+};
 
 function ArrowIcon() {
   return <span aria-hidden="true">↗</span>;
 }
 
-const classificationLabel = (classification: string) =>
-  classification === "mechanical-port"
-    ? "Native mechanical port"
-    : "Compiled source port";
+function Header() {
+  return (
+    <header className="site-header">
+      <a className="wordmark" href="/" aria-label="Hyfrme home">
+        <span className="wordmark-glyph" aria-hidden="true">
+          hf
+        </span>
+        hyfrme
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="/#catalog">Components</a>
+        <a href={githubUrl} target="_blank" rel="noreferrer">
+          GitHub <ArrowIcon />
+        </a>
+      </nav>
+    </header>
+  );
+}
 
-const installCommandFor = (entry: CatalogEntry) => {
-  const directories = [
-    ...new Set(
-      entry.item.files.map((file) =>
-        file.target.split("/").slice(0, -1).join("/"),
-      ),
-    ),
-  ].filter(Boolean);
-  const commands =
-    directories.length > 0 ? [`mkdir -p ${directories.join(" ")}`] : [];
-  for (const file of entry.item.files) {
-    commands.push(
-      `curl -fsSL ${rawRoot}/${entry.item.name}/${file.path} -o ${file.target}`,
-    );
-  }
-  return commands.join("\n");
-};
+function CatalogCard({ entry }: { entry: CatalogEntry }) {
+  const [previewing, setPreviewing] = useState(false);
+  const category = categoryFor(entry);
+  const previewRoot = `/previews/${entry.item.name}`;
 
-export function App() {
+  return (
+    <a
+      className="catalog-card"
+      href={`/components/${entry.item.name}`}
+      data-component-slug={entry.item.name}
+      data-previewing={previewing ? "true" : "false"}
+      onPointerEnter={() => setPreviewing(true)}
+      onPointerLeave={() => setPreviewing(false)}
+      onFocus={() => setPreviewing(true)}
+      onBlur={() => setPreviewing(false)}
+      aria-label={`Open ${entry.item.title}`}
+    >
+      <span className="catalog-card-preview">
+        {previewing ? (
+          <video
+            src={`${previewRoot}/hyperframes.mp4`}
+            poster={`${previewRoot}/thumbnail.png`}
+            muted
+            autoPlay
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+          />
+        ) : (
+          <img src={`${previewRoot}/thumbnail.png`} alt="" loading="lazy" />
+        )}
+        <span className="preview-hint">Hover to play</span>
+      </span>
+      <span className="catalog-card-copy">
+        <span>{categoryDescription(category)}</span>
+        <strong>{entry.item.title}</strong>
+        <span className="card-description">{cardDescription(entry)}</span>
+        <span className="card-arrow" aria-hidden="true">
+          ↗
+        </span>
+      </span>
+    </a>
+  );
+}
+
+function CatalogPage() {
   const [query, setQuery] = useState("");
-  const [selectedSlug, setSelectedSlug] = useState(featured.item.name);
-  const [selectedSource, setSelectedSource] = useState("");
-  const selected =
-    catalog.find((entry) => entry.item.name === selectedSlug) ?? featured;
+  const [category, setCategory] = useState<CatalogCategory>("all");
+  const categories = Object.keys(categoryLabels) as CatalogCategory[];
+  const categoryCounts = useMemo(
+    () =>
+      Object.fromEntries(
+        categories.map((candidate) => [
+          candidate,
+          candidate === "all"
+            ? catalog.length
+            : catalog.filter((entry) => categoryFor(entry) === candidate)
+                .length,
+        ]),
+      ) as Record<CatalogCategory, number>,
+    [],
+  );
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
-    if (!normalized) return catalog;
-    return catalog.filter((entry) =>
-      [
-        entry.item.name,
-        entry.item.title,
-        entry.item.description,
-        ...entry.item.tags,
-      ]
-        .join(" ")
-        .toLowerCase()
-        .includes(normalized),
-    );
-  }, [query]);
+    return catalog.filter((entry) => {
+      const matchesCategory =
+        category === "all" || categoryFor(entry) === category;
+      const matchesQuery =
+        !normalized ||
+        [
+          entry.item.name,
+          entry.item.title,
+          entry.item.description,
+          ...entry.item.tags,
+        ]
+          .join(" ")
+          .toLowerCase()
+          .includes(normalized);
+      return matchesCategory && matchesQuery;
+    });
+  }, [category, query]);
+
+  useEffect(() => {
+    document.title = "Hyfrme — motion blocks for HyperFrames";
+  }, []);
+
+  return (
+    <>
+      <section className="catalog-intro">
+        <span className="status-pill">Remocn motion · HyperFrames runtime</span>
+        <h1>Cinematic components for HyperFrames.</h1>
+        <p>
+          {catalog.length} Remocn animations, rebuilt frame-for-frame as
+          standalone HyperFrames blocks. Hover to preview, then open any block
+          to compare and install it.
+        </p>
+      </section>
+
+      <section className="catalog-section" id="catalog">
+        <div className="catalog-heading">
+          <div>
+            <span className="section-kicker">Component library</span>
+            <h2>Browse everything</h2>
+          </div>
+          <label className="catalog-search">
+            <span>Search</span>
+            <input
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search components…"
+            />
+          </label>
+        </div>
+
+        <div className="catalog-filters" aria-label="Filter components">
+          {categories.map((candidate) => (
+            <button
+              type="button"
+              key={candidate}
+              aria-pressed={category === candidate}
+              onClick={() => setCategory(candidate)}
+            >
+              {categoryLabels[candidate]}
+              <span>{categoryCounts[candidate]}</span>
+            </button>
+          ))}
+          <span className="result-count">{filtered.length} shown</span>
+        </div>
+
+        {filtered.length > 0 ? (
+          <div className="catalog-grid">
+            {filtered.map((entry) => (
+              <CatalogCard entry={entry} key={entry.item.name} />
+            ))}
+          </div>
+        ) : (
+          <div className="empty-state">
+            <h3>No components found</h3>
+            <p>Try another search or clear the active filter.</p>
+            <button
+              type="button"
+              onClick={() => {
+                setQuery("");
+                setCategory("all");
+              }}
+            >
+              Show all components
+            </button>
+          </div>
+        )}
+      </section>
+    </>
+  );
+}
+
+function DetailPage({ entry }: { entry: CatalogEntry }) {
+  const [source, setSource] = useState("");
+  const category = categoryFor(entry);
+  const blockUrl = `${githubUrl}/blob/main/registry/blocks/${entry.item.name}/${entry.item.name}.html`;
+  const upstreamUrl = `https://github.com/Remocn/remocn/blob/${entry.parity.origin.commit}/${entry.parity.origin.source}`;
+  const installCommand = `npx ${cliUrl} add ${entry.item.name}`;
 
   useEffect(() => {
     let active = true;
-    setSelectedSource("");
-    selected.loadSource().then((source) => {
-      if (active) setSelectedSource(source);
+    document.title = `${entry.item.title} — Hyfrme`;
+    entry.loadSource().then((nextSource) => {
+      if (active) setSource(nextSource);
     });
     return () => {
       active = false;
     };
-  }, [selected]);
-
-  const select = (slug: string) => {
-    setSelectedSlug(slug);
-    window.setTimeout(
-      () => document.getElementById("compare")?.scrollIntoView(),
-      0,
-    );
-  };
-  const blockUrl = `${githubUrl}/blob/main/registry/blocks/${selected.item.name}/${selected.item.name}.html`;
-  const upstreamUrl = `https://github.com/Remocn/remocn/blob/${selected.parity.origin.commit}/${selected.parity.origin.source}`;
-  const isIcon = selected.item.tags.includes("icon");
-  const isCompiled = selected.parity.classification === "compiled-source-port";
+  }, [entry]);
 
   return (
-    <div className="page-shell">
-      <header className="site-header">
-        <a className="wordmark" href="#top" aria-label="Hyfrme home">
-          <span className="wordmark-glyph" aria-hidden="true">
-            hf
+    <article className="detail-page">
+      <a className="back-link" href="/#catalog">
+        <span aria-hidden="true">←</span> All components
+      </a>
+
+      <header className="detail-header">
+        <div>
+          <span className="section-kicker">
+            {categoryDescription(category)} · {entry.item.name}
           </span>
-          hyfrme
+          <h1>{entry.item.title}</h1>
+          <p>{cardDescription(entry)}</p>
+          <div className="detail-meta">
+            <span>Verified against Remocn</span>
+            <span>{entry.item.duration.toFixed(1)}s</span>
+            <span>
+              {entry.item.dimensions.width} × {entry.item.dimensions.height}
+            </span>
+          </div>
+        </div>
+
+        <CodePanel.Install command={installCommand} />
+      </header>
+
+      <section className="detail-section">
+        <div className="detail-section-heading">
+          <div>
+            <span className="section-kicker">Comparison</span>
+            <h2>Remocn and HyperFrames</h2>
+          </div>
+          <a href={upstreamUrl} target="_blank" rel="noreferrer">
+            Original source <ArrowIcon />
+          </a>
+        </div>
+        <ComparisonPlayer
+          referenceSrc={`/previews/${entry.item.name}/remocn.mp4`}
+          portSrc={`/previews/${entry.item.name}/hyperframes.mp4`}
+          square={entry.item.dimensions.width === entry.item.dimensions.height}
+        />
+        <p className="parity-note">
+          Verified across {entry.parity.result.frameCount} frames ·{" "}
+          {(entry.parity.result.meanSsim * 100).toFixed(3)}% visual match
+        </p>
+      </section>
+
+      <section className="detail-section code-section">
+        <div className="detail-section-heading">
+          <div>
+            <span className="section-kicker">Source</span>
+            <h2>Own the code</h2>
+          </div>
+          <p>
+            The installer copies these files into your project. Edit everything.
+          </p>
+        </div>
+        <CodePanel.Source
+          source={source || "Loading source…"}
+          sourceUrl={blockUrl}
+          filename={`${entry.item.name}.html`}
+        />
+      </section>
+    </article>
+  );
+}
+
+function NotFoundPage() {
+  useEffect(() => {
+    document.title = "Component not found — Hyfrme";
+  }, []);
+
+  return (
+    <section className="not-found">
+      <span className="section-kicker">404</span>
+      <h1>That component is not here.</h1>
+      <a href="/#catalog">Browse all components</a>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer>
+      <span>Hyfrme</span>
+      <p>Open-source motion blocks for HyperFrames.</p>
+      <div>
+        <a href={githubUrl} target="_blank" rel="noreferrer">
+          GitHub <ArrowIcon />
         </a>
-        <nav aria-label="Main navigation">
-          <a href="#catalog">Catalog</a>
-          <a href="#compare">Compare</a>
-          <a href="#method">Method</a>
-        </nav>
         <a
-          className="github-link"
-          href={githubUrl}
+          href={`${githubUrl}/blob/main/THIRD_PARTY_NOTICES.md`}
           target="_blank"
           rel="noreferrer"
         >
-          GitHub <ArrowIcon />
+          Attributions <ArrowIcon />
         </a>
-      </header>
+      </div>
+    </footer>
+  );
+}
 
-      <main id="top">
-        <section className="hero">
-          <div className="hero-copy">
-            <div className="eyebrow">
-              <span>Open source</span>
-              <span>{catalog.length} verified ports</span>
-            </div>
-            <h1>
-              Frames should survive the <em>framework.</em>
-            </h1>
-            <p className="hero-lede">
-              Hyfrme ports Remocn motion components into standalone HyperFrames
-              blocks—and publishes the frame-by-frame proof beside every one.
-            </p>
-            <div className="hero-actions">
-              <a className="button button-primary" href="#catalog">
-                Browse {catalog.length} ports <span aria-hidden="true">↓</span>
-              </a>
-              <a
-                className="button button-secondary"
-                href={githubUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Read the source <ArrowIcon />
-              </a>
-            </div>
-          </div>
-          <div
-            className="hero-proof"
-            aria-label="Featured port fidelity summary"
-          >
-            <div className="proof-heading">
-              <span>{featured.item.name}</span>
-              <span className="verified-badge">verified</span>
-            </div>
-            <video
-              src={`/previews/${featured.item.name}/hyperframes.mp4`}
-              muted
-              autoPlay
-              loop
-              playsInline
-              aria-label={`${featured.item.title} verified HyperFrames render`}
-            />
-            <div className="proof-metrics">
-              <div>
-                <span>Mean SSIM</span>
-                <strong>{featured.parity.result.meanSsim.toFixed(6)}</strong>
-              </div>
-              <div>
-                <span>Frames tested</span>
-                <strong>{featured.parity.result.frameCount}</strong>
-              </div>
-              <div>
-                <span>Catalog</span>
-                <strong>{catalog.length} passing</strong>
-              </div>
-            </div>
-          </div>
-        </section>
+export function App() {
+  const slug = slugFromPath();
+  const entry = slug
+    ? catalog.find((candidate) => candidate.item.name === slug)
+    : null;
+  const isComponentPath = window.location.pathname.startsWith("/components/");
 
-        <section className="ticker" aria-label="Project principles">
-          <span>Source-visible</span>
-          <span aria-hidden="true">◆</span>
-          <span>Frame-measured</span>
-          <span aria-hidden="true">◆</span>
-          <span>HyperFrames-ready</span>
-          <span aria-hidden="true">◆</span>
-          <span>MIT licensed</span>
-        </section>
-
-        <section className="catalog-section" id="catalog">
-          <div className="section-heading">
-            <div>
-              <span className="section-kicker">
-                Catalog / {String(catalog.length).padStart(3, "0")}
-              </span>
-              <h2>Verified blocks</h2>
-            </div>
-            <p>
-              Nothing enters this catalog until the HyperFrames render passes a
-              pinned, frame-by-frame comparison against Remocn.
-            </p>
-          </div>
-
-          <div className="catalog-tools">
-            <label htmlFor="catalog-search">Search ports</label>
-            <input
-              id="catalog-search"
-              type="search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Try loader, arrow, status…"
-            />
-            <span>{filtered.length} results</span>
-          </div>
-
-          <div className="catalog-grid">
-            {filtered.map((entry, index) => (
-              <button
-                className="catalog-card"
-                type="button"
-                key={entry.item.name}
-                onClick={() => select(entry.item.name)}
-              >
-                <span className="catalog-card-index">
-                  {String(index + 1).padStart(3, "0")}
-                </span>
-                <span className="catalog-card-preview">
-                  <img
-                    src={`/previews/${entry.item.name}/thumbnail.png`}
-                    alt=""
-                    loading="lazy"
-                  />
-                </span>
-                <span className="catalog-card-copy">
-                  <span>
-                    {entry.item.tags.includes("icon")
-                      ? "Animated icon"
-                      : entry.item.tags.includes("typography")
-                        ? "Typography / effect"
-                        : entry.item.tags.includes("primitive")
-                          ? "UI primitive"
-                          : "Composition / data"}
-                  </span>
-                  <strong>{entry.item.title}</strong>
-                </span>
-                <span className="catalog-card-score">
-                  {(entry.parity.result.meanSsim * 100).toFixed(3)}%
-                </span>
-              </button>
-            ))}
-          </div>
-        </section>
-
-        <section className="compare-section" id="compare">
-          <div className="component-heading">
-            <div>
-              <span className="section-kicker">
-                Selected / {selected.item.name}
-              </span>
-              <h2>{selected.item.title}</h2>
-            </div>
-            <div className="component-tags">
-              {selected.item.tags.slice(0, 3).map((tag) => (
-                <span key={tag}>{tag}</span>
-              ))}
-            </div>
-          </div>
-
-          <ComparisonPlayer
-            key={selected.item.name}
-            referenceSrc={`/previews/${selected.item.name}/remocn.mp4`}
-            portSrc={`/previews/${selected.item.name}/hyperframes.mp4`}
-            square={
-              selected.item.dimensions.width === selected.item.dimensions.height
-            }
-          />
-
-          <div className="port-details">
-            <div className="port-description">
-              <span className="section-kicker">What was preserved</span>
-              <h3>
-                {isIcon
-                  ? "Same paths. Same frame math."
-                  : isCompiled
-                    ? "Same component. Same frame math."
-                    : "Same motion. Native timeline."}
-              </h3>
-              <p>
-                {isIcon
-                  ? "The original SVG paths, props, easing, interpolation, spring behavior, and action timing are compiled into a deterministic HyperFrames-controlled block. The canonical render is measured across every source frame."
-                  : isCompiled
-                    ? "The original React component, editable controls, Remotion frame math, typography, and source timing are bundled into a deterministic runtime driven by the HyperFrames GSAP clock. The canonical render is measured across every source frame."
-                    : "Per-character timing, blur, vertical travel, typography, and the source cubic Bézier are rebuilt in a seek-safe GSAP timeline and measured across the complete fixture."}
-              </p>
-              <a href={upstreamUrl} target="_blank" rel="noreferrer">
-                Inspect the pinned Remocn source <ArrowIcon />
-              </a>
-            </div>
-            <dl className="spec-list">
-              <div>
-                <dt>Classification</dt>
-                <dd>{classificationLabel(selected.parity.classification)}</dd>
-              </div>
-              <div>
-                <dt>Canvas</dt>
-                <dd>
-                  {selected.parity.fixture.width} ×{" "}
-                  {selected.parity.fixture.height}
-                </dd>
-              </div>
-              <div>
-                <dt>Runtime</dt>
-                <dd>
-                  {selected.item.duration.toFixed(2)}s /{" "}
-                  {selected.parity.fixture.fps} fps
-                </dd>
-              </div>
-              <div>
-                <dt>Frames</dt>
-                <dd>{selected.parity.result.frameCount}</dd>
-              </div>
-              <div>
-                <dt>Result</dt>
-                <dd className="pass-value">
-                  Pass / {selected.parity.result.meanSsim.toFixed(6)}
-                </dd>
-              </div>
-            </dl>
-          </div>
-
-          <CodePanel
-            source={selectedSource || "Loading source…"}
-            installCommand={installCommandFor(selected)}
-            sourceUrl={blockUrl}
-            filename={`${selected.item.name}.html`}
-            fileCount={selected.item.files.length}
-          />
-        </section>
-
-        <section className="method-section" id="method">
-          <div className="section-heading method-heading">
-            <div>
-              <span className="section-kicker">The fidelity contract</span>
-              <h2>Proof, not “looks close.”</h2>
-            </div>
-            <p>
-              Every port carries its source commit, fixture, implementation
-              class, rendered artifacts, and pass/fail measurement in the repo.
-            </p>
-          </div>
-          <ol className="method-grid">
-            <li>
-              <span>01</span>
-              <h3>Pin</h3>
-              <p>
-                Freeze the upstream commit, props, canvas, fps, and duration.
-              </p>
-            </li>
-            <li>
-              <span>02</span>
-              <h3>Translate</h3>
-              <p>Map source timing to deterministic HyperFrames primitives.</p>
-            </li>
-            <li>
-              <span>03</span>
-              <h3>Render</h3>
-              <p>
-                Produce both videos from the same fixture and color pipeline.
-              </p>
-            </li>
-            <li>
-              <span>04</span>
-              <h3>Measure</h3>
-              <p>
-                Compare every frame, publish the score, and document any gap.
-              </p>
-            </li>
-          </ol>
-        </section>
+  return (
+    <div className="page-shell">
+      <Header />
+      <main>
+        {entry ? (
+          <DetailPage entry={entry} />
+        ) : isComponentPath ? (
+          <NotFoundPage />
+        ) : (
+          <CatalogPage />
+        )}
       </main>
-
-      <footer>
-        <a className="wordmark footer-wordmark" href="#top">
-          hyfrme
-        </a>
-        <p>
-          An independent MIT-licensed project. Remocn and HyperFrames remain
-          their respective projects.
-        </p>
-        <div>
-          <a href={githubUrl} target="_blank" rel="noreferrer">
-            GitHub ↗
-          </a>
-          <a
-            href={`${githubUrl}/blob/main/THIRD_PARTY_NOTICES.md`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Attributions ↗
-          </a>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

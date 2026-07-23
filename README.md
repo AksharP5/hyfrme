@@ -38,28 +38,18 @@ runtime in their browser.
 
 ## Install a block
 
-Run these commands from a HyperFrames project:
+Open a component in the [catalog](https://hyfrme.vercel.app), then run its
+one-line command from a HyperFrames project:
 
 ```bash
-mkdir -p compositions assets/fonts
-curl -fsSL https://raw.githubusercontent.com/AksharP5/hyfrme/main/registry/blocks/soft-blur-in/soft-blur-in.html -o compositions/soft-blur-in.html
-curl -fsSL https://raw.githubusercontent.com/AksharP5/hyfrme/main/registry/blocks/soft-blur-in/Geist-SemiBold.woff2 -o assets/fonts/Geist-SemiBold.woff2
+npx https://hyfrme.vercel.app/cli add soft-blur-in
 ```
 
-For an icon, the block is one standalone HTML file:
-
-```bash
-mkdir -p compositions
-curl -fsSL https://raw.githubusercontent.com/AksharP5/hyfrme/main/registry/blocks/icon-check-circle/icon-check-circle.html -o compositions/icon-check-circle.html
-```
-
-Compiled typography/effect, composition/data, and UI blocks include the HTML
-composition, source runtime, bundled fonts, and applicable third-party license
-files. Social blocks also include pinned default images. The catalog generates
-every required install command for the selected block.
-
-Manual installation does not replace a project's configured HyperFrames
-registry. The website generates the exact command for every selected block.
+The installer reads `hyperframes.json`, respects its configured composition and
+asset paths, and copies every required HTML, runtime, font, image, and license
+file. It does not replace the project's configured HyperFrames registry. Use
+`--dir <project>` to target another directory or `--force` to replace an
+existing installation.
 
 ## Repository map
 
