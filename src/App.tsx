@@ -26,7 +26,7 @@ import {
 } from "./lib/customization";
 
 const githubUrl = "https://github.com/AksharP5/hyfrme";
-const cliUrl = "https://hyfrme.vercel.app/cli";
+const cliUrl = "https://hyfrme.vercel.app/cli/v0.2.0";
 const catalogCategories = Object.keys(categoryLabels) as CatalogCategory[];
 const catalogCategoryCounts = Object.fromEntries(
   catalogCategories.map((candidate) => [

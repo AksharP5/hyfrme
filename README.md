@@ -42,7 +42,7 @@ Open a component in the [catalog](https://hyfrme.vercel.app), then run its
 one-line command from a HyperFrames project:
 
 ```bash
-npx https://hyfrme.vercel.app/cli add soft-blur-in
+npx https://hyfrme.vercel.app/cli/v0.2.0 add soft-blur-in
 ```
 
 The installer reads `hyperframes.json`, respects its configured composition and
@@ -58,7 +58,7 @@ Every control in the catalog can also become an installed default. The copied
 command adds one `--set key=value` option per changed value:
 
 ```bash
-npx https://hyfrme.vercel.app/cli add matrix-decode \
+npx https://hyfrme.vercel.app/cli/v0.2.0 add matrix-decode \
   --set 'text=HELLO WORLD' \
   --set 'fontSize=31' \
   --set 'color=#22c55e'
