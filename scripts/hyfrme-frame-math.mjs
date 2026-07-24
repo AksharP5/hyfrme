@@ -104,9 +104,28 @@ class Easing {
     return (value) => 1 - Math.cos(value * Math.PI / 2) ** 3 * Math.cos(value * period);
   }
   static sin(value) { return 1 - Math.cos(value * Math.PI / 2); }
+  static circle(value) {
+    const clamped = Math.min(1, Math.max(0, value));
+    return 1 - Math.sqrt(1 - clamped * clamped);
+  }
+  static exp(value) { return 2 ** (10 * (value - 1)); }
   static poly(power) { return (value) => value ** power; }
   static back(overshoot = 1.70158) {
     return (value) => value * value * ((overshoot + 1) * value - overshoot);
+  }
+  static bounce(value) {
+    const clamped = Math.min(1, Math.max(0, value));
+    if (clamped < 1 / 2.75) return 7.5625 * clamped * clamped;
+    if (clamped < 2 / 2.75) {
+      const shifted = clamped - 1.5 / 2.75;
+      return 7.5625 * shifted * shifted + 0.75;
+    }
+    if (clamped < 2.5 / 2.75) {
+      const shifted = clamped - 2.25 / 2.75;
+      return 7.5625 * shifted * shifted + 0.9375;
+    }
+    const shifted = clamped - 2.625 / 2.75;
+    return 7.5625 * shifted * shifted + 0.984375;
   }
   static in(easing) { return easing; }
   static out(easing) { return (value) => 1 - easing(1 - value); }

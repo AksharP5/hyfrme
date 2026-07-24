@@ -22,6 +22,7 @@ import { Customizer } from "./components/Customizer";
 import { InstallPanel } from "./components/InstallPanel";
 import { LandingHero } from "./components/LandingHero";
 import { LivePreview } from "./components/LivePreview";
+import { ShowcaseDetailPage, ShowcasesPage } from "./components/Showcases";
 import { VariableTable } from "./components/VariableTable";
 import {
   buildInstallCommands,
@@ -32,6 +33,7 @@ import {
   valuesFromUrl,
   writeValuesToUrl,
 } from "./lib/customization";
+import { showcases } from "./showcases";
 
 const ComparisonPlayer = lazy(() =>
   import("./components/ComparisonPlayer").then((module) => ({
@@ -80,12 +82,13 @@ function Header() {
         </span>
         hyfrme
       </a>
-      <nav className="library-navigation" aria-label="Component categories">
+      <nav className="library-navigation" aria-label="Library navigation">
         {categoryOrder.map((category) => (
           <a href={`/?category=${category}#catalog`} key={category}>
             {categoryLabels[category]}
           </a>
         ))}
+        <a href="/showcases">Showcases</a>
       </nav>
       <nav className="utility-navigation" aria-label="Project links">
         <a href={githubUrl} target="_blank" rel="noreferrer">
@@ -529,6 +532,7 @@ function Footer() {
       <span>Hyfrme</span>
       <p>Open-source motion blocks for HyperFrames.</p>
       <div>
+        <a href="/showcases">Showcases</a>
         <a href={githubUrl} target="_blank" rel="noreferrer">
           GitHub <ArrowIcon />
         </a>
@@ -550,12 +554,28 @@ export function App() {
     ? catalog.find((candidate) => candidate.item.name === slug)
     : null;
   const isComponentPath = window.location.pathname.startsWith("/components/");
+  const showcaseMatch = window.location.pathname.match(
+    /^\/showcases\/([^/]+)\/?$/,
+  );
+  const showcase = showcaseMatch
+    ? showcases.find(
+        (candidate) => candidate.slug === decodeURIComponent(showcaseMatch[1]),
+      )
+    : null;
+  const isShowcasesIndex = /^\/showcases\/?$/.test(window.location.pathname);
+  const isShowcasePath = window.location.pathname.startsWith("/showcases/");
 
   return (
     <div className="page-shell">
       <Header />
       <main>
-        {entry ? (
+        {showcase ? (
+          <ShowcaseDetailPage showcase={showcase} />
+        ) : isShowcasesIndex ? (
+          <ShowcasesPage />
+        ) : isShowcasePath ? (
+          <NotFoundPage />
+        ) : entry ? (
           <DetailPage entry={entry} />
         ) : isComponentPath ? (
           <NotFoundPage />
