@@ -20,6 +20,7 @@ import { CatalogCard } from "./components/CatalogCard";
 import { CodePanel } from "./components/CodePanel";
 import { Customizer } from "./components/Customizer";
 import { InstallPanel } from "./components/InstallPanel";
+import { LandingHero } from "./components/LandingHero";
 import { LivePreview } from "./components/LivePreview";
 import { VariableTable } from "./components/VariableTable";
 import {
@@ -40,6 +41,7 @@ const ComparisonPlayer = lazy(() =>
 
 const githubUrl = "https://github.com/AksharP5/hyfrme";
 const cliPackage = "hyfrme@latest";
+const installAllCommand = `npx ${cliPackage} add --all`;
 const catalogCategories = Object.keys(categoryLabels) as CatalogCategory[];
 const categoryOrder = catalogCategories.filter(
   (category): category is Exclude<CatalogCategory, "all"> => category !== "all",
@@ -269,6 +271,18 @@ function CatalogPage() {
         )}
       </section>
     </div>
+  );
+}
+
+function HomePage() {
+  return (
+    <>
+      <LandingHero
+        componentCount={catalog.length}
+        installCommand={installAllCommand}
+      />
+      <CatalogPage />
+    </>
   );
 }
 
@@ -546,7 +560,7 @@ export function App() {
         ) : isComponentPath ? (
           <NotFoundPage />
         ) : (
-          <CatalogPage />
+          <HomePage />
         )}
       </main>
       <Footer />

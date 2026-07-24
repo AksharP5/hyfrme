@@ -38,6 +38,10 @@ assert.match(
   /const cliPackage = "hyfrme@latest";/,
 );
 assert.match(
+  contents.get("src/App.tsx"),
+  /const installAllCommand = `npx \$\{cliPackage\} add --all`;/,
+);
+assert.match(
   contents.get("src/lib/customization.ts"),
   /pnpm dlx \$\{cliPackage\}/,
 );
@@ -52,6 +56,11 @@ for (const path of ["README.md", "cli/README.md", "skills/hyfrme/SKILL.md"]) {
     contents.get(path),
     /npx hyfrme@latest add /,
     `${path} is missing the canonical npm install command`,
+  );
+  assert.match(
+    contents.get(path),
+    /npx hyfrme@latest add --all/,
+    `${path} is missing the canonical install-all command`,
   );
 }
 

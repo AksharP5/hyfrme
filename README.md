@@ -24,6 +24,12 @@ Start inside a HyperFrames project, then add any component from the
 npx hyfrme@latest add soft-blur-in
 ```
 
+Install the full catalog when you want every block available locally:
+
+```bash
+npx hyfrme@latest add --all
+```
+
 Changed values from the browser are installed as the component's new defaults:
 
 ```bash

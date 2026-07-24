@@ -7,6 +7,12 @@ Copy customizable motion components from
 npx hyfrme@latest add soft-blur-in
 ```
 
+Install every component:
+
+```bash
+npx hyfrme@latest add --all
+```
+
 Customize supported defaults while installing:
 
 ```bash
@@ -20,7 +26,9 @@ Run the command inside a project with `hyperframes.json`, or pass
 and asset paths.
 
 ```text
+hyfrme add <name>... [--dir <project>] [--force]
 hyfrme add <name> [--set <key=value>]... [--dir <project>] [--force]
+hyfrme add --all [--dir <project>] [--force]
 ```
 
 Browse components and build customized commands at

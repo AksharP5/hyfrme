@@ -53,6 +53,9 @@ npx hyfrme@latest add icon-check
 npx hyfrme@latest add matrix-decode --set 'text=SHIPPED' --set 'color=#22c55e'
 ```
 
+Use `npx hyfrme@latest add --all` only when the project genuinely needs the
+entire catalog; prefer a small set of named components for focused videos.
+
 Use `--dir <project>` when targeting another directory and `--force` only when
 replacing an existing installation intentionally.
 

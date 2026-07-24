@@ -10,6 +10,7 @@ const exec = promisify(execFile);
 const root = resolve(import.meta.dirname, "..");
 const registry = resolve(root, "registry");
 const temporary = await mkdtemp(resolve(tmpdir(), "hyfrme-cli-"));
+const allTemporary = await mkdtemp(resolve(tmpdir(), "hyfrme-cli-all-"));
 
 const contentTypes = {
   ".html": "text/html",
@@ -22,6 +23,19 @@ const contentTypes = {
 const server = createServer(async (request, response) => {
   try {
     const url = new URL(request.url ?? "/", "http://localhost");
+    if (url.pathname === "/registry.json") {
+      response.writeHead(200, { "content-type": "application/json" });
+      response.end(
+        JSON.stringify({
+          name: "hyfrme",
+          items: [
+            { name: "soft-blur-in", type: "hyperframes:block" },
+            { name: "matrix-decode", type: "hyperframes:block" },
+          ],
+        }),
+      );
+      return;
+    }
     const path = resolve(registry, `.${decodeURIComponent(url.pathname)}`);
     if (!path.startsWith(registry)) throw new Error("Unsafe registry path");
     const body = await readFile(path);
@@ -43,6 +57,16 @@ const registryUrl = `http://127.0.0.1:${address.port}`;
 try {
   await writeFile(
     resolve(temporary, "hyperframes.json"),
+    JSON.stringify({
+      paths: {
+        blocks: "motion/hyfrme",
+        components: "compositions/components",
+        assets: "static/hyfrme",
+      },
+    }),
+  );
+  await writeFile(
+    resolve(allTemporary, "hyperframes.json"),
     JSON.stringify({
       paths: {
         blocks: "motion/hyfrme",
@@ -136,6 +160,46 @@ try {
     /data-composition-src="motion\/hyfrme\/matrix-decode\.html"/,
   );
 
+  const installAllResult = await exec(
+    process.execPath,
+    [
+      resolve(root, "cli/bin/hyfrme.mjs"),
+      "add",
+      "--all",
+      "--dir",
+      allTemporary,
+    ],
+    {
+      env: { ...process.env, HYFRME_REGISTRY_URL: registryUrl },
+    },
+  );
+  assert.match(installAllResult.stdout, /Adding 2 Hyfrme components/);
+  assert.match(installAllResult.stdout, /1\/2 Soft Blur In/);
+  assert.match(installAllResult.stdout, /2\/2 Matrix Decode/);
+  assert.match(installAllResult.stdout, /Added 2 Hyfrme components/);
+  await readFile(
+    resolve(allTemporary, "motion/hyfrme/soft-blur-in.html"),
+    "utf8",
+  );
+  await readFile(
+    resolve(allTemporary, "motion/hyfrme/matrix-decode.html"),
+    "utf8",
+  );
+
+  await exec(
+    process.execPath,
+    [
+      resolve(root, "cli/bin/hyfrme.mjs"),
+      "add",
+      "--all",
+      "--dir",
+      allTemporary,
+    ],
+    {
+      env: { ...process.env, HYFRME_REGISTRY_URL: registryUrl },
+    },
+  );
+
   await assert.rejects(
     exec(
       process.execPath,
@@ -158,4 +222,5 @@ try {
 } finally {
   server.close();
   await rm(temporary, { recursive: true, force: true });
+  await rm(allTemporary, { recursive: true, force: true });
 }
