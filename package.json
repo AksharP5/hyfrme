@@ -4,11 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "npm run sync:registry",
+    "predev": "npm run sync:registry && npm run sync:catalog",
     "dev": "vite",
-    "prebuild": "npm run sync:registry && npm run build:cli",
+    "prebuild": "npm run sync:registry && npm run sync:catalog && npm run build:cli",
     "build": "tsc --noEmit && vite build",
-    "check": "npm run validate && npm run test:cli && tsc --noEmit",
+    "check": "node scripts/build-catalog-data.mjs --check && npm run validate && npm run test:cli && tsc --noEmit",
     "validate": "node scripts/validate-catalog.mjs",
     "test:cli": "node scripts/test-cli.mjs",
     "verify:installer": "node scripts/verify-installer.mjs",
@@ -27,6 +27,7 @@
     "build:catalog": "node scripts/build-verified-catalog.mjs",
     "generate:thumbnails": "node scripts/generate-thumbnails.mjs",
     "sync:registry": "node scripts/sync-registry.mjs",
+    "sync:catalog": "node scripts/build-catalog-data.mjs",
     "build:cli": "node scripts/build-cli-package.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check ."

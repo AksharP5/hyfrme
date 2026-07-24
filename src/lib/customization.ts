@@ -1,4 +1,4 @@
-import type { RegistryItem } from "../catalog";
+import type { RegistryItem, RegistrySummary } from "../catalog";
 
 export type CompositionVariable = {
   id: string;
@@ -132,7 +132,7 @@ export function changedValues(
 }
 
 export function buildUsageSnippet(
-  item: RegistryItem,
+  item: RegistrySummary,
   variables: CompositionVariable[],
   values: CustomValues,
 ) {
@@ -207,11 +207,12 @@ export function buildPreviewDocument(
   const width = item.dimensions.width;
   const height = item.dimensions.height;
   const background = transparent ? "transparent" : "#f6f6f3";
+  const previewScale = transparent ? 0.42 : 1;
   const bootstrap = `<script>
 window.__hyperframes = { getVariables: () => (${safeValues}) };
 window.addEventListener("load", () => {
   const fit = () => {
-    const scale = Math.min(innerWidth / ${width}, innerHeight / ${height});
+    const scale = Math.min(innerWidth / ${width}, innerHeight / ${height}) * ${previewScale};
     const x = (innerWidth - ${width} * scale) / 2;
     const y = (innerHeight - ${height} * scale) / 2;
     document.body.style.transform = "translate(" + x + "px," + y + "px) scale(" + scale + ")";
@@ -266,7 +267,7 @@ const signedNumbers = new Set([
 
 export function numberBounds(
   variable: CompositionVariable,
-  item: RegistryItem,
+  item: RegistrySummary,
 ) {
   const value = Number(variable.default);
   if (variable.id === "speed") {

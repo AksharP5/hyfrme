@@ -4,25 +4,24 @@ export type RegistryFile = {
   type: string;
 };
 
-export type RegistryItem = {
+import catalogData from "./generated/catalog-data.json";
+
+export type RegistrySummary = {
   name: string;
   title: string;
   description: string;
   tags: string[];
   dimensions: { width: number; height: number };
   duration: number;
+};
+
+export type RegistryItem = RegistrySummary & {
   files: RegistryFile[];
 };
 
-export type Parity = {
+export type ParitySummary = {
   slug: string;
   origin: { commit: string; source: string };
-  fixture: {
-    width: number;
-    height: number;
-    fps: number;
-    durationInFrames: number;
-  };
   result: {
     frameCount: number;
     meanSsim: number;
@@ -31,38 +30,42 @@ export type Parity = {
 };
 
 export type CatalogEntry = {
-  item: RegistryItem;
-  parity: Parity;
+  item: RegistrySummary;
+  parity: ParitySummary;
+  loadItem: () => Promise<RegistryItem>;
   loadSource: () => Promise<string>;
 };
 
 export type CatalogCategory =
   "all" | "components" | "primitives" | "shaders" | "icons";
 
-const registryModules = import.meta.glob(
-  "../registry/blocks/*/registry-item.json",
-  { eager: true, import: "default" },
-) as Record<string, RegistryItem>;
-const parityModules = import.meta.glob("../parity/*.json", {
-  eager: true,
-  import: "default",
-}) as Record<string, Parity>;
-const sourceModules = import.meta.glob("../registry/blocks/*/*.html", {
-  import: "default",
-  query: "?raw",
-}) as Record<string, () => Promise<string>>;
+async function fetchRequired(path: string) {
+  const response = await fetch(path);
+  if (!response.ok) {
+    throw new Error(`Unable to load ${path}: ${response.status}`);
+  }
+  return response;
+}
 
-export const catalog = Object.entries(registryModules)
-  .map(([path, item]) => {
-    const parity = Object.values(parityModules).find(
-      (candidate) => candidate.slug === item.name,
-    );
-    const loadSource = Object.entries(sourceModules).find(([sourcePath]) =>
-      sourcePath.endsWith(`/${item.name}/${item.name}.html`),
-    )?.[1];
-    return parity && loadSource ? { item, parity, loadSource } : null;
+export const catalog = (
+  catalogData as Array<{
+    item: RegistrySummary;
+    parity: ParitySummary;
+  }>
+)
+  .map(({ item, parity }) => {
+    const blockRoot = `/registry/blocks/${encodeURIComponent(item.name)}`;
+    return {
+      item,
+      parity,
+      loadItem: async () =>
+        (await (
+          await fetchRequired(`${blockRoot}/registry-item.json`)
+        ).json()) as RegistryItem,
+      loadSource: async () =>
+        (await fetchRequired(`${blockRoot}/${item.name}.html`)).text(),
+    };
   })
-  .filter((entry): entry is CatalogEntry => entry !== null)
   .sort((left, right) => left.item.title.localeCompare(right.item.title));
 
 export const categoryLabels: Record<CatalogCategory, string> = {

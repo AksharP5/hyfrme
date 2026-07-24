@@ -31,14 +31,11 @@ export function InstallPanel({ commands, customized }: InstallPanelProps) {
       aria-labelledby="install-title"
     >
       <div className="install-panel-copy">
-        <span className="section-kicker">Installation</span>
-        <h2 id="install-title">
-          {customized ? "Install your version" : "Add to HyperFrames"}
-        </h2>
+        <h2 id="install-title">Installation</h2>
         <p>
           {customized
-            ? "Your changed values are written into the installed block as its new defaults."
-            : "One command copies the block and every required asset into your project."}
+            ? "This command installs the version you customized above."
+            : "Copy the block and its required assets into your project."}
         </p>
       </div>
       <div className="command-shell">

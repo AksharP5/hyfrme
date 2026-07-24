@@ -1,4 +1,4 @@
-import type { RegistryItem } from "../catalog";
+import type { RegistrySummary } from "../catalog";
 import {
   type CompositionVariable,
   type CustomValues,
@@ -8,7 +8,7 @@ import {
 import { CopyButton } from "./CopyButton";
 
 type CustomizerProps = {
-  item: RegistryItem;
+  item: RegistrySummary;
   variables: CompositionVariable[];
   values: CustomValues;
   onChange: (id: string, value: string | number | boolean) => void;
@@ -17,7 +17,7 @@ type CustomizerProps = {
 };
 
 type ControlProps = {
-  item: RegistryItem;
+  item: RegistrySummary;
   variable: CompositionVariable;
   value: string | number | boolean;
   onChange: (value: string | number | boolean) => void;
@@ -134,10 +134,7 @@ export function Customizer({
   return (
     <section className="customizer" aria-labelledby="customizer-title">
       <div className="customizer-heading">
-        <div>
-          <span className="section-kicker">Make it yours</span>
-          <h2 id="customizer-title">Customize</h2>
-        </div>
+        <h2 id="customizer-title">Customize</h2>
         <div className="customizer-actions">
           <CopyButton
             value={shareUrl}

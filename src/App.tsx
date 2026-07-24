@@ -1,4 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+import {
+  lazy,
+  Suspense,
+  useEffect,
+  useMemo,
+  useState,
+  type MouseEvent,
+} from "react";
 import {
   catalog,
   type CatalogCategory,
@@ -7,10 +14,10 @@ import {
   categoryDescription,
   categoryFor,
   categoryLabels,
+  type RegistryItem,
 } from "./catalog";
 import { CatalogCard } from "./components/CatalogCard";
 import { CodePanel } from "./components/CodePanel";
-import { ComparisonPlayer } from "./components/ComparisonPlayer";
 import { Customizer } from "./components/Customizer";
 import { InstallPanel } from "./components/InstallPanel";
 import { LivePreview } from "./components/LivePreview";
@@ -25,9 +32,18 @@ import {
   writeValuesToUrl,
 } from "./lib/customization";
 
+const ComparisonPlayer = lazy(() =>
+  import("./components/ComparisonPlayer").then((module) => ({
+    default: module.ComparisonPlayer,
+  })),
+);
+
 const githubUrl = "https://github.com/AksharP5/hyfrme";
 const cliUrl = "https://hyfrme.vercel.app/cli/v0.2.0";
 const catalogCategories = Object.keys(categoryLabels) as CatalogCategory[];
+const categoryOrder = catalogCategories.filter(
+  (category): category is Exclude<CatalogCategory, "all"> => category !== "all",
+);
 const catalogCategoryCounts = Object.fromEntries(
   catalogCategories.map((candidate) => [
     candidate,
@@ -63,10 +79,11 @@ function Header() {
         hyfrme
       </a>
       <nav className="library-navigation" aria-label="Component categories">
-        <a href="/?category=components#catalog">Components</a>
-        <a href="/?category=primitives#catalog">Primitives</a>
-        <a href="/?category=shaders#catalog">Shaders</a>
-        <a href="/?category=icons#catalog">Icons</a>
+        {categoryOrder.map((category) => (
+          <a href={`/?category=${category}#catalog`} key={category}>
+            {categoryLabels[category]}
+          </a>
+        ))}
       </nav>
       <nav className="utility-navigation" aria-label="Project links">
         <a href={githubUrl} target="_blank" rel="noreferrer">
@@ -74,6 +91,71 @@ function Header() {
         </a>
       </nav>
     </header>
+  );
+}
+
+type LibrarySidebarProps = {
+  activeCategory: CatalogCategory;
+  currentEntry?: CatalogEntry;
+  onSelectCategory?: (
+    category: CatalogCategory,
+    event: MouseEvent<HTMLAnchorElement>,
+  ) => void;
+};
+
+function LibrarySidebar({
+  activeCategory,
+  currentEntry,
+  onSelectCategory,
+}: LibrarySidebarProps) {
+  const activeEntries =
+    activeCategory === "all"
+      ? []
+      : catalog.filter((entry) => categoryFor(entry) === activeCategory);
+
+  return (
+    <aside className="library-sidebar">
+      <nav aria-label="Library navigation">
+        <span className="sidebar-label">Library</span>
+        <a
+          className={activeCategory === "all" ? "is-active" : ""}
+          href="/#catalog"
+          onClick={(event) => onSelectCategory?.("all", event)}
+        >
+          <span>All components</span>
+          <small>{catalogCategoryCounts.all}</small>
+        </a>
+        {categoryOrder.map((category) => (
+          <a
+            className={activeCategory === category ? "is-active" : ""}
+            href={`/?category=${category}#catalog`}
+            key={category}
+            onClick={(event) => onSelectCategory?.(category, event)}
+          >
+            <span>{categoryLabels[category]}</span>
+            <small>{catalogCategoryCounts[category]}</small>
+          </a>
+        ))}
+      </nav>
+      {currentEntry ? (
+        <nav className="sidebar-components" aria-label="Components in category">
+          <span className="sidebar-label">
+            {categoryLabels[categoryFor(currentEntry)]}
+          </span>
+          {activeEntries.map((entry) => (
+            <a
+              className={
+                entry.item.name === currentEntry.item.name ? "is-current" : ""
+              }
+              href={`/components/${entry.item.name}`}
+              key={entry.item.name}
+            >
+              {entry.item.title}
+            </a>
+          ))}
+        </nav>
+      ) : null}
+    </aside>
   );
 }
 
@@ -101,7 +183,7 @@ function CatalogPage() {
   }, [category, query]);
 
   useEffect(() => {
-    document.title = "Hyfrme — customizable motion for HyperFrames";
+    document.title = "Hyfrme — motion components for HyperFrames";
   }, []);
 
   const selectCategory = (next: CatalogCategory) => {
@@ -112,38 +194,44 @@ function CatalogPage() {
     window.history.replaceState(null, "", url);
   };
 
-  return (
-    <>
-      <section className="catalog-intro">
-        <p className="eyebrow">Open-source motion library</p>
-        <h1>Motion blocks you can make your own.</h1>
-        <p>
-          Preview, customize, and install production-ready HyperFrames
-          components without leaving the browser.
-        </p>
-        <a className="hero-action" href="#catalog">
-          Browse {catalog.length} components <span aria-hidden="true">↓</span>
-        </a>
-      </section>
+  const selectedLabel =
+    category === "all" ? "Components" : categoryLabels[category];
+  const selectedDescription =
+    category === "all"
+      ? "Browse, customize, and install open-source motion for HyperFrames."
+      : `Browse every ${categoryLabels[category].toLowerCase()} block available in Hyfrme.`;
 
-      <section className="catalog-section" id="catalog">
-        <div className="catalog-heading">
-          <div>
-            <span className="section-kicker">Library</span>
-            <h2>Find your next motion</h2>
-          </div>
+  return (
+    <div className="docs-layout" id="catalog">
+      <LibrarySidebar
+        activeCategory={category}
+        onSelectCategory={(next, event) => {
+          event.preventDefault();
+          selectCategory(next);
+        }}
+      />
+      <section className="catalog-page">
+        <header className="page-heading">
+          <span className="section-kicker">Hyfrme library</span>
+          <h1>{selectedLabel}</h1>
+          <p>{selectedDescription}</p>
+        </header>
+
+        <div className="catalog-tools">
           <label className="catalog-search">
-            <span>Search</span>
+            <span className="sr-only">Search components</span>
+            <span aria-hidden="true">⌕</span>
             <input
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search components…"
+              placeholder="Filter components…"
             />
           </label>
+          <span>{filtered.length} results</span>
         </div>
 
-        <div className="catalog-filters" aria-label="Filter components">
+        <div className="mobile-filters" aria-label="Filter components">
           {catalogCategories.map((candidate) => (
             <button
               type="button"
@@ -152,10 +240,8 @@ function CatalogPage() {
               onClick={() => selectCategory(candidate)}
             >
               {categoryLabels[candidate]}
-              <span>{catalogCategoryCounts[candidate]}</span>
             </button>
           ))}
-          <span className="result-count">{filtered.length} shown</span>
         </div>
 
         {filtered.length > 0 ? (
@@ -163,16 +249,12 @@ function CatalogPage() {
             className={`catalog-grid${category === "icons" ? " is-icons" : ""}`}
           >
             {filtered.map((entry) => (
-              <CatalogCard
-                entry={entry}
-                cliUrl={cliUrl}
-                key={entry.item.name}
-              />
+              <CatalogCard entry={entry} key={entry.item.name} />
             ))}
           </div>
         ) : (
           <div className="empty-state">
-            <h3>No components found</h3>
+            <h2>No components found</h2>
             <p>Try another search or clear the active filter.</p>
             <button
               type="button"
@@ -186,14 +268,16 @@ function CatalogPage() {
           </div>
         )}
       </section>
-    </>
+    </div>
   );
 }
 
 function DetailPage({ entry }: { entry: CatalogEntry }) {
   const [source, setSource] = useState("");
+  const [previewItem, setPreviewItem] = useState<RegistryItem | null>(null);
   const [values, setValues] = useState<CustomValues>({});
   const [tab, setTab] = useState<"preview" | "code">("preview");
+  const [verificationOpen, setVerificationOpen] = useState(false);
   const variables = useMemo(() => parseCompositionVariables(source), [source]);
   const defaults = useMemo(() => defaultValues(variables), [variables]);
   const effectiveValues = useMemo(
@@ -229,9 +313,14 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
     let active = true;
     document.title = `${entry.item.title} — Hyfrme`;
     setSource("");
-    entry.loadSource().then((nextSource) => {
-      if (active) setSource(nextSource);
-    });
+    setPreviewItem(null);
+    Promise.all([entry.loadSource(), entry.loadItem()]).then(
+      ([nextSource, nextItem]) => {
+        if (!active) return;
+        setSource(nextSource);
+        setPreviewItem(nextItem);
+      },
+    );
     return () => {
       active = false;
     };
@@ -255,158 +344,154 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
   };
 
   return (
-    <article className="detail-page">
-      <a className="back-link" href="/#catalog">
-        <span aria-hidden="true">←</span> All components
-      </a>
+    <div className="docs-layout detail-layout">
+      <LibrarySidebar activeCategory={category} currentEntry={entry} />
+      <article className="detail-page">
+        <a className="back-link" href="/#catalog">
+          <span aria-hidden="true">←</span> All components
+        </a>
 
-      <header className="detail-header">
-        <span className="section-kicker">
-          {categoryDescription(category)} · {entry.item.name}
-        </span>
-        <h1>{entry.item.title}</h1>
-        <p>{cardDescription(entry)}</p>
-      </header>
-
-      <section className="component-workbench" aria-label="Component editor">
-        <div className="workbench-tabs" role="tablist" aria-label="View">
-          <button
-            type="button"
-            role="tab"
-            aria-selected={tab === "preview"}
-            onClick={() => setTab("preview")}
-          >
-            Preview
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={tab === "code"}
-            onClick={() => setTab("code")}
-          >
-            Code
-          </button>
-          <span>
-            {entry.item.dimensions.width} × {entry.item.dimensions.height} ·{" "}
-            {entry.item.duration.toFixed(1)}s
+        <header className="detail-header">
+          <span className="section-kicker">
+            {categoryDescription(category)} · {entry.item.name}
           </span>
-        </div>
+          <h1>{entry.item.title}</h1>
+          <p>{cardDescription(entry)}</p>
+        </header>
 
-        {tab === "preview" ? (
-          source ? (
-            <LivePreview
-              item={entry.item}
-              source={source}
-              values={effectiveValues}
-            />
+        <section className="component-workbench" aria-label="Component editor">
+          <div className="workbench-tabs" role="tablist" aria-label="View">
+            <div>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={tab === "preview"}
+                onClick={() => setTab("preview")}
+              >
+                Preview
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={tab === "code"}
+                onClick={() => setTab("code")}
+              >
+                Code
+              </button>
+            </div>
+            <span>
+              {entry.item.dimensions.width} × {entry.item.dimensions.height} ·{" "}
+              {entry.item.duration.toFixed(1)}s
+            </span>
+          </div>
+
+          {tab === "preview" ? (
+            source && previewItem ? (
+              <LivePreview
+                item={previewItem}
+                source={source}
+                values={effectiveValues}
+              />
+            ) : (
+              <div className="preview-loading">Loading live preview…</div>
+            )
           ) : (
-            <div className="preview-loading">Loading live preview…</div>
-          )
-        ) : (
-          <CodePanel.Source
-            source={usageSnippet}
-            filename="index.html"
-            copyLabel="Copy usage"
-          />
-        )}
+            <CodePanel.Source
+              source={usageSnippet}
+              filename="index.html"
+              copyLabel="Copy code"
+            />
+          )}
+
+          {variables.length > 0 ? (
+            <Customizer
+              item={entry.item}
+              variables={variables}
+              values={effectiveValues}
+              onChange={changeValue}
+              onReset={resetValues}
+              shareUrl={window.location.href}
+            />
+          ) : null}
+        </section>
+
+        <InstallPanel commands={installCommands} customized={customized} />
 
         {variables.length > 0 ? (
-          <Customizer
-            item={entry.item}
-            variables={variables}
-            values={effectiveValues}
-            onChange={changeValue}
-            onReset={resetValues}
-            shareUrl={window.location.href}
-          />
-        ) : null}
-      </section>
-
-      <InstallPanel commands={installCommands} customized={customized} />
-
-      <section className="detail-section usage-section">
-        <div className="detail-section-heading">
-          <div>
-            <span className="section-kicker">Usage</span>
-            <h2>Drop it into your composition</h2>
-          </div>
-          <p>
-            The installer writes the block to <code>compositions/</code>. This
-            is the complete host markup.
-          </p>
-        </div>
-        <CodePanel.Source
-          source={usageSnippet}
-          filename="index.html"
-          copyLabel="Copy usage"
-        />
-      </section>
-
-      {variables.length > 0 ? (
-        <section className="detail-section variables-section">
-          <div className="detail-section-heading">
-            <div>
-              <span className="section-kicker">Variables</span>
-              <h2>Everything you can change</h2>
+          <section className="detail-section variables-section">
+            <div className="detail-section-heading">
+              <div>
+                <h2>Props</h2>
+                <p>
+                  The installer bakes your current values in as the new
+                  defaults. You can keep changing them in HyperFrames.
+                </p>
+              </div>
             </div>
-            <p>
-              Use the controls above, the installer’s <code>--set</code>{" "}
-              options, or <code>data-variable-values</code> in your host.
-            </p>
-          </div>
-          <VariableTable variables={variables} values={effectiveValues} />
-        </section>
-      ) : null}
-
-      <details className="verification-details">
-        <summary>
-          <span>
-            <span className="section-kicker">Port verification</span>
-            <strong>Measured against the original Remocn render</strong>
-          </span>
-          <span>
-            {(entry.parity.result.meanSsim * 100).toFixed(3)}% match ·{" "}
-            {entry.parity.result.frameCount} frames
-          </span>
-          <span>View comparison ↓</span>
-        </summary>
-        <div className="verification-body">
-          <div className="detail-section-heading">
-            <p>
-              This technical evidence is kept out of the primary install flow.
-              It is here for maintainers and anyone auditing the port.
-            </p>
-            <a href={upstreamUrl} target="_blank" rel="noreferrer">
-              Original source <ArrowIcon />
-            </a>
-          </div>
-          <ComparisonPlayer
-            referenceSrc={`/previews/${entry.item.name}/remocn.mp4`}
-            portSrc={`/previews/${entry.item.name}/hyperframes.mp4`}
-            square={
-              entry.item.dimensions.width === entry.item.dimensions.height
-            }
-          />
-        </div>
-      </details>
-
-      <nav className="component-pagination" aria-label="More components">
-        {previousEntry ? (
-          <a href={`/components/${previousEntry.item.name}`}>
-            <span>← Previous</span>
-            <strong>{previousEntry.item.title}</strong>
-          </a>
-        ) : (
-          <span />
-        )}
-        {nextEntry ? (
-          <a href={`/components/${nextEntry.item.name}`}>
-            <span>Next →</span>
-            <strong>{nextEntry.item.title}</strong>
-          </a>
+            <VariableTable variables={variables} values={effectiveValues} />
+          </section>
         ) : null}
-      </nav>
-    </article>
+
+        <details
+          className="verification-details"
+          onToggle={(event) => setVerificationOpen(event.currentTarget.open)}
+        >
+          <summary>
+            <span>
+              Verified against Remocn ·{" "}
+              {(entry.parity.result.meanSsim * 100).toFixed(3)}% match
+            </span>
+            <span>{entry.parity.result.frameCount} frames</span>
+            <span aria-hidden="true">↓</span>
+          </summary>
+          {verificationOpen ? (
+            <div className="verification-body">
+              <div className="verification-copy">
+                <p>
+                  Synchronized renders of the pinned upstream source and this
+                  HyperFrames port.
+                </p>
+                <a href={upstreamUrl} target="_blank" rel="noreferrer">
+                  Original source <ArrowIcon />
+                </a>
+              </div>
+              <Suspense
+                fallback={
+                  <div className="preview-loading">
+                    Loading comparison player…
+                  </div>
+                }
+              >
+                <ComparisonPlayer
+                  referenceSrc={`/previews/${entry.item.name}/remocn.mp4`}
+                  portSrc={`/previews/${entry.item.name}/hyperframes.mp4`}
+                  square={
+                    entry.item.dimensions.width === entry.item.dimensions.height
+                  }
+                />
+              </Suspense>
+            </div>
+          ) : null}
+        </details>
+
+        <nav className="component-pagination" aria-label="More components">
+          {previousEntry ? (
+            <a href={`/components/${previousEntry.item.name}`}>
+              <span>← Previous</span>
+              <strong>{previousEntry.item.title}</strong>
+            </a>
+          ) : (
+            <span />
+          )}
+          {nextEntry ? (
+            <a href={`/components/${nextEntry.item.name}`}>
+              <span>Next →</span>
+              <strong>{nextEntry.item.title}</strong>
+            </a>
+          ) : null}
+        </nav>
+      </article>
+    </div>
   );
 }
 
