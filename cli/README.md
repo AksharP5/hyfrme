@@ -4,13 +4,13 @@ Copy customizable motion components from
 [Hyfrme](https://hyfrme.vercel.app) into a HyperFrames project.
 
 ```bash
-npx hyfrme add soft-blur-in
+npx hyfrme@latest add soft-blur-in
 ```
 
 Customize supported defaults while installing:
 
 ```bash
-npx hyfrme add matrix-decode \
+npx hyfrme@latest add matrix-decode \
   --set 'text=HELLO WORLD' \
   --set 'fontSize=31'
 ```

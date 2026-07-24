@@ -21,13 +21,13 @@ Start inside a HyperFrames project, then add any component from the
 [catalog](https://hyfrme.vercel.app):
 
 ```bash
-npx hyfrme add soft-blur-in
+npx hyfrme@latest add soft-blur-in
 ```
 
 Changed values from the browser are installed as the component's new defaults:
 
 ```bash
-npx hyfrme add matrix-decode \
+npx hyfrme@latest add matrix-decode \
   --set 'text=HELLO WORLD' \
   --set 'fontSize=31' \
   --set 'color=#22c55e'
@@ -42,7 +42,7 @@ Install the Hyfrme skill so your coding agent can discover, install, and wire
 components correctly:
 
 ```bash
-npx skills add AksharP5/hyfrme --yes
+npx skills@latest add AksharP5/hyfrme --yes
 ```
 
 Then ask:

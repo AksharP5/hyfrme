@@ -39,7 +39,7 @@ const ComparisonPlayer = lazy(() =>
 );
 
 const githubUrl = "https://github.com/AksharP5/hyfrme";
-const cliUrl = "hyfrme";
+const cliPackage = "hyfrme@latest";
 const catalogCategories = Object.keys(categoryLabels) as CatalogCategory[];
 const categoryOrder = catalogCategories.filter(
   (category): category is Exclude<CatalogCategory, "all"> => category !== "all",
@@ -290,7 +290,7 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
     (variable) => effectiveValues[variable.id] !== variable.default,
   );
   const installCommands = buildInstallCommands(
-    cliUrl,
+    cliPackage,
     entry.item.name,
     variables,
     effectiveValues,
