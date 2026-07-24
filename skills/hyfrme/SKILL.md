@@ -42,16 +42,19 @@ and density to the composition's existing visual language.
 ## Install
 
 ```bash
-npx hyfrme add <component-name>
+npx hyfrme@latest add <component-name>
 ```
 
 Examples:
 
 ```bash
-npx hyfrme add soft-blur-in
-npx hyfrme add icon-check
-npx hyfrme add matrix-decode --set 'text=SHIPPED' --set 'color=#22c55e'
+npx hyfrme@latest add soft-blur-in
+npx hyfrme@latest add icon-check
+npx hyfrme@latest add matrix-decode --set 'text=SHIPPED' --set 'color=#22c55e'
 ```
+
+Use `npx hyfrme@latest add --all` only when the project genuinely needs the
+entire catalog; prefer a small set of named components for focused videos.
 
 Use `--dir <project>` when targeting another directory and `--force` only when
 replacing an existing installation intentionally.

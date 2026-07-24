@@ -80,7 +80,7 @@ function shellQuote(value: string) {
 }
 
 export function buildInstallCommand(
-  cliUrl: string,
+  cliPackage: string,
   name: string,
   variables: CompositionVariable[],
   values: CustomValues,
@@ -94,23 +94,23 @@ export function buildInstallCommand(
     )
     .map((value) => ` --set ${value}`)
     .join("");
-  return `npx ${cliUrl} add ${name}${options}`;
+  return `npx ${cliPackage} add ${name}${options}`;
 }
 
 export function buildInstallCommands(
-  cliUrl: string,
+  cliPackage: string,
   name: string,
   variables: CompositionVariable[],
   values: CustomValues,
 ): InstallCommands {
-  const npm = buildInstallCommand(cliUrl, name, variables, values);
-  const args = npm.slice(`npx ${cliUrl} `.length);
+  const npm = buildInstallCommand(cliPackage, name, variables, values);
+  const args = npm.slice(`npx ${cliPackage} `.length);
   return {
     prompt: `Add the Hyfrme ${name} block to my HyperFrames project. Run: ${npm}`,
-    pnpm: `pnpm dlx ${cliUrl} ${args}`,
-    yarn: `yarn dlx ${cliUrl} ${args}`,
+    pnpm: `pnpm dlx ${cliPackage} ${args}`,
+    yarn: `YARN_NPM_PREAPPROVED_PACKAGES=hyfrme yarn dlx ${cliPackage} ${args}`,
     npm,
-    bun: `bunx ${cliUrl} ${args}`,
+    bun: `bunx ${cliPackage} ${args}`,
   };
 }
 

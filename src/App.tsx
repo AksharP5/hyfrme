@@ -20,6 +20,7 @@ import { CatalogCard } from "./components/CatalogCard";
 import { CodePanel } from "./components/CodePanel";
 import { Customizer } from "./components/Customizer";
 import { InstallPanel } from "./components/InstallPanel";
+import { LandingHero } from "./components/LandingHero";
 import { LivePreview } from "./components/LivePreview";
 import { ShowcaseDetailPage, ShowcasesPage } from "./components/Showcases";
 import { VariableTable } from "./components/VariableTable";
@@ -41,7 +42,8 @@ const ComparisonPlayer = lazy(() =>
 );
 
 const githubUrl = "https://github.com/AksharP5/hyfrme";
-const cliUrl = "hyfrme";
+const cliPackage = "hyfrme@latest";
+const installAllCommand = `npx ${cliPackage} add --all`;
 const catalogCategories = Object.keys(categoryLabels) as CatalogCategory[];
 const categoryOrder = catalogCategories.filter(
   (category): category is Exclude<CatalogCategory, "all"> => category !== "all",
@@ -275,6 +277,18 @@ function CatalogPage() {
   );
 }
 
+function HomePage() {
+  return (
+    <>
+      <LandingHero
+        componentCount={catalog.length}
+        installCommand={installAllCommand}
+      />
+      <CatalogPage />
+    </>
+  );
+}
+
 function DetailPage({ entry }: { entry: CatalogEntry }) {
   const [source, setSource] = useState("");
   const [previewItem, setPreviewItem] = useState<RegistryItem | null>(null);
@@ -293,7 +307,7 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
     (variable) => effectiveValues[variable.id] !== variable.default,
   );
   const installCommands = buildInstallCommands(
-    cliUrl,
+    cliPackage,
     entry.item.name,
     variables,
     effectiveValues,
@@ -566,7 +580,7 @@ export function App() {
         ) : isComponentPath ? (
           <NotFoundPage />
         ) : (
-          <CatalogPage />
+          <HomePage />
         )}
       </main>
       <Footer />

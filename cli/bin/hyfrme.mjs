@@ -12,10 +12,14 @@ const args = process.argv.slice(2);
 const usage = `hyfrme — add motion blocks to HyperFrames
 
 Usage:
+  hyfrme add <name>... [--dir <project>] [--force]
   hyfrme add <name> [--set <key=value>]... [--dir <project>] [--force]
+  hyfrme add --all [--dir <project>] [--force]
 
 Examples:
   hyfrme add icon-activity
+  hyfrme add soft-blur-in matrix-decode icon-sparkles
+  hyfrme add --all
   hyfrme add soft-blur-in --dir ./my-video
   hyfrme add matrix-decode --set text=HELLO --set fontSize=48
 `;
@@ -46,15 +50,18 @@ const parseOptions = () => {
   }
 
   if (args[0] !== "add") fail(`unknown command "${args[0]}"\n\n${usage}`);
-  const name = args[1];
-  if (!name || name.startsWith("-")) fail("add requires a component name");
-  if (!/^[a-z0-9-]+$/.test(name)) fail(`invalid component name "${name}"`);
 
   let directory = ".";
   let force = false;
+  let installAll = false;
+  const names = [];
   const settings = [];
-  for (let index = 2; index < args.length; index += 1) {
+  for (let index = 1; index < args.length; index += 1) {
     const value = args[index];
+    if (value === "--all") {
+      installAll = true;
+      continue;
+    }
     if (value === "--force") {
       force = true;
       continue;
@@ -80,10 +87,30 @@ const parseOptions = () => {
       settings.push(value.slice("--set=".length));
       continue;
     }
-    fail(`unknown option "${value}"`);
+    if (value.startsWith("-")) fail(`unknown option "${value}"`);
+    if (!/^[a-z0-9-]+$/.test(value)) {
+      fail(`invalid component name "${value}"`);
+    }
+    names.push(value);
   }
 
-  return { name, projectDirectory: resolve(directory), force, settings };
+  if (installAll && names.length > 0) {
+    fail("--all cannot be combined with component names");
+  }
+  if (!installAll && names.length === 0) {
+    fail("add requires a component name or --all");
+  }
+  if (settings.length > 0 && (installAll || names.length !== 1)) {
+    fail("--set can only customize one named component at a time");
+  }
+
+  return {
+    names: [...new Set(names)],
+    installAll,
+    projectDirectory: resolve(directory),
+    force,
+    settings,
+  };
 };
 
 const fetchBytes = async (url, label) => {
@@ -372,44 +399,77 @@ ${lintSafeRuntime.replace(/<\/script/gi, "<\\/script")}
     .replace(`<script src='${runtimePath}'></script>`, () => replacement);
 };
 
-const { name, projectDirectory, force, settings } = parseOptions();
+const { names, installAll, projectDirectory, force, settings } = parseOptions();
 const config = await readProjectConfig(projectDirectory);
 const assetPath = config.paths?.assets ?? "assets";
-const itemRoot = `${registryRoot}/blocks/${encodeURIComponent(name)}`;
-const item = await fetchJson(
-  `${itemRoot}/registry-item.json`,
-  `component "${name}"`,
-);
+const matchesExistingFile = async (path, bytes) => {
+  try {
+    const current = new Uint8Array(await readFile(path));
+    if (current.length !== bytes.length) return false;
+    return current.every((byte, index) => byte === bytes[index]);
+  } catch {
+    return false;
+  }
+};
 
-if (
-  item.name !== name ||
-  !Array.isArray(item.files) ||
-  item.files.length === 0
-) {
-  fail(`component "${name}" has an invalid registry manifest`);
-}
+const prepareComponent = async (name, componentSettings) => {
+  const itemRoot = `${registryRoot}/blocks/${encodeURIComponent(name)}`;
+  const item = await fetchJson(
+    `${itemRoot}/registry-item.json`,
+    `component "${name}"`,
+  );
 
-const fetched = await Promise.all(
-  item.files.map(async (file) => {
-    const bytes = await fetchBytes(
-      `${itemRoot}/${file.path
-        .split("/")
-        .map((segment) => encodeURIComponent(segment))
-        .join("/")}`,
-      file.path,
-    );
-    return {
-      bytes,
-      file,
-      target: targetFor(projectDirectory, config, item, file),
-    };
-  }),
-);
+  if (
+    item.name !== name ||
+    !Array.isArray(item.files) ||
+    item.files.length === 0
+  ) {
+    fail(`component "${name}" has an invalid registry manifest`);
+  }
 
-const runtimeDownloads = new Map(
-  fetched
-    .filter(({ file }) => file.path.endsWith(".runtime.js"))
-    .map(({ bytes, file, target }) => {
+  const fetched = await Promise.all(
+    item.files.map(async (file) => {
+      const bytes = await fetchBytes(
+        `${itemRoot}/${file.path
+          .split("/")
+          .map((segment) => encodeURIComponent(segment))
+          .join("/")}`,
+        file.path,
+      );
+      return {
+        bytes,
+        file,
+        target: targetFor(projectDirectory, config, item, file),
+      };
+    }),
+  );
+
+  const runtimeDownloads = new Map(
+    fetched
+      .filter(({ file }) => file.path.endsWith(".runtime.js"))
+      .map(({ bytes, file, target }) => {
+        const source = new TextDecoder().decode(bytes);
+        const relocated = rewriteManifestPaths(
+          source,
+          item,
+          config,
+          projectDirectory,
+        );
+        return [
+          file.path,
+          {
+            path: relative(projectDirectory, target).replaceAll("\\", "/"),
+            source: namespaceCompiledPort(relocated, name, true, assetPath),
+          },
+        ];
+      }),
+  );
+
+  const downloads = fetched.map(({ bytes, file, target }) => {
+    const isComposition = file.type === "hyperframes:composition";
+    const isRuntime = file.path.endsWith(".runtime.js");
+    let output = bytes;
+    if (isComposition || isRuntime) {
       const source = new TextDecoder().decode(bytes);
       const relocated = rewriteManifestPaths(
         source,
@@ -417,85 +477,79 @@ const runtimeDownloads = new Map(
         config,
         projectDirectory,
       );
-      return [
-        file.path,
-        {
-          path: relative(projectDirectory, target).replaceAll("\\", "/"),
-          source: namespaceCompiledPort(relocated, name, true, assetPath),
-        },
-      ];
-    }),
-);
-
-const downloads = fetched.map(({ bytes, file, target }) => {
-  const isComposition = file.type === "hyperframes:composition";
-  const isRuntime = file.path.endsWith(".runtime.js");
-  let output = bytes;
-  if (isComposition || isRuntime) {
-    const source = new TextDecoder().decode(bytes);
-    const relocated = rewriteManifestPaths(
-      source,
-      item,
-      config,
-      projectDirectory,
-    );
-    if (isComposition) {
-      let customized = customizeSource(relocated, settings, name);
-      for (const runtime of runtimeDownloads.values()) {
-        customized = inlineCompiledRuntime(
-          customized,
-          runtime.source,
-          runtime.path,
-          name,
+      if (isComposition) {
+        let customized = customizeSource(relocated, componentSettings, name);
+        for (const runtime of runtimeDownloads.values()) {
+          customized = inlineCompiledRuntime(
+            customized,
+            runtime.source,
+            runtime.path,
+            name,
+          );
+        }
+        output = new TextEncoder().encode(
+          toInstallableBlock(customized, name, assetPath),
+        );
+      } else {
+        output = new TextEncoder().encode(
+          runtimeDownloads.get(file.path)?.source ??
+            namespaceCompiledPort(relocated, name, true, assetPath),
         );
       }
-      output = new TextEncoder().encode(
-        toInstallableBlock(customized, name, assetPath),
-      );
+    }
+    return {
+      bytes: output,
+      file,
+      target,
+    };
+  });
+
+  return { item, downloads };
+};
+
+const installComponent = async (name, componentSettings, detailedOutput) => {
+  const { item, downloads } = await prepareComponent(name, componentSettings);
+  const conflicts = [];
+  const unchanged = new Set();
+
+  for (const download of downloads) {
+    if (!(await exists(download.target))) continue;
+    if (await matchesExistingFile(download.target, download.bytes)) {
+      unchanged.add(download.target);
     } else {
-      output = new TextEncoder().encode(
-        runtimeDownloads.get(file.path)?.source ??
-          namespaceCompiledPort(relocated, name, true, assetPath),
-      );
+      conflicts.push(download.target);
     }
   }
-  return {
-    bytes: output,
-    file,
-    target,
-  };
-});
 
-const conflicts = [];
-for (const download of downloads) {
-  if (await exists(download.target)) conflicts.push(download.target);
-}
-if (conflicts.length > 0 && !force) {
-  fail(
-    `${relative(projectDirectory, conflicts[0])} already exists. Re-run with --force to replace it.`,
-  );
-}
+  if (conflicts.length > 0 && !force) {
+    fail(
+      `${relative(projectDirectory, conflicts[0])} already exists. Re-run with --force to replace it.`,
+    );
+  }
 
-for (const download of downloads) {
-  await mkdir(dirname(download.target), { recursive: true });
-  await writeFile(download.target, download.bytes);
-}
+  for (const download of downloads) {
+    if (unchanged.has(download.target)) continue;
+    await mkdir(dirname(download.target), { recursive: true });
+    await writeFile(download.target, download.bytes);
+  }
 
-console.log(`Added ${item.title ?? name}`);
-if (settings.length > 0) {
-  console.log(`  customized: ${settings.join(", ")}`);
-}
-for (const download of downloads) {
-  console.log(`  ${relative(projectDirectory, download.target)}`);
-}
-if (item.type === "hyperframes:block" && item.dimensions) {
-  const composition = downloads.find(
-    (download) => download.file.type === "hyperframes:composition",
-  );
-  const compositionPath = composition
-    ? relative(projectDirectory, composition.target).replaceAll("\\", "/")
-    : `compositions/${item.name}.html`;
-  console.log(`
+  if (!detailedOutput) return item.title ?? name;
+
+  console.log(`Added ${item.title ?? name}`);
+  if (componentSettings.length > 0) {
+    console.log(`  customized: ${componentSettings.join(", ")}`);
+  }
+  for (const download of downloads) {
+    console.log(`  ${relative(projectDirectory, download.target)}`);
+  }
+  if (item.type === "hyperframes:block" && item.dimensions) {
+    const composition = downloads.find(
+      (download) => download.file.type === "hyperframes:composition",
+    );
+    const compositionPath = composition
+      ? relative(projectDirectory, composition.target).replaceAll("\\", "/")
+      : `compositions/${item.name}.html`;
+    console.log(`
 Use it in your composition:
   <div
     id="${item.name}"
@@ -507,4 +561,39 @@ Use it in your composition:
     data-width="${item.dimensions.width}"
     data-height="${item.dimensions.height}"
   ></div>`);
+  }
+
+  return item.title ?? name;
+};
+
+const namesToInstall = installAll
+  ? await (async () => {
+      const registry = await fetchJson(
+        `${registryRoot}/registry.json`,
+        "Hyfrme registry",
+      );
+      if (!Array.isArray(registry.items) || registry.items.length === 0) {
+        fail("Hyfrme registry has no installable components");
+      }
+      const registryNames = registry.items.map((item) => item?.name);
+      if (
+        registryNames.some(
+          (name) => typeof name !== "string" || !/^[a-z0-9-]+$/.test(name),
+        )
+      ) {
+        fail("Hyfrme registry contains an invalid component name");
+      }
+      return [...new Set(registryNames)];
+    })()
+  : names;
+
+if (namesToInstall.length === 1) {
+  await installComponent(namesToInstall[0], settings, true);
+} else {
+  console.log(`Adding ${namesToInstall.length} Hyfrme components…`);
+  for (const [index, name] of namesToInstall.entries()) {
+    const title = await installComponent(name, [], false);
+    console.log(`  ${index + 1}/${namesToInstall.length} ${title}`);
+  }
+  console.log(`Added ${namesToInstall.length} Hyfrme components.`);
 }
