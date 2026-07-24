@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/shadcn.css">
+    <style>
+      @font-face { font-family: "Geist"; src: url("assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+      @font-face { font-family: "Geist Mono"; src: url("assets/fonts/GeistMono-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+      @font-face { font-family: "Manrope"; src: url("assets/fonts/Manrope-Latin.woff2") format("woff2"); font-style: normal; font-weight: 200 800; font-display: block; }
+      @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-Latin.woff2") format("woff2"); font-style: normal; font-weight: 300 700; font-display: block; }
+      @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"), local("SF Mono"); }
+      @font-face { font-family: "Apple Color Emoji"; src: local("Apple Color Emoji"); }
+      @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
+      @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #09090b; }
+      #hyfrme-showcase-root { position: absolute; inset: 0; width: 1280px; height: 720px; overflow: hidden; }
+    </style>
+  </head>
+  <body>
+    <div id="introducing-shadcn" data-composition-id="introducing-shadcn" data-start="0" data-duration="72.6" data-fps="30" data-width="1280" data-height="720">
+      <div id="introducing-shadcn-source-stage" class="clip" data-start="0" data-duration="72.6" data-track-index="0">
+        <div
+          id="hyfrme-showcase-root"
+          data-layout-allow-overflow
+          data-layout-allow-overlap
+          data-layout-allow-occlusion
+        ></div>
+      </div>
+    </div>
+    <script src="compositions/introducing-shadcn.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const clock = { frame: 0 };
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to(clock, {
+        frame: 2177,
+        duration: 72.6,
+        ease: "none",
+        onUpdate: () => window.__hyfrmeRenderFrame(
+          Math.max(0, Math.min(2177, Math.round(clock.frame)))
+        ),
+      });
+      window.__timelines["introducing-shadcn"] = timeline;
+    </script>
+  </body>
+</html>
