@@ -80,15 +80,15 @@ function Header() {
         </span>
         hyfrme
       </a>
-      <nav className="library-navigation" aria-label="Component categories">
+      <nav className="library-navigation" aria-label="Library navigation">
         {categoryOrder.map((category) => (
           <a href={`/?category=${category}#catalog`} key={category}>
             {categoryLabels[category]}
           </a>
         ))}
+        <a href="/showcases">Showcases</a>
       </nav>
       <nav className="utility-navigation" aria-label="Project links">
-        <a href="/showcases">Showcases</a>
         <a href={githubUrl} target="_blank" rel="noreferrer">
           GitHub <ArrowIcon />
         </a>

@@ -16,7 +16,8 @@ runtime is bundled:
 The generated runtimes contain React and ReactDOM, plus the translated
 composition source and Paper shader runtime. They do not contain Remotion.
 
-The public `Remocn/remocn-collections` repository does not currently declare a
-repository license. The source pins and attribution are therefore kept
-explicit for review before Hyfrme treats these showcase translations as
-redistributable release artifacts.
+Remocn's product site describes Remocn as MIT-licensed, and the
+`Remocn/remocn-collections` README expressly presents every demo as reusable
+and installable into another project. The collection repository does not
+currently contain its own `LICENSE` file, so Hyfrme preserves the exact source
+pins and attribution alongside the translated artifacts.

@@ -15,6 +15,21 @@ Licensed under the MIT License. The full upstream license is available at
 The full Remocn MIT notice is also preserved inside every generated port that
 contains derived source.
 
+## Remocn showcase source
+
+The six showcase films are HyperFrames translations of source published in
+`Remocn/remocn-collections`. Remocn's product site describes the project as
+MIT-licensed, and the collection README expressly presents every demo as
+reusable and installable into another project. The collection repository does
+not contain a separate `LICENSE` file at the pinned commits.
+
+Copyright (c) 2026 Remocn
+
+Each translated film records its exact upstream commit and source path in
+`catalog/showcases.json` and its parity manifest. See
+<https://github.com/Remocn/remocn-collections> and
+<https://www.remocn.dev/>.
+
 ## Paper Shaders
 
 Twenty-seven shader and shader-transition runtimes bundle
