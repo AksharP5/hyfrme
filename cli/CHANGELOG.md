@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/AksharP5/hyfrme/compare/v0.2.1...v0.3.0) (2026-07-24)
+
+
+### Features
+
+* add landing page and install all ([57fab96](https://github.com/AksharP5/hyfrme/commit/57fab96d26206935f8993a43fee112485e71cc49))
+
 ## [0.2.1](https://github.com/AksharP5/hyfrme/compare/v0.2.0...v0.2.1) (2026-07-24)
 
 
