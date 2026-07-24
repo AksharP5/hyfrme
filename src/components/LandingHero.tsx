@@ -69,7 +69,7 @@ export function LandingHero({
         <div className="landing-proof" aria-label="Hyfrme benefits">
           <span>Customize before install</span>
           <span>Source and assets included</span>
-          <span>Visually parity tested</span>
+          <span>Visual parity tested</span>
         </div>
       </div>
 
