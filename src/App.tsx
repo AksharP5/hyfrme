@@ -39,7 +39,7 @@ const ComparisonPlayer = lazy(() =>
 );
 
 const githubUrl = "https://github.com/AksharP5/hyfrme";
-const cliUrl = "https://hyfrme.vercel.app/cli/v0.2.0";
+const cliUrl = "hyfrme";
 const catalogCategories = Object.keys(categoryLabels) as CatalogCategory[];
 const categoryOrder = catalogCategories.filter(
   (category): category is Exclude<CatalogCategory, "all"> => category !== "all",

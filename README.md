@@ -1,119 +1,79 @@
 # Hyfrme
 
-Hyfrme ports open-source [Remocn](https://github.com/Remocn/remocn)
-components to standalone [HyperFrames](https://hyperframes.heygen.com/) blocks
-and publishes the source, fixture, and measured visual comparison for each
-port.
+Hyfrme is a copy-paste motion library for
+[HyperFrames](https://hyperframes.heygen.com/). Browse 253 components,
+customize one in the browser, then copy it into your project with one command.
+You own the installed HTML, JavaScript, fonts, and assets.
 
-A port is public only after it passes the fidelity contract in
-[`docs/PORTING.md`](docs/PORTING.md).
+## Why Hyfrme
 
-## Available ports
+- **Customize before you install.** Every component page turns supported
+  variables into live controls and updates the command for your version.
+- **Own the code.** Components are copied into your project instead of hidden
+  behind a runtime dependency.
+- **Verified motion.** Every port is rendered against its pinned
+  [Remocn](https://github.com/Remocn/remocn) source and published only after
+  passing the repository's visual parity checks.
 
-- `soft-blur-in`: native mechanical port, 60 frames, 0.998647 mean SSIM.
-- 24 typography and effect components: compiled source ports, 60–120 frames
-  each, 0.986619–0.999432 mean SSIM (0.997021 family mean).
-- 83 composition, transition, shader, AI, social, and data scenes: compiled
-  source ports, 90–360 frames each, 0.952963–0.999848 mean SSIM (0.994263
-  family mean).
-- 45 UI primitives and complete flows: compiled source ports, 40–380 frames
-  each, 0.995265–0.999995 mean SSIM (0.999585 family mean).
-- 100 animated icons: compiled source ports, 60–90 frames each, 0.985560–0.998621
-  mean SSIM (0.993872 family mean).
+## Installation
 
-Together with the native `soft-blur-in` port, that is all 253 visual blocks
-from the current pinned Remocn commit. The exact score and fixture for every
-item live under `parity/` and are visible in the catalog.
+Start inside a HyperFrames project, then add any component from the
+[catalog](https://hyfrme.vercel.app):
 
-## Run the catalog locally
+```bash
+npx hyfrme add soft-blur-in
+```
+
+Changed values from the browser are installed as the component's new defaults:
+
+```bash
+npx hyfrme add matrix-decode \
+  --set 'text=HELLO WORLD' \
+  --set 'fontSize=31' \
+  --set 'color=#22c55e'
+```
+
+The CLI respects the paths in `hyperframes.json`, copies every required file,
+and prints the markup needed to mount the component.
+
+## Setup with AI
+
+Install the Hyfrme skill so your coding agent can discover, install, and wire
+components correctly:
+
+```bash
+npx skills add AksharP5/hyfrme --yes
+```
+
+Then ask:
+
+```text
+Use Hyfrme to add a motion component that fits this scene, customize it to the
+project's visual style, and wire it into my HyperFrames composition.
+```
+
+## Develop locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Then open the local URL printed by Vite. The catalog uses synchronized,
-pre-rendered MP4s for comparison so visitors do not need either framework
-runtime in their browser.
-
-## Install a block
-
-Open a component in the [catalog](https://hyfrme.vercel.app), then run its
-one-line command from a HyperFrames project:
-
-```bash
-npx https://hyfrme.vercel.app/cli/v0.2.0 add soft-blur-in
-```
-
-The installer reads `hyperframes.json`, respects its configured composition and
-asset paths, and copies every required HTML, runtime, font, image, and license
-file. Standalone verified ports are converted into embeddable HyperFrames
-sub-compositions during installation. Compiled runtimes are embedded and
-namespaced per block so several Hyfrme components can mount reliably in the
-same project. It does not replace the project's configured HyperFrames
-registry. Use `--dir <project>` to target another directory or `--force` to
-replace an existing installation.
-
-Every control in the catalog can also become an installed default. The copied
-command adds one `--set key=value` option per changed value:
-
-```bash
-npx https://hyfrme.vercel.app/cli/v0.2.0 add matrix-decode \
-  --set 'text=HELLO WORLD' \
-  --set 'fontSize=31' \
-  --set 'color=#22c55e'
-```
-
-The CLI validates each setting against the block's embedded variable metadata
-and writes the selected values into the copied composition. It also prints the
-compact `data-composition-src` markup needed to mount the block in
-`index.html`. Per-instance overrides remain available through HyperFrames'
-`data-variable-values` attribute.
-
-## Repository map
-
-- `registry/` contains installable HyperFrames blocks and manifests.
-- `parity/` contains the pinned source fixture and comparison measurements.
-- `public/previews/` contains the synchronized reference and port renders.
-- `src/` contains the public comparison catalog.
-- `docs/PORTING.md` defines what “1:1” means and how new ports are admitted.
-
-## Verification
+Before contributing:
 
 ```bash
 npm run check
 npm run build
-npm run verify:installer
 ```
 
-`npm run check` validates that every catalog item has its source files,
-attribution, previews, and a passing parity manifest. Composition-level
-HyperFrames checks and frame comparisons are run while producing each port;
-their results are committed under `parity/`.
-
-The repeatable icon and typography/effect pipelines are exposed as:
-
-```bash
-npm run audit:upstream
-npm run generate:icons
-npm run verify:icons
-npm run generate:icon-previews
-npm run generate:text
-npm run verify:text
-npm run generate:core
-npm run verify:core
-npm run generate:primitives
-npm run verify:primitives
-npm run build:catalog
-npm run generate:thumbnails
-```
+Composition ports follow the parity workflow in
+[`docs/PORTING.md`](docs/PORTING.md). Contributor-specific agent instructions
+live in [`AGENTS.md`](AGENTS.md).
 
 ## Attribution
 
-Hyfrme is an independent project and is not an official Remocn or HyperFrames
+Hyfrme is an independent project, not an official Remocn or HyperFrames
 project. Ported source remains attributed to its upstream implementation. See
 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
 
-## License
-
-Hyfrme is released under the [MIT License](LICENSE).
+MIT licensed.
