@@ -158,6 +158,30 @@ footer a {
   transition: color 140ms ease;
 }
 
+.utility-navigation .github-star-link {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  padding: 0 11px;
+  gap: 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: 7px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.github-star-link > span {
+  color: var(--accent);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.utility-navigation .github-star-link:hover {
+  border-color: #57575f;
+  background: var(--surface);
+}
+
 .utility-navigation a:hover,
 footer a:hover {
   color: var(--ink);
@@ -383,6 +407,136 @@ main {
   grid-column: 2;
   color: var(--quiet);
   font-size: 11px;
+}
+
+.family-section {
+  width: min(1400px, 100%);
+  margin: 0 auto;
+  padding: 112px 48px 128px;
+}
+
+.family-heading {
+  max-width: 760px;
+  margin-bottom: 52px;
+}
+
+.family-heading h2 {
+  margin: 16px 0 18px;
+  font-family: "Geist", sans-serif;
+  font-size: clamp(48px, 6.4vw, 82px);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+}
+
+.family-heading p {
+  max-width: 650px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.family-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.family-card {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  transition:
+    border-color 140ms ease,
+    transform 140ms ease;
+}
+
+.family-card:first-child {
+  grid-column: 1 / -1;
+}
+
+.family-card:hover,
+.family-card:focus-visible {
+  border-color: var(--line-strong);
+  transform: translateY(-3px);
+}
+
+.family-card-preview {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 8;
+  border-bottom: 1px solid var(--line);
+  background: var(--preview);
+}
+
+.family-card:first-child .family-card-preview {
+  aspect-ratio: 16 / 5;
+}
+
+.family-card-preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.family-card.is-icon .family-card-preview {
+  background: #121214;
+}
+
+.family-card.is-icon .family-card-preview img {
+  object-fit: contain;
+  filter: invert(1);
+  mix-blend-mode: screen;
+  transform: scale(0.52);
+}
+
+.family-card.is-showcase .family-card-preview img {
+  object-position: center 42%;
+}
+
+.family-card-copy {
+  display: block;
+  min-height: 142px;
+  padding: 22px;
+}
+
+.family-card-copy > span {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.family-card-copy small {
+  grid-column: 1 / -1;
+  margin-bottom: 7px;
+  color: var(--quiet);
+  font: 10px var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.family-card-copy strong {
+  font-family: "Geist", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.family-card-copy > span > span {
+  color: var(--quiet);
+  font-size: 14px;
+}
+
+.family-card-copy p {
+  max-width: 520px;
+  margin: 13px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
 }
 
 .docs-layout {
@@ -1876,6 +2030,10 @@ footer > div {
   .landing-hero {
     padding-inline: 32px;
   }
+
+  .family-section {
+    padding-inline: 32px;
+  }
 }
 
 @media (max-width: 820px) {
@@ -1921,6 +2079,23 @@ footer > div {
 
   .landing-preview-card:last-child {
     display: none;
+  }
+
+  .family-section {
+    padding: 92px 20px 104px;
+  }
+
+  .family-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .family-card:first-child {
+    grid-column: auto;
+  }
+
+  .family-card:first-child .family-card-preview,
+  .family-card-preview {
+    aspect-ratio: 16 / 8;
   }
 
   .docs-layout,
@@ -2100,6 +2275,27 @@ footer > div {
 
   .landing-preview-card:not(:first-child) {
     display: none;
+  }
+
+  .family-heading {
+    margin-bottom: 34px;
+  }
+
+  .family-heading h2 {
+    font-size: clamp(46px, 14vw, 64px);
+  }
+
+  .family-heading p {
+    font-size: 16px;
+  }
+
+  .family-card-copy {
+    min-height: 0;
+    padding: 18px;
+  }
+
+  .family-card-copy strong {
+    font-size: 21px;
   }
 
   .catalog-tools {

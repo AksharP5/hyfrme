@@ -19,6 +19,7 @@ import {
 import { CatalogCard } from "./components/CatalogCard";
 import { CodePanel } from "./components/CodePanel";
 import { Customizer } from "./components/Customizer";
+import { FamilySection, type LandingFamily } from "./components/FamilySection";
 import { InstallPanel } from "./components/InstallPanel";
 import { LandingHero } from "./components/LandingHero";
 import { LivePreview } from "./components/LivePreview";
@@ -73,6 +74,10 @@ function ArrowIcon() {
   return <span aria-hidden="true">↗</span>;
 }
 
+function StarIcon() {
+  return <span aria-hidden="true">☆</span>;
+}
+
 function Header() {
   return (
     <header className="site-header">
@@ -84,15 +89,20 @@ function Header() {
       </a>
       <nav className="library-navigation" aria-label="Library navigation">
         {categoryOrder.map((category) => (
-          <a href={`/?category=${category}#catalog`} key={category}>
+          <a href={`/components?category=${category}`} key={category}>
             {categoryLabels[category]}
           </a>
         ))}
         <a href="/showcases">Showcases</a>
       </nav>
       <nav className="utility-navigation" aria-label="Project links">
-        <a href={githubUrl} target="_blank" rel="noreferrer">
-          GitHub <ArrowIcon />
+        <a
+          className="github-star-link"
+          href={githubUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <StarIcon /> Star on GitHub
         </a>
       </nav>
     </header>
@@ -124,7 +134,7 @@ function LibrarySidebar({
         <span className="sidebar-label">Library</span>
         <a
           className={activeCategory === "all" ? "is-active" : ""}
-          href="/#catalog"
+          href="/components"
           onClick={(event) => onSelectCategory?.("all", event)}
         >
           <span>All components</span>
@@ -133,7 +143,7 @@ function LibrarySidebar({
         {categoryOrder.map((category) => (
           <a
             className={activeCategory === category ? "is-active" : ""}
-            href={`/?category=${category}#catalog`}
+            href={`/components?category=${category}`}
             key={category}
             onClick={(event) => onSelectCategory?.(category, event)}
           >
@@ -278,13 +288,67 @@ function CatalogPage() {
 }
 
 function HomePage() {
+  useEffect(() => {
+    document.title = "Hyfrme — motion components for HyperFrames";
+  }, []);
+
+  const families: LandingFamily[] = [
+    {
+      title: "Motion components",
+      description:
+        "Cinematic text, charts, reveals, and scene-ready motion blocks.",
+      href: "/components?category=components",
+      countLabel: `${catalogCategoryCounts.components} blocks`,
+      preview: "/previews/matrix-decode/thumbnail.png",
+      previewAlt: "Matrix Decode motion component",
+    },
+    {
+      title: "UI primitives",
+      description:
+        "Buttons, inputs, dialogs, and product UI animated on the frame.",
+      href: "/components?category=primitives",
+      countLabel: `${catalogCategoryCounts.primitives} blocks`,
+      preview: "/previews/button/thumbnail.png",
+      previewAlt: "Animated button primitive",
+    },
+    {
+      title: "Shaders",
+      description:
+        "Procedural backgrounds, distortions, wipes, and GPU-driven texture.",
+      href: "/components?category=shaders",
+      countLabel: `${catalogCategoryCounts.shaders} blocks`,
+      preview: "/previews/shader-swirl/thumbnail.png",
+      previewAlt: "Procedural swirl shader",
+    },
+    {
+      title: "Animated icons",
+      description:
+        "Familiar Lucide shapes re-authored as deterministic motion.",
+      href: "/components?category=icons",
+      countLabel: `${catalogCategoryCounts.icons} blocks`,
+      preview: "/previews/icon-sparkles/thumbnail.png",
+      previewAlt: "Animated sparkles icon",
+      presentation: "icon",
+    },
+    {
+      title: "Showcases",
+      description:
+        "Finished films showing how the building blocks compose into stories.",
+      href: "/showcases",
+      countLabel: `${showcases.length} films`,
+      preview: showcases[0]?.posterUrl ?? "",
+      previewAlt: showcases[0]?.title ?? "Hyfrme showcase",
+      presentation: "showcase",
+    },
+  ];
+
   return (
     <>
       <LandingHero
         componentCount={catalog.length}
         installCommand={installAllCommand}
       />
-      <CatalogPage />
+      <FamilySection families={families} />
     </>
   );
 }
@@ -364,7 +428,7 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
     <div className="docs-layout detail-layout">
       <LibrarySidebar activeCategory={category} currentEntry={entry} />
       <article className="detail-page">
-        <a className="back-link" href="/#catalog">
+        <a className="back-link" href="/components">
           <span aria-hidden="true">←</span> All components
         </a>
 
@@ -521,7 +585,7 @@ function NotFoundPage() {
     <section className="not-found">
       <span className="section-kicker">404</span>
       <h1>That component is not here.</h1>
-      <a href="/#catalog">Browse all components</a>
+      <a href="/components">Browse all components</a>
     </section>
   );
 }
@@ -564,6 +628,8 @@ export function App() {
     : null;
   const isShowcasesIndex = /^\/showcases\/?$/.test(window.location.pathname);
   const isShowcasePath = window.location.pathname.startsWith("/showcases/");
+  const isCatalogIndex = /^\/components\/?$/.test(window.location.pathname);
+  const isHome = /^\/$/.test(window.location.pathname);
 
   return (
     <div className="page-shell">
@@ -577,10 +643,14 @@ export function App() {
           <NotFoundPage />
         ) : entry ? (
           <DetailPage entry={entry} />
+        ) : isCatalogIndex ? (
+          <CatalogPage />
         ) : isComponentPath ? (
           <NotFoundPage />
-        ) : (
+        ) : isHome ? (
           <HomePage />
+        ) : (
+          <NotFoundPage />
         )}
       </main>
       <Footer />

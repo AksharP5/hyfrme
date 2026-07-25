@@ -53,7 +53,7 @@ function VariableControl({ item, variable, value, onChange }: ControlProps) {
             id={id}
             type="color"
             value={String(value)}
-            onChange={(event) => onChange(event.target.value)}
+            onInput={(event) => onChange(event.currentTarget.value)}
           />
         </span>
       </label>

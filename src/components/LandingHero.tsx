@@ -44,8 +44,8 @@ export function LandingHero({
           the source directly into your HyperFrames project.
         </p>
         <div className="landing-actions">
-          <a className="landing-primary-action" href="#catalog">
-            Browse components <span aria-hidden="true">↓</span>
+          <a className="landing-primary-action" href="/components">
+            Browse components <span aria-hidden="true">→</span>
           </a>
           <CopyButton
             className="landing-install-command"
