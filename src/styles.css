@@ -439,12 +439,13 @@ main {
 
 .family-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
 }
 
 .family-card {
   display: block;
+  min-width: 0;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -452,10 +453,6 @@ main {
   transition:
     border-color 140ms ease,
     transform 140ms ease;
-}
-
-.family-card:first-child {
-  grid-column: 1 / -1;
 }
 
 .family-card:hover,
@@ -467,15 +464,12 @@ main {
 .family-card-preview {
   display: block;
   overflow: hidden;
-  aspect-ratio: 16 / 8;
+  aspect-ratio: 4 / 3;
   border-bottom: 1px solid var(--line);
   background: var(--preview);
 }
 
-.family-card:first-child .family-card-preview {
-  aspect-ratio: 16 / 5;
-}
-
+.family-card-preview video,
 .family-card-preview img {
   display: block;
   width: 100%;
@@ -483,10 +477,15 @@ main {
   object-fit: cover;
 }
 
+.family-card-preview img {
+  display: none;
+}
+
 .family-card.is-icon .family-card-preview {
   background: #121214;
 }
 
+.family-card.is-icon .family-card-preview video,
 .family-card.is-icon .family-card-preview img {
   object-fit: contain;
   filter: invert(1);
@@ -494,14 +493,25 @@ main {
   transform: scale(0.52);
 }
 
+.family-card.is-primitive .family-card-preview video,
+.family-card.is-primitive .family-card-preview img {
+  transform: scale(2.4);
+}
+
+.family-card.is-showcase .family-card-preview video,
 .family-card.is-showcase .family-card-preview img {
-  object-position: center 42%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.family-card.is-showcase .family-card-preview {
+  background: #050506;
 }
 
 .family-card-copy {
   display: block;
-  min-height: 142px;
-  padding: 22px;
+  min-height: 164px;
+  padding: 18px;
 }
 
 .family-card-copy > span {
@@ -521,7 +531,7 @@ main {
 
 .family-card-copy strong {
   font-family: "Geist", sans-serif;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.04em;
 }
@@ -533,9 +543,9 @@ main {
 
 .family-card-copy p {
   max-width: 520px;
-  margin: 13px 0 0;
+  margin: 11px 0 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.55;
 }
 
@@ -2034,6 +2044,10 @@ footer > div {
   .family-section {
     padding-inline: 32px;
   }
+
+  .family-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 820px) {
@@ -2086,16 +2100,7 @@ footer > div {
   }
 
   .family-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .family-card:first-child {
-    grid-column: auto;
-  }
-
-  .family-card:first-child .family-card-preview,
-  .family-card-preview {
-    aspect-ratio: 16 / 8;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .docs-layout,
@@ -2197,6 +2202,16 @@ footer > div {
 
   .showcase-meta {
     padding: 50px 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .family-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .family-card-preview {
+    aspect-ratio: 16 / 8;
   }
 }
 
@@ -2433,5 +2448,27 @@ footer > div {
   .component-pagination a:last-child {
     align-items: start;
     text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .family-card,
+  .landing-preview-card {
+    transition: none;
+  }
+
+  .family-card:hover,
+  .family-card:focus-visible,
+  .landing-preview-card:hover,
+  .landing-preview-card:focus-visible {
+    transform: none;
+  }
+
+  .family-card-preview video {
+    display: none;
+  }
+
+  .family-card-preview img {
+    display: block;
   }
 }
