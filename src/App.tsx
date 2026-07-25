@@ -350,10 +350,7 @@ function HomePage() {
 
   return (
     <>
-      <LandingHero
-        componentCount={catalog.length}
-        installCommand={installAllCommand}
-      />
+      <LandingHero installCommand={installAllCommand} />
       <FamilySection families={families} />
     </>
   );
@@ -599,9 +596,11 @@ function NotFoundPage() {
 function Footer() {
   return (
     <footer>
-      <span>Hyfrme</span>
+      <a className="footer-brand" href="/" aria-label="Hyfrme home">
+        Hyfrme
+      </a>
       <p>Open-source motion blocks for HyperFrames.</p>
-      <div>
+      <nav className="footer-links" aria-label="Footer navigation">
         <a href="/showcases">Showcases</a>
         <a href={githubUrl} target="_blank" rel="noreferrer">
           GitHub <ArrowIcon />
@@ -613,7 +612,7 @@ function Footer() {
         >
           Attributions <ArrowIcon />
         </a>
-      </div>
+      </nav>
     </footer>
   );
 }

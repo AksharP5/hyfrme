@@ -1,7 +1,6 @@
 import { CopyButton } from "./CopyButton";
 
 type LandingHeroProps = {
-  componentCount: number;
   installCommand: string;
 };
 
@@ -23,17 +22,10 @@ const featuredComponents = [
   },
 ] as const;
 
-export function LandingHero({
-  componentCount,
-  installCommand,
-}: LandingHeroProps) {
+export function LandingHero({ installCommand }: LandingHeroProps) {
   return (
     <section className="landing-hero" aria-labelledby="landing-title">
       <div className="landing-hero-copy">
-        <span className="landing-eyebrow">
-          <span aria-hidden="true" />
-          {componentCount} verified components for HyperFrames
-        </span>
         <h1 id="landing-title">
           Cinematic motion,
           <br />

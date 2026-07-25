@@ -208,30 +208,8 @@ main {
   text-align: center;
 }
 
-.landing-eyebrow {
-  display: inline-flex;
-  min-height: 32px;
-  align-items: center;
-  padding: 0 12px;
-  gap: 8px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: var(--muted);
-  font: 10px var(--mono);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.landing-eyebrow > span {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 4px rgba(110, 231, 183, 0.08);
-}
-
 .landing-hero h1 {
-  margin: 30px 0 22px;
+  margin: 0 0 22px;
   font-family: "Geist", sans-serif;
   font-size: clamp(64px, 8.2vw, 112px);
   font-weight: 600;
@@ -1939,7 +1917,7 @@ main {
 footer {
   display: grid;
   min-height: 132px;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: center;
   padding: 24px max(24px, calc((100vw - 1400px) / 2));
   border-top: 1px solid var(--line);
@@ -1947,7 +1925,9 @@ footer {
   font-size: 12px;
 }
 
-footer > span {
+.footer-brand {
+  width: fit-content;
+  justify-self: start;
   color: var(--ink);
   font-family: "Geist", sans-serif;
   font-size: 16px;
@@ -1955,12 +1935,23 @@ footer > span {
 
 footer p {
   margin: 0;
+  justify-self: center;
+  text-align: center;
 }
 
-footer > div {
+.footer-links {
   display: flex;
+  align-items: center;
+  justify-self: end;
   justify-content: end;
   gap: 20px;
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1;
 }
 
 @media (max-width: 1120px) {
@@ -2122,11 +2113,15 @@ footer > div {
   }
 
   footer {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr;
   }
 
   footer p {
     display: none;
+  }
+
+  .footer-links {
+    justify-self: end;
   }
 
   .showcases-page,
@@ -2178,6 +2173,15 @@ footer > div {
 }
 
 @media (max-width: 600px) {
+  footer {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .footer-links {
+    justify-self: start;
+  }
+
   .showcases-hero h1,
   .showcase-detail-header h1 {
     font-size: clamp(54px, 20vw, 86px);
@@ -2196,12 +2200,7 @@ footer > div {
     padding-top: 54px;
   }
 
-  .landing-eyebrow {
-    font-size: 8px;
-  }
-
   .landing-hero h1 {
-    margin-top: 24px;
     font-size: clamp(47px, 15vw, 64px);
     line-height: 0.92;
   }
