@@ -1873,40 +1873,21 @@ main {
   aspect-ratio: 16 / 9;
 }
 
-.showcase-meta {
-  display: grid;
-  padding: 72px 0;
-  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.6fr);
-  gap: 80px;
-  border-bottom: 1px solid var(--line);
+.showcase-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0 0;
+  gap: 28px;
 }
 
-.showcase-meta-primary h2 {
-  max-width: 660px;
-  margin: 13px 0 15px;
-  font-family: "Geist", sans-serif;
-  font-size: clamp(34px, 4.5vw, 58px);
-  font-weight: 600;
-  letter-spacing: -0.055em;
-  line-height: 1;
-}
-
-.showcase-meta-primary p {
-  max-width: 650px;
-  margin: 0;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.65;
-}
-
-.showcase-actions {
+.showcase-source-links {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 28px;
   gap: 9px;
 }
 
-.showcase-actions a {
+.showcase-source-links a {
   padding: 10px 12px;
   border: 1px solid var(--line-strong);
   border-radius: 6px;
@@ -1915,56 +1896,32 @@ main {
   font-size: 12px;
 }
 
-.showcase-actions a:hover {
+.showcase-source-links a:hover {
   background: var(--surface-raised);
 }
 
-.showcase-meta dl {
-  margin: 0;
-}
-
-.showcase-meta dl > div {
-  display: grid;
-  padding: 14px 0;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  border-bottom: 1px solid var(--line);
-  font-size: 12px;
-}
-
-.showcase-meta dt {
-  color: var(--quiet);
-}
-
-.showcase-meta dd {
-  margin: 0;
-  color: var(--ink);
-  text-align: right;
-}
-
-.showcase-components {
-  padding-top: 60px;
-}
-
-.showcase-components > div {
+.showcase-info dl {
   display: flex;
-  flex-wrap: wrap;
-  margin-top: 18px;
+  margin: 0;
+  gap: 34px;
+}
+
+.showcase-info dl > div {
+  display: flex;
+  align-items: baseline;
   gap: 8px;
 }
 
-.showcase-components a {
-  padding: 8px 10px;
-  border: 1px solid var(--line);
-  border-radius: 5px;
-  background: var(--surface);
-  color: var(--muted);
+.showcase-info dt {
+  color: var(--quiet);
   font: 10px var(--mono);
+  text-transform: uppercase;
 }
 
-.showcase-components a:hover {
-  border-color: var(--line-strong);
+.showcase-info dd {
+  margin: 0;
   color: var(--ink);
+  font-size: 12px;
 }
 
 .not-found h1 {
@@ -2190,8 +2147,7 @@ footer > div {
     margin-bottom: 48px;
   }
 
-  .showcase-detail-header,
-  .showcase-meta {
+  .showcase-detail-header {
     grid-template-columns: 1fr;
     gap: 26px;
   }
@@ -2200,8 +2156,14 @@ footer > div {
     margin-bottom: 30px;
   }
 
-  .showcase-meta {
-    padding: 50px 0;
+  .showcase-info {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .showcase-source-links a {
+    flex: 1;
+    text-align: center;
   }
 }
 

@@ -123,25 +123,7 @@ export function ShowcaseDetailPage({ showcase }: { showcase: Showcase }) {
         />
       </div>
 
-      <section className="showcase-meta" aria-label="Showcase details">
-        <div className="showcase-meta-primary">
-          <span className="section-kicker">The build</span>
-          <h2>Remocn composition. HyperFrames clock.</h2>
-          <p>
-            This port preserves the original 1280 × 720 staging, 30 fps
-            timeline, scene order, transitions, typography, and shader treatment
-            while handing frame ownership to HyperFrames.
-          </p>
-          <div className="showcase-actions">
-            <a href={showcase.sourceUrl} target="_blank" rel="noreferrer">
-              HyperFrames source <ArrowIcon />
-            </a>
-            <a href={showcase.originUrl} target="_blank" rel="noreferrer">
-              Pinned Remocn source <ArrowIcon />
-            </a>
-          </div>
-        </div>
-
+      <section className="showcase-info" aria-label="Showcase information">
         <dl>
           <div>
             <dt>Creator</dt>
@@ -155,30 +137,16 @@ export function ShowcaseDetailPage({ showcase }: { showcase: Showcase }) {
             <dt>Runtime</dt>
             <dd>{formatDuration(showcase.duration)}</dd>
           </div>
-          <div>
-            <dt>Frames</dt>
-            <dd>{showcase.durationInFrames.toLocaleString()}</dd>
-          </div>
-          <div>
-            <dt>Parity</dt>
-            <dd>
-              {showcase.meanSsim === null
-                ? "Pending render"
-                : `${(showcase.meanSsim * 100).toFixed(3)}% SSIM`}
-            </dd>
-          </div>
         </dl>
-      </section>
 
-      <section className="showcase-components">
-        <span className="section-kicker">Remocn building blocks</span>
-        <div>
-          {showcase.components.map((component) => (
-            <a href={`/components/${component}`} key={component}>
-              {component}
-            </a>
-          ))}
-        </div>
+        <nav className="showcase-source-links" aria-label="Showcase source">
+          <a href={showcase.sourceUrl} target="_blank" rel="noreferrer">
+            View HyperFrames source <ArrowIcon />
+          </a>
+          <a href={showcase.originUrl} target="_blank" rel="noreferrer">
+            View original Remocn source <ArrowIcon />
+          </a>
+        </nav>
       </section>
     </article>
   );
