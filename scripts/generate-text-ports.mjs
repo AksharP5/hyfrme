@@ -89,6 +89,8 @@ const coreNames = [
   "warp-dissolve",
   "whip-pan",
   "push-through",
+  "slide-swap",
+  "spring-settle",
   "focus-pull",
   "zoom-blur",
   "claude-chat",
@@ -282,6 +284,14 @@ const sceneOverrides = {
   "push-through": {
     source: "components/docs/examples/push-through-example.tsx",
     componentName: "PushThroughExampleScene",
+  },
+  "slide-swap": {
+    source: "components/docs/examples/slide-swap-example.tsx",
+    componentName: "SlideSwapExampleScene",
+  },
+  "spring-settle": {
+    source: "components/docs/examples/spring-settle-example.tsx",
+    componentName: "SpringSettleExampleScene",
   },
   "focus-pull": {
     source: "components/docs/examples/focus-pull-example.tsx",
@@ -1164,19 +1174,26 @@ for (const name of selectedNames) {
       ? "primitive"
       : "core";
   const duration = fixture.durationInFrames / fixture.fps;
-  const variables = Object.entries(controls).map(([id, control]) => ({
-    id,
-    type:
-      control.type === "text"
-        ? "string"
-        : control.type === "select"
+  const variables = Object.entries(controls).map(([id, control]) => {
+    const variable = {
+      id,
+      type:
+        control.type === "text"
           ? "string"
-          : control.type === "number-input"
-            ? "number"
-            : control.type,
-    label: control.label ?? id,
-    default: Object.hasOwn(props, id) ? props[id] : control.default,
-  }));
+          : control.type === "select"
+            ? "string"
+            : control.type === "number-input"
+              ? "number"
+              : control.type,
+      label: control.label ?? id,
+      default: Object.hasOwn(props, id) ? props[id] : control.default,
+    };
+    if (Array.isArray(control.options)) variable.options = control.options;
+    for (const key of ["min", "max", "step"]) {
+      if (typeof control[key] === "number") variable[key] = control[key];
+    }
+    return variable;
+  });
   if (
     "speed" in props &&
     !variables.some((variable) => variable.id === "speed")

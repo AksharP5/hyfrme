@@ -5,6 +5,10 @@ export type CompositionVariable = {
   type: "string" | "number" | "color" | "boolean";
   label: string;
   default: string | number | boolean;
+  min?: number;
+  max?: number;
+  step?: number;
+  options?: string[];
 };
 
 export type CustomValues = Record<string, string | number | boolean>;
@@ -252,6 +256,9 @@ const selectOptions: Record<string, string[]> = {
 };
 
 export function optionsFor(variable: CompositionVariable) {
+  if (variable.options?.includes(String(variable.default))) {
+    return variable.options;
+  }
   const options = selectOptions[variable.id];
   return options?.includes(String(variable.default)) ? options : null;
 }
@@ -270,26 +277,43 @@ export function numberBounds(
   item: RegistrySummary,
 ) {
   const value = Number(variable.default);
+  const withOverrides = (bounds: {
+    min: number;
+    max: number;
+    step: number;
+  }) => ({
+    min: variable.min ?? bounds.min,
+    max: variable.max ?? bounds.max,
+    step: variable.step ?? bounds.step,
+  });
   if (variable.id === "speed") {
-    return { min: 0.25, max: 4, step: 0.25 };
+    return withOverrides({ min: 0.25, max: 4, step: 0.25 });
   }
   if (variable.id === "size" && item.tags.includes("icon")) {
-    return {
+    return withOverrides({
       min: 12,
       max: Math.max(item.dimensions.width, item.dimensions.height),
       step: 1,
-    };
+    });
   }
   if (signedNumbers.has(variable.id)) {
     const span = Math.max(Math.abs(value) * 2, 1);
-    return { min: -span, max: span, step: Number.isInteger(value) ? 1 : 0.05 };
+    return withOverrides({
+      min: -span,
+      max: span,
+      step: Number.isInteger(value) ? 1 : 0.05,
+    });
   }
   if (Math.abs(value) <= 1) {
-    return { min: 0, max: Math.max(1, value * 2), step: 0.05 };
+    return withOverrides({
+      min: 0,
+      max: Math.max(1, value * 2),
+      step: 0.05,
+    });
   }
-  return {
+  return withOverrides({
     min: 0,
     max: Math.max(Math.ceil(value * 2), 10),
     step: Number.isInteger(value) ? 1 : 0.1,
-  };
+  });
 }

@@ -113,6 +113,28 @@ class Easing {
   static back(overshoot = 1.70158) {
     return (value) => value * value * ((overshoot + 1) * value - overshoot);
   }
+  static spring({allowTail = false, durationRestThreshold, ...config} = {}) {
+    const easing = (value) => {
+      if (value <= 0) return 0;
+      if (!allowTail && value >= 1) return 1;
+      if (allowTail) {
+        return spring({
+          fps: 30,
+          frame: value * hyfrmeMeasureSpring(30, config, durationRestThreshold ?? 0.005),
+          config,
+        });
+      }
+      return spring({
+        fps: 30,
+        frame: value * 30,
+        config,
+        durationInFrames: 30,
+        durationRestThreshold,
+      });
+    };
+    easing.remotionShouldExtendRight = allowTail;
+    return easing;
+  }
   static bounce(value) {
     const clamped = Math.min(1, Math.max(0, value));
     if (clamped < 1 / 2.75) return 7.5625 * clamped * clamped;

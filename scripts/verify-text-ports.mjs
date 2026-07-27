@@ -119,8 +119,8 @@ await writeFile(
       private: true,
       type: "module",
       scripts: {
-        check: "npx --yes hyperframes@0.7.64 check",
-        render: "npx --yes hyperframes@0.7.64 render",
+        check: "npx --yes hyperframes@0.7.74 check",
+        render: "npx --yes hyperframes@0.7.74 render",
       },
     },
     null,

@@ -10,6 +10,10 @@ const iconFixtures = JSON.parse(
   await readFile(resolve(root, "catalog", "icon-fixtures.json"), "utf8"),
 );
 const iconNames = new Set(iconFixtures.map((entry) => entry.slug));
+const representativeTimes = new Map([
+  ["slide-swap", 5.8],
+  ["spring-settle", 5.8],
+]);
 
 const run = (args) =>
   new Promise((accept, reject) => {
@@ -24,13 +28,15 @@ const run = (args) =>
 
 for (const [index, item] of registry.items.entries()) {
   const previewDirectory = resolve(root, "public", "previews", item.name);
+  const representativeTime = representativeTimes.get(item.name);
   await mkdir(previewDirectory, { recursive: true });
   await run([
     "-y",
     "-v",
     "error",
-    "-sseof",
-    "-0.05",
+    ...(representativeTime === undefined
+      ? ["-sseof", "-0.05"]
+      : ["-ss", String(representativeTime)]),
     "-i",
     resolve(previewDirectory, "hyperframes.mp4"),
     "-vf",
