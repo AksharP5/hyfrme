@@ -210,7 +210,9 @@ export function buildPreviewDocument(
   const safeName = JSON.stringify(item.name);
   const width = item.dimensions.width;
   const height = item.dimensions.height;
-  const background = transparent ? "transparent" : "#f6f6f3";
+  const backgroundRule = transparent
+    ? "background: transparent !important;"
+    : "";
   const previewScale = transparent ? 0.42 : 1;
   const bootstrap = `<script>
 window.__hyperframes = { getVariables: () => (${safeValues}) };
@@ -230,12 +232,12 @@ window.addEventListener("load", () => {
 });
 </script>
 <style>
-html { width: 100%; height: 100%; overflow: hidden; background: ${background} !important; }
+html { width: 100%; height: 100%; overflow: hidden; ${backgroundRule} }
 body {
   width: ${width}px !important;
   height: ${height}px !important;
   transform-origin: 0 0;
-  background: ${background} !important;
+  ${backgroundRule}
 }
 </style>`;
   return rewriteAssetPaths(source, item).replace(
