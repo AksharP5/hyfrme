@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"tracking in"},{"id":"startTracking","type":"number","label":"Start tracking (em)","default":0.5},{"id":"startBlur","type":"number","label":"Start blur","default":12},{"id":"fontSize","type":"number","label":"Font size","default":96},{"id":"color","type":"color","label":"Color","default":"#171717"},{"id":"fontWeight","type":"string","label":"Font weight","default":"700"},{"id":"speed","type":"number","label":"Speed","default":1}]'>
+<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"tracking in"},{"id":"startTracking","type":"number","label":"Start tracking (em)","default":0.5,"min":0,"max":2,"step":0.05},{"id":"startBlur","type":"number","label":"Start blur","default":12,"min":0,"max":40,"step":1},{"id":"fontSize","type":"number","label":"Font size","default":96,"min":12,"max":200,"step":1},{"id":"color","type":"color","label":"Color","default":"#171717"},{"id":"fontWeight","type":"string","label":"Font weight","default":"700","options":["400","500","600","700"]},{"id":"speed","type":"number","label":"Speed","default":1}]'>
   <head>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <style>
       @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
+
 
 
 

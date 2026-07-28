@@ -943,9 +943,26 @@ const socialAssetsPlugin = {
   },
 };
 
-const sourceAnnotationsPlugin = {
-  name: "hyfrme-source-annotations",
+const sourceAdjustmentsPlugin = {
+  name: "hyfrme-source-adjustments",
   setup(buildApi) {
+    buildApi.onLoad(
+      { filter: /registry\/remocn\/tracking-in\/index\.tsx$/ },
+      async (args) => {
+        const original = await readFile(args.path, "utf8");
+        const contents = original.replace(
+          "const blurAmount = interpolate(t, [0, 1], [startBlur, 0]);",
+          `const blurAmount = Math.max(
+    0,
+    interpolate(t, [0, 1], [startBlur, 0]),
+  );`,
+        );
+        if (contents === original) {
+          throw new Error(`Missing expected Tracking In blur in ${args.path}`);
+        }
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
     buildApi.onLoad(
       {
         filter:
@@ -1149,7 +1166,7 @@ for (const name of selectedNames) {
       socialFontsPlugin,
       caveatPlugin,
       socialAssetsPlugin,
-      sourceAnnotationsPlugin,
+      sourceAdjustmentsPlugin,
       shaderGatePlugin,
     ],
     stdin: {
