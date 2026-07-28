@@ -2,10 +2,11 @@
 
 ## Remocn source reference
 
-All 253 visual ports are derived from pinned Remocn implementations. The first
-234 use commit `ea730a20b4ab09430ee7292aebc847c002375151`; the 19 additions use
-commit `32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c`. Every port names its exact
-source file and fixture in its parity manifest.
+All 255 visual ports are derived from pinned Remocn implementations. Of these,
+233 use commit `ea730a20b4ab09430ee7292aebc847c002375151`, 19 use commit
+`32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c`, and three use commit
+`16eef5d3727eb258ce345a305d67a86eeca02908`. Every generated port names its
+exact source file and fixture in its parity manifest.
 
 Copyright (c) 2026 Remocn
 

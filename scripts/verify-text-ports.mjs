@@ -1,5 +1,6 @@
 import { spawn } from "node:child_process";
 import { cp, copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
+import { homedir } from "node:os";
 import { dirname, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
@@ -119,8 +120,8 @@ await writeFile(
       private: true,
       type: "module",
       scripts: {
-        check: "npx --yes hyperframes@0.7.74 check",
-        render: "npx --yes hyperframes@0.7.74 render",
+        check: "npx --yes hyperframes@0.7.77 check",
+        render: "npx --yes hyperframes@0.7.77 render",
       },
     },
     null,
@@ -150,9 +151,12 @@ await writeFile(
   '{"id":"hyfrme-text-verification","name":"Hyfrme text verification"}\n',
 );
 
-const diffScript = resolve(
-  "/Users/aksharpatel/.agents/skills/remotion-to-hyperframes/scripts/render_diff.sh",
-);
+const diffScript =
+  process.env.R2HF_DIFF_SCRIPT ??
+  resolve(
+    homedir(),
+    ".agents/skills/remotion-to-hyperframes/scripts/render_diff.sh",
+  );
 const failures = [];
 
 for (const [index, entry] of selected.entries()) {
