@@ -518,7 +518,10 @@ function CatalogPage() {
         ) : null}
 
         {filtered.length > 0 ? (
-          taxonomySections.length > 0 && !selectedSection && !queryActive ? (
+          taxonomySections.length > 0 &&
+          !selectedSection &&
+          !queryActive &&
+          category !== "icons" ? (
             <div className="taxonomy-overview">
               {taxonomySections.map((section) => {
                 const count = slugsForSection(section).length;

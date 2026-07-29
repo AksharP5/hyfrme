@@ -1193,7 +1193,9 @@ for (const name of selectedNames) {
   const displayTitle =
     catalogFamily === "primitive"
       ? registryItem.title.replace(/^UI\s+/, "")
-      : registryItem.title;
+      : name.startsWith("shader-")
+        ? registryItem.title.replace(/^Shader\s+/, "")
+        : registryItem.title;
   const duration = fixture.durationInFrames / fixture.fps;
   const variables = Object.entries(controls).map(([id, control]) => {
     const variable = {
