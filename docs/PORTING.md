@@ -115,9 +115,9 @@ compiled-source runtime.
   retains the checker's documented `sweep_static` WebGL-canvas heuristic in its
   parity manifest.
 - The latest upstream update adds `slide-swap` and `spring-settle`, plus the
-  internal `scene-motion` helper they share. Both public blocks pass the full
-  HyperFrames check. Their mean SSIM scores are 0.997717 and 0.998177 across
-  210 and 213 canonical frames respectively.
+  internal `scene-motion` helper used directly by `spring-settle`. Both public
+  blocks pass the full HyperFrames check. Their mean SSIM scores are 0.997717
+  and 0.998177 across 210 and 213 canonical frames respectively.
 - `progress-steps`, number wheels, intentional overlay scenes, and static
   backdrops retain strict-render-only claims where the full checker reports
   known heuristic false positives. Per-item manifests state the exact result.
@@ -140,9 +140,9 @@ All 45 UI primitives and flows are verified.
 
 The pinned visual inventory at Remocn
 `16eef5d3727eb258ce345a305d67a86eeca02908` is complete: 255/255 ports have
-passing parity manifests. The five non-visual upstream entries are shared
-runtime helpers, including the internal `brush` dependency, rather than catalog
-blocks.
+passing parity manifests. The five non-visual upstream entries—`brush`,
+`icons-core`, `remocn-ui`, `scene-motion`, and `stop-motion`—are shared runtime
+helpers rather than catalog blocks.
 
 Upstream changes should open a review issue; they must never overwrite a
 passing port automatically.
