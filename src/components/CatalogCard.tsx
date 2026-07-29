@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   type CatalogEntry,
   cardDescription,
-  categoryDescription,
+  catalogDescriptor,
   categoryFor,
 } from "../catalog";
 
@@ -45,7 +45,7 @@ export function CatalogCard({ entry }: CatalogCardProps) {
         )}
       </span>
       <span className="catalog-card-copy">
-        <span>{categoryDescription(category)}</span>
+        <span>{catalogDescriptor(entry)}</span>
         <strong>{entry.item.title}</strong>
         <small>{cardDescription(entry)}</small>
       </span>

@@ -36,7 +36,10 @@ export function LandingHero({ installCommand }: LandingHeroProps) {
           the source directly into your HyperFrames project.
         </p>
         <div className="landing-actions">
-          <a className="landing-primary-action" href="/components">
+          <a
+            className="landing-primary-action"
+            href="/components?category=components"
+          >
             Browse components <span aria-hidden="true">→</span>
           </a>
           <CopyButton

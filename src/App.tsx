@@ -8,13 +8,18 @@ import {
 } from "react";
 import {
   catalog,
+  catalogDescriptor,
+  catalogTaxonomy,
   type CatalogCategory,
   type CatalogEntry,
+  type CatalogTaxonomyGroup,
+  type CatalogTaxonomySection,
   cardDescription,
-  categoryDescription,
   categoryFor,
   categoryLabels,
   type RegistryItem,
+  taxonomyFor,
+  taxonomySearchTerms,
 } from "./catalog";
 import { CatalogCard } from "./components/CatalogCard";
 import { CodePanel } from "./components/CodePanel";
@@ -57,6 +62,55 @@ const catalogCategoryCounts = Object.fromEntries(
       : catalog.filter((entry) => categoryFor(entry) === candidate).length,
   ]),
 ) as Record<CatalogCategory, number>;
+const catalogBySlug = new Map(
+  catalog.map((entry) => [entry.item.name, entry] as const),
+);
+
+function slugsForSection(section: CatalogTaxonomySection) {
+  return section.slugs ?? section.groups?.flatMap((group) => group.slugs) ?? [];
+}
+
+function entriesForSlugs(slugs: string[]) {
+  return slugs
+    .map((slug) => catalogBySlug.get(slug))
+    .filter((entry): entry is CatalogEntry => Boolean(entry));
+}
+
+function taxonomySectionsFor(category: CatalogCategory) {
+  if (category === "all") return [];
+  const sections = catalogTaxonomy[category] ?? [];
+  if (sections.length === 0) return [];
+  const assigned = new Set(sections.flatMap(slugsForSection));
+  const ungrouped = catalog.filter(
+    (entry) =>
+      categoryFor(entry) === category && !assigned.has(entry.item.name),
+  );
+  return ungrouped.length === 0
+    ? sections
+    : [
+        ...sections,
+        {
+          id: "more",
+          label: `More ${categoryLabels[category].toLowerCase()}`,
+          description:
+            "Newly added blocks awaiting a more specific collection.",
+          featuredSlug: ungrouped[0].item.name,
+          slugs: ungrouped.map((entry) => entry.item.name),
+        },
+      ];
+}
+
+function taxonomyHref(
+  category: CatalogCategory,
+  section?: CatalogTaxonomySection,
+  group?: CatalogTaxonomyGroup,
+) {
+  if (category === "all") return "/components";
+  const params = new URLSearchParams({ category });
+  if (section) params.set("section", section.id);
+  if (group) params.set("group", group.id);
+  return `/components?${params.toString()}`;
+}
 
 function categoryFromUrl(): CatalogCategory {
   const category = new URLSearchParams(window.location.search).get("category");
@@ -111,6 +165,8 @@ function Header() {
 
 type LibrarySidebarProps = {
   activeCategory: CatalogCategory;
+  activeSection?: string;
+  activeGroup?: string;
   currentEntry?: CatalogEntry;
   onSelectCategory?: (
     category: CatalogCategory,
@@ -120,10 +176,19 @@ type LibrarySidebarProps = {
 
 function LibrarySidebar({
   activeCategory,
+  activeSection,
+  activeGroup,
   currentEntry,
   onSelectCategory,
 }: LibrarySidebarProps) {
-  const activeEntries =
+  const taxonomy = currentEntry ? taxonomyFor(currentEntry) : undefined;
+  const resolvedSection = taxonomy?.section.id ?? activeSection;
+  const resolvedGroup = taxonomy?.group?.id ?? activeGroup;
+  const sections = taxonomySectionsFor(activeCategory);
+  const selectedSection = sections.find(
+    (section) => section.id === resolvedSection,
+  );
+  const fallbackEntries =
     activeCategory === "all"
       ? []
       : catalog.filter((entry) => categoryFor(entry) === activeCategory);
@@ -152,12 +217,71 @@ function LibrarySidebar({
           </a>
         ))}
       </nav>
-      {currentEntry ? (
+      {sections.length > 0 ? (
+        <nav className="sidebar-taxonomy" aria-label="Browse this category">
+          <span className="sidebar-label">Browse</span>
+          {sections.map((section) => (
+            <div className="sidebar-taxonomy-section" key={section.id}>
+              <a
+                className={resolvedSection === section.id ? "is-active" : ""}
+                href={taxonomyHref(activeCategory, section)}
+              >
+                <span>{section.label}</span>
+                <small>{slugsForSection(section).length}</small>
+              </a>
+              {resolvedSection === section.id && section.groups ? (
+                <div className="sidebar-taxonomy-groups">
+                  {section.groups.map((group) => (
+                    <a
+                      className={resolvedGroup === group.id ? "is-active" : ""}
+                      href={taxonomyHref(activeCategory, section, group)}
+                      key={group.id}
+                    >
+                      <span>{group.label}</span>
+                      <small>{group.slugs.length}</small>
+                    </a>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          ))}
+          {currentEntry && selectedSection ? (
+            <div className="sidebar-entry-list">
+              {(
+                selectedSection.groups ?? [
+                  {
+                    id: selectedSection.id,
+                    label: selectedSection.label,
+                    slugs: selectedSection.slugs ?? [],
+                  },
+                ]
+              ).map((group) => (
+                <div key={group.id}>
+                  <span className="sidebar-group-label">{group.label}</span>
+                  {entriesForSlugs(group.slugs).map((entry) => (
+                    <a
+                      className={
+                        entry.item.name === currentEntry.item.name
+                          ? "is-current"
+                          : ""
+                      }
+                      href={`/components/${entry.item.name}`}
+                      key={entry.item.name}
+                    >
+                      {entry.item.title}
+                    </a>
+                  ))}
+                </div>
+              ))}
+            </div>
+          ) : null}
+        </nav>
+      ) : currentEntry ? (
         <nav className="sidebar-components" aria-label="Components in category">
           <span className="sidebar-label">
             {categoryLabels[categoryFor(currentEntry)]}
           </span>
-          {activeEntries.map((entry) => (
+          {fallbackEntries.map((entry) => (
             <a
               className={
                 entry.item.name === currentEntry.item.name ? "is-current" : ""
@@ -177,11 +301,28 @@ function LibrarySidebar({
 function CatalogPage() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<CatalogCategory>(categoryFromUrl);
+  const taxonomySections = taxonomySectionsFor(category);
+  const urlParams = new URLSearchParams(window.location.search);
+  const selectedSection = taxonomySections.find(
+    (section) => section.id === urlParams.get("section"),
+  );
+  const selectedGroup = selectedSection?.groups?.find(
+    (group) => group.id === urlParams.get("group"),
+  );
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
     return catalog.filter((entry) => {
       const matchesCategory =
         category === "all" || categoryFor(entry) === category;
+      const entryTaxonomy = taxonomyFor(entry);
+      const matchesSection =
+        !selectedSection ||
+        entryTaxonomy?.section.id === selectedSection.id ||
+        slugsForSection(selectedSection).includes(entry.item.name);
+      const matchesGroup =
+        !selectedGroup ||
+        entryTaxonomy?.group?.id === selectedGroup.id ||
+        selectedGroup.slugs.includes(entry.item.name);
       const matchesQuery =
         !normalized ||
         [
@@ -189,13 +330,14 @@ function CatalogPage() {
           entry.item.title,
           entry.item.description,
           ...entry.item.tags,
+          ...taxonomySearchTerms(entry),
         ]
           .join(" ")
           .toLowerCase()
           .includes(normalized);
-      return matchesCategory && matchesQuery;
+      return matchesCategory && matchesSection && matchesGroup && matchesQuery;
     });
-  }, [category, query]);
+  }, [category, query, selectedGroup, selectedSection]);
 
   useEffect(() => {
     document.title = "Hyfrme — motion components for HyperFrames";
@@ -204,22 +346,106 @@ function CatalogPage() {
   const selectCategory = (next: CatalogCategory) => {
     setCategory(next);
     const url = new URL(window.location.href);
-    if (next === "all") url.searchParams.delete("category");
-    else url.searchParams.set("category", next);
+    url.searchParams.delete("section");
+    url.searchParams.delete("group");
+    if (next === "all") {
+      url.searchParams.delete("category");
+    } else {
+      url.searchParams.set("category", next);
+    }
     window.history.replaceState(null, "", url);
   };
 
-  const selectedLabel =
-    category === "all" ? "Components" : categoryLabels[category];
+  const selectedLabel = selectedGroup
+    ? selectedGroup.label
+    : selectedSection
+      ? selectedSection.label
+      : category === "all"
+        ? "All components"
+        : categoryLabels[category];
   const selectedDescription =
-    category === "all"
-      ? "Browse, customize, and install open-source motion for HyperFrames."
-      : `Browse every ${categoryLabels[category].toLowerCase()} block available in Hyfrme.`;
+    selectedGroup?.description ??
+    selectedSection?.description ??
+    {
+      all: "Browse, customize, and install every open-source Hyfrme block.",
+      components:
+        "Choose a focused motion family, then narrow it down by technique.",
+      primitives:
+        "Timeline-driven interface components, complete flows, and installable parts.",
+      shaders:
+        "Procedural backgrounds, textures, distortions, and GPU-driven motion.",
+      icons: "Familiar Lucide shapes re-authored as deterministic motion.",
+    }[category];
+  const filteredNames = new Set(filtered.map((entry) => entry.item.name));
+  const queryActive = query.trim().length > 0;
+
+  const renderGrid = (entries: CatalogEntry[]) => (
+    <div className={`catalog-grid${category === "icons" ? " is-icons" : ""}`}>
+      {entries.map((entry) => (
+        <CatalogCard entry={entry} key={entry.item.name} />
+      ))}
+    </div>
+  );
+
+  const renderTaxonomySection = (section: CatalogTaxonomySection) => {
+    const groups = section.groups ?? [
+      {
+        id: section.id,
+        label: section.label,
+        slugs: section.slugs ?? [],
+      },
+    ];
+    const visibleGroups = groups
+      .filter((group) => !selectedGroup || group.id === selectedGroup.id)
+      .map((group) => ({
+        group,
+        entries: entriesForSlugs(group.slugs).filter((entry) =>
+          filteredNames.has(entry.item.name),
+        ),
+      }))
+      .filter(({ entries }) => entries.length > 0);
+
+    if (visibleGroups.length === 0) return null;
+    return (
+      <section className="catalog-section" key={section.id}>
+        {!selectedSection || queryActive ? (
+          <header className="catalog-section-heading">
+            <div>
+              <h2>{section.label}</h2>
+              <p>{section.description}</p>
+            </div>
+            <a href={taxonomyHref(category, section)}>
+              View {section.label.toLowerCase()}{" "}
+              <span aria-hidden="true">→</span>
+            </a>
+          </header>
+        ) : null}
+        <div className="catalog-groups">
+          {visibleGroups.map(({ group, entries }) => (
+            <section className="catalog-group" key={group.id}>
+              {groups.length > 1 && !selectedGroup ? (
+                <header className="catalog-group-heading">
+                  <h3>{group.label}</h3>
+                  <a href={taxonomyHref(category, section, group)}>
+                    {entries.length} {entries.length === 1 ? "block" : "blocks"}
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </header>
+              ) : null}
+              {renderGrid(entries)}
+            </section>
+          ))}
+        </div>
+      </section>
+    );
+  };
 
   return (
     <div className="docs-layout" id="catalog">
       <LibrarySidebar
         activeCategory={category}
+        activeSection={selectedSection?.id}
+        activeGroup={selectedGroup?.id}
         onSelectCategory={(next, event) => {
           event.preventDefault();
           selectCategory(next);
@@ -227,7 +453,11 @@ function CatalogPage() {
       />
       <section className="catalog-page">
         <header className="page-heading">
-          <span className="section-kicker">Hyfrme library</span>
+          <span className="section-kicker">
+            {selectedSection
+              ? `${categoryLabels[category]} · ${selectedSection.label}`
+              : "Hyfrme library"}
+          </span>
           <h1>{selectedLabel}</h1>
           <p>{selectedDescription}</p>
         </header>
@@ -259,14 +489,75 @@ function CatalogPage() {
           ))}
         </div>
 
+        {taxonomySections.length > 0 ? (
+          <nav className="mobile-taxonomy" aria-label="Browse this category">
+            {selectedSection?.groups
+              ? selectedSection.groups.map((group) => (
+                  <a
+                    className={
+                      selectedGroup?.id === group.id ? "is-active" : ""
+                    }
+                    href={taxonomyHref(category, selectedSection, group)}
+                    key={group.id}
+                  >
+                    {group.label}
+                  </a>
+                ))
+              : taxonomySections.map((section) => (
+                  <a
+                    className={
+                      selectedSection?.id === section.id ? "is-active" : ""
+                    }
+                    href={taxonomyHref(category, section)}
+                    key={section.id}
+                  >
+                    {section.label}
+                  </a>
+                ))}
+          </nav>
+        ) : null}
+
         {filtered.length > 0 ? (
-          <div
-            className={`catalog-grid${category === "icons" ? " is-icons" : ""}`}
-          >
-            {filtered.map((entry) => (
-              <CatalogCard entry={entry} key={entry.item.name} />
-            ))}
-          </div>
+          taxonomySections.length > 0 && !selectedSection && !queryActive ? (
+            <div className="taxonomy-overview">
+              {taxonomySections.map((section) => {
+                const count = slugsForSection(section).length;
+                return (
+                  <a
+                    className="taxonomy-card"
+                    href={taxonomyHref(category, section)}
+                    key={section.id}
+                  >
+                    <span className="taxonomy-card-preview">
+                      <img
+                        src={`/previews/${section.featuredSlug}/thumbnail.png`}
+                        alt=""
+                        loading="lazy"
+                      />
+                    </span>
+                    <span className="taxonomy-card-copy">
+                      <small>
+                        {count} {count === 1 ? "block" : "blocks"}
+                      </small>
+                      <strong>{section.label}</strong>
+                      <p>{section.description}</p>
+                      <span>
+                        Browse <span aria-hidden="true">→</span>
+                      </span>
+                    </span>
+                  </a>
+                );
+              })}
+            </div>
+          ) : taxonomySections.length > 0 ? (
+            <div className="catalog-sections">
+              {(selectedSection ? [selectedSection] : taxonomySections).map(
+                renderTaxonomySection,
+              )}
+            </div>
+          ) : (
+            renderGrid(filtered)
+          )
         ) : (
           <div className="empty-state">
             <h2>No components found</h2>
@@ -369,6 +660,7 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
     [defaults, values],
   );
   const category = categoryFor(entry);
+  const entryTaxonomy = taxonomyFor(entry);
   const upstreamUrl = `https://github.com/Remocn/remocn/blob/${entry.parity.origin.commit}/${entry.parity.origin.source}`;
   const customized = variables.some(
     (variable) => effectiveValues[variable.id] !== variable.default,
@@ -384,13 +676,19 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
     variables,
     effectiveValues,
   );
-  const entryIndex = catalog.findIndex(
+  const neighboringEntries = entryTaxonomy?.group
+    ? entriesForSlugs(entryTaxonomy.group.slugs)
+    : entryTaxonomy
+      ? entriesForSlugs(slugsForSection(entryTaxonomy.section))
+      : catalog.filter((candidate) => categoryFor(candidate) === category);
+  const entryIndex = neighboringEntries.findIndex(
     (candidate) => candidate.item.name === entry.item.name,
   );
-  const previousEntry = entryIndex > 0 ? catalog[entryIndex - 1] : null;
+  const previousEntry =
+    entryIndex > 0 ? neighboringEntries[entryIndex - 1] : null;
   const nextEntry =
-    entryIndex >= 0 && entryIndex < catalog.length - 1
-      ? catalog[entryIndex + 1]
+    entryIndex >= 0 && entryIndex < neighboringEntries.length - 1
+      ? neighboringEntries[entryIndex + 1]
       : null;
 
   useEffect(() => {
@@ -431,13 +729,27 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
     <div className="docs-layout detail-layout">
       <LibrarySidebar activeCategory={category} currentEntry={entry} />
       <article className="detail-page">
-        <a className="back-link" href="/components">
-          <span aria-hidden="true">←</span> All components
+        <a
+          className="back-link"
+          href={
+            entryTaxonomy
+              ? taxonomyHref(
+                  entryTaxonomy.category,
+                  entryTaxonomy.section,
+                  entryTaxonomy.group,
+                )
+              : `/components?category=${category}`
+          }
+        >
+          <span aria-hidden="true">←</span>{" "}
+          {entryTaxonomy?.group?.label ??
+            entryTaxonomy?.section.label ??
+            categoryLabels[category]}
         </a>
 
         <header className="detail-header">
           <span className="section-kicker">
-            {categoryDescription(category)} · {entry.item.name}
+            {catalogDescriptor(entry)} · {entry.item.name}
           </span>
           <h1>{entry.item.title}</h1>
           <p>{cardDescription(entry)}</p>

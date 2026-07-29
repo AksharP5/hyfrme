@@ -1190,6 +1190,10 @@ for (const name of selectedNames) {
     : primitiveNames.includes(name)
       ? "primitive"
       : "core";
+  const displayTitle =
+    catalogFamily === "primitive"
+      ? registryItem.title.replace(/^UI\s+/, "")
+      : registryItem.title;
   const duration = fixture.durationInFrames / fixture.fps;
   const variables = Object.entries(controls).map(([id, control]) => {
     const variable = {
@@ -1397,7 +1401,7 @@ ${caveatNames.has(name) ? '      @font-face { font-family: "Caveat"; src: url(".
         $schema: "https://hyperframes.heygen.com/schema/registry-item.json",
         name,
         type: "hyperframes:block",
-        title: registryItem.title,
+        title: displayTitle,
         description: `${registryItem.description} Compiled for deterministic HyperFrames playback by Hyfrme.`,
         tags:
           catalogFamily === "text"
@@ -1487,7 +1491,7 @@ ${caveatNames.has(name) ? '      @font-face { font-family: "Caveat"; src: url(".
   fixtures.push({
     slug: name,
     catalogFamily,
-    title: registryItem.title,
+    title: displayTitle,
     description: registryItem.description,
     componentName: renderComponentName,
     origin: {

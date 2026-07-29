@@ -39,6 +39,422 @@ export type CatalogEntry = {
 export type CatalogCategory =
   "all" | "components" | "primitives" | "shaders" | "icons";
 
+export type CatalogTaxonomyGroup = {
+  id: string;
+  label: string;
+  description?: string;
+  slugs: string[];
+};
+
+export type CatalogTaxonomySection = {
+  id: string;
+  label: string;
+  description: string;
+  featuredSlug: string;
+  slugs?: string[];
+  groups?: CatalogTaxonomyGroup[];
+};
+
+export type CatalogTaxonomy = {
+  category: Exclude<CatalogCategory, "all">;
+  section: CatalogTaxonomySection;
+  group?: CatalogTaxonomyGroup;
+};
+
+const componentTaxonomy: CatalogTaxonomySection[] = [
+  {
+    id: "layout",
+    label: "Layout",
+    description: "Scene scaffolding, camera framing, and split-screen layouts.",
+    featuredSlug: "chat-to-preview-layout",
+    groups: [
+      {
+        id: "scene-framing",
+        label: "Scene Framing",
+        slugs: ["backdrop"],
+      },
+      {
+        id: "camera-motion",
+        label: "Camera Motion",
+        slugs: ["drift"],
+      },
+      {
+        id: "split-layouts",
+        label: "Split Layouts",
+        slugs: ["chat-to-preview-layout"],
+      },
+    ],
+  },
+  {
+    id: "typography",
+    label: "Typography",
+    description:
+      "Text reveals, highlights, dynamic values, transitions, and kinetic type.",
+    featuredSlug: "soft-blur-in",
+    groups: [
+      {
+        id: "reveals",
+        label: "Reveals",
+        slugs: [
+          "soft-blur-in",
+          "per-character-rise",
+          "bottom-up-letters",
+          "top-down-letters",
+          "spring-scale-in",
+          "micro-scale-fade",
+          "scale-down-fade",
+          "blur-out-up",
+          "focus-blur-resolve",
+          "line-by-line-slide",
+          "staggered-fade-up",
+          "mask-reveal-up",
+          "tracking-in",
+          "handwrite",
+        ],
+      },
+      {
+        id: "highlights",
+        label: "Highlights",
+        slugs: [
+          "inline-highlight",
+          "marker-highlight",
+          "ink-underline",
+          "shimmer-sweep",
+        ],
+      },
+      {
+        id: "dynamic-text",
+        label: "Dynamic Text",
+        slugs: [
+          "typewriter",
+          "hand-count",
+          "slot-machine-roll",
+          "number-wheel",
+          "rolling-number",
+          "rolodex-flip",
+          "value-swap",
+        ],
+      },
+      {
+        id: "hero-display",
+        label: "Hero & Display",
+        slugs: ["infinite-marquee", "perspective-marquee"],
+      },
+      {
+        id: "tech-glitch",
+        label: "Tech & Glitch",
+        slugs: ["matrix-decode", "rgb-glitch-text"],
+      },
+      {
+        id: "text-transitions",
+        label: "Text Transitions",
+        slugs: [
+          "per-word-crossfade",
+          "fade-through",
+          "shared-axis-y",
+          "shared-axis-z",
+          "strikethrough-replace",
+        ],
+      },
+      {
+        id: "kinetic",
+        label: "Kinetic",
+        slugs: [
+          "short-slide-right",
+          "kinetic-center-build",
+          "short-slide-down",
+        ],
+      },
+    ],
+  },
+  {
+    id: "ui-blocks",
+    label: "UI Blocks",
+    description:
+      "Prebuilt code, terminal, data, workflow, and paper interface scenes.",
+    featuredSlug: "terminal-simulator",
+    groups: [
+      {
+        id: "code-cli",
+        label: "Code & CLI",
+        slugs: [
+          "glass-code-block",
+          "glass-code-walk",
+          "terminal-simulator",
+          "terminal-cursor-zoom",
+        ],
+      },
+      {
+        id: "data-system",
+        label: "Data & System",
+        slugs: ["animated-line-chart", "animated-bar-chart", "data-flow-pipes"],
+      },
+      {
+        id: "workflows",
+        label: "Workflows",
+        slugs: ["progress-steps"],
+      },
+      {
+        id: "paper-scrapbook",
+        label: "Paper & Scrapbook",
+        slugs: ["paper-sticker", "polaroid", "check-list", "reel"],
+      },
+    ],
+  },
+  {
+    id: "ai",
+    label: "AI",
+    description: "Animated AI chat composers and coding-agent interfaces.",
+    featuredSlug: "claude-chat",
+    groups: [
+      {
+        id: "chat-composers",
+        label: "Chat Composers",
+        slugs: ["claude-chat", "chat-gpt", "v0"],
+      },
+      {
+        id: "coding-agents",
+        label: "Coding Agents",
+        slugs: ["claude-code", "opencode"],
+      },
+    ],
+  },
+  {
+    id: "transitions",
+    label: "Transitions",
+    description:
+      "Scene transitions, camera moves, shader cuts, and stylized wipes.",
+    featuredSlug: "ripple-zoom",
+    groups: [
+      {
+        id: "camera-motion",
+        label: "Camera Motion",
+        slugs: [
+          "whip-pan",
+          "push-through",
+          "focus-pull",
+          "zoom-blur",
+          "page-turn",
+        ],
+      },
+      {
+        id: "shader",
+        label: "Shader",
+        slugs: [
+          "grain-dissolve",
+          "wave-wipe",
+          "ripple-zoom",
+          "warp-dissolve",
+          "swirl-dissolve",
+          "dither-dissolve",
+          "perlin-dissolve",
+          "smoke-dissolve",
+        ],
+      },
+      {
+        id: "stylized",
+        label: "Stylized",
+        slugs: ["ascii-dissolve", "caret-wipe", "icon-scatter"],
+      },
+      {
+        id: "scene-sequencers",
+        label: "Scene Sequencers",
+        slugs: ["slide-swap", "spring-settle"],
+      },
+    ],
+  },
+  {
+    id: "social",
+    label: "Social",
+    description: "Milestones, social proof, profiles, and brand moments.",
+    featuredSlug: "github-stars",
+    groups: [
+      {
+        id: "github",
+        label: "GitHub",
+        slugs: ["github-stars", "github-sponsors"],
+      },
+      {
+        id: "x",
+        label: "X",
+        slugs: ["x-follow-card", "x-followers-overview"],
+      },
+      {
+        id: "brand",
+        label: "Brand",
+        slugs: ["logo-enter"],
+      },
+    ],
+  },
+  {
+    id: "effects",
+    label: "Effects",
+    description: "Physical overlays, hand-made marks, and interaction cues.",
+    featuredSlug: "confetti",
+    groups: [
+      {
+        id: "celebration",
+        label: "Celebration",
+        slugs: ["confetti"],
+      },
+      {
+        id: "paper-ink",
+        label: "Paper & Ink",
+        slugs: ["paper-wobble", "ink-arrow", "scribble-circle", "crumple-toss"],
+      },
+      {
+        id: "interaction",
+        label: "Interaction",
+        slugs: ["simulated-cursor"],
+      },
+    ],
+  },
+  {
+    id: "compositions",
+    label: "Compositions",
+    description:
+      "Full scenes composed from reusable motion and interface blocks.",
+    featuredSlug: "live-code-compilation",
+    groups: [
+      {
+        id: "hero-outro",
+        label: "Hero & Outro",
+        slugs: ["ecosystem-constellation", "infinite-bento-pan"],
+      },
+      {
+        id: "product-showcases",
+        label: "Product Showcases",
+        slugs: ["live-code-compilation"],
+      },
+    ],
+  },
+];
+
+const primitiveTaxonomy: CatalogTaxonomySection[] = [
+  {
+    id: "components",
+    label: "Components",
+    description:
+      "Timeline-driven controls, overlays, feedback, and layout primitives.",
+    featuredSlug: "button",
+    groups: [
+      {
+        id: "controls-input",
+        label: "Controls & Input",
+        slugs: [
+          "button",
+          "checkbox",
+          "radio",
+          "switch",
+          "input",
+          "field",
+          "select",
+          "combobox",
+          "slider",
+          "toggle-group",
+          "stepper",
+        ],
+      },
+      {
+        id: "overlays-menus",
+        label: "Overlays & Menus",
+        slugs: [
+          "alert-dialog",
+          "dialog",
+          "sheet",
+          "drawer",
+          "dropdown-menu",
+          "command-menu",
+          "context-menu",
+          "popover",
+          "tooltip",
+          "toast",
+        ],
+      },
+      {
+        id: "feedback-status",
+        label: "Feedback & Status",
+        slugs: [
+          "progress",
+          "spinner",
+          "skeleton",
+          "skeleton-block",
+          "typing-indicator",
+          "message-bubble",
+          "blur-in",
+        ],
+      },
+      {
+        id: "structure-utility",
+        label: "Structure & Utility",
+        slugs: ["accordion", "caret", "cursor", "resizable", "tabs"],
+      },
+    ],
+  },
+  {
+    id: "blocks",
+    label: "Blocks",
+    description: "Complete scripted interface flows assembled from primitives.",
+    featuredSlug: "chat-flow",
+    groups: [
+      {
+        id: "messaging",
+        label: "Messaging",
+        slugs: ["chat-flow", "telegram-chat-flow", "imessage-chat-flow"],
+      },
+      {
+        id: "product-flows",
+        label: "Product Flows",
+        slugs: [
+          "signup-flow",
+          "checkout-flow",
+          "onboarding-stepper-flow",
+          "ai-prompt-flow",
+          "settings-toggle-flow",
+        ],
+      },
+    ],
+  },
+  {
+    id: "component-parts",
+    label: "Component Parts",
+    description:
+      "Installable atoms used inside the larger menu and select primitives.",
+    featuredSlug: "select-item",
+    slugs: ["select-item", "dropdown-menu-item", "command-menu-item"],
+  },
+];
+
+export const catalogTaxonomy: Partial<
+  Record<Exclude<CatalogCategory, "all">, CatalogTaxonomySection[]>
+> = {
+  components: componentTaxonomy,
+  primitives: primitiveTaxonomy,
+};
+
+const taxonomyBySlug = new Map<string, CatalogTaxonomy>();
+
+for (const [category, sections] of Object.entries(catalogTaxonomy) as Array<
+  [Exclude<CatalogCategory, "all">, CatalogTaxonomySection[]]
+>) {
+  for (const section of sections) {
+    for (const slug of section.slugs ?? []) {
+      if (taxonomyBySlug.has(slug)) {
+        throw new Error(`Duplicate catalog taxonomy entry: ${slug}`);
+      }
+      taxonomyBySlug.set(slug, { category, section });
+    }
+    for (const group of section.groups ?? []) {
+      for (const slug of group.slugs) {
+        if (taxonomyBySlug.has(slug)) {
+          throw new Error(`Duplicate catalog taxonomy entry: ${slug}`);
+        }
+        taxonomyBySlug.set(slug, { category, section, group });
+      }
+    }
+  }
+}
+
 async function fetchRequired(path: string) {
   const response = await fetch(path);
   if (!response.ok) {
@@ -81,10 +497,29 @@ export function categoryFor(
 ): Exclude<CatalogCategory, "all"> {
   if (entry.item.tags.includes("icon")) return "icons";
   if (entry.item.name.startsWith("shader-")) return "shaders";
+  const taxonomy = taxonomyBySlug.get(entry.item.name);
+  if (taxonomy) return taxonomy.category;
   if (entry.item.tags.includes("ui") || entry.item.tags.includes("primitive")) {
     return "primitives";
   }
   return "components";
+}
+
+export function taxonomyFor(entry: CatalogEntry) {
+  return taxonomyBySlug.get(entry.item.name);
+}
+
+export function taxonomySearchTerms(entry: CatalogEntry) {
+  const taxonomy = taxonomyFor(entry);
+  return taxonomy ? [taxonomy.section.label, taxonomy.group?.label ?? ""] : [];
+}
+
+export function catalogDescriptor(entry: CatalogEntry) {
+  const taxonomy = taxonomyFor(entry);
+  if (!taxonomy) return categoryDescription(categoryFor(entry));
+  return [taxonomy.section.label, taxonomy.group?.label]
+    .filter(Boolean)
+    .join(" · ");
 }
 
 export function categoryDescription(category: Exclude<CatalogCategory, "all">) {

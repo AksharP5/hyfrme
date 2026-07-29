@@ -1,6 +1,35 @@
 [
   {
     "item": {
+      "name": "accordion",
+      "title": "Accordion",
+      "description": "A disclosure whose opened/closed state is a pure function of the timeline; the panel reveal, chevron, and background are keyframed presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 3.3333333333333335
+    },
+    "parity": {
+      "slug": "accordion",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/accordion/index.tsx"
+      },
+      "result": {
+        "frameCount": 100,
+        "meanSsim": 0.999846,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "icon-activity",
       "title": "Activity",
       "description": "Animated Lucide activity icon — the pulse line sweeps through like an EKG, popping at the peak. Loops by default. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -24,6 +53,64 @@
       "result": {
         "frameCount": 90,
         "meanSsim": 0.99543,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "ai-prompt-flow",
+      "title": "AI Prompt Flow",
+      "description": "An AI prompt composition: a prompt types into the field, the Generate button runs hover → press → loading, a skeleton shimmer reveals, then crossfades into the generated answer, and a ready toast slides in. A pure orchestrator — the shimmer is owned by the skeleton-block motion atom; every other channel comes from a composed primitive's hook. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 7.666666666666667
+    },
+    "parity": {
+      "slug": "ai-prompt-flow",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/ai-prompt-flow/index.tsx"
+      },
+      "result": {
+        "frameCount": 230,
+        "meanSsim": 0.99969,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "alert-dialog",
+      "title": "Alert Dialog",
+      "description": "A modal alert dialog whose opened/closed state is a pure function of the timeline; the backdrop dim and popup zoom are keyframed presets. Self-contained — pair it with the Button as a trigger (see the example). Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "alert-dialog",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/alert-dialog/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999392,
         "pass": true
       }
     }
@@ -407,6 +494,35 @@
   },
   {
     "item": {
+      "name": "blur-in",
+      "title": "Blur In",
+      "description": "A wrapper that reveals a single child with blur + opacity + a directional offset; a pure state atom, theme-independent — its context is a motion config (blur/distance/axis), not a theme. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 1.3333333333333333
+    },
+    "parity": {
+      "slug": "blur-in",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/blur-in/index.tsx"
+      },
+      "result": {
+        "frameCount": 40,
+        "meanSsim": 0.999916,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "blur-out-up",
       "title": "Blur Out Up",
       "description": "Words arrive clean and depart upward with increasing blur for airy exits. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -494,6 +610,35 @@
   },
   {
     "item": {
+      "name": "button",
+      "title": "Button",
+      "description": "A button whose idle/hover/press/loading/success state is a pure function of the timeline; the loading state composes the Spinner motion atom. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4.4
+    },
+    "parity": {
+      "slug": "button",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/button/index.tsx"
+      },
+      "result": {
+        "frameCount": 132,
+        "meanSsim": 0.99993,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "icon-calendar",
       "title": "Calendar",
       "description": "Animated Lucide calendar icon — the pad draws on, then the binder rings dip and the page snaps into place. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -552,6 +697,35 @@
   },
   {
     "item": {
+      "name": "caret",
+      "title": "Caret",
+      "description": "A blinking text caret — a controlled vertical bar, or a pure motion atom that blinks deterministically from useCurrentFrame. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "caret",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/caret/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999995,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "caret-wipe",
       "title": "Caret Wipe",
       "description": "Sweep a typing caret across the frame, wiping the outgoing scene into the next. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -575,6 +749,35 @@
       "result": {
         "frameCount": 100,
         "meanSsim": 0.997675,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "chat-flow",
+      "title": "Chat Flow",
+      "description": "A messaging composition: an outgoing message types into the composer, the send button presses, and the bubble rises in; the other side shows a typing indicator that swaps into the reply, and reactions pop in. A pure orchestrator — every channel comes from a composed primitive's hook (Input, MessageBubble, TypingIndicator). Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 432,
+        "height": 768
+      },
+      "duration": 12
+    },
+    "parity": {
+      "slug": "chat-flow",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/chat-flow/index.tsx"
+      },
+      "result": {
+        "frameCount": 360,
+        "meanSsim": 0.998549,
         "pass": true
       }
     }
@@ -720,6 +923,64 @@
       "result": {
         "frameCount": 360,
         "meanSsim": 0.99835,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "checkbox",
+      "title": "Checkbox",
+      "description": "A checkbox whose checked/unchecked state is a pure function of the timeline; the box fill, border, and checkmark draw are keyframed presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 3.3333333333333335
+    },
+    "parity": {
+      "slug": "checkbox",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/checkbox/index.tsx"
+      },
+      "result": {
+        "frameCount": 100,
+        "meanSsim": 0.999986,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "checkout-flow",
+      "title": "Checkout Flow",
+      "description": "A cursor-driven checkout card: the card and its fields blur-in, then the pointer flips a billing-cycle toggle, types a card number, ticks the terms checkbox, and presses Pay through to success, ending in a toast. A pure orchestrator — every channel comes from a composed primitive's transition hook. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 10.666666666666666
+    },
+    "parity": {
+      "slug": "checkout-flow",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/checkout-flow/index.tsx"
+      },
+      "result": {
+        "frameCount": 320,
+        "meanSsim": 0.999307,
         "pass": true
       }
     }
@@ -987,6 +1248,93 @@
   },
   {
     "item": {
+      "name": "combobox",
+      "title": "Combobox",
+      "description": "A combobox whose opened/closed state is a pure function of the timeline; the panel fade/scale/lift are keyframed presets like select. The trigger reuses the Input presets (typed query + caret reveal via an injected inputStyle), the list is filtered by a pure case-insensitive substring on the visible query prefix, and rows reuse the SelectItem row. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "combobox",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/combobox/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999864,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "command-menu",
+      "title": "Command Menu",
+      "description": "A ⌘K command palette whose opened/closed state is a pure function of the timeline; the panel zoom + backdrop dim are dialog-like keyframed presets. The search row reveals the typed query, the list is filtered by a pure case-insensitive substring on the visible query prefix, and rows reuse the CommandMenuItem row. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4.333333333333333
+    },
+    "parity": {
+      "slug": "command-menu",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/command-menu/index.tsx"
+      },
+      "result": {
+        "frameCount": 130,
+        "meanSsim": 0.999748,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "command-menu-item",
+      "title": "Command Menu Item",
+      "description": "A command-palette row whose idle/hover/press/selected state is a pure function of the timeline. Leading icon + label + trailing shortcut kbd. Exports an inline CommandMenuItemRow (reused by CommandMenu) and a standalone CommandMenuItem atom; the row background, label color, and icon color are keyframed presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "command-menu-item",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/command-menu-item/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999948,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "confetti",
       "title": "Confetti",
       "description": "Deterministic confetti burst for Remotion — seeded particles with gravity, spin, and flutter so every render is identical. Fire it on any frame as a celebratory overlay. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -1010,6 +1358,35 @@
       "result": {
         "frameCount": 90,
         "meanSsim": 0.999125,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "context-menu",
+      "title": "Context Menu",
+      "description": "A right-click context menu whose opened/closed state is a pure function of the timeline; the panel scales from its top-left corner (the click point) with a fade + lift. No trigger — the caller positions it. Rows reuse the DropdownMenuItem row; items are plain string labels. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4.5
+    },
+    "parity": {
+      "slug": "context-menu",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/context-menu/index.tsx"
+      },
+      "result": {
+        "frameCount": 135,
+        "meanSsim": 0.999853,
         "pass": true
       }
     }
@@ -1132,6 +1509,35 @@
   },
   {
     "item": {
+      "name": "cursor",
+      "title": "Cursor",
+      "description": "An animated cursor that moves between waypoints, clicks (ripple), and drags. The Cursor renderer is a pure function of a numeric CursorStyle channel; useCursorPath reads the frame and eases the path, ripple, and press phases. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4.666666666666667
+    },
+    "parity": {
+      "slug": "cursor",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/cursor/index.tsx"
+      },
+      "result": {
+        "frameCount": 140,
+        "meanSsim": 0.999912,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "data-flow-pipes",
       "title": "Data Flow Pipes",
       "description": "Glowing data packets travel along SVG bezier pipes between system nodes, leaving fading trails. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -1184,6 +1590,35 @@
       "result": {
         "frameCount": 80,
         "meanSsim": 0.992052,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "dialog",
+      "title": "Dialog",
+      "description": "A modal dialog whose opened/closed state is a pure function of the timeline; the backdrop dim and popup zoom are keyframed presets, with a close button and a primary action. Self-contained — pair it with the Button as a trigger (see the example). Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "dialog",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/dialog/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999513,
         "pass": true
       }
     }
@@ -1277,6 +1712,35 @@
   },
   {
     "item": {
+      "name": "drawer",
+      "title": "Drawer",
+      "description": "A bottom panel whose opened/closed state is a pure function of the timeline; the backdrop dim and bottom-edge slide-up are keyframed presets, with a drag handle and a primary action. Self-contained — pair it with the Button as a trigger (see the example). Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "drawer",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/drawer/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999516,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "drift",
       "title": "Drift",
       "description": "A slow linear camera push-in wrapper that scales its scene from 1 to 1+grow across the sequence so no frame is ever static. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -1300,6 +1764,64 @@
       "result": {
         "frameCount": 90,
         "meanSsim": 0.996413,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "dropdown-menu",
+      "title": "Dropdown Menu",
+      "description": "A dropdown menu whose opened/closed state is a pure function of the timeline; the trigger reuses the Button primitive and the reveal panel composes DropdownMenuItem rows. The panel fade, scale, lift, and chevron are keyframed presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "dropdown-menu",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/dropdown-menu/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999834,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "dropdown-menu-item",
+      "title": "Dropdown Menu Item",
+      "description": "A dropdown menu action row whose idle/hover/press state is a pure function of the timeline; the row background and label color are keyframed presets. Composed inside the DropdownMenu panel. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "dropdown-menu-item",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/dropdown-menu-item/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999975,
         "pass": true
       }
     }
@@ -1445,6 +1967,35 @@
       "result": {
         "frameCount": 90,
         "meanSsim": 0.997987,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "field",
+      "title": "Field",
+      "description": "A static layout family for composing labeled form controls, modeled on shadcn's Field: FieldGroup ▸ Field ▸ FieldLabel / FieldControl / FieldDescription. Reads no frame and holds no state — colors come from the resolved theme. FieldControl is a relative fixed-height slot for the absolute remocn-ui controls (Input, Button). Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 3
+    },
+    "parity": {
+      "slug": "field",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/field/index.tsx"
+      },
+      "result": {
+        "frameCount": 90,
+        "meanSsim": 0.999856,
         "pass": true
       }
     }
@@ -2060,6 +2611,35 @@
   },
   {
     "item": {
+      "name": "imessage-chat-flow",
+      "title": "iMessage Chat Flow",
+      "description": "An iMessage-styled messaging composition: gray incoming and blue outgoing bubbles with tails, an in-thread typing bubble with dots, a Delivered label, and tapback-style reaction badges. The composer types the outgoing message before sending. Chrome icons come from lucide-react; self-contained otherwise, composing the caret and typing-indicator primitives. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 432,
+        "height": 768
+      },
+      "duration": 12
+    },
+    "parity": {
+      "slug": "imessage-chat-flow",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/imessage-chat-flow/index.tsx"
+      },
+      "result": {
+        "frameCount": 360,
+        "meanSsim": 0.997919,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "icon-inbox",
       "title": "Inbox",
       "description": "Animated Lucide inbox icon — the tray draws on, then dips under the weight of an arriving item and springs back. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -2257,6 +2837,35 @@
       "result": {
         "frameCount": 90,
         "meanSsim": 0.99733,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "input",
+      "title": "Input",
+      "description": "A text input whose idle/hover/active/typing/invalid state is a pure function of the timeline; the focus ring, border, caret, and value reveal are keyframed presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "input",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/input/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999876,
         "pass": true
       }
     }
@@ -2727,6 +3336,35 @@
   },
   {
     "item": {
+      "name": "message-bubble",
+      "title": "Message Bubble",
+      "description": "A chat message bubble whose hidden/visible state is a pure function of the timeline. The renderer is a pure function of a MessageBubbleStyle (opacity, translateY, scale); useMessageBubbleTransition eases the rise-in enter. The incoming/outgoing variant resolves bubble color and alignment from the theme, and an optional reaction badge pops in on its own channel. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 3
+    },
+    "parity": {
+      "slug": "message-bubble",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/message-bubble/index.tsx"
+      },
+      "result": {
+        "frameCount": 90,
+        "meanSsim": 0.99991,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "icon-message-circle",
       "title": "Message Circle",
       "description": "Animated Lucide message-circle icon — the bubble draws on, then inflates from its tail like a message arriving. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -2924,6 +3562,35 @@
       "result": {
         "frameCount": 112,
         "meanSsim": 0.998355,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "onboarding-stepper-flow",
+      "title": "Onboarding Stepper Flow",
+      "description": "A multi-step onboarding composition: a horizontal stepper advances through panels of input, radio, and switch fields, finishing on a Finish button that runs to success. Panel crossfade derives linearly from the stepper's exposed position channel; every other channel comes from a composed primitive's hook. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 5.833333333333333
+    },
+    "parity": {
+      "slug": "onboarding-stepper-flow",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/onboarding-stepper-flow/index.tsx"
+      },
+      "result": {
+        "frameCount": 175,
+        "meanSsim": 0.999777,
         "pass": true
       }
     }
@@ -3423,6 +4090,64 @@
   },
   {
     "item": {
+      "name": "popover",
+      "title": "Popover",
+      "description": "A popover/hover-card whose opened/closed state is a pure function of the timeline. The Popover renderer is a pure function of a PopoverStyle (opacity, scale, translate); usePopoverTransition eases both the open and the close. The static `side` prop sets the enter translate axis; renders title + description and/or arbitrary children in a popover card. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4.333333333333333
+    },
+    "parity": {
+      "slug": "popover",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/popover/index.tsx"
+      },
+      "result": {
+        "frameCount": 130,
+        "meanSsim": 0.999808,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "progress",
+      "title": "Progress",
+      "description": "A progress bar whose fill is a pure function of a numeric value channel (value-channel deviation). The Progress renderer takes a clamped 0–100 value; useProgressTransition reads the frame and eases the fill between value steps. Muted track + primary indicator, optional floored percentage label. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 5.333333333333333
+    },
+    "parity": {
+      "slug": "progress",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/progress/index.tsx"
+      },
+      "result": {
+        "frameCount": 160,
+        "meanSsim": 0.99997,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "progress-steps",
       "title": "Progress Steps",
       "description": "Multi-step pipeline with sequentially activating nodes and filling lines. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -3481,6 +4206,35 @@
   },
   {
     "item": {
+      "name": "radio",
+      "title": "Radio",
+      "description": "A radio whose checked/unchecked state is a pure function of the timeline; the ring border and inner dot pop are keyframed presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 3.3333333333333335
+    },
+    "parity": {
+      "slug": "radio",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/radio/index.tsx"
+      },
+      "result": {
+        "frameCount": 100,
+        "meanSsim": 0.999967,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "reel",
       "title": "Reel",
       "description": "A fixed centered card where images stack on the z-axis and each blooms open over the last via a centre-out mask. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -3533,6 +4287,35 @@
       "result": {
         "frameCount": 90,
         "meanSsim": 0.989406,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "resizable",
+      "title": "Resizable",
+      "description": "Two panels split by a draggable handle, where the split ratio is a numeric channel plus a handle idle/hover/press channel (dual-channel value-channel deviation). The Resizable renderer is pure (clamped 0–1 ratio, handle scale, grab-ring opacity); useResizableTransition reads the frame and eases both channels — ratio as a numeric lerp, the handle visual from its state presets. Horizontal and vertical splits; 1px divider + centered grip pill with a derived grab ring. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 6.833333333333333
+    },
+    "parity": {
+      "slug": "resizable",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/resizable/index.tsx"
+      },
+      "result": {
+        "frameCount": 205,
+        "meanSsim": 0.999863,
         "pass": true
       }
     }
@@ -3800,6 +4583,64 @@
   },
   {
     "item": {
+      "name": "select",
+      "title": "Select",
+      "description": "A select whose opened/closed state is a pure function of the timeline; the trigger reuses the Button primitive and the reveal panel composes SelectItem rows. The panel fade, scale, lift, and chevron are keyframed presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "select",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/select/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999809,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "select-item",
+      "title": "Select Item",
+      "description": "A select option row whose idle/hover/press/selected state is a pure function of the timeline; the row background, label color, and check icon are keyframed presets. Composed inside the Select panel. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "select-item",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/select-item/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999967,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "icon-send",
       "title": "Send",
       "description": "Animated Lucide send icon — the paper plane draws on, then darts forward with a wind-up and settles back for a send-message beat. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -3852,6 +4693,35 @@
       "result": {
         "frameCount": 75,
         "meanSsim": 0.993577,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "settings-toggle-flow",
+      "title": "Settings Toggle Flow",
+      "description": "A two-column settings card: the card and its controls blur-in, then the cursor flips a switch, opens a select, drags a labeled slider, and clicks Save, ending in a saved toast. A pure orchestrator — every channel comes from a composed primitive's transition hook. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 10.666666666666666
+    },
+    "parity": {
+      "slug": "settings-toggle-flow",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/settings-toggle-flow/index.tsx"
+      },
+      "result": {
+        "frameCount": 320,
+        "meanSsim": 0.999174,
         "pass": true
       }
     }
@@ -4583,6 +5453,35 @@
   },
   {
     "item": {
+      "name": "sheet",
+      "title": "Sheet",
+      "description": "A side panel whose opened/closed state is a pure function of the timeline; the backdrop dim and right-edge slide-in are keyframed presets, with a close button and a primary action. Self-contained — pair it with the Button as a trigger (see the example). Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "sheet",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/sheet/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999581,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "icon-shield",
       "title": "Shield",
       "description": "Animated Lucide shield icon — draws on, then braces: a firm guard pulse that asserts protection. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -4728,6 +5627,35 @@
   },
   {
     "item": {
+      "name": "signup-flow",
+      "title": "Signup Flow",
+      "description": "A signup card composition: a real shadcn-style card (header, labeled Full Name / Email / Password / Confirm fields, primary + Google-outline buttons, sign-in footer) whose cursor fills each field top-to-bottom, then clicks Create account (hover → press → loading → success) as a success toast slides in. A pure orchestrator — every channel comes from a composed primitive's transition hook. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 12.666666666666666
+    },
+    "parity": {
+      "slug": "signup-flow",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/signup-flow/index.tsx"
+      },
+      "result": {
+        "frameCount": 380,
+        "meanSsim": 0.999182,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "simulated-cursor",
       "title": "Simulated Cursor",
       "description": "Animated mouse cursor moving between waypoints with click ripple feedback. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -4751,6 +5679,64 @@
       "result": {
         "frameCount": 150,
         "meanSsim": 0.999421,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "skeleton",
+      "title": "Skeleton",
+      "description": "A skeleton→content crossfade whose loading/loaded state is a pure function of the timeline. The Skeleton renderer is pure (reads no frame); only the composed SkeletonBlock shimmer reads it. SkeletonStyle opacities sum to 1 so the box never dims; real children sit in normal flow and the placeholder (a lines/card layout or a custom node) is an absolute overlay. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 7.333333333333333
+    },
+    "parity": {
+      "slug": "skeleton",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/skeleton/index.tsx"
+      },
+      "result": {
+        "frameCount": 220,
+        "meanSsim": 0.999944,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "skeleton-block",
+      "title": "Skeleton Block",
+      "description": "A shimmer placeholder block — a motion atom (spinner pattern). A directional highlight gradient sweeps across deterministically from useCurrentFrame() and loops seamlessly. Configurable width/height/radius/speed and base/highlight colors. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "skeleton-block",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/skeleton-block/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999981,
         "pass": true
       }
     }
@@ -4809,6 +5795,35 @@
       "result": {
         "frameCount": 210,
         "meanSsim": 0.997717,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "slider",
+      "title": "Slider",
+      "description": "A slider whose fill is a numeric value channel plus a thumb idle/hover/press channel (dual-channel value-channel deviation). The Slider renderer is pure (clamped 0–100 value, thumb scale, grab-ring opacity); useSliderTransition reads the frame and eases both channels — value as a numeric lerp, the thumb visual from its state presets. Muted track + primary range + bordered thumb with a derived grab ring. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "slider",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/slider/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999957,
         "pass": true
       }
     }
@@ -4961,6 +5976,35 @@
   },
   {
     "item": {
+      "name": "spinner",
+      "title": "Spinner",
+      "description": "A deterministic spinning arc that loops on the Remotion frame — a pure motion atom with no state. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "spinner",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/spinner/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999989,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "spring-scale-in",
       "title": "Spring Scale In",
       "description": "Words pop in with a soft overshoot scale, like a physical spring settling into place. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -5077,6 +6121,35 @@
   },
   {
     "item": {
+      "name": "stepper",
+      "title": "Stepper",
+      "description": "A horizontal onboarding stepper whose progress is a pure function of a continuous step index (value-channel deviation). Every circle (fill, number, stroke-dash check) and connector (primary fill fraction) derives purely from the float position; useStepperTransition reads the frame and eases position between step indices. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 5
+    },
+    "parity": {
+      "slug": "stepper",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/stepper/index.tsx"
+      },
+      "result": {
+        "frameCount": 150,
+        "meanSsim": 0.99991,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "strikethrough-replace",
       "title": "Strikethrough Replace",
       "description": "Draws a strike line across old text then reveals new text in its place. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -5164,6 +6237,64 @@
   },
   {
     "item": {
+      "name": "switch",
+      "title": "Switch",
+      "description": "A switch whose checked/unchecked state is a pure function of the timeline; the track fill and sliding thumb are keyframed presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 3.3333333333333335
+    },
+    "parity": {
+      "slug": "switch",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/switch/index.tsx"
+      },
+      "result": {
+        "frameCount": 100,
+        "meanSsim": 0.999978,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "tabs",
+      "title": "Tabs",
+      "description": "A tabs widget whose active-tab state is a pure function of the timeline; the sliding indicator, label colors, and panel crossfade are keyframed/derived presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "tabs",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/tabs/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999855,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
       "name": "icon-tag",
       "title": "Tag",
       "description": "Animated Lucide tag icon — draws on, then swings from its hole like a price tag flicked by a shopper. Compiled for deterministic HyperFrames playback by Hyfrme.",
@@ -5216,6 +6347,35 @@
       "result": {
         "frameCount": 80,
         "meanSsim": 0.992229,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "telegram-chat-flow",
+      "title": "Telegram Chat Flow",
+      "description": "A Telegram-styled messaging composition: tailed bubbles (white incoming, blue outgoing) with in-bubble timestamps and delivery checks, a header that flips to 'typing…' while the other side replies, reaction chips, and a Telegram composer that types the outgoing message before sending. Self-contained — it owns its timeline and only composes the caret primitive. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 432,
+        "height": 768
+      },
+      "duration": 12
+    },
+    "parity": {
+      "slug": "telegram-chat-flow",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/telegram-chat-flow/index.tsx"
+      },
+      "result": {
+        "frameCount": 360,
+        "meanSsim": 0.995265,
         "pass": true
       }
     }
@@ -5361,6 +6521,93 @@
       "result": {
         "frameCount": 90,
         "meanSsim": 0.987723,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "toast",
+      "title": "Toast",
+      "description": "A toast notification whose hidden/visible state is a pure function of the timeline. The Toast renderer is a pure function of a ToastStyle (opacity, translateY, scale); useToastTransition eases both the slide-in enter and the auto-dismiss exit. Variants default/success/error change the leading icon and its color. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 5.666666666666667
+    },
+    "parity": {
+      "slug": "toast",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/toast/index.tsx"
+      },
+      "result": {
+        "frameCount": 170,
+        "meanSsim": 0.99977,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "toggle-group",
+      "title": "Toggle Group",
+      "description": "A segmented control whose active value is a pure function of the timeline; a raised thumb SLIDES between segments (position + width derived from a float indicator offset, no jumps) and the labels crossfade color via mixOklch. The tabs precedent without content panels. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 3.8333333333333335
+    },
+    "parity": {
+      "slug": "toggle-group",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/toggle-group/index.tsx"
+      },
+      "result": {
+        "frameCount": 115,
+        "meanSsim": 0.999926,
+        "pass": true
+      }
+    }
+  },
+  {
+    "item": {
+      "name": "tooltip",
+      "title": "Tooltip",
+      "description": "A tooltip whose hidden/visible state is a pure function of the timeline. The Tooltip renderer is a pure function of a TooltipStyle (opacity, scale, translate); useTooltipTransition eases both the show and the hide. The static `side` prop sets the enter translate axis and the arrow placement. Compiled for deterministic HyperFrames playback by Hyfrme.",
+      "tags": [
+        "ui",
+        "primitive",
+        "remocn-port"
+      ],
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "duration": 4
+    },
+    "parity": {
+      "slug": "tooltip",
+      "origin": {
+        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+        "source": "registry/remocn-ui/tooltip/index.tsx"
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.999846,
         "pass": true
       }
     }
@@ -5570,1255 +6817,8 @@
   },
   {
     "item": {
-      "name": "accordion",
-      "title": "UI Accordion",
-      "description": "A disclosure whose opened/closed state is a pure function of the timeline; the panel reveal, chevron, and background are keyframed presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 3.3333333333333335
-    },
-    "parity": {
-      "slug": "accordion",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/accordion/index.tsx"
-      },
-      "result": {
-        "frameCount": 100,
-        "meanSsim": 0.999846,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "ai-prompt-flow",
-      "title": "UI AI Prompt Flow",
-      "description": "An AI prompt composition: a prompt types into the field, the Generate button runs hover → press → loading, a skeleton shimmer reveals, then crossfades into the generated answer, and a ready toast slides in. A pure orchestrator — the shimmer is owned by the skeleton-block motion atom; every other channel comes from a composed primitive's hook. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 7.666666666666667
-    },
-    "parity": {
-      "slug": "ai-prompt-flow",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/ai-prompt-flow/index.tsx"
-      },
-      "result": {
-        "frameCount": 230,
-        "meanSsim": 0.99969,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "alert-dialog",
-      "title": "UI Alert Dialog",
-      "description": "A modal alert dialog whose opened/closed state is a pure function of the timeline; the backdrop dim and popup zoom are keyframed presets. Self-contained — pair it with the Button as a trigger (see the example). Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "alert-dialog",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/alert-dialog/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999392,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "blur-in",
-      "title": "UI Blur In",
-      "description": "A wrapper that reveals a single child with blur + opacity + a directional offset; a pure state atom, theme-independent — its context is a motion config (blur/distance/axis), not a theme. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 1.3333333333333333
-    },
-    "parity": {
-      "slug": "blur-in",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/blur-in/index.tsx"
-      },
-      "result": {
-        "frameCount": 40,
-        "meanSsim": 0.999916,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "button",
-      "title": "UI Button",
-      "description": "A button whose idle/hover/press/loading/success state is a pure function of the timeline; the loading state composes the Spinner motion atom. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4.4
-    },
-    "parity": {
-      "slug": "button",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/button/index.tsx"
-      },
-      "result": {
-        "frameCount": 132,
-        "meanSsim": 0.99993,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "caret",
-      "title": "UI Caret",
-      "description": "A blinking text caret — a controlled vertical bar, or a pure motion atom that blinks deterministically from useCurrentFrame. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "caret",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/caret/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999995,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "chat-flow",
-      "title": "UI Chat Flow",
-      "description": "A messaging composition: an outgoing message types into the composer, the send button presses, and the bubble rises in; the other side shows a typing indicator that swaps into the reply, and reactions pop in. A pure orchestrator — every channel comes from a composed primitive's hook (Input, MessageBubble, TypingIndicator). Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 432,
-        "height": 768
-      },
-      "duration": 12
-    },
-    "parity": {
-      "slug": "chat-flow",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/chat-flow/index.tsx"
-      },
-      "result": {
-        "frameCount": 360,
-        "meanSsim": 0.998549,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "checkbox",
-      "title": "UI Checkbox",
-      "description": "A checkbox whose checked/unchecked state is a pure function of the timeline; the box fill, border, and checkmark draw are keyframed presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 3.3333333333333335
-    },
-    "parity": {
-      "slug": "checkbox",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/checkbox/index.tsx"
-      },
-      "result": {
-        "frameCount": 100,
-        "meanSsim": 0.999986,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "checkout-flow",
-      "title": "UI Checkout Flow",
-      "description": "A cursor-driven checkout card: the card and its fields blur-in, then the pointer flips a billing-cycle toggle, types a card number, ticks the terms checkbox, and presses Pay through to success, ending in a toast. A pure orchestrator — every channel comes from a composed primitive's transition hook. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 10.666666666666666
-    },
-    "parity": {
-      "slug": "checkout-flow",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/checkout-flow/index.tsx"
-      },
-      "result": {
-        "frameCount": 320,
-        "meanSsim": 0.999307,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "combobox",
-      "title": "UI Combobox",
-      "description": "A combobox whose opened/closed state is a pure function of the timeline; the panel fade/scale/lift are keyframed presets like select. The trigger reuses the Input presets (typed query + caret reveal via an injected inputStyle), the list is filtered by a pure case-insensitive substring on the visible query prefix, and rows reuse the SelectItem row. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "combobox",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/combobox/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999864,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "command-menu",
-      "title": "UI Command Menu",
-      "description": "A ⌘K command palette whose opened/closed state is a pure function of the timeline; the panel zoom + backdrop dim are dialog-like keyframed presets. The search row reveals the typed query, the list is filtered by a pure case-insensitive substring on the visible query prefix, and rows reuse the CommandMenuItem row. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4.333333333333333
-    },
-    "parity": {
-      "slug": "command-menu",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/command-menu/index.tsx"
-      },
-      "result": {
-        "frameCount": 130,
-        "meanSsim": 0.999748,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "command-menu-item",
-      "title": "UI Command Menu Item",
-      "description": "A command-palette row whose idle/hover/press/selected state is a pure function of the timeline. Leading icon + label + trailing shortcut kbd. Exports an inline CommandMenuItemRow (reused by CommandMenu) and a standalone CommandMenuItem atom; the row background, label color, and icon color are keyframed presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "command-menu-item",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/command-menu-item/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999948,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "context-menu",
-      "title": "UI Context Menu",
-      "description": "A right-click context menu whose opened/closed state is a pure function of the timeline; the panel scales from its top-left corner (the click point) with a fade + lift. No trigger — the caller positions it. Rows reuse the DropdownMenuItem row; items are plain string labels. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4.5
-    },
-    "parity": {
-      "slug": "context-menu",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/context-menu/index.tsx"
-      },
-      "result": {
-        "frameCount": 135,
-        "meanSsim": 0.999853,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "cursor",
-      "title": "UI Cursor",
-      "description": "An animated cursor that moves between waypoints, clicks (ripple), and drags. The Cursor renderer is a pure function of a numeric CursorStyle channel; useCursorPath reads the frame and eases the path, ripple, and press phases. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4.666666666666667
-    },
-    "parity": {
-      "slug": "cursor",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/cursor/index.tsx"
-      },
-      "result": {
-        "frameCount": 140,
-        "meanSsim": 0.999912,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "dialog",
-      "title": "UI Dialog",
-      "description": "A modal dialog whose opened/closed state is a pure function of the timeline; the backdrop dim and popup zoom are keyframed presets, with a close button and a primary action. Self-contained — pair it with the Button as a trigger (see the example). Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "dialog",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/dialog/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999513,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "drawer",
-      "title": "UI Drawer",
-      "description": "A bottom panel whose opened/closed state is a pure function of the timeline; the backdrop dim and bottom-edge slide-up are keyframed presets, with a drag handle and a primary action. Self-contained — pair it with the Button as a trigger (see the example). Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "drawer",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/drawer/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999516,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "dropdown-menu",
-      "title": "UI Dropdown Menu",
-      "description": "A dropdown menu whose opened/closed state is a pure function of the timeline; the trigger reuses the Button primitive and the reveal panel composes DropdownMenuItem rows. The panel fade, scale, lift, and chevron are keyframed presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "dropdown-menu",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/dropdown-menu/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999834,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "dropdown-menu-item",
-      "title": "UI Dropdown Menu Item",
-      "description": "A dropdown menu action row whose idle/hover/press state is a pure function of the timeline; the row background and label color are keyframed presets. Composed inside the DropdownMenu panel. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "dropdown-menu-item",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/dropdown-menu-item/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999975,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "field",
-      "title": "UI Field",
-      "description": "A static layout family for composing labeled form controls, modeled on shadcn's Field: FieldGroup ▸ Field ▸ FieldLabel / FieldControl / FieldDescription. Reads no frame and holds no state — colors come from the resolved theme. FieldControl is a relative fixed-height slot for the absolute remocn-ui controls (Input, Button). Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 3
-    },
-    "parity": {
-      "slug": "field",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/field/index.tsx"
-      },
-      "result": {
-        "frameCount": 90,
-        "meanSsim": 0.999856,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "imessage-chat-flow",
-      "title": "UI iMessage Chat Flow",
-      "description": "An iMessage-styled messaging composition: gray incoming and blue outgoing bubbles with tails, an in-thread typing bubble with dots, a Delivered label, and tapback-style reaction badges. The composer types the outgoing message before sending. Chrome icons come from lucide-react; self-contained otherwise, composing the caret and typing-indicator primitives. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 432,
-        "height": 768
-      },
-      "duration": 12
-    },
-    "parity": {
-      "slug": "imessage-chat-flow",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/imessage-chat-flow/index.tsx"
-      },
-      "result": {
-        "frameCount": 360,
-        "meanSsim": 0.997919,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "input",
-      "title": "UI Input",
-      "description": "A text input whose idle/hover/active/typing/invalid state is a pure function of the timeline; the focus ring, border, caret, and value reveal are keyframed presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "input",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/input/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999876,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "message-bubble",
-      "title": "UI Message Bubble",
-      "description": "A chat message bubble whose hidden/visible state is a pure function of the timeline. The renderer is a pure function of a MessageBubbleStyle (opacity, translateY, scale); useMessageBubbleTransition eases the rise-in enter. The incoming/outgoing variant resolves bubble color and alignment from the theme, and an optional reaction badge pops in on its own channel. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 3
-    },
-    "parity": {
-      "slug": "message-bubble",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/message-bubble/index.tsx"
-      },
-      "result": {
-        "frameCount": 90,
-        "meanSsim": 0.99991,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "onboarding-stepper-flow",
-      "title": "UI Onboarding Stepper Flow",
-      "description": "A multi-step onboarding composition: a horizontal stepper advances through panels of input, radio, and switch fields, finishing on a Finish button that runs to success. Panel crossfade derives linearly from the stepper's exposed position channel; every other channel comes from a composed primitive's hook. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 5.833333333333333
-    },
-    "parity": {
-      "slug": "onboarding-stepper-flow",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/onboarding-stepper-flow/index.tsx"
-      },
-      "result": {
-        "frameCount": 175,
-        "meanSsim": 0.999777,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "popover",
-      "title": "UI Popover",
-      "description": "A popover/hover-card whose opened/closed state is a pure function of the timeline. The Popover renderer is a pure function of a PopoverStyle (opacity, scale, translate); usePopoverTransition eases both the open and the close. The static `side` prop sets the enter translate axis; renders title + description and/or arbitrary children in a popover card. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4.333333333333333
-    },
-    "parity": {
-      "slug": "popover",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/popover/index.tsx"
-      },
-      "result": {
-        "frameCount": 130,
-        "meanSsim": 0.999808,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "progress",
-      "title": "UI Progress",
-      "description": "A progress bar whose fill is a pure function of a numeric value channel (value-channel deviation). The Progress renderer takes a clamped 0–100 value; useProgressTransition reads the frame and eases the fill between value steps. Muted track + primary indicator, optional floored percentage label. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 5.333333333333333
-    },
-    "parity": {
-      "slug": "progress",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/progress/index.tsx"
-      },
-      "result": {
-        "frameCount": 160,
-        "meanSsim": 0.99997,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "radio",
-      "title": "UI Radio",
-      "description": "A radio whose checked/unchecked state is a pure function of the timeline; the ring border and inner dot pop are keyframed presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 3.3333333333333335
-    },
-    "parity": {
-      "slug": "radio",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/radio/index.tsx"
-      },
-      "result": {
-        "frameCount": 100,
-        "meanSsim": 0.999967,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "resizable",
-      "title": "UI Resizable",
-      "description": "Two panels split by a draggable handle, where the split ratio is a numeric channel plus a handle idle/hover/press channel (dual-channel value-channel deviation). The Resizable renderer is pure (clamped 0–1 ratio, handle scale, grab-ring opacity); useResizableTransition reads the frame and eases both channels — ratio as a numeric lerp, the handle visual from its state presets. Horizontal and vertical splits; 1px divider + centered grip pill with a derived grab ring. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 6.833333333333333
-    },
-    "parity": {
-      "slug": "resizable",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/resizable/index.tsx"
-      },
-      "result": {
-        "frameCount": 205,
-        "meanSsim": 0.999863,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "select",
-      "title": "UI Select",
-      "description": "A select whose opened/closed state is a pure function of the timeline; the trigger reuses the Button primitive and the reveal panel composes SelectItem rows. The panel fade, scale, lift, and chevron are keyframed presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "select",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/select/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999809,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "select-item",
-      "title": "UI Select Item",
-      "description": "A select option row whose idle/hover/press/selected state is a pure function of the timeline; the row background, label color, and check icon are keyframed presets. Composed inside the Select panel. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "select-item",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/select-item/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999967,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "settings-toggle-flow",
-      "title": "UI Settings Toggle Flow",
-      "description": "A two-column settings card: the card and its controls blur-in, then the cursor flips a switch, opens a select, drags a labeled slider, and clicks Save, ending in a saved toast. A pure orchestrator — every channel comes from a composed primitive's transition hook. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 10.666666666666666
-    },
-    "parity": {
-      "slug": "settings-toggle-flow",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/settings-toggle-flow/index.tsx"
-      },
-      "result": {
-        "frameCount": 320,
-        "meanSsim": 0.999174,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "sheet",
-      "title": "UI Sheet",
-      "description": "A side panel whose opened/closed state is a pure function of the timeline; the backdrop dim and right-edge slide-in are keyframed presets, with a close button and a primary action. Self-contained — pair it with the Button as a trigger (see the example). Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "sheet",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/sheet/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999581,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "signup-flow",
-      "title": "UI Signup Flow",
-      "description": "A signup card composition: a real shadcn-style card (header, labeled Full Name / Email / Password / Confirm fields, primary + Google-outline buttons, sign-in footer) whose cursor fills each field top-to-bottom, then clicks Create account (hover → press → loading → success) as a success toast slides in. A pure orchestrator — every channel comes from a composed primitive's transition hook. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 12.666666666666666
-    },
-    "parity": {
-      "slug": "signup-flow",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/signup-flow/index.tsx"
-      },
-      "result": {
-        "frameCount": 380,
-        "meanSsim": 0.999182,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "skeleton",
-      "title": "UI Skeleton",
-      "description": "A skeleton→content crossfade whose loading/loaded state is a pure function of the timeline. The Skeleton renderer is pure (reads no frame); only the composed SkeletonBlock shimmer reads it. SkeletonStyle opacities sum to 1 so the box never dims; real children sit in normal flow and the placeholder (a lines/card layout or a custom node) is an absolute overlay. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 7.333333333333333
-    },
-    "parity": {
-      "slug": "skeleton",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/skeleton/index.tsx"
-      },
-      "result": {
-        "frameCount": 220,
-        "meanSsim": 0.999944,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "skeleton-block",
-      "title": "UI Skeleton Block",
-      "description": "A shimmer placeholder block — a motion atom (spinner pattern). A directional highlight gradient sweeps across deterministically from useCurrentFrame() and loops seamlessly. Configurable width/height/radius/speed and base/highlight colors. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "skeleton-block",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/skeleton-block/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999981,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "slider",
-      "title": "UI Slider",
-      "description": "A slider whose fill is a numeric value channel plus a thumb idle/hover/press channel (dual-channel value-channel deviation). The Slider renderer is pure (clamped 0–100 value, thumb scale, grab-ring opacity); useSliderTransition reads the frame and eases both channels — value as a numeric lerp, the thumb visual from its state presets. Muted track + primary range + bordered thumb with a derived grab ring. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "slider",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/slider/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999957,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "spinner",
-      "title": "UI Spinner",
-      "description": "A deterministic spinning arc that loops on the Remotion frame — a pure motion atom with no state. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "spinner",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/spinner/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999989,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "stepper",
-      "title": "UI Stepper",
-      "description": "A horizontal onboarding stepper whose progress is a pure function of a continuous step index (value-channel deviation). Every circle (fill, number, stroke-dash check) and connector (primary fill fraction) derives purely from the float position; useStepperTransition reads the frame and eases position between step indices. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 5
-    },
-    "parity": {
-      "slug": "stepper",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/stepper/index.tsx"
-      },
-      "result": {
-        "frameCount": 150,
-        "meanSsim": 0.99991,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "switch",
-      "title": "UI Switch",
-      "description": "A switch whose checked/unchecked state is a pure function of the timeline; the track fill and sliding thumb are keyframed presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 3.3333333333333335
-    },
-    "parity": {
-      "slug": "switch",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/switch/index.tsx"
-      },
-      "result": {
-        "frameCount": 100,
-        "meanSsim": 0.999978,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "tabs",
-      "title": "UI Tabs",
-      "description": "A tabs widget whose active-tab state is a pure function of the timeline; the sliding indicator, label colors, and panel crossfade are keyframed/derived presets. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "tabs",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/tabs/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999855,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "telegram-chat-flow",
-      "title": "UI Telegram Chat Flow",
-      "description": "A Telegram-styled messaging composition: tailed bubbles (white incoming, blue outgoing) with in-bubble timestamps and delivery checks, a header that flips to 'typing…' while the other side replies, reaction chips, and a Telegram composer that types the outgoing message before sending. Self-contained — it owns its timeline and only composes the caret primitive. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 432,
-        "height": 768
-      },
-      "duration": 12
-    },
-    "parity": {
-      "slug": "telegram-chat-flow",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/telegram-chat-flow/index.tsx"
-      },
-      "result": {
-        "frameCount": 360,
-        "meanSsim": 0.995265,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "toast",
-      "title": "UI Toast",
-      "description": "A toast notification whose hidden/visible state is a pure function of the timeline. The Toast renderer is a pure function of a ToastStyle (opacity, translateY, scale); useToastTransition eases both the slide-in enter and the auto-dismiss exit. Variants default/success/error change the leading icon and its color. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 5.666666666666667
-    },
-    "parity": {
-      "slug": "toast",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/toast/index.tsx"
-      },
-      "result": {
-        "frameCount": 170,
-        "meanSsim": 0.99977,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "toggle-group",
-      "title": "UI Toggle Group",
-      "description": "A segmented control whose active value is a pure function of the timeline; a raised thumb SLIDES between segments (position + width derived from a float indicator offset, no jumps) and the labels crossfade color via mixOklch. The tabs precedent without content panels. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 3.8333333333333335
-    },
-    "parity": {
-      "slug": "toggle-group",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/toggle-group/index.tsx"
-      },
-      "result": {
-        "frameCount": 115,
-        "meanSsim": 0.999926,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
-      "name": "tooltip",
-      "title": "UI Tooltip",
-      "description": "A tooltip whose hidden/visible state is a pure function of the timeline. The Tooltip renderer is a pure function of a TooltipStyle (opacity, scale, translate); useTooltipTransition eases both the show and the hide. The static `side` prop sets the enter translate axis and the arrow placement. Compiled for deterministic HyperFrames playback by Hyfrme.",
-      "tags": [
-        "ui",
-        "primitive",
-        "remocn-port"
-      ],
-      "dimensions": {
-        "width": 1280,
-        "height": 720
-      },
-      "duration": 4
-    },
-    "parity": {
-      "slug": "tooltip",
-      "origin": {
-        "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
-        "source": "registry/remocn-ui/tooltip/index.tsx"
-      },
-      "result": {
-        "frameCount": 120,
-        "meanSsim": 0.999846,
-        "pass": true
-      }
-    }
-  },
-  {
-    "item": {
       "name": "typing-indicator",
-      "title": "UI Typing Indicator",
+      "title": "Typing Indicator",
       "description": "A continuous typing animation: N dots bounce with a staggered sine wave. A motion atom — it reads the frame and takes color, size, gap, and speed props, defaulting to currentColor so it inherits the bubble it sits in. Compiled for deterministic HyperFrames playback by Hyfrme.",
       "tags": [
         "ui",
