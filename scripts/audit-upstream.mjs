@@ -1,9 +1,10 @@
 import { spawnSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
-import { dirname, resolve } from "node:path";
+import { dirname, relative, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
+const explicitSource = process.env.REMOCN_SOURCE !== undefined;
 const sourceRoot = resolve(root, process.env.REMOCN_SOURCE ?? ".work/remocn");
 const lintScript =
   process.env.R2HF_LINT_SCRIPT ??
@@ -14,6 +15,41 @@ const lintScript =
 const registryPath = resolve(sourceRoot, "registry-artifacts/registry.json");
 const outputPath = resolve(root, "catalog/upstream-inventory.json");
 const reportPath = resolve(root, "docs/UPSTREAM_STATUS.md");
+const sourceCommit = spawnSync("git", ["-C", sourceRoot, "rev-parse", "HEAD"], {
+  encoding: "utf8",
+}).stdout.trim();
+const sourceStatus = spawnSync(
+  "git",
+  ["-C", sourceRoot, "status", "--porcelain=v1", "--untracked-files=all"],
+  {
+    encoding: "utf8",
+  },
+).stdout.trim();
+const pinnedCommit = await readFile(outputPath, "utf8")
+  .then(JSON.parse)
+  .then((inventory) => inventory.summary?.upstream?.commit)
+  .catch(() => null);
+
+if (!sourceCommit) {
+  throw new Error(`Could not resolve a Remocn commit in ${sourceRoot}.`);
+}
+
+if (!explicitSource && pinnedCommit && sourceCommit !== pinnedCommit) {
+  throw new Error(
+    [
+      `The default Remocn checkout is at ${sourceCommit},`,
+      `but the generated inventory is pinned to ${pinnedCommit}.`,
+      "Update .work/remocn to the pinned commit, or set REMOCN_SOURCE to an intentional checkout.",
+    ].join(" "),
+  );
+}
+
+if (sourceStatus) {
+  throw new Error(
+    `The Remocn checkout at ${sourceRoot} has uncommitted files. Audit a clean checkout so the inventory matches ${sourceCommit}.`,
+  );
+}
+
 const registry = JSON.parse(await readFile(registryPath, "utf8"));
 const publishedRegistry = await readFile(
   resolve(root, "registry", "registry.json"),
@@ -73,6 +109,16 @@ const detectFeatures = (source) => {
   return features;
 };
 
+const normalizeLintResult = (result) => ({
+  ...result,
+  findings: (result.findings ?? []).map((finding) => ({
+    ...finding,
+    file: finding.file.startsWith(sourceRoot)
+      ? relative(sourceRoot, finding.file).replaceAll("\\", "/")
+      : finding.file,
+  })),
+});
+
 const items = [];
 
 for (const item of registry.items) {
@@ -82,9 +128,10 @@ for (const item of registry.items) {
         encoding: "utf8",
       })
     : null;
-  const lintResult = lint?.stdout
+  const rawLintResult = lint?.stdout
     ? JSON.parse(lint.stdout)
     : { files_scanned: 0, blockers: 0, warnings: 0, infos: 0, findings: [] };
+  const lintResult = normalizeLintResult(rawLintResult);
   const sourceChunks = [];
   for (const file of item.files ?? []) {
     const absolutePath = resolve(sourceRoot, file.path);
@@ -136,12 +183,26 @@ const countBy = (values, key) =>
       ]),
   );
 
+const visualNames = new Set(
+  items.filter((item) => item.visual).map((item) => item.name),
+);
+const publishedNames = new Set(
+  publishedRegistry.items?.map((item) => item.name) ?? [],
+);
+const publishedCount = [...visualNames].filter((name) =>
+  publishedNames.has(name),
+).length;
+const missingNames = [...visualNames]
+  .filter((name) => !publishedNames.has(name))
+  .sort();
+const extraNames = [...publishedNames]
+  .filter((name) => !visualNames.has(name))
+  .sort();
+
 const summary = {
   upstream: {
     repository: "https://github.com/Remocn/remocn",
-    commit: spawnSync("git", ["-C", sourceRoot, "rev-parse", "HEAD"], {
-      encoding: "utf8",
-    }).stdout.trim(),
+    commit: sourceCommit,
   },
   totalRegistryItems: items.length,
   visualItems: items.filter((item) => item.visual).length,
@@ -151,6 +212,11 @@ const summary = {
     "family",
   ),
   byTranslationClass: countBy(items, "translationClass"),
+  coverage: {
+    publishedItems: publishedCount,
+    missingItems: missingNames,
+    extraItems: extraNames,
+  },
   blockerItems: items
     .filter((item) => item.lint.blockers > 0)
     .map((item) => item.name),
@@ -162,27 +228,34 @@ await writeFile(outputPath, `${JSON.stringify({ summary, items }, null, 2)}\n`);
 const tableRows = Object.entries(summary.byTranslationClass)
   .map(([classification, count]) => `| ${classification} | ${count} |`)
   .join("\n");
-const publishedCount = publishedRegistry.items?.length ?? 0;
 const iconNames = new Set(
   items
     .filter((item) => item.family === "icons" && item.visual)
     .map((item) => item.name),
 );
-const publishedIconCount =
-  publishedRegistry.items?.filter((item) => iconNames.has(item.name)).length ??
-  0;
-const textNames = new Set(textFixtures.map((item) => item.slug));
-const publishedTextCount =
-  publishedRegistry.items?.filter((item) => textNames.has(item.name)).length ??
-  0;
-const coreNames = new Set(coreFixtures.map((item) => item.slug));
-const publishedCoreCount =
-  publishedRegistry.items?.filter((item) => coreNames.has(item.name)).length ??
-  0;
-const primitiveNames = new Set(primitiveFixtures.map((item) => item.slug));
-const publishedPrimitiveCount =
-  publishedRegistry.items?.filter((item) => primitiveNames.has(item.name))
-    .length ?? 0;
+const fixtureNames = (fixtures) =>
+  new Set(
+    fixtures.map((item) => item.slug).filter((name) => visualNames.has(name)),
+  );
+const textNames = fixtureNames(textFixtures);
+const coreNames = fixtureNames(coreFixtures);
+const primitiveNames = fixtureNames(primitiveFixtures);
+const categorizedNames = new Set([
+  ...iconNames,
+  ...textNames,
+  ...coreNames,
+  ...primitiveNames,
+]);
+const standaloneNames = new Set(
+  [...visualNames].filter((name) => !categorizedNames.has(name)),
+);
+const publishedIn = (names) =>
+  [...names].filter((name) => publishedNames.has(name)).length;
+const publishedIconCount = publishedIn(iconNames);
+const publishedTextCount = publishedIn(textNames);
+const publishedCoreCount = publishedIn(coreNames);
+const publishedPrimitiveCount = publishedIn(primitiveNames);
+const publishedStandaloneCount = publishedIn(standaloneNames);
 const blockerRows = items
   .filter((item) => item.lint.blockers > 0)
   .map(
@@ -212,12 +285,13 @@ registry manifest and the official Remotion-to-HyperFrames source linter.
 
 ## Verified progress
 
-- ${publishedCount} visual ports published in the local verified registry.
+- ${publishedCount}/${visualNames.size} visual ports published in the local verified registry.
 - ${publishedIconCount}/${iconNames.size} animated icons published.
-- ${publishedTextCount}/${textFixtures.length} typography/effect ports published.
-- ${publishedCoreCount}/${coreFixtures.length} composition/data ports published.
-- ${publishedPrimitiveCount}/${primitiveFixtures.length} UI primitive ports published.
-- ${Math.max(0, summary.visualItems - publishedCount)} visual items remain.
+- ${publishedTextCount}/${textNames.size} typography/effect ports published.
+- ${publishedCoreCount}/${coreNames.size} composition/data ports published.
+- ${publishedPrimitiveCount}/${primitiveNames.size} UI primitive ports published.
+${standaloneNames.size > 0 ? `- ${publishedStandaloneCount}/${standaloneNames.size} standalone visual ports published (${[...standaloneNames].map((name) => `\`${name}\``).join(", ")}).\n` : ""}- ${missingNames.length} visual items remain.
+- ${extraNames.length} local-only registry items.
 
 | Translation class | Count |
 | --- | ---: |
