@@ -11,8 +11,14 @@ const iconFixtures = JSON.parse(
 );
 const iconNames = new Set(iconFixtures.map((entry) => entry.slug));
 const representativeTimes = new Map([
+  ["displacement", 1.2],
+  ["ember-burn", 1.33],
+  ["glitch-cut", 1.3],
+  ["grid-wave", 1.4],
+  ["particle-dissolve", 1.4],
   ["slide-swap", 5.8],
   ["spring-settle", 5.8],
+  ["tv-power-off", 1.2],
 ]);
 
 const run = (args) =>

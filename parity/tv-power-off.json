@@ -1,0 +1,46 @@
+{
+  "slug": "tv-power-off",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "source": "registry/remocn/tv-power-off/index.tsx",
+    "entry": "components/docs/examples/tv-power-off-example.tsx",
+    "config": "registry/remocn/tv-power-off/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 62,
+    "props": {
+      "durationInFrames": 18,
+      "gain": 1,
+      "afterglow": 1,
+      "phosphor": "#d8ecff"
+    },
+    "background": "#050505"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 62,
+    "meanSsim": 0.997402,
+    "minSsim": 0.994915,
+    "p05Ssim": 0.99493,
+    "p95Ssim": 1,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/tv-power-off/remocn.mp4",
+    "hyperframesVideo": "public/previews/tv-power-off/hyperframes.mp4",
+    "summary": "parity/tv-power-off-diff/summary.json"
+  }
+}

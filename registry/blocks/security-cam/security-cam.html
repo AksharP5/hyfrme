@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"compression","type":"number","label":"Compression","default":0.7,"min":0,"max":1,"step":0.05},{"id":"blockSize","type":"number","label":"Macroblock","default":10,"min":4,"max":32,"step":1},{"id":"noise","type":"number","label":"Sensor noise","default":0.6,"min":0,"max":2,"step":0.05},{"id":"intensity","type":"number","label":"Intensity","default":1,"min":0,"max":1,"step":0.05}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #0a0a0a; }
+      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; }
+      [data-hyfrme-seek-probe] { position: absolute; width: 1px; height: 1px; pointer-events: none; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="security-cam" data-start="0" data-duration="3" data-fps="30" data-width="1280" data-height="720">
+      <canvas layoutsubtree hidden data-layout-ignore data-hyfrme-clock></canvas>
+      <span data-hyfrme-seek-probe aria-hidden="true"></span>
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="3" data-track-index="0">
+        <div id="hyfrme-source-root" data-layout-ignore data-layout-allow-occlusion data-layout-allow-overlap></div>
+      </div>
+    </div>
+    <script src="./security-cam.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const clock = document.querySelector('[data-composition-id="security-cam"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="security-cam"] [data-hyfrme-clock]', {
+        frame: 90,
+        duration: 3,
+        ease: "none",
+        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(89, Math.round(clock.frame)))),
+      });
+      timeline.to('[data-composition-id="security-cam"] [data-hyfrme-seek-probe]', { x: 120, duration: 3, ease: "none" }, 0);
+      window.__timelines["security-cam"] = timeline;
+    </script>
+  </body>
+</html>

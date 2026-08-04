@@ -139,7 +139,43 @@ const coreNames = [
   "shader-strata",
   "shader-weave",
   "reel",
+  "displacement",
+  "ember-burn",
+  "glitch-cut",
+  "grid-wave",
+  "particle-dissolve",
+  "ascii-render",
+  "camera-lens",
+  "crt-screen",
+  "halftone-print",
+  "hologram",
+  "pixelate-region",
+  "security-cam",
+  "sustained-glitch",
+  "tv-power-off",
+  "underwater-ripple",
+  "vhs-filter",
 ];
+const canvasTransitionNames = new Set([
+  "displacement",
+  "ember-burn",
+  "glitch-cut",
+  "grid-wave",
+  "particle-dissolve",
+]);
+const canvasFilterNames = new Set([
+  "ascii-render",
+  "camera-lens",
+  "crt-screen",
+  "halftone-print",
+  "hologram",
+  "pixelate-region",
+  "security-cam",
+  "sustained-glitch",
+  "tv-power-off",
+  "underwater-ripple",
+  "vhs-filter",
+]);
 const primitiveNames = [
   "caret",
   "skeleton-block",
@@ -352,6 +388,70 @@ const sceneOverrides = {
   reel: {
     source: "components/docs/examples/reel-example.tsx",
     componentName: "ReelExampleScene",
+  },
+  displacement: {
+    source: "components/docs/examples/displacement-example.tsx",
+    componentName: "DisplacementExampleScene",
+  },
+  "ember-burn": {
+    source: "components/docs/examples/ember-burn-example.tsx",
+    componentName: "EmberBurnExampleScene",
+  },
+  "glitch-cut": {
+    source: "components/docs/examples/glitch-cut-example.tsx",
+    componentName: "GlitchCutExampleScene",
+  },
+  "grid-wave": {
+    source: "components/docs/examples/grid-wave-example.tsx",
+    componentName: "GridWaveExampleScene",
+  },
+  "particle-dissolve": {
+    source: "components/docs/examples/particle-dissolve-example.tsx",
+    componentName: "ParticleDissolveExampleScene",
+  },
+  "ascii-render": {
+    source: "components/docs/examples/ascii-render-example.tsx",
+    componentName: "AsciiRenderExampleScene",
+  },
+  "camera-lens": {
+    source: "components/docs/examples/camera-lens-example.tsx",
+    componentName: "CameraLensExampleScene",
+  },
+  "crt-screen": {
+    source: "components/docs/examples/crt-screen-example.tsx",
+    componentName: "CrtScreenExampleScene",
+  },
+  "halftone-print": {
+    source: "components/docs/examples/halftone-print-example.tsx",
+    componentName: "HalftonePrintExampleScene",
+  },
+  hologram: {
+    source: "components/docs/examples/hologram-example.tsx",
+    componentName: "HologramExampleScene",
+  },
+  "pixelate-region": {
+    source: "components/docs/examples/pixelate-region-example.tsx",
+    componentName: "PixelateRegionExampleScene",
+  },
+  "security-cam": {
+    source: "components/docs/examples/security-cam-example.tsx",
+    componentName: "SecurityCamExampleScene",
+  },
+  "sustained-glitch": {
+    source: "components/docs/examples/sustained-glitch-example.tsx",
+    componentName: "SustainedGlitchExampleScene",
+  },
+  "tv-power-off": {
+    source: "components/docs/examples/tv-power-off-example.tsx",
+    componentName: "TvPowerOffExampleScene",
+  },
+  "underwater-ripple": {
+    source: "components/docs/examples/underwater-ripple-example.tsx",
+    componentName: "UnderwaterRippleExampleScene",
+  },
+  "vhs-filter": {
+    source: "components/docs/examples/vhs-filter-example.tsx",
+    componentName: "VhsFilterExampleScene",
   },
   button: {
     source: "components/docs/examples/button-example.tsx",
@@ -701,6 +801,16 @@ const remotionPlugin = {
           export {Easing, interpolate, interpolateColors, random, spring};
           export const delayRender = () => 0;
           export const continueRender = () => {};
+          export const useDelayRender = () => ({delayRender, continueRender});
+          export const isHtmlInCanvasSupported = () => {
+            if (typeof document === "undefined") return false;
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+            return typeof context?.drawElementImage === "function" &&
+              typeof canvas.requestPaint === "function" &&
+              typeof canvas.captureElementImage === "function" &&
+              "transferControlToOffscreen" in HTMLCanvasElement.prototype;
+          };
           export const useCurrentFrame = () => useContext(LocalFrameContext) ?? currentFrame;
           export const useVideoConfig = () => videoConfig;
           export const AbsoluteFill = ({children, className, style, ...props}) => React.createElement("div", {
@@ -759,9 +869,44 @@ const transitionsPlugin = {
             const frame = useCurrentFrame();
             const {fps} = useVideoConfig();
             const entries = React.Children.toArray(children);
+            const outgoingImages = React.useRef({});
+            const incomingImages = React.useRef({});
             let timelineCursor = 0;
             let transitionOffset = 0;
             const rendered = [];
+            const progressUpdates = [];
+
+            const drawIfSynced = (key) => {
+              const outgoing = outgoingImages.current[key];
+              const incoming = incomingImages.current[key];
+              if (!incoming?.elementImage && outgoing?.elementImage) {
+                incoming?.draw?.(null, null, 0);
+                outgoing.draw(null, outgoing.elementImage, 0);
+                return;
+              }
+              if (!outgoing?.elementImage && incoming?.elementImage) {
+                outgoing?.draw?.(null, null, 0);
+                incoming.draw(incoming.elementImage, null, 0);
+                return;
+              }
+              if (!outgoing?.elementImage || !incoming?.elementImage) return;
+              if (outgoing.progress !== incoming.progress) return;
+              incoming.draw(
+                incoming.elementImage,
+                outgoing.elementImage,
+                outgoing.progress,
+              );
+              outgoing.draw(null, null, 0);
+            };
+
+            const setOutgoing = (key, elementImage, progress, draw) => {
+              outgoingImages.current[key] = {elementImage, progress, draw};
+              drawIfSynced(key);
+            };
+            const setIncoming = (key, elementImage, progress, draw) => {
+              incomingImages.current[key] = {elementImage, progress, draw};
+              drawIfSynced(key);
+            };
 
             for (let index = 0; index < entries.length; index += 1) {
               const entry = entries[index];
@@ -785,6 +930,7 @@ const transitionsPlugin = {
                   frame: frame - start - entry.props.durationInFrames + duration,
                   fps,
                 });
+                progressUpdates.push({kind: "outgoing", key: index + 1, progress});
                 const presentation = nextTransition.props.presentation;
                 const Presentation = presentation.component;
                 content = <Presentation
@@ -792,6 +938,8 @@ const transitionsPlugin = {
                   presentationDirection="exiting"
                   presentationProgress={progress}
                   presentationDurationInFrames={duration}
+                  onElementImage={(elementImage, draw) => setOutgoing(index + 1, elementImage, progress, draw)}
+                  onUnmount={() => setOutgoing(index + 1, null, null, null)}
                   bothEnteringAndExiting={false}
                 >{content}</Presentation>;
               }
@@ -802,6 +950,7 @@ const transitionsPlugin = {
                   frame: frame - start,
                   fps,
                 });
+                progressUpdates.push({kind: "incoming", key: index - 1, progress});
                 const presentation = previousTransition.props.presentation;
                 const Presentation = presentation.component;
                 content = <Presentation
@@ -809,12 +958,25 @@ const transitionsPlugin = {
                   presentationDirection="entering"
                   presentationProgress={progress}
                   presentationDurationInFrames={duration}
+                  onElementImage={(elementImage, draw) => setIncoming(index - 1, elementImage, progress, draw)}
+                  onUnmount={() => setIncoming(index - 1, null, null, null)}
                   bothEnteringAndExiting={false}
                 >{content}</Presentation>;
               }
 
               rendered.push(<Sequence key={index} from={start} durationInFrames={entry.props.durationInFrames}>{content}</Sequence>);
             }
+
+            React.useLayoutEffect(() => {
+              const keys = new Set();
+              for (const update of progressUpdates) {
+                const images = update.kind === "outgoing" ? outgoingImages : incomingImages;
+                const image = images.current[update.key];
+                if (image) image.progress = update.progress;
+                keys.add(update.key);
+              }
+              for (const key of keys) drawIfSynced(key);
+            }, [frame]);
 
             return <>{rendered}</>;
           };
@@ -947,6 +1109,70 @@ const sourceAdjustmentsPlugin = {
   name: "hyfrme-source-adjustments",
   setup(buildApi) {
     buildApi.onLoad(
+      { filter: /registry\/remocn\/canvas-presentation\/index\.tsx$/ },
+      async (args) => {
+        const original = await readFile(args.path, "utf8");
+        const filterCaptureTrigger = `        const instance = instanceRef.current;
+        if (!scene || !capture || !context || !instance) {
+          return;
+        }
+        const elementImage = layout.captureElementImage(scene);`;
+        const safeFilterCapture = `        const instance = instanceRef.current;
+        if (!scene || !capture || !context || !instance) {
+          return;
+        }
+        let elementImage;
+        try {
+          elementImage = layout.captureElementImage(scene);
+        } catch (error) {
+          if (
+            error instanceof DOMException &&
+            error.name === "InvalidStateError" &&
+            error.message.includes("No cached paint record")
+          ) {
+            return;
+          }
+          throw error;
+        }`;
+        const trigger = `    React.useLayoutEffect(() => {
+      const layout = layoutRef.current;
+      if (!layout) {
+        return;
+      }
+      const handle = delayRender("canvas-presentation: filter paint");`;
+        const replacement = `    React.useLayoutEffect(() => {
+      const capture = captureRef.current;
+      const instance = instanceRef.current;
+      if (capture && instance && capture.width > 0 && capture.height > 0) {
+        instance.draw({
+          scene: capture,
+          width: capture.width,
+          height: capture.height,
+          frame: frameRef.current,
+          time: timeRef.current,
+          passedProps: passedPropsRef.current,
+        });
+      }
+      const layout = layoutRef.current;
+      if (!layout) {
+        return;
+      }
+      const handle = delayRender("canvas-presentation: filter paint");`;
+        const contents = original
+          .replace(filterCaptureTrigger, safeFilterCapture)
+          .replace(trigger, replacement);
+        if (
+          !original.includes(filterCaptureTrigger) ||
+          !original.includes(trigger)
+        ) {
+          throw new Error(
+            `Missing expected filter paint effect in ${args.path}`,
+          );
+        }
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
+    buildApi.onLoad(
       { filter: /registry\/remocn\/tracking-in\/index\.tsx$/ },
       async (args) => {
         const original = await readFile(args.path, "utf8");
@@ -1019,6 +1245,7 @@ const loadConfig = async (path) => {
     entryPoints: [path],
     format: "esm",
     platform: "node",
+    plugins: [remotionPlugin, transitionsPlugin],
     tsconfig: resolve(upstream, "tsconfig.json"),
     write: false,
   });
@@ -1048,6 +1275,7 @@ const fontSource = resolve(
   "soft-blur-in",
   "Geist-SemiBold.woff2",
 );
+const geistLatinSource = resolve(root, "assets", "fonts", "Geist-Latin.woff2");
 const jetBrainsMonoSource = resolve(
   root,
   "assets",
@@ -1065,6 +1293,8 @@ const geistMonoSource = resolve(
 const caveatSource = resolve(root, "assets", "fonts", "Caveat-Latin.woff2");
 
 for (const name of selectedNames) {
+  const usesVariableGeist =
+    canvasTransitionNames.has(name) || canvasFilterNames.has(name);
   const inventoryItem = upstreamInventory.items.find(
     (item) => item.name === name,
   );
@@ -1229,7 +1459,7 @@ for (const name of selectedNames) {
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <style>
-      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/${usesVariableGeist ? "Geist-Latin.woff2" : "Geist-SemiBold.woff2"}") format("woff2"); font-style: normal; font-weight: ${usesVariableGeist ? "100 900" : "600"}; font-display: block; }
 ${jetBrainsMonoNames.has(name) ? '      @font-face { font-family: "JetBrains Mono"; src: url("../assets/fonts/JetBrainsMono-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 800; font-display: block; }' : ""}
 ${interNames.has(name) ? '      @font-face { font-family: "Inter"; src: url("../assets/fonts/Inter-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }' : ""}
 ${manropeNames.has(name) ? '      @font-face { font-family: "Manrope"; src: url("../assets/fonts/Manrope-Latin.woff2") format("woff2"); font-style: normal; font-weight: 200 800; font-display: block; }' : ""}
@@ -1239,25 +1469,30 @@ ${caveatNames.has(name) ? '      @font-face { font-family: "Caveat"; src: url(".
       html, body { width: ${fixture.width}px; height: ${fixture.height}px; margin: 0; overflow: hidden; background: ${fixture.background}; }
       body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
       #hyfrme-source-root { position: absolute; inset: 0; }
+${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? "      [data-hyfrme-seek-probe] { position: absolute; width: 1px; height: 1px; pointer-events: none; }" : ""}
     </style>
   </head>
   <body>
     <div id="root" data-composition-id="${name}" data-start="0" data-duration="${duration}" data-fps="${fixture.fps}" data-width="${fixture.width}" data-height="${fixture.height}">
+${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? "      <canvas layoutsubtree hidden data-layout-ignore data-hyfrme-clock></canvas>" : "      <span hidden data-layout-ignore data-hyfrme-clock></span>"}
+${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? '      <span data-hyfrme-seek-probe aria-hidden="true"></span>' : ""}
       <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="${duration}" data-track-index="0">
-        <div id="hyfrme-source-root"${name === "shimmer-sweep" ? " data-layout-allow-occlusion" : ""}></div>
+        <div id="hyfrme-source-root"${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? " data-layout-ignore data-layout-allow-occlusion data-layout-allow-overlap" : name === "shimmer-sweep" ? " data-layout-allow-occlusion" : ""}></div>
       </div>
     </div>
     <script src="./${name}.runtime.js"></script>
     <script>
       window.__timelines = window.__timelines || {};
-      const clock = { frame: 0 };
+      const clock = document.querySelector('[data-composition-id="${name}"] [data-hyfrme-clock]');
+      clock.frame = 0;
       const timeline = gsap.timeline({ paused: true });
-      timeline.to(clock, {
+      timeline.to('[data-composition-id="${name}"] [data-hyfrme-clock]', {
         frame: ${fixture.durationInFrames},
         duration: ${duration},
         ease: "none",
         onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(${fixture.durationInFrames - 1}, Math.round(clock.frame)))),
       });
+${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? `      timeline.to('[data-composition-id="${name}"] [data-hyfrme-seek-probe]', { x: 120, duration: ${duration}, ease: "none" }, 0);` : ""}
       window.__timelines["${name}"] = timeline;
     </script>
   </body>
@@ -1371,7 +1606,10 @@ ${caveatNames.has(name) ? '      @font-face { font-family: "Caveat"; src: url(".
   }
   await writeFile(resolve(blockDirectory, `${name}.html`), html);
   await writeFile(resolve(blockDirectory, `${name}.runtime.js`), runtime);
-  await copyFile(fontSource, resolve(blockDirectory, "Geist-SemiBold.woff2"));
+  const geistFile = usesVariableGeist
+    ? { source: geistLatinSource, name: "Geist-Latin.woff2" }
+    : { source: fontSource, name: "Geist-SemiBold.woff2" };
+  await copyFile(geistFile.source, resolve(blockDirectory, geistFile.name));
   if (jetBrainsMonoNames.has(name)) {
     await copyFile(
       jetBrainsMonoSource,
@@ -1410,7 +1648,11 @@ ${caveatNames.has(name) ? '      @font-face { font-family: "Caveat"; src: url(".
             ? ["typography", "effect", "remocn-port"]
             : catalogFamily === "primitive"
               ? ["ui", "primitive", "remocn-port"]
-              : ["composition", "data", "remocn-port"],
+              : canvasTransitionNames.has(name)
+                ? ["transition", "html-in-canvas", "webgl", "remocn-port"]
+                : canvasFilterNames.has(name)
+                  ? ["filter", "html-in-canvas", "webgl", "remocn-port"]
+                  : ["composition", "data", "remocn-port"],
         author: "Hyfrme",
         authorUrl: "https://github.com/AksharP5/hyfrme",
         license: paperShaderNames.has(name)
@@ -1430,8 +1672,8 @@ ${caveatNames.has(name) ? '      @font-face { font-family: "Caveat"; src: url(".
             type: "hyperframes:asset",
           },
           {
-            path: "Geist-SemiBold.woff2",
-            target: "assets/fonts/Geist-SemiBold.woff2",
+            path: geistFile.name,
+            target: `assets/fonts/${geistFile.name}`,
             type: "hyperframes:asset",
           },
           ...(jetBrainsMonoNames.has(name)

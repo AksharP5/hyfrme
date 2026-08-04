@@ -1,0 +1,46 @@
+{
+  "slug": "halftone-print",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "source": "registry/remocn/halftone-print/index.tsx",
+    "entry": "components/docs/examples/halftone-print-example.tsx",
+    "config": "registry/remocn/halftone-print/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "dotSize": 10,
+      "angle": 0,
+      "misregistration": 1.2,
+      "paperTint": "#f4efe4"
+    },
+    "background": "#26231d"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.96723,
+    "minSsim": 0.967203,
+    "p05Ssim": 0.967228,
+    "p95Ssim": 0.967231,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/halftone-print/remocn.mp4",
+    "hyperframesVideo": "public/previews/halftone-print/hyperframes.mp4",
+    "summary": "parity/halftone-print-diff/summary.json"
+  }
+}

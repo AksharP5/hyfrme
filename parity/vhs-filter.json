@@ -1,0 +1,46 @@
+{
+  "slug": "vhs-filter",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "source": "registry/remocn/vhs-filter/index.tsx",
+    "entry": "components/docs/examples/vhs-filter-example.tsx",
+    "config": "registry/remocn/vhs-filter/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "bleed": 1,
+      "wobble": 1,
+      "noise": 1,
+      "intensity": 1
+    },
+    "background": "#0a0a0a"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.995888,
+    "minSsim": 0.99574,
+    "p05Ssim": 0.995785,
+    "p95Ssim": 0.995996,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/vhs-filter/remocn.mp4",
+    "hyperframesVideo": "public/previews/vhs-filter/hyperframes.mp4",
+    "summary": "parity/vhs-filter-diff/summary.json"
+  }
+}

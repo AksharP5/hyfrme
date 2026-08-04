@@ -1,0 +1,47 @@
+{
+  "slug": "camera-lens",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "source": "registry/remocn/camera-lens/index.tsx",
+    "entry": "components/docs/examples/camera-lens-example.tsx",
+    "config": "registry/remocn/camera-lens/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "softness": 0.5,
+      "bloom": 0.5,
+      "aberration": 0.5,
+      "vignette": 0.5,
+      "distortion": 0.05
+    },
+    "background": "#0a0a0a"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.995285,
+    "minSsim": 0.995282,
+    "p05Ssim": 0.995284,
+    "p95Ssim": 0.995286,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/camera-lens/remocn.mp4",
+    "hyperframesVideo": "public/previews/camera-lens/hyperframes.mp4",
+    "summary": "parity/camera-lens-diff/summary.json"
+  }
+}

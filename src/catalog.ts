@@ -249,6 +249,11 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "dither-dissolve",
           "perlin-dissolve",
           "smoke-dissolve",
+          "displacement",
+          "ember-burn",
+          "glitch-cut",
+          "grid-wave",
+          "particle-dissolve",
         ],
       },
       {
@@ -289,7 +294,8 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
   {
     id: "effects",
     label: "Effects",
-    description: "Physical overlays, hand-made marks, and interaction cues.",
+    description:
+      "Scene filters, display treatments, physical overlays, and interaction cues.",
     featuredSlug: "confetti",
     groups: [
       {
@@ -306,6 +312,27 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
         id: "interaction",
         label: "Interaction",
         slugs: ["simulated-cursor"],
+      },
+      {
+        id: "canvas-filters",
+        label: "Canvas Filters",
+        slugs: [
+          "ascii-render",
+          "camera-lens",
+          "crt-screen",
+          "halftone-print",
+          "hologram",
+          "pixelate-region",
+          "security-cam",
+          "sustained-glitch",
+          "underwater-ripple",
+          "vhs-filter",
+        ],
+      },
+      {
+        id: "shutdown",
+        label: "Shutdown",
+        slugs: ["tv-power-off"],
       },
     ],
   },

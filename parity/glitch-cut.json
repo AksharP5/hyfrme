@@ -1,0 +1,46 @@
+{
+  "slug": "glitch-cut",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "source": "registry/remocn/glitch-cut/index.tsx",
+    "entry": "components/docs/examples/glitch-cut-example.tsx",
+    "config": "registry/remocn/glitch-cut/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 78,
+    "props": {
+      "intensity": 1,
+      "slices": 24,
+      "rgbSplit": 1,
+      "blockNoise": 0.6
+    },
+    "background": "#0a0a0a"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 78,
+    "meanSsim": 0.994313,
+    "minSsim": 0.989698,
+    "p05Ssim": 0.990328,
+    "p95Ssim": 0.995211,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/glitch-cut/remocn.mp4",
+    "hyperframesVideo": "public/previews/glitch-cut/hyperframes.mp4",
+    "summary": "parity/glitch-cut-diff/summary.json"
+  }
+}

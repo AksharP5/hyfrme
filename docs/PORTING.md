@@ -40,7 +40,9 @@ code.
 1. Inspect the upstream source for translation blockers.
 2. Render Remocn at the pinned commit with PNG frames and a fixed color path.
 3. Run `hyperframes check`, then render the port at identical dimensions/fps.
-4. Compute SSIM and save the videos, summary, and frame strip.
+4. Compute SSIM and save the videos, summary, and frame strip. Use lossless PNG
+   frames when full-frame noise makes independent video encoders the dominant
+   source of error.
 5. Gate simple and medium ports at 0.95 mean SSIM.
 6. Publish the source attribution, metrics, and any documented gap.
 
@@ -121,6 +123,12 @@ compiled-source runtime.
 - `progress-steps`, number wheels, intentional overlay scenes, and static
   backdrops retain strict-render-only claims where the full checker reports
   known heuristic false positives. Per-item manifests state the exact result.
+- The current pin adds five WebGL transitions, ten continuous canvas filters,
+  and TV Power Off. All 16 use Remocn's `canvas-presentation` helper through a
+  deterministic HyperFrames frame clock. Their mean SSIM is 0.990547, with a
+  0.967230–0.997402 range. Security Cam and VHS use lossless PNG comparisons
+  because their full-frame noise is distorted differently by independent
+  H.264 encoders.
 
 All 45 UI primitives and flows are verified.
 
@@ -139,10 +147,10 @@ All 45 UI primitives and flows are verified.
 ## Coverage status
 
 The pinned visual inventory at Remocn
-`16eef5d3727eb258ce345a305d67a86eeca02908` is complete: 255/255 ports have
-passing parity manifests. The five non-visual upstream entries—`brush`,
-`icons-core`, `remocn-ui`, `scene-motion`, and `stop-motion`—are shared runtime
-helpers rather than catalog blocks.
+`92d7d1f2805ca9c05d5d117083e22577ecab70df` is complete: 271/271 ports have
+passing parity manifests. The six non-visual upstream entries—`brush`,
+`canvas-presentation`, `icons-core`, `remocn-ui`, `scene-motion`, and
+`stop-motion`—are shared runtime helpers rather than catalog blocks.
 
 Upstream changes should open a review issue; they must never overwrite a
 passing port automatically.

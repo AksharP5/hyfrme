@@ -1,0 +1,48 @@
+{
+  "slug": "particle-dissolve",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "source": "registry/remocn/particle-dissolve/index.tsx",
+    "entry": "components/docs/examples/particle-dissolve-example.tsx",
+    "config": "registry/remocn/particle-dissolve/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 84,
+    "props": {
+      "particleSize": 4,
+      "scatter": 0.08,
+      "shimmer": 0.6,
+      "aberration": 0.5,
+      "direction": "reveal",
+      "stagger": 0.55
+    },
+    "background": "#0a0a0a"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 84,
+    "meanSsim": 0.98938,
+    "minSsim": 0.959038,
+    "p05Ssim": 0.964186,
+    "p95Ssim": 0.995215,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/particle-dissolve/remocn.mp4",
+    "hyperframesVideo": "public/previews/particle-dissolve/hyperframes.mp4",
+    "summary": "parity/particle-dissolve-diff/summary.json"
+  }
+}

@@ -2,24 +2,24 @@
   "summary": {
     "upstream": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "16eef5d3727eb258ce345a305d67a86eeca02908"
+      "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df"
     },
-    "totalRegistryItems": 260,
-    "visualItems": 255,
-    "sharedRuntimeItems": 5,
+    "totalRegistryItems": 277,
+    "visualItems": 271,
+    "sharedRuntimeItems": 6,
     "byFamily": {
-      "core": 111,
+      "core": 127,
       "icons": 100,
       "ui": 44
     },
     "byTranslationClass": {
       "interop-or-native-rewrite": 27,
       "manual-review": 33,
-      "mechanical-candidate": 195,
-      "shared-runtime": 5
+      "mechanical-candidate": 211,
+      "shared-runtime": 6
     },
     "coverage": {
-      "publishedItems": 255,
+      "publishedItems": 271,
       "missingItems": [],
       "extraItems": []
     },
@@ -50,7 +50,8 @@
       "shader-caustics",
       "shader-gem-smoke",
       "shader-strata",
-      "shader-weave"
+      "shader-weave",
+      "canvas-presentation"
     ]
   },
   "items": [
@@ -4673,6 +4674,660 @@
             "recommendation": "See references/timing.md for the GSAP equivalent"
           }
         ]
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "canvas-presentation",
+      "title": "Canvas Presentation",
+      "description": "The html-in-canvas scaffolding the canvas transitions and scene filters share: support detection, a full-screen WebGL2 shader fed either both sides of a cut or the single scene a filter wraps, and routing to a CSS fallback where the browser lacks the API.",
+      "type": "registry:lib",
+      "family": "core",
+      "visual": false,
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/canvas-presentation/index.tsx",
+          "type": "registry:lib",
+          "target": "lib/remocn/canvas-presentation.tsx"
+        }
+      ],
+      "sourceLineCount": 703,
+      "features": [
+        "shader",
+        "transition",
+        "effect"
+      ],
+      "lint": {
+        "files_scanned": 1,
+        "blockers": 6,
+        "warnings": 3,
+        "infos": 0,
+        "findings": [
+          {
+            "file": "registry/remocn/canvas-presentation/index.tsx",
+            "line": 375,
+            "column": 22,
+            "severity": "warning",
+            "rule": "r2hf/delay-render",
+            "message": "delayRender() — HF waits on asset readiness via the Frame Adapter pattern",
+            "recommendation": "Drop the call; HF handles this transparently"
+          },
+          {
+            "file": "registry/remocn/canvas-presentation/index.tsx",
+            "line": 396,
+            "column": 24,
+            "severity": "warning",
+            "rule": "r2hf/use-callback",
+            "message": "useCallback — typically decorative for render performance, no HF equivalent needed",
+            "recommendation": "Drop the wrapper, inline the function"
+          },
+          {
+            "file": "registry/remocn/canvas-presentation/index.tsx",
+            "line": 405,
+            "column": 11,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          },
+          {
+            "file": "registry/remocn/canvas-presentation/index.tsx",
+            "line": 434,
+            "column": 11,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          },
+          {
+            "file": "registry/remocn/canvas-presentation/index.tsx",
+            "line": 463,
+            "column": 11,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          },
+          {
+            "file": "registry/remocn/canvas-presentation/index.tsx",
+            "line": 490,
+            "column": 11,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          },
+          {
+            "file": "registry/remocn/canvas-presentation/index.tsx",
+            "line": 497,
+            "column": 11,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          },
+          {
+            "file": "registry/remocn/canvas-presentation/index.tsx",
+            "line": 546,
+            "column": 11,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          },
+          {
+            "file": "registry/remocn/canvas-presentation/index.tsx",
+            "line": 638,
+            "column": 22,
+            "severity": "warning",
+            "rule": "r2hf/delay-render",
+            "message": "delayRender() — HF waits on asset readiness via the Frame Adapter pattern",
+            "recommendation": "Drop the call; HF handles this transparently"
+          }
+        ]
+      },
+      "translationClass": "shared-runtime"
+    },
+    {
+      "name": "ember-burn",
+      "title": "Ember Burn",
+      "description": "The outgoing frame catches fire where it is brightest, boils in the heat, chars at the rim, and blows away as sparks carrying its own colour.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "@remocn/canvas-presentation"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/ember-burn/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/ember-burn.tsx"
+        }
+      ],
+      "sourceLineCount": 226,
+      "features": [
+        "shader",
+        "transition"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "displacement",
+      "title": "Displacement",
+      "description": "The frame breaks into a grid of cells that shear apart into offset, colour-fringed tiles under film grain, then settle back carrying the next scene.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "@remocn/canvas-presentation"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/displacement/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/displacement.tsx"
+        }
+      ],
+      "sourceLineCount": 156,
+      "features": [
+        "shader",
+        "transition"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "hologram",
+      "title": "Hologram",
+      "description": "Play a scene as a projection: a ghost double shimmers off the image, emission lines structure it, and only what is bright enough carries through the dark volume it hangs in.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "@remocn/canvas-presentation"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/hologram/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/hologram.tsx"
+        }
+      ],
+      "sourceLineCount": 181,
+      "features": [
+        "shader"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "security-cam",
+      "title": "Security Cam",
+      "description": "Run a scene through a cheap recorder: macroblocks flatten under a starved bitrate, colour resolution collapses to half the luma, blacks crush and shadows crawl with sensor noise.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "@remocn/canvas-presentation"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/security-cam/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/security-cam.tsx"
+        }
+      ],
+      "sourceLineCount": 172,
+      "features": [
+        "shader"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "tv-power-off",
+      "title": "TV Power Off",
+      "description": "End a scene the way a tube does: the picture collapses into a glowing horizontal line, the line pinches to a phosphor dot, the dot decays, and the frame is left dead black.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "@remocn/canvas-presentation"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/tv-power-off/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/tv-power-off.tsx"
+        }
+      ],
+      "sourceLineCount": 233,
+      "features": [
+        "shader"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "camera-lens",
+      "title": "Camera Lens",
+      "description": "Put a scene behind real glass: resolution falls off toward the corners, highlights bloom through the optics, colour fringes at the edges — a screencast that reads as filmed rather than rendered.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "@remocn/canvas-presentation"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/camera-lens/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/camera-lens.tsx"
+        }
+      ],
+      "sourceLineCount": 151,
+      "features": [
+        "shader"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "underwater-ripple",
+      "title": "Underwater Ripple",
+      "description": "Hold a scene under moving water: every pixel is read through a layered refraction field that closes on a whole number of cycles, with colour fringing where the water bends hardest.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "@remocn/canvas-presentation"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/underwater-ripple/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/underwater-ripple.tsx"
+        }
+      ],
+      "sourceLineCount": 125,
+      "features": [
+        "shader"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "halftone-print",
+      "title": "Halftone Print",
+      "description": "Print a scene onto paper: each colour separates onto its own rotated screen of dots sized by the ink under them, slightly out of register the way a real press runs.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "@remocn/canvas-presentation"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/halftone-print/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/halftone-print.tsx"
+        }
+      ],
+      "sourceLineCount": 155,
+      "features": [
+        "shader"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "ascii-render",
+      "title": "ASCII Render",
+      "description": "Redraw a live scene as ASCII: the frame divides into glyph cells and each one becomes the character matching the brightness of the picture inside it.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "@remocn/canvas-presentation"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/ascii-render/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/ascii-render.tsx"
+        }
+      ],
+      "sourceLineCount": 218,
+      "features": [
+        "shader"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "pixelate-region",
+      "title": "Pixelate Region",
+      "description": "Cover rectangles of a scene with an opaque mosaic while the rest passes through untouched — redact keys, addresses and personal data before a demo goes out.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "@remocn/canvas-presentation"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/pixelate-region/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/pixelate-region.tsx"
+        }
+      ],
+      "sourceLineCount": 156,
+      "features": [
+        "shader"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "sustained-glitch",
+      "title": "Sustained Glitch",
+      "description": "Broadcast corruption held over a scene in scheduled bursts: slices tear sideways, channels split, and blocks fill with picture pulled from somewhere else — then the frame rests clean until the next hit.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "@remocn/canvas-presentation"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/sustained-glitch/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/sustained-glitch.tsx"
+        }
+      ],
+      "sourceLineCount": 194,
+      "features": [
+        "shader"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "crt-screen",
+      "title": "CRT Screen",
+      "description": "Put a scene behind curved glass: the picture bulges out to the corners, an RGB phosphor mask and scanlines ride the curve, bright areas flood the mask, and the tube falls away into darkness at the rim.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "@remocn/canvas-presentation"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/crt-screen/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/crt-screen.tsx"
+        }
+      ],
+      "sourceLineCount": 141,
+      "features": [
+        "shader"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "vhs-filter",
+      "title": "VHS Filter",
+      "description": "Hold a scene under analog tape: chroma bleeds sideways off every edge, rows wobble out of line, the bottom of the frame tears on the head switch, and luma noise settles over all of it.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "@remocn/canvas-presentation"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/vhs-filter/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/vhs-filter.tsx"
+        }
+      ],
+      "sourceLineCount": 191,
+      "features": [
+        "shader"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "grid-wave",
+      "title": "Grid Wave",
+      "description": "A wave travels across the frame raising the picture into a grid of solid blocks with lit tops and shaded sides, which set back down carrying the next scene.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "@remocn/canvas-presentation"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/grid-wave/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/grid-wave.tsx"
+        }
+      ],
+      "sourceLineCount": 213,
+      "features": [
+        "shader",
+        "transition"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "particle-dissolve",
+      "title": "Particle Dissolve",
+      "description": "The frame is ground into drifting grey dust whose specks carry real fragments of the picture, and the next scene coalesces back out of the same dust.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "@remocn/canvas-presentation"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/particle-dissolve/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/particle-dissolve.tsx"
+        }
+      ],
+      "sourceLineCount": 224,
+      "features": [
+        "shader",
+        "transition"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "glitch-cut",
+      "title": "Glitch Cut",
+      "description": "A broadcast-glitch hard cut: the frame tears into displaced slices with channel split and corrupted blocks, and the incoming scene takes over slice by slice at the peak.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "@remocn/canvas-presentation"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/glitch-cut/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/glitch-cut.tsx"
+        }
+      ],
+      "sourceLineCount": 193,
+      "features": [
+        "shader",
+        "transition"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
       },
       "translationClass": "mechanical-candidate"
     },

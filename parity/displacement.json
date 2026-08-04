@@ -1,0 +1,48 @@
+{
+  "slug": "displacement",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "source": "registry/remocn/displacement/index.tsx",
+    "entry": "components/docs/examples/displacement-example.tsx",
+    "config": "registry/remocn/displacement/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 72,
+    "props": {
+      "grid": 60,
+      "cellAspect": 1,
+      "shift": 1,
+      "aberration": 1,
+      "grain": 0.5,
+      "stagger": 0.45
+    },
+    "background": "#0a0a0a"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 72,
+    "meanSsim": 0.988704,
+    "minSsim": 0.951235,
+    "p05Ssim": 0.955178,
+    "p95Ssim": 0.995216,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/displacement/remocn.mp4",
+    "hyperframesVideo": "public/previews/displacement/hyperframes.mp4",
+    "summary": "parity/displacement-diff/summary.json"
+  }
+}
