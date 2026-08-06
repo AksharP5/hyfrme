@@ -147,10 +147,14 @@ All 45 UI primitives and flows are verified.
 ## Coverage status
 
 The pinned visual inventory at Remocn
-`92d7d1f2805ca9c05d5d117083e22577ecab70df` is complete: 271/271 ports have
+`3099150eecace1ded8cf651e4063d714e40d96f3` is complete: 271/271 ports have
 passing parity manifests. The six non-visual upstream entries—`brush`,
 `canvas-presentation`, `icons-core`, `remocn-ui`, `scene-motion`, and
 `stop-motion`—are shared runtime helpers rather than catalog blocks.
+
+Hyfrme mirrors Remocn's minimum speed of 1 for the 11 progress-driven scenes
+whose payoff depends on reaching the final frame. The maximum remains 4 and the
+step remains 0.25 in the website customizer, installed metadata, and CLI.
 
 Upstream changes should open a review issue; they must never overwrite a
 passing port automatically.

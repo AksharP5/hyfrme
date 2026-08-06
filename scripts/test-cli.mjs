@@ -218,6 +218,40 @@ try {
     /unknown setting "notARealControl"/,
   );
 
+  await assert.rejects(
+    exec(
+      process.execPath,
+      [
+        resolve(root, "cli/bin/hyfrme.mjs"),
+        "add",
+        "chat-gpt",
+        "--dir",
+        temporary,
+        "--set",
+        "speed=0.75",
+      ],
+      { env: { ...process.env, HYFRME_REGISTRY_URL: registryUrl } },
+    ),
+    /"speed" must be at least 1, received 0.75/,
+  );
+
+  await assert.rejects(
+    exec(
+      process.execPath,
+      [
+        resolve(root, "cli/bin/hyfrme.mjs"),
+        "add",
+        "chat-gpt",
+        "--dir",
+        temporary,
+        "--set",
+        "speed=4.25",
+      ],
+      { env: { ...process.env, HYFRME_REGISTRY_URL: registryUrl } },
+    ),
+    /"speed" must be at most 4, received 4.25/,
+  );
+
   console.log("CLI customization tests passed.");
 } finally {
   server.close();

@@ -210,6 +210,16 @@ const parseSettingValue = (variable, raw) => {
     if (!Number.isFinite(value)) {
       fail(`"${variable.id}" requires a number, received "${raw}"`);
     }
+    if (typeof variable.min === "number" && value < variable.min) {
+      fail(
+        `"${variable.id}" must be at least ${variable.min}, received ${value}`,
+      );
+    }
+    if (typeof variable.max === "number" && value > variable.max) {
+      fail(
+        `"${variable.id}" must be at most ${variable.max}, received ${value}`,
+      );
+    }
     return value;
   }
   if (variable.type === "boolean") {

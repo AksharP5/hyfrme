@@ -176,6 +176,19 @@ const canvasFilterNames = new Set([
   "underwater-ripple",
   "vhs-filter",
 ]);
+const speedMinOneNames = new Set([
+  "chat-gpt",
+  "claude-chat",
+  "claude-code",
+  "github-sponsors",
+  "github-stars",
+  "number-wheel",
+  "opencode",
+  "rolling-number",
+  "v0",
+  "x-follow-card",
+  "x-followers-overview",
+]);
 const primitiveNames = [
   "caret",
   "skeleton-block",
@@ -1445,13 +1458,24 @@ for (const name of selectedNames) {
     for (const key of ["min", "max", "step"]) {
       if (typeof control[key] === "number") variable[key] = control[key];
     }
+    if (id === "speed" && speedMinOneNames.has(name)) {
+      variable.min = 1;
+      variable.max = 4;
+      variable.step = 0.25;
+    }
     return variable;
   });
   if (
     "speed" in props &&
     !variables.some((variable) => variable.id === "speed")
   ) {
-    variables.push({ id: "speed", type: "number", label: "Speed", default: 1 });
+    variables.push({
+      id: "speed",
+      type: "number",
+      label: "Speed",
+      default: 1,
+      ...(speedMinOneNames.has(name) ? { min: 1, max: 4, step: 0.25 } : {}),
+    });
   }
   const html = `<!doctype html>
 <html lang="en" data-composition-variables='${escapeHtmlAttribute(JSON.stringify(variables))}'>
