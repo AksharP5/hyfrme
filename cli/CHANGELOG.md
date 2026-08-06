@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/AksharP5/hyfrme/compare/v0.3.0...v0.3.1) (2026-08-06)
+
+
+### Bug Fixes
+
+* align speed controls with Remocn ([652216f](https://github.com/AksharP5/hyfrme/commit/652216fe09af75e2b522f7b1aa6906b4772c3d8a))
+
 ## [0.3.0](https://github.com/AksharP5/hyfrme/compare/v0.2.1...v0.3.0) (2026-07-24)
 
 
