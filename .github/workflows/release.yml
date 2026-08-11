@@ -3,6 +3,12 @@ name: Release CLI
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Draft release version to resume, such as 0.3.1
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -22,40 +28,118 @@ jobs:
       id-token: write
     steps:
       - id: release
+        if: ${{ github.event_name == 'push' }}
         uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
         with:
           token: ${{ github.token }}
           config-file: release-please-config.json
           manifest-file: release-please-manifest.json
 
+      - id: publish
+        name: Resolve release publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_CREATED: ${{ steps.release.outputs['cli--release_created'] }}
+          RELEASE_TAG: ${{ steps.release.outputs['cli--tag_name'] }}
+          RELEASE_VERSION: ${{ steps.release.outputs['cli--version'] }}
+          REQUESTED_VERSION: ${{ inputs.version }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
+            if [[ "$RELEASE_CREATED" != "true" ]]; then
+              echo "enabled=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            version="$RELEASE_VERSION"
+            tag="$RELEASE_TAG"
+            publish_package=true
+          else
+            version="${REQUESTED_VERSION#v}"
+            tag="v$version"
+
+            if [[ "$(gh release view "$tag" --repo "$GITHUB_REPOSITORY" --json isDraft --jq .isDraft)" != "true" ]]; then
+              echo "Release $tag is not a draft" >&2
+              exit 1
+            fi
+
+            compare_status="$(gh api "repos/$GITHUB_REPOSITORY/compare/$tag...$GITHUB_SHA" --jq .status)"
+            if [[ "$compare_status" != "ahead" && "$compare_status" != "identical" ]]; then
+              echo "Release tag $tag is not contained in $GITHUB_SHA" >&2
+              exit 1
+            fi
+
+            npm_error="$(mktemp)"
+            if npm view "hyfrme@$version" version --json > /dev/null 2> "$npm_error"; then
+              publish_package=false
+            elif grep --quiet E404 "$npm_error"; then
+              publish_package=true
+            else
+              cat "$npm_error" >&2
+              exit 1
+            fi
+          fi
+
+          if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+([+-][0-9A-Za-z.-]+)?$ ]]; then
+            echo "Invalid release version: $version" >&2
+            exit 1
+          fi
+
+          if [[ "$tag" != "v$version" ]]; then
+            echo "Release tag $tag does not match version $version" >&2
+            exit 1
+          fi
+
+          echo "enabled=true" >> "$GITHUB_OUTPUT"
+          echo "publish_package=$publish_package" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        if: ${{ steps.release.outputs['cli--release_created'] == 'true' }}
+        if: ${{ steps.publish.outputs.enabled == 'true' }}
         with:
           persist-credentials: false
 
+      - name: Verify release metadata
+        if: ${{ steps.publish.outputs.enabled == 'true' }}
+        env:
+          VERSION: ${{ steps.publish.outputs.version }}
+        shell: bash
+        run: |
+          test "$(node -p "require('./cli/package.json').version")" = "$VERSION"
+          test "$(node -p "require('./release-please-manifest.json').cli")" = "$VERSION"
+
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
-        if: ${{ steps.release.outputs['cli--release_created'] == 'true' }}
+        if: ${{ steps.publish.outputs.enabled == 'true' }}
         with:
           node-version: "24.18.0"
           cache: npm
           registry-url: https://registry.npmjs.org
 
+      - name: Install media verification tools
+        if: ${{ steps.publish.outputs.enabled == 'true' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ffmpeg
+
       - name: Install dependencies
-        if: ${{ steps.release.outputs['cli--release_created'] == 'true' }}
+        if: ${{ steps.publish.outputs.enabled == 'true' }}
         run: npm ci
 
       - name: Check catalog and registry
-        if: ${{ steps.release.outputs['cli--release_created'] == 'true' }}
+        if: ${{ steps.publish.outputs.enabled == 'true' }}
         run: npm run check
 
       - name: Build catalog and downloadable CLI
-        if: ${{ steps.release.outputs['cli--release_created'] == 'true' }}
+        if: ${{ steps.publish.outputs.enabled == 'true' }}
         run: npm run build
 
       - name: Inspect npm package
-        if: ${{ steps.release.outputs['cli--release_created'] == 'true' }}
+        if: ${{ steps.publish.outputs.enabled == 'true' }}
         env:
-          VERSION: ${{ steps.release.outputs['cli--version'] }}
+          VERSION: ${{ steps.publish.outputs.version }}
         shell: bash
         run: |
           npm pack ./cli --dry-run --json > /tmp/hyfrme-pack.json
@@ -65,12 +149,12 @@ jobs:
           test "$(jq -r '.[0].files[] | select(.path == "bin/hyfrme.mjs") | .mode' /tmp/hyfrme-pack.json)" = 493
 
       - name: Publish to npm
-        if: ${{ steps.release.outputs['cli--release_created'] == 'true' }}
+        if: ${{ steps.publish.outputs.publish_package == 'true' }}
         run: npm publish ./cli --access public --provenance --ignore-scripts
 
       - name: Publish GitHub release
-        if: ${{ steps.release.outputs['cli--release_created'] == 'true' }}
+        if: ${{ steps.publish.outputs.enabled == 'true' }}
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG_NAME: ${{ steps.release.outputs['cli--tag_name'] }}
+          TAG_NAME: ${{ steps.publish.outputs.tag }}
         run: gh release edit "$TAG_NAME" --draft=false
