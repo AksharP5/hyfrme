@@ -90,11 +90,11 @@ installation or include Remotion runtime code.
   and SSIM; HyperFrames 0.7.64 does not fingerprint `background-position` as
   geometry motion, so no full-check claim is made for that item.
 
-All 85 composition/data items are verified with the same
+All 83 composition/data items are verified with the same
 compiled-source runtime.
 
-- All 85 strict renders passed.
-- Family mean SSIM: 0.994350.
+- All 83 strict renders passed.
+- Family mean SSIM: 0.994234.
 - Per-item range: 0.952963–0.999848.
 - Canonical fixtures cover 90–360 frames at 30 fps.
 - Twelve overlapping-scene transitions use a Hyfrme-owned `TransitionSeries`
@@ -116,14 +116,14 @@ compiled-source runtime.
   HyperFrames check; `shader-gem-smoke` passes runtime, motion, and contrast but
   retains the checker's documented `sweep_static` WebGL-canvas heuristic in its
   parity manifest.
-- The latest upstream update adds `slide-swap` and `spring-settle`, plus the
+- A previous upstream update added `slide-swap` and `spring-settle`, plus the
   internal `scene-motion` helper used directly by `spring-settle`. Both public
   blocks pass the full HyperFrames check. Their mean SSIM scores are 0.997717
   and 0.998177 across 210 and 213 canonical frames respectively.
-- `progress-steps`, number wheels, intentional overlay scenes, and static
-  backdrops retain strict-render-only claims where the full checker reports
-  known heuristic false positives. Per-item manifests state the exact result.
-- The current pin adds five WebGL transitions, ten continuous canvas filters,
+- Number wheels, intentional overlay scenes, and static backdrops retain
+  strict-render-only claims where the full checker reports known heuristic
+  false positives. Per-item manifests state the exact result.
+- A previous pin added five WebGL transitions, ten continuous canvas filters,
   and TV Power Off. All 16 use Remocn's `canvas-presentation` helper through a
   deterministic HyperFrames frame clock. Their mean SSIM is 0.990547, with a
   0.967230–0.997402 range. Security Cam and VHS use lossless PNG comparisons
@@ -147,10 +147,14 @@ All 45 UI primitives and flows are verified.
 ## Coverage status
 
 The pinned visual inventory at Remocn
-`3099150eecace1ded8cf651e4063d714e40d96f3` is complete: 271/271 ports have
+`0797bfe319bd2dae06eea5a9f67591e1b31392e5` is complete: 269/269 ports have
 passing parity manifests. The six non-visual upstream entries—`brush`,
 `canvas-presentation`, `icons-core`, `remocn-ui`, `scene-motion`, and
 `stop-motion`—are shared runtime helpers rather than catalog blocks.
+
+The current pin removes `data-flow-pipes` and `progress-steps` after Remocn
+withdrew both broken components from its public registry. Hyfrme removes their
+catalog entries, installer files, previews, and parity manifests as well.
 
 Hyfrme mirrors Remocn's minimum speed of 1 for the 11 progress-driven scenes
 whose payoff depends on reaching the final frame. The maximum remains 4 and the

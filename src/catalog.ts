@@ -187,12 +187,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "data-system",
         label: "Data & System",
-        slugs: ["animated-line-chart", "animated-bar-chart", "data-flow-pipes"],
-      },
-      {
-        id: "workflows",
-        label: "Workflows",
-        slugs: ["progress-steps"],
+        slugs: ["animated-line-chart", "animated-bar-chart"],
       },
       {
         id: "paper-scrapbook",

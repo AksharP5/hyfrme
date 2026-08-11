@@ -55,7 +55,6 @@ const textNames = [
 ];
 const coreNames = [
   "chat-to-preview-layout",
-  "data-flow-pipes",
   "perspective-marquee",
   "live-code-compilation",
   "infinite-bento-pan",
@@ -66,7 +65,6 @@ const coreNames = [
   "glass-code-walk",
   "animated-line-chart",
   "animated-bar-chart",
-  "progress-steps",
   "simulated-cursor",
   "logo-enter",
   "ecosystem-constellation",
