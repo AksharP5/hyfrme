@@ -1446,6 +1446,14 @@ for (const name of selectedNames) {
         ? config.previewBackdrop.value
         : "#ffffff"),
   };
+  const runtimeProps = { ...props };
+  if (name === "kinetic-warp") {
+    runtimeProps.fontUrl = "../assets/fonts/PassionOne.css";
+  } else if (name === "stretch-in") {
+    runtimeProps.fontUrl = "../assets/fonts/Anton-Latin.ttf";
+  }
+  const assetProps =
+    name === "stretch-in" ? { fontUrl: runtimeProps.fontUrl } : {};
   const importPath = `./${relative(upstream, renderSourcePath).replaceAll("\\", "/")}`;
   const entry = `
     import React from "react";
@@ -1461,7 +1469,8 @@ for (const name of selectedNames) {
       height: fixture.height,
       durationInFrames: fixture.durationInFrames,
     })};
-    const props = ${JSON.stringify(props)};
+    const props = ${JSON.stringify(runtimeProps)};
+    ${Object.keys(assetProps).length > 0 ? "Object.assign(props, window.__hyfrmeAssetProps ?? {});" : ""}
     for (const key of ${JSON.stringify(Object.keys(controls))}) {
       props[key] = variables[key];
     }
@@ -1529,7 +1538,9 @@ for (const name of selectedNames) {
               ? "number"
               : control.type,
       label: control.label ?? id,
-      default: Object.hasOwn(props, id) ? props[id] : control.default,
+      default: Object.hasOwn(runtimeProps, id)
+        ? runtimeProps[id]
+        : control.default,
     };
     if (Array.isArray(control.options)) variable.options = control.options;
     for (const key of ["min", "max", "step"]) {
@@ -1582,6 +1593,7 @@ ${seekProbeNames.has(name) ? '      <span data-hyfrme-seek-probe aria-hidden="tr
         <div id="hyfrme-source-root"${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? " data-layout-ignore data-layout-allow-occlusion data-layout-allow-overlap" : intentionalOverlapNames.has(name) ? " data-layout-allow-overlap" : name === "shimmer-sweep" ? " data-layout-allow-occlusion" : ""}></div>
       </div>
     </div>
+${Object.keys(assetProps).length > 0 ? `    <script>window.__hyfrmeAssetProps = ${JSON.stringify(assetProps)};</script>` : ""}
     <script src="./${name}.runtime.js"></script>
     <script>
       window.__timelines = window.__timelines || {};
