@@ -1,0 +1,47 @@
+{
+  "slug": "perspective-squeeze",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
+    "source": "registry/remocn/perspective-squeeze/index.tsx",
+    "config": "registry/remocn/perspective-squeeze/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 225,
+    "props": {
+      "upperText": "REMOCN",
+      "lowerText": "BEST",
+      "fill": "#f2f2f2",
+      "upperFontFamily": "Impact, 'Arial Narrow', sans-serif",
+      "lowerFontFamily": "Impact, 'Arial Narrow', sans-serif",
+      "lineGap": 50
+    },
+    "background": "#141318"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 225,
+    "meanSsim": 0.997849,
+    "minSsim": 0.992942,
+    "p05Ssim": 0.994914,
+    "p95Ssim": 0.998465,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/perspective-squeeze/remocn.mp4",
+    "hyperframesVideo": "public/previews/perspective-squeeze/hyperframes.mp4",
+    "summary": "parity/perspective-squeeze-diff/summary.json"
+  }
+}

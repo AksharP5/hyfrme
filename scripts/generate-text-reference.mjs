@@ -15,6 +15,18 @@ await copyFile(
   resolve(root, "assets", "fonts", "Geist-Latin.woff2"),
   resolve(upstream, "public", "assets", "fonts", "Geist-Latin.woff2"),
 );
+for (const file of [
+  "PassionOne.css",
+  "PassionOne-400.ttf",
+  "PassionOne-700.ttf",
+  "PassionOne-900.ttf",
+  "Anton-Latin.ttf",
+]) {
+  await copyFile(
+    resolve(root, "assets", "fonts", file),
+    resolve(upstream, "public", "assets", "fonts", file),
+  );
+}
 const fixtureFiles = [
   "text-fixtures.json",
   "core-fixtures.json",
@@ -112,7 +124,12 @@ function HyfrmeTextRoot() {
   }
   return (
     <>
-      <style>{'@font-face { font-family: "Geist"; src: url("' + staticFile("assets/fonts/Geist-Latin.woff2") + '") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }'}</style>
+      <style>{
+        '@font-face { font-family: "Geist"; src: url("' + staticFile("assets/fonts/Geist-Latin.woff2") + '") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }' +
+        '@font-face { font-family: "Passion One"; src: url("' + staticFile("assets/fonts/PassionOne-400.ttf") + '") format("truetype"); font-style: normal; font-weight: 400; font-display: block; }' +
+        '@font-face { font-family: "Passion One"; src: url("' + staticFile("assets/fonts/PassionOne-700.ttf") + '") format("truetype"); font-style: normal; font-weight: 700; font-display: block; }' +
+        '@font-face { font-family: "Passion One"; src: url("' + staticFile("assets/fonts/PassionOne-900.ttf") + '") format("truetype"); font-style: normal; font-weight: 900; font-display: block; }'
+      }</style>
       ${compositions}
     </>
   );

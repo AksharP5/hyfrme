@@ -110,6 +110,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "mask-reveal-up",
           "tracking-in",
           "handwrite",
+          "stretch-in",
         ],
       },
       {
@@ -138,12 +139,12 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "hero-display",
         label: "Hero & Display",
-        slugs: ["infinite-marquee", "perspective-marquee"],
+        slugs: ["infinite-marquee", "perspective-marquee", "extrude-pop"],
       },
       {
         id: "tech-glitch",
         label: "Tech & Glitch",
-        slugs: ["matrix-decode", "rgb-glitch-text"],
+        slugs: ["matrix-decode", "rgb-glitch-text", "chromatic-wave"],
       },
       {
         id: "text-transitions",
@@ -154,6 +155,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "shared-axis-y",
           "shared-axis-z",
           "strikethrough-replace",
+          "gooey-morph",
         ],
       },
       {
@@ -163,6 +165,8 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "short-slide-right",
           "kinetic-center-build",
           "short-slide-down",
+          "kinetic-warp",
+          "perspective-squeeze",
         ],
       },
     ],
@@ -229,6 +233,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "push-through",
           "focus-pull",
           "zoom-blur",
+          "lens-zoom",
           "page-turn",
         ],
       },

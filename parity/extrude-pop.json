@@ -1,0 +1,47 @@
+{
+  "slug": "extrude-pop",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
+    "source": "registry/remocn/extrude-pop/index.tsx",
+    "config": "registry/remocn/extrude-pop/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "letter": "WIN",
+      "bodyColor": "#e8192b",
+      "faceColor": "#ffffff",
+      "minimaxRadius": 80,
+      "extrudeAngleDeg": -58.6,
+      "extrudeEndFrame": 48
+    },
+    "background": "#141318"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.997152,
+    "minSsim": 0.99391,
+    "p05Ssim": 0.9967,
+    "p95Ssim": 0.997441,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/extrude-pop/remocn.mp4",
+    "hyperframesVideo": "public/previews/extrude-pop/hyperframes.mp4",
+    "summary": "parity/extrude-pop-diff/summary.json"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "slug": "gooey-morph",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
+    "source": "registry/remocn/gooey-morph/index.tsx",
+    "config": "registry/remocn/gooey-morph/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "word": "HELLO",
+      "fill": "#f2f2f2",
+      "fontFamily": "'Bodoni Moda', Georgia, serif",
+      "blurRadius": 6,
+      "displaceAmount": 20,
+      "barTravelFrames": 30
+    },
+    "background": "#141318"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.998056,
+    "minSsim": 0.995119,
+    "p05Ssim": 0.995906,
+    "p95Ssim": 0.999951,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/gooey-morph/remocn.mp4",
+    "hyperframesVideo": "public/previews/gooey-morph/hyperframes.mp4",
+    "summary": "parity/gooey-morph-diff/summary.json"
+  }
+}

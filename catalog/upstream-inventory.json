@@ -2,28 +2,30 @@
   "summary": {
     "upstream": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "0797bfe319bd2dae06eea5a9f67591e1b31392e5"
+      "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d"
     },
-    "totalRegistryItems": 275,
-    "visualItems": 269,
+    "totalRegistryItems": 282,
+    "visualItems": 276,
     "sharedRuntimeItems": 6,
     "byFamily": {
-      "core": 125,
+      "core": 132,
       "icons": 100,
       "ui": 44
     },
     "byTranslationClass": {
-      "interop-or-native-rewrite": 27,
-      "manual-review": 33,
-      "mechanical-candidate": 209,
+      "interop-or-native-rewrite": 29,
+      "manual-review": 34,
+      "mechanical-candidate": 213,
       "shared-runtime": 6
     },
     "coverage": {
-      "publishedItems": 269,
+      "publishedItems": 276,
       "missingItems": [],
       "extraItems": []
     },
     "blockerItems": [
+      "kinetic-warp",
+      "stretch-in",
       "shader-mesh-gradient",
       "shader-grain-gradient",
       "shader-warp",
@@ -344,6 +346,40 @@
       "translationClass": "mechanical-candidate"
     },
     {
+      "name": "lens-zoom",
+      "title": "Lens Zoom",
+      "description": "A hard cut disguised as a lens punch-in: barrel distortion, zoom blur, chromatic split and camera shake around the splice.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/lens-zoom/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/lens-zoom.tsx"
+        }
+      ],
+      "sourceLineCount": 534,
+      "features": [
+        "transition",
+        "interpolate",
+        "svg"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
       "name": "line-by-line-slide",
       "title": "Line-by-Line Slide",
       "description": "Each line enters from the left with a staggered slide and exits to the right for a flowing paragraph reveal.",
@@ -406,6 +442,49 @@
         "findings": []
       },
       "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "extrude-pop",
+      "title": "Extrude Pop",
+      "description": "A flat word pops up out of the plane on a solid colored 3D body, no camera involved.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/extrude-pop/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/extrude-pop.tsx"
+        }
+      ],
+      "sourceLineCount": 114,
+      "features": [
+        "interpolate",
+        "svg",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 1,
+        "infos": 0,
+        "findings": [
+          {
+            "file": "registry/remocn/extrude-pop/index.tsx",
+            "line": 45,
+            "column": 15,
+            "severity": "warning",
+            "rule": "r2hf/use-memo",
+            "message": "useMemo — typically decorative, no HF equivalent needed",
+            "recommendation": "Drop the wrapper, compute inline"
+          }
+        ]
+      },
+      "translationClass": "manual-review"
     },
     {
       "name": "fade-through",
@@ -534,6 +613,95 @@
         "findings": []
       },
       "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "kinetic-warp",
+      "title": "Kinetic Warp",
+      "description": "A coarse mesh warp bends a whole word in staccato beats, one axis per keyframe.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/kinetic-warp/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/kinetic-warp.tsx"
+        }
+      ],
+      "sourceLineCount": 287,
+      "features": [
+        "interpolate",
+        "state",
+        "effect",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 3,
+        "warnings": 3,
+        "infos": 0,
+        "findings": [
+          {
+            "file": "registry/remocn/kinetic-warp/index.tsx",
+            "line": 119,
+            "column": 37,
+            "severity": "blocker",
+            "rule": "r2hf/use-state",
+            "message": "useState detected — Remotion compositions that drive animation via React state are not deterministic frame-capture targets in HyperFrames",
+            "recommendation": "Use the runtime interop pattern from PR #214 instead of attempting a translation"
+          },
+          {
+            "file": "registry/remocn/kinetic-warp/index.tsx",
+            "line": 126,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          },
+          {
+            "file": "registry/remocn/kinetic-warp/index.tsx",
+            "line": 127,
+            "column": 20,
+            "severity": "warning",
+            "rule": "r2hf/delay-render",
+            "message": "delayRender() — HF waits on asset readiness via the Frame Adapter pattern",
+            "recommendation": "Drop the call; HF handles this transparently"
+          },
+          {
+            "file": "registry/remocn/kinetic-warp/index.tsx",
+            "line": 145,
+            "column": 18,
+            "severity": "warning",
+            "rule": "r2hf/use-memo",
+            "message": "useMemo — typically decorative, no HF equivalent needed",
+            "recommendation": "Drop the wrapper, compute inline"
+          },
+          {
+            "file": "registry/remocn/kinetic-warp/index.tsx",
+            "line": 190,
+            "column": 19,
+            "severity": "warning",
+            "rule": "r2hf/use-memo",
+            "message": "useMemo — typically decorative, no HF equivalent needed",
+            "recommendation": "Drop the wrapper, compute inline"
+          },
+          {
+            "file": "registry/remocn/kinetic-warp/index.tsx",
+            "line": 219,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          }
+        ]
+      },
+      "translationClass": "interop-or-native-rewrite"
     },
     {
       "name": "kinetic-center-build",
@@ -721,6 +889,77 @@
         ]
       },
       "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "stretch-in",
+      "title": "Stretch In",
+      "description": "Letters fly in from off-canvas and smear horizontally on the way — a vertex-lag deformation, not a scale.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion",
+        "opentype.js"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/stretch-in/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/stretch-in.tsx"
+        }
+      ],
+      "sourceLineCount": 219,
+      "features": [
+        "interpolate",
+        "svg",
+        "effect"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 2,
+        "warnings": 2,
+        "infos": 0,
+        "findings": [
+          {
+            "file": "registry/remocn/stretch-in/index.tsx",
+            "line": 111,
+            "column": 27,
+            "severity": "blocker",
+            "rule": "r2hf/use-state",
+            "message": "useState detected — Remotion compositions that drive animation via React state are not deterministic frame-capture targets in HyperFrames",
+            "recommendation": "Use the runtime interop pattern from PR #214 instead of attempting a translation"
+          },
+          {
+            "file": "registry/remocn/stretch-in/index.tsx",
+            "line": 113,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          },
+          {
+            "file": "registry/remocn/stretch-in/index.tsx",
+            "line": 114,
+            "column": 20,
+            "severity": "warning",
+            "rule": "r2hf/delay-render",
+            "message": "delayRender() — HF waits on asset readiness via the Frame Adapter pattern",
+            "recommendation": "Drop the call; HF handles this transparently"
+          },
+          {
+            "file": "registry/remocn/stretch-in/index.tsx",
+            "line": 130,
+            "column": 19,
+            "severity": "warning",
+            "rule": "r2hf/use-memo",
+            "message": "useMemo — typically decorative, no HF equivalent needed",
+            "recommendation": "Drop the wrapper, compute inline"
+          }
+        ]
+      },
+      "translationClass": "interop-or-native-rewrite"
     },
     {
       "name": "strikethrough-replace",
@@ -2381,6 +2620,39 @@
       "translationClass": "mechanical-candidate"
     },
     {
+      "name": "gooey-morph",
+      "title": "Gooey Morph",
+      "description": "Bars fly in Tetris-style, land as a row, and melt into a word through a gooey blur-and-threshold morph.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/gooey-morph/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/gooey-morph.tsx"
+        }
+      ],
+      "sourceLineCount": 253,
+      "features": [
+        "interpolate",
+        "svg",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
       "name": "grain-dissolve",
       "title": "Grain Dissolve",
       "description": "A grain-gradient shader transition that disintegrates the outgoing scene into soft grainy shapes and condenses the next scene out of the noise.",
@@ -2895,6 +3167,39 @@
       ],
       "sourceLineCount": 146,
       "features": [
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "perspective-squeeze",
+      "title": "Perspective Squeeze",
+      "description": "Two lines of heavy type endlessly trade height while corner-pinned perspective bends the flat stack into receding planes.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/perspective-squeeze/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/perspective-squeeze.tsx"
+        }
+      ],
+      "sourceLineCount": 260,
+      "features": [
+        "interpolate",
+        "svg",
         "font"
       ],
       "lint": {
@@ -3487,6 +3792,39 @@
       ],
       "lint": {
         "files_scanned": 3,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "chromatic-wave",
+      "title": "Chromatic Wave",
+      "description": "A soft wave travels down through the type; where it crosses, the letters ripple and split into RGB fringes.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/chromatic-wave/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/chromatic-wave.tsx"
+        }
+      ],
+      "sourceLineCount": 307,
+      "features": [
+        "interpolate",
+        "svg",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
         "blockers": 0,
         "warnings": 0,
         "infos": 0,

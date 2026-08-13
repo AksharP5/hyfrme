@@ -133,8 +133,8 @@ await writeFile(
       private: true,
       type: "module",
       scripts: {
-        check: "npx --yes hyperframes@0.7.90 check",
-        render: "npx --yes hyperframes@0.7.90 render",
+        check: "npx --yes hyperframes@0.7.107 check",
+        render: "npx --yes hyperframes@0.7.107 render",
       },
     },
     null,

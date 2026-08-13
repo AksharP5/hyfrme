@@ -1,0 +1,49 @@
+{
+  "slug": "kinetic-warp",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
+    "source": "registry/remocn/kinetic-warp/index.tsx",
+    "config": "registry/remocn/kinetic-warp/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "text": "REM\nOCN",
+      "textColor": "#FFFFFF",
+      "fontFamily": "Passion One",
+      "fontUrl": "/assets/fonts/PassionOne.css",
+      "fontWeight": "700",
+      "fontSize": 107.1,
+      "layerScale": 480,
+      "keyframeStride": 20
+    },
+    "background": "#141318"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.999431,
+    "minSsim": 0.999217,
+    "p05Ssim": 0.999288,
+    "p95Ssim": 0.999568,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/kinetic-warp/remocn.mp4",
+    "hyperframesVideo": "public/previews/kinetic-warp/hyperframes.mp4",
+    "summary": "parity/kinetic-warp-diff/summary.json"
+  }
+}
