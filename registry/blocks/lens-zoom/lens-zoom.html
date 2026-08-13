@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"lensSteps","type":"number","label":"Lens steps","default":9,"min":4,"max":32,"step":1},{"id":"blurSamples","type":"number","label":"Blur samples","default":7,"min":2,"max":32,"step":1},{"id":"shakeAmount","type":"number","label":"Shake amount","default":50,"min":0,"max":300,"step":5},{"id":"shakeTranslatePx","type":"number","label":"Shake travel (px)","default":73,"min":0,"max":80,"step":1}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #141318; }
+      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; }
+      [data-hyfrme-seek-probe] { position: absolute; width: 1px; height: 1px; pointer-events: none; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="lens-zoom" data-start="0" data-duration="3.7333333333333334" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+      <span data-hyfrme-seek-probe aria-hidden="true"></span>
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="3.7333333333333334" data-track-index="0">
+        <div id="hyfrme-source-root" data-layout-allow-overlap></div>
+      </div>
+    </div>
+    <script src="./lens-zoom.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const clock = document.querySelector('[data-composition-id="lens-zoom"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="lens-zoom"] [data-hyfrme-clock]', {
+        frame: 112,
+        duration: 3.7333333333333334,
+        ease: "none",
+        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(111, Math.round(clock.frame)))),
+      });
+      timeline.to('[data-composition-id="lens-zoom"] [data-hyfrme-seek-probe]', { x: 120, duration: 3.7333333333333334, ease: "none" }, 0);
+      window.__timelines["lens-zoom"] = timeline;
+    </script>
+  </body>
+</html>

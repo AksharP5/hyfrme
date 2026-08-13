@@ -2,11 +2,12 @@
 
 ## Remocn source reference
 
-All 269 visual ports are derived from pinned Remocn implementations. Of these,
+All 276 visual ports are derived from pinned Remocn implementations. Of these,
 231 use commit `ea730a20b4ab09430ee7292aebc847c002375151`, 19 use commit
 `32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c`, and three use commit
 `16eef5d3727eb258ce345a305d67a86eeca02908`. The 16 canvas transitions,
-filters, and effects use commit `92d7d1f2805ca9c05d5d117083e22577ecab70df`.
+filters, and effects use commit `92d7d1f2805ca9c05d5d117083e22577ecab70df`,
+and seven use commit `4ed9b8a3b96396068a17e28e4b3e23f726fcc69d`.
 Every generated port names its
 exact source file and fixture in its parity manifest.
 
@@ -93,6 +94,15 @@ The hand-drawn compositions bundle the unmodified normal Latin Caveat variable
 font from Google Fonts. Caveat is licensed under the SIL Open Font License,
 Version 1.1. Its complete terms are preserved at
 `assets/fonts/Caveat-OFL.txt` and install with each block that uses it.
+
+## Passion One and Anton fonts
+
+`kinetic-warp` bundles the unmodified Passion One 400, 700, and 900 TrueType
+fonts from Google Fonts. `stretch-in` bundles the unmodified Anton Latin
+TrueType font used by its pinned Remocn source. Both families are licensed
+under the SIL Open Font License, Version 1.1. Their complete terms are
+preserved at `assets/fonts/PassionOne-OFL.txt` and
+`assets/fonts/Anton-OFL.txt` and install with the relevant block.
 
 ## date-fns
 

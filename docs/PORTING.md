@@ -69,17 +69,17 @@ time.
   the canonical 48×48 fixture), so the vector strokes stay sharp when enlarged
   without changing the installable block or its canonical parity result.
 
-The first 24-item typography/effect family is verified as exact compiled-source
+The 30-item typography/effect family is verified as exact compiled-source
 ports. Each block preserves the upstream React component and editable controls,
 uses Hyfrme-owned Remotion-compatible easing/interpolation behavior, and
 re-renders from a HyperFrames-controlled frame clock. The runtime and Geist font
 ship beside the HTML composition, so playback does not depend on a Remotion
 installation or include Remotion runtime code.
 
-- All 24 strict renders passed.
+- All 30 strict renders passed.
 - Seven representative motion structures passed full HyperFrames lint, runtime,
   layout, motion, and contrast checks with zero errors or warnings.
-- Family mean SSIM: 0.997021.
+- Family mean SSIM: 0.997223.
 - Per-item range: 0.986619–0.999432.
 - Canonical fixtures cover 60–120 frames at 30 fps and 1280×720.
 - `marker-highlight`, `tracking-in`, and `slot-machine-roll` extend the family
@@ -89,12 +89,17 @@ installation or include Remotion runtime code.
   stacked base/shine text. Its animated clipped gradient passes strict render
   and SSIM; HyperFrames 0.7.64 does not fingerprint `background-position` as
   geometry motion, so no full-check claim is made for that item.
+- The current pin adds Chromatic Wave, Extrude Pop, Gooey Morph, Kinetic Warp,
+  Perspective Squeeze, and Stretch In. All six pass the full HyperFrames check
+  and average 0.997836 mean SSIM. Kinetic Warp and Stretch In use the documented
+  compiled-source adapter for stateful font/canvas work and install their exact
+  Passion One and Anton font files locally.
 
-All 83 composition/data items are verified with the same
+All 100 composition/data items are verified with the same
 compiled-source runtime.
 
-- All 83 strict renders passed.
-- Family mean SSIM: 0.994234.
+- All 100 strict renders passed.
+- Family mean SSIM: 0.993659.
 - Per-item range: 0.952963–0.999848.
 - Canonical fixtures cover 90–360 frames at 30 fps.
 - Twelve overlapping-scene transitions use a Hyfrme-owned `TransitionSeries`
@@ -116,6 +121,9 @@ compiled-source runtime.
   HyperFrames check; `shader-gem-smoke` passes runtime, motion, and contrast but
   retains the checker's documented `sweep_static` WebGL-canvas heuristic in its
   parity manifest.
+- Lens Zoom uses Remocn's official example scene and transition presentation.
+  It passes the full HyperFrames check and reaches 0.995738 mean SSIM across
+  112 canonical frames.
 - A previous upstream update added `slide-swap` and `spring-settle`, plus the
   internal `scene-motion` helper used directly by `spring-settle`. Both public
   blocks pass the full HyperFrames check. Their mean SSIM scores are 0.997717
@@ -147,7 +155,7 @@ All 45 UI primitives and flows are verified.
 ## Coverage status
 
 The pinned visual inventory at Remocn
-`0797bfe319bd2dae06eea5a9f67591e1b31392e5` is complete: 269/269 ports have
+`4ed9b8a3b96396068a17e28e4b3e23f726fcc69d` is complete: 276/276 ports have
 passing parity manifests. The six non-visual upstream entries—`brush`,
 `canvas-presentation`, `icons-core`, `remocn-ui`, `scene-motion`, and
 `stop-motion`—are shared runtime helpers rather than catalog blocks.

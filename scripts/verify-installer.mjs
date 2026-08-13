@@ -20,8 +20,10 @@ const runId = `hyfrme-installer-${Date.now()}`;
 
 const contentTypes = {
   ".html": "text/html",
+  ".css": "text/css",
   ".json": "application/json",
   ".js": "text/javascript",
+  ".ttf": "font/ttf",
   ".txt": "text/plain",
   ".woff2": "font/woff2",
 };
@@ -209,18 +211,55 @@ try {
     { env: { HYFRME_REGISTRY_URL: registryUrl } },
   );
   assert.match(iconInstallOutput, /customized: color=#176b33/);
+  const kineticInstallOutput = await run(
+    process.execPath,
+    [
+      resolve(root, "cli/bin/hyfrme.mjs"),
+      "add",
+      "kinetic-warp",
+      "--dir",
+      workbench,
+      "--set",
+      "text=HYPER\\nFRAMES",
+    ],
+    { env: { HYFRME_REGISTRY_URL: registryUrl } },
+  );
+  assert.match(kineticInstallOutput, /customized: text=HYPER\\nFRAMES/);
+  const stretchInstallOutput = await run(
+    process.execPath,
+    [
+      resolve(root, "cli/bin/hyfrme.mjs"),
+      "add",
+      "stretch-in",
+      "--dir",
+      workbench,
+    ],
+    { env: { HYFRME_REGISTRY_URL: registryUrl } },
+  );
+  assert.match(stretchInstallOutput, /Added Stretch In/);
+  await Promise.all(
+    [
+      "PassionOne.css",
+      "PassionOne-400.ttf",
+      "PassionOne-700.ttf",
+      "PassionOne-900.ttf",
+      "Anton-Latin.ttf",
+    ].map((file) => stat(resolve(workbench, "assets", "fonts", file))),
+  );
 
   const checkOutput = await run(
     "npx",
-    ["--yes", "hyperframes@0.7.64", "check", "--at", "1.5,2.8", "--json"],
+    ["--yes", "hyperframes@0.7.107", "check", "--at", "1.5,2.8", "--json"],
     { cwd: workbench },
   );
-  const checkEnvelope = JSON.parse(checkOutput);
+  const jsonStart = checkOutput.indexOf("{");
+  assert(jsonStart >= 0, `Expected JSON check output:\n${checkOutput}`);
+  const checkEnvelope = JSON.parse(checkOutput.slice(jsonStart));
   assert.equal(checkEnvelope.ok, true, checkOutput);
 
   await run(
     "npx",
-    ["--yes", "hyperframes@0.7.64", "snapshot", "--at", "1.5,2.8"],
+    ["--yes", "hyperframes@0.7.107", "snapshot", "--at", "1.5,2.8"],
     { cwd: workbench },
   );
   const snapshots = await findPngs(workbench);
@@ -230,7 +269,7 @@ try {
     "npx",
     [
       "--yes",
-      "hyperframes@0.7.64",
+      "hyperframes@0.7.107",
       "render",
       "--output",
       renderPath,

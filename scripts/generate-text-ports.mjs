@@ -52,6 +52,12 @@ const textNames = [
   "marker-highlight",
   "tracking-in",
   "slot-machine-roll",
+  "chromatic-wave",
+  "extrude-pop",
+  "gooey-morph",
+  "kinetic-warp",
+  "perspective-squeeze",
+  "stretch-in",
 ];
 const coreNames = [
   "chat-to-preview-layout",
@@ -153,6 +159,7 @@ const coreNames = [
   "tv-power-off",
   "underwater-ripple",
   "vhs-filter",
+  "lens-zoom",
 ];
 const canvasTransitionNames = new Set([
   "displacement",
@@ -173,6 +180,27 @@ const canvasFilterNames = new Set([
   "tv-power-off",
   "underwater-ripple",
   "vhs-filter",
+]);
+const newSeekProbeNames = new Set([
+  "chromatic-wave",
+  "extrude-pop",
+  "gooey-morph",
+  "kinetic-warp",
+  "lens-zoom",
+  "perspective-squeeze",
+  "stretch-in",
+]);
+const seekProbeNames = new Set([
+  ...canvasTransitionNames,
+  ...canvasFilterNames,
+  ...newSeekProbeNames,
+]);
+const intentionalOverlapNames = new Set([
+  "chromatic-wave",
+  "extrude-pop",
+  "gooey-morph",
+  "lens-zoom",
+  "perspective-squeeze",
 ]);
 const speedMinOneNames = new Set([
   "chat-gpt",
@@ -463,6 +491,10 @@ const sceneOverrides = {
   "vhs-filter": {
     source: "components/docs/examples/vhs-filter-example.tsx",
     componentName: "VhsFilterExampleScene",
+  },
+  "lens-zoom": {
+    source: "components/docs/examples/lens-zoom-example.tsx",
+    componentName: "LensZoomExampleScene",
   },
   button: {
     source: "components/docs/examples/button-example.tsx",
@@ -1201,6 +1233,20 @@ const sourceAdjustmentsPlugin = {
       },
     );
     buildApi.onLoad(
+      { filter: /registry\/remocn\/stretch-in\/index\.tsx$/ },
+      async (args) => {
+        const original = await readFile(args.path, "utf8");
+        const contents = original.replace(
+          "https://fonts.gstatic.com/s/anton/v27/1Ptgg87LROyAm0K0.ttf",
+          "/assets/fonts/Anton-Latin.ttf",
+        );
+        if (contents === original) {
+          throw new Error(`Missing expected Anton font URL in ${args.path}`);
+        }
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
+    buildApi.onLoad(
       {
         filter:
           /components\/docs\/examples\/(paper-wobble|ink-arrow|crumple-toss|scribble-circle)-example\.tsx$/,
@@ -1224,6 +1270,28 @@ const sourceAdjustmentsPlugin = {
           throw new Error(`Missing expected low-contrast copy in ${args.path}`);
         }
         return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
+  },
+};
+
+const deterministicOpenTypePlugin = {
+  name: "hyfrme-deterministic-opentype",
+  setup(buildApi) {
+    buildApi.onLoad(
+      { filter: /node_modules\/opentype\.js\/dist\/opentype\.(?:mjs|js)$/ },
+      async (args) => {
+        const original = await readFile(args.path, "utf8");
+        const contents = original.replace(
+          "Math.round((/* @__PURE__ */ new Date()).getTime() / 1e3) + 2082844800",
+          "2082844800",
+        );
+        if (contents === original) {
+          throw new Error(
+            `Missing expected OpenType timestamp in ${args.path}`,
+          );
+        }
+        return { contents, loader: "js", resolveDir: dirname(args.path) };
       },
     );
   },
@@ -1302,6 +1370,11 @@ const geistMonoSource = resolve(
   "GeistMono-Latin.woff2",
 );
 const caveatSource = resolve(root, "assets", "fonts", "Caveat-Latin.woff2");
+const passionOneFiles = [
+  "PassionOne-400.ttf",
+  "PassionOne-700.ttf",
+  "PassionOne-900.ttf",
+];
 
 for (const name of selectedNames) {
   const usesVariableGeist =
@@ -1341,7 +1414,11 @@ for (const name of selectedNames) {
   const props = Object.fromEntries(
     Object.entries(controls).map(([key, control]) => [key, control.default]),
   );
-  if (name === "x-follow-card") {
+  if (name === "kinetic-warp") {
+    props.fontUrl = "/assets/fonts/PassionOne.css";
+  } else if (name === "stretch-in") {
+    props.fontUrl = "/assets/fonts/Anton-Latin.ttf";
+  } else if (name === "x-follow-card") {
     props.avatarUrl = "/assets/social/logo.svg";
     props.coverUrl = "/assets/social/imgs/x-cover.png";
   } else if (name === "x-followers-overview") {
@@ -1363,6 +1440,7 @@ for (const name of selectedNames) {
     props,
     background:
       sceneOverride?.background ??
+      (name === "kinetic-warp" ? "#141318" : null) ??
       (config.previewBackdrop?.type === "color" ||
       config.previewBackdrop?.type === "gradient"
         ? config.previewBackdrop.value
@@ -1383,10 +1461,10 @@ for (const name of selectedNames) {
       height: fixture.height,
       durationInFrames: fixture.durationInFrames,
     })};
-    const props = ${JSON.stringify(Object.keys(props))}.reduce((result, key) => {
-      result[key] = variables[key];
-      return result;
-    }, {});
+    const props = ${JSON.stringify(props)};
+    for (const key of ${JSON.stringify(Object.keys(controls))}) {
+      props[key] = variables[key];
+    }
     window.__hyfrmeRenderFrame = (frame) => {
       __setHyfrmeFrame(frame, config);
       flushSync(() => root.render(React.createElement(${renderComponentName}, props)));
@@ -1407,6 +1485,7 @@ for (const name of selectedNames) {
       socialFontsPlugin,
       caveatPlugin,
       socialAssetsPlugin,
+      deterministicOpenTypePlugin,
       sourceAdjustmentsPlugin,
       shaderGatePlugin,
     ],
@@ -1425,7 +1504,7 @@ for (const name of selectedNames) {
     },
     write: false,
   });
-  const runtime = result.outputFiles[0].text;
+  const runtime = result.outputFiles[0].text.replace(/[ \t]+$/gm, "");
   const catalogFamily = textNames.includes(name)
     ? "text"
     : primitiveNames.includes(name)
@@ -1487,19 +1566,20 @@ ${interNames.has(name) ? '      @font-face { font-family: "Inter"; src: url("../
 ${manropeNames.has(name) ? '      @font-face { font-family: "Manrope"; src: url("../assets/fonts/Manrope-Latin.woff2") format("woff2"); font-style: normal; font-weight: 200 800; font-display: block; }' : ""}
 ${geistMonoNames.has(name) ? '      @font-face { font-family: "Geist Mono"; src: url("../assets/fonts/GeistMono-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }' : ""}
 ${caveatNames.has(name) ? '      @font-face { font-family: "Caveat"; src: url("../assets/fonts/Caveat-Latin.woff2") format("woff2"); font-style: normal; font-weight: 400 700; font-display: block; }' : ""}
+${name === "kinetic-warp" ? '      @font-face { font-family: "Passion One"; src: url("../assets/fonts/PassionOne-400.ttf") format("truetype"); font-style: normal; font-weight: 400; font-display: block; }\n      @font-face { font-family: "Passion One"; src: url("../assets/fonts/PassionOne-700.ttf") format("truetype"); font-style: normal; font-weight: 700; font-display: block; }\n      @font-face { font-family: "Passion One"; src: url("../assets/fonts/PassionOne-900.ttf") format("truetype"); font-style: normal; font-weight: 900; font-display: block; }' : ""}
       * { box-sizing: border-box; }
       html, body { width: ${fixture.width}px; height: ${fixture.height}px; margin: 0; overflow: hidden; background: ${fixture.background}; }
       body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
       #hyfrme-source-root { position: absolute; inset: 0; }
-${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? "      [data-hyfrme-seek-probe] { position: absolute; width: 1px; height: 1px; pointer-events: none; }" : ""}
+${seekProbeNames.has(name) ? "      [data-hyfrme-seek-probe] { position: absolute; width: 1px; height: 1px; pointer-events: none; }" : ""}
     </style>
   </head>
   <body>
     <div id="root" data-composition-id="${name}" data-start="0" data-duration="${duration}" data-fps="${fixture.fps}" data-width="${fixture.width}" data-height="${fixture.height}">
 ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? "      <canvas layoutsubtree hidden data-layout-ignore data-hyfrme-clock></canvas>" : "      <span hidden data-layout-ignore data-hyfrme-clock></span>"}
-${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? '      <span data-hyfrme-seek-probe aria-hidden="true"></span>' : ""}
+${seekProbeNames.has(name) ? '      <span data-hyfrme-seek-probe aria-hidden="true"></span>' : ""}
       <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="${duration}" data-track-index="0">
-        <div id="hyfrme-source-root"${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? " data-layout-ignore data-layout-allow-occlusion data-layout-allow-overlap" : name === "shimmer-sweep" ? " data-layout-allow-occlusion" : ""}></div>
+        <div id="hyfrme-source-root"${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? " data-layout-ignore data-layout-allow-occlusion data-layout-allow-overlap" : intentionalOverlapNames.has(name) ? " data-layout-allow-overlap" : name === "shimmer-sweep" ? " data-layout-allow-occlusion" : ""}></div>
       </div>
     </div>
     <script src="./${name}.runtime.js"></script>
@@ -1514,7 +1594,7 @@ ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? '      <span 
         ease: "none",
         onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(${fixture.durationInFrames - 1}, Math.round(clock.frame)))),
       });
-${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? `      timeline.to('[data-composition-id="${name}"] [data-hyfrme-seek-probe]', { x: 120, duration: ${duration}, ease: "none" }, 0);` : ""}
+${seekProbeNames.has(name) ? `      timeline.to('[data-composition-id="${name}"] [data-hyfrme-seek-probe]', { x: 120, duration: ${duration}, ease: "none" }, 0);` : ""}
       window.__timelines["${name}"] = timeline;
     </script>
   </body>
@@ -1563,6 +1643,39 @@ ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? `      timeli
       target: "THIRD_PARTY_LICENSES/Caveat-OFL.txt",
       source: resolve(root, "assets", "fonts", "Caveat-OFL.txt"),
     });
+  }
+  if (name === "kinetic-warp") {
+    packagedAssets.push(
+      {
+        path: "PassionOne.css",
+        target: "assets/fonts/PassionOne.css",
+        source: resolve(root, "assets", "fonts", "PassionOne.css"),
+      },
+      ...passionOneFiles.map((file) => ({
+        path: file,
+        target: `assets/fonts/${file}`,
+        source: resolve(root, "assets", "fonts", file),
+      })),
+      {
+        path: "licenses/PassionOne-OFL.txt",
+        target: "THIRD_PARTY_LICENSES/PassionOne-OFL.txt",
+        source: resolve(root, "assets", "fonts", "PassionOne-OFL.txt"),
+      },
+    );
+  }
+  if (name === "stretch-in") {
+    packagedAssets.push(
+      {
+        path: "Anton-Latin.ttf",
+        target: "assets/fonts/Anton-Latin.ttf",
+        source: resolve(root, "assets", "fonts", "Anton-Latin.ttf"),
+      },
+      {
+        path: "licenses/Anton-OFL.txt",
+        target: "THIRD_PARTY_LICENSES/Anton-OFL.txt",
+        source: resolve(root, "assets", "fonts", "Anton-OFL.txt"),
+      },
+    );
   }
   if (paperShaderNames.has(name)) {
     packagedAssets.push({

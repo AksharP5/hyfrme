@@ -20,6 +20,18 @@ const representativeTimes = new Map([
   ["spring-settle", 5.8],
   ["tv-power-off", 1.2],
 ]);
+const onlyIndex = process.argv.indexOf("--only");
+const only =
+  onlyIndex === -1 ? null : new Set(process.argv[onlyIndex + 1].split(","));
+const items = only
+  ? registry.items.filter((item) => only.has(item.name))
+  : registry.items;
+
+if (only && items.length !== only.size) {
+  throw new Error(
+    `Expected ${only.size} registry items, found ${items.length}`,
+  );
+}
 
 const run = (args) =>
   new Promise((accept, reject) => {
@@ -32,7 +44,7 @@ const run = (args) =>
     );
   });
 
-for (const [index, item] of registry.items.entries()) {
+for (const [index, item] of items.entries()) {
   const previewDirectory = resolve(root, "public", "previews", item.name);
   const representativeTime = representativeTimes.get(item.name);
   await mkdir(previewDirectory, { recursive: true });
@@ -53,7 +65,7 @@ for (const [index, item] of registry.items.entries()) {
     "1",
     resolve(previewDirectory, "thumbnail.png"),
   ]);
-  process.stdout.write(`\rThumbnails ${index + 1}/${registry.items.length}`);
+  process.stdout.write(`\rThumbnails ${index + 1}/${items.length}`);
 }
 
 process.stdout.write("\n");
