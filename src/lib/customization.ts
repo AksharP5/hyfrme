@@ -204,7 +204,7 @@ export function buildPreviewDocument(
   values: CustomValues,
   transparent: boolean,
 ) {
-  const safeValues = JSON.stringify(values)
+  const safeValues = rewriteAssetPaths(JSON.stringify(values), item)
     .replaceAll("<", "\\u003c")
     .replaceAll(">", "\\u003e");
   const safeName = JSON.stringify(item.name);
