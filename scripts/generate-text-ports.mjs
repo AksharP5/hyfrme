@@ -17,6 +17,17 @@ await copyFile(
   resolve(root, "fixtures", "remocn", "field-example.tsx"),
   fieldWrapperPath,
 );
+const stageWrapperPath = resolve(
+  upstream,
+  "components",
+  "docs",
+  "examples",
+  "hyfrme-stage-example.tsx",
+);
+await copyFile(
+  resolve(root, "fixtures", "remocn", "stage-example.tsx"),
+  stageWrapperPath,
+);
 const upstreamInventory = JSON.parse(
   await readFile(resolve(root, "catalog", "upstream-inventory.json"), "utf8"),
 );
@@ -79,6 +90,7 @@ const coreNames = [
   "confetti",
   "backdrop",
   "drift",
+  "stage",
   "rolodex-flip",
   "value-swap",
   "number-wheel",
@@ -187,6 +199,7 @@ const newSeekProbeNames = new Set([
   "gooey-morph",
   "kinetic-warp",
   "lens-zoom",
+  "stage",
   "perspective-squeeze",
   "stretch-in",
 ]);
@@ -201,6 +214,7 @@ const intentionalOverlapNames = new Set([
   "gooey-morph",
   "lens-zoom",
   "perspective-squeeze",
+  "stage",
 ]);
 const speedMinOneNames = new Set([
   "chat-gpt",
@@ -311,6 +325,19 @@ const sceneOverrides = {
   drift: {
     source: "components/docs/examples/drift-example.tsx",
     componentName: "DriftExampleScene",
+  },
+  stage: {
+    source: "components/docs/examples/hyfrme-stage-example.tsx",
+    originEntry: "components/docs/examples/stage-example.tsx",
+    originComponentName: "StageExampleScene",
+    componentName: "HyfrmeStageExampleScene",
+    extraControls: {
+      imageUrl: {
+        type: "text",
+        default: "../assets/stage-remocn-components.webp",
+        label: "Image URL",
+      },
+    },
   },
   "rolodex-flip": {
     source: "components/docs/examples/rolodex-flip-example.tsx",
@@ -1346,6 +1373,42 @@ const parseUiExampleControls = (source, name) => {
   );
 };
 
+const normalizeControls = (controls) =>
+  Object.fromEntries(
+    Object.entries(controls).flatMap(([name, control]) => {
+      const label = control.label ?? control.description ?? name;
+      if (control.type === "text-content") {
+        return [[name, { type: "text", default: control.default, label }]];
+      }
+      if (control.type === "enum") {
+        return [
+          [
+            name,
+            {
+              type: "select",
+              default: control.default,
+              options: Object.keys(control.variants),
+              label,
+            },
+          ],
+        ];
+      }
+      if (
+        [
+          "text",
+          "number",
+          "number-input",
+          "color",
+          "select",
+          "boolean",
+        ].includes(control.type)
+      ) {
+        return [[name, { ...control, label }]];
+      }
+      return [];
+    }),
+  );
+
 const fixtures = [];
 const fontSource = resolve(
   root,
@@ -1404,13 +1467,18 @@ for (const name of selectedNames) {
     (sceneOverride?.uiExample
       ? parseUiExampleControls(renderSource, name)
       : null);
-  const controls = controlKeys
+  const normalizedControls = normalizeControls(config.controls);
+  const configuredControls = controlKeys
     ? Object.fromEntries(
-        Object.entries(config.controls).filter(([key]) =>
+        Object.entries(normalizedControls).filter(([key]) =>
           controlKeys.includes(key),
         ),
       )
-    : config.controls;
+    : normalizedControls;
+  const controls = {
+    ...configuredControls,
+    ...(sceneOverride?.extraControls ?? {}),
+  };
   const props = Object.fromEntries(
     Object.entries(controls).map(([key, control]) => [key, control.default]),
   );
@@ -1746,6 +1814,13 @@ ${seekProbeNames.has(name) ? `      timeline.to('[data-composition-id="${name}"]
       });
     }
   }
+  if (name === "stage") {
+    packagedAssets.push({
+      path: "stage-remocn-components.webp",
+      target: "assets/stage-remocn-components.webp",
+      source: resolve(upstream, "public", "stage-remocn-components.webp"),
+    });
+  }
   for (const asset of packagedAssets) {
     const output = resolve(blockDirectory, asset.path);
     await mkdir(dirname(output), { recursive: true });
@@ -1884,12 +1959,14 @@ ${seekProbeNames.has(name) ? `      timeline.to('[data-composition-id="${name}"]
     catalogFamily,
     title: displayTitle,
     description: registryItem.description,
-    componentName: renderComponentName,
+    componentName: sceneOverride?.originComponentName ?? renderComponentName,
     origin: {
       repository: "https://github.com/Remocn/remocn",
       commit: upstreamCommit,
       source: inventoryItem.files[0].path,
-      ...(sceneOverride ? { entry: sceneOverride.source } : {}),
+      ...(sceneOverride
+        ? { entry: sceneOverride.originEntry ?? sceneOverride.source }
+        : {}),
       ...(sceneOverride?.config
         ? {}
         : { config: relative(upstream, configPath) }),

@@ -76,7 +76,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "camera-motion",
         label: "Camera Motion",
-        slugs: ["drift"],
+        slugs: ["drift", "stage"],
       },
       {
         id: "split-layouts",

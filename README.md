@@ -1,7 +1,7 @@
 # Hyfrme
 
 Hyfrme is a copy-paste motion library for
-[HyperFrames](https://hyperframes.heygen.com/). Browse 276 components,
+[HyperFrames](https://hyperframes.heygen.com/). Browse 277 components,
 customize one in the browser, then copy it into your project with one command.
 You own the installed HTML, JavaScript, fonts, and assets.
 

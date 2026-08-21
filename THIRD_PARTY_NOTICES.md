@@ -2,12 +2,13 @@
 
 ## Remocn source reference
 
-All 276 visual ports are derived from pinned Remocn implementations. Of these,
+All 277 visual ports are derived from pinned Remocn implementations. Of these,
 231 use commit `ea730a20b4ab09430ee7292aebc847c002375151`, 19 use commit
 `32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c`, and three use commit
 `16eef5d3727eb258ce345a305d67a86eeca02908`. The 16 canvas transitions,
 filters, and effects use commit `92d7d1f2805ca9c05d5d117083e22577ecab70df`,
-and seven use commit `4ed9b8a3b96396068a17e28e4b3e23f726fcc69d`.
+seven use commit `4ed9b8a3b96396068a17e28e4b3e23f726fcc69d`, and Stage uses commit
+`0e30c226746ba4e64a959461350fab4298aa62b9`.
 Every generated port names its
 exact source file and fixture in its parity manifest.
 

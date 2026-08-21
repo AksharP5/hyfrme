@@ -25,6 +25,7 @@ const contentTypes = {
   ".js": "text/javascript",
   ".ttf": "font/ttf",
   ".txt": "text/plain",
+  ".webp": "image/webp",
   ".woff2": "font/woff2",
 };
 
@@ -237,6 +238,20 @@ try {
     { env: { HYFRME_REGISTRY_URL: registryUrl } },
   );
   assert.match(stretchInstallOutput, /Added Stretch In/);
+  const stageInstallOutput = await run(
+    process.execPath,
+    [
+      resolve(root, "cli/bin/hyfrme.mjs"),
+      "add",
+      "stage",
+      "--dir",
+      workbench,
+      "--set",
+      "preset=site-tour",
+    ],
+    { env: { HYFRME_REGISTRY_URL: registryUrl } },
+  );
+  assert.match(stageInstallOutput, /customized: preset=site-tour/);
   await Promise.all(
     [
       "PassionOne.css",
@@ -246,6 +261,7 @@ try {
       "Anton-Latin.ttf",
     ].map((file) => stat(resolve(workbench, "assets", "fonts", file))),
   );
+  await stat(resolve(workbench, "assets", "stage-remocn-components.webp"));
 
   const checkOutput = await run(
     "npx",

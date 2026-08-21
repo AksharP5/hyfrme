@@ -124,6 +124,9 @@ compiled-source runtime.
 - Lens Zoom uses Remocn's official example scene and transition presentation.
   It passes the full HyperFrames check and reaches 0.995738 mean SSIM across
   112 canonical frames.
+- Stage uses Remocn's official long-page example and exposes all 12 upstream
+  controls plus the installed image URL. It passes the full HyperFrames check
+  and reaches 0.994107 mean SSIM across 300 canonical frames.
 - A previous upstream update added `slide-swap` and `spring-settle`, plus the
   internal `scene-motion` helper used directly by `spring-settle`. Both public
   blocks pass the full HyperFrames check. Their mean SSIM scores are 0.997717
@@ -155,7 +158,7 @@ All 45 UI primitives and flows are verified.
 ## Coverage status
 
 The pinned visual inventory at Remocn
-`4ed9b8a3b96396068a17e28e4b3e23f726fcc69d` is complete: 276/276 ports have
+`0e30c226746ba4e64a959461350fab4298aa62b9` is complete: 277/277 ports have
 passing parity manifests. The six non-visual upstream entries—`brush`,
 `canvas-presentation`, `icons-core`, `remocn-ui`, `scene-motion`, and
 `stop-motion`—are shared runtime helpers rather than catalog blocks.
