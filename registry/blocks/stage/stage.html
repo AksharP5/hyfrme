@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"preset","type":"string","label":"Camera path","default":"smooth-descent","options":["smooth-descent","site-tour","hero-push","section-hop"]},{"id":"shake","type":"number","label":"Handheld shake","default":0,"min":0,"max":1,"step":0.05},{"id":"seed","type":"string","label":"Shake seed","default":"remocn-smooth-descent"},{"id":"backdrop","type":"string","label":"Backdrop (CSS)","default":"linear-gradient(145deg, #17181d 0%, #09090b 72%)"},{"id":"rotateX","type":"number","label":"Rotate X","default":14,"min":-180,"max":180,"step":1},{"id":"rotateY","type":"number","label":"Rotate Y","default":-20,"min":-180,"max":180,"step":1},{"id":"perspective","type":"number","label":"Perspective","default":900,"min":50,"max":5000,"step":25},{"id":"scale","type":"number","label":"Scale","default":0.86,"min":0.1,"max":3,"step":0.01},{"id":"radius","type":"number","label":"Radius","default":1.4,"min":0,"max":4,"step":0.1},{"id":"reflection","type":"number","label":"Reflection","default":0.24,"min":0,"max":1,"step":0.05},{"id":"shadow","type":"number","label":"Contact shadow","default":0.7,"min":0,"max":1,"step":0.05},{"id":"light","type":"number","label":"Studio light","default":0.55,"min":0,"max":1,"step":0.05},{"id":"imageUrl","type":"string","label":"Image URL","default":"../assets/stage-remocn-components.webp"}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
+
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #ffffff; }
+      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; }
+      [data-hyfrme-seek-probe] { position: absolute; width: 1px; height: 1px; pointer-events: none; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="stage" data-start="0" data-duration="10" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+      <span data-hyfrme-seek-probe aria-hidden="true"></span>
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="10" data-track-index="0">
+        <div id="hyfrme-source-root" data-layout-allow-overlap></div>
+      </div>
+    </div>
+
+    <script src="./stage.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const clock = document.querySelector('[data-composition-id="stage"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="stage"] [data-hyfrme-clock]', {
+        frame: 300,
+        duration: 10,
+        ease: "none",
+        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(299, Math.round(clock.frame)))),
+      });
+      timeline.to('[data-composition-id="stage"] [data-hyfrme-seek-probe]', { x: 120, duration: 10, ease: "none" }, 0);
+      window.__timelines["stage"] = timeline;
+    </script>
+  </body>
+</html>

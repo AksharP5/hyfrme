@@ -18,6 +18,7 @@ const representativeTimes = new Map([
   ["particle-dissolve", 1.4],
   ["slide-swap", 5.8],
   ["spring-settle", 5.8],
+  ["stage", 5],
   ["tv-power-off", 1.2],
 ]);
 const onlyIndex = process.argv.indexOf("--only");
