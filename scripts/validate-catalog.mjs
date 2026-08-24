@@ -12,6 +12,18 @@ const ensure = async (path, label) => {
 };
 
 const registry = await readJson(resolve(root, "registry", "registry.json"));
+const upstreamInventory = await readJson(
+  resolve(root, "catalog", "upstream-inventory.json"),
+);
+const htmlInCanvasItems = new Set(
+  upstreamInventory.items
+    .filter(
+      (item) =>
+        item.visual === true &&
+        item.registryDependencies?.includes("@remocn/canvas-presentation"),
+    )
+    .map((item) => item.name),
+);
 
 if (!Array.isArray(registry.items) || registry.items.length === 0) {
   throw new Error("registry/registry.json must contain at least one item");
@@ -31,6 +43,15 @@ for (const item of registry.items) {
   if (manifest.name !== item.name) {
     throw new Error(
       `${item.name}: registry item name does not match catalog name`,
+    );
+  }
+
+  if (
+    manifest.tags?.includes("html-in-canvas") !==
+    htmlInCanvasItems.has(item.name)
+  ) {
+    throw new Error(
+      `${item.name}: html-in-canvas tag must match its Remocn canvas-presentation dependency`,
     );
   }
 
