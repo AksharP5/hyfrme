@@ -28,6 +28,17 @@ await copyFile(
   resolve(root, "fixtures", "remocn", "stage-example.tsx"),
   stageWrapperPath,
 );
+const asciiRenderWrapperPath = resolve(
+  upstream,
+  "components",
+  "docs",
+  "examples",
+  "hyfrme-ascii-render-example.tsx",
+);
+await copyFile(
+  resolve(root, "fixtures", "remocn", "ascii-render-example.tsx"),
+  asciiRenderWrapperPath,
+);
 const upstreamInventory = JSON.parse(
   await readFile(resolve(root, "catalog", "upstream-inventory.json"), "utf8"),
 );
@@ -476,8 +487,11 @@ const sceneOverrides = {
     componentName: "ParticleDissolveExampleScene",
   },
   "ascii-render": {
-    source: "components/docs/examples/ascii-render-example.tsx",
-    componentName: "AsciiRenderExampleScene",
+    source: "components/docs/examples/hyfrme-ascii-render-example.tsx",
+    originEntry: "components/docs/examples/ascii-render-recipes.tsx",
+    originComponentName: "AsciiResolveExampleScene",
+    componentName: "HyfrmeAsciiRenderExampleScene",
+    durationInFrames: 96,
   },
   "camera-lens": {
     source: "components/docs/examples/camera-lens-example.tsx",

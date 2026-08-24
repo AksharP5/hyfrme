@@ -127,6 +127,9 @@ compiled-source runtime.
 - Stage uses Remocn's official long-page example and exposes all 12 upstream
   controls plus the installed image URL. It passes the full HyperFrames check
   and reaches 0.994107 mean SSIM across 300 canonical frames.
+- ASCII Render uses Remocn's official ASCII Resolve recipe so its catalog video
+  demonstrates the filter changing over time. Hyfrme keeps all five component
+  controls available while matching the recipe at their default values.
 - A previous upstream update added `slide-swap` and `spring-settle`, plus the
   internal `scene-motion` helper used directly by `spring-settle`. Both public
   blocks pass the full HyperFrames check. Their mean SSIM scores are 0.997717
