@@ -14,14 +14,42 @@ type PreviewTimeline = {
   restart: () => void;
 };
 
+type HtmlInCanvasElement = HTMLCanvasElement & {
+  captureElementImage?: unknown;
+  requestPaint?: unknown;
+};
+
+type HtmlInCanvasContext = CanvasRenderingContext2D & {
+  drawElementImage?: unknown;
+};
+
+function supportsHtmlInCanvas() {
+  const canvas = document.createElement("canvas") as HtmlInCanvasElement;
+  const context = canvas.getContext("2d") as HtmlInCanvasContext | null;
+
+  return (
+    typeof context?.drawElementImage === "function" &&
+    typeof canvas.requestPaint === "function" &&
+    typeof canvas.captureElementImage === "function" &&
+    "transferControlToOffscreen" in HTMLCanvasElement.prototype
+  );
+}
+
 export function LivePreview({ item, source, values }: LivePreviewProps) {
   const frameRef = useRef<HTMLIFrameElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
+  const [htmlInCanvasSupported] = useState(supportsHtmlInCanvas);
   const isIcon = item.tags.includes("icon");
+  const usesRenderedPreview =
+    item.tags.includes("html-in-canvas") && !htmlInCanvasSupported;
   const document = useMemo(
-    () => buildPreviewDocument(source, item, values, isIcon),
-    [isIcon, item, source, values],
+    () =>
+      usesRenderedPreview
+        ? ""
+        : buildPreviewDocument(source, item, values, isIcon),
+    [isIcon, item, source, usesRenderedPreview, values],
   );
 
   const timeline = () => {
@@ -34,6 +62,14 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
   };
 
   const togglePlayback = () => {
+    if (usesRenderedPreview) {
+      const video = videoRef.current;
+      if (!video) return;
+      if (video.paused) void video.play().catch(() => setPaused(true));
+      else video.pause();
+      return;
+    }
+
     const currentTimeline = timeline();
     if (!currentTimeline) return;
     if (paused) currentTimeline.play();
@@ -42,6 +78,14 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
   };
 
   const replay = () => {
+    if (usesRenderedPreview) {
+      const video = videoRef.current;
+      if (!video) return;
+      video.currentTime = 0;
+      void video.play().catch(() => setPaused(true));
+      return;
+    }
+
     timeline()?.restart();
     setPaused(false);
   };
@@ -55,15 +99,33 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
       ref={containerRef}
       className={`live-preview${isIcon ? " is-icon" : ""}`}
     >
-      <iframe
-        ref={frameRef}
-        title={`${item.title} customized preview`}
-        srcDoc={document}
-        sandbox="allow-scripts allow-same-origin"
-        onLoad={() => setPaused(false)}
-      />
+      {usesRenderedPreview ? (
+        <video
+          ref={videoRef}
+          src={`/previews/${item.name}/hyperframes.mp4`}
+          poster={`/previews/${item.name}/thumbnail.png`}
+          muted
+          autoPlay
+          loop
+          playsInline
+          preload="auto"
+          aria-label={`${item.title} rendered preview`}
+          onLoadedData={(event) => setPaused(event.currentTarget.paused)}
+          onPlay={() => setPaused(false)}
+          onPause={() => setPaused(true)}
+        />
+      ) : (
+        <iframe
+          ref={frameRef}
+          title={`${item.title} customized preview`}
+          srcDoc={document}
+          sandbox="allow-scripts allow-same-origin"
+          onLoad={() => setPaused(false)}
+        />
+      )}
       <span className="live-indicator">
-        <span aria-hidden="true" /> Live preview
+        <span aria-hidden="true" />
+        {usesRenderedPreview ? "Rendered preview" : "Live preview"}
       </span>
       <div className="preview-controls">
         <button type="button" onClick={togglePlayback}>
