@@ -65,7 +65,7 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
     if (usesRenderedPreview) {
       const video = videoRef.current;
       if (!video) return;
-      if (video.paused) void video.play();
+      if (video.paused) void video.play().catch(() => setPaused(true));
       else video.pause();
       return;
     }
@@ -82,7 +82,7 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
       const video = videoRef.current;
       if (!video) return;
       video.currentTime = 0;
-      void video.play();
+      void video.play().catch(() => setPaused(true));
       return;
     }
 
