@@ -1102,10 +1102,17 @@ main {
   mix-blend-mode: screen;
 }
 
-.live-preview iframe {
+.live-preview iframe,
+.live-preview > video {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+.live-preview > video {
+  display: block;
+  object-fit: contain;
+  background: #0a0a0a;
 }
 
 .live-indicator {
