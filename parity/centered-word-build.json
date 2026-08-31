@@ -1,0 +1,53 @@
+{
+  "slug": "centered-word-build",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "source": "registry/remocn/centered-word-build/index.tsx",
+    "config": "registry/remocn/centered-word-build/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 75,
+    "props": {
+      "text": "everything we learn from",
+      "fontSize": 52,
+      "wordGap": 11,
+      "accel": 0.75,
+      "rise": 0.18,
+      "zoomStep": 0.035,
+      "settleFrames": 9,
+      "exitAt": 51,
+      "exitFrames": 12,
+      "color": "#fff3df",
+      "fontWeight": "400",
+      "speed": 1
+    },
+    "background": "radial-gradient(circle at 50% 108%, #ffd77a 0%, #ff6840 31%, #f13d21 78%)"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 75,
+    "meanSsim": 0.995184,
+    "minSsim": 0.993872,
+    "p05Ssim": 0.994049,
+    "p95Ssim": 0.996829,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/centered-word-build/remocn.mp4",
+    "hyperframesVideo": "public/previews/centered-word-build/hyperframes.mp4",
+    "summary": "parity/centered-word-build-diff/summary.json"
+  }
+}

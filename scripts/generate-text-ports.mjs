@@ -81,6 +81,7 @@ const textNames = [
   "perspective-squeeze",
   "stretch-in",
   "caret-swap",
+  "centered-word-build",
 ];
 const coreNames = [
   "chat-to-preview-layout",
@@ -836,7 +837,7 @@ const manropeNames = new Set([
 ]);
 const geistMonoNames = new Set(["github-stars"]);
 const caveatNames = new Set(["handwrite", "hand-count", "check-list"]);
-const variableGeistNames = new Set(["caret-swap"]);
+const variableGeistNames = new Set(["caret-swap", "centered-word-build"]);
 const sponsorAvatarIds = [
   1, 2, 3, 4, 70, 5, 6, 38, 14, 15, 18, 16, 9, 21, 22, 25, 26, 28, 30, 31, 7,
   12, 13, 19,
@@ -1285,6 +1286,22 @@ const sourceAdjustmentsPlugin = {
         );
         if (contents === original) {
           throw new Error(`Missing expected Anton font URL in ${args.path}`);
+        }
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
+    buildApi.onLoad(
+      { filter: /registry\/remocn\/centered-word-build\/index\.tsx$/ },
+      async (args) => {
+        const original = await readFile(args.path, "utf8");
+        const contents = original.replace(
+          "<span\n        className={className}",
+          "<span\n        data-layout-ignore\n        className={className}",
+        );
+        if (contents === original) {
+          throw new Error(
+            `Missing expected Centered Word Build text in ${args.path}`,
+          );
         }
         return { contents, loader: "tsx", resolveDir: dirname(args.path) };
       },
