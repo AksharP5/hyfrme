@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"Remocn"},{"id":"fontSize","type":"number","label":"Font size","default":72,"min":12,"max":160,"step":1},{"id":"stagger","type":"number","label":"Frames / char","default":3,"min":1,"max":8,"step":1},{"id":"squeeze","type":"number","label":"Extra gap (em)","default":0.03,"min":0,"max":0.2,"step":0.01},{"id":"color","type":"color","label":"Color","default":"#171717"},{"id":"fontWeight","type":"string","label":"Font weight","default":"400","options":["400","500","600","700"]},{"id":"speed","type":"number","label":"Speed","default":1}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #ffffff; }
+      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="squeeze-in" data-start="0" data-duration="2" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="2" data-track-index="0">
+        <div id="hyfrme-source-root"></div>
+      </div>
+    </div>
+
+    <script src="./squeeze-in.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const clock = document.querySelector('[data-composition-id="squeeze-in"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="squeeze-in"] [data-hyfrme-clock]', {
+        frame: 60,
+        duration: 2,
+        ease: "none",
+        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(59, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["squeeze-in"] = timeline;
+    </script>
+  </body>
+</html>

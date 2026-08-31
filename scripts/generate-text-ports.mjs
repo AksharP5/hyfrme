@@ -88,6 +88,7 @@ const textNames = [
   "outline-fill-track-text",
   "shadow-sweep-text",
   "sheen-slide-in",
+  "squeeze-in",
 ];
 const coreNames = [
   "chat-to-preview-layout",
@@ -849,6 +850,7 @@ const variableGeistNames = new Set([
   "fog-rise",
   "inline-pill-takeover",
   "sheen-slide-in",
+  "squeeze-in",
 ]);
 const sponsorAvatarIds = [
   1, 2, 3, 4, 70, 5, 6, 38, 14, 15, 18, 16, 9, 21, 22, 25, 26, 28, 30, 31, 7,
