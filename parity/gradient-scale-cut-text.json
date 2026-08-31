@@ -1,0 +1,56 @@
+{
+  "slug": "gradient-scale-cut-text",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "source": "registry/remocn/gradient-scale-cut-text/index.tsx",
+    "config": "registry/remocn/gradient-scale-cut-text/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 36,
+    "props": {
+      "text": "Introducing",
+      "giantFontSize": 520,
+      "compactFontSize": 132,
+      "anchorOffsetX": -16,
+      "giantTravel": 400,
+      "settleTravel": 160,
+      "cutFrame": 13,
+      "revealSoftness": 14,
+      "compactBlur": 12,
+      "gradientStart": "#f04a14",
+      "gradientEnd": "#f3f1f1",
+      "ghostColor": "#170b0a",
+      "backgroundColor": "#000000",
+      "fontWeight": "700",
+      "speed": 1
+    },
+    "background": "#000000"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 36,
+    "meanSsim": 0.997496,
+    "minSsim": 0.996347,
+    "p05Ssim": 0.99647,
+    "p95Ssim": 0.999127,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/gradient-scale-cut-text/remocn.mp4",
+    "hyperframesVideo": "public/previews/gradient-scale-cut-text/hyperframes.mp4",
+    "summary": "parity/gradient-scale-cut-text-diff/summary.json"
+  }
+}

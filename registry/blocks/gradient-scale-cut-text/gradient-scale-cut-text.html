@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"Introducing"},{"id":"giantFontSize","type":"number","label":"Giant font size","default":520,"min":160,"max":720,"step":4},{"id":"compactFontSize","type":"number","label":"Compact font size","default":132,"min":40,"max":240,"step":2},{"id":"anchorOffsetX","type":"number","label":"Final horizontal anchor offset","default":-16,"min":-400,"max":400,"step":4},{"id":"giantTravel","type":"number","label":"Giant phase left travel","default":400,"min":0,"max":800,"step":4},{"id":"settleTravel","type":"number","label":"Compact entrance travel","default":160,"min":0,"max":400,"step":4},{"id":"cutFrame","type":"number","label":"Hard cut frame","default":13,"min":4,"max":24,"step":1},{"id":"revealSoftness","type":"number","label":"Reveal edge softness","default":14,"min":0,"max":40,"step":1},{"id":"compactBlur","type":"number","label":"Blur after the cut","default":12,"min":0,"max":40,"step":1},{"id":"gradientStart","type":"color","label":"Gradient start","default":"#f04a14"},{"id":"gradientEnd","type":"color","label":"Gradient end","default":"#f3f1f1"},{"id":"ghostColor","type":"color","label":"Unrevealed text color","default":"#170b0a"},{"id":"backgroundColor","type":"color","label":"Background color","default":"#000000"},{"id":"fontWeight","type":"string","label":"Font weight","default":"700","options":["400","500","600","700"]},{"id":"speed","type":"number","label":"Speed","default":1}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
+
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #000000; }
+      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="gradient-scale-cut-text" data-start="0" data-duration="1.2" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="1.2" data-track-index="0">
+        <div id="hyfrme-source-root"></div>
+      </div>
+    </div>
+
+    <script src="./gradient-scale-cut-text.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const clock = document.querySelector('[data-composition-id="gradient-scale-cut-text"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="gradient-scale-cut-text"] [data-hyfrme-clock]', {
+        frame: 36,
+        duration: 1.2,
+        ease: "none",
+        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(35, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["gradient-scale-cut-text"] = timeline;
+    </script>
+  </body>
+</html>
