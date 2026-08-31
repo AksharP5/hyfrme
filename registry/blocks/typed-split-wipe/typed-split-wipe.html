@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"prefix","type":"string","label":"Leading text","default":"Introducing"},{"id":"anchor","type":"string","label":"Persistent anchor","default":"X"},{"id":"suffix","type":"string","label":"Staggered trailing words","default":"Ads MCP"},{"id":"typeFrames","type":"number","label":"Typing frames","default":30,"min":6,"max":60,"step":1},{"id":"exitAt","type":"number","label":"Exit start frame","default":50,"min":20,"max":90,"step":1},{"id":"exitFrames","type":"number","label":"Exit duration","default":20,"min":6,"max":40,"step":1},{"id":"wordStagger","type":"number","label":"Suffix word stagger","default":4,"min":0,"max":12,"step":1},{"id":"anchorShift","type":"number","label":"Anchor exit shift","default":-72,"min":-200,"max":0,"step":2},{"id":"fontSize","type":"number","label":"Font size","default":42,"min":18,"max":120,"step":1},{"id":"color","type":"color","label":"Text color","default":"#e8e8e8"},{"id":"fontWeight","type":"string","label":"Font weight","default":"400","options":["400","500","600","700"]},{"id":"speed","type":"number","label":"Speed","default":1}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #101010; }
+      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="typed-split-wipe" data-start="0" data-duration="2.5" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="2.5" data-track-index="0">
+        <div id="hyfrme-source-root"></div>
+      </div>
+    </div>
+
+    <script src="./typed-split-wipe.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const clock = document.querySelector('[data-composition-id="typed-split-wipe"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="typed-split-wipe"] [data-hyfrme-clock]', {
+        frame: 75,
+        duration: 2.5,
+        ease: "none",
+        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(74, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["typed-split-wipe"] = timeline;
+    </script>
+  </body>
+</html>
