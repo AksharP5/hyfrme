@@ -13,6 +13,7 @@ const iconNames = new Set(iconFixtures.map((entry) => entry.slug));
 const representativeTimes = new Map([
   ["displacement", 1.2],
   ["ember-burn", 1.33],
+  ["fog-rise", 1.5],
   ["glitch-cut", 1.3],
   ["grid-wave", 1.4],
   ["particle-dissolve", 1.4],
