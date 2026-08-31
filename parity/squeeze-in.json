@@ -1,0 +1,48 @@
+{
+  "slug": "squeeze-in",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "source": "registry/remocn/squeeze-in/index.tsx",
+    "config": "registry/remocn/squeeze-in/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 60,
+    "props": {
+      "text": "Remocn",
+      "fontSize": 72,
+      "stagger": 3,
+      "squeeze": 0.03,
+      "color": "#171717",
+      "fontWeight": "400",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 60,
+    "meanSsim": 0.999467,
+    "minSsim": 0.999224,
+    "p05Ssim": 0.9993,
+    "p95Ssim": 0.999939,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/squeeze-in/remocn.mp4",
+    "hyperframesVideo": "public/previews/squeeze-in/hyperframes.mp4",
+    "summary": "parity/squeeze-in-diff/summary.json"
+  }
+}
