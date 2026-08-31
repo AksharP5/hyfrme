@@ -85,6 +85,7 @@ const textNames = [
   "fog-rise",
   "gradient-scale-cut-text",
   "inline-pill-takeover",
+  "outline-fill-track-text",
 ];
 const coreNames = [
   "chat-to-preview-layout",
@@ -1341,6 +1342,22 @@ const sourceAdjustmentsPlugin = {
         if (contents === original) {
           throw new Error(
             `Missing expected Inline Pill Takeover root in ${args.path}`,
+          );
+        }
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
+    buildApi.onLoad(
+      { filter: /registry\/remocn\/outline-fill-track-text\/index\.tsx$/ },
+      async (args) => {
+        const original = await readFile(args.path, "utf8");
+        const contents = original.replace(
+          "<div\n      className={className}",
+          "<div\n      data-layout-ignore\n      className={className}",
+        );
+        if (contents === original) {
+          throw new Error(
+            `Missing expected Outline Fill Track Text root in ${args.path}`,
           );
         }
         return { contents, loader: "tsx", resolveDir: dirname(args.path) };

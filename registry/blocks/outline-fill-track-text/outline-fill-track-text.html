@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"leadText","type":"string","label":"Lead text","default":"Keep"},{"id":"valueText","type":"string","label":"Outlined value","default":"1000000000%"},{"id":"fontSize","type":"number","label":"Font size","default":368,"min":120,"max":520,"step":4},{"id":"enterOffset","type":"number","label":"Vertical entrance offset","default":240,"min":0,"max":420,"step":4},{"id":"anchorOffsetX","type":"number","label":"Shared horizontal anchor offset","default":-84,"min":-400,"max":400,"step":4},{"id":"trackDistance","type":"number","label":"Lead-to-value distance override; zero measures the text","default":0,"min":0,"max":1800,"step":10},{"id":"wordGap","type":"number","label":"Gap between the lead and value","default":220,"min":0,"max":500,"step":4},{"id":"endPadding","type":"number","label":"Trailing edge padding for long values","default":96,"min":0,"max":320,"step":4},{"id":"fillDuration","type":"number","label":"Fill duration in frames","default":38,"min":8,"max":45,"step":1},{"id":"outlineWidth","type":"number","label":"Outline width","default":3,"min":0,"max":12,"step":0.5},{"id":"color","type":"color","label":"Fill color","default":"#f4f3f6"},{"id":"outlineColor","type":"color","label":"Outline color","default":"#e6e2ed"},{"id":"backgroundColor","type":"color","label":"Background color","default":"#030012"},{"id":"glowColor","type":"color","label":"Entrance glow color","default":"#64109a"},{"id":"fontWeight","type":"string","label":"Font weight","default":"700","options":["400","500","600","700"]},{"id":"speed","type":"number","label":"Speed","default":1}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
+
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #030012; }
+      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="outline-fill-track-text" data-start="0" data-duration="2.6666666666666665" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="2.6666666666666665" data-track-index="0">
+        <div id="hyfrme-source-root"></div>
+      </div>
+    </div>
+
+    <script src="./outline-fill-track-text.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const clock = document.querySelector('[data-composition-id="outline-fill-track-text"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="outline-fill-track-text"] [data-hyfrme-clock]', {
+        frame: 80,
+        duration: 2.6666666666666665,
+        ease: "none",
+        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(79, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["outline-fill-track-text"] = timeline;
+    </script>
+  </body>
+</html>
