@@ -1,5 +1,6 @@
 import { access, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { build } from "esbuild";
 
 const root = resolve(import.meta.dirname, "..");
 const readJson = async (path) => JSON.parse(await readFile(path, "utf8"));
@@ -27,6 +28,31 @@ const htmlInCanvasItems = new Set(
 
 if (!Array.isArray(registry.items) || registry.items.length === 0) {
   throw new Error("registry/registry.json must contain at least one item");
+}
+
+const [{ text: catalogModuleSource }] = (
+  await build({
+    entryPoints: [resolve(root, "src", "catalog.ts")],
+    bundle: true,
+    format: "esm",
+    platform: "node",
+    write: false,
+  })
+).outputFiles;
+const catalogModule = await import(
+  `data:text/javascript;base64,${Buffer.from(catalogModuleSource).toString("base64")}`
+);
+const unclassifiedTypography = catalogModule.catalog
+  .filter((entry) => entry.item.tags.includes("typography"))
+  .filter(
+    (entry) => catalogModule.taxonomyFor(entry)?.section.id !== "typography",
+  )
+  .map((entry) => entry.item.name);
+
+if (unclassifiedTypography.length > 0) {
+  throw new Error(
+    `Typography ports must be assigned to the Typography taxonomy: ${unclassifiedTypography.join(", ")}`,
+  );
 }
 
 for (const item of registry.items) {
