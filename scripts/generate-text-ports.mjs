@@ -93,6 +93,7 @@ const textNames = [
   "word-push",
   "word-stream",
   "zoom-words",
+  "rush-type",
 ];
 const coreNames = [
   "chat-to-preview-layout",
@@ -225,6 +226,7 @@ const newSeekProbeNames = new Set([
   "lens-zoom",
   "stage",
   "perspective-squeeze",
+  "rush-type",
   "stretch-in",
 ]);
 const seekProbeNames = new Set([
@@ -1403,6 +1405,22 @@ const sourceAdjustmentsPlugin = {
         if (contents === original) {
           throw new Error(
             `Missing expected Sheen Slide In root in ${args.path}`,
+          );
+        }
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
+    buildApi.onLoad(
+      { filter: /registry\/remocn\/rush-type\/index\.tsx$/ },
+      async (args) => {
+        const original = await readFile(args.path, "utf8");
+        const contents = original.replace(
+          "const [fontReady, setFontReady] = useState(false);",
+          "const fontReady = true;\n  const setFontReady = () => {};",
+        );
+        if (contents === original) {
+          throw new Error(
+            `Missing expected Rush Type font state in ${args.path}`,
           );
         }
         return { contents, loader: "tsx", resolveDir: dirname(args.path) };

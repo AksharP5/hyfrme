@@ -18,6 +18,7 @@ const representativeTimes = new Map([
   ["grid-wave", 1.4],
   ["outline-fill-track-text", 1.5],
   ["particle-dissolve", 1.4],
+  ["rush-type", 1.1],
   ["shadow-sweep-text", 0.83],
   ["sheen-slide-in", 0.8],
   ["slide-swap", 5.8],
