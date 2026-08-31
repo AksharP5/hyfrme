@@ -87,6 +87,7 @@ const textNames = [
   "inline-pill-takeover",
   "outline-fill-track-text",
   "shadow-sweep-text",
+  "sheen-slide-in",
 ];
 const coreNames = [
   "chat-to-preview-layout",
@@ -847,6 +848,7 @@ const variableGeistNames = new Set([
   "centered-word-build",
   "fog-rise",
   "inline-pill-takeover",
+  "sheen-slide-in",
 ]);
 const sponsorAvatarIds = [
   1, 2, 3, 4, 70, 5, 6, 38, 14, 15, 18, 16, 9, 21, 22, 25, 26, 28, 30, 31, 7,
@@ -1375,6 +1377,22 @@ const sourceAdjustmentsPlugin = {
         if (contents === original) {
           throw new Error(
             `Missing expected Shadow Sweep Text root in ${args.path}`,
+          );
+        }
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
+    buildApi.onLoad(
+      { filter: /registry\/remocn\/sheen-slide-in\/index\.tsx$/ },
+      async (args) => {
+        const original = await readFile(args.path, "utf8");
+        const contents = original.replace(
+          '<div\n      style={{\n        position: "absolute",\n        inset: 0,\n        display: "flex"',
+          '<div\n      data-layout-ignore\n      style={{\n        position: "absolute",\n        inset: 0,\n        display: "flex"',
+        );
+        if (contents === original) {
+          throw new Error(
+            `Missing expected Sheen Slide In root in ${args.path}`,
           );
         }
         return { contents, loader: "tsx", resolveDir: dirname(args.path) };
