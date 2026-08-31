@@ -80,6 +80,7 @@ const textNames = [
   "kinetic-warp",
   "perspective-squeeze",
   "stretch-in",
+  "caret-swap",
 ];
 const coreNames = [
   "chat-to-preview-layout",
@@ -835,6 +836,7 @@ const manropeNames = new Set([
 ]);
 const geistMonoNames = new Set(["github-stars"]);
 const caveatNames = new Set(["handwrite", "hand-count", "check-list"]);
+const variableGeistNames = new Set(["caret-swap"]);
 const sponsorAvatarIds = [
   1, 2, 3, 4, 70, 5, 6, 38, 14, 15, 18, 16, 9, 21, 22, 25, 26, 28, 30, 31, 7,
   12, 13, 19,
@@ -1455,7 +1457,9 @@ const passionOneFiles = [
 
 for (const name of selectedNames) {
   const usesVariableGeist =
-    canvasTransitionNames.has(name) || canvasFilterNames.has(name);
+    variableGeistNames.has(name) ||
+    canvasTransitionNames.has(name) ||
+    canvasFilterNames.has(name);
   const inventoryItem = upstreamInventory.items.find(
     (item) => item.name === name,
   );

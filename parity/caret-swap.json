@@ -1,0 +1,51 @@
+{
+  "slug": "caret-swap",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "source": "registry/remocn/caret-swap/index.tsx",
+    "config": "registry/remocn/caret-swap/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 100,
+    "props": {
+      "fromText": "Executing it?",
+      "toText": "That's where everyone quits",
+      "fontSize": 72,
+      "swapAt": 20,
+      "typeSpeed": 1,
+      "color": "#171717",
+      "caretColor": "#FF4DAA",
+      "caretColorEnd": "#8A5CF6",
+      "fontWeight": "400",
+      "speed": 1
+    },
+    "background": "#fdf6f0"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 100,
+    "meanSsim": 0.998433,
+    "minSsim": 0.997496,
+    "p05Ssim": 0.997518,
+    "p95Ssim": 0.999944,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/caret-swap/remocn.mp4",
+    "hyperframesVideo": "public/previews/caret-swap/hyperframes.mp4",
+    "summary": "parity/caret-swap-diff/summary.json"
+  }
+}

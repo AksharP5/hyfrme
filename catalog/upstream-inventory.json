@@ -2,28 +2,43 @@
   "summary": {
     "upstream": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "0e30c226746ba4e64a959461350fab4298aa62b9"
+      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0"
     },
-    "totalRegistryItems": 283,
-    "visualItems": 277,
+    "totalRegistryItems": 297,
+    "visualItems": 291,
     "sharedRuntimeItems": 6,
     "byFamily": {
-      "core": 133,
+      "core": 147,
       "icons": 100,
       "ui": 44
     },
     "byTranslationClass": {
-      "interop-or-native-rewrite": 29,
-      "manual-review": 34,
-      "mechanical-candidate": 214,
+      "interop-or-native-rewrite": 30,
+      "manual-review": 35,
+      "mechanical-candidate": 226,
       "shared-runtime": 6
     },
     "coverage": {
-      "publishedItems": 277,
-      "missingItems": [],
+      "publishedItems": 278,
+      "missingItems": [
+        "centered-word-build",
+        "fog-rise",
+        "gradient-scale-cut-text",
+        "inline-pill-takeover",
+        "outline-fill-track-text",
+        "rush-type",
+        "shadow-sweep-text",
+        "sheen-slide-in",
+        "squeeze-in",
+        "typed-split-wipe",
+        "word-push",
+        "word-stream",
+        "zoom-words"
+      ],
       "extraItems": []
     },
     "blockerItems": [
+      "rush-type",
       "kinetic-warp",
       "stretch-in",
       "shader-mesh-gradient",
@@ -442,6 +457,576 @@
         "findings": []
       },
       "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "word-stream",
+      "title": "Word Stream",
+      "description": "Voiceover-paced phrases that build word by word — the next word looms as a blurred ghost before it resolves, then the phrase cuts away.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/word-stream/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/word-stream.tsx"
+        }
+      ],
+      "sourceLineCount": 180,
+      "features": [
+        "interpolate",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "word-push",
+      "title": "Word Push",
+      "description": "A phrase builds from its first word centered: each next word drives in from the right and pushes the line left, easing into the new center.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/word-push/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/word-push.tsx"
+        }
+      ],
+      "sourceLineCount": 153,
+      "features": [
+        "interpolate",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "sheen-slide-in",
+      "title": "Sheen Slide In",
+      "description": "A title glides in from the right with an exponential settle and a slow final creep to center, while a gradient sheen sweeps once through the glyphs.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/sheen-slide-in/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/sheen-slide-in.tsx"
+        }
+      ],
+      "sourceLineCount": 146,
+      "features": [
+        "interpolate",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "squeeze-in",
+      "title": "Squeeze In",
+      "description": "Characters appear one by one on a tight stagger; when the last one lands, every letter gap compresses as one and the word squeezes together.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/squeeze-in/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/squeeze-in.tsx"
+        }
+      ],
+      "sourceLineCount": 102,
+      "features": [
+        "interpolate",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "fog-rise",
+      "title": "Fog Rise",
+      "description": "Display text resolves out of fog: characters sharpen from heavy blur center-out with vertical streaks dissolving above them, as if rising along the z-axis.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/fog-rise/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/fog-rise.tsx"
+        }
+      ],
+      "sourceLineCount": 150,
+      "features": [
+        "spring",
+        "interpolate",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "caret-swap",
+      "title": "Caret Swap",
+      "description": "A gradient caret swells into a block that consumes the first phrase right-to-left, collapses back and types the second phrase out with a blinking caret.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/caret-swap/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/caret-swap.tsx"
+        }
+      ],
+      "sourceLineCount": 227,
+      "features": [
+        "interpolate",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "zoom-words",
+      "title": "Zoom Words",
+      "description": "A close-up word reveal: huge words fade into a long line while the camera rides the write head, the line streaming off-frame as the shot eases into focus.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/zoom-words/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/zoom-words.tsx"
+        }
+      ],
+      "sourceLineCount": 163,
+      "features": [
+        "interpolate",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "centered-word-build",
+      "title": "Centered Word Build",
+      "description": "Words appear sharply from below while the centered phrase pushes cumulatively closer on every beat, then clears through a soft left-to-right opacity wipe.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/centered-word-build/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/centered-word-build.tsx"
+        }
+      ],
+      "sourceLineCount": 163,
+      "features": [
+        "interpolate",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "inline-pill-takeover",
+      "title": "Inline Pill Takeover",
+      "description": "A clipped pill expands inside a sentence, physically pushes the surrounding words apart, removes them through blur and takes over the frame with a fast camera punch-in.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/inline-pill-takeover/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/inline-pill-takeover.tsx"
+        }
+      ],
+      "sourceLineCount": 217,
+      "features": [
+        "interpolate",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "typed-split-wipe",
+      "title": "Typed Split Wipe",
+      "description": "A centered cursorless type build holds, then exits through opposing fixed-layout glyph wipes that leave the anchor visible longest.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/typed-split-wipe/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/typed-split-wipe.tsx"
+        }
+      ],
+      "sourceLineCount": 160,
+      "features": [
+        "interpolate",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "shadow-sweep-text",
+      "title": "Shadow Sweep Text",
+      "description": "A line rises up and left while one dense dark shadow uncovers it and a second shadow sweeps back across it for the exit.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/shadow-sweep-text/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/shadow-sweep-text.tsx"
+        }
+      ],
+      "sourceLineCount": 164,
+      "features": [
+        "interpolate",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "outline-fill-track-text",
+      "title": "Outline Fill Track Text",
+      "description": "A rising lead word gives way to an outlined value that fills from left to right while both travel on one continuous track.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/outline-fill-track-text/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/outline-fill-track-text.tsx"
+        }
+      ],
+      "sourceLineCount": 237,
+      "features": [
+        "interpolate",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 1,
+        "infos": 0,
+        "findings": [
+          {
+            "file": "registry/remocn/outline-fill-track-text/index.tsx",
+            "line": 82,
+            "column": 24,
+            "severity": "warning",
+            "rule": "r2hf/use-memo",
+            "message": "useMemo — typically decorative, no HF equivalent needed",
+            "recommendation": "Drop the wrapper, compute inline"
+          }
+        ]
+      },
+      "translationClass": "manual-review"
+    },
+    {
+      "name": "gradient-scale-cut-text",
+      "title": "Gradient Scale Cut Text",
+      "description": "An oversized gradient reveal snaps to a separate compact blurred line that settles left while the reveal continues.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/gradient-scale-cut-text/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/gradient-scale-cut-text.tsx"
+        }
+      ],
+      "sourceLineCount": 216,
+      "features": [
+        "interpolate",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "rush-type",
+      "title": "Rush Type",
+      "description": "A resting white word blasts through vertical scale motion, separating into energy-conserving RGB shutter trails before the next word resolves.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/rush-type/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/rush-type.tsx"
+        }
+      ],
+      "sourceLineCount": 1165,
+      "features": [
+        "shader",
+        "state",
+        "effect",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 3,
+        "blockers": 7,
+        "warnings": 5,
+        "infos": 0,
+        "findings": [
+          {
+            "file": "registry/remocn/rush-type/index.tsx",
+            "line": 1015,
+            "column": 37,
+            "severity": "blocker",
+            "rule": "r2hf/use-state",
+            "message": "useState detected — Remotion compositions that drive animation via React state are not deterministic frame-capture targets in HyperFrames",
+            "recommendation": "Use the runtime interop pattern from PR #214 instead of attempting a translation"
+          },
+          {
+            "file": "registry/remocn/rush-type/index.tsx",
+            "line": 1016,
+            "column": 41,
+            "severity": "blocker",
+            "rule": "r2hf/use-state",
+            "message": "useState detected — Remotion compositions that drive animation via React state are not deterministic frame-capture targets in HyperFrames",
+            "recommendation": "Use the runtime interop pattern from PR #214 instead of attempting a translation"
+          },
+          {
+            "file": "registry/remocn/rush-type/index.tsx",
+            "line": 1017,
+            "column": 26,
+            "severity": "blocker",
+            "rule": "r2hf/use-state",
+            "message": "useState detected — Remotion compositions that drive animation via React state are not deterministic frame-capture targets in HyperFrames",
+            "recommendation": "Use the runtime interop pattern from PR #214 instead of attempting a translation"
+          },
+          {
+            "file": "registry/remocn/rush-type/index.tsx",
+            "line": 1017,
+            "column": 41,
+            "severity": "warning",
+            "rule": "r2hf/delay-render",
+            "message": "delayRender() — HF waits on asset readiness via the Frame Adapter pattern",
+            "recommendation": "Drop the call; HF handles this transparently"
+          },
+          {
+            "file": "registry/remocn/rush-type/index.tsx",
+            "line": 1019,
+            "column": 17,
+            "severity": "warning",
+            "rule": "r2hf/use-memo",
+            "message": "useMemo — typically decorative, no HF equivalent needed",
+            "recommendation": "Drop the wrapper, compute inline"
+          },
+          {
+            "file": "registry/remocn/rush-type/index.tsx",
+            "line": 1020,
+            "column": 30,
+            "severity": "warning",
+            "rule": "r2hf/use-memo",
+            "message": "useMemo — typically decorative, no HF equivalent needed",
+            "recommendation": "Drop the wrapper, compute inline"
+          },
+          {
+            "file": "registry/remocn/rush-type/index.tsx",
+            "line": 1024,
+            "column": 21,
+            "severity": "warning",
+            "rule": "r2hf/use-memo",
+            "message": "useMemo — typically decorative, no HF equivalent needed",
+            "recommendation": "Drop the wrapper, compute inline"
+          },
+          {
+            "file": "registry/remocn/rush-type/index.tsx",
+            "line": 1025,
+            "column": 22,
+            "severity": "warning",
+            "rule": "r2hf/use-memo",
+            "message": "useMemo — typically decorative, no HF equivalent needed",
+            "recommendation": "Drop the wrapper, compute inline"
+          },
+          {
+            "file": "registry/remocn/rush-type/index.tsx",
+            "line": 1039,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          },
+          {
+            "file": "registry/remocn/rush-type/index.tsx",
+            "line": 1061,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          },
+          {
+            "file": "registry/remocn/rush-type/index.tsx",
+            "line": 1080,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          },
+          {
+            "file": "registry/remocn/rush-type/index.tsx",
+            "line": 1115,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          }
+        ]
+      },
+      "translationClass": "interop-or-native-rewrite"
     },
     {
       "name": "extrude-pop",
