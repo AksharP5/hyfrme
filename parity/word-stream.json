@@ -1,0 +1,49 @@
+{
+  "slug": "word-stream",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "source": "registry/remocn/word-stream/index.tsx",
+    "config": "registry/remocn/word-stream/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 100,
+    "props": {
+      "text": "introducing | one-tap checkout | for your store",
+      "fontSize": 72,
+      "wordGap": 6,
+      "hold": 18,
+      "drift": 2,
+      "color": "#171717",
+      "fontWeight": "400",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 100,
+    "meanSsim": 0.998907,
+    "minSsim": 0.998307,
+    "p05Ssim": 0.998377,
+    "p95Ssim": 0.999703,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/word-stream/remocn.mp4",
+    "hyperframesVideo": "public/previews/word-stream/hyperframes.mp4",
+    "summary": "parity/word-stream-diff/summary.json"
+  }
+}

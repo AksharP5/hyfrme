@@ -91,6 +91,7 @@ const textNames = [
   "squeeze-in",
   "typed-split-wipe",
   "word-push",
+  "word-stream",
 ];
 const coreNames = [
   "chat-to-preview-layout",
@@ -855,6 +856,7 @@ const variableGeistNames = new Set([
   "squeeze-in",
   "typed-split-wipe",
   "word-push",
+  "word-stream",
 ]);
 const sponsorAvatarIds = [
   1, 2, 3, 4, 70, 5, 6, 38, 14, 15, 18, 16, 9, 21, 22, 25, 26, 28, 30, 31, 7,
