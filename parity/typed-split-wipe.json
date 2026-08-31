@@ -1,0 +1,53 @@
+{
+  "slug": "typed-split-wipe",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "source": "registry/remocn/typed-split-wipe/index.tsx",
+    "config": "registry/remocn/typed-split-wipe/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 75,
+    "props": {
+      "prefix": "Introducing",
+      "anchor": "X",
+      "suffix": "Ads MCP",
+      "typeFrames": 30,
+      "exitAt": 50,
+      "exitFrames": 20,
+      "wordStagger": 4,
+      "anchorShift": -72,
+      "fontSize": 42,
+      "color": "#e8e8e8",
+      "fontWeight": "400",
+      "speed": 1
+    },
+    "background": "#101010"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 75,
+    "meanSsim": 0.998827,
+    "minSsim": 0.998281,
+    "p05Ssim": 0.998282,
+    "p95Ssim": 0.999612,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/typed-split-wipe/remocn.mp4",
+    "hyperframesVideo": "public/previews/typed-split-wipe/hyperframes.mp4",
+    "summary": "parity/typed-split-wipe-diff/summary.json"
+  }
+}
