@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"Introducing"},{"id":"exitAt","type":"number","label":"Exit frame","default":60,"min":30,"max":150,"step":5},{"id":"fontSize","type":"number","label":"Font size","default":72,"min":12,"max":160,"step":1},{"id":"baseColor","type":"color","label":"Base color","default":"#18181b"},{"id":"sheenColor","type":"color","label":"Sheen color","default":"#4f8ef7"},{"id":"fontWeight","type":"string","label":"Font weight","default":"400","options":["400","500","600","700"]},{"id":"speed","type":"number","label":"Speed","default":1}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #ffffff; }
+      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="sheen-slide-in" data-start="0" data-duration="2.3333333333333335" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="2.3333333333333335" data-track-index="0">
+        <div id="hyfrme-source-root"></div>
+      </div>
+    </div>
+
+    <script src="./sheen-slide-in.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const clock = document.querySelector('[data-composition-id="sheen-slide-in"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="sheen-slide-in"] [data-hyfrme-clock]', {
+        frame: 70,
+        duration: 2.3333333333333335,
+        ease: "none",
+        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(69, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["sheen-slide-in"] = timeline;
+    </script>
+  </body>
+</html>
