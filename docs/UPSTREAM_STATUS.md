@@ -14,13 +14,13 @@ registry manifest and the official Remotion-to-HyperFrames source linter.
 
 ## Verified progress
 
-- 281/291 visual ports published in the local verified registry.
+- 282/291 visual ports published in the local verified registry.
 - 100/100 animated icons published.
-- 34/34 typography/effect ports published.
+- 35/35 typography/effect ports published.
 - 101/101 composition/data ports published.
 - 45/45 UI primitive ports published.
-- 1/11 standalone visual ports published (`soft-blur-in`, `word-stream`, `word-push`, `sheen-slide-in`, `squeeze-in`, `zoom-words`, `inline-pill-takeover`, `typed-split-wipe`, `shadow-sweep-text`, `outline-fill-track-text`, `rush-type`).
-- 10 visual items remain.
+- 1/10 standalone visual ports published (`soft-blur-in`, `word-stream`, `word-push`, `sheen-slide-in`, `squeeze-in`, `zoom-words`, `typed-split-wipe`, `shadow-sweep-text`, `outline-fill-track-text`, `rush-type`).
+- 9 visual items remain.
 - 0 local-only registry items.
 
 | Translation class | Count |
