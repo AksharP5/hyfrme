@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"everything we learn from"},{"id":"fontSize","type":"number","label":"Font size","default":52,"min":24,"max":160,"step":1},{"id":"wordGap","type":"number","label":"First word gaps","default":11,"min":4,"max":24,"step":1},{"id":"accel","type":"number","label":"Later gap multiplier","default":0.75,"min":0.4,"max":1,"step":0.05},{"id":"rise","type":"number","label":"Word rise (em)","default":0.18,"min":0,"max":0.5,"step":0.01},{"id":"zoomStep","type":"number","label":"Zoom / word","default":0.035,"min":0,"max":0.1,"step":0.005},{"id":"settleFrames","type":"number","label":"Rise and zoom frames","default":9,"min":2,"max":20,"step":1},{"id":"exitAt","type":"number","label":"Exit start frame","default":51,"min":20,"max":100,"step":1},{"id":"exitFrames","type":"number","label":"Exit duration","default":12,"min":4,"max":30,"step":1},{"id":"color","type":"color","label":"Color","default":"#fff3df"},{"id":"fontWeight","type":"string","label":"Font weight","default":"400","options":["400","500","600","700"]},{"id":"speed","type":"number","label":"Speed","default":1}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: radial-gradient(circle at 50% 108%, #ffd77a 0%, #ff6840 31%, #f13d21 78%); }
+      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="centered-word-build" data-start="0" data-duration="2.5" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="2.5" data-track-index="0">
+        <div id="hyfrme-source-root"></div>
+      </div>
+    </div>
+
+    <script src="./centered-word-build.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const clock = document.querySelector('[data-composition-id="centered-word-build"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="centered-word-build"] [data-hyfrme-clock]', {
+        frame: 75,
+        duration: 2.5,
+        ease: "none",
+        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(74, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["centered-word-build"] = timeline;
+    </script>
+  </body>
+</html>
