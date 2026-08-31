@@ -16,6 +16,7 @@ const representativeTimes = new Map([
   ["fog-rise", 1.5],
   ["glitch-cut", 1.3],
   ["grid-wave", 1.4],
+  ["outline-fill-track-text", 1.5],
   ["particle-dissolve", 1.4],
   ["slide-swap", 5.8],
   ["spring-settle", 5.8],
