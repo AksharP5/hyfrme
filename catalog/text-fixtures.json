@@ -950,5 +950,48 @@
       },
       "background": "radial-gradient(circle at 50% 108%, #ffd77a 0%, #ff6840 31%, #f13d21 78%)"
     }
+  },
+  {
+    "slug": "fog-rise",
+    "catalogFamily": "text",
+    "title": "Fog Rise",
+    "description": "Display text resolves out of fog: characters sharpen from heavy blur center-out with vertical streaks dissolving above them, as if rising along the z-axis.",
+    "componentName": "FogRise",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+      "source": "registry/remocn/fog-rise/index.tsx",
+      "config": "registry/remocn/fog-rise/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 90,
+      "props": {
+        "text": "Remocn",
+        "fontSize": 304,
+        "stagger": 5,
+        "blur": 0.17,
+        "tilt": 55,
+        "depth": 5,
+        "lift": 0.85,
+        "drift": 0.005,
+        "exitAt": 60,
+        "exitAccel": 0.04,
+        "mass": 1.3,
+        "stiffness": 60,
+        "damping": 13,
+        "spreadGap": 0.07,
+        "tracking": -0.07,
+        "resolveFrames": 22,
+        "fadeFrames": 18,
+        "color": "#004CFF",
+        "fontWeight": "400",
+        "speed": 1
+      },
+      "background": "#ffffff"
+    }
   }
 ]

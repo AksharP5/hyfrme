@@ -82,6 +82,7 @@ const textNames = [
   "stretch-in",
   "caret-swap",
   "centered-word-build",
+  "fog-rise",
 ];
 const coreNames = [
   "chat-to-preview-layout",
@@ -837,7 +838,11 @@ const manropeNames = new Set([
 ]);
 const geistMonoNames = new Set(["github-stars"]);
 const caveatNames = new Set(["handwrite", "hand-count", "check-list"]);
-const variableGeistNames = new Set(["caret-swap", "centered-word-build"]);
+const variableGeistNames = new Set([
+  "caret-swap",
+  "centered-word-build",
+  "fog-rise",
+]);
 const sponsorAvatarIds = [
   1, 2, 3, 4, 70, 5, 6, 38, 14, 15, 18, 16, 9, 21, 22, 25, 26, 28, 30, 31, 7,
   12, 13, 19,
