@@ -1,0 +1,61 @@
+{
+  "slug": "fog-rise",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "source": "registry/remocn/fog-rise/index.tsx",
+    "config": "registry/remocn/fog-rise/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "text": "Remocn",
+      "fontSize": 304,
+      "stagger": 5,
+      "blur": 0.17,
+      "tilt": 55,
+      "depth": 5,
+      "lift": 0.85,
+      "drift": 0.005,
+      "exitAt": 60,
+      "exitAccel": 0.04,
+      "mass": 1.3,
+      "stiffness": 60,
+      "damping": 13,
+      "spreadGap": 0.07,
+      "tracking": -0.07,
+      "resolveFrames": 22,
+      "fadeFrames": 18,
+      "color": "#004CFF",
+      "fontWeight": "400",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.998463,
+    "minSsim": 0.997146,
+    "p05Ssim": 0.9973,
+    "p95Ssim": 0.999988,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/fog-rise/remocn.mp4",
+    "hyperframesVideo": "public/previews/fog-rise/hyperframes.mp4",
+    "summary": "parity/fog-rise-diff/summary.json"
+  }
+}
