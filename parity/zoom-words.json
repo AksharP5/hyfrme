@@ -1,0 +1,51 @@
+{
+  "slug": "zoom-words",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "source": "registry/remocn/zoom-words/index.tsx",
+    "config": "registry/remocn/zoom-words/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 75,
+    "props": {
+      "text": "Still piecing together tools",
+      "fontSize": 64,
+      "wordGap": 12,
+      "zoom": 2.2,
+      "anchor": 0.5,
+      "blur": 0.04,
+      "blurFrames": 60,
+      "color": "#cfc2ff",
+      "fontWeight": "400",
+      "speed": 1
+    },
+    "background": "linear-gradient(180deg, #0a0612 25%, #6a3fd6 100%)"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 75,
+    "meanSsim": 0.995531,
+    "minSsim": 0.992537,
+    "p05Ssim": 0.992863,
+    "p95Ssim": 0.996928,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/zoom-words/remocn.mp4",
+    "hyperframesVideo": "public/previews/zoom-words/hyperframes.mp4",
+    "summary": "parity/zoom-words-diff/summary.json"
+  }
+}

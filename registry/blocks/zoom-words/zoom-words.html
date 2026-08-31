@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"Still piecing together tools"},{"id":"fontSize","type":"number","label":"Font size","default":64,"min":24,"max":160,"step":1},{"id":"wordGap","type":"number","label":"Frames / word","default":12,"min":4,"max":24,"step":1},{"id":"zoom","type":"number","label":"Camera zoom","default":2.2,"min":1,"max":4,"step":0.1},{"id":"anchor","type":"number","label":"Camera anchor","default":0.5,"min":0.2,"max":0.9,"step":0.05},{"id":"blur","type":"number","label":"Start blur (em)","default":0.04,"min":0,"max":0.3,"step":0.01},{"id":"blurFrames","type":"number","label":"Focus frames","default":60,"min":10,"max":120,"step":5},{"id":"color","type":"color","label":"Color","default":"#cfc2ff"},{"id":"fontWeight","type":"string","label":"Font weight","default":"400","options":["400","500","600","700"]},{"id":"speed","type":"number","label":"Speed","default":1}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: linear-gradient(180deg, #0a0612 25%, #6a3fd6 100%); }
+      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="zoom-words" data-start="0" data-duration="2.5" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="2.5" data-track-index="0">
+        <div id="hyfrme-source-root"></div>
+      </div>
+    </div>
+
+    <script src="./zoom-words.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const clock = document.querySelector('[data-composition-id="zoom-words"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="zoom-words"] [data-hyfrme-clock]', {
+        frame: 75,
+        duration: 2.5,
+        ease: "none",
+        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(74, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["zoom-words"] = timeline;
+    </script>
+  </body>
+</html>

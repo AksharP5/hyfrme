@@ -25,6 +25,7 @@ const representativeTimes = new Map([
   ["stage", 5],
   ["tv-power-off", 1.2],
   ["typed-split-wipe", 1.5],
+  ["zoom-words", 0.8],
 ]);
 const onlyIndex = process.argv.indexOf("--only");
 const only =
