@@ -1,0 +1,48 @@
+{
+  "slug": "word-push",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "source": "registry/remocn/word-push/index.tsx",
+    "config": "registry/remocn/word-push/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "text": "move at your own pace",
+      "fontSize": 72,
+      "wordGap": 10,
+      "accel": 0.8,
+      "color": "#171717",
+      "fontWeight": "400",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "decoded-video",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.998307,
+    "minSsim": 0.997782,
+    "p05Ssim": 0.997872,
+    "p95Ssim": 0.999503,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+  },
+  "artifacts": {
+    "remocnVideo": "public/previews/word-push/remocn.mp4",
+    "hyperframesVideo": "public/previews/word-push/hyperframes.mp4",
+    "summary": "parity/word-push-diff/summary.json"
+  }
+}
