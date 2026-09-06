@@ -16,7 +16,11 @@ function ShowcaseCard({ showcase }: { showcase: Showcase }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const play = () => {
-    void videoRef.current?.play();
+    const video = videoRef.current;
+    if (!video) return;
+    const src = mediaUrl(showcase.previewUrl);
+    if (video.getAttribute("src") !== src) video.src = src;
+    void video.play().catch(() => undefined);
   };
 
   const pause = () => {
@@ -43,9 +47,8 @@ function ShowcaseCard({ showcase }: { showcase: Showcase }) {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           poster={showcase.posterUrl}
-          src={mediaUrl(showcase.previewUrl)}
         />
         <span className="showcase-play" aria-hidden="true">
           ▶

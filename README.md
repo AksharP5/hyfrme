@@ -97,6 +97,18 @@ SHA-256 hash, resumes interrupted uploads, and never removes remote files.
 It generates temporary redirects for the original video URLs, preserving
 existing links when a video changes. The site uses Blob URLs directly.
 
+Sync compresses preview videos of 5 MB or larger with FFmpeg, keeping the
+original resolution, frame rate, duration, and audio. It uses H.264 CRF 16 and
+accepts the delivery copy only when SSIM is at least 0.98 and the file is at
+least 10% smaller. Otherwise it uploads the original. Install `ffmpeg` and
+`ffprobe` before syncing a new large preview. They are not needed for builds.
+Delivery URLs include the source hash and an encoding version; change that
+version when changing the encoding recipe. Original files and parity artifacts
+stay untouched. Showcase films retain their original encoding.
+
+Showcase cards load video on hover or keyboard focus. Homepage family cards
+load when visible and respect reduced motion.
+
 Production builds verify every video's hash and redirect before omitting those
 MP4s from `dist/`. Missing or outdated uploads fail the build. Building an
 unchanged checkout needs no Blob credentials. Keep the original videos for local
