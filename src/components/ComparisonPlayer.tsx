@@ -1,3 +1,4 @@
+import { mediaUrl } from "../media";
 import { useEffect, useRef, useState } from "react";
 
 type ViewMode = "side-by-side" | "wipe";
@@ -148,7 +149,7 @@ export function ComparisonPlayer({
       ref={kind === "reference" ? referenceRef : portRef}
       className={className}
       style={style}
-      src={kind === "reference" ? referenceSrc : portSrc}
+      src={mediaUrl(kind === "reference" ? referenceSrc : portSrc)}
       muted
       playsInline
       preload="auto"

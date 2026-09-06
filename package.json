@@ -8,7 +8,7 @@
     "dev": "vite",
     "prebuild": "npm run sync:registry && npm run sync:catalog && npm run build:cli",
     "build": "tsc --noEmit && vite build",
-    "check": "node scripts/build-catalog-data.mjs --check && npm run validate && npm run verify:showcases && npm run test:cli && npm run check:commands && tsc --noEmit",
+    "check": "node scripts/build-catalog-data.mjs --check && npm run validate && npm run verify:showcases && npm run test:cli && npm run test:media && npm run check:commands && tsc --noEmit",
     "check:commands": "node scripts/check-install-commands.mjs",
     "validate": "node scripts/validate-catalog.mjs",
     "test:cli": "node scripts/test-cli.mjs",
@@ -33,7 +33,9 @@
     "sync:catalog": "node scripts/build-catalog-data.mjs",
     "build:cli": "node scripts/build-cli-package.mjs",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "sync:media": "node scripts/sync-media.mjs",
+    "test:media": "node --test scripts/test-media.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "2.0.1",
@@ -44,6 +46,7 @@
   "devDependencies": {
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "@vercel/blob": "^2.8.0",
     "@vitejs/plugin-react": "6.0.3",
     "esbuild": "0.28.1",
     "prettier": "3.9.5",
