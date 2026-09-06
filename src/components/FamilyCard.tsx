@@ -24,10 +24,12 @@ export function FamilyCard({ family }: FamilyCardProps) {
     if (!video) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const src = mediaUrl(family.previewVideo);
     let visible = false;
 
     const syncPlayback = () => {
       if (visible && !reducedMotion.matches) {
+        if (video.getAttribute("src") !== src) video.src = src;
         void video.play().catch(() => undefined);
       } else {
         video.pause();
@@ -50,7 +52,7 @@ export function FamilyCard({ family }: FamilyCardProps) {
       reducedMotion.removeEventListener("change", syncPlayback);
       video.pause();
     };
-  }, []);
+  }, [family.previewVideo]);
 
   return (
     <a
@@ -63,12 +65,11 @@ export function FamilyCard({ family }: FamilyCardProps) {
       <span className="family-card-preview">
         <video
           ref={videoRef}
-          src={mediaUrl(family.previewVideo)}
           poster={family.previewPoster}
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           aria-hidden="true"
         />
         <img

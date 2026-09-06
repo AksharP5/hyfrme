@@ -2,6 +2,7 @@ import { existsSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { BlobNotFoundError, head, put } from "@vercel/blob";
+import { mediaContent } from "./encode-media.mjs";
 import {
   blobPath,
   isHostedMedia,
@@ -40,7 +41,7 @@ for (const file of changed) {
   const pathname = blobPath(file);
   const blob = await head(pathname).catch(async (error) => {
     if (!(error instanceof BlobNotFoundError)) throw error;
-    return put(pathname, await readFile(file.filename), {
+    return put(pathname, await mediaContent(file), {
       access: "public",
       addRandomSuffix: false,
       allowOverwrite: false,

@@ -4,6 +4,7 @@ import { relative, resolve, sep } from "node:path";
 
 export const root = resolve(import.meta.dirname, "..");
 export const manifestPath = resolve(root, "src/generated/media.json");
+const encodingVersion = "h264-v1";
 
 export function isHostedMedia(path) {
   return (
@@ -23,6 +24,7 @@ export async function readMediaFiles(publicDirectory) {
     files.push({
       path,
       filename,
+      size: content.byteLength,
       sha256: createHash("sha256").update(content).digest("hex"),
     });
   }
@@ -30,7 +32,12 @@ export async function readMediaFiles(publicDirectory) {
 }
 
 export function blobPath(file) {
-  return `media/${file.sha256}${file.path}`;
+  const variant = shouldEncodeMedia(file) ? `${encodingVersion}/` : "";
+  return `media/${variant}${file.sha256}${file.path}`;
+}
+
+export function shouldEncodeMedia(file) {
+  return file.path.startsWith("/previews/") && file.size >= 5_000_000;
 }
 
 export async function readMediaManifest(path = manifestPath) {
@@ -43,12 +50,16 @@ export async function readMediaManifest(path = manifestPath) {
       throw new Error(`Invalid media manifest entry: ${path}`);
     }
     const url = new URL(value);
-    const sha256 = url.pathname.split("/")[2];
+    const pathname = url.pathname.replace(
+      /^\/media\/h264-v[1-9]\d*\//,
+      "/media/",
+    );
+    const sha256 = pathname.split("/")[2];
     if (
       url.protocol !== "https:" ||
       !/^[a-z0-9]+\.public\.blob\.vercel-storage\.com$/.test(url.hostname) ||
       !/^[a-f0-9]{64}$/.test(sha256 ?? "") ||
-      url.pathname !== `/${blobPath({ path, sha256 })}` ||
+      pathname !== `/media/${sha256}${path}` ||
       url.search ||
       url.hash ||
       url.username ||
