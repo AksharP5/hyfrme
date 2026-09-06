@@ -1,3 +1,4 @@
+import { mediaUrl } from "../media";
 import { CopyButton } from "./CopyButton";
 
 type LandingHeroProps = {
@@ -77,7 +78,7 @@ export function LandingHero({ installCommand }: LandingHeroProps) {
             aria-label={`Open ${component.title}`}
           >
             <video
-              src={`/previews/${component.name}/hyperframes.mp4`}
+              src={mediaUrl(`/previews/${component.name}/hyperframes.mp4`)}
               poster={`/previews/${component.name}/thumbnail.png`}
               muted
               autoPlay

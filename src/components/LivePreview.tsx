@@ -1,3 +1,4 @@
+import { mediaUrl } from "../media";
 import { useMemo, useRef, useState } from "react";
 import type { RegistryItem } from "../catalog";
 import { buildPreviewDocument, type CustomValues } from "../lib/customization";
@@ -102,7 +103,7 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
       {usesRenderedPreview ? (
         <video
           ref={videoRef}
-          src={`/previews/${item.name}/hyperframes.mp4`}
+          src={mediaUrl(`/previews/${item.name}/hyperframes.mp4`)}
           poster={`/previews/${item.name}/thumbnail.png`}
           muted
           autoPlay

@@ -76,6 +76,32 @@ Composition ports follow the parity workflow in
 [`docs/PORTING.md`](docs/PORTING.md). Contributor-specific agent instructions
 live in [`AGENTS.md`](AGENTS.md).
 
+## Website video storage
+
+Catalog preview and showcase MP4s are served from public Vercel Blob storage.
+Local development uses the original files in `public/previews/` and
+`public/showcases/`. Registry assets and CLI installs stay self-contained.
+
+After adding or re-rendering a website video, sync it before building:
+
+```bash
+# Set BLOB_READ_WRITE_TOKEN in the environment or an ignored .env.local file.
+npm run sync:media
+npm run check
+npm run build
+```
+
+Commit the updated videos, `src/generated/media.json`, and `vercel.json`
+together. Sync uploads changed videos to immutable paths containing their
+SHA-256 hash, resumes interrupted uploads, and never removes remote files.
+It generates temporary redirects for the original video URLs, preserving
+existing links when a video changes. The site uses Blob URLs directly.
+
+Production builds verify every video's hash and redirect before omitting those
+MP4s from `dist/`. Missing or outdated uploads fail the build. Building an
+unchanged checkout needs no Blob credentials. Keep the original videos for local
+development and parity checks. Do not put Blob credentials in a `VITE_` variable.
+
 ## Attribution
 
 Hyfrme is an independent project, not an official Remocn or HyperFrames

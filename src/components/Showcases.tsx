@@ -1,3 +1,4 @@
+import { mediaUrl } from "../media";
 import { useEffect, useRef } from "react";
 import type { Showcase } from "../showcases";
 import { showcases } from "../showcases";
@@ -44,7 +45,7 @@ function ShowcaseCard({ showcase }: { showcase: Showcase }) {
           playsInline
           preload="metadata"
           poster={showcase.posterUrl}
-          src={showcase.previewUrl}
+          src={mediaUrl(showcase.previewUrl)}
         />
         <span className="showcase-play" aria-hidden="true">
           ▶
@@ -119,7 +120,7 @@ export function ShowcaseDetailPage({ showcase }: { showcase: Showcase }) {
           playsInline
           preload="metadata"
           poster={showcase.posterUrl}
-          src={showcase.previewUrl}
+          src={mediaUrl(showcase.previewUrl)}
         />
       </div>
 

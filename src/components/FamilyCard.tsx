@@ -1,3 +1,4 @@
+import { mediaUrl } from "../media";
 import { useEffect, useRef } from "react";
 
 export type LandingFamily = {
@@ -62,7 +63,7 @@ export function FamilyCard({ family }: FamilyCardProps) {
       <span className="family-card-preview">
         <video
           ref={videoRef}
-          src={family.previewVideo}
+          src={mediaUrl(family.previewVideo)}
           poster={family.previewPoster}
           muted
           loop
