@@ -2,6 +2,7 @@ import { build } from "esbuild";
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, relative, resolve } from "node:path";
 import { frameMathSource, remocnMitBanner } from "./hyfrme-frame-math.mjs";
+import { readUpstreamRegistry } from "./read-upstream-registry.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const upstream = resolve(root, process.env.REMOCN_SOURCE ?? ".work/remocn");
@@ -42,12 +43,7 @@ await copyFile(
 const upstreamInventory = JSON.parse(
   await readFile(resolve(root, "catalog", "upstream-inventory.json"), "utf8"),
 );
-const upstreamRegistry = JSON.parse(
-  await readFile(
-    resolve(upstream, "registry-artifacts", "registry.json"),
-    "utf8",
-  ),
-);
+const upstreamRegistry = await readUpstreamRegistry(upstream);
 const upstreamCommit = upstreamInventory.summary.upstream.commit;
 const textNames = [
   "per-character-rise",
@@ -272,6 +268,7 @@ const primitiveNames = [
   "sheet",
   "drawer",
   "select",
+  "select-menu",
   "dropdown-menu",
   "tabs",
   "cursor",
@@ -632,6 +629,13 @@ const sceneOverrides = {
     source: "components/docs/examples/select-example.tsx",
     componentName: "SelectExampleScene",
     durationInFrames: 120,
+    background: "oklch(1 0 0)",
+    uiExample: true,
+  },
+  "select-menu": {
+    source: "components/docs/examples/select-menu-example.tsx",
+    componentName: "SelectMenuExampleScene",
+    durationInFrames: 128,
     background: "oklch(1 0 0)",
     uiExample: true,
   },
@@ -1406,6 +1410,20 @@ const sourceAdjustmentsPlugin = {
           throw new Error(
             `Missing expected Sheen Slide In root in ${args.path}`,
           );
+        }
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
+    buildApi.onLoad(
+      { filter: /registry\/remocn-ui\/select-menu\/index\.tsx$/ },
+      async (args) => {
+        const original = await readFile(args.path, "utf8");
+        const contents = original.replace(
+          "            <div\n              key={option}",
+          "            <div\n              data-layout-ignore\n              key={option}",
+        );
+        if (contents === original) {
+          throw new Error(`Missing expected Select Menu row in ${args.path}`);
         }
         return { contents, loader: "tsx", resolveDir: dirname(args.path) };
       },
