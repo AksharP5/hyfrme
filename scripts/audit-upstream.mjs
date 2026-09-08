@@ -2,6 +2,7 @@ import { spawnSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { dirname, relative, resolve } from "node:path";
+import { readUpstreamRegistry } from "./read-upstream-registry.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const explicitSource = process.env.REMOCN_SOURCE !== undefined;
@@ -12,7 +13,6 @@ const lintScript =
     homedir(),
     ".agents/skills/remotion-to-hyperframes/scripts/lint_source.py",
   );
-const registryPath = resolve(sourceRoot, "registry-artifacts/registry.json");
 const outputPath = resolve(root, "catalog/upstream-inventory.json");
 const reportPath = resolve(root, "docs/UPSTREAM_STATUS.md");
 const sourceCommit = spawnSync("git", ["-C", sourceRoot, "rev-parse", "HEAD"], {
@@ -50,7 +50,7 @@ if (sourceStatus) {
   );
 }
 
-const registry = JSON.parse(await readFile(registryPath, "utf8"));
+const registry = await readUpstreamRegistry(sourceRoot);
 const publishedRegistry = await readFile(
   resolve(root, "registry", "registry.json"),
   "utf8",

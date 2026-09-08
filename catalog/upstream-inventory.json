@@ -2,24 +2,24 @@
   "summary": {
     "upstream": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0"
+      "commit": "25348774f7b63d09477172e6084cb669799511a3"
     },
-    "totalRegistryItems": 297,
-    "visualItems": 291,
+    "totalRegistryItems": 298,
+    "visualItems": 292,
     "sharedRuntimeItems": 6,
     "byFamily": {
       "core": 147,
       "icons": 100,
-      "ui": 44
+      "ui": 45
     },
     "byTranslationClass": {
       "interop-or-native-rewrite": 30,
-      "manual-review": 35,
+      "manual-review": 36,
       "mechanical-candidate": 226,
       "shared-runtime": 6
     },
     "coverage": {
-      "publishedItems": 291,
+      "publishedItems": 292,
       "missingItems": [],
       "extraItems": []
     },
@@ -7008,6 +7008,55 @@
             "severity": "warning",
             "rule": "r2hf/custom-hook",
             "message": "Custom hook `useSelectTransition` defined locally — may need manual rewrite",
+            "recommendation": "Inline the hook body if pure; bow out to runtime interop if it uses useState/useEffect"
+          }
+        ]
+      },
+      "translationClass": "manual-review"
+    },
+    {
+      "name": "select-menu",
+      "title": "UI Select Menu",
+      "description": "A vertical option list where exactly one row is highlighted; the highlight bar and left accent slide smoothly between rows. Fully controlled via selectedIndex/state or useSelectMenuTransition.",
+      "type": "registry:component",
+      "family": "ui",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "@remocn/remocn-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn-ui/select-menu/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/select-menu.tsx"
+        },
+        {
+          "path": "registry/remocn-ui/select-menu/use-select-menu-transition.ts",
+          "type": "registry:component",
+          "target": "components/remocn/use-select-menu-transition.ts"
+        }
+      ],
+      "sourceLineCount": 383,
+      "features": [
+        "svg",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 4,
+        "blockers": 0,
+        "warnings": 1,
+        "infos": 0,
+        "findings": [
+          {
+            "file": "registry/remocn-ui/select-menu/use-select-menu-transition.ts",
+            "line": 88,
+            "column": 1,
+            "severity": "warning",
+            "rule": "r2hf/custom-hook",
+            "message": "Custom hook `useSelectMenuTransition` defined locally — may need manual rewrite",
             "recommendation": "Inline the hook body if pure; bow out to runtime interop if it uses useState/useEffect"
           }
         ]
