@@ -1,0 +1,65 @@
+{
+  "slug": "shader-light-tunnel",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "e3dc260ff1965440d1f64fb65a8c9a9373e78328",
+    "source": "registry/remocn/shader-light-tunnel/index.tsx",
+    "config": "registry/remocn/shader-light-tunnel/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "speed": 1,
+      "twist": 0.7,
+      "spirals": 3,
+      "glow": 1,
+      "depth": 1,
+      "timeOffset": 0
+    },
+    "background": "#05050a"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "aa288fb94dc6c4f090e840bc4dad37172f87535ec999c4e11ace258a3f423dea",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/shader-light-tunnel/reference.mp4",
+    "hyperframesVideo": "public/previews/shader-light-tunnel/hyperframes.mp4",
+    "thumbnail": "public/previews/shader-light-tunnel/thumbnail.png",
+    "summary": "parity/shader-light-tunnel-diff/summary.json",
+    "perFrameSsim": "parity/shader-light-tunnel-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-light-tunnel-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-light-tunnel-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-light-tunnel-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-light-tunnel-diff/hyperframes-alpha.framemd5"
+  }
+}

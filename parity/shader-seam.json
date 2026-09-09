@@ -1,0 +1,64 @@
+{
+  "slug": "shader-seam",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "e3dc260ff1965440d1f64fb65a8c9a9373e78328",
+    "source": "registry/remocn/shader-seam/index.tsx",
+    "entry": "components/docs/examples/shader-seam-example.tsx",
+    "config": "registry/remocn/shader-seam/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 156,
+    "props": {
+      "softness": 0.18,
+      "detail": 0.65,
+      "timeOffset": 0,
+      "speed": 1
+    },
+    "background": "#14121c"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "05d2a2ffaaa351dbe3cc1d09aade5508c10561895dfc7165a124693452a818c2",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 156,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 156,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/shader-seam/reference.mp4",
+    "hyperframesVideo": "public/previews/shader-seam/hyperframes.mp4",
+    "thumbnail": "public/previews/shader-seam/thumbnail.png",
+    "summary": "parity/shader-seam-diff/summary.json",
+    "perFrameSsim": "parity/shader-seam-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-seam-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-seam-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-seam-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-seam-diff/hyperframes-alpha.framemd5"
+  }
+}

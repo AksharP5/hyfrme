@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"Your product"},{"id":"fontSize","type":"number","label":"Font size","default":400,"min":24,"max":500,"step":1},{"id":"wordDuration","type":"number","label":"Frames per word","default":30,"min":12,"max":90,"step":1},{"id":"intensity","type":"number","label":"Hero shader strength","default":1,"min":0,"max":1,"step":0.01}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #000000; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#000000; }
+
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="shader-text-reveal" data-start="0" data-duration="2.5" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="2.5" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
+      </div>
+    </div>
+    <script src="./shader-text-reveal.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="shader-text-reveal"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="shader-text-reveal"] [data-hyfrme-clock]', {
+        frame: 75,
+        duration: 2.5,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(74, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["shader-text-reveal"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

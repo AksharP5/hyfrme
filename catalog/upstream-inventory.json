@@ -2,24 +2,24 @@
   "summary": {
     "upstream": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "5a5f3a7d2524c01d050e20bfb8859c93f2b3f663"
+      "commit": "e3dc260ff1965440d1f64fb65a8c9a9373e78328"
     },
-    "totalRegistryItems": 303,
-    "visualItems": 297,
+    "totalRegistryItems": 308,
+    "visualItems": 302,
     "sharedRuntimeItems": 6,
     "byFamily": {
-      "core": 152,
+      "core": 157,
       "icons": 100,
       "ui": 45
     },
     "byTranslationClass": {
-      "interop-or-native-rewrite": 31,
+      "interop-or-native-rewrite": 36,
       "manual-review": 36,
       "mechanical-candidate": 230,
       "shared-runtime": 6
     },
     "coverage": {
-      "publishedItems": 297,
+      "publishedItems": 302,
       "missingItems": [],
       "extraItems": []
     },
@@ -55,7 +55,12 @@
       "shader-gem-smoke",
       "shader-strata",
       "shader-weave",
-      "canvas-presentation"
+      "canvas-presentation",
+      "shader-seam",
+      "shader-text-reveal",
+      "inline-word-roll",
+      "shader-light-tunnel",
+      "shader-spiral-pass"
     ]
   },
   "items": [
@@ -6406,6 +6411,313 @@
         "findings": []
       },
       "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "shader-seam",
+      "title": "Shader Seam",
+      "description": "Dissolve a stationary OpenShaders material to uncover the next scene.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/shader-seam/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/shader-seam.tsx"
+        }
+      ],
+      "sourceLineCount": 573,
+      "features": [
+        "shader",
+        "transition",
+        "effect"
+      ],
+      "lint": {
+        "files_scanned": 3,
+        "blockers": 2,
+        "warnings": 1,
+        "infos": 0,
+        "findings": [
+          {
+            "file": "registry/remocn/shader-seam/index.tsx",
+            "line": 490,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          },
+          {
+            "file": "registry/remocn/shader-seam/index.tsx",
+            "line": 492,
+            "column": 20,
+            "severity": "warning",
+            "rule": "r2hf/delay-render",
+            "message": "delayRender() — HF waits on asset readiness via the Frame Adapter pattern",
+            "recommendation": "Drop the call; HF handles this transparently"
+          },
+          {
+            "file": "registry/remocn/shader-seam/index.tsx",
+            "line": 509,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          }
+        ]
+      },
+      "translationClass": "interop-or-native-rewrite"
+    },
+    {
+      "name": "shader-text-reveal",
+      "title": "Shader Text Reveal",
+      "description": "Reveal words through the original OpenShaders hero shader, then settle into white type.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/shader-text-reveal/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/shader-text-reveal.tsx"
+        }
+      ],
+      "sourceLineCount": 599,
+      "features": [
+        "shader",
+        "effect",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 3,
+        "blockers": 2,
+        "warnings": 1,
+        "infos": 0,
+        "findings": [
+          {
+            "file": "registry/remocn/shader-text-reveal/index.tsx",
+            "line": 503,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          },
+          {
+            "file": "registry/remocn/shader-text-reveal/index.tsx",
+            "line": 507,
+            "column": 20,
+            "severity": "warning",
+            "rule": "r2hf/delay-render",
+            "message": "delayRender() — HF waits on asset readiness via the Frame Adapter pattern",
+            "recommendation": "Drop the call; HF handles this transparently"
+          },
+          {
+            "file": "registry/remocn/shader-text-reveal/index.tsx",
+            "line": 562,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          }
+        ]
+      },
+      "translationClass": "interop-or-native-rewrite"
+    },
+    {
+      "name": "inline-word-roll",
+      "title": "Inline Word Roll",
+      "description": "Roll through words beside a fixed prefix with accelerating timing and smoothly centered width.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/inline-word-roll/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/inline-word-roll.tsx"
+        }
+      ],
+      "sourceLineCount": 282,
+      "features": [
+        "effect",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 3,
+        "blockers": 2,
+        "warnings": 1,
+        "infos": 0,
+        "findings": [
+          {
+            "file": "registry/remocn/inline-word-roll/index.tsx",
+            "line": 104,
+            "column": 33,
+            "severity": "blocker",
+            "rule": "r2hf/use-state",
+            "message": "useState detected — Remotion compositions that drive animation via React state are not deterministic frame-capture targets in HyperFrames",
+            "recommendation": "Use the runtime interop pattern from PR #214 instead of attempting a translation"
+          },
+          {
+            "file": "registry/remocn/inline-word-roll/index.tsx",
+            "line": 120,
+            "column": 20,
+            "severity": "warning",
+            "rule": "r2hf/delay-render",
+            "message": "delayRender() — HF waits on asset readiness via the Frame Adapter pattern",
+            "recommendation": "Drop the call; HF handles this transparently"
+          },
+          {
+            "file": "registry/remocn/inline-word-roll/index.tsx",
+            "line": 162,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          }
+        ]
+      },
+      "translationClass": "interop-or-native-rewrite"
+    },
+    {
+      "name": "shader-light-tunnel",
+      "title": "Light Tunnel",
+      "description": "Fly straight through a tunnel made from the original OpenShaders hero shader.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/shader-light-tunnel/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/shader-light-tunnel.tsx"
+        }
+      ],
+      "sourceLineCount": 496,
+      "features": [
+        "shader",
+        "effect"
+      ],
+      "lint": {
+        "files_scanned": 2,
+        "blockers": 2,
+        "warnings": 1,
+        "infos": 0,
+        "findings": [
+          {
+            "file": "registry/remocn/shader-light-tunnel/index.tsx",
+            "line": 440,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          },
+          {
+            "file": "registry/remocn/shader-light-tunnel/index.tsx",
+            "line": 442,
+            "column": 20,
+            "severity": "warning",
+            "rule": "r2hf/delay-render",
+            "message": "delayRender() — HF waits on asset readiness via the Frame Adapter pattern",
+            "recommendation": "Drop the call; HF handles this transparently"
+          },
+          {
+            "file": "registry/remocn/shader-light-tunnel/index.tsx",
+            "line": 456,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          }
+        ]
+      },
+      "translationClass": "interop-or-native-rewrite"
+    },
+    {
+      "name": "shader-spiral-pass",
+      "title": "Shader Spiral Pass",
+      "description": "Accelerate into the hero spiral and emerge through its soft center into the next scene.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion",
+        "@remotion/transitions"
+      ],
+      "registryDependencies": [
+        "@remocn/shader-light-tunnel"
+      ],
+      "files": [
+        {
+          "path": "registry/remocn/shader-spiral-pass/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/shader-spiral-pass.tsx"
+        }
+      ],
+      "sourceLineCount": 172,
+      "features": [
+        "shader",
+        "transition",
+        "effect"
+      ],
+      "lint": {
+        "files_scanned": 3,
+        "blockers": 2,
+        "warnings": 1,
+        "infos": 0,
+        "findings": [
+          {
+            "file": "registry/remocn/shader-spiral-pass/index.tsx",
+            "line": 79,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          },
+          {
+            "file": "registry/remocn/shader-spiral-pass/index.tsx",
+            "line": 81,
+            "column": 20,
+            "severity": "warning",
+            "rule": "r2hf/delay-render",
+            "message": "delayRender() — HF waits on asset readiness via the Frame Adapter pattern",
+            "recommendation": "Drop the call; HF handles this transparently"
+          },
+          {
+            "file": "registry/remocn/shader-spiral-pass/index.tsx",
+            "line": 95,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          }
+        ]
+      },
+      "translationClass": "interop-or-native-rewrite"
     },
     {
       "name": "remocn-ui",

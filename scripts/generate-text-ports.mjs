@@ -38,7 +38,11 @@ const upstreamCommit = execFileSync(
   { encoding: "utf8" },
 ).trim();
 const additionManifests = await Promise.all(
-  ["remocn-additions", "remocn-additions-2026-09-09"].map(async (directory) =>
+  [
+    "remocn-additions",
+    "remocn-additions-2026-09-09",
+    "remocn-additions-e3dc260",
+  ].map(async (directory) =>
     JSON.parse(
       await readFile(
         resolve(root, "assets", directory, "manifest.json"),
@@ -94,8 +98,13 @@ const textNames = [
   "perspective-squeeze",
   "chromatic-wave",
   "type-fossil",
+  "inline-word-roll",
+  "shader-text-reveal",
 ];
 const coreNames = [
+  "shader-light-tunnel",
+  "shader-seam",
+  "shader-spiral-pass",
   "cursor-gravity",
   "lens-zoom",
   "radial-burst",
@@ -324,6 +333,14 @@ const uiFlowConfig = (compositionWidth = 1280, compositionHeight = 720) => ({
   controls: {},
 });
 const sceneOverrides = {
+  "shader-seam": {
+    source: "components/docs/examples/shader-seam-example.tsx",
+    componentName: "ShaderSeamExampleScene",
+  },
+  "shader-spiral-pass": {
+    source: "components/docs/examples/shader-spiral-pass-example.tsx",
+    componentName: "ShaderSpiralPassExampleScene",
+  },
   "lens-zoom": {
     source: "components/docs/examples/lens-zoom-example.tsx",
     componentName: "LensZoomExampleScene",
@@ -835,6 +852,13 @@ const manropeNames = new Set([
   "x-followers-overview",
 ]);
 const geistMonoNames = new Set(["github-stars"]);
+const sourceTextRenderingNames = new Set([
+  "lens-zoom",
+  "github-stars",
+  "inline-word-roll",
+  "shader-seam",
+  "shader-spiral-pass",
+]);
 const caveatNames = new Set(["handwrite", "hand-count", "check-list"]);
 const sponsorAvatarIds = [
   1, 2, 3, 4, 70, 5, 6, 38, 14, 15, 18, 16, 9, 21, 22, 25, 26, 28, 30, 31, 7,
@@ -899,6 +923,7 @@ const remotionPlugin = {
           let nextHandle = 0;
           const pending = new Map();
           const waiting = new Set();
+          let sourceError;
           const LocalFrameContext = createContext(null);
           export {Easing, interpolate, interpolateColors, random, spring};
           export const delayRender = (label) => {
@@ -909,13 +934,19 @@ const remotionPlugin = {
           export const continueRender = (handle) => {
             pending.delete(handle);
             if (pending.size === 0) {
-              for (const resolve of waiting) resolve();
+              for (const {resolve} of waiting) resolve();
               waiting.clear();
             }
           };
-          export const __waitForSource = () => pending.size === 0 ? Promise.resolve() : new Promise(resolve => waiting.add(resolve));
+          export const cancelRender = (error) => {
+            sourceError = error instanceof Error ? error : new Error(String(error));
+            for (const {reject} of waiting) reject(sourceError);
+            waiting.clear();
+            throw sourceError;
+          };
+          export const __waitForSource = () => sourceError ? Promise.reject(sourceError) : pending.size === 0 ? Promise.resolve() : new Promise((resolve, reject) => waiting.add({resolve, reject}));
           export const __setHyfrmeAssets = (assets) => {assetMap = assets;};
-          export const useDelayRender = () => ({delayRender, continueRender});
+          export const useDelayRender = () => ({delayRender, continueRender, cancelRender});
           export const isHtmlInCanvasSupported = () => {
             if (typeof document === "undefined") return false;
             const canvas = document.createElement("canvas");
@@ -1239,6 +1270,24 @@ const sourceAdjustmentsPlugin = {
   name: "hyfrme-source-adjustments",
   setup(buildApi) {
     buildApi.onLoad(
+      { filter: /components\/docs\/examples\/shader-seam-example\.tsx$/ },
+      async (args) => {
+        const source = await readFile(args.path, "utf8");
+        const circle =
+          '<div\n        style={{\n          position: "absolute",\n          right: -100,';
+        if (!source.includes(circle))
+          throw new Error(`Missing Shader Seam decorative rings in ${args.path}`);
+        return {
+          contents: source.replace(
+            circle,
+            circle.replace("<div", "<div data-layout-allow-overflow"),
+          ),
+          loader: "tsx",
+          resolveDir: dirname(args.path),
+        };
+      },
+    );
+    buildApi.onLoad(
       {
         filter:
           /registry\/remocn\/(extrude-pop|kinetic-morph-text|type-fossil)\/index\.tsx$/,
@@ -1372,6 +1421,28 @@ const shaderGatePlugin = {
       { filter: /registry\/remocn\/shader-[^/]+\/index\.tsx$/ },
       async (args) => {
         const original = await readFile(args.path, "utf8");
+        if (/\buseDelayRender\b/.test(original)) {
+          let contents = original.replace("/* @remocn", "/*! @remocn");
+          if (/\/(shader-seam|shader-spiral-pass)\/index\.tsx$/.test(args.path)) {
+            // The scene is intentionally covered while the transition is active.
+            const scene =
+              '<AbsoluteFill\n        style={{\n          visibility: entering !== phase.showNext';
+            if (!contents.includes(scene))
+              throw new Error(`Missing transition scene layer in ${args.path}`);
+            contents = contents.replace(
+              scene,
+              scene.replace(
+                "<AbsoluteFill",
+                "<AbsoluteFill data-layout-allow-occlusion={active || undefined}",
+              ),
+            );
+          }
+          return {
+            contents,
+            loader: "tsx",
+            resolveDir: dirname(args.path),
+          };
+        }
         const contents = original.replace(
           /const \[handle\] = useState\(\(\) => delayRender\("shader-[^"]+"\)\);/,
           "const handle = 0;",
@@ -1640,7 +1711,8 @@ for (const name of selectedNames) {
   const displayTitle =
     catalogFamily === "primitive"
       ? registryItem.title.replace(/^UI\s+/, "")
-      : name.startsWith("shader-")
+      : name.startsWith("shader-") &&
+          !["shader-seam", "shader-spiral-pass", "shader-text-reveal"].includes(name)
         ? registryItem.title.replace(/^Shader\s+/, "")
         : registryItem.title;
   const duration = fixture.durationInFrames / fixture.fps;
@@ -1886,7 +1958,7 @@ ${caveatNames.has(name) ? '      @font-face { font-family: "Caveat"; src: url(".
       html, body { width: ${fixture.width}px; height: ${fixture.height}px; margin: 0; overflow: hidden; background: ${fixture.background}; }
       body { --font-geist-sans: "${geistFamily}"; font-family: "${geistFamily}", -apple-system, BlinkMacSystemFont, sans-serif; }
       #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"${geistFamily}";font-family:"${geistFamily}",sans-serif; background:${fixture.background}; }
-${name === "lens-zoom" || name === "github-stars" ? "      #hyfrme-source-root, #hyfrme-source-root * { text-rendering: auto; }" : ""}
+${sourceTextRenderingNames.has(name) ? "      #hyfrme-source-root, #hyfrme-source-root * { text-rendering: auto; }" : ""}
 ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? "      [data-hyfrme-seek-probe] { position: absolute; width: 1px; height: 1px; pointer-events: none; }" : ""}
     </style>
   </head>
@@ -2080,6 +2152,7 @@ const writeFixtures = async (catalogFamily, filename, orderedNames) => {
   const generated = fixtures.filter(
     (entry) => entry.catalogFamily === catalogFamily,
   );
+  if (!generated.length) return;
   let output = generated;
   if (only) {
     const existing = JSON.parse(

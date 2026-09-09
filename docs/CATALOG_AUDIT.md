@@ -1,20 +1,23 @@
 # Catalog browser audit
 
 Checked September 9, 2026 with Chrome Headless Shell 152.0.7977.42.
-[Per-component results](../catalog/browser-audit.json) cover all 336 catalog
-components: 297 Remocn and 39 Snapcn. Removed upstream components
+[Per-component results](../catalog/browser-audit.json) cover all 341 catalog
+components: 302 Remocn and 39 Snapcn. Removed upstream components
 `progress-steps` and `data-flow-pipes` are excluded.
 
 | Check                               |  Coverage |
 | ----------------------------------- | --------: |
-| Preview starts and advances         | 336 / 336 |
-| Live iframe previews                |       320 |
+| Preview starts and advances         | 341 / 341 |
+| Live iframe previews                |       325 |
 | Rendered default previews           |        16 |
-| Pause and replay controls exercised |        55 |
-| Browser frame comparisons           |       960 |
-| Samples at or above 0.95 SSIM       | 959 / 960 |
+| Pause and replay controls exercised |        60 |
+| Customization and reset exercised   |         5 |
+| Three-sample frame comparisons      |       975 |
+| Samples at or above 0.95 SSIM       | 974 / 975 |
+| Transition-boundary comparisons     |        16 |
+| Backwards seeks                     |        14 |
 
-The sampled SSIM mean is **0.997264**. The minimum is **0.928461** for
+The sampled SSIM mean is **0.997306**. The minimum is **0.928461** for
 `icon-inbox`, frame 35. Different reference formats and normalization make the
 aggregate mean descriptive; it is not an additional port acceptance threshold.
 Full-frame port verification remains recorded in each `parity/<slug>.json`.
@@ -34,6 +37,13 @@ pinned upstream reference video. The 100 icons explicitly used their pinned
 upstream PNGs rendered in the same browser to control for GPU implementation
 differences. Shader Color Panels was checked with hardware WebGL.
 
+The five additions at `e3dc260ff1965440d1f64fb65a8c9a9373e78328` use pinned
+lossless reference PNGs and NVIDIA ANGLE WebGL. All 15 samples and 16 additional
+transition-boundary comparisons score **1.0 SSIM**. Both transitions also pass
+seven backwards seeks. Each component's autoplay, Pause, Replay, customization,
+and Reset were exercised at website size. Customization changes pixels; Reset
+restores the identical default image.
+
 Snapcn comparisons used pinned upstream lossless PNGs, with transparency
 composited over the actual preview background. Playback controls were checked
 at website size before resizing for comparison. The 117 Snapcn samples all
@@ -51,6 +61,11 @@ HyperFrames render in ordinary Chrome. The audit checked playback, pausing,
 resumption through Replay, and the default-settings notice. It does not claim
 live customization or new browser SSIM measurements for these fallbacks.
 
+The five newest checks used a local production preview server. Its Vercel
+analytics and speed-insights endpoints return 404 because those routes require
+Vercel hosting. These responses and navigation-cancelled requests are recorded
+separately from component errors.
+
 ## Repairs verified during this audit
 
 - Corrected packaged image paths in Reel and four social components, plus
@@ -65,8 +80,19 @@ live customization or new browser SSIM measurements for these fallbacks.
 - Corrected showcase fonts and a one-frame clock error, and removed shadcn's
   unavailable avatar request while preserving its initials fallback. All six
   films pass the full HyperFrames check and 7,058 frame comparisons.
+- The five newest Remocn ports pass the full HyperFrames check with all 594 RGB
+  frames and alpha channels exactly matching their pinned references.
 
 Additional browser checks cover visible autoplay errors, recovery through a
 trusted Replay click, cached media failures on repeated page loads, and custom
 relative image/video paths. Error messages reach the parent page without an
 uncaught exception; corrected media requests load and advance.
+URL customizations now initialize before the preview mounts. Ten consecutive
+cached loads preserved the requested media URL in both the controls and the
+loaded iframe, fixing an intermittent fallback to default media.
+
+All four new shader previews were also checked with WebGL2 unavailable. Early
+and delayed initialization failures display an error and pause playback. Play
+and Replay preserve early errors; retries of delayed failures pause again without
+an error loop. Two installed Shader Text Reveal instances retain independent
+variables and return to identical frames after seeking backwards.

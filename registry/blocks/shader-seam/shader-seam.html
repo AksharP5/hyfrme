@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"softness","type":"number","label":"Dissolve softness","default":0.18,"min":0.02,"max":0.4,"step":0.01},{"id":"detail","type":"number","label":"Organic detail","default":0.65,"min":0,"max":1,"step":0.01},{"id":"timeOffset","type":"number","label":"Shader start time","default":0,"min":0,"max":30,"step":0.5},{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #14121c; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#14121c; }
+      #hyfrme-source-root, #hyfrme-source-root * { text-rendering: auto; }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="shader-seam" data-start="0" data-duration="5.2" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="5.2" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
+      </div>
+    </div>
+    <script src="./shader-seam.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="shader-seam"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="shader-seam"] [data-hyfrme-clock]', {
+        frame: 156,
+        duration: 5.2,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(155, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["shader-seam"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

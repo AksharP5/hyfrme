@@ -216,10 +216,17 @@ export function buildPreviewDocument(
   const previewScale = transparent ? 0.42 : 1;
   const bootstrap = `<script>
 window.__hyperframes = { getVariables: () => (${safeValues}) };
-const previewError = (error) => {
+const previewError = (error, paused = false) => {
   console.error("Component preview failed", error);
-  parent.postMessage({type: "hyfrme-preview-error", message: error.message || String(error)}, parent.location.origin);
+  parent.postMessage({type: "hyfrme-preview-error", message: error?.message || String(error), paused}, parent.location.origin);
 };
+const runtimeError = (error) => {
+  window.__timelines?.[${safeName}]?.pause();
+  for (const media of document.querySelectorAll("video, audio")) media.pause();
+  previewError(error, true);
+};
+window.addEventListener("error", (event) => runtimeError(event.error || event.message));
+window.addEventListener("unhandledrejection", (event) => runtimeError(event.reason));
 window.addEventListener("load", () => {
   if (${!transparent} && frameElement && getComputedStyle(document.documentElement).backgroundColor === "rgba(0, 0, 0, 0)") {
     document.documentElement.style.backgroundColor = parent.getComputedStyle(frameElement).getPropertyValue("--preview");
@@ -289,7 +296,7 @@ window.addEventListener("load", () => {
       timeline.repeat(-1).play(0);
       syncMedia(true);
     });
-  }).catch(previewError);
+  }).catch(runtimeError);
 });
 </script>
 <style>

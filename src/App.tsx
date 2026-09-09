@@ -755,6 +755,7 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
     Promise.all([entry.loadSource(), entry.loadItem()]).then(
       ([nextSource, nextItem]) => {
         if (!active) return;
+        setValues(valuesFromUrl(parseCompositionVariables(nextSource)));
         setSource(nextSource);
         setPreviewItem(nextItem);
       },
@@ -763,10 +764,6 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
       active = false;
     };
   }, [entry]);
-
-  useEffect(() => {
-    if (variables.length > 0) setValues(valuesFromUrl(variables));
-  }, [variables]);
 
   const changeValue = (id: string, value: string | number | boolean) => {
     setValues((current) => {

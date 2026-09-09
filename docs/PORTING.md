@@ -147,7 +147,7 @@ The original 45 UI primitives and flows are verified.
 ## Coverage status
 
 The audited Remocn inventory at
-`5a5f3a7d2524c01d050e20bfb8859c93f2b3f663` contains 297 public visual components.
+`e3dc260ff1965440d1f64fb65a8c9a9373e78328` contains 302 public visual components.
 The deprecated `progress-steps` and `data-flow-pipes` ports are removed.
 The six helper entries,
 `brush`, `canvas-presentation`, `icons-core`, `remocn-ui`, `scene-motion`, and
@@ -167,7 +167,7 @@ passing port automatically.
 
 ## Latest Remocn additions
 
-The September 2026 update adds 21 text effects, Lens Zoom, Radial Burst, Stage,
+The earlier September 2026 update added 21 text effects, Lens Zoom, Radial Burst, Stage,
 Search Reveal, and Select Menu at commit
 `3e03565f5c0001e143c2ed941eea7c3181f13260`. Their canonical fixtures use
 Remotion 4.0.513 and the source lockfile's exact dependencies. Fonts and images
@@ -185,6 +185,24 @@ check and exact alpha comparison. Mean SSIM is 0.999666 and 0.999906,
 respectively. Their separate asset manifest is
 `assets/remocn-additions-2026-09-09/manifest.json`. Select it with
 `REMOCN_ASSET_MANIFEST` when running `setup:remocn-latest`.
+
+Inline Word Roll, Shader Text Reveal, Shader Light Tunnel, Shader Seam, and
+Shader Spiral Pass use commit `e3dc260ff1965440d1f64fb65a8c9a9373e78328`.
+Their manifest is `assets/remocn-additions-e3dc260/manifest.json`. These five
+need no additional external assets. The transition fixtures use the pinned
+upstream example compositions; earlier ports retain their existing pins.
+
+All five pass the full HyperFrames check and strict rendering. All 594 RGB
+frames match their pinned references exactly (SSIM 1.0), with exact alpha.
+
+Reproduce these five ports with:
+
+```bash
+export REMOCN_SOURCE=.work/remocn-e3dc260ff1965440d1f64fb65a8c9a9373e78328
+REMOCN_ASSET_MANIFEST=assets/remocn-additions-e3dc260/manifest.json npm run setup:remocn-latest
+node scripts/generate-text-ports.mjs --only inline-word-roll,shader-text-reveal,shader-light-tunnel,shader-seam,shader-spiral-pass
+node scripts/verify-text-ports.mjs --lossless --only inline-word-roll,shader-text-reveal,shader-light-tunnel,shader-seam,shader-spiral-pass --browser-gpu
+```
 
 Use the isolated checkout so older fixtures retain their original pins:
 
@@ -220,8 +238,8 @@ its transparent output, with a black website preview behind its white text.
 
 All 39 pinned Snapcn visual components are verified across 5,744 frames. The
 frame-weighted mean SSIM is 0.998594; every component averages at least 0.990681,
-and the lowest individual frame scores 0.957827. Together with the 297 Remocn
-ports, the catalog contains 336 components.
+and the lowest individual frame scores 0.957827. Together with the 302 Remocn
+ports, the catalog contains 341 components.
 
 Thirty-three Snapcn blocks pass the full HyperFrames check. Answer Highlight,
 Announce Title, Logo Drift, Follower Rush, Roster Grant, and Wordmark Cut retain narrowly reviewed findings

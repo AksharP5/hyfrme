@@ -141,6 +141,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "squeeze-in",
           "fog-rise",
           "stretch-in",
+          "shader-text-reveal",
           "snapcn-text-reveal",
         ],
       },
@@ -164,6 +165,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "typewriter",
           "hand-count",
           "slot-machine-roll",
+          "inline-word-roll",
           "number-wheel",
           "rolling-number",
           "rolodex-flip",
@@ -352,6 +354,8 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "glitch-cut",
           "grid-wave",
           "particle-dissolve",
+          "shader-seam",
+          "shader-spiral-pass",
         ],
       },
       {
@@ -836,6 +840,8 @@ export const categoryLabels: Record<CatalogCategory, string> = {
 export function categoryFor(
   entry: CatalogEntry,
 ): Exclude<CatalogCategory, "all"> {
+  const taxonomy = taxonomyBySlug.get(entry.item.name);
+  if (taxonomy) return taxonomy.category;
   if (entry.item.tags.includes("icon")) return "icons";
   if (
     entry.item.name.startsWith("shader-") ||
@@ -843,8 +849,6 @@ export function categoryFor(
     entry.item.tags.includes("shaders")
   )
     return "shaders";
-  const taxonomy = taxonomyBySlug.get(entry.item.name);
-  if (taxonomy) return taxonomy.category;
   if (entry.item.tags.includes("ui") || entry.item.tags.includes("primitive")) {
     return "primitives";
   }

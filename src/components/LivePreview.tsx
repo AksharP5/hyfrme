@@ -60,6 +60,7 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
         typeof event.data.message === "string"
       ) {
         setError(event.data.message);
+        if (event.data.paused === true) setPaused(true);
       }
     };
     window.addEventListener("message", receiveError);
@@ -71,8 +72,8 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
   const timeline = () => previewWindow()?.__timelines?.[item.name];
 
   const togglePlayback = () => {
-    setError(null);
     if (videoRef.current) {
+      setError(null);
       if (videoRef.current.paused) {
         void videoRef.current
           .play()
@@ -82,6 +83,7 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
     }
     const currentTimeline = timeline();
     if (!currentTimeline) return;
+    setError(null);
     if (paused) currentTimeline.play();
     else currentTimeline.pause();
     previewWindow()?.__hyfrmeSyncPreviewMedia?.();
@@ -89,15 +91,18 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
   };
 
   const replay = () => {
-    setError(null);
     if (videoRef.current) {
+      setError(null);
       videoRef.current.currentTime = 0;
       void videoRef.current
         .play()
         .catch((error: Error) => setError(error.message));
       return;
     }
-    timeline()?.restart();
+    const currentTimeline = timeline();
+    if (!currentTimeline) return;
+    setError(null);
+    currentTimeline.restart();
     previewWindow()?.__hyfrmeSyncPreviewMedia?.();
     setPaused(false);
   };

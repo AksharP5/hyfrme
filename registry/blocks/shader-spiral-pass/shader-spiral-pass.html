@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25},{"id":"spirals","type":"number","label":"Spiral count","default":3,"min":1,"max":6,"step":1},{"id":"twist","type":"number","label":"Spiral motion","default":0.7,"min":0,"max":2,"step":0.05},{"id":"zoom","type":"number","label":"Camera push","default":14,"min":2,"max":24,"step":1},{"id":"softness","type":"number","label":"Exit softness","default":0.12,"min":0.02,"max":0.3,"step":0.01},{"id":"timeOffset","type":"number","label":"Start time","default":0,"min":0,"max":60,"step":0.1}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #15111c; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#15111c; }
+      #hyfrme-source-root, #hyfrme-source-root * { text-rendering: auto; }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="shader-spiral-pass" data-start="0" data-duration="5.6" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="5.6" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
+      </div>
+    </div>
+    <script src="./shader-spiral-pass.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="shader-spiral-pass"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="shader-spiral-pass"] [data-hyfrme-clock]', {
+        frame: 168,
+        duration: 5.6,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(167, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["shader-spiral-pass"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

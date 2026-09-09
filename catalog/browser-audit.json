@@ -4,17 +4,17 @@
   "browser": "Chrome Headless Shell 152.0.7977.42",
   "scope": "Catalog component pages, pinned fixture inputs; sampled browser comparison supplements full-frame parity/<slug>.json.",
   "summary": {
-    "components": 336,
+    "components": 341,
     "bySource": {
-      "remocn": 297,
+      "remocn": 302,
       "snapcn": 39
     },
-    "livePreviews": 320,
+    "livePreviews": 325,
     "renderedDefaultPreviews": 16,
-    "autoplayChecks": 336,
-    "pauseAndReplayChecks": 55,
-    "sampleComparisons": 960,
-    "meanSampleSsim": 0.997264,
+    "autoplayChecks": 341,
+    "pauseAndReplayChecks": 60,
+    "sampleComparisons": 975,
+    "meanSampleSsim": 0.997306,
     "minSampleSsim": 0.928461,
     "samplesBelow095": [
       {
@@ -22,21 +22,27 @@
         "frame": 35,
         "ssim": 0.928461
       }
-    ]
+    ],
+    "customizationAndResetChecks": 5,
+    "transitionBoundaryComparisons": 16,
+    "backwardSeekChecks": 14,
+    "minTransitionBoundarySsim": 1
   },
   "profiles": {
     "remocn-video": "Live iframe, autoplay and page/request errors checked. Three frames at floor(durationInFrames * p), p = 0.2, 0.5, 0.8, compared with pinned reference MP4 frames. Canonical fixture dimensions, website scale/filter removed, fixture background applied. Shader Color Panels uses hardware WebGL.",
     "remocn-icon-video": "Live iframe with pinned 384px showcase size explicitly applied. Autoplay and page/request errors checked. Canonical showcase dimensions, white background, website scale/filter removed. Three frames compared with pinned reference MP4 frames.",
     "remocn-same-browser-png": "Remocn live iframe checks plus three PNG comparisons against pinned upstream rendered in the same browser, avoiding differences between browser/GPU shader implementations.",
     "snapcn-png": "Live iframe autoplay, pause, replay, images, media readiness and page/console/HTTP/request errors checked. Three pinned upstream lossless PNG frames at floor((durationInFrames - 1) * p), p = 0.2, 0.5, 0.8. Seek (frame + 0.1) / fps avoids previous-video-frame rounding. Canonical dimensions after controls checked at website size; reference alpha composited over the iframe background.",
-    "rendered-defaults": "Ordinary Chrome lacks the required HTML-in-canvas API. Verified HyperFrames default render played in the catalog video element; autoplay, pause, replay and default-settings notice checked. No live customization or new browser SSIM claim."
+    "rendered-defaults": "Ordinary Chrome lacks the required HTML-in-canvas API. Verified HyperFrames default render played in the catalog video element; autoplay, pause, replay and default-settings notice checked. No live customization or new browser SSIM claim.",
+    "remocn-lossless-png": "Five additions at e3dc260ff1965440d1f64fb65a8c9a9373e78328. Actual catalog iframe autoplay, Pause, Replay, customizer edits and Reset checked at website size. Customizations change pixels; Reset restores identical pixels. Three canonical-size samples at floor(durationInFrames * p), p = 0.2, 0.5, 0.8, compared with pinned lossless reference PNGs using NVIDIA ANGLE gl-egl, sRGB and source font-render-hinting flags. Reference alpha is composited over the fixture background; website scaling and controls are removed for comparison. Both transitions additionally compare eight boundary seeks, seven backwards. Navigation-cancelled requests and local Vercel telemetry 404s are recorded separately from component failures."
   },
   "limitations": [
     "Only listed checks were performed; omitted fields mean unmeasured, not zero.",
     "Three sampled browser frames do not replace the full-frame deterministic render checks in parity/<slug>.json.",
     "Reference formats and normalization differ by profile, so the aggregate mean is descriptive only.",
     "icon-inbox has one browser sample below 0.95. Its separately verified 384px showcase full-frame mean is 0.970517; its minimum is 0.811321. The 48px installed fixture mean is 0.994187.",
-    "Rendered fallback checks cover the default video and controls, not customized live rendering."
+    "Rendered fallback checks cover the default video and controls, not customized live rendering.",
+    "The five e3dc260 browser checks ran on a local production preview server. Vercel analytics and speed-insights endpoints returned 404 because the local server does not provide those routes; these are recorded separately from component HTTP and console errors."
   ],
   "items": [
     {
@@ -3782,6 +3788,51 @@
       ]
     },
     {
+      "slug": "inline-word-roll",
+      "source": "remocn",
+      "profile": "remocn-lossless-png",
+      "controls": ["autoplay", "pause", "replay", "customization", "reset"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "cancelledRequests": 14,
+      "localTelemetryErrors": [
+        {
+          "status": 404,
+          "path": "/_vercel/insights/script.js"
+        },
+        {
+          "status": 404,
+          "path": "/_vercel/speed-insights/script.js"
+        }
+      ],
+      "customization": {
+        "variable": "prefix",
+        "value": "Searching for",
+        "changedPixels": true,
+        "resetRestoresPixels": true,
+        "frame": 52
+      },
+      "samples": [
+        {
+          "frame": 21,
+          "ssim": 1
+        },
+        {
+          "frame": 52,
+          "ssim": 1
+        },
+        {
+          "frame": 84,
+          "ssim": 1
+        }
+      ]
+    },
+    {
       "slug": "input",
       "source": "remocn",
       "profile": "remocn-video",
@@ -5048,6 +5099,51 @@
       ]
     },
     {
+      "slug": "shader-light-tunnel",
+      "source": "remocn",
+      "profile": "remocn-lossless-png",
+      "controls": ["autoplay", "pause", "replay", "customization", "reset"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "cancelledRequests": 2,
+      "localTelemetryErrors": [
+        {
+          "status": 404,
+          "path": "/_vercel/insights/script.js"
+        },
+        {
+          "status": 404,
+          "path": "/_vercel/speed-insights/script.js"
+        }
+      ],
+      "customization": {
+        "variable": "twist",
+        "value": 2,
+        "changedPixels": true,
+        "resetRestoresPixels": true,
+        "frame": 45
+      },
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 1
+        },
+        {
+          "frame": 45,
+          "ssim": 1
+        },
+        {
+          "frame": 72,
+          "ssim": 1
+        }
+      ]
+    },
+    {
       "slug": "shader-liquid-metal",
       "source": "remocn",
       "profile": "remocn-video",
@@ -5192,6 +5288,93 @@
       ]
     },
     {
+      "slug": "shader-seam",
+      "source": "remocn",
+      "profile": "remocn-lossless-png",
+      "controls": ["autoplay", "pause", "replay", "customization", "reset"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "cancelledRequests": 2,
+      "localTelemetryErrors": [
+        {
+          "status": 404,
+          "path": "/_vercel/insights/script.js"
+        },
+        {
+          "status": 404,
+          "path": "/_vercel/speed-insights/script.js"
+        }
+      ],
+      "customization": {
+        "variable": "detail",
+        "value": 1,
+        "changedPixels": true,
+        "resetRestoresPixels": true,
+        "frame": 90
+      },
+      "samples": [
+        {
+          "frame": 31,
+          "ssim": 1
+        },
+        {
+          "frame": 78,
+          "ssim": 1
+        },
+        {
+          "frame": 124,
+          "ssim": 1
+        }
+      ],
+      "boundarySeeks": [
+        {
+          "frame": 155,
+          "ssim": 1,
+          "direction": "forward"
+        },
+        {
+          "frame": 109,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 108,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 107,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 49,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 48,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 47,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 0,
+          "ssim": 1,
+          "direction": "backward"
+        }
+      ]
+    },
+    {
       "slug": "shader-simplex-noise",
       "source": "remocn",
       "profile": "remocn-video",
@@ -5264,6 +5447,93 @@
       ]
     },
     {
+      "slug": "shader-spiral-pass",
+      "source": "remocn",
+      "profile": "remocn-lossless-png",
+      "controls": ["autoplay", "pause", "replay", "customization", "reset"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "cancelledRequests": 2,
+      "localTelemetryErrors": [
+        {
+          "status": 404,
+          "path": "/_vercel/insights/script.js"
+        },
+        {
+          "status": 404,
+          "path": "/_vercel/speed-insights/script.js"
+        }
+      ],
+      "customization": {
+        "variable": "zoom",
+        "value": 24,
+        "changedPixels": true,
+        "resetRestoresPixels": true,
+        "frame": 84
+      },
+      "samples": [
+        {
+          "frame": 33,
+          "ssim": 1
+        },
+        {
+          "frame": 84,
+          "ssim": 1
+        },
+        {
+          "frame": 134,
+          "ssim": 1
+        }
+      ],
+      "boundarySeeks": [
+        {
+          "frame": 167,
+          "ssim": 1,
+          "direction": "forward"
+        },
+        {
+          "frame": 121,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 120,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 119,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 49,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 48,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 47,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 0,
+          "ssim": 1,
+          "direction": "backward"
+        }
+      ]
+    },
+    {
       "slug": "shader-strata",
       "source": "remocn",
       "profile": "remocn-video",
@@ -5308,6 +5578,51 @@
         {
           "frame": 120,
           "ssim": 0.997951
+        }
+      ]
+    },
+    {
+      "slug": "shader-text-reveal",
+      "source": "remocn",
+      "profile": "remocn-lossless-png",
+      "controls": ["autoplay", "pause", "replay", "customization", "reset"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "cancelledRequests": 13,
+      "localTelemetryErrors": [
+        {
+          "status": 404,
+          "path": "/_vercel/insights/script.js"
+        },
+        {
+          "status": 404,
+          "path": "/_vercel/speed-insights/script.js"
+        }
+      ],
+      "customization": {
+        "variable": "text",
+        "value": "Signal motion",
+        "changedPixels": true,
+        "resetRestoresPixels": true,
+        "frame": 37
+      },
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 1
+        },
+        {
+          "frame": 37,
+          "ssim": 1
+        },
+        {
+          "frame": 60,
+          "ssim": 1
         }
       ]
     },
