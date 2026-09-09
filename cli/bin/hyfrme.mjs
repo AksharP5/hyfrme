@@ -369,11 +369,6 @@ const toInstallableBlock = (source, name, assetPath) => {
     .trim()}\n${body[1].trim()}`
     .replace(/html,\s*body\s*\{([^}]*)\}/gi, "#root {$1}")
     .replace(/(^|\})\s*body\s*\{([^}]*)\}/gi, "$1\n#root {$2}");
-  const indented = templateContent
-    .split("\n")
-    .map((line) => `      ${line}`)
-    .join("\n");
-
   return `<!doctype html>
 <html${html[1]}>
   <head>
@@ -381,7 +376,7 @@ const toInstallableBlock = (source, name, assetPath) => {
   </head>
   <body>
     <template>
-${indented}
+${templateContent}
     </template>
   </body>
 </html>

@@ -1,0 +1,104 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "duration": 4,
+    "samples": [
+      0.222,
+      0.667,
+      1.111,
+      1.556,
+      2,
+      2.444,
+      2.889,
+      3.333,
+      3.778
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 0,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.01:1; WCAG AA requires 3:1.",
+        "text": "HELLO",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(241,241,241)",
+        "ratio": 1.01,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(139,139,139)",
+        "large": true,
+        "selector": "div > div > div > div > div > div > svg > g > text",
+        "dataAttributes": {},
+        "sourceFile": "compositions/gooey-morph.html",
+        "bbox": {
+          "x": 359.9541931152344,
+          "y": 260.8666687011719,
+          "width": 561.9583740234375,
+          "height": 174.66665649414062
+        },
+        "time": 2
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      0.222,
+      1.111,
+      2,
+      2.889,
+      3.778
+    ],
+    "checked": 3,
+    "passed": 2
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.32",
+    "updateAvailable": true
+  }
+}

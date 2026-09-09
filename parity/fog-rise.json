@@ -2,7 +2,7 @@
   "slug": "fog-rise",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/fog-rise/index.tsx",
     "config": "registry/remocn/fog-rise/config.ts",
     "license": "MIT"
@@ -37,25 +37,43 @@
     "background": "#ffffff"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "49377bf41999e96ac60eb7e86413a8552606f7b8c660e9b43230e7d77f57abca",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.998463,
-    "minSsim": 0.997146,
-    "p05Ssim": 0.9973,
-    "p95Ssim": 0.999988,
+    "meanSsim": 0.9999999777777778,
+    "minSsim": 0.999999,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/fog-rise/remocn.mp4",
+    "referenceVideo": "public/previews/fog-rise/reference.mp4",
     "hyperframesVideo": "public/previews/fog-rise/hyperframes.mp4",
-    "summary": "parity/fog-rise-diff/summary.json"
+    "thumbnail": "public/previews/fog-rise/thumbnail.png",
+    "summary": "parity/fog-rise-diff/summary.json",
+    "perFrameSsim": "parity/fog-rise-diff/ssim.log",
+    "hyperframesCheck": "parity/fog-rise-diff/hyperframes-check.log",
+    "worstFrame": "parity/fog-rise-diff/worst-frame.png",
+    "referenceAlpha": "parity/fog-rise-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/fog-rise-diff/hyperframes-alpha.framemd5"
   }
 }

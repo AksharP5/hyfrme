@@ -11,6 +11,12 @@ import {
 import { homedir } from "node:os";
 import { dirname, resolve } from "node:path";
 
+if (process.argv.includes("--lossless")) {
+  process.argv.push("--source-profile", "remocn");
+  await import("./verify-snapcn-ports.mjs");
+  process.exit(process.exitCode ?? 0);
+}
+
 const root = resolve(import.meta.dirname, "..");
 const upstream = resolve(root, process.env.REMOCN_SOURCE ?? ".work/remocn");
 const workbench = resolve(root, ".work", "verify-text");

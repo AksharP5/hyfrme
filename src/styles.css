@@ -737,6 +737,44 @@ main {
   display: none;
 }
 
+.source-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: -8px 0 28px;
+}
+
+.source-filters > span {
+  margin-right: 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.source-filters button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.source-filters button[aria-pressed="true"] {
+  border-color: var(--line-strong);
+  background: var(--surface-raised);
+  color: var(--ink);
+}
+
+.source-filters button > span {
+  color: var(--quiet);
+  font: 10px var(--mono);
+}
+
 .mobile-taxonomy {
   display: none;
 }
@@ -967,6 +1005,34 @@ main {
   text-transform: uppercase;
 }
 
+.catalog-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.source-badge {
+  flex-shrink: 0;
+  padding: 3px 5px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  color: var(--muted);
+  font: 10px var(--mono);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.detail-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
 .catalog-card-copy strong {
   font-family: "Geist", sans-serif;
   font-size: 17px;
@@ -1097,6 +1163,10 @@ main {
   background: #121214;
 }
 
+[data-component-slug="kinetic-warp"] {
+  --preview: #000;
+}
+
 .live-preview.is-icon iframe {
   filter: invert(1);
   mix-blend-mode: screen;
@@ -1107,6 +1177,19 @@ main {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+.preview-error,
+.preview-notice {
+  position: absolute;
+  inset: auto 16px 58px;
+  padding: 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface-raised);
+  color: var(--ink);
+  font-size: 12px;
+  overflow-wrap: anywhere;
 }
 
 .live-preview > video {

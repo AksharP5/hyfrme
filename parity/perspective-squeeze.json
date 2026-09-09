@@ -2,7 +2,7 @@
   "slug": "perspective-squeeze",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/perspective-squeeze/index.tsx",
     "config": "registry/remocn/perspective-squeeze/config.ts",
     "license": "MIT"
@@ -23,25 +23,96 @@
     "background": "#141318"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "1f961e4bef8360b03e2388bbe418c75eea57380491a7762aa82d93eba31821f3",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 225,
-    "meanSsim": 0.997849,
-    "minSsim": 0.992942,
-    "p05Ssim": 0.994914,
-    "p95Ssim": 0.998465,
+    "meanSsim": 0.9999662711111108,
+    "minSsim": 0.999455,
+    "p05Ssim": 0.999856,
+    "p95Ssim": 0.999997,
+    "alpha": {
+      "frameCount": 225,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check reported 3 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "perspective-squeeze",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/perspective-squeeze/index.tsx",
+          "config": "registry/remocn/perspective-squeeze/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+          "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
+          "text": "REMOCN"
+        },
+        "reason": "The pinned source projects two SVG blocks through cornerPinMatrix and squashes their REMOCN/BEST lines with textLength and per-line matrix transforms. These exact line bounds overlap in the unchanged source geometry. Preserve that source treatment; RGB SSIM is mean 0.999910/min 0.996864 and all 225 alpha planes match exactly."
+      },
+      {
+        "slug": "perspective-squeeze",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/perspective-squeeze/index.tsx",
+          "config": "registry/remocn/perspective-squeeze/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
+          "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+          "text": "BEST"
+        },
+        "reason": "The pinned source projects two SVG blocks through cornerPinMatrix and squashes their REMOCN/BEST lines with textLength and per-line matrix transforms. These exact line bounds overlap in the unchanged source geometry. Preserve that source treatment; RGB SSIM is mean 0.999910/min 0.996864 and all 225 alpha planes match exactly."
+      },
+      {
+        "slug": "perspective-squeeze",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/perspective-squeeze/index.tsx",
+          "config": "registry/remocn/perspective-squeeze/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+          "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
+          "text": "REMOCN"
+        },
+        "reason": "The pinned source projects two SVG blocks through cornerPinMatrix and squashes their REMOCN/BEST lines with textLength and per-line matrix transforms. These exact line bounds overlap in the unchanged source geometry. Preserve that source treatment; RGB SSIM is mean 0.999910/min 0.996864 and all 225 alpha planes match exactly."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/perspective-squeeze/remocn.mp4",
+    "referenceVideo": "public/previews/perspective-squeeze/reference.mp4",
     "hyperframesVideo": "public/previews/perspective-squeeze/hyperframes.mp4",
-    "summary": "parity/perspective-squeeze-diff/summary.json"
+    "thumbnail": "public/previews/perspective-squeeze/thumbnail.png",
+    "summary": "parity/perspective-squeeze-diff/summary.json",
+    "perFrameSsim": "parity/perspective-squeeze-diff/ssim.log",
+    "hyperframesCheck": "parity/perspective-squeeze-diff/hyperframes-check.log",
+    "worstFrame": "parity/perspective-squeeze-diff/worst-frame.png",
+    "referenceAlpha": "parity/perspective-squeeze-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/perspective-squeeze-diff/hyperframes-alpha.framemd5"
   }
 }

@@ -29,25 +29,105 @@
     "background": "#f5f7f9"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "e4ff247b9510ef654fd177fca494d5b7fbfe6af670337e2c6ff9713cf9fe5899",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 165,
-    "meanSsim": 0.988248,
-    "minSsim": 0.985039,
-    "p05Ssim": 0.985127,
-    "p95Ssim": 0.99963,
+    "meanSsim": 0.9994710060606055,
+    "minSsim": 0.999252,
+    "p05Ssim": 0.999252,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 165,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "hyperframes": "full check reported 7 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "x-follow-card",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+          "source": "registry/remocn/x-follow-card/index.tsx",
+          "config": "registry/remocn/x-follow-card/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div > span:nth-of-type(2) > span",
+          "text": "remocn.dev",
+          "fg": "rgb(29,155,240)",
+          "bg": "rgb(255,255,255)",
+          "ratio": 3,
+          "requiredRatio": 4.5
+        },
+        "reason": "The pinned X Follow Card source defaults accentColor to #1d9bf0 (index.tsx:684), uses it for the website label (line 370) and Follow button background with white text (lines 455-456). Those unchanged source colors yield 3:1 contrast. Preserve source fidelity; the full contrast findings remain visible in the audit."
+      },
+      {
+        "slug": "x-follow-card",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+          "source": "registry/remocn/x-follow-card/index.tsx",
+          "config": "registry/remocn/x-follow-card/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div:nth-of-type(1)",
+          "text": "Follow",
+          "fg": "rgb(255,255,255)",
+          "bg": "rgb(29,155,240)",
+          "ratio": 3,
+          "requiredRatio": 4.5
+        },
+        "reason": "The pinned X Follow Card source defaults accentColor to #1d9bf0 (index.tsx:684), uses it for the website label (line 370) and Follow button background with white text (lines 455-456). Those unchanged source colors yield 3:1 contrast. Preserve source fidelity; the full contrast findings remain visible in the audit."
+      },
+      {
+        "slug": "x-follow-card",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+          "source": "registry/remocn/x-follow-card/index.tsx",
+          "config": "registry/remocn/x-follow-card/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div:nth-of-type(1)",
+          "text": "Follow",
+          "fg": "rgb(255,255,255)",
+          "bg": "rgb(253,254,255)",
+          "ratio": 1.01,
+          "requiredRatio": 4.5
+        },
+        "reason": "The pinned X Follow Card source defaults accentColor to #1d9bf0 (index.tsx:684), uses it for the website label (line 370) and Follow button background with white text (lines 455-456). Those unchanged source colors yield 3:1 contrast. Preserve source fidelity; the full contrast findings remain visible in the audit."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.473",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/x-follow-card/remocn.mp4",
+    "referenceVideo": "public/previews/x-follow-card/reference.mp4",
     "hyperframesVideo": "public/previews/x-follow-card/hyperframes.mp4",
-    "summary": "parity/x-follow-card-diff/summary.json"
+    "thumbnail": "public/previews/x-follow-card/thumbnail.png",
+    "summary": "parity/x-follow-card-diff/summary.json",
+    "perFrameSsim": "parity/x-follow-card-diff/ssim.log",
+    "hyperframesCheck": "parity/x-follow-card-diff/hyperframes-check.log",
+    "worstFrame": "parity/x-follow-card-diff/worst-frame.png",
+    "referenceAlpha": "parity/x-follow-card-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/x-follow-card-diff/hyperframes-alpha.framemd5"
   }
 }

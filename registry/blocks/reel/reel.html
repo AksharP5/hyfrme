@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="en" data-composition-variables='[{"id":"width","type":"number","label":"Card width","default":1180},{"id":"height","type":"number","label":"Card height","default":676},{"id":"radius","type":"number","label":"Corner radius","default":16},{"id":"step","type":"number","label":"Frames / image","default":20},{"id":"reveal","type":"number","label":"Reveal frames","default":13}]'>
+<html lang="en" data-composition-variables='[{"id":"width","type":"number","label":"Card width","default":1180,"min":600,"max":1280,"step":20},{"id":"height","type":"number","label":"Card height","default":676,"min":360,"max":720,"step":4},{"id":"radius","type":"number","label":"Corner radius","default":16,"min":0,"max":40,"step":1},{"id":"step","type":"number","label":"Frames / image","default":20,"min":6,"max":40,"step":1},{"id":"reveal","type":"number","label":"Reveal frames","default":13,"min":4,"max":30,"step":1}]'>
   <head>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <style>
+
       @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
 
 
@@ -13,27 +14,37 @@
       * { box-sizing: border-box; }
       html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #0b0b0c; }
       body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
-      #hyfrme-source-root { position: absolute; inset: 0; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Geist";font-family:"Geist",sans-serif; background:#0b0b0c; }
+
+
     </style>
   </head>
   <body>
     <div id="root" data-composition-id="reel" data-start="0" data-duration="5.333333333333333" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
       <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="5.333333333333333" data-track-index="0">
-        <div id="hyfrme-source-root"></div>
+        <div id="hyfrme-source-root" data-hyfrme-assets='{"/assets/reel/reel-1.jpg":"../assets/reel/reel-1.jpg","/assets/reel/reel-2.jpg":"../assets/reel/reel-2.jpg","/assets/reel/reel-3.jpg":"../assets/reel/reel-3.jpg","/assets/reel/reel-4.jpg":"../assets/reel/reel-4.jpg","/assets/reel/reel-5.jpg":"../assets/reel/reel-5.jpg","/assets/reel/reel-6.jpg":"../assets/reel/reel-6.jpg"}'></div>
       </div>
     </div>
     <script src="./reel.runtime.js"></script>
     <script>
       window.__timelines = window.__timelines || {};
-      const clock = { frame: 0 };
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="reel"] [data-hyfrme-clock]');
+      clock.frame = 0;
       const timeline = gsap.timeline({ paused: true });
-      timeline.to(clock, {
+      timeline.to('[data-composition-id="reel"] [data-hyfrme-clock]', {
         frame: 160,
         duration: 5.333333333333333,
         ease: "none",
-        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(159, Math.round(clock.frame)))),
+        onUpdate: () => renderFrame(Math.max(0, Math.min(159, Math.round(clock.frame)))),
       });
+
       window.__timelines["reel"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
     </script>
   </body>
 </html>

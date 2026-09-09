@@ -1,0 +1,87 @@
+{
+  "slug": "snapcn-wordmark-cut",
+  "origin": {
+    "repository": "https://github.com/snapcndev/snapcn",
+    "commit": "bc5b59f3f0fad9657b338fa62349a55fa33f160f",
+    "source": "registry/snap-cn/wordmark-cut/index.tsx",
+    "config": "registry/snap-cn/wordmark-cut/config.ts",
+    "license": "MIT",
+    "entry": "registry/snap-cn/wordmark-cut/index.tsx"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 66,
+    "props": {
+      "word": "snapcn.",
+      "dotFrom": "#3072db",
+      "dotTo": "#4fd8f5",
+      "warm": 1,
+      "theme": "light",
+      "fontFamily": "Default",
+      "speed": 1
+    },
+    "background": "#faf9f6"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "958626e8a50e6f266d012aaa891ebe7bae0dd9e7387756b37b9bea81d4206832",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 66,
+    "meanSsim": 0.9994555606060606,
+    "minSsim": 0.998624,
+    "p05Ssim": 0.998752,
+    "p95Ssim": 0.999855,
+    "alpha": {
+      "frameCount": 66,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check reported 1 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "snapcn-wordmark-cut",
+        "origin": {
+          "repository": "https://github.com/snapcndev/snapcn",
+          "commit": "bc5b59f3f0fad9657b338fa62349a55fa33f160f",
+          "source": "registry/snap-cn/wordmark-cut/index.tsx",
+          "config": "registry/snap-cn/wordmark-cut/config.ts",
+          "license": "MIT",
+          "entry": "registry/snap-cn/wordmark-cut/index.tsx"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "text": "snapcn",
+          "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)"
+        },
+        "reason": "The pinned close shot deliberately overlays a blurred copy of this same text through a radial mask to reproduce depth of field. The inspector treats the masked copy as an opaque occluder. Preserve the source composition; RGB SSIM is mean0.999456/min0.998624 and every alpha plane matches exactly."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.473",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/snapcn-wordmark-cut/reference.mp4",
+    "hyperframesVideo": "public/previews/snapcn-wordmark-cut/hyperframes.mp4",
+    "thumbnail": "public/previews/snapcn-wordmark-cut/thumbnail.png",
+    "summary": "parity/snapcn-wordmark-cut-diff/summary.json",
+    "perFrameSsim": "parity/snapcn-wordmark-cut-diff/ssim.log",
+    "hyperframesCheck": "parity/snapcn-wordmark-cut-diff/hyperframes-check.log",
+    "worstFrame": "parity/snapcn-wordmark-cut-diff/worst-frame.png",
+    "referenceAlpha": "parity/snapcn-wordmark-cut-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/snapcn-wordmark-cut-diff/hyperframes-alpha.framemd5"
+  }
+}

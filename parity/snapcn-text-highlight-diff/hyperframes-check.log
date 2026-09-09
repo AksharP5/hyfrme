@@ -1,0 +1,156 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "escaped_container",
+        "severity": "warning",
+        "time": 0.519,
+        "selector": "#snapcn-text-highlight-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 487.49,
+          "top": 330.6,
+          "right": 546.29,
+          "bottom": 389.4,
+          "width": 58.8,
+          "height": 58.8
+        },
+        "containerSelector": "#snapcn-text-highlight-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "text": "mark",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 540.39,
+          "top": 325,
+          "right": 815.2,
+          "bottom": 395,
+          "width": 274.81,
+          "height": 70
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-text-highlight.html",
+        "bbox": {
+          "x": 487.49,
+          "y": 330.6,
+          "width": 58.8,
+          "height": 58.8
+        },
+        "firstSeen": 0.519,
+        "lastSeen": 1.556,
+        "occurrences": 3
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 1.763,
+        "selector": "#snapcn-text-highlight-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 213.57,
+          "top": 39.02,
+          "right": 855.53,
+          "bottom": 680.97,
+          "width": 641.95,
+          "height": 641.95
+        },
+        "containerSelector": "#snapcn-text-highlight-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 581.06,
+          "top": 330.6,
+          "right": 639.85,
+          "bottom": 389.4,
+          "width": 58.8,
+          "height": 58.8
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-text-highlight.html",
+        "bbox": {
+          "x": 213.57,
+          "y": 39.02,
+          "width": 641.95,
+          "height": 641.95
+        },
+        "firstSeen": 1.763,
+        "lastSeen": 1.763,
+        "occurrences": 1
+      }
+    ],
+    "duration": 1.8666666666666667,
+    "samples": [
+      0.104,
+      0.311,
+      0.519,
+      0.726,
+      0.933,
+      1.141,
+      1.348,
+      1.556,
+      1.763
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 2,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.104,
+      0.519,
+      0.933,
+      1.348,
+      1.763
+    ],
+    "checked": 0,
+    "passed": 0
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.30",
+    "updateAvailable": false
+  }
+}

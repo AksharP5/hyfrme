@@ -7,6 +7,13 @@ Copy customizable motion components from
 npx hyfrme@latest add soft-blur-in
 ```
 
+The catalog includes Remocn and Snapcn ports with source filters. Snapcn block
+names use a prefix:
+
+```bash
+npx hyfrme@latest add snapcn-phone-frame
+```
+
 Install every component:
 
 ```bash

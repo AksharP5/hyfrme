@@ -1,0 +1,441 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "infoCount": 6,
+    "findings": [
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.139,
+        "selector": "#zoom-words-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -768,
+          "top": -432,
+          "right": 2048,
+          "bottom": 1152,
+          "width": 2816,
+          "height": 1584
+        },
+        "containerSelector": "#zoom-words-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 768,
+          "right": 768,
+          "top": 432,
+          "bottom": 432
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/zoom-words.html",
+        "bbox": {
+          "x": -768,
+          "y": -432,
+          "width": 2816,
+          "height": 1584
+        },
+        "firstSeen": 0.139,
+        "lastSeen": 2.361,
+        "occurrences": 9
+      },
+      {
+        "code": "escaped_container",
+        "severity": "warning",
+        "time": 0.139,
+        "selector": "#zoom-words-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -768,
+          "top": -432,
+          "right": 2048,
+          "bottom": 1152,
+          "width": 2816,
+          "height": 1584
+        },
+        "containerSelector": "#zoom-words-source-root > div:nth-of-type(1)",
+        "text": "Still piecing together tools",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/zoom-words.html",
+        "bbox": {
+          "x": -768,
+          "y": -432,
+          "width": 2816,
+          "height": 1584
+        },
+        "firstSeen": 0.139,
+        "lastSeen": 2.361,
+        "occurrences": 9
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "warning",
+        "time": 1.528,
+        "selector": "#zoom-words-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -66.19,
+          "top": 268.05,
+          "right": 496.91,
+          "bottom": 450.65,
+          "width": 563.1,
+          "height": 182.6
+        },
+        "containerSelector": "#root",
+        "text": "together",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 66.19
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/zoom-words.html",
+        "bbox": {
+          "x": -66.19,
+          "y": 268.05,
+          "width": 563.1,
+          "height": 182.6
+        },
+        "firstSeen": 1.528,
+        "lastSeen": 2.361,
+        "occurrences": 4
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.972,
+        "selector": "#zoom-words-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -168.79,
+          "top": 268.05,
+          "right": 95.96,
+          "bottom": 450.65,
+          "width": 264.76,
+          "height": 182.6
+        },
+        "containerSelector": "#root",
+        "text": "Still",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 168.79
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/zoom-words.html",
+        "bbox": {
+          "x": -168.79,
+          "y": 268.05,
+          "width": 264.76,
+          "height": 182.6
+        },
+        "firstSeen": 0.972,
+        "lastSeen": 0.972,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.25,
+        "selector": "#zoom-words-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -768.56,
+          "top": 268.05,
+          "right": -503.8,
+          "bottom": 450.65,
+          "width": 264.76,
+          "height": 182.6
+        },
+        "containerSelector": "#root",
+        "text": "Still",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 768.56
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/zoom-words.html",
+        "bbox": {
+          "x": -768.56,
+          "y": 268.05,
+          "width": 264.76,
+          "height": 182.6
+        },
+        "firstSeen": 1.25,
+        "lastSeen": 1.25,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.25,
+        "selector": "#zoom-words-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -503.8,
+          "top": 268.05,
+          "right": -23.75,
+          "bottom": 450.65,
+          "width": 480.05,
+          "height": 182.6
+        },
+        "containerSelector": "#root",
+        "text": "piecing",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 503.8
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/zoom-words.html",
+        "bbox": {
+          "x": -503.8,
+          "y": 268.05,
+          "width": 480.05,
+          "height": 182.6
+        },
+        "firstSeen": 1.25,
+        "lastSeen": 1.25,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.25,
+        "selector": "#zoom-words-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -23.75,
+          "top": 268.05,
+          "right": 539.34,
+          "bottom": 450.65,
+          "width": 563.1,
+          "height": 182.6
+        },
+        "containerSelector": "#root",
+        "text": "together",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 23.75
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/zoom-words.html",
+        "bbox": {
+          "x": -23.75,
+          "y": 268.05,
+          "width": 563.1,
+          "height": 182.6
+        },
+        "firstSeen": 1.25,
+        "lastSeen": 1.25,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.528,
+        "selector": "#zoom-words-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -810.99,
+          "top": 268.05,
+          "right": -546.24,
+          "bottom": 450.65,
+          "width": 264.76,
+          "height": 182.6
+        },
+        "containerSelector": "#root",
+        "text": "Still",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 810.99
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/zoom-words.html",
+        "bbox": {
+          "x": -810.99,
+          "y": 268.05,
+          "width": 264.76,
+          "height": 182.6
+        },
+        "firstSeen": 1.528,
+        "lastSeen": 2.361,
+        "occurrences": 4
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.528,
+        "selector": "#zoom-words-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -546.24,
+          "top": 268.05,
+          "right": -66.19,
+          "bottom": 450.65,
+          "width": 480.05,
+          "height": 182.6
+        },
+        "containerSelector": "#root",
+        "text": "piecing",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 546.24
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/zoom-words.html",
+        "bbox": {
+          "x": -546.24,
+          "y": 268.05,
+          "width": 480.05,
+          "height": 182.6
+        },
+        "firstSeen": 1.528,
+        "lastSeen": 2.361,
+        "occurrences": 4
+      }
+    ],
+    "duration": 2.5,
+    "samples": [
+      0.139,
+      0.417,
+      0.694,
+      0.972,
+      1.25,
+      1.528,
+      1.806,
+      2.083,
+      2.361
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 9,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.139,
+      0.694,
+      1.25,
+      1.806,
+      2.361
+    ],
+    "checked": 8,
+    "passed": 8
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.32",
+    "updateAvailable": true
+  }
+}

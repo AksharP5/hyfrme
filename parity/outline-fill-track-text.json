@@ -2,7 +2,7 @@
   "slug": "outline-fill-track-text",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/outline-fill-track-text/index.tsx",
     "config": "registry/remocn/outline-fill-track-text/config.ts",
     "license": "MIT"
@@ -33,25 +33,61 @@
     "background": "#030012"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "93f2155291347051921adaa70097fea3d42217976547be2381538cb583b0f275",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 80,
-    "meanSsim": 0.998469,
-    "minSsim": 0.997787,
-    "p05Ssim": 0.997878,
-    "p95Ssim": 0.99919,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 80,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check reported 1 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "outline-fill-track-text",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/outline-fill-track-text/index.tsx",
+          "config": "registry/remocn/outline-fill-track-text/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_not_painted",
+          "selector": "#outline-fill-track-text-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(1)",
+          "text": "1000000000%"
+        },
+        "reason": "The pinned source paints this value as an outline using WebkitTextStroke with transparent text fill, then overlays a clipped filled copy. The inspector does not account for the stroke. Preserve the source outline/fill treatment; RGB SSIM is mean 0.997643/min 0.980352 and all 80 alpha  planes match exactly."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/outline-fill-track-text/remocn.mp4",
+    "referenceVideo": "public/previews/outline-fill-track-text/reference.mp4",
     "hyperframesVideo": "public/previews/outline-fill-track-text/hyperframes.mp4",
-    "summary": "parity/outline-fill-track-text-diff/summary.json"
+    "thumbnail": "public/previews/outline-fill-track-text/thumbnail.png",
+    "summary": "parity/outline-fill-track-text-diff/summary.json",
+    "perFrameSsim": "parity/outline-fill-track-text-diff/ssim.log",
+    "hyperframesCheck": "parity/outline-fill-track-text-diff/hyperframes-check.log",
+    "worstFrame": "parity/outline-fill-track-text-diff/worst-frame.png",
+    "referenceAlpha": "parity/outline-fill-track-text-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/outline-fill-track-text-diff/hyperframes-alpha.framemd5"
   }
 }

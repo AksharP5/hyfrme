@@ -1,36 +1,91 @@
 <!doctype html>
-<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"REM\nOCN"},{"id":"textColor","type":"color","label":"Color","default":"#FFFFFF"},{"id":"fontFamily","type":"string","label":"Font family","default":"Passion One"},{"id":"fontUrl","type":"string","label":"Font URL","default":"../assets/fonts/PassionOne.css"},{"id":"fontWeight","type":"string","label":"Font weight","default":"700","options":["400","500","600","700"]},{"id":"fontSize","type":"number","label":"Font size","default":107.1,"min":40,"max":200,"step":0.1},{"id":"layerScale","type":"number","label":"Layer scale (%)","default":480,"min":100,"max":800,"step":10},{"id":"keyframeStride","type":"number","label":"Keyframe stride","default":20,"min":5,"max":40,"step":1}]'>
+<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"REM\nOCN"},{"id":"textColor","type":"color","label":"Color","default":"#FFFFFF"},{"id":"fontFamily","type":"string","label":"Font family","default":"Passion One"},{"id":"fontUrl","type":"string","label":"Font URL","default":"https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&amp;display=block"},{"id":"fontWeight","type":"string","label":"Font weight","default":"700","options":["400","500","600","700"]},{"id":"fontSize","type":"number","label":"Font size","default":107.1,"min":40,"max":200,"step":0.1},{"id":"layerScale","type":"number","label":"Layer scale (%)","default":480,"min":100,"max":800,"step":10},{"id":"keyframeStride","type":"number","label":"Keyframe stride","default":20,"min":5,"max":40,"step":1}]'>
   <head>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <style>
-      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
+/* latin-ext */
+@font-face {
+  font-family: 'Passion One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(../assets/remocn-additions/PassionOne-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Passion One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(../assets/remocn-additions/PassionOne-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Passion One';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(../assets/remocn-additions/PassionOne-700-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Passion One';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(../assets/remocn-additions/PassionOne-700-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Passion One';
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url(../assets/remocn-additions/PassionOne-900-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Passion One';
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url(../assets/remocn-additions/PassionOne-900-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
 
 
 
 
 
-      @font-face { font-family: "Passion One"; src: url("../assets/fonts/PassionOne-400.ttf") format("truetype"); font-style: normal; font-weight: 400; font-display: block; }
-      @font-face { font-family: "Passion One"; src: url("../assets/fonts/PassionOne-700.ttf") format("truetype"); font-style: normal; font-weight: 700; font-display: block; }
-      @font-face { font-family: "Passion One"; src: url("../assets/fonts/PassionOne-900.ttf") format("truetype"); font-style: normal; font-weight: 900; font-display: block; }
       * { box-sizing: border-box; }
-      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #141318; }
-      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
-      #hyfrme-source-root { position: absolute; inset: 0; }
-      [data-hyfrme-seek-probe] { position: absolute; width: 1px; height: 1px; pointer-events: none; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: transparent; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:transparent; }
+
+
     </style>
   </head>
   <body>
     <div id="root" data-composition-id="kinetic-warp" data-start="0" data-duration="4" data-fps="30" data-width="1280" data-height="720">
       <span hidden data-layout-ignore data-hyfrme-clock></span>
-      <span data-hyfrme-seek-probe aria-hidden="true"></span>
+
       <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="4" data-track-index="0">
-        <div id="hyfrme-source-root"></div>
+        <div id="hyfrme-source-root" data-hyfrme-assets='{"https://fonts.gstatic.com/s/passionone/v20/PbynFmL8HhTPqbjUzux3JEuf9lvQ6Q.woff2":"../assets/remocn-additions/PassionOne-400-latin-ext.woff2","https://fonts.gstatic.com/s/passionone/v20/PbynFmL8HhTPqbjUzux3JEuR9ls.woff2":"../assets/remocn-additions/PassionOne-400-latin.woff2","https://fonts.gstatic.com/s/passionone/v20/Pby6FmL8HhTPqbjUzux3JEMq007hyJcsuA.woff2":"../assets/remocn-additions/PassionOne-700-latin-ext.woff2","https://fonts.gstatic.com/s/passionone/v20/Pby6FmL8HhTPqbjUzux3JEMq007vyJc.woff2":"../assets/remocn-additions/PassionOne-700-latin.woff2","https://fonts.gstatic.com/s/passionone/v20/Pby6FmL8HhTPqbjUzux3JEMS0U7hyJcsuA.woff2":"../assets/remocn-additions/PassionOne-900-latin-ext.woff2","https://fonts.gstatic.com/s/passionone/v20/Pby6FmL8HhTPqbjUzux3JEMS0U7vyJc.woff2":"../assets/remocn-additions/PassionOne-900-latin.woff2","https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&amp;display=block":"../assets/remocn-additions/PassionOne.css"}'></div>
       </div>
     </div>
     <script src="./kinetic-warp.runtime.js"></script>
     <script>
       window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
       const clock = document.querySelector('[data-composition-id="kinetic-warp"] [data-hyfrme-clock]');
       clock.frame = 0;
       const timeline = gsap.timeline({ paused: true });
@@ -38,10 +93,12 @@
         frame: 120,
         duration: 4,
         ease: "none",
-        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(119, Math.round(clock.frame)))),
+        onUpdate: () => renderFrame(Math.max(0, Math.min(119, Math.round(clock.frame)))),
       });
-      timeline.to('[data-composition-id="kinetic-warp"] [data-hyfrme-seek-probe]', { x: 120, duration: 4, ease: "none" }, 0);
+
       window.__timelines["kinetic-warp"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
     </script>
   </body>
 </html>

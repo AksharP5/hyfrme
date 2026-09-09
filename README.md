@@ -1,7 +1,7 @@
 # Hyfrme
 
 Hyfrme is a copy-paste motion library for
-[HyperFrames](https://hyperframes.heygen.com/). Browse 277 components,
+[HyperFrames](https://hyperframes.heygen.com/). Browse components from Remocn and Snapcn,
 customize one in the browser, then copy it into your project with one command.
 You own the installed HTML, JavaScript, fonts, and assets.
 
@@ -12,7 +12,7 @@ You own the installed HTML, JavaScript, fonts, and assets.
 - **Own the code.** Components are copied into your project instead of hidden
   behind a runtime dependency.
 - **Verified motion.** Every port is rendered against its pinned
-  [Remocn](https://github.com/Remocn/remocn) source and published only after
+  [Remocn](https://github.com/Remocn/remocn) or [Snapcn](https://github.com/snapcndev/snapcn) source and published only after
   passing the repository's visual parity checks.
 
 ## Installation
@@ -22,6 +22,13 @@ Start inside a HyperFrames project, then add any component from the
 
 ```bash
 npx hyfrme@latest add soft-blur-in
+```
+
+Filter the catalog by Remocn or Snapcn to browse either source. Snapcn names
+carry a prefix so similarly named components remain distinct:
+
+```bash
+npx hyfrme@latest add snapcn-phone-frame
 ```
 
 Install the full catalog when you want every block available locally:
@@ -65,7 +72,7 @@ npm install
 npm run dev
 ```
 
-Before contributing:
+Before contributing, ensure FFmpeg is on your PATH, then run:
 
 ```bash
 npm run check
@@ -116,8 +123,9 @@ development and parity checks. Do not put Blob credentials in a `VITE_` variable
 
 ## Attribution
 
-Hyfrme is an independent project, not an official Remocn or HyperFrames
+Hyfrme is an independent project, not an official Remocn, Snapcn, or HyperFrames
 project. Ported source remains attributed to its upstream implementation. See
 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
 
-MIT licensed.
+Hyfrme’s own code is MIT licensed. Installed blocks retain the third-party
+licenses listed in their manifests and copied notices.

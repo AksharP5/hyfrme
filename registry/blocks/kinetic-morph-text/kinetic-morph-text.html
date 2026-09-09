@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Phrases (separate with |)","default":"Hello | Make it move | Shape what&#39;s next"},{"id":"fontSize","type":"number","label":"Font size","default":100,"min":24,"max":180,"step":1},{"id":"fontWeight","type":"string","label":"Font weight","default":"600","options":["400","500","600","700"]},{"id":"spread","type":"number","label":"Flight spread","default":180,"min":0,"max":230,"step":5},{"id":"rotation","type":"number","label":"Rotation","default":110,"min":0,"max":240,"step":5},{"id":"morph","type":"number","label":"Morph strength","default":0.75,"min":0,"max":1,"step":0.05},{"id":"trails","type":"number","label":"Outline trails","default":0.45,"min":0,"max":1,"step":0.05},{"id":"transitionFrames","type":"number","label":"Transition frames","default":54,"min":18,"max":90,"step":1},{"id":"holdFrames","type":"number","label":"Hold frames","default":42,"min":0,"max":90,"step":1},{"id":"loop","type":"boolean","label":"Loop phrases","default":false},{"id":"color","type":"color","label":"Text color","default":"#b4f4d9"},{"id":"backgroundColor","type":"color","label":"Background","default":"#a800b7"},{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: transparent; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:transparent; }
+
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="kinetic-morph-text" data-start="0" data-duration="9.6" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="9.6" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
+      </div>
+    </div>
+    <script src="./kinetic-morph-text.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="kinetic-morph-text"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="kinetic-morph-text"] [data-hyfrme-clock]', {
+        frame: 288,
+        duration: 9.6,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(287, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["kinetic-morph-text"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

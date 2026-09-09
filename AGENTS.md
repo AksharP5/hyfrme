@@ -1,6 +1,6 @@
 # Hyfrme
 
-Hyfrme is a copy-paste component catalog for HyperFrames. It ports Remocn
+Hyfrme is a copy-paste component catalog for HyperFrames. It ports Remocn and Snapcn
 motion into standalone HTML blocks, lets users customize supported variables
 in the browser, and installs the selected source into their project.
 
@@ -9,7 +9,7 @@ in the browser, and installs the selected source into their project.
 - Users own the installed source; do not turn Hyfrme into a runtime dependency.
 - The website, CLI, registry manifest, and installed files must describe the
   same component names and variables.
-- Keep Hyfrme's own identity while preserving required Remocn attribution.
+- Keep Hyfrme's own identity while preserving each source's attribution and licenses.
 - A port is verified by deterministic renders and SSIM, never by visual
   inspection alone.
 
@@ -30,7 +30,7 @@ installer metadata.
 
 After editing a composition:
 
-1. Render the pinned Remocn fixture.
+1. Render the pinned upstream fixture.
 2. Run the full HyperFrames check on the installed block fixture.
 3. Render Hyfrme with identical dimensions, fps, duration, and inputs.
 4. Recompute SSIM and update the parity manifest and artifacts.
@@ -46,3 +46,8 @@ npm pack ./cli --dry-run
 
 Keep generated registry and catalog artifacts synchronized. Preserve
 third-party notices, license files, and the exact pinned upstream commit.
+
+Snapcn ports use `npm run generate:snapcn` and `npm run verify:snapcn`.
+Use `npm run setup:snapcn` for the isolated reference dependencies and checkout.
+See `docs/SNAPCN_AUDIT.md` for the Apache-licensed Paper source requirement;
+never bundle the PolyForm-licensed npm shader archive into new Snapcn blocks.

@@ -1,0 +1,7736 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-09-09",
+  "browser": "Chrome Headless Shell 152.0.7977.42",
+  "scope": "Catalog component pages, pinned fixture inputs; sampled browser comparison supplements full-frame parity/<slug>.json.",
+  "summary": {
+    "components": 336,
+    "bySource": {
+      "remocn": 297,
+      "snapcn": 39
+    },
+    "livePreviews": 320,
+    "renderedDefaultPreviews": 16,
+    "autoplayChecks": 336,
+    "pauseAndReplayChecks": 55,
+    "sampleComparisons": 960,
+    "meanSampleSsim": 0.997264,
+    "minSampleSsim": 0.928461,
+    "samplesBelow095": [
+      {
+        "slug": "icon-inbox",
+        "frame": 35,
+        "ssim": 0.928461
+      }
+    ]
+  },
+  "profiles": {
+    "remocn-video": "Live iframe, autoplay and page/request errors checked. Three frames at floor(durationInFrames * p), p = 0.2, 0.5, 0.8, compared with pinned reference MP4 frames. Canonical fixture dimensions, website scale/filter removed, fixture background applied. Shader Color Panels uses hardware WebGL.",
+    "remocn-icon-video": "Live iframe with pinned 384px showcase size explicitly applied. Autoplay and page/request errors checked. Canonical showcase dimensions, white background, website scale/filter removed. Three frames compared with pinned reference MP4 frames.",
+    "remocn-same-browser-png": "Remocn live iframe checks plus three PNG comparisons against pinned upstream rendered in the same browser, avoiding differences between browser/GPU shader implementations.",
+    "snapcn-png": "Live iframe autoplay, pause, replay, images, media readiness and page/console/HTTP/request errors checked. Three pinned upstream lossless PNG frames at floor((durationInFrames - 1) * p), p = 0.2, 0.5, 0.8. Seek (frame + 0.1) / fps avoids previous-video-frame rounding. Canonical dimensions after controls checked at website size; reference alpha composited over the iframe background.",
+    "rendered-defaults": "Ordinary Chrome lacks the required HTML-in-canvas API. Verified HyperFrames default render played in the catalog video element; autoplay, pause, replay and default-settings notice checked. No live customization or new browser SSIM claim."
+  },
+  "limitations": [
+    "Only listed checks were performed; omitted fields mean unmeasured, not zero.",
+    "Three sampled browser frames do not replace the full-frame deterministic render checks in parity/<slug>.json.",
+    "Reference formats and normalization differ by profile, so the aggregate mean is descriptive only.",
+    "icon-inbox has one browser sample below 0.95. Its separately verified 384px showcase full-frame mean is 0.970517; its minimum is 0.811321. The 48px installed fixture mean is 0.994187.",
+    "Rendered fallback checks cover the default video and controls, not customized live rendering."
+  ],
+  "items": [
+    {
+      "slug": "accordion",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 20,
+          "ssim": 0.999318
+        },
+        {
+          "frame": 50,
+          "ssim": 0.999215
+        },
+        {
+          "frame": 80,
+          "ssim": 0.999287
+        }
+      ]
+    },
+    {
+      "slug": "ai-prompt-flow",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 46,
+          "ssim": 0.999363
+        },
+        {
+          "frame": 115,
+          "ssim": 0.999415
+        },
+        {
+          "frame": 184,
+          "ssim": 0.995448
+        }
+      ]
+    },
+    {
+      "slug": "alert-dialog",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.999539
+        },
+        {
+          "frame": 60,
+          "ssim": 0.997509
+        },
+        {
+          "frame": 96,
+          "ssim": 0.997999
+        }
+      ]
+    },
+    {
+      "slug": "animated-bar-chart",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.998296
+        },
+        {
+          "frame": 45,
+          "ssim": 0.995154
+        },
+        {
+          "frame": 72,
+          "ssim": 0.995023
+        }
+      ]
+    },
+    {
+      "slug": "animated-line-chart",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.998958
+        },
+        {
+          "frame": 45,
+          "ssim": 0.99832
+        },
+        {
+          "frame": 72,
+          "ssim": 0.998233
+        }
+      ]
+    },
+    {
+      "slug": "ascii-dissolve",
+      "source": "remocn",
+      "profile": "remocn-same-browser-png",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 20,
+          "ssim": 0.999319
+        },
+        {
+          "frame": 50,
+          "ssim": 1
+        },
+        {
+          "frame": 80,
+          "ssim": 0.999185
+        }
+      ]
+    },
+    {
+      "slug": "ascii-render",
+      "source": "remocn",
+      "profile": "rendered-defaults",
+      "controls": ["autoplay", "pause", "replay"]
+    },
+    {
+      "slug": "backdrop",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.99188
+        },
+        {
+          "frame": 75,
+          "ssim": 0.99188
+        },
+        {
+          "frame": 120,
+          "ssim": 0.991882
+        }
+      ]
+    },
+    {
+      "slug": "blur-in",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 8,
+          "ssim": 1
+        },
+        {
+          "frame": 20,
+          "ssim": 0.999946
+        },
+        {
+          "frame": 32,
+          "ssim": 0.999945
+        }
+      ]
+    },
+    {
+      "slug": "blur-out-up",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.996625
+        },
+        {
+          "frame": 45,
+          "ssim": 0.996625
+        },
+        {
+          "frame": 72,
+          "ssim": 0.996625
+        }
+      ]
+    },
+    {
+      "slug": "bottom-up-letters",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999581
+        },
+        {
+          "frame": 30,
+          "ssim": 0.999571
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999571
+        }
+      ]
+    },
+    {
+      "slug": "button",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 26,
+          "ssim": 0.999946
+        },
+        {
+          "frame": 66,
+          "ssim": 0.999993
+        },
+        {
+          "frame": 105,
+          "ssim": 0.999992
+        }
+      ]
+    },
+    {
+      "slug": "camera-lens",
+      "source": "remocn",
+      "profile": "rendered-defaults",
+      "controls": ["autoplay", "pause", "replay"]
+    },
+    {
+      "slug": "caret",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 1
+        },
+        {
+          "frame": 60,
+          "ssim": 1
+        },
+        {
+          "frame": 96,
+          "ssim": 1
+        }
+      ]
+    },
+    {
+      "slug": "caret-swap",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 20,
+          "ssim": 0.997677
+        },
+        {
+          "frame": 50,
+          "ssim": 0.997613
+        },
+        {
+          "frame": 80,
+          "ssim": 0.992207
+        }
+      ]
+    },
+    {
+      "slug": "caret-wipe",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 20,
+          "ssim": 0.998606
+        },
+        {
+          "frame": 50,
+          "ssim": 0.998254
+        },
+        {
+          "frame": 80,
+          "ssim": 0.997993
+        }
+      ]
+    },
+    {
+      "slug": "centered-word-build",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.995839
+        },
+        {
+          "frame": 37,
+          "ssim": 0.993948
+        },
+        {
+          "frame": 60,
+          "ssim": 0.996311
+        }
+      ]
+    },
+    {
+      "slug": "chat-flow",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 2,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 72,
+          "ssim": 0.996552
+        },
+        {
+          "frame": 180,
+          "ssim": 0.995235
+        },
+        {
+          "frame": 288,
+          "ssim": 0.994332
+        }
+      ]
+    },
+    {
+      "slug": "chat-gpt",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.99724
+        },
+        {
+          "frame": 75,
+          "ssim": 0.997931
+        },
+        {
+          "frame": 120,
+          "ssim": 0.997737
+        }
+      ]
+    },
+    {
+      "slug": "chat-to-preview-layout",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.994535
+        },
+        {
+          "frame": 60,
+          "ssim": 0.995471
+        },
+        {
+          "frame": 96,
+          "ssim": 0.995486
+        }
+      ]
+    },
+    {
+      "slug": "check-list",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 72,
+          "ssim": 0.996284
+        },
+        {
+          "frame": 180,
+          "ssim": 0.994504
+        },
+        {
+          "frame": 288,
+          "ssim": 0.994678
+        }
+      ]
+    },
+    {
+      "slug": "checkbox",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 20,
+          "ssim": 0.999999
+        },
+        {
+          "frame": 50,
+          "ssim": 0.999999
+        },
+        {
+          "frame": 80,
+          "ssim": 0.999997
+        }
+      ]
+    },
+    {
+      "slug": "checkout-flow",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 64,
+          "ssim": 0.996696
+        },
+        {
+          "frame": 160,
+          "ssim": 0.996658
+        },
+        {
+          "frame": 256,
+          "ssim": 0.996608
+        }
+      ]
+    },
+    {
+      "slug": "chromatic-wave",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 20,
+          "ssim": 0.999993
+        },
+        {
+          "frame": 50,
+          "ssim": 0.995369
+        },
+        {
+          "frame": 80,
+          "ssim": 0.999785
+        }
+      ]
+    },
+    {
+      "slug": "claude-chat",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.998302
+        },
+        {
+          "frame": 75,
+          "ssim": 0.999377
+        },
+        {
+          "frame": 120,
+          "ssim": 0.999249
+        }
+      ]
+    },
+    {
+      "slug": "claude-code",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 32,
+          "ssim": 0.98438
+        },
+        {
+          "frame": 80,
+          "ssim": 0.984687
+        },
+        {
+          "frame": 128,
+          "ssim": 0.983184
+        }
+      ]
+    },
+    {
+      "slug": "combobox",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.999466
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999925
+        },
+        {
+          "frame": 96,
+          "ssim": 0.999918
+        }
+      ]
+    },
+    {
+      "slug": "command-menu",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 26,
+          "ssim": 0.998274
+        },
+        {
+          "frame": 65,
+          "ssim": 0.99973
+        },
+        {
+          "frame": 104,
+          "ssim": 0.999688
+        }
+      ]
+    },
+    {
+      "slug": "command-menu-item",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.99986
+        },
+        {
+          "frame": 60,
+          "ssim": 0.99986
+        },
+        {
+          "frame": 96,
+          "ssim": 0.99986
+        }
+      ]
+    },
+    {
+      "slug": "confetti",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.996524
+        },
+        {
+          "frame": 45,
+          "ssim": 0.998401
+        },
+        {
+          "frame": 72,
+          "ssim": 0.999724
+        }
+      ]
+    },
+    {
+      "slug": "context-menu",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 27,
+          "ssim": 0.999938
+        },
+        {
+          "frame": 67,
+          "ssim": 0.999732
+        },
+        {
+          "frame": 108,
+          "ssim": 0.999942
+        }
+      ]
+    },
+    {
+      "slug": "crt-screen",
+      "source": "remocn",
+      "profile": "rendered-defaults",
+      "controls": ["autoplay", "pause", "replay"]
+    },
+    {
+      "slug": "crumple-toss",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.999721
+        },
+        {
+          "frame": 45,
+          "ssim": 0.999903
+        },
+        {
+          "frame": 72,
+          "ssim": 0.999902
+        }
+      ]
+    },
+    {
+      "slug": "cursor",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 28,
+          "ssim": 0.999928
+        },
+        {
+          "frame": 70,
+          "ssim": 0.999944
+        },
+        {
+          "frame": 112,
+          "ssim": 0.99999
+        }
+      ]
+    },
+    {
+      "slug": "cursor-gravity",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 36,
+          "ssim": 0.999833
+        },
+        {
+          "frame": 90,
+          "ssim": 0.999395
+        },
+        {
+          "frame": 144,
+          "ssim": 0.999304
+        }
+      ]
+    },
+    {
+      "slug": "dialog",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.999939
+        },
+        {
+          "frame": 60,
+          "ssim": 0.998521
+        },
+        {
+          "frame": 96,
+          "ssim": 0.998796
+        }
+      ]
+    },
+    {
+      "slug": "displacement",
+      "source": "remocn",
+      "profile": "rendered-defaults",
+      "controls": ["autoplay", "pause", "replay"]
+    },
+    {
+      "slug": "dither-dissolve",
+      "source": "remocn",
+      "profile": "remocn-same-browser-png",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 20,
+          "ssim": 0.999321
+        },
+        {
+          "frame": 50,
+          "ssim": 1
+        },
+        {
+          "frame": 80,
+          "ssim": 0.999174
+        }
+      ]
+    },
+    {
+      "slug": "drawer",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.999939
+        },
+        {
+          "frame": 60,
+          "ssim": 0.99834
+        },
+        {
+          "frame": 96,
+          "ssim": 0.998736
+        }
+      ]
+    },
+    {
+      "slug": "drift",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.99468
+        },
+        {
+          "frame": 45,
+          "ssim": 0.994373
+        },
+        {
+          "frame": 72,
+          "ssim": 0.995009
+        }
+      ]
+    },
+    {
+      "slug": "dropdown-menu",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.999954
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999778
+        },
+        {
+          "frame": 96,
+          "ssim": 0.999784
+        }
+      ]
+    },
+    {
+      "slug": "dropdown-menu-item",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.999987
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999987
+        },
+        {
+          "frame": 96,
+          "ssim": 0.999987
+        }
+      ]
+    },
+    {
+      "slug": "ecosystem-constellation",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 48,
+          "ssim": 0.994278
+        },
+        {
+          "frame": 120,
+          "ssim": 0.989798
+        },
+        {
+          "frame": 192,
+          "ssim": 0.994699
+        }
+      ]
+    },
+    {
+      "slug": "ember-burn",
+      "source": "remocn",
+      "profile": "rendered-defaults",
+      "controls": ["autoplay", "pause", "replay"]
+    },
+    {
+      "slug": "extrude-pop",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.995253
+        },
+        {
+          "frame": 45,
+          "ssim": 0.995355
+        },
+        {
+          "frame": 72,
+          "ssim": 0.995348
+        }
+      ]
+    },
+    {
+      "slug": "fade-through",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.996126
+        },
+        {
+          "frame": 45,
+          "ssim": 0.996353
+        },
+        {
+          "frame": 72,
+          "ssim": 0.996353
+        }
+      ]
+    },
+    {
+      "slug": "field",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.998806
+        },
+        {
+          "frame": 45,
+          "ssim": 0.998806
+        },
+        {
+          "frame": 72,
+          "ssim": 0.998806
+        }
+      ]
+    },
+    {
+      "slug": "focus-blur-resolve",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.997542
+        },
+        {
+          "frame": 45,
+          "ssim": 0.997537
+        },
+        {
+          "frame": 72,
+          "ssim": 0.997537
+        }
+      ]
+    },
+    {
+      "slug": "focus-pull",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 22,
+          "ssim": 0.99866
+        },
+        {
+          "frame": 57,
+          "ssim": 0.999145
+        },
+        {
+          "frame": 91,
+          "ssim": 0.998307
+        }
+      ]
+    },
+    {
+      "slug": "fog-rise",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.997967
+        },
+        {
+          "frame": 45,
+          "ssim": 0.989818
+        },
+        {
+          "frame": 72,
+          "ssim": 0.999994
+        }
+      ]
+    },
+    {
+      "slug": "github-sponsors",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 24,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 54,
+          "ssim": 0.99975
+        },
+        {
+          "frame": 135,
+          "ssim": 0.997856
+        },
+        {
+          "frame": 216,
+          "ssim": 0.994171
+        }
+      ]
+    },
+    {
+      "slug": "github-stars",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 61,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.995823
+        },
+        {
+          "frame": 60,
+          "ssim": 0.995149
+        },
+        {
+          "frame": 96,
+          "ssim": 0.996265
+        }
+      ]
+    },
+    {
+      "slug": "glass-code-block",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 36,
+          "ssim": 0.992146
+        },
+        {
+          "frame": 90,
+          "ssim": 0.992147
+        },
+        {
+          "frame": 144,
+          "ssim": 0.992147
+        }
+      ]
+    },
+    {
+      "slug": "glass-code-walk",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.977256
+        },
+        {
+          "frame": 75,
+          "ssim": 0.987233
+        },
+        {
+          "frame": 120,
+          "ssim": 0.993386
+        }
+      ]
+    },
+    {
+      "slug": "glitch-cut",
+      "source": "remocn",
+      "profile": "rendered-defaults",
+      "controls": ["autoplay", "pause", "replay"]
+    },
+    {
+      "slug": "gooey-morph",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.99979
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999192
+        },
+        {
+          "frame": 96,
+          "ssim": 0.999756
+        }
+      ]
+    },
+    {
+      "slug": "gradient-scale-cut-text",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 7,
+          "ssim": 0.99769
+        },
+        {
+          "frame": 18,
+          "ssim": 0.998828
+        },
+        {
+          "frame": 28,
+          "ssim": 0.999512
+        }
+      ]
+    },
+    {
+      "slug": "grain-dissolve",
+      "source": "remocn",
+      "profile": "remocn-same-browser-png",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 23,
+          "ssim": 0.999327
+        },
+        {
+          "frame": 58,
+          "ssim": 1
+        },
+        {
+          "frame": 92,
+          "ssim": 0.997457
+        }
+      ]
+    },
+    {
+      "slug": "grid-wave",
+      "source": "remocn",
+      "profile": "rendered-defaults",
+      "controls": ["autoplay", "pause", "replay"]
+    },
+    {
+      "slug": "halftone-print",
+      "source": "remocn",
+      "profile": "rendered-defaults",
+      "controls": ["autoplay", "pause", "replay"]
+    },
+    {
+      "slug": "hand-count",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.999531
+        },
+        {
+          "frame": 45,
+          "ssim": 0.999365
+        },
+        {
+          "frame": 72,
+          "ssim": 0.999166
+        }
+      ]
+    },
+    {
+      "slug": "handwrite",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.998968
+        },
+        {
+          "frame": 60,
+          "ssim": 0.998924
+        },
+        {
+          "frame": 96,
+          "ssim": 0.998924
+        }
+      ]
+    },
+    {
+      "slug": "hologram",
+      "source": "remocn",
+      "profile": "rendered-defaults",
+      "controls": ["autoplay", "pause", "replay"]
+    },
+    {
+      "slug": "icon-activity",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.999829
+        },
+        {
+          "frame": 45,
+          "ssim": 0.999916
+        },
+        {
+          "frame": 72,
+          "ssim": 0.999853
+        }
+      ]
+    },
+    {
+      "slug": "icon-alert-triangle",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999848
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999863
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999866
+        }
+      ]
+    },
+    {
+      "slug": "icon-arrow-down",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.99991
+        },
+        {
+          "frame": 30,
+          "ssim": 0.999955
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999954
+        }
+      ]
+    },
+    {
+      "slug": "icon-arrow-left",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999927
+        },
+        {
+          "frame": 30,
+          "ssim": 0.999933
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999931
+        }
+      ]
+    },
+    {
+      "slug": "icon-arrow-right",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999896
+        },
+        {
+          "frame": 30,
+          "ssim": 0.999951
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999943
+        }
+      ]
+    },
+    {
+      "slug": "icon-arrow-up",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999915
+        },
+        {
+          "frame": 30,
+          "ssim": 0.999941
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999941
+        }
+      ]
+    },
+    {
+      "slug": "icon-at-sign",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999748
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999797
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999792
+        }
+      ]
+    },
+    {
+      "slug": "icon-award",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999886
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999672
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999854
+        }
+      ]
+    },
+    {
+      "slug": "icon-bar-chart-3",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 16,
+          "ssim": 0.999957
+        },
+        {
+          "frame": 40,
+          "ssim": 0.999963
+        },
+        {
+          "frame": 64,
+          "ssim": 0.999963
+        }
+      ]
+    },
+    {
+      "slug": "icon-bell",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999806
+        },
+        {
+          "frame": 37,
+          "ssim": 0.99965
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999883
+        }
+      ]
+    },
+    {
+      "slug": "icon-bookmark",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999914
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999936
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999938
+        }
+      ]
+    },
+    {
+      "slug": "icon-calendar",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999935
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999702
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999961
+        }
+      ]
+    },
+    {
+      "slug": "icon-camera",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999819
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999874
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999874
+        }
+      ]
+    },
+    {
+      "slug": "icon-check",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999897
+        },
+        {
+          "frame": 30,
+          "ssim": 0.999915
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999943
+        }
+      ]
+    },
+    {
+      "slug": "icon-check-circle",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999688
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999751
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999823
+        }
+      ]
+    },
+    {
+      "slug": "icon-chevron-down",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999917
+        },
+        {
+          "frame": 30,
+          "ssim": 0.973111
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999947
+        }
+      ]
+    },
+    {
+      "slug": "icon-chevron-left",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999932
+        },
+        {
+          "frame": 30,
+          "ssim": 0.973391
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999951
+        }
+      ]
+    },
+    {
+      "slug": "icon-chevron-right",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.99992
+        },
+        {
+          "frame": 30,
+          "ssim": 0.973391
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999949
+        }
+      ]
+    },
+    {
+      "slug": "icon-chevron-up",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999931
+        },
+        {
+          "frame": 30,
+          "ssim": 0.973144
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999948
+        }
+      ]
+    },
+    {
+      "slug": "icon-clock",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.999812
+        },
+        {
+          "frame": 45,
+          "ssim": 0.999817
+        },
+        {
+          "frame": 72,
+          "ssim": 0.999733
+        }
+      ]
+    },
+    {
+      "slug": "icon-cloud",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999814
+        },
+        {
+          "frame": 35,
+          "ssim": 0.993337
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999882
+        }
+      ]
+    },
+    {
+      "slug": "icon-code",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999878
+        },
+        {
+          "frame": 35,
+          "ssim": 0.99978
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999925
+        }
+      ]
+    },
+    {
+      "slug": "icon-copy",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999877
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999879
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999926
+        }
+      ]
+    },
+    {
+      "slug": "icon-credit-card",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999938
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999642
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999952
+        }
+      ]
+    },
+    {
+      "slug": "icon-crown",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999802
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999688
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999873
+        }
+      ]
+    },
+    {
+      "slug": "icon-database",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 16,
+          "ssim": 0.99981
+        },
+        {
+          "frame": 40,
+          "ssim": 0.999867
+        },
+        {
+          "frame": 64,
+          "ssim": 0.999866
+        }
+      ]
+    },
+    {
+      "slug": "icon-dollar-sign",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999913
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999888
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999934
+        }
+      ]
+    },
+    {
+      "slug": "icon-download",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.9999
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999926
+        },
+        {
+          "frame": 56,
+          "ssim": 0.99993
+        }
+      ]
+    },
+    {
+      "slug": "icon-external-link",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999905
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999887
+        },
+        {
+          "frame": 56,
+          "ssim": 0.99994
+        }
+      ]
+    },
+    {
+      "slug": "icon-eye",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.99966
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999766
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999797
+        }
+      ]
+    },
+    {
+      "slug": "icon-eye-off",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999727
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999624
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999727
+        }
+      ]
+    },
+    {
+      "slug": "icon-file-text",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 16,
+          "ssim": 0.999944
+        },
+        {
+          "frame": 40,
+          "ssim": 0.999929
+        },
+        {
+          "frame": 64,
+          "ssim": 0.999929
+        }
+      ]
+    },
+    {
+      "slug": "icon-filter",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999863
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999826
+        },
+        {
+          "frame": 56,
+          "ssim": 0.99989
+        }
+      ]
+    },
+    {
+      "slug": "icon-flame",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.999738
+        },
+        {
+          "frame": 45,
+          "ssim": 0.999787
+        },
+        {
+          "frame": 72,
+          "ssim": 0.999725
+        }
+      ]
+    },
+    {
+      "slug": "icon-folder",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999927
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999843
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999945
+        }
+      ]
+    },
+    {
+      "slug": "icon-gem",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 16,
+          "ssim": 0.999729
+        },
+        {
+          "frame": 40,
+          "ssim": 0.999771
+        },
+        {
+          "frame": 64,
+          "ssim": 0.999783
+        }
+      ]
+    },
+    {
+      "slug": "icon-gift",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 16,
+          "ssim": 0.999868
+        },
+        {
+          "frame": 40,
+          "ssim": 0.99978
+        },
+        {
+          "frame": 64,
+          "ssim": 0.9999
+        }
+      ]
+    },
+    {
+      "slug": "icon-globe",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.999632
+        },
+        {
+          "frame": 45,
+          "ssim": 0.999523
+        },
+        {
+          "frame": 72,
+          "ssim": 0.999473
+        }
+      ]
+    },
+    {
+      "slug": "icon-heart",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999761
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999853
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999851
+        }
+      ]
+    },
+    {
+      "slug": "icon-help-circle",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999762
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999762
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999782
+        }
+      ]
+    },
+    {
+      "slug": "icon-home",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999901
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999724
+        },
+        {
+          "frame": 56,
+          "ssim": 0.99992
+        }
+      ]
+    },
+    {
+      "slug": "icon-image",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.9998
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999844
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999876
+        }
+      ]
+    },
+    {
+      "slug": "icon-inbox",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999895
+        },
+        {
+          "frame": 35,
+          "ssim": 0.928461
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999912
+        }
+      ]
+    },
+    {
+      "slug": "icon-info",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.99982
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999812
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999822
+        }
+      ]
+    },
+    {
+      "slug": "icon-key",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999806
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999746
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999845
+        }
+      ]
+    },
+    {
+      "slug": "icon-layout-grid",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999898
+        },
+        {
+          "frame": 37,
+          "ssim": 0.9997
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999906
+        }
+      ]
+    },
+    {
+      "slug": "icon-link",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999702
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999718
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999854
+        }
+      ]
+    },
+    {
+      "slug": "icon-loader",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.999706
+        },
+        {
+          "frame": 45,
+          "ssim": 0.999767
+        },
+        {
+          "frame": 72,
+          "ssim": 0.999721
+        }
+      ]
+    },
+    {
+      "slug": "icon-lock",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999872
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999663
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999925
+        }
+      ]
+    },
+    {
+      "slug": "icon-log-out",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.99991
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999922
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999942
+        }
+      ]
+    },
+    {
+      "slug": "icon-mail",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999842
+        },
+        {
+          "frame": 37,
+          "ssim": 0.951296
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999898
+        }
+      ]
+    },
+    {
+      "slug": "icon-maximize",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999911
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999796
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999944
+        }
+      ]
+    },
+    {
+      "slug": "icon-menu",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999966
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999966
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999984
+        }
+      ]
+    },
+    {
+      "slug": "icon-message-circle",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999753
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999796
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999839
+        }
+      ]
+    },
+    {
+      "slug": "icon-mic",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.99987
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999876
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999889
+        }
+      ]
+    },
+    {
+      "slug": "icon-monitor",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999885
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999945
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999945
+        }
+      ]
+    },
+    {
+      "slug": "icon-moon",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999795
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999794
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999847
+        }
+      ]
+    },
+    {
+      "slug": "icon-more-horizontal",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999904
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999948
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999951
+        }
+      ]
+    },
+    {
+      "slug": "icon-package",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 16,
+          "ssim": 0.999742
+        },
+        {
+          "frame": 40,
+          "ssim": 0.999823
+        },
+        {
+          "frame": 64,
+          "ssim": 0.999823
+        }
+      ]
+    },
+    {
+      "slug": "icon-party-popper",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999787
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999735
+        },
+        {
+          "frame": 60,
+          "ssim": 0.99978
+        }
+      ]
+    },
+    {
+      "slug": "icon-pause",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999933
+        },
+        {
+          "frame": 30,
+          "ssim": 0.99985
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999959
+        }
+      ]
+    },
+    {
+      "slug": "icon-pencil",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.99974
+        },
+        {
+          "frame": 37,
+          "ssim": 0.99976
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999867
+        }
+      ]
+    },
+    {
+      "slug": "icon-phone",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999751
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999577
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999848
+        }
+      ]
+    },
+    {
+      "slug": "icon-play",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999859
+        },
+        {
+          "frame": 30,
+          "ssim": 0.957551
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999896
+        }
+      ]
+    },
+    {
+      "slug": "icon-plus",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999984
+        },
+        {
+          "frame": 30,
+          "ssim": 0.999926
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999984
+        }
+      ]
+    },
+    {
+      "slug": "icon-plus-circle",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999819
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999755
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999849
+        }
+      ]
+    },
+    {
+      "slug": "icon-refresh-cw",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.99957
+        },
+        {
+          "frame": 45,
+          "ssim": 0.999649
+        },
+        {
+          "frame": 72,
+          "ssim": 0.99976
+        }
+      ]
+    },
+    {
+      "slug": "icon-rocket",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 16,
+          "ssim": 0.999736
+        },
+        {
+          "frame": 40,
+          "ssim": 0.999649
+        },
+        {
+          "frame": 64,
+          "ssim": 0.999815
+        }
+      ]
+    },
+    {
+      "slug": "icon-save",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999894
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999927
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999929
+        }
+      ]
+    },
+    {
+      "slug": "icon-scatter",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 20,
+          "ssim": 0.998852
+        },
+        {
+          "frame": 50,
+          "ssim": 0.999517
+        },
+        {
+          "frame": 80,
+          "ssim": 0.997995
+        }
+      ]
+    },
+    {
+      "slug": "icon-search",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.99976
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999793
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999856
+        }
+      ]
+    },
+    {
+      "slug": "icon-send",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999684
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999788
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999833
+        }
+      ]
+    },
+    {
+      "slug": "icon-settings",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999587
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999624
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999764
+        }
+      ]
+    },
+    {
+      "slug": "icon-share-2",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 16,
+          "ssim": 0.999754
+        },
+        {
+          "frame": 40,
+          "ssim": 0.999755
+        },
+        {
+          "frame": 64,
+          "ssim": 0.999817
+        }
+      ]
+    },
+    {
+      "slug": "icon-shield",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999838
+        },
+        {
+          "frame": 35,
+          "ssim": 0.9999
+        },
+        {
+          "frame": 56,
+          "ssim": 0.9999
+        }
+      ]
+    },
+    {
+      "slug": "icon-shopping-cart",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999848
+        },
+        {
+          "frame": 37,
+          "ssim": 0.99984
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999903
+        }
+      ]
+    },
+    {
+      "slug": "icon-skip-forward",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999843
+        },
+        {
+          "frame": 30,
+          "ssim": 0.999767
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999878
+        }
+      ]
+    },
+    {
+      "slug": "icon-smartphone",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999927
+        },
+        {
+          "frame": 35,
+          "ssim": 0.99996
+        },
+        {
+          "frame": 56,
+          "ssim": 0.99996
+        }
+      ]
+    },
+    {
+      "slug": "icon-sparkles",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.999654
+        },
+        {
+          "frame": 45,
+          "ssim": 0.99946
+        },
+        {
+          "frame": 72,
+          "ssim": 0.999626
+        }
+      ]
+    },
+    {
+      "slug": "icon-star",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999707
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999844
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999851
+        }
+      ]
+    },
+    {
+      "slug": "icon-sun",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 17,
+          "ssim": 0.99992
+        },
+        {
+          "frame": 42,
+          "ssim": 0.999861
+        },
+        {
+          "frame": 68,
+          "ssim": 0.999889
+        }
+      ]
+    },
+    {
+      "slug": "icon-tag",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999812
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999696
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999877
+        }
+      ]
+    },
+    {
+      "slug": "icon-target",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 16,
+          "ssim": 0.999635
+        },
+        {
+          "frame": 40,
+          "ssim": 0.999683
+        },
+        {
+          "frame": 64,
+          "ssim": 0.999728
+        }
+      ]
+    },
+    {
+      "slug": "icon-terminal",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999942
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999928
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999951
+        }
+      ]
+    },
+    {
+      "slug": "icon-thumbs-up",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999726
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999792
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999871
+        }
+      ]
+    },
+    {
+      "slug": "icon-timer",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.999865
+        },
+        {
+          "frame": 45,
+          "ssim": 0.999832
+        },
+        {
+          "frame": 72,
+          "ssim": 0.999863
+        }
+      ]
+    },
+    {
+      "slug": "icon-trash",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999939
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999835
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999941
+        }
+      ]
+    },
+    {
+      "slug": "icon-trending-down",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.99991
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999909
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999933
+        }
+      ]
+    },
+    {
+      "slug": "icon-trending-up",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999926
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999896
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999945
+        }
+      ]
+    },
+    {
+      "slug": "icon-trophy",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 17,
+          "ssim": 0.999868
+        },
+        {
+          "frame": 42,
+          "ssim": 0.999711
+        },
+        {
+          "frame": 68,
+          "ssim": 0.999884
+        }
+      ]
+    },
+    {
+      "slug": "icon-upload",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999904
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999934
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999925
+        }
+      ]
+    },
+    {
+      "slug": "icon-user",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999851
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999818
+        },
+        {
+          "frame": 56,
+          "ssim": 0.9999
+        }
+      ]
+    },
+    {
+      "slug": "icon-user-plus",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999878
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999809
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999869
+        }
+      ]
+    },
+    {
+      "slug": "icon-users",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 16,
+          "ssim": 0.999825
+        },
+        {
+          "frame": 40,
+          "ssim": 0.999821
+        },
+        {
+          "frame": 64,
+          "ssim": 0.999821
+        }
+      ]
+    },
+    {
+      "slug": "icon-video",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.99989
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999877
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999905
+        }
+      ]
+    },
+    {
+      "slug": "icon-volume-2",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999868
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999851
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999885
+        }
+      ]
+    },
+    {
+      "slug": "icon-volume-x",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999947
+        },
+        {
+          "frame": 35,
+          "ssim": 0.966371
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999913
+        }
+      ]
+    },
+    {
+      "slug": "icon-wallet",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999917
+        },
+        {
+          "frame": 35,
+          "ssim": 0.999852
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999948
+        }
+      ]
+    },
+    {
+      "slug": "icon-x",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999866
+        },
+        {
+          "frame": 30,
+          "ssim": 0.999718
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999917
+        }
+      ]
+    },
+    {
+      "slug": "icon-x-circle",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999802
+        },
+        {
+          "frame": 35,
+          "ssim": 0.970536
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999841
+        }
+      ]
+    },
+    {
+      "slug": "icon-zap",
+      "source": "remocn",
+      "profile": "remocn-icon-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.99976
+        },
+        {
+          "frame": 30,
+          "ssim": 0.999825
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999827
+        }
+      ]
+    },
+    {
+      "slug": "imessage-chat-flow",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 2,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 72,
+          "ssim": 0.995741
+        },
+        {
+          "frame": 180,
+          "ssim": 0.989364
+        },
+        {
+          "frame": 288,
+          "ssim": 0.986082
+        }
+      ]
+    },
+    {
+      "slug": "infinite-bento-pan",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 60,
+          "ssim": 0.991036
+        },
+        {
+          "frame": 150,
+          "ssim": 0.991168
+        },
+        {
+          "frame": 240,
+          "ssim": 0.989457
+        }
+      ]
+    },
+    {
+      "slug": "infinite-marquee",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 36,
+          "ssim": 0.978677
+        },
+        {
+          "frame": 90,
+          "ssim": 0.977937
+        },
+        {
+          "frame": 144,
+          "ssim": 0.975626
+        }
+      ]
+    },
+    {
+      "slug": "ink-arrow",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.996409
+        },
+        {
+          "frame": 75,
+          "ssim": 0.996369
+        },
+        {
+          "frame": 120,
+          "ssim": 0.996369
+        }
+      ]
+    },
+    {
+      "slug": "ink-underline",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.995335
+        },
+        {
+          "frame": 60,
+          "ssim": 0.995
+        },
+        {
+          "frame": 96,
+          "ssim": 0.994999
+        }
+      ]
+    },
+    {
+      "slug": "inline-highlight",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.995525
+        },
+        {
+          "frame": 45,
+          "ssim": 0.994444
+        },
+        {
+          "frame": 72,
+          "ssim": 0.994237
+        }
+      ]
+    },
+    {
+      "slug": "inline-pill-takeover",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 9,
+          "ssim": 0.99201
+        },
+        {
+          "frame": 22,
+          "ssim": 0.995389
+        },
+        {
+          "frame": 36,
+          "ssim": 0.991617
+        }
+      ]
+    },
+    {
+      "slug": "input",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.999753
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999822
+        },
+        {
+          "frame": 96,
+          "ssim": 0.998671
+        }
+      ]
+    },
+    {
+      "slug": "kinetic-center-build",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.993616
+        },
+        {
+          "frame": 30,
+          "ssim": 0.990262
+        },
+        {
+          "frame": 48,
+          "ssim": 0.990263
+        }
+      ]
+    },
+    {
+      "slug": "kinetic-morph-text",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 57,
+          "ssim": 0.998925
+        },
+        {
+          "frame": 144,
+          "ssim": 0.997213
+        },
+        {
+          "frame": 230,
+          "ssim": 0.995739
+        }
+      ]
+    },
+    {
+      "slug": "kinetic-warp",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.99339
+        },
+        {
+          "frame": 60,
+          "ssim": 0.993414
+        },
+        {
+          "frame": 96,
+          "ssim": 0.990317
+        }
+      ]
+    },
+    {
+      "slug": "lens-zoom",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 22,
+          "ssim": 0.995354
+        },
+        {
+          "frame": 56,
+          "ssim": 0.968955
+        },
+        {
+          "frame": 89,
+          "ssim": 0.993856
+        }
+      ]
+    },
+    {
+      "slug": "line-by-line-slide",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.997381
+        },
+        {
+          "frame": 45,
+          "ssim": 0.997391
+        },
+        {
+          "frame": 72,
+          "ssim": 0.997391
+        }
+      ]
+    },
+    {
+      "slug": "live-code-compilation",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 52,
+          "ssim": 0.995203
+        },
+        {
+          "frame": 130,
+          "ssim": 0.990656
+        },
+        {
+          "frame": 208,
+          "ssim": 0.987399
+        }
+      ]
+    },
+    {
+      "slug": "logo-enter",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.999527
+        },
+        {
+          "frame": 45,
+          "ssim": 0.999536
+        },
+        {
+          "frame": 72,
+          "ssim": 0.999534
+        }
+      ]
+    },
+    {
+      "slug": "marker-highlight",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.9959
+        },
+        {
+          "frame": 45,
+          "ssim": 0.993549
+        },
+        {
+          "frame": 72,
+          "ssim": 0.993417
+        }
+      ]
+    },
+    {
+      "slug": "mask-reveal-up",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.996441
+        },
+        {
+          "frame": 45,
+          "ssim": 0.99644
+        },
+        {
+          "frame": 72,
+          "ssim": 0.99644
+        }
+      ]
+    },
+    {
+      "slug": "matrix-decode",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.997114
+        },
+        {
+          "frame": 45,
+          "ssim": 0.996783
+        },
+        {
+          "frame": 72,
+          "ssim": 0.996445
+        }
+      ]
+    },
+    {
+      "slug": "message-bubble",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.999775
+        },
+        {
+          "frame": 45,
+          "ssim": 0.999766
+        },
+        {
+          "frame": 72,
+          "ssim": 0.999594
+        }
+      ]
+    },
+    {
+      "slug": "micro-scale-fade",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.997245
+        },
+        {
+          "frame": 30,
+          "ssim": 0.996661
+        },
+        {
+          "frame": 48,
+          "ssim": 0.99666
+        }
+      ]
+    },
+    {
+      "slug": "number-wheel",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 22,
+          "ssim": 0.999055
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999077
+        },
+        {
+          "frame": 89,
+          "ssim": 0.999144
+        }
+      ]
+    },
+    {
+      "slug": "onboarding-stepper-flow",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 35,
+          "ssim": 0.999143
+        },
+        {
+          "frame": 87,
+          "ssim": 0.999487
+        },
+        {
+          "frame": 140,
+          "ssim": 0.999462
+        }
+      ]
+    },
+    {
+      "slug": "opencode",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.997277
+        },
+        {
+          "frame": 75,
+          "ssim": 0.99556
+        },
+        {
+          "frame": 120,
+          "ssim": 0.993218
+        }
+      ]
+    },
+    {
+      "slug": "outline-fill-track-text",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 16,
+          "ssim": 0.998842
+        },
+        {
+          "frame": 40,
+          "ssim": 0.998638
+        },
+        {
+          "frame": 64,
+          "ssim": 0.998267
+        }
+      ]
+    },
+    {
+      "slug": "page-turn",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 25,
+          "ssim": 0.998266
+        },
+        {
+          "frame": 64,
+          "ssim": 0.997828
+        },
+        {
+          "frame": 102,
+          "ssim": 0.997657
+        }
+      ]
+    },
+    {
+      "slug": "paper-sticker",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.997514
+        },
+        {
+          "frame": 60,
+          "ssim": 0.995247
+        },
+        {
+          "frame": 96,
+          "ssim": 0.995193
+        }
+      ]
+    },
+    {
+      "slug": "paper-wobble",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.996595
+        },
+        {
+          "frame": 45,
+          "ssim": 0.997387
+        },
+        {
+          "frame": 72,
+          "ssim": 0.997253
+        }
+      ]
+    },
+    {
+      "slug": "particle-dissolve",
+      "source": "remocn",
+      "profile": "rendered-defaults",
+      "controls": ["autoplay", "pause", "replay"]
+    },
+    {
+      "slug": "per-character-rise",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.998789
+        },
+        {
+          "frame": 30,
+          "ssim": 0.998322
+        },
+        {
+          "frame": 48,
+          "ssim": 0.998321
+        }
+      ]
+    },
+    {
+      "slug": "per-word-crossfade",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.997432
+        },
+        {
+          "frame": 45,
+          "ssim": 0.99704
+        },
+        {
+          "frame": 72,
+          "ssim": 0.99704
+        }
+      ]
+    },
+    {
+      "slug": "perlin-dissolve",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 23,
+          "ssim": 0.998214
+        },
+        {
+          "frame": 58,
+          "ssim": 0.999954
+        },
+        {
+          "frame": 92,
+          "ssim": 0.996821
+        }
+      ]
+    },
+    {
+      "slug": "perspective-marquee",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 48,
+          "ssim": 0.984212
+        },
+        {
+          "frame": 120,
+          "ssim": 0.983204
+        },
+        {
+          "frame": 192,
+          "ssim": 0.982445
+        }
+      ]
+    },
+    {
+      "slug": "perspective-squeeze",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 45,
+          "ssim": 0.998418
+        },
+        {
+          "frame": 112,
+          "ssim": 0.99755
+        },
+        {
+          "frame": 180,
+          "ssim": 0.997967
+        }
+      ]
+    },
+    {
+      "slug": "pixelate-region",
+      "source": "remocn",
+      "profile": "rendered-defaults",
+      "controls": ["autoplay", "pause", "replay"]
+    },
+    {
+      "slug": "polaroid",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.996531
+        },
+        {
+          "frame": 75,
+          "ssim": 0.996315
+        },
+        {
+          "frame": 120,
+          "ssim": 0.996249
+        }
+      ]
+    },
+    {
+      "slug": "popover",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 26,
+          "ssim": 0.999945
+        },
+        {
+          "frame": 65,
+          "ssim": 0.998879
+        },
+        {
+          "frame": 104,
+          "ssim": 0.999105
+        }
+      ]
+    },
+    {
+      "slug": "progress",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 32,
+          "ssim": 0.999877
+        },
+        {
+          "frame": 80,
+          "ssim": 0.999868
+        },
+        {
+          "frame": 128,
+          "ssim": 0.999889
+        }
+      ]
+    },
+    {
+      "slug": "push-through",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 22,
+          "ssim": 0.99866
+        },
+        {
+          "frame": 56,
+          "ssim": 0.999081
+        },
+        {
+          "frame": 89,
+          "ssim": 0.998078
+        }
+      ]
+    },
+    {
+      "slug": "radial-burst",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.996181
+        },
+        {
+          "frame": 60,
+          "ssim": 0.990448
+        },
+        {
+          "frame": 96,
+          "ssim": 0.998885
+        }
+      ]
+    },
+    {
+      "slug": "radio",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 20,
+          "ssim": 0.999999
+        },
+        {
+          "frame": 50,
+          "ssim": 1
+        },
+        {
+          "frame": 80,
+          "ssim": 0.999999
+        }
+      ]
+    },
+    {
+      "slug": "reel",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 6,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 32,
+          "ssim": 0.989261
+        },
+        {
+          "frame": 80,
+          "ssim": 0.985341
+        },
+        {
+          "frame": 128,
+          "ssim": 0.985441
+        }
+      ]
+    },
+    {
+      "slug": "resizable",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 41,
+          "ssim": 0.999706
+        },
+        {
+          "frame": 102,
+          "ssim": 0.999667
+        },
+        {
+          "frame": 164,
+          "ssim": 0.99965
+        }
+      ]
+    },
+    {
+      "slug": "rgb-glitch-text",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.996963
+        },
+        {
+          "frame": 45,
+          "ssim": 0.996867
+        },
+        {
+          "frame": 72,
+          "ssim": 0.996867
+        }
+      ]
+    },
+    {
+      "slug": "ripple-zoom",
+      "source": "remocn",
+      "profile": "remocn-same-browser-png",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 23,
+          "ssim": 0.999323
+        },
+        {
+          "frame": 58,
+          "ssim": 0.999975
+        },
+        {
+          "frame": 92,
+          "ssim": 0.998973
+        }
+      ]
+    },
+    {
+      "slug": "rolling-number",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.998891
+        },
+        {
+          "frame": 75,
+          "ssim": 0.999092
+        },
+        {
+          "frame": 120,
+          "ssim": 0.999015
+        }
+      ]
+    },
+    {
+      "slug": "rolodex-flip",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 22,
+          "ssim": 0.997584
+        },
+        {
+          "frame": 55,
+          "ssim": 0.997947
+        },
+        {
+          "frame": 88,
+          "ssim": 0.996861
+        }
+      ]
+    },
+    {
+      "slug": "rush-type",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 20,
+          "ssim": 0.999753
+        },
+        {
+          "frame": 52,
+          "ssim": 0.999923
+        },
+        {
+          "frame": 83,
+          "ssim": 0.999886
+        }
+      ]
+    },
+    {
+      "slug": "scale-down-fade",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.99824
+        },
+        {
+          "frame": 45,
+          "ssim": 0.99824
+        },
+        {
+          "frame": 72,
+          "ssim": 0.99824
+        }
+      ]
+    },
+    {
+      "slug": "scribble-circle",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.998716
+        },
+        {
+          "frame": 75,
+          "ssim": 0.998716
+        },
+        {
+          "frame": 120,
+          "ssim": 0.998716
+        }
+      ]
+    },
+    {
+      "slug": "search-reveal",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 21,
+          "ssim": 0.999509
+        },
+        {
+          "frame": 54,
+          "ssim": 0.999889
+        },
+        {
+          "frame": 86,
+          "ssim": 0.993926
+        }
+      ]
+    },
+    {
+      "slug": "security-cam",
+      "source": "remocn",
+      "profile": "rendered-defaults",
+      "controls": ["autoplay", "pause", "replay"]
+    },
+    {
+      "slug": "select",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.99974
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999476
+        },
+        {
+          "frame": 96,
+          "ssim": 0.999495
+        }
+      ]
+    },
+    {
+      "slug": "select-item",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.999951
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999951
+        },
+        {
+          "frame": 96,
+          "ssim": 0.999951
+        }
+      ]
+    },
+    {
+      "slug": "select-menu",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 25,
+          "ssim": 0.999826
+        },
+        {
+          "frame": 64,
+          "ssim": 0.999824
+        },
+        {
+          "frame": 102,
+          "ssim": 0.999598
+        }
+      ]
+    },
+    {
+      "slug": "settings-toggle-flow",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 64,
+          "ssim": 0.997649
+        },
+        {
+          "frame": 160,
+          "ssim": 0.997624
+        },
+        {
+          "frame": 256,
+          "ssim": 0.997541
+        }
+      ]
+    },
+    {
+      "slug": "shader-caustics",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.996666
+        },
+        {
+          "frame": 75,
+          "ssim": 0.996487
+        },
+        {
+          "frame": 120,
+          "ssim": 0.996391
+        }
+      ]
+    },
+    {
+      "slug": "shader-color-panels",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.997634
+        },
+        {
+          "frame": 75,
+          "ssim": 0.997541
+        },
+        {
+          "frame": 120,
+          "ssim": 0.997526
+        }
+      ]
+    },
+    {
+      "slug": "shader-dithering",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.978417
+        },
+        {
+          "frame": 75,
+          "ssim": 0.978966
+        },
+        {
+          "frame": 120,
+          "ssim": 0.978081
+        }
+      ]
+    },
+    {
+      "slug": "shader-dot-orbit",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.995004
+        },
+        {
+          "frame": 75,
+          "ssim": 0.994704
+        },
+        {
+          "frame": 120,
+          "ssim": 0.995092
+        }
+      ]
+    },
+    {
+      "slug": "shader-gem-smoke",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.997724
+        },
+        {
+          "frame": 75,
+          "ssim": 0.997401
+        },
+        {
+          "frame": 120,
+          "ssim": 0.99751
+        }
+      ]
+    },
+    {
+      "slug": "shader-god-rays",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.996176
+        },
+        {
+          "frame": 75,
+          "ssim": 0.996097
+        },
+        {
+          "frame": 120,
+          "ssim": 0.995813
+        }
+      ]
+    },
+    {
+      "slug": "shader-grain-gradient",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.98289
+        },
+        {
+          "frame": 75,
+          "ssim": 0.988329
+        },
+        {
+          "frame": 120,
+          "ssim": 0.992241
+        }
+      ]
+    },
+    {
+      "slug": "shader-liquid-metal",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.988471
+        },
+        {
+          "frame": 75,
+          "ssim": 0.988444
+        },
+        {
+          "frame": 120,
+          "ssim": 0.989817
+        }
+      ]
+    },
+    {
+      "slug": "shader-mesh-gradient",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.998738
+        },
+        {
+          "frame": 75,
+          "ssim": 0.999114
+        },
+        {
+          "frame": 120,
+          "ssim": 0.999532
+        }
+      ]
+    },
+    {
+      "slug": "shader-metaballs",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.997985
+        },
+        {
+          "frame": 75,
+          "ssim": 0.998108
+        },
+        {
+          "frame": 120,
+          "ssim": 0.99749
+        }
+      ]
+    },
+    {
+      "slug": "shader-neuro-noise",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.996797
+        },
+        {
+          "frame": 75,
+          "ssim": 0.99681
+        },
+        {
+          "frame": 120,
+          "ssim": 0.996696
+        }
+      ]
+    },
+    {
+      "slug": "shader-perlin-noise",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.993093
+        },
+        {
+          "frame": 75,
+          "ssim": 0.993455
+        },
+        {
+          "frame": 120,
+          "ssim": 0.993967
+        }
+      ]
+    },
+    {
+      "slug": "shader-pulsing-border",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.998882
+        },
+        {
+          "frame": 75,
+          "ssim": 0.998956
+        },
+        {
+          "frame": 120,
+          "ssim": 0.999075
+        }
+      ]
+    },
+    {
+      "slug": "shader-simplex-noise",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.998745
+        },
+        {
+          "frame": 75,
+          "ssim": 0.998625
+        },
+        {
+          "frame": 120,
+          "ssim": 0.998625
+        }
+      ]
+    },
+    {
+      "slug": "shader-smoke-ring",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.994621
+        },
+        {
+          "frame": 75,
+          "ssim": 0.99474
+        },
+        {
+          "frame": 120,
+          "ssim": 0.994302
+        }
+      ]
+    },
+    {
+      "slug": "shader-spiral",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.995589
+        },
+        {
+          "frame": 75,
+          "ssim": 0.995533
+        },
+        {
+          "frame": 120,
+          "ssim": 0.995497
+        }
+      ]
+    },
+    {
+      "slug": "shader-strata",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.992007
+        },
+        {
+          "frame": 75,
+          "ssim": 0.991759
+        },
+        {
+          "frame": 120,
+          "ssim": 0.991916
+        }
+      ]
+    },
+    {
+      "slug": "shader-swirl",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.997585
+        },
+        {
+          "frame": 75,
+          "ssim": 0.998169
+        },
+        {
+          "frame": 120,
+          "ssim": 0.997951
+        }
+      ]
+    },
+    {
+      "slug": "shader-voronoi",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.981753
+        },
+        {
+          "frame": 75,
+          "ssim": 0.982013
+        },
+        {
+          "frame": 120,
+          "ssim": 0.983081
+        }
+      ]
+    },
+    {
+      "slug": "shader-warp",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.99658
+        },
+        {
+          "frame": 75,
+          "ssim": 0.996582
+        },
+        {
+          "frame": 120,
+          "ssim": 0.996575
+        }
+      ]
+    },
+    {
+      "slug": "shader-water",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.998355
+        },
+        {
+          "frame": 75,
+          "ssim": 0.99852
+        },
+        {
+          "frame": 120,
+          "ssim": 0.998426
+        }
+      ]
+    },
+    {
+      "slug": "shader-weave",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.973831
+        },
+        {
+          "frame": 75,
+          "ssim": 0.973103
+        },
+        {
+          "frame": 120,
+          "ssim": 0.972755
+        }
+      ]
+    },
+    {
+      "slug": "shadow-sweep-text",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 7,
+          "ssim": 0.999271
+        },
+        {
+          "frame": 18,
+          "ssim": 0.999165
+        },
+        {
+          "frame": 29,
+          "ssim": 0.999278
+        }
+      ]
+    },
+    {
+      "slug": "shared-axis-y",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.997365
+        },
+        {
+          "frame": 45,
+          "ssim": 0.997365
+        },
+        {
+          "frame": 72,
+          "ssim": 0.997365
+        }
+      ]
+    },
+    {
+      "slug": "shared-axis-z",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.997608
+        },
+        {
+          "frame": 45,
+          "ssim": 0.997318
+        },
+        {
+          "frame": 72,
+          "ssim": 0.997318
+        }
+      ]
+    },
+    {
+      "slug": "sheen-slide-in",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.99836
+        },
+        {
+          "frame": 35,
+          "ssim": 0.998388
+        },
+        {
+          "frame": 56,
+          "ssim": 0.998589
+        }
+      ]
+    },
+    {
+      "slug": "sheet",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.999939
+        },
+        {
+          "frame": 60,
+          "ssim": 0.998669
+        },
+        {
+          "frame": 96,
+          "ssim": 0.99959
+        }
+      ]
+    },
+    {
+      "slug": "shimmer-sweep",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.994113
+        },
+        {
+          "frame": 60,
+          "ssim": 0.99443
+        },
+        {
+          "frame": 96,
+          "ssim": 0.994331
+        }
+      ]
+    },
+    {
+      "slug": "short-slide-down",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999285
+        },
+        {
+          "frame": 30,
+          "ssim": 0.998106
+        },
+        {
+          "frame": 48,
+          "ssim": 0.99795
+        }
+      ]
+    },
+    {
+      "slug": "short-slide-right",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.997521
+        },
+        {
+          "frame": 30,
+          "ssim": 0.996911
+        },
+        {
+          "frame": 48,
+          "ssim": 0.996911
+        }
+      ]
+    },
+    {
+      "slug": "signup-flow",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 76,
+          "ssim": 0.996332
+        },
+        {
+          "frame": 190,
+          "ssim": 0.996327
+        },
+        {
+          "frame": 304,
+          "ssim": 0.996075
+        }
+      ]
+    },
+    {
+      "slug": "simulated-cursor",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.999996
+        },
+        {
+          "frame": 75,
+          "ssim": 0.999999
+        },
+        {
+          "frame": 120,
+          "ssim": 0.999999
+        }
+      ]
+    },
+    {
+      "slug": "skeleton",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 44,
+          "ssim": 0.999991
+        },
+        {
+          "frame": 110,
+          "ssim": 0.99999
+        },
+        {
+          "frame": 176,
+          "ssim": 0.999983
+        }
+      ]
+    },
+    {
+      "slug": "skeleton-block",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.999991
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999994
+        },
+        {
+          "frame": 96,
+          "ssim": 0.999996
+        }
+      ]
+    },
+    {
+      "slug": "slide-swap",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 42,
+          "ssim": 0.998322
+        },
+        {
+          "frame": 105,
+          "ssim": 0.997914
+        },
+        {
+          "frame": 168,
+          "ssim": 0.997716
+        }
+      ]
+    },
+    {
+      "slug": "slider",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.999966
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999977
+        },
+        {
+          "frame": 96,
+          "ssim": 0.999978
+        }
+      ]
+    },
+    {
+      "slug": "slot-machine-roll",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.997832
+        },
+        {
+          "frame": 45,
+          "ssim": 0.997826
+        },
+        {
+          "frame": 72,
+          "ssim": 0.997826
+        }
+      ]
+    },
+    {
+      "slug": "smoke-dissolve",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 23,
+          "ssim": 0.996113
+        },
+        {
+          "frame": 58,
+          "ssim": 0.99401
+        },
+        {
+          "frame": 92,
+          "ssim": 0.997927
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-agent-steps",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 31,
+          "ssim": 0.991354
+        },
+        {
+          "frame": 79,
+          "ssim": 0.980983
+        },
+        {
+          "frame": 127,
+          "ssim": 0.998298
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-announce-title",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 33,
+          "ssim": 1
+        },
+        {
+          "frame": 84,
+          "ssim": 0.984594
+        },
+        {
+          "frame": 135,
+          "ssim": 0.998156
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-answer-highlight",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 37,
+          "ssim": 0.990162
+        },
+        {
+          "frame": 94,
+          "ssim": 0.975715
+        },
+        {
+          "frame": 151,
+          "ssim": 0.975546
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-answer-stream",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 29,
+          "ssim": 0.998597
+        },
+        {
+          "frame": 74,
+          "ssim": 0.999791
+        },
+        {
+          "frame": 119,
+          "ssim": 0.999668
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-block-wordmark",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 29,
+          "ssim": 0.999998
+        },
+        {
+          "frame": 74,
+          "ssim": 0.999998
+        },
+        {
+          "frame": 119,
+          "ssim": 1
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-caret",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 23,
+          "ssim": 1
+        },
+        {
+          "frame": 59,
+          "ssim": 1
+        },
+        {
+          "frame": 95,
+          "ssim": 1
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-count-grid",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 5,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 9,
+          "ssim": 0.999867
+        },
+        {
+          "frame": 23,
+          "ssim": 0.999894
+        },
+        {
+          "frame": 36,
+          "ssim": 0.999895
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-cursor-track",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 26,
+          "ssim": 0.999995
+        },
+        {
+          "frame": 65,
+          "ssim": 0.999991
+        },
+        {
+          "frame": 104,
+          "ssim": 0.999983
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-follower-rush",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 24,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 59,
+          "ssim": 0.99997
+        },
+        {
+          "frame": 149,
+          "ssim": 0.999963
+        },
+        {
+          "frame": 239,
+          "ssim": 0.999963
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-hero-launch",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 2,
+      "samples": [
+        {
+          "frame": 33,
+          "ssim": 0.999202
+        },
+        {
+          "frame": 84,
+          "ssim": 0.997622
+        },
+        {
+          "frame": 135,
+          "ssim": 0.99838
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-input",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 23,
+          "ssim": 0.998054
+        },
+        {
+          "frame": 59,
+          "ssim": 0.998054
+        },
+        {
+          "frame": 95,
+          "ssim": 0.998054
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-karaoke-captions",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 29,
+          "ssim": 1
+        },
+        {
+          "frame": 74,
+          "ssim": 1
+        },
+        {
+          "frame": 119,
+          "ssim": 1
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-laptop-frame",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 1,
+      "samples": [
+        {
+          "frame": 47,
+          "ssim": 0.996183
+        },
+        {
+          "frame": 119,
+          "ssim": 0.993259
+        },
+        {
+          "frame": 191,
+          "ssim": 0.969553
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-logo-assemble",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 10,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 21,
+          "ssim": 0.999917
+        },
+        {
+          "frame": 53,
+          "ssim": 0.999539
+        },
+        {
+          "frame": 85,
+          "ssim": 1
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-logo-drift",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 21,
+          "ssim": 0.999039
+        },
+        {
+          "frame": 53,
+          "ssim": 0.999054
+        },
+        {
+          "frame": 85,
+          "ssim": 0.999089
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-logo-flicker",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 2,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 19,
+          "ssim": 0.999397
+        },
+        {
+          "frame": 49,
+          "ssim": 0.999107
+        },
+        {
+          "frame": 79,
+          "ssim": 0.996922
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-moodboard-reveal",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 8,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 29,
+          "ssim": 0.999938
+        },
+        {
+          "frame": 74,
+          "ssim": 0.999169
+        },
+        {
+          "frame": 119,
+          "ssim": 0.999388
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-orbit-gallery",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 42,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 59,
+          "ssim": 0.983124
+        },
+        {
+          "frame": 149,
+          "ssim": 0.982997
+        },
+        {
+          "frame": 239,
+          "ssim": 0.983263
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-phone-frame",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 1,
+      "samples": [
+        {
+          "frame": 47,
+          "ssim": 0.99244
+        },
+        {
+          "frame": 119,
+          "ssim": 0.989982
+        },
+        {
+          "frame": 191,
+          "ssim": 0.992128
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-prompt-send",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 32,
+          "ssim": 0.996861
+        },
+        {
+          "frame": 82,
+          "ssim": 0.967479
+        },
+        {
+          "frame": 131,
+          "ssim": 0.996737
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-prompt-zoom",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 17,
+          "ssim": 0.999634
+        },
+        {
+          "frame": 44,
+          "ssim": 0.999957
+        },
+        {
+          "frame": 71,
+          "ssim": 0.999957
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-pulsing-border",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 35,
+          "ssim": 0.995709
+        },
+        {
+          "frame": 89,
+          "ssim": 0.994925
+        },
+        {
+          "frame": 143,
+          "ssim": 0.997821
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-punch-lines",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 28,
+          "ssim": 0.999998
+        },
+        {
+          "frame": 71,
+          "ssim": 1
+        },
+        {
+          "frame": 114,
+          "ssim": 0.99999
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-roster-grant",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 23,
+          "ssim": 0.998118
+        },
+        {
+          "frame": 59,
+          "ssim": 0.998044
+        },
+        {
+          "frame": 95,
+          "ssim": 0.998098
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-screen-recording",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 1,
+      "samples": [
+        {
+          "frame": 27,
+          "ssim": 0.999622
+        },
+        {
+          "frame": 69,
+          "ssim": 0.999448
+        },
+        {
+          "frame": 110,
+          "ssim": 0.999618
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-search-typing",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 83,
+          "ssim": 0.999975
+        },
+        {
+          "frame": 209,
+          "ssim": 0.999992
+        },
+        {
+          "frame": 335,
+          "ssim": 0.999977
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-status-cycle",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 29,
+          "ssim": 0.999978
+        },
+        {
+          "frame": 74,
+          "ssim": 1
+        },
+        {
+          "frame": 119,
+          "ssim": 0.999963
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-terminal-simulator",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 39,
+          "ssim": 0.999994
+        },
+        {
+          "frame": 99,
+          "ssim": 0.999983
+        },
+        {
+          "frame": 159,
+          "ssim": 0.999908
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-text-build",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.999999
+        },
+        {
+          "frame": 37,
+          "ssim": 0.999987
+        },
+        {
+          "frame": 59,
+          "ssim": 1
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-text-highlight",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 11,
+          "ssim": 0.999714
+        },
+        {
+          "frame": 27,
+          "ssim": 0.999478
+        },
+        {
+          "frame": 44,
+          "ssim": 0.999389
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-text-reveal",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 17,
+          "ssim": 1
+        },
+        {
+          "frame": 44,
+          "ssim": 1
+        },
+        {
+          "frame": 71,
+          "ssim": 1
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-text-rewrite",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 20,
+          "ssim": 0.998224
+        },
+        {
+          "frame": 50,
+          "ssim": 0.998276
+        },
+        {
+          "frame": 80,
+          "ssim": 0.998304
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-text-select",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 14,
+          "ssim": 0.998941
+        },
+        {
+          "frame": 35,
+          "ssim": 0.998994
+        },
+        {
+          "frame": 56,
+          "ssim": 0.99829
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-text-swap",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 17,
+          "ssim": 0.99943
+        },
+        {
+          "frame": 44,
+          "ssim": 1
+        },
+        {
+          "frame": 71,
+          "ssim": 1
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-text-swell",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 21,
+          "ssim": 1
+        },
+        {
+          "frame": 54,
+          "ssim": 1
+        },
+        {
+          "frame": 87,
+          "ssim": 1
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-type-morph",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 1
+        },
+        {
+          "frame": 46,
+          "ssim": 1
+        },
+        {
+          "frame": 74,
+          "ssim": 1
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-word-captions",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 19,
+          "ssim": 1
+        },
+        {
+          "frame": 47,
+          "ssim": 1
+        },
+        {
+          "frame": 76,
+          "ssim": 1
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-word-flip",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 35,
+          "ssim": 1
+        },
+        {
+          "frame": 89,
+          "ssim": 1
+        },
+        {
+          "frame": 143,
+          "ssim": 0.999999
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-wordmark-cut",
+      "source": "snapcn",
+      "profile": "snapcn-png",
+      "controls": ["autoplay", "pause", "replay"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "samples": [
+        {
+          "frame": 13,
+          "ssim": 0.99927
+        },
+        {
+          "frame": 32,
+          "ssim": 0.998624
+        },
+        {
+          "frame": 52,
+          "ssim": 0.999788
+        }
+      ]
+    },
+    {
+      "slug": "soft-blur-in",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999544
+        },
+        {
+          "frame": 30,
+          "ssim": 0.998164
+        },
+        {
+          "frame": 48,
+          "ssim": 0.992093
+        }
+      ]
+    },
+    {
+      "slug": "spinner",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 1
+        },
+        {
+          "frame": 60,
+          "ssim": 1
+        },
+        {
+          "frame": 96,
+          "ssim": 1
+        }
+      ]
+    },
+    {
+      "slug": "spring-scale-in",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.997634
+        },
+        {
+          "frame": 30,
+          "ssim": 0.997402
+        },
+        {
+          "frame": 48,
+          "ssim": 0.997402
+        }
+      ]
+    },
+    {
+      "slug": "spring-settle",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 42,
+          "ssim": 0.997756
+        },
+        {
+          "frame": 106,
+          "ssim": 0.997397
+        },
+        {
+          "frame": 170,
+          "ssim": 0.998266
+        }
+      ]
+    },
+    {
+      "slug": "squeeze-in",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999954
+        },
+        {
+          "frame": 30,
+          "ssim": 0.999717
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999779
+        }
+      ]
+    },
+    {
+      "slug": "stage",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 1,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 60,
+          "ssim": 0.996502
+        },
+        {
+          "frame": 150,
+          "ssim": 0.996588
+        },
+        {
+          "frame": 240,
+          "ssim": 0.996273
+        }
+      ]
+    },
+    {
+      "slug": "staggered-fade-up",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.996021
+        },
+        {
+          "frame": 45,
+          "ssim": 0.995676
+        },
+        {
+          "frame": 72,
+          "ssim": 0.995676
+        }
+      ]
+    },
+    {
+      "slug": "stepper",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.999843
+        },
+        {
+          "frame": 75,
+          "ssim": 0.999842
+        },
+        {
+          "frame": 120,
+          "ssim": 0.999854
+        }
+      ]
+    },
+    {
+      "slug": "stretch-in",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999649
+        },
+        {
+          "frame": 30,
+          "ssim": 0.999547
+        },
+        {
+          "frame": 48,
+          "ssim": 0.999635
+        }
+      ]
+    },
+    {
+      "slug": "strikethrough-replace",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.996093
+        },
+        {
+          "frame": 60,
+          "ssim": 0.996196
+        },
+        {
+          "frame": 96,
+          "ssim": 0.998493
+        }
+      ]
+    },
+    {
+      "slug": "sustained-glitch",
+      "source": "remocn",
+      "profile": "rendered-defaults",
+      "controls": ["autoplay", "pause", "replay"]
+    },
+    {
+      "slug": "swirl-dissolve",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 23,
+          "ssim": 0.999842
+        },
+        {
+          "frame": 58,
+          "ssim": 0.997569
+        },
+        {
+          "frame": 92,
+          "ssim": 0.998912
+        }
+      ]
+    },
+    {
+      "slug": "switch",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 20,
+          "ssim": 0.999999
+        },
+        {
+          "frame": 50,
+          "ssim": 0.999999
+        },
+        {
+          "frame": 80,
+          "ssim": 0.999999
+        }
+      ]
+    },
+    {
+      "slug": "tabs",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.999344
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999361
+        },
+        {
+          "frame": 96,
+          "ssim": 0.999564
+        }
+      ]
+    },
+    {
+      "slug": "telegram-chat-flow",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 2,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 72,
+          "ssim": 0.992612
+        },
+        {
+          "frame": 180,
+          "ssim": 0.986644
+        },
+        {
+          "frame": 288,
+          "ssim": 0.9868
+        }
+      ]
+    },
+    {
+      "slug": "terminal-cursor-zoom",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.997248
+        },
+        {
+          "frame": 45,
+          "ssim": 0.988357
+        },
+        {
+          "frame": 72,
+          "ssim": 0.989991
+        }
+      ]
+    },
+    {
+      "slug": "terminal-simulator",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 48,
+          "ssim": 0.998539
+        },
+        {
+          "frame": 120,
+          "ssim": 0.998075
+        },
+        {
+          "frame": 192,
+          "ssim": 0.996577
+        }
+      ]
+    },
+    {
+      "slug": "toast",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 34,
+          "ssim": 0.999941
+        },
+        {
+          "frame": 85,
+          "ssim": 0.999423
+        },
+        {
+          "frame": 136,
+          "ssim": 0.999269
+        }
+      ]
+    },
+    {
+      "slug": "toggle-group",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 23,
+          "ssim": 0.99989
+        },
+        {
+          "frame": 57,
+          "ssim": 0.999854
+        },
+        {
+          "frame": 92,
+          "ssim": 0.999879
+        }
+      ]
+    },
+    {
+      "slug": "tooltip",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.999945
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999852
+        },
+        {
+          "frame": 96,
+          "ssim": 0.999845
+        }
+      ]
+    },
+    {
+      "slug": "top-down-letters",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 12,
+          "ssim": 0.999594
+        },
+        {
+          "frame": 30,
+          "ssim": 0.99941
+        },
+        {
+          "frame": 48,
+          "ssim": 0.99941
+        }
+      ]
+    },
+    {
+      "slug": "tracking-in",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.993885
+        },
+        {
+          "frame": 45,
+          "ssim": 0.993606
+        },
+        {
+          "frame": 72,
+          "ssim": 0.993606
+        }
+      ]
+    },
+    {
+      "slug": "tv-power-off",
+      "source": "remocn",
+      "profile": "rendered-defaults",
+      "controls": ["autoplay", "pause", "replay"]
+    },
+    {
+      "slug": "type-fossil",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 41,
+          "ssim": 0.981556
+        },
+        {
+          "frame": 104,
+          "ssim": 0.983648
+        },
+        {
+          "frame": 166,
+          "ssim": 0.995865
+        }
+      ]
+    },
+    {
+      "slug": "typed-split-wipe",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.999479
+        },
+        {
+          "frame": 37,
+          "ssim": 0.998614
+        },
+        {
+          "frame": 60,
+          "ssim": 0.999228
+        }
+      ]
+    },
+    {
+      "slug": "typewriter",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 24,
+          "ssim": 0.996623
+        },
+        {
+          "frame": 60,
+          "ssim": 0.993398
+        },
+        {
+          "frame": 96,
+          "ssim": 0.993399
+        }
+      ]
+    },
+    {
+      "slug": "typing-indicator",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.999881
+        },
+        {
+          "frame": 45,
+          "ssim": 0.999882
+        },
+        {
+          "frame": 72,
+          "ssim": 0.999879
+        }
+      ]
+    },
+    {
+      "slug": "underwater-ripple",
+      "source": "remocn",
+      "profile": "rendered-defaults",
+      "controls": ["autoplay", "pause", "replay"]
+    },
+    {
+      "slug": "v0",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 30,
+          "ssim": 0.997652
+        },
+        {
+          "frame": 75,
+          "ssim": 0.997414
+        },
+        {
+          "frame": 120,
+          "ssim": 0.996346
+        }
+      ]
+    },
+    {
+      "slug": "value-swap",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 20,
+          "ssim": 0.999719
+        },
+        {
+          "frame": 50,
+          "ssim": 0.999565
+        },
+        {
+          "frame": 80,
+          "ssim": 0.999406
+        }
+      ]
+    },
+    {
+      "slug": "vhs-filter",
+      "source": "remocn",
+      "profile": "rendered-defaults",
+      "controls": ["autoplay", "pause", "replay"]
+    },
+    {
+      "slug": "warp-dissolve",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 23,
+          "ssim": 0.998187
+        },
+        {
+          "frame": 58,
+          "ssim": 0.993667
+        },
+        {
+          "frame": 92,
+          "ssim": 0.997643
+        }
+      ]
+    },
+    {
+      "slug": "wave-wipe",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 23,
+          "ssim": 0.998662
+        },
+        {
+          "frame": 58,
+          "ssim": 0.956659
+        },
+        {
+          "frame": 92,
+          "ssim": 0.986197
+        }
+      ]
+    },
+    {
+      "slug": "whip-pan",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 22,
+          "ssim": 0.99866
+        },
+        {
+          "frame": 57,
+          "ssim": 0.999163
+        },
+        {
+          "frame": 91,
+          "ssim": 0.998273
+        }
+      ]
+    },
+    {
+      "slug": "word-push",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 18,
+          "ssim": 0.999167
+        },
+        {
+          "frame": 45,
+          "ssim": 0.997726
+        },
+        {
+          "frame": 72,
+          "ssim": 0.997726
+        }
+      ]
+    },
+    {
+      "slug": "word-stream",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 20,
+          "ssim": 0.998814
+        },
+        {
+          "frame": 50,
+          "ssim": 0.999457
+        },
+        {
+          "frame": 80,
+          "ssim": 0.998561
+        }
+      ]
+    },
+    {
+      "slug": "x-follow-card",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 3,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 33,
+          "ssim": 0.995887
+        },
+        {
+          "frame": 82,
+          "ssim": 0.987691
+        },
+        {
+          "frame": 132,
+          "ssim": 0.987803
+        }
+      ]
+    },
+    {
+      "slug": "x-followers-overview",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 1,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 72,
+          "ssim": 0.997632
+        },
+        {
+          "frame": 180,
+          "ssim": 0.999151
+        },
+        {
+          "frame": 288,
+          "ssim": 0.998117
+        }
+      ]
+    },
+    {
+      "slug": "zoom-blur",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 22,
+          "ssim": 0.99866
+        },
+        {
+          "frame": 57,
+          "ssim": 0.999354
+        },
+        {
+          "frame": 91,
+          "ssim": 0.998439
+        }
+      ]
+    },
+    {
+      "slug": "zoom-words",
+      "source": "remocn",
+      "profile": "remocn-video",
+      "controls": ["autoplay"],
+      "pageErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "samples": [
+        {
+          "frame": 15,
+          "ssim": 0.996734
+        },
+        {
+          "frame": 37,
+          "ssim": 0.996574
+        },
+        {
+          "frame": 60,
+          "ssim": 0.993888
+        }
+      ]
+    }
+  ]
+}

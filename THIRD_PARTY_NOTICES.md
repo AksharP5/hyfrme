@@ -2,15 +2,20 @@
 
 ## Remocn source reference
 
-All 277 visual ports are derived from pinned Remocn implementations. Of these,
-231 use commit `ea730a20b4ab09430ee7292aebc847c002375151`, 19 use commit
+The original 271 Remocn visual ports are derived from pinned Remocn implementations. Of these,
+233 use commit `ea730a20b4ab09430ee7292aebc847c002375151`, 19 use commit
 `32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c`, and three use commit
 `16eef5d3727eb258ce345a305d67a86eeca02908`. The 16 canvas transitions,
-filters, and effects use commit `92d7d1f2805ca9c05d5d117083e22577ecab70df`,
-seven use commit `4ed9b8a3b96396068a17e28e4b3e23f726fcc69d`, and Stage uses commit
-`0e30c226746ba4e64a959461350fab4298aa62b9`.
+filters, and effects use commit `92d7d1f2805ca9c05d5d117083e22577ecab70df`.
 Every generated port names its
 exact source file and fixture in its parity manifest.
+
+The September 8 additions use commit
+`3e03565f5c0001e143c2ed941eea7c3181f13260`. Their exact fonts, Stage image,
+source URLs, hashes, and license notices are recorded in
+`assets/remocn-additions/manifest.json`. The new ports retain complete source
+and dependency licenses. Anton, Passion One, and Geist use OFL-1.1; Stretch In
+also includes opentype.js 2.0.0 under MIT.
 
 Copyright (c) 2026 Remocn
 
@@ -19,6 +24,29 @@ Licensed under the MIT License. The full upstream license is available at
 
 The full Remocn MIT notice is also preserved inside every generated port that
 contains derived source.
+
+## Snapcn source reference
+
+Snapcn ports derive from `snapcndev/snapcn` at commit
+`353803b506dba0cb7ca13bb45b0d099690400815`. Roster Grant and Wordmark Cut use
+`bc5b59f3f0fad9657b338fa62349a55fa33f160f`. Roster Grant's attributed Lucide
+pointer path retains its ISC notice.
+
+Copyright (c) 2026 Sri Nath (snap-cn).
+
+The full MIT license ships inside each generated runtime and installs at
+`THIRD_PARTY_LICENSES/snapcn/Snapcn-MIT.txt`. Each block records its exact
+source and bundled dependencies. Font licenses, dependency licenses, and media
+credits install alongside it. Orbit Gallery photographs retain the Unsplash
+license and photographer credits; they are not licensed under MIT.
+
+Snapcn's Pulsing Border uses Paper source from Apache-2.0 commit
+`f9f2a8b2edeb78ec59256c4dc571f5eaf943d798`, verified byte-for-byte against the
+required upstream runtime sources. It does not bundle the PolyForm-licensed
+npm archive. Its full Apache license and provenance record install with the block.
+
+See [the source and license audit](docs/SNAPCN_AUDIT.md) and
+`assets/snapcn/manifest.json` for the complete frozen asset and license inventory.
 
 ## Remocn showcase source
 
@@ -95,15 +123,6 @@ The hand-drawn compositions bundle the unmodified normal Latin Caveat variable
 font from Google Fonts. Caveat is licensed under the SIL Open Font License,
 Version 1.1. Its complete terms are preserved at
 `assets/fonts/Caveat-OFL.txt` and install with each block that uses it.
-
-## Passion One and Anton fonts
-
-`kinetic-warp` bundles the unmodified Passion One 400, 700, and 900 TrueType
-fonts from Google Fonts. `stretch-in` bundles the unmodified Anton Latin
-TrueType font used by its pinned Remocn source. Both families are licensed
-under the SIL Open Font License, Version 1.1. Their complete terms are
-preserved at `assets/fonts/PassionOne-OFL.txt` and
-`assets/fonts/Anton-OFL.txt` and install with the relevant block.
 
 ## date-fns
 

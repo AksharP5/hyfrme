@@ -2,7 +2,7 @@
   "slug": "shadow-sweep-text",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/shadow-sweep-text/index.tsx",
     "config": "registry/remocn/shadow-sweep-text/config.ts",
     "license": "MIT"
@@ -27,25 +27,62 @@
     "background": "#030012"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "bdeda08ba6ef2f204d1accf79975f3b44761f972bef302b431d07b898240a333",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 37,
-    "meanSsim": 0.998103,
-    "minSsim": 0.996068,
-    "p05Ssim": 0.996083,
-    "p95Ssim": 0.999754,
+    "meanSsim": 0.9968561621621619,
+    "minSsim": 0.993069,
+    "p05Ssim": 0.99311,
+    "p95Ssim": 0.999882,
+    "alpha": {
+      "frameCount": 37,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check reported 1 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "shadow-sweep-text",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/shadow-sweep-text/index.tsx",
+          "config": "registry/remocn/shadow-sweep-text/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#shadow-sweep-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "containerSelector": "#shadow-sweep-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+          "text": "are abandoned"
+        },
+        "reason": "The pinned source intentionally sweeps a blurred radial-gradient shadow across the masked text during entry and exit. The inspector identifies this actual shadow layer as an opaque occluder. Preserve the source effect; all 37 frame alpha plane matches and RGB SSIM is mean 0.996592/min 0.993028. The complete finding remains in the audit."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/shadow-sweep-text/remocn.mp4",
+    "referenceVideo": "public/previews/shadow-sweep-text/reference.mp4",
     "hyperframesVideo": "public/previews/shadow-sweep-text/hyperframes.mp4",
-    "summary": "parity/shadow-sweep-text-diff/summary.json"
+    "thumbnail": "public/previews/shadow-sweep-text/thumbnail.png",
+    "summary": "parity/shadow-sweep-text-diff/summary.json",
+    "perFrameSsim": "parity/shadow-sweep-text-diff/ssim.log",
+    "hyperframesCheck": "parity/shadow-sweep-text-diff/hyperframes-check.log",
+    "worstFrame": "parity/shadow-sweep-text-diff/worst-frame.png",
+    "referenceAlpha": "parity/shadow-sweep-text-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shadow-sweep-text-diff/hyperframes-alpha.framemd5"
   }
 }

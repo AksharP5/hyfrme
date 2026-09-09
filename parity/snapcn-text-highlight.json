@@ -1,0 +1,85 @@
+{
+  "slug": "snapcn-text-highlight",
+  "origin": {
+    "repository": "https://github.com/snapcndev/snapcn",
+    "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+    "source": "registry/snap-cn/text-highlight/index.tsx",
+    "config": "registry/snap-cn/text-highlight/config.ts",
+    "license": "MIT",
+    "entry": "registry/snap-cn/text-highlight/index.tsx"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 56,
+    "props": {
+      "before": "Powered by ",
+      "highlight": "Northwind",
+      "after": "",
+      "preset": "logo-wipe",
+      "baseColor": "#101828",
+      "accentColor": "#266DF0",
+      "highlightedTextColor": "#101828",
+      "replaceWith": "Acme",
+      "startAt": 6,
+      "drawDuration": 14,
+      "thickness": 4,
+      "shineColor": "#FAFAFA",
+      "logoSrc": "",
+      "logoScale": 1.05,
+      "spinTurns": 1,
+      "holdDuration": 12,
+      "rushDuration": 24,
+      "rushScale": 42,
+      "rushDrift": 0.55,
+      "swingOut": 0.25,
+      "coverColor": "#266DF0",
+      "fontSize": 56,
+      "fontWeight": "600",
+      "fontFamily": "Default",
+      "speed": 1
+    },
+    "background": "#FAFAFA"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "a7bc972bb78863ee9ab7be015eceb83d31bebe7afe9b22ef81dc589020675ca2",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 56,
+    "meanSsim": 0.9999749285714289,
+    "minSsim": 0.999878,
+    "p05Ssim": 0.999918,
+    "p95Ssim": 0.999997,
+    "pass": true,
+    "alpha": {
+      "frameCount": 56,
+      "mismatchedFrames": [],
+      "pass": true
+    }
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.473",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/snapcn-text-highlight/reference.mp4",
+    "hyperframesVideo": "public/previews/snapcn-text-highlight/hyperframes.mp4",
+    "thumbnail": "public/previews/snapcn-text-highlight/thumbnail.png",
+    "summary": "parity/snapcn-text-highlight-diff/summary.json",
+    "perFrameSsim": "parity/snapcn-text-highlight-diff/ssim.log",
+    "hyperframesCheck": "parity/snapcn-text-highlight-diff/hyperframes-check.log",
+    "worstFrame": "parity/snapcn-text-highlight-diff/worst-frame.png",
+    "referenceAlpha": "parity/snapcn-text-highlight-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/snapcn-text-highlight-diff/hyperframes-alpha.framemd5"
+  }
+}

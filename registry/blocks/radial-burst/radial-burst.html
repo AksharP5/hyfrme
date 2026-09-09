@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"segments","type":"number","label":"Segments","default":8,"min":4,"max":16,"step":1},{"id":"radius","type":"number","label":"Burst radius","default":210,"min":100,"max":280,"step":5},{"id":"thickness","type":"number","label":"Thickness","default":30,"min":8,"max":60,"step":1},{"id":"rotation","type":"number","label":"Rotation","default":135,"min":-360,"max":360,"step":15},{"id":"intensity","type":"number","label":"Intensity","default":1,"min":0,"max":1.5,"step":0.1},{"id":"twist","type":"number","label":"Ribbon twist","default":110,"min":-180,"max":180,"step":10},{"id":"echoes","type":"number","label":"Contour echoes","default":3,"min":0,"max":5,"step":1},{"id":"color","type":"color","label":"Shape color","default":"#ffffff"},{"id":"accentColor","type":"color","label":"Accent color","default":"#f4e4a7"},{"id":"backgroundColor","type":"color","label":"Background","default":"#a800b7"},{"id":"loop","type":"boolean","label":"Loop animation","default":false},{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: transparent; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:transparent; }
+
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="radial-burst" data-start="0" data-duration="4" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="4" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
+      </div>
+    </div>
+    <script src="./radial-burst.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="radial-burst"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="radial-burst"] [data-hyfrme-clock]', {
+        frame: 120,
+        duration: 4,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(119, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["radial-burst"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

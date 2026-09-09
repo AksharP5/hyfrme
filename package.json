@@ -8,7 +8,7 @@
     "dev": "vite",
     "prebuild": "npm run sync:registry && npm run sync:catalog && npm run build:cli",
     "build": "tsc --noEmit && vite build",
-    "check": "node scripts/build-catalog-data.mjs --check && npm run validate && npm run verify:showcases && npm run test:cli && npm run test:media && npm run check:commands && tsc --noEmit",
+    "check": "node scripts/build-catalog-data.mjs --check && npm run validate && npm run validate:snapcn && npm run verify:showcases && npm run test:cli && npm run test:media && npm run test:taxonomy && npm run test:remocn-registry && npm run test:snapcn-media && npm run test:snapcn-alpha && npm run check:commands && tsc --noEmit",
     "check:commands": "node scripts/check-install-commands.mjs",
     "validate": "node scripts/validate-catalog.mjs",
     "test:cli": "node scripts/test-cli.mjs",
@@ -35,7 +35,16 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "sync:media": "node scripts/sync-media.mjs",
-    "test:media": "node --test scripts/test-media.mjs"
+    "test:media": "node --test scripts/test-media.mjs",
+    "test:taxonomy": "node scripts/test-catalog-taxonomy.mjs",
+    "test:remocn-registry": "node scripts/test-remocn-registry.mjs",
+    "test:snapcn-media": "node scripts/test-snapcn-media.mjs",
+    "test:snapcn-alpha": "node scripts/test-snapcn-alpha.mjs",
+    "setup:remocn-latest": "node scripts/setup-remocn-latest.mjs",
+    "setup:snapcn": "node scripts/setup-snapcn.mjs",
+    "generate:snapcn": "node scripts/run-snapcn.mjs generate",
+    "verify:snapcn": "node scripts/run-snapcn.mjs verify",
+    "validate:snapcn": "node scripts/validate-snapcn.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "2.0.1",

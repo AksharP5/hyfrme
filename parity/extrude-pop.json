@@ -2,7 +2,7 @@
   "slug": "extrude-pop",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/extrude-pop/index.tsx",
     "config": "registry/remocn/extrude-pop/config.ts",
     "license": "MIT"
@@ -23,25 +23,43 @@
     "background": "#141318"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "22fb61906bba185c34272ba55f82d180b071d0855237400f803cfa90e5dfa367",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.997152,
-    "minSsim": 0.99391,
-    "p05Ssim": 0.9967,
-    "p95Ssim": 0.997441,
+    "meanSsim": 0.9998126444444436,
+    "minSsim": 0.999181,
+    "p05Ssim": 0.999779,
+    "p95Ssim": 0.999946,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/extrude-pop/remocn.mp4",
+    "referenceVideo": "public/previews/extrude-pop/reference.mp4",
     "hyperframesVideo": "public/previews/extrude-pop/hyperframes.mp4",
-    "summary": "parity/extrude-pop-diff/summary.json"
+    "thumbnail": "public/previews/extrude-pop/thumbnail.png",
+    "summary": "parity/extrude-pop-diff/summary.json",
+    "perFrameSsim": "parity/extrude-pop-diff/ssim.log",
+    "hyperframesCheck": "parity/extrude-pop-diff/hyperframes-check.log",
+    "worstFrame": "parity/extrude-pop-diff/worst-frame.png",
+    "referenceAlpha": "parity/extrude-pop-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/extrude-pop-diff/hyperframes-alpha.framemd5"
   }
 }

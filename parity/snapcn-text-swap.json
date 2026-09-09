@@ -1,0 +1,75 @@
+{
+  "slug": "snapcn-text-swap",
+  "origin": {
+    "repository": "https://github.com/snapcndev/snapcn",
+    "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+    "source": "registry/snap-cn/text-swap/index.tsx",
+    "config": "registry/snap-cn/text-swap/config.ts",
+    "license": "MIT",
+    "entry": "registry/snap-cn/text-swap/index.tsx"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "fromText": "Manual invoicing",
+      "toText": "Automated with Acme",
+      "transition": "fly-through",
+      "unit": "block",
+      "exitDuration": 20,
+      "enterDuration": 16,
+      "exitStagger": 1,
+      "enterStagger": 2,
+      "overlap": 1,
+      "microDelay": 2,
+      "fontSize": 72,
+      "color": "#101828",
+      "fontWeight": "600",
+      "fontFamily": "Default",
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "5ffa075184d0e11fcec90ebd5a5f43a6b26ac8aec1dea38058253e29bc199d57",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 0.9999353111111111,
+    "minSsim": 0.997964,
+    "p05Ssim": 0.999767,
+    "p95Ssim": 1,
+    "pass": true,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    }
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.473",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/snapcn-text-swap/reference.mp4",
+    "hyperframesVideo": "public/previews/snapcn-text-swap/hyperframes.mp4",
+    "thumbnail": "public/previews/snapcn-text-swap/thumbnail.png",
+    "summary": "parity/snapcn-text-swap-diff/summary.json",
+    "perFrameSsim": "parity/snapcn-text-swap-diff/ssim.log",
+    "hyperframesCheck": "parity/snapcn-text-swap-diff/hyperframes-check.log",
+    "worstFrame": "parity/snapcn-text-swap-diff/worst-frame.png",
+    "referenceAlpha": "parity/snapcn-text-swap-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/snapcn-text-swap-diff/hyperframes-alpha.framemd5"
+  }
+}

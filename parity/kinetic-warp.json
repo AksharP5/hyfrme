@@ -2,7 +2,7 @@
   "slug": "kinetic-warp",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/kinetic-warp/index.tsx",
     "config": "registry/remocn/kinetic-warp/config.ts",
     "license": "MIT"
@@ -16,34 +16,52 @@
       "text": "REM\nOCN",
       "textColor": "#FFFFFF",
       "fontFamily": "Passion One",
-      "fontUrl": "/assets/fonts/PassionOne.css",
+      "fontUrl": "https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&display=block",
       "fontWeight": "700",
       "fontSize": 107.1,
       "layerScale": 480,
       "keyframeStride": 20
     },
-    "background": "#141318"
+    "background": "transparent"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "a4ca22b059fc50476e6c2518ad417192cc58f5e7935e2f005cdac0b3acc97718",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.999431,
-    "minSsim": 0.999217,
-    "p05Ssim": 0.999288,
-    "p95Ssim": 0.999568,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/kinetic-warp/remocn.mp4",
+    "referenceVideo": "public/previews/kinetic-warp/reference.mp4",
     "hyperframesVideo": "public/previews/kinetic-warp/hyperframes.mp4",
-    "summary": "parity/kinetic-warp-diff/summary.json"
+    "thumbnail": "public/previews/kinetic-warp/thumbnail.png",
+    "summary": "parity/kinetic-warp-diff/summary.json",
+    "perFrameSsim": "parity/kinetic-warp-diff/ssim.log",
+    "hyperframesCheck": "parity/kinetic-warp-diff/hyperframes-check.log",
+    "worstFrame": "parity/kinetic-warp-diff/worst-frame.png",
+    "referenceAlpha": "parity/kinetic-warp-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/kinetic-warp-diff/hyperframes-alpha.framemd5"
   }
 }

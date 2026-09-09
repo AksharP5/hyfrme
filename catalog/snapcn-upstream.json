@@ -1,0 +1,977 @@
+{
+  "repository": "https://github.com/snapcndev/snapcn",
+  "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+  "license": "MIT",
+  "copyright": "Copyright (c) 2026 Sri Nath (snap-cn)",
+  "licenseSource": "LICENSE",
+  "licenseSha256": "6c90b43d45308aa3485bb1e8da9418d21ce0f8a5503be83d9b3f37f05d49e517",
+  "fixtureSource": "catalog/snapcn-fixtures.json",
+  "assetManifest": "assets/snapcn/manifest.json",
+  "summary": {
+    "totalRegistryItems": 40,
+    "visualItems": 39,
+    "sharedRuntimeItems": 1,
+    "previewRegistryItems": 36,
+    "sourceFamilies": {
+      "snap-cn": 37,
+      "snap-cn-ui": 2
+    },
+    "missingFixtures": []
+  },
+  "notes": [
+    "The root registry includes registry/snap-cn-pro/registry.json, but that path does not exist at this pin. No private/pro source was accessed.",
+    "Caret, Input and PulsingBorder are publicly published registry components with individual configs, although absent from the merged CONFIGS preview map. Their own config defaults are preserved without scene-level speed merging.",
+    "All other fixtures execute the pinned CONFIGS module so shared controls and MIN_SPEED_ONE overrides match upstream.",
+    "Pinned upstream preview stage sets fontFamily Geist and --font-geist-sans to Geist. No global centering or padding is added.",
+    "All configured preview backdrops at this pin are colors. Missing backdrops remain transparent.",
+    "Assets present in the MIT repository have no separate per-file terms. Their copyright provenance beyond the repository is not documented upstream.",
+    "External orbit-gallery images use the Unsplash license, not MIT. Each frozen image retains its photographer and original image URL in the asset manifest.",
+    "Bundled fonts retain unmodified binary files and per-family original license texts. Ultra uses Apache-2.0; remaining families use OFL-1.1."
+  ],
+  "items": [
+    {
+      "name": "answer-highlight",
+      "slug": "snapcn-answer-highlight",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/answer-highlight/index.tsx",
+      "sourceSha256": "699cf7994e7c41c3b4c6a2c9b0448fb0e5c47e23447272b911f70146ebf47afd",
+      "docs": ["content/docs/ai-input/answer-highlight.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "agent-steps",
+      "slug": "snapcn-agent-steps",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/agent-steps/index.tsx",
+      "sourceSha256": "5d1952ddddb44cb048eb381e47c80ff7529432ad2f0e251c18a16dfe6ab8b7d5",
+      "docs": ["content/docs/ai-input/agent-steps.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "announce-title",
+      "slug": "snapcn-announce-title",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/announce-title/index.tsx",
+      "sourceSha256": "f2abd9631f61faf1870d2616eb8be4199ca6ef2b64ec32f89592effd5ae485dd",
+      "docs": ["content/docs/scenes/announce-title.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "answer-stream",
+      "slug": "snapcn-answer-stream",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/answer-stream/index.tsx",
+      "sourceSha256": "2e4ce4974a7e68a8a12d12e8a384efdaa075c73b5295adf665edb8fb12cb09ad",
+      "docs": ["content/docs/ai-input/answer-stream.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": [
+        "https://snapcn.dev/r/snap-cn-ui.json",
+        "https://snapcn.dev/r/input.json"
+      ],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "text-reveal",
+      "slug": "snapcn-text-reveal",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/text-reveal/index.tsx",
+      "sourceSha256": "50cf31ee1eb26d0cae89484198d1a4fa6809b1c1972bdb7d8552c52daee12a4b",
+      "docs": ["content/docs/text/text-reveal.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "text-highlight",
+      "slug": "snapcn-text-highlight",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/text-highlight/index.tsx",
+      "sourceSha256": "158b91b5a4fec1ab1a2264df992e9106c344c7ac0982ee34a3715a2c75418b9e",
+      "docs": ["content/docs/text/text-highlight.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": true,
+        "shader": false
+      }
+    },
+    {
+      "name": "text-rewrite",
+      "slug": "snapcn-text-rewrite",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/text-rewrite/index.tsx",
+      "sourceSha256": "1da9248ef95ff25e60d0d14c1b1a432cb1d131bcd5537e6aac8258ac452a9d10",
+      "docs": ["content/docs/text/text-rewrite.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "text-select",
+      "slug": "snapcn-text-select",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/text-select/index.tsx",
+      "sourceSha256": "2c448e032119b5c21c282c475321726defb5a453f7bdc0a373abc298582bbe1f",
+      "docs": ["content/docs/text/text-select.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "text-swap",
+      "slug": "snapcn-text-swap",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/text-swap/index.tsx",
+      "sourceSha256": "955a2f705bb406f4c53352ed710599313da1df94bad8c59699472826a8a568f7",
+      "docs": ["content/docs/text/text-swap.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "text-swell",
+      "slug": "snapcn-text-swell",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/text-swell/index.tsx",
+      "sourceSha256": "68161d3803883fc94708c799e2ba91b617e7113f41d0cbe22e9dc6d5aabd3fb4",
+      "docs": ["content/docs/text/text-swell.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "text-build",
+      "slug": "snapcn-text-build",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/text-build/index.tsx",
+      "sourceSha256": "0efdea0b262152d5b61bd52bd62d3596ccb630cd37784f2c305efd5d10591088",
+      "docs": ["content/docs/text/text-build.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "word-flip",
+      "slug": "snapcn-word-flip",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/word-flip/index.tsx",
+      "sourceSha256": "f1f5aa877860e911c16e93520b7cbd3af933405f3c61a8e2c5ecf08033cc2837",
+      "docs": ["content/docs/text/word-flip.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "word-captions",
+      "slug": "snapcn-word-captions",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/word-captions/index.tsx",
+      "sourceSha256": "2a7415a44ab621ef3065f1ac8130497d6fe8e0def41da302e60616852f88ce95",
+      "docs": ["content/docs/captions/word-captions.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "karaoke-captions",
+      "slug": "snapcn-karaoke-captions",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/karaoke-captions/index.tsx",
+      "sourceSha256": "c867b49609766a6b76414bbeb0549959d9534cc805476804022e7f4687a66243",
+      "docs": ["content/docs/captions/karaoke-captions.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "logo-drift",
+      "slug": "snapcn-logo-drift",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/logo-drift/index.tsx",
+      "sourceSha256": "4c867fb600aa6a375c6b370ad3f75af08d08a0a483698171eb0cbe4285d0fbcc",
+      "docs": ["content/docs/logos/logo-drift.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "logo-assemble",
+      "slug": "snapcn-logo-assemble",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/logo-assemble/index.tsx",
+      "sourceSha256": "dbf5ff9bc62a6c947eab82493bc00c52a31d50f4adbc4065dfe77ece68f1af3a",
+      "docs": ["content/docs/logos/logo-assemble.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": true,
+        "shader": false
+      }
+    },
+    {
+      "name": "logo-flicker",
+      "slug": "snapcn-logo-flicker",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/logo-flicker/index.tsx",
+      "sourceSha256": "00f257d17dd409e98adf9642e91295df8e20a3e6a1de89925d91399a85f9a306",
+      "docs": ["content/docs/logos/logo-flicker.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": true,
+        "shader": false
+      }
+    },
+    {
+      "name": "block-wordmark",
+      "slug": "snapcn-block-wordmark",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/block-wordmark/index.tsx",
+      "sourceSha256": "cc44dedf6b563a118667f0625d570c8242171eb32934ad0b7a036b60ac7830d0",
+      "docs": ["content/docs/logos/block-wordmark.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "phone-frame",
+      "slug": "snapcn-phone-frame",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/phone-frame/index.tsx",
+      "sourceSha256": "b8e99322c142b9ac9a8226b4a52c0e590458c50b287951d5430d89cc14373a06",
+      "docs": ["content/docs/screens/phone-frame.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": true,
+        "shader": false
+      }
+    },
+    {
+      "name": "laptop-frame",
+      "slug": "snapcn-laptop-frame",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/laptop-frame/index.tsx",
+      "sourceSha256": "f6d3f0957725c4146bad64560ae2cdd0fa14340d063ce62a8da263a52f294d23",
+      "docs": ["content/docs/screens/laptop-frame.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": true,
+        "shader": false
+      }
+    },
+    {
+      "name": "terminal-simulator",
+      "slug": "snapcn-terminal-simulator",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/terminal-simulator/index.tsx",
+      "sourceSha256": "251dbc217d8024e7441bb02eef05897e30b6582c8cceceaece39a961c7939a60",
+      "docs": ["content/docs/screens/terminal-simulator.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "screen-recording",
+      "slug": "snapcn-screen-recording",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/screen-recording/index.tsx",
+      "sourceSha256": "6385b7f263e58cd9e2ee9edd8761875689eed1ac4de698fcd2756c7c1e465180",
+      "docs": ["content/docs/screens/screen-recording.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": true,
+        "shader": false
+      }
+    },
+    {
+      "name": "count-grid",
+      "slug": "snapcn-count-grid",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/count-grid/index.tsx",
+      "sourceSha256": "342b9190fcd76212f032430a993c591e0266fbfa74b70483822cfa12b88b022d",
+      "docs": ["content/docs/scenes/count-grid.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": true,
+        "shader": false
+      }
+    },
+    {
+      "name": "cursor-track",
+      "slug": "snapcn-cursor-track",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/cursor-track/index.tsx",
+      "sourceSha256": "b37a41e753e5535b58a6f24ffc6362eafd7f9bf22485d324ea43fa8bc0da3825",
+      "docs": ["content/docs/screens/cursor-track.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "pulsing-border",
+      "slug": "snapcn-pulsing-border",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/pulsing-border/index.tsx",
+      "sourceSha256": "3f6d810161e97ccfb446fef78036a311be0559806191fc3e351f0977e9613a2f",
+      "docs": [],
+      "inPreviewRegistry": false,
+      "dependencies": ["remotion", "@paper-design/shaders-react"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": true,
+        "media": false,
+        "shader": true
+      }
+    },
+    {
+      "name": "follower-rush",
+      "slug": "snapcn-follower-rush",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/follower-rush/index.tsx",
+      "sourceSha256": "56b72f2113a11cd3e951badf1413cb5a943c92d9a2b9c7fbeaad9e09e79d1c01",
+      "docs": ["content/docs/social/follower-rush.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": true,
+        "media": true,
+        "shader": false
+      }
+    },
+    {
+      "name": "prompt-send",
+      "slug": "snapcn-prompt-send",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/prompt-send/index.tsx",
+      "sourceSha256": "4f980f095369ed063f538e661a64b2f081f86f56a2d3ee2ef3f3d3a6bc83f94b",
+      "docs": ["content/docs/ai-input/prompt-send.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": [
+        "https://snapcn.dev/r/snap-cn-ui.json",
+        "https://snapcn.dev/r/input.json"
+      ],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "prompt-zoom",
+      "slug": "snapcn-prompt-zoom",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/prompt-zoom/index.tsx",
+      "sourceSha256": "df7f655c3284f2028013579dcca71ec9330fbea30ac91a44f60ce3468ecb5fbb",
+      "docs": ["content/docs/ai-input/prompt-zoom.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": [
+        "https://snapcn.dev/r/snap-cn-ui.json",
+        "https://snapcn.dev/r/input.json"
+      ],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "punch-lines",
+      "slug": "snapcn-punch-lines",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/punch-lines/index.tsx",
+      "sourceSha256": "5ed644bae97a81753ad1b10d58f1f6c1e8dc023c6fc34c9bb3c19e3df1fcab92",
+      "docs": ["content/docs/text/punch-lines.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "orbit-gallery",
+      "slug": "snapcn-orbit-gallery",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/orbit-gallery/index.tsx",
+      "sourceSha256": "bf9b981514f55da38071a790a1049fd68b090a2181ea3b6325ac9795db5d2893",
+      "docs": ["content/docs/scenes/orbit-gallery.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": true,
+        "media": true,
+        "shader": false
+      }
+    },
+    {
+      "name": "hero-launch",
+      "slug": "snapcn-hero-launch",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/hero-launch/index.tsx",
+      "sourceSha256": "bd1cf9de3921a2a900ea2fe9e24fe5e3bcc2230ef40c096c3719ed667f4fedc1",
+      "docs": ["content/docs/scenes/hero-launch.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": true,
+        "media": true,
+        "shader": false
+      }
+    },
+    {
+      "name": "moodboard-reveal",
+      "slug": "snapcn-moodboard-reveal",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/moodboard-reveal/index.tsx",
+      "sourceSha256": "9c5fbad2441d5c99bcc353de6f1fc41984c66df385e3d445f749cfc793dfe540",
+      "docs": ["content/docs/scenes/moodboard-reveal.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": true,
+        "shader": false
+      }
+    },
+    {
+      "name": "search-typing",
+      "slug": "snapcn-search-typing",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/search-typing/index.tsx",
+      "sourceSha256": "ac31757b61f6d590d7319fc34a101a8e7ef4293b6315a6e8b0b94cdcbad3e015",
+      "docs": ["content/docs/ai-input/search-typing.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": [
+        "https://snapcn.dev/r/snap-cn-ui.json",
+        "https://snapcn.dev/r/caret.json",
+        "https://snapcn.dev/r/input.json"
+      ],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "status-cycle",
+      "slug": "snapcn-status-cycle",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/status-cycle/index.tsx",
+      "sourceSha256": "1ff72825541a1a0fd1fe41570edf3337223e11c874a533c58ba72fb38e3172bb",
+      "docs": ["content/docs/scenes/status-cycle.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "type-morph",
+      "slug": "snapcn-type-morph",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/type-morph/index.tsx",
+      "sourceSha256": "0d16a11c3b641ebff5d5e344ea5c8bb7899d3ab3519c8e436a720bad5d69f98e",
+      "docs": ["content/docs/text/type-morph.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": [
+        "https://snapcn.dev/r/snap-cn-ui.json",
+        "https://snapcn.dev/r/text-reveal.json"
+      ],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "snap-cn-ui",
+      "slug": null,
+      "kind": "shared-runtime",
+      "tier": "snap-cn-ui",
+      "source": "registry/snap-cn-ui/core/timeline.ts",
+      "sourceSha256": "344658ef648c92d18612723701cc6d8377542986bcaafd27590a1df1eca6223a",
+      "docs": [],
+      "inPreviewRegistry": false,
+      "dependencies": ["remotion", "culori", "@remotion/google-fonts"],
+      "registryDependencies": [],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "caret",
+      "slug": "snapcn-caret",
+      "kind": "visual",
+      "tier": "snap-cn-ui",
+      "source": "registry/snap-cn-ui/caret/index.tsx",
+      "sourceSha256": "c52f1aa250a37622bd0fa613df3302d941eaa5153ff8999f39afc9b514f853f5",
+      "docs": [],
+      "inPreviewRegistry": false,
+      "dependencies": ["remotion"],
+      "registryDependencies": [],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "input",
+      "slug": "snapcn-input",
+      "kind": "visual",
+      "tier": "snap-cn-ui",
+      "source": "registry/snap-cn-ui/input/index.tsx",
+      "sourceSha256": "8e6dfd77df9a845f583b68cb472db2fa70244815b066571671552bc831467b06",
+      "docs": [],
+      "inPreviewRegistry": false,
+      "dependencies": ["remotion", "class-variance-authority"],
+      "registryDependencies": [
+        "https://snapcn.dev/r/snap-cn-ui.json",
+        "https://snapcn.dev/r/caret.json",
+        "utils"
+      ],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "roster-grant",
+      "slug": "snapcn-roster-grant",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "commit": "bc5b59f3f0fad9657b338fa62349a55fa33f160f",
+      "source": "registry/snap-cn/roster-grant/index.tsx",
+      "sourceSha256": "77306534c670c33e77dcd4abc11a0da6ced76b51d61f8496facca2841cebdee7",
+      "docs": ["content/docs/scenes/roster-grant.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      }
+    },
+    {
+      "name": "wordmark-cut",
+      "slug": "snapcn-wordmark-cut",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "commit": "bc5b59f3f0fad9657b338fa62349a55fa33f160f",
+      "source": "registry/snap-cn/wordmark-cut/index.tsx",
+      "sourceSha256": "17e533480a75a190081a805cc1264bec709d9dcbdd28a9f77b590c085cbbc106",
+      "docs": ["content/docs/scenes/wordmark-cut.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      }
+    }
+  ],
+  "dependencyLicenseNotes": [
+    {
+      "dependency": "@paper-design/shaders and @paper-design/shaders-react",
+      "pinnedNpmVersion": "0.0.76",
+      "pinnedNpmLicense": "PolyForm-Shield-1.0.0",
+      "distributionLicense": "Apache-2.0",
+      "sourceCommit": "f9f2a8b2edeb78ec59256c4dc571f5eaf943d798",
+      "evidence": "assets/snapcn/paper-shaders/provenance.json",
+      "resolution": "Use the unmodified Apache source files frozen in assets/snapcn/paper-shaders. Root and both package-local licenses explicitly grant Apache-2.0 at this pin. All 13 runtime sources match the pinned npm source maps byte for byte."
+    },
+    {
+      "dependency": "@remotion/google-fonts",
+      "pinnedNpmVersion": "4.0.473",
+      "distribution": "Font binaries only, with per-font OFL-1.1/Apache-2.0 terms. The Remotion font loader belongs in reference tooling, not installed components."
+    },
+    {
+      "dependency": "remotion",
+      "pinnedNpmVersion": "4.0.473",
+      "distribution": "Reference rendering only. Installed HyperFrames components must not bundle the Remotion runtime."
+    }
+  ],
+  "updates": [
+    {
+      "commit": "bc5b59f3f0fad9657b338fa62349a55fa33f160f",
+      "checkedAt": "2026-09-08",
+      "added": ["snapcn-roster-grant", "snapcn-wordmark-cut"],
+      "existingSourceFilesUnchanged": true
+    }
+  ],
+  "publishedAudit": {
+    "checkedAt": "2026-09-09",
+    "repository": "https://github.com/snapcndev/snapcn",
+    "commit": "099cb549d472bc63dd7ad8ca0f28ff0f39b71a51",
+    "registryUrl": "https://snapcn.dev/r/registry.json",
+    "registrySha256": "d63feaaffc8e47e7c1f5cf55c2e3dcb12b892738fb937c63e5810d126037b9d0",
+    "counts": {
+      "totalRegistryItems": 54,
+      "freeVisualItems": 39,
+      "proVisualItems": 14,
+      "sharedRuntimeItems": 1
+    },
+    "freeSourceUnchangedFrom": "bc5b59f3f0fad9657b338fa62349a55fa33f160f",
+    "freeSourceUnchanged": true,
+    "existingFixturePinsPreserved": true,
+    "excludedProItems": [
+      {
+        "name": "manifesto",
+        "source": "registry/snap-cn-pro/manifesto/index.tsx",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/manifesto.json",
+        "httpStatus": 402,
+        "error": "pro_component"
+      },
+      {
+        "name": "read-through",
+        "source": "registry/snap-cn-pro/read-through/index.tsx",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/read-through.json",
+        "httpStatus": 402,
+        "error": "pro_component"
+      },
+      {
+        "name": "word-settle",
+        "source": "registry/snap-cn-pro/word-settle/index.tsx",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/word-settle.json",
+        "httpStatus": 402,
+        "error": "pro_component"
+      },
+      {
+        "name": "chat-thread",
+        "source": "registry/snap-cn-pro/chat-thread/index.tsx",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/chat-thread.json",
+        "httpStatus": 402,
+        "error": "pro_component"
+      },
+      {
+        "name": "lcd-type",
+        "source": "registry/snap-cn-pro/lcd-type/index.tsx",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/lcd-type.json",
+        "httpStatus": 402,
+        "error": "pro_component"
+      },
+      {
+        "name": "sentence-set",
+        "source": "registry/snap-cn-pro/sentence-set/index.tsx",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/sentence-set.json",
+        "httpStatus": 402,
+        "error": "pro_component"
+      },
+      {
+        "name": "showcase-drift",
+        "source": "registry/snap-cn-pro/showcase-drift/index.tsx",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/showcase-drift.json",
+        "httpStatus": 402,
+        "error": "pro_component"
+      },
+      {
+        "name": "agent-chat",
+        "source": "registry/snap-cn-pro/agent-chat/index.tsx",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/agent-chat.json",
+        "httpStatus": 402,
+        "error": "pro_component"
+      },
+      {
+        "name": "version-drop",
+        "source": "registry/snap-cn-pro/version-drop/index.tsx",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/version-drop.json",
+        "httpStatus": 402,
+        "error": "pro_component"
+      },
+      {
+        "name": "agent-open",
+        "source": "registry/snap-cn-pro/agent-open/index.tsx",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/agent-open.json",
+        "httpStatus": 402,
+        "error": "pro_component"
+      },
+      {
+        "name": "phrase-swarm",
+        "source": "registry/snap-cn-pro/phrase-swarm/index.tsx",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/phrase-swarm.json",
+        "httpStatus": 402,
+        "error": "pro_component"
+      },
+      {
+        "name": "word-rush",
+        "source": "registry/snap-cn-pro/word-rush/index.tsx",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/word-rush.json",
+        "httpStatus": 402,
+        "error": "pro_component"
+      },
+      {
+        "name": "app-reveal",
+        "source": "registry/snap-cn-pro/app-reveal/index.tsx",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/app-reveal.json",
+        "httpStatus": 402,
+        "error": "pro_component"
+      },
+      {
+        "name": "stretch-word",
+        "source": "registry/snap-cn-pro/stretch-word/index.tsx",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/stretch-word.json",
+        "httpStatus": 402,
+        "error": "pro_component"
+      }
+    ],
+    "exclusionReason": "All 14 additional published components require Pro access. Their advertised source files are absent from this public Git commit and their registry endpoints return HTTP 402 pro_component. The public repository MIT license does not establish redistribution rights for unavailable private source; no Pro source is bundled.",
+    "accessImplementationUrl": "https://github.com/snapcndev/snapcn/blob/099cb549d472bc63dd7ad8ca0f28ff0f39b71a51/app/r/%5Bfile%5D/route.ts",
+    "proUrl": "https://snapcn.dev/pro"
+  }
+}

@@ -21,25 +21,43 @@
     "background": "#ffffff"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "f58cbf45b0f259d66adcb91c7f1b4ff20184f17d6f1b31a03677a533be588b6b",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 270,
-    "meanSsim": 0.998382,
-    "minSsim": 0.992606,
-    "p05Ssim": 0.996362,
-    "p95Ssim": 0.9999,
+    "meanSsim": 0.9975620925925945,
+    "minSsim": 0.990585,
+    "p05Ssim": 0.992734,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 270,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.473",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/github-sponsors/remocn.mp4",
+    "referenceVideo": "public/previews/github-sponsors/reference.mp4",
     "hyperframesVideo": "public/previews/github-sponsors/hyperframes.mp4",
-    "summary": "parity/github-sponsors-diff/summary.json"
+    "thumbnail": "public/previews/github-sponsors/thumbnail.png",
+    "summary": "parity/github-sponsors-diff/summary.json",
+    "perFrameSsim": "parity/github-sponsors-diff/ssim.log",
+    "hyperframesCheck": "parity/github-sponsors-diff/hyperframes-check.log",
+    "worstFrame": "parity/github-sponsors-diff/worst-frame.png",
+    "referenceAlpha": "parity/github-sponsors-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/github-sponsors-diff/hyperframes-alpha.framemd5"
   }
 }

@@ -1,0 +1,385 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 2,
+    "infoCount": 6,
+    "findings": [
+      {
+        "code": "escaped_container",
+        "severity": "warning",
+        "time": 0.917,
+        "selector": "#inline-pill-takeover-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -711.92,
+          "top": -400.46,
+          "right": 1991.92,
+          "bottom": 1120.46,
+          "width": 2703.84,
+          "height": 1520.91
+        },
+        "containerSelector": "#inline-pill-takeover-source-root > div:nth-of-type(1)",
+        "text": "powering 20% Start building of the Internet.",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/inline-pill-takeover.html",
+        "bbox": {
+          "x": -711.92,
+          "y": -400.46,
+          "width": 2703.84,
+          "height": 1520.91
+        },
+        "firstSeen": 0.917,
+        "lastSeen": 1.417,
+        "occurrences": 4
+      },
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 1.083,
+        "selector": "#inline-pill-takeover-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -736,
+          "top": -414,
+          "right": 2016,
+          "bottom": 1134,
+          "width": 2752,
+          "height": 1548
+        },
+        "containerSelector": "#inline-pill-takeover-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 736,
+          "right": 736,
+          "top": 414,
+          "bottom": 414
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/inline-pill-takeover.html",
+        "bbox": {
+          "x": -736,
+          "y": -414,
+          "width": 2752,
+          "height": 1548
+        },
+        "firstSeen": 1.083,
+        "lastSeen": 1.417,
+        "occurrences": 3
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 0.125,
+        "selector": "#inline-pill-takeover-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 234.95,
+          "top": 326,
+          "right": 564.28,
+          "bottom": 393,
+          "width": 329.33,
+          "height": 67
+        },
+        "containerSelector": "#inline-pill-takeover-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+        "text": "powering 20%",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/inline-pill-takeover.html",
+        "bbox": {
+          "x": 234.95,
+          "y": 326,
+          "width": 329.33,
+          "height": 67
+        },
+        "firstSeen": 0.125,
+        "lastSeen": 0.125,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 0.125,
+        "selector": "#inline-pill-takeover-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 513.1,
+          "top": 331.14,
+          "right": 766.87,
+          "bottom": 388.14,
+          "width": 253.77,
+          "height": 57
+        },
+        "containerSelector": "#inline-pill-takeover-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "Start building",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/inline-pill-takeover.html",
+        "bbox": {
+          "x": 513.1,
+          "y": 331.14,
+          "width": 253.77,
+          "height": 57
+        },
+        "firstSeen": 0.125,
+        "lastSeen": 0.125,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.25,
+        "selector": "#inline-pill-takeover-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 513.1,
+          "top": 338.14,
+          "right": 766.87,
+          "bottom": 381.83,
+          "width": 253.77,
+          "height": 43.69
+        },
+        "containerSelector": "#inline-pill-takeover-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 529.31,
+          "top": 331.86,
+          "right": 750.67,
+          "bottom": 388.13,
+          "width": 221.36,
+          "height": 56.27
+        },
+        "overflow": {
+          "left": 16.21,
+          "right": 16.2
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/inline-pill-takeover.html",
+        "bbox": {
+          "x": 513.1,
+          "y": 338.14,
+          "width": 253.77,
+          "height": 43.69
+        },
+        "firstSeen": 0.25,
+        "lastSeen": 0.25,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.583,
+        "selector": "#inline-pill-takeover-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -112.4,
+          "top": -63.22,
+          "right": 1392.4,
+          "bottom": 783.22,
+          "width": 1504.79,
+          "height": 846.45
+        },
+        "containerSelector": "#inline-pill-takeover-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 112.4,
+          "right": 112.4,
+          "top": 63.22,
+          "bottom": 63.22
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/inline-pill-takeover.html",
+        "bbox": {
+          "x": -112.4,
+          "y": -63.22,
+          "width": 1504.79,
+          "height": 846.45
+        },
+        "firstSeen": 0.583,
+        "lastSeen": 0.583,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.75,
+        "selector": "#inline-pill-takeover-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -158.68,
+          "top": -89.26,
+          "right": 1438.68,
+          "bottom": 809.26,
+          "width": 1597.36,
+          "height": 898.51
+        },
+        "containerSelector": "#inline-pill-takeover-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 158.68,
+          "right": 158.68,
+          "top": 89.26,
+          "bottom": 89.26
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/inline-pill-takeover.html",
+        "bbox": {
+          "x": -158.68,
+          "y": -89.26,
+          "width": 1597.36,
+          "height": 898.51
+        },
+        "firstSeen": 0.75,
+        "lastSeen": 0.75,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.917,
+        "selector": "#inline-pill-takeover-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -711.92,
+          "top": -400.46,
+          "right": 1991.92,
+          "bottom": 1120.46,
+          "width": 2703.84,
+          "height": 1520.91
+        },
+        "containerSelector": "#inline-pill-takeover-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 711.92,
+          "right": 711.92,
+          "top": 400.46,
+          "bottom": 400.46
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/inline-pill-takeover.html",
+        "bbox": {
+          "x": -711.92,
+          "y": -400.46,
+          "width": 2703.84,
+          "height": 1520.91
+        },
+        "firstSeen": 0.917,
+        "lastSeen": 0.917,
+        "occurrences": 1
+      }
+    ],
+    "duration": 1.5,
+    "samples": [
+      0.083,
+      0.25,
+      0.417,
+      0.583,
+      0.75,
+      0.917,
+      1.083,
+      1.25,
+      1.417
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 8,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.083,
+      0.417,
+      0.75,
+      1.083,
+      1.417
+    ],
+    "checked": 8,
+    "passed": 8
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.32",
+    "updateAvailable": true
+  }
+}

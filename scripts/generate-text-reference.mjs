@@ -1,6 +1,15 @@
 import { copyFile, cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
+if (process.argv.includes("--lossless")) {
+  const { renderReferences, selectFixtures } =
+    await import("./remocn-lossless-reference.mjs");
+  await renderReferences(await selectFixtures(), {
+    reuse: process.argv.includes("--reuse-reference"),
+  });
+  process.exit(0);
+}
+
 const root = resolve(import.meta.dirname, "..");
 const upstream = resolve(root, process.env.REMOCN_SOURCE ?? ".work/remocn");
 await cp(

@@ -1,0 +1,621 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 12,
+    "findings": [
+      {
+        "code": "escaped_container",
+        "severity": "warning",
+        "time": 0.278,
+        "selector": "#snapcn-answer-stream-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -1560.96,
+          "top": -1099.92,
+          "right": 1459.84,
+          "bottom": 598,
+          "width": 3020.8,
+          "height": 1697.92
+        },
+        "containerSelector": "#snapcn-answer-stream-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "How do I rank higher in AI answers? Auto",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 23.2,
+          "top": 2.33,
+          "right": 1303.2,
+          "bottom": 721.78,
+          "width": 1280,
+          "height": 719.46
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-answer-stream.html",
+        "bbox": {
+          "x": -1560.96,
+          "y": -1099.92,
+          "width": 3020.8,
+          "height": 1697.92
+        },
+        "firstSeen": 0.278,
+        "lastSeen": 0.833,
+        "occurrences": 2
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.278,
+        "selector": "#snapcn-answer-stream-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -906.34,
+          "top": 229.78,
+          "right": -97.81,
+          "bottom": 287.74,
+          "width": 808.53,
+          "height": 57.96
+        },
+        "containerSelector": "#root",
+        "text": "How do I rank higher in AI answers?",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 906.34
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-answer-stream.html",
+        "bbox": {
+          "x": -906.34,
+          "y": 229.78,
+          "width": 808.53,
+          "height": 57.96
+        },
+        "firstSeen": 0.278,
+        "lastSeen": 0.278,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.278,
+        "selector": "#snapcn-answer-stream-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 23.2,
+          "top": 2.33,
+          "right": 1303.2,
+          "bottom": 721.78,
+          "width": 1280,
+          "height": 719.46
+        },
+        "containerSelector": "#snapcn-answer-stream-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0.27,
+          "right": 1280,
+          "bottom": 719.73,
+          "width": 1280,
+          "height": 719.46
+        },
+        "overflow": {
+          "right": 23.2,
+          "bottom": 2.05
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-answer-stream.html",
+        "bbox": {
+          "x": 23.2,
+          "y": 2.33,
+          "width": 1280,
+          "height": 719.46
+        },
+        "firstSeen": 0.278,
+        "lastSeen": 0.278,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 0.278,
+        "selector": "#snapcn-answer-stream-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": -1005.21,
+          "top": 134.31,
+          "right": 866.59,
+          "bottom": 570.72,
+          "width": 1871.8,
+          "height": 436.41
+        },
+        "containerSelector": "#root",
+        "text": "How do I rank higher in AI answers? Auto",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1005.21
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-answer-stream.html",
+        "bbox": {
+          "x": -1005.21,
+          "y": 134.31,
+          "width": 1871.8,
+          "height": 436.41
+        },
+        "firstSeen": 0.278,
+        "lastSeen": 0.278,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.833,
+        "selector": "#snapcn-answer-stream-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -929.54,
+          "top": 227.72,
+          "right": -121.01,
+          "bottom": 285.68,
+          "width": 808.53,
+          "height": 57.96
+        },
+        "containerSelector": "#root",
+        "text": "How do I rank higher in AI answers?",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 929.54
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-answer-stream.html",
+        "bbox": {
+          "x": -929.54,
+          "y": 227.72,
+          "width": 808.53,
+          "height": 57.96
+        },
+        "firstSeen": 0.833,
+        "lastSeen": 0.833,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 0.833,
+        "selector": "#snapcn-answer-stream-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": -1028.41,
+          "top": 132.26,
+          "right": 843.39,
+          "bottom": 568.67,
+          "width": 1871.8,
+          "height": 436.41
+        },
+        "containerSelector": "#root",
+        "text": "How do I rank higher in AI answers? Auto",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1028.41
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-answer-stream.html",
+        "bbox": {
+          "x": -1028.41,
+          "y": 132.26,
+          "width": 1871.8,
+          "height": 436.41
+        },
+        "firstSeen": 0.833,
+        "lastSeen": 0.833,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.389,
+        "selector": "#snapcn-answer-stream-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 145.39,
+          "top": 1157.62,
+          "right": 612.69,
+          "bottom": 1191.12,
+          "width": 467.3,
+          "height": 33.5
+        },
+        "containerSelector": "#root",
+        "text": "How do I rank higher in AI answers?",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 471.12
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-answer-stream.html",
+        "bbox": {
+          "x": 145.39,
+          "y": 1157.62,
+          "width": 467.3,
+          "height": 33.5
+        },
+        "firstSeen": 1.389,
+        "lastSeen": 1.389,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.389,
+        "selector": "#snapcn-answer-stream-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1016.78,
+          "top": 1286.2,
+          "right": 1055.79,
+          "bottom": 1307.87,
+          "width": 39.01,
+          "height": 21.68
+        },
+        "containerSelector": "#root",
+        "text": "Auto",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 587.87
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-answer-stream.html",
+        "bbox": {
+          "x": 1016.78,
+          "y": 1286.2,
+          "width": 39.01,
+          "height": 21.68
+        },
+        "firstSeen": 1.389,
+        "lastSeen": 1.389,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.389,
+        "selector": "#snapcn-answer-stream-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 0,
+          "top": -22.41,
+          "right": 1280,
+          "bottom": 697.05,
+          "width": 1280,
+          "height": 719.46
+        },
+        "containerSelector": "#snapcn-answer-stream-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0.27,
+          "right": 1280,
+          "bottom": 719.73,
+          "width": 1280,
+          "height": 719.46
+        },
+        "overflow": {
+          "top": 22.68
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-answer-stream.html",
+        "bbox": {
+          "x": 0,
+          "y": -22.41,
+          "width": 1280,
+          "height": 719.46
+        },
+        "firstSeen": 1.389,
+        "lastSeen": 1.389,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.944,
+        "selector": "#snapcn-answer-stream-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 145.39,
+          "top": 1180.3,
+          "right": 612.69,
+          "bottom": 1213.8,
+          "width": 467.3,
+          "height": 33.5
+        },
+        "containerSelector": "#root",
+        "text": "How do I rank higher in AI answers?",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 493.8
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-answer-stream.html",
+        "bbox": {
+          "x": 145.39,
+          "y": 1180.3,
+          "width": 467.3,
+          "height": 33.5
+        },
+        "firstSeen": 1.944,
+        "lastSeen": 1.944,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.944,
+        "selector": "#snapcn-answer-stream-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1016.78,
+          "top": 1308.88,
+          "right": 1055.79,
+          "bottom": 1330.55,
+          "width": 39.01,
+          "height": 21.68
+        },
+        "containerSelector": "#root",
+        "text": "Auto",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 610.55
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-answer-stream.html",
+        "bbox": {
+          "x": 1016.78,
+          "y": 1308.88,
+          "width": 39.01,
+          "height": 21.68
+        },
+        "firstSeen": 1.944,
+        "lastSeen": 1.944,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.5,
+        "selector": "#snapcn-answer-stream-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 222.85,
+          "top": 848.99,
+          "right": 616.97,
+          "bottom": 877.25,
+          "width": 394.12,
+          "height": 28.25
+        },
+        "containerSelector": "#root",
+        "text": "How do I rank higher in AI answers?",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 157.25
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-answer-stream.html",
+        "bbox": {
+          "x": 222.85,
+          "y": 848.99,
+          "width": 394.12,
+          "height": 28.25
+        },
+        "firstSeen": 2.5,
+        "lastSeen": 2.5,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.5,
+        "selector": "#snapcn-answer-stream-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 957.77,
+          "top": 957.44,
+          "right": 990.67,
+          "bottom": 975.72,
+          "width": 32.9,
+          "height": 18.28
+        },
+        "containerSelector": "#root",
+        "text": "Auto",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 255.72
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-answer-stream.html",
+        "bbox": {
+          "x": 957.77,
+          "y": 957.44,
+          "width": 32.9,
+          "height": 18.28
+        },
+        "firstSeen": 2.5,
+        "lastSeen": 2.5,
+        "occurrences": 1
+      }
+    ],
+    "duration": 5,
+    "samples": [
+      0.278,
+      0.833,
+      1.389,
+      1.944,
+      2.5,
+      3.056,
+      3.611,
+      4.167,
+      4.722
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 13,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 4.4:1; WCAG AA requires 4.5:1.",
+        "text": "Analysing",
+        "fg": "rgb(38,109,240)",
+        "bg": "rgb(250,249,246)",
+        "ratio": 4.4,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(37,107,236)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-answer-stream.html",
+        "bbox": {
+          "x": 104.00654602050781,
+          "y": 282.6869812011719,
+          "width": 124.08396911621094,
+          "height": 33.499603271484375
+        },
+        "time": 1.389
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      0.278,
+      1.389,
+      2.5,
+      3.611,
+      4.722
+    ],
+    "checked": 221,
+    "passed": 220
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.30",
+    "updateAvailable": false
+  }
+}

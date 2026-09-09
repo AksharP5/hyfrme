@@ -2,7 +2,7 @@
   "slug": "chromatic-wave",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/chromatic-wave/index.tsx",
     "config": "registry/remocn/chromatic-wave/config.ts",
     "license": "MIT"
@@ -20,28 +20,507 @@
       "maxDisplacementPx": 39,
       "turbulentAmount": 130
     },
-    "background": "#ffffff"
+    "background": "transparent"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "671017f630259a09b52d653d7e9d142819ea822458a6d7d3ed262acced7dca6e",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 100,
-    "meanSsim": 0.99537,
-    "minSsim": 0.993889,
-    "p05Ssim": 0.99416,
-    "p95Ssim": 0.996208,
+    "meanSsim": 0.9977692800000006,
+    "minSsim": 0.997386,
+    "p05Ssim": 0.997591,
+    "p95Ssim": 0.997883,
+    "alpha": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check reported 27 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(1)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(2)",
+          "text": "APPLES"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(1)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(1)",
+          "text": "APPLES"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(1)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(2)",
+          "text": "APPLES"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(1)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(1)",
+          "text": "APPLES"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(1)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(2)",
+          "text": "APPLES"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(2)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(3)",
+          "text": "MUSIC"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(2)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(1)",
+          "text": "MUSIC"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(2)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(2)",
+          "text": "MUSIC"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(2)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(3)",
+          "text": "MUSIC"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(2)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(1)",
+          "text": "MUSIC"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(2)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(2)",
+          "text": "MUSIC"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(2)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(3)",
+          "text": "MUSIC"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(3)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(2)",
+          "text": "APPLES"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(3)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(3)",
+          "text": "APPLES"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(3)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(2)",
+          "text": "APPLES"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(3)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(3)",
+          "text": "APPLES"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(1)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(2)",
+          "text": "APPLES"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(1)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(1)",
+          "text": "APPLES"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(1)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(2)",
+          "text": "APPLES"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(2)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(3)",
+          "text": "MUSIC"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(2)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(1)",
+          "text": "MUSIC"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(2)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(2)",
+          "text": "MUSIC"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(2)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(3)",
+          "text": "MUSIC"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(3)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(2)",
+          "text": "APPLES"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(3)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(3)",
+          "text": "APPLES"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(1)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(2)",
+          "text": "APPLES"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      },
+      {
+        "slug": "chromatic-wave",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/chromatic-wave/index.tsx",
+          "config": "registry/remocn/chromatic-wave/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(2)",
+          "containerSelector": "#chromatic-wave-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > g:nth-of-type(3) > text:nth-of-type(3)",
+          "text": "MUSIC"
+        },
+        "reason": "The pinned source paints its APPLES/MUSIC/APPLES SVG content three times through separate red, green, and blue displacement filters with screen blending. These exact text bounds overlap across color copies and adjacent lines in that unchanged source geometry. Preserve the source chromatic effect; RGB SSIM is mean 0.997686/min 0.997262 and all 100 alpha planes match exactly."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/chromatic-wave/remocn.mp4",
+    "referenceVideo": "public/previews/chromatic-wave/reference.mp4",
     "hyperframesVideo": "public/previews/chromatic-wave/hyperframes.mp4",
-    "summary": "parity/chromatic-wave-diff/summary.json"
+    "thumbnail": "public/previews/chromatic-wave/thumbnail.png",
+    "summary": "parity/chromatic-wave-diff/summary.json",
+    "perFrameSsim": "parity/chromatic-wave-diff/ssim.log",
+    "hyperframesCheck": "parity/chromatic-wave-diff/hyperframes-check.log",
+    "worstFrame": "parity/chromatic-wave-diff/worst-frame.png",
+    "referenceAlpha": "parity/chromatic-wave-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/chromatic-wave-diff/hyperframes-alpha.framemd5"
   }
 }

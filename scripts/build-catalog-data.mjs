@@ -1,4 +1,4 @@
-import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
@@ -8,9 +8,8 @@ const outputPath = resolve(root, "src", "generated", "catalog-data.json");
 const checking = process.argv.includes("--check");
 
 const readJson = async (path) => JSON.parse(await readFile(path, "utf8"));
-const directories = (await readdir(blocksDirectory, { withFileTypes: true }))
-  .filter((entry) => entry.isDirectory())
-  .map((entry) => entry.name);
+const registry = await readJson(resolve(root, "registry/registry.json"));
+const directories = registry.items.map((entry) => entry.name);
 
 const entries = await Promise.all(
   directories.map(async (name) => {
@@ -31,8 +30,18 @@ const entries = await Promise.all(
       parity: {
         slug: parity.slug,
         origin: {
+          repository: parity.origin.repository,
           commit: parity.origin.commit,
           source: parity.origin.source,
+        },
+        artifacts: {
+          referenceVideo: (
+            parity.artifacts.referenceVideo ?? parity.artifacts.remocnVideo
+          ).replace(/^public\//, "/"),
+          hyperframesVideo: parity.artifacts.hyperframesVideo.replace(
+            /^public\//,
+            "/",
+          ),
         },
         result: {
           frameCount: parity.result.frameCount,

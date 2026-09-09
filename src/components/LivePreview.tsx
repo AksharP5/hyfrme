@@ -1,5 +1,5 @@
 import { mediaUrl } from "../media";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { RegistryItem } from "../catalog";
 import { buildPreviewDocument, type CustomValues } from "../lib/customization";
 
@@ -15,24 +15,23 @@ type PreviewTimeline = {
   restart: () => void;
 };
 
-type HtmlInCanvasElement = HTMLCanvasElement & {
-  captureElementImage?: unknown;
-  requestPaint?: unknown;
-};
-
-type HtmlInCanvasContext = CanvasRenderingContext2D & {
-  drawElementImage?: unknown;
+type PreviewWindow = Window & {
+  __timelines?: Record<string, PreviewTimeline>;
+  __hyfrmeSyncPreviewMedia?: () => void;
 };
 
 function supportsHtmlInCanvas() {
-  const canvas = document.createElement("canvas") as HtmlInCanvasElement;
-  const context = canvas.getContext("2d") as HtmlInCanvasContext | null;
-
-  return (
-    typeof context?.drawElementImage === "function" &&
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+  return Boolean(
+    context &&
+    "drawElementImage" in context &&
+    typeof context.drawElementImage === "function" &&
+    "requestPaint" in canvas &&
     typeof canvas.requestPaint === "function" &&
+    "captureElementImage" in canvas &&
     typeof canvas.captureElementImage === "function" &&
-    "transferControlToOffscreen" in HTMLCanvasElement.prototype
+    "transferControlToOffscreen" in canvas,
   );
 }
 
@@ -41,53 +40,65 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
-  const [htmlInCanvasSupported] = useState(supportsHtmlInCanvas);
+  const [error, setError] = useState<string | null>(null);
   const isIcon = item.tags.includes("icon");
-  const usesRenderedPreview =
-    item.tags.includes("html-in-canvas") && !htmlInCanvasSupported;
+  const rendered = useMemo(
+    () => item.tags.includes("html-in-canvas") && !supportsHtmlInCanvas(),
+    [item],
+  );
   const document = useMemo(
-    () =>
-      usesRenderedPreview
-        ? ""
-        : buildPreviewDocument(source, item, values, isIcon),
-    [isIcon, item, source, usesRenderedPreview, values],
+    () => (rendered ? "" : buildPreviewDocument(source, item, values, isIcon)),
+    [isIcon, item, source, values, rendered],
   );
 
-  const timeline = () => {
-    const previewWindow = frameRef.current?.contentWindow as
-      | (Window & {
-          __timelines?: Record<string, PreviewTimeline>;
-        })
-      | null;
-    return previewWindow?.__timelines?.[item.name];
-  };
+  useEffect(() => {
+    setError(null);
+    const receiveError = (event: MessageEvent) => {
+      if (event.source !== frameRef.current?.contentWindow) return;
+      if (
+        event.data?.type === "hyfrme-preview-error" &&
+        typeof event.data.message === "string"
+      ) {
+        setError(event.data.message);
+      }
+    };
+    window.addEventListener("message", receiveError);
+    return () => window.removeEventListener("message", receiveError);
+  }, [document, item.name]);
+
+  const previewWindow = () =>
+    frameRef.current?.contentWindow as PreviewWindow | null;
+  const timeline = () => previewWindow()?.__timelines?.[item.name];
 
   const togglePlayback = () => {
-    if (usesRenderedPreview) {
-      const video = videoRef.current;
-      if (!video) return;
-      if (video.paused) void video.play().catch(() => setPaused(true));
-      else video.pause();
+    setError(null);
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        void videoRef.current
+          .play()
+          .catch((error: Error) => setError(error.message));
+      } else videoRef.current.pause();
       return;
     }
-
     const currentTimeline = timeline();
     if (!currentTimeline) return;
     if (paused) currentTimeline.play();
     else currentTimeline.pause();
+    previewWindow()?.__hyfrmeSyncPreviewMedia?.();
     setPaused((current) => !current);
   };
 
   const replay = () => {
-    if (usesRenderedPreview) {
-      const video = videoRef.current;
-      if (!video) return;
-      video.currentTime = 0;
-      void video.play().catch(() => setPaused(true));
+    setError(null);
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      void videoRef.current
+        .play()
+        .catch((error: Error) => setError(error.message));
       return;
     }
-
     timeline()?.restart();
+    previewWindow()?.__hyfrmeSyncPreviewMedia?.();
     setPaused(false);
   };
 
@@ -99,21 +110,21 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
     <div
       ref={containerRef}
       className={`live-preview${isIcon ? " is-icon" : ""}`}
+      data-component-slug={item.name}
     >
-      {usesRenderedPreview ? (
+      {rendered ? (
         <video
           ref={videoRef}
+          aria-label={`${item.title} rendered preview with default settings`}
           src={mediaUrl(`/previews/${item.name}/hyperframes.mp4`)}
           poster={`/previews/${item.name}/thumbnail.png`}
-          muted
           autoPlay
           loop
+          muted
           playsInline
-          preload="auto"
-          aria-label={`${item.title} rendered preview`}
-          onLoadedData={(event) => setPaused(event.currentTarget.paused)}
           onPlay={() => setPaused(false)}
           onPause={() => setPaused(true)}
+          onError={() => setError("Unable to load rendered preview.")}
         />
       ) : (
         <iframe
@@ -125,9 +136,20 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
         />
       )}
       <span className="live-indicator">
-        <span aria-hidden="true" />
-        {usesRenderedPreview ? "Rendered preview" : "Live preview"}
+        <span aria-hidden="true" />{" "}
+        {rendered ? "Rendered preview" : "Live preview"}
       </span>
+      {rendered && !error ? (
+        <p className="preview-notice">
+          This browser cannot preview this effect live. Showing default
+          settings.
+        </p>
+      ) : null}
+      {error ? (
+        <div className="preview-error" role="alert">
+          {error}
+        </div>
+      ) : null}
       <div className="preview-controls">
         <button type="button" onClick={togglePlayback}>
           <span aria-hidden="true">{paused ? "▶" : "Ⅱ"}</span>

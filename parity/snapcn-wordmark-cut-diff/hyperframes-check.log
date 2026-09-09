@@ -1,0 +1,1050 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": false,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 2,
+    "infoCount": 21,
+    "findings": [
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 1.344,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": -1925.42,
+          "top": -174.25,
+          "right": 622.41,
+          "bottom": 736.53,
+          "width": 2547.83,
+          "height": 910.79
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "text": "snapcn",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.33,
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -1925.42,
+          "y": -174.25,
+          "width": 2547.83,
+          "height": 910.79
+        },
+        "firstSeen": 1.344,
+        "lastSeen": 2.078,
+        "occurrences": 4
+      },
+      {
+        "code": "escaped_container",
+        "severity": "warning",
+        "time": 1.344,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -1925.42,
+          "top": -95.21,
+          "right": 844.27,
+          "bottom": 657.49,
+          "width": 2769.69,
+          "height": 752.7
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "snapcn",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 4.07,
+          "top": 0.59,
+          "right": 1283.13,
+          "bottom": 715.57,
+          "width": 1279.05,
+          "height": 714.98
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -1925.42,
+          "y": -95.21,
+          "width": 2769.69,
+          "height": 752.7
+        },
+        "firstSeen": 1.344,
+        "lastSeen": 2.078,
+        "occurrences": 4
+      },
+      {
+        "code": "escaped_container",
+        "severity": "warning",
+        "time": 1.344,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -1925.42,
+          "top": -95.21,
+          "right": 844.27,
+          "bottom": 657.49,
+          "width": 2769.69,
+          "height": 752.7
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "text": "snapcn",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 4.07,
+          "top": 0.59,
+          "right": 1283.13,
+          "bottom": 715.57,
+          "width": 1279.05,
+          "height": 714.98
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -1925.42,
+          "y": -95.21,
+          "width": 2769.69,
+          "height": 752.7
+        },
+        "firstSeen": 1.344,
+        "lastSeen": 2.078,
+        "occurrences": 4
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.122,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -75.51,
+          "top": 270.25,
+          "right": 1415.37,
+          "bottom": 802.38,
+          "width": 1490.87,
+          "height": 532.13
+        },
+        "containerSelector": "#root",
+        "text": "snapcn",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 75.51,
+          "right": 135.37,
+          "bottom": 82.38
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -75.51,
+          "y": 270.25,
+          "width": 1490.87,
+          "height": 532.13
+        },
+        "firstSeen": 0.122,
+        "lastSeen": 0.122,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.122,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 0,
+          "top": 49.66,
+          "right": 1280,
+          "bottom": 765.16,
+          "width": 1280,
+          "height": 715.51
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "bottom": 47.42
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": 0,
+          "y": 49.66,
+          "width": 1280,
+          "height": 715.51
+        },
+        "firstSeen": 0.122,
+        "lastSeen": 0.122,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.367,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -75.51,
+          "top": 237.45,
+          "right": 1415.37,
+          "bottom": 769.58,
+          "width": 1490.87,
+          "height": 532.13
+        },
+        "containerSelector": "#root",
+        "text": "snapcn",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 75.51,
+          "right": 135.37,
+          "bottom": 49.58
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -75.51,
+          "y": 237.45,
+          "width": 1490.87,
+          "height": 532.13
+        },
+        "firstSeen": 0.367,
+        "lastSeen": 0.367,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.367,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 0,
+          "top": 16.86,
+          "right": 1280,
+          "bottom": 732.36,
+          "width": 1280,
+          "height": 715.51
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "bottom": 14.62
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": 0,
+          "y": 16.86,
+          "width": 1280,
+          "height": 715.51
+        },
+        "firstSeen": 0.367,
+        "lastSeen": 0.367,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.611,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -75.51,
+          "top": 226.87,
+          "right": 1415.37,
+          "bottom": 759,
+          "width": 1490.87,
+          "height": 532.13
+        },
+        "containerSelector": "#root",
+        "text": "snapcn",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 75.51,
+          "right": 135.37,
+          "bottom": 39
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -75.51,
+          "y": 226.87,
+          "width": 1490.87,
+          "height": 532.13
+        },
+        "firstSeen": 0.611,
+        "lastSeen": 0.611,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.611,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 0,
+          "top": 6.28,
+          "right": 1280,
+          "bottom": 721.78,
+          "width": 1280,
+          "height": 715.51
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "bottom": 4.04
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": 0,
+          "y": 6.28,
+          "width": 1280,
+          "height": 715.51
+        },
+        "firstSeen": 0.611,
+        "lastSeen": 0.611,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.856,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -76.96,
+          "top": 222.82,
+          "right": 1413.91,
+          "bottom": 754.96,
+          "width": 1490.87,
+          "height": 532.13
+        },
+        "containerSelector": "#root",
+        "text": "snapcn",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 76.96,
+          "right": 133.91,
+          "bottom": 34.96
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -76.96,
+          "y": 222.82,
+          "width": 1490.87,
+          "height": 532.13
+        },
+        "firstSeen": 0.856,
+        "lastSeen": 0.856,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.1,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -101.15,
+          "top": 222.82,
+          "right": 1389.72,
+          "bottom": 754.96,
+          "width": 1490.87,
+          "height": 532.13
+        },
+        "containerSelector": "#root",
+        "text": "snapcn",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 101.15,
+          "right": 109.72,
+          "bottom": 34.96
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -101.15,
+          "y": 222.82,
+          "width": 1490.87,
+          "height": 532.13
+        },
+        "firstSeen": 1.1,
+        "lastSeen": 1.1,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.1,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -25.64,
+          "top": 2.23,
+          "right": 1254.36,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 25.64
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -25.64,
+          "y": 2.23,
+          "width": 1280,
+          "height": 715.51
+        },
+        "firstSeen": 1.1,
+        "lastSeen": 1.1,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.344,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1925.42,
+          "top": -174.25,
+          "right": 622.41,
+          "bottom": 736.53,
+          "width": 2547.83,
+          "height": 910.79
+        },
+        "containerSelector": "#root",
+        "text": "snapcn",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1925.42,
+          "top": 174.25,
+          "bottom": 16.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -1925.42,
+          "y": -174.25,
+          "width": 2547.83,
+          "height": 910.79
+        },
+        "firstSeen": 1.344,
+        "lastSeen": 1.344,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.344,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1925.42,
+          "top": -174.25,
+          "right": 622.41,
+          "bottom": 736.53,
+          "width": 2547.83,
+          "height": 910.79
+        },
+        "containerSelector": "#root",
+        "text": "snapcn",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1925.42,
+          "top": 174.25,
+          "bottom": 16.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -1925.42,
+          "y": -174.25,
+          "width": 2547.83,
+          "height": 910.79
+        },
+        "firstSeen": 1.344,
+        "lastSeen": 1.344,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.344,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 4.07,
+          "top": 0.59,
+          "right": 1283.13,
+          "bottom": 715.57,
+          "width": 1279.05,
+          "height": 714.98
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "right": 3.13
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": 4.07,
+          "y": 0.59,
+          "width": 1279.05,
+          "height": 714.98
+        },
+        "firstSeen": 1.344,
+        "lastSeen": 1.344,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.589,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1935.83,
+          "top": -177.47,
+          "right": 618.38,
+          "bottom": 735.6,
+          "width": 2554.21,
+          "height": 913.07
+        },
+        "containerSelector": "#root",
+        "text": "snapcn",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1935.83,
+          "top": 177.47,
+          "bottom": 15.6
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -1935.83,
+          "y": -177.47,
+          "width": 2554.21,
+          "height": 913.07
+        },
+        "firstSeen": 1.589,
+        "lastSeen": 1.589,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.589,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1935.83,
+          "top": -177.47,
+          "right": 618.38,
+          "bottom": 735.6,
+          "width": 2554.21,
+          "height": 913.07
+        },
+        "containerSelector": "#root",
+        "text": "snapcn",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1935.83,
+          "top": 177.47,
+          "bottom": 15.6
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -1935.83,
+          "y": -177.47,
+          "width": 2554.21,
+          "height": 913.07
+        },
+        "firstSeen": 1.589,
+        "lastSeen": 1.589,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.589,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -1.5,
+          "top": -2.19,
+          "right": 1280.75,
+          "bottom": 714.58,
+          "width": 1282.26,
+          "height": 716.77
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "top": 4.42
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -1.5,
+          "y": -2.19,
+          "width": 1282.26,
+          "height": 716.77
+        },
+        "firstSeen": 1.589,
+        "lastSeen": 1.589,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.833,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -2015.92,
+          "top": -194.75,
+          "right": 613.09,
+          "bottom": 745.05,
+          "width": 2629.01,
+          "height": 939.81
+        },
+        "containerSelector": "#root",
+        "text": "snapcn",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 2015.92,
+          "top": 194.75,
+          "bottom": 25.05
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -2015.92,
+          "y": -194.75,
+          "width": 2629.01,
+          "height": 939.81
+        },
+        "firstSeen": 1.833,
+        "lastSeen": 1.833,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.833,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -2015.92,
+          "top": -194.75,
+          "right": 613.09,
+          "bottom": 745.05,
+          "width": 2629.01,
+          "height": 939.81
+        },
+        "containerSelector": "#root",
+        "text": "snapcn",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 2015.92,
+          "top": 194.75,
+          "bottom": 25.05
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -2015.92,
+          "y": -194.75,
+          "width": 2629.01,
+          "height": 939.81
+        },
+        "firstSeen": 1.833,
+        "lastSeen": 1.833,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.833,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -24.94,
+          "top": -14.34,
+          "right": 1294.87,
+          "bottom": 723.42,
+          "width": 1319.81,
+          "height": 737.76
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 24.94,
+          "right": 14.87,
+          "top": 16.57,
+          "bottom": 5.68
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -24.94,
+          "y": -14.34,
+          "width": 1319.81,
+          "height": 737.76
+        },
+        "firstSeen": 1.833,
+        "lastSeen": 1.833,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.078,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -2297.15,
+          "top": -266.88,
+          "right": 595.96,
+          "bottom": 767.34,
+          "width": 2893.1,
+          "height": 1034.21
+        },
+        "containerSelector": "#root",
+        "text": "snapcn",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 2297.15,
+          "top": 266.88,
+          "bottom": 47.34
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -2297.15,
+          "y": -266.88,
+          "width": 2893.1,
+          "height": 1034.21
+        },
+        "firstSeen": 2.078,
+        "lastSeen": 2.078,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.078,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -2297.15,
+          "top": -266.88,
+          "right": 595.96,
+          "bottom": 767.34,
+          "width": 2893.1,
+          "height": 1034.21
+        },
+        "containerSelector": "#root",
+        "text": "snapcn",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 2297.15,
+          "top": 266.88,
+          "bottom": 47.34
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -2297.15,
+          "y": -266.88,
+          "width": 2893.1,
+          "height": 1034.21
+        },
+        "firstSeen": 2.078,
+        "lastSeen": 2.078,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 2.078,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -106.17,
+          "top": -68.34,
+          "right": 1346.22,
+          "bottom": 743.53,
+          "width": 1452.38,
+          "height": 811.87
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 106.17,
+          "right": 66.22,
+          "top": 70.57,
+          "bottom": 25.79
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -106.17,
+          "y": -68.34,
+          "width": 1452.38,
+          "height": 811.87
+        },
+        "firstSeen": 2.078,
+        "lastSeen": 2.078,
+        "occurrences": 1
+      }
+    ],
+    "duration": 2.2,
+    "samples": [
+      0.122,
+      0.367,
+      0.611,
+      0.856,
+      1.1,
+      1.344,
+      1.589,
+      1.833,
+      2.078
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 24,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.122,
+      0.611,
+      1.1,
+      1.589,
+      2.078
+    ],
+    "checked": 0,
+    "passed": 0
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.32",
+    "updateAvailable": true
+  }
+}

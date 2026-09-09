@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Search text","default":"remocn"},{"id":"fieldWidth","type":"number","label":"Field width","default":464,"min":320,"max":640,"step":8},{"id":"fontSize","type":"number","label":"Font size","default":34,"min":18,"max":54,"step":1},{"id":"framesPerCharacter","type":"number","label":"Frames per character","default":4,"min":1,"max":12,"step":1},{"id":"showPanel","type":"boolean","label":"Graphic panel","default":true},{"id":"showGuides","type":"boolean","label":"Construction guides","default":true},{"id":"color","type":"color","label":"Text and markers","default":"#26232b"},{"id":"fieldColor","type":"color","label":"Search field","default":"#ffffff"},{"id":"ringColor","type":"color","label":"Circles and search icon","default":"#cbc5cf"},{"id":"panelColor","type":"color","label":"Panel color","default":"#a800b7"},{"id":"accentColor","type":"color","label":"Graphic accents","default":"#e8f99a"},{"id":"backgroundColor","type":"color","label":"Background","default":"#f5f1f5"},{"id":"reducedMotion","type":"boolean","label":"Static final pose","default":false},{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: transparent; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:transparent; }
+
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="search-reveal" data-start="0" data-duration="3.6" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="3.6" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
+      </div>
+    </div>
+    <script src="./search-reveal.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="search-reveal"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="search-reveal"] [data-hyfrme-clock]', {
+        frame: 108,
+        duration: 3.6,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(107, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["search-reveal"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

@@ -24,25 +24,85 @@
     "background": "#F5F4EF"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "55c6c643409cd3094f99b1bed63957c9141376d225e3ffe061c44bbd8d011268",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.995143,
-    "minSsim": 0.992978,
-    "p05Ssim": 0.993353,
-    "p95Ssim": 0.999109,
+    "meanSsim": 0.9960262000000019,
+    "minSsim": 0.994703,
+    "p05Ssim": 0.99472,
+    "p95Ssim": 0.999322,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "hyperframes": "full check reported 2 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "claude-chat",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+          "source": "registry/remocn/claude-chat/index.tsx",
+          "config": "registry/remocn/claude-chat/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div > div:nth-of-type(1) > span > span:nth-of-type(2)",
+          "text": "Try: draft an email · summarize a doc · plan your ",
+          "fg": "rgb(163,160,151)",
+          "bg": "rgb(246,245,241)",
+          "ratio": 2.4,
+          "requiredRatio": 4.5
+        },
+        "reason": "The pinned Claude Chat light theme defines placeholder #A3A097 on a white card (index.tsx:38-44) and applies that color to its default Try prompt (line 312). Its unchanged source palette yields 2.4:1 during entrance and 2.61:1 once settled. All 150 source frames match with exact alpha and RGB SSIM mean 0.996026/min 0.994703; retain the full contrast findings in the audit."
+      },
+      {
+        "slug": "claude-chat",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+          "source": "registry/remocn/claude-chat/index.tsx",
+          "config": "registry/remocn/claude-chat/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div > div:nth-of-type(1) > span > span:nth-of-type(2)",
+          "text": "Try: draft an email · summarize a doc · plan your ",
+          "fg": "rgb(163,160,151)",
+          "bg": "rgb(255,255,255)",
+          "ratio": 2.61,
+          "requiredRatio": 4.5
+        },
+        "reason": "The pinned Claude Chat light theme defines placeholder #A3A097 on a white card (index.tsx:38-44) and applies that color to its default Try prompt (line 312). Its unchanged source palette yields 2.4:1 during entrance and 2.61:1 once settled. All 150 source frames match with exact alpha and RGB SSIM mean 0.996026/min 0.994703; retain the full contrast findings in the audit."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.473",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/claude-chat/remocn.mp4",
+    "referenceVideo": "public/previews/claude-chat/reference.mp4",
     "hyperframesVideo": "public/previews/claude-chat/hyperframes.mp4",
-    "summary": "parity/claude-chat-diff/summary.json"
+    "thumbnail": "public/previews/claude-chat/thumbnail.png",
+    "summary": "parity/claude-chat-diff/summary.json",
+    "perFrameSsim": "parity/claude-chat-diff/ssim.log",
+    "hyperframesCheck": "parity/claude-chat-diff/hyperframes-check.log",
+    "worstFrame": "parity/claude-chat-diff/worst-frame.png",
+    "referenceAlpha": "parity/claude-chat-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/claude-chat-diff/hyperframes-alpha.framemd5"
   }
 }

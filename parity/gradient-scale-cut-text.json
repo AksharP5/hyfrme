@@ -2,7 +2,7 @@
   "slug": "gradient-scale-cut-text",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/gradient-scale-cut-text/index.tsx",
     "config": "registry/remocn/gradient-scale-cut-text/config.ts",
     "license": "MIT"
@@ -32,25 +32,82 @@
     "background": "#000000"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "7e3da7d91235e1e360e7decf39f232a4adaae84a97a1c766da963cc85d219257",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 36,
-    "meanSsim": 0.997496,
-    "minSsim": 0.996347,
-    "p05Ssim": 0.99647,
-    "p95Ssim": 0.999127,
+    "meanSsim": 0.9962815555555563,
+    "minSsim": 0.98916,
+    "p05Ssim": 0.989169,
+    "p95Ssim": 0.999774,
+    "alpha": {
+      "frameCount": 36,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check reported 6 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "gradient-scale-cut-text",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/gradient-scale-cut-text/index.tsx",
+          "config": "registry/remocn/gradient-scale-cut-text/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "containerSelector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+          "text": "Introducing"
+        },
+        "reason": "The pinned TextLayer deliberately overlays its ghost text with the same glyphs painted through a transparent background-clip:text gradient and reveal mask. The inspector treats that overlay as opaque. Preserve this source layering; RGB SSIM is mean 0.996167/min 0.988119 and all 36 alpha  planes match exactly."
+      },
+      {
+        "slug": "gradient-scale-cut-text",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/gradient-scale-cut-text/index.tsx",
+          "config": "registry/remocn/gradient-scale-cut-text/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div > span:nth-of-type(1)",
+          "text": "Introducing",
+          "fg": "rgb(23,11,10)",
+          "bg": "rgb(0,0,0)",
+          "ratio": 1.09,
+          "requiredRatio": 3
+        },
+        "reason": "The pinned source explicitly paints its initial ghost copy #170b0a on #000000, beneath the separate animated gradient copy. The low-contrast ghost is part of the reveal design. Preserve the source colors; RGB SSIM is mean 0.996167/min 0.988119 and all 36 alpha  planes match exactly."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/gradient-scale-cut-text/remocn.mp4",
+    "referenceVideo": "public/previews/gradient-scale-cut-text/reference.mp4",
     "hyperframesVideo": "public/previews/gradient-scale-cut-text/hyperframes.mp4",
-    "summary": "parity/gradient-scale-cut-text-diff/summary.json"
+    "thumbnail": "public/previews/gradient-scale-cut-text/thumbnail.png",
+    "summary": "parity/gradient-scale-cut-text-diff/summary.json",
+    "perFrameSsim": "parity/gradient-scale-cut-text-diff/ssim.log",
+    "hyperframesCheck": "parity/gradient-scale-cut-text-diff/hyperframes-check.log",
+    "worstFrame": "parity/gradient-scale-cut-text-diff/worst-frame.png",
+    "referenceAlpha": "parity/gradient-scale-cut-text-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/gradient-scale-cut-text-diff/hyperframes-alpha.framemd5"
   }
 }

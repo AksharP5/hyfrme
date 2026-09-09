@@ -1,0 +1,66 @@
+{
+  "slug": "snapcn-logo-flicker",
+  "origin": {
+    "repository": "https://github.com/snapcndev/snapcn",
+    "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+    "source": "registry/snap-cn/logo-flicker/index.tsx",
+    "config": "registry/snap-cn/logo-flicker/config.ts",
+    "license": "MIT",
+    "entry": "registry/snap-cn/logo-flicker/index.tsx"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 100,
+    "props": {
+      "brandName": "snapcn",
+      "logoSrc": "/logo/snapcn-white.png",
+      "flipInterval": 2,
+      "background": "#050505",
+      "fontFamily": "Default",
+      "speed": 1
+    },
+    "background": "#050505"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "3ef3f02c9d760edc1bbdbc2eaec7a27f1f30eaa801230b339b6deafceb3e2c27",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 100,
+    "meanSsim": 0.9991267100000001,
+    "minSsim": 0.993447,
+    "p05Ssim": 0.996885,
+    "p95Ssim": 0.999943,
+    "alpha": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.473",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/snapcn-logo-flicker/reference.mp4",
+    "hyperframesVideo": "public/previews/snapcn-logo-flicker/hyperframes.mp4",
+    "thumbnail": "public/previews/snapcn-logo-flicker/thumbnail.png",
+    "summary": "parity/snapcn-logo-flicker-diff/summary.json",
+    "perFrameSsim": "parity/snapcn-logo-flicker-diff/ssim.log",
+    "hyperframesCheck": "parity/snapcn-logo-flicker-diff/hyperframes-check.log",
+    "worstFrame": "parity/snapcn-logo-flicker-diff/worst-frame.png",
+    "referenceAlpha": "parity/snapcn-logo-flicker-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/snapcn-logo-flicker-diff/hyperframes-alpha.framemd5"
+  }
+}

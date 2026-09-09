@@ -112,7 +112,10 @@ for (const item of registry.items) {
   }
 
   await ensure(
-    resolve(root, "public", "previews", item.name, "remocn.mp4"),
+    resolve(
+      root,
+      parity.artifacts.referenceVideo ?? parity.artifacts.remocnVideo,
+    ),
     `${item.name} reference preview`,
   );
   await ensure(

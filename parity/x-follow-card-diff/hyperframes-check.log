@@ -1,0 +1,296 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": false,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 3.75,
+        "selector": "#x-follow-card-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 833.95,
+          "top": 250.5,
+          "right": 882.05,
+          "bottom": 269.5,
+          "width": 48.09,
+          "height": 19
+        },
+        "containerSelector": "#x-follow-card-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "text": "Follow",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/x-follow-card.html",
+        "bbox": {
+          "x": 833.95,
+          "y": 250.5,
+          "width": 48.09,
+          "height": 19
+        },
+        "firstSeen": 3.75,
+        "lastSeen": 3.875,
+        "occurrences": 2
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 3.972,
+        "selector": "#x-follow-card-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 832.69,
+          "top": 250,
+          "right": 883.31,
+          "bottom": 270,
+          "width": 50.63,
+          "height": 20
+        },
+        "containerSelector": "#x-follow-card-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "text": "Follow",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/x-follow-card.html",
+        "bbox": {
+          "x": 832.69,
+          "y": 250,
+          "width": 50.63,
+          "height": 20
+        },
+        "firstSeen": 3.972,
+        "lastSeen": 3.972,
+        "occurrences": 1
+      }
+    ],
+    "duration": 5.5,
+    "samples": [
+      0.306,
+      0.917,
+      1.528,
+      2.139,
+      2.75,
+      3.361,
+      3.972,
+      4.583,
+      5.194
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 2,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": false,
+    "errorCount": 7,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 3:1; WCAG AA requires 4.5:1.",
+        "text": "remocn.dev",
+        "fg": "rgb(29,155,240)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 3,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(23,123,191)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div > span:nth-of-type(2) > span",
+        "dataAttributes": {},
+        "sourceFile": "compositions/x-follow-card.html",
+        "bbox": {
+          "x": 479.71881103515625,
+          "y": 408.3751220703125,
+          "width": 84.10931396484375,
+          "height": 19
+        },
+        "time": 1.528
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 3:1; WCAG AA requires 4.5:1.",
+        "text": "Follow",
+        "fg": "rgb(255,255,255)",
+        "bg": "rgb(29,155,240)",
+        "ratio": 3,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(46,46,46)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/x-follow-card.html",
+        "bbox": {
+          "x": 799.9999389648438,
+          "y": 240.00015258789062,
+          "width": 115.99993896484375,
+          "height": 40
+        },
+        "time": 1.528
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 3:1; WCAG AA requires 4.5:1.",
+        "text": "remocn.dev",
+        "fg": "rgb(29,155,240)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 3,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(23,123,191)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div > span:nth-of-type(2) > span",
+        "dataAttributes": {},
+        "sourceFile": "compositions/x-follow-card.html",
+        "bbox": {
+          "x": 479.71875,
+          "y": 408.375,
+          "width": 84.109375,
+          "height": 19
+        },
+        "time": 2.75
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 3:1; WCAG AA requires 4.5:1.",
+        "text": "Follow",
+        "fg": "rgb(255,255,255)",
+        "bg": "rgb(29,155,240)",
+        "ratio": 3,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(46,46,46)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/x-follow-card.html",
+        "bbox": {
+          "x": 800,
+          "y": 240,
+          "width": 116,
+          "height": 40
+        },
+        "time": 2.75
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 3:1; WCAG AA requires 4.5:1.",
+        "text": "remocn.dev",
+        "fg": "rgb(29,155,240)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 3,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(23,123,191)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div > span:nth-of-type(2) > span",
+        "dataAttributes": {},
+        "sourceFile": "compositions/x-follow-card.html",
+        "bbox": {
+          "x": 479.71875,
+          "y": 408.375,
+          "width": 84.109375,
+          "height": 19
+        },
+        "time": 3.972
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 1.01:1; WCAG AA requires 4.5:1.",
+        "text": "Follow",
+        "fg": "rgb(255,255,255)",
+        "bg": "rgb(253,254,255)",
+        "ratio": 1.01,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(117,117,117)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/x-follow-card.html",
+        "bbox": {
+          "x": 800,
+          "y": 240,
+          "width": 116,
+          "height": 40
+        },
+        "time": 3.972
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 3:1; WCAG AA requires 4.5:1.",
+        "text": "remocn.dev",
+        "fg": "rgb(29,155,240)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 3,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(23,123,191)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div > span:nth-of-type(2) > span",
+        "dataAttributes": {},
+        "sourceFile": "compositions/x-follow-card.html",
+        "bbox": {
+          "x": 479.71875,
+          "y": 408.375,
+          "width": 84.109375,
+          "height": 19
+        },
+        "time": 5.194
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      0.306,
+      1.528,
+      2.75,
+      3.972,
+      5.194
+    ],
+    "checked": 69,
+    "passed": 62
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.32",
+    "updateAvailable": true
+  }
+}

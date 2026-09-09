@@ -1,23 +1,19 @@
 "use client";
 
-import { Img } from "remotion";
-import { Stage, type StageProps } from "@/registry/remocn/stage";
+import { Img, staticFile } from "remotion";
+import { Stage } from "@/registry/remocn/stage";
 import {
   STAGE_PRESETS,
-  type StagePreset,
+  type StageExampleProps,
 } from "@/components/docs/examples/stage-example";
 
-export interface HyfrmeStageExampleProps extends Omit<
-  StageProps,
-  "children" | "contentSize" | "moves"
-> {
-  preset?: StagePreset;
+export interface HyfrmeStageExampleProps extends StageExampleProps {
   imageUrl?: string;
 }
 
 export function HyfrmeStageExampleScene({
   preset = "smooth-descent",
-  imageUrl = "../assets/stage-remocn-components.webp",
+  imageUrl = staticFile("stage-remocn-components.webp"),
   shake = 0,
   seed = "remocn-smooth-descent",
   ...stageProps

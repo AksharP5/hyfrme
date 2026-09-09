@@ -2,7 +2,7 @@
   "slug": "inline-pill-takeover",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/inline-pill-takeover/index.tsx",
     "config": "registry/remocn/inline-pill-takeover/config.ts",
     "license": "MIT"
@@ -37,25 +37,43 @@
     "background": "radial-gradient(circle at 50% 108%, #ffd77a 0%, #ff6840 31%, #f13d21 78%)"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "ff0039fc820bcc47e3fad2b517e70666673d9cf581d6407b60712df3954878d4",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 45,
-    "meanSsim": 0.994666,
-    "minSsim": 0.993099,
-    "p05Ssim": 0.99321,
-    "p95Ssim": 0.995929,
+    "meanSsim": 0.9992808666666668,
+    "minSsim": 0.996897,
+    "p05Ssim": 0.996931,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 45,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/inline-pill-takeover/remocn.mp4",
+    "referenceVideo": "public/previews/inline-pill-takeover/reference.mp4",
     "hyperframesVideo": "public/previews/inline-pill-takeover/hyperframes.mp4",
-    "summary": "parity/inline-pill-takeover-diff/summary.json"
+    "thumbnail": "public/previews/inline-pill-takeover/thumbnail.png",
+    "summary": "parity/inline-pill-takeover-diff/summary.json",
+    "perFrameSsim": "parity/inline-pill-takeover-diff/ssim.log",
+    "hyperframesCheck": "parity/inline-pill-takeover-diff/hyperframes-check.log",
+    "worstFrame": "parity/inline-pill-takeover-diff/worst-frame.png",
+    "referenceAlpha": "parity/inline-pill-takeover-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/inline-pill-takeover-diff/hyperframes-alpha.framemd5"
   }
 }

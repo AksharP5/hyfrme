@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"are abandoned"},{"id":"fontSize","type":"number","label":"Font size","default":96,"min":24,"max":180,"step":1},{"id":"rise","type":"number","label":"Vertical travel","default":96,"min":0,"max":300,"step":1},{"id":"driftLeft","type":"number","label":"Leftward travel","default":16,"min":0,"max":120,"step":1},{"id":"shadowSoftness","type":"number","label":"Shadow softness","default":130,"min":0,"max":280,"step":2},{"id":"color","type":"color","label":"Text color","default":"#aaa6b5"},{"id":"backgroundColor","type":"color","label":"Background color","default":"#030012"},{"id":"shadowColor","type":"color","label":"Shadow color","default":"#030012"},{"id":"fontWeight","type":"string","label":"Font weight","default":"700","options":["400","500","600","700"]},{"id":"speed","type":"number","label":"Speed","default":1}]'>
+<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"are abandoned"},{"id":"fontSize","type":"number","label":"Font size","default":96,"min":24,"max":180,"step":1},{"id":"rise","type":"number","label":"Vertical travel","default":96,"min":0,"max":300,"step":1},{"id":"driftLeft","type":"number","label":"Leftward travel","default":16,"min":0,"max":120,"step":1},{"id":"shadowSoftness","type":"number","label":"Shadow softness","default":130,"min":0,"max":280,"step":2},{"id":"color","type":"color","label":"Text color","default":"#aaa6b5"},{"id":"backgroundColor","type":"color","label":"Background color","default":"#030012"},{"id":"shadowColor","type":"color","label":"Shadow color","default":"#030012"},{"id":"fontWeight","type":"string","label":"Font weight","default":"700","options":["400","500","600","700"]},{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25}]'>
   <head>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <style>
-      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
 
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
 
 
 
@@ -13,8 +13,9 @@
 
       * { box-sizing: border-box; }
       html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #030012; }
-      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
-      #hyfrme-source-root { position: absolute; inset: 0; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#030012; }
+
 
     </style>
   </head>
@@ -23,13 +24,14 @@
       <span hidden data-layout-ignore data-hyfrme-clock></span>
 
       <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="1.2333333333333334" data-track-index="0">
-        <div id="hyfrme-source-root"></div>
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
       </div>
     </div>
-
     <script src="./shadow-sweep-text.runtime.js"></script>
     <script>
       window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
       const clock = document.querySelector('[data-composition-id="shadow-sweep-text"] [data-hyfrme-clock]');
       clock.frame = 0;
       const timeline = gsap.timeline({ paused: true });
@@ -37,10 +39,12 @@
         frame: 37,
         duration: 1.2333333333333334,
         ease: "none",
-        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(36, Math.round(clock.frame)))),
+        onUpdate: () => renderFrame(Math.max(0, Math.min(36, Math.round(clock.frame)))),
       });
 
       window.__timelines["shadow-sweep-text"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
     </script>
   </body>
 </html>

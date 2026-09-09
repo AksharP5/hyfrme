@@ -1,0 +1,119 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "escaped_container",
+        "severity": "warning",
+        "time": 0.556,
+        "selector": "#stage-source-root > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 292.12,
+          "top": -6559.34,
+          "right": 1143.21,
+          "bottom": 150.59,
+          "width": 851.09,
+          "height": 6709.92
+        },
+        "containerSelector": "#stage-source-root > div:nth-of-type(1) > div:nth-of-type(3)",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/stage.html",
+        "bbox": {
+          "x": 292.12,
+          "y": -6559.34,
+          "width": 851.09,
+          "height": 6709.92
+        },
+        "firstSeen": 0.556,
+        "lastSeen": 9.444,
+        "occurrences": 7
+      }
+    ],
+    "duration": 10,
+    "samples": [
+      0.556,
+      1.667,
+      2.778,
+      3.889,
+      5,
+      6.111,
+      7.222,
+      8.333,
+      9.444
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 1,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.556,
+      2.778,
+      5,
+      7.222,
+      9.444
+    ],
+    "checked": 0,
+    "passed": 0
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.32",
+    "updateAvailable": true
+  }
+}

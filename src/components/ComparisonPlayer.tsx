@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 type ViewMode = "side-by-side" | "wipe";
 
 type ComparisonPlayerProps = {
+  referenceLabel: string;
   referenceSrc: string;
   portSrc: string;
   square?: boolean;
@@ -12,6 +13,7 @@ type ComparisonPlayerProps = {
 const formatTime = (seconds: number) => `${seconds.toFixed(2)}s`;
 
 export function ComparisonPlayer({
+  referenceLabel,
   referenceSrc,
   portSrc,
   square = false,
@@ -158,7 +160,7 @@ export function ComparisonPlayer({
       onEnded={kind === "port" ? pauseBoth : undefined}
       aria-label={
         kind === "reference"
-          ? "Remocn reference render"
+          ? `${referenceLabel} reference render`
           : "HyperFrames port render"
       }
     />
@@ -193,7 +195,7 @@ export function ComparisonPlayer({
           <div className="render-panel">
             <div className="render-label">
               <span>Reference</span>
-              <strong>Remocn</strong>
+              <strong>{referenceLabel}</strong>
             </div>
             {video("reference")}
           </div>
@@ -207,7 +209,7 @@ export function ComparisonPlayer({
         </div>
       ) : (
         <div className="wipe-view">
-          <div className="wipe-label wipe-label-left">Remocn</div>
+          <div className="wipe-label wipe-label-left">{referenceLabel}</div>
           <div className="wipe-label wipe-label-right">HyperFrames</div>
           {video("reference", "wipe-video")}
           {video("port", "wipe-video wipe-video-port", {

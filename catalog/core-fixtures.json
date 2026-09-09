@@ -1,5 +1,172 @@
 [
   {
+    "slug": "cursor-gravity",
+    "catalogFamily": "core",
+    "title": "Cursor Gravity",
+    "description": "A rounded triangular cursor tugs a button out of the screen edge with pulsed elastic resistance.",
+    "componentName": "CursorGravity",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "5a5f3a7d2524c01d050e20bfb8859c93f2b3f663",
+      "source": "registry/remocn/cursor-gravity/index.tsx",
+      "config": "registry/remocn/cursor-gravity/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 180,
+      "props": {
+        "label": "Create something",
+        "tension": 1,
+        "cursorColor": "#fffaf0",
+        "color": "#fffaf0",
+        "textColor": "#32153c",
+        "backgroundColor": "#a800b7",
+        "speed": 1
+      },
+      "background": "transparent"
+    }
+  },
+  {
+    "slug": "lens-zoom",
+    "catalogFamily": "core",
+    "title": "Lens Zoom",
+    "description": "A hard cut disguised as a lens punch-in: barrel distortion, zoom blur, chromatic split and camera shake around the splice.",
+    "componentName": "LensZoomExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/lens-zoom/index.tsx",
+      "entry": "components/docs/examples/lens-zoom-example.tsx",
+      "config": "registry/remocn/lens-zoom/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 112,
+      "props": {
+        "lensSteps": 9,
+        "blurSamples": 7,
+        "shakeAmount": 50,
+        "shakeTranslatePx": 73
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "radial-burst",
+    "catalogFamily": "core",
+    "title": "Radial Burst",
+    "description": "Sculptural ribbons twist into a tilted ring and sweep outward through contour echoes for an expressive product introduction.",
+    "componentName": "RadialBurst",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/radial-burst/index.tsx",
+      "config": "registry/remocn/radial-burst/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 120,
+      "props": {
+        "segments": 8,
+        "radius": 210,
+        "thickness": 30,
+        "rotation": 135,
+        "intensity": 1,
+        "twist": 110,
+        "echoes": 3,
+        "color": "#ffffff",
+        "accentColor": "#f4e4a7",
+        "backgroundColor": "#a800b7",
+        "loop": false,
+        "speed": 1
+      },
+      "background": "transparent"
+    }
+  },
+  {
+    "slug": "stage",
+    "catalogFamily": "core",
+    "title": "Stage",
+    "description": "Place a screenshot, recording, or long page on a perspective studio plane and direct an integrated camera across it with timeline keyframes.",
+    "componentName": "StageExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/stage/index.tsx",
+      "entry": "components/docs/examples/stage-example.tsx",
+      "config": "registry/remocn/stage/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 300,
+      "props": {
+        "preset": "smooth-descent",
+        "shake": 0,
+        "seed": "remocn-smooth-descent",
+        "backdrop": "linear-gradient(145deg, #17181d 0%, #09090b 72%)",
+        "rotateX": 14,
+        "rotateY": -20,
+        "perspective": 900,
+        "scale": 0.86,
+        "radius": 1.4,
+        "reflection": 0.24,
+        "shadow": 0.7,
+        "light": 0.55,
+        "imageUrl": "../assets/remocn-additions/stage-remocn-components.webp"
+      },
+      "background": "transparent"
+    }
+  },
+  {
+    "slug": "search-reveal",
+    "catalogFamily": "core",
+    "title": "Search Reveal",
+    "description": "Expanding construction circles snap into a search pill, type editable text, and reveal an abstract graphic panel.",
+    "componentName": "SearchReveal",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/search-reveal/index.tsx",
+      "config": "registry/remocn/search-reveal/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 108,
+      "props": {
+        "text": "remocn",
+        "fieldWidth": 464,
+        "fontSize": 34,
+        "framesPerCharacter": 4,
+        "showPanel": true,
+        "showGuides": true,
+        "color": "#26232b",
+        "fieldColor": "#ffffff",
+        "ringColor": "#cbc5cf",
+        "panelColor": "#a800b7",
+        "accentColor": "#e8f99a",
+        "backgroundColor": "#f5f1f5",
+        "reducedMotion": false,
+        "speed": 1
+      },
+      "background": "transparent"
+    }
+  },
+  {
     "slug": "chat-to-preview-layout",
     "catalogFamily": "core",
     "title": "Chat to Preview Layout",
@@ -127,7 +294,7 @@
       "fps": 30,
       "durationInFrames": 180,
       "props": {
-        "text": "ship · build · animate · ",
+        "text": "ship \u00b7 build \u00b7 animate \u00b7 ",
         "fontSize": 120,
         "color": "#171717",
         "fontWeight": "700",
@@ -463,7 +630,7 @@
     "slug": "confetti",
     "catalogFamily": "core",
     "title": "Confetti",
-    "description": "Deterministic confetti burst for Remotion — seeded particles with gravity, spin, and flutter so every render is identical. Fire it on any frame as a celebratory overlay.",
+    "description": "Deterministic confetti burst for Remotion \u2014 seeded particles with gravity, spin, and flutter so every render is identical. Fire it on any frame as a celebratory overlay.",
     "componentName": "Confetti",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -545,43 +712,6 @@
     }
   },
   {
-    "slug": "stage",
-    "catalogFamily": "core",
-    "title": "Stage",
-    "description": "Place a screenshot, recording, or long page on a perspective studio plane and direct an integrated camera across it with timeline keyframes.",
-    "componentName": "StageExampleScene",
-    "origin": {
-      "repository": "https://github.com/Remocn/remocn",
-      "commit": "0e30c226746ba4e64a959461350fab4298aa62b9",
-      "source": "registry/remocn/stage/index.tsx",
-      "entry": "components/docs/examples/stage-example.tsx",
-      "config": "registry/remocn/stage/config.ts",
-      "license": "MIT"
-    },
-    "fixture": {
-      "width": 1280,
-      "height": 720,
-      "fps": 30,
-      "durationInFrames": 300,
-      "props": {
-        "preset": "smooth-descent",
-        "shake": 0,
-        "seed": "remocn-smooth-descent",
-        "backdrop": "linear-gradient(145deg, #17181d 0%, #09090b 72%)",
-        "rotateX": 14,
-        "rotateY": -20,
-        "perspective": 900,
-        "scale": 0.86,
-        "radius": 1.4,
-        "reflection": 0.24,
-        "shadow": 0.7,
-        "light": 0.55,
-        "imageUrl": "../assets/stage-remocn-components.webp"
-      },
-      "background": "#ffffff"
-    }
-  },
-  {
     "slug": "rolodex-flip",
     "catalogFamily": "core",
     "title": "Rolodex Flip",
@@ -611,7 +741,7 @@
     "slug": "value-swap",
     "catalogFamily": "core",
     "title": "Value Swap",
-    "description": "Swaps a value in place with a vertical slide — the old value exits up as the new one enters from below while an invisible sizer keeps the width stable.",
+    "description": "Swaps a value in place with a vertical slide \u2014 the old value exits up as the new one enters from below while an invisible sizer keeps the width stable.",
     "componentName": "ValueSwapExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -1079,7 +1209,7 @@
     "slug": "claude-chat",
     "catalogFamily": "core",
     "title": "Claude Chat",
-    "description": "Animated Claude chat input — types a prompt character-by-character and the waveform button morphs into a terracotta send button the moment text appears. Warm light/dark themes.",
+    "description": "Animated Claude chat input \u2014 types a prompt character-by-character and the waveform button morphs into a terracotta send button the moment text appears. Warm light/dark themes.",
     "componentName": "ClaudeChat",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -1095,7 +1225,7 @@
       "durationInFrames": 150,
       "props": {
         "greeting": "Back at it, Dima",
-        "placeholder": "Try: draft an email · summarize a doc · plan your week",
+        "placeholder": "Try: draft an email \u00b7 summarize a doc \u00b7 plan your week",
         "prompt": "Draft a launch tweet for our new release",
         "modelName": "Opus 4.8",
         "modelTier": "Max",
@@ -1109,7 +1239,7 @@
     "slug": "chat-gpt",
     "catalogFamily": "core",
     "title": "ChatGPT",
-    "description": "Animated ChatGPT composer — types a prompt into the pill input, the blue voice button morphs into a send button, and the suggestion chips fade out. Light/dark themes.",
+    "description": "Animated ChatGPT composer \u2014 types a prompt into the pill input, the blue voice button morphs into a send button, and the suggestion chips fade out. Light/dark themes.",
     "componentName": "ChatGpt",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -1137,7 +1267,7 @@
     "slug": "v0",
     "catalogFamily": "core",
     "title": "v0",
-    "description": "Animated Vercel v0 composer — types a prompt into the dark textarea and the mic button morphs into a send button. Dark/light themes.",
+    "description": "Animated Vercel v0 composer \u2014 types a prompt into the dark textarea and the mic button morphs into a send button. Dark/light themes.",
     "componentName": "V0",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -1153,7 +1283,7 @@
       "durationInFrames": 150,
       "props": {
         "greeting": "What do you want to create?",
-        "placeholder": "Ask v0 to build…",
+        "placeholder": "Ask v0 to build\u2026",
         "prompt": "a landing page for my SaaS with pricing and testimonials",
         "modelName": "v0 Max",
         "projectName": "Project",
@@ -1166,7 +1296,7 @@
     "slug": "claude-code",
     "catalogFamily": "core",
     "title": "Claude Code",
-    "description": "Animated Claude Code CLI welcome screen — terminal window with a dashed welcome box, recent activity and what's new panels, and a prompt line that types a command with a block cursor. Dark/light themes.",
+    "description": "Animated Claude Code CLI welcome screen \u2014 terminal window with a dashed welcome box, recent activity and what's new panels, and a prompt line that types a command with a block cursor. Dark/light themes.",
     "componentName": "ClaudeCode",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -1183,7 +1313,7 @@
       "props": {
         "title": "Claude Code v2.0.0",
         "userName": "Remocn",
-        "model": "Opus 4.8 • Max 20x",
+        "model": "Opus 4.8 \u2022 Max 20x",
         "cwd": "/users/remocn/code/apps",
         "placeholder": "Try \"edit <filepath> to ...\"",
         "prompt": "edit src/theme.ts to add a dark mode toggle",
@@ -1197,7 +1327,7 @@
     "slug": "opencode",
     "catalogFamily": "core",
     "title": "OpenCode",
-    "description": "Animated OpenCode TUI welcome screen — two-tone wordmark, an input box with a blue accent bar that types a query, a model status line, and command hints. Dark/light themes.",
+    "description": "Animated OpenCode TUI welcome screen \u2014 two-tone wordmark, an input box with a blue accent bar that types a query, a model status line, and command hints. Dark/light themes.",
     "componentName": "OpenCode",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -1283,7 +1413,7 @@
     "slug": "x-follow-card",
     "catalogFamily": "core",
     "title": "X Follow Card",
-    "description": "Animated X profile follow card — spring bounce-in, staggered blur-in, a synthetic cursor that clicks Follow and flips it to Following. Light/dark, horizontal or vertical.",
+    "description": "Animated X profile follow card \u2014 spring bounce-in, staggered blur-in, a synthetic cursor that clicks Follow and flips it to Following. Light/dark, horizontal or vertical.",
     "componentName": "XFollowCard",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -1318,7 +1448,7 @@
     "slug": "x-followers-overview",
     "catalogFamily": "core",
     "title": "X Followers Overview",
-    "description": "X follow notifications cycle through as 3D flipping text — '<name> followed you · 7h' — then the total follower count pops in with a confetti burst. Hardcoded sample list (X API ready). Light/dark, horizontal or vertical.",
+    "description": "X follow notifications cycle through as 3D flipping text \u2014 '<name> followed you \u00b7 7h' \u2014 then the total follower count pops in with a confetti burst. Hardcoded sample list (X API ready). Light/dark, horizontal or vertical.",
     "componentName": "XFollowersOverview",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -2271,7 +2401,7 @@
     "slug": "shader-caustics",
     "catalogFamily": "core",
     "title": "Caustics",
-    "description": "A field of refracted light — the bright filaments light makes through a rippling surface.",
+    "description": "A field of refracted light \u2014 the bright filaments light makes through a rippling surface.",
     "componentName": "ShaderCaustics",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -2299,7 +2429,7 @@
     "slug": "shader-gem-smoke",
     "catalogFamily": "core",
     "title": "Gem Smoke",
-    "description": "Paper's Gem Smoke shader driven by the frame — smoke flowing behind and inside a glassy logo.",
+    "description": "Paper's Gem Smoke shader driven by the frame \u2014 smoke flowing behind and inside a glassy logo.",
     "componentName": "ShaderGemSmoke",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -2387,7 +2517,7 @@
     "componentName": "ReelExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+      "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
       "source": "registry/remocn/reel/index.tsx",
       "entry": "components/docs/examples/reel-example.tsx",
       "config": "registry/remocn/reel/config.ts",
@@ -2589,7 +2719,7 @@
     "slug": "camera-lens",
     "catalogFamily": "core",
     "title": "Camera Lens",
-    "description": "Put a scene behind real glass: resolution falls off toward the corners, highlights bloom through the optics, colour fringes at the edges — a screencast that reads as filmed rather than rendered.",
+    "description": "Put a scene behind real glass: resolution falls off toward the corners, highlights bloom through the optics, colour fringes at the edges \u2014 a screencast that reads as filmed rather than rendered.",
     "componentName": "CameraLensExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -2703,7 +2833,7 @@
     "slug": "pixelate-region",
     "catalogFamily": "core",
     "title": "Pixelate Region",
-    "description": "Cover rectangles of a scene with an opaque mosaic while the rest passes through untouched — redact keys, addresses and personal data before a demo goes out.",
+    "description": "Cover rectangles of a scene with an opaque mosaic while the rest passes through untouched \u2014 redact keys, addresses and personal data before a demo goes out.",
     "componentName": "PixelateRegionExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -2756,7 +2886,7 @@
     "slug": "sustained-glitch",
     "catalogFamily": "core",
     "title": "Sustained Glitch",
-    "description": "Broadcast corruption held over a scene in scheduled bursts: slices tear sideways, channels split, and blocks fill with picture pulled from somewhere else — then the frame rests clean until the next hit.",
+    "description": "Broadcast corruption held over a scene in scheduled bursts: slices tear sideways, channels split, and blocks fill with picture pulled from somewhere else \u2014 then the frame rests clean until the next hit.",
     "componentName": "SustainedGlitchExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -2862,34 +2992,6 @@
         "intensity": 1
       },
       "background": "#0a0a0a"
-    }
-  },
-  {
-    "slug": "lens-zoom",
-    "catalogFamily": "core",
-    "title": "Lens Zoom",
-    "description": "A hard cut disguised as a lens punch-in: barrel distortion, zoom blur, chromatic split and camera shake around the splice.",
-    "componentName": "LensZoomExampleScene",
-    "origin": {
-      "repository": "https://github.com/Remocn/remocn",
-      "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
-      "source": "registry/remocn/lens-zoom/index.tsx",
-      "entry": "components/docs/examples/lens-zoom-example.tsx",
-      "config": "registry/remocn/lens-zoom/config.ts",
-      "license": "MIT"
-    },
-    "fixture": {
-      "width": 1280,
-      "height": 720,
-      "fps": 30,
-      "durationInFrames": 112,
-      "props": {
-        "lensSteps": 9,
-        "blurSamples": 7,
-        "shakeAmount": 50,
-        "shakeTranslatePx": 73
-      },
-      "background": "#141318"
     }
   }
 ]

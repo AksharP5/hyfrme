@@ -9,9 +9,11 @@ import {
 import {
   catalog,
   catalogDescriptor,
+  catalogSources,
   catalogTaxonomy,
   type CatalogCategory,
   type CatalogEntry,
+  type CatalogSource,
   type CatalogTaxonomyGroup,
   type CatalogTaxonomySection,
   cardDescription,
@@ -65,6 +67,15 @@ const catalogCategoryCounts = Object.fromEntries(
 const catalogBySlug = new Map(
   catalog.map((entry) => [entry.item.name, entry] as const),
 );
+type SourceFilter = "all" | CatalogSource["id"];
+const sourceFilters = [{ id: "all", label: "All" }, ...catalogSources] as const;
+
+function sourceFromUrl(): SourceFilter {
+  const source = new URLSearchParams(window.location.search).get("source");
+  return (
+    catalogSources.find((candidate) => candidate.id === source)?.id ?? "all"
+  );
+}
 
 function slugsForSection(section: CatalogTaxonomySection) {
   return section.slugs ?? section.groups?.flatMap((group) => group.slugs) ?? [];
@@ -105,11 +116,13 @@ function taxonomyHref(
   section?: CatalogTaxonomySection,
   group?: CatalogTaxonomyGroup,
 ) {
-  if (category === "all") return "/components";
-  const params = new URLSearchParams({ category });
+  const params = new URLSearchParams();
+  if (category !== "all") params.set("category", category);
   if (section) params.set("section", section.id);
   if (group) params.set("group", group.id);
-  return `/components?${params.toString()}`;
+  const source = sourceFromUrl();
+  if (source !== "all") params.set("source", source);
+  return `/components${params.size ? `?${params}` : ""}`;
 }
 
 function categoryFromUrl(): CatalogCategory {
@@ -301,6 +314,7 @@ function LibrarySidebar({
 function CatalogPage() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<CatalogCategory>(categoryFromUrl);
+  const [source, setSource] = useState<SourceFilter>(sourceFromUrl);
   const taxonomySections = taxonomySectionsFor(category);
   const urlParams = new URLSearchParams(window.location.search);
   const selectedSection = taxonomySections.find(
@@ -309,7 +323,7 @@ function CatalogPage() {
   const selectedGroup = selectedSection?.groups?.find(
     (group) => group.id === urlParams.get("group"),
   );
-  const filtered = useMemo(() => {
+  const matchingEntries = useMemo(() => {
     const normalized = query.trim().toLowerCase();
     return catalog.filter((entry) => {
       const matchesCategory =
@@ -329,6 +343,7 @@ function CatalogPage() {
           entry.item.name,
           entry.item.title,
           entry.item.description,
+          entry.source.label,
           ...entry.item.tags,
           ...taxonomySearchTerms(entry),
         ]
@@ -338,6 +353,9 @@ function CatalogPage() {
       return matchesCategory && matchesSection && matchesGroup && matchesQuery;
     });
   }, [category, query, selectedGroup, selectedSection]);
+  const filtered = matchingEntries.filter(
+    (entry) => source === "all" || entry.source.id === source,
+  );
 
   useEffect(() => {
     document.title = "Hyfrme — motion components for HyperFrames";
@@ -353,6 +371,14 @@ function CatalogPage() {
     } else {
       url.searchParams.set("category", next);
     }
+    window.history.replaceState(null, "", url);
+  };
+
+  const selectSource = (next: SourceFilter) => {
+    setSource(next);
+    const url = new URL(window.location.href);
+    if (next === "all") url.searchParams.delete("source");
+    else url.searchParams.set("source", next);
     window.history.replaceState(null, "", url);
   };
 
@@ -476,6 +502,31 @@ function CatalogPage() {
           <span>{filtered.length} results</span>
         </div>
 
+        <div
+          className="source-filters"
+          role="group"
+          aria-label="Filter by source"
+        >
+          <span>Source</span>
+          {sourceFilters.map((candidate) => (
+            <button
+              type="button"
+              key={candidate.id}
+              aria-pressed={source === candidate.id}
+              onClick={() => selectSource(candidate.id)}
+            >
+              {candidate.label}
+              <span>
+                {candidate.id === "all"
+                  ? matchingEntries.length
+                  : matchingEntries.filter(
+                      (entry) => entry.source.id === candidate.id,
+                    ).length}
+              </span>
+            </button>
+          ))}
+        </div>
+
         <div className="mobile-filters" aria-label="Filter components">
           {catalogCategories.map((candidate) => (
             <button
@@ -521,6 +572,7 @@ function CatalogPage() {
           taxonomySections.length > 0 &&
           !selectedSection &&
           !queryActive &&
+          source === "all" &&
           category !== "icons" ? (
             <div className="taxonomy-overview">
               {taxonomySections.map((section) => {
@@ -570,6 +622,7 @@ function CatalogPage() {
               onClick={() => {
                 setQuery("");
                 selectCategory("all");
+                selectSource("all");
               }}
             >
               Show all components
@@ -664,7 +717,7 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
   );
   const category = categoryFor(entry);
   const entryTaxonomy = taxonomyFor(entry);
-  const upstreamUrl = `https://github.com/Remocn/remocn/blob/${entry.parity.origin.commit}/${entry.parity.origin.source}`;
+  const upstreamUrl = `${entry.source.repository}/blob/${entry.parity.origin.commit}/${entry.parity.origin.source}`;
   const customized = variables.some(
     (variable) => effectiveValues[variable.id] !== variable.default,
   );
@@ -756,6 +809,15 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
           </span>
           <h1>{entry.item.title}</h1>
           <p>{cardDescription(entry)}</p>
+          <a
+            className="detail-source"
+            href={upstreamUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span className="source-badge">{entry.source.label}</span>
+            Original source <ArrowIcon />
+          </a>
         </header>
 
         <section className="component-workbench" aria-label="Component editor">
@@ -837,7 +899,7 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
         >
           <summary>
             <span>
-              Verified against Remocn ·{" "}
+              Verified against {entry.source.label} ·{" "}
               {(entry.parity.result.meanSsim * 100).toFixed(3)}% match
             </span>
             <span>{entry.parity.result.frameCount} frames</span>
@@ -862,8 +924,9 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
                 }
               >
                 <ComparisonPlayer
-                  referenceSrc={`/previews/${entry.item.name}/remocn.mp4`}
-                  portSrc={`/previews/${entry.item.name}/hyperframes.mp4`}
+                  referenceLabel={entry.source.label}
+                  referenceSrc={entry.parity.artifacts.referenceVideo}
+                  portSrc={entry.parity.artifacts.hyperframesVideo}
                   square={
                     entry.item.dimensions.width === entry.item.dimensions.height
                   }

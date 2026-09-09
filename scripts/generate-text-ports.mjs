@@ -1,8 +1,15 @@
 import { build } from "esbuild";
-import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
-import { dirname, relative, resolve } from "node:path";
+import { execFileSync } from "node:child_process";
+import {
+  copyFile,
+  mkdir,
+  readFile,
+  readdir,
+  writeFile,
+} from "node:fs/promises";
+import { basename, dirname, relative, resolve } from "node:path";
 import { frameMathSource, remocnMitBanner } from "./hyfrme-frame-math.mjs";
-import { readUpstreamRegistry } from "./read-upstream-registry.mjs";
+import { readRemocnRegistry } from "./remocn-registry.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const upstream = resolve(root, process.env.REMOCN_SOURCE ?? ".work/remocn");
@@ -18,33 +25,28 @@ await copyFile(
   resolve(root, "fixtures", "remocn", "field-example.tsx"),
   fieldWrapperPath,
 );
-const stageWrapperPath = resolve(
-  upstream,
-  "components",
-  "docs",
-  "examples",
-  "hyfrme-stage-example.tsx",
-);
 await copyFile(
-  resolve(root, "fixtures", "remocn", "stage-example.tsx"),
-  stageWrapperPath,
+  resolve(root, "fixtures/remocn/stage-example.tsx"),
+  resolve(upstream, "components/docs/examples/hyfrme-stage-example.tsx"),
 );
-const asciiRenderWrapperPath = resolve(
-  upstream,
-  "components",
-  "docs",
-  "examples",
-  "hyfrme-ascii-render-example.tsx",
+const asciiRenderWrapperPath = resolve(upstream, "components/docs/examples/hyfrme-ascii-render-example.tsx");
+await copyFile(resolve(root, "fixtures/remocn/ascii-render-example.tsx"), asciiRenderWrapperPath);
+const upstreamRegistry = await readRemocnRegistry(upstream);
+const upstreamCommit = execFileSync(
+  "git",
+  ["-C", upstream, "rev-parse", "HEAD"],
+  { encoding: "utf8" },
+).trim();
+const additionManifests = await Promise.all(
+  ["remocn-additions", "remocn-additions-2026-09-09"].map(async (directory) =>
+    JSON.parse(
+      await readFile(
+        resolve(root, "assets", directory, "manifest.json"),
+        "utf8",
+      ),
+    ),
+  ),
 );
-await copyFile(
-  resolve(root, "fixtures", "remocn", "ascii-render-example.tsx"),
-  asciiRenderWrapperPath,
-);
-const upstreamInventory = JSON.parse(
-  await readFile(resolve(root, "catalog", "upstream-inventory.json"), "utf8"),
-);
-const upstreamRegistry = await readUpstreamRegistry(upstream);
-const upstreamCommit = upstreamInventory.summary.upstream.commit;
 const textNames = [
   "per-character-rise",
   "bottom-up-letters",
@@ -70,28 +72,35 @@ const textNames = [
   "marker-highlight",
   "tracking-in",
   "slot-machine-roll",
-  "chromatic-wave",
-  "extrude-pop",
-  "gooey-morph",
-  "kinetic-warp",
-  "perspective-squeeze",
-  "stretch-in",
-  "caret-swap",
-  "centered-word-build",
-  "fog-rise",
-  "gradient-scale-cut-text",
-  "inline-pill-takeover",
-  "outline-fill-track-text",
-  "shadow-sweep-text",
+  "word-stream",
+  "word-push",
   "sheen-slide-in",
   "squeeze-in",
-  "typed-split-wipe",
-  "word-push",
-  "word-stream",
+  "fog-rise",
+  "caret-swap",
   "zoom-words",
+  "centered-word-build",
+  "inline-pill-takeover",
+  "typed-split-wipe",
+  "shadow-sweep-text",
+  "outline-fill-track-text",
+  "gradient-scale-cut-text",
   "rush-type",
+  "extrude-pop",
+  "kinetic-morph-text",
+  "kinetic-warp",
+  "stretch-in",
+  "gooey-morph",
+  "perspective-squeeze",
+  "chromatic-wave",
+  "type-fossil",
 ];
 const coreNames = [
+  "cursor-gravity",
+  "lens-zoom",
+  "radial-burst",
+  "stage",
+  "search-reveal",
   "chat-to-preview-layout",
   "perspective-marquee",
   "live-code-compilation",
@@ -111,7 +120,6 @@ const coreNames = [
   "confetti",
   "backdrop",
   "drift",
-  "stage",
   "rolodex-flip",
   "value-swap",
   "number-wheel",
@@ -192,7 +200,6 @@ const coreNames = [
   "tv-power-off",
   "underwater-ripple",
   "vhs-filter",
-  "lens-zoom",
 ];
 const canvasTransitionNames = new Set([
   "displacement",
@@ -214,30 +221,6 @@ const canvasFilterNames = new Set([
   "underwater-ripple",
   "vhs-filter",
 ]);
-const newSeekProbeNames = new Set([
-  "chromatic-wave",
-  "extrude-pop",
-  "gooey-morph",
-  "kinetic-warp",
-  "lens-zoom",
-  "stage",
-  "perspective-squeeze",
-  "rush-type",
-  "stretch-in",
-]);
-const seekProbeNames = new Set([
-  ...canvasTransitionNames,
-  ...canvasFilterNames,
-  ...newSeekProbeNames,
-]);
-const intentionalOverlapNames = new Set([
-  "chromatic-wave",
-  "extrude-pop",
-  "gooey-morph",
-  "lens-zoom",
-  "perspective-squeeze",
-  "stage",
-]);
 const speedMinOneNames = new Set([
   "chat-gpt",
   "claude-chat",
@@ -252,6 +235,7 @@ const speedMinOneNames = new Set([
   "x-followers-overview",
 ]);
 const primitiveNames = [
+  "select-menu",
   "caret",
   "skeleton-block",
   "spinner",
@@ -268,7 +252,6 @@ const primitiveNames = [
   "sheet",
   "drawer",
   "select",
-  "select-menu",
   "dropdown-menu",
   "tabs",
   "cursor",
@@ -341,6 +324,28 @@ const uiFlowConfig = (compositionWidth = 1280, compositionHeight = 720) => ({
   controls: {},
 });
 const sceneOverrides = {
+  "lens-zoom": {
+    source: "components/docs/examples/lens-zoom-example.tsx",
+    componentName: "LensZoomExampleScene",
+  },
+  stage: {
+    source: "components/docs/examples/hyfrme-stage-example.tsx",
+    componentName: "HyfrmeStageExampleScene",
+    originEntry: "components/docs/examples/stage-example.tsx",
+    originComponentName: "StageExampleScene",
+    extraControls: {
+      imageUrl: {
+        type: "text",
+        default: "../assets/remocn-additions/stage-remocn-components.webp",
+        label: "Image URL",
+      },
+    },
+  },
+  "select-menu": {
+    source: "components/docs/examples/select-menu-example.tsx",
+    componentName: "SelectMenuExampleScene",
+    uiExample: true,
+  },
   backdrop: {
     source: "components/docs/examples/backdrop-demo.tsx",
     componentName: "BackdropDemo",
@@ -348,19 +353,6 @@ const sceneOverrides = {
   drift: {
     source: "components/docs/examples/drift-example.tsx",
     componentName: "DriftExampleScene",
-  },
-  stage: {
-    source: "components/docs/examples/hyfrme-stage-example.tsx",
-    originEntry: "components/docs/examples/stage-example.tsx",
-    originComponentName: "StageExampleScene",
-    componentName: "HyfrmeStageExampleScene",
-    extraControls: {
-      imageUrl: {
-        type: "text",
-        default: "../assets/stage-remocn-components.webp",
-        label: "Image URL",
-      },
-    },
   },
   "rolodex-flip": {
     source: "components/docs/examples/rolodex-flip-example.tsx",
@@ -545,10 +537,6 @@ const sceneOverrides = {
     source: "components/docs/examples/vhs-filter-example.tsx",
     componentName: "VhsFilterExampleScene",
   },
-  "lens-zoom": {
-    source: "components/docs/examples/lens-zoom-example.tsx",
-    componentName: "LensZoomExampleScene",
-  },
   button: {
     source: "components/docs/examples/button-example.tsx",
     componentName: "ButtonExampleScene",
@@ -629,13 +617,6 @@ const sceneOverrides = {
     source: "components/docs/examples/select-example.tsx",
     componentName: "SelectExampleScene",
     durationInFrames: 120,
-    background: "oklch(1 0 0)",
-    uiExample: true,
-  },
-  "select-menu": {
-    source: "components/docs/examples/select-menu-example.tsx",
-    componentName: "SelectMenuExampleScene",
-    durationInFrames: 128,
     background: "oklch(1 0 0)",
     uiExample: true,
   },
@@ -841,6 +822,7 @@ const sceneOverrides = {
   },
 };
 const jetBrainsMonoNames = new Set([
+  "github-stars",
   "number-wheel",
   "rolling-number",
   "claude-code",
@@ -854,18 +836,6 @@ const manropeNames = new Set([
 ]);
 const geistMonoNames = new Set(["github-stars"]);
 const caveatNames = new Set(["handwrite", "hand-count", "check-list"]);
-const variableGeistNames = new Set([
-  "caret-swap",
-  "centered-word-build",
-  "fog-rise",
-  "inline-pill-takeover",
-  "sheen-slide-in",
-  "squeeze-in",
-  "typed-split-wipe",
-  "word-push",
-  "word-stream",
-  "zoom-words",
-]);
 const sponsorAvatarIds = [
   1, 2, 3, 4, 70, 5, 6, 38, 14, 15, 18, 16, 9, 21, 22, 25, 26, 28, 30, 31, 7,
   12, 13, 19,
@@ -896,6 +866,19 @@ if (only && selectedNames.length !== only.size) {
     `Expected ${only.size} known names, found ${selectedNames.length}`,
   );
 }
+for (const name of selectedNames) {
+  const manifest = additionManifests.find((item) => item.components[name]);
+  if (manifest && upstreamCommit !== manifest.upstream.commit) {
+    throw new Error(
+      `${name} requires source ${manifest.upstream.commit}. Select --only names from that pin.`,
+    );
+  }
+  if (!upstreamRegistry.items.some((item) => item.name === name)) {
+    throw new Error(
+      `Source ${upstreamCommit} does not contain ${name}. Select --only names from one source pin.`,
+    );
+  }
+}
 
 const remotionPlugin = {
   name: "hyfrme-remotion-clock",
@@ -912,10 +895,26 @@ const remotionPlugin = {
           ${frameMathSource}
           let currentFrame = 0;
           let videoConfig = {fps: 30, width: 1280, height: 720, durationInFrames: 60};
+          let assetMap = {};
+          let nextHandle = 0;
+          const pending = new Map();
+          const waiting = new Set();
           const LocalFrameContext = createContext(null);
           export {Easing, interpolate, interpolateColors, random, spring};
-          export const delayRender = () => 0;
-          export const continueRender = () => {};
+          export const delayRender = (label) => {
+            const handle = nextHandle++;
+            pending.set(handle, label);
+            return handle;
+          };
+          export const continueRender = (handle) => {
+            pending.delete(handle);
+            if (pending.size === 0) {
+              for (const resolve of waiting) resolve();
+              waiting.clear();
+            }
+          };
+          export const __waitForSource = () => pending.size === 0 ? Promise.resolve() : new Promise(resolve => waiting.add(resolve));
+          export const __setHyfrmeAssets = (assets) => {assetMap = assets;};
           export const useDelayRender = () => ({delayRender, continueRender});
           export const isHtmlInCanvasSupported = () => {
             if (typeof document === "undefined") return false;
@@ -933,8 +932,8 @@ const remotionPlugin = {
             className,
             style: {position: "absolute", inset: 0, width: "100%", height: "100%", display: "flex", flexDirection: "column", ...style},
           }, children);
-          export const Img = ({children, ...props}) => React.createElement("img", props, children);
-          export const staticFile = (path) => "/assets/" + path.replace(/^\\//, "");
+          export const Img = ({children, src, ...props}) => React.createElement("img", {...props, src: assetMap[src] ?? src}, children);
+          export const staticFile = (path) => assetMap[path] ?? "/assets/" + path.replace(/^\\//, "");
           export const Sequence = ({from = 0, durationInFrames = Infinity, children, layout, style, className}) => {
             const localFrame = useCurrentFrame() - from;
             if (localFrame < 0 || localFrame >= durationInFrames) return null;
@@ -1205,7 +1204,7 @@ const socialAssetsPlugin = {
       },
       async (args) => {
         const original = await readFile(args.path, "utf8");
-        const contents = original
+        let contents = original
           .replaceAll(
             /https:\/\/avatars\.githubusercontent\.com\/u\/(\d+)\?v=4/g,
             "/assets/social/avatars/u$1.png",
@@ -1214,6 +1213,22 @@ const socialAssetsPlugin = {
             "const [errored, setErrored] = useState(false);",
             "const errored = false; const setErrored = () => {};",
           );
+        if (args.path.includes("/github-stars/")) {
+          // Odometer digits and scrolling rows intentionally cross their clipping zones.
+          contents = contents
+            .replaceAll(
+              "<Odometer current={current} fontSize={counterSize} color={t.fg} />",
+              '<span data-layout-ignore style={{display:"contents"}}><Odometer current={current} fontSize={counterSize} color={t.fg} /></span>',
+            )
+            .replace(
+              "const listViewport = (\n    <div",
+              "const listViewport = (\n    <div data-layout-allow-occlusion",
+            )
+            .replace(
+              "<div\n            style={{\n              fontSize: loginSize,",
+              "<div data-layout-allow-overflow\n            style={{\n              fontSize: loginSize,",
+            );
+        }
         return { contents, loader: "tsx", resolveDir: dirname(args.path) };
       },
     );
@@ -1223,6 +1238,23 @@ const socialAssetsPlugin = {
 const sourceAdjustmentsPlugin = {
   name: "hyfrme-source-adjustments",
   setup(buildApi) {
+    buildApi.onLoad(
+      {
+        filter:
+          /registry\/remocn\/(extrude-pop|kinetic-morph-text|type-fossil)\/index\.tsx$/,
+      },
+      async (args) => {
+        const source = await readFile(args.path, "utf8");
+        // These SVG text copies form extrusion faces, trails, contours, and morph blends.
+        const contents = source.replace(
+          /<text\b/g,
+          '<text data-layout-allow-overlap=""',
+        );
+        if (contents === source)
+          throw new Error(`Missing SVG text layers in ${args.path}`);
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
     buildApi.onLoad(
       { filter: /registry\/remocn\/canvas-presentation\/index\.tsx$/ },
       async (args) => {
@@ -1305,146 +1337,6 @@ const sourceAdjustmentsPlugin = {
       },
     );
     buildApi.onLoad(
-      { filter: /registry\/remocn\/stretch-in\/index\.tsx$/ },
-      async (args) => {
-        const original = await readFile(args.path, "utf8");
-        const contents = original.replace(
-          "https://fonts.gstatic.com/s/anton/v27/1Ptgg87LROyAm0K0.ttf",
-          "/assets/fonts/Anton-Latin.ttf",
-        );
-        if (contents === original) {
-          throw new Error(`Missing expected Anton font URL in ${args.path}`);
-        }
-        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
-      },
-    );
-    buildApi.onLoad(
-      { filter: /registry\/remocn\/centered-word-build\/index\.tsx$/ },
-      async (args) => {
-        const original = await readFile(args.path, "utf8");
-        const contents = original.replace(
-          "<span\n        className={className}",
-          "<span\n        data-layout-ignore\n        className={className}",
-        );
-        if (contents === original) {
-          throw new Error(
-            `Missing expected Centered Word Build text in ${args.path}`,
-          );
-        }
-        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
-      },
-    );
-    buildApi.onLoad(
-      { filter: /registry\/remocn\/gradient-scale-cut-text\/index\.tsx$/ },
-      async (args) => {
-        const original = await readFile(args.path, "utf8");
-        const contents = original.replace(
-          "<div\n      className={className}",
-          "<div\n      data-layout-ignore\n      className={className}",
-        );
-        if (contents === original) {
-          throw new Error(
-            `Missing expected Gradient Scale Cut Text root in ${args.path}`,
-          );
-        }
-        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
-      },
-    );
-    buildApi.onLoad(
-      { filter: /registry\/remocn\/inline-pill-takeover\/index\.tsx$/ },
-      async (args) => {
-        const original = await readFile(args.path, "utf8");
-        const contents = original.replace(
-          "<div\n      className={className}",
-          "<div\n      data-layout-ignore\n      className={className}",
-        );
-        if (contents === original) {
-          throw new Error(
-            `Missing expected Inline Pill Takeover root in ${args.path}`,
-          );
-        }
-        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
-      },
-    );
-    buildApi.onLoad(
-      { filter: /registry\/remocn\/outline-fill-track-text\/index\.tsx$/ },
-      async (args) => {
-        const original = await readFile(args.path, "utf8");
-        const contents = original.replace(
-          "<div\n      className={className}",
-          "<div\n      data-layout-ignore\n      className={className}",
-        );
-        if (contents === original) {
-          throw new Error(
-            `Missing expected Outline Fill Track Text root in ${args.path}`,
-          );
-        }
-        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
-      },
-    );
-    buildApi.onLoad(
-      { filter: /registry\/remocn\/shadow-sweep-text\/index\.tsx$/ },
-      async (args) => {
-        const original = await readFile(args.path, "utf8");
-        const contents = original.replace(
-          "<div\n      className={className}",
-          "<div\n      data-layout-ignore\n      className={className}",
-        );
-        if (contents === original) {
-          throw new Error(
-            `Missing expected Shadow Sweep Text root in ${args.path}`,
-          );
-        }
-        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
-      },
-    );
-    buildApi.onLoad(
-      { filter: /registry\/remocn\/sheen-slide-in\/index\.tsx$/ },
-      async (args) => {
-        const original = await readFile(args.path, "utf8");
-        const contents = original.replace(
-          '<div\n      style={{\n        position: "absolute",\n        inset: 0,\n        display: "flex"',
-          '<div\n      data-layout-ignore\n      style={{\n        position: "absolute",\n        inset: 0,\n        display: "flex"',
-        );
-        if (contents === original) {
-          throw new Error(
-            `Missing expected Sheen Slide In root in ${args.path}`,
-          );
-        }
-        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
-      },
-    );
-    buildApi.onLoad(
-      { filter: /registry\/remocn-ui\/select-menu\/index\.tsx$/ },
-      async (args) => {
-        const original = await readFile(args.path, "utf8");
-        const contents = original.replace(
-          "            <div\n              key={option}",
-          "            <div\n              data-layout-ignore\n              key={option}",
-        );
-        if (contents === original) {
-          throw new Error(`Missing expected Select Menu row in ${args.path}`);
-        }
-        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
-      },
-    );
-    buildApi.onLoad(
-      { filter: /registry\/remocn\/rush-type\/index\.tsx$/ },
-      async (args) => {
-        const original = await readFile(args.path, "utf8");
-        const contents = original.replace(
-          "const [fontReady, setFontReady] = useState(false);",
-          "const fontReady = true;\n  const setFontReady = () => {};",
-        );
-        if (contents === original) {
-          throw new Error(
-            `Missing expected Rush Type font state in ${args.path}`,
-          );
-        }
-        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
-      },
-    );
-    buildApi.onLoad(
       {
         filter:
           /components\/docs\/examples\/(paper-wobble|ink-arrow|crumple-toss|scribble-circle)-example\.tsx$/,
@@ -1473,28 +1365,6 @@ const sourceAdjustmentsPlugin = {
   },
 };
 
-const deterministicOpenTypePlugin = {
-  name: "hyfrme-deterministic-opentype",
-  setup(buildApi) {
-    buildApi.onLoad(
-      { filter: /node_modules\/opentype\.js\/dist\/opentype\.(?:mjs|js)$/ },
-      async (args) => {
-        const original = await readFile(args.path, "utf8");
-        const contents = original.replace(
-          "Math.round((/* @__PURE__ */ new Date()).getTime() / 1e3) + 2082844800",
-          "2082844800",
-        );
-        if (contents === original) {
-          throw new Error(
-            `Missing expected OpenType timestamp in ${args.path}`,
-          );
-        }
-        return { contents, loader: "js", resolveDir: dirname(args.path) };
-      },
-    );
-  },
-};
-
 const shaderGatePlugin = {
   name: "hyfrme-shader-render-gate",
   setup(buildApi) {
@@ -1515,7 +1385,7 @@ const shaderGatePlugin = {
   },
 };
 
-const loadConfig = async (path) => {
+const loadConfig = async (path, exportName) => {
   const result = await build({
     absWorkingDir: upstream,
     bundle: true,
@@ -1528,7 +1398,7 @@ const loadConfig = async (path) => {
   });
   const url = `data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString("base64")}`;
   const exports = await import(url);
-  return Object.values(exports)[0];
+  return exportName ? exports[exportName] : Object.values(exports)[0];
 };
 
 const escapeHtmlAttribute = (value) =>
@@ -1543,42 +1413,6 @@ const parseUiExampleControls = (source, name) => {
     (match) => match[1],
   );
 };
-
-const normalizeControls = (controls) =>
-  Object.fromEntries(
-    Object.entries(controls).flatMap(([name, control]) => {
-      const label = control.label ?? control.description ?? name;
-      if (control.type === "text-content") {
-        return [[name, { type: "text", default: control.default, label }]];
-      }
-      if (control.type === "enum") {
-        return [
-          [
-            name,
-            {
-              type: "select",
-              default: control.default,
-              options: Object.keys(control.variants),
-              label,
-            },
-          ],
-        ];
-      }
-      if (
-        [
-          "text",
-          "number",
-          "number-input",
-          "color",
-          "select",
-          "boolean",
-        ].includes(control.type)
-      ) {
-        return [[name, { ...control, label }]];
-      }
-      return [];
-    }),
-  );
 
 const fixtures = [];
 const fontSource = resolve(
@@ -1604,68 +1438,87 @@ const geistMonoSource = resolve(
   "GeistMono-Latin.woff2",
 );
 const caveatSource = resolve(root, "assets", "fonts", "Caveat-Latin.woff2");
-const passionOneFiles = [
-  "PassionOne-400.ttf",
-  "PassionOne-700.ttf",
-  "PassionOne-900.ttf",
-];
+let resolveControls;
 
 for (const name of selectedNames) {
+  const additionManifest = additionManifests.find(
+    (item) => item.components[name],
+  );
+  const addition = additionManifest?.components[name];
+  const selectedAssets = (additionManifest?.assets ?? []).filter(
+    (asset) =>
+      asset.components.includes(name) && asset.role !== "upstream-stylesheet",
+  );
+  const assetMap = Object.fromEntries(
+    selectedAssets
+      .filter((asset) =>
+        ["font", "local-stylesheet", "image"].includes(asset.role),
+      )
+      .flatMap((asset) => [
+        [asset.sourceUrl, `../${asset.path}`],
+        ...(asset.role === "image"
+          ? [[basename(asset.path), `../${asset.path}`]]
+          : []),
+      ]),
+  );
   const usesVariableGeist =
-    variableGeistNames.has(name) ||
+    Boolean(addition) ||
     canvasTransitionNames.has(name) ||
     canvasFilterNames.has(name);
-  const inventoryItem = upstreamInventory.items.find(
-    (item) => item.name === name,
-  );
+  const geistFamily = addition ? "Hyfrme Remocn Geist" : "Geist";
   const registryItem = upstreamRegistry.items.find(
     (item) => item.name === name,
   );
-  if (!inventoryItem || !registryItem)
-    throw new Error(`Missing upstream item ${name}`);
-  const sourcePath = resolve(upstream, inventoryItem.files[0].path);
+  const sourcePath = resolve(upstream, registryItem.files[0].path);
   const sceneOverride = sceneOverrides[name];
   const renderSourcePath = sceneOverride
     ? resolve(upstream, sceneOverride.source)
     : sourcePath;
   const configPath = resolve(dirname(sourcePath), "config.ts");
-  const config = sceneOverride?.config ?? (await loadConfig(configPath));
+  const sourceConfig = sceneOverride?.config ?? (await loadConfig(configPath));
+  if (addition)
+    resolveControls ??= await loadConfig(
+      resolve(upstream, "lib/customizer-config.ts"),
+      "resolveControls",
+    );
+  const config = addition
+    ? {
+        ...sourceConfig,
+        controls: resolveControls(name, sourceConfig.controls),
+      }
+    : sourceConfig;
   const renderComponentName =
     sceneOverride?.componentName ?? config.componentName;
   const renderSource = sceneOverride
     ? await readFile(renderSourcePath, "utf8")
     : null;
+  const source = await readFile(sourcePath, "utf8");
   const controlKeys =
     sceneOverride?.controls ??
     (sceneOverride?.uiExample
       ? parseUiExampleControls(renderSource, name)
       : null);
-  const normalizedControls = normalizeControls(config.controls);
-  const configuredControls = controlKeys
-    ? Object.fromEntries(
-        Object.entries(normalizedControls).filter(([key]) =>
-          controlKeys.includes(key),
-        ),
-      )
-    : normalizedControls;
-  const controls = {
-    ...configuredControls,
-    ...(sceneOverride?.extraControls ?? {}),
-  };
+  const controls = Object.fromEntries(
+    Object.entries({
+      ...config.controls,
+      ...sceneOverride?.extraControls,
+    }).filter(
+      ([key]) =>
+        (!controlKeys || controlKeys.includes(key)) &&
+        (key !== "speed" ||
+          !addition ||
+          /\bspeed\b/.test(renderSource ?? source)),
+    ),
+  );
   const props = Object.fromEntries(
     Object.entries(controls).map(([key, control]) => [key, control.default]),
   );
-  if (name === "kinetic-warp") {
-    props.fontUrl = "/assets/fonts/PassionOne.css";
-  } else if (name === "stretch-in") {
-    props.fontUrl = "/assets/fonts/Anton-Latin.ttf";
-  } else if (name === "x-follow-card") {
+  if (name === "x-follow-card") {
     props.avatarUrl = "/assets/social/logo.svg";
     props.coverUrl = "/assets/social/imgs/x-cover.png";
   } else if (name === "x-followers-overview") {
     props.avatarUrl = "/assets/social/logo.svg";
   }
-  const source = await readFile(sourcePath, "utf8");
   if (
     /\bspeed\??:/.test(source) &&
     !("speed" in props) &&
@@ -1677,32 +1530,31 @@ for (const name of selectedNames) {
     height: config.compositionHeight,
     fps: config.fps,
     durationInFrames:
-      sceneOverride?.durationInFrames ?? config.durationInFrames,
+      sceneOverride?.durationInFrames ??
+      (typeof config.durationInFrames === "function"
+        ? config.durationInFrames(props)
+        : config.durationInFrames),
     props,
     background:
       sceneOverride?.background ??
-      (name === "kinetic-warp" ? "#141318" : null) ??
       (config.previewBackdrop?.type === "color" ||
       config.previewBackdrop?.type === "gradient"
         ? config.previewBackdrop.value
-        : "#ffffff"),
+        : addition
+          ? "transparent"
+          : "#ffffff"),
   };
-  const runtimeProps = { ...props };
-  if (name === "kinetic-warp") {
-    runtimeProps.fontUrl = "../assets/fonts/PassionOne.css";
-  } else if (name === "stretch-in") {
-    runtimeProps.fontUrl = "../assets/fonts/Anton-Latin.ttf";
-  }
-  const assetProps =
-    name === "stretch-in" ? { fontUrl: runtimeProps.fontUrl } : {};
   const importPath = `./${relative(upstream, renderSourcePath).replaceAll("\\", "/")}`;
   const entry = `
     import React from "react";
     import {flushSync} from "react-dom";
     import {createRoot} from "react-dom/client";
-    import {__setHyfrmeFrame} from "remotion";
+    import {__setHyfrmeFrame, __setHyfrmeAssets, __waitForSource} from "remotion";
     import {${renderComponentName}} from ${JSON.stringify(importPath)};
-    const root = createRoot(document.getElementById("hyfrme-source-root"));
+    const container = document.getElementById("hyfrme-source-root");
+    const assets = JSON.parse(container.dataset.hyfrmeAssets ?? '{}');
+    __setHyfrmeAssets(assets);
+    const root = createRoot(container, {identifierPrefix: container.closest('[data-composition-file]')?.dataset.compositionId ?? ${JSON.stringify(name)}});
     const variables = window.__hyperframes.getVariables();
     const config = ${JSON.stringify({
       fps: fixture.fps,
@@ -1710,22 +1562,48 @@ for (const name of selectedNames) {
       height: fixture.height,
       durationInFrames: fixture.durationInFrames,
     })};
-    const props = ${JSON.stringify(runtimeProps)};
-    ${Object.keys(assetProps).length > 0 ? "Object.assign(props, window.__hyfrmeAssetProps ?? {});" : ""}
-    for (const key of ${JSON.stringify(Object.keys(controls))}) {
-      props[key] = variables[key];
-    }
-    window.__hyfrmeRenderFrame = (frame) => {
+    const props = ${JSON.stringify(Object.keys(props))}.reduce((result, key) => {
+      result[key] = assets[variables[key]] ?? variables[key];
+      return result;
+    }, {});
+    ${name === "stretch-in" ? `props.fontUrl = assets[${JSON.stringify(selectedAssets.find((asset) => asset.role === "font").sourceUrl)}];` : ""}
+    const renderFrame = (frame) => {
       __setHyfrmeFrame(frame, config);
       flushSync(() => root.render(React.createElement(${renderComponentName}, props)));
     };
-    window.__hyfrmeRenderFrame(0);
+    window.__hyfrmeRenderFrame = renderFrame;
+    window.__hyfrmeReady = (async () => {
+      ${
+        name === "kinetic-warp"
+          ? `if (props.fontUrl && props.fontUrl !== assets[${JSON.stringify(selectedAssets.find((asset) => asset.role === "local-stylesheet").sourceUrl)}]) {
+        await new Promise((resolve, reject) => {
+          const stylesheet = document.createElement('link');
+          stylesheet.rel = 'stylesheet';
+          stylesheet.href = props.fontUrl;
+          stylesheet.onload = resolve;
+          stylesheet.onerror = () => reject(new Error('Could not load font stylesheet: ' + props.fontUrl));
+          document.head.appendChild(stylesheet);
+        });
+      }`
+          : ""
+      }
+      const families = new Set(${JSON.stringify([geistFamily, ...selectedAssets.filter((asset) => asset.family).map((asset) => asset.family)])});
+      ${name === "kinetic-warp" ? "families.add(props.fontFamily);" : ""}
+      await Promise.all(Array.from(document.fonts).filter(font => families.has(font.family.replaceAll('"', '').replaceAll("'", ''))).map(font => font.load()));
+      await document.fonts.ready;
+      renderFrame(0);
+      await __waitForSource();
+      renderFrame(0);
+      await Promise.all(Array.from(container.querySelectorAll('img')).map(image => image.decode()));
+    })();
   `;
   const result = await build({
     absWorkingDir: upstream,
     bundle: true,
     format: "iife",
     minify: true,
+    metafile: true,
+    ...(addition ? { supported: { "template-literal": false } } : {}),
     platform: "browser",
     plugins: [
       remotionPlugin,
@@ -1735,7 +1613,6 @@ for (const name of selectedNames) {
       socialFontsPlugin,
       caveatPlugin,
       socialAssetsPlugin,
-      deterministicOpenTypePlugin,
       sourceAdjustmentsPlugin,
       shaderGatePlugin,
     ],
@@ -1754,7 +1631,7 @@ for (const name of selectedNames) {
     },
     write: false,
   });
-  const runtime = result.outputFiles[0].text.replace(/[ \t]+$/gm, "");
+  const runtime = result.outputFiles[0].text;
   const catalogFamily = textNames.includes(name)
     ? "text"
     : primitiveNames.includes(name)
@@ -1779,11 +1656,14 @@ for (const name of selectedNames) {
               ? "number"
               : control.type,
       label: control.label ?? id,
-      default: Object.hasOwn(runtimeProps, id)
-        ? runtimeProps[id]
-        : control.default,
+      default: Object.hasOwn(props, id) ? props[id] : control.default,
     };
     if (Array.isArray(control.options)) variable.options = control.options;
+    if (!["string", "number", "boolean", "color"].includes(variable.type)) {
+      throw new Error(
+        `${name}.${id}: unsupported variable type ${variable.type}`,
+      );
+    }
     for (const key of ["min", "max", "step"]) {
       if (typeof control[key] === "number") variable[key] = control[key];
     }
@@ -1806,62 +1686,89 @@ for (const name of selectedNames) {
       ...(speedMinOneNames.has(name) ? { min: 1, max: 4, step: 0.25 } : {}),
     });
   }
-  const html = `<!doctype html>
-<html lang="en" data-composition-variables='${escapeHtmlAttribute(JSON.stringify(variables))}'>
-  <head>
-    <meta charset="UTF-8">
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
-    <style>
-      @font-face { font-family: "Geist"; src: url("../assets/fonts/${usesVariableGeist ? "Geist-Latin.woff2" : "Geist-SemiBold.woff2"}") format("woff2"); font-style: normal; font-weight: ${usesVariableGeist ? "100 900" : "600"}; font-display: block; }
-${jetBrainsMonoNames.has(name) ? '      @font-face { font-family: "JetBrains Mono"; src: url("../assets/fonts/JetBrainsMono-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 800; font-display: block; }' : ""}
-${interNames.has(name) ? '      @font-face { font-family: "Inter"; src: url("../assets/fonts/Inter-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }' : ""}
-${manropeNames.has(name) ? '      @font-face { font-family: "Manrope"; src: url("../assets/fonts/Manrope-Latin.woff2") format("woff2"); font-style: normal; font-weight: 200 800; font-display: block; }' : ""}
-${geistMonoNames.has(name) ? '      @font-face { font-family: "Geist Mono"; src: url("../assets/fonts/GeistMono-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }' : ""}
-${caveatNames.has(name) ? '      @font-face { font-family: "Caveat"; src: url("../assets/fonts/Caveat-Latin.woff2") format("woff2"); font-style: normal; font-weight: 400 700; font-display: block; }' : ""}
-${name === "kinetic-warp" ? '      @font-face { font-family: "Passion One"; src: url("../assets/fonts/PassionOne-400.ttf") format("truetype"); font-style: normal; font-weight: 400; font-display: block; }\n      @font-face { font-family: "Passion One"; src: url("../assets/fonts/PassionOne-700.ttf") format("truetype"); font-style: normal; font-weight: 700; font-display: block; }\n      @font-face { font-family: "Passion One"; src: url("../assets/fonts/PassionOne-900.ttf") format("truetype"); font-style: normal; font-weight: 900; font-display: block; }' : ""}
-      * { box-sizing: border-box; }
-      html, body { width: ${fixture.width}px; height: ${fixture.height}px; margin: 0; overflow: hidden; background: ${fixture.background}; }
-      body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
-      #hyfrme-source-root { position: absolute; inset: 0; }
-${seekProbeNames.has(name) ? "      [data-hyfrme-seek-probe] { position: absolute; width: 1px; height: 1px; pointer-events: none; }" : ""}
-    </style>
-  </head>
-  <body>
-    <div id="root" data-composition-id="${name}" data-start="0" data-duration="${duration}" data-fps="${fixture.fps}" data-width="${fixture.width}" data-height="${fixture.height}">
-${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? "      <canvas layoutsubtree hidden data-layout-ignore data-hyfrme-clock></canvas>" : "      <span hidden data-layout-ignore data-hyfrme-clock></span>"}
-${seekProbeNames.has(name) ? '      <span data-hyfrme-seek-probe aria-hidden="true"></span>' : ""}
-      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="${duration}" data-track-index="0">
-        <div id="hyfrme-source-root"${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? " data-layout-ignore data-layout-allow-occlusion data-layout-allow-overlap" : intentionalOverlapNames.has(name) ? " data-layout-allow-overlap" : name === "shimmer-sweep" ? " data-layout-allow-occlusion" : ""}></div>
-      </div>
-    </div>
-${Object.keys(assetProps).length > 0 ? `    <script>window.__hyfrmeAssetProps = ${JSON.stringify(assetProps)};</script>` : ""}
-    <script src="./${name}.runtime.js"></script>
-    <script>
-      window.__timelines = window.__timelines || {};
-      const clock = document.querySelector('[data-composition-id="${name}"] [data-hyfrme-clock]');
-      clock.frame = 0;
-      const timeline = gsap.timeline({ paused: true });
-      timeline.to('[data-composition-id="${name}"] [data-hyfrme-clock]', {
-        frame: ${fixture.durationInFrames},
-        duration: ${duration},
-        ease: "none",
-        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(${fixture.durationInFrames - 1}, Math.round(clock.frame)))),
-      });
-${seekProbeNames.has(name) ? `      timeline.to('[data-composition-id="${name}"] [data-hyfrme-seek-probe]', { x: 120, duration: ${duration}, ease: "none" }, 0);` : ""}
-      window.__timelines["${name}"] = timeline;
-    </script>
-  </body>
-</html>
-`;
+  const localFontCss = (
+    await Promise.all(
+      selectedAssets
+        .filter((asset) => asset.role === "local-stylesheet")
+        .map(async (asset) =>
+          (await readFile(resolve(root, asset.path), "utf8")).replaceAll(
+            "url(./",
+            `url(../${dirname(asset.path)}/`,
+          ),
+        ),
+    )
+  ).join("\n");
   const blockDirectory = resolve(root, "registry", "blocks", name);
   await mkdir(blockDirectory, { recursive: true });
   const packagedAssets = [
     {
       path: "licenses/Geist-OFL.txt",
-      target: "THIRD_PARTY_LICENSES/Geist-OFL.txt",
-      source: resolve(root, "assets", "fonts", "Geist-OFL.txt"),
+      target: addition
+        ? "THIRD_PARTY_LICENSES/remocn/Geist-OFL.txt"
+        : "THIRD_PARTY_LICENSES/Geist-OFL.txt",
+      source: resolve(
+        root,
+        "assets",
+        addition ? "remocn-additions" : "fonts",
+        "Geist-OFL.txt",
+      ),
     },
   ];
+  const packageLicenses = new Set(["MIT", "OFL-1.1"]);
+  if (addition) {
+    packagedAssets.push({
+      path: "licenses/Remocn-MIT.txt",
+      target: "THIRD_PARTY_LICENSES/remocn/Remocn-MIT.txt",
+      source: resolve(upstream, "LICENSE"),
+    });
+    for (const asset of selectedAssets) {
+      if (
+        asset.reused ||
+        ["Geist-OFL.txt", "REMOCN-LICENSE.txt"].includes(basename(asset.path))
+      )
+        continue;
+      const license = asset.role.includes("license");
+      packagedAssets.push({
+        path: `${license ? "licenses" : "remocn-additions"}/${basename(asset.path)}`,
+        target: license
+          ? `THIRD_PARTY_LICENSES/remocn/${basename(asset.path)}`
+          : asset.path,
+        source: resolve(root, asset.path),
+      });
+      if (asset.license) packageLicenses.add(asset.license);
+    }
+    const packages = new Set(
+      Object.keys(result.metafile.inputs)
+        .filter((path) => path.includes("node_modules/"))
+        .map((path) => {
+          const parts = path.split("node_modules/").at(-1).split("/");
+          return parts[0].startsWith("@")
+            ? parts.slice(0, 2).join("/")
+            : parts[0];
+        }),
+    );
+    for (const packageName of packages) {
+      const directory = resolve(upstream, "node_modules", packageName);
+      const manifest = JSON.parse(
+        await readFile(resolve(directory, "package.json"), "utf8"),
+      );
+      packageLicenses.add(manifest.license);
+      if (selectedAssets.some((asset) => asset.package === packageName))
+        continue;
+      const licenses = (await readdir(directory)).filter((file) =>
+        /^(license|copying|notice)([.-]|$)/i.test(file),
+      );
+      if (!licenses.length) throw new Error(`Missing ${packageName} license`);
+      for (const license of licenses) {
+        const filename = `${packageName.replaceAll("/", "-")}-${license}`;
+        packagedAssets.push({
+          path: `licenses/${filename}`,
+          target: `THIRD_PARTY_LICENSES/remocn/${filename}`,
+          source: resolve(directory, license),
+        });
+      }
+    }
+  }
   if (jetBrainsMonoNames.has(name)) {
     packagedAssets.push({
       path: "licenses/JetBrainsMono-OFL.txt",
@@ -1896,39 +1803,6 @@ ${seekProbeNames.has(name) ? `      timeline.to('[data-composition-id="${name}"]
       target: "THIRD_PARTY_LICENSES/Caveat-OFL.txt",
       source: resolve(root, "assets", "fonts", "Caveat-OFL.txt"),
     });
-  }
-  if (name === "kinetic-warp") {
-    packagedAssets.push(
-      {
-        path: "PassionOne.css",
-        target: "assets/fonts/PassionOne.css",
-        source: resolve(root, "assets", "fonts", "PassionOne.css"),
-      },
-      ...passionOneFiles.map((file) => ({
-        path: file,
-        target: `assets/fonts/${file}`,
-        source: resolve(root, "assets", "fonts", file),
-      })),
-      {
-        path: "licenses/PassionOne-OFL.txt",
-        target: "THIRD_PARTY_LICENSES/PassionOne-OFL.txt",
-        source: resolve(root, "assets", "fonts", "PassionOne-OFL.txt"),
-      },
-    );
-  }
-  if (name === "stretch-in") {
-    packagedAssets.push(
-      {
-        path: "Anton-Latin.ttf",
-        target: "assets/fonts/Anton-Latin.ttf",
-        source: resolve(root, "assets", "fonts", "Anton-Latin.ttf"),
-      },
-      {
-        path: "licenses/Anton-OFL.txt",
-        target: "THIRD_PARTY_LICENSES/Anton-OFL.txt",
-        source: resolve(root, "assets", "fonts", "Anton-OFL.txt"),
-      },
-    );
   }
   if (paperShaderNames.has(name)) {
     packagedAssets.push({
@@ -1987,18 +1861,65 @@ ${seekProbeNames.has(name) ? `      timeline.to('[data-composition-id="${name}"]
       });
     }
   }
-  if (name === "stage") {
-    packagedAssets.push({
-      path: "stage-remocn-components.webp",
-      target: "assets/stage-remocn-components.webp",
-      source: resolve(upstream, "public", "stage-remocn-components.webp"),
-    });
-  }
   for (const asset of packagedAssets) {
+    if (asset.target.startsWith("assets/")) {
+      assetMap[`/${asset.target}`] = `../${asset.target}`;
+    }
     const output = resolve(blockDirectory, asset.path);
     await mkdir(dirname(output), { recursive: true });
     await copyFile(asset.source, output);
   }
+  const html = `<!doctype html>
+<html lang="en" data-composition-variables='${escapeHtmlAttribute(JSON.stringify(variables))}'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+${localFontCss}
+      @font-face { font-family: "${geistFamily}"; src: url("../assets/fonts/${usesVariableGeist ? "Geist-Latin.woff2" : "Geist-SemiBold.woff2"}") format("woff2"); font-style: normal; font-weight: ${usesVariableGeist ? "100 900" : "600"}; font-display: block; }
+${jetBrainsMonoNames.has(name) ? '      @font-face { font-family: "JetBrains Mono"; src: url("../assets/fonts/JetBrainsMono-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 800; font-display: block; }' : ""}
+${interNames.has(name) ? '      @font-face { font-family: "Inter"; src: url("../assets/fonts/Inter-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }' : ""}
+${manropeNames.has(name) ? '      @font-face { font-family: "Manrope"; src: url("../assets/fonts/Manrope-Latin.woff2") format("woff2"); font-style: normal; font-weight: 200 800; font-display: block; }' : ""}
+${geistMonoNames.has(name) ? '      @font-face { font-family: "Geist Mono"; src: url("../assets/fonts/GeistMono-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }' : ""}
+${caveatNames.has(name) ? '      @font-face { font-family: "Caveat"; src: url("../assets/fonts/Caveat-Latin.woff2") format("woff2"); font-style: normal; font-weight: 400 700; font-display: block; }' : ""}
+      * { box-sizing: border-box; }
+      html, body { width: ${fixture.width}px; height: ${fixture.height}px; margin: 0; overflow: hidden; background: ${fixture.background}; }
+      body { --font-geist-sans: "${geistFamily}"; font-family: "${geistFamily}", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"${geistFamily}";font-family:"${geistFamily}",sans-serif; background:${fixture.background}; }
+${name === "lens-zoom" || name === "github-stars" ? "      #hyfrme-source-root, #hyfrme-source-root * { text-rendering: auto; }" : ""}
+${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? "      [data-hyfrme-seek-probe] { position: absolute; width: 1px; height: 1px; pointer-events: none; }" : ""}
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="${name}" data-start="0" data-duration="${duration}" data-fps="${fixture.fps}" data-width="${fixture.width}" data-height="${fixture.height}">
+${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? "      <canvas layoutsubtree hidden data-layout-ignore data-hyfrme-clock></canvas>" : "      <span hidden data-layout-ignore data-hyfrme-clock></span>"}
+${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? '      <span data-hyfrme-seek-probe aria-hidden="true"></span>' : ""}
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="${duration}" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='${escapeHtmlAttribute(JSON.stringify(assetMap))}'${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? " data-layout-ignore data-layout-allow-occlusion data-layout-allow-overlap" : name === "shimmer-sweep" ? " data-layout-allow-occlusion" : ""}></div>
+      </div>
+    </div>
+    <script src="./${name}.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="${name}"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="${name}"] [data-hyfrme-clock]', {
+        frame: ${fixture.durationInFrames},
+        duration: ${duration},
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(${fixture.durationInFrames - 1}, Math.round(clock.frame)))),
+      });
+${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? `      timeline.to('[data-composition-id="${name}"] [data-hyfrme-seek-probe]', { x: 120, duration: ${duration}, ease: "none" }, 0);` : ""}
+      window.__timelines["${name}"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>
+`;
   await writeFile(resolve(blockDirectory, `${name}.html`), html);
   await writeFile(resolve(blockDirectory, `${name}.runtime.js`), runtime);
   const geistFile = usesVariableGeist
@@ -2050,9 +1971,11 @@ ${seekProbeNames.has(name) ? `      timeline.to('[data-composition-id="${name}"]
                   : ["composition", "data", "remocn-port"],
         author: "Hyfrme",
         authorUrl: "https://github.com/AksharP5/hyfrme",
-        license: paperShaderNames.has(name)
-          ? "MIT + PolyForm Shield 1.0.0"
-          : "MIT",
+        license: addition
+          ? [...packageLicenses].join(" AND ")
+          : paperShaderNames.has(name)
+            ? "MIT + PolyForm Shield 1.0.0"
+            : "MIT",
         dimensions: { width: fixture.width, height: fixture.height },
         duration,
         files: [
@@ -2136,7 +2059,7 @@ ${seekProbeNames.has(name) ? `      timeline.to('[data-composition-id="${name}"]
     origin: {
       repository: "https://github.com/Remocn/remocn",
       commit: upstreamCommit,
-      source: inventoryItem.files[0].path,
+      source: registryItem.files[0].path,
       ...(sceneOverride
         ? { entry: sceneOverride.originEntry ?? sceneOverride.source }
         : {}),

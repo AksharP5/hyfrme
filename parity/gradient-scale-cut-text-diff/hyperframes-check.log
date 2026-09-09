@@ -1,0 +1,580 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": false,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 0,
+    "infoCount": 9,
+    "findings": [
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 0.067,
+        "selector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 407.47,
+          "top": 40.8,
+          "right": 3266.97,
+          "bottom": 621.8,
+          "width": 2859.5,
+          "height": 581
+        },
+        "containerSelector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "text": "Introducing",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.33,
+        "dataAttributes": {},
+        "sourceFile": "compositions/gradient-scale-cut-text.html",
+        "bbox": {
+          "x": 407.47,
+          "y": 40.8,
+          "width": 2859.5,
+          "height": 581
+        },
+        "firstSeen": 0.067,
+        "lastSeen": 1.133,
+        "occurrences": 9
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.067,
+        "selector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 407.47,
+          "top": 40.8,
+          "right": 3266.97,
+          "bottom": 621.8,
+          "width": 2859.5,
+          "height": 581
+        },
+        "containerSelector": "#root",
+        "text": "Introducing",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 1986.97
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/gradient-scale-cut-text.html",
+        "bbox": {
+          "x": 407.47,
+          "y": 40.8,
+          "width": 2859.5,
+          "height": 581
+        },
+        "firstSeen": 0.067,
+        "lastSeen": 0.067,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.067,
+        "selector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 407.47,
+          "top": 40.8,
+          "right": 3266.97,
+          "bottom": 621.8,
+          "width": 2859.5,
+          "height": 581
+        },
+        "containerSelector": "#root",
+        "text": "Introducing",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 1986.97
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/gradient-scale-cut-text.html",
+        "bbox": {
+          "x": 407.47,
+          "y": 40.8,
+          "width": 2859.5,
+          "height": 581
+        },
+        "firstSeen": 0.067,
+        "lastSeen": 0.067,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.067,
+        "selector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 407.47,
+          "top": 40.8,
+          "right": 3266.97,
+          "bottom": 623.2,
+          "width": 2859.5,
+          "height": 582.39
+        },
+        "containerSelector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 1986.97
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/gradient-scale-cut-text.html",
+        "bbox": {
+          "x": 407.47,
+          "y": 40.8,
+          "width": 2859.5,
+          "height": 582.39
+        },
+        "firstSeen": 0.067,
+        "lastSeen": 0.067,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.2,
+        "selector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 226,
+          "top": 40.8,
+          "right": 3085.5,
+          "bottom": 621.8,
+          "width": 2859.5,
+          "height": 581
+        },
+        "containerSelector": "#root",
+        "text": "Introducing",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 1805.5
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/gradient-scale-cut-text.html",
+        "bbox": {
+          "x": 226,
+          "y": 40.8,
+          "width": 2859.5,
+          "height": 581
+        },
+        "firstSeen": 0.2,
+        "lastSeen": 0.2,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.2,
+        "selector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 226,
+          "top": 40.8,
+          "right": 3085.5,
+          "bottom": 621.8,
+          "width": 2859.5,
+          "height": 581
+        },
+        "containerSelector": "#root",
+        "text": "Introducing",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 1805.5
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/gradient-scale-cut-text.html",
+        "bbox": {
+          "x": 226,
+          "y": 40.8,
+          "width": 2859.5,
+          "height": 581
+        },
+        "firstSeen": 0.2,
+        "lastSeen": 0.2,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.2,
+        "selector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 226,
+          "top": 40.8,
+          "right": 3085.5,
+          "bottom": 623.2,
+          "width": 2859.5,
+          "height": 582.39
+        },
+        "containerSelector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 1805.5
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/gradient-scale-cut-text.html",
+        "bbox": {
+          "x": 226,
+          "y": 40.8,
+          "width": 2859.5,
+          "height": 582.39
+        },
+        "firstSeen": 0.2,
+        "lastSeen": 0.2,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.333,
+        "selector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 182.25,
+          "top": 40.8,
+          "right": 3041.75,
+          "bottom": 621.8,
+          "width": 2859.5,
+          "height": 581
+        },
+        "containerSelector": "#root",
+        "text": "Introducing",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 1761.75
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/gradient-scale-cut-text.html",
+        "bbox": {
+          "x": 182.25,
+          "y": 40.8,
+          "width": 2859.5,
+          "height": 581
+        },
+        "firstSeen": 0.333,
+        "lastSeen": 0.333,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.333,
+        "selector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 182.25,
+          "top": 40.8,
+          "right": 3041.75,
+          "bottom": 621.8,
+          "width": 2859.5,
+          "height": 581
+        },
+        "containerSelector": "#root",
+        "text": "Introducing",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 1761.75
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/gradient-scale-cut-text.html",
+        "bbox": {
+          "x": 182.25,
+          "y": 40.8,
+          "width": 2859.5,
+          "height": 581
+        },
+        "firstSeen": 0.333,
+        "lastSeen": 0.333,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.333,
+        "selector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 182.25,
+          "top": 40.8,
+          "right": 3041.75,
+          "bottom": 623.2,
+          "width": 2859.5,
+          "height": 582.39
+        },
+        "containerSelector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 1761.75
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/gradient-scale-cut-text.html",
+        "bbox": {
+          "x": 182.25,
+          "y": 40.8,
+          "width": 2859.5,
+          "height": 582.39
+        },
+        "firstSeen": 0.333,
+        "lastSeen": 0.333,
+        "occurrences": 1
+      }
+    ],
+    "duration": 1.2,
+    "samples": [
+      0.067,
+      0.2,
+      0.333,
+      0.467,
+      0.6,
+      0.733,
+      0.867,
+      1,
+      1.133
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 10,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": false,
+    "errorCount": 5,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 1.09:1; WCAG AA requires 3:1.",
+        "text": "Introducing",
+        "fg": "rgb(23,11,10)",
+        "bg": "rgb(0,0,0)",
+        "ratio": 1.09,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(96,88,87)",
+        "large": true,
+        "selector": "div > div > div > div > div > div > div > div > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/gradient-scale-cut-text.html",
+        "bbox": {
+          "x": 407.46875,
+          "y": 40.8046875,
+          "width": 2859.5,
+          "height": 582.390625
+        },
+        "time": 0.067
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 1.09:1; WCAG AA requires 3:1.",
+        "text": "Introducing",
+        "fg": "rgb(23,11,10)",
+        "bg": "rgb(0,0,0)",
+        "ratio": 1.09,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(96,88,87)",
+        "large": true,
+        "selector": "div > div > div > div > div > div > div > div > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/gradient-scale-cut-text.html",
+        "bbox": {
+          "x": 182.25,
+          "y": 40.8046875,
+          "width": 2859.5,
+          "height": 582.390625
+        },
+        "time": 0.333
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 1.09:1; WCAG AA requires 3:1.",
+        "text": "Introducing",
+        "fg": "rgb(23,11,10)",
+        "bg": "rgb(0,0,0)",
+        "ratio": 1.09,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(96,88,87)",
+        "large": true,
+        "selector": "div > div > div > div > div > div > div > div > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/gradient-scale-cut-text.html",
+        "bbox": {
+          "x": 325.869384765625,
+          "y": 291.0859375,
+          "width": 631.51123046875,
+          "height": 147.828125
+        },
+        "time": 0.6
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 1.09:1; WCAG AA requires 3:1.",
+        "text": "Introducing",
+        "fg": "rgb(23,11,10)",
+        "bg": "rgb(0,0,0)",
+        "ratio": 1.09,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(96,88,87)",
+        "large": true,
+        "selector": "div > div > div > div > div > div > div > div > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/gradient-scale-cut-text.html",
+        "bbox": {
+          "x": 308.244384765625,
+          "y": 291.0859375,
+          "width": 631.51123046875,
+          "height": 147.828125
+        },
+        "time": 0.867
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 1.09:1; WCAG AA requires 3:1.",
+        "text": "Introducing",
+        "fg": "rgb(23,11,10)",
+        "bg": "rgb(0,0,0)",
+        "ratio": 1.09,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(96,88,87)",
+        "large": true,
+        "selector": "div > div > div > div > div > div > div > div > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/gradient-scale-cut-text.html",
+        "bbox": {
+          "x": 308.244384765625,
+          "y": 291.0859375,
+          "width": 631.51123046875,
+          "height": 147.828125
+        },
+        "time": 1.133
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      0.067,
+      0.333,
+      0.6,
+      0.867,
+      1.133
+    ],
+    "checked": 5,
+    "passed": 0
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.32",
+    "updateAvailable": true
+  }
+}

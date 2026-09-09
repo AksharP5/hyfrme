@@ -1,0 +1,6050 @@
+[
+  {
+    "slug": "snapcn-answer-highlight",
+    "catalogFamily": "snapcn",
+    "title": "Answer Highlight",
+    "description": "A question in a pill, an answer that writes itself a word at a time, and then the beat the whole shot is for: a caret lands mid-sentence and a selection band drags across one statement, wrapping the line the way a real one does — and settles onto the single word that matters. Name the sentence and the word as strings; the run is found in the answer for you, punctuation and all.",
+    "componentName": "AnswerHighlight",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/answer-highlight/index.tsx",
+      "config": "registry/snap-cn/answer-highlight/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/answer-highlight/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 190,
+      "props": {
+        "question": "How should we structure the demo video?",
+        "answer": "Build one composition per scene and keep the timeline declarative, so the same props always render the same frames. Anything that reads the clock at render time is a bug you will find in the export.",
+        "statement": "keep the timeline declarative",
+        "word": "declarative",
+        "questionHold": 0.6,
+        "wordStep": 0.055,
+        "beforeDrag": 0.45,
+        "dragStep": 0.11,
+        "beforeWord": 0.6,
+        "paperColor": "#faf9f6",
+        "pillColor": "#ffffff",
+        "questionColor": "#6e6a63",
+        "answerColor": "#141414",
+        "accentColor": "#3072db",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "question": {
+        "type": "text",
+        "default": "How should we structure the demo video?",
+        "label": "Question"
+      },
+      "answer": {
+        "type": "text",
+        "default": "Build one composition per scene and keep the timeline declarative, so the same props always render the same frames. Anything that reads the clock at render time is a bug you will find in the export.",
+        "label": "Answer"
+      },
+      "statement": {
+        "type": "text",
+        "default": "keep the timeline declarative",
+        "label": "Statement to select"
+      },
+      "word": {
+        "type": "text",
+        "default": "declarative",
+        "label": "Word to pick out"
+      },
+      "questionHold": {
+        "type": "number",
+        "default": 0.6,
+        "min": 0.2,
+        "max": 3,
+        "step": 0.05,
+        "label": "Question hold"
+      },
+      "wordStep": {
+        "type": "number",
+        "default": 0.055,
+        "min": 0.02,
+        "max": 0.2,
+        "step": 0.005,
+        "label": "Seconds per word"
+      },
+      "beforeDrag": {
+        "type": "number",
+        "default": 0.45,
+        "min": 0,
+        "max": 2,
+        "step": 0.05,
+        "label": "Pause before the drag"
+      },
+      "dragStep": {
+        "type": "number",
+        "default": 0.11,
+        "min": 0.03,
+        "max": 0.4,
+        "step": 0.005,
+        "label": "Drag speed (s/word)"
+      },
+      "beforeWord": {
+        "type": "number",
+        "default": 0.6,
+        "min": 0,
+        "max": 2,
+        "step": 0.05,
+        "label": "Pause before the word"
+      },
+      "paperColor": {
+        "type": "color",
+        "default": "#faf9f6",
+        "label": "Page"
+      },
+      "pillColor": {
+        "type": "color",
+        "default": "#ffffff",
+        "label": "Question pill"
+      },
+      "questionColor": {
+        "type": "color",
+        "default": "#6e6a63",
+        "label": "Question ink"
+      },
+      "answerColor": {
+        "type": "color",
+        "default": "#141414",
+        "label": "Answer ink"
+      },
+      "accentColor": {
+        "type": "color",
+        "default": "#3072db",
+        "label": "Selection",
+        "brand": "accent"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "ai-input"
+    ]
+  },
+  {
+    "slug": "snapcn-agent-steps",
+    "catalogFamily": "snapcn",
+    "title": "Agent Steps",
+    "description": "An agent narrating its own work: the prompt lands in a pill, and under it a log writes itself one line at a time — each step running with a faint spinning globe, then flipping to past tense behind a check while the whole column steps up a row so the live line always sits on the centre. When the work is done the column swells and clears, and the last line slides to the middle and becomes the answer. Every proportion and every curve is fitted from frame measurements.",
+    "componentName": "AgentSteps",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/agent-steps/index.tsx",
+      "config": "registry/snap-cn/agent-steps/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/agent-steps/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 160,
+      "props": {
+        "query": "A 30-second launch video for a Next.js analytics dashboard",
+        "steps": "Searching the registry… > Searched the registry @globe; Looking up components matching “dashboard”… > Looked up 6 matching components; Reading the docs… > Read 4 component docs @globe; Checking available props… > Checked available props; Building the timeline… > Set 9 scene timings; Rendering frames… > Rendered frames",
+        "result": "Rendered 900 frames",
+        "stepHold": 0.45,
+        "queryHold": 0.683,
+        "finalHold": 0.283,
+        "paperColor": "#faf9f6",
+        "glowColor": "rgb(228, 230, 240)",
+        "glowRadius": 0.465,
+        "pillColor": "#ffffff",
+        "inkColor": "#141414",
+        "stepColor": "#6e6a63",
+        "accentColor": "#3072db",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "query": {
+        "type": "text",
+        "default": "A 30-second launch video for a Next.js analytics dashboard",
+        "label": "Prompt"
+      },
+      "steps": {
+        "type": "text",
+        "default": "Searching the registry… > Searched the registry @globe; Looking up components matching “dashboard”… > Looked up 6 matching components; Reading the docs… > Read 4 component docs @globe; Checking available props… > Checked available props; Building the timeline… > Set 9 scene timings; Rendering frames… > Rendered frames",
+        "label": "Steps (running > done; …)"
+      },
+      "result": {
+        "type": "text",
+        "default": "Rendered 900 frames",
+        "label": "Result"
+      },
+      "stepHold": {
+        "type": "number",
+        "default": 0.45,
+        "min": 0.15,
+        "max": 2,
+        "step": 0.05,
+        "label": "Seconds per step"
+      },
+      "queryHold": {
+        "type": "number",
+        "default": 0.683,
+        "min": 0.2,
+        "max": 3,
+        "step": 0.05,
+        "label": "Prompt hold"
+      },
+      "finalHold": {
+        "type": "number",
+        "default": 0.283,
+        "min": 0.1,
+        "max": 2,
+        "step": 0.05,
+        "label": "Last step hold"
+      },
+      "paperColor": {
+        "type": "color",
+        "default": "#faf9f6",
+        "label": "Page"
+      },
+      "glowColor": {
+        "type": "color",
+        "default": "rgb(228, 230, 240)",
+        "label": "Wash",
+        "brand": "accent"
+      },
+      "glowRadius": {
+        "type": "number",
+        "default": 0.465,
+        "min": 0,
+        "max": 1.2,
+        "step": 0.005,
+        "label": "Wash radius"
+      },
+      "pillColor": {
+        "type": "color",
+        "default": "#ffffff",
+        "label": "Pill"
+      },
+      "inkColor": {
+        "type": "color",
+        "default": "#141414",
+        "label": "Prompt ink"
+      },
+      "stepColor": {
+        "type": "color",
+        "default": "#6e6a63",
+        "label": "Step ink"
+      },
+      "accentColor": {
+        "type": "color",
+        "default": "#3072db",
+        "label": "Check",
+        "brand": "accent"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "ai-input"
+    ]
+  },
+  {
+    "slug": "snapcn-announce-title",
+    "catalogFamily": "snapcn",
+    "title": "Announce Title",
+    "description": "A four-shot launch title: the eyebrow rushes past the camera on a receding type plane and lands on a colour field, the name assembles word by word on paper, and a macro pan across the tagline cuts wide as the line builds itself last word first while a white sweep drains it out of colour. Content, palette and the mark that leads the closing line are all props.",
+    "componentName": "AnnounceTitle",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/announce-title/index.tsx",
+      "config": "registry/snap-cn/announce-title/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/announce-title/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 170,
+      "props": {
+        "eyebrow": "Introducing",
+        "title": "snapcn 1.0",
+        "tagline": "Ready-made scenes for Remotion, in one command.",
+        "symbolPath": "M15.757 15.459c-3.324 0.816 -6.07 2.966 -7.563 5.911 -1.194 2.388 -1.174 1.672 -1.174 24.66 0 19.982 0.02 21.077 0.378 22.132 0.955 2.926 2.946 4.498 6.588 5.215 1.99 0.398 2.528 0.657 3.702 1.732 1.055 0.975 1.473 2.169 1.473 4.219 0.02 2.408 0.836 3.901 2.647 4.856l1.035 0.537 19.505 0.06c17.574 0.06 19.624 0.02 20.739 -0.259 1.493 -0.418 2.647 -1.333 3.403 -2.766l0.537 -1.015 0.06 -6.269c0.04 -3.443 0.04 -6.807 0 -7.444l-0.06 -1.194 -0.617 0.995c-0.717 1.174 -2.01 2.289 -3.383 2.906l-0.975 0.458 -16.121 0.06c-11.763 0.04 -16.42 -0 -17.216 -0.159 -2.548 -0.557 -5.135 -2.408 -6.468 -4.657 -1.294 -2.189 -1.314 -2.548 -1.254 -16.44l0.06 -12.439 0.478 -1.154c0.876 -2.209 2.926 -4.18 5.374 -5.155l1.115 -0.458 16.519 -0.06c16.101 -0.04 16.539 -0.04 17.813 0.358 1.592 0.498 2.966 1.473 3.941 2.826l0.736 1.035 0.06 -6.648c0.06 -7.304 -0.06 -8.319 -1.115 -9.832 -0.597 -0.876 -1.95 -1.811 -3.025 -2.11 -0.438 -0.119 -9.096 -0.199 -23.386 -0.179 -18.37 0.02 -22.908 0.06 -23.804 0.279zM79.665 31.819c-6.508 3.901 -11.902 7.185 -11.981 7.304 -0.08 0.119 -0.139 5.055 -0.1 10.947l0.04 10.748 2.886 1.811c1.592 0.995 4.14 2.587 5.672 3.523 1.533 0.935 5.632 3.463 9.096 5.613 3.463 2.15 6.488 3.901 6.707 3.901 0.219 -0 0.537 -0.139 0.697 -0.318 0.279 -0.279 0.318 -2.806 0.318 -24.958 0 -15.544 -0.08 -24.839 -0.199 -25.157 -0.139 -0.398 -0.318 -0.517 -0.736 -0.517 -0.358 0.02 -4.617 2.448 -12.399 7.105z",
+        "symbolColors": "",
+        "symbolScale": 1,
+        "fieldColor": "#5600f5",
+        "titleColor": "#4800c9",
+        "paperColor": "#fcfcfa",
+        "voidColor": "#100022",
+        "nightColor": "#000028",
+        "glowColor": "#08ff4b",
+        "glowStrength": 0.139,
+        "taglineColor": "#f2f8ff",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#000028"
+    },
+    "controls": {
+      "eyebrow": {
+        "type": "text",
+        "default": "Introducing",
+        "label": "Eyebrow"
+      },
+      "title": {
+        "type": "text",
+        "default": "snapcn 1.0",
+        "label": "Title"
+      },
+      "tagline": {
+        "type": "text",
+        "default": "Ready-made scenes for Remotion, in one command.",
+        "label": "Tagline"
+      },
+      "symbolPath": {
+        "type": "text",
+        "default": "M15.757 15.459c-3.324 0.816 -6.07 2.966 -7.563 5.911 -1.194 2.388 -1.174 1.672 -1.174 24.66 0 19.982 0.02 21.077 0.378 22.132 0.955 2.926 2.946 4.498 6.588 5.215 1.99 0.398 2.528 0.657 3.702 1.732 1.055 0.975 1.473 2.169 1.473 4.219 0.02 2.408 0.836 3.901 2.647 4.856l1.035 0.537 19.505 0.06c17.574 0.06 19.624 0.02 20.739 -0.259 1.493 -0.418 2.647 -1.333 3.403 -2.766l0.537 -1.015 0.06 -6.269c0.04 -3.443 0.04 -6.807 0 -7.444l-0.06 -1.194 -0.617 0.995c-0.717 1.174 -2.01 2.289 -3.383 2.906l-0.975 0.458 -16.121 0.06c-11.763 0.04 -16.42 -0 -17.216 -0.159 -2.548 -0.557 -5.135 -2.408 -6.468 -4.657 -1.294 -2.189 -1.314 -2.548 -1.254 -16.44l0.06 -12.439 0.478 -1.154c0.876 -2.209 2.926 -4.18 5.374 -5.155l1.115 -0.458 16.519 -0.06c16.101 -0.04 16.539 -0.04 17.813 0.358 1.592 0.498 2.966 1.473 3.941 2.826l0.736 1.035 0.06 -6.648c0.06 -7.304 -0.06 -8.319 -1.115 -9.832 -0.597 -0.876 -1.95 -1.811 -3.025 -2.11 -0.438 -0.119 -9.096 -0.199 -23.386 -0.179 -18.37 0.02 -22.908 0.06 -23.804 0.279zM79.665 31.819c-6.508 3.901 -11.902 7.185 -11.981 7.304 -0.08 0.119 -0.139 5.055 -0.1 10.947l0.04 10.748 2.886 1.811c1.592 0.995 4.14 2.587 5.672 3.523 1.533 0.935 5.632 3.463 9.096 5.613 3.463 2.15 6.488 3.901 6.707 3.901 0.219 -0 0.537 -0.139 0.697 -0.318 0.279 -0.279 0.318 -2.806 0.318 -24.958 0 -15.544 -0.08 -24.839 -0.199 -25.157 -0.139 -0.398 -0.318 -0.517 -0.736 -0.517 -0.358 0.02 -4.617 2.448 -12.399 7.105z",
+        "label": "Symbol path"
+      },
+      "symbolColors": {
+        "type": "text",
+        "default": "",
+        "label": "Symbol colours (comma-separated)"
+      },
+      "symbolScale": {
+        "type": "number",
+        "default": 1,
+        "min": 0,
+        "max": 3,
+        "step": 0.05,
+        "label": "Symbol size"
+      },
+      "fieldColor": {
+        "type": "color",
+        "default": "#5600f5",
+        "label": "Colour field",
+        "brand": "accent"
+      },
+      "titleColor": {
+        "type": "color",
+        "default": "#4800c9",
+        "label": "Title ink"
+      },
+      "paperColor": {
+        "type": "color",
+        "default": "#fcfcfa",
+        "label": "Title paper"
+      },
+      "voidColor": {
+        "type": "color",
+        "default": "#100022",
+        "label": "Opening ground"
+      },
+      "nightColor": {
+        "type": "color",
+        "default": "#000028",
+        "label": "Closing ground"
+      },
+      "glowColor": {
+        "type": "color",
+        "default": "#08ff4b",
+        "label": "Closing glow"
+      },
+      "glowStrength": {
+        "type": "number",
+        "default": 0.139,
+        "min": 0,
+        "max": 0.4,
+        "step": 0.005,
+        "label": "Glow strength"
+      },
+      "taglineColor": {
+        "type": "color",
+        "default": "#f2f8ff",
+        "label": "Tagline ink"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "scenes"
+    ]
+  },
+  {
+    "slug": "snapcn-answer-stream",
+    "catalogFamily": "snapcn",
+    "title": "Answer Stream",
+    "description": "The beat after send: a macro shot on the button that cuts — hard, on its fastest frame — to the answer building itself on the page, while the camera pulls back 1.364× about a focal point above the frame to keep up with it. Every word arrives hot and cools to the foreground.",
+    "componentName": "AnswerStream",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/answer-stream/index.tsx",
+      "config": "registry/snap-cn/answer-stream/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/answer-stream/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "question": "How do I rank higher in AI answers?",
+        "answer": "Analysing your prompt gaps…\nFound 27 prompts you should rank for and don't yet, so your name shows up everywhere AI looks.",
+        "headline": "Your AI visibility score: 34% — here's how I'd fix it:",
+        "model": "Auto",
+        "commitAt": 1,
+        "cutAt": 1.284,
+        "pullbackAt": 1.933,
+        "pullbackDuration": 1.1,
+        "pullbackUndershoot": 0.028,
+        "pullbackFrom": 1.364,
+        "focusY": -0.548,
+        "macroZoom": 2.36,
+        "wordsPerSecond": 25,
+        "coolSeconds": 0.23,
+        "blur": 3,
+        "accentColor": "#266DF0",
+        "mode": "light",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "question": {
+        "type": "text",
+        "default": "How do I rank higher in AI answers?",
+        "label": "Question"
+      },
+      "answer": {
+        "type": "text",
+        "default": "Analysing your prompt gaps…\nFound 27 prompts you should rank for and don't yet, so your name shows up everywhere AI looks.",
+        "label": "Answer"
+      },
+      "headline": {
+        "type": "text",
+        "default": "Your AI visibility score: 34% — here's how I'd fix it:",
+        "label": "Headline"
+      },
+      "model": {
+        "type": "text",
+        "default": "Auto",
+        "label": "Model"
+      },
+      "commitAt": {
+        "type": "number",
+        "default": 1,
+        "min": 0,
+        "max": 3,
+        "step": 0.01,
+        "label": "Commit at (s)"
+      },
+      "cutAt": {
+        "type": "number",
+        "default": 1.284,
+        "min": 0.2,
+        "max": 4,
+        "step": 0.01,
+        "label": "Cut at (s)"
+      },
+      "pullbackAt": {
+        "type": "number",
+        "default": 1.933,
+        "min": 0.5,
+        "max": 5,
+        "step": 0.01,
+        "label": "Pull back at (s)"
+      },
+      "pullbackDuration": {
+        "type": "number",
+        "default": 1.1,
+        "min": 0.2,
+        "max": 3,
+        "step": 0.05,
+        "label": "Pull back for (s)"
+      },
+      "pullbackUndershoot": {
+        "type": "number",
+        "default": 0.028,
+        "min": 0,
+        "max": 0.2,
+        "step": 0.002,
+        "label": "Undershoot"
+      },
+      "pullbackFrom": {
+        "type": "number",
+        "default": 1.364,
+        "min": 1,
+        "max": 3,
+        "step": 0.005,
+        "label": "Pull back from"
+      },
+      "focusY": {
+        "type": "number",
+        "default": -0.548,
+        "min": -2,
+        "max": 1,
+        "step": 0.005,
+        "label": "Focus Y"
+      },
+      "macroZoom": {
+        "type": "number",
+        "default": 2.36,
+        "min": 1,
+        "max": 5,
+        "step": 0.01,
+        "label": "Macro zoom"
+      },
+      "wordsPerSecond": {
+        "type": "number",
+        "default": 25,
+        "min": 4,
+        "max": 60,
+        "step": 1,
+        "label": "Words / second"
+      },
+      "coolSeconds": {
+        "type": "number",
+        "default": 0.23,
+        "min": 0,
+        "max": 1.5,
+        "step": 0.01,
+        "label": "Cool over (s)"
+      },
+      "blur": {
+        "type": "number",
+        "default": 3,
+        "min": 0,
+        "max": 20,
+        "step": 0.5,
+        "label": "Motion blur"
+      },
+      "accentColor": {
+        "type": "color",
+        "default": "#266DF0",
+        "label": "Accent",
+        "brand": "accent"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Mode"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "ai-input"
+    ]
+  },
+  {
+    "slug": "snapcn-text-reveal",
+    "catalogFamily": "snapcn",
+    "title": "Text Reveal",
+    "description": "One staggered enter/exit text animator: fade, slide, blur, scale, mask and tracking effects over character, word, line or block units, with 14 classic looks as presets.",
+    "componentName": "TextReveal",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/text-reveal/index.tsx",
+      "config": "registry/snap-cn/text-reveal/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/text-reveal/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 90,
+      "props": {
+        "text": "Meet Acme Billing",
+        "fontSize": 72,
+        "color": "#101828",
+        "fontWeight": "600",
+        "initialScale": 2.3,
+        "pushScale": 1.06,
+        "introDuration": 6,
+        "holdDuration": 12,
+        "recedeDuration": 14,
+        "assembleDuration": 30,
+        "wordDelay": 7,
+        "wordStagger": 4,
+        "wordDuration": 14,
+        "wordPush": 0.5,
+        "wordFade": 2,
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#FAFAFA"
+    },
+    "controls": {
+      "text": {
+        "type": "text",
+        "default": "Meet Acme Billing",
+        "label": "Text"
+      },
+      "fontSize": {
+        "type": "number",
+        "default": 72,
+        "min": 12,
+        "max": 160,
+        "step": 1,
+        "label": "Font size"
+      },
+      "color": {
+        "type": "color",
+        "default": "#101828",
+        "label": "Color"
+      },
+      "fontWeight": {
+        "type": "select",
+        "default": "600",
+        "options": [
+          "400",
+          "500",
+          "600",
+          "700"
+        ],
+        "label": "Font weight"
+      },
+      "initialScale": {
+        "type": "number",
+        "default": 2.3,
+        "min": 1,
+        "max": 4,
+        "step": 0.1,
+        "label": "Lead word scale"
+      },
+      "pushScale": {
+        "type": "number",
+        "default": 1.06,
+        "min": 1,
+        "max": 1.3,
+        "step": 0.01,
+        "label": "Forward push"
+      },
+      "introDuration": {
+        "type": "number",
+        "default": 6,
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "label": "Intro fade"
+      },
+      "holdDuration": {
+        "type": "number",
+        "default": 12,
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "label": "Hold (frames)"
+      },
+      "recedeDuration": {
+        "type": "number",
+        "default": 14,
+        "min": 4,
+        "max": 60,
+        "step": 1,
+        "label": "Recede duration"
+      },
+      "assembleDuration": {
+        "type": "number",
+        "default": 30,
+        "min": 8,
+        "max": 120,
+        "step": 1,
+        "label": "Assemble duration"
+      },
+      "wordDelay": {
+        "type": "number",
+        "default": 7,
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "label": "Word delay"
+      },
+      "wordStagger": {
+        "type": "number",
+        "default": 4,
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "label": "Word stagger"
+      },
+      "wordDuration": {
+        "type": "number",
+        "default": 14,
+        "min": 4,
+        "max": 60,
+        "step": 1,
+        "label": "Word push duration"
+      },
+      "wordPush": {
+        "type": "number",
+        "default": 0.5,
+        "min": 0,
+        "max": 2,
+        "step": 0.05,
+        "label": "Word push distance (em)"
+      },
+      "wordFade": {
+        "type": "number",
+        "default": 2,
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "label": "Word fade"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "text"
+    ]
+  },
+  {
+    "slug": "snapcn-text-highlight",
+    "catalogFamily": "snapcn",
+    "title": "Text Highlight",
+    "description": "Animated emphasis on one span inside a static sentence — marker sweep, color shift, underline, strikethrough-replace, or shimmer.",
+    "componentName": "TextHighlight",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/text-highlight/index.tsx",
+      "config": "registry/snap-cn/text-highlight/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/text-highlight/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 56,
+      "props": {
+        "before": "Powered by ",
+        "highlight": "Northwind",
+        "after": "",
+        "preset": "logo-wipe",
+        "baseColor": "#101828",
+        "accentColor": "#266DF0",
+        "highlightedTextColor": "#101828",
+        "replaceWith": "Acme",
+        "startAt": 6,
+        "drawDuration": 14,
+        "thickness": 4,
+        "shineColor": "#FAFAFA",
+        "logoSrc": "",
+        "logoScale": 1.05,
+        "spinTurns": 1,
+        "holdDuration": 12,
+        "rushDuration": 24,
+        "rushScale": 42,
+        "rushDrift": 0.55,
+        "swingOut": 0.25,
+        "coverColor": "#266DF0",
+        "fontSize": 56,
+        "fontWeight": "600",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#FAFAFA"
+    },
+    "controls": {
+      "before": {
+        "type": "text",
+        "default": "Powered by ",
+        "label": "Before"
+      },
+      "highlight": {
+        "type": "text",
+        "default": "Northwind",
+        "label": "Highlight / wordmark"
+      },
+      "after": {
+        "type": "text",
+        "default": "",
+        "label": "After"
+      },
+      "preset": {
+        "type": "select",
+        "default": "logo-wipe",
+        "options": [
+          "logo-wipe",
+          "marker",
+          "color",
+          "underline",
+          "strikethrough",
+          "shimmer"
+        ],
+        "label": "Preset"
+      },
+      "baseColor": {
+        "type": "color",
+        "default": "#101828",
+        "label": "Base color"
+      },
+      "accentColor": {
+        "type": "color",
+        "default": "#266DF0",
+        "label": "Accent color",
+        "brand": "accent"
+      },
+      "highlightedTextColor": {
+        "type": "color",
+        "default": "#101828",
+        "label": "Highlighted text color"
+      },
+      "replaceWith": {
+        "type": "text",
+        "default": "Acme",
+        "label": "Replace with (strikethrough)"
+      },
+      "startAt": {
+        "type": "number",
+        "default": 6,
+        "min": 0,
+        "max": 120,
+        "step": 1,
+        "label": "Start at (frames)"
+      },
+      "drawDuration": {
+        "type": "number",
+        "default": 14,
+        "min": 5,
+        "max": 120,
+        "step": 1,
+        "label": "Draw duration (frames)"
+      },
+      "thickness": {
+        "type": "number",
+        "default": 4,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "label": "Line thickness"
+      },
+      "shineColor": {
+        "type": "color",
+        "default": "#FAFAFA",
+        "label": "Shine color (shimmer)"
+      },
+      "logoSrc": {
+        "type": "image",
+        "default": "",
+        "label": "Logo URL",
+        "brand": "logo"
+      },
+      "logoScale": {
+        "type": "number",
+        "default": 1.05,
+        "min": 0.4,
+        "max": 3,
+        "step": 0.05,
+        "label": "Mark size (× font)"
+      },
+      "spinTurns": {
+        "type": "number",
+        "default": 1,
+        "min": 0,
+        "max": 4,
+        "step": 0.25,
+        "label": "Mark spin (turns)"
+      },
+      "holdDuration": {
+        "type": "number",
+        "default": 12,
+        "min": 0,
+        "max": 60,
+        "step": 1,
+        "label": "Lockup hold"
+      },
+      "rushDuration": {
+        "type": "number",
+        "default": 24,
+        "min": 6,
+        "max": 80,
+        "step": 1,
+        "label": "Rush duration"
+      },
+      "rushScale": {
+        "type": "number",
+        "default": 42,
+        "min": 2,
+        "max": 80,
+        "step": 1,
+        "label": "Rush scale (× mark)"
+      },
+      "rushDrift": {
+        "type": "number",
+        "default": 0.55,
+        "min": -0.8,
+        "max": 0.8,
+        "step": 0.05,
+        "label": "Swing across (× width)"
+      },
+      "swingOut": {
+        "type": "number",
+        "default": 0.25,
+        "min": 0,
+        "max": 0.33,
+        "step": 0.01,
+        "label": "Swing arc (× width)"
+      },
+      "coverColor": {
+        "type": "color",
+        "default": "#266DF0",
+        "label": "Ink color (end of rush)"
+      },
+      "fontSize": {
+        "type": "number",
+        "default": 56,
+        "min": 12,
+        "max": 160,
+        "step": 1,
+        "label": "Font size"
+      },
+      "fontWeight": {
+        "type": "select",
+        "default": "600",
+        "options": [
+          "400",
+          "500",
+          "600",
+          "700"
+        ],
+        "label": "Font weight"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "text"
+    ]
+  },
+  {
+    "slug": "snapcn-text-rewrite",
+    "catalogFamily": "snapcn",
+    "title": "Text Rewrite",
+    "description": "A line that writes itself a word at a time, comes forward and gets selected — then its opening is swept away by a clip that cuts letters in half as it passes, and a new ending is written on while the line slides to its new centre. The mark rides the sweeping edge throughout.",
+    "componentName": "TextRewrite",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/text-rewrite/index.tsx",
+      "config": "registry/snap-cn/text-rewrite/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/text-rewrite/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 102,
+      "props": {
+        "headline": "Or just add snapcn",
+        "keep": 1,
+        "append": "registry",
+        "wordAt": 0.217,
+        "wordStagger": 0.189,
+        "wordDuration": 0.085,
+        "coolDelay": 0.189,
+        "coolDuration": 0.189,
+        "cutAt": 1.033,
+        "zoomDuration": 0,
+        "zoom": 2.41,
+        "dragAt": 1.033,
+        "dragDuration": 0.2,
+        "eraseAt": 1.45,
+        "eraseDuration": 0.517,
+        "rewriteAt": 2,
+        "rewriteDuration": 0.533,
+        "deselectAt": 2.85,
+        "deselectDuration": 0.15,
+        "fontSize": 20,
+        "fontWeight": 500,
+        "centerY": 0.4902,
+        "selectionOpacity": 0.21,
+        "selectionAngle": 90,
+        "markSize": 1.15,
+        "glow": true,
+        "glowOpacity": 0.075,
+        "accentColor": "#3072db",
+        "mode": "light",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "headline": {
+        "type": "text",
+        "default": "Or just add snapcn",
+        "label": "Headline"
+      },
+      "keep": {
+        "type": "number",
+        "default": 1,
+        "min": 0,
+        "max": 8,
+        "step": 1,
+        "label": "Words kept"
+      },
+      "append": {
+        "type": "text",
+        "default": "registry",
+        "label": "Written on"
+      },
+      "wordAt": {
+        "type": "number",
+        "default": 0.217,
+        "min": 0,
+        "max": 2,
+        "step": 0.005,
+        "label": "First word at (s)"
+      },
+      "wordStagger": {
+        "type": "number",
+        "default": 0.189,
+        "min": 0.02,
+        "max": 0.8,
+        "step": 0.002,
+        "label": "Word stagger (s)"
+      },
+      "wordDuration": {
+        "type": "number",
+        "default": 0.085,
+        "min": 0.02,
+        "max": 1,
+        "step": 0.005,
+        "label": "Word opens in (s)"
+      },
+      "coolDelay": {
+        "type": "number",
+        "default": 0.189,
+        "min": 0,
+        "max": 1.5,
+        "step": 0.005,
+        "label": "Accent holds (s)"
+      },
+      "coolDuration": {
+        "type": "number",
+        "default": 0.189,
+        "min": 0.01,
+        "max": 1.5,
+        "step": 0.005,
+        "label": "Accent cools over (s)"
+      },
+      "cutAt": {
+        "type": "number",
+        "default": 1.033,
+        "min": 0.1,
+        "max": 6,
+        "step": 0.01,
+        "label": "Comes forward at (s)"
+      },
+      "zoomDuration": {
+        "type": "number",
+        "default": 0,
+        "min": 0,
+        "max": 2,
+        "step": 0.01,
+        "label": "Forward over (s)"
+      },
+      "zoom": {
+        "type": "number",
+        "default": 2.41,
+        "min": 1,
+        "max": 6,
+        "step": 0.01,
+        "label": "Forward to"
+      },
+      "dragAt": {
+        "type": "number",
+        "default": 1.033,
+        "min": 0.1,
+        "max": 6,
+        "step": 0.005,
+        "label": "Select at (s)"
+      },
+      "dragDuration": {
+        "type": "number",
+        "default": 0.2,
+        "min": 0.02,
+        "max": 2,
+        "step": 0.005,
+        "label": "Drag over (s)"
+      },
+      "eraseAt": {
+        "type": "number",
+        "default": 1.45,
+        "min": 0.1,
+        "max": 8,
+        "step": 0.005,
+        "label": "Erase at (s)"
+      },
+      "eraseDuration": {
+        "type": "number",
+        "default": 0.517,
+        "min": 0.05,
+        "max": 3,
+        "step": 0.005,
+        "label": "Erase over (s)"
+      },
+      "rewriteAt": {
+        "type": "number",
+        "default": 2,
+        "min": 0.1,
+        "max": 8,
+        "step": 0.005,
+        "label": "Rewrite at (s)"
+      },
+      "rewriteDuration": {
+        "type": "number",
+        "default": 0.533,
+        "min": 0.05,
+        "max": 3,
+        "step": 0.005,
+        "label": "Rewrite over (s)"
+      },
+      "deselectAt": {
+        "type": "number",
+        "default": 2.85,
+        "min": 0.1,
+        "max": 10,
+        "step": 0.005,
+        "label": "Deselect at (s)"
+      },
+      "deselectDuration": {
+        "type": "number",
+        "default": 0.15,
+        "min": 0.02,
+        "max": 2,
+        "step": 0.005,
+        "label": "Deselect over (s)"
+      },
+      "fontSize": {
+        "type": "number",
+        "default": 20,
+        "min": 8,
+        "max": 64,
+        "step": 0.5,
+        "label": "Type size"
+      },
+      "fontWeight": {
+        "type": "number",
+        "default": 500,
+        "min": 400,
+        "max": 600,
+        "step": 100,
+        "label": "Weight"
+      },
+      "centerY": {
+        "type": "number",
+        "default": 0.4902,
+        "min": 0.1,
+        "max": 0.9,
+        "step": 0.002,
+        "label": "Line Y"
+      },
+      "selectionOpacity": {
+        "type": "number",
+        "default": 0.21,
+        "min": 0,
+        "max": 0.8,
+        "step": 0.005,
+        "label": "Selection strength"
+      },
+      "selectionAngle": {
+        "type": "number",
+        "default": 90,
+        "min": 0,
+        "max": 180,
+        "step": 1,
+        "label": "Sheen angle"
+      },
+      "markSize": {
+        "type": "number",
+        "default": 1.15,
+        "min": 0,
+        "max": 3,
+        "step": 0.01,
+        "label": "Mark size (em)"
+      },
+      "glow": {
+        "type": "boolean",
+        "default": true,
+        "label": "Wash"
+      },
+      "glowOpacity": {
+        "type": "number",
+        "default": 0.075,
+        "min": 0,
+        "max": 0.5,
+        "step": 0.005,
+        "label": "Wash strength"
+      },
+      "accentColor": {
+        "type": "color",
+        "default": "#3072db",
+        "label": "Accent",
+        "brand": "accent"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Mode"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "text"
+    ]
+  },
+  {
+    "slug": "snapcn-text-select",
+    "catalogFamily": "snapcn",
+    "title": "Text Select",
+    "description": "A line that writes itself a word at a time — each one arriving in the accent and cooling to the foreground a beat later, so exactly one word is ever coloured — then pushes forward to full size on a baseline-pivoted scale and gets selected, the drag sweeping across under a gradient sheen with a hard caret edge.",
+    "componentName": "TextSelect",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/text-select/index.tsx",
+      "config": "registry/snap-cn/text-select/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/text-select/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 72,
+      "props": {
+        "headline": "One command into your project.",
+        "wordAt": 0.066,
+        "wordStagger": 0.208,
+        "wordDuration": 0.13,
+        "shiftX": 0.475,
+        "coolDelay": 0.208,
+        "coolDuration": 0.208,
+        "cutAt": 1.13,
+        "zoomDuration": 0.42,
+        "zoom": 2.39,
+        "selectAt": 1.4,
+        "selectDuration": 0.26,
+        "fontSize": 20,
+        "fontWeight": 500,
+        "centerY": 0.5116,
+        "selectionOpacity": 0.207,
+        "selectionAngle": 90,
+        "shineColor": "#ffffff",
+        "shineOpacity": 0.5,
+        "shineDepth": 0.55,
+        "shineWidth": 0.3,
+        "shineDuration": 0.62,
+        "shineEvery": 1.1,
+        "selectionPad": 0.063,
+        "glow": true,
+        "glowOpacity": 0.075,
+        "accentColor": "#3072db",
+        "mode": "light",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "headline": {
+        "type": "text",
+        "default": "One command into your project.",
+        "label": "Headline"
+      },
+      "wordAt": {
+        "type": "number",
+        "default": 0.066,
+        "min": 0,
+        "max": 2,
+        "step": 0.005,
+        "label": "First word at (s)"
+      },
+      "wordStagger": {
+        "type": "number",
+        "default": 0.208,
+        "min": 0.02,
+        "max": 0.8,
+        "step": 0.002,
+        "label": "Word stagger (s)"
+      },
+      "wordDuration": {
+        "type": "number",
+        "default": 0.13,
+        "min": 0.02,
+        "max": 1,
+        "step": 0.005,
+        "label": "Word lands in (s)"
+      },
+      "shiftX": {
+        "type": "number",
+        "default": 0.475,
+        "min": -2,
+        "max": 2,
+        "step": 0.005,
+        "label": "Line arrives from (em)"
+      },
+      "coolDelay": {
+        "type": "number",
+        "default": 0.208,
+        "min": 0,
+        "max": 1.5,
+        "step": 0.005,
+        "label": "Accent holds (s)"
+      },
+      "coolDuration": {
+        "type": "number",
+        "default": 0.208,
+        "min": 0.01,
+        "max": 1.5,
+        "step": 0.005,
+        "label": "Accent cools over (s)"
+      },
+      "cutAt": {
+        "type": "number",
+        "default": 1.13,
+        "min": 0.1,
+        "max": 6,
+        "step": 0.01,
+        "label": "Comes forward at (s)"
+      },
+      "zoomDuration": {
+        "type": "number",
+        "default": 0.42,
+        "min": 0,
+        "max": 2,
+        "step": 0.01,
+        "label": "Forward over (s)"
+      },
+      "zoom": {
+        "type": "number",
+        "default": 2.39,
+        "min": 1,
+        "max": 6,
+        "step": 0.01,
+        "label": "Forward to"
+      },
+      "selectAt": {
+        "type": "number",
+        "default": 1.4,
+        "min": 0.1,
+        "max": 6,
+        "step": 0.005,
+        "label": "Select at (s)"
+      },
+      "selectDuration": {
+        "type": "number",
+        "default": 0.26,
+        "min": 0.02,
+        "max": 2,
+        "step": 0.005,
+        "label": "Drag over (s)"
+      },
+      "fontSize": {
+        "type": "number",
+        "default": 20,
+        "min": 8,
+        "max": 64,
+        "step": 0.5,
+        "label": "Type size"
+      },
+      "fontWeight": {
+        "type": "number",
+        "default": 500,
+        "min": 400,
+        "max": 600,
+        "step": 100,
+        "label": "Weight"
+      },
+      "centerY": {
+        "type": "number",
+        "default": 0.5116,
+        "min": 0.1,
+        "max": 0.9,
+        "step": 0.002,
+        "label": "Line Y"
+      },
+      "selectionOpacity": {
+        "type": "number",
+        "default": 0.207,
+        "min": 0,
+        "max": 0.8,
+        "step": 0.005,
+        "label": "Selection strength"
+      },
+      "selectionAngle": {
+        "type": "number",
+        "default": 90,
+        "min": 0,
+        "max": 180,
+        "step": 1,
+        "label": "Sheen angle"
+      },
+      "shineColor": {
+        "type": "color",
+        "default": "#ffffff",
+        "label": "Glint"
+      },
+      "shineOpacity": {
+        "type": "number",
+        "default": 0.5,
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "label": "Glint strength"
+      },
+      "shineDepth": {
+        "type": "number",
+        "default": 0.55,
+        "min": 0,
+        "max": 2,
+        "step": 0.01,
+        "label": "Glint shoulders"
+      },
+      "shineWidth": {
+        "type": "number",
+        "default": 0.3,
+        "min": 0.05,
+        "max": 1,
+        "step": 0.01,
+        "label": "Glint width"
+      },
+      "shineDuration": {
+        "type": "number",
+        "default": 0.62,
+        "min": 0.05,
+        "max": 3,
+        "step": 0.01,
+        "label": "Glint crosses in (s)"
+      },
+      "shineEvery": {
+        "type": "number",
+        "default": 1.1,
+        "min": 0,
+        "max": 6,
+        "step": 0.05,
+        "label": "Glint every (s)"
+      },
+      "selectionPad": {
+        "type": "number",
+        "default": 0.063,
+        "min": 0,
+        "max": 1,
+        "step": 0.005,
+        "label": "Selection pad (em)"
+      },
+      "glow": {
+        "type": "boolean",
+        "default": true,
+        "label": "Wash"
+      },
+      "glowOpacity": {
+        "type": "number",
+        "default": 0.075,
+        "min": 0,
+        "max": 0.5,
+        "step": 0.005,
+        "label": "Wash strength"
+      },
+      "accentColor": {
+        "type": "color",
+        "default": "#3072db",
+        "label": "Accent",
+        "brand": "accent"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Mode"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "text"
+    ]
+  },
+  {
+    "slug": "snapcn-text-swap",
+    "catalogFamily": "snapcn",
+    "title": "Text Swap",
+    "description": "Replaces one line of text with another using exit-then-enter scheduling, with five transition presets: fade-through, crossfade, shared-axis-y, shared-axis-z, and cut.",
+    "componentName": "TextSwap",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/text-swap/index.tsx",
+      "config": "registry/snap-cn/text-swap/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/text-swap/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 90,
+      "props": {
+        "fromText": "Manual invoicing",
+        "toText": "Automated with Acme",
+        "transition": "fly-through",
+        "unit": "block",
+        "exitDuration": 20,
+        "enterDuration": 16,
+        "exitStagger": 1,
+        "enterStagger": 2,
+        "overlap": 1,
+        "microDelay": 2,
+        "fontSize": 72,
+        "color": "#101828",
+        "fontWeight": "600",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#ffffff"
+    },
+    "controls": {
+      "fromText": {
+        "type": "text",
+        "default": "Manual invoicing",
+        "label": "From text"
+      },
+      "toText": {
+        "type": "text",
+        "default": "Automated with Acme",
+        "label": "To text"
+      },
+      "transition": {
+        "type": "select",
+        "default": "fly-through",
+        "options": [
+          "fly-through",
+          "fade-through",
+          "crossfade",
+          "shared-axis-y",
+          "shared-axis-z",
+          "cut"
+        ],
+        "label": "Transition"
+      },
+      "unit": {
+        "type": "select",
+        "default": "block",
+        "options": [
+          "block",
+          "word"
+        ],
+        "label": "Unit"
+      },
+      "exitDuration": {
+        "type": "number",
+        "default": 20,
+        "min": 2,
+        "max": 40,
+        "step": 1,
+        "label": "Exit duration"
+      },
+      "enterDuration": {
+        "type": "number",
+        "default": 16,
+        "min": 2,
+        "max": 40,
+        "step": 1,
+        "label": "Enter duration"
+      },
+      "exitStagger": {
+        "type": "number",
+        "default": 1,
+        "min": 0,
+        "max": 8,
+        "step": 1,
+        "label": "Exit stagger"
+      },
+      "enterStagger": {
+        "type": "number",
+        "default": 2,
+        "min": 0,
+        "max": 8,
+        "step": 1,
+        "label": "Enter stagger"
+      },
+      "overlap": {
+        "type": "number",
+        "default": 1,
+        "min": 0,
+        "max": 12,
+        "step": 1,
+        "label": "Overlap"
+      },
+      "microDelay": {
+        "type": "number",
+        "default": 2,
+        "min": 0,
+        "max": 12,
+        "step": 1,
+        "label": "Micro delay"
+      },
+      "fontSize": {
+        "type": "number",
+        "default": 72,
+        "min": 12,
+        "max": 160,
+        "step": 1,
+        "label": "Font size"
+      },
+      "color": {
+        "type": "color",
+        "default": "#101828",
+        "label": "Color"
+      },
+      "fontWeight": {
+        "type": "select",
+        "default": "600",
+        "options": [
+          "400",
+          "500",
+          "600",
+          "700"
+        ],
+        "label": "Font weight"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "text"
+    ]
+  },
+  {
+    "slug": "snapcn-text-swell",
+    "catalogFamily": "snapcn",
+    "title": "Text Swell",
+    "description": "A title reveal where the lead word floats toward the viewer and hangs there while the sentence assembles around it — each trailing word pushes in and its letters bounce up off the baseline in a wave — before the whole line falls back to size.",
+    "componentName": "TextSwell",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/text-swell/index.tsx",
+      "config": "registry/snap-cn/text-swell/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/text-swell/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 110,
+      "props": {
+        "text": "No extra charge",
+        "fontSize": 72,
+        "color": "#101828",
+        "fontWeight": "600",
+        "riseDistance": 0.7,
+        "riseDuration": 10,
+        "introDuration": 8,
+        "frontScale": 2.1,
+        "approachDelay": 14,
+        "approachDuration": 20,
+        "wordDelay": 27,
+        "wordStagger": 14,
+        "wordPush": 0.15,
+        "wordPushDuration": 12,
+        "bounceWords": 1,
+        "letterSwell": 0.23,
+        "letterStagger": 2,
+        "letterRise": 3,
+        "letterHold": 0,
+        "letterFall": 6,
+        "holdDuration": 6,
+        "recedeDuration": 18,
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#FAFAFA"
+    },
+    "controls": {
+      "text": {
+        "type": "text",
+        "default": "No extra charge",
+        "label": "Text"
+      },
+      "fontSize": {
+        "type": "number",
+        "default": 72,
+        "min": 12,
+        "max": 160,
+        "step": 1,
+        "label": "Font size"
+      },
+      "color": {
+        "type": "color",
+        "default": "#101828",
+        "label": "Color"
+      },
+      "fontWeight": {
+        "type": "select",
+        "default": "600",
+        "options": [
+          "400",
+          "500",
+          "600",
+          "700"
+        ],
+        "label": "Font weight"
+      },
+      "riseDistance": {
+        "type": "number",
+        "default": 0.7,
+        "min": 0,
+        "max": 3,
+        "step": 0.05,
+        "label": "Rise from below (em)"
+      },
+      "riseDuration": {
+        "type": "number",
+        "default": 10,
+        "min": 1,
+        "max": 60,
+        "step": 1,
+        "label": "Rise duration"
+      },
+      "introDuration": {
+        "type": "number",
+        "default": 8,
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "label": "Intro fade"
+      },
+      "frontScale": {
+        "type": "number",
+        "default": 2.1,
+        "min": 1,
+        "max": 4,
+        "step": 0.1,
+        "label": "Front scale"
+      },
+      "approachDelay": {
+        "type": "number",
+        "default": 14,
+        "min": 0,
+        "max": 60,
+        "step": 1,
+        "label": "Approach delay"
+      },
+      "approachDuration": {
+        "type": "number",
+        "default": 20,
+        "min": 4,
+        "max": 80,
+        "step": 1,
+        "label": "Approach"
+      },
+      "wordDelay": {
+        "type": "number",
+        "default": 27,
+        "min": 0,
+        "max": 80,
+        "step": 1,
+        "label": "Word delay"
+      },
+      "wordStagger": {
+        "type": "number",
+        "default": 14,
+        "min": 1,
+        "max": 40,
+        "step": 1,
+        "label": "Word stagger"
+      },
+      "wordPush": {
+        "type": "number",
+        "default": 0.15,
+        "min": 0,
+        "max": 1,
+        "step": 0.05,
+        "label": "Word push (em)"
+      },
+      "wordPushDuration": {
+        "type": "number",
+        "default": 12,
+        "min": 2,
+        "max": 40,
+        "step": 1,
+        "label": "Word push / shove"
+      },
+      "bounceWords": {
+        "type": "number",
+        "default": 1,
+        "min": 0,
+        "max": 6,
+        "step": 1,
+        "label": "Words that bounce"
+      },
+      "letterSwell": {
+        "type": "number",
+        "default": 0.23,
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "label": "Letter swell"
+      },
+      "letterStagger": {
+        "type": "number",
+        "default": 2,
+        "min": 0.5,
+        "max": 12,
+        "step": 0.5,
+        "label": "Letter stagger"
+      },
+      "letterRise": {
+        "type": "number",
+        "default": 3,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "label": "Letter rise"
+      },
+      "letterHold": {
+        "type": "number",
+        "default": 0,
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "label": "Letter hold"
+      },
+      "letterFall": {
+        "type": "number",
+        "default": 6,
+        "min": 1,
+        "max": 30,
+        "step": 1,
+        "label": "Letter fall"
+      },
+      "holdDuration": {
+        "type": "number",
+        "default": 6,
+        "min": 0,
+        "max": 60,
+        "step": 1,
+        "label": "Front hold"
+      },
+      "recedeDuration": {
+        "type": "number",
+        "default": 18,
+        "min": 4,
+        "max": 80,
+        "step": 1,
+        "label": "Recede"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "text"
+    ]
+  },
+  {
+    "slug": "snapcn-text-build",
+    "catalogFamily": "snapcn",
+    "title": "Text Build",
+    "description": "Words enter one at a time while already-placed words physically reflow to stay centered — a growing line on the x axis or a growing stack on the y axis.",
+    "componentName": "TextBuild",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/text-build/index.tsx",
+      "config": "registry/snap-cn/text-build/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/text-build/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 75,
+      "props": {
+        "text": "Ship. Test. Deploy. Repeat.",
+        "axis": "x",
+        "entryOffset": 88,
+        "gap": 10,
+        "firstDuration": 10,
+        "pushDuration": 13,
+        "entryScale": 0.992,
+        "entryBlur": 3.5,
+        "reflowBlur": 0.8,
+        "fontSize": 72,
+        "color": "#101828",
+        "fontWeight": "600",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#FAFAFA"
+    },
+    "controls": {
+      "text": {
+        "type": "text",
+        "default": "Ship. Test. Deploy. Repeat.",
+        "label": "Text"
+      },
+      "axis": {
+        "type": "select",
+        "default": "x",
+        "options": [
+          "x",
+          "y"
+        ],
+        "label": "Axis"
+      },
+      "entryOffset": {
+        "type": "number",
+        "default": 88,
+        "min": 8,
+        "max": 160,
+        "step": 1,
+        "label": "Entry offset"
+      },
+      "gap": {
+        "type": "number",
+        "default": 10,
+        "min": 0,
+        "max": 48,
+        "step": 1,
+        "label": "Gap"
+      },
+      "firstDuration": {
+        "type": "number",
+        "default": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "label": "First duration"
+      },
+      "pushDuration": {
+        "type": "number",
+        "default": 13,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "label": "Push duration"
+      },
+      "entryScale": {
+        "type": "number",
+        "default": 0.992,
+        "min": 0.9,
+        "max": 1,
+        "step": 0.001,
+        "label": "Entry scale"
+      },
+      "entryBlur": {
+        "type": "number",
+        "default": 3.5,
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "label": "Entry blur"
+      },
+      "reflowBlur": {
+        "type": "number",
+        "default": 0.8,
+        "min": 0,
+        "max": 4,
+        "step": 0.1,
+        "label": "Reflow blur"
+      },
+      "fontSize": {
+        "type": "number",
+        "default": 72,
+        "min": 12,
+        "max": 160,
+        "step": 1,
+        "label": "Font size"
+      },
+      "color": {
+        "type": "color",
+        "default": "#101828",
+        "label": "Color"
+      },
+      "fontWeight": {
+        "type": "select",
+        "default": "600",
+        "options": [
+          "400",
+          "500",
+          "600",
+          "700"
+        ],
+        "label": "Font weight"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "text"
+    ]
+  },
+  {
+    "slug": "snapcn-word-flip",
+    "catalogFamily": "snapcn",
+    "title": "Word Flip",
+    "description": "A headline types itself out, then one word cycles on a 3D flip — it sinks into an anticipation dip, throws up and away about its baseline under motion blur, and the next word unfurls from below. The slot is reserved from the first keystroke, so nothing in the sentence ever reflows.",
+    "componentName": "WordFlip",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/word-flip/index.tsx",
+      "config": "registry/snap-cn/word-flip/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/word-flip/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 180,
+      "props": {
+        "prefix": "Looking For A",
+        "suffix": "Portfolio",
+        "cps": 9,
+        "pause": 6,
+        "cycle": 35,
+        "exitDuration": 9,
+        "enterDuration": 9,
+        "overlap": 3,
+        "perspective": 6.5,
+        "caret": true,
+        "fontSize": 72,
+        "color": "#101828",
+        "fontWeight": "600",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#FAFAFA"
+    },
+    "controls": {
+      "prefix": {
+        "type": "text",
+        "default": "Looking For A",
+        "label": "Prefix"
+      },
+      "suffix": {
+        "type": "text",
+        "default": "Portfolio",
+        "label": "Suffix"
+      },
+      "cps": {
+        "type": "number",
+        "default": 9,
+        "min": 3,
+        "max": 24,
+        "step": 0.5,
+        "label": "Typing speed (cps)"
+      },
+      "pause": {
+        "type": "number",
+        "default": 6,
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "label": "Pause"
+      },
+      "cycle": {
+        "type": "number",
+        "default": 35,
+        "min": 16,
+        "max": 90,
+        "step": 1,
+        "label": "Cycle"
+      },
+      "exitDuration": {
+        "type": "number",
+        "default": 9,
+        "min": 4,
+        "max": 24,
+        "step": 1,
+        "label": "Exit duration"
+      },
+      "enterDuration": {
+        "type": "number",
+        "default": 9,
+        "min": 4,
+        "max": 24,
+        "step": 1,
+        "label": "Enter duration"
+      },
+      "overlap": {
+        "type": "number",
+        "default": 3,
+        "min": 0,
+        "max": 8,
+        "step": 1,
+        "label": "Overlap"
+      },
+      "perspective": {
+        "type": "number",
+        "default": 6.5,
+        "min": 2,
+        "max": 20,
+        "step": 0.5,
+        "label": "Perspective (em)"
+      },
+      "caret": {
+        "type": "boolean",
+        "default": true,
+        "label": "Caret"
+      },
+      "fontSize": {
+        "type": "number",
+        "default": 72,
+        "min": 12,
+        "max": 120,
+        "step": 1,
+        "label": "Font size"
+      },
+      "color": {
+        "type": "color",
+        "default": "#101828",
+        "label": "Color"
+      },
+      "fontWeight": {
+        "type": "select",
+        "default": "600",
+        "options": [
+          "400",
+          "500",
+          "600",
+          "700"
+        ],
+        "label": "Font weight"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "text"
+    ]
+  },
+  {
+    "slug": "snapcn-word-captions",
+    "catalogFamily": "snapcn",
+    "title": "Word Captions",
+    "description": "Burned-in captions in the styles big channels actually use — heavy Montserrat, a real outside outline so they read on any footage, and the spoken word springing to an accent. Four presets: beast, hormozi, pop, clean.",
+    "componentName": "WordCaptions",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/word-captions/index.tsx",
+      "config": "registry/snap-cn/word-captions/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/word-captions/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 96,
+      "props": {
+        "words": "You are losing three hours every week to manual invoices and you don’t even notice it",
+        "framesPerWord": 14,
+        "preset": "boxed",
+        "groupSize": 0,
+        "activeStyle": "pop",
+        "aspect": "16:9",
+        "maxWidth": 800,
+        "fontSize": 0,
+        "textColor": "#FFFFFF",
+        "pillColor": "rgba(16,24,40,0.55)",
+        "accentColor": "#FFE81F",
+        "fontWeight": "0",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#FAFAFA"
+    },
+    "controls": {
+      "words": {
+        "type": "text",
+        "default": "You are losing three hours every week to manual invoices and you don’t even notice it",
+        "label": "Transcript"
+      },
+      "framesPerWord": {
+        "type": "number",
+        "default": 14,
+        "min": 6,
+        "max": 40,
+        "step": 1,
+        "label": "Frames / word"
+      },
+      "preset": {
+        "type": "select",
+        "default": "boxed",
+        "options": [
+          "boxed",
+          "youtube",
+          "beast",
+          "hormozi",
+          "pop",
+          "clean"
+        ],
+        "label": "Preset"
+      },
+      "groupSize": {
+        "type": "number",
+        "default": 0,
+        "min": 0,
+        "max": 3,
+        "step": 1,
+        "label": "Words per beat"
+      },
+      "activeStyle": {
+        "type": "select",
+        "default": "pop",
+        "options": [
+          "pop",
+          "highlight",
+          "color"
+        ],
+        "label": "Active style"
+      },
+      "aspect": {
+        "type": "select",
+        "default": "16:9",
+        "options": [
+          "16:9",
+          "1:1",
+          "9:16"
+        ],
+        "label": "Aspect preset"
+      },
+      "maxWidth": {
+        "type": "number",
+        "default": 800,
+        "min": 300,
+        "max": 1600,
+        "step": 20,
+        "label": "Max width"
+      },
+      "fontSize": {
+        "type": "number",
+        "default": 0,
+        "min": 0,
+        "max": 120,
+        "step": 1,
+        "label": "Font size"
+      },
+      "textColor": {
+        "type": "color",
+        "default": "#FFFFFF",
+        "label": "Text color"
+      },
+      "pillColor": {
+        "type": "text",
+        "default": "rgba(16,24,40,0.55)",
+        "label": "Pill color (CSS)"
+      },
+      "accentColor": {
+        "type": "color",
+        "default": "#FFE81F",
+        "label": "Accent",
+        "brand": "accent"
+      },
+      "fontWeight": {
+        "type": "select",
+        "default": "0",
+        "options": [
+          "400",
+          "500",
+          "600",
+          "700"
+        ],
+        "label": "Font weight"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "captions"
+    ]
+  },
+  {
+    "slug": "snapcn-karaoke-captions",
+    "catalogFamily": "snapcn",
+    "title": "Karaoke Captions",
+    "description": "A caption line that fills word by word as it is spoken — heavy outlined type that reads on any footage. Three presets: karaoke, highlight (the word rides an accent bar), clean.",
+    "componentName": "KaraokeCaptions",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/karaoke-captions/index.tsx",
+      "config": "registry/snap-cn/karaoke-captions/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/karaoke-captions/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "text": "Acme reconciles every transaction automatically",
+        "emphasize": "automatically",
+        "preset": "boxed",
+        "theme": "dark",
+        "accentColor": "#FFE81F",
+        "fontSize": 0,
+        "fontWeight": "0",
+        "aspect": "landscape",
+        "emphasisScale": 1.08,
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#FAFAFA"
+    },
+    "controls": {
+      "text": {
+        "type": "text",
+        "default": "Acme reconciles every transaction automatically",
+        "label": "Line text"
+      },
+      "emphasize": {
+        "type": "text",
+        "default": "automatically",
+        "label": "Emphasized words (comma-separated)"
+      },
+      "preset": {
+        "type": "select",
+        "default": "boxed",
+        "options": [
+          "boxed",
+          "karaoke",
+          "highlight",
+          "clean"
+        ],
+        "label": "Preset"
+      },
+      "theme": {
+        "type": "select",
+        "default": "dark",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Theme"
+      },
+      "accentColor": {
+        "type": "color",
+        "default": "#FFE81F",
+        "label": "Accent",
+        "brand": "accent"
+      },
+      "fontSize": {
+        "type": "number",
+        "default": 0,
+        "min": 0,
+        "max": 96,
+        "step": 1,
+        "label": "Font size"
+      },
+      "fontWeight": {
+        "type": "select",
+        "default": "0",
+        "options": [
+          "400",
+          "500",
+          "600",
+          "700"
+        ],
+        "label": "Font weight"
+      },
+      "aspect": {
+        "type": "select",
+        "default": "landscape",
+        "options": [
+          "landscape",
+          "portrait",
+          "square"
+        ],
+        "label": "Safe area"
+      },
+      "emphasisScale": {
+        "type": "number",
+        "default": 1.08,
+        "min": 1,
+        "max": 1.2,
+        "step": 0.01,
+        "label": "Emphasis scale"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "captions"
+    ]
+  },
+  {
+    "slug": "snapcn-logo-drift",
+    "catalogFamily": "snapcn",
+    "title": "Logo Drift",
+    "description": "A field of tiles drifting past a headline while the camera pulls steadily back, so the wall of things-it-works-with keeps arriving from every edge. The pull-back is one linear scale measured at 0.176 per second across every tile; the words do not fade in, they arrive 1.216× large and 4.3px soft and land in 140ms.",
+    "componentName": "LogoDrift",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/logo-drift/index.tsx",
+      "config": "registry/snap-cn/logo-drift/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/logo-drift/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 108,
+      "props": {
+        "headline": "Built for the stack you already use.",
+        "pullback": 0.1762,
+        "tileSpeed": 1,
+        "tileScale": 1,
+        "tileFade": 0.4,
+        "tileRadius": 0.02,
+        "glyphScale": 0.34,
+        "wordStagger": 0.15,
+        "wordDuration": 0.14,
+        "wordScale": 1.216,
+        "wordBlur": 4.3,
+        "exitAt": 3.13,
+        "exitDuration": 0.34,
+        "fontSize": 20,
+        "glow": true,
+        "glowOpacity": 0.07,
+        "accentColor": "#3072db",
+        "mode": "light",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "headline": {
+        "type": "text",
+        "default": "Built for the stack you already use.",
+        "label": "Headline"
+      },
+      "pullback": {
+        "type": "number",
+        "default": 0.1762,
+        "min": 0,
+        "max": 0.4,
+        "step": 0.001,
+        "label": "Pull-back / sec"
+      },
+      "tileSpeed": {
+        "type": "number",
+        "default": 1,
+        "min": 0,
+        "max": 3,
+        "step": 0.05,
+        "label": "Drift"
+      },
+      "tileScale": {
+        "type": "number",
+        "default": 1,
+        "min": 0.3,
+        "max": 2,
+        "step": 0.05,
+        "label": "Tile size"
+      },
+      "tileFade": {
+        "type": "number",
+        "default": 0.4,
+        "min": 0.05,
+        "max": 2,
+        "step": 0.01,
+        "label": "Tile fade τ (s)"
+      },
+      "tileRadius": {
+        "type": "number",
+        "default": 0.02,
+        "min": 0,
+        "max": 0.5,
+        "step": 0.01,
+        "label": "Tile radius"
+      },
+      "glyphScale": {
+        "type": "number",
+        "default": 0.34,
+        "min": 0.1,
+        "max": 0.7,
+        "step": 0.01,
+        "label": "Glyph size"
+      },
+      "wordStagger": {
+        "type": "number",
+        "default": 0.15,
+        "min": 0,
+        "max": 0.6,
+        "step": 0.005,
+        "label": "Word stagger (s)"
+      },
+      "wordDuration": {
+        "type": "number",
+        "default": 0.14,
+        "min": 0.02,
+        "max": 1,
+        "step": 0.005,
+        "label": "Word lands in (s)"
+      },
+      "wordScale": {
+        "type": "number",
+        "default": 1.216,
+        "min": 0.5,
+        "max": 2,
+        "step": 0.001,
+        "label": "Word arrives at"
+      },
+      "wordBlur": {
+        "type": "number",
+        "default": 4.3,
+        "min": 0,
+        "max": 20,
+        "step": 0.1,
+        "label": "Word blur (px)"
+      },
+      "exitAt": {
+        "type": "number",
+        "default": 3.13,
+        "min": 0.5,
+        "max": 10,
+        "step": 0.01,
+        "label": "Exit at (s)"
+      },
+      "exitDuration": {
+        "type": "number",
+        "default": 0.34,
+        "min": 0.05,
+        "max": 2,
+        "step": 0.01,
+        "label": "Exit over (s)"
+      },
+      "fontSize": {
+        "type": "number",
+        "default": 20,
+        "min": 8,
+        "max": 64,
+        "step": 0.5,
+        "label": "Headline size"
+      },
+      "glow": {
+        "type": "boolean",
+        "default": true,
+        "label": "Wash"
+      },
+      "glowOpacity": {
+        "type": "number",
+        "default": 0.07,
+        "min": 0,
+        "max": 0.5,
+        "step": 0.005,
+        "label": "Wash strength"
+      },
+      "accentColor": {
+        "type": "color",
+        "default": "#3072db",
+        "label": "Accent",
+        "brand": "accent"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Mode"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "logos"
+    ]
+  },
+  {
+    "slug": "snapcn-logo-assemble",
+    "catalogFamily": "snapcn",
+    "title": "Logo Assemble",
+    "description": "A single ring of image cards revolves around a centred title, then spins inward and drains to the middle — giving birth to a simple logo that slides left as the brand name reveals to its right.",
+    "componentName": "LogoAssemble",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/logo-assemble/index.tsx",
+      "config": "registry/snap-cn/logo-assemble/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/logo-assemble/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 108,
+      "props": {
+        "brandName": "snapcn",
+        "middleText": "Cinematic components for React",
+        "logoSrc": "/logo/snapcn-white.png",
+        "count": 10,
+        "background": "#050505",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#050505"
+    },
+    "controls": {
+      "brandName": {
+        "type": "text",
+        "default": "snapcn",
+        "label": "Brand name"
+      },
+      "middleText": {
+        "type": "text",
+        "default": "Cinematic components for React",
+        "label": "Center text"
+      },
+      "logoSrc": {
+        "type": "image",
+        "default": "/logo/snapcn-white.png",
+        "label": "Logo (simple, monochrome)",
+        "brand": "logo"
+      },
+      "count": {
+        "type": "number",
+        "default": 10,
+        "min": 5,
+        "max": 16,
+        "step": 1,
+        "label": "Ring images"
+      },
+      "background": {
+        "type": "color",
+        "default": "#050505",
+        "label": "Background"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "logos"
+    ]
+  },
+  {
+    "slug": "snapcn-logo-flicker",
+    "catalogFamily": "snapcn",
+    "title": "Logo Flicker",
+    "description": "Images flip across a central card very fast, the flicker decelerates and fades, and the logo and brand name resolve underneath — a strobe of imagery settling onto the mark.",
+    "componentName": "LogoFlicker",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/logo-flicker/index.tsx",
+      "config": "registry/snap-cn/logo-flicker/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/logo-flicker/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 100,
+      "props": {
+        "brandName": "snapcn",
+        "logoSrc": "/logo/snapcn-white.png",
+        "flipInterval": 2,
+        "background": "#050505",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#050505"
+    },
+    "controls": {
+      "brandName": {
+        "type": "text",
+        "default": "snapcn",
+        "label": "Brand name"
+      },
+      "logoSrc": {
+        "type": "image",
+        "default": "/logo/snapcn-white.png",
+        "label": "Logo (simple, monochrome)",
+        "brand": "logo"
+      },
+      "flipInterval": {
+        "type": "number",
+        "default": 2,
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Flip interval (frames)"
+      },
+      "background": {
+        "type": "color",
+        "default": "#050505",
+        "label": "Background"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "logos"
+    ]
+  },
+  {
+    "slug": "snapcn-block-wordmark",
+    "catalogFamily": "snapcn",
+    "title": "Block Wordmark",
+    "description": "A wordmark builds out of solid blocks — a square scales in, a coloured deck fans out around it and winds back, the stack collapses and stretches into one block per letter, then each block flashes a colour and swaps for its real letterform.",
+    "componentName": "BlockWordmark",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/block-wordmark/index.tsx",
+      "config": "registry/snap-cn/block-wordmark/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/block-wordmark/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "text": "snapcn",
+        "color": "#0000FF",
+        "colors": "#3072db, #1a4487, #6b9be8, #092148, #9cbdf2",
+        "background": "#faf9f6",
+        "fontSize": 160,
+        "fontWeight": "400",
+        "blockSizing": "square",
+        "blockGap": 0.093,
+        "cornerRadius": 0.18,
+        "cards": 6,
+        "spinDuration": 33,
+        "holdDuration": 54,
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#faf9f6"
+    },
+    "controls": {
+      "text": {
+        "type": "text",
+        "default": "snapcn",
+        "label": "Wordmark"
+      },
+      "color": {
+        "type": "color",
+        "default": "#0000FF",
+        "label": "Ink"
+      },
+      "colors": {
+        "type": "text",
+        "default": "#3072db, #1a4487, #6b9be8, #092148, #9cbdf2",
+        "label": "Deck & flash colours (comma-separated)"
+      },
+      "background": {
+        "type": "color",
+        "default": "#faf9f6",
+        "label": "Background"
+      },
+      "fontSize": {
+        "type": "number",
+        "default": 160,
+        "min": 48,
+        "max": 320,
+        "step": 4,
+        "label": "Font size"
+      },
+      "fontWeight": {
+        "type": "select",
+        "default": "400",
+        "options": [
+          "400"
+        ],
+        "label": "Font weight"
+      },
+      "blockSizing": {
+        "type": "select",
+        "default": "square",
+        "options": [
+          "square",
+          "glyph"
+        ],
+        "label": "Block sizing"
+      },
+      "blockGap": {
+        "type": "number",
+        "default": 0.093,
+        "min": 0,
+        "max": 0.4,
+        "step": 0.005,
+        "label": "Block gap (× side)"
+      },
+      "cornerRadius": {
+        "type": "number",
+        "default": 0.18,
+        "min": 0,
+        "max": 0.5,
+        "step": 0.01,
+        "label": "Corner radius (× side)"
+      },
+      "cards": {
+        "type": "number",
+        "default": 6,
+        "min": 2,
+        "max": 12,
+        "step": 1,
+        "label": "Deck cards"
+      },
+      "spinDuration": {
+        "type": "number",
+        "default": 33,
+        "min": 12,
+        "max": 90,
+        "step": 1,
+        "label": "Shuffle frames"
+      },
+      "holdDuration": {
+        "type": "number",
+        "default": 54,
+        "min": 0,
+        "max": 150,
+        "step": 2,
+        "label": "Hold before resolve"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "logos"
+    ]
+  },
+  {
+    "slug": "snapcn-phone-frame",
+    "catalogFamily": "snapcn",
+    "title": "Phone Frame",
+    "description": "iPhone-style device frame with a dynamic island and a screen slot — flat or lightly 3D-tilted, with rise, rotate-in, or float entrances and a subtle float loop.",
+    "componentName": "PhoneFrame",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/phone-frame/index.tsx",
+      "config": "registry/snap-cn/phone-frame/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/phone-frame/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 240,
+      "props": {
+        "variant": "showcase",
+        "entrance": "float",
+        "screenSrc": "/showcase-mobile-videos/boss-energy-roundup.mp4",
+        "bezelColor": "#C7C9CE",
+        "screenColor": "#0A0A0B",
+        "radius": 53,
+        "screenRadius": 41,
+        "scale": 0.92,
+        "tiltAngle": -12,
+        "showDynamicIsland": true,
+        "floatLoop": false,
+        "floatAmplitude": 6,
+        "shadow": "0 30px 70px rgba(16,24,40,0.28)",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "linear-gradient(180deg, #FBFBFC 0%, #F3F4F6 60%, #ECEDF0 100%)"
+    },
+    "controls": {
+      "variant": {
+        "type": "select",
+        "default": "showcase",
+        "options": [
+          "flat",
+          "tilt",
+          "showcase"
+        ],
+        "label": "Variant"
+      },
+      "entrance": {
+        "type": "select",
+        "default": "float",
+        "options": [
+          "rise",
+          "rotate-in",
+          "float"
+        ],
+        "label": "Entrance"
+      },
+      "screenSrc": {
+        "type": "image",
+        "default": "/showcase-mobile-videos/boss-energy-roundup.mp4",
+        "label": "Screen (image or video)"
+      },
+      "bezelColor": {
+        "type": "color",
+        "default": "#C7C9CE",
+        "label": "Bezel color"
+      },
+      "screenColor": {
+        "type": "color",
+        "default": "#0A0A0B",
+        "label": "Screen color"
+      },
+      "radius": {
+        "type": "number",
+        "default": 53,
+        "min": 24,
+        "max": 90,
+        "step": 1,
+        "label": "Body radius"
+      },
+      "screenRadius": {
+        "type": "number",
+        "default": 41,
+        "min": 12,
+        "max": 78,
+        "step": 1,
+        "label": "Screen radius"
+      },
+      "scale": {
+        "type": "number",
+        "default": 0.92,
+        "min": 0.4,
+        "max": 1.5,
+        "step": 0.05,
+        "label": "Scale"
+      },
+      "tiltAngle": {
+        "type": "number",
+        "default": -12,
+        "min": -30,
+        "max": 30,
+        "step": 1,
+        "label": "Tilt angle"
+      },
+      "showDynamicIsland": {
+        "type": "boolean",
+        "default": true,
+        "label": "Dynamic island"
+      },
+      "floatLoop": {
+        "type": "boolean",
+        "default": false,
+        "label": "Float loop"
+      },
+      "floatAmplitude": {
+        "type": "number",
+        "default": 6,
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "label": "Float amplitude"
+      },
+      "shadow": {
+        "type": "text",
+        "default": "0 30px 70px rgba(16,24,40,0.28)",
+        "label": "Shadow"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "screens"
+    ]
+  },
+  {
+    "slug": "snapcn-laptop-frame",
+    "catalogFamily": "snapcn",
+    "title": "Laptop Frame",
+    "description": "MacBook-style laptop that opens, runs a dynamic-island notch notification, then dives the camera into the screen until an image or video fills the frame.",
+    "componentName": "LaptopFrame",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/laptop-frame/index.tsx",
+      "config": "registry/snap-cn/laptop-frame/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/laptop-frame/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 240,
+      "props": {
+        "screenSrc": "/demos/answer-stream.mp4",
+        "entrance": "open",
+        "finale": "zoom-to-screen",
+        "notchLabel": "AirPods Connected",
+        "showNotch": true,
+        "batteryLevel": 85,
+        "bezelColor": "#1D1D1F",
+        "screenColor": "#FFFFFF",
+        "restTilt": 18,
+        "radius": 22,
+        "scale": 0.85,
+        "floatLoop": true,
+        "floatAmplitude": 4,
+        "shadow": "0 40px 80px rgba(10,12,20,0.45)",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#000000"
+    },
+    "controls": {
+      "screenSrc": {
+        "type": "image",
+        "default": "/demos/answer-stream.mp4",
+        "label": "Screen (image or video)"
+      },
+      "entrance": {
+        "type": "select",
+        "default": "open",
+        "options": [
+          "rise",
+          "open",
+          "none"
+        ],
+        "label": "Entrance"
+      },
+      "finale": {
+        "type": "select",
+        "default": "zoom-to-screen",
+        "options": [
+          "none",
+          "zoom-to-screen"
+        ],
+        "label": "Finale"
+      },
+      "notchLabel": {
+        "type": "text",
+        "default": "AirPods Connected",
+        "label": "Notch label"
+      },
+      "showNotch": {
+        "type": "boolean",
+        "default": true,
+        "label": "Notch"
+      },
+      "batteryLevel": {
+        "type": "number",
+        "default": 85,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "label": "Battery level"
+      },
+      "bezelColor": {
+        "type": "color",
+        "default": "#1D1D1F",
+        "label": "Bezel color"
+      },
+      "screenColor": {
+        "type": "color",
+        "default": "#FFFFFF",
+        "label": "Screen color"
+      },
+      "restTilt": {
+        "type": "number",
+        "default": 18,
+        "min": 0,
+        "max": 45,
+        "step": 1,
+        "label": "Lid tilt"
+      },
+      "radius": {
+        "type": "number",
+        "default": 22,
+        "min": 8,
+        "max": 40,
+        "step": 1,
+        "label": "Lid radius"
+      },
+      "scale": {
+        "type": "number",
+        "default": 0.85,
+        "min": 0.4,
+        "max": 1.4,
+        "step": 0.05,
+        "label": "Scale"
+      },
+      "floatLoop": {
+        "type": "boolean",
+        "default": true,
+        "label": "Float loop"
+      },
+      "floatAmplitude": {
+        "type": "number",
+        "default": 4,
+        "min": 0,
+        "max": 16,
+        "step": 1,
+        "label": "Float amplitude"
+      },
+      "shadow": {
+        "type": "text",
+        "default": "0 40px 80px rgba(10,12,20,0.45)",
+        "label": "Shadow"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "screens"
+    ]
+  },
+  {
+    "slug": "snapcn-terminal-simulator",
+    "catalogFamily": "snapcn",
+    "title": "Terminal Simulator",
+    "description": "Terminal window with chunked command playback, freeze-frame pauses, step scrolling, and an optional cursor-pinned zoom camera.",
+    "componentName": "TerminalSimulator",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/terminal-simulator/index.tsx",
+      "config": "registry/snap-cn/terminal-simulator/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/terminal-simulator/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 200,
+      "props": {
+        "intro": "*work* one step at a *time.*",
+        "background": "#141417",
+        "borderColor": "#26272B",
+        "fontSize": 18,
+        "charsPerFrame": 2,
+        "chunkSize": 3,
+        "zoom": false,
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#0A0A0B"
+    },
+    "controls": {
+      "intro": {
+        "type": "text",
+        "default": "*work* one step at a *time.*",
+        "label": "Intro"
+      },
+      "background": {
+        "type": "color",
+        "default": "#141417",
+        "label": "Panel surface"
+      },
+      "borderColor": {
+        "type": "color",
+        "default": "#26272B",
+        "label": "Panel hairline"
+      },
+      "fontSize": {
+        "type": "number",
+        "default": 18,
+        "min": 10,
+        "max": 32,
+        "step": 1,
+        "label": "Font size"
+      },
+      "charsPerFrame": {
+        "type": "number",
+        "default": 2,
+        "min": 0.25,
+        "max": 6,
+        "step": 0.25,
+        "label": "Chars / frame"
+      },
+      "chunkSize": {
+        "type": "number",
+        "default": 3,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "label": "Chunk size"
+      },
+      "zoom": {
+        "type": "boolean",
+        "default": false,
+        "label": "Extra zoom"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "screens"
+    ]
+  },
+  {
+    "slug": "snapcn-screen-recording",
+    "catalogFamily": "snapcn",
+    "title": "Screen Recording",
+    "description": "The treatment that turns a raw screen capture into a shot: crop the browser and OS chrome off each edge as a fraction, fit what is left to the frame, and run a keyframed camera that pushes in on whatever matters at a given frame and holds until the next move. Takes a video or a still through the same track.",
+    "componentName": "ScreenRecording",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/screen-recording/index.tsx",
+      "config": "registry/snap-cn/screen-recording/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/screen-recording/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 139,
+      "props": {
+        "src": "/demos/answer-stream.mp4",
+        "cropTop": 0,
+        "cropRight": 0,
+        "cropBottom": 0,
+        "cropLeft": 0,
+        "fit": "cover",
+        "backdropColor": "#faf9f6",
+        "entrance": "fade",
+        "radius": 0,
+        "trimBefore": 0,
+        "audio": false,
+        "speed": 1
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "src": {
+        "type": "image",
+        "default": "/demos/answer-stream.mp4",
+        "label": "Recording"
+      },
+      "cropTop": {
+        "type": "number",
+        "default": 0,
+        "min": 0,
+        "max": 0.4,
+        "step": 0.005,
+        "label": "Crop top"
+      },
+      "cropRight": {
+        "type": "number",
+        "default": 0,
+        "min": 0,
+        "max": 0.4,
+        "step": 0.005,
+        "label": "Crop right"
+      },
+      "cropBottom": {
+        "type": "number",
+        "default": 0,
+        "min": 0,
+        "max": 0.4,
+        "step": 0.005,
+        "label": "Crop bottom"
+      },
+      "cropLeft": {
+        "type": "number",
+        "default": 0,
+        "min": 0,
+        "max": 0.4,
+        "step": 0.005,
+        "label": "Crop left"
+      },
+      "fit": {
+        "type": "select",
+        "default": "cover",
+        "options": [
+          "cover",
+          "contain"
+        ],
+        "label": "Fit"
+      },
+      "backdropColor": {
+        "type": "color",
+        "default": "#faf9f6",
+        "label": "Letterbox"
+      },
+      "entrance": {
+        "type": "select",
+        "default": "fade",
+        "options": [
+          "fade",
+          "none"
+        ],
+        "label": "Entrance"
+      },
+      "radius": {
+        "type": "number",
+        "default": 0,
+        "min": 0,
+        "max": 48,
+        "step": 1,
+        "label": "Corner radius"
+      },
+      "trimBefore": {
+        "type": "number",
+        "default": 0,
+        "min": 0,
+        "max": 300,
+        "step": 1,
+        "label": "Trim in"
+      },
+      "audio": {
+        "type": "boolean",
+        "default": false,
+        "label": "Audio"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "screens"
+    ]
+  },
+  {
+    "slug": "snapcn-count-grid",
+    "catalogFamily": "snapcn",
+    "title": "Count Grid",
+    "description": "A grid of cards rushes in under a horizontal smear, settles on five and a label, then the camera pulls back a fraction while every empty cell around them fills in from the middle out and the number jumps. The \"and it scales\" shot, without a cut — one card is deliberately late to land, which is what makes the entry read as five separate things arriving rather than one picture being pushed in.",
+    "componentName": "CountGrid",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/count-grid/index.tsx",
+      "config": "registry/snap-cn/count-grid/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/count-grid/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 47,
+      "props": {
+        "from": "5",
+        "to": "500",
+        "noun": "clips",
+        "inkFrom": "#1F4470",
+        "inkTo": "#2B84E0",
+        "background": "#FDFDFD",
+        "speed": 1
+      },
+      "background": "#FDFDFD"
+    },
+    "controls": {
+      "from": {
+        "type": "text",
+        "default": "5",
+        "label": "Count before"
+      },
+      "to": {
+        "type": "text",
+        "default": "500",
+        "label": "Count after"
+      },
+      "noun": {
+        "type": "text",
+        "default": "clips",
+        "label": "Noun"
+      },
+      "inkFrom": {
+        "type": "color",
+        "default": "#1F4470",
+        "label": "Label ink (left)"
+      },
+      "inkTo": {
+        "type": "color",
+        "default": "#2B84E0",
+        "label": "Label ink (right)"
+      },
+      "background": {
+        "type": "color",
+        "default": "#FDFDFD",
+        "label": "Background"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "scenes"
+    ]
+  },
+  {
+    "slug": "snapcn-cursor-track",
+    "catalogFamily": "snapcn",
+    "title": "Cursor Track",
+    "description": "A synthetic cursor that walks a path of normalized waypoints over any children and pulses a click ring on arrival. A hand-drawn macOS-style arrow with an outline that keeps it readable over arbitrary footage, or a touch puck — for UI sims, and for recordings whose real cursor never made it into the file.",
+    "componentName": "CursorTrack",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/cursor-track/index.tsx",
+      "config": "registry/snap-cn/cursor-track/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/cursor-track/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 132,
+      "props": {
+        "variant": "arrow",
+        "size": 28,
+        "color": "#141414",
+        "outlineColor": "#faf9f6",
+        "ringColor": "#3072db",
+        "clickFrames": 14,
+        "showBefore": false,
+        "speed": 1
+      },
+      "background": "#FAFAFA"
+    },
+    "controls": {
+      "variant": {
+        "type": "select",
+        "default": "arrow",
+        "options": [
+          "arrow",
+          "dot"
+        ],
+        "label": "Cursor"
+      },
+      "size": {
+        "type": "number",
+        "default": 28,
+        "min": 12,
+        "max": 72,
+        "step": 1,
+        "label": "Cursor size"
+      },
+      "color": {
+        "type": "color",
+        "default": "#141414",
+        "label": "Cursor"
+      },
+      "outlineColor": {
+        "type": "color",
+        "default": "#faf9f6",
+        "label": "Outline"
+      },
+      "ringColor": {
+        "type": "color",
+        "default": "#3072db",
+        "label": "Click ring",
+        "brand": "accent"
+      },
+      "clickFrames": {
+        "type": "number",
+        "default": 14,
+        "min": 6,
+        "max": 40,
+        "step": 1,
+        "label": "Click ring length"
+      },
+      "showBefore": {
+        "type": "boolean",
+        "default": false,
+        "label": "Park before start"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "screens"
+    ]
+  },
+  {
+    "slug": "snapcn-pulsing-border",
+    "catalogFamily": "snapcn",
+    "title": "Pulsing Border",
+    "description": "Glowing 'AI is working' frame — a soft pulsing border overlay that breathes around the scene edges while a response streams.",
+    "componentName": "PulsingBorder",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/pulsing-border/index.tsx",
+      "config": "registry/snap-cn/pulsing-border/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/pulsing-border/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 180,
+      "props": {
+        "speed": 0.6,
+        "thickness": 0.06,
+        "roundness": 0.08,
+        "intensity": 0.15,
+        "bloom": 0.2,
+        "glowColorA": "#266DF0",
+        "glowColorB": "#6D9BF5",
+        "colorBack": "#00000000"
+      },
+      "background": "#FAFAFA"
+    },
+    "controls": {
+      "speed": {
+        "type": "number",
+        "default": 0.6,
+        "min": 0.1,
+        "max": 4,
+        "step": 0.1,
+        "label": "Speed"
+      },
+      "thickness": {
+        "type": "number",
+        "default": 0.06,
+        "min": 0.02,
+        "max": 0.5,
+        "step": 0.01,
+        "label": "Thickness"
+      },
+      "roundness": {
+        "type": "number",
+        "default": 0.08,
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "label": "Roundness"
+      },
+      "intensity": {
+        "type": "number",
+        "default": 0.15,
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "label": "Intensity"
+      },
+      "bloom": {
+        "type": "number",
+        "default": 0.2,
+        "min": 0,
+        "max": 1,
+        "step": 0.05,
+        "label": "Bloom"
+      },
+      "glowColorA": {
+        "type": "color",
+        "default": "#266DF0",
+        "label": "Glow A",
+        "brand": "accent"
+      },
+      "glowColorB": {
+        "type": "color",
+        "default": "#6D9BF5",
+        "label": "Glow B"
+      },
+      "colorBack": {
+        "type": "color",
+        "default": "#00000000",
+        "label": "Background"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "shaders"
+    ]
+  },
+  {
+    "slug": "snapcn-follower-rush",
+    "catalogFamily": "snapcn",
+    "title": "Follower Rush",
+    "description": "An X-style follower notification that piles up — avatars stack in and the count explodes, then the row bends into an undulating wave of faces.",
+    "componentName": "FollowerRush",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/follower-rush/index.tsx",
+      "config": "registry/snap-cn/follower-rush/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/follower-rush/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 300,
+      "props": {
+        "totalFollowers": 5000,
+        "accentColor": "#266DF0",
+        "theme": "light",
+        "orientation": "horizontal",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#FAFAFA"
+    },
+    "controls": {
+      "totalFollowers": {
+        "type": "number-input",
+        "default": 5000,
+        "min": 10,
+        "max": 1000000,
+        "step": 100,
+        "label": "Total followers"
+      },
+      "accentColor": {
+        "type": "color",
+        "default": "#266DF0",
+        "label": "Accent",
+        "brand": "accent"
+      },
+      "theme": {
+        "type": "select",
+        "default": "light",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Theme"
+      },
+      "orientation": {
+        "type": "select",
+        "default": "horizontal",
+        "options": [
+          "horizontal",
+          "vertical"
+        ],
+        "label": "Orientation"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "social"
+    ]
+  },
+  {
+    "slug": "snapcn-prompt-send",
+    "catalogFamily": "snapcn",
+    "title": "Prompt Send",
+    "description": "A composer that unrolls from a hairline, writes a brief into itself while the camera cuts in and rides the caret, then cuts back out to the send button as a pointer arrives and clicks it. The typing is eased, not constant — 17 chars/sec on the first word, 33 in the middle, a settle on the last three. Long copy scrolls the field under its own caret and extra suggestions wrap, so the panel fits whatever you put in it.",
+    "componentName": "PromptSend",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/prompt-send/index.tsx",
+      "config": "registry/snap-cn/prompt-send/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/prompt-send/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 165,
+      "props": {
+        "text": "Add a text reveal, a soft blur transition, and a gradient background",
+        "placeholder": "Describe the scene you want…",
+        "chips": "Add a text reveal, Try a blur transition, Pick a background, Assemble a scene",
+        "width": 636.2,
+        "fieldHeight": 121.2,
+        "fontSize": 14,
+        "chipFontSize": 12.3,
+        "radius": 22,
+        "typeStart": 0.915,
+        "typeDuration": 3.025,
+        "chipsAt": 0.545,
+        "chipStagger": 0.1,
+        "cutInAt": 1.975,
+        "cutOutAt": 4.008,
+        "zoomIn": 2.327,
+        "zoomOut": 1.44,
+        "focusX": 0.573,
+        "focusY": 0.4881,
+        "clickAt": 4.658,
+        "cursor": true,
+        "accentColor": "#3072db",
+        "mode": "light",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "text": {
+        "type": "text",
+        "default": "Add a text reveal, a soft blur transition, and a gradient background",
+        "label": "Prompt"
+      },
+      "placeholder": {
+        "type": "text",
+        "default": "Describe the scene you want…",
+        "label": "Placeholder"
+      },
+      "chips": {
+        "type": "text",
+        "default": "Add a text reveal, Try a blur transition, Pick a background, Assemble a scene",
+        "label": "Suggestions"
+      },
+      "width": {
+        "type": "number",
+        "default": 636.2,
+        "min": 240,
+        "max": 890,
+        "step": 1,
+        "label": "Panel width"
+      },
+      "fieldHeight": {
+        "type": "number",
+        "default": 121.2,
+        "min": 40,
+        "max": 260,
+        "step": 1,
+        "label": "Field height"
+      },
+      "fontSize": {
+        "type": "number",
+        "default": 14,
+        "min": 8,
+        "max": 32,
+        "step": 0.5,
+        "label": "Prompt size"
+      },
+      "chipFontSize": {
+        "type": "number",
+        "default": 12.3,
+        "min": 7,
+        "max": 24,
+        "step": 0.1,
+        "label": "Chip size"
+      },
+      "radius": {
+        "type": "number",
+        "default": 22,
+        "min": 0,
+        "max": 48,
+        "step": 1,
+        "label": "Radius"
+      },
+      "typeStart": {
+        "type": "number",
+        "default": 0.915,
+        "min": 0,
+        "max": 4,
+        "step": 0.01,
+        "label": "Type at (s)"
+      },
+      "typeDuration": {
+        "type": "number",
+        "default": 3.025,
+        "min": 0.5,
+        "max": 8,
+        "step": 0.01,
+        "label": "Type over (s)"
+      },
+      "chipsAt": {
+        "type": "number",
+        "default": 0.545,
+        "min": 0,
+        "max": 4,
+        "step": 0.01,
+        "label": "Chips at (s)"
+      },
+      "chipStagger": {
+        "type": "number",
+        "default": 0.1,
+        "min": 0,
+        "max": 0.6,
+        "step": 0.01,
+        "label": "Chip stagger (s)"
+      },
+      "cutInAt": {
+        "type": "number",
+        "default": 1.975,
+        "min": 0.1,
+        "max": 6,
+        "step": 0.01,
+        "label": "Cut in at (s)"
+      },
+      "cutOutAt": {
+        "type": "number",
+        "default": 4.008,
+        "min": 0.2,
+        "max": 8,
+        "step": 0.01,
+        "label": "Cut out at (s)"
+      },
+      "zoomIn": {
+        "type": "number",
+        "default": 2.327,
+        "min": 1,
+        "max": 5,
+        "step": 0.001,
+        "label": "Zoom in"
+      },
+      "zoomOut": {
+        "type": "number",
+        "default": 1.44,
+        "min": 1,
+        "max": 3,
+        "step": 0.001,
+        "label": "Zoom out"
+      },
+      "focusX": {
+        "type": "number",
+        "default": 0.573,
+        "min": 0,
+        "max": 1,
+        "step": 0.001,
+        "label": "Caret X"
+      },
+      "focusY": {
+        "type": "number",
+        "default": 0.4881,
+        "min": 0,
+        "max": 1,
+        "step": 0.001,
+        "label": "Caret Y"
+      },
+      "clickAt": {
+        "type": "number",
+        "default": 4.658,
+        "min": 0.5,
+        "max": 8,
+        "step": 0.01,
+        "label": "Click at (s)"
+      },
+      "cursor": {
+        "type": "boolean",
+        "default": true,
+        "label": "Pointer"
+      },
+      "accentColor": {
+        "type": "color",
+        "default": "#3072db",
+        "label": "Accent",
+        "brand": "accent"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Mode"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "ai-input"
+    ]
+  },
+  {
+    "slug": "snapcn-prompt-zoom",
+    "catalogFamily": "snapcn",
+    "title": "Prompt Zoom",
+    "description": "An assistant landing screen that offers its suggestions, then cuts — hard, in a single frame — into the caret, where the prompt types itself. The push-in is a measured 2.547× anchored on the text insertion point, not an animated zoom.",
+    "componentName": "PromptZoom",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/prompt-zoom/index.tsx",
+      "config": "registry/snap-cn/prompt-zoom/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/prompt-zoom/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 90,
+      "props": {
+        "greeting": "Up late?",
+        "text": "Get me a plan for tomorrow",
+        "placeholder": "How can I help you today?",
+        "model": "Auto",
+        "effort": "Medium",
+        "typeStart": 0.35,
+        "cutAt": 1,
+        "zoom": 2.547,
+        "charsPerSecond": 18,
+        "focusX": 0.27,
+        "focusY": 0.516,
+        "accentColor": "#266DF0",
+        "mode": "light",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "greeting": {
+        "type": "text",
+        "default": "Up late?",
+        "label": "Greeting"
+      },
+      "text": {
+        "type": "text",
+        "default": "Get me a plan for tomorrow",
+        "label": "Prompt"
+      },
+      "placeholder": {
+        "type": "text",
+        "default": "How can I help you today?",
+        "label": "Placeholder"
+      },
+      "model": {
+        "type": "text",
+        "default": "Auto",
+        "label": "Model"
+      },
+      "effort": {
+        "type": "text",
+        "default": "Medium",
+        "label": "Effort"
+      },
+      "typeStart": {
+        "type": "number",
+        "default": 0.35,
+        "min": 0,
+        "max": 4,
+        "step": 0.01,
+        "label": "Type at (s)"
+      },
+      "cutAt": {
+        "type": "number",
+        "default": 1,
+        "min": 0.1,
+        "max": 3,
+        "step": 0.01,
+        "label": "Cut at (s)"
+      },
+      "zoom": {
+        "type": "number",
+        "default": 2.547,
+        "min": 1,
+        "max": 5,
+        "step": 0.01,
+        "label": "Zoom"
+      },
+      "charsPerSecond": {
+        "type": "number",
+        "default": 18,
+        "min": 4,
+        "max": 40,
+        "step": 1,
+        "label": "Chars / second"
+      },
+      "focusX": {
+        "type": "number",
+        "default": 0.27,
+        "min": 0,
+        "max": 1,
+        "step": 0.005,
+        "label": "Focus X"
+      },
+      "focusY": {
+        "type": "number",
+        "default": 0.516,
+        "min": 0,
+        "max": 1,
+        "step": 0.005,
+        "label": "Focus Y"
+      },
+      "accentColor": {
+        "type": "color",
+        "default": "#266DF0",
+        "label": "Accent",
+        "brand": "accent"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Mode"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "ai-input"
+    ]
+  },
+  {
+    "slug": "snapcn-punch-lines",
+    "catalogFamily": "snapcn",
+    "title": "Punch Lines",
+    "description": "A run of full-frame title cards that cut hard between beats. A statement card is flicked in from the left line by line and settles on a critically damped curve, then rushes past the camera; a hero card punches its words up from a third of their size in a wave and pushes slowly forward until it cuts. Every curve is fitted from frame measurements — the slide to 0.42px rms over 37 frames.",
+    "componentName": "PunchLines",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/punch-lines/index.tsx",
+      "config": "registry/snap-cn/punch-lines/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/punch-lines/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 144,
+      "props": {
+        "script": "Ready-made scenes / for Remotion. | One command. Own it. | snapcn.",
+        "styles": "slide,punch",
+        "sizes": "1,0.945,2.7",
+        "holds": "48",
+        "accentBeat": 3,
+        "fontSize": 93,
+        "fontWeight": "600",
+        "lineHeight": 0.89,
+        "letterSpacing": "-0.022em",
+        "wordSpacing": "-0.02em",
+        "ground": "#faf9f6",
+        "ink": "#141414",
+        "accentColor": "#ff1c8e",
+        "lead": 4,
+        "slideFrom": -0.737,
+        "slideKick": 7.34,
+        "slideSettle": 2.846,
+        "lineStagger": 3.5,
+        "slideDrop": 0.313,
+        "motionBlur": 1,
+        "punchFrom": 0.32,
+        "punchFrames": 15,
+        "wordStagger": 2.8,
+        "pushFrom": 0.778,
+        "pushRate": 0.205,
+        "rushLead": 12.2,
+        "rushFrames": 18,
+        "rushTravel": 0.85,
+        "fit": 0.92,
+        "mode": "light",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#faf9f6"
+    },
+    "controls": {
+      "script": {
+        "type": "text",
+        "default": "Ready-made scenes / for Remotion. | One command. Own it. | snapcn.",
+        "label": "Script (| card, / line)"
+      },
+      "styles": {
+        "type": "text",
+        "default": "slide,punch",
+        "label": "Card looks"
+      },
+      "sizes": {
+        "type": "text",
+        "default": "1,0.945,2.7",
+        "label": "Card sizes"
+      },
+      "holds": {
+        "type": "text",
+        "default": "48",
+        "label": "Card lengths (frames)"
+      },
+      "accentBeat": {
+        "type": "number",
+        "default": 3,
+        "min": 0,
+        "max": 8,
+        "step": 1,
+        "label": "Accent card"
+      },
+      "fontSize": {
+        "type": "number",
+        "default": 93,
+        "min": 24,
+        "max": 200,
+        "step": 1,
+        "label": "Font size"
+      },
+      "fontWeight": {
+        "type": "select",
+        "default": "600",
+        "options": [
+          "400",
+          "500",
+          "600",
+          "700"
+        ],
+        "label": "Font weight"
+      },
+      "lineHeight": {
+        "type": "number",
+        "default": 0.89,
+        "min": 0.7,
+        "max": 1.6,
+        "step": 0.005,
+        "label": "Line height (em)"
+      },
+      "letterSpacing": {
+        "type": "text",
+        "default": "-0.022em",
+        "label": "Letter spacing"
+      },
+      "wordSpacing": {
+        "type": "text",
+        "default": "-0.02em",
+        "label": "Word spacing"
+      },
+      "ground": {
+        "type": "color",
+        "default": "#faf9f6",
+        "label": "Ground"
+      },
+      "ink": {
+        "type": "color",
+        "default": "#141414",
+        "label": "Type"
+      },
+      "accentColor": {
+        "type": "color",
+        "default": "#ff1c8e",
+        "label": "Accent",
+        "brand": "accent"
+      },
+      "lead": {
+        "type": "number",
+        "default": 4,
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "label": "Entrance lead"
+      },
+      "slideFrom": {
+        "type": "number",
+        "default": -0.737,
+        "min": -3,
+        "max": 0,
+        "step": 0.01,
+        "label": "Slide from (em)"
+      },
+      "slideKick": {
+        "type": "number",
+        "default": 7.34,
+        "min": 0,
+        "max": 20,
+        "step": 0.1,
+        "label": "Slide kick (em/s)"
+      },
+      "slideSettle": {
+        "type": "number",
+        "default": 2.846,
+        "min": 0.5,
+        "max": 8,
+        "step": 0.05,
+        "label": "Slide settle"
+      },
+      "lineStagger": {
+        "type": "number",
+        "default": 3.5,
+        "min": 0,
+        "max": 20,
+        "step": 0.5,
+        "label": "Line stagger"
+      },
+      "slideDrop": {
+        "type": "number",
+        "default": 0.313,
+        "min": -1,
+        "max": 1,
+        "step": 0.01,
+        "label": "Slide drop (em)"
+      },
+      "motionBlur": {
+        "type": "number",
+        "default": 1,
+        "min": 0,
+        "max": 1,
+        "step": 0.05,
+        "label": "Motion blur"
+      },
+      "punchFrom": {
+        "type": "number",
+        "default": 0.32,
+        "min": 0.05,
+        "max": 1,
+        "step": 0.01,
+        "label": "Punch from"
+      },
+      "punchFrames": {
+        "type": "number",
+        "default": 15,
+        "min": 2,
+        "max": 40,
+        "step": 0.5,
+        "label": "Punch"
+      },
+      "wordStagger": {
+        "type": "number",
+        "default": 2.8,
+        "min": 0,
+        "max": 12,
+        "step": 0.1,
+        "label": "Word stagger"
+      },
+      "pushFrom": {
+        "type": "number",
+        "default": 0.778,
+        "min": 0.3,
+        "max": 1,
+        "step": 0.005,
+        "label": "Push from"
+      },
+      "pushRate": {
+        "type": "number",
+        "default": 0.205,
+        "min": 0,
+        "max": 1,
+        "step": 0.005,
+        "label": "Push per second"
+      },
+      "rushLead": {
+        "type": "number",
+        "default": 12.2,
+        "min": 0,
+        "max": 40,
+        "step": 0.2,
+        "label": "Rush lead"
+      },
+      "rushFrames": {
+        "type": "number",
+        "default": 18,
+        "min": 4,
+        "max": 60,
+        "step": 1,
+        "label": "Rush"
+      },
+      "rushTravel": {
+        "type": "number",
+        "default": 0.85,
+        "min": 0.2,
+        "max": 0.95,
+        "step": 0.01,
+        "label": "Rush travel"
+      },
+      "fit": {
+        "type": "number",
+        "default": 0.92,
+        "min": 0.4,
+        "max": 1,
+        "step": 0.01,
+        "label": "Fit width"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Mode"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "text"
+    ]
+  },
+  {
+    "slug": "snapcn-orbit-gallery",
+    "catalogFamily": "snapcn",
+    "title": "Orbit Gallery",
+    "description": "An image-universe hero: a continuous stream of photos flows along an Archimedean spiral (a vortex) from the frame edges into the center — evenly spaced by arc length, shrinking and rotating to follow the coil, with the title held in the clear middle. A slow, cinematic opener for launch and editorial videos.",
+    "componentName": "OrbitGallery",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/orbit-gallery/index.tsx",
+      "config": "registry/snap-cn/orbit-gallery/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/orbit-gallery/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 300,
+      "props": {
+        "title": "A whole new universe",
+        "subtitle": "Article — The Design Process",
+        "buttonLabel": "Explore",
+        "turns": 3,
+        "spacing": 5,
+        "spread": 7,
+        "imageSize": 172,
+        "sizeAttenuation": 2,
+        "cornerRadius": 5,
+        "orbitSeconds": 40,
+        "background": "#050505",
+        "textColor": "#FFFFFF",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#050505"
+    },
+    "controls": {
+      "title": {
+        "type": "text",
+        "default": "A whole new universe",
+        "label": "Title"
+      },
+      "subtitle": {
+        "type": "text",
+        "default": "Article — The Design Process",
+        "label": "Subtitle"
+      },
+      "buttonLabel": {
+        "type": "text",
+        "default": "Explore",
+        "label": "Button label"
+      },
+      "turns": {
+        "type": "number-input",
+        "default": 3,
+        "min": 1,
+        "max": 6,
+        "step": 0.1,
+        "label": "Spiral coils"
+      },
+      "spacing": {
+        "type": "number-input",
+        "default": 5,
+        "min": 2,
+        "max": 14,
+        "step": 0.5,
+        "label": "Card spacing"
+      },
+      "spread": {
+        "type": "number-input",
+        "default": 7,
+        "min": 1,
+        "max": 10,
+        "step": 0.5,
+        "label": "Spread"
+      },
+      "imageSize": {
+        "type": "number-input",
+        "default": 172,
+        "min": 80,
+        "max": 360,
+        "step": 10,
+        "label": "Image size"
+      },
+      "sizeAttenuation": {
+        "type": "number-input",
+        "default": 2,
+        "min": 0,
+        "max": 4,
+        "step": 0.25,
+        "label": "Center shrink"
+      },
+      "cornerRadius": {
+        "type": "number-input",
+        "default": 5,
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "label": "Corner radius"
+      },
+      "orbitSeconds": {
+        "type": "number-input",
+        "default": 40,
+        "min": 10,
+        "max": 120,
+        "step": 1,
+        "label": "Seconds per flow"
+      },
+      "background": {
+        "type": "color",
+        "default": "#050505",
+        "label": "Background"
+      },
+      "textColor": {
+        "type": "color",
+        "default": "#FFFFFF",
+        "label": "Text color"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "scenes"
+    ]
+  },
+  {
+    "slug": "snapcn-hero-launch",
+    "catalogFamily": "snapcn",
+    "title": "Product Hero",
+    "description": "Cinematic product-launch hero — two cards slide into formation as the headline reveals above.",
+    "componentName": "HeroLaunch",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/hero-launch/index.tsx",
+      "config": "registry/snap-cn/hero-launch/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/hero-launch/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 170,
+      "props": {
+        "image1": "/demos/moodboard-reveal.mp4",
+        "image2": "/demos/orbit-gallery.mp4",
+        "heading": "npx shadcn add @snapcn",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#050505"
+    },
+    "controls": {
+      "image1": {
+        "type": "image",
+        "default": "/demos/moodboard-reveal.mp4",
+        "label": "Left card (image/video)"
+      },
+      "image2": {
+        "type": "image",
+        "default": "/demos/orbit-gallery.mp4",
+        "label": "Right card (image/video)"
+      },
+      "heading": {
+        "type": "text",
+        "default": "npx shadcn add @snapcn",
+        "label": "Headline"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "scenes"
+    ]
+  },
+  {
+    "slug": "snapcn-moodboard-reveal",
+    "catalogFamily": "snapcn",
+    "title": "Moodboard Reveal",
+    "description": "A kinetic headline with a swapping inline image, then a scattered gallery of photos flies in, the camera pushes through it as the background lifts from near-black to off-white, and it lands on a single hero image.",
+    "componentName": "MoodboardReveal",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/moodboard-reveal/index.tsx",
+      "config": "registry/snap-cn/moodboard-reveal/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/moodboard-reveal/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "leadIn": "that lets you",
+        "emphasis": "filter",
+        "tailIn": "out AI.",
+        "heroImage": "/showcase-assets/821d815affa6496c39cbdeeec7a84603.jpg",
+        "darkColor": "#0A0A0A",
+        "lightColor": "#E7E7E7",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#0A0A0A"
+    },
+    "controls": {
+      "leadIn": {
+        "type": "text",
+        "default": "that lets you",
+        "label": "Lead-in"
+      },
+      "emphasis": {
+        "type": "text",
+        "default": "filter",
+        "label": "Emphasis word"
+      },
+      "tailIn": {
+        "type": "text",
+        "default": "out AI.",
+        "label": "Tail"
+      },
+      "heroImage": {
+        "type": "image",
+        "default": "/showcase-assets/821d815affa6496c39cbdeeec7a84603.jpg",
+        "label": "Hero image"
+      },
+      "darkColor": {
+        "type": "color",
+        "default": "#0A0A0A",
+        "label": "Start background"
+      },
+      "lightColor": {
+        "type": "color",
+        "default": "#E7E7E7",
+        "label": "End background"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "scenes"
+    ]
+  },
+  {
+    "slug": "snapcn-search-typing",
+    "catalogFamily": "snapcn",
+    "title": "Search Typing",
+    "description": "A search field wider than the shot: two thirds in frame, then it comes forward, types across its left half, pages to its right half, and goes back. Every proportion is measured, and the scale pivots on the text baseline so the type never climbs the pixel grid.",
+    "componentName": "SearchTyping",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/search-typing/index.tsx",
+      "config": "registry/snap-cn/search-typing/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/search-typing/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 60,
+      "durationInFrames": 420,
+      "props": {
+        "text": "How do I make my product demo actually look expensive?",
+        "charsPerSecond": 14,
+        "humanize": 0.35,
+        "wordPause": 1.55,
+        "punctuationPause": 2.2,
+        "startDelay": 0.5,
+        "dollyDuration": 0.8,
+        "panDuration": 0.5,
+        "holdAfter": 0.9,
+        "recedeDuration": 1.2,
+        "dolly": 1.25,
+        "fieldHeight": 0.27,
+        "frontVisible": 0.56,
+        "edgeInset": 40,
+        "caretBlinksPerSecond": 1,
+        "caret": true,
+        "surface": "shadcn",
+        "mode": "light",
+        "icon": "search",
+        "fontWeight": 300,
+        "seed": "search-typing",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#FAFAFA"
+    },
+    "controls": {
+      "text": {
+        "type": "text",
+        "default": "How do I make my product demo actually look expensive?",
+        "label": "Text"
+      },
+      "charsPerSecond": {
+        "type": "number",
+        "default": 14,
+        "min": 4,
+        "max": 40,
+        "step": 1,
+        "label": "Chars / second"
+      },
+      "humanize": {
+        "type": "number",
+        "default": 0.35,
+        "min": 0,
+        "max": 1,
+        "step": 0.05,
+        "label": "Humanize"
+      },
+      "wordPause": {
+        "type": "number",
+        "default": 1.55,
+        "min": 1,
+        "max": 4,
+        "step": 0.05,
+        "label": "Word pause"
+      },
+      "punctuationPause": {
+        "type": "number",
+        "default": 2.2,
+        "min": 1,
+        "max": 6,
+        "step": 0.1,
+        "label": "Punctuation pause"
+      },
+      "startDelay": {
+        "type": "number",
+        "default": 0.5,
+        "min": 0,
+        "max": 4,
+        "step": 0.1,
+        "label": "Start delay (s)"
+      },
+      "dollyDuration": {
+        "type": "number",
+        "default": 0.8,
+        "min": 0.1,
+        "max": 4,
+        "step": 0.1,
+        "label": "Comes forward (s)"
+      },
+      "panDuration": {
+        "type": "number",
+        "default": 0.5,
+        "min": 0.1,
+        "max": 3,
+        "step": 0.05,
+        "label": "Pan to right half (s)"
+      },
+      "holdAfter": {
+        "type": "number",
+        "default": 0.9,
+        "min": 0,
+        "max": 6,
+        "step": 0.1,
+        "label": "Hold at front (s)"
+      },
+      "recedeDuration": {
+        "type": "number",
+        "default": 1.2,
+        "min": 0,
+        "max": 4,
+        "step": 0.1,
+        "label": "Goes back (s)"
+      },
+      "dolly": {
+        "type": "number",
+        "default": 1.25,
+        "min": 1,
+        "max": 2,
+        "step": 0.01,
+        "label": "Dolly (measured: 1.25)"
+      },
+      "fieldHeight": {
+        "type": "number",
+        "default": 0.27,
+        "min": 0.12,
+        "max": 0.45,
+        "step": 0.005,
+        "label": "Field height (× frame)"
+      },
+      "frontVisible": {
+        "type": "number",
+        "default": 0.56,
+        "min": 0.3,
+        "max": 1,
+        "step": 0.01,
+        "label": "In frame at the front"
+      },
+      "edgeInset": {
+        "type": "number",
+        "default": 40,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "label": "Edge inset (px)"
+      },
+      "caretBlinksPerSecond": {
+        "type": "number",
+        "default": 1,
+        "min": 0,
+        "max": 4,
+        "step": 0.1,
+        "label": "Caret blinks / second"
+      },
+      "caret": {
+        "type": "boolean",
+        "default": true,
+        "label": "Caret"
+      },
+      "surface": {
+        "type": "select",
+        "default": "shadcn",
+        "options": [
+          "shadcn",
+          "glass"
+        ],
+        "label": "Surface"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Mode"
+      },
+      "icon": {
+        "type": "select",
+        "default": "search",
+        "options": [
+          "search",
+          "sparkle",
+          "none"
+        ],
+        "label": "Icon"
+      },
+      "fontWeight": {
+        "type": "number",
+        "default": 300,
+        "min": 100,
+        "max": 700,
+        "step": 100,
+        "label": "Font weight"
+      },
+      "seed": {
+        "type": "text",
+        "default": "search-typing",
+        "label": "Seed"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "ai-input"
+    ]
+  },
+  {
+    "slug": "snapcn-status-cycle",
+    "catalogFamily": "snapcn",
+    "title": "Status Cycle",
+    "description": "A centred line whose status pill cycles: the label rolls up behind a hard clip while the pill's width springs past its target and back, and the line re-centres around it. The field then crossfades and a column of chips steps up from below. Copy, palette and every timing are props; the curves are fitted from frame measurements, not eyeballed.",
+    "componentName": "StatusCycle",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/status-cycle/index.tsx",
+      "config": "registry/snap-cn/status-cycle/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/status-cycle/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 150,
+      "props": {
+        "prefix": "snapcn is",
+        "statuses": "animating, transitioning, rendering a scene, installed",
+        "chips": "text-reveal, phone-frame, answer-stream, word-flip, orbit-gallery",
+        "fieldColor": "#3577e0",
+        "pageColor": "#faf9f6",
+        "pillColor": "#141414",
+        "pillLabelColor": "rgb(178, 205, 247)",
+        "prefixColor": "#141414",
+        "chipFills": "#ffffff, rgb(226, 236, 253), #3577e0",
+        "chipTextColor": "#141414",
+        "chipBorderColor": "rgb(160, 160, 160)",
+        "fontWeight": "400",
+        "chipFontWeight": "400",
+        "fontSize": 63,
+        "chipFontSize": 160,
+        "introFrames": 24,
+        "statusHold": 18,
+        "chipStagger": 8,
+        "pillCenterY": 0.516,
+        "startAt": 0,
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "prefix": {
+        "type": "text",
+        "default": "snapcn is",
+        "label": "Prefix"
+      },
+      "statuses": {
+        "type": "text",
+        "default": "animating, transitioning, rendering a scene, installed",
+        "label": "Statuses (comma-separated)"
+      },
+      "chips": {
+        "type": "text",
+        "default": "text-reveal, phone-frame, answer-stream, word-flip, orbit-gallery",
+        "label": "Chips (comma-separated)"
+      },
+      "fieldColor": {
+        "type": "color",
+        "default": "#3577e0",
+        "label": "Field (act 1)"
+      },
+      "pageColor": {
+        "type": "color",
+        "default": "#faf9f6",
+        "label": "Page (act 2)"
+      },
+      "pillColor": {
+        "type": "color",
+        "default": "#141414",
+        "label": "Pill"
+      },
+      "pillLabelColor": {
+        "type": "color",
+        "default": "rgb(178, 205, 247)",
+        "label": "Pill label"
+      },
+      "prefixColor": {
+        "type": "color",
+        "default": "#141414",
+        "label": "Prefix ink"
+      },
+      "chipFills": {
+        "type": "text",
+        "default": "#ffffff, rgb(226, 236, 253), #3577e0",
+        "label": "Chip fills (comma-separated)"
+      },
+      "chipTextColor": {
+        "type": "color",
+        "default": "#141414",
+        "label": "Chip ink"
+      },
+      "chipBorderColor": {
+        "type": "color",
+        "default": "rgb(160, 160, 160)",
+        "label": "Chip hairline"
+      },
+      "fontWeight": {
+        "type": "select",
+        "default": "400",
+        "options": [
+          "400",
+          "500",
+          "600",
+          "700"
+        ],
+        "label": "Status weight"
+      },
+      "chipFontWeight": {
+        "type": "select",
+        "default": "400",
+        "options": [
+          "400",
+          "500",
+          "600",
+          "700"
+        ],
+        "label": "Chip weight"
+      },
+      "fontSize": {
+        "type": "number",
+        "default": 63,
+        "min": 24,
+        "max": 140,
+        "step": 1,
+        "label": "Status size"
+      },
+      "chipFontSize": {
+        "type": "number",
+        "default": 160,
+        "min": 48,
+        "max": 260,
+        "step": 2,
+        "label": "Chip size"
+      },
+      "introFrames": {
+        "type": "number",
+        "default": 24,
+        "min": 8,
+        "max": 60,
+        "step": 1,
+        "label": "Intro length"
+      },
+      "statusHold": {
+        "type": "number",
+        "default": 18,
+        "min": 10,
+        "max": 60,
+        "step": 1,
+        "label": "Status hold"
+      },
+      "chipStagger": {
+        "type": "number",
+        "default": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "label": "Chip stagger"
+      },
+      "pillCenterY": {
+        "type": "number",
+        "default": 0.516,
+        "min": 0.2,
+        "max": 0.8,
+        "step": 0.004,
+        "label": "Lockup height"
+      },
+      "startAt": {
+        "type": "number",
+        "default": 0,
+        "min": 0,
+        "max": 60,
+        "step": 1,
+        "label": "Start at (frames)"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "scenes"
+    ]
+  },
+  {
+    "slug": "snapcn-type-morph",
+    "catalogFamily": "snapcn",
+    "title": "Type Morph",
+    "description": "A headline that types itself under a glowing caret, sheds its lead, morphs letter by letter, and ends under a colour flood.",
+    "componentName": "TypeMorph",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn/type-morph/index.tsx",
+      "config": "registry/snap-cn/type-morph/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/type-morph/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 94,
+      "props": {
+        "lead": "Not just ",
+        "emphasis": "communicator.",
+        "morphTo": "something more.",
+        "finally_": "more.",
+        "accent": "#b3a9f9",
+        "background": "#ffffff",
+        "ink": "#000000",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "lead": {
+        "type": "text",
+        "default": "Not just ",
+        "label": "Lead (cut away)"
+      },
+      "emphasis": {
+        "type": "text",
+        "default": "communicator.",
+        "label": "Emphasis"
+      },
+      "morphTo": {
+        "type": "text",
+        "default": "something more.",
+        "label": "Morphs into"
+      },
+      "finally_": {
+        "type": "text",
+        "default": "more.",
+        "label": "Final word"
+      },
+      "accent": {
+        "type": "color",
+        "default": "#b3a9f9",
+        "label": "Caret & hot glyphs",
+        "brand": "accent"
+      },
+      "background": {
+        "type": "color",
+        "default": "#ffffff",
+        "label": "Page"
+      },
+      "ink": {
+        "type": "color",
+        "default": "#000000",
+        "label": "Text"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "text"
+    ]
+  },
+  {
+    "slug": "snapcn-caret",
+    "catalogFamily": "snapcn",
+    "title": "UI Caret",
+    "description": "A blinking text caret — a controlled vertical bar, or a pure motion atom that blinks deterministically from useCurrentFrame.",
+    "componentName": "Caret",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn-ui/caret/index.tsx",
+      "config": "registry/snap-cn-ui/caret/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn-ui/caret/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 120,
+      "props": {
+        "height": 28,
+        "width": 3,
+        "radius": 1,
+        "blink": true,
+        "blinkPerSecond": 1,
+        "color": "#1F1E1D"
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "height": {
+        "type": "number",
+        "default": 28,
+        "min": 8,
+        "max": 80,
+        "step": 2,
+        "label": "Height"
+      },
+      "width": {
+        "type": "number",
+        "default": 3,
+        "min": 1,
+        "max": 8,
+        "step": 1,
+        "label": "Width"
+      },
+      "radius": {
+        "type": "number",
+        "default": 1,
+        "min": 0,
+        "max": 8,
+        "step": 1,
+        "label": "Radius"
+      },
+      "blink": {
+        "type": "boolean",
+        "default": true,
+        "label": "Blink"
+      },
+      "blinkPerSecond": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Blink/sec"
+      },
+      "color": {
+        "type": "color",
+        "default": "#1F1E1D",
+        "label": "Color"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "ui"
+    ]
+  },
+  {
+    "slug": "snapcn-input",
+    "catalogFamily": "snapcn",
+    "title": "UI Input",
+    "description": "A text input whose idle/hover/active/typing/invalid state is a pure function of the timeline; the focus ring, border, caret, and value reveal are keyframed presets.",
+    "componentName": "Input",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "source": "registry/snap-cn-ui/input/index.tsx",
+      "config": "registry/snap-cn-ui/input/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn-ui/input/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 120,
+      "props": {
+        "placeholder": "you@example.com",
+        "value": "remotion@snapcn.dev",
+        "size": "default",
+        "state": "typing",
+        "primary": "#171717"
+      },
+      "background": "oklch(1 0 0)"
+    },
+    "controls": {
+      "placeholder": {
+        "type": "text",
+        "default": "you@example.com",
+        "label": "Placeholder"
+      },
+      "value": {
+        "type": "text",
+        "default": "remotion@snapcn.dev",
+        "label": "Value"
+      },
+      "size": {
+        "type": "select",
+        "default": "default",
+        "options": [
+          "sm",
+          "default",
+          "lg"
+        ],
+        "label": "Size"
+      },
+      "state": {
+        "type": "select",
+        "default": "typing",
+        "options": [
+          "idle",
+          "hover",
+          "active",
+          "typing",
+          "blur",
+          "invalid"
+        ],
+        "label": "State"
+      },
+      "primary": {
+        "type": "color",
+        "default": "#171717",
+        "label": "Primary"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "ui"
+    ]
+  },
+  {
+    "slug": "snapcn-roster-grant",
+    "catalogFamily": "snapcn",
+    "title": "Roster Grant",
+    "description": "Three rows of roster cards stream past a call to action, a pointer walks in and clicks it, and the monograms start turning to the accent one every seven frames — top row, middle, bottom, top, bottom, middle, so it reads as a system granting rather than a list iterating. The camera and the middle row's clearance around the pill settle on the same measured exponential; the outer rows deliberately do not, which is what stops the two sides ever looking symmetric.",
+    "componentName": "RosterGrant",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "bc5b59f3f0fad9657b338fa62349a55fa33f160f",
+      "source": "registry/snap-cn/roster-grant/index.tsx",
+      "config": "registry/snap-cn/roster-grant/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/roster-grant/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 120,
+      "props": {
+        "label": "Install all",
+        "accentColor": "#3072db",
+        "theme": "light",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#faf9f6"
+    },
+    "controls": {
+      "label": {
+        "type": "text",
+        "default": "Install all",
+        "label": "Button"
+      },
+      "accentColor": {
+        "type": "color",
+        "default": "#3072db",
+        "label": "Accent",
+        "brand": "accent"
+      },
+      "theme": {
+        "type": "select",
+        "default": "light",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Theme"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "scenes"
+    ],
+    "inlineDependencies": [
+      "lucide"
+    ]
+  },
+  {
+    "slug": "snapcn-wordmark-cut",
+    "catalogFamily": "snapcn",
+    "title": "Wordmark Cut",
+    "description": "A wordmark twice the width of the frame, cooling from a lit gradient to ink while it settles, and then a hard cut onto its last letters and the dot — 1.71× nearer, with a shallow depth of field the wide shot does not have, which is the only thing that says the second shot is closer rather than just bigger. It holds a beat and pushes in, still accelerating on the last frame.",
+    "componentName": "WordmarkCut",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "bc5b59f3f0fad9657b338fa62349a55fa33f160f",
+      "source": "registry/snap-cn/wordmark-cut/index.tsx",
+      "config": "registry/snap-cn/wordmark-cut/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/wordmark-cut/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 66,
+      "props": {
+        "word": "snapcn.",
+        "dotFrom": "#3072db",
+        "dotTo": "#4fd8f5",
+        "warm": 1,
+        "theme": "light",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#faf9f6"
+    },
+    "controls": {
+      "word": {
+        "type": "text",
+        "default": "snapcn.",
+        "label": "Wordmark"
+      },
+      "dotFrom": {
+        "type": "color",
+        "default": "#3072db",
+        "label": "Gradient (deep end)",
+        "brand": "accent"
+      },
+      "dotTo": {
+        "type": "color",
+        "default": "#4fd8f5",
+        "label": "Gradient (light end)",
+        "brand": "accent"
+      },
+      "warm": {
+        "type": "number",
+        "default": 1,
+        "min": 0,
+        "max": 1,
+        "step": 0.05,
+        "label": "Light"
+      },
+      "theme": {
+        "type": "select",
+        "default": "light",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Theme"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "scenes"
+    ]
+  }
+]

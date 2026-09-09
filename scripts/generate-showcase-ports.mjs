@@ -449,6 +449,17 @@ const sourceRewritePlugin = {
       contents:
         "export const useIsMobile = () => false; // Canonical 1280px showcase fixture",
     }));
+    buildApi.onLoad(
+      { filter: /src\/demos\/_ui\/app-sidebar\.tsx$/ },
+      async (args) => ({
+        loader: "tsx",
+        resolveDir: dirname(args.path),
+        contents: (await readFile(args.path, "utf8")).replace(
+          'avatar: "/avatars/shadcn.jpg"',
+          'avatar: ""',
+        ),
+      }),
+    );
     buildApi.onLoad({ filter: /src\/lib\/demo-assets\.ts$/ }, () => ({
       loader: "ts",
       contents: `
@@ -553,7 +564,7 @@ for (const showcase of showcases) {
       const clock = { frame: 0 };
       const timeline = gsap.timeline({ paused: true });
       timeline.to(clock, {
-        frame: ${showcase.durationInFrames - 1},
+        frame: ${showcase.durationInFrames},
         duration: ${duration},
         ease: "none",
         onUpdate: () => window.__hyfrmeRenderFrame(

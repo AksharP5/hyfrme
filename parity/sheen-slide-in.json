@@ -2,7 +2,7 @@
   "slug": "sheen-slide-in",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/sheen-slide-in/index.tsx",
     "config": "registry/remocn/sheen-slide-in/config.ts",
     "license": "MIT"
@@ -24,25 +24,62 @@
     "background": "#ffffff"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "08edcc2b99399b5ce783132cc87962b144a73e66faea3d7ce2f94fd9b3877db2",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 70,
-    "meanSsim": 0.999015,
-    "minSsim": 0.998548,
-    "p05Ssim": 0.998622,
-    "p95Ssim": 0.999994,
+    "meanSsim": 0.9974758142857143,
+    "minSsim": 0.996861,
+    "p05Ssim": 0.996924,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 70,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check reported 1 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "sheen-slide-in",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "source": "registry/remocn/sheen-slide-in/index.tsx",
+          "config": "registry/remocn/sheen-slide-in/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#sheen-slide-in-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "containerSelector": "#sheen-slide-in-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+          "text": "Introducing"
+        },
+        "reason": "The pinned source deliberately overlays the base Introducing text with an aria-hidden span whose transparent fill and background-clip:text paint the moving sheen. It does not obscure the base as an opaque box. Preserve the original layered effect; all 70 frames have matching alpha and RGB SSIM mean 0.997476/min 0.996861. The complete inspector finding remains in the audit."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/sheen-slide-in/remocn.mp4",
+    "referenceVideo": "public/previews/sheen-slide-in/reference.mp4",
     "hyperframesVideo": "public/previews/sheen-slide-in/hyperframes.mp4",
-    "summary": "parity/sheen-slide-in-diff/summary.json"
+    "thumbnail": "public/previews/sheen-slide-in/thumbnail.png",
+    "summary": "parity/sheen-slide-in-diff/summary.json",
+    "perFrameSsim": "parity/sheen-slide-in-diff/ssim.log",
+    "hyperframesCheck": "parity/sheen-slide-in-diff/hyperframes-check.log",
+    "worstFrame": "parity/sheen-slide-in-diff/worst-frame.png",
+    "referenceAlpha": "parity/sheen-slide-in-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/sheen-slide-in-diff/hyperframes-alpha.framemd5"
   }
 }

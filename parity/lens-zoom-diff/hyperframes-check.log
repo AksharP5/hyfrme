@@ -1,0 +1,286 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 6,
+    "findings": [
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.867,
+        "selector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(10) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 10.67,
+          "top": 40.82,
+          "right": 1295.88,
+          "bottom": 683.02,
+          "width": 1285.21,
+          "height": 642.21
+        },
+        "containerSelector": "#root",
+        "text": "Lens Zoom",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 15.88
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/lens-zoom.html",
+        "bbox": {
+          "x": 10.67,
+          "y": 40.82,
+          "width": 1285.21,
+          "height": 642.21
+        },
+        "firstSeen": 1.867,
+        "lastSeen": 1.867,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.867,
+        "selector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 12.63,
+          "top": 0.77,
+          "right": 1293.92,
+          "bottom": 723.07,
+          "width": 1281.29,
+          "height": 722.3
+        },
+        "containerSelector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 13.92,
+          "bottom": 3.07
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/lens-zoom.html",
+        "bbox": {
+          "x": 12.63,
+          "y": 0.77,
+          "width": 1281.29,
+          "height": 722.3
+        },
+        "firstSeen": 1.867,
+        "lastSeen": 1.867,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 1.867,
+        "selector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(9) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 48.29,
+          "top": 59.62,
+          "right": 1258.25,
+          "bottom": 664.22,
+          "width": 1209.96,
+          "height": 604.6
+        },
+        "containerSelector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(10) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "text": "Lens Zoom",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/lens-zoom.html",
+        "bbox": {
+          "x": 48.29,
+          "y": 59.62,
+          "width": 1209.96,
+          "height": 604.6
+        },
+        "firstSeen": 1.867,
+        "lastSeen": 1.867,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 1.867,
+        "selector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(10)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -1240.48,
+          "top": -1006.64,
+          "right": 2547.03,
+          "bottom": 1730.49,
+          "width": 3787.51,
+          "height": 2737.13
+        },
+        "containerSelector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(5)",
+        "text": "Lens Zoom",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 19.03,
+          "top": 4.38,
+          "right": 1287.51,
+          "bottom": 719.46,
+          "width": 1268.48,
+          "height": 715.08
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/lens-zoom.html",
+        "bbox": {
+          "x": -1240.48,
+          "y": -1006.64,
+          "width": 3787.51,
+          "height": 2737.13
+        },
+        "firstSeen": 1.867,
+        "lastSeen": 1.867,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 1.991,
+        "selector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(9) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 311.19,
+          "top": 194.47,
+          "right": 1027.72,
+          "bottom": 495.37,
+          "width": 716.54,
+          "height": 300.9
+        },
+        "containerSelector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(10) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "text": "Lens Zoom",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/lens-zoom.html",
+        "bbox": {
+          "x": 311.19,
+          "y": 194.47,
+          "width": 716.54,
+          "height": 300.9
+        },
+        "firstSeen": 1.991,
+        "lastSeen": 1.991,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 2.116,
+        "selector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(9) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 380.37,
+          "top": 295.29,
+          "right": 905.78,
+          "bottom": 468.83,
+          "width": 525.41,
+          "height": 173.55
+        },
+        "containerSelector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(10) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "text": "Lens Zoom",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/lens-zoom.html",
+        "bbox": {
+          "x": 380.37,
+          "y": 295.29,
+          "width": 525.41,
+          "height": 173.55
+        },
+        "firstSeen": 2.116,
+        "lastSeen": 2.116,
+        "occurrences": 1
+      }
+    ],
+    "duration": 3.7333333333333334,
+    "samples": [
+      0.207,
+      0.622,
+      1.037,
+      1.452,
+      1.867,
+      2.281,
+      2.696,
+      3.111,
+      3.526
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 6,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.207,
+      1.037,
+      1.867,
+      2.696,
+      3.526
+    ],
+    "checked": 6,
+    "passed": 6
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.32",
+    "updateAvailable": true
+  }
+}

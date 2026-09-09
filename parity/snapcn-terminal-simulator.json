@@ -1,0 +1,69 @@
+{
+  "slug": "snapcn-terminal-simulator",
+  "origin": {
+    "repository": "https://github.com/snapcndev/snapcn",
+    "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+    "source": "registry/snap-cn/terminal-simulator/index.tsx",
+    "config": "registry/snap-cn/terminal-simulator/config.ts",
+    "license": "MIT",
+    "entry": "registry/snap-cn/terminal-simulator/index.tsx"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 200,
+    "props": {
+      "intro": "*work* one step at a *time.*",
+      "background": "#141417",
+      "borderColor": "#26272B",
+      "fontSize": 18,
+      "charsPerFrame": 2,
+      "chunkSize": 3,
+      "zoom": false,
+      "fontFamily": "Default",
+      "speed": 1
+    },
+    "background": "#0A0A0B"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "111cad73406069d8e95934808306fb33d1737bf9118028f45c5d2102ebee7450",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 200,
+    "meanSsim": 0.9998021600000012,
+    "minSsim": 0.997222,
+    "p05Ssim": 0.998813,
+    "p95Ssim": 1,
+    "pass": true,
+    "alpha": {
+      "frameCount": 200,
+      "mismatchedFrames": [],
+      "pass": true
+    }
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.473",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/snapcn-terminal-simulator/reference.mp4",
+    "hyperframesVideo": "public/previews/snapcn-terminal-simulator/hyperframes.mp4",
+    "thumbnail": "public/previews/snapcn-terminal-simulator/thumbnail.png",
+    "summary": "parity/snapcn-terminal-simulator-diff/summary.json",
+    "perFrameSsim": "parity/snapcn-terminal-simulator-diff/ssim.log",
+    "hyperframesCheck": "parity/snapcn-terminal-simulator-diff/hyperframes-check.log",
+    "worstFrame": "parity/snapcn-terminal-simulator-diff/worst-frame.png",
+    "referenceAlpha": "parity/snapcn-terminal-simulator-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/snapcn-terminal-simulator-diff/hyperframes-alpha.framemd5"
+  }
+}

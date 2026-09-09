@@ -2,7 +2,7 @@
   "slug": "lens-zoom",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/lens-zoom/index.tsx",
     "entry": "components/docs/examples/lens-zoom-example.tsx",
     "config": "registry/remocn/lens-zoom/config.ts",
@@ -22,25 +22,43 @@
     "background": "#141318"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "21427ced70cf60e596ce4afdd63951f5db155fe326cc64e677c1e3cd508e2b2d",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 112,
-    "meanSsim": 0.995738,
-    "minSsim": 0.989037,
-    "p05Ssim": 0.992492,
-    "p95Ssim": 0.996827,
+    "meanSsim": 0.9999530803571428,
+    "minSsim": 0.998924,
+    "p05Ssim": 0.999381,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 112,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/lens-zoom/remocn.mp4",
+    "referenceVideo": "public/previews/lens-zoom/reference.mp4",
     "hyperframesVideo": "public/previews/lens-zoom/hyperframes.mp4",
-    "summary": "parity/lens-zoom-diff/summary.json"
+    "thumbnail": "public/previews/lens-zoom/thumbnail.png",
+    "summary": "parity/lens-zoom-diff/summary.json",
+    "perFrameSsim": "parity/lens-zoom-diff/ssim.log",
+    "hyperframesCheck": "parity/lens-zoom-diff/hyperframes-check.log",
+    "worstFrame": "parity/lens-zoom-diff/worst-frame.png",
+    "referenceAlpha": "parity/lens-zoom-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/lens-zoom-diff/hyperframes-alpha.framemd5"
   }
 }

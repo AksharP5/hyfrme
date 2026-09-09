@@ -1,0 +1,735 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "infoCount": 14,
+    "findings": [
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.333,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1292,
+          "top": 316,
+          "right": 1592,
+          "bottom": 404,
+          "width": 300,
+          "height": 88
+        },
+        "containerSelector": "#cursor-gravity-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 312
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/cursor-gravity.html",
+        "bbox": {
+          "x": 1292,
+          "y": 316,
+          "width": 300,
+          "height": 88
+        },
+        "firstSeen": 0.333,
+        "lastSeen": 1,
+        "occurrences": 2
+      },
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.333,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > path:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1292,
+          "top": 316,
+          "right": 1592,
+          "bottom": 404,
+          "width": 300,
+          "height": 88
+        },
+        "containerSelector": "#cursor-gravity-source-root > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 312
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/cursor-gravity.html",
+        "bbox": {
+          "x": 1292,
+          "y": 316,
+          "width": 300,
+          "height": 88
+        },
+        "firstSeen": 0.333,
+        "lastSeen": 1,
+        "occurrences": 2
+      },
+      {
+        "code": "rotation_pivot_drift",
+        "severity": "warning",
+        "time": 5.667,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > svg:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 284.05,
+          "y": 652.07,
+          "width": 143.74,
+          "height": 201.78
+        },
+        "rect": {
+          "left": 284.05,
+          "top": 652.07,
+          "right": 427.79,
+          "bottom": 853.85,
+          "width": 143.74,
+          "height": 201.78
+        },
+        "message": "Rotating element's bounding-box center drifts 953px across rotation — it is not spinning about its own center (check transformOrigin/svgOrigin).",
+        "fixHint": "The bounding-box center should stay fixed while the element spins; check its transformOrigin/svgOrigin so rotation pivots about the element's own center rather than a point in a coordinate space it was resized out of.",
+        "firstSeen": 5.667,
+        "lastSeen": 5.667,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.333,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1323.86,
+          "top": 346.5,
+          "right": 1518.13,
+          "bottom": 372.5,
+          "width": 194.27,
+          "height": 26
+        },
+        "containerSelector": "#root",
+        "text": "Create something",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 238.13
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/cursor-gravity.html",
+        "bbox": {
+          "x": 1323.86,
+          "y": 346.5,
+          "width": 194.27,
+          "height": 26
+        },
+        "firstSeen": 0.333,
+        "lastSeen": 1,
+        "occurrences": 2
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.333,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > svg:nth-of-type(2)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 187.2,
+          "top": 795.02,
+          "right": 385.43,
+          "bottom": 955.07,
+          "width": 198.22,
+          "height": 160.05
+        },
+        "containerSelector": "#cursor-gravity-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 235.07
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/cursor-gravity.html",
+        "bbox": {
+          "x": 187.2,
+          "y": 795.02,
+          "width": 198.22,
+          "height": 160.05
+        },
+        "firstSeen": 0.333,
+        "lastSeen": 0.333,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.667,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1316.47,
+          "top": 346.5,
+          "right": 1510.74,
+          "bottom": 372.5,
+          "width": 194.27,
+          "height": 26
+        },
+        "containerSelector": "#root",
+        "text": "Create something",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 230.74
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/cursor-gravity.html",
+        "bbox": {
+          "x": 1316.47,
+          "y": 346.5,
+          "width": 194.27,
+          "height": 26
+        },
+        "firstSeen": 1.667,
+        "lastSeen": 1.667,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.667,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1284.61,
+          "top": 316,
+          "right": 1584.61,
+          "bottom": 404,
+          "width": 300,
+          "height": 88
+        },
+        "containerSelector": "#cursor-gravity-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 304.61
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/cursor-gravity.html",
+        "bbox": {
+          "x": 1284.61,
+          "y": 316,
+          "width": 300,
+          "height": 88
+        },
+        "firstSeen": 1.667,
+        "lastSeen": 1.667,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.667,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > path:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1207.38,
+          "top": 317.48,
+          "right": 1584.61,
+          "bottom": 402.52,
+          "width": 377.24,
+          "height": 85.04
+        },
+        "containerSelector": "#cursor-gravity-source-root > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 304.61
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/cursor-gravity.html",
+        "bbox": {
+          "x": 1207.38,
+          "y": 317.48,
+          "width": 377.24,
+          "height": 85.04
+        },
+        "firstSeen": 1.667,
+        "lastSeen": 1.667,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.333,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1315.99,
+          "top": 346.5,
+          "right": 1510.25,
+          "bottom": 372.5,
+          "width": 194.27,
+          "height": 26
+        },
+        "containerSelector": "#root",
+        "text": "Create something",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 230.25
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/cursor-gravity.html",
+        "bbox": {
+          "x": 1315.99,
+          "y": 346.5,
+          "width": 194.27,
+          "height": 26
+        },
+        "firstSeen": 2.333,
+        "lastSeen": 2.333,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 2.333,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1284.13,
+          "top": 316,
+          "right": 1584.13,
+          "bottom": 404,
+          "width": 300,
+          "height": 88
+        },
+        "containerSelector": "#cursor-gravity-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 304.13
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/cursor-gravity.html",
+        "bbox": {
+          "x": 1284.13,
+          "y": 316,
+          "width": 300,
+          "height": 88
+        },
+        "firstSeen": 2.333,
+        "lastSeen": 2.333,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 2.333,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > path:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1201.81,
+          "top": 317.58,
+          "right": 1584.13,
+          "bottom": 402.42,
+          "width": 382.32,
+          "height": 84.84
+        },
+        "containerSelector": "#cursor-gravity-source-root > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 304.13
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/cursor-gravity.html",
+        "bbox": {
+          "x": 1201.81,
+          "y": 317.58,
+          "width": 382.32,
+          "height": 84.84
+        },
+        "firstSeen": 2.333,
+        "lastSeen": 2.333,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 3,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1298.57,
+          "top": 346.5,
+          "right": 1492.84,
+          "bottom": 372.5,
+          "width": 194.27,
+          "height": 26
+        },
+        "containerSelector": "#root",
+        "text": "Create something",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 212.84
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/cursor-gravity.html",
+        "bbox": {
+          "x": 1298.57,
+          "y": 346.5,
+          "width": 194.27,
+          "height": 26
+        },
+        "firstSeen": 3,
+        "lastSeen": 3,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 3,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1266.71,
+          "top": 316,
+          "right": 1566.71,
+          "bottom": 404,
+          "width": 300,
+          "height": 88
+        },
+        "containerSelector": "#cursor-gravity-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 286.71
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/cursor-gravity.html",
+        "bbox": {
+          "x": 1266.71,
+          "y": 316,
+          "width": 300,
+          "height": 88
+        },
+        "firstSeen": 3,
+        "lastSeen": 3,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 3,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > svg:nth-of-type(1) > path:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1002.25,
+          "top": 321.07,
+          "right": 1566.71,
+          "bottom": 398.93,
+          "width": 564.46,
+          "height": 77.86
+        },
+        "containerSelector": "#cursor-gravity-source-root > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 286.71
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/cursor-gravity.html",
+        "bbox": {
+          "x": 1002.25,
+          "y": 321.07,
+          "width": 564.46,
+          "height": 77.86
+        },
+        "firstSeen": 3,
+        "lastSeen": 3,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 3,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 1266.71,
+          "top": 316,
+          "right": 1566.71,
+          "bottom": 404,
+          "width": 300,
+          "height": 88
+        },
+        "containerSelector": "#cursor-gravity-source-root > div:nth-of-type(1)",
+        "text": "Create something",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/cursor-gravity.html",
+        "bbox": {
+          "x": 1266.71,
+          "y": 316,
+          "width": 300,
+          "height": 88
+        },
+        "firstSeen": 3,
+        "lastSeen": 3,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 5,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > svg:nth-of-type(2)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 284.26,
+          "top": 651.27,
+          "right": 427.59,
+          "bottom": 853.1,
+          "width": 143.33,
+          "height": 201.83
+        },
+        "containerSelector": "#cursor-gravity-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 133.1
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/cursor-gravity.html",
+        "bbox": {
+          "x": 284.26,
+          "y": 651.27,
+          "width": 143.33,
+          "height": 201.83
+        },
+        "firstSeen": 5,
+        "lastSeen": 5,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 5.667,
+        "selector": "#cursor-gravity-source-root > div:nth-of-type(1) > svg:nth-of-type(2)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 284.05,
+          "top": 652.07,
+          "right": 427.79,
+          "bottom": 853.85,
+          "width": 143.74,
+          "height": 201.78
+        },
+        "containerSelector": "#cursor-gravity-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 133.85
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/cursor-gravity.html",
+        "bbox": {
+          "x": 284.05,
+          "y": 652.07,
+          "width": 143.74,
+          "height": 201.78
+        },
+        "firstSeen": 5.667,
+        "lastSeen": 5.667,
+        "occurrences": 1
+      }
+    ],
+    "duration": 6,
+    "samples": [
+      0.333,
+      1,
+      1.667,
+      2.333,
+      3,
+      3.667,
+      4.333,
+      5,
+      5.667
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 17,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.333,
+      1.667,
+      3,
+      4.333,
+      5.667
+    ],
+    "checked": 2,
+    "passed": 2
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.32",
+    "updateAvailable": true
+  }
+}

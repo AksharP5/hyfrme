@@ -1,0 +1,149 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": false,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 0.069,
+        "selector": "#shadow-sweep-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 292.06,
+          "top": 395.87,
+          "right": 974.88,
+          "bottom": 502.87,
+          "width": 682.83,
+          "height": 107
+        },
+        "containerSelector": "#shadow-sweep-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "are abandoned",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.44,
+        "dataAttributes": {},
+        "sourceFile": "compositions/shadow-sweep-text.html",
+        "bbox": {
+          "x": 292.06,
+          "y": 395.87,
+          "width": 682.83,
+          "height": 107
+        },
+        "firstSeen": 0.069,
+        "lastSeen": 1.165,
+        "occurrences": 7
+      },
+      {
+        "code": "escaped_container",
+        "severity": "warning",
+        "time": 0.069,
+        "selector": "#shadow-sweep-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 188.37,
+          "top": 325.08,
+          "right": 578.37,
+          "bottom": 574.67,
+          "width": 390,
+          "height": 249.59
+        },
+        "containerSelector": "#shadow-sweep-text-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 292.06,
+          "top": 401.87,
+          "right": 974.88,
+          "bottom": 497.87,
+          "width": 682.83,
+          "height": 96
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/shadow-sweep-text.html",
+        "bbox": {
+          "x": 188.37,
+          "y": 325.08,
+          "width": 390,
+          "height": 249.59
+        },
+        "firstSeen": 0.069,
+        "lastSeen": 1.165,
+        "occurrences": 4
+      }
+    ],
+    "duration": 1.2333333333333334,
+    "samples": [
+      0.069,
+      0.206,
+      0.343,
+      0.48,
+      0.617,
+      0.754,
+      0.891,
+      1.028,
+      1.165
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 2,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.069,
+      0.343,
+      0.617,
+      0.891,
+      1.165
+    ],
+    "checked": 5,
+    "passed": 5
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.32",
+    "updateAvailable": true
+  }
+}

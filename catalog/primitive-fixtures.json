@@ -1,9 +1,35 @@
 [
   {
+    "slug": "select-menu",
+    "catalogFamily": "primitive",
+    "title": "Select Menu",
+    "description": "A vertical option list where exactly one row is highlighted; the highlight bar and left accent slide smoothly between rows. Fully controlled via selectedIndex/state or useSelectMenuTransition.",
+    "componentName": "SelectMenuExampleScene",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn-ui/select-menu/index.tsx",
+      "entry": "components/docs/examples/select-menu-example.tsx",
+      "config": "registry/remocn-ui/select-menu/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 128,
+      "props": {
+        "selectedIndex": 1,
+        "variant": "soft"
+      },
+      "background": "oklch(1 0 0)"
+    }
+  },
+  {
     "slug": "caret",
     "catalogFamily": "primitive",
     "title": "Caret",
-    "description": "A blinking text caret — a controlled vertical bar, or a pure motion atom that blinks deterministically from useCurrentFrame.",
+    "description": "A blinking text caret \u2014 a controlled vertical bar, or a pure motion atom that blinks deterministically from useCurrentFrame.",
     "componentName": "Caret",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -33,7 +59,7 @@
     "slug": "skeleton-block",
     "catalogFamily": "primitive",
     "title": "Skeleton Block",
-    "description": "A shimmer placeholder block — a motion atom (spinner pattern). A directional highlight gradient sweeps across deterministically from useCurrentFrame() and loops seamlessly. Configurable width/height/radius/speed and base/highlight colors.",
+    "description": "A shimmer placeholder block \u2014 a motion atom (spinner pattern). A directional highlight gradient sweeps across deterministically from useCurrentFrame() and loops seamlessly. Configurable width/height/radius/speed and base/highlight colors.",
     "componentName": "SkeletonBlock",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -60,7 +86,7 @@
     "slug": "spinner",
     "catalogFamily": "primitive",
     "title": "Spinner",
-    "description": "A deterministic spinning arc that loops on the Remotion frame — a pure motion atom with no state.",
+    "description": "A deterministic spinning arc that loops on the Remotion frame \u2014 a pure motion atom with no state.",
     "componentName": "Spinner",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -86,7 +112,7 @@
     "slug": "typing-indicator",
     "catalogFamily": "primitive",
     "title": "Typing Indicator",
-    "description": "A continuous typing animation: N dots bounce with a staggered sine wave. A motion atom — it reads the frame and takes color, size, gap, and speed props, defaulting to currentColor so it inherits the bubble it sits in.",
+    "description": "A continuous typing animation: N dots bounce with a staggered sine wave. A motion atom \u2014 it reads the frame and takes color, size, gap, and speed props, defaulting to currentColor so it inherits the bubble it sits in.",
     "componentName": "TypingIndicator",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -308,7 +334,7 @@
     "slug": "alert-dialog",
     "catalogFamily": "primitive",
     "title": "Alert Dialog",
-    "description": "A modal alert dialog whose opened/closed state is a pure function of the timeline; the backdrop dim and popup zoom are keyframed presets. Self-contained — pair it with the Button as a trigger (see the example).",
+    "description": "A modal alert dialog whose opened/closed state is a pure function of the timeline; the backdrop dim and popup zoom are keyframed presets. Self-contained \u2014 pair it with the Button as a trigger (see the example).",
     "componentName": "AlertDialogExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -336,7 +362,7 @@
     "slug": "dialog",
     "catalogFamily": "primitive",
     "title": "Dialog",
-    "description": "A modal dialog whose opened/closed state is a pure function of the timeline; the backdrop dim and popup zoom are keyframed presets, with a close button and a primary action. Self-contained — pair it with the Button as a trigger (see the example).",
+    "description": "A modal dialog whose opened/closed state is a pure function of the timeline; the backdrop dim and popup zoom are keyframed presets, with a close button and a primary action. Self-contained \u2014 pair it with the Button as a trigger (see the example).",
     "componentName": "DialogExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -364,7 +390,7 @@
     "slug": "sheet",
     "catalogFamily": "primitive",
     "title": "Sheet",
-    "description": "A side panel whose opened/closed state is a pure function of the timeline; the backdrop dim and right-edge slide-in are keyframed presets, with a close button and a primary action. Self-contained — pair it with the Button as a trigger (see the example).",
+    "description": "A side panel whose opened/closed state is a pure function of the timeline; the backdrop dim and right-edge slide-in are keyframed presets, with a close button and a primary action. Self-contained \u2014 pair it with the Button as a trigger (see the example).",
     "componentName": "SheetExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -392,7 +418,7 @@
     "slug": "drawer",
     "catalogFamily": "primitive",
     "title": "Drawer",
-    "description": "A bottom panel whose opened/closed state is a pure function of the timeline; the backdrop dim and bottom-edge slide-up are keyframed presets, with a drag handle and a primary action. Self-contained — pair it with the Button as a trigger (see the example).",
+    "description": "A bottom panel whose opened/closed state is a pure function of the timeline; the backdrop dim and bottom-edge slide-up are keyframed presets, with a drag handle and a primary action. Self-contained \u2014 pair it with the Button as a trigger (see the example).",
     "componentName": "DrawerExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -437,32 +463,6 @@
       "durationInFrames": 120,
       "props": {
         "label": "Select a fruit"
-      },
-      "background": "oklch(1 0 0)"
-    }
-  },
-  {
-    "slug": "select-menu",
-    "catalogFamily": "primitive",
-    "title": "Select Menu",
-    "description": "A vertical option list where exactly one row is highlighted; the highlight bar and left accent slide smoothly between rows. Fully controlled via selectedIndex/state or useSelectMenuTransition.",
-    "componentName": "SelectMenuExampleScene",
-    "origin": {
-      "repository": "https://github.com/Remocn/remocn",
-      "commit": "25348774f7b63d09477172e6084cb669799511a3",
-      "source": "registry/remocn-ui/select-menu/index.tsx",
-      "entry": "components/docs/examples/select-menu-example.tsx",
-      "config": "registry/remocn-ui/select-menu/config.ts",
-      "license": "MIT"
-    },
-    "fixture": {
-      "width": 1280,
-      "height": 720,
-      "fps": 30,
-      "durationInFrames": 128,
-      "props": {
-        "selectedIndex": 1,
-        "variant": "soft"
       },
       "background": "oklch(1 0 0)"
     }
@@ -593,7 +593,7 @@
       "props": {
         "text": "Yep, pushing it live now",
         "variant": "incoming",
-        "reaction": "🔥"
+        "reaction": "\ud83d\udd25"
       },
       "background": "oklch(1 0 0)"
     }
@@ -602,7 +602,7 @@
     "slug": "command-menu",
     "catalogFamily": "primitive",
     "title": "Command Menu",
-    "description": "A ⌘K command palette whose opened/closed state is a pure function of the timeline; the panel zoom + backdrop dim are dialog-like keyframed presets. The search row reveals the typed query, the list is filtered by a pure case-insensitive substring on the visible query prefix, and rows reuse the CommandMenuItem row.",
+    "description": "A \u2318K command palette whose opened/closed state is a pure function of the timeline; the panel zoom + backdrop dim are dialog-like keyframed presets. The search row reveals the typed query, the list is filtered by a pure case-insensitive substring on the visible query prefix, and rows reuse the CommandMenuItem row.",
     "componentName": "CommandMenuExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -650,7 +650,7 @@
     "slug": "progress",
     "catalogFamily": "primitive",
     "title": "Progress",
-    "description": "A progress bar whose fill is a pure function of a numeric value channel (value-channel deviation). The Progress renderer takes a clamped 0–100 value; useProgressTransition reads the frame and eases the fill between value steps. Muted track + primary indicator, optional floored percentage label.",
+    "description": "A progress bar whose fill is a pure function of a numeric value channel (value-channel deviation). The Progress renderer takes a clamped 0\u2013100 value; useProgressTransition reads the frame and eases the fill between value steps. Muted track + primary indicator, optional floored percentage label.",
     "componentName": "ProgressExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -675,7 +675,7 @@
     "slug": "skeleton",
     "catalogFamily": "primitive",
     "title": "Skeleton",
-    "description": "A skeleton→content crossfade whose loading/loaded state is a pure function of the timeline. The Skeleton renderer is pure (reads no frame); only the composed SkeletonBlock shimmer reads it. SkeletonStyle opacities sum to 1 so the box never dims; real children sit in normal flow and the placeholder (a lines/card layout or a custom node) is an absolute overlay.",
+    "description": "A skeleton\u2192content crossfade whose loading/loaded state is a pure function of the timeline. The Skeleton renderer is pure (reads no frame); only the composed SkeletonBlock shimmer reads it. SkeletonStyle opacities sum to 1 so the box never dims; real children sit in normal flow and the placeholder (a lines/card layout or a custom node) is an absolute overlay.",
     "componentName": "SkeletonExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -700,7 +700,7 @@
     "slug": "slider",
     "catalogFamily": "primitive",
     "title": "Slider",
-    "description": "A slider whose fill is a numeric value channel plus a thumb idle/hover/press channel (dual-channel value-channel deviation). The Slider renderer is pure (clamped 0–100 value, thumb scale, grab-ring opacity); useSliderTransition reads the frame and eases both channels — value as a numeric lerp, the thumb visual from its state presets. Muted track + primary range + bordered thumb with a derived grab ring.",
+    "description": "A slider whose fill is a numeric value channel plus a thumb idle/hover/press channel (dual-channel value-channel deviation). The Slider renderer is pure (clamped 0\u2013100 value, thumb scale, grab-ring opacity); useSliderTransition reads the frame and eases both channels \u2014 value as a numeric lerp, the thumb visual from its state presets. Muted track + primary range + bordered thumb with a derived grab ring.",
     "componentName": "SliderExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -741,7 +741,7 @@
       "fps": 30,
       "durationInFrames": 120,
       "props": {
-        "placeholder": "Select a fruit…"
+        "placeholder": "Select a fruit\u2026"
       },
       "background": "oklch(1 0 0)"
     }
@@ -773,7 +773,7 @@
     "slug": "context-menu",
     "catalogFamily": "primitive",
     "title": "Context Menu",
-    "description": "A right-click context menu whose opened/closed state is a pure function of the timeline; the panel scales from its top-left corner (the click point) with a fade + lift. No trigger — the caller positions it. Rows reuse the DropdownMenuItem row; items are plain string labels.",
+    "description": "A right-click context menu whose opened/closed state is a pure function of the timeline; the panel scales from its top-left corner (the click point) with a fade + lift. No trigger \u2014 the caller positions it. Rows reuse the DropdownMenuItem row; items are plain string labels.",
     "componentName": "ContextMenuExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -842,7 +842,7 @@
     "slug": "resizable",
     "catalogFamily": "primitive",
     "title": "Resizable",
-    "description": "Two panels split by a draggable handle, where the split ratio is a numeric channel plus a handle idle/hover/press channel (dual-channel value-channel deviation). The Resizable renderer is pure (clamped 0–1 ratio, handle scale, grab-ring opacity); useResizableTransition reads the frame and eases both channels — ratio as a numeric lerp, the handle visual from its state presets. Horizontal and vertical splits; 1px divider + centered grip pill with a derived grab ring.",
+    "description": "Two panels split by a draggable handle, where the split ratio is a numeric channel plus a handle idle/hover/press channel (dual-channel value-channel deviation). The Resizable renderer is pure (clamped 0\u20131 ratio, handle scale, grab-ring opacity); useResizableTransition reads the frame and eases both channels \u2014 ratio as a numeric lerp, the handle visual from its state presets. Horizontal and vertical splits; 1px divider + centered grip pill with a derived grab ring.",
     "componentName": "ResizableExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -867,7 +867,7 @@
     "slug": "blur-in",
     "catalogFamily": "primitive",
     "title": "Blur In",
-    "description": "A wrapper that reveals a single child with blur + opacity + a directional offset; a pure state atom, theme-independent — its context is a motion config (blur/distance/axis), not a theme.",
+    "description": "A wrapper that reveals a single child with blur + opacity + a directional offset; a pure state atom, theme-independent \u2014 its context is a motion config (blur/distance/axis), not a theme.",
     "componentName": "BlurInExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -894,7 +894,7 @@
     "slug": "signup-flow",
     "catalogFamily": "primitive",
     "title": "Signup Flow",
-    "description": "A signup card composition: a real shadcn-style card (header, labeled Full Name / Email / Password / Confirm fields, primary + Google-outline buttons, sign-in footer) whose cursor fills each field top-to-bottom, then clicks Create account (hover → press → loading → success) as a success toast slides in. A pure orchestrator — every channel comes from a composed primitive's transition hook.",
+    "description": "A signup card composition: a real shadcn-style card (header, labeled Full Name / Email / Password / Confirm fields, primary + Google-outline buttons, sign-in footer) whose cursor fills each field top-to-bottom, then clicks Create account (hover \u2192 press \u2192 loading \u2192 success) as a success toast slides in. A pure orchestrator \u2014 every channel comes from a composed primitive's transition hook.",
     "componentName": "SignupFlowExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -916,7 +916,7 @@
     "slug": "ai-prompt-flow",
     "catalogFamily": "primitive",
     "title": "AI Prompt Flow",
-    "description": "An AI prompt composition: a prompt types into the field, the Generate button runs hover → press → loading, a skeleton shimmer reveals, then crossfades into the generated answer, and a ready toast slides in. A pure orchestrator — the shimmer is owned by the skeleton-block motion atom; every other channel comes from a composed primitive's hook.",
+    "description": "An AI prompt composition: a prompt types into the field, the Generate button runs hover \u2192 press \u2192 loading, a skeleton shimmer reveals, then crossfades into the generated answer, and a ready toast slides in. A pure orchestrator \u2014 the shimmer is owned by the skeleton-block motion atom; every other channel comes from a composed primitive's hook.",
     "componentName": "AiPromptFlowExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -938,7 +938,7 @@
     "slug": "checkout-flow",
     "catalogFamily": "primitive",
     "title": "Checkout Flow",
-    "description": "A cursor-driven checkout card: the card and its fields blur-in, then the pointer flips a billing-cycle toggle, types a card number, ticks the terms checkbox, and presses Pay through to success, ending in a toast. A pure orchestrator — every channel comes from a composed primitive's transition hook.",
+    "description": "A cursor-driven checkout card: the card and its fields blur-in, then the pointer flips a billing-cycle toggle, types a card number, ticks the terms checkbox, and presses Pay through to success, ending in a toast. A pure orchestrator \u2014 every channel comes from a composed primitive's transition hook.",
     "componentName": "CheckoutFlowExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -982,7 +982,7 @@
     "slug": "settings-toggle-flow",
     "catalogFamily": "primitive",
     "title": "Settings Toggle Flow",
-    "description": "A two-column settings card: the card and its controls blur-in, then the cursor flips a switch, opens a select, drags a labeled slider, and clicks Save, ending in a saved toast. A pure orchestrator — every channel comes from a composed primitive's transition hook.",
+    "description": "A two-column settings card: the card and its controls blur-in, then the cursor flips a switch, opens a select, drags a labeled slider, and clicks Save, ending in a saved toast. A pure orchestrator \u2014 every channel comes from a composed primitive's transition hook.",
     "componentName": "SettingsToggleFlowExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -1004,7 +1004,7 @@
     "slug": "chat-flow",
     "catalogFamily": "primitive",
     "title": "Chat Flow",
-    "description": "A messaging composition: an outgoing message types into the composer, the send button presses, and the bubble rises in; the other side shows a typing indicator that swaps into the reply, and reactions pop in. A pure orchestrator — every channel comes from a composed primitive's hook (Input, MessageBubble, TypingIndicator).",
+    "description": "A messaging composition: an outgoing message types into the composer, the send button presses, and the bubble rises in; the other side shows a typing indicator that swaps into the reply, and reactions pop in. A pure orchestrator \u2014 every channel comes from a composed primitive's hook (Input, MessageBubble, TypingIndicator).",
     "componentName": "ChatFlowExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -1026,7 +1026,7 @@
     "slug": "telegram-chat-flow",
     "catalogFamily": "primitive",
     "title": "Telegram Chat Flow",
-    "description": "A Telegram-styled messaging composition: tailed bubbles (white incoming, blue outgoing) with in-bubble timestamps and delivery checks, a header that flips to 'typing…' while the other side replies, reaction chips, and a Telegram composer that types the outgoing message before sending. Self-contained — it owns its timeline and only composes the caret primitive.",
+    "description": "A Telegram-styled messaging composition: tailed bubbles (white incoming, blue outgoing) with in-bubble timestamps and delivery checks, a header that flips to 'typing\u2026' while the other side replies, reaction chips, and a Telegram composer that types the outgoing message before sending. Self-contained \u2014 it owns its timeline and only composes the caret primitive.",
     "componentName": "TelegramChatFlowExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -1070,7 +1070,7 @@
     "slug": "field",
     "catalogFamily": "primitive",
     "title": "Field",
-    "description": "A static layout family for composing labeled form controls, modeled on shadcn's Field: FieldGroup ▸ Field ▸ FieldLabel / FieldControl / FieldDescription. Reads no frame and holds no state — colors come from the resolved theme. FieldControl is a relative fixed-height slot for the absolute remocn-ui controls (Input, Button).",
+    "description": "A static layout family for composing labeled form controls, modeled on shadcn's Field: FieldGroup \u25b8 Field \u25b8 FieldLabel / FieldControl / FieldDescription. Reads no frame and holds no state \u2014 colors come from the resolved theme. FieldControl is a relative fixed-height slot for the absolute remocn-ui controls (Input, Button).",
     "componentName": "HyfrmeFieldExampleScene",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
@@ -1159,7 +1159,7 @@
       "props": {
         "label": "Settings",
         "icon": "settings",
-        "shortcut": "⌘ S",
+        "shortcut": "\u2318 S",
         "state": "selected"
       },
       "background": "oklch(1 0 0)"

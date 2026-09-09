@@ -2,7 +2,7 @@ import { build } from "esbuild";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, relative, resolve } from "node:path";
 import { interpolationSource, remocnMitBanner } from "./hyfrme-frame-math.mjs";
-import { readUpstreamRegistry } from "./read-upstream-registry.mjs";
+import { readRemocnRegistry } from "./remocn-registry.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const upstream = resolve(root, process.env.REMOCN_SOURCE ?? ".work/remocn");
@@ -12,7 +12,7 @@ const upstreamCommit = (
 const inventory = JSON.parse(
   await readFile(resolve(root, "catalog", "upstream-inventory.json"), "utf8"),
 );
-const upstreamRegistry = await readUpstreamRegistry(upstream);
+const upstreamRegistry = await readRemocnRegistry(upstream);
 
 const onlyIndex = process.argv.indexOf("--only");
 const only = onlyIndex === -1 ? null : process.argv[onlyIndex + 1];

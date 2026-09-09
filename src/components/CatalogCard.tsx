@@ -22,6 +22,7 @@ export function CatalogCard({ entry }: CatalogCardProps) {
       className={`catalog-card${isIcon ? " is-icon" : ""}`}
       href={`/components/${entry.item.name}`}
       data-component-slug={entry.item.name}
+      data-source={entry.source.id}
       data-previewing={previewing ? "true" : "false"}
       onPointerEnter={() => setPreviewing(true)}
       onPointerLeave={() => setPreviewing(false)}
@@ -46,7 +47,10 @@ export function CatalogCard({ entry }: CatalogCardProps) {
         )}
       </span>
       <span className="catalog-card-copy">
-        <span>{catalogDescriptor(entry)}</span>
+        <span className="catalog-card-meta">
+          <span>{catalogDescriptor(entry)}</span>
+          <span className="source-badge">{entry.source.label}</span>
+        </span>
         <strong>{entry.item.title}</strong>
         <small>{cardDescription(entry)}</small>
       </span>

@@ -5,6 +5,7 @@ import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { extname, resolve } from "node:path";
 import { tmpdir } from "node:os";
 import { promisify } from "node:util";
+import { runInNewContext } from "node:vm";
 
 const exec = promisify(execFile);
 const root = resolve(import.meta.dirname, "..");
@@ -20,9 +21,46 @@ const contentTypes = {
   ".woff2": "font/woff2",
 };
 
+const multilineFixture = new Map([
+  [
+    "/blocks/multiline/registry-item.json",
+    JSON.stringify({
+      name: "multiline",
+      title: "Multiline",
+      files: [
+        {
+          path: "multiline.html",
+          target: "compositions/multiline.html",
+          type: "hyperframes:composition",
+        },
+        {
+          path: "multiline.runtime.js",
+          target: "compositions/multiline.runtime.js",
+          type: "hyperframes:asset",
+        },
+      ],
+    }),
+  ],
+  [
+    "/blocks/multiline/multiline.html",
+    '<html><head></head><body><script src="./multiline.runtime.js"></script></body></html>',
+  ],
+  [
+    "/blocks/multiline/multiline.runtime.js",
+    "window.lines = window.__hyperframes.getVariables().text.split(`\n`);\nwindow.defaultText = `first\nsecond`;",
+  ],
+]);
+
 const server = createServer(async (request, response) => {
   try {
     const url = new URL(request.url ?? "/", "http://localhost");
+    if (multilineFixture.has(url.pathname)) {
+      response.writeHead(200, {
+        "content-type": contentTypes[extname(url.pathname)],
+      });
+      response.end(multilineFixture.get(url.pathname));
+      return;
+    }
     if (url.pathname === "/registry.json") {
       response.writeHead(200, { "content-type": "application/json" });
       response.end(
@@ -159,6 +197,34 @@ try {
     result.stdout,
     /data-composition-src="motion\/hyfrme\/matrix-decode\.html"/,
   );
+
+  await exec(
+    process.execPath,
+    [
+      resolve(root, "cli/bin/hyfrme.mjs"),
+      "add",
+      "multiline",
+      "--dir",
+      temporary,
+    ],
+    {
+      env: { ...process.env, HYFRME_REGISTRY_URL: registryUrl },
+    },
+  );
+  const multiline = await readFile(
+    resolve(temporary, "motion/hyfrme/multiline.html"),
+    "utf8",
+  );
+  const preview = {
+    __hyperframes: { getVariables: () => ({ text: "first\nsecond" }) },
+  };
+  for (const [, script] of multiline.matchAll(
+    /<script>([\s\S]*?)<\/script>/g,
+  )) {
+    runInNewContext(script, { window: preview });
+  }
+  assert.deepEqual(Array.from(preview.lines), ["first", "second"]);
+  assert.equal(preview.defaultText, "first\nsecond");
 
   const installAllResult = await exec(
     process.execPath,

@@ -27,6 +27,10 @@ cd my-video
 Browse the visual catalog at <https://hyfrme.vercel.app>. The machine-readable
 registry is at <https://hyfrme.vercel.app/registry/registry.json>.
 
+Use the catalog's source filter to browse Remocn or Snapcn ports. Snapcn block
+names start with `snapcn-`, such as `snapcn-phone-frame`; copy the exact catalog
+name into the install command.
+
 Choose the smallest component that serves the scene:
 
 | Category   | Use for                                                                      |
@@ -84,9 +88,9 @@ Use the markup printed by the installer. A block mount follows this shape:
 ></div>
 ```
 
-Keep `data-composition-id` aligned with the installed block, place the mount on
-the intended timeline track, and use the exact installed path printed by the
-CLI. Do not guess dimensions or duration.
+Give each mount a unique `data-composition-id`, place it on the intended timeline
+track, and use the exact installed path printed by the CLI. Multiple mounts can
+reuse one installed source. Do not guess dimensions or duration.
 
 ## Customize
 
@@ -102,7 +106,9 @@ variable names. Per-instance overrides remain available through
 
 - Use deterministic HyperFrames timing; do not add `Math.random()`, timers, or
   non-seekable animation around the installed block.
+- For video-containing Snapcn blocks, render with `--video-frame-format png`
+  to preserve the lossless video extraction used for parity verification.
 - Preserve copied license and attribution files.
-- Hyfrme ports Remocn components but is an independent HyperFrames project.
+- Hyfrme ports Remocn and Snapcn components as an independent HyperFrames project.
 - Treat the website preview as a selection tool, then run `hyperframes check`
   after wiring the installed source into a real composition.

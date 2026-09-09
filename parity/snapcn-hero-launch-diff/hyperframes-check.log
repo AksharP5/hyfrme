@@ -1,0 +1,651 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 14,
+    "findings": [
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 1.574,
+        "selector": "#snapcn-hero-launch-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 47.84,
+          "top": 175.31,
+          "right": 1138.66,
+          "bottom": 876.69,
+          "width": 1090.83,
+          "height": 701.38
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 156.69
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-hero-launch.html",
+        "bbox": {
+          "x": 47.84,
+          "y": 175.31,
+          "width": 1090.83,
+          "height": 701.38
+        },
+        "firstSeen": 1.574,
+        "lastSeen": 1.574,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 2.204,
+        "selector": "#snapcn-hero-launch-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 1059.03,
+          "top": 216,
+          "right": 2059.03,
+          "bottom": 836,
+          "width": 1000,
+          "height": 620
+        },
+        "containerSelector": "#snapcn-hero-launch-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-hero-launch.html",
+        "bbox": {
+          "x": 1059.03,
+          "y": 216,
+          "width": 1000,
+          "height": 620
+        },
+        "firstSeen": 2.204,
+        "lastSeen": 2.204,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 2.204,
+        "selector": "#snapcn-hero-launch-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": -138.33,
+          "top": 215.94,
+          "right": 607.38,
+          "bottom": 836.06,
+          "width": 745.71,
+          "height": 620.12
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 138.33,
+          "bottom": 116.06
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-hero-launch.html",
+        "bbox": {
+          "x": -138.33,
+          "y": 215.94,
+          "width": 745.71,
+          "height": 620.12
+        },
+        "firstSeen": 2.204,
+        "lastSeen": 2.204,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 2.204,
+        "selector": "#snapcn-hero-launch-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 1059.03,
+          "top": 216,
+          "right": 1798.99,
+          "bottom": 836,
+          "width": 739.96,
+          "height": 620
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 518.99,
+          "bottom": 116
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-hero-launch.html",
+        "bbox": {
+          "x": 1059.03,
+          "y": 216,
+          "width": 739.96,
+          "height": 620
+        },
+        "firstSeen": 2.204,
+        "lastSeen": 2.204,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 2.833,
+        "selector": "#snapcn-hero-launch-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": -145.96,
+          "top": 216,
+          "right": 594,
+          "bottom": 836,
+          "width": 739.96,
+          "height": 620
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 145.96,
+          "bottom": 116
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-hero-launch.html",
+        "bbox": {
+          "x": -145.96,
+          "y": 216,
+          "width": 739.96,
+          "height": 620
+        },
+        "firstSeen": 2.833,
+        "lastSeen": 2.833,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 2.833,
+        "selector": "#snapcn-hero-launch-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 699.65,
+          "top": 216,
+          "right": 1439.61,
+          "bottom": 836,
+          "width": 739.96,
+          "height": 620
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 159.61,
+          "bottom": 116
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-hero-launch.html",
+        "bbox": {
+          "x": 699.65,
+          "y": 216,
+          "width": 739.96,
+          "height": 620
+        },
+        "firstSeen": 2.833,
+        "lastSeen": 2.833,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 3.463,
+        "selector": "#snapcn-hero-launch-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": -145.96,
+          "top": 216.5,
+          "right": 594,
+          "bottom": 836.5,
+          "width": 739.96,
+          "height": 620
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 145.96,
+          "bottom": 116.5
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-hero-launch.html",
+        "bbox": {
+          "x": -145.96,
+          "y": 216.5,
+          "width": 739.96,
+          "height": 620
+        },
+        "firstSeen": 3.463,
+        "lastSeen": 3.463,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 3.463,
+        "selector": "#snapcn-hero-launch-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 686,
+          "top": 216.5,
+          "right": 1425.96,
+          "bottom": 836.5,
+          "width": 739.96,
+          "height": 620
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 145.96,
+          "bottom": 116.5
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-hero-launch.html",
+        "bbox": {
+          "x": 686,
+          "y": 216.5,
+          "width": 739.96,
+          "height": 620
+        },
+        "firstSeen": 3.463,
+        "lastSeen": 3.463,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 4.093,
+        "selector": "#snapcn-hero-launch-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": -145.96,
+          "top": 212.5,
+          "right": 594,
+          "bottom": 832.5,
+          "width": 739.96,
+          "height": 620
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 145.96,
+          "bottom": 112.5
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-hero-launch.html",
+        "bbox": {
+          "x": -145.96,
+          "y": 212.5,
+          "width": 739.96,
+          "height": 620
+        },
+        "firstSeen": 4.093,
+        "lastSeen": 4.093,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 4.093,
+        "selector": "#snapcn-hero-launch-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 686,
+          "top": 212.5,
+          "right": 1425.96,
+          "bottom": 832.5,
+          "width": 739.96,
+          "height": 620
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 145.96,
+          "bottom": 112.5
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-hero-launch.html",
+        "bbox": {
+          "x": 686,
+          "y": 212.5,
+          "width": 739.96,
+          "height": 620
+        },
+        "firstSeen": 4.093,
+        "lastSeen": 4.093,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 4.722,
+        "selector": "#snapcn-hero-launch-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": -145.96,
+          "top": 238.71,
+          "right": 594,
+          "bottom": 858.71,
+          "width": 739.96,
+          "height": 620
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 145.96,
+          "bottom": 138.71
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-hero-launch.html",
+        "bbox": {
+          "x": -145.96,
+          "y": 238.71,
+          "width": 739.96,
+          "height": 620
+        },
+        "firstSeen": 4.722,
+        "lastSeen": 4.722,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 4.722,
+        "selector": "#snapcn-hero-launch-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 686,
+          "top": 238.71,
+          "right": 1425.96,
+          "bottom": 858.71,
+          "width": 739.96,
+          "height": 620
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 145.96,
+          "bottom": 138.71
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-hero-launch.html",
+        "bbox": {
+          "x": 686,
+          "y": 238.71,
+          "width": 739.96,
+          "height": 620
+        },
+        "firstSeen": 4.722,
+        "lastSeen": 4.722,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 5.352,
+        "selector": "#snapcn-hero-launch-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": -145.96,
+          "top": 331.2,
+          "right": 594,
+          "bottom": 951.2,
+          "width": 739.96,
+          "height": 620
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 145.96,
+          "bottom": 231.2
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-hero-launch.html",
+        "bbox": {
+          "x": -145.96,
+          "y": 331.2,
+          "width": 739.96,
+          "height": 620
+        },
+        "firstSeen": 5.352,
+        "lastSeen": 5.352,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 5.352,
+        "selector": "#snapcn-hero-launch-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 686,
+          "top": 331.2,
+          "right": 1425.96,
+          "bottom": 951.2,
+          "width": 739.96,
+          "height": 620
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 145.96,
+          "bottom": 231.2
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-hero-launch.html",
+        "bbox": {
+          "x": 686,
+          "y": 331.2,
+          "width": 739.96,
+          "height": 620
+        },
+        "firstSeen": 5.352,
+        "lastSeen": 5.352,
+        "occurrences": 1
+      }
+    ],
+    "duration": 5.666666666666667,
+    "samples": [
+      0.315,
+      0.944,
+      1.574,
+      2.204,
+      2.833,
+      3.463,
+      4.093,
+      4.722,
+      5.352
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 14,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.315,
+      1.574,
+      2.833,
+      4.093,
+      5.352
+    ],
+    "checked": 1,
+    "passed": 1
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.32",
+    "updateAvailable": true
+  }
+}

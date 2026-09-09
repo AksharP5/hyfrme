@@ -23,25 +23,43 @@
     "background": "#000000"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "f5147dd1a2477793f1123ceddf5c7b4f5a5304f7af2e4622835a25fcb166704b",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.989746,
-    "minSsim": 0.986111,
-    "p05Ssim": 0.986112,
-    "p95Ssim": 0.994353,
+    "meanSsim": 0.9997834999999998,
+    "minSsim": 0.99867,
+    "p05Ssim": 0.998883,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.473",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/v0/remocn.mp4",
+    "referenceVideo": "public/previews/v0/reference.mp4",
     "hyperframesVideo": "public/previews/v0/hyperframes.mp4",
-    "summary": "parity/v0-diff/summary.json"
+    "thumbnail": "public/previews/v0/thumbnail.png",
+    "summary": "parity/v0-diff/summary.json",
+    "perFrameSsim": "parity/v0-diff/ssim.log",
+    "hyperframesCheck": "parity/v0-diff/hyperframes-check.log",
+    "worstFrame": "parity/v0-diff/worst-frame.png",
+    "referenceAlpha": "parity/v0-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/v0-diff/hyperframes-alpha.framemd5"
   }
 }

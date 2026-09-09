@@ -1,0 +1,109 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "rotation_pivot_drift",
+        "severity": "warning",
+        "time": 4.722,
+        "selector": "#snapcn-moodboard-reveal-source-root > div:nth-of-type(1) > div:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 822.465,
+          "y": 430.435,
+          "width": 55.07,
+          "height": 55.07
+        },
+        "rect": {
+          "left": 822.465,
+          "top": 430.435,
+          "right": 877.535,
+          "bottom": 485.50500000000005,
+          "width": 55.07,
+          "height": 55.07
+        },
+        "message": "Rotating element's bounding-box center drifts 208px across rotation — it is not spinning about its own center (check transformOrigin/svgOrigin).",
+        "fixHint": "The bounding-box center should stay fixed while the element spins; check its transformOrigin/svgOrigin so rotation pivots about the element's own center rather than a point in a coordinate space it was resized out of.",
+        "firstSeen": 4.722,
+        "lastSeen": 4.722,
+        "occurrences": 1
+      }
+    ],
+    "duration": 5,
+    "samples": [
+      0.278,
+      0.833,
+      1.389,
+      1.944,
+      2.5,
+      3.056,
+      3.611,
+      4.167,
+      4.722
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 1,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.278,
+      1.389,
+      2.5,
+      3.611,
+      4.722
+    ],
+    "checked": 4,
+    "passed": 4
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.30",
+    "updateAvailable": false
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "slug": "snapcn-input",
+  "origin": {
+    "repository": "https://github.com/snapcndev/snapcn",
+    "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+    "source": "registry/snap-cn-ui/input/index.tsx",
+    "config": "registry/snap-cn-ui/input/config.ts",
+    "license": "MIT",
+    "entry": "registry/snap-cn-ui/input/index.tsx"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "placeholder": "you@example.com",
+      "value": "remotion@snapcn.dev",
+      "size": "default",
+      "state": "typing",
+      "primary": "#171717"
+    },
+    "background": "oklch(1 0 0)"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "3fdd3aeda0a741dbdaa7bb08db9bb469a1f81832bb05770f61cfc6c9b9ca5d9e",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.9985089999999988,
+    "minSsim": 0.998509,
+    "p05Ssim": 0.998509,
+    "p95Ssim": 0.998509,
+    "pass": true,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    }
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.473",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/snapcn-input/reference.mp4",
+    "hyperframesVideo": "public/previews/snapcn-input/hyperframes.mp4",
+    "thumbnail": "public/previews/snapcn-input/thumbnail.png",
+    "summary": "parity/snapcn-input-diff/summary.json",
+    "perFrameSsim": "parity/snapcn-input-diff/ssim.log",
+    "hyperframesCheck": "parity/snapcn-input-diff/hyperframes-check.log",
+    "worstFrame": "parity/snapcn-input-diff/worst-frame.png",
+    "referenceAlpha": "parity/snapcn-input-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/snapcn-input-diff/hyperframes-alpha.framemd5"
+  }
+}

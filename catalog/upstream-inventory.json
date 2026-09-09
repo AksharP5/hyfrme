@@ -2,29 +2,30 @@
   "summary": {
     "upstream": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "25348774f7b63d09477172e6084cb669799511a3"
+      "commit": "5a5f3a7d2524c01d050e20bfb8859c93f2b3f663"
     },
-    "totalRegistryItems": 298,
-    "visualItems": 292,
+    "totalRegistryItems": 303,
+    "visualItems": 297,
     "sharedRuntimeItems": 6,
     "byFamily": {
-      "core": 147,
+      "core": 152,
       "icons": 100,
       "ui": 45
     },
     "byTranslationClass": {
-      "interop-or-native-rewrite": 30,
+      "interop-or-native-rewrite": 31,
       "manual-review": 36,
-      "mechanical-candidate": 226,
+      "mechanical-candidate": 230,
       "shared-runtime": 6
     },
     "coverage": {
-      "publishedItems": 292,
+      "publishedItems": 297,
       "missingItems": [],
       "extraItems": []
     },
     "blockerItems": [
       "rush-type",
+      "kinetic-morph-text",
       "kinetic-warp",
       "stretch-in",
       "shader-mesh-gradient",
@@ -1184,6 +1185,76 @@
         "findings": []
       },
       "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "kinetic-morph-text",
+      "title": "Kinetic Morph Text",
+      "description": "Letters lift, rotate, and softly reshape into editable phrases with sampled outline trails.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/kinetic-morph-text/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/kinetic-morph-text.tsx"
+        }
+      ],
+      "sourceLineCount": 455,
+      "features": [
+        "svg",
+        "effect",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 3,
+        "blockers": 2,
+        "warnings": 2,
+        "infos": 0,
+        "findings": [
+          {
+            "file": "registry/remocn/kinetic-morph-text/index.tsx",
+            "line": 210,
+            "column": 1,
+            "severity": "warning",
+            "rule": "r2hf/custom-hook",
+            "message": "Custom hook `useGlyphLayout` defined locally — may need manual rewrite",
+            "recommendation": "Inline the hook body if pure; bow out to runtime interop if it uses useState/useEffect"
+          },
+          {
+            "file": "registry/remocn/kinetic-morph-text/index.tsx",
+            "line": 217,
+            "column": 31,
+            "severity": "blocker",
+            "rule": "r2hf/use-state",
+            "message": "useState detected — Remotion compositions that drive animation via React state are not deterministic frame-capture targets in HyperFrames",
+            "recommendation": "Use the runtime interop pattern from PR #214 instead of attempting a translation"
+          },
+          {
+            "file": "registry/remocn/kinetic-morph-text/index.tsx",
+            "line": 220,
+            "column": 3,
+            "severity": "blocker",
+            "rule": "r2hf/use-effect-deps",
+            "message": "useEffect/useLayoutEffect with non-empty deps — side effects don't translate to HF's seek-driven model",
+            "recommendation": "Move the side-effect work into a build step, or use the runtime interop pattern"
+          },
+          {
+            "file": "registry/remocn/kinetic-morph-text/index.tsx",
+            "line": 387,
+            "column": 17,
+            "severity": "warning",
+            "rule": "r2hf/use-memo",
+            "message": "useMemo — typically decorative, no HF equivalent needed",
+            "recommendation": "Drop the wrapper, compute inline"
+          }
+        ]
+      },
+      "translationClass": "interop-or-native-rewrite"
     },
     {
       "name": "kinetic-warp",
@@ -4404,6 +4475,49 @@
       "translationClass": "mechanical-candidate"
     },
     {
+      "name": "radial-burst",
+      "title": "Radial Burst",
+      "description": "Sculptural ribbons twist into a tilted ring and sweep outward through contour echoes for an expressive product introduction.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/radial-burst/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/radial-burst.tsx"
+        }
+      ],
+      "sourceLineCount": 407,
+      "features": [
+        "spring",
+        "interpolate",
+        "svg"
+      ],
+      "lint": {
+        "files_scanned": 3,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 1,
+        "findings": [
+          {
+            "file": "registry/remocn/radial-burst/index.tsx",
+            "line": 304,
+            "column": 17,
+            "severity": "info",
+            "rule": "r2hf/interpolate-colors",
+            "message": "interpolateColors() — translate to a GSAP color tween",
+            "recommendation": "See references/timing.md for the GSAP equivalent"
+          }
+        ]
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
       "name": "confetti",
       "title": "Confetti",
       "description": "Deterministic confetti burst for Remotion — seeded particles with gravity, spin, and flutter so every render is identical. Fire it on any frame as a celebratory overlay.",
@@ -6197,6 +6311,103 @@
       "translationClass": "mechanical-candidate"
     },
     {
+      "name": "search-reveal",
+      "title": "Search Reveal",
+      "description": "Expanding construction circles snap into a search pill, type editable text, and reveal an abstract graphic panel.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/search-reveal/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/search-reveal.tsx"
+        }
+      ],
+      "sourceLineCount": 370,
+      "features": [
+        "interpolate",
+        "svg",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 3,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "cursor-gravity",
+      "title": "Cursor Gravity",
+      "description": "A rounded triangular cursor tugs a button out of the screen edge with pulsed elastic resistance.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/cursor-gravity/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/cursor-gravity.tsx"
+        }
+      ],
+      "sourceLineCount": 295,
+      "features": [
+        "svg",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 3,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
+      "name": "type-fossil",
+      "title": "Type Fossil",
+      "description": "A readable word carries layers of fine contours, revises itself, then compresses into a clean typographic imprint.",
+      "type": "registry:component",
+      "family": "core",
+      "visual": true,
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/remocn/type-fossil/index.tsx",
+          "type": "registry:component",
+          "target": "components/remocn/type-fossil.tsx"
+        }
+      ],
+      "sourceLineCount": 242,
+      "features": [
+        "svg",
+        "font"
+      ],
+      "lint": {
+        "files_scanned": 3,
+        "blockers": 0,
+        "warnings": 0,
+        "infos": 0,
+        "findings": []
+      },
+      "translationClass": "mechanical-candidate"
+    },
+    {
       "name": "remocn-ui",
       "title": "remocn UI Core",
       "description": "Shared timeline-fold hook, theme context, and color math for remocn UI primitives.",
@@ -7039,7 +7250,7 @@
           "target": "components/remocn/use-select-menu-transition.ts"
         }
       ],
-      "sourceLineCount": 383,
+      "sourceLineCount": 382,
       "features": [
         "svg",
         "font"

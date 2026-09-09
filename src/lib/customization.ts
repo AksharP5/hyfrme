@@ -160,10 +160,10 @@ export function buildUsageSnippet(
 }
 
 function registryFileUrl(name: string, path: string) {
-  return `/registry/blocks/${encodeURIComponent(name)}/${path
-    .split("/")
-    .map(encodeURIComponent)
-    .join("/")}`;
+  return new URL(
+    `/registry/blocks/${encodeURIComponent(name)}/${path.split("/").map(encodeURIComponent).join("/")}`,
+    window.location.origin,
+  ).href;
 }
 
 function rewriteAssetPaths(source: string, item: RegistryItem) {
@@ -216,19 +216,80 @@ export function buildPreviewDocument(
   const previewScale = transparent ? 0.42 : 1;
   const bootstrap = `<script>
 window.__hyperframes = { getVariables: () => (${safeValues}) };
+const previewError = (error) => {
+  console.error("Component preview failed", error);
+  parent.postMessage({type: "hyfrme-preview-error", message: error.message || String(error)}, parent.location.origin);
+};
 window.addEventListener("load", () => {
+  if (${!transparent} && frameElement && getComputedStyle(document.documentElement).backgroundColor === "rgba(0, 0, 0, 0)") {
+    document.documentElement.style.backgroundColor = parent.getComputedStyle(frameElement).getPropertyValue("--preview");
+  }
   const fit = () => {
     const scale = Math.min(innerWidth / ${width}, innerHeight / ${height}) * ${previewScale};
     const x = (innerWidth - ${width} * scale) / 2;
     const y = (innerHeight - ${height} * scale) / 2;
     document.body.style.transform = "translate(" + x + "px," + y + "px) scale(" + scale + ")";
   };
-  fit();
-  addEventListener("resize", fit);
-  requestAnimationFrame(() => {
-    const timeline = window.__timelines?.[${safeName}];
-    if (timeline) timeline.repeat(-1).play(0);
-  });
+  Promise.resolve(window.__hyfrmeReady).then(() => {
+    fit();
+    addEventListener("resize", fit);
+    requestAnimationFrame(() => {
+      const timeline = window.__timelines?.[${safeName}];
+      if (!timeline) return;
+      const tracked = new WeakSet();
+      const pending = new WeakSet();
+      const failed = new WeakSet();
+      const autoplayBlocked = new WeakSet();
+      const syncMedia = (force = false) => {
+        const time = timeline.time();
+        for (const media of document.querySelectorAll("video[data-start], audio[data-start]")) {
+          if (!tracked.has(media)) {
+            tracked.add(media);
+            media.addEventListener("loadedmetadata", () => syncMedia(true));
+            const mediaError = () => {
+              if (failed.has(media)) return;
+              failed.add(media);
+              previewError(new Error("Unable to load media: " + (media.currentSrc || media.src)));
+            };
+            media.addEventListener("error", mediaError);
+            if (media.error) mediaError();
+          }
+          if (failed.has(media) || media.readyState === 0) continue;
+          const start = Number(media.dataset.start || 0);
+          const duration = Number(media.dataset.duration || timeline.duration());
+          const offsetValue = Number(media.dataset.playbackStart ?? media.dataset.mediaStart ?? 0);
+          const offset = Number.isFinite(offsetValue) ? Math.max(0, offsetValue) : 0;
+          const rateValue = Number(media.dataset.playbackRate || media.defaultPlaybackRate);
+          const rate = rateValue > 0 && Number.isFinite(rateValue) ? Math.max(0.1, Math.min(5, rateValue)) : 1;
+          const target = Math.min(media.duration, offset + Math.max(0, time - start) * rate);
+          const playing = !timeline.paused() && time >= start && time < start + duration && target < media.duration;
+          if (!playing) media.pause();
+          if (!media.seeking && Math.abs(media.currentTime - target) > (force || !playing ? 0.01 : 0.2)) {
+            media.currentTime = target;
+          }
+          media.playbackRate = rate * timeline.timeScale();
+          if (force) autoplayBlocked.delete(media);
+          if (playing && media.paused && !pending.has(media) && !autoplayBlocked.has(media)) {
+            pending.add(media);
+            media.play().catch((error) => {
+              if (error.name === "AbortError") return;
+              if (error.name === "NotAllowedError") autoplayBlocked.add(media);
+              else failed.add(media);
+              previewError(error);
+            }).finally(() => pending.delete(media));
+          }
+        }
+      };
+      window.__hyfrmeSyncPreviewMedia = () => syncMedia(true);
+      const onUpdate = timeline.eventCallback("onUpdate");
+      timeline.eventCallback("onUpdate", () => {
+        onUpdate?.call(timeline);
+        syncMedia();
+      });
+      timeline.repeat(-1).play(0);
+      syncMedia(true);
+    });
+  }).catch(previewError);
 });
 </script>
 <style>

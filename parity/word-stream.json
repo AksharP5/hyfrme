@@ -2,7 +2,7 @@
   "slug": "word-stream",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/word-stream/index.tsx",
     "config": "registry/remocn/word-stream/config.ts",
     "license": "MIT"
@@ -25,25 +25,43 @@
     "background": "#ffffff"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "13c7d47c535091e4986ea64d1203be619199b9e3b0039b36955cfa6ba3d7ad7b",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 100,
-    "meanSsim": 0.998907,
-    "minSsim": 0.998307,
-    "p05Ssim": 0.998377,
-    "p95Ssim": 0.999703,
+    "meanSsim": 0.9969547600000006,
+    "minSsim": 0.995158,
+    "p05Ssim": 0.995158,
+    "p95Ssim": 0.999312,
+    "alpha": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/word-stream/remocn.mp4",
+    "referenceVideo": "public/previews/word-stream/reference.mp4",
     "hyperframesVideo": "public/previews/word-stream/hyperframes.mp4",
-    "summary": "parity/word-stream-diff/summary.json"
+    "thumbnail": "public/previews/word-stream/thumbnail.png",
+    "summary": "parity/word-stream-diff/summary.json",
+    "perFrameSsim": "parity/word-stream-diff/ssim.log",
+    "hyperframesCheck": "parity/word-stream-diff/hyperframes-check.log",
+    "worstFrame": "parity/word-stream-diff/worst-frame.png",
+    "referenceAlpha": "parity/word-stream-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/word-stream-diff/hyperframes-alpha.framemd5"
   }
 }

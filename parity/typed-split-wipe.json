@@ -2,7 +2,7 @@
   "slug": "typed-split-wipe",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/typed-split-wipe/index.tsx",
     "config": "registry/remocn/typed-split-wipe/config.ts",
     "license": "MIT"
@@ -29,25 +29,43 @@
     "background": "#101010"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "36c09be820ca25c07937c2a5ce8025dd9791fdd60813c1a94c50dd0eaddb8666",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 75,
-    "meanSsim": 0.998827,
-    "minSsim": 0.998281,
-    "p05Ssim": 0.998282,
-    "p95Ssim": 0.999612,
+    "meanSsim": 0.9981613466666666,
+    "minSsim": 0.996948,
+    "p05Ssim": 0.996992,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 75,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/typed-split-wipe/remocn.mp4",
+    "referenceVideo": "public/previews/typed-split-wipe/reference.mp4",
     "hyperframesVideo": "public/previews/typed-split-wipe/hyperframes.mp4",
-    "summary": "parity/typed-split-wipe-diff/summary.json"
+    "thumbnail": "public/previews/typed-split-wipe/thumbnail.png",
+    "summary": "parity/typed-split-wipe-diff/summary.json",
+    "perFrameSsim": "parity/typed-split-wipe-diff/ssim.log",
+    "hyperframesCheck": "parity/typed-split-wipe-diff/hyperframes-check.log",
+    "worstFrame": "parity/typed-split-wipe-diff/worst-frame.png",
+    "referenceAlpha": "parity/typed-split-wipe-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/typed-split-wipe-diff/hyperframes-alpha.framemd5"
   }
 }

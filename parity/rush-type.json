@@ -2,7 +2,7 @@
   "slug": "rush-type",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/rush-type/index.tsx",
     "config": "registry/remocn/rush-type/config.ts",
     "license": "MIT"
@@ -27,25 +27,43 @@
     "background": "#000000"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "f642e66ae481072e98cfd02cf25aa21ad99450ed713da32a8ee7ab16152c599b",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 104,
-    "meanSsim": 0.995945,
-    "minSsim": 0.973369,
-    "p05Ssim": 0.979309,
-    "p95Ssim": 0.99994,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 104,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/rush-type/remocn.mp4",
+    "referenceVideo": "public/previews/rush-type/reference.mp4",
     "hyperframesVideo": "public/previews/rush-type/hyperframes.mp4",
-    "summary": "parity/rush-type-diff/summary.json"
+    "thumbnail": "public/previews/rush-type/thumbnail.png",
+    "summary": "parity/rush-type-diff/summary.json",
+    "perFrameSsim": "parity/rush-type-diff/ssim.log",
+    "hyperframesCheck": "parity/rush-type-diff/hyperframes-check.log",
+    "worstFrame": "parity/rush-type-diff/worst-frame.png",
+    "referenceAlpha": "parity/rush-type-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/rush-type-diff/hyperframes-alpha.framemd5"
   }
 }

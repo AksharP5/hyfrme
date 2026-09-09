@@ -2,7 +2,7 @@
   "slug": "gooey-morph",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/gooey-morph/index.tsx",
     "config": "registry/remocn/gooey-morph/config.ts",
     "license": "MIT"
@@ -23,25 +23,43 @@
     "background": "#141318"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "2b65feb830c55a8a9db35e0f76fef9fdaaaa1e93d183f759f1e0fd105b5d40b7",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.998056,
-    "minSsim": 0.995119,
-    "p05Ssim": 0.995906,
-    "p95Ssim": 0.999951,
+    "meanSsim": 0.9991397249999989,
+    "minSsim": 0.997476,
+    "p05Ssim": 0.998138,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/gooey-morph/remocn.mp4",
+    "referenceVideo": "public/previews/gooey-morph/reference.mp4",
     "hyperframesVideo": "public/previews/gooey-morph/hyperframes.mp4",
-    "summary": "parity/gooey-morph-diff/summary.json"
+    "thumbnail": "public/previews/gooey-morph/thumbnail.png",
+    "summary": "parity/gooey-morph-diff/summary.json",
+    "perFrameSsim": "parity/gooey-morph-diff/ssim.log",
+    "hyperframesCheck": "parity/gooey-morph-diff/hyperframes-check.log",
+    "worstFrame": "parity/gooey-morph-diff/worst-frame.png",
+    "referenceAlpha": "parity/gooey-morph-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/gooey-morph-diff/hyperframes-alpha.framemd5"
   }
 }

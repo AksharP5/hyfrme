@@ -2,7 +2,7 @@
   "slug": "squeeze-in",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/squeeze-in/index.tsx",
     "config": "registry/remocn/squeeze-in/config.ts",
     "license": "MIT"
@@ -24,25 +24,43 @@
     "background": "#ffffff"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "da471650ee3b2c32c9ab2109f3d3950289ea61a16c4e17eff9281f059ba39ba8",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 60,
-    "meanSsim": 0.999467,
-    "minSsim": 0.999224,
-    "p05Ssim": 0.9993,
-    "p95Ssim": 0.999939,
+    "meanSsim": 0.9980623166666661,
+    "minSsim": 0.997666,
+    "p05Ssim": 0.997699,
+    "p95Ssim": 0.999648,
+    "alpha": {
+      "frameCount": 60,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/squeeze-in/remocn.mp4",
+    "referenceVideo": "public/previews/squeeze-in/reference.mp4",
     "hyperframesVideo": "public/previews/squeeze-in/hyperframes.mp4",
-    "summary": "parity/squeeze-in-diff/summary.json"
+    "thumbnail": "public/previews/squeeze-in/thumbnail.png",
+    "summary": "parity/squeeze-in-diff/summary.json",
+    "perFrameSsim": "parity/squeeze-in-diff/ssim.log",
+    "hyperframesCheck": "parity/squeeze-in-diff/hyperframes-check.log",
+    "worstFrame": "parity/squeeze-in-diff/worst-frame.png",
+    "referenceAlpha": "parity/squeeze-in-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/squeeze-in-diff/hyperframes-alpha.framemd5"
   }
 }

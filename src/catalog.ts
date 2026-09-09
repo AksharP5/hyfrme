@@ -21,7 +21,8 @@ export type RegistryItem = RegistrySummary & {
 
 export type ParitySummary = {
   slug: string;
-  origin: { commit: string; source: string };
+  origin: { repository: string; commit: string; source: string };
+  artifacts: { referenceVideo: string; hyperframesVideo: string };
   result: {
     frameCount: number;
     meanSsim: number;
@@ -29,9 +30,25 @@ export type ParitySummary = {
   };
 };
 
+export const catalogSources = [
+  {
+    id: "remocn",
+    label: "Remocn",
+    repository: "https://github.com/Remocn/remocn",
+  },
+  {
+    id: "snapcn",
+    label: "Snapcn",
+    repository: "https://github.com/snapcndev/snapcn",
+  },
+] as const;
+
+export type CatalogSource = (typeof catalogSources)[number];
+
 export type CatalogEntry = {
   item: RegistrySummary;
   parity: ParitySummary;
+  source: CatalogSource;
   loadItem: () => Promise<RegistryItem>;
   loadSource: () => Promise<string>;
 };
@@ -71,17 +88,27 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "scene-framing",
         label: "Scene Framing",
-        slugs: ["backdrop"],
+        slugs: ["backdrop", "stage"],
       },
       {
         id: "camera-motion",
         label: "Camera Motion",
-        slugs: ["drift", "stage"],
+        slugs: ["drift"],
       },
       {
         id: "split-layouts",
         label: "Split Layouts",
         slugs: ["chat-to-preview-layout"],
+      },
+      {
+        id: "device-frames",
+        label: "Device Frames",
+        slugs: ["snapcn-phone-frame", "snapcn-laptop-frame"],
+      },
+      {
+        id: "screen-captures",
+        label: "Screen Captures",
+        slugs: ["snapcn-screen-recording"],
       },
     ],
   },
@@ -105,15 +132,16 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "scale-down-fade",
           "blur-out-up",
           "focus-blur-resolve",
-          "fog-rise",
           "line-by-line-slide",
           "staggered-fade-up",
           "mask-reveal-up",
           "tracking-in",
           "handwrite",
-          "shadow-sweep-text",
           "sheen-slide-in",
+          "squeeze-in",
+          "fog-rise",
           "stretch-in",
+          "snapcn-text-reveal",
         ],
       },
       {
@@ -123,8 +151,10 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "inline-highlight",
           "marker-highlight",
           "ink-underline",
-          "outline-fill-track-text",
           "shimmer-sweep",
+          "outline-fill-track-text",
+          "snapcn-text-highlight",
+          "snapcn-text-select",
         ],
       },
       {
@@ -132,7 +162,6 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
         label: "Dynamic Text",
         slugs: [
           "typewriter",
-          "caret-swap",
           "hand-count",
           "slot-machine-roll",
           "number-wheel",
@@ -140,6 +169,8 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "rolodex-flip",
           "value-swap",
           "word-stream",
+          "word-push",
+          "caret-swap",
         ],
       },
       {
@@ -148,21 +179,14 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
         slugs: [
           "infinite-marquee",
           "perspective-marquee",
-          "extrude-pop",
-          "gradient-scale-cut-text",
-          "inline-pill-takeover",
-          "zoom-words",
+          "shadow-sweep-text",
+          "snapcn-punch-lines",
         ],
       },
       {
         id: "tech-glitch",
         label: "Tech & Glitch",
-        slugs: [
-          "matrix-decode",
-          "rgb-glitch-text",
-          "chromatic-wave",
-          "rush-type",
-        ],
+        slugs: ["matrix-decode", "rgb-glitch-text", "chromatic-wave"],
       },
       {
         id: "text-transitions",
@@ -173,8 +197,12 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "shared-axis-y",
           "shared-axis-z",
           "strikethrough-replace",
-          "gooey-morph",
           "typed-split-wipe",
+          "gradient-scale-cut-text",
+          "snapcn-text-rewrite",
+          "snapcn-text-swap",
+          "snapcn-word-flip",
+          "snapcn-type-morph",
         ],
       },
       {
@@ -182,15 +210,41 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
         label: "Kinetic",
         slugs: [
           "short-slide-right",
-          "centered-word-build",
           "kinetic-center-build",
           "short-slide-down",
+          "zoom-words",
+          "centered-word-build",
+          "inline-pill-takeover",
+          "rush-type",
+          "extrude-pop",
+          "kinetic-morph-text",
           "kinetic-warp",
+          "gooey-morph",
           "perspective-squeeze",
-          "squeeze-in",
-          "word-push",
+          "type-fossil",
+          "snapcn-text-swell",
+          "snapcn-text-build",
         ],
       },
+      {
+        id: "captions",
+        label: "Captions",
+        slugs: ["snapcn-word-captions", "snapcn-karaoke-captions"],
+      },
+    ],
+  },
+  {
+    id: "logos",
+    label: "Logos",
+    description: "Logo entrances, image reveals, and animated wordmarks.",
+    featuredSlug: "snapcn-logo-flicker",
+    slugs: [
+      "logo-enter",
+      "snapcn-logo-assemble",
+      "snapcn-logo-flicker",
+      "snapcn-logo-drift",
+      "snapcn-block-wordmark",
+      "snapcn-wordmark-cut",
     ],
   },
   {
@@ -208,6 +262,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "glass-code-walk",
           "terminal-simulator",
           "terminal-cursor-zoom",
+          "snapcn-terminal-simulator",
         ],
       },
       {
@@ -216,16 +271,22 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
         slugs: ["animated-line-chart", "animated-bar-chart"],
       },
       {
+        id: "workflows",
+        label: "Workflows",
+        slugs: ["snapcn-status-cycle"],
+      },
+      {
         id: "paper-scrapbook",
         label: "Paper & Scrapbook",
-        slugs: ["paper-sticker", "polaroid", "check-list", "reel"],
+        slugs: ["paper-sticker", "polaroid", "check-list"],
       },
     ],
   },
   {
     id: "ai",
     label: "AI",
-    description: "Animated AI chat composers and coding-agent interfaces.",
+    description:
+      "Chat composers, search prompts, answers, and agent workflows.",
     featuredSlug: "claude-chat",
     groups: [
       {
@@ -235,8 +296,23 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       },
       {
         id: "coding-agents",
-        label: "Coding Agents",
-        slugs: ["claude-code", "opencode"],
+        label: "Agent Workflows",
+        slugs: ["claude-code", "opencode", "snapcn-agent-steps"],
+      },
+      {
+        id: "search-prompts",
+        label: "Search & Prompts",
+        slugs: [
+          "search-reveal",
+          "snapcn-search-typing",
+          "snapcn-prompt-send",
+          "snapcn-prompt-zoom",
+        ],
+      },
+      {
+        id: "answers",
+        label: "Answers",
+        slugs: ["snapcn-answer-stream", "snapcn-answer-highlight"],
       },
     ],
   },
@@ -255,8 +331,8 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "push-through",
           "focus-pull",
           "zoom-blur",
-          "lens-zoom",
           "page-turn",
+          "lens-zoom",
         ],
       },
       {
@@ -293,7 +369,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
   {
     id: "social",
     label: "Social",
-    description: "Milestones, social proof, profiles, and brand moments.",
+    description: "Milestones, social proof, profiles, and follower growth.",
     featuredSlug: "github-stars",
     groups: [
       {
@@ -307,9 +383,9 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
         slugs: ["x-follow-card", "x-followers-overview"],
       },
       {
-        id: "brand",
-        label: "Brand",
-        slugs: ["logo-enter"],
+        id: "followers",
+        label: "Followers",
+        slugs: ["snapcn-follower-rush"],
       },
     ],
   },
@@ -323,7 +399,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "celebration",
         label: "Celebration",
-        slugs: ["confetti"],
+        slugs: ["confetti", "radial-burst"],
       },
       {
         id: "paper-ink",
@@ -333,7 +409,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "interaction",
         label: "Interaction",
-        slugs: ["simulated-cursor"],
+        slugs: ["simulated-cursor", "cursor-gravity", "snapcn-cursor-track"],
       },
       {
         id: "canvas-filters",
@@ -360,7 +436,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
   },
   {
     id: "compositions",
-    label: "Compositions",
+    label: "Scenes",
     description:
       "Full scenes composed from reusable motion and interface blocks.",
     featuredSlug: "live-code-compilation",
@@ -368,12 +444,26 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "hero-outro",
         label: "Hero & Outro",
-        slugs: ["ecosystem-constellation", "infinite-bento-pan"],
+        slugs: [
+          "ecosystem-constellation",
+          "infinite-bento-pan",
+          "snapcn-announce-title",
+        ],
       },
       {
         id: "product-showcases",
         label: "Product Showcases",
-        slugs: ["live-code-compilation"],
+        slugs: ["live-code-compilation", "snapcn-hero-launch"],
+      },
+      {
+        id: "galleries",
+        label: "Galleries",
+        slugs: ["reel", "snapcn-orbit-gallery", "snapcn-moodboard-reveal"],
+      },
+      {
+        id: "data-teams",
+        label: "Data & Teams",
+        slugs: ["snapcn-count-grid", "snapcn-roster-grant"],
       },
     ],
   },
@@ -396,8 +486,10 @@ const primitiveTaxonomy: CatalogTaxonomySection[] = [
           "radio",
           "switch",
           "input",
+          "snapcn-input",
           "field",
           "select",
+          "select-menu",
           "combobox",
           "slider",
           "toggle-group",
@@ -436,7 +528,14 @@ const primitiveTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "structure-utility",
         label: "Structure & Utility",
-        slugs: ["accordion", "caret", "cursor", "resizable", "tabs"],
+        slugs: [
+          "accordion",
+          "caret",
+          "snapcn-caret",
+          "cursor",
+          "resizable",
+          "tabs",
+        ],
       },
     ],
   },
@@ -704,9 +803,18 @@ export const catalog = (
 )
   .map(({ item, parity }) => {
     const blockRoot = `/registry/blocks/${encodeURIComponent(item.name)}`;
+    const source = catalogSources.find(
+      (candidate) => candidate.repository === parity.origin.repository,
+    );
+    if (!source) {
+      throw new Error(
+        `Unknown source repository for ${item.name}: ${parity.origin.repository}`,
+      );
+    }
     return {
       item,
       parity,
+      source,
       loadItem: async () =>
         (await (
           await fetchRequired(`${blockRoot}/registry-item.json`)
@@ -729,7 +837,12 @@ export function categoryFor(
   entry: CatalogEntry,
 ): Exclude<CatalogCategory, "all"> {
   if (entry.item.tags.includes("icon")) return "icons";
-  if (entry.item.name.startsWith("shader-")) return "shaders";
+  if (
+    entry.item.name.startsWith("shader-") ||
+    entry.item.tags.includes("shader") ||
+    entry.item.tags.includes("shaders")
+  )
+    return "shaders";
   const taxonomy = taxonomyBySlug.get(entry.item.name);
   if (taxonomy) return taxonomy.category;
   if (entry.item.tags.includes("ui") || entry.item.tags.includes("primitive")) {
@@ -770,5 +883,5 @@ export function cardDescription(entry: CatalogEntry) {
       / Compiled for deterministic HyperFrames playback by Hyfrme\.$/,
       "",
     )
-    .replace(/, ported from Remocn for HyperFrames\.$/, ".");
+    .replace(/, ported from (?:Remocn|Snapcn) for HyperFrames\.$/, ".");
 }

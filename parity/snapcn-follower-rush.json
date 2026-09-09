@@ -1,0 +1,152 @@
+{
+  "slug": "snapcn-follower-rush",
+  "origin": {
+    "repository": "https://github.com/snapcndev/snapcn",
+    "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+    "source": "registry/snap-cn/follower-rush/index.tsx",
+    "config": "registry/snap-cn/follower-rush/config.ts",
+    "license": "MIT",
+    "entry": "registry/snap-cn/follower-rush/index.tsx"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 300,
+    "props": {
+      "totalFollowers": 5000,
+      "accentColor": "#266DF0",
+      "theme": "light",
+      "orientation": "horizontal",
+      "fontFamily": "Default",
+      "speed": 1
+    },
+    "background": "#FAFAFA"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "3d16e78b1874eda61cd224e83109df693efcde9cc1b1fb8317280bef10bcd834",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 300,
+    "meanSsim": 0.9999483199999992,
+    "minSsim": 0.997321,
+    "p05Ssim": 0.999953,
+    "p95Ssim": 0.999987,
+    "pass": true,
+    "alpha": {
+      "frameCount": 300,
+      "mismatchedFrames": [],
+      "pass": true
+    }
+  },
+  "checks": {
+    "hyperframes": "full check reported 4 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "snapcn-follower-rush",
+        "origin": {
+          "repository": "https://github.com/snapcndev/snapcn",
+          "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+          "source": "registry/snap-cn/follower-rush/index.tsx",
+          "config": "registry/snap-cn/follower-rush/config.ts",
+          "license": "MIT",
+          "entry": "registry/snap-cn/follower-rush/index.tsx"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > div:nth-of-type(2) > div",
+          "text": "L",
+          "fg": "rgb(110,106,99)",
+          "bg": "rgb(207,184,172)",
+          "ratio": 2.84,
+          "requiredRatio": 3
+        },
+        "reason": "The unchanged source places fallback initials behind the actual avatar photograph. The contrast inspector samples the photograph behind this obscured text. Full lossless source comparison measured mean SSIM 0.999963 and minimum 0.999951; preserve the source avatar and retain the complete audit."
+      },
+      {
+        "slug": "snapcn-follower-rush",
+        "origin": {
+          "repository": "https://github.com/snapcndev/snapcn",
+          "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+          "source": "registry/snap-cn/follower-rush/index.tsx",
+          "config": "registry/snap-cn/follower-rush/config.ts",
+          "license": "MIT",
+          "entry": "registry/snap-cn/follower-rush/index.tsx"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > div:nth-of-type(7) > div",
+          "text": "M",
+          "fg": "rgb(110,106,99)",
+          "bg": "rgb(63,62,64)",
+          "ratio": 1.98,
+          "requiredRatio": 3
+        },
+        "reason": "The unchanged source places fallback initials behind the actual avatar photograph. The contrast inspector samples the photograph behind this obscured text. Full lossless source comparison measured mean SSIM 0.999963 and minimum 0.999951; preserve the source avatar and retain the complete audit."
+      },
+      {
+        "slug": "snapcn-follower-rush",
+        "origin": {
+          "repository": "https://github.com/snapcndev/snapcn",
+          "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+          "source": "registry/snap-cn/follower-rush/index.tsx",
+          "config": "registry/snap-cn/follower-rush/config.ts",
+          "license": "MIT",
+          "entry": "registry/snap-cn/follower-rush/index.tsx"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > div:nth-of-type(2) > div",
+          "text": "L",
+          "fg": "rgb(110,106,99)",
+          "bg": "rgb(148,149,199)",
+          "ratio": 1.89,
+          "requiredRatio": 3
+        },
+        "reason": "The unchanged source places fallback initials behind the actual avatar photograph. The contrast inspector samples the photograph behind this obscured text. Full lossless source comparison measured mean SSIM 0.999963 and minimum 0.999951; preserve the source avatar and retain the complete audit."
+      },
+      {
+        "slug": "snapcn-follower-rush",
+        "origin": {
+          "repository": "https://github.com/snapcndev/snapcn",
+          "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+          "source": "registry/snap-cn/follower-rush/index.tsx",
+          "config": "registry/snap-cn/follower-rush/config.ts",
+          "license": "MIT",
+          "entry": "registry/snap-cn/follower-rush/index.tsx"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > div:nth-of-type(7) > div",
+          "text": "M",
+          "fg": "rgb(110,106,99)",
+          "bg": "rgb(151,106,93)",
+          "ratio": 1.16,
+          "requiredRatio": 3
+        },
+        "reason": "The unchanged source places fallback initials behind the actual avatar photograph. The contrast inspector samples the photograph behind this obscured text. Full lossless source comparison measured mean SSIM 0.999963 and minimum 0.999951; preserve the source avatar and retain the complete audit."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.473",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/snapcn-follower-rush/reference.mp4",
+    "hyperframesVideo": "public/previews/snapcn-follower-rush/hyperframes.mp4",
+    "thumbnail": "public/previews/snapcn-follower-rush/thumbnail.png",
+    "summary": "parity/snapcn-follower-rush-diff/summary.json",
+    "perFrameSsim": "parity/snapcn-follower-rush-diff/ssim.log",
+    "hyperframesCheck": "parity/snapcn-follower-rush-diff/hyperframes-check.log",
+    "worstFrame": "parity/snapcn-follower-rush-diff/worst-frame.png",
+    "referenceAlpha": "parity/snapcn-follower-rush-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/snapcn-follower-rush-diff/hyperframes-alpha.framemd5"
+  }
+}

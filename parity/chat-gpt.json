@@ -22,25 +22,43 @@
     "background": "#FFFFFF"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "ea36314b939c219ca51d4ef5a87f4a9a9c95c260ca34c3dcc58e25a93669eb71",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.993306,
-    "minSsim": 0.991606,
-    "p05Ssim": 0.991615,
-    "p95Ssim": 0.996623,
+    "meanSsim": 0.9999933599999999,
+    "minSsim": 0.999874,
+    "p05Ssim": 0.999897,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.473",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/chat-gpt/remocn.mp4",
+    "referenceVideo": "public/previews/chat-gpt/reference.mp4",
     "hyperframesVideo": "public/previews/chat-gpt/hyperframes.mp4",
-    "summary": "parity/chat-gpt-diff/summary.json"
+    "thumbnail": "public/previews/chat-gpt/thumbnail.png",
+    "summary": "parity/chat-gpt-diff/summary.json",
+    "perFrameSsim": "parity/chat-gpt-diff/ssim.log",
+    "hyperframesCheck": "parity/chat-gpt-diff/hyperframes-check.log",
+    "worstFrame": "parity/chat-gpt-diff/worst-frame.png",
+    "referenceAlpha": "parity/chat-gpt-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/chat-gpt-diff/hyperframes-alpha.framemd5"
   }
 }

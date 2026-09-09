@@ -252,16 +252,17 @@ try {
     { env: { HYFRME_REGISTRY_URL: registryUrl } },
   );
   assert.match(stageInstallOutput, /customized: preset=site-tour/);
-  await Promise.all(
-    [
-      "PassionOne.css",
-      "PassionOne-400.ttf",
-      "PassionOne-700.ttf",
-      "PassionOne-900.ttf",
-      "Anton-Latin.ttf",
-    ].map((file) => stat(resolve(workbench, "assets", "fonts", file))),
-  );
-  await stat(resolve(workbench, "assets", "stage-remocn-components.webp"));
+  for (const name of ["kinetic-warp", "stretch-in", "stage"]) {
+    const item = JSON.parse(
+      await readFile(
+        resolve(registry, "blocks", name, "registry-item.json"),
+        "utf8",
+      ),
+    );
+    await Promise.all(
+      item.files.map((file) => stat(resolve(workbench, file.target))),
+    );
+  }
 
   const checkOutput = await run(
     "npx",

@@ -12,6 +12,12 @@ runtime is bundled:
 - Videorc's two remote GitHub image URLs are replaced with local assets under
   `showcases/assets/demo/`.
 - Google Fonts imports are replaced with bundled, licensed local fonts.
+- The shadcn sidebar references an avatar absent from the pinned source. Its
+  empty avatar URL preserves the source's initials fallback without a failed
+  network request.
+
+The frame clock advances at the source fps and clamps the final frame. This
+keeps hard cuts aligned throughout the film.
 
 The generated runtimes contain React and ReactDOM, plus the translated
 composition source and Paper shader runtime. They do not contain Remotion.

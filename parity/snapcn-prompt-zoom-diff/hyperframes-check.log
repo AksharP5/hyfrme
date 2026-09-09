@@ -1,0 +1,434 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "infoCount": 6,
+    "findings": [
+      {
+        "code": "canvas_overflow",
+        "severity": "warning",
+        "time": 1.167,
+        "selector": "#snapcn-prompt-zoom-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 931.8,
+          "top": -19.84,
+          "right": 1383.78,
+          "bottom": 145.18,
+          "width": 451.98,
+          "height": 165.02
+        },
+        "containerSelector": "#root",
+        "text": "Up late?",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 103.78,
+          "top": 19.84
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-prompt-zoom.html",
+        "bbox": {
+          "x": 931.8,
+          "y": -19.84,
+          "width": 451.98,
+          "height": 165.02
+        },
+        "firstSeen": 1.167,
+        "lastSeen": 2.833,
+        "occurrences": 6
+      },
+      {
+        "code": "escaped_container",
+        "severity": "warning",
+        "time": 1.833,
+        "selector": "#snapcn-prompt-zoom-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -534.64,
+          "top": -563.2,
+          "right": 2725.52,
+          "bottom": 1248,
+          "width": 3260.16,
+          "height": 1811.2
+        },
+        "containerSelector": "#snapcn-prompt-zoom-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Up late? Get me a plan for tomorrow Auto Medium",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 4.44,
+          "right": 1280,
+          "bottom": 715.56,
+          "width": 1280,
+          "height": 711.11
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-prompt-zoom.html",
+        "bbox": {
+          "x": -534.64,
+          "y": -563.2,
+          "width": 3260.16,
+          "height": 1811.2
+        },
+        "firstSeen": 1.833,
+        "lastSeen": 2.833,
+        "occurrences": 4
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "warning",
+        "time": 1.833,
+        "selector": "#snapcn-prompt-zoom-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 161.66,
+          "top": 229.7,
+          "right": 2017.14,
+          "bottom": 575.84,
+          "width": 1855.47,
+          "height": 346.14
+        },
+        "containerSelector": "#root",
+        "text": "Get me a plan for tomorrow Auto Medium",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 737.14
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-prompt-zoom.html",
+        "bbox": {
+          "x": 161.66,
+          "y": 229.7,
+          "width": 1855.47,
+          "height": 346.14
+        },
+        "firstSeen": 1.833,
+        "lastSeen": 2.833,
+        "occurrences": 4
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.167,
+        "selector": "#snapcn-prompt-zoom-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1664.77,
+          "top": 467.17,
+          "right": 1755.14,
+          "bottom": 515.47,
+          "width": 90.37,
+          "height": 48.3
+        },
+        "containerSelector": "#root",
+        "text": "Auto",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 475.14
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-prompt-zoom.html",
+        "bbox": {
+          "x": 1664.77,
+          "y": 467.17,
+          "width": 90.37,
+          "height": 48.3
+        },
+        "firstSeen": 1.167,
+        "lastSeen": 2.833,
+        "occurrences": 6
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.167,
+        "selector": "#snapcn-prompt-zoom-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1779.29,
+          "top": 467.17,
+          "right": 1932.61,
+          "bottom": 515.47,
+          "width": 153.32,
+          "height": 48.3
+        },
+        "containerSelector": "#root",
+        "text": "Medium",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 652.61
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-prompt-zoom.html",
+        "bbox": {
+          "x": 1779.29,
+          "y": 467.17,
+          "width": 153.32,
+          "height": 48.3
+        },
+        "firstSeen": 1.167,
+        "lastSeen": 2.833,
+        "occurrences": 6
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 1.167,
+        "selector": "#snapcn-prompt-zoom-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -534.64,
+          "top": -563.2,
+          "right": 2725.52,
+          "bottom": 1248,
+          "width": 3260.16,
+          "height": 1811.2
+        },
+        "containerSelector": "#snapcn-prompt-zoom-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Up late? Get me a plan Auto Medium",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 4.44,
+          "right": 1280,
+          "bottom": 715.56,
+          "width": 1280,
+          "height": 711.11
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-prompt-zoom.html",
+        "bbox": {
+          "x": -534.64,
+          "y": -563.2,
+          "width": 3260.16,
+          "height": 1811.2
+        },
+        "firstSeen": 1.167,
+        "lastSeen": 1.167,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 1.167,
+        "selector": "#snapcn-prompt-zoom-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 161.66,
+          "top": 229.7,
+          "right": 2017.14,
+          "bottom": 575.84,
+          "width": 1855.47,
+          "height": 346.14
+        },
+        "containerSelector": "#root",
+        "text": "Get me a plan Auto Medium",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 737.14
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-prompt-zoom.html",
+        "bbox": {
+          "x": 161.66,
+          "y": 229.7,
+          "width": 1855.47,
+          "height": 346.14
+        },
+        "firstSeen": 1.167,
+        "lastSeen": 1.167,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 1.5,
+        "selector": "#snapcn-prompt-zoom-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -534.64,
+          "top": -563.2,
+          "right": 2725.52,
+          "bottom": 1248,
+          "width": 3260.16,
+          "height": 1811.2
+        },
+        "containerSelector": "#snapcn-prompt-zoom-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Up late? Get me a plan for to Auto Medium",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 4.44,
+          "right": 1280,
+          "bottom": 715.56,
+          "width": 1280,
+          "height": 711.11
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-prompt-zoom.html",
+        "bbox": {
+          "x": -534.64,
+          "y": -563.2,
+          "width": 3260.16,
+          "height": 1811.2
+        },
+        "firstSeen": 1.5,
+        "lastSeen": 1.5,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 1.5,
+        "selector": "#snapcn-prompt-zoom-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 161.66,
+          "top": 229.7,
+          "right": 2017.14,
+          "bottom": 575.84,
+          "width": 1855.47,
+          "height": 346.14
+        },
+        "containerSelector": "#root",
+        "text": "Get me a plan for to Auto Medium",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 737.14
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-prompt-zoom.html",
+        "bbox": {
+          "x": 161.66,
+          "y": 229.7,
+          "width": 1855.47,
+          "height": 346.14
+        },
+        "firstSeen": 1.5,
+        "lastSeen": 1.5,
+        "occurrences": 1
+      }
+    ],
+    "duration": 3,
+    "samples": [
+      0.167,
+      0.5,
+      0.833,
+      1.167,
+      1.5,
+      1.833,
+      2.167,
+      2.5,
+      2.833
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 9,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.167,
+      0.833,
+      1.5,
+      2.167,
+      2.833
+    ],
+    "checked": 14,
+    "passed": 14
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.30",
+    "updateAvailable": false
+  }
+}

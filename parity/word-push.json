@@ -2,7 +2,7 @@
   "slug": "word-push",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
     "source": "registry/remocn/word-push/index.tsx",
     "config": "registry/remocn/word-push/config.ts",
     "license": "MIT"
@@ -24,25 +24,43 @@
     "background": "#ffffff"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "92cc780fa9b11bee866fbb2c19aa14ef172bb1ccbf4481c35df26bab3d76b8ac",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.998307,
-    "minSsim": 0.997782,
-    "p05Ssim": 0.997872,
-    "p95Ssim": 0.999503,
+    "meanSsim": 0.9956071444444433,
+    "minSsim": 0.994414,
+    "p05Ssim": 0.994474,
+    "p95Ssim": 0.998687,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/word-push/remocn.mp4",
+    "referenceVideo": "public/previews/word-push/reference.mp4",
     "hyperframesVideo": "public/previews/word-push/hyperframes.mp4",
-    "summary": "parity/word-push-diff/summary.json"
+    "thumbnail": "public/previews/word-push/thumbnail.png",
+    "summary": "parity/word-push-diff/summary.json",
+    "perFrameSsim": "parity/word-push-diff/ssim.log",
+    "hyperframesCheck": "parity/word-push-diff/hyperframes-check.log",
+    "worstFrame": "parity/word-push-diff/worst-frame.png",
+    "referenceAlpha": "parity/word-push-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/word-push-diff/hyperframes-alpha.framemd5"
   }
 }

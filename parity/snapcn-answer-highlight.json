@@ -1,0 +1,99 @@
+{
+  "slug": "snapcn-answer-highlight",
+  "origin": {
+    "repository": "https://github.com/snapcndev/snapcn",
+    "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+    "source": "registry/snap-cn/answer-highlight/index.tsx",
+    "config": "registry/snap-cn/answer-highlight/config.ts",
+    "license": "MIT",
+    "entry": "registry/snap-cn/answer-highlight/index.tsx"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 190,
+    "props": {
+      "question": "How should we structure the demo video?",
+      "answer": "Build one composition per scene and keep the timeline declarative, so the same props always render the same frames. Anything that reads the clock at render time is a bug you will find in the export.",
+      "statement": "keep the timeline declarative",
+      "word": "declarative",
+      "questionHold": 0.6,
+      "wordStep": 0.055,
+      "beforeDrag": 0.45,
+      "dragStep": 0.11,
+      "beforeWord": 0.6,
+      "paperColor": "#faf9f6",
+      "pillColor": "#ffffff",
+      "questionColor": "#6e6a63",
+      "answerColor": "#141414",
+      "accentColor": "#3072db",
+      "fontFamily": "Default",
+      "speed": 1
+    },
+    "background": "transparent"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "39caa161209d000257d7ac7a19f068b2fdfd1e8b6f57dc930fc8220c8e88a532",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 190,
+    "meanSsim": 0.9999945684210493,
+    "minSsim": 0.999906,
+    "p05Ssim": 0.999986,
+    "p95Ssim": 0.999998,
+    "pass": true,
+    "alpha": {
+      "frameCount": 190,
+      "mismatchedFrames": [],
+      "pass": true
+    }
+  },
+  "checks": {
+    "hyperframes": "full check reported 2 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "snapcn-answer-highlight",
+        "origin": {
+          "repository": "https://github.com/snapcndev/snapcn",
+          "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+          "source": "registry/snap-cn/answer-highlight/index.tsx",
+          "config": "registry/snap-cn/answer-highlight/config.ts",
+          "license": "MIT",
+          "entry": "registry/snap-cn/answer-highlight/index.tsx"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(2) > span:nth-of-type(10)",
+          "text": "declarative,",
+          "fg": "rgb(48,114,219)",
+          "bg": "rgb(189,208,238)",
+          "ratio": 2.95,
+          "requiredRatio": 3
+        },
+        "reason": "The unmodified Snapcn selection uses this exact blue on this exact highlight. Lossless comparison measured mean SSIM 0.999992 and minimum 0.999846. Preserve source colors; retain the full contrast failure in the audit."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.473",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/snapcn-answer-highlight/reference.mp4",
+    "hyperframesVideo": "public/previews/snapcn-answer-highlight/hyperframes.mp4",
+    "thumbnail": "public/previews/snapcn-answer-highlight/thumbnail.png",
+    "summary": "parity/snapcn-answer-highlight-diff/summary.json",
+    "perFrameSsim": "parity/snapcn-answer-highlight-diff/ssim.log",
+    "hyperframesCheck": "parity/snapcn-answer-highlight-diff/hyperframes-check.log",
+    "worstFrame": "parity/snapcn-answer-highlight-diff/worst-frame.png",
+    "referenceAlpha": "parity/snapcn-answer-highlight-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/snapcn-answer-highlight-diff/hyperframes-alpha.framemd5"
+  }
+}

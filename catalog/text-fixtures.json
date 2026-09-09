@@ -707,16 +707,16 @@
     }
   },
   {
-    "slug": "chromatic-wave",
+    "slug": "word-stream",
     "catalogFamily": "text",
-    "title": "Chromatic Wave",
-    "description": "A soft wave travels down through the type; where it crosses, the letters ripple and split into RGB fringes.",
-    "componentName": "ChromaticWave",
+    "title": "Word Stream",
+    "description": "Voiceover-paced phrases that build word by word — the next word looms as a blurred ghost before it resolves, then the phrase cuts away.",
+    "componentName": "WordStream",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
-      "source": "registry/remocn/chromatic-wave/index.tsx",
-      "config": "registry/remocn/chromatic-wave/config.ts",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/word-stream/index.tsx",
+      "config": "registry/remocn/word-stream/config.ts",
       "license": "MIT"
     },
     "fixture": {
@@ -725,27 +725,29 @@
       "fps": 30,
       "durationInFrames": 100,
       "props": {
-        "headline": "MUSIC",
-        "kicker": "APPLES",
-        "fill": "#ffffff",
-        "waveHeight": 28,
-        "maxDisplacementPx": 39,
-        "turbulentAmount": 130
+        "text": "introducing | one-tap checkout | for your store",
+        "fontSize": 72,
+        "wordGap": 6,
+        "hold": 18,
+        "drift": 2,
+        "color": "#171717",
+        "fontWeight": "400",
+        "speed": 1
       },
       "background": "#ffffff"
     }
   },
   {
-    "slug": "extrude-pop",
+    "slug": "word-push",
     "catalogFamily": "text",
-    "title": "Extrude Pop",
-    "description": "A flat word pops up out of the plane on a solid colored 3D body, no camera involved.",
-    "componentName": "ExtrudePop",
+    "title": "Word Push",
+    "description": "A phrase builds from its first word centered: each next word drives in from the right and pushes the line left, easing into the new center.",
+    "componentName": "WordPush",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
-      "source": "registry/remocn/extrude-pop/index.tsx",
-      "config": "registry/remocn/extrude-pop/config.ts",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/word-push/index.tsx",
+      "config": "registry/remocn/word-push/config.ts",
       "license": "MIT"
     },
     "fixture": {
@@ -754,116 +756,58 @@
       "fps": 30,
       "durationInFrames": 90,
       "props": {
-        "letter": "WIN",
-        "bodyColor": "#e8192b",
-        "faceColor": "#ffffff",
-        "minimaxRadius": 80,
-        "extrudeAngleDeg": -58.6,
-        "extrudeEndFrame": 48
+        "text": "move at your own pace",
+        "fontSize": 72,
+        "wordGap": 10,
+        "accel": 0.8,
+        "color": "#171717",
+        "fontWeight": "400",
+        "speed": 1
       },
-      "background": "#141318"
+      "background": "#ffffff"
     }
   },
   {
-    "slug": "gooey-morph",
+    "slug": "sheen-slide-in",
     "catalogFamily": "text",
-    "title": "Gooey Morph",
-    "description": "Bars fly in Tetris-style, land as a row, and melt into a word through a gooey blur-and-threshold morph.",
-    "componentName": "GooeyMorph",
+    "title": "Sheen Slide In",
+    "description": "A title glides in from the right with an exponential settle and a slow final creep to center, while a gradient sheen sweeps once through the glyphs.",
+    "componentName": "SheenSlideIn",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
-      "source": "registry/remocn/gooey-morph/index.tsx",
-      "config": "registry/remocn/gooey-morph/config.ts",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/sheen-slide-in/index.tsx",
+      "config": "registry/remocn/sheen-slide-in/config.ts",
       "license": "MIT"
     },
     "fixture": {
       "width": 1280,
       "height": 720,
       "fps": 30,
-      "durationInFrames": 120,
+      "durationInFrames": 70,
       "props": {
-        "word": "HELLO",
-        "fill": "#f2f2f2",
-        "fontFamily": "'Bodoni Moda', Georgia, serif",
-        "blurRadius": 6,
-        "displaceAmount": 20,
-        "barTravelFrames": 30
+        "text": "Introducing",
+        "exitAt": 60,
+        "fontSize": 72,
+        "baseColor": "#18181b",
+        "sheenColor": "#4f8ef7",
+        "fontWeight": "400",
+        "speed": 1
       },
-      "background": "#141318"
+      "background": "#ffffff"
     }
   },
   {
-    "slug": "kinetic-warp",
+    "slug": "squeeze-in",
     "catalogFamily": "text",
-    "title": "Kinetic Warp",
-    "description": "A coarse mesh warp bends a whole word in staccato beats, one axis per keyframe.",
-    "componentName": "KineticWarp",
+    "title": "Squeeze In",
+    "description": "Characters appear one by one on a tight stagger; when the last one lands, every letter gap compresses as one and the word squeezes together.",
+    "componentName": "SqueezeIn",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
-      "source": "registry/remocn/kinetic-warp/index.tsx",
-      "config": "registry/remocn/kinetic-warp/config.ts",
-      "license": "MIT"
-    },
-    "fixture": {
-      "width": 1280,
-      "height": 720,
-      "fps": 30,
-      "durationInFrames": 120,
-      "props": {
-        "text": "REM\nOCN",
-        "textColor": "#FFFFFF",
-        "fontFamily": "Passion One",
-        "fontUrl": "/assets/fonts/PassionOne.css",
-        "fontWeight": "700",
-        "fontSize": 107.1,
-        "layerScale": 480,
-        "keyframeStride": 20
-      },
-      "background": "#141318"
-    }
-  },
-  {
-    "slug": "perspective-squeeze",
-    "catalogFamily": "text",
-    "title": "Perspective Squeeze",
-    "description": "Two lines of heavy type endlessly trade height while corner-pinned perspective bends the flat stack into receding planes.",
-    "componentName": "PerspectiveSqueeze",
-    "origin": {
-      "repository": "https://github.com/Remocn/remocn",
-      "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
-      "source": "registry/remocn/perspective-squeeze/index.tsx",
-      "config": "registry/remocn/perspective-squeeze/config.ts",
-      "license": "MIT"
-    },
-    "fixture": {
-      "width": 1280,
-      "height": 720,
-      "fps": 30,
-      "durationInFrames": 225,
-      "props": {
-        "upperText": "REMOCN",
-        "lowerText": "BEST",
-        "fill": "#f2f2f2",
-        "upperFontFamily": "Impact, 'Arial Narrow', sans-serif",
-        "lowerFontFamily": "Impact, 'Arial Narrow', sans-serif",
-        "lineGap": 50
-      },
-      "background": "#141318"
-    }
-  },
-  {
-    "slug": "stretch-in",
-    "catalogFamily": "text",
-    "title": "Stretch In",
-    "description": "Letters fly in from off-canvas and smear horizontally on the way — a vertex-lag deformation, not a scale.",
-    "componentName": "StretchIn",
-    "origin": {
-      "repository": "https://github.com/Remocn/remocn",
-      "commit": "4ed9b8a3b96396068a17e28e4b3e23f726fcc69d",
-      "source": "registry/remocn/stretch-in/index.tsx",
-      "config": "registry/remocn/stretch-in/config.ts",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/squeeze-in/index.tsx",
+      "config": "registry/remocn/squeeze-in/config.ts",
       "license": "MIT"
     },
     "fixture": {
@@ -872,83 +816,15 @@
       "fps": 30,
       "durationInFrames": 60,
       "props": {
-        "text": "REMOCN",
-        "fill": "#ffffff",
-        "fontSize": 510,
-        "entryStagger": 3,
-        "travelFrames": 33,
-        "vertexLagFrames": 3.5,
-        "fontUrl": "/assets/fonts/Anton-Latin.ttf"
-      },
-      "background": "#141318"
-    }
-  },
-  {
-    "slug": "caret-swap",
-    "catalogFamily": "text",
-    "title": "Caret Swap",
-    "description": "A gradient caret swells into a block that consumes the first phrase right-to-left, collapses back and types the second phrase out with a blinking caret.",
-    "componentName": "CaretSwap",
-    "origin": {
-      "repository": "https://github.com/Remocn/remocn",
-      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
-      "source": "registry/remocn/caret-swap/index.tsx",
-      "config": "registry/remocn/caret-swap/config.ts",
-      "license": "MIT"
-    },
-    "fixture": {
-      "width": 1280,
-      "height": 720,
-      "fps": 30,
-      "durationInFrames": 100,
-      "props": {
-        "fromText": "Executing it?",
-        "toText": "That's where everyone quits",
+        "text": "Remocn",
         "fontSize": 72,
-        "swapAt": 20,
-        "typeSpeed": 1,
+        "stagger": 3,
+        "squeeze": 0.03,
         "color": "#171717",
-        "caretColor": "#FF4DAA",
-        "caretColorEnd": "#8A5CF6",
         "fontWeight": "400",
         "speed": 1
       },
-      "background": "#fdf6f0"
-    }
-  },
-  {
-    "slug": "centered-word-build",
-    "catalogFamily": "text",
-    "title": "Centered Word Build",
-    "description": "Words appear sharply from below while the centered phrase pushes cumulatively closer on every beat, then clears through a soft left-to-right opacity wipe.",
-    "componentName": "CenteredWordBuild",
-    "origin": {
-      "repository": "https://github.com/Remocn/remocn",
-      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
-      "source": "registry/remocn/centered-word-build/index.tsx",
-      "config": "registry/remocn/centered-word-build/config.ts",
-      "license": "MIT"
-    },
-    "fixture": {
-      "width": 1280,
-      "height": 720,
-      "fps": 30,
-      "durationInFrames": 75,
-      "props": {
-        "text": "everything we learn from",
-        "fontSize": 52,
-        "wordGap": 11,
-        "accel": 0.75,
-        "rise": 0.18,
-        "zoomStep": 0.035,
-        "settleFrames": 9,
-        "exitAt": 51,
-        "exitFrames": 12,
-        "color": "#fff3df",
-        "fontWeight": "400",
-        "speed": 1
-      },
-      "background": "radial-gradient(circle at 50% 108%, #ffd77a 0%, #ff6840 31%, #f13d21 78%)"
+      "background": "#ffffff"
     }
   },
   {
@@ -959,7 +835,7 @@
     "componentName": "FogRise",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
       "source": "registry/remocn/fog-rise/index.tsx",
       "config": "registry/remocn/fog-rise/config.ts",
       "license": "MIT"
@@ -995,41 +871,104 @@
     }
   },
   {
-    "slug": "gradient-scale-cut-text",
+    "slug": "caret-swap",
     "catalogFamily": "text",
-    "title": "Gradient Scale Cut Text",
-    "description": "An oversized gradient reveal snaps to a separate compact blurred line that settles left while the reveal continues.",
-    "componentName": "GradientScaleCutText",
+    "title": "Caret Swap",
+    "description": "A gradient caret swells into a block that consumes the first phrase right-to-left, collapses back and types the second phrase out with a blinking caret.",
+    "componentName": "CaretSwap",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
-      "source": "registry/remocn/gradient-scale-cut-text/index.tsx",
-      "config": "registry/remocn/gradient-scale-cut-text/config.ts",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/caret-swap/index.tsx",
+      "config": "registry/remocn/caret-swap/config.ts",
       "license": "MIT"
     },
     "fixture": {
       "width": 1280,
       "height": 720,
       "fps": 30,
-      "durationInFrames": 36,
+      "durationInFrames": 100,
       "props": {
-        "text": "Introducing",
-        "giantFontSize": 520,
-        "compactFontSize": 132,
-        "anchorOffsetX": -16,
-        "giantTravel": 400,
-        "settleTravel": 160,
-        "cutFrame": 13,
-        "revealSoftness": 14,
-        "compactBlur": 12,
-        "gradientStart": "#f04a14",
-        "gradientEnd": "#f3f1f1",
-        "ghostColor": "#170b0a",
-        "backgroundColor": "#000000",
-        "fontWeight": "700",
+        "fromText": "Executing it?",
+        "toText": "That's where everyone quits",
+        "fontSize": 72,
+        "swapAt": 20,
+        "typeSpeed": 1,
+        "color": "#171717",
+        "caretColor": "#FF4DAA",
+        "caretColorEnd": "#8A5CF6",
+        "fontWeight": "400",
         "speed": 1
       },
-      "background": "#000000"
+      "background": "#fdf6f0"
+    }
+  },
+  {
+    "slug": "zoom-words",
+    "catalogFamily": "text",
+    "title": "Zoom Words",
+    "description": "A close-up word reveal: huge words fade into a long line while the camera rides the write head, the line streaming off-frame as the shot eases into focus.",
+    "componentName": "ZoomWords",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/zoom-words/index.tsx",
+      "config": "registry/remocn/zoom-words/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 75,
+      "props": {
+        "text": "Still piecing together tools",
+        "fontSize": 64,
+        "wordGap": 12,
+        "zoom": 2.2,
+        "anchor": 0.5,
+        "blur": 0.04,
+        "blurFrames": 60,
+        "color": "#cfc2ff",
+        "fontWeight": "400",
+        "speed": 1
+      },
+      "background": "linear-gradient(180deg, #0a0612 25%, #6a3fd6 100%)"
+    }
+  },
+  {
+    "slug": "centered-word-build",
+    "catalogFamily": "text",
+    "title": "Centered Word Build",
+    "description": "Words appear sharply from below while the centered phrase pushes cumulatively closer on every beat, then clears through a soft left-to-right opacity wipe.",
+    "componentName": "CenteredWordBuild",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/centered-word-build/index.tsx",
+      "config": "registry/remocn/centered-word-build/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 75,
+      "props": {
+        "text": "everything we learn from",
+        "fontSize": 52,
+        "wordGap": 11,
+        "accel": 0.75,
+        "rise": 0.18,
+        "zoomStep": 0.035,
+        "settleFrames": 9,
+        "exitAt": 51,
+        "exitFrames": 12,
+        "color": "#fff3df",
+        "fontWeight": "400",
+        "speed": 1
+      },
+      "background": "radial-gradient(circle at 50% 108%, #ffd77a 0%, #ff6840 31%, #f13d21 78%)"
     }
   },
   {
@@ -1040,7 +979,7 @@
     "componentName": "InlinePillTakeover",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
       "source": "registry/remocn/inline-pill-takeover/index.tsx",
       "config": "registry/remocn/inline-pill-takeover/config.ts",
       "license": "MIT"
@@ -1076,6 +1015,74 @@
     }
   },
   {
+    "slug": "typed-split-wipe",
+    "catalogFamily": "text",
+    "title": "Typed Split Wipe",
+    "description": "A centered cursorless type build holds, then exits through opposing fixed-layout glyph wipes that leave the anchor visible longest.",
+    "componentName": "TypedSplitWipe",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/typed-split-wipe/index.tsx",
+      "config": "registry/remocn/typed-split-wipe/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 75,
+      "props": {
+        "prefix": "Introducing",
+        "anchor": "X",
+        "suffix": "Ads MCP",
+        "typeFrames": 30,
+        "exitAt": 50,
+        "exitFrames": 20,
+        "wordStagger": 4,
+        "anchorShift": -72,
+        "fontSize": 42,
+        "color": "#e8e8e8",
+        "fontWeight": "400",
+        "speed": 1
+      },
+      "background": "#101010"
+    }
+  },
+  {
+    "slug": "shadow-sweep-text",
+    "catalogFamily": "text",
+    "title": "Shadow Sweep Text",
+    "description": "A line rises up and left while one dense dark shadow uncovers it and a second shadow sweeps back across it for the exit.",
+    "componentName": "ShadowSweepText",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/shadow-sweep-text/index.tsx",
+      "config": "registry/remocn/shadow-sweep-text/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 37,
+      "props": {
+        "text": "are abandoned",
+        "fontSize": 96,
+        "rise": 96,
+        "driftLeft": 16,
+        "shadowSoftness": 130,
+        "color": "#aaa6b5",
+        "backgroundColor": "#030012",
+        "shadowColor": "#030012",
+        "fontWeight": "700",
+        "speed": 1
+      },
+      "background": "#030012"
+    }
+  },
+  {
     "slug": "outline-fill-track-text",
     "catalogFamily": "text",
     "title": "Outline Fill Track Text",
@@ -1083,7 +1090,7 @@
     "componentName": "OutlineFillTrackText",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
       "source": "registry/remocn/outline-fill-track-text/index.tsx",
       "config": "registry/remocn/outline-fill-track-text/config.ts",
       "license": "MIT"
@@ -1115,225 +1122,41 @@
     }
   },
   {
-    "slug": "shadow-sweep-text",
+    "slug": "gradient-scale-cut-text",
     "catalogFamily": "text",
-    "title": "Shadow Sweep Text",
-    "description": "A line rises up and left while one dense dark shadow uncovers it and a second shadow sweeps back across it for the exit.",
-    "componentName": "ShadowSweepText",
+    "title": "Gradient Scale Cut Text",
+    "description": "An oversized gradient reveal snaps to a separate compact blurred line that settles left while the reveal continues.",
+    "componentName": "GradientScaleCutText",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
-      "source": "registry/remocn/shadow-sweep-text/index.tsx",
-      "config": "registry/remocn/shadow-sweep-text/config.ts",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/gradient-scale-cut-text/index.tsx",
+      "config": "registry/remocn/gradient-scale-cut-text/config.ts",
       "license": "MIT"
     },
     "fixture": {
       "width": 1280,
       "height": 720,
       "fps": 30,
-      "durationInFrames": 37,
+      "durationInFrames": 36,
       "props": {
-        "text": "are abandoned",
-        "fontSize": 96,
-        "rise": 96,
-        "driftLeft": 16,
-        "shadowSoftness": 130,
-        "color": "#aaa6b5",
-        "backgroundColor": "#030012",
-        "shadowColor": "#030012",
+        "text": "Introducing",
+        "giantFontSize": 520,
+        "compactFontSize": 132,
+        "anchorOffsetX": -16,
+        "giantTravel": 400,
+        "settleTravel": 160,
+        "cutFrame": 13,
+        "revealSoftness": 14,
+        "compactBlur": 12,
+        "gradientStart": "#f04a14",
+        "gradientEnd": "#f3f1f1",
+        "ghostColor": "#170b0a",
+        "backgroundColor": "#000000",
         "fontWeight": "700",
         "speed": 1
       },
-      "background": "#030012"
-    }
-  },
-  {
-    "slug": "sheen-slide-in",
-    "catalogFamily": "text",
-    "title": "Sheen Slide In",
-    "description": "A title glides in from the right with an exponential settle and a slow final creep to center, while a gradient sheen sweeps once through the glyphs.",
-    "componentName": "SheenSlideIn",
-    "origin": {
-      "repository": "https://github.com/Remocn/remocn",
-      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
-      "source": "registry/remocn/sheen-slide-in/index.tsx",
-      "config": "registry/remocn/sheen-slide-in/config.ts",
-      "license": "MIT"
-    },
-    "fixture": {
-      "width": 1280,
-      "height": 720,
-      "fps": 30,
-      "durationInFrames": 70,
-      "props": {
-        "text": "Introducing",
-        "exitAt": 60,
-        "fontSize": 72,
-        "baseColor": "#18181b",
-        "sheenColor": "#4f8ef7",
-        "fontWeight": "400",
-        "speed": 1
-      },
-      "background": "#ffffff"
-    }
-  },
-  {
-    "slug": "squeeze-in",
-    "catalogFamily": "text",
-    "title": "Squeeze In",
-    "description": "Characters appear one by one on a tight stagger; when the last one lands, every letter gap compresses as one and the word squeezes together.",
-    "componentName": "SqueezeIn",
-    "origin": {
-      "repository": "https://github.com/Remocn/remocn",
-      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
-      "source": "registry/remocn/squeeze-in/index.tsx",
-      "config": "registry/remocn/squeeze-in/config.ts",
-      "license": "MIT"
-    },
-    "fixture": {
-      "width": 1280,
-      "height": 720,
-      "fps": 30,
-      "durationInFrames": 60,
-      "props": {
-        "text": "Remocn",
-        "fontSize": 72,
-        "stagger": 3,
-        "squeeze": 0.03,
-        "color": "#171717",
-        "fontWeight": "400",
-        "speed": 1
-      },
-      "background": "#ffffff"
-    }
-  },
-  {
-    "slug": "typed-split-wipe",
-    "catalogFamily": "text",
-    "title": "Typed Split Wipe",
-    "description": "A centered cursorless type build holds, then exits through opposing fixed-layout glyph wipes that leave the anchor visible longest.",
-    "componentName": "TypedSplitWipe",
-    "origin": {
-      "repository": "https://github.com/Remocn/remocn",
-      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
-      "source": "registry/remocn/typed-split-wipe/index.tsx",
-      "config": "registry/remocn/typed-split-wipe/config.ts",
-      "license": "MIT"
-    },
-    "fixture": {
-      "width": 1280,
-      "height": 720,
-      "fps": 30,
-      "durationInFrames": 75,
-      "props": {
-        "prefix": "Introducing",
-        "anchor": "X",
-        "suffix": "Ads MCP",
-        "typeFrames": 30,
-        "exitAt": 50,
-        "exitFrames": 20,
-        "wordStagger": 4,
-        "anchorShift": -72,
-        "fontSize": 42,
-        "color": "#e8e8e8",
-        "fontWeight": "400",
-        "speed": 1
-      },
-      "background": "#101010"
-    }
-  },
-  {
-    "slug": "word-push",
-    "catalogFamily": "text",
-    "title": "Word Push",
-    "description": "A phrase builds from its first word centered: each next word drives in from the right and pushes the line left, easing into the new center.",
-    "componentName": "WordPush",
-    "origin": {
-      "repository": "https://github.com/Remocn/remocn",
-      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
-      "source": "registry/remocn/word-push/index.tsx",
-      "config": "registry/remocn/word-push/config.ts",
-      "license": "MIT"
-    },
-    "fixture": {
-      "width": 1280,
-      "height": 720,
-      "fps": 30,
-      "durationInFrames": 90,
-      "props": {
-        "text": "move at your own pace",
-        "fontSize": 72,
-        "wordGap": 10,
-        "accel": 0.8,
-        "color": "#171717",
-        "fontWeight": "400",
-        "speed": 1
-      },
-      "background": "#ffffff"
-    }
-  },
-  {
-    "slug": "word-stream",
-    "catalogFamily": "text",
-    "title": "Word Stream",
-    "description": "Voiceover-paced phrases that build word by word — the next word looms as a blurred ghost before it resolves, then the phrase cuts away.",
-    "componentName": "WordStream",
-    "origin": {
-      "repository": "https://github.com/Remocn/remocn",
-      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
-      "source": "registry/remocn/word-stream/index.tsx",
-      "config": "registry/remocn/word-stream/config.ts",
-      "license": "MIT"
-    },
-    "fixture": {
-      "width": 1280,
-      "height": 720,
-      "fps": 30,
-      "durationInFrames": 100,
-      "props": {
-        "text": "introducing | one-tap checkout | for your store",
-        "fontSize": 72,
-        "wordGap": 6,
-        "hold": 18,
-        "drift": 2,
-        "color": "#171717",
-        "fontWeight": "400",
-        "speed": 1
-      },
-      "background": "#ffffff"
-    }
-  },
-  {
-    "slug": "zoom-words",
-    "catalogFamily": "text",
-    "title": "Zoom Words",
-    "description": "A close-up word reveal: huge words fade into a long line while the camera rides the write head, the line streaming off-frame as the shot eases into focus.",
-    "componentName": "ZoomWords",
-    "origin": {
-      "repository": "https://github.com/Remocn/remocn",
-      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
-      "source": "registry/remocn/zoom-words/index.tsx",
-      "config": "registry/remocn/zoom-words/config.ts",
-      "license": "MIT"
-    },
-    "fixture": {
-      "width": 1280,
-      "height": 720,
-      "fps": 30,
-      "durationInFrames": 75,
-      "props": {
-        "text": "Still piecing together tools",
-        "fontSize": 64,
-        "wordGap": 12,
-        "zoom": 2.2,
-        "anchor": 0.5,
-        "blur": 0.04,
-        "blurFrames": 60,
-        "color": "#cfc2ff",
-        "fontWeight": "400",
-        "speed": 1
-      },
-      "background": "linear-gradient(180deg, #0a0612 25%, #6a3fd6 100%)"
+      "background": "#000000"
     }
   },
   {
@@ -1344,7 +1167,7 @@
     "componentName": "RushType",
     "origin": {
       "repository": "https://github.com/Remocn/remocn",
-      "commit": "2872cacea5bd76e400918ffe46526c03509c7bd0",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
       "source": "registry/remocn/rush-type/index.tsx",
       "config": "registry/remocn/rush-type/config.ts",
       "license": "MIT"
@@ -1367,6 +1190,251 @@
         "speed": 1
       },
       "background": "#000000"
+    }
+  },
+  {
+    "slug": "extrude-pop",
+    "catalogFamily": "text",
+    "title": "Extrude Pop",
+    "description": "A flat word pops up out of the plane on a solid colored 3D body, no camera involved.",
+    "componentName": "ExtrudePop",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/extrude-pop/index.tsx",
+      "config": "registry/remocn/extrude-pop/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 90,
+      "props": {
+        "letter": "WIN",
+        "bodyColor": "#e8192b",
+        "faceColor": "#ffffff",
+        "minimaxRadius": 80,
+        "extrudeAngleDeg": -58.6,
+        "extrudeEndFrame": 48
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "kinetic-morph-text",
+    "catalogFamily": "text",
+    "title": "Kinetic Morph Text",
+    "description": "Letters lift, rotate, and softly reshape into editable phrases with sampled outline trails.",
+    "componentName": "KineticMorphText",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/kinetic-morph-text/index.tsx",
+      "config": "registry/remocn/kinetic-morph-text/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 288,
+      "props": {
+        "text": "Hello | Make it move | Shape what's next",
+        "fontSize": 100,
+        "fontWeight": "600",
+        "spread": 180,
+        "rotation": 110,
+        "morph": 0.75,
+        "trails": 0.45,
+        "transitionFrames": 54,
+        "holdFrames": 42,
+        "loop": false,
+        "color": "#b4f4d9",
+        "backgroundColor": "#a800b7",
+        "speed": 1
+      },
+      "background": "transparent"
+    }
+  },
+  {
+    "slug": "kinetic-warp",
+    "catalogFamily": "text",
+    "title": "Kinetic Warp",
+    "description": "A coarse mesh warp bends a whole word in staccato beats, one axis per keyframe.",
+    "componentName": "KineticWarp",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/kinetic-warp/index.tsx",
+      "config": "registry/remocn/kinetic-warp/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 120,
+      "props": {
+        "text": "REM\nOCN",
+        "textColor": "#FFFFFF",
+        "fontFamily": "Passion One",
+        "fontUrl": "https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&display=block",
+        "fontWeight": "700",
+        "fontSize": 107.1,
+        "layerScale": 480,
+        "keyframeStride": 20
+      },
+      "background": "transparent"
+    }
+  },
+  {
+    "slug": "stretch-in",
+    "catalogFamily": "text",
+    "title": "Stretch In",
+    "description": "Letters fly in from off-canvas and smear horizontally on the way — a vertex-lag deformation, not a scale.",
+    "componentName": "StretchIn",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/stretch-in/index.tsx",
+      "config": "registry/remocn/stretch-in/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 60,
+      "props": {
+        "text": "REMOCN",
+        "fill": "#ffffff",
+        "fontSize": 510,
+        "entryStagger": 3,
+        "travelFrames": 33,
+        "vertexLagFrames": 3.5
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "gooey-morph",
+    "catalogFamily": "text",
+    "title": "Gooey Morph",
+    "description": "Bars fly in Tetris-style, land as a row, and melt into a word through a gooey blur-and-threshold morph.",
+    "componentName": "GooeyMorph",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/gooey-morph/index.tsx",
+      "config": "registry/remocn/gooey-morph/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 120,
+      "props": {
+        "word": "HELLO",
+        "fill": "#f2f2f2",
+        "fontFamily": "'Bodoni Moda', Georgia, serif",
+        "blurRadius": 6,
+        "displaceAmount": 20,
+        "barTravelFrames": 30
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "perspective-squeeze",
+    "catalogFamily": "text",
+    "title": "Perspective Squeeze",
+    "description": "Two lines of heavy type endlessly trade height while corner-pinned perspective bends the flat stack into receding planes.",
+    "componentName": "PerspectiveSqueeze",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/perspective-squeeze/index.tsx",
+      "config": "registry/remocn/perspective-squeeze/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 225,
+      "props": {
+        "upperText": "REMOCN",
+        "lowerText": "BEST",
+        "fill": "#f2f2f2",
+        "upperFontFamily": "Impact, 'Arial Narrow', sans-serif",
+        "lowerFontFamily": "Impact, 'Arial Narrow', sans-serif",
+        "lineGap": 50
+      },
+      "background": "#141318"
+    }
+  },
+  {
+    "slug": "chromatic-wave",
+    "catalogFamily": "text",
+    "title": "Chromatic Wave",
+    "description": "A soft wave travels down through the type; where it crosses, the letters ripple and split into RGB fringes.",
+    "componentName": "ChromaticWave",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+      "source": "registry/remocn/chromatic-wave/index.tsx",
+      "config": "registry/remocn/chromatic-wave/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 100,
+      "props": {
+        "headline": "MUSIC",
+        "kicker": "APPLES",
+        "fill": "#ffffff",
+        "waveHeight": 28,
+        "maxDisplacementPx": 39,
+        "turbulentAmount": 130
+      },
+      "background": "transparent"
+    }
+  },
+  {
+    "slug": "type-fossil",
+    "catalogFamily": "text",
+    "title": "Type Fossil",
+    "description": "A readable word carries layers of fine contours, revises itself, then compresses into a clean typographic imprint.",
+    "componentName": "TypeFossil",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "5a5f3a7d2524c01d050e20bfb8859c93f2b3f663",
+      "source": "registry/remocn/type-fossil/index.tsx",
+      "config": "registry/remocn/type-fossil/config.ts",
+      "license": "MIT"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 208,
+      "props": {
+        "text": "Form",
+        "drafts": "Idea | Maybe | Try | Almost | Again | Closer",
+        "layers": 16,
+        "depth": 100,
+        "fontSize": 220,
+        "fontWeight": "600",
+        "color": "#302b26",
+        "accentColor": "#a800b7",
+        "backgroundColor": "#eeeae2",
+        "speed": 1
+      },
+      "background": "transparent"
     }
   }
 ]
