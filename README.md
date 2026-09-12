@@ -102,7 +102,18 @@ Commit the updated videos, `src/generated/media.json`, and `vercel.json`
 together. Sync uploads changed videos to immutable paths containing their
 SHA-256 hash, resumes interrupted uploads, and never removes remote files.
 It generates temporary redirects for the original video URLs, preserving
-existing links when a video changes. The site uses Blob URLs directly.
+existing links when a video changes. The site follows these redirects when a
+video is requested, so the initial JavaScript does not include the full media
+manifest. `vite preview` serves the same redirects; development serves local
+videos directly.
+
+Catalog pages load only component summaries. Opening a component fetches its
+registry metadata and verification details together in `catalog.json`, alongside
+the HTML source. These files are generated under `public/registry/` by
+`npm run sync:catalog`; `predev` and `prebuild` run this automatically.
+With 346 components, these changes reduce initial JavaScript from 668 KB to
+407 KB, or 153 KB to 106 KB gzipped. Comparison-player code remains deferred
+until the verification panel opens.
 
 Sync compresses preview videos of 5 MB or larger with FFmpeg, keeping the
 original resolution, frame rate, duration, and audio. It uses H.264 CRF 16 and

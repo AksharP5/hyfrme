@@ -1,6 +1,7 @@
 import { spawn } from "node:child_process";
 import { copyFile, mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { homedir } from "node:os";
 
 const root = resolve(import.meta.dirname, "..");
 const workbench = resolve(root, ".work", "icon-showcases");
@@ -98,7 +99,7 @@ if (!reuseReference) {
       selected.map((entry) => entry.slug).join(","),
       "--showcase",
     ],
-    { cwd: resolve(root, ".work", "remocn") },
+    { cwd: resolve(root, process.env.REMOCN_SOURCE ?? ".work/remocn") },
   );
 }
 
@@ -143,7 +144,8 @@ await writeFile(
 );
 
 const diffScript = resolve(
-  "/Users/aksharpatel/.agents/skills/remotion-to-hyperframes/scripts/render_diff.sh",
+  homedir(),
+  ".agents/skills/remotion-to-hyperframes/scripts/render_diff.sh",
 );
 const staged = [];
 const failures = [];
@@ -270,6 +272,7 @@ for (const { entry, renderDirectory, summary } of staged) {
       width: entry.fixture.width * showcaseScale,
       height: entry.fixture.height * showcaseScale,
       scale: showcaseScale,
+      renderScale: 1,
       props: {
         ...entry.fixture.props,
         size: entry.fixture.props.size * showcaseScale,

@@ -69,6 +69,13 @@ time.
   the canonical 48×48 fixture), so the vector strokes stay sharp when enlarged
   without changing the installable block or its canonical parity result.
 
+Inbox's 384px showcase uses native 384px source props and canvas with render
+scale 1. Enlarging a 48px render also enlarged its CSS translation, producing
+the old mismatch. The corrected 48px and 384px installed fixtures pass all
+140 lossless frames with exact RGBA and zero full-check warnings or errors.
+The icon generator also initializes its renderer map for the published CLI's
+inline-script namespacing.
+
 The first 24-item typography/effect family is verified as exact compiled-source
 ports. Each block preserves the upstream React component and editable controls,
 uses Hyfrme-owned Remotion-compatible easing/interpolation behavior, and

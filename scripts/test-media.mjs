@@ -8,6 +8,7 @@ import {
   writeFile,
 } from "node:fs/promises";
 import { tmpdir } from "node:os";
+import { createServer } from "node:http";
 import { dirname, resolve } from "node:path";
 import test from "node:test";
 import { mediaContent } from "./encode-media.mjs";
@@ -15,6 +16,7 @@ import { frameRateArgument } from "./frame-rate.mjs";
 import {
   blobPath,
   copyPublicWithoutMedia,
+  hostedMedia,
   mediaRedirects,
   readMediaFiles,
   readMediaManifest,
@@ -79,6 +81,39 @@ test("production requires uploaded current media and matching legacy redirects",
   assert.throws(
     () => validateMedia(changed, manifest, redirects),
     /Missing or outdated media/,
+  );
+});
+
+test("production preview redirects video requests and serves other assets normally", async (t) => {
+  const manifest = await readMediaManifest();
+  const path = Object.keys(manifest)[0];
+  let middleware;
+  await hostedMedia().configurePreviewServer({
+    middlewares: {
+      use: (handler) => {
+        middleware = handler;
+      },
+    },
+  });
+  const server = createServer((request, response) => {
+    middleware(request, response, () => {
+      response.writeHead(200, { "Content-Type": "text/plain" });
+      response.end("static asset");
+    });
+  });
+  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+  t.after(() => new Promise((resolve) => server.close(resolve)));
+  const origin = `http://127.0.0.1:${server.address().port}`;
+  const video = await fetch(`${origin}${path}?v=preview`, {
+    method: "HEAD",
+    redirect: "manual",
+    headers: { Range: "bytes=0-1" },
+  });
+  assert.equal(video.status, 307);
+  assert.equal(video.headers.get("location"), manifest[path]);
+  assert.equal(
+    await (await fetch(`${origin}/registry/block.html`)).text(),
+    "static asset",
   );
 });
 

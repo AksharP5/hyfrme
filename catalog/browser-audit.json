@@ -14,18 +14,12 @@
     "autoplayChecks": 346,
     "pauseAndReplayChecks": 65,
     "sampleComparisons": 990,
-    "meanSampleSsim": 0.997346,
-    "minSampleSsim": 0.928461,
-    "samplesBelow095": [
-      {
-        "slug": "icon-inbox",
-        "frame": 35,
-        "ssim": 0.928461
-      }
-    ],
+    "meanSampleSsim": 0.997419,
+    "minSampleSsim": 0.951296,
+    "samplesBelow095": [],
     "customizationAndResetChecks": 10,
     "transitionBoundaryComparisons": 16,
-    "backwardSeekChecks": 24,
+    "backwardSeekChecks": 27,
     "minTransitionBoundarySsim": 1,
     "additionalSeekComparisons": 15,
     "minSeekComparisonSsim": 1
@@ -37,7 +31,8 @@
     "snapcn-png": "Live iframe autoplay, pause, replay, images, media readiness and page/console/HTTP/request errors checked. Three pinned upstream lossless PNG frames at floor((durationInFrames - 1) * p), p = 0.2, 0.5, 0.8. Seek (frame + 0.1) / fps avoids previous-video-frame rounding. Canonical dimensions after controls checked at website size; reference alpha composited over the iframe background.",
     "rendered-defaults": "Ordinary Chrome lacks the required HTML-in-canvas API. Verified HyperFrames default render played in the catalog video element; autoplay, pause, replay and default-settings notice checked. No live customization or new browser SSIM claim.",
     "remocn-lossless-png": "Five additions at e3dc260ff1965440d1f64fb65a8c9a9373e78328. Actual catalog iframe autoplay, Pause, Replay, customizer edits and Reset checked at website size. Customizations change pixels; Reset restores identical pixels. Three canonical-size samples at floor(durationInFrames * p), p = 0.2, 0.5, 0.8, compared with pinned lossless reference PNGs using NVIDIA ANGLE gl-egl, sRGB and source font-render-hinting flags. Reference alpha is composited over the fixture background; website scaling and controls are removed for comparison. Both transitions additionally compare eight boundary seeks, seven backwards. Navigation-cancelled requests and local Vercel telemetry 404s are recorded separately from component failures.",
-    "remocn-template-png": "Five templates at 7fa2db1cd29dfb36743e54e3d078dd9107c879a2, checked September 12. Actual catalog iframe autoplay, Pause, Replay, accent color edits and Reset at website size. Edits change pixels; Reset restores identical pixels. Three canonical-size samples at 20%, 50%, and 80% plus final/middle/first frame seeks compared with pinned lossless reference PNGs. Native timeline seeks use the authored fps. NVIDIA ANGLE gl-egl, sRGB and source font-render-hinting flags; reference alpha composited over the fixture background. Navigation-cancelled requests and local Vercel telemetry 404s recorded separately."
+    "remocn-template-png": "Five templates at 7fa2db1cd29dfb36743e54e3d078dd9107c879a2, checked September 12. Actual catalog iframe autoplay, Pause, Replay, accent color edits and Reset at website size. Edits change pixels; Reset restores identical pixels. Three canonical-size samples at 20%, 50%, and 80% plus final/middle/first frame seeks compared with pinned lossless reference PNGs. Native timeline seeks use the authored fps. NVIDIA ANGLE gl-egl, sRGB and source font-render-hinting flags; reference alpha composited over the fixture background. Navigation-cancelled requests and local Vercel telemetry 404s recorded separately.",
+    "remocn-icon-png": "Inbox: native 384px source props and canvas, render scale 1, pinned lossless PNGs. Actual catalog iframe with size=384 and canonical geometry; all 70 frames and three repeated backward seeks verified."
   },
   "limitations": [
     "Only listed checks were performed; omitted fields mean unmeasured, not zero.",
@@ -2449,22 +2444,42 @@
     {
       "slug": "icon-inbox",
       "source": "remocn",
-      "profile": "remocn-icon-video",
+      "profile": "remocn-icon-png",
       "controls": ["autoplay"],
       "pageErrors": 0,
       "requestFailures": 0,
       "samples": [
         {
           "frame": 14,
-          "ssim": 0.999895
+          "ssim": 1
         },
         {
           "frame": 35,
-          "ssim": 0.928461
+          "ssim": 1
         },
         {
           "frame": 56,
-          "ssim": 0.999912
+          "ssim": 1
+        }
+      ],
+      "checkedDate": "2026-09-12",
+      "fullFrameComparison": {
+        "frames": 70,
+        "mean": 1,
+        "min": 1
+      },
+      "backwardSeekComparisons": [
+        {
+          "frame": 35,
+          "identical": true
+        },
+        {
+          "frame": 14,
+          "identical": true
+        },
+        {
+          "frame": 0,
+          "identical": true
         }
       ]
     },

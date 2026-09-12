@@ -1,4 +1,3 @@
-import { mediaUrl } from "../media";
 import { useEffect, useRef } from "react";
 
 export type LandingFamily = {
@@ -24,7 +23,7 @@ export function FamilyCard({ family }: FamilyCardProps) {
     if (!video) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const src = mediaUrl(family.previewVideo);
+    const src = family.previewVideo;
     let visible = false;
 
     const syncPlayback = () => {

@@ -19,7 +19,6 @@ import {
   cardDescription,
   categoryFor,
   categoryLabels,
-  type RegistryItem,
   taxonomyFor,
   taxonomySearchTerms,
 } from "./catalog";
@@ -705,7 +704,10 @@ function HomePage() {
 
 function DetailPage({ entry }: { entry: CatalogEntry }) {
   const [source, setSource] = useState("");
-  const [previewItem, setPreviewItem] = useState<RegistryItem | null>(null);
+  const [details, setDetails] = useState<Awaited<
+    ReturnType<CatalogEntry["loadDetails"]>
+  > | null>(null);
+  const [loadError, setLoadError] = useState("");
   const [values, setValues] = useState<CustomValues>({});
   const [tab, setTab] = useState<"preview" | "code">("preview");
   const [verificationOpen, setVerificationOpen] = useState(false);
@@ -717,7 +719,10 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
   );
   const category = categoryFor(entry);
   const entryTaxonomy = taxonomyFor(entry);
-  const upstreamUrl = `${entry.source.repository}/blob/${entry.parity.origin.commit}/${entry.parity.origin.source}`;
+  const parity = details?.parity;
+  const upstreamUrl = parity
+    ? `${entry.source.repository}/blob/${parity.origin.commit}/${parity.origin.source}`
+    : undefined;
   const customized = variables.some(
     (variable) => effectiveValues[variable.id] !== variable.default,
   );
@@ -751,15 +756,19 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
     let active = true;
     document.title = `${entry.item.title} — Hyfrme`;
     setSource("");
-    setPreviewItem(null);
-    Promise.all([entry.loadSource(), entry.loadItem()]).then(
-      ([nextSource, nextItem]) => {
+    setDetails(null);
+    setLoadError("");
+    Promise.all([entry.loadSource(), entry.loadDetails()])
+      .then(([nextSource, nextDetails]) => {
         if (!active) return;
         setValues(valuesFromUrl(parseCompositionVariables(nextSource)));
         setSource(nextSource);
-        setPreviewItem(nextItem);
-      },
-    );
+        setDetails(nextDetails);
+      })
+      .catch((error: unknown) => {
+        if (active)
+          setLoadError(error instanceof Error ? error.message : String(error));
+      });
     return () => {
       active = false;
     };
@@ -844,9 +853,13 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
           </div>
 
           {tab === "preview" ? (
-            source && previewItem ? (
+            loadError ? (
+              <div className="preview-loading" role="alert">
+                {loadError}
+              </div>
+            ) : source && details ? (
               <LivePreview
-                item={previewItem}
+                item={details.item}
                 source={source}
                 values={effectiveValues}
               />
@@ -890,48 +903,51 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
           </section>
         ) : null}
 
-        <details
-          className="verification-details"
-          onToggle={(event) => setVerificationOpen(event.currentTarget.open)}
-        >
-          <summary>
-            <span>
-              Verified against {entry.source.label} ·{" "}
-              {(entry.parity.result.meanSsim * 100).toFixed(3)}% match
-            </span>
-            <span>{entry.parity.result.frameCount} frames</span>
-            <span aria-hidden="true">↓</span>
-          </summary>
-          {verificationOpen ? (
-            <div className="verification-body">
-              <div className="verification-copy">
-                <p>
-                  Synchronized renders of the pinned upstream source and this
-                  HyperFrames port.
-                </p>
-                <a href={upstreamUrl} target="_blank" rel="noreferrer">
-                  Original source <ArrowIcon />
-                </a>
-              </div>
-              <Suspense
-                fallback={
-                  <div className="preview-loading">
-                    Loading comparison player…
-                  </div>
-                }
-              >
-                <ComparisonPlayer
-                  referenceLabel={entry.source.label}
-                  referenceSrc={entry.parity.artifacts.referenceVideo}
-                  portSrc={entry.parity.artifacts.hyperframesVideo}
-                  square={
-                    entry.item.dimensions.width === entry.item.dimensions.height
+        {parity ? (
+          <details
+            className="verification-details"
+            onToggle={(event) => setVerificationOpen(event.currentTarget.open)}
+          >
+            <summary>
+              <span>
+                Verified against {entry.source.label} ·{" "}
+                {(parity.result.meanSsim * 100).toFixed(3)}% match
+              </span>
+              <span>{parity.result.frameCount} frames</span>
+              <span aria-hidden="true">↓</span>
+            </summary>
+            {verificationOpen ? (
+              <div className="verification-body">
+                <div className="verification-copy">
+                  <p>
+                    Synchronized renders of the pinned upstream source and this
+                    HyperFrames port.
+                  </p>
+                  <a href={upstreamUrl} target="_blank" rel="noreferrer">
+                    Original source <ArrowIcon />
+                  </a>
+                </div>
+                <Suspense
+                  fallback={
+                    <div className="preview-loading">
+                      Loading comparison player…
+                    </div>
                   }
-                />
-              </Suspense>
-            </div>
-          ) : null}
-        </details>
+                >
+                  <ComparisonPlayer
+                    referenceLabel={entry.source.label}
+                    referenceSrc={parity.artifacts.referenceVideo}
+                    portSrc={parity.artifacts.hyperframesVideo}
+                    square={
+                      entry.item.dimensions.width ===
+                      entry.item.dimensions.height
+                    }
+                  />
+                </Suspense>
+              </div>
+            ) : null}
+          </details>
+        ) : null}
 
         <nav className="component-pagination" aria-label="More components">
           {previousEntry ? (

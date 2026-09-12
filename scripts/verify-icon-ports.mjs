@@ -1,6 +1,7 @@
 import { spawn } from "node:child_process";
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { homedir } from "node:os";
 
 const root = resolve(import.meta.dirname, "..");
 const workbench = resolve(root, ".work", "verify-icons");
@@ -54,7 +55,7 @@ if (!reuseReference) {
       "--only",
       selected.map((entry) => entry.slug).join(","),
     ],
-    { cwd: resolve(root, ".work", "remocn") },
+    { cwd: resolve(root, process.env.REMOCN_SOURCE ?? ".work/remocn") },
   );
 }
 
@@ -99,7 +100,8 @@ await writeFile(
 );
 
 const diffScript = resolve(
-  "/Users/aksharpatel/.agents/skills/remotion-to-hyperframes/scripts/render_diff.sh",
+  homedir(),
+  ".agents/skills/remotion-to-hyperframes/scripts/render_diff.sh",
 );
 const failures = [];
 

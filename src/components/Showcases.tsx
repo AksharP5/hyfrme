@@ -1,4 +1,3 @@
-import { mediaUrl } from "../media";
 import { useEffect, useRef } from "react";
 import type { Showcase } from "../showcases";
 import { showcases } from "../showcases";
@@ -18,7 +17,7 @@ function ShowcaseCard({ showcase }: { showcase: Showcase }) {
   const play = () => {
     const video = videoRef.current;
     if (!video) return;
-    const src = mediaUrl(showcase.previewUrl);
+    const src = showcase.previewUrl;
     if (video.getAttribute("src") !== src) video.src = src;
     void video.play().catch(() => undefined);
   };
@@ -123,7 +122,7 @@ export function ShowcaseDetailPage({ showcase }: { showcase: Showcase }) {
           playsInline
           preload="metadata"
           poster={showcase.posterUrl}
-          src={mediaUrl(showcase.previewUrl)}
+          src={showcase.previewUrl}
         />
       </div>
 

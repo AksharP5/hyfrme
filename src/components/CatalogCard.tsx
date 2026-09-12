@@ -1,4 +1,3 @@
-import { mediaUrl } from "../media";
 import { useState } from "react";
 import {
   type CatalogEntry,
@@ -33,7 +32,7 @@ export function CatalogCard({ entry }: CatalogCardProps) {
       <span className="catalog-card-preview">
         {previewing ? (
           <video
-            src={mediaUrl(`${previewRoot}/hyperframes.mp4`)}
+            src={`${previewRoot}/hyperframes.mp4`}
             poster={`${previewRoot}/thumbnail.png`}
             muted
             autoPlay

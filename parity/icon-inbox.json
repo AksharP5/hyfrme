@@ -28,14 +28,16 @@
   },
   "result": {
     "frameCount": 70,
-    "meanSsim": 0.994187,
-    "minSsim": 0.985957,
-    "p05Ssim": 0.988603,
-    "p95Ssim": 0.997344,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "exactRgba": true,
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "hyperframes": "0 errors, 0 warnings; installed fixture runtime and layout passed",
+    "installedThroughCli": true
   },
   "artifacts": {
     "remocnVideo": "public/previews/icon-inbox/remocn.mp4",
@@ -54,15 +56,34 @@
         "size": 384,
         "color": "#171717",
         "strokeWidth": 2
-      }
+      },
+      "renderScale": 1,
+      "fps": 30,
+      "durationInFrames": 70
     },
+    "measurement": "lossless-png",
     "result": {
       "frameCount": 70,
-      "meanSsim": 0.970517,
-      "minSsim": 0.811321,
-      "p05Ssim": 0.817521,
-      "p95Ssim": 0.998932,
+      "meanSsim": 1,
+      "minSsim": 1,
+      "p05Ssim": 1,
+      "p95Ssim": 1,
+      "exactRgba": true,
       "pass": true
+    },
+    "checks": {
+      "hyperframes": "0 errors, 0 warnings; installed fixture runtime and layout passed"
+    },
+    "artifacts": {
+      "summary": "parity/icon-inbox-showcase-diff/summary.json",
+      "ssim": "parity/icon-inbox-showcase-diff/ssim.log"
     }
+  },
+  "measurement": "lossless-png",
+  "verification": {
+    "sourceSha256": "80ecb432be053700ad62a02b2ec95c74778322a85945225cb19c72f550e739db",
+    "remotionVersion": "4.0.473",
+    "hyperframesVersion": "0.8.30",
+    "browser": "Google Chrome for Testing 152.0.7977.42"
   }
 }

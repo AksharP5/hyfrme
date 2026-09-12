@@ -1,4 +1,3 @@
-import { mediaUrl } from "../media";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { RegistryItem } from "../catalog";
 import { buildPreviewDocument, type CustomValues } from "../lib/customization";
@@ -121,7 +120,7 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
         <video
           ref={videoRef}
           aria-label={`${item.title} rendered preview with default settings`}
-          src={mediaUrl(`/previews/${item.name}/hyperframes.mp4`)}
+          src={`/previews/${item.name}/hyperframes.mp4`}
           poster={`/previews/${item.name}/thumbnail.png`}
           autoPlay
           loop

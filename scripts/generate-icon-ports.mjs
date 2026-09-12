@@ -429,6 +429,7 @@ for (const icon of icons) {
       strokeWidth: Number(variables.strokeWidth),
     };
 
+    window.__hyfrmeRenderers = window.__hyfrmeRenderers || {};
     window.__hyfrmeRenderFrame = (frame) => {
       __setHyfrmeFrame(frame, videoConfig);
       renderHyfrmeVNode(rootElement, ${componentName}(props));

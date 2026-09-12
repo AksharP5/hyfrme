@@ -120,9 +120,9 @@ export function hostedMedia() {
   let outputDirectory;
   return {
     name: "hosted-media",
-    apply: "build",
     config: () => ({ build: { copyPublicDir: false } }),
     async configResolved(config) {
+      if (config.command !== "build") return;
       publicDirectory = config.publicDir;
       outputDirectory = resolve(config.root, config.build.outDir);
       const files = await readMediaFiles(publicDirectory);
@@ -131,6 +131,16 @@ export function hostedMedia() {
         await readFile(resolve(root, "vercel.json"), "utf8"),
       );
       validateMedia(files, manifest, vercel.redirects);
+    },
+    async configurePreviewServer(server) {
+      const manifest = await readMediaManifest();
+      server.middlewares.use((request, response, next) => {
+        const path = new URL(request.url, "http://localhost").pathname;
+        const destination = manifest[path];
+        if (!destination) return next();
+        response.writeHead(307, { Location: destination });
+        response.end();
+      });
     },
     async writeBundle() {
       await copyPublicWithoutMedia(publicDirectory, outputDirectory);

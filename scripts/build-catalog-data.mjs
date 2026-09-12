@@ -1,5 +1,5 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { dirname, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const blocksDirectory = resolve(root, "registry", "blocks");
@@ -19,14 +19,7 @@ const entries = await Promise.all(
     const parity = await readJson(resolve(parityDirectory, `${name}.json`));
 
     return {
-      item: {
-        name: item.name,
-        title: item.title,
-        description: item.description,
-        tags: item.tags,
-        dimensions: item.dimensions,
-        duration: item.duration,
-      },
+      item,
       parity: {
         slug: parity.slug,
         origin: {
@@ -54,7 +47,18 @@ const entries = await Promise.all(
 );
 
 entries.sort((left, right) => left.item.title.localeCompare(right.item.title));
-const output = `${JSON.stringify(entries, null, 2)}\n`;
+const summaries = entries.map(({ item, parity }) => ({
+  item: {
+    name: item.name,
+    title: item.title,
+    description: item.description,
+    tags: item.tags,
+    dimensions: item.dimensions,
+    duration: item.duration,
+  },
+  sourceRepository: parity.origin.repository,
+}));
+const output = `${JSON.stringify(summaries, null, 2)}\n`;
 
 if (checking) {
   const current = await readFile(outputPath, "utf8").catch(() => "");
@@ -69,6 +73,18 @@ if (checking) {
 } else {
   await mkdir(resolve(root, "src", "generated"), { recursive: true });
   await writeFile(outputPath, output);
+  await Promise.all(
+    entries.map(async (entry) => {
+      const path = resolve(
+        root,
+        "public/registry/blocks",
+        entry.item.name,
+        "catalog.json",
+      );
+      await mkdir(dirname(path), { recursive: true });
+      await writeFile(path, `${JSON.stringify(entry)}\n`);
+    }),
+  );
   console.log(
     `Generated lightweight catalog data for ${entries.length} blocks.`,
   );

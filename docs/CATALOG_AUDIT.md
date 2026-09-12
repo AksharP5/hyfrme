@@ -14,13 +14,13 @@ components: 307 Remocn and 39 Snapcn. Removed upstream components
 | Pause and replay controls exercised  |        65 |
 | Customization and reset exercised    |        10 |
 | Three-sample frame comparisons       |       990 |
-| Samples at or above 0.95 SSIM        | 989 / 990 |
+| Samples at or above 0.95 SSIM        | 990 / 990 |
 | Transition-boundary comparisons      |        16 |
 | Additional template seek comparisons |        15 |
-| Backwards seeks                      |        24 |
+| Backwards seeks                      |        27 |
 
-The sampled SSIM mean is **0.997346**. The minimum is **0.928461** for
-`icon-inbox`, frame 35. Different reference formats and normalization make the
+The sampled SSIM mean is **0.997419**. The minimum is **0.951296** for
+`icon-mail`, frame 37. Different reference formats and normalization make the
 aggregate mean descriptive; it is not an additional port acceptance threshold.
 Full-frame port verification remains recorded in each `parity/<slug>.json`.
 
@@ -59,10 +59,12 @@ exceeded 0.95 SSIM: mean **0.997297**, minimum **0.967479**.
 
 ## Limits
 
-Three sampled frames cannot establish full-duration parity. The existing
-`icon-inbox` 384px showcase has full-frame mean SSIM **0.970517** and minimum
-**0.811321**; its installed 48px fixture has mean **0.994187**. The browser result
-preserves the observed mismatch instead of treating every sample as passing.
+Three sampled frames cannot establish full-duration parity. Inbox additionally
+passes all 70 browser frames against native 384px lossless references, plus
+three identical backward seeks. Its former mismatch came from rendering the
+48px reference at 8× scale, which incorrectly amplified CSS pixel motion.
+The corrected reference and installed 48px/384px fixtures match every frame
+exactly. Other icon browser comparisons retain their recorded video references.
 
 The 16 components requiring HTML-in-canvas display their verified default
 HyperFrames render in ordinary Chrome. The audit checked playback, pausing,

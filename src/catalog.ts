@@ -6,14 +6,7 @@ export type RegistryFile = {
 
 import catalogData from "./generated/catalog-data.json";
 
-export type RegistrySummary = {
-  name: string;
-  title: string;
-  description: string;
-  tags: string[];
-  dimensions: { width: number; height: number };
-  duration: number;
-};
+export type RegistrySummary = (typeof catalogData)[number]["item"];
 
 export type RegistryItem = RegistrySummary & {
   files: RegistryFile[];
@@ -47,9 +40,8 @@ export type CatalogSource = (typeof catalogSources)[number];
 
 export type CatalogEntry = {
   item: RegistrySummary;
-  parity: ParitySummary;
   source: CatalogSource;
-  loadItem: () => Promise<RegistryItem>;
+  loadDetails: () => Promise<{ item: RegistryItem; parity: ParitySummary }>;
   loadSource: () => Promise<string>;
 };
 
@@ -807,30 +799,24 @@ async function fetchRequired(path: string) {
   return response;
 }
 
-export const catalog = (
-  catalogData as Array<{
-    item: RegistrySummary;
-    parity: ParitySummary;
-  }>
-)
-  .map(({ item, parity }) => {
+export const catalog: CatalogEntry[] = catalogData
+  .map(({ item, sourceRepository }) => {
     const blockRoot = `/registry/blocks/${encodeURIComponent(item.name)}`;
     const source = catalogSources.find(
-      (candidate) => candidate.repository === parity.origin.repository,
+      (candidate) => candidate.repository === sourceRepository,
     );
     if (!source) {
       throw new Error(
-        `Unknown source repository for ${item.name}: ${parity.origin.repository}`,
+        `Unknown source repository for ${item.name}: ${sourceRepository}`,
       );
     }
     return {
       item,
-      parity,
       source,
-      loadItem: async () =>
+      loadDetails: async () =>
         (await (
-          await fetchRequired(`${blockRoot}/registry-item.json`)
-        ).json()) as RegistryItem,
+          await fetchRequired(`${blockRoot}/catalog.json`)
+        ).json()) as Awaited<ReturnType<CatalogEntry["loadDetails"]>>,
       loadSource: async () =>
         (await fetchRequired(`${blockRoot}/${item.name}.html`)).text(),
     };
