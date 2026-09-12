@@ -11,6 +11,7 @@ import { tmpdir } from "node:os";
 import { dirname, resolve } from "node:path";
 import test from "node:test";
 import { mediaContent } from "./encode-media.mjs";
+import { frameRateArgument } from "./frame-rate.mjs";
 import {
   blobPath,
   copyPublicWithoutMedia,
@@ -19,6 +20,14 @@ import {
   readMediaManifest,
   validateMedia,
 } from "./media.mjs";
+
+test("render and encoder arguments preserve exact source frame rates", () => {
+  assert.equal(frameRateArgument(60), "60");
+  assert.equal(frameRateArgument(60000 / 1001), "60000/1001");
+  for (const fps of [59.94, 0, Infinity, NaN]) {
+    assert.throws(() => frameRateArgument(fps), /Unsupported frame rate/);
+  }
+});
 
 async function fixture(t) {
   const directory = await mkdtemp(resolve(tmpdir(), "hyfrme-media-"));

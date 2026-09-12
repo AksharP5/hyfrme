@@ -1,23 +1,25 @@
 # Catalog browser audit
 
-Checked September 9, 2026 with Chrome Headless Shell 152.0.7977.42.
-[Per-component results](../catalog/browser-audit.json) cover all 341 catalog
-components: 302 Remocn and 39 Snapcn. Removed upstream components
+Checked September 9, 2026; extended September 12 with Chrome for Testing
+152.0.7977.42.
+[Per-component results](../catalog/browser-audit.json) cover all 346 catalog
+components: 307 Remocn and 39 Snapcn. Removed upstream components
 `progress-steps` and `data-flow-pipes` are excluded.
 
-| Check                               |  Coverage |
-| ----------------------------------- | --------: |
-| Preview starts and advances         | 341 / 341 |
-| Live iframe previews                |       325 |
-| Rendered default previews           |        16 |
-| Pause and replay controls exercised |        60 |
-| Customization and reset exercised   |         5 |
-| Three-sample frame comparisons      |       975 |
-| Samples at or above 0.95 SSIM       | 974 / 975 |
-| Transition-boundary comparisons     |        16 |
-| Backwards seeks                     |        14 |
+| Check                                |  Coverage |
+| ------------------------------------ | --------: |
+| Preview starts and advances          | 346 / 346 |
+| Live iframe previews                 |       330 |
+| Rendered default previews            |        16 |
+| Pause and replay controls exercised  |        65 |
+| Customization and reset exercised    |        10 |
+| Three-sample frame comparisons       |       990 |
+| Samples at or above 0.95 SSIM        | 989 / 990 |
+| Transition-boundary comparisons      |        16 |
+| Additional template seek comparisons |        15 |
+| Backwards seeks                      |        24 |
 
-The sampled SSIM mean is **0.997306**. The minimum is **0.928461** for
+The sampled SSIM mean is **0.997346**. The minimum is **0.928461** for
 `icon-inbox`, frame 35. Different reference formats and normalization make the
 aggregate mean descriptive; it is not an additional port acceptance threshold.
 Full-frame port verification remains recorded in each `parity/<slug>.json`.
@@ -44,6 +46,12 @@ seven backwards seeks. Each component's autoplay, Pause, Replay, customization,
 and Reset were exercised at website size. Customization changes pixels; Reset
 restores the identical default image.
 
+The five templates at `7fa2db1cd29dfb36743e54e3d078dd9107c879a2` add 15
+canonical samples and 15 final/middle/first-frame seek comparisons, with a minimum SSIM of
+**0.999986**. All five also pass autoplay, Pause, Replay, accent-color edits,
+and exact-image Reset checks. Their full-duration export results cover
+7,550 frames separately; the website samples do not replace those checks.
+
 Snapcn comparisons used pinned upstream lossless PNGs, with transparency
 composited over the actual preview background. Playback controls were checked
 at website size before resizing for comparison. The 117 Snapcn samples all
@@ -61,7 +69,7 @@ HyperFrames render in ordinary Chrome. The audit checked playback, pausing,
 resumption through Replay, and the default-settings notice. It does not claim
 live customization or new browser SSIM measurements for these fallbacks.
 
-The five newest checks used a local production preview server. Its Vercel
+The ten latest checks used a local production preview server. Its Vercel
 analytics and speed-insights endpoints return 404 because those routes require
 Vercel hosting. These responses and navigation-cancelled requests are recorded
 separately from component errors.
@@ -80,7 +88,7 @@ separately from component errors.
 - Corrected showcase fonts and a one-frame clock error, and removed shadcn's
   unavailable avatar request while preserving its initials fallback. All six
   films pass the full HyperFrames check and 7,058 frame comparisons.
-- The five newest Remocn ports pass the full HyperFrames check with all 594 RGB
+- The five `e3dc260` Remocn ports pass the full HyperFrames check with all 594 RGB
   frames and alpha channels exactly matching their pinned references.
 
 Additional browser checks cover visible autoplay errors, recovery through a

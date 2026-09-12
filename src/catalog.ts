@@ -457,7 +457,15 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "product-showcases",
         label: "Product Showcases",
-        slugs: ["live-code-compilation", "snapcn-hero-launch"],
+        slugs: [
+          "live-code-compilation",
+          "snapcn-hero-launch",
+          "release-teaser",
+          "brand-guidelines",
+          "workflow-console",
+          "launch-anything",
+          "fomo-limit-orders",
+        ],
       },
       {
         id: "galleries",

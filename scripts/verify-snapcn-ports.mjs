@@ -11,6 +11,7 @@ import {
 } from "node:fs/promises";
 import { extname, resolve, sep } from "node:path";
 import { compareAlphaFrames } from "./snapcn-alpha.mjs";
+import { frameRateArgument } from "./frame-rate.mjs";
 const args = process.argv.slice(2);
 const profileIndex = args.indexOf("--source-profile");
 const profile = profileIndex === -1 ? "snapcn" : args[profileIndex + 1];
@@ -161,7 +162,7 @@ async function encode(directory, output, fixture) {
     "error",
     "-y",
     "-framerate",
-    String(fixture.fps),
+    frameRateArgument(fixture.fps),
     "-pattern_type",
     "glob",
     "-i",
@@ -252,7 +253,7 @@ try {
       const duration = fixture.durationInFrames / fixture.fps;
       await writeFile(
         resolve(project, "index.html"),
-        `<!doctype html><html lang="en"><head><meta charset="UTF-8"><script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script><style>html,body{margin:0;width:${fixture.width}px;height:${fixture.height}px;overflow:hidden}#root,#scene{position:absolute;inset:0}</style></head><body><div id="root" data-composition-id="verify-${slug}" data-no-timeline data-start="0" data-duration="${duration}" data-width="${fixture.width}" data-height="${fixture.height}" data-fps="${fixture.fps}"><div id="scene" class="clip" data-composition-id="${slug}" data-composition-src="compositions/${slug}.html" data-start="0" data-duration="${duration}" data-track-index="1" data-width="${fixture.width}" data-height="${fixture.height}"></div></div></body></html>\n`,
+        `<!doctype html><html lang="en"><head><meta charset="UTF-8"><script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script><style>html,body{margin:0;width:${fixture.width}px;height:${fixture.height}px;overflow:hidden}#root,#scene{position:absolute;inset:0}</style></head><body><div id="root" data-composition-id="verify-${slug}" data-no-timeline data-start="0" data-duration="${duration}" data-width="${fixture.width}" data-height="${fixture.height}" data-fps="${frameRateArgument(fixture.fps)}"><div id="scene" class="clip" data-composition-id="${slug}" data-composition-src="compositions/${slug}.html" data-start="0" data-duration="${duration}" data-track-index="1" data-width="${fixture.width}" data-height="${fixture.height}"></div></div></body></html>\n`,
       );
       const check = await run(
         "npx",
@@ -312,13 +313,13 @@ try {
           "-loglevel",
           "error",
           "-framerate",
-          String(fixture.fps),
+          frameRateArgument(fixture.fps),
           "-pattern_type",
           "glob",
           "-i",
           resolve(referenceFrames, "*.png"),
           "-framerate",
-          String(fixture.fps),
+          frameRateArgument(fixture.fps),
           "-pattern_type",
           "glob",
           "-i",

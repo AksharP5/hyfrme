@@ -4,17 +4,17 @@
   "browser": "Chrome Headless Shell 152.0.7977.42",
   "scope": "Catalog component pages, pinned fixture inputs; sampled browser comparison supplements full-frame parity/<slug>.json.",
   "summary": {
-    "components": 341,
+    "components": 346,
     "bySource": {
-      "remocn": 302,
+      "remocn": 307,
       "snapcn": 39
     },
-    "livePreviews": 325,
+    "livePreviews": 330,
     "renderedDefaultPreviews": 16,
-    "autoplayChecks": 341,
-    "pauseAndReplayChecks": 60,
-    "sampleComparisons": 975,
-    "meanSampleSsim": 0.997306,
+    "autoplayChecks": 346,
+    "pauseAndReplayChecks": 65,
+    "sampleComparisons": 990,
+    "meanSampleSsim": 0.997346,
     "minSampleSsim": 0.928461,
     "samplesBelow095": [
       {
@@ -23,10 +23,12 @@
         "ssim": 0.928461
       }
     ],
-    "customizationAndResetChecks": 5,
+    "customizationAndResetChecks": 10,
     "transitionBoundaryComparisons": 16,
-    "backwardSeekChecks": 14,
-    "minTransitionBoundarySsim": 1
+    "backwardSeekChecks": 24,
+    "minTransitionBoundarySsim": 1,
+    "additionalSeekComparisons": 15,
+    "minSeekComparisonSsim": 1
   },
   "profiles": {
     "remocn-video": "Live iframe, autoplay and page/request errors checked. Three frames at floor(durationInFrames * p), p = 0.2, 0.5, 0.8, compared with pinned reference MP4 frames. Canonical fixture dimensions, website scale/filter removed, fixture background applied. Shader Color Panels uses hardware WebGL.",
@@ -34,7 +36,8 @@
     "remocn-same-browser-png": "Remocn live iframe checks plus three PNG comparisons against pinned upstream rendered in the same browser, avoiding differences between browser/GPU shader implementations.",
     "snapcn-png": "Live iframe autoplay, pause, replay, images, media readiness and page/console/HTTP/request errors checked. Three pinned upstream lossless PNG frames at floor((durationInFrames - 1) * p), p = 0.2, 0.5, 0.8. Seek (frame + 0.1) / fps avoids previous-video-frame rounding. Canonical dimensions after controls checked at website size; reference alpha composited over the iframe background.",
     "rendered-defaults": "Ordinary Chrome lacks the required HTML-in-canvas API. Verified HyperFrames default render played in the catalog video element; autoplay, pause, replay and default-settings notice checked. No live customization or new browser SSIM claim.",
-    "remocn-lossless-png": "Five additions at e3dc260ff1965440d1f64fb65a8c9a9373e78328. Actual catalog iframe autoplay, Pause, Replay, customizer edits and Reset checked at website size. Customizations change pixels; Reset restores identical pixels. Three canonical-size samples at floor(durationInFrames * p), p = 0.2, 0.5, 0.8, compared with pinned lossless reference PNGs using NVIDIA ANGLE gl-egl, sRGB and source font-render-hinting flags. Reference alpha is composited over the fixture background; website scaling and controls are removed for comparison. Both transitions additionally compare eight boundary seeks, seven backwards. Navigation-cancelled requests and local Vercel telemetry 404s are recorded separately from component failures."
+    "remocn-lossless-png": "Five additions at e3dc260ff1965440d1f64fb65a8c9a9373e78328. Actual catalog iframe autoplay, Pause, Replay, customizer edits and Reset checked at website size. Customizations change pixels; Reset restores identical pixels. Three canonical-size samples at floor(durationInFrames * p), p = 0.2, 0.5, 0.8, compared with pinned lossless reference PNGs using NVIDIA ANGLE gl-egl, sRGB and source font-render-hinting flags. Reference alpha is composited over the fixture background; website scaling and controls are removed for comparison. Both transitions additionally compare eight boundary seeks, seven backwards. Navigation-cancelled requests and local Vercel telemetry 404s are recorded separately from component failures.",
+    "remocn-template-png": "Five templates at 7fa2db1cd29dfb36743e54e3d078dd9107c879a2, checked September 12. Actual catalog iframe autoplay, Pause, Replay, accent color edits and Reset at website size. Edits change pixels; Reset restores identical pixels. Three canonical-size samples at 20%, 50%, and 80% plus final/middle/first frame seeks compared with pinned lossless reference PNGs. Native timeline seeks use the authored fps. NVIDIA ANGLE gl-egl, sRGB and source font-render-hinting flags; reference alpha composited over the fixture background. Navigation-cancelled requests and local Vercel telemetry 404s recorded separately."
   },
   "limitations": [
     "Only listed checks were performed; omitted fields mean unmeasured, not zero.",
@@ -288,6 +291,68 @@
         {
           "frame": 48,
           "ssim": 0.999571
+        }
+      ]
+    },
+    {
+      "slug": "brand-guidelines",
+      "source": "remocn",
+      "profile": "remocn-template-png",
+      "checkedDate": "2026-09-12",
+      "controls": ["autoplay", "pause", "replay", "customization", "reset"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 3,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "cancelledRequests": 2,
+      "localTelemetryErrors": [
+        {
+          "status": 404,
+          "path": "/_vercel/insights/script.js"
+        },
+        {
+          "status": 404,
+          "path": "/_vercel/speed-insights/script.js"
+        }
+      ],
+      "customization": {
+        "variable": "accentColor",
+        "value": "#d93075",
+        "changedPixels": true,
+        "resetRestoresPixels": true
+      },
+      "samples": [
+        {
+          "frame": 214,
+          "ssim": 1
+        },
+        {
+          "frame": 536,
+          "ssim": 1
+        },
+        {
+          "frame": 857,
+          "ssim": 1
+        }
+      ],
+      "seekComparisons": [
+        {
+          "frame": 1071,
+          "ssim": 1,
+          "direction": "forward"
+        },
+        {
+          "frame": 536,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 0,
+          "ssim": 1,
+          "direction": "backward"
         }
       ]
     },
@@ -1152,6 +1217,68 @@
         {
           "frame": 72,
           "ssim": 0.999994
+        }
+      ]
+    },
+    {
+      "slug": "fomo-limit-orders",
+      "source": "remocn",
+      "profile": "remocn-template-png",
+      "checkedDate": "2026-09-12",
+      "controls": ["autoplay", "pause", "replay", "customization", "reset"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "cancelledRequests": 2,
+      "localTelemetryErrors": [
+        {
+          "status": 404,
+          "path": "/_vercel/insights/script.js"
+        },
+        {
+          "status": 404,
+          "path": "/_vercel/speed-insights/script.js"
+        }
+      ],
+      "customization": {
+        "variable": "accentColor",
+        "value": "#d93075",
+        "changedPixels": true,
+        "resetRestoresPixels": true
+      },
+      "samples": [
+        {
+          "frame": 221,
+          "ssim": 1
+        },
+        {
+          "frame": 554,
+          "ssim": 1
+        },
+        {
+          "frame": 886,
+          "ssim": 1
+        }
+      ],
+      "seekComparisons": [
+        {
+          "frame": 1107,
+          "ssim": 1,
+          "direction": "forward"
+        },
+        {
+          "frame": 554,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 0,
+          "ssim": 1,
+          "direction": "backward"
         }
       ]
     },
@@ -3929,6 +4056,68 @@
       ]
     },
     {
+      "slug": "launch-anything",
+      "source": "remocn",
+      "profile": "remocn-template-png",
+      "checkedDate": "2026-09-12",
+      "controls": ["autoplay", "pause", "replay", "customization", "reset"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 4,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "cancelledRequests": 2,
+      "localTelemetryErrors": [
+        {
+          "status": 404,
+          "path": "/_vercel/insights/script.js"
+        },
+        {
+          "status": 404,
+          "path": "/_vercel/speed-insights/script.js"
+        }
+      ],
+      "customization": {
+        "variable": "accentColor",
+        "value": "#d93075",
+        "changedPixels": true,
+        "resetRestoresPixels": true
+      },
+      "samples": [
+        {
+          "frame": 320,
+          "ssim": 0.999986
+        },
+        {
+          "frame": 800,
+          "ssim": 1
+        },
+        {
+          "frame": 1280,
+          "ssim": 1
+        }
+      ],
+      "seekComparisons": [
+        {
+          "frame": 1599,
+          "ssim": 1,
+          "direction": "forward"
+        },
+        {
+          "frame": 800,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 0,
+          "ssim": 1,
+          "direction": "backward"
+        }
+      ]
+    },
+    {
       "slug": "lens-zoom",
       "source": "remocn",
       "profile": "remocn-video",
@@ -4609,6 +4798,68 @@
         {
           "frame": 128,
           "ssim": 0.985441
+        }
+      ]
+    },
+    {
+      "slug": "release-teaser",
+      "source": "remocn",
+      "profile": "remocn-template-png",
+      "checkedDate": "2026-09-12",
+      "controls": ["autoplay", "pause", "replay", "customization", "reset"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "cancelledRequests": 2,
+      "localTelemetryErrors": [
+        {
+          "status": 404,
+          "path": "/_vercel/insights/script.js"
+        },
+        {
+          "status": 404,
+          "path": "/_vercel/speed-insights/script.js"
+        }
+      ],
+      "customization": {
+        "variable": "accentColor",
+        "value": "#d93075",
+        "changedPixels": true,
+        "resetRestoresPixels": true
+      },
+      "samples": [
+        {
+          "frame": 192,
+          "ssim": 1
+        },
+        {
+          "frame": 480,
+          "ssim": 1
+        },
+        {
+          "frame": 768,
+          "ssim": 1
+        }
+      ],
+      "seekComparisons": [
+        {
+          "frame": 959,
+          "ssim": 1,
+          "direction": "forward"
+        },
+        {
+          "frame": 480,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 0,
+          "ssim": 1,
+          "direction": "backward"
         }
       ]
     },
@@ -7721,7 +7972,35 @@
           "frame": 60,
           "ssim": 0.999228
         }
-      ]
+      ],
+      "unicodeTyping": {
+        "checkedDate": "2026-09-12",
+        "originCommit": "7fa2db1cd29dfb36743e54e3d078dd9107c879a2",
+        "initialCharacterComplete": true,
+        "samples": [
+          {
+            "frame": 0,
+            "text": "𝐀"
+          },
+          {
+            "frame": 5,
+            "text": "𝐀"
+          },
+          {
+            "frame": 10,
+            "text": "𝐀 "
+          },
+          {
+            "frame": 20,
+            "text": "𝐀 B "
+          },
+          {
+            "frame": 30,
+            "text": "𝐀 B C"
+          }
+        ],
+        "allWellFormed": true
+      }
     },
     {
       "slug": "typewriter",
@@ -7952,6 +8231,68 @@
       ]
     },
     {
+      "slug": "workflow-console",
+      "source": "remocn",
+      "profile": "remocn-template-png",
+      "checkedDate": "2026-09-12",
+      "controls": ["autoplay", "pause", "replay", "customization", "reset"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "cancelledRequests": 2,
+      "localTelemetryErrors": [
+        {
+          "status": 404,
+          "path": "/_vercel/insights/script.js"
+        },
+        {
+          "status": 404,
+          "path": "/_vercel/speed-insights/script.js"
+        }
+      ],
+      "customization": {
+        "variable": "accentColor",
+        "value": "#d93075",
+        "changedPixels": true,
+        "resetRestoresPixels": true
+      },
+      "samples": [
+        {
+          "frame": 562,
+          "ssim": 1
+        },
+        {
+          "frame": 1405,
+          "ssim": 1
+        },
+        {
+          "frame": 2248,
+          "ssim": 1
+        }
+      ],
+      "seekComparisons": [
+        {
+          "frame": 2809,
+          "ssim": 1,
+          "direction": "forward"
+        },
+        {
+          "frame": 1405,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 0,
+          "ssim": 1,
+          "direction": "backward"
+        }
+      ]
+    },
+    {
       "slug": "x-follow-card",
       "source": "remocn",
       "profile": "remocn-video",
@@ -8047,5 +8388,6 @@
         }
       ]
     }
-  ]
+  ],
+  "updatedDate": "2026-09-12"
 }

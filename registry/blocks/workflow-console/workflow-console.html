@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"productName","type":"string","label":"Product name in the opening title","default":"Workflow Console"},{"id":"accentColor","type":"color","label":"Result highlights and performance bars","default":"#8ed8f8"},{"id":"backgroundColor","type":"color","label":"Main background","default":"#0e1b2b"}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+/* inter-latin-400-normal */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(../assets/remocn-templates-7fa2db1/fonts/inter/files/inter-latin-400-normal.woff2) format('woff2'), url(../assets/remocn-templates-7fa2db1/fonts/inter/files/inter-latin-400-normal.woff) format('woff');
+}
+/* roboto-mono-latin-400-normal */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(../assets/remocn-templates-7fa2db1/fonts/roboto-mono/files/roboto-mono-latin-400-normal.woff2) format('woff2'), url(../assets/remocn-templates-7fa2db1/fonts/roboto-mono/files/roboto-mono-latin-400-normal.woff) format('woff');
+}
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; margin: 0; overflow: hidden; background: transparent; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:transparent; }
+      #hyfrme-source-root, #hyfrme-source-root * { text-rendering: auto; }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="workflow-console" data-start="0" data-duration="46.833333333333336" data-fps="60" data-width="1920" data-height="1080">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="46.833333333333336" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{"https://cdn.jsdelivr.net/npm/@fontsource/inter@5.3.0/latin-400.css":"../assets/remocn-templates-7fa2db1/fonts/inter/latin-400.css","https://cdn.jsdelivr.net/npm/@fontsource/inter@5.3.0/files/inter-latin-400-normal.woff":"../assets/remocn-templates-7fa2db1/fonts/inter/files/inter-latin-400-normal.woff","https://cdn.jsdelivr.net/npm/@fontsource/inter@5.3.0/files/inter-latin-400-normal.woff2":"../assets/remocn-templates-7fa2db1/fonts/inter/files/inter-latin-400-normal.woff2","https://cdn.jsdelivr.net/npm/@fontsource/roboto-mono@5.3.0/latin-400.css":"../assets/remocn-templates-7fa2db1/fonts/roboto-mono/latin-400.css","https://cdn.jsdelivr.net/npm/@fontsource/roboto-mono@5.3.0/files/roboto-mono-latin-400-normal.woff":"../assets/remocn-templates-7fa2db1/fonts/roboto-mono/files/roboto-mono-latin-400-normal.woff","https://cdn.jsdelivr.net/npm/@fontsource/roboto-mono@5.3.0/files/roboto-mono-latin-400-normal.woff2":"../assets/remocn-templates-7fa2db1/fonts/roboto-mono/files/roboto-mono-latin-400-normal.woff2","/assets/remocn-templates-7fa2db1/fonts/inter/latin-400.css":"../assets/remocn-templates-7fa2db1/fonts/inter/latin-400.css","/assets/remocn-templates-7fa2db1/fonts/inter/files/inter-latin-400-normal.woff":"../assets/remocn-templates-7fa2db1/fonts/inter/files/inter-latin-400-normal.woff","/assets/remocn-templates-7fa2db1/fonts/inter/files/inter-latin-400-normal.woff2":"../assets/remocn-templates-7fa2db1/fonts/inter/files/inter-latin-400-normal.woff2","/assets/remocn-templates-7fa2db1/fonts/roboto-mono/latin-400.css":"../assets/remocn-templates-7fa2db1/fonts/roboto-mono/latin-400.css","/assets/remocn-templates-7fa2db1/fonts/roboto-mono/files/roboto-mono-latin-400-normal.woff":"../assets/remocn-templates-7fa2db1/fonts/roboto-mono/files/roboto-mono-latin-400-normal.woff","/assets/remocn-templates-7fa2db1/fonts/roboto-mono/files/roboto-mono-latin-400-normal.woff2":"../assets/remocn-templates-7fa2db1/fonts/roboto-mono/files/roboto-mono-latin-400-normal.woff2","/assets/remocn-templates-7fa2db1/Natural-Earth-NOTICE.txt":"../assets/remocn-templates-7fa2db1/Natural-Earth-NOTICE.txt"}'></div>
+      </div>
+    </div>
+    <script src="./workflow-console.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="workflow-console"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="workflow-console"] [data-hyfrme-clock]', {
+        frame: 2810,
+        duration: 46.833333333333336,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(2809, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["workflow-console"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

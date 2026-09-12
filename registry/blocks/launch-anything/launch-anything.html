@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"opening","type":"string","label":"First chrome word","default":"Good"},{"id":"subject","type":"string","label":"Second chrome word","default":"ideas"},{"id":"brandUrl","type":"string","label":"Closing website address","default":"yourproduct.example"},{"id":"accentColor","type":"color","label":"Product interface accent","default":"#245744"}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+/* manrope-latin-400-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-400-normal.woff2) format('woff2'), url(../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-400-normal.woff) format('woff');
+}
+/* manrope-latin-500-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-500-normal.woff2) format('woff2'), url(../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-500-normal.woff) format('woff');
+}
+/* manrope-latin-600-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-600-normal.woff2) format('woff2'), url(../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-600-normal.woff) format('woff');
+}
+/* manrope-latin-700-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-700-normal.woff2) format('woff2'), url(../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-700-normal.woff) format('woff');
+}
+/* manrope-latin-800-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src: url(../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-800-normal.woff2) format('woff2'), url(../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-800-normal.woff) format('woff');
+}
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; margin: 0; overflow: hidden; background: transparent; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:transparent; }
+      #hyfrme-source-root, #hyfrme-source-root * { text-rendering: auto; }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="launch-anything" data-start="0" data-duration="26.666666666666668" data-fps="60" data-width="1920" data-height="1080">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="26.666666666666668" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{"https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.2.8/latin-400.css":"../assets/remocn-templates-7fa2db1/fonts/manrope/latin-400.css","https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.2.8/latin-500.css":"../assets/remocn-templates-7fa2db1/fonts/manrope/latin-500.css","https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.2.8/latin-600.css":"../assets/remocn-templates-7fa2db1/fonts/manrope/latin-600.css","https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.2.8/latin-700.css":"../assets/remocn-templates-7fa2db1/fonts/manrope/latin-700.css","https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.2.8/latin-800.css":"../assets/remocn-templates-7fa2db1/fonts/manrope/latin-800.css","https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.2.8/files/manrope-latin-400-normal.woff":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-400-normal.woff","https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.2.8/files/manrope-latin-400-normal.woff2":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-400-normal.woff2","https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.2.8/files/manrope-latin-500-normal.woff":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-500-normal.woff","https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.2.8/files/manrope-latin-500-normal.woff2":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-500-normal.woff2","https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.2.8/files/manrope-latin-600-normal.woff":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-600-normal.woff","https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.2.8/files/manrope-latin-600-normal.woff2":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-600-normal.woff2","https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.2.8/files/manrope-latin-700-normal.woff":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-700-normal.woff","https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.2.8/files/manrope-latin-700-normal.woff2":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-700-normal.woff2","https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.2.8/files/manrope-latin-800-normal.woff":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-800-normal.woff","https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.2.8/files/manrope-latin-800-normal.woff2":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-800-normal.woff2","https://raw.githubusercontent.com/Remocn/remocn/7fa2db1cd29dfb36743e54e3d078dd9107c879a2/public/templates/product-showcase/workbench.jpg":"../assets/remocn-templates-7fa2db1/images/product-showcase/workbench.jpg","workbench.jpg":"../assets/remocn-templates-7fa2db1/images/product-showcase/workbench.jpg","https://raw.githubusercontent.com/Remocn/remocn/7fa2db1cd29dfb36743e54e3d078dd9107c879a2/public/templates/product-showcase/gallery.jpg":"../assets/remocn-templates-7fa2db1/images/product-showcase/gallery.jpg","gallery.jpg":"../assets/remocn-templates-7fa2db1/images/product-showcase/gallery.jpg","https://raw.githubusercontent.com/Remocn/remocn/7fa2db1cd29dfb36743e54e3d078dd9107c879a2/public/templates/product-showcase/sculpture.jpg":"../assets/remocn-templates-7fa2db1/images/product-showcase/sculpture.jpg","sculpture.jpg":"../assets/remocn-templates-7fa2db1/images/product-showcase/sculpture.jpg","https://raw.githubusercontent.com/Remocn/remocn/7fa2db1cd29dfb36743e54e3d078dd9107c879a2/public/templates/product-showcase/courtyard.jpg":"../assets/remocn-templates-7fa2db1/images/product-showcase/courtyard.jpg","courtyard.jpg":"../assets/remocn-templates-7fa2db1/images/product-showcase/courtyard.jpg","/assets/remocn-templates-7fa2db1/fonts/manrope/latin-400.css":"../assets/remocn-templates-7fa2db1/fonts/manrope/latin-400.css","/assets/remocn-templates-7fa2db1/fonts/manrope/latin-500.css":"../assets/remocn-templates-7fa2db1/fonts/manrope/latin-500.css","/assets/remocn-templates-7fa2db1/fonts/manrope/latin-600.css":"../assets/remocn-templates-7fa2db1/fonts/manrope/latin-600.css","/assets/remocn-templates-7fa2db1/fonts/manrope/latin-700.css":"../assets/remocn-templates-7fa2db1/fonts/manrope/latin-700.css","/assets/remocn-templates-7fa2db1/fonts/manrope/latin-800.css":"../assets/remocn-templates-7fa2db1/fonts/manrope/latin-800.css","/assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-400-normal.woff":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-400-normal.woff","/assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-400-normal.woff2":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-400-normal.woff2","/assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-500-normal.woff":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-500-normal.woff","/assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-500-normal.woff2":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-500-normal.woff2","/assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-600-normal.woff":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-600-normal.woff","/assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-600-normal.woff2":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-600-normal.woff2","/assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-700-normal.woff":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-700-normal.woff","/assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-700-normal.woff2":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-700-normal.woff2","/assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-800-normal.woff":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-800-normal.woff","/assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-800-normal.woff2":"../assets/remocn-templates-7fa2db1/fonts/manrope/files/manrope-latin-800-normal.woff2","/assets/remocn-templates-7fa2db1/provenance/product-showcase-assets.md":"../assets/remocn-templates-7fa2db1/provenance/product-showcase-assets.md","/assets/remocn-templates-7fa2db1/images/product-showcase/workbench.jpg":"../assets/remocn-templates-7fa2db1/images/product-showcase/workbench.jpg","/assets/remocn-templates-7fa2db1/images/product-showcase/gallery.jpg":"../assets/remocn-templates-7fa2db1/images/product-showcase/gallery.jpg","/assets/remocn-templates-7fa2db1/images/product-showcase/sculpture.jpg":"../assets/remocn-templates-7fa2db1/images/product-showcase/sculpture.jpg","/assets/remocn-templates-7fa2db1/images/product-showcase/courtyard.jpg":"../assets/remocn-templates-7fa2db1/images/product-showcase/courtyard.jpg"}'></div>
+      </div>
+    </div>
+    <script src="./launch-anything.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="launch-anything"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="launch-anything"] [data-hyfrme-clock]', {
+        frame: 1600,
+        duration: 26.666666666666668,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(1599, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["launch-anything"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

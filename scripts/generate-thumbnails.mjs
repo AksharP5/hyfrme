@@ -11,13 +11,17 @@ const iconFixtures = JSON.parse(
 );
 const iconNames = new Set(iconFixtures.map((entry) => entry.slug));
 const representativeTimes = new Map([
+  ["brand-guidelines", 12.12],
   ["displacement", 1.2],
   ["ember-burn", 1.33],
   ["fog-rise", 1.5],
+  ["fomo-limit-orders", 13.3],
   ["glitch-cut", 1.3],
   ["grid-wave", 1.4],
+  ["launch-anything", 13.3],
   ["outline-fill-track-text", 1.5],
   ["particle-dissolve", 1.4],
+  ["release-teaser", 11.6],
   ["rush-type", 1.1],
   ["shadow-sweep-text", 0.83],
   ["sheen-slide-in", 0.8],
@@ -29,6 +33,7 @@ const representativeTimes = new Map([
   ["stage", 5],
   ["tv-power-off", 1.2],
   ["typed-split-wipe", 1.5],
+  ["workflow-console", 23.4],
   ["zoom-words", 0.8],
 ]);
 const onlyIndex = process.argv.indexOf("--only");

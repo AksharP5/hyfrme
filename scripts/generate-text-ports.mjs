@@ -10,6 +10,7 @@ import {
 import { basename, dirname, relative, resolve } from "node:path";
 import { frameMathSource, remocnMitBanner } from "./hyfrme-frame-math.mjs";
 import { readRemocnRegistry } from "./remocn-registry.mjs";
+import { frameRateArgument } from "./frame-rate.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const upstream = resolve(root, process.env.REMOCN_SOURCE ?? ".work/remocn");
@@ -29,8 +30,14 @@ await copyFile(
   resolve(root, "fixtures/remocn/stage-example.tsx"),
   resolve(upstream, "components/docs/examples/hyfrme-stage-example.tsx"),
 );
-const asciiRenderWrapperPath = resolve(upstream, "components/docs/examples/hyfrme-ascii-render-example.tsx");
-await copyFile(resolve(root, "fixtures/remocn/ascii-render-example.tsx"), asciiRenderWrapperPath);
+const asciiRenderWrapperPath = resolve(
+  upstream,
+  "components/docs/examples/hyfrme-ascii-render-example.tsx",
+);
+await copyFile(
+  resolve(root, "fixtures/remocn/ascii-render-example.tsx"),
+  asciiRenderWrapperPath,
+);
 const upstreamRegistry = await readRemocnRegistry(upstream);
 const upstreamCommit = execFileSync(
   "git",
@@ -42,6 +49,7 @@ const additionManifests = await Promise.all(
     "remocn-additions",
     "remocn-additions-2026-09-09",
     "remocn-additions-e3dc260",
+    "remocn-templates-7fa2db1",
   ].map(async (directory) =>
     JSON.parse(
       await readFile(
@@ -101,7 +109,15 @@ const textNames = [
   "inline-word-roll",
   "shader-text-reveal",
 ];
+const templateNames = [
+  "release-teaser",
+  "brand-guidelines",
+  "workflow-console",
+  "launch-anything",
+  "fomo-limit-orders",
+];
 const coreNames = [
+  ...templateNames,
   "shader-light-tunnel",
   "shader-seam",
   "shader-spiral-pass",
@@ -853,6 +869,7 @@ const manropeNames = new Set([
 ]);
 const geistMonoNames = new Set(["github-stars"]);
 const sourceTextRenderingNames = new Set([
+  ...templateNames,
   "lens-zoom",
   "github-stars",
   "inline-word-roll",
@@ -891,10 +908,13 @@ if (only && selectedNames.length !== only.size) {
   );
 }
 for (const name of selectedNames) {
-  const manifest = additionManifests.find((item) => item.components[name]);
-  if (manifest && upstreamCommit !== manifest.upstream.commit) {
+  const manifests = additionManifests.filter((item) => item.components[name]);
+  if (
+    manifests.length &&
+    !manifests.some((manifest) => upstreamCommit === manifest.upstream.commit)
+  ) {
     throw new Error(
-      `${name} requires source ${manifest.upstream.commit}. Select --only names from that pin.`,
+      `${name} requires source ${manifests.map((manifest) => manifest.upstream.commit).join(" or ")}. Select --only names from that pin.`,
     );
   }
   if (!upstreamRegistry.items.some((item) => item.name === name)) {
@@ -963,7 +983,13 @@ const remotionPlugin = {
             className,
             style: {position: "absolute", inset: 0, width: "100%", height: "100%", display: "flex", flexDirection: "column", ...style},
           }, children);
-          export const Img = ({children, src, ...props}) => React.createElement("img", {...props, src: assetMap[src] ?? src}, children);
+          export const Img = ({children, src, ...props}) => React.createElement("img", {decoding: "sync", ...props, src: assetMap[src] ?? src}, children);
+          export const Audio = ({src, volume = 1}) => React.createElement("audio", {
+            id: React.useId(), src: assetMap[src] ?? src,
+            "data-start": 0, "data-duration": videoConfig.durationInFrames / videoConfig.fps, "data-volume": volume,
+          });
+          export const Interactive = {Div: ({name, children, ...props}) => React.createElement("div", props, children)};
+          export const useRemotionEnvironment = () => ({isStudio: false, isRendering: true, isPlayer: false});
           export const staticFile = (path) => assetMap[path] ?? "/assets/" + path.replace(/^\\//, "");
           export const Sequence = ({from = 0, durationInFrames = Infinity, children, layout, style, className}) => {
             const localFrame = useCurrentFrame() - from;
@@ -1270,13 +1296,95 @@ const sourceAdjustmentsPlugin = {
   name: "hyfrme-source-adjustments",
   setup(buildApi) {
     buildApi.onLoad(
+      { filter: /registry\/remocn-templates\/brand-guidelines\/ui\.tsx$/ },
+      async (args) => {
+        let contents = await readFile(args.path, "utf8");
+        for (const [from, to] of [
+          [
+            "export function Label({\n  children,",
+            "export function Label({\n  allowOverlap,\n  children,",
+          ],
+          [
+            "  children: React.ReactNode;",
+            "  allowOverlap?: boolean;\n  children: React.ReactNode;",
+          ],
+          [
+            'name="Identity label"',
+            'name="Identity label" data-layout-allow-overlap={allowOverlap || undefined}',
+          ],
+        ]) {
+          if (!contents.includes(from))
+            throw new Error(`Missing palette label adapter in ${args.path}`);
+          contents = contents.replace(from, to);
+        }
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
+    buildApi.onLoad(
+      {
+        filter:
+          /registry\/remocn-templates\/(brand-guidelines\/scenes\/(palette|collage|typography)|workflow-console\/ui)\.tsx$/,
+      },
+      async (args) => {
+        const source = await readFile(args.path, "utf8");
+        // Preserve upstream's staged panels, overlapping collage, and clipped command text.
+        const edits = args.path.endsWith("/palette.tsx")
+          ? [
+              "<Label\n            style=",
+              "<Label allowOverlap\n            style=",
+            ]
+          : args.path.endsWith("/collage.tsx")
+            ? [
+                "<div\n        style={{\n          fontSize: fitSize(content.brandName,",
+                "<div data-layout-allow-overlap\n        style={{\n          fontSize: fitSize(content.brandName,",
+              ]
+            : args.path.endsWith("/typography.tsx")
+              ? [
+                  "<span>\n          {state.caret",
+                  "<span data-layout-allow-overlap>\n          {state.caret",
+                ]
+              : [
+                  "<span>{written}</span>",
+                  "<span data-layout-allow-overlap>{written}</span>",
+                ];
+        if (!source.includes(edits[0]))
+          throw new Error(`Missing intentional layout layer in ${args.path}`);
+        return {
+          contents: source.replace(edits[0], edits[1]),
+          loader: "tsx",
+          resolveDir: dirname(args.path),
+        };
+      },
+    );
+    buildApi.onLoad(
+      { filter: /registry\/remocn-templates\/[^/]+\/assets\.ts$/ },
+      async (args) => {
+        let contents = await readFile(args.path, "utf8");
+        const assets = additionManifests
+          .flatMap((manifest) => manifest.assets)
+          .filter(
+            (asset) => asset.embedded?.source === relative(upstream, args.path),
+          );
+        for (const asset of assets) {
+          const bytes = await readFile(resolve(root, asset.path));
+          const embedded = `data:image/jpeg;base64,${bytes.toString("base64")}`;
+          if (!contents.includes(embedded))
+            throw new Error(`Embedded image differs from ${asset.path}`);
+          contents = contents.replaceAll(embedded, `/${asset.path}`);
+        }
+        return { contents, loader: "ts", resolveDir: dirname(args.path) };
+      },
+    );
+    buildApi.onLoad(
       { filter: /components\/docs\/examples\/shader-seam-example\.tsx$/ },
       async (args) => {
         const source = await readFile(args.path, "utf8");
         const circle =
           '<div\n        style={{\n          position: "absolute",\n          right: -100,';
         if (!source.includes(circle))
-          throw new Error(`Missing Shader Seam decorative rings in ${args.path}`);
+          throw new Error(
+            `Missing Shader Seam decorative rings in ${args.path}`,
+          );
         return {
           contents: source.replace(
             circle,
@@ -1423,10 +1531,12 @@ const shaderGatePlugin = {
         const original = await readFile(args.path, "utf8");
         if (/\buseDelayRender\b/.test(original)) {
           let contents = original.replace("/* @remocn", "/*! @remocn");
-          if (/\/(shader-seam|shader-spiral-pass)\/index\.tsx$/.test(args.path)) {
+          if (
+            /\/(shader-seam|shader-spiral-pass)\/index\.tsx$/.test(args.path)
+          ) {
             // The scene is intentionally covered while the transition is active.
             const scene =
-              '<AbsoluteFill\n        style={{\n          visibility: entering !== phase.showNext';
+              "<AbsoluteFill\n        style={{\n          visibility: entering !== phase.showNext";
             if (!contents.includes(scene))
               throw new Error(`Missing transition scene layer in ${args.path}`);
             contents = contents.replace(
@@ -1456,6 +1566,28 @@ const shaderGatePlugin = {
   },
 };
 
+const fontSourcePlugin = {
+  name: "hyfrme-frozen-fontsource",
+  setup(buildApi) {
+    const imports = new Set(
+      additionManifests.flatMap((manifest) =>
+        manifest.assets
+          .filter((asset) => asset.sourceImport)
+          .map((asset) => asset.sourceImport),
+      ),
+    );
+    buildApi.onResolve({ filter: /^@fontsource\/.*\.css$/ }, ({ path }) => {
+      if (!imports.has(path))
+        throw new Error(`Unfrozen font stylesheet: ${path}`);
+      return { path, namespace: "hyfrme-fontsource" };
+    });
+    buildApi.onLoad({ filter: /.*/, namespace: "hyfrme-fontsource" }, () => ({
+      contents: "",
+      loader: "js",
+    }));
+  },
+};
+
 const loadConfig = async (path, exportName) => {
   const result = await build({
     absWorkingDir: upstream,
@@ -1463,13 +1595,23 @@ const loadConfig = async (path, exportName) => {
     entryPoints: [path],
     format: "esm",
     platform: "node",
-    plugins: [remotionPlugin, transitionsPlugin],
+    plugins: [remotionPlugin, transitionsPlugin, fontSourcePlugin],
     tsconfig: resolve(upstream, "tsconfig.json"),
     write: false,
   });
   const url = `data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString("base64")}`;
   const exports = await import(url);
-  return exportName ? exports[exportName] : Object.values(exports)[0];
+  if (exportName) return exports[exportName];
+  const configs = Object.values(exports).filter(
+    (value) =>
+      value &&
+      typeof value === "object" &&
+      "controls" in value &&
+      "componentName" in value,
+  );
+  if (configs.length !== 1)
+    throw new Error(`Expected one component config in ${path}`);
+  return configs[0];
 };
 
 const escapeHtmlAttribute = (value) =>
@@ -1513,7 +1655,7 @@ let resolveControls;
 
 for (const name of selectedNames) {
   const additionManifest = additionManifests.find(
-    (item) => item.components[name],
+    (item) => item.components[name] && item.upstream.commit === upstreamCommit,
   );
   const addition = additionManifest?.components[name];
   const selectedAssets = (additionManifest?.assets ?? []).filter(
@@ -1540,12 +1682,17 @@ for (const name of selectedNames) {
   const registryItem = upstreamRegistry.items.find(
     (item) => item.name === name,
   );
-  const sourcePath = resolve(upstream, registryItem.files[0].path);
+  const sourcePath = resolve(
+    upstream,
+    addition?.source ?? registryItem.files[0].path,
+  );
   const sceneOverride = sceneOverrides[name];
   const renderSourcePath = sceneOverride
     ? resolve(upstream, sceneOverride.source)
     : sourcePath;
-  const configPath = resolve(dirname(sourcePath), "config.ts");
+  const configPath = templateNames.includes(name)
+    ? sourcePath
+    : resolve(dirname(sourcePath), "config.ts");
   const sourceConfig = sceneOverride?.config ?? (await loadConfig(configPath));
   if (addition)
     resolveControls ??= await loadConfig(
@@ -1616,6 +1763,9 @@ for (const name of selectedNames) {
           : "#ffffff"),
   };
   const importPath = `./${relative(upstream, renderSourcePath).replaceAll("\\", "/")}`;
+  const sceneImages = selectedAssets.filter(
+    (asset) => asset.role === "image" && asset.embedded,
+  );
   const entry = `
     import React from "react";
     import {flushSync} from "react-dom";
@@ -1625,6 +1775,22 @@ for (const name of selectedNames) {
     const container = document.getElementById("hyfrme-source-root");
     const assets = JSON.parse(container.dataset.hyfrmeAssets ?? '{}');
     __setHyfrmeAssets(assets);
+    ${
+      sceneImages.length
+        ? `
+    // Retain decoded photos before later scenes mount their image elements.
+    const imagePreloads = document.createElement('div');
+    imagePreloads.hidden = true;
+    const sceneImages = ${JSON.stringify(sceneImages.map((asset) => `/${asset.path}`))}.map(src => {
+      const image = new Image();
+      image.src = assets[src] ?? src;
+      imagePreloads.append(image);
+      return image;
+    });
+    container.before(imagePreloads);
+    `
+        : ""
+    }
     const root = createRoot(container, {identifierPrefix: container.closest('[data-composition-file]')?.dataset.compositionId ?? ${JSON.stringify(name)}});
     const variables = window.__hyperframes.getVariables();
     const config = ${JSON.stringify({
@@ -1643,7 +1809,19 @@ for (const name of selectedNames) {
       flushSync(() => root.render(React.createElement(${renderComponentName}, props)));
     };
     window.__hyfrmeRenderFrame = renderFrame;
+    ${
+      sceneImages.length
+        ? `
+    window.addEventListener('hf-seek', event => {
+      event.detail.waitUntil(Promise.resolve().then(() =>
+        Promise.all(Array.from(container.querySelectorAll('img')).map(image => image.decode()))
+      ));
+    });
+    `
+        : ""
+    }
     window.__hyfrmeReady = (async () => {
+      ${sceneImages.length ? "await Promise.all(sceneImages.map(image => image.decode()));" : ""}
       ${
         name === "kinetic-warp"
           ? `if (props.fontUrl && props.fontUrl !== assets[${JSON.stringify(selectedAssets.find((asset) => asset.role === "local-stylesheet").sourceUrl)}]) {
@@ -1686,6 +1864,7 @@ for (const name of selectedNames) {
       socialAssetsPlugin,
       sourceAdjustmentsPlugin,
       shaderGatePlugin,
+      fontSourcePlugin,
     ],
     stdin: {
       contents: entry,
@@ -1712,7 +1891,9 @@ for (const name of selectedNames) {
     catalogFamily === "primitive"
       ? registryItem.title.replace(/^UI\s+/, "")
       : name.startsWith("shader-") &&
-          !["shader-seam", "shader-spiral-pass", "shader-text-reveal"].includes(name)
+          !["shader-seam", "shader-spiral-pass", "shader-text-reveal"].includes(
+            name,
+          )
         ? registryItem.title.replace(/^Shader\s+/, "")
         : registryItem.title;
   const duration = fixture.durationInFrames / fixture.fps;
@@ -1796,14 +1977,19 @@ for (const name of selectedNames) {
     for (const asset of selectedAssets) {
       if (
         asset.reused ||
-        ["Geist-OFL.txt", "REMOCN-LICENSE.txt"].includes(basename(asset.path))
+        ["Geist-OFL.txt", "REMOCN-LICENSE.txt", "Remocn-MIT.txt"].includes(
+          basename(asset.path),
+        )
       )
         continue;
       const license = asset.role.includes("license");
+      const assetPath = templateNames.includes(name)
+        ? relative(resolve(root, "assets"), resolve(root, asset.path))
+        : basename(asset.path);
       packagedAssets.push({
-        path: `${license ? "licenses" : "remocn-additions"}/${basename(asset.path)}`,
+        path: `${license ? "licenses" : "remocn-additions"}/${assetPath}`,
         target: license
-          ? `THIRD_PARTY_LICENSES/remocn/${basename(asset.path)}`
+          ? `THIRD_PARTY_LICENSES/remocn/${assetPath}`
           : asset.path,
         source: resolve(root, asset.path),
       });
@@ -1963,7 +2149,7 @@ ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? "      [data-
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="${name}" data-start="0" data-duration="${duration}" data-fps="${fixture.fps}" data-width="${fixture.width}" data-height="${fixture.height}">
+    <div id="root" data-composition-id="${name}" data-start="0" data-duration="${duration}" data-fps="${frameRateArgument(fixture.fps)}" data-width="${fixture.width}" data-height="${fixture.height}">
 ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? "      <canvas layoutsubtree hidden data-layout-ignore data-hyfrme-clock></canvas>" : "      <span hidden data-layout-ignore data-hyfrme-clock></span>"}
 ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? '      <span data-hyfrme-seek-probe aria-hidden="true"></span>' : ""}
       <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="${duration}" data-track-index="0">
@@ -2131,7 +2317,7 @@ ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? `      timeli
     origin: {
       repository: "https://github.com/Remocn/remocn",
       commit: upstreamCommit,
-      source: registryItem.files[0].path,
+      source: relative(upstream, sourcePath),
       ...(sceneOverride
         ? { entry: sceneOverride.originEntry ?? sceneOverride.source }
         : {}),

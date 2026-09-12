@@ -18,6 +18,10 @@ export const upstream = resolve(
 export const workbench = resolve(root, ".work/remocn-lossless-reference");
 export const remotionVersion = "4.0.513";
 const referenceGl = "angle-egl";
+const frozenAssetDirectories = [
+  "assets/remocn-additions",
+  "assets/remocn-templates-7fa2db1",
+];
 
 async function assertSource(commit) {
   const [head, status] = await Promise.all([
@@ -90,29 +94,35 @@ export async function selectFixtures(args = process.argv.slice(2)) {
         `${entry.slug}: reference checkout ${commit} differs from pinned source ${entry.origin.commit}`,
       );
     }
-    for (const key of ["width", "height", "fps", "durationInFrames"]) {
+    for (const key of ["width", "height", "durationInFrames"]) {
       if (!Number.isInteger(entry.fixture[key]) || entry.fixture[key] < 1) {
         throw new Error(`${entry.slug}: invalid fixture ${key}`);
       }
+    }
+    if (!Number.isFinite(entry.fixture.fps) || entry.fixture.fps <= 0) {
+      throw new Error(`${entry.slug}: invalid fixture fps`);
     }
   }
   return fixtures;
 }
 
 async function frozenAssets() {
-  const manifest = JSON.parse(
-    await readFile(
-      resolve(root, "assets/remocn-additions/manifest.json"),
-      "utf8",
-    ),
+  return Promise.all(
+    frozenAssetDirectories.map(async (directory) => {
+      const manifest = JSON.parse(
+        await readFile(resolve(root, directory, "manifest.json"), "utf8"),
+      );
+      for (const asset of manifest.assets) {
+        const bytes = await readFile(resolve(root, asset.path));
+        if (createHash("sha256").update(bytes).digest("hex") !== asset.sha256) {
+          throw new Error(
+            `Frozen Remocn asset checksum mismatch: ${asset.path}`,
+          );
+        }
+      }
+      return manifest;
+    }),
   );
-  for (const asset of manifest.assets) {
-    const bytes = await readFile(resolve(root, asset.path));
-    if (createHash("sha256").update(bytes).digest("hex") !== asset.sha256) {
-      throw new Error(`Frozen Remocn asset checksum mismatch: ${asset.path}`);
-    }
-  }
-  return manifest;
 }
 
 export async function referenceFingerprint(entry) {
@@ -132,6 +142,18 @@ export async function referenceFingerprint(entry) {
 }
 
 export async function renderReferences(fixtures, { reuse = false } = {}) {
+  // Template CSS imports must not add font faces to another fixture's document.
+  if (
+    fixtures.length > 1 &&
+    fixtures.some((entry) =>
+      entry.origin.source.startsWith("registry/remocn-templates/"),
+    )
+  ) {
+    for (const entry of fixtures) {
+      await renderReferences([entry], { reuse });
+    }
+    return;
+  }
   const pending = [];
   for (const entry of fixtures) {
     const directory = resolve(workbench, "renders", entry.slug);
@@ -177,21 +199,21 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
     resolve(root, "assets/fonts/Geist-Latin.woff2"),
     resolve(publicDirectory, "assets/fonts/Geist-Latin.woff2"),
   );
-  await cp(
-    resolve(root, "assets/remocn-additions"),
-    resolve(publicDirectory, "assets/remocn-additions"),
-    { recursive: true },
-  );
+  for (const directory of frozenAssetDirectories) {
+    await cp(resolve(root, directory), resolve(publicDirectory, directory), {
+      recursive: true,
+    });
+  }
 
-  const manifest = await frozenAssets();
-  const replacements = manifest.assets
+  const assets = (await frozenAssets()).flatMap((manifest) => manifest.assets);
+  const replacements = assets
     .filter((asset) => asset.sourceUrl && asset.role !== "upstream-stylesheet")
     .map((asset) => [asset.sourceUrl, `/${asset.path}`]);
   const fontCss = [
     '@font-face { font-family:"Geist";src:url("/assets/fonts/Geist-Latin.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:block; }',
   ];
-  for (const asset of manifest.assets.filter(
-    (asset) => asset.role === "local-stylesheet",
+  for (const asset of assets.filter(
+    (asset) => asset.role === "local-stylesheet" && !asset.sourceImport,
   )) {
     const css = await readFile(resolve(root, asset.path), "utf8");
     fontCss.push(
@@ -202,7 +224,7 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
       ),
     );
   }
-  const stageImage = manifest.assets.find(
+  const stageImage = assets.find(
     (asset) => asset.components.includes("stage") && /\.webp$/.test(asset.path),
   );
   if (stageImage) {
@@ -287,6 +309,13 @@ registerRoot(()=> <><style>{${JSON.stringify(fontCss.join("\n"))}}</style>${comp
             alias: require.resolve("react/jsx-runtime"),
             onlyModule: true,
           },
+          ...assets
+            .filter((asset) => asset.sourceImport)
+            .map((asset) => ({
+              name: asset.sourceImport,
+              alias: resolve(root, asset.path),
+              onlyModule: true,
+            })),
           ...tsconfigWebpackAlias(upstream),
         ],
       },

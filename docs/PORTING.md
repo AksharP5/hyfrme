@@ -147,7 +147,7 @@ The original 45 UI primitives and flows are verified.
 ## Coverage status
 
 The audited Remocn inventory at
-`e3dc260ff1965440d1f64fb65a8c9a9373e78328` contains 302 public visual components.
+`7fa2db1cd29dfb36743e54e3d078dd9107c879a2` contains 307 public visual components.
 The deprecated `progress-steps` and `data-flow-pipes` ports are removed.
 The six helper entries,
 `brush`, `canvas-presentation`, `icons-core`, `remocn-ui`, `scene-motion`, and
@@ -166,6 +166,53 @@ Upstream changes should open a review issue; they must never overwrite a
 passing port automatically.
 
 ## Latest Remocn additions
+
+Release Teaser, Brand Guidelines, Workflow Console, Product Showcase
+(`launch-anything`), and Order Flow (`fomo-limit-orders`) use commit
+`7fa2db1cd29dfb36743e54e3d078dd9107c879a2`. They are customizable blocks under
+Scenes / Product showcases. The same pin supplies Typed Split Wipe's Unicode
+typing fix.
+
+Template fonts, their original CSS, photographs, and licenses are frozen in
+`assets/remocn-templates-7fa2db1/manifest.json`. The reference resolves the exact
+upstream Fontsource imports; each template renders in an isolated font set.
+Installed blocks include those fonts and image files. Embedded source JPEGs
+become local assets, keeping each runtime below 240 KiB. Release Teaser retains
+its exact `60000/1001` frame rate throughout rendering and encoding.
+Scene photos decode before playback begins and remain preloaded. Image elements
+request synchronous decoding, and the HyperFrames seek gate waits for newly
+mounted or changed images. This prevents a previous photo from leaking into
+Product Showcase's next scene during export.
+
+Brand Guidelines' staged palette labels and overlapping collage/type layers,
+and Workflow Console's clipped command text, have narrowly scoped layout
+annotations. The original colors and motion remain intact. Brand Guidelines'
+one contrast warning, Workflow Console's three chart entrance overlap warnings,
+and Product Showcase's eleven contrast warnings remain visible in the full-check
+reports.
+
+[Installed-template checks](../catalog/template-installed-audit.json) exercise
+all 17 exposed controls, 25 out-of-order seeks, and five exact default resets.
+All sampled images and fonts load without request or runtime errors. The
+HyperFrames preview shell quantizes seek times to its default frame grid;
+repeatability is checked at identical requested times. Export parity uses the
+authored frame rate and compares every frame separately.
+
+All five pass the full HyperFrames check and strict rendering across 7,550
+frames, with exact alpha. Frame-weighted mean SSIM is **0.999851** and the
+lowest frame is **0.995845**. Release Teaser and Brand Guidelines match
+every RGB frame exactly. Typed Split Wipe's Unicode fix passes its separate
+75-frame fixture. Its website preview also preserves a supplementary-plane
+character throughout typing, including the complete first character at frame zero.
+
+Reproduce the templates and Unicode fix with:
+
+```bash
+export REMOCN_SOURCE=.work/remocn-7fa2db1cd29dfb36743e54e3d078dd9107c879a2
+REMOCN_ASSET_MANIFEST=assets/remocn-templates-7fa2db1/manifest.json npm run setup:remocn-latest
+node scripts/generate-text-ports.mjs --only release-teaser,brand-guidelines,workflow-console,launch-anything,fomo-limit-orders,typed-split-wipe
+node scripts/verify-text-ports.mjs --lossless --only release-teaser,brand-guidelines,workflow-console,launch-anything,fomo-limit-orders,typed-split-wipe --browser-gpu
+```
 
 The earlier September 2026 update added 21 text effects, Lens Zoom, Radial Burst, Stage,
 Search Reveal, and Select Menu at commit
@@ -238,8 +285,8 @@ its transparent output, with a black website preview behind its white text.
 
 All 39 pinned Snapcn visual components are verified across 5,744 frames. The
 frame-weighted mean SSIM is 0.998594; every component averages at least 0.990681,
-and the lowest individual frame scores 0.957827. Together with the 302 Remocn
-ports, the catalog contains 341 components.
+and the lowest individual frame scores 0.957827. Together with the 307 Remocn
+ports, the catalog contains 346 components.
 
 Thirty-three Snapcn blocks pass the full HyperFrames check. Answer Highlight,
 Announce Title, Logo Drift, Follower Rush, Roster Grant, and Wordmark Cut retain narrowly reviewed findings

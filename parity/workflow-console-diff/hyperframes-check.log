@@ -1,0 +1,1719 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "infoCount": 40,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 38.84,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 444.46,
+          "top": 816.4,
+          "right": 537.28,
+          "bottom": 845.07,
+          "width": 92.82,
+          "height": 28.66
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3)",
+        "text": "Baseline",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 444.46,
+          "y": 816.4,
+          "width": 92.82,
+          "height": 28.66
+        },
+        "firstSeen": 38.84,
+        "lastSeen": 38.965,
+        "occurrences": 2
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 38.84,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 983.71,
+          "top": 810.49,
+          "right": 1064.05,
+          "bottom": 839.15,
+          "width": 80.34,
+          "height": 28.66
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(3)",
+        "text": "Parallel",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 983.71,
+          "y": 810.49,
+          "width": 80.34,
+          "height": 28.66
+        },
+        "firstSeen": 38.84,
+        "lastSeen": 38.965,
+        "occurrences": 2
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 38.84,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1253.33,
+          "top": 793.51,
+          "right": 1365.08,
+          "bottom": 822.17,
+          "width": 111.75,
+          "height": 28.66
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3)",
+        "text": "Optimized",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 1253.33,
+          "y": 793.51,
+          "width": 111.75,
+          "height": 28.66
+        },
+        "firstSeen": 38.84,
+        "lastSeen": 38.965,
+        "occurrences": 2
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -849,
+          "top": 492,
+          "right": -639,
+          "bottom": 560,
+          "width": 210,
+          "height": 68
+        },
+        "containerSelector": "#root",
+        "text": "Preview",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 849
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": -849,
+          "y": 492,
+          "width": 210,
+          "height": 68
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -580.69,
+          "top": 492,
+          "right": -379.37,
+          "bottom": 560,
+          "width": 201.31,
+          "height": 68
+        },
+        "containerSelector": "#root",
+        "text": "Staging",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 580.69
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": -580.69,
+          "y": 492,
+          "width": 201.31,
+          "height": 68
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -356,
+          "top": 492,
+          "right": -68.56,
+          "bottom": 560,
+          "width": 287.44,
+          "height": 68
+        },
+        "containerSelector": "#root",
+        "text": "Production",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 356
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": -356,
+          "y": 492,
+          "width": 287.44,
+          "height": 68
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -47.19,
+          "top": 492,
+          "right": 143.13,
+          "bottom": 560,
+          "width": 190.31,
+          "height": 68
+        },
+        "containerSelector": "#root",
+        "text": "Canary",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 47.19
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": -47.19,
+          "y": 492,
+          "width": 190.31,
+          "height": 68
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(10)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1771.31,
+          "top": 492,
+          "right": 1972.63,
+          "bottom": 560,
+          "width": 201.31,
+          "height": 68
+        },
+        "containerSelector": "#root",
+        "text": "Staging",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 52.63
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 1771.31,
+          "y": 492,
+          "width": 201.31,
+          "height": 68
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(11)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1996,
+          "top": 492,
+          "right": 2283.44,
+          "bottom": 560,
+          "width": 287.44,
+          "height": 68
+        },
+        "containerSelector": "#root",
+        "text": "Production",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 363.44
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 1996,
+          "y": 492,
+          "width": 287.44,
+          "height": 68
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(12)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 2304.81,
+          "top": 492,
+          "right": 2495.13,
+          "bottom": 560,
+          "width": 190.31,
+          "height": 68
+        },
+        "containerSelector": "#root",
+        "text": "Canary",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 575.13
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 2304.81,
+          "y": 492,
+          "width": 190.31,
+          "height": 68
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(13)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 2559,
+          "top": 492,
+          "right": 2769,
+          "bottom": 560,
+          "width": 210,
+          "height": 68
+        },
+        "containerSelector": "#root",
+        "text": "Preview",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 849
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 2559,
+          "y": 492,
+          "width": 210,
+          "height": 68
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(14)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 2827.31,
+          "top": 492,
+          "right": 3028.63,
+          "bottom": 560,
+          "width": 201.31,
+          "height": 68
+        },
+        "containerSelector": "#root",
+        "text": "Staging",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 1108.63
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 2827.31,
+          "y": 492,
+          "width": 201.31,
+          "height": 68
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(15)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 3052,
+          "top": 492,
+          "right": 3339.44,
+          "bottom": 560,
+          "width": 287.44,
+          "height": 68
+        },
+        "containerSelector": "#root",
+        "text": "Production",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 1419.44
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 3052,
+          "y": 492,
+          "width": 287.44,
+          "height": 68
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(16)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 3360.81,
+          "top": 492,
+          "right": 3551.13,
+          "bottom": 560,
+          "width": 190.31,
+          "height": 68
+        },
+        "containerSelector": "#root",
+        "text": "Canary",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 1631.13
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 3360.81,
+          "y": 492,
+          "width": 190.31,
+          "height": 68
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(17)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 3615,
+          "top": 492,
+          "right": 3825,
+          "bottom": 560,
+          "width": 210,
+          "height": 68
+        },
+        "containerSelector": "#root",
+        "text": "Preview",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 1905
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 3615,
+          "y": 492,
+          "width": 210,
+          "height": 68
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(18)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 3883.31,
+          "top": 492,
+          "right": 4084.63,
+          "bottom": 560,
+          "width": 201.31,
+          "height": 68
+        },
+        "containerSelector": "#root",
+        "text": "Staging",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 2164.63
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 3883.31,
+          "y": 492,
+          "width": 201.31,
+          "height": 68
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -884,
+          "top": 468,
+          "right": -604,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "overflow": {
+          "left": 984
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": -884,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -620,
+          "top": 468,
+          "right": -340,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "overflow": {
+          "left": 720
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": -620,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -356,
+          "top": 468,
+          "right": -76,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "overflow": {
+          "left": 456
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": -356,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -92,
+          "top": 468,
+          "right": 188,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "overflow": {
+          "left": 192
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": -92,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(10)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1732,
+          "top": 468,
+          "right": 2012,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "overflow": {
+          "right": 192
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 1732,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(11)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1996,
+          "top": 468,
+          "right": 2276,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "overflow": {
+          "right": 456
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 1996,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(12)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 2260,
+          "top": 468,
+          "right": 2540,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "overflow": {
+          "right": 720
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 2260,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(13)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 2524,
+          "top": 468,
+          "right": 2804,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "overflow": {
+          "right": 984
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 2524,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(14)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 2788,
+          "top": 468,
+          "right": 3068,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "overflow": {
+          "right": 1248
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 2788,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(15)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 3052,
+          "top": 468,
+          "right": 3332,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "overflow": {
+          "right": 1512
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 3052,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(16)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 3316,
+          "top": 468,
+          "right": 3596,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "overflow": {
+          "right": 1776
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 3316,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(17)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 3580,
+          "top": 468,
+          "right": 3860,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "overflow": {
+          "right": 2040
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 3580,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(18)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 3844,
+          "top": 468,
+          "right": 4124,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "overflow": {
+          "right": 2304
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 3844,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -884,
+          "top": 468,
+          "right": -604,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Preview",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": -884,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -620,
+          "top": 468,
+          "right": -340,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Staging",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": -620,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -356,
+          "top": 468,
+          "right": -76,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Production",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": -356,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(11)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 1996,
+          "top": 468,
+          "right": 2276,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Production",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 1996,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(12)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 2260,
+          "top": 468,
+          "right": 2540,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Canary",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 2260,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(13)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 2524,
+          "top": 468,
+          "right": 2804,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Preview",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 2524,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(14)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 2788,
+          "top": 468,
+          "right": 3068,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Staging",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 2788,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(15)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 3052,
+          "top": 468,
+          "right": 3332,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Production",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 3052,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(16)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 3316,
+          "top": 468,
+          "right": 3596,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Canary",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 3316,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(17)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 3580,
+          "top": 468,
+          "right": 3860,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Preview",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 3580,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(18)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 3844,
+          "top": 468,
+          "right": 4124,
+          "bottom": 588,
+          "width": 280,
+          "height": 120
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Staging",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 3844,
+          "y": 468,
+          "width": 280,
+          "height": 120
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 33.824,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 165.23,
+          "top": 428,
+          "right": 2911.29,
+          "bottom": 564,
+          "width": 2746.06,
+          "height": 136
+        },
+        "containerSelector": "#root",
+        "text": "The test queue is growing — add parallel wor",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 991.29
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 165.23,
+          "y": 428,
+          "width": 2746.06,
+          "height": 136
+        },
+        "firstSeen": 33.824,
+        "lastSeen": 33.824,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 33.824,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 165.23,
+          "top": 424,
+          "right": 7365.23,
+          "bottom": 720,
+          "width": 7200,
+          "height": 296
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 5445.23
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 165.23,
+          "y": 424,
+          "width": 7200,
+          "height": 296
+        },
+        "firstSeen": 33.824,
+        "lastSeen": 33.824,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 33.824,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 165.23,
+          "top": 424,
+          "right": 7365.23,
+          "bottom": 720,
+          "width": 7200,
+          "height": 296
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "The test queue is growing — add parallel wor Test wo",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 165.23,
+          "y": 424,
+          "width": 7200,
+          "height": 296
+        },
+        "firstSeen": 33.824,
+        "lastSeen": 33.824,
+        "occurrences": 1
+      }
+    ],
+    "duration": 46.833333333333336,
+    "samples": [
+      2.602,
+      7.806,
+      13.009,
+      18.213,
+      23.417,
+      28.62,
+      33.824,
+      39.028,
+      44.231
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 43,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      2.602,
+      13.009,
+      23.417,
+      33.824,
+      44.231
+    ],
+    "checked": 26,
+    "passed": 26
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.35",
+    "updateAvailable": true
+  }
+}

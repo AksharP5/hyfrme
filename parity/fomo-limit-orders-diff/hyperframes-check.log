@@ -1,0 +1,2335 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 61,
+    "findings": [
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 1.026,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 1108,
+          "top": -55.68,
+          "right": 1296,
+          "bottom": 16.32,
+          "width": 188,
+          "height": 72
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1108,
+          "y": -55.68,
+          "width": 188,
+          "height": 72
+        },
+        "firstSeen": 1.026,
+        "lastSeen": 1.026,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 3.078,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 248,
+          "top": 36,
+          "right": 2568,
+          "bottom": 3980,
+          "width": 2320,
+          "height": 3944
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "9:41 ▮▮▮ ◔ ▰ DEMO 5x $79.00 ↑ $1.00 (1.28%) ╂ 15m ⌃ 1D 1W 3M 6M 1Y All ϟ 2x Long $12,640.00 +$640.00 Lev. size $12.64K (160 DEMO) ▴ 10.67% Avg. entry $75.00 Liq. price $37.50 ＋Add a note Add SL/TP Overview Activity Details Close position Long",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 248,
+          "y": 36,
+          "width": 2320,
+          "height": 3944
+        },
+        "firstSeen": 3.078,
+        "lastSeen": 3.078,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.13,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 328.49,
+          "top": -1379.3,
+          "right": 458.61,
+          "bottom": -1289.85,
+          "width": 130.12,
+          "height": 89.44
+        },
+        "containerSelector": "#root",
+        "text": "9:41",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 1379.3
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 328.49,
+          "y": -1379.3,
+          "width": 130.12,
+          "height": 89.44
+        },
+        "firstSeen": 5.13,
+        "lastSeen": 5.13,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.13,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1354.74,
+          "top": -1355.76,
+          "right": 1595.49,
+          "bottom": -1294.56,
+          "width": 240.75,
+          "height": 61.2
+        },
+        "containerSelector": "#root",
+        "text": "▮▮▮ ◔ ▰",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 1355.76
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1354.74,
+          "y": -1355.76,
+          "width": 240.75,
+          "height": 61.2
+        },
+        "firstSeen": 5.13,
+        "lastSeen": 5.13,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.13,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 563.87,
+          "top": -1183.93,
+          "right": 774.61,
+          "bottom": -1075.66,
+          "width": 210.74,
+          "height": 108.27
+        },
+        "containerSelector": "#root",
+        "text": "DEMO",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 1183.93
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 563.87,
+          "y": -1183.93,
+          "width": 210.74,
+          "height": 108.27
+        },
+        "firstSeen": 5.13,
+        "lastSeen": 5.13,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.13,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 835.81,
+          "top": -1169.81,
+          "right": 894.21,
+          "bottom": -1089.78,
+          "width": 58.4,
+          "height": 80.03
+        },
+        "containerSelector": "#root",
+        "text": "5x",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 1169.81
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 835.81,
+          "y": -1169.81,
+          "width": 58.4,
+          "height": 80.03
+        },
+        "firstSeen": 5.13,
+        "lastSeen": 5.13,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.13,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 563.87,
+          "top": -1061.53,
+          "right": 914.22,
+          "bottom": -981.51,
+          "width": 350.35,
+          "height": 80.03
+        },
+        "containerSelector": "#root",
+        "text": "Demo Market",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 1061.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 563.87,
+          "y": -1061.53,
+          "width": 350.35,
+          "height": 80.03
+        },
+        "firstSeen": 5.13,
+        "lastSeen": 5.13,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.13,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 144.9,
+          "top": -894.42,
+          "right": 485.83,
+          "bottom": -739.07,
+          "width": 340.93,
+          "height": 155.35
+        },
+        "containerSelector": "#root",
+        "text": "$79.00",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 894.42
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 144.9,
+          "y": -894.42,
+          "width": 340.93,
+          "height": 155.35
+        },
+        "firstSeen": 5.13,
+        "lastSeen": 5.13,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.13,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 149.61,
+          "top": -734.36,
+          "right": 555.34,
+          "bottom": -654.33,
+          "width": 405.73,
+          "height": 80.03
+        },
+        "containerSelector": "#root",
+        "text": "↑ $1.00 (1.28%)",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 734.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 149.61,
+          "y": -734.36,
+          "width": 405.73,
+          "height": 80.03
+        },
+        "firstSeen": 5.13,
+        "lastSeen": 5.13,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.13,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(6) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 276.78,
+          "top": 1021.57,
+          "right": 586.31,
+          "bottom": 1106.3,
+          "width": 309.52,
+          "height": 84.74
+        },
+        "containerSelector": "#root",
+        "text": "Add a note",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "bottom": 26.3
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 276.78,
+          "y": 1021.57,
+          "width": 309.52,
+          "height": 84.74
+        },
+        "firstSeen": 5.13,
+        "lastSeen": 5.13,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.13,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(6) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 168.44,
+          "top": 1021.57,
+          "right": 229.71,
+          "bottom": 1106.3,
+          "width": 61.27,
+          "height": 84.74
+        },
+        "containerSelector": "#root",
+        "text": "＋",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "bottom": 26.3
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 168.44,
+          "y": 1021.57,
+          "width": 61.27,
+          "height": 84.74
+        },
+        "firstSeen": 5.13,
+        "lastSeen": 5.13,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.13,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(6) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1493.1,
+          "top": 1019.21,
+          "right": 1792.55,
+          "bottom": 1103.95,
+          "width": 299.45,
+          "height": 84.74
+        },
+        "containerSelector": "#root",
+        "text": "Add SL/TP",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "bottom": 23.95
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1493.1,
+          "y": 1019.21,
+          "width": 299.45,
+          "height": 84.74
+        },
+        "firstSeen": 5.13,
+        "lastSeen": 5.13,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.13,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(7)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 276.71,
+          "top": 1181.62,
+          "right": 1062.21,
+          "bottom": 1252.24,
+          "width": 785.5,
+          "height": 70.61
+        },
+        "containerSelector": "#root",
+        "text": "Overview Activity Details",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "bottom": 172.24
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 276.71,
+          "y": 1181.62,
+          "width": 785.5,
+          "height": 70.61
+        },
+        "firstSeen": 5.13,
+        "lastSeen": 5.13,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.13,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(8) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 488.55,
+          "top": 1322.85,
+          "right": 907.6,
+          "bottom": 1407.59,
+          "width": 419.05,
+          "height": 84.74
+        },
+        "containerSelector": "#root",
+        "text": "Close position",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "bottom": 327.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 488.55,
+          "y": 1322.85,
+          "width": 419.05,
+          "height": 84.74
+        },
+        "firstSeen": 5.13,
+        "lastSeen": 5.13,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.13,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(8) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1194.76,
+          "top": 1322.85,
+          "right": 1339.08,
+          "bottom": 1407.59,
+          "width": 144.32,
+          "height": 84.74
+        },
+        "containerSelector": "#root",
+        "text": "Long",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "bottom": 327.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1194.76,
+          "y": 1322.85,
+          "width": 144.32,
+          "height": 84.74
+        },
+        "firstSeen": 5.13,
+        "lastSeen": 5.13,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 861.46,
+          "top": -1655.46,
+          "right": 969.24,
+          "bottom": -1581.37,
+          "width": 107.79,
+          "height": 74.09
+        },
+        "containerSelector": "#root",
+        "text": "9:41",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 1655.46
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 861.46,
+          "y": -1655.46,
+          "width": 107.79,
+          "height": 74.09
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1711.56,
+          "top": -1635.97,
+          "right": 1910.98,
+          "bottom": -1585.27,
+          "width": 199.42,
+          "height": 50.69
+        },
+        "containerSelector": "#root",
+        "text": "▮▮▮ ◔ ▰",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 1635.97
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1711.56,
+          "y": -1635.97,
+          "width": 199.42,
+          "height": 50.69
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1056.44,
+          "top": -1493.63,
+          "right": 1231,
+          "bottom": -1403.94,
+          "width": 174.57,
+          "height": 89.69
+        },
+        "containerSelector": "#root",
+        "text": "DEMO",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 1493.63
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1056.44,
+          "y": -1493.63,
+          "width": 174.57,
+          "height": 89.69
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1281.69,
+          "top": -1481.94,
+          "right": 1330.07,
+          "bottom": -1415.64,
+          "width": 48.38,
+          "height": 66.29
+        },
+        "containerSelector": "#root",
+        "text": "5x",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 1481.94
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1281.69,
+          "y": -1481.94,
+          "width": 48.38,
+          "height": 66.29
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1056.44,
+          "top": -1392.25,
+          "right": 1346.65,
+          "bottom": -1325.95,
+          "width": 290.21,
+          "height": 66.29
+        },
+        "containerSelector": "#root",
+        "text": "Demo Market",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 1392.25
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1056.44,
+          "y": -1392.25,
+          "width": 290.21,
+          "height": 66.29
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 709.38,
+          "top": -1253.81,
+          "right": 991.79,
+          "bottom": -1125.13,
+          "width": 282.41,
+          "height": 128.68
+        },
+        "containerSelector": "#root",
+        "text": "$79.00",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 1253.81
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 709.38,
+          "y": -1253.81,
+          "width": 282.41,
+          "height": 128.68
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 713.28,
+          "top": -1121.23,
+          "right": 1049.37,
+          "bottom": -1054.94,
+          "width": 336.09,
+          "height": 66.29
+        },
+        "containerSelector": "#root",
+        "text": "↑ $1.00 (1.28%)",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 1121.23
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 713.28,
+          "y": -1121.23,
+          "width": 336.09,
+          "height": 66.29
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(4) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 682.87,
+          "top": -456.36,
+          "right": 818.02,
+          "bottom": -390.07,
+          "width": 135.14,
+          "height": 66.29
+        },
+        "containerSelector": "#root",
+        "text": "15m ⌃",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 456.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 682.87,
+          "y": -456.36,
+          "width": 135.14,
+          "height": 66.29
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 654.78,
+          "top": -456.36,
+          "right": 682.87,
+          "bottom": -390.07,
+          "width": 28.09,
+          "height": 66.29
+        },
+        "containerSelector": "#root",
+        "text": "╂",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 456.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 654.78,
+          "y": -456.36,
+          "width": 28.09,
+          "height": 66.29
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(4) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 929.88,
+          "top": -456.36,
+          "right": 981.98,
+          "bottom": -390.07,
+          "width": 52.1,
+          "height": 66.29
+        },
+        "containerSelector": "#root",
+        "text": "1D",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 456.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 929.88,
+          "y": -456.36,
+          "width": 52.1,
+          "height": 66.29
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(4) > span:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1109.44,
+          "top": -456.36,
+          "right": 1174.27,
+          "bottom": -390.07,
+          "width": 64.83,
+          "height": 66.29
+        },
+        "containerSelector": "#root",
+        "text": "1W",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 456.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1109.44,
+          "y": -456.36,
+          "width": 64.83,
+          "height": 66.29
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(4) > span:nth-of-type(4)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1301.74,
+          "top": -456.36,
+          "right": 1368.34,
+          "bottom": -390.07,
+          "width": 66.6,
+          "height": 66.29
+        },
+        "containerSelector": "#root",
+        "text": "3M",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 456.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1301.74,
+          "y": -456.36,
+          "width": 66.6,
+          "height": 66.29
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(4) > span:nth-of-type(5)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1495.86,
+          "top": -456.36,
+          "right": 1564.78,
+          "bottom": -390.07,
+          "width": 68.91,
+          "height": 66.29
+        },
+        "containerSelector": "#root",
+        "text": "6M",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 456.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1495.86,
+          "y": -456.36,
+          "width": 68.91,
+          "height": 66.29
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(4) > span:nth-of-type(6)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1692.24,
+          "top": -456.36,
+          "right": 1739.77,
+          "bottom": -390.07,
+          "width": 47.53,
+          "height": 66.29
+        },
+        "containerSelector": "#root",
+        "text": "1Y",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 456.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1692.24,
+          "y": -456.36,
+          "width": 47.53,
+          "height": 66.29
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(4) > span:nth-of-type(7)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1867.23,
+          "top": -456.36,
+          "right": 1922.86,
+          "bottom": -390.07,
+          "width": 55.63,
+          "height": 66.29
+        },
+        "containerSelector": "#root",
+        "text": "All",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 2.86,
+          "top": 456.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1867.23,
+          "y": -456.36,
+          "width": 55.63,
+          "height": 66.29
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(4) > span:nth-of-type(8)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 2034.73,
+          "top": -477.81,
+          "right": 2078.11,
+          "bottom": -368.62,
+          "width": 43.38,
+          "height": 109.19
+        },
+        "containerSelector": "#root",
+        "text": "ϟ",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 158.11,
+          "top": 477.81
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 2034.73,
+          "y": -477.81,
+          "width": 43.38,
+          "height": 109.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 748.37,
+          "top": -251.63,
+          "right": 921.05,
+          "bottom": -185.34,
+          "width": 172.68,
+          "height": 66.29
+        },
+        "containerSelector": "#root",
+        "text": "2x Long",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 251.63
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 748.37,
+          "y": -251.63,
+          "width": 172.68,
+          "height": 66.29
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 728.87,
+          "top": -150.24,
+          "right": 1114.26,
+          "bottom": -41.06,
+          "width": 385.38,
+          "height": 109.19
+        },
+        "containerSelector": "#root",
+        "text": "$12,640.00",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 150.24
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 728.87,
+          "y": -150.24,
+          "width": 385.38,
+          "height": 109.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(2) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1732.64,
+          "top": -150.24,
+          "right": 2070.31,
+          "bottom": -41.06,
+          "width": 337.68,
+          "height": 109.19
+        },
+        "containerSelector": "#root",
+        "text": "+$640.00",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 150.31,
+          "top": 150.24
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1732.64,
+          "y": -150.24,
+          "width": 337.68,
+          "height": 109.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 728.87,
+          "top": -29.36,
+          "right": 1409.59,
+          "bottom": 40.83,
+          "width": 680.71,
+          "height": 70.19
+        },
+        "containerSelector": "#root",
+        "text": "Lev. size (160 DEMO)",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 29.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 728.87,
+          "y": -29.36,
+          "width": 680.71,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(3)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 728.87,
+          "top": -29.36,
+          "right": 1409.59,
+          "bottom": 40.83,
+          "width": 680.71,
+          "height": 70.19
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "Lev. size (160 DEMO)",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.67,
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 728.87,
+          "y": -29.36,
+          "width": 680.71,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 934.88,
+          "top": -29.36,
+          "right": 1120.72,
+          "bottom": 40.83,
+          "width": 185.84,
+          "height": 70.19
+        },
+        "containerSelector": "#root",
+        "text": "$12.64K",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 29.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 934.88,
+          "y": -29.36,
+          "width": 185.84,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 934.88,
+          "top": -29.36,
+          "right": 1120.72,
+          "bottom": 40.83,
+          "width": 185.84,
+          "height": 70.19
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "$12.64K",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.67,
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 934.88,
+          "y": -29.36,
+          "width": 185.84,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(4)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1749.82,
+          "top": -29.36,
+          "right": 1929.14,
+          "bottom": 40.83,
+          "width": 179.32,
+          "height": 70.19
+        },
+        "containerSelector": "#root",
+        "text": "10.67%",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 9.14,
+          "top": 29.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1749.82,
+          "y": -29.36,
+          "width": 179.32,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(4)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1749.82,
+          "top": -29.36,
+          "right": 1929.14,
+          "bottom": 40.83,
+          "width": 179.32,
+          "height": 70.19
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "10.67%",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.63,
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1749.82,
+          "y": -29.36,
+          "width": 179.32,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(4) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1719.36,
+          "top": -29.36,
+          "right": 1749.82,
+          "bottom": 40.83,
+          "width": 30.47,
+          "height": 70.19
+        },
+        "containerSelector": "#root",
+        "text": "▴",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 29.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1719.36,
+          "y": -29.36,
+          "width": 30.47,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(4) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1719.36,
+          "top": -29.36,
+          "right": 1749.82,
+          "bottom": 40.83,
+          "width": 30.47,
+          "height": 70.19
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "▴",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.67,
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1719.36,
+          "y": -29.36,
+          "width": 30.47,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(6) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 728.87,
+          "top": 118.82,
+          "right": 975.95,
+          "bottom": 189.02,
+          "width": 247.07,
+          "height": 70.19
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "Avg. entry",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 728.87,
+          "y": 118.82,
+          "width": 247.07,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(6) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 999.34,
+          "top": 118.82,
+          "right": 1162.45,
+          "bottom": 189.02,
+          "width": 163.11,
+          "height": 70.19
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "$75.00",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 999.34,
+          "y": 118.82,
+          "width": 163.11,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(6) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1666.59,
+          "top": 118.82,
+          "right": 1889.53,
+          "bottom": 189.02,
+          "width": 222.94,
+          "height": 70.19
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "Liq. price",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1666.59,
+          "y": 118.82,
+          "width": 222.94,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(6) > span:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1912.93,
+          "top": 118.82,
+          "right": 2070.31,
+          "bottom": 189.02,
+          "width": 157.38,
+          "height": 70.19
+        },
+        "containerSelector": "#root",
+        "text": "$37.50",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 150.31
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1912.93,
+          "y": 118.82,
+          "width": 157.38,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(6) > span:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1912.93,
+          "top": 118.82,
+          "right": 2070.31,
+          "bottom": 189.02,
+          "width": 157.38,
+          "height": 70.19
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "$37.50",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.11,
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1912.93,
+          "y": 118.82,
+          "width": 157.38,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(6) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 818.62,
+          "top": 333.3,
+          "right": 1075.02,
+          "bottom": 403.49,
+          "width": 256.39,
+          "height": 70.19
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "Add a note",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 818.62,
+          "y": 333.3,
+          "width": 256.39,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(6) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 728.87,
+          "top": 333.3,
+          "right": 779.63,
+          "bottom": 403.49,
+          "width": 50.75,
+          "height": 70.19
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "＋",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 728.87,
+          "y": 333.3,
+          "width": 50.75,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(6) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1826.17,
+          "top": 331.35,
+          "right": 2074.21,
+          "bottom": 401.54,
+          "width": 248.05,
+          "height": 70.19
+        },
+        "containerSelector": "#root",
+        "text": "Add SL/TP",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 154.21
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1826.17,
+          "y": 331.35,
+          "width": 248.05,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(6) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1826.17,
+          "top": 331.35,
+          "right": 2074.21,
+          "bottom": 401.54,
+          "width": 248.05,
+          "height": 70.19
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "Add SL/TP",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.44,
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1826.17,
+          "y": 331.35,
+          "width": 248.05,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(7)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 818.56,
+          "top": 465.88,
+          "right": 1469.24,
+          "bottom": 524.38,
+          "width": 650.67,
+          "height": 58.49
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "Overview Activity Details",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 818.56,
+          "y": 465.88,
+          "width": 650.67,
+          "height": 58.49
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(8) > div:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 994.04,
+          "top": 582.87,
+          "right": 1341.16,
+          "bottom": 653.06,
+          "width": 347.12,
+          "height": 70.19
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "Close position",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 994.04,
+          "y": 582.87,
+          "width": 347.12,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(8) > div:nth-of-type(3)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1579.03,
+          "top": 582.87,
+          "right": 1698.58,
+          "bottom": 653.06,
+          "width": 119.55,
+          "height": 70.19
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "Long",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1579.03,
+          "y": 582.87,
+          "width": 119.55,
+          "height": 70.19
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 619.69,
+          "top": -1780.25,
+          "right": 2179.5,
+          "bottom": 871.43,
+          "width": 1559.81,
+          "height": 2651.68
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "9:41 ▮▮▮ ◔ ▰ DEMO 5x Demo Market $79.00 ↑ $1.00 (1.28%) ╂ 15m ⌃ 1D 1W 3M 6M 1Y All ϟ 2x Long $12,640.00 +$640.00 Lev. size $12.64K (160 DEMO) ▴ 10.67% Avg. entry $75.00 Liq. price $37.50 ＋Add a note Add SL/TP Overview Activity Details Close position Long",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 619.69,
+          "y": -1780.25,
+          "width": 1559.81,
+          "height": 2651.68
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 7.181,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > div:nth-of-type(5)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 685.98,
+          "top": -302.33,
+          "right": 2113.21,
+          "bottom": 235.81,
+          "width": 1427.23,
+          "height": 538.14
+        },
+        "containerSelector": "#root",
+        "text": "2x Long $12,640.00 +$640.00 Lev. size $12.64K (1",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 193.21,
+          "top": 302.33
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 685.98,
+          "y": -302.33,
+          "width": 1427.23,
+          "height": 538.14
+        },
+        "firstSeen": 7.181,
+        "lastSeen": 7.181,
+        "occurrences": 1
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 9.233,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": -680,
+          "top": 408,
+          "right": 2600,
+          "bottom": 672,
+          "width": 3280,
+          "height": 264
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 680,
+          "right": 680
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": -680,
+          "y": 408,
+          "width": 3280,
+          "height": 264
+        },
+        "firstSeen": 9.233,
+        "lastSeen": 9.233,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 16.345,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 639.31,
+          "top": 466,
+          "right": 844.19,
+          "bottom": 590,
+          "width": 204.88,
+          "height": 124
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "text": "price.",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 639.31,
+          "y": 466,
+          "width": 204.88,
+          "height": 124
+        },
+        "firstSeen": 16.345,
+        "lastSeen": 16.345,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 16.345,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 864.19,
+          "top": 466,
+          "right": 1030.19,
+          "bottom": 590,
+          "width": 166,
+          "height": 124
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "text": "Your",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 864.19,
+          "y": 466,
+          "width": 166,
+          "height": 124
+        },
+        "firstSeen": 16.345,
+        "lastSeen": 16.345,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 16.345,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1050.19,
+          "top": 466,
+          "right": 1221.63,
+          "bottom": 590,
+          "width": 171.44,
+          "height": 124
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "text": "next",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1050.19,
+          "y": 466,
+          "width": 171.44,
+          "height": 124
+        },
+        "firstSeen": 16.345,
+        "lastSeen": 16.345,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 16.345,
+        "selector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1241.63,
+          "top": 466,
+          "right": 1466.63,
+          "bottom": 590,
+          "width": 225,
+          "height": 124
+        },
+        "containerSelector": "#fomo-limit-orders-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "text": "move.",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/fomo-limit-orders.html",
+        "bbox": {
+          "x": 1241.63,
+          "y": 466,
+          "width": 225,
+          "height": 124
+        },
+        "firstSeen": 16.345,
+        "lastSeen": 16.345,
+        "occurrences": 1
+      }
+    ],
+    "duration": 18.466666666666665,
+    "samples": [
+      1.026,
+      3.078,
+      5.13,
+      7.181,
+      9.233,
+      11.285,
+      13.337,
+      15.389,
+      17.441
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 61,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      1.026,
+      5.13,
+      9.233,
+      13.337,
+      17.441
+    ],
+    "checked": 46,
+    "passed": 46
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.35",
+    "updateAvailable": true
+  }
+}
