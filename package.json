@@ -29,6 +29,8 @@
     "verify:primitives": "node scripts/verify-text-ports.mjs --family primitive",
     "build:catalog": "node scripts/build-verified-catalog.mjs",
     "generate:thumbnails": "node scripts/generate-thumbnails.mjs",
+    "postgenerate:thumbnails": "npm run optimize:thumbnails",
+    "optimize:thumbnails": "node scripts/optimize-thumbnails.mjs",
     "sync:registry": "node scripts/sync-registry.mjs",
     "sync:catalog": "node scripts/build-catalog-data.mjs",
     "build:cli": "node scripts/build-cli-package.mjs",

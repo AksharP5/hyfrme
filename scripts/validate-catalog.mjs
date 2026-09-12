@@ -126,6 +126,10 @@ for (const item of registry.items) {
     resolve(root, "public", "previews", item.name, "thumbnail.png"),
     `${item.name} thumbnail`,
   );
+  await ensure(
+    resolve(root, "public", "previews", item.name, "thumbnail.webp"),
+    `${item.name} optimized thumbnail; run npm run optimize:thumbnails`,
+  );
 }
 
 console.log(`Validated ${registry.items.length} verified Hyfrme port(s).`);

@@ -33,7 +33,7 @@ export function CatalogCard({ entry }: CatalogCardProps) {
         {previewing ? (
           <video
             src={`${previewRoot}/hyperframes.mp4`}
-            poster={`${previewRoot}/thumbnail.png`}
+            poster={`${previewRoot}/thumbnail.webp`}
             muted
             autoPlay
             loop
@@ -42,7 +42,7 @@ export function CatalogCard({ entry }: CatalogCardProps) {
             aria-hidden="true"
           />
         ) : (
-          <img src={`${previewRoot}/thumbnail.png`} alt="" loading="lazy" />
+          <img src={`${previewRoot}/thumbnail.webp`} alt="" loading="lazy" />
         )}
       </span>
       <span className="catalog-card-copy">

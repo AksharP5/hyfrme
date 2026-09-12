@@ -94,6 +94,7 @@ After adding or re-rendering a website video, sync it before building:
 ```bash
 # Set BLOB_READ_WRITE_TOKEN in the environment or an ignored .env.local file.
 npm run sync:media
+npm run optimize:thumbnails
 npm run check
 npm run build
 ```
@@ -111,9 +112,21 @@ Catalog pages load only component summaries. Opening a component fetches its
 registry metadata and verification details together in `catalog.json`, alongside
 the HTML source. These files are generated under `public/registry/` by
 `npm run sync:catalog`; `predev` and `prebuild` run this automatically.
-With 346 components, these changes reduce initial JavaScript from 668 KB to
-407 KB, or 153 KB to 106 KB gzipped. Comparison-player code remains deferred
-until the verification panel opens.
+The editor loads only on component pages. With 346 components, initial
+JavaScript is 388 KB, or 100 KB gzipped, compared with 668 KB and 153 KB before
+these optimizations. Comparison-player code remains deferred until the
+verification panel opens.
+
+The website uses `thumbnail.webp` for component images and video posters.
+`npm run optimize:thumbnails` generates these from the original PNGs using
+lossless WebP, resizing images wider than 1024px. Smaller images keep their
+original dimensions. Generation converts PNG color metadata to sRGB and
+preserves transparent edges when resizing. Run it after updating thumbnails
+and commit both formats. `npm run generate:thumbnails` runs it automatically.
+FFmpeg and ffprobe are required for generation, but not for builds.
+Across 346 components, WebP reduces thumbnail bytes from 14.82 MB to 7.63 MB.
+Browser-rendered comparisons on light and dark backgrounds at up to 650px
+wide have a minimum SSIM of 0.990754.
 
 Sync compresses preview videos of 5 MB or larger with FFmpeg, keeping the
 original resolution, frame rate, duration, and audio. It uses H.264 CRF 16 and

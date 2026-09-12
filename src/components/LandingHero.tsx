@@ -78,7 +78,7 @@ export function LandingHero({ installCommand }: LandingHeroProps) {
           >
             <video
               src={`/previews/${component.name}/hyperframes.mp4`}
-              poster={`/previews/${component.name}/thumbnail.png`}
+              poster={`/previews/${component.name}/thumbnail.webp`}
               muted
               autoPlay
               loop

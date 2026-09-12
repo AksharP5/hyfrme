@@ -121,7 +121,7 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
           ref={videoRef}
           aria-label={`${item.title} rendered preview with default settings`}
           src={`/previews/${item.name}/hyperframes.mp4`}
-          poster={`/previews/${item.name}/thumbnail.png`}
+          poster={`/previews/${item.name}/thumbnail.webp`}
           autoPlay
           loop
           muted
