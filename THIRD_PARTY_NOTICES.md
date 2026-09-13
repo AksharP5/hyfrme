@@ -31,6 +31,8 @@ Snapcn ports derive from `snapcndev/snapcn` at commit
 `353803b506dba0cb7ca13bb45b0d099690400815`. Roster Grant and Wordmark Cut use
 `bc5b59f3f0fad9657b338fa62349a55fa33f160f`. Roster Grant's attributed Lucide
 pointer path retains its ISC notice.
+Word Gather, Word Wheel, Channel Thread, Logo Collapse, and Card Rail use
+`1159369742d75d66ae89b3f83d45850861ccc63e`.
 
 Copyright (c) 2026 Sri Nath (snap-cn).
 

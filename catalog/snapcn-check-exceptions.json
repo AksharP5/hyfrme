@@ -690,5 +690,23 @@
       "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)"
     },
     "reason": "The pinned close shot deliberately overlays a blurred copy of this same text through a radial mask to reproduce depth of field. The inspector treats the masked copy as an opaque occluder. Preserve the source composition; RGB SSIM is mean0.999456/min0.998624 and every alpha plane matches exactly."
+  },
+  {
+    "slug": "snapcn-word-wheel",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "1159369742d75d66ae89b3f83d45850861ccc63e",
+      "source": "registry/snap-cn/word-wheel/index.tsx",
+      "config": "registry/snap-cn/word-wheel/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/word-wheel/index.tsx"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#snapcn-word-wheel-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > div:nth-of-type(6)",
+      "containerSelector": "#snapcn-word-wheel-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > div:nth-of-type(7)",
+      "text": "Changelogs"
+    },
+    "reason": "The unmodified Word Wheel source places reel rows on a 34px pitch and scales each row around its baseline (index.tsx lines 355-380). Adjacent text bounding boxes overlap during the measured slot transition. All 66 lossless frames match the pinned source with mean SSIM 0.999996, minimum 0.999993, and exact alpha. Preserve the source motion and retain the full layout finding."
   }
 ]

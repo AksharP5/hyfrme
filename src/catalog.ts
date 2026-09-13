@@ -135,6 +135,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "stretch-in",
           "shader-text-reveal",
           "snapcn-text-reveal",
+          "snapcn-word-gather",
         ],
       },
       {
@@ -165,6 +166,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "word-stream",
           "word-push",
           "caret-swap",
+          "snapcn-word-wheel",
         ],
       },
       {
@@ -239,6 +241,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       "snapcn-logo-drift",
       "snapcn-block-wordmark",
       "snapcn-wordmark-cut",
+      "snapcn-logo-collapse",
     ],
   },
   {
@@ -267,7 +270,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "workflows",
         label: "Workflows",
-        slugs: ["snapcn-status-cycle"],
+        slugs: ["snapcn-status-cycle", "snapcn-channel-thread"],
       },
       {
         id: "paper-scrapbook",
@@ -462,7 +465,12 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "galleries",
         label: "Galleries",
-        slugs: ["reel", "snapcn-orbit-gallery", "snapcn-moodboard-reveal"],
+        slugs: [
+          "reel",
+          "snapcn-orbit-gallery",
+          "snapcn-moodboard-reveal",
+          "snapcn-card-rail",
+        ],
       },
       {
         id: "data-teams",

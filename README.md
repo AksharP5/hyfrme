@@ -112,8 +112,8 @@ Catalog pages load only component summaries. Opening a component fetches its
 registry metadata and verification details together in `catalog.json`, alongside
 the HTML source. These files are generated under `public/registry/` by
 `npm run sync:catalog`; `predev` and `prebuild` run this automatically.
-The editor loads only on component pages. With 346 components, initial
-JavaScript is 388 KB, or 100 KB gzipped, compared with 668 KB and 153 KB before
+The editor loads only on component pages. With 351 components, initial
+JavaScript is 393 KB, or 102 KB gzipped, compared with 668 KB and 153 KB before
 these optimizations. Comparison-player code remains deferred until the
 verification panel opens.
 
@@ -124,7 +124,7 @@ original dimensions. Generation converts PNG color metadata to sRGB and
 preserves transparent edges when resizing. Run it after updating thumbnails
 and commit both formats. `npm run generate:thumbnails` runs it automatically.
 FFmpeg and ffprobe are required for generation, but not for builds.
-Across 346 components, WebP reduces thumbnail bytes from 14.82 MB to 7.63 MB.
+Across 351 components, WebP reduces thumbnail bytes from 15.33 MB to 7.91 MB.
 Browser-rendered comparisons on light and dark backgrounds at up to 650px
 wide have a minimum SSIM of 0.990754.
 

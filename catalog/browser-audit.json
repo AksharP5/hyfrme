@@ -4,25 +4,25 @@
   "browser": "Chrome Headless Shell 152.0.7977.42",
   "scope": "Catalog component pages, pinned fixture inputs; sampled browser comparison supplements full-frame parity/<slug>.json.",
   "summary": {
-    "components": 346,
+    "components": 351,
     "bySource": {
       "remocn": 307,
-      "snapcn": 39
+      "snapcn": 44
     },
-    "livePreviews": 330,
+    "livePreviews": 335,
     "renderedDefaultPreviews": 16,
-    "autoplayChecks": 346,
-    "pauseAndReplayChecks": 65,
-    "sampleComparisons": 990,
-    "meanSampleSsim": 0.997419,
+    "autoplayChecks": 351,
+    "pauseAndReplayChecks": 70,
+    "sampleComparisons": 1005,
+    "meanSampleSsim": 0.997448,
     "minSampleSsim": 0.951296,
     "samplesBelow095": [],
-    "customizationAndResetChecks": 10,
+    "customizationAndResetChecks": 15,
     "transitionBoundaryComparisons": 16,
-    "backwardSeekChecks": 27,
+    "backwardSeekChecks": 37,
     "minTransitionBoundarySsim": 1,
-    "additionalSeekComparisons": 15,
-    "minSeekComparisonSsim": 1
+    "additionalSeekComparisons": 30,
+    "minSeekComparisonSsim": 0.996425
   },
   "profiles": {
     "remocn-video": "Live iframe, autoplay and page/request errors checked. Three frames at floor(durationInFrames * p), p = 0.2, 0.5, 0.8, compared with pinned reference MP4 frames. Canonical fixture dimensions, website scale/filter removed, fixture background applied. Shader Color Panels uses hardware WebGL.",
@@ -32,7 +32,8 @@
     "rendered-defaults": "Ordinary Chrome lacks the required HTML-in-canvas API. Verified HyperFrames default render played in the catalog video element; autoplay, pause, replay and default-settings notice checked. No live customization or new browser SSIM claim.",
     "remocn-lossless-png": "Five additions at e3dc260ff1965440d1f64fb65a8c9a9373e78328. Actual catalog iframe autoplay, Pause, Replay, customizer edits and Reset checked at website size. Customizations change pixels; Reset restores identical pixels. Three canonical-size samples at floor(durationInFrames * p), p = 0.2, 0.5, 0.8, compared with pinned lossless reference PNGs using NVIDIA ANGLE gl-egl, sRGB and source font-render-hinting flags. Reference alpha is composited over the fixture background; website scaling and controls are removed for comparison. Both transitions additionally compare eight boundary seeks, seven backwards. Navigation-cancelled requests and local Vercel telemetry 404s are recorded separately from component failures.",
     "remocn-template-png": "Five templates at 7fa2db1cd29dfb36743e54e3d078dd9107c879a2, checked September 12. Actual catalog iframe autoplay, Pause, Replay, accent color edits and Reset at website size. Edits change pixels; Reset restores identical pixels. Three canonical-size samples at 20%, 50%, and 80% plus final/middle/first frame seeks compared with pinned lossless reference PNGs. Native timeline seeks use the authored fps. NVIDIA ANGLE gl-egl, sRGB and source font-render-hinting flags; reference alpha composited over the fixture background. Navigation-cancelled requests and local Vercel telemetry 404s recorded separately.",
-    "remocn-icon-png": "Inbox: native 384px source props and canvas, render scale 1, pinned lossless PNGs. Actual catalog iframe with size=384 and canonical geometry; all 70 frames and three repeated backward seeks verified."
+    "remocn-icon-png": "Inbox: native 384px source props and canvas, render scale 1, pinned lossless PNGs. Actual catalog iframe with size=384 and canonical geometry; all 70 frames and three repeated backward seeks verified.",
+    "snapcn-latest-png": "Five additions at 1159369742d75d66ae89b3f83d45850861ccc63e, checked September 12. Actual catalog iframe autoplay, Pause, Replay, text edits and Reset at website size. Edits change pixels; Reset restores identical pixels. Three canonical-size samples at 20%, 50%, and 80% plus final/middle/first frame seeks compared with pinned lossless reference PNGs. Native timeline seeks use authored fps. NVIDIA ANGLE gl-egl, sRGB and source font-render-hinting flags; reference alpha composited over fixture background. Navigation-cancelled requests and local Vercel telemetry 404s recorded separately."
   },
   "limitations": [
     "Only listed checks were performed; omitted fields mean unmeasured, not zero.",
@@ -6508,6 +6509,68 @@
       ]
     },
     {
+      "slug": "snapcn-card-rail",
+      "source": "snapcn",
+      "profile": "snapcn-latest-png",
+      "checkedDate": "2026-09-12",
+      "controls": ["autoplay", "pause", "replay", "customization", "reset"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 6,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "cancelledRequests": 2,
+      "localTelemetryErrors": [
+        {
+          "status": 404,
+          "path": "/_vercel/insights/script.js"
+        },
+        {
+          "status": 404,
+          "path": "/_vercel/speed-insights/script.js"
+        }
+      ],
+      "customization": {
+        "variable": "heading",
+        "value": "Your scenes",
+        "changedPixels": true,
+        "resetRestoresPixels": true
+      },
+      "samples": [
+        {
+          "frame": 21,
+          "ssim": 0.999663
+        },
+        {
+          "frame": 53,
+          "ssim": 0.996662
+        },
+        {
+          "frame": 85,
+          "ssim": 0.994467
+        }
+      ],
+      "seekComparisons": [
+        {
+          "frame": 107,
+          "ssim": 0.999679,
+          "direction": "forward"
+        },
+        {
+          "frame": 54,
+          "ssim": 0.999125,
+          "direction": "backward"
+        },
+        {
+          "frame": 0,
+          "ssim": 0.996425,
+          "direction": "backward"
+        }
+      ]
+    },
+    {
       "slug": "snapcn-caret",
       "source": "snapcn",
       "profile": "snapcn-png",
@@ -6531,6 +6594,68 @@
         {
           "frame": 95,
           "ssim": 1
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-channel-thread",
+      "source": "snapcn",
+      "profile": "snapcn-latest-png",
+      "checkedDate": "2026-09-12",
+      "controls": ["autoplay", "pause", "replay", "customization", "reset"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 1,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "cancelledRequests": 2,
+      "localTelemetryErrors": [
+        {
+          "status": 404,
+          "path": "/_vercel/insights/script.js"
+        },
+        {
+          "status": 404,
+          "path": "/_vercel/speed-insights/script.js"
+        }
+      ],
+      "customization": {
+        "variable": "script",
+        "value": "Ready to ship?|The scene is done.;Looks great.|Ship it.",
+        "changedPixels": true,
+        "resetRestoresPixels": true
+      },
+      "samples": [
+        {
+          "frame": 21,
+          "ssim": 0.99999
+        },
+        {
+          "frame": 54,
+          "ssim": 0.999957
+        },
+        {
+          "frame": 87,
+          "ssim": 0.999987
+        }
+      ],
+      "seekComparisons": [
+        {
+          "frame": 109,
+          "ssim": 0.999985,
+          "direction": "forward"
+        },
+        {
+          "frame": 55,
+          "ssim": 0.999946,
+          "direction": "backward"
+        },
+        {
+          "frame": 0,
+          "ssim": 0.99999,
+          "direction": "backward"
         }
       ]
     },
@@ -6747,6 +6872,68 @@
         {
           "frame": 85,
           "ssim": 1
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-logo-collapse",
+      "source": "snapcn",
+      "profile": "snapcn-latest-png",
+      "checkedDate": "2026-09-12",
+      "controls": ["autoplay", "pause", "replay", "customization", "reset"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 1,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "cancelledRequests": 2,
+      "localTelemetryErrors": [
+        {
+          "status": 404,
+          "path": "/_vercel/insights/script.js"
+        },
+        {
+          "status": 404,
+          "path": "/_vercel/speed-insights/script.js"
+        }
+      ],
+      "customization": {
+        "variable": "wordmark",
+        "value": "Hyfrme",
+        "changedPixels": true,
+        "resetRestoresPixels": true
+      },
+      "samples": [
+        {
+          "frame": 10,
+          "ssim": 0.999975
+        },
+        {
+          "frame": 25,
+          "ssim": 1
+        },
+        {
+          "frame": 40,
+          "ssim": 1
+        }
+      ],
+      "seekComparisons": [
+        {
+          "frame": 51,
+          "ssim": 1,
+          "direction": "forward"
+        },
+        {
+          "frame": 26,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 0,
+          "ssim": 0.999975,
+          "direction": "backward"
         }
       ]
     },
@@ -7399,6 +7586,130 @@
       ]
     },
     {
+      "slug": "snapcn-word-gather",
+      "source": "snapcn",
+      "profile": "snapcn-latest-png",
+      "checkedDate": "2026-09-12",
+      "controls": ["autoplay", "pause", "replay", "customization", "reset"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "cancelledRequests": 2,
+      "localTelemetryErrors": [
+        {
+          "status": 404,
+          "path": "/_vercel/insights/script.js"
+        },
+        {
+          "status": 404,
+          "path": "/_vercel/speed-insights/script.js"
+        }
+      ],
+      "customization": {
+        "variable": "text",
+        "value": "Build a scene with Hyfrme.",
+        "changedPixels": true,
+        "resetRestoresPixels": true
+      },
+      "samples": [
+        {
+          "frame": 9,
+          "ssim": 1
+        },
+        {
+          "frame": 24,
+          "ssim": 1
+        },
+        {
+          "frame": 38,
+          "ssim": 1
+        }
+      ],
+      "seekComparisons": [
+        {
+          "frame": 48,
+          "ssim": 1,
+          "direction": "forward"
+        },
+        {
+          "frame": 24,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 0,
+          "ssim": 1,
+          "direction": "backward"
+        }
+      ]
+    },
+    {
+      "slug": "snapcn-word-wheel",
+      "source": "snapcn",
+      "profile": "snapcn-latest-png",
+      "checkedDate": "2026-09-12",
+      "controls": ["autoplay", "pause", "replay", "customization", "reset"],
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "httpErrors": 0,
+      "requestFailures": 0,
+      "loadedImages": 0,
+      "brokenImages": 0,
+      "readyMedia": 0,
+      "cancelledRequests": 2,
+      "localTelemetryErrors": [
+        {
+          "status": 404,
+          "path": "/_vercel/insights/script.js"
+        },
+        {
+          "status": 404,
+          "path": "/_vercel/speed-insights/script.js"
+        }
+      ],
+      "customization": {
+        "variable": "headline",
+        "value": "Hyfrme for",
+        "changedPixels": true,
+        "resetRestoresPixels": true
+      },
+      "samples": [
+        {
+          "frame": 13,
+          "ssim": 0.999996
+        },
+        {
+          "frame": 32,
+          "ssim": 0.999996
+        },
+        {
+          "frame": 52,
+          "ssim": 0.999996
+        }
+      ],
+      "seekComparisons": [
+        {
+          "frame": 65,
+          "ssim": 0.999997,
+          "direction": "forward"
+        },
+        {
+          "frame": 33,
+          "ssim": 0.999996,
+          "direction": "backward"
+        },
+        {
+          "frame": 0,
+          "ssim": 0.999997,
+          "direction": "backward"
+        }
+      ]
+    },
+    {
       "slug": "snapcn-wordmark-cut",
       "source": "snapcn",
       "profile": "snapcn-png",
@@ -7995,23 +8306,23 @@
         "samples": [
           {
             "frame": 0,
-            "text": "𝐀"
+            "text": "\ud835\udc00"
           },
           {
             "frame": 5,
-            "text": "𝐀"
+            "text": "\ud835\udc00"
           },
           {
             "frame": 10,
-            "text": "𝐀 "
+            "text": "\ud835\udc00 "
           },
           {
             "frame": 20,
-            "text": "𝐀 B "
+            "text": "\ud835\udc00 B "
           },
           {
             "frame": 30,
-            "text": "𝐀 B C"
+            "text": "\ud835\udc00 B C"
           }
         ],
         "allWellFormed": true

@@ -8,12 +8,12 @@
   "fixtureSource": "catalog/snapcn-fixtures.json",
   "assetManifest": "assets/snapcn/manifest.json",
   "summary": {
-    "totalRegistryItems": 40,
-    "visualItems": 39,
+    "totalRegistryItems": 45,
+    "visualItems": 44,
     "sharedRuntimeItems": 1,
-    "previewRegistryItems": 36,
+    "previewRegistryItems": 41,
     "sourceFamilies": {
-      "snap-cn": 37,
+      "snap-cn": 42,
       "snap-cn-ui": 2
     },
     "missingFixtures": []
@@ -810,6 +810,106 @@
         "media": false,
         "shader": false
       }
+    },
+    {
+      "name": "word-gather",
+      "slug": "snapcn-word-gather",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/word-gather/index.tsx",
+      "sourceSha256": "36c1c00af212c8674b3eb29b0bbc72c075031a557f36e8fa50f23d5125610f48",
+      "docs": ["content/docs/text/word-gather.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      },
+      "commit": "1159369742d75d66ae89b3f83d45850861ccc63e"
+    },
+    {
+      "name": "word-wheel",
+      "slug": "snapcn-word-wheel",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/word-wheel/index.tsx",
+      "sourceSha256": "e41bdb78943078541edf495d858fbccf2b2e48a6f54d5d541ded96a79ecb1d4a",
+      "docs": ["content/docs/text/word-wheel.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      },
+      "commit": "1159369742d75d66ae89b3f83d45850861ccc63e"
+    },
+    {
+      "name": "channel-thread",
+      "slug": "snapcn-channel-thread",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/channel-thread/index.tsx",
+      "sourceSha256": "d187f2f12b723959b40b72976b993a5ba74c0c64bd5dbf84a2037238973df1a0",
+      "docs": ["content/docs/social/channel-thread.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": true,
+        "media": true,
+        "shader": false
+      },
+      "commit": "1159369742d75d66ae89b3f83d45850861ccc63e"
+    },
+    {
+      "name": "logo-collapse",
+      "slug": "snapcn-logo-collapse",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/logo-collapse/index.tsx",
+      "sourceSha256": "8059e3ad8d6c746534fc1a3744ddd5fce29e74b46205f2ab6b4d0a9358946167",
+      "docs": ["content/docs/logos/logo-collapse.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": true,
+        "media": true,
+        "shader": false
+      },
+      "commit": "1159369742d75d66ae89b3f83d45850861ccc63e"
+    },
+    {
+      "name": "card-rail",
+      "slug": "snapcn-card-rail",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/card-rail/index.tsx",
+      "sourceSha256": "13fe730deca34589e66900bdb47d63d370e40a91f7e69adb3c724c30d0b659d3",
+      "docs": ["content/docs/scenes/card-rail.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": true,
+        "media": true,
+        "shader": false
+      },
+      "commit": "1159369742d75d66ae89b3f83d45850861ccc63e"
     }
   ],
   "dependencyLicenseNotes": [
@@ -839,21 +939,33 @@
       "checkedAt": "2026-09-08",
       "added": ["snapcn-roster-grant", "snapcn-wordmark-cut"],
       "existingSourceFilesUnchanged": true
+    },
+    {
+      "commit": "1159369742d75d66ae89b3f83d45850861ccc63e",
+      "checkedAt": "2026-09-12",
+      "added": [
+        "snapcn-word-gather",
+        "snapcn-word-wheel",
+        "snapcn-channel-thread",
+        "snapcn-logo-collapse",
+        "snapcn-card-rail"
+      ],
+      "existingSourceFilesUnchanged": true
     }
   ],
   "publishedAudit": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-12",
     "repository": "https://github.com/snapcndev/snapcn",
-    "commit": "099cb549d472bc63dd7ad8ca0f28ff0f39b71a51",
+    "commit": "1159369742d75d66ae89b3f83d45850861ccc63e",
     "registryUrl": "https://snapcn.dev/r/registry.json",
-    "registrySha256": "d63feaaffc8e47e7c1f5cf55c2e3dcb12b892738fb937c63e5810d126037b9d0",
+    "registrySha256": "8e6019a5142258581a1402261dc279d2e3f61939453e895e16d533ce6e959b44",
     "counts": {
-      "totalRegistryItems": 54,
-      "freeVisualItems": 39,
+      "totalRegistryItems": 59,
+      "freeVisualItems": 44,
       "proVisualItems": 14,
       "sharedRuntimeItems": 1
     },
-    "freeSourceUnchangedFrom": "bc5b59f3f0fad9657b338fa62349a55fa33f160f",
+    "freeSourceUnchangedFrom": "099cb549d472bc63dd7ad8ca0f28ff0f39b71a51",
     "freeSourceUnchanged": true,
     "existingFixturePinsPreserved": true,
     "excludedProItems": [
@@ -971,7 +1083,44 @@
       }
     ],
     "exclusionReason": "All 14 additional published components require Pro access. Their advertised source files are absent from this public Git commit and their registry endpoints return HTTP 402 pro_component. The public repository MIT license does not establish redistribution rights for unavailable private source; no Pro source is bundled.",
-    "accessImplementationUrl": "https://github.com/snapcndev/snapcn/blob/099cb549d472bc63dd7ad8ca0f28ff0f39b71a51/app/r/%5Bfile%5D/route.ts",
-    "proUrl": "https://snapcn.dev/pro"
+    "accessImplementationUrl": "https://github.com/snapcndev/snapcn/blob/1159369742d75d66ae89b3f83d45850861ccc63e/app/r/%5Bfile%5D/route.ts",
+    "proUrl": "https://snapcn.dev/pro",
+    "addedFreeItems": [
+      {
+        "name": "word-gather",
+        "source": "registry/snap-cn/word-gather/index.tsx",
+        "sourcePresentAtCommit": true,
+        "sourceUrl": "https://snapcn.dev/r/word-gather.json",
+        "httpStatus": 200
+      },
+      {
+        "name": "word-wheel",
+        "source": "registry/snap-cn/word-wheel/index.tsx",
+        "sourcePresentAtCommit": true,
+        "sourceUrl": "https://snapcn.dev/r/word-wheel.json",
+        "httpStatus": 200
+      },
+      {
+        "name": "channel-thread",
+        "source": "registry/snap-cn/channel-thread/index.tsx",
+        "sourcePresentAtCommit": true,
+        "sourceUrl": "https://snapcn.dev/r/channel-thread.json",
+        "httpStatus": 200
+      },
+      {
+        "name": "logo-collapse",
+        "source": "registry/snap-cn/logo-collapse/index.tsx",
+        "sourcePresentAtCommit": true,
+        "sourceUrl": "https://snapcn.dev/r/logo-collapse.json",
+        "httpStatus": 200
+      },
+      {
+        "name": "card-rail",
+        "source": "registry/snap-cn/card-rail/index.tsx",
+        "sourcePresentAtCommit": true,
+        "sourceUrl": "https://snapcn.dev/r/card-rail.json",
+        "httpStatus": 200
+      }
+    ]
   }
 }

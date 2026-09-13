@@ -1,0 +1,86 @@
+{
+  "slug": "snapcn-word-wheel",
+  "origin": {
+    "repository": "https://github.com/snapcndev/snapcn",
+    "commit": "1159369742d75d66ae89b3f83d45850861ccc63e",
+    "source": "registry/snap-cn/word-wheel/index.tsx",
+    "config": "registry/snap-cn/word-wheel/config.ts",
+    "license": "MIT",
+    "entry": "registry/snap-cn/word-wheel/index.tsx"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 66,
+    "props": {
+      "headline": "snapcn for",
+      "words": "Launches, Founders, Indie hackers, Agencies, Designers, Startups, Dev tools, Solo builders, Changelogs",
+      "spin": 9,
+      "mode": "light",
+      "fontFamily": "Default",
+      "speed": 1
+    },
+    "background": "transparent"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "14efb410c0c1963e005d47d901a85ce506c0396ce99b38ad2d6d24108ee957ec",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 66,
+    "meanSsim": 0.9999958030303031,
+    "minSsim": 0.999993,
+    "p05Ssim": 0.999994,
+    "p95Ssim": 0.999997,
+    "alpha": {
+      "frameCount": 66,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check reported 1 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "snapcn-word-wheel",
+        "origin": {
+          "repository": "https://github.com/snapcndev/snapcn",
+          "commit": "1159369742d75d66ae89b3f83d45850861ccc63e",
+          "source": "registry/snap-cn/word-wheel/index.tsx",
+          "config": "registry/snap-cn/word-wheel/config.ts",
+          "license": "MIT",
+          "entry": "registry/snap-cn/word-wheel/index.tsx"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#snapcn-word-wheel-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > div:nth-of-type(6)",
+          "containerSelector": "#snapcn-word-wheel-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > div:nth-of-type(7)",
+          "text": "Changelogs"
+        },
+        "reason": "The unmodified Word Wheel source places reel rows on a 34px pitch and scales each row around its baseline (index.tsx lines 355-380). Adjacent text bounding boxes overlap during the measured slot transition. All 66 lossless frames match the pinned source with mean SSIM 0.999996, minimum 0.999993, and exact alpha. Preserve the source motion and retain the full layout finding."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.473",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/snapcn-word-wheel/reference.mp4",
+    "hyperframesVideo": "public/previews/snapcn-word-wheel/hyperframes.mp4",
+    "thumbnail": "public/previews/snapcn-word-wheel/thumbnail.png",
+    "summary": "parity/snapcn-word-wheel-diff/summary.json",
+    "perFrameSsim": "parity/snapcn-word-wheel-diff/ssim.log",
+    "hyperframesCheck": "parity/snapcn-word-wheel-diff/hyperframes-check.log",
+    "worstFrame": "parity/snapcn-word-wheel-diff/worst-frame.png",
+    "referenceAlpha": "parity/snapcn-word-wheel-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/snapcn-word-wheel-diff/hyperframes-alpha.framemd5"
+  }
+}

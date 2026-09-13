@@ -2,24 +2,24 @@
 
 Checked September 9, 2026; extended September 12 with Chrome for Testing
 152.0.7977.42.
-[Per-component results](../catalog/browser-audit.json) cover all 346 catalog
-components: 307 Remocn and 39 Snapcn. Removed upstream components
+[Per-component results](../catalog/browser-audit.json) cover all 351 catalog
+components: 307 Remocn and 44 Snapcn. Removed upstream components
 `progress-steps` and `data-flow-pipes` are excluded.
 
-| Check                                |  Coverage |
-| ------------------------------------ | --------: |
-| Preview starts and advances          | 346 / 346 |
-| Live iframe previews                 |       330 |
-| Rendered default previews            |        16 |
-| Pause and replay controls exercised  |        65 |
-| Customization and reset exercised    |        10 |
-| Three-sample frame comparisons       |       990 |
-| Samples at or above 0.95 SSIM        | 990 / 990 |
-| Transition-boundary comparisons      |        16 |
-| Additional template seek comparisons |        15 |
-| Backwards seeks                      |        27 |
+| Check                                 |    Coverage |
+| ------------------------------------- | ----------: |
+| Preview starts and advances           |   351 / 351 |
+| Live iframe previews                  |         335 |
+| Rendered default previews             |          16 |
+| Pause and replay controls exercised   |          70 |
+| Customization and reset exercised     |          15 |
+| Three-sample frame comparisons        |        1005 |
+| Samples at or above 0.95 SSIM         | 1005 / 1005 |
+| Transition-boundary comparisons       |          16 |
+| Additional component seek comparisons |          30 |
+| Backwards seeks                       |          37 |
 
-The sampled SSIM mean is **0.997419**. The minimum is **0.951296** for
+The sampled SSIM mean is **0.997448**. The minimum is **0.951296** for
 `icon-mail`, frame 37. Different reference formats and normalization make the
 aggregate mean descriptive; it is not an additional port acceptance threshold.
 Full-frame port verification remains recorded in each `parity/<slug>.json`.
@@ -28,7 +28,7 @@ Full-frame port verification remains recorded in each `parity/<slug>.json`.
 
 Every live preview was opened through its catalog component page and observed
 advancing. Remocn checks captured page errors, failed requests and, where recorded,
-image readiness. The 39 Snapcn checks also covered console and HTTP errors, image
+image readiness. The 44 Snapcn checks also covered console and HTTP errors, image
 and media readiness, pause and replay. Recorded error and broken-image counts
 were zero. Omitted result fields mean unmeasured.
 
@@ -54,8 +54,14 @@ and exact-image Reset checks. Their full-duration export results cover
 
 Snapcn comparisons used pinned upstream lossless PNGs, with transparency
 composited over the actual preview background. Playback controls were checked
-at website size before resizing for comparison. The 117 Snapcn samples all
-exceeded 0.95 SSIM: mean **0.997297**, minimum **0.967479**.
+at website size before resizing for comparison. The 132 Snapcn samples all
+exceeded 0.95 SSIM: mean **0.997533**, minimum **0.967479**.
+
+The five Snapcn additions at `1159369742d75d66ae89b3f83d45850861ccc63e`
+add 15 canonical samples and 15 final/middle/first-frame seek comparisons,
+with minimum SSIM **0.994467**. Each passes autoplay, Pause, Replay, text edits,
+and exact-image Reset. Their 385 full-duration export comparisons remain
+recorded separately in the parity reports.
 
 ## Limits
 
@@ -71,7 +77,7 @@ HyperFrames render in ordinary Chrome. The audit checked playback, pausing,
 resumption through Replay, and the default-settings notice. It does not claim
 live customization or new browser SSIM measurements for these fallbacks.
 
-The ten latest checks used a local production preview server. Its Vercel
+The fifteen latest checks used a local production preview server. Its Vercel
 analytics and speed-insights endpoints return 404 because those routes require
 Vercel hosting. These responses and navigation-cancelled requests are recorded
 separately from component errors.
@@ -83,7 +89,7 @@ separately from component errors.
   Remocn ports pass 1,525 full-frame comparisons and exact alpha.
 - Added lossless video color metadata for three Snapcn blocks. All 1,200 decoded
   source-video RGB frames remain unchanged, and native browser colors now match
-  the reference. All 39 Snapcn previews pass the browser checks above.
+  the reference. All 44 Snapcn previews pass the browser checks above.
 - Preserved Stage's custom image control across the updated source pin. Its 300
   default frames pass SSIM and exact alpha, and custom images work in the browser
   and an actual CLI installation.
