@@ -47,13 +47,7 @@ export function ComponentEditor({
     [defaults, values],
   );
   const parity = details?.parity;
-  const upstreamUrl = parity
-    ? `${entry.source.repository}/blob/${parity.origin.commit}/${parity.origin.source}`
-    : undefined;
-  const sourceUrl =
-    entry.source.id === "hyfrme"
-      ? `${entry.source.repository}/blob/main/registry/blocks/${entry.item.name}/${entry.item.name}.html`
-      : upstreamUrl;
+  const sourceUrl = `https://github.com/AksharP5/hyfrme/blob/main/registry/blocks/${entry.item.name}/${entry.item.name}.html`;
   const customized = variables.some(
     (variable) => effectiveValues[variable.id] !== variable.default,
   );
@@ -116,12 +110,10 @@ export function ComponentEditor({
           href={sourceUrl}
           target="_blank"
           rel="noreferrer"
+          aria-label={`View ${entry.item.title} source on Hyfrme GitHub`}
+          title="View source on Hyfrme GitHub"
         >
           <span className="source-badge">{entry.source.label}</span>
-          {entry.source.id === "hyfrme"
-            ? "Hyfrme original"
-            : "Original source"}{" "}
-          <span aria-hidden="true">↗</span>
         </a>
       </header>
 
@@ -222,8 +214,8 @@ export function ComponentEditor({
                   Synchronized renders of the pinned upstream source and this
                   HyperFrames port.
                 </p>
-                <a href={upstreamUrl} target="_blank" rel="noreferrer">
-                  Original source <span aria-hidden="true">↗</span>
+                <a href={sourceUrl} target="_blank" rel="noreferrer">
+                  Hyfrme source <span aria-hidden="true">↗</span>
                 </a>
               </div>
               <Suspense
