@@ -8,20 +8,30 @@ Catalog previews and showcase MP4s are served from public Vercel Blob storage.
 Development uses the original files in `public/previews/` and
 `public/showcases/`. Registry assets and CLI installs remain self-contained.
 
-Before merging a contribution that adds or re-renders a website video, the
-repository owner runs these commands using their existing local credentials:
+After approving a PR, check out the reviewed changes locally. If it changes
+website videos, run `npm run sync:media` using your existing local credentials.
+Then validate the result:
 
 ```bash
-npm run sync:media
 npm run check
-npm run build
+npm run build:production
+npm pack ./cli --dry-run
 ```
 
-Commit updated videos, `src/generated/media.json`, and `vercel.json` together.
+Commit any generated changes to `src/generated/media.json` and `vercel.json`
+with the reviewed contribution, then merge or push the completed change to
+`main`. If the fork does not allow maintainer edits, integrate it on a local
+branch and include the publishing commit there before merging.
+
+PR CI uses the contributor build and does not need uploads. After a push to
+`main`, CI also runs `npm run build:production`. Vercel uses this production
+build for deployments and rejects unpublished media. Hosted previews with
+unpublished videos are skipped until the owner completes this step.
+
 Sync uploads changed videos to immutable paths containing their SHA-256 hash,
 resumes interrupted uploads, and never removes remote files. Temporary redirects
-preserve the original video URLs. `vite preview` uses these redirects;
-`npm run dev` serves local videos directly.
+preserve the original video URLs. To inspect a production build locally, run
+`npm run preview -- --mode hosted`. Regular builds and previews use local videos.
 
 Production builds verify every video's hash and redirect before omitting those
 MP4s from `dist/`. Missing or outdated uploads fail the build. Building an

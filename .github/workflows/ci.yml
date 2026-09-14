@@ -24,3 +24,7 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm run build
+      - run: npm pack ./cli --dry-run
+      - name: Verify production media
+        if: github.event_name == 'push'
+        run: npm run build:production

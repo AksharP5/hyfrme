@@ -5,7 +5,7 @@ in a video project, see the [README](../README.md).
 
 ## Local setup
 
-No Blob token or access to the owner’s Vercel account is needed. The development
+No Blob token or access to the owner's Vercel account is needed. The development
 server serves the video files committed in this repository.
 
 ```bash
@@ -13,8 +13,17 @@ npm install
 npm run dev
 ```
 
-Install FFmpeg and ffprobe for media generation and verification. For changes
-that leave video files unchanged, run these checks before opening a pull request:
+Install FFmpeg and ffprobe for media generation and verification.
+
+## Open a pull request
+
+1. Make your changes and include updated renders, thumbnails, and parity evidence
+   when editing a component.
+2. Run the checks below. They work with unpublished videos and require no credentials.
+3. Review the built site with `npm run preview` and include a short description of
+   the change and verification results in your PR. Mention any changed video files.
+4. Open the PR. This is the contributor's final step; the owner reviews it and
+   handles [production publishing](PUBLISHING.md) before merging.
 
 ```bash
 npm run check
@@ -22,12 +31,14 @@ npm run build
 npm pack ./cli --dry-run
 ```
 
-An unchanged checkout builds without credentials. If your changes add or
-re-render videos, use `npm run dev` to preview them and include the videos in your
-pull request. Run the other checks above; production builds and CI remain blocked
-until the repository owner [publishes the changed videos](PUBLISHING.md) and runs
-the final build before merging. You do not need a token or
-changes to `src/generated/media.json` or `vercel.json`.
+`npm run build` includes local videos in `dist/`. `npm run preview` serves those
+files, including new renders. PR CI runs the same checks and build. No upload or
+changes to `src/generated/media.json` or media redirects in `vercel.json` are
+required from contributors.
+
+Vercel skips hosted previews when videos have not been published yet. This does
+not skip PR CI; use the local preview to review these contributions. Once the
+owner publishes the videos, hosted previews can build again.
 
 Follow the [porting workflow](PORTING.md) for composition ports and the
 [project instructions](../AGENTS.md) when working with an agent.
@@ -39,7 +50,8 @@ npm run verify:screen-lift
 npm run sync:registry
 npm run sync:catalog
 npm run check
-npm run dev
+npm run build
+npm run preview
 ```
 
 The verifier checks actual CLI installations, custom paths and variables, and
