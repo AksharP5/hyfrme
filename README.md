@@ -40,7 +40,7 @@ HTML chat rows and light across the glass.
 npx hyfrme@latest add screen-lift
 ```
 
-Customize its chat text, CSS avatars, colors, lift depth, and camera angle
+Customize its chat text, avatar photos, colors, lift depth, and camera angle
 in the catalog or with `--set`. See the [component guide](registry/blocks/screen-lift/README.md).
 
 Install the full catalog when you want every block available locally:

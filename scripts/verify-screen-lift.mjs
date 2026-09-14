@@ -115,6 +115,8 @@ const overrides = {
   chat2Message: "Every word is editable.",
   chat2Time: "1m",
   chat2Color: "#654080",
+  chat2Avatar: "media/screen-lift/04.jpg",
+  chat3Avatar: "",
   accentColor: "#ad83ff",
   lift: 130,
   angle: 16,
@@ -153,12 +155,11 @@ const canonicalHtml = await readFile(
   resolve(block, "screen-lift.html"),
   "utf8",
 );
-assert.doesNotMatch(
-  canonicalHtml,
-  /<img\b|<canvas\b|screen\.png|data:image\//i,
-);
+assert.doesNotMatch(canonicalHtml, /<canvas\b|screen\.png|data:image\//i);
 assert(
-  manifest.files.every((file) => !/\.(png|jpe?g|webp|svg)$/i.test(file.path)),
+  manifest.files
+    .filter((file) => /\.(png|jpe?g|webp|svg)$/i.test(file.path))
+    .every((file) => /^0[1-6]\.jpg$/.test(file.path)),
 );
 const installedHtml = await readFile(
   resolve(installed, "compositions/screen-lift.html"),
