@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/AksharP5/hyfrme/compare/v0.3.1...v0.4.0) (2026-09-14)
+
+
+### Features
+
+* add Snapcn catalog and repair previews ([76222af](https://github.com/AksharP5/hyfrme/commit/76222af4fb6f21adf502901e911759e995a6714a))
+
 ## [0.3.1](https://github.com/AksharP5/hyfrme/compare/v0.3.0...v0.3.1) (2026-08-11)
 
 
