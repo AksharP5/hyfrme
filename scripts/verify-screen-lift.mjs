@@ -110,11 +110,16 @@ await new Promise((accept, reject) => {
 const address = server.address();
 assert(address && typeof address === "object");
 const overrides = {
-  image: "media/screen-lift/screen.png",
+  title: "Inbox",
+  chat2Name: "Taylor Park",
+  chat2Message: "Every word is editable.",
+  chat2Time: "1m",
+  chat2Color: "#654080",
+  accentColor: "#ad83ff",
   lift: 130,
   angle: 16,
-  focusY: 410,
-  focusHeight: 100,
+  focusRow: 3,
+  rowHeight: 100,
 };
 try {
   for (const [directory, values] of [
@@ -147,6 +152,13 @@ try {
 const canonicalHtml = await readFile(
   resolve(block, "screen-lift.html"),
   "utf8",
+);
+assert.doesNotMatch(
+  canonicalHtml,
+  /<img\b|<canvas\b|screen\.png|data:image\//i,
+);
+assert(
+  manifest.files.every((file) => !/\.(png|jpe?g|webp|svg)$/i.test(file.path)),
 );
 const installedHtml = await readFile(
   resolve(installed, "compositions/screen-lift.html"),
@@ -196,7 +208,7 @@ for (const [id, value] of Object.entries(overrides)) {
     `${id}: installer ignored override`,
   );
 }
-assert.match(customizedHtml, /media\/screen-lift\/screen\.png/);
+assert.match(customizedHtml, /media\/screen-lift\/Geist\.woff2/);
 
 async function check(directory) {
   const { stdout } = await hf(["check", "--json"], directory);

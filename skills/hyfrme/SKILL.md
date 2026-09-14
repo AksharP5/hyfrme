@@ -53,7 +53,7 @@ Examples:
 
 ```bash
 npx hyfrme@latest add soft-blur-in
-npx hyfrme@latest add screen-lift --set 'image=assets/my-screen.png'
+npx hyfrme@latest add screen-lift --set 'chat2Message=Made this with Hyfrme.'
 npx hyfrme@latest add icon-check
 npx hyfrme@latest add matrix-decode --set 'text=SHIPPED' --set 'color=#22c55e'
 ```

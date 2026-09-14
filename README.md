@@ -34,13 +34,13 @@ npx hyfrme@latest add snapcn-phone-frame
 ```
 
 Screen Lift is a Hyfrme original: a 4-second phone close-up with two raised
-screenshot regions and light across the glass.
+HTML chat rows and light across the glass.
 
 ```bash
 npx hyfrme@latest add screen-lift
 ```
 
-Customize its screenshot, lift depth, camera angle, and selected screen region
+Customize its chat text, CSS avatars, colors, lift depth, and camera angle
 in the catalog or with `--set`. See the [component guide](registry/blocks/screen-lift/README.md).
 
 Install the full catalog when you want every block available locally:
