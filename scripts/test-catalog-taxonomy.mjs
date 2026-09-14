@@ -11,7 +11,7 @@ const result = await build({
   format: "esm",
   write: false,
 });
-const { catalogTaxonomy, categoryFor, taxonomyFor } = await import(
+const { catalog, catalogTaxonomy, categoryFor, taxonomyFor } = await import(
   `data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString("base64")}`
 );
 const directories = await readdir(resolve(root, "registry/blocks"), {
@@ -75,6 +75,17 @@ assert.equal(orbit.group.label, "Galleries");
 for (const name of ["snapcn-logo-flicker", "logo-enter"]) {
   assert.equal(taxonomyFor({ item: { name } }).section.label, "Logos");
 }
+
+const screenLift = catalog.find((entry) => entry.item.name === "screen-lift");
+assert(screenLift, "Screen Lift must be listed in the catalog");
+assert.equal(screenLift.source.id, "hyfrme");
+assert.equal(taxonomyFor(screenLift).group.id, "device-frames");
+const screenLiftEvidence = JSON.parse(
+  await readFile(resolve(root, "parity/screen-lift.json"), "utf8"),
+);
+assert.equal(screenLiftEvidence.kind, "original");
+assert.equal(screenLiftEvidence.artifacts.referenceVideo, undefined);
+assert.equal(screenLiftEvidence.result.meanSsim, undefined);
 
 console.log(
   `Catalog taxonomy passed: ${entries.length} blocks, ${assigned.size} named placements.`,

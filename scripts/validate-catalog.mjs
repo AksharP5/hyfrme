@@ -1,4 +1,5 @@
 import { access, readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import { resolve } from "node:path";
 import { build } from "esbuild";
 
@@ -65,6 +66,13 @@ for (const item of registry.items) {
 
   const manifest = await readJson(manifestPath);
   const parity = await readJson(parityPath);
+  const original = parity.kind === "original";
+
+  if (original !== manifest.tags?.includes("hyfrme-original")) {
+    throw new Error(
+      `${item.name}: original source tag must match its evidence`,
+    );
+  }
 
   if (manifest.name !== item.name) {
     throw new Error(
@@ -90,7 +98,7 @@ for (const item of registry.items) {
 
   if (parity.status !== "verified" || parity.result?.pass !== true) {
     throw new Error(
-      `${item.name}: only verified, passing ports can enter the catalog`,
+      `${item.name}: only verified, passing components can enter the catalog`,
     );
   }
 
@@ -111,13 +119,58 @@ for (const item of registry.items) {
     }
   }
 
-  await ensure(
-    resolve(
-      root,
-      parity.artifacts.referenceVideo ?? parity.artifacts.remocnVideo,
-    ),
-    `${item.name} reference preview`,
-  );
+  if (original) {
+    if (
+      parity.checks?.hyperframes?.pass !== true ||
+      parity.fixture?.width !== manifest.dimensions.width ||
+      parity.fixture.height !== manifest.dimensions.height ||
+      parity.fixture.durationInFrames !== parity.result.frameCount ||
+      parity.fixture.durationInFrames / parity.fixture.fps !== manifest.duration
+    ) {
+      throw new Error(
+        `${item.name}: original requires a passing check and complete render`,
+      );
+    }
+    if (
+      parity.origin.commit ||
+      parity.artifacts.referenceVideo ||
+      parity.artifacts.remocnVideo ||
+      "meanSsim" in parity.result
+    ) {
+      throw new Error(`${item.name}: original must not claim upstream parity`);
+    }
+    await ensure(
+      resolve(root, parity.artifacts.check),
+      `${item.name} HyperFrames check`,
+    );
+    await ensure(
+      resolve(root, parity.artifacts.summary),
+      `${item.name} render summary`,
+    );
+    const [check, summary, source] = await Promise.all([
+      readJson(resolve(root, parity.artifacts.check)),
+      readJson(resolve(root, parity.artifacts.summary)),
+      readFile(resolve(root, parity.origin.source)),
+    ]);
+    if (
+      check.ok !== true ||
+      summary.pass !== true ||
+      summary.frameCount !== parity.result.frameCount ||
+      summary.sourceSha256 !== createHash("sha256").update(source).digest("hex")
+    ) {
+      throw new Error(
+        `${item.name}: original verification evidence is stale or failing`,
+      );
+    }
+  } else {
+    await ensure(
+      resolve(
+        root,
+        parity.artifacts.referenceVideo ?? parity.artifacts.remocnVideo,
+      ),
+      `${item.name} reference preview`,
+    );
+  }
   await ensure(
     resolve(root, "public", "previews", item.name, "hyperframes.mp4"),
     `${item.name} HyperFrames preview`,
@@ -132,4 +185,4 @@ for (const item of registry.items) {
   );
 }
 
-console.log(`Validated ${registry.items.length} verified Hyfrme port(s).`);
+console.log(`Validated ${registry.items.length} verified Hyfrme component(s).`);

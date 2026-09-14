@@ -27,7 +27,7 @@ cd my-video
 Browse the visual catalog at <https://hyfrme.vercel.app>. The machine-readable
 registry is at <https://hyfrme.vercel.app/registry/registry.json>.
 
-Use the catalog's source filter to browse Remocn or Snapcn ports. Snapcn block
+Use the catalog's source filter to browse Hyfrme originals or Remocn and Snapcn ports. Snapcn block
 names start with `snapcn-`, such as `snapcn-phone-frame`; copy the exact catalog
 name into the install command.
 
@@ -53,6 +53,7 @@ Examples:
 
 ```bash
 npx hyfrme@latest add soft-blur-in
+npx hyfrme@latest add screen-lift --set 'image=assets/my-screen.png'
 npx hyfrme@latest add icon-check
 npx hyfrme@latest add matrix-decode --set 'text=SHIPPED' --set 'color=#22c55e'
 ```
@@ -109,6 +110,8 @@ variable names. Per-instance overrides remain available through
 - For video-containing Snapcn blocks, render with `--video-frame-format png`
   to preserve the lossless video extraction used for parity verification.
 - Preserve copied license and attribution files.
-- Hyfrme ports Remocn and Snapcn components as an independent HyperFrames project.
+- Hyfrme includes original components and independent ports of Remocn and Snapcn.
+  Original components have installation and render checks, without an upstream
+  parity comparison.
 - Treat the website preview as a selection tool, then run `hyperframes check`
   after wiring the installed source into a real composition.

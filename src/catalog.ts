@@ -25,6 +25,11 @@ export type ParitySummary = {
 
 export const catalogSources = [
   {
+    id: "hyfrme",
+    label: "Hyfrme",
+    repository: "https://github.com/AksharP5/hyfrme",
+  },
+  {
     id: "remocn",
     label: "Remocn",
     repository: "https://github.com/Remocn/remocn",
@@ -41,7 +46,10 @@ export type CatalogSource = (typeof catalogSources)[number];
 export type CatalogEntry = {
   item: RegistrySummary;
   source: CatalogSource;
-  loadDetails: () => Promise<{ item: RegistryItem; parity: ParitySummary }>;
+  loadDetails: () => Promise<{
+    item: RegistryItem;
+    parity: ParitySummary | null;
+  }>;
   loadSource: () => Promise<string>;
 };
 
@@ -95,7 +103,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "device-frames",
         label: "Device Frames",
-        slugs: ["snapcn-phone-frame", "snapcn-laptop-frame"],
+        slugs: ["snapcn-phone-frame", "snapcn-laptop-frame", "screen-lift"],
       },
       {
         id: "screen-captures",

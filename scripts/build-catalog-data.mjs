@@ -20,34 +20,39 @@ const entries = await Promise.all(
 
     return {
       item,
-      parity: {
-        slug: parity.slug,
-        origin: {
-          repository: parity.origin.repository,
-          commit: parity.origin.commit,
-          source: parity.origin.source,
-        },
-        artifacts: {
-          referenceVideo: (
-            parity.artifacts.referenceVideo ?? parity.artifacts.remocnVideo
-          ).replace(/^public\//, "/"),
-          hyperframesVideo: parity.artifacts.hyperframesVideo.replace(
-            /^public\//,
-            "/",
-          ),
-        },
-        result: {
-          frameCount: parity.result.frameCount,
-          meanSsim: parity.result.meanSsim,
-          pass: parity.result.pass,
-        },
-      },
+      sourceRepository: parity.origin.repository,
+      parity:
+        parity.kind === "original"
+          ? null
+          : {
+              slug: parity.slug,
+              origin: {
+                repository: parity.origin.repository,
+                commit: parity.origin.commit,
+                source: parity.origin.source,
+              },
+              artifacts: {
+                referenceVideo: (
+                  parity.artifacts.referenceVideo ??
+                  parity.artifacts.remocnVideo
+                ).replace(/^public\//, "/"),
+                hyperframesVideo: parity.artifacts.hyperframesVideo.replace(
+                  /^public\//,
+                  "/",
+                ),
+              },
+              result: {
+                frameCount: parity.result.frameCount,
+                meanSsim: parity.result.meanSsim,
+                pass: parity.result.pass,
+              },
+            },
     };
   }),
 );
 
 entries.sort((left, right) => left.item.title.localeCompare(right.item.title));
-const summaries = entries.map(({ item, parity }) => ({
+const summaries = entries.map(({ item, sourceRepository }) => ({
   item: {
     name: item.name,
     title: item.title,
@@ -56,7 +61,7 @@ const summaries = entries.map(({ item, parity }) => ({
     dimensions: item.dimensions,
     duration: item.duration,
   },
-  sourceRepository: parity.origin.repository,
+  sourceRepository,
 }));
 const output = `${JSON.stringify(summaries, null, 2)}\n`;
 
@@ -74,15 +79,15 @@ if (checking) {
   await mkdir(resolve(root, "src", "generated"), { recursive: true });
   await writeFile(outputPath, output);
   await Promise.all(
-    entries.map(async (entry) => {
+    entries.map(async ({ item, parity }) => {
       const path = resolve(
         root,
         "public/registry/blocks",
-        entry.item.name,
+        item.name,
         "catalog.json",
       );
       await mkdir(dirname(path), { recursive: true });
-      await writeFile(path, `${JSON.stringify(entry)}\n`);
+      await writeFile(path, `${JSON.stringify({ item, parity })}\n`);
     }),
   );
   console.log(

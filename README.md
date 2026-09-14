@@ -1,7 +1,7 @@
 # Hyfrme
 
 Hyfrme is a copy-paste motion library for
-[HyperFrames](https://hyperframes.heygen.com/). Browse components from Remocn and Snapcn,
+[HyperFrames](https://hyperframes.heygen.com/). Browse Hyfrme originals and ports from Remocn and Snapcn,
 customize one in the browser, then copy it into your project with one command.
 You own the installed HTML, JavaScript, fonts, and assets.
 
@@ -14,6 +14,8 @@ You own the installed HTML, JavaScript, fonts, and assets.
 - **Verified motion.** Every port is rendered against its pinned
   [Remocn](https://github.com/Remocn/remocn) or [Snapcn](https://github.com/snapcndev/snapcn) source and published only after
   passing the repository's visual parity checks.
+- **Original components.** Hyfrme originals are checked and rendered through the
+  installer. They do not claim visual parity with an upstream library.
 
 ## Installation
 
@@ -24,12 +26,22 @@ Start inside a HyperFrames project, then add any component from the
 npx hyfrme@latest add soft-blur-in
 ```
 
-Filter the catalog by Remocn or Snapcn to browse either source. Snapcn names
+Filter the catalog by Hyfrme, Remocn, or Snapcn to browse a source. Snapcn names
 carry a prefix so similarly named components remain distinct:
 
 ```bash
 npx hyfrme@latest add snapcn-phone-frame
 ```
+
+Screen Lift is a Hyfrme original: a 4-second phone close-up with two raised
+screenshot regions and light across the glass.
+
+```bash
+npx hyfrme@latest add screen-lift
+```
+
+Customize its screenshot, lift depth, camera angle, and selected screen region
+in the catalog or with `--set`. See the [component guide](registry/blocks/screen-lift/README.md).
 
 Install the full catalog when you want every block available locally:
 
@@ -82,6 +94,12 @@ npm run build
 Composition ports follow the parity workflow in
 [`docs/PORTING.md`](docs/PORTING.md). Contributor-specific agent instructions
 live in [`AGENTS.md`](AGENTS.md).
+
+After editing Screen Lift, run `npm run verify:screen-lift` to check the actual
+CLI installation, custom paths and variables, and all 120 rendered frames.
+Then run `npm run sync:registry`, `npm run sync:catalog`, and `npm run sync:media`
+before the regular checks and build. Its installation comparison measures the
+original source against the installed result, not an upstream port.
 
 ## Website video storage
 

@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, readdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
@@ -17,7 +17,21 @@ const primitiveFixtures = JSON.parse(
 const snapcnFixtures = JSON.parse(
   await readFile(resolve(root, "catalog", "snapcn-fixtures.json"), "utf8"),
 );
+const blockDirectory = resolve(root, "registry", "blocks");
+const originalItems = (
+  await Promise.all(
+    (await readdir(blockDirectory)).map(async (name) =>
+      JSON.parse(
+        await readFile(
+          resolve(blockDirectory, name, "registry-item.json"),
+          "utf8",
+        ),
+      ),
+    ),
+  )
+).filter((item) => item.tags?.includes("hyfrme-original"));
 const orderedNames = [
+  ...originalItems.map((item) => item.name).sort(),
   "soft-blur-in",
   ...textFixtures.map((entry) => entry.slug),
   ...coreFixtures.map((entry) => entry.slug),

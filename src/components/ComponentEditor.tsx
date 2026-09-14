@@ -50,6 +50,10 @@ export function ComponentEditor({
   const upstreamUrl = parity
     ? `${entry.source.repository}/blob/${parity.origin.commit}/${parity.origin.source}`
     : undefined;
+  const sourceUrl =
+    entry.source.id === "hyfrme"
+      ? `${entry.source.repository}/blob/main/registry/blocks/${entry.item.name}/${entry.item.name}.html`
+      : upstreamUrl;
   const customized = variables.some(
     (variable) => effectiveValues[variable.id] !== variable.default,
   );
@@ -109,12 +113,15 @@ export function ComponentEditor({
         <p>{cardDescription(entry)}</p>
         <a
           className="detail-source"
-          href={upstreamUrl}
+          href={sourceUrl}
           target="_blank"
           rel="noreferrer"
         >
           <span className="source-badge">{entry.source.label}</span>
-          Original source <span aria-hidden="true">↗</span>
+          {entry.source.id === "hyfrme"
+            ? "Hyfrme original"
+            : "Original source"}{" "}
+          <span aria-hidden="true">↗</span>
         </a>
       </header>
 

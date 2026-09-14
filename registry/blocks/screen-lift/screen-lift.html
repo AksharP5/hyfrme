@@ -1,0 +1,529 @@
+<!doctype html>
+<html
+  lang="en"
+  data-composition-variables='[{"id":"image","type":"string","label":"Screen image","default":"../assets/screen-lift/screen.png"},{"id":"lift","type":"number","label":"Lift depth","default":100,"min":30,"max":160,"step":5},{"id":"angle","type":"number","label":"Camera angle","default":12,"min":4,"max":20,"step":1},{"id":"focusY","type":"number","label":"Focus position","default":379,"min":270,"max":850,"step":1},{"id":"focusHeight","type":"number","label":"Focus height","default":112,"min":80,"max":200,"step":1}]'
+>
+  <head>
+    <meta charset="utf-8" />
+    <title>Screen lift</title>
+    <script src="../assets/screen-lift/gsap.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        background: #050607;
+      }
+      #screen-lift {
+        position: relative;
+        width: 1280px;
+        height: 960px;
+        overflow: hidden;
+        background: #050607;
+      }
+      .atmosphere {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 14% 3%,
+          #373a3b 0%,
+          #17191b 24%,
+          #08090a 47%,
+          #030405 80%
+        );
+      }
+      .softbox {
+        position: absolute;
+        left: -38px;
+        top: -425px;
+        width: 420px;
+        height: 940px;
+        background: linear-gradient(
+          90deg,
+          transparent 8%,
+          #f8f5ea12 24%,
+          #fff9e547 47%,
+          #eef5ff28 63%,
+          transparent 91%
+        );
+        mask-image: linear-gradient(
+          180deg,
+          transparent 4%,
+          #000 24%,
+          #000 55%,
+          transparent 96%
+        );
+        filter: blur(26px);
+        transform: rotate(-38deg);
+        pointer-events: none;
+      }
+      .light-source {
+        position: absolute;
+        left: -210px;
+        top: -260px;
+        width: 620px;
+        height: 610px;
+        background: radial-gradient(
+          ellipse,
+          #f9f4e535 0%,
+          #eef3f310 40%,
+          transparent 69%
+        );
+        pointer-events: none;
+      }
+      .camera {
+        position: absolute;
+        inset: 0;
+        perspective: 1600px;
+        perspective-origin: 50% 36%;
+      }
+      .rig {
+        position: absolute;
+        left: 480px;
+        top: 252px;
+        width: 628px;
+        height: 1288px;
+        transform-origin: 50% 25%;
+        transform-style: preserve-3d;
+      }
+      #screen-lift-metal {
+        position: absolute;
+        inset: 0;
+        transform-style: preserve-3d;
+      }
+      .body-layer {
+        position: absolute;
+        inset: 0;
+        border-radius: 82px;
+        background: linear-gradient(
+          130deg,
+          #717477 0%,
+          #32383d 18%,
+          #080a0d 39%,
+          #22272c 67%,
+          #15191b 100%
+        );
+        border: 1px solid #575e64;
+        backface-visibility: hidden;
+      }
+      .front-rim {
+        position: absolute;
+        inset: 0;
+        border-radius: 82px;
+        background: linear-gradient(
+          130deg,
+          #aeb9c0 0%,
+          #35393c 9%,
+          #14171c 20%,
+          #111418 46%,
+          #464c51 76%,
+          #0d1115 100%
+        );
+        border: 1px solid #7e858b;
+        box-shadow:
+          inset 1px 0 0 #39baf749,
+          inset -1px 0 0 #e8922949;
+        backface-visibility: hidden;
+      }
+      .inner-bezel {
+        position: absolute;
+        inset: 3px;
+        border-radius: 79px;
+        border: 9px solid #07080a;
+        background: #000;
+        box-shadow: inset 0 0 0 1px #43474c;
+      }
+      .screen {
+        position: absolute;
+        left: 14px;
+        top: 14px;
+        width: 600px;
+        height: 1260px;
+        border-radius: 68px;
+        overflow: hidden;
+        background: #030405;
+        backface-visibility: hidden;
+      }
+      .screen-picture {
+        width: 600px;
+        height: 1260px;
+        background: url("../assets/screen-lift/screen.png") 0 0/600px 1260px
+          no-repeat;
+      }
+      .glass {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          130deg,
+          #eef5ff18,
+          transparent 29%,
+          transparent 69%,
+          #b8c9ee03
+        );
+        border-radius: 68px;
+        box-shadow:
+          inset 1px 1px 1px #b7d8ff15,
+          inset -1px 0 0 #ff9b3514;
+        pointer-events: none;
+      }
+      .screen-dim {
+        position: absolute;
+        inset: 0;
+        background: #020304;
+        opacity: 0;
+      }
+      .slot {
+        position: absolute;
+        left: 0;
+        width: 600px;
+        background: #020304;
+        opacity: 0;
+        box-shadow: inset 0 5px 22px #000;
+      }
+      .lift-row {
+        position: absolute;
+        left: 14px;
+        width: 600px;
+        height: 128px;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+      }
+      .lift-face {
+        position: absolute;
+        inset: 0;
+        border-radius: 25px;
+        background: url("../assets/screen-lift/screen.png") no-repeat;
+        background-size: 600px 1260px;
+        background-origin: border-box;
+        border: 1px solid transparent;
+        overflow: hidden;
+        box-shadow: 0 0 0 transparent;
+        backface-visibility: hidden;
+      }
+      .lift-face:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: #020304;
+        opacity: var(--recede, 0);
+        pointer-events: none;
+      }
+      .lift-edge {
+        position: absolute;
+        inset: 0;
+        border-radius: 25px;
+        background: linear-gradient(
+          145deg,
+          #909ba3,
+          #1a1d20 25%,
+          #080a0c 65%,
+          #38414a
+        );
+        border: 1px solid #909a9e50;
+        opacity: 0;
+      }
+      .glass-reflection {
+        position: absolute;
+        left: -110px;
+        top: 32px;
+        width: 370px;
+        height: 320px;
+        background: radial-gradient(
+          ellipse at 24% 40%,
+          #f0f6ff25 0%,
+          #eff5ff0d 34%,
+          transparent 65%
+        );
+        mask-image: radial-gradient(ellipse, #000 20%, transparent 72%);
+        opacity: 0;
+        pointer-events: none;
+      }
+      .rim-glint {
+        position: absolute;
+        top: 90px;
+        left: -2px;
+        width: 3px;
+        height: 110px;
+        background: linear-gradient(
+          transparent,
+          #d7eaff 30%,
+          #fff 49%,
+          #fff 52%,
+          #cce6ff 72%,
+          transparent
+        );
+        box-shadow:
+          0 0 6px #e0efffb3,
+          0 0 17px #aacfff66;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .rim-glint:before {
+        content: "";
+        position: absolute;
+        left: -28px;
+        top: 16px;
+        width: 60px;
+        height: 82px;
+        background: radial-gradient(
+          ellipse,
+          #eaf4ff80 0%,
+          #e9f3ff25 31%,
+          #bddbff08 51%,
+          transparent 72%
+        );
+        filter: blur(3px);
+      }
+      .rim-glint:after {
+        content: "";
+        position: absolute;
+        left: -1px;
+        top: 38px;
+        width: 5px;
+        height: 35px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow:
+          0 0 6px #fff,
+          0 0 14px #e3f1ffcc;
+      }
+      .rim-reflection {
+        position: absolute;
+        inset: 0;
+        border-radius: 82px;
+        border-left: 2px solid #c1d1dd35;
+        border-top: 1px solid #d1e4ed26;
+        pointer-events: none;
+      }
+      .button {
+        position: absolute;
+        left: -4px;
+        width: 5px;
+        border-radius: 3px;
+        background: linear-gradient(90deg, #161b21, #707b82, #171d24);
+      }
+      .button.one {
+        top: 170px;
+        height: 38px;
+      }
+      .button.two {
+        top: 245px;
+        height: 70px;
+      }
+      .button.three {
+        top: 332px;
+        height: 70px;
+      }
+      .vignette {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 56%, #02030455 100%);
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="screen-lift"
+      data-composition-id="screen-lift"
+      data-width="1280"
+      data-height="960"
+      data-duration="4"
+      data-fps="30"
+    >
+      <div class="atmosphere"></div>
+      <div class="softbox" data-layout-allow-overflow></div>
+      <div class="light-source" data-layout-allow-overflow></div>
+      <div class="camera">
+        <div class="rig" data-layout-allow-overflow>
+          <div id="screen-lift-metal"></div>
+          <div class="front-rim" data-layout-allow-overflow>
+            <div class="inner-bezel"></div>
+          </div>
+          <div class="screen" data-layout-allow-overflow>
+            <div class="screen-picture"></div>
+            <div class="screen-dim"></div>
+            <div class="slot primary-slot"></div>
+            <div class="slot secondary-slot"></div>
+            <div class="glass"></div>
+            <div class="glass-reflection"></div>
+          </div>
+          <div class="button one" data-layout-allow-overflow></div>
+          <div class="button two" data-layout-allow-overflow></div>
+          <div class="button three" data-layout-allow-overflow></div>
+          <div class="rim-reflection" data-layout-allow-overflow></div>
+          <div class="rim-glint"></div>
+          <div class="lift-row secondary" data-layout-allow-overflow>
+            <div class="lift-edge" data-layout-allow-overflow></div>
+            <div class="lift-face" data-layout-allow-overflow></div>
+          </div>
+          <div class="lift-row primary" data-layout-allow-overflow>
+            <div class="lift-edge" data-layout-allow-overflow></div>
+            <div class="lift-face" data-layout-allow-overflow></div>
+          </div>
+        </div>
+      </div>
+      <div class="vignette"></div>
+    </div>
+    <script>
+      (() => {
+        const vars = {
+          image: "../assets/screen-lift/screen.png",
+          lift: 100,
+          angle: 12,
+          focusY: 379,
+          focusHeight: 112,
+          ...window.__hyperframes?.getVariables?.(),
+        };
+        const top = Math.max(0, Math.min(1132, Number(vars.focusY))),
+          height = Math.max(80, Math.min(200, Number(vars.focusHeight))),
+          depth = Number(vars.lift),
+          angle = Number(vars.angle);
+        for (let i = 0; i < 8; i++) {
+          const layer = document.createElement("div");
+          layer.className = "body-layer";
+          layer.setAttribute("data-layout-allow-overflow", "");
+          gsap.set(layer, { z: -18 + i * 2 });
+          document.getElementById("screen-lift-metal").append(layer);
+        }
+        document.getElementById("screen-lift-metal").style.transformStyle =
+          "preserve-3d";
+        document.querySelector(".screen-picture").style.backgroundImage =
+          `url(${JSON.stringify(vars.image)})`;
+        for (const [selector, slotSelector, y] of [
+          [".primary", ".primary-slot", top],
+          [
+            ".secondary",
+            ".secondary-slot",
+            Math.min(1260 - height, top + height),
+          ],
+        ]) {
+          const row = document.querySelector(selector),
+            face = row.querySelector(".lift-face"),
+            edge = row.querySelector(".lift-edge");
+          gsap.set(row, { top: 14 + y, height, z: 0.2, autoAlpha: 0 });
+          face.style.backgroundImage = `url(${JSON.stringify(vars.image)})`;
+          face.style.backgroundPosition = `0px -${y}px`;
+          gsap.set(edge, { z: -2 });
+          gsap.set(slotSelector, { top: y, height });
+        }
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo(
+          ".rig",
+          {
+            x: 60,
+            y: 40,
+            rotationX: 24,
+            rotationY: -21,
+            rotationZ: angle + 3,
+            scale: 1.23,
+          },
+          {
+            x: -39,
+            y: -31,
+            rotationX: 13.5,
+            rotationY: -11.5,
+            rotationZ: angle - 0.2,
+            scale: 1.505,
+            duration: 4,
+            ease: "power2.inOut",
+          },
+          0,
+        );
+        tl.fromTo(
+          ".primary",
+          { z: 0.2, x: 0, y: 0 },
+          {
+            z: depth,
+            x: -23,
+            y: height * 0.05,
+            duration: 1.35,
+            ease: "power3.inOut",
+          },
+          1.35,
+        );
+        tl.fromTo(
+          ".secondary",
+          { z: 0.2, x: 0, y: 0 },
+          {
+            z: depth * 0.5,
+            x: -12,
+            y: -height * 0.12,
+            duration: 1.45,
+            ease: "power3.inOut",
+          },
+          1.6,
+        );
+        tl.to(
+          ".primary",
+          { autoAlpha: 1, duration: 0.35, ease: "sine.inOut" },
+          1.35,
+        );
+        tl.to(
+          ".secondary",
+          { autoAlpha: 1, duration: 0.35, ease: "sine.inOut" },
+          1.6,
+        );
+        tl.to(".screen-dim", { opacity: 0.38, duration: 1.2 }, 1.35);
+        tl.to(".primary-slot", { opacity: 1, duration: 0.6 }, 1.45);
+        tl.to(".secondary-slot", { opacity: 1, duration: 0.6 }, 1.7);
+        tl.to(".lift-edge", { opacity: 1, duration: 0.75 }, 1.4);
+        tl.to(
+          ".primary .lift-face",
+          {
+            borderColor: "#3b454e",
+            boxShadow:
+              "0 12px 20px #000d, 0 3px 5px #0009, inset 0 1px 0 #e0d8c52b, -1px 0 0 #44c9ef66, 1px 0 0 #e4914444",
+            duration: 1.2,
+          },
+          1.4,
+        );
+        tl.to(
+          ".secondary .lift-face",
+          {
+            borderColor: "#303a42",
+            "--recede": 0.12,
+            boxShadow:
+              "0 10px 18px #0009, inset 0 1px 0 #d7dfe615, -1px 0 0 #44c9ef33, 1px 0 0 #e4914422",
+            duration: 1.2,
+          },
+          1.6,
+        );
+        tl.fromTo(
+          ".rim-glint",
+          { opacity: 0.15, y: -25 },
+          { opacity: 1, y: 25, duration: 2, ease: "sine.inOut" },
+          0.6,
+        );
+        tl.to(
+          ".rim-glint",
+          { opacity: 0.7, y: 75, duration: 1.4, ease: "sine.inOut" },
+          2.6,
+        );
+        tl.fromTo(
+          ".glass-reflection",
+          { opacity: 0.2, y: -12 },
+          { opacity: 0.85, y: 24, duration: 2, ease: "sine.inOut" },
+          0.6,
+        );
+        tl.to(
+          ".glass-reflection",
+          { opacity: 0.55, y: 56, duration: 1.4, ease: "sine.inOut" },
+          2.6,
+        );
+        tl.fromTo(
+          ".softbox",
+          { x: 0, opacity: 0.72 },
+          { x: 56, opacity: 0.95, duration: 4, ease: "sine.inOut" },
+          0,
+        );
+        window.__timelines = window.__timelines || {};
+        window.__timelines["screen-lift"] = tl;
+        tl.seek(0);
+      })();
+    </script>
+  </body>
+</html>
