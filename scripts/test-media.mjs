@@ -10,7 +10,9 @@ import {
 import { tmpdir } from "node:os";
 import { createServer } from "node:http";
 import { dirname, resolve } from "node:path";
+import { spawnSync } from "node:child_process";
 import test from "node:test";
+import { build, preview } from "vite";
 import { mediaContent } from "./encode-media.mjs";
 import { frameRateArgument } from "./frame-rate.mjs";
 import {
@@ -20,6 +22,7 @@ import {
   mediaRedirects,
   readMediaFiles,
   readMediaManifest,
+  root,
   validateMedia,
 } from "./media.mjs";
 
@@ -56,6 +59,76 @@ async function fixture(t) {
   );
   return { directory, publicDirectory, files, manifest };
 }
+
+test("contributors build and preview unpublished videos while production rejects them", async (t) => {
+  const { directory, files } = await fixture(t);
+  await writeFile(
+    resolve(directory, "index.html"),
+    "<h1>Contributor preview</h1>",
+  );
+  const config = {
+    configFile: resolve(root, "vite.config.ts"),
+    root: directory,
+    logLevel: "silent",
+  };
+  await build(config);
+  const server = await preview({
+    ...config,
+    preview: { host: "127.0.0.1", port: 0, open: false },
+  });
+  t.after(() => new Promise((resolve) => server.httpServer.close(resolve)));
+  const origin = `http://127.0.0.1:${server.httpServer.address().port}`;
+  for (const file of files) {
+    const response = await fetch(`${origin}${file.path}`, {
+      redirect: "manual",
+    });
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get("location"), null);
+    assert.equal(await response.text(), await readFile(file.filename, "utf8"));
+  }
+  await assert.rejects(
+    build({ ...config, mode: "hosted" }),
+    /Missing or outdated media/,
+  );
+});
+
+test("Vercel defers unpublished previews without skipping the production check", async (t) => {
+  const { directory, files, manifest } = await fixture(t);
+  await mkdir(resolve(directory, "scripts"));
+  for (const file of ["media.mjs", "ignore-unpublished-preview.mjs"]) {
+    await writeFile(
+      resolve(directory, "scripts", file),
+      await readFile(resolve(root, "scripts", file)),
+    );
+  }
+  await mkdir(resolve(directory, "src/generated"), { recursive: true });
+  await writeFile(
+    resolve(directory, "src/generated/media.json"),
+    JSON.stringify(manifest),
+  );
+  await writeFile(
+    resolve(directory, "vercel.json"),
+    JSON.stringify({ redirects: mediaRedirects(manifest) }),
+  );
+  const run = (environment) =>
+    spawnSync(
+      process.execPath,
+      [resolve(directory, "scripts/ignore-unpublished-preview.mjs")],
+      {
+        env: { ...process.env, VERCEL_ENV: environment },
+        encoding: "utf8",
+      },
+    );
+  assert.equal(run("preview").status, 1);
+  await writeFile(files[0].filename, "new render");
+  const deferred = run("preview");
+  assert.equal(deferred.status, 0);
+  assert.match(
+    deferred.stdout,
+    /Hosted preview skipped: Missing or outdated media/,
+  );
+  assert.equal(run("production").status, 1);
+});
 
 test("production requires uploaded current media and matching legacy redirects", async (t) => {
   const { files, manifest, publicDirectory } = await fixture(t);

@@ -8,6 +8,8 @@
     "dev": "vite",
     "prebuild": "npm run sync:registry && npm run sync:catalog && npm run build:cli",
     "build": "tsc --noEmit && vite build",
+    "build:production": "npm run build -- --mode hosted",
+    "preview": "vite preview",
     "check": "node scripts/build-catalog-data.mjs --check && npm run validate && npm run validate:snapcn && npm run verify:showcases && npm run test:cli && npm run test:media && npm run test:taxonomy && npm run test:remocn-registry && npm run test:snapcn-media && npm run test:snapcn-alpha && npm run test:preview-errors && npm run check:commands && tsc --noEmit",
     "check:commands": "node scripts/check-install-commands.mjs",
     "validate": "node scripts/validate-catalog.mjs",
