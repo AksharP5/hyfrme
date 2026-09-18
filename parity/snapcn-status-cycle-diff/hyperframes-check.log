@@ -1,6 +1,6 @@
 [hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
 {
-  "ok": true,
+  "ok": false,
   "strict": false,
   "lint": {
     "ok": true,
@@ -18,82 +18,24 @@
     "findings": []
   },
   "layout": {
-    "ok": true,
-    "errorCount": 0,
-    "warningCount": 8,
+    "ok": false,
+    "errorCount": 3,
+    "warningCount": 5,
     "infoCount": 16,
     "findings": [
       {
         "code": "content_overlap",
-        "severity": "warning",
-        "time": 0,
-        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(6)",
-        "message": "Two text blocks overlap and may render unreadable.",
-        "rect": {
-          "left": 632.83,
-          "top": 365.99,
-          "right": 650.72,
-          "bottom": 402.51,
-          "width": 17.89,
-          "height": 36.52
-        },
-        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
-        "text": "n",
-        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-status-cycle.html",
-        "bbox": {
-          "x": 632.83,
-          "y": 365.99,
-          "width": 17.89,
-          "height": 36.52
-        },
-        "firstSeen": 0,
-        "lastSeen": 0.278,
-        "occurrences": 4
-      },
-      {
-        "code": "content_overlap",
-        "severity": "warning",
-        "time": 0,
-        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(8)",
-        "message": "Two text blocks overlap and may render unreadable.",
-        "rect": {
-          "left": 687.21,
-          "top": 385.48,
-          "right": 689.59,
-          "bottom": 397.31,
-          "width": 2.38,
-          "height": 11.83
-        },
-        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
-        "text": "i",
-        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-status-cycle.html",
-        "bbox": {
-          "x": 687.21,
-          "y": 385.48,
-          "width": 2.38,
-          "height": 11.83
-        },
-        "firstSeen": 0,
-        "lastSeen": 0.278,
-        "occurrences": 4
-      },
-      {
-        "code": "content_overlap",
-        "severity": "warning",
+        "severity": "error",
         "time": 0,
         "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(9)",
         "message": "Two text blocks overlap and may render unreadable.",
         "rect": {
-          "left": 713.12,
-          "top": 388.46,
-          "right": 716.64,
-          "bottom": 396.51,
-          "width": 3.52,
-          "height": 8.05
+          "left": 645.32,
+          "top": 366.12,
+          "right": 660.92,
+          "bottom": 401.75,
+          "width": 15.59,
+          "height": 35.63
         },
         "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
         "text": "s",
@@ -101,14 +43,72 @@
         "dataAttributes": {},
         "sourceFile": "compositions/snapcn-status-cycle.html",
         "bbox": {
-          "x": 713.12,
-          "y": 388.46,
-          "width": 3.52,
-          "height": 8.05
+          "x": 645.32,
+          "y": 366.12,
+          "width": 15.59,
+          "height": 35.63
         },
         "firstSeen": 0,
-        "lastSeen": 0.375,
-        "occurrences": 5
+        "lastSeen": 3.113,
+        "occurrences": 6
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 0,
+        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(6)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 697.44,
+          "top": 390.07,
+          "right": 701.76,
+          "bottom": 398.89,
+          "width": 4.32,
+          "height": 8.82
+        },
+        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "text": "n",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-status-cycle.html",
+        "bbox": {
+          "x": 697.44,
+          "y": 390.07,
+          "width": 4.32,
+          "height": 8.82
+        },
+        "firstSeen": 0,
+        "lastSeen": 3.113,
+        "occurrences": 4
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 0,
+        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(8)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 749.78,
+          "top": 390.07,
+          "right": 751.55,
+          "bottom": 398.89,
+          "width": 1.77,
+          "height": 8.82
+        },
+        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "text": "i",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-status-cycle.html",
+        "bbox": {
+          "x": 749.78,
+          "y": 390.07,
+          "width": 1.77,
+          "height": 8.82
+        },
+        "firstSeen": 0,
+        "lastSeen": 3.113,
+        "occurrences": 4
       },
       {
         "code": "content_overlap",
@@ -142,16 +142,16 @@
       {
         "code": "content_overlap",
         "severity": "warning",
-        "time": 0.278,
+        "time": 0.367,
         "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
         "message": "Two text blocks overlap and may render unreadable.",
         "rect": {
-          "left": 425.62,
-          "top": 310.41,
-          "right": 472.42,
-          "bottom": 417.33,
-          "width": 46.8,
-          "height": 106.92
+          "left": 370.26,
+          "top": 309.49,
+          "right": 417.25,
+          "bottom": 416.85,
+          "width": 47,
+          "height": 107.37
         },
         "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
         "text": "s",
@@ -159,188 +159,19 @@
         "dataAttributes": {},
         "sourceFile": "compositions/snapcn-status-cycle.html",
         "bbox": {
-          "x": 425.62,
-          "y": 310.41,
-          "width": 46.8,
-          "height": 106.92
+          "x": 370.26,
+          "y": 309.49,
+          "width": 47,
+          "height": 107.37
         },
-        "firstSeen": 0.278,
-        "lastSeen": 0.375,
+        "firstSeen": 0.367,
+        "lastSeen": 0.374,
         "occurrences": 2
       },
       {
         "code": "content_overlap",
         "severity": "warning",
-        "time": 0.375,
-        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(3)",
-        "message": "Two text blocks overlap and may render unreadable.",
-        "rect": {
-          "left": 442.85,
-          "top": 308.22,
-          "right": 493.59,
-          "bottom": 417.19,
-          "width": 50.74,
-          "height": 108.96
-        },
-        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
-        "text": "a",
-        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-status-cycle.html",
-        "bbox": {
-          "x": 442.85,
-          "y": 308.22,
-          "width": 50.74,
-          "height": 108.96
-        },
-        "firstSeen": 0.375,
-        "lastSeen": 0.5,
-        "occurrences": 2
-      },
-      {
-        "code": "content_overlap",
-        "severity": "warning",
-        "time": 0.375,
-        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
-        "message": "Two text blocks overlap and may render unreadable.",
-        "rect": {
-          "left": 479.56,
-          "top": 311.9,
-          "right": 532.51,
-          "bottom": 416.21,
-          "width": 52.95,
-          "height": 104.31
-        },
-        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(5)",
-        "text": "p",
-        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-status-cycle.html",
-        "bbox": {
-          "x": 479.56,
-          "y": 311.9,
-          "width": 52.95,
-          "height": 104.31
-        },
-        "firstSeen": 0.375,
-        "lastSeen": 0.5,
-        "occurrences": 2
-      },
-      {
-        "code": "content_overlap",
-        "severity": "warning",
-        "time": 0.5,
-        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(8)",
-        "message": "Two text blocks overlap and may render unreadable.",
-        "rect": {
-          "left": 554.3,
-          "top": 312.98,
-          "right": 574.87,
-          "bottom": 415.4,
-          "width": 20.57,
-          "height": 102.42
-        },
-        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(9)",
-        "text": "i",
-        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-status-cycle.html",
-        "bbox": {
-          "x": 554.3,
-          "y": 312.98,
-          "width": 20.57,
-          "height": 102.42
-        },
-        "firstSeen": 0.5,
-        "lastSeen": 0.625,
-        "occurrences": 2
-      },
-      {
-        "code": "container_overflow",
-        "severity": "info",
-        "time": 0.278,
-        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2)",
-        "message": "Element extends outside a clipping layout container.",
-        "rect": {
-          "left": -37.88,
-          "top": -21.99,
-          "right": 1317.88,
-          "bottom": 740.63,
-          "width": 1355.76,
-          "height": 762.61
-        },
-        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1)",
-        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 0,
-          "top": 0,
-          "right": 1280,
-          "bottom": 720,
-          "width": 1280,
-          "height": 720
-        },
-        "overflow": {
-          "left": 37.88,
-          "right": 37.88,
-          "top": 21.99,
-          "bottom": 20.63
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-status-cycle.html",
-        "bbox": {
-          "x": -37.88,
-          "y": -21.99,
-          "width": 1355.76,
-          "height": 762.61
-        },
-        "firstSeen": 0.278,
-        "lastSeen": 0.278,
-        "occurrences": 1
-      },
-      {
-        "code": "container_overflow",
-        "severity": "info",
-        "time": 0.278,
-        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
-        "message": "Element extends outside a clipping layout container.",
-        "rect": {
-          "left": 642.25,
-          "top": 333.88,
-          "right": 949.58,
-          "bottom": 409.15,
-          "width": 307.33,
-          "height": 75.27
-        },
-        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
-        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 743.27,
-          "top": 333.88,
-          "right": 848.56,
-          "bottom": 409.15,
-          "width": 105.29,
-          "height": 75.27
-        },
-        "overflow": {
-          "left": 101.02,
-          "right": 101.02
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-status-cycle.html",
-        "bbox": {
-          "x": 642.25,
-          "y": 333.88,
-          "width": 307.33,
-          "height": 75.27
-        },
-        "firstSeen": 0.278,
-        "lastSeen": 0.278,
-        "occurrences": 1
-      },
-      {
-        "code": "content_overlap",
-        "severity": "info",
-        "time": 0.375,
+        "time": 0.367,
         "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2)",
         "message": "Two text blocks overlap and may render unreadable.",
         "rect": {
@@ -362,126 +193,84 @@
           "width": 53.8,
           "height": 109.82
         },
-        "firstSeen": 0.375,
-        "lastSeen": 0.375,
-        "occurrences": 1
+        "firstSeen": 0.367,
+        "lastSeen": 0.374,
+        "occurrences": 2
       },
       {
         "code": "content_overlap",
-        "severity": "info",
-        "time": 0.5,
-        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(5)",
+        "severity": "warning",
+        "time": 0.367,
+        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(3)",
         "message": "Two text blocks overlap and may render unreadable.",
         "rect": {
-          "left": 457.81,
-          "top": 310.61,
-          "right": 507.74,
-          "bottom": 416.03,
-          "width": 49.93,
-          "height": 105.42
+          "left": 442.85,
+          "top": 308.22,
+          "right": 493.59,
+          "bottom": 417.19,
+          "width": 50.74,
+          "height": 108.96
         },
-        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(6)",
-        "text": "c",
+        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+        "text": "a",
         "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
         "dataAttributes": {},
         "sourceFile": "compositions/snapcn-status-cycle.html",
         "bbox": {
-          "x": 457.81,
-          "y": 310.61,
-          "width": 49.93,
-          "height": 105.42
+          "x": 442.85,
+          "y": 308.22,
+          "width": 50.74,
+          "height": 108.96
         },
-        "firstSeen": 0.5,
-        "lastSeen": 0.5,
-        "occurrences": 1
+        "firstSeen": 0.367,
+        "lastSeen": 0.498,
+        "occurrences": 3
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 0.367,
+        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 479.56,
+          "top": 311.9,
+          "right": 532.51,
+          "bottom": 416.21,
+          "width": 52.95,
+          "height": 104.31
+        },
+        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(5)",
+        "text": "p",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-status-cycle.html",
+        "bbox": {
+          "x": 479.56,
+          "y": 311.9,
+          "width": 52.95,
+          "height": 104.31
+        },
+        "firstSeen": 0.367,
+        "lastSeen": 0.498,
+        "occurrences": 3
       },
       {
         "code": "container_overflow",
         "severity": "info",
-        "time": 0.833,
-        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "time": 0.367,
+        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
-          "left": 603.44,
-          "top": 408.54,
-          "right": 971.57,
-          "bottom": 479.74,
-          "width": 368.14,
-          "height": 71.2
+          "left": -21.33,
+          "top": -12.38,
+          "right": 1301.33,
+          "bottom": 731.61,
+          "width": 1322.66,
+          "height": 744
         },
-        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 628.7,
-          "top": 335.92,
-          "right": 946.31,
-          "bottom": 407.12,
-          "width": 317.62,
-          "height": 71.2
-        },
-        "overflow": {
-          "left": 25.26,
-          "right": 25.26,
-          "bottom": 72.62
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-status-cycle.html",
-        "bbox": {
-          "x": 603.44,
-          "y": 408.54,
-          "width": 368.14,
-          "height": 71.2
-        },
-        "firstSeen": 0.833,
-        "lastSeen": 0.833,
-        "occurrences": 1
-      },
-      {
-        "code": "content_overlap",
-        "severity": "info",
-        "time": 1.625,
-        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(9)",
-        "message": "Two text blocks overlap and may render unreadable.",
-        "rect": {
-          "left": 520.5,
-          "top": 335.5,
-          "right": 552.67,
-          "bottom": 408.99,
-          "width": 32.17,
-          "height": 73.49
-        },
-        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2)",
-        "text": "s",
-        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-status-cycle.html",
-        "bbox": {
-          "x": 520.5,
-          "y": 335.5,
-          "width": 32.17,
-          "height": 73.49
-        },
-        "firstSeen": 1.625,
-        "lastSeen": 1.625,
-        "occurrences": 1
-      },
-      {
-        "code": "canvas_overflow",
-        "severity": "info",
-        "time": 4.167,
-        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
-        "message": "Text extends outside the composition canvas.",
-        "rect": {
-          "left": 113.56,
-          "top": -43.77,
-          "right": 865.36,
-          "bottom": 136.23,
-          "width": 751.8,
-          "height": 180
-        },
-        "containerSelector": "#root",
-        "text": "text-reveal",
-        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
         "containerRect": {
           "left": 0,
           "top": 0,
@@ -491,36 +280,285 @@
           "height": 720
         },
         "overflow": {
-          "top": 43.77
+          "left": 21.33,
+          "right": 21.33,
+          "top": 12.38,
+          "bottom": 11.61
         },
         "dataAttributes": {},
         "sourceFile": "compositions/snapcn-status-cycle.html",
         "bbox": {
-          "x": 113.56,
-          "y": -43.77,
-          "width": 751.8,
-          "height": 180
+          "x": -21.33,
+          "y": -12.38,
+          "width": 1322.66,
+          "height": 744
         },
-        "firstSeen": 4.167,
-        "lastSeen": 4.167,
+        "firstSeen": 0.367,
+        "lastSeen": 0.367,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.367,
+        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 642.2,
+          "top": 334.8,
+          "right": 942.02,
+          "bottom": 408.23,
+          "width": 299.83,
+          "height": 73.43
+        },
+        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 680.82,
+          "top": 334.8,
+          "right": 903.42,
+          "bottom": 408.23,
+          "width": 222.6,
+          "height": 73.43
+        },
+        "overflow": {
+          "left": 38.62,
+          "right": 38.6
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-status-cycle.html",
+        "bbox": {
+          "x": 642.2,
+          "y": 334.8,
+          "width": 299.83,
+          "height": 73.43
+        },
+        "firstSeen": 0.367,
+        "lastSeen": 0.367,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 0.498,
+        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(5)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 464.51,
+          "top": 308.5,
+          "right": 515.76,
+          "bottom": 416.69,
+          "width": 51.25,
+          "height": 108.19
+        },
+        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(6)",
+        "text": "c",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-status-cycle.html",
+        "bbox": {
+          "x": 464.51,
+          "y": 308.5,
+          "width": 51.25,
+          "height": 108.19
+        },
+        "firstSeen": 0.498,
+        "lastSeen": 0.498,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 0.623,
+        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(8)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 547.83,
+          "top": 311.03,
+          "right": 568.86,
+          "bottom": 415.72,
+          "width": 21.03,
+          "height": 104.69
+        },
+        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(9)",
+        "text": "i",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-status-cycle.html",
+        "bbox": {
+          "x": 547.83,
+          "y": 311.03,
+          "width": 21.03,
+          "height": 104.69
+        },
+        "firstSeen": 0.623,
+        "lastSeen": 0.623,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.1,
+        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 642.13,
+          "top": 286.95,
+          "right": 932.35,
+          "bottom": 358.03,
+          "width": 290.22,
+          "height": 71.08
+        },
+        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 596.88,
+          "top": 335.98,
+          "right": 977.59,
+          "bottom": 407.06,
+          "width": 380.71,
+          "height": 71.08
+        },
+        "overflow": {
+          "top": 49.03
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-status-cycle.html",
+        "bbox": {
+          "x": 642.13,
+          "y": 286.95,
+          "width": 290.22,
+          "height": 71.08
+        },
+        "firstSeen": 1.1,
+        "lastSeen": 1.1,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.1,
+        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 603.48,
+          "top": 359.45,
+          "right": 970.99,
+          "bottom": 430.53,
+          "width": 367.51,
+          "height": 71.08
+        },
+        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 596.88,
+          "top": 335.98,
+          "right": 977.59,
+          "bottom": 407.06,
+          "width": 380.71,
+          "height": 71.08
+        },
+        "overflow": {
+          "bottom": 23.47
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-status-cycle.html",
+        "bbox": {
+          "x": 603.48,
+          "y": 359.45,
+          "width": 367.51,
+          "height": 71.08
+        },
+        "firstSeen": 1.1,
+        "lastSeen": 1.1,
+        "occurrences": 1
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.833,
+        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 518.16,
+          "top": 408.47,
+          "right": 1056.28,
+          "bottom": 479.53,
+          "width": 538.13,
+          "height": 71.06
+        },
+        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 590.22,
+          "top": 335.98,
+          "right": 984.22,
+          "bottom": 407.05,
+          "width": 394,
+          "height": 71.06
+        },
+        "overflow": {
+          "left": 72.06,
+          "right": 72.06,
+          "bottom": 72.48
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-status-cycle.html",
+        "bbox": {
+          "x": 518.16,
+          "y": 408.47,
+          "width": 538.13,
+          "height": 71.06
+        },
+        "firstSeen": 1.833,
+        "lastSeen": 1.833,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 1.992,
+        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(9)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 528.15,
+          "top": 332.82,
+          "right": 561.8,
+          "bottom": 409.7,
+          "width": 33.65,
+          "height": 76.88
+        },
+        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "text": "s",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-status-cycle.html",
+        "bbox": {
+          "x": 528.15,
+          "y": 332.82,
+          "width": 33.65,
+          "height": 76.88
+        },
+        "firstSeen": 1.992,
+        "lastSeen": 1.992,
         "occurrences": 1
       },
       {
         "code": "canvas_overflow",
         "severity": "info",
-        "time": 4.167,
-        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4)",
+        "time": 5.5,
+        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
         "message": "Text extends outside the composition canvas.",
         "rect": {
-          "left": 529.42,
+          "left": 113.5,
           "top": 670.65,
-          "right": 1166.47,
+          "right": 1166.45,
           "bottom": 850.65,
-          "width": 637.05,
+          "width": 1052.95,
           "height": 180
         },
         "containerSelector": "#root",
-        "text": "word-flip",
+        "text": "answer-stream",
         "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
         "containerRect": {
           "left": 0,
@@ -536,66 +574,27 @@
         "dataAttributes": {},
         "sourceFile": "compositions/snapcn-status-cycle.html",
         "bbox": {
-          "x": 529.42,
+          "x": 113.5,
           "y": 670.65,
-          "width": 637.05,
+          "width": 1052.95,
           "height": 180
         },
-        "firstSeen": 4.167,
-        "lastSeen": 4.167,
+        "firstSeen": 5.5,
+        "lastSeen": 5.5,
         "occurrences": 1
       },
       {
         "code": "container_overflow",
         "severity": "info",
-        "time": 4.167,
-        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "time": 5.5,
+        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 51.19,
-          "top": -52.18,
-          "right": 927.75,
-          "bottom": 144.92,
-          "width": 876.56,
-          "height": 197.09
-        },
-        "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2)",
-        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 0,
-          "top": 0,
-          "right": 1280,
-          "bottom": 720,
-          "width": 1280,
-          "height": 720
-        },
-        "overflow": {
-          "top": 52.18
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-status-cycle.html",
-        "bbox": {
-          "x": 51.19,
-          "y": -52.18,
-          "width": 876.56,
-          "height": 197.09
-        },
-        "firstSeen": 4.167,
-        "lastSeen": 4.167,
-        "occurrences": 1
-      },
-      {
-        "code": "container_overflow",
-        "severity": "info",
-        "time": 4.167,
-        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4)",
-        "message": "Element extends outside a clipping layout container.",
-        "rect": {
-          "left": 467.09,
           "top": 662.24,
-          "right": 1228.81,
+          "right": 1228.78,
           "bottom": 859.34,
-          "width": 761.72,
+          "width": 1177.59,
           "height": 197.09
         },
         "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2)",
@@ -614,31 +613,31 @@
         "dataAttributes": {},
         "sourceFile": "compositions/snapcn-status-cycle.html",
         "bbox": {
-          "x": 467.09,
+          "x": 51.19,
           "y": 662.24,
-          "width": 761.72,
+          "width": 1177.59,
           "height": 197.09
         },
-        "firstSeen": 4.167,
-        "lastSeen": 4.167,
+        "firstSeen": 5.5,
+        "lastSeen": 5.5,
         "occurrences": 1
       },
       {
         "code": "escaped_container",
         "severity": "info",
-        "time": 4.167,
-        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4)",
+        "time": 5.5,
+        "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
         "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
         "rect": {
-          "left": 467.09,
+          "left": 51.19,
           "top": 662.24,
-          "right": 1228.81,
+          "right": 1228.78,
           "bottom": 859.34,
-          "width": 761.72,
+          "width": 1177.59,
           "height": 197.09
         },
         "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2)",
-        "text": "word-flip",
+        "text": "answer-stream",
         "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
         "containerRect": {
           "left": 0,
@@ -651,26 +650,26 @@
         "dataAttributes": {},
         "sourceFile": "compositions/snapcn-status-cycle.html",
         "bbox": {
-          "x": 467.09,
+          "x": 51.19,
           "y": 662.24,
-          "width": 761.72,
+          "width": 1177.59,
           "height": 197.09
         },
-        "firstSeen": 4.167,
-        "lastSeen": 4.167,
+        "firstSeen": 5.5,
+        "lastSeen": 5.5,
         "occurrences": 1
       },
       {
         "code": "canvas_overflow",
         "severity": "info",
-        "time": 4.722,
+        "time": 6.233,
         "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
         "message": "Text extends outside the composition canvas.",
         "rect": {
           "left": 113.56,
-          "top": -460.18,
+          "top": -451.08,
           "right": 865.36,
-          "bottom": -280.18,
+          "bottom": -271.08,
           "width": 751.8,
           "height": 180
         },
@@ -686,31 +685,31 @@
           "height": 720
         },
         "overflow": {
-          "top": 460.18
+          "top": 451.08
         },
         "dataAttributes": {},
         "sourceFile": "compositions/snapcn-status-cycle.html",
         "bbox": {
           "x": 113.56,
-          "y": -460.18,
+          "y": -451.08,
           "width": 751.8,
           "height": 180
         },
-        "firstSeen": 4.722,
-        "lastSeen": 4.722,
+        "firstSeen": 6.233,
+        "lastSeen": 6.233,
         "occurrences": 1
       },
       {
         "code": "canvas_overflow",
         "severity": "info",
-        "time": 4.722,
+        "time": 6.233,
         "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
         "message": "Text extends outside the composition canvas.",
         "rect": {
           "left": 247.02,
-          "top": -222.04,
+          "top": -212.94,
           "right": 1166.39,
-          "bottom": -42.04,
+          "bottom": -32.94,
           "width": 919.38,
           "height": 180
         },
@@ -726,31 +725,31 @@
           "height": 720
         },
         "overflow": {
-          "top": 222.04
+          "top": 212.94
         },
         "dataAttributes": {},
         "sourceFile": "compositions/snapcn-status-cycle.html",
         "bbox": {
           "x": 247.02,
-          "y": -222.04,
+          "y": -212.94,
           "width": 919.38,
           "height": 180
         },
-        "firstSeen": 4.722,
-        "lastSeen": 4.722,
+        "firstSeen": 6.233,
+        "lastSeen": 6.233,
         "occurrences": 1
       },
       {
         "code": "container_overflow",
         "severity": "info",
-        "time": 4.722,
+        "time": 6.233,
         "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 51.19,
-          "top": -468.58,
+          "top": -459.49,
           "right": 927.75,
-          "bottom": -271.49,
+          "bottom": -262.39,
           "width": 876.56,
           "height": 197.09
         },
@@ -765,31 +764,31 @@
           "height": 720
         },
         "overflow": {
-          "top": 468.58
+          "top": 459.49
         },
         "dataAttributes": {},
         "sourceFile": "compositions/snapcn-status-cycle.html",
         "bbox": {
           "x": 51.19,
-          "y": -468.58,
+          "y": -459.49,
           "width": 876.56,
           "height": 197.09
         },
-        "firstSeen": 4.722,
-        "lastSeen": 4.722,
+        "firstSeen": 6.233,
+        "lastSeen": 6.233,
         "occurrences": 1
       },
       {
         "code": "container_overflow",
         "severity": "info",
-        "time": 4.722,
+        "time": 6.233,
         "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 184.59,
-          "top": -230.44,
+          "top": -221.35,
           "right": 1228.81,
-          "bottom": -33.35,
+          "bottom": -24.25,
           "width": 1044.22,
           "height": 197.09
         },
@@ -804,31 +803,31 @@
           "height": 720
         },
         "overflow": {
-          "top": 230.44
+          "top": 221.35
         },
         "dataAttributes": {},
         "sourceFile": "compositions/snapcn-status-cycle.html",
         "bbox": {
           "x": 184.59,
-          "y": -230.44,
+          "y": -221.35,
           "width": 1044.22,
           "height": 197.09
         },
-        "firstSeen": 4.722,
-        "lastSeen": 4.722,
+        "firstSeen": 6.233,
+        "lastSeen": 6.233,
         "occurrences": 1
       },
       {
         "code": "escaped_container",
         "severity": "info",
-        "time": 4.722,
+        "time": 6.233,
         "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
         "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
         "rect": {
           "left": 51.19,
-          "top": -468.58,
+          "top": -459.49,
           "right": 927.75,
-          "bottom": -271.49,
+          "bottom": -262.39,
           "width": 876.56,
           "height": 197.09
         },
@@ -847,26 +846,26 @@
         "sourceFile": "compositions/snapcn-status-cycle.html",
         "bbox": {
           "x": 51.19,
-          "y": -468.58,
+          "y": -459.49,
           "width": 876.56,
           "height": 197.09
         },
-        "firstSeen": 4.722,
-        "lastSeen": 4.722,
+        "firstSeen": 6.233,
+        "lastSeen": 6.233,
         "occurrences": 1
       }
     ],
-    "duration": 5,
+    "duration": 6.6,
     "samples": [
-      0.278,
-      0.833,
-      1.389,
-      1.944,
-      2.5,
-      3.056,
-      3.611,
-      4.167,
-      4.722
+      0.367,
+      1.1,
+      1.833,
+      2.567,
+      3.3,
+      4.033,
+      4.767,
+      5.5,
+      6.233
     ],
     "transitionSamples": [],
     "transitionSamplesDropped": 0,
@@ -893,35 +892,35 @@
         "code": "contrast_aa_failure",
         "severity": "warning",
         "message": "Contrast is 2.66:1; WCAG AA requires 3:1.",
-        "text": "animating",
+        "text": "rendering a scene",
         "fg": "rgb(178,205,247)",
         "bg": "rgb(53,119,224)",
         "ratio": 2.66,
         "requiredRatio": 3,
         "suggestedColor": "rgb(43,49,59)",
         "large": true,
-        "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(2) > div",
+        "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2)",
         "dataAttributes": {},
         "sourceFile": "compositions/snapcn-status-cycle.html",
         "bbox": {
-          "x": 642.250732421875,
-          "y": 333.8811340332031,
-          "width": 307.3297119140625,
-          "height": 75.26846313476562
+          "x": 518.1560668945312,
+          "y": 408.4697265625,
+          "width": 538.1256713867188,
+          "height": 71.06259155273438
         },
-        "time": 0.278
+        "time": 1.833
       }
     ],
     "enabled": true,
     "samples": [
-      0.278,
-      1.389,
-      2.5,
-      3.611,
-      4.722
+      0.367,
+      1.833,
+      3.3,
+      4.767,
+      6.233
     ],
-    "checked": 29,
-    "passed": 28
+    "checked": 40,
+    "passed": 39
   },
   "snapshots": {
     "enabled": false,
@@ -931,7 +930,7 @@
   },
   "_meta": {
     "version": "0.8.30",
-    "latestVersion": "0.8.30",
-    "updateAvailable": false
+    "latestVersion": "0.8.46",
+    "updateAvailable": true
   }
 }

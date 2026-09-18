@@ -33,6 +33,7 @@ Snapcn ports derive from `snapcndev/snapcn` at commit
 pointer path retains its ISC notice.
 Word Gather, Word Wheel, Channel Thread, Logo Collapse, and Card Rail use
 `1159369742d75d66ae89b3f83d45850861ccc63e`.
+Status Cycle uses `0b30e76a3d1e4c9a49390d109a9630b118b1e100`.
 
 Copyright (c) 2026 Sri Nath (snap-cn).
 

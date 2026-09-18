@@ -1,8 +1,8 @@
 # Catalog browser audit
 
-Checked September 9, 2026; extended September 12 with Chrome for Testing
+Checked September 9, 2026; extended through September 17 with Chrome for Testing
 152.0.7977.42.
-[Per-component results](../catalog/browser-audit.json) cover all 351 catalog
+[Per-component results](../catalog/browser-audit.json) cover 351 ported catalog
 components: 307 Remocn and 44 Snapcn. Removed upstream components
 `progress-steps` and `data-flow-pipes` are excluded.
 
@@ -12,12 +12,12 @@ components: 307 Remocn and 44 Snapcn. Removed upstream components
 | Live iframe previews                  |         335 |
 | Rendered default previews             |          16 |
 | Pause and replay controls exercised   |          70 |
-| Customization and reset exercised     |          15 |
+| Customization and reset exercised     |          16 |
 | Three-sample frame comparisons        |        1005 |
 | Samples at or above 0.95 SSIM         | 1005 / 1005 |
 | Transition-boundary comparisons       |          16 |
-| Additional component seek comparisons |          30 |
-| Backwards seeks                       |          37 |
+| Additional component seek comparisons |          38 |
+| Backwards seeks                       |          44 |
 
 The sampled SSIM mean is **0.997448**. The minimum is **0.951296** for
 `icon-mail`, frame 37. Different reference formats and normalization make the
@@ -55,13 +55,19 @@ and exact-image Reset checks. Their full-duration export results cover
 Snapcn comparisons used pinned upstream lossless PNGs, with transparency
 composited over the actual preview background. Playback controls were checked
 at website size before resizing for comparison. The 132 Snapcn samples all
-exceeded 0.95 SSIM: mean **0.997533**, minimum **0.967479**.
+exceeded 0.95 SSIM: mean **0.997534**, minimum **0.967479**.
 
 The five Snapcn additions at `1159369742d75d66ae89b3f83d45850861ccc63e`
 add 15 canonical samples and 15 final/middle/first-frame seek comparisons,
 with minimum SSIM **0.994467**. Each passes autoplay, Pause, Replay, text edits,
 and exact-image Reset. Their 385 full-duration export comparisons remain
 recorded separately in the parity reports.
+
+The September 17 Status Cycle update replaces its three samples and adds eight
+seek comparisons across label rolls, the transition to chips, and the final
+frame. The minimum browser SSIM is **0.999971**. Its 30-frame status hold and
+6.6-second duration are verified, along with playback, prefix edits, and an
+exact-image Reset.
 
 ## Limits
 
@@ -77,7 +83,7 @@ HyperFrames render in ordinary Chrome. The audit checked playback, pausing,
 resumption through Replay, and the default-settings notice. It does not claim
 live customization or new browser SSIM measurements for these fallbacks.
 
-The fifteen latest checks used a local production preview server. Its Vercel
+The recent additions and Status Cycle update used a local production preview server. Its Vercel
 analytics and speed-insights endpoints return 404 because those routes require
 Vercel hosting. These responses and navigation-cancelled requests are recorded
 separately from component errors.

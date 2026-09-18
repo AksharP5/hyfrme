@@ -1,10 +1,13 @@
 # Snapcn source and license audit
 
-Snapcn's original 37 ports retain commit
+Snapcn's original ports other than Status Cycle retain commit
 `353803b506dba0cb7ca13bb45b0d099690400815`. Roster Grant and Wordmark Cut use
 `bc5b59f3f0fad9657b338fa62349a55fa33f160f`, checked on September 8, 2026.
 Word Gather, Word Wheel, Channel Thread, Logo Collapse, and Card Rail use
 `1159369742d75d66ae89b3f83d45850861ccc63e`, checked on September 12, 2026.
+Status Cycle uses `0b30e76a3d1e4c9a49390d109a9630b118b1e100`, checked on
+September 17, 2026. Its label roll now takes 0.5 seconds, with 30 frames between
+statuses and a 198-frame fixture. Other component pins remain unchanged.
 All 44 free visual components have fixtures in `catalog/snapcn-fixtures.json`.
 The source inventory is `catalog/snapcn-upstream.json`.
 
@@ -155,6 +158,14 @@ Verification compares every frame's RGB with SSIM and requires exact alpha-plane
 matches. Per-frame alpha hashes accompany the parity reports, so transparent
 output cannot pass on RGB alone. `npm run check` includes a regression that
 rejects an invisible frame with unchanged RGB.
+
+The September 17 Status Cycle update passes all 198 lossless frame comparisons
+with mean SSIM 0.999992, minimum 0.999936, and exact alpha. Its CLI-installed
+fixture passes strict rendering. The full check reports three reviewed overlaps
+between animated prefix glyphs and the clipped pill label, also present in the
+pinned source. Exact selectors and source evidence are recorded in
+`catalog/snapcn-check-exceptions.json`; the full findings remain in its parity
+report.
 
 The five September 12 additions pass all 385 lossless frame comparisons, with
 weighted mean SSIM 0.998264, minimum 0.988421, and exact alpha. All five pass

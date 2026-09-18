@@ -708,5 +708,59 @@
       "text": "Changelogs"
     },
     "reason": "The unmodified Word Wheel source places reel rows on a 34px pitch and scales each row around its baseline (index.tsx lines 355-380). Adjacent text bounding boxes overlap during the measured slot transition. All 66 lossless frames match the pinned source with mean SSIM 0.999996, minimum 0.999993, and exact alpha. Preserve the source motion and retain the full layout finding."
+  },
+  {
+    "slug": "snapcn-status-cycle",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "0b30e76a3d1e4c9a49390d109a9630b118b1e100",
+      "source": "registry/snap-cn/status-cycle/index.tsx",
+      "config": "registry/snap-cn/status-cycle/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/status-cycle/index.tsx"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(9)",
+      "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+      "text": "s"
+    },
+    "reason": "The pinned source scales prefix glyphs beyond their fixed slots while the status pill grows and recenters (index.tsx lines 510-565 and 668-760). Its clipped label bounds overlap the prefix during those transitions. All 198 lossless frames match the unmodified source with mean SSIM 0.999992, minimum 0.999936, and exact alpha. Preserve the source motion and retain the layout finding."
+  },
+  {
+    "slug": "snapcn-status-cycle",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "0b30e76a3d1e4c9a49390d109a9630b118b1e100",
+      "source": "registry/snap-cn/status-cycle/index.tsx",
+      "config": "registry/snap-cn/status-cycle/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/status-cycle/index.tsx"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(6)",
+      "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+      "text": "n"
+    },
+    "reason": "The pinned source scales prefix glyphs beyond their fixed slots while the status pill grows and recenters (index.tsx lines 510-565 and 668-760). Its clipped label bounds overlap the prefix during those transitions. All 198 lossless frames match the unmodified source with mean SSIM 0.999992, minimum 0.999936, and exact alpha. Preserve the source motion and retain the layout finding."
+  },
+  {
+    "slug": "snapcn-status-cycle",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "0b30e76a3d1e4c9a49390d109a9630b118b1e100",
+      "source": "registry/snap-cn/status-cycle/index.tsx",
+      "config": "registry/snap-cn/status-cycle/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/status-cycle/index.tsx"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(8)",
+      "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+      "text": "i"
+    },
+    "reason": "The pinned source scales prefix glyphs beyond their fixed slots while the status pill grows and recenters (index.tsx lines 510-565 and 668-760). Its clipped label bounds overlap the prefix during those transitions. All 198 lossless frames match the unmodified source with mean SSIM 0.999992, minimum 0.999936, and exact alpha. Preserve the source motion and retain the layout finding."
   }
 ]

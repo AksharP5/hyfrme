@@ -17,11 +17,11 @@
     "meanSampleSsim": 0.997448,
     "minSampleSsim": 0.951296,
     "samplesBelow095": [],
-    "customizationAndResetChecks": 15,
+    "customizationAndResetChecks": 16,
     "transitionBoundaryComparisons": 16,
-    "backwardSeekChecks": 37,
+    "backwardSeekChecks": 44,
     "minTransitionBoundarySsim": 1,
-    "additionalSeekComparisons": 30,
+    "additionalSeekComparisons": 38,
     "minSeekComparisonSsim": 0.996425
   },
   "profiles": {
@@ -33,7 +33,8 @@
     "remocn-lossless-png": "Five additions at e3dc260ff1965440d1f64fb65a8c9a9373e78328. Actual catalog iframe autoplay, Pause, Replay, customizer edits and Reset checked at website size. Customizations change pixels; Reset restores identical pixels. Three canonical-size samples at floor(durationInFrames * p), p = 0.2, 0.5, 0.8, compared with pinned lossless reference PNGs using NVIDIA ANGLE gl-egl, sRGB and source font-render-hinting flags. Reference alpha is composited over the fixture background; website scaling and controls are removed for comparison. Both transitions additionally compare eight boundary seeks, seven backwards. Navigation-cancelled requests and local Vercel telemetry 404s are recorded separately from component failures.",
     "remocn-template-png": "Five templates at 7fa2db1cd29dfb36743e54e3d078dd9107c879a2, checked September 12. Actual catalog iframe autoplay, Pause, Replay, accent color edits and Reset at website size. Edits change pixels; Reset restores identical pixels. Three canonical-size samples at 20%, 50%, and 80% plus final/middle/first frame seeks compared with pinned lossless reference PNGs. Native timeline seeks use the authored fps. NVIDIA ANGLE gl-egl, sRGB and source font-render-hinting flags; reference alpha composited over the fixture background. Navigation-cancelled requests and local Vercel telemetry 404s recorded separately.",
     "remocn-icon-png": "Inbox: native 384px source props and canvas, render scale 1, pinned lossless PNGs. Actual catalog iframe with size=384 and canonical geometry; all 70 frames and three repeated backward seeks verified.",
-    "snapcn-latest-png": "Five additions at 1159369742d75d66ae89b3f83d45850861ccc63e, checked September 12. Actual catalog iframe autoplay, Pause, Replay, text edits and Reset at website size. Edits change pixels; Reset restores identical pixels. Three canonical-size samples at 20%, 50%, and 80% plus final/middle/first frame seeks compared with pinned lossless reference PNGs. Native timeline seeks use authored fps. NVIDIA ANGLE gl-egl, sRGB and source font-render-hinting flags; reference alpha composited over fixture background. Navigation-cancelled requests and local Vercel telemetry 404s recorded separately."
+    "snapcn-latest-png": "Five additions at 1159369742d75d66ae89b3f83d45850861ccc63e, checked September 12. Actual catalog iframe autoplay, Pause, Replay, text edits and Reset at website size. Edits change pixels; Reset restores identical pixels. Three canonical-size samples at 20%, 50%, and 80% plus final/middle/first frame seeks compared with pinned lossless reference PNGs. Native timeline seeks use authored fps. NVIDIA ANGLE gl-egl, sRGB and source font-render-hinting flags; reference alpha composited over fixture background. Navigation-cancelled requests and local Vercel telemetry 404s recorded separately.",
+    "snapcn-status-cycle-update-png": "Status Cycle at 0b30e76a3d1e4c9a49390d109a9630b118b1e100, checked September 17. Actual catalog iframe autoplay, Pause, Replay, prefix edit and exact-image Reset at website size. Verified 30-frame statusHold default and 6.6-second timeline. Three canonical samples plus final frame, act transition, label roll and backward seeks compared with pinned lossless PNGs. Authored 30fps, NVIDIA ANGLE gl-egl, sRGB and source font-render-hinting flags. Local telemetry errors and navigation-cancelled requests recorded separately."
   },
   "limitations": [
     "Only listed checks were performed; omitted fields mean unmeasured, not zero.",
@@ -7264,8 +7265,9 @@
     {
       "slug": "snapcn-status-cycle",
       "source": "snapcn",
-      "profile": "snapcn-png",
-      "controls": ["autoplay", "pause", "replay"],
+      "profile": "snapcn-status-cycle-update-png",
+      "checkedDate": "2026-09-17",
+      "controls": ["autoplay", "pause", "replay", "customization", "reset"],
       "pageErrors": 0,
       "consoleErrors": 0,
       "httpErrors": 0,
@@ -7273,18 +7275,77 @@
       "loadedImages": 0,
       "brokenImages": 0,
       "readyMedia": 0,
-      "samples": [
+      "cancelledRequests": 2,
+      "localTelemetryErrors": [
         {
-          "frame": 29,
-          "ssim": 0.999978
+          "status": 404,
+          "path": "/_vercel/insights/script.js"
         },
         {
-          "frame": 74,
+          "status": 404,
+          "path": "/_vercel/speed-insights/script.js"
+        }
+      ],
+      "customization": {
+        "variable": "prefix",
+        "value": "Hyfrme is",
+        "changedPixels": true,
+        "resetRestoresPixels": true
+      },
+      "samples": [
+        {
+          "frame": 39,
+          "ssim": 0.999997
+        },
+        {
+          "frame": 98,
           "ssim": 1
         },
         {
-          "frame": 119,
-          "ssim": 0.999963
+          "frame": 157,
+          "ssim": 0.999994
+        }
+      ],
+      "seekComparisons": [
+        {
+          "frame": 197,
+          "ssim": 0.999971,
+          "direction": "forward"
+        },
+        {
+          "frame": 144,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 143,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 99,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 60,
+          "ssim": 1,
+          "direction": "backward"
+        },
+        {
+          "frame": 39,
+          "ssim": 0.999997,
+          "direction": "backward"
+        },
+        {
+          "frame": 24,
+          "ssim": 0.999996,
+          "direction": "backward"
+        },
+        {
+          "frame": 0,
+          "ssim": 1,
+          "direction": "backward"
         }
       ]
     },
@@ -8306,23 +8367,23 @@
         "samples": [
           {
             "frame": 0,
-            "text": "\ud835\udc00"
+            "text": "𝐀"
           },
           {
             "frame": 5,
-            "text": "\ud835\udc00"
+            "text": "𝐀"
           },
           {
             "frame": 10,
-            "text": "\ud835\udc00 "
+            "text": "𝐀 "
           },
           {
             "frame": 20,
-            "text": "\ud835\udc00 B "
+            "text": "𝐀 B "
           },
           {
             "frame": 30,
-            "text": "\ud835\udc00 B C"
+            "text": "𝐀 B C"
           }
         ],
         "allWellFormed": true
@@ -8715,5 +8776,5 @@
       ]
     }
   ],
-  "updatedDate": "2026-09-12"
+  "updatedDate": "2026-09-17"
 }

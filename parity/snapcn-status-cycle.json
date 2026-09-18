@@ -2,7 +2,7 @@
   "slug": "snapcn-status-cycle",
   "origin": {
     "repository": "https://github.com/snapcndev/snapcn",
-    "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+    "commit": "0b30e76a3d1e4c9a49390d109a9630b118b1e100",
     "source": "registry/snap-cn/status-cycle/index.tsx",
     "config": "registry/snap-cn/status-cycle/config.ts",
     "license": "MIT",
@@ -12,7 +12,7 @@
     "width": 1280,
     "height": 720,
     "fps": 30,
-    "durationInFrames": 150,
+    "durationInFrames": 198,
     "props": {
       "prefix": "snapcn is",
       "statuses": "animating, transitioning, rendering a scene, installed",
@@ -30,7 +30,7 @@
       "fontSize": 63,
       "chipFontSize": 160,
       "introFrames": 24,
-      "statusHold": 18,
+      "statusHold": 30,
       "chipStagger": 8,
       "pillCenterY": 0.516,
       "startAt": 0,
@@ -42,26 +42,82 @@
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "db16d01761aa0e0dd2db0ba237efd688ddc35958fccd34ae4a868350b2bbefe1",
+  "fingerprint": "51d5bb37d412073c79dd3db494e7d4745a638586e77f11e64928e0d9d68e548d",
   "thresholds": {
     "meanSsim": 0.99,
     "minSsim": 0.95
   },
   "result": {
-    "frameCount": 150,
-    "meanSsim": 0.999989233333333,
+    "frameCount": 198,
+    "meanSsim": 0.9999918282828284,
     "minSsim": 0.999936,
-    "p05Ssim": 0.999957,
+    "p05Ssim": 0.999959,
     "p95Ssim": 1,
-    "pass": true,
     "alpha": {
-      "frameCount": 150,
+      "frameCount": 198,
       "mismatchedFrames": [],
       "pass": true
-    }
+    },
+    "pass": true
   },
   "checks": {
-    "hyperframes": "full check passed; strict render passed",
+    "hyperframes": "full check reported 3 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "snapcn-status-cycle",
+        "origin": {
+          "repository": "https://github.com/snapcndev/snapcn",
+          "commit": "0b30e76a3d1e4c9a49390d109a9630b118b1e100",
+          "source": "registry/snap-cn/status-cycle/index.tsx",
+          "config": "registry/snap-cn/status-cycle/config.ts",
+          "license": "MIT",
+          "entry": "registry/snap-cn/status-cycle/index.tsx"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(9)",
+          "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+          "text": "s"
+        },
+        "reason": "The pinned source scales prefix glyphs beyond their fixed slots while the status pill grows and recenters (index.tsx lines 510-565 and 668-760). Its clipped label bounds overlap the prefix during those transitions. All 198 lossless frames match the unmodified source with mean SSIM 0.999992, minimum 0.999936, and exact alpha. Preserve the source motion and retain the layout finding."
+      },
+      {
+        "slug": "snapcn-status-cycle",
+        "origin": {
+          "repository": "https://github.com/snapcndev/snapcn",
+          "commit": "0b30e76a3d1e4c9a49390d109a9630b118b1e100",
+          "source": "registry/snap-cn/status-cycle/index.tsx",
+          "config": "registry/snap-cn/status-cycle/config.ts",
+          "license": "MIT",
+          "entry": "registry/snap-cn/status-cycle/index.tsx"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(6)",
+          "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+          "text": "n"
+        },
+        "reason": "The pinned source scales prefix glyphs beyond their fixed slots while the status pill grows and recenters (index.tsx lines 510-565 and 668-760). Its clipped label bounds overlap the prefix during those transitions. All 198 lossless frames match the unmodified source with mean SSIM 0.999992, minimum 0.999936, and exact alpha. Preserve the source motion and retain the layout finding."
+      },
+      {
+        "slug": "snapcn-status-cycle",
+        "origin": {
+          "repository": "https://github.com/snapcndev/snapcn",
+          "commit": "0b30e76a3d1e4c9a49390d109a9630b118b1e100",
+          "source": "registry/snap-cn/status-cycle/index.tsx",
+          "config": "registry/snap-cn/status-cycle/config.ts",
+          "license": "MIT",
+          "entry": "registry/snap-cn/status-cycle/index.tsx"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(8)",
+          "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+          "text": "i"
+        },
+        "reason": "The pinned source scales prefix glyphs beyond their fixed slots while the status pill grows and recenters (index.tsx lines 510-565 and 668-760). Its clipped label bounds overlap the prefix during those transitions. All 198 lossless frames match the unmodified source with mean SSIM 0.999992, minimum 0.999936, and exact alpha. Preserve the source motion and retain the layout finding."
+      }
+    ],
     "hyperframesVersion": "0.8.30",
     "remotionVersion": "4.0.473",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
