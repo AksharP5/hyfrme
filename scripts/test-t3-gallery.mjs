@@ -43,7 +43,7 @@ for (const idea of ideas) {
     throw new Error(`T3 Code gallery block ${idea.block} is missing or repeated`);
   }
   mapped.add(idea.block);
-  await stat(resolve(root, "public/registry/blocks", idea.block, "catalog.json"));
+  await stat(resolve(root, "registry/blocks", idea.block, "registry-item.json"));
   const parity = JSON.parse(
     await readFile(resolve(root, "parity", `${idea.block}.json`), "utf8"),
   );
