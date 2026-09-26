@@ -24,12 +24,12 @@
       "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
     },
     "captureAtlas": "parity/t3-agent-answer-v0042-atlas.json",
-    "compositionSha256": "e2ffe605f7d291b5425a684c955934264e740df0415a5c1e6d0edb35b587443e"
+    "compositionSha256": "3d54daf4815b11a15013ae31bcf59994284f0b2465161ab7b534df399831ea98"
   },
-  "interaction": "Native v0.0.42 completed-answer controls reveal Copy link, show its tooltip, copy the seeded Hyfrme reply to the browser clipboard, and display copied feedback.",
+  "interaction": "Native v0.0.42 controls reveal Copy link and its tooltip. A visible pointer follows the seeded Hyfrme reply, presses Copy link, and shows the native copied feedback.",
   "providerState": "The completed Hyfrme answer is seeded. The native Copy link action ran against the browser clipboard; no AI provider runs.",
-  "classification": "source-dom-port with lossless native-frame default",
-  "measurement": "lossless PNG; every native capture strip round-trips at SSIM 1.0",
+  "classification": "native DOM state port with a deterministic visible pointer-led copy interaction",
+  "measurement": "120 lossless native frames compared to the editable DOM render; native clipboard text, pointer targets, and customized copy feedback are checked separately",
   "status": "verified",
   "thresholds": {
     "meanSsim": 0.985,
@@ -37,39 +37,39 @@
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.9998782416666672,
-    "minSsim": 0.996846,
-    "p05Ssim": 0.999639,
-    "p95Ssim": 1,
-    "worstFrame": 72,
+    "meanSsim": 0.9906164999999982,
+    "minSsim": 0.987654,
+    "p05Ssim": 0.988245,
+    "p95Ssim": 0.991196,
+    "worstFrame": 76,
     "pass": true,
     "phaseFrames": {
       "before": {
         "frame": 0,
-        "ssim": 1
+        "ssim": 0.99005
       },
       "hover": {
         "frame": 30,
-        "ssim": 1
+        "ssim": 0.990807
       },
       "tooltip": {
         "frame": 55,
-        "ssim": 0.999639
+        "ssim": 0.99063
       },
       "copied": {
         "frame": 80,
-        "ssim": 1
+        "ssim": 0.990311
       },
       "clear": {
         "frame": 95,
-        "ssim": 1
+        "ssim": 0.991126
       }
     }
   },
   "themes": {
     "dark": {
       "sourceCommit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
-      "referenceSha256": "b9cdabfeb85de1747ca0aaf1bbc3fb53aed00f52dbcf92aec7a28d39b56c10b9",
+      "referenceSha256": "cc1f0b27d66f79ff76c39588c57601f59d4dc14a022bf1c07d7c686fd20cb7eb",
       "sourceHashes": {
         "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
         "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
@@ -77,55 +77,55 @@
       },
       "sourceDomHashes": {
         "before": {
-          "root": "e6fd92db3a4500442056f7e5550ee7a61cc8e00250bb3a0c414fae0f4825972c",
-          "portal": "dafb96ebfe48c99964126aefbde358289052e9c5809feb321f99fa9e7a003bfb"
+          "root": "0506ca8bb85c444e1968fe61b1c9f1b43078909f45a15b06c8a7a4da115f59c6",
+          "portal": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84"
         },
         "hover": {
-          "root": "2b8ff4df7b4d0867b5594ea50ade73b4ac33134a3ee7fec4c28a70d02e5692e6",
+          "root": "48eb07434bf400cdf10b639ae11dbb68a88b8e9e390fbbb52570e64a2b179d0a",
           "portal": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84"
         },
         "tooltip": {
-          "root": "e319154071543a69eb530473e880d9cfe9a755791842f236318e4cca06981667",
-          "portal": "ecdab670835817483819097780089d7cd4ac6d2b3d554b649af8d16e08f32a8d"
+          "root": "7a61cd23615061121f2f7aaa88c7515bfa3c9418470662b2ec374a0b26649e04",
+          "portal": "c3e93502d7fbcc5daf76fa4f2c8f3c393869fcc62827494f087d0f1950299ba1"
         },
         "copied": {
-          "root": "3123a8faae4a54e0cccdbce976be0403a9d886450287d8bb1f6e0cfee419669b",
-          "portal": "fddb46c63959a6cdf2d6985468ce0f14463af90f0156b795f5fc990f2929e505"
+          "root": "cfce255438877b9c7a14533ee066c69cc6644f8028674b08595d8b560d4da9e2",
+          "portal": "18517448fd4ccbb5d06e1d1f9dec1052b84e81eaf492c2401e498b66f3f1ad61"
         },
         "clear": {
-          "root": "2b8ff4df7b4d0867b5594ea50ade73b4ac33134a3ee7fec4c28a70d02e5692e6",
+          "root": "48eb07434bf400cdf10b639ae11dbb68a88b8e9e390fbbb52570e64a2b179d0a",
           "portal": "a58883f51add470cb4272c47a6c5147050dd4c19ec67b0e6f563e9415e9870f0"
         }
       },
       "themeSha256": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
       "result": {
         "frameCount": 120,
-        "meanSsim": 0.9998782416666672,
-        "minSsim": 0.996846,
-        "p05Ssim": 0.999639,
-        "p95Ssim": 1,
-        "worstFrame": 72,
+        "meanSsim": 0.9906164999999982,
+        "minSsim": 0.987654,
+        "p05Ssim": 0.988245,
+        "p95Ssim": 0.991196,
+        "worstFrame": 76,
         "pass": true,
         "phaseFrames": {
           "before": {
             "frame": 0,
-            "ssim": 1
+            "ssim": 0.99005
           },
           "hover": {
             "frame": 30,
-            "ssim": 1
+            "ssim": 0.990807
           },
           "tooltip": {
             "frame": 55,
-            "ssim": 0.999639
+            "ssim": 0.99063
           },
           "copied": {
             "frame": 80,
-            "ssim": 1
+            "ssim": 0.990311
           },
           "clear": {
             "frame": 95,
-            "ssim": 1
+            "ssim": 0.991126
           }
         }
       },
@@ -149,7 +149,7 @@
     },
     "light": {
       "sourceCommit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
-      "referenceSha256": "013bf2e1c50cf2f20a1aed2245a7ba99fc954886fb5871df6943e7fe3874929b",
+      "referenceSha256": "dd3806c051e20b031d4e334ecd8da7ad5c981fc949ae9f63fdb3cb2914424d88",
       "sourceHashes": {
         "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
         "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
@@ -157,55 +157,55 @@
       },
       "sourceDomHashes": {
         "before": {
-          "root": "84c92ab59e4a28cc673cbde3ceecc41690b55515c4275f6fc5ed0bba9fb7550b",
-          "portal": "dafb96ebfe48c99964126aefbde358289052e9c5809feb321f99fa9e7a003bfb"
+          "root": "fc35bbb486ae600d07200bda2759b88f1279295998d9b8c205b52d6e91cba77e",
+          "portal": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84"
         },
         "hover": {
-          "root": "ba512189fcea3ca5629f6f5706dd1a3bdb6ef8d34036db358f332fc833eb9877",
+          "root": "437368cf5c469a4b9a139f316d4d6a6cd9ed4d47ca3523f64b9e988b15d2eac5",
           "portal": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84"
         },
         "tooltip": {
-          "root": "7d510c89b01d5434a81a8fe52b5345c0fe5874d955b3d4978ba972b2225894f8",
-          "portal": "ecdab670835817483819097780089d7cd4ac6d2b3d554b649af8d16e08f32a8d"
+          "root": "d31bcfa732c26bb7b88971d99fc9a827207b5063d5f22b8685c0fcaf31a95421",
+          "portal": "c3e93502d7fbcc5daf76fa4f2c8f3c393869fcc62827494f087d0f1950299ba1"
         },
         "copied": {
-          "root": "04dcd8e5f87b5538f7314ae7bea2e145c936a90868d12c4717d4b58f5f94332a",
-          "portal": "fddb46c63959a6cdf2d6985468ce0f14463af90f0156b795f5fc990f2929e505"
+          "root": "a39293ec6fd3404c3f73181df03a7aa63125b174de753094427aa506670a46e0",
+          "portal": "18517448fd4ccbb5d06e1d1f9dec1052b84e81eaf492c2401e498b66f3f1ad61"
         },
         "clear": {
-          "root": "ba512189fcea3ca5629f6f5706dd1a3bdb6ef8d34036db358f332fc833eb9877",
+          "root": "437368cf5c469a4b9a139f316d4d6a6cd9ed4d47ca3523f64b9e988b15d2eac5",
           "portal": "a58883f51add470cb4272c47a6c5147050dd4c19ec67b0e6f563e9415e9870f0"
         }
       },
       "themeSha256": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
       "result": {
         "frameCount": 120,
-        "meanSsim": 0.9998911750000007,
-        "minSsim": 0.998091,
-        "p05Ssim": 0.999554,
-        "p95Ssim": 1,
-        "worstFrame": 84,
+        "meanSsim": 0.990411075,
+        "minSsim": 0.987257,
+        "p05Ssim": 0.988136,
+        "p95Ssim": 0.991049,
+        "worstFrame": 79,
         "pass": true,
         "phaseFrames": {
           "before": {
             "frame": 0,
-            "ssim": 1
+            "ssim": 0.989966
           },
           "hover": {
             "frame": 30,
-            "ssim": 1
+            "ssim": 0.99061
           },
           "tooltip": {
             "frame": 55,
-            "ssim": 0.999554
+            "ssim": 0.990468
           },
           "copied": {
             "frame": 80,
-            "ssim": 1
+            "ssim": 0.990445
           },
           "clear": {
             "frame": 95,
-            "ssim": 1
+            "ssim": 0.990837
           }
         }
       },
@@ -233,7 +233,7 @@
     "hyperframesVersion": "0.8.75",
     "sourceBrowser": "Google Chrome for Testing 152.0.7977.30",
     "installedThroughCli": true,
-    "customVariables": "Editable DOM mode changed Hyfrme project and thread text, prompt, visible action or dialog, theme, and event timing; full checks, text assertions, and strict 120-frame renders passed in both themes."
+    "customVariables": "HyperFrames variables changed the Hyfrme project, branch, thread labels, prompt, reply, copy labels, pointer visibility/color/size, theme, and event timing; visible text assertions and strict 120-frame renders passed in both themes."
   },
   "artifacts": {
     "nativeRecording": "parity/t3-agent-answer-v0042-dark-reference.mkv",

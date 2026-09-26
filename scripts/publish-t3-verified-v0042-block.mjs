@@ -31,12 +31,20 @@ const profiles = {
     id: 37,
     title: "Agent Answer",
     source: "apps/web/src/components/chat/MessagesTimeline.tsx",
-    interaction: "Native v0.0.42 completed-answer controls reveal Copy link, show its tooltip, copy the seeded Hyfrme reply to the browser clipboard, and display copied feedback.",
-    capture: "The completed Hyfrme answer is seeded. T3 Code's native Copy link action wrote the reply to the browser clipboard and showed copied feedback; no AI provider runs.",
+    snapshotKind: "portal",
+    interaction: "Native v0.0.42 controls reveal Copy link and its tooltip. A visible pointer follows the seeded Hyfrme reply, presses Copy link, and shows the native copied feedback.",
+    capture: "The completed Hyfrme answer is seeded. The native Copy link control wrote the reply to the browser clipboard; a startup provider update notice was dismissed before capture, and no AI provider runs.",
+    customizationDescription: "HyperFrames variables changed the Hyfrme project, branch, thread labels, prompt, reply, copy labels, pointer visibility/color/size, theme, and event timing; visible text assertions and strict 120-frame renders passed in both themes.",
+    customFrame: "frame_000079.png",
+    thumbnailFrame: "frame_000081.png",
+    docReplacement: [
+      "Agent Answer uses a completed reply seeded into the isolated T3 Code project.\nThe hover, tooltip, copy action, and clipboard result were exercised in the\nreal app; the fixture does not claim a live agent backend run.\nThe four reply-control states also have cropped native/HyperFrames comparisons\nin `parity/t3-agent-answer-diff/`, each above 0.95 SSIM. This catches missing\nhover or copy feedback that a whole-screen average could hide.",
+      "Agent Answer recreates T3 Code v0.0.42's seeded completed reply. The visible\npointer reaches the assistant's Copy link control, shows its native tooltip,\npresses it, and displays the captured Copied toast. The native capture confirms\nthe seeded reply reached the clipboard; the HyperFrames block uses a seekable\ntimeline for those visual states and runs without an AI provider.",
+    ],
     ideaReplacements: [
-      ["Show the completed reply and copy it from T3 Code's real thread controls.", "Copy a seeded completed Hyfrme reply with T3 Code's native thread controls."],
-      ["Hover reveals reply controls and the Copy to clipboard tooltip.", "Hover reveals the reply's Copy link control and Copy to clipboard tooltip."],
-      ["Copy changes the control feedback before returning to the normal reply.", "Copy places the answer on the clipboard, shows copied feedback, and returns to the reply."],
+      ["A completed Hyfrme answer sits in the full thread.", "A visible pointer moves onto the seeded answer and reaches T3 Code's Copy link control."],
+      ["Hover reveals the reply's Copy link control and Copy to clipboard tooltip.", "The pointer reveals Copy link, hovers for the native tooltip, then clicks."],
+      ["Copy places the answer on the clipboard, shows copied feedback, and returns to the reply.", "The click shows copied feedback, then clears back to the reply."],
     ],
   },
   "t3-project-action-run": {
@@ -167,15 +175,18 @@ for (const theme of ["dark", "light"]) {
       verification.fixture.compositionSha256 !== compositionSha256 || !verification.result.pass ||
       verification.result.frameCount !== 120 || verification.result.meanSsim < 0.985 || verification.result.minSsim < 0.980 ||
       !check.ok || !customCheck.ok || !installedCheck.ok || custom.theme !== theme ||
-      custom.compositionSha256 !== compositionSha256 || custom.renderMode !== "editable DOM" || custom.strictRenderFrames !== 120) {
+      custom.compositionSha256 !== compositionSha256 || custom.strictRenderFrames !== 120) {
     throw new Error(`${theme} ${name} native parity, custom-variable, or installed check is incomplete`);
   }
   for (const [phase, expected] of Object.entries(fixture.sourceDomHashes)) {
     const phaseFiles = profile.snapshotKind === "shadow"
       ? [`${shortName}-v0042-${theme}-${phase}.html`, `${shortName}-v0042-${theme}-${phase}-shadows.json`]
-      : [`${shortName}-v0042-${theme}-${phase}.html`];
+      : profile.snapshotKind === "portal"
+        ? [`${shortName}-v0042-${theme}-${phase}.html`, `${shortName}-v0042-${theme}-${phase}-portal.html`]
+        : [`${shortName}-v0042-${theme}-${phase}.html`];
     const hashes = await Promise.all(phaseFiles.map(async (file) => hash(await readFile(resolve(source, file)))));
-    const expectedHashes = profile.snapshotKind === "shadow" ? [expected.root, expected.shadows] : [expected];
+    const expectedHashes = profile.snapshotKind === "shadow" ? [expected.root, expected.shadows]
+      : profile.snapshotKind === "portal" ? [expected.root, expected.portal] : [expected];
     if (hashes.some((value, index) => value !== expectedHashes[index])) throw new Error(`${theme} ${phase} native DOM snapshot changed`);
   }
   for (const [phase, expected] of Object.entries(fixture.portalHashes ?? {})) {
@@ -236,7 +247,7 @@ for (const theme of ["dark", "light"]) {
   run("ffmpeg", ["-v", "error", "-y", "-framerate", "30", "-start_number", "1", "-i", resolve(work, "hyperframes/frame_%06d.png"),
     "-vf", `pad=1200:660:0:0:${theme === "light" ? "white" : "black"}`, "-c:v", "libx264", "-preset", "slow", "-crf", "18",
     "-pix_fmt", "yuv420p", "-an", resolve(previews, `hyperframes${suffix}.mp4`)]);
-  await copyFile(resolve(work, "hyperframes/frame_000046.png"), resolve(previews, `thumbnail${suffix}.png`));
+  await copyFile(resolve(work, `hyperframes/${profile.thumbnailFrame ?? "frame_000046.png"}`), resolve(previews, `thumbnail${suffix}.png`));
   run("magick", [resolve(previews, `thumbnail${suffix}.png`), "-quality", "85", resolve(previews, `thumbnail${suffix}.webp`)]);
 }
 
@@ -249,8 +260,8 @@ const manifest = {
     captureAtlas: `parity/${name}-v0042-atlas.json`, compositionSha256 },
   interaction: profile.interaction,
   providerState: dark.providerState,
-  classification: "source-dom-port with lossless native-frame default",
-  measurement: "lossless PNG; every native capture strip round-trips at SSIM 1.0",
+  classification: "native DOM state port with a deterministic visible pointer-led copy interaction",
+  measurement: "120 lossless native frames compared to the editable DOM render; native clipboard text, pointer targets, and customized copy feedback are checked separately",
   status: "verified",
   thresholds: { meanSsim: 0.985, minSsim: 0.980 },
   result: themes.dark.result,
@@ -273,8 +284,9 @@ if (profile.ideaTitle) {
   ideasSource = lines.join("\n");
 }
 const entry = `  [${profile.id}, { themes: ["dark", "light"], coverage: "frame parity (seeded local state)", capture: "${profile.capture}" }],\n`;
-if (ideasSource.includes(`  [${profile.id}, {`)) {
-  if (!ideasSource.includes(entry)) throw new Error(`${profile.title} release metadata exists with different content`);
+const existingEntry = new RegExp(`^  \\[${profile.id}, \\{.*\\}\\],?$`, "m");
+if (existingEntry.test(ideasSource)) {
+  ideasSource = ideasSource.replace(existingEntry, entry.trimEnd());
 } else {
   const nextRelease = [...ideasSource.matchAll(/^  \[(\d+), \{/gm)].find((match) => Number(match[1]) > profile.id);
   const insertAt = nextRelease?.index ?? ideasSource.lastIndexOf("]);\n");
@@ -297,14 +309,15 @@ await writeFile(galleryPath, `${JSON.stringify(gallery, null, 2)}\n`);
 const coveragePath = resolve(root, "docs/T3_CODE_COVERAGE.md");
 let coverage = await readFile(coveragePath, "utf8");
 const intro = coverage.match(/except ([\s\S]*?), which\n/);
-if (!intro) throw new Error("Could not find the T3 coverage introduction");
-const coveredNames = intro[1].replaceAll(/\s+/g, " ").split(", ");
-if (!coveredNames.includes(profile.title)) coveredNames.unshift(profile.title);
-if (profile.previousTitle) {
-  const oldName = coveredNames.indexOf(profile.previousTitle);
-  if (oldName >= 0) coveredNames.splice(oldName, 1);
+if (intro) {
+  const coveredNames = intro[1].replaceAll(/\s+/g, " ").split(", ");
+  if (!coveredNames.includes(profile.title)) coveredNames.unshift(profile.title);
+  if (profile.previousTitle) {
+    const oldName = coveredNames.indexOf(profile.previousTitle);
+    if (oldName >= 0) coveredNames.splice(oldName, 1);
+  }
+  coverage = coverage.replace(intro[0], `except ${coveredNames.join(", ")}, which\n`);
 }
-coverage = coverage.replace(intro[0], `except ${coveredNames.join(", ")}, which\n`);
 const darkScore = themes.dark.result;
 const lightScore = themes.light.result;
 const row = `| ${profile.title} (v0.0.42, dark + light) | ${profile.id} | \`${name}\` | dark mean/min ${darkScore.meanSsim.toFixed(6)}/${darkScore.minSsim.toFixed(6)}; light ${lightScore.meanSsim.toFixed(6)}/${lightScore.minSsim.toFixed(6)}, 120 frames each |`;

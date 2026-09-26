@@ -162,7 +162,7 @@ replies are seeded, with no provider inference (`parity/t3-thread-switch.json`).
 | Prompt Stash and Recall (v0.0.42, dark + light) | 34 | `t3-prompt-stash` | dark mean/min 0.991177/0.990861; light 0.991279/0.990892, 120 frames each; live local stash and reload |
 | Thread Rename (v0.0.42, dark + light) | 35 | `t3-thread-rename` | dark mean/min 0.989543/0.988632; light 0.989761/0.988699, 120 frames each; default menu crop 1.000000 |
 | Project Action Run (v0.0.42, dark + light) | 36 | `t3-project-action-run` | dark mean/min 1.000000/1.000000; light 1.000000/1.000000, 120 frames each |
-| Agent Answer (v0.0.42, dark + light) | 37 | `t3-agent-answer` | dark mean/min 0.999878/0.996846; light 0.999891/0.998091, 120 frames each |
+| Agent Answer (v0.0.42, dark + light) | 37 | `t3-agent-answer` | dark mean/min 0.990616/0.987654; light 0.990411/0.987257, 120 frames each |
 | Message Rewind (v0.0.42, dark + light) | 38 | `t3-message-rewind` | dark mean/min 0.999968/0.999808; light 0.999946/0.999677, 120 frames each |
 | Thread Pin (v0.0.42, dark + light) | 39 | `t3-thread-pin` | dark mean/min 0.989814/0.988789; light 0.989948/0.989003, 120 frames each |
 | Commit Creation (v0.0.42, dark + light) | 40 | `t3-commit-creation` | dark mean/min 1.000000/1.000000; light 1.000000/1.000000, 120 frames each |
@@ -211,12 +211,11 @@ render verifies changed project, thread, file, HTML text, counts, and timing.
 
 Project Action Run creates and executes Verify Hyfrme from the real v0.0.42 toolbar. The isolated command runs `git diff --check` and a scoped Logo Enter diff stat; the displayed result comes from the local repository. Both desktop themes and its editable terminal content have strict 120-frame renders.
 
-Agent Answer uses a completed reply seeded into the isolated T3 Code project.
-The hover, tooltip, copy action, and clipboard result were exercised in the
-real app; the fixture does not claim a live agent backend run.
-The four reply-control states also have cropped native/HyperFrames comparisons
-in `parity/t3-agent-answer-diff/`, each above 0.95 SSIM. This catches missing
-hover or copy feedback that a whole-screen average could hide.
+Agent Answer recreates T3 Code v0.0.42's seeded completed reply. The visible
+pointer reaches the assistant's Copy link control, shows its native tooltip,
+presses it, and displays the captured Copied toast. The native capture confirms
+the seeded reply reached the clipboard; the HyperFrames block uses a seekable
+timeline for those visual states and runs without an AI provider.
 
 Message Rewind opens T3 Code's actual checkpoint confirmation and cancels it.
 The fixture verifies the confirmation interaction without discarding the
