@@ -115,7 +115,8 @@ const host = [...document.querySelectorAll('[data-composition-id="${name}"]')]
   .find((element) => element.querySelector('.t3-pointer') && !element.hasAttribute('data-hf-agent-answer-bound'));
 if (!host) throw new Error('T3 Agent Answer composition host is missing');
 host.setAttribute('data-hf-agent-answer-bound', 'true');
-const root = host.querySelector('[data-hf-inner-root="true"], #root');
+const rootSelector = '[data-hf-inner-root="true"], #root';
+const root = host.matches(rootSelector) ? host : host.querySelector(rootSelector) ?? host;
 if (!root) throw new Error('T3 Agent Answer root is missing');
 const pointer = root.querySelector('.t3-pointer');
 const pointerRing = pointer.querySelector('[data-pointer-ring]');
