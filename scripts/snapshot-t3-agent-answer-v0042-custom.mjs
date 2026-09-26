@@ -16,13 +16,14 @@ for (const theme of ["dark", "light"]) {
   const project = resolve(root, `.work/${name}-v0042-${theme}-custom`);
   const composition = await readFile(resolve(candidate, `${name}.html`));
   const overrides = {
-    theme, renderMode: "editable DOM", projectName: "hyfrme-studio", branchName: "hyfrme/main",
+    theme, projectName: "hyfrme-studio", branchName: "hyfrme/main",
     threadOne: "Review a Hyfrme opener", threadTwo: "Audit Hyfrme timing", threadThree: "Check Logo Enter",
     threadFour: "Review final hold", threadFive: "Search reveal timing",
     userMessage: "Create a Hyfrme opener and hold the last frame.",
     answerLead: "The Hyfrme review is ready in", answerFile: "hyfrme-motion.html",
     answerTail: ". Keep the final frame steady.", copyAction: "Copy Hyfrme reply",
     copyTooltip: "Copy Hyfrme reply", copiedFeedback: "Hyfrme copied!",
+    showPointer: true, pointerColor: "#ff3d7f", pointerSize: 32,
     composerPlaceholder: "Continue the Hyfrme review", hoverFrame: 22, tooltipFrame: 48, copyFrame: 78, clearFrame: 104,
   };
   await mkdir(resolve(project, "compositions"), { recursive: true });
@@ -42,10 +43,11 @@ for (const theme of ["dark", "light"]) {
   const ocr = (frame) => run("tesseract", [resolve(project, "render", `frame_${String(frame + 1).padStart(6, "0")}.png`), "stdout", "--psm", "11"]);
   const promptText = ocr(10);
   const tooltipFrame = resolve(project, "render/frame_000061.png");
+  const copyFrame = resolve(project, "render/frame_000079.png");
   const answerCrop = resolve(project, "answer-crop.png");
   const tooltipCrop = resolve(project, "tooltip-crop.png");
   run("magick", [tooltipFrame, "-crop", "700x55+400+155", "-resize", "200%", answerCrop]);
-  run("magick", [tooltipFrame, "-crop", "150x75+292+165", "-resize", "300%", tooltipCrop]);
+  run("magick", [copyFrame, "-crop", "150x75+292+165", "-resize", "300%", tooltipCrop]);
   const tooltipText = run("tesseract", [answerCrop, "stdout", "--psm", "6"]);
   const copiedText = run("tesseract", [tooltipCrop, "stdout", "--psm", "6"]);
   const normalize = (value) => value.toLowerCase().replaceAll(/[^a-z0-9]+/g, " ");
@@ -55,18 +57,18 @@ for (const theme of ["dark", "light"]) {
   for (const phrase of ["hyfrme motion html", "final frame steady"]) if (!normalize(tooltipText).includes(normalize(phrase))) {
     throw new Error(`${theme} customized answer is absent from the rendered frame: ${tooltipText.slice(0, 800)}`);
   }
-  for (const phrase of ["Copy", "Hyfrme reply"]) if (!normalize(copiedText).includes(normalize(phrase))) {
-    throw new Error(`${theme} customized copy action is absent from the rendered frame: ${copiedText.slice(0, 800)}`);
+  for (const phrase of ["Copied", "Hyfrme copied"]) if (!normalize(copiedText).includes(normalize(phrase))) {
+    throw new Error(`${theme} customized copy feedback is absent from the rendered frame: ${copiedText.slice(0, 800)}`);
   }
   const samples = [10, 23, 49, 79, 105];
   const sampleFrameSha256 = Object.fromEntries(await Promise.all(samples.map(async (frame) => [
     frame, hash(await readFile(resolve(project, "render", `frame_${String(frame + 1).padStart(6, "0")}.png`))),
   ])));
-  if (new Set(Object.values(sampleFrameSha256)).size !== samples.length - 1 || sampleFrameSha256[23] !== sampleFrameSha256[105]) {
-    throw new Error(`${theme} edited interaction phases did not render as the captured before, hover, tooltip, copied, and cleared states`);
+  if (new Set(Object.values(sampleFrameSha256)).size !== samples.length) {
+    throw new Error(`${theme} edited interaction phases and pointer path did not produce distinct rendered frames`);
   }
   await writeFile(resolve(project, "proof.json"), `${JSON.stringify({ theme, fullCheck: true, strictRenderFrames: frames.length,
-    compositionSha256: hash(composition), renderMode: overrides.renderMode, customVariables: overrides,
+    compositionSha256: hash(composition), customVariables: overrides,
     sampleFrameSha256, promptOcr: promptText.trim(), answerOcr: tooltipText.trim(), copiedOcr: copiedText.trim() }, null, 2)}\n`);
-  console.log(`${theme} editable-DOM Agent Answer passed custom prompt, answer, copy feedback, timing, full check and strict 120-frame render.`);
+  console.log(`${theme} custom Agent Answer passed full check, text assertions, and a strict 120-frame render.`);
 }

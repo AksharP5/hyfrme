@@ -67,7 +67,7 @@ try {
       throw new Error(`${theme} CLI installation changed the composition beyond its documented wrapper and theme default`);
     }
     const installedTheme = declarations.find((variable) => variable.id === "theme");
-    if (installedTheme?.default !== theme || JSON.stringify(installedTheme.options) !== '["dark","light"]') {
+    if (installedTheme?.default !== theme || JSON.stringify(installedTheme.options?.map(({ value }) => value)) !== '["dark","light"]') {
       throw new Error(`${theme} CLI installation lost the theme selector`);
     }
     await readFile(resolve(project, "compositions/t3-code-gsap.min.js"));

@@ -67,6 +67,7 @@ try {
   let clipboardText;
   let threadAges;
   let messageTimes;
+  const interactionTargets = { pointerStart: { x: 800, y: 50 }, pointerExit: { x: 800, y: 50 } };
   try {
     const page = await browser.newPage({ viewport: { width: 1200, height: 659 }, deviceScaleFactor: 1, colorScheme: theme });
     await page.clock.setFixedTime(new Date("2026-09-25T11:30:00Z"));
@@ -74,12 +75,26 @@ try {
     await page.goto(pairingUrl, { waitUntil: "domcontentloaded" });
     await page.locator('[data-testid="composer-editor"]').waitFor({ timeout: 20000 });
     if ((await page.evaluate(() => document.documentElement.classList.contains("dark"))) !== (theme === "dark")) throw new Error(`Unexpected ${theme} theme`);
+    const dismissProviderUpdate = async () => {
+      const title = page.getByText("Updates Available: 2 providers", { exact: true });
+      if (!(await title.count())) return;
+      const dismiss = page.getByRole("button", { name: "Dismiss notification" });
+      if (!(await dismiss.count())) throw new Error("Provider update notice has no native dismiss control");
+      await dismiss.first().click();
+      await title.first().waitFor({ state: "detached", timeout: 3000 });
+    };
+    await page.waitForTimeout(750);
+    await dismissProviderUpdate();
+    if (await page.getByText("Updates Available: 2 providers", { exact: true }).count()) throw new Error("Provider update notification remained in the answer fixture");
     await page.getByText("Build a logo intro", { exact: true }).click();
     await page.waitForURL(/hyfrme-fixture-logo-intro/);
     const answer = page.locator('[data-timeline-row-kind="message"]').filter({ hasText: "I found the Logo Enter timing" });
     await answer.waitFor({ timeout: 12000 });
-    await page.waitForTimeout(500);
-    await page.locator('button[data-slot="toast-close"]').evaluateAll((buttons) => buttons.forEach((button) => button.click()));
+    await page.waitForTimeout(1200);
+    await dismissProviderUpdate();
+    if (await page.getByText("Updates Available: 2 providers", { exact: true }).count()) {
+      throw new Error("Provider update notification appeared after entering the seeded answer");
+    }
     await page.mouse.move(800, 50);
     await page.evaluate(() => document.fonts.ready);
     threadAges = await page.locator('[data-testid="sidebar-row-card"]')
@@ -102,9 +117,18 @@ try {
     };
     await saved("before");
     for (let frame = 0; frame < frames; frame++) {
-      if (frame === events.hover) { await answer.hover(); await page.waitForTimeout(250); await saved("hover"); }
+      if (frame === events.hover) {
+        await answer.hover();
+        const box = await answer.boundingBox();
+        if (!box) throw new Error("Native assistant reply has no hover target");
+        interactionTargets.answer = { x: box.x + box.width / 2, y: box.y + box.height / 2 };
+        await page.waitForTimeout(250); await saved("hover");
+      }
       if (frame === events.tooltip) {
         await copy.hover();
+        const box = await copy.boundingBox();
+        if (!box) throw new Error("Native Copy link control has no pointer target");
+        interactionTargets.copy = { x: box.x + box.width / 2, y: box.y + box.height / 2 };
         await page.getByText("Copy to clipboard", { exact: true }).waitFor({ timeout: 4000 });
         await page.waitForTimeout(120); await saved("tooltip");
       }
@@ -134,7 +158,7 @@ try {
   await writeFile(resolve(source, `${prefix}-fixture.json`), `${JSON.stringify({ sourceTag: "v0.0.42",
     sourceCommit: "719a76ca1dbf5490f1aa33ffb9966301e02be9a9", sourceHashes,
     captureBrowser: { version: run(executablePath, ["--version"]), flags }, viewport: { width: 1200, height: 659 },
-    fps, frames, theme, phases, events, threadAges, messageTimes, answerText, clipboardText, sourceDomHashes,
+    fps, frames, theme, phases, events, interactionTargets, threadAges, messageTimes, answerText, clipboardText, sourceDomHashes,
     referenceSha256: hash(await readFile(reference)), providerState: "The completed Hyfrme answer is seeded. The native Copy link action ran against the browser clipboard; no AI provider runs." }, null, 2)}\n`);
   console.log(`Captured v0.0.42 Agent Answer in ${theme}; native copy placed the seeded response on the clipboard.`);
 } finally { server.kill("SIGTERM"); }
