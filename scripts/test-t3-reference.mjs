@@ -2,8 +2,8 @@ import { readFile, stat } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import { resolve } from "node:path";
-import { ideas, references } from "../public/ideas/data.js";
-import { renderT3Scene } from "../public/ideas/t3-scenes.js";
+import { ideas, references } from "../parity/t3-gallery/data.js";
+import { renderT3Scene } from "../parity/t3-gallery/t3-scenes.js";
 
 const root = resolve(import.meta.dirname, "..");
 const galleryParity = JSON.parse(
@@ -22,19 +22,19 @@ for (const idea of ideas) {
     throw new Error(`T3 Code gallery idea ${idea.id} has a duplicate ID or missing source`);
   }
   ids.add(idea.id);
-  if (!renderT3Scene(idea).includes(`/ideas/t3-clips/${idea.id}.mp4`)) {
-    throw new Error(`T3 Code gallery idea ${idea.id} has no native animation`);
+  if (!renderT3Scene(idea).includes(`./t3-clips/${idea.id}.mp4`)) {
+    throw new Error(`T3 Code reference ${idea.id} has no native animation`);
   }
   if (idea.themes.includes("light")) {
     const lightName = idea.previewVariant === "settingsEnabled200" ? "reference-settings-enabled-light.mp4" : "reference-light.mp4";
     if (!renderT3Scene(idea, "light").includes(`/previews/${idea.block}/${lightName}`)) {
-      throw new Error(`T3 Code gallery idea ${idea.id} has no light native animation`);
+      throw new Error(`T3 Code reference ${idea.id} has no light native animation`);
     }
     await stat(resolve(root, "public/previews", idea.block, lightName));
   }
   for (const path of [
-    `public/ideas/t3-clips/${idea.id}.mp4`,
-    ...["a", "b", "c"].map((step) => `public/ideas/t3-frames/${idea.id}-${step}.webp`),
+    `parity/t3-gallery/t3-clips/${idea.id}.mp4`,
+    ...["a", "b", "c"].map((step) => `parity/t3-gallery/t3-frames/${idea.id}-${step}.webp`),
   ]) {
     await stat(resolve(root, path));
   }
@@ -112,4 +112,4 @@ for (const { name } of registry.items) {
   }
 }
 
-console.log(`${ideas.length} T3 Code references; ${mapped.size} working catalog links.`);
+console.log(`${ideas.length} T3 Code references; ${mapped.size} installable catalog blocks.`);

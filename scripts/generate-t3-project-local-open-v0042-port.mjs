@@ -324,7 +324,7 @@ for (const appearance of ["dark", "light"]) {
   }
 }
 await copyFile(
-  resolve(root, "public/ideas/assets/T3-CODE-LICENSE.txt"),
+  resolve(root, "parity/t3-gallery/assets/T3-CODE-LICENSE.txt"),
   resolve(output, "licenses/T3-CODE-LICENSE.txt"),
 );
 await writeFile(

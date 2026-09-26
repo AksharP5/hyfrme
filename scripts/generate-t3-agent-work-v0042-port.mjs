@@ -158,7 +158,7 @@ for (const theme of ["dark", "light"]) for (let row = 0; row < 10; row++) {
   await copyFile(resolve(source, `${shortName}-v0042-${theme}-capture-${String(row).padStart(2, "0")}.webp`),
     resolve(output, `${name}-capture-${theme}-${String(row).padStart(2, "0")}.webp`));
 }
-await copyFile(resolve(root, "public/ideas/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
+await copyFile(resolve(root, "parity/t3-gallery/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
 await copyFile(resolve(root, "assets/t3-code/v0.0.35/agent-work-t3-third-party-notices.md"), resolve(output, "licenses/T3-THIRD_PARTY_NOTICES.md"));
 await writeFile(resolve(output, "README.md"), `# T3 Code: Agent Work\n\nThis four-second block reproduces the official T3 Code v0.0.42 workspace at 1200 × 659 in desktop dark and light. Its native capture follows a Hyfrme prompt from Thinking to a live npm command, expands the command details, then collapses them. The live command state is seeded in an isolated local workspace; no AI provider executes.\n\nThe default pixel-verified mode replays the lossless native capture. Switch to editable DOM mode before changing project, branch, thread, prompt, command, age, duration, theme, or event-frame variables. The pinned default native capture strips round-trip every frame at SSIM 1.0. Source: https://github.com/pingdotgg/t3code/tree/${dark.sourceCommit}.\n`);
 await writeFile(resolve(output, "registry-item.json"), `${JSON.stringify({

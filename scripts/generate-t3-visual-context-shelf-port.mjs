@@ -164,7 +164,7 @@ await writeFile(resolve(output, `${name}.html`), html);
 await writeFile(resolve(output, "t3-code-gsap.min.js"), gsap);
 await copyFile(resolve(source, "visual-context-shelf-logo-enter.png"), resolve(output, "t3-visual-context-logo-enter.png"));
 await copyFile(
-  resolve(root, "public/ideas/assets/T3-CODE-LICENSE.txt"),
+  resolve(root, "parity/t3-gallery/assets/T3-CODE-LICENSE.txt"),
   resolve(output, "licenses/T3-CODE-LICENSE.txt"),
 );
 await copyFile(resolve(root, "assets/remocn-additions/REMOCN-LICENSE.txt"), resolve(output, "licenses/REMOCN-LICENSE.txt"));

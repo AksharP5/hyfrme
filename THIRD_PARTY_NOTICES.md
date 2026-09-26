@@ -1,20 +1,20 @@
 # Third-party notices
 
-## T3 Code gallery marks and captures
+## T3 Code reference assets
 
-The T3 Code gallery at `public/ideas/` retains unmodified
+The internal reference archive at `parity/t3-gallery/` retains unmodified
 OpenAI, Claude, OpenCode, Cursor, Grok, and Antigravity provider SVG marks from
 the [T3 Code harness page](https://t3.codes/harnesses/). They identify the
 providers illustrated in T3 Code. The marks remain the
 property of their respective owners and do not ship with Hyfrme blocks.
 
-The gallery's T3 wordmark is copied from
+The archived T3 wordmark is copied from
 [T3Wordmark.tsx](https://github.com/pingdotgg/t3code/blob/f925d639421844f02b3166d29281905dbba6d529/apps/web/src/components/T3Wordmark.tsx).
-The T3 Code frames and recordings at `public/ideas/t3-frames/` and
-`public/ideas/t3-clips/` were captured from an isolated T3 Code v0.0.42
+The T3 Code frames and recordings at `parity/t3-gallery/t3-frames/` and
+`parity/t3-gallery/t3-clips/` were captured from an isolated T3 Code v0.0.42
 instance with synthetic Hyfrme content. T3 Code is
 MIT-licensed, Copyright (c) 2026 T3 Tools Inc. Its complete license is
-preserved at public/ideas/assets/T3-CODE-LICENSE.txt.
+preserved at parity/t3-gallery/assets/T3-CODE-LICENSE.txt.
 
 Installable blocks tagged `t3-code` use captured DOM and styles from the pinned
 v0.0.42 build. Their installed files include the complete T3 Code MIT

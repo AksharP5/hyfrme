@@ -3,7 +3,7 @@ export const references = [
 ].map((reference) => ({
   ...reference,
   video: null,
-  poster: "/ideas/t3-frames/11-a.webp",
+  poster: "./t3-frames/11-a.webp",
   catalog: "https://github.com/pingdotgg/t3code",
   frames: 120,
 }));

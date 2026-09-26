@@ -227,7 +227,7 @@ await writeFile(resolve(output, "t3-code-gsap.min.js"), gsap);
 for (const theme of ["dark", "light"]) for (let row = 0; row < sprites[theme].length; row++) {
   await writeFile(resolve(output, `t3-prompt-send-capture-${theme}-${String(row).padStart(2, "0")}.webp`), sprites[theme][row]);
 }
-await copyFile(resolve(root, "public/ideas/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
+await copyFile(resolve(root, "parity/t3-gallery/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
 await writeFile(resolve(output, "registry-item.json"), `${JSON.stringify({
   $schema: "https://hyperframes.heygen.com/schema/registry-item.json",
   name, type: "hyperframes:block", title: "T3 Code: Prompt Send",

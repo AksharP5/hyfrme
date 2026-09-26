@@ -262,7 +262,7 @@ const manifest = {
 };
 await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 
-const ideasPath = resolve(root, "public/ideas/data.js");
+const ideasPath = resolve(root, "parity/t3-gallery/data.js");
 let ideasSource = await readFile(ideasPath, "utf8");
 if (profile.ideaTitle) {
   const lineStart = `  idea(${profile.id}, `;

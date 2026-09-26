@@ -3,7 +3,7 @@ import { spawnSync } from "node:child_process";
 import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
-import { ideas } from "../public/ideas/data.js";
+import { ideas } from "../parity/t3-gallery/data.js";
 
 const root = resolve(import.meta.dirname, "..");
 const manifestPath = resolve(root, "parity/t3code-ideas.json");

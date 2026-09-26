@@ -261,7 +261,7 @@ window.__timelines['${name}'] = timeline;
 await mkdir(resolve(output, "licenses"), { recursive: true });
 await writeFile(resolve(output, `${name}.html`), html);
 await writeFile(resolve(output, "t3-code-gsap.min.js"), gsap);
-await copyFile(resolve(root, "public/ideas/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
+await copyFile(resolve(root, "parity/t3-gallery/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
 for (const [from, to] of [
   ["source-file-open-t3-third-party-notices.md", "T3-THIRD_PARTY_NOTICES.md"],
   ["source-file-open-pierre-trees-license.md", "PIERRE-TREES-LICENSE.md"],
