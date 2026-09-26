@@ -1,0 +1,250 @@
+{
+  "slug": "t3-message-rewind",
+  "origin": {
+    "repository": "https://github.com/pingdotgg/t3code",
+    "commit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+    "source": "apps/web/src/components/chat/MessagesTimeline.tsx",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1200,
+    "height": 659,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "theme": "dark",
+      "hover": 25,
+      "tooltip": 45,
+      "confirm": 65,
+      "cancel": 95
+    },
+    "sourceHashes": {
+      "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+      "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+      "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+    },
+    "captureAtlas": "parity/t3-message-rewind-v0042-atlas.json",
+    "compositionSha256": "6e42617af8dd2d96f33b475248cb7c0bd16b65d732284675d8e0cf028f72194e"
+  },
+  "interaction": "Native v0.0.42 Edit from here reveals its tooltip and opens the checkpoint dialog with Revert files too and Revert and keep changes. The seeded conversation is left unchanged by canceling the dialog.",
+  "providerState": "The completed conversation and checkpoint are seeded; the confirmation was opened and canceled, so no rewind ran.",
+  "classification": "source-dom-port with lossless native-frame default",
+  "measurement": "lossless PNG; every native capture strip round-trips at SSIM 1.0",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.985,
+    "minSsim": 0.98
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.9999680000000003,
+    "minSsim": 0.999808,
+    "p05Ssim": 0.999808,
+    "p95Ssim": 1,
+    "worstFrame": 45,
+    "pass": true,
+    "phaseFrames": {
+      "before": {
+        "frame": 0,
+        "ssim": 1
+      },
+      "hover": {
+        "frame": 25,
+        "ssim": 1
+      },
+      "tooltip": {
+        "frame": 45,
+        "ssim": 0.999808
+      },
+      "confirm": {
+        "frame": 65,
+        "ssim": 1
+      },
+      "closed": {
+        "frame": 95,
+        "ssim": 1
+      }
+    }
+  },
+  "themes": {
+    "dark": {
+      "sourceCommit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+      "referenceSha256": "701aed2b8eceb72e789b612c58e02a5f3b6cde8a4608802db335133edf3f35e3",
+      "sourceHashes": {
+        "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+        "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+        "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+      },
+      "sourceDomHashes": {
+        "before": {
+          "root": "728f654eae5ae95210083dad199fcdad497f4559f6e3e5bf9c6cae9755bce6a9",
+          "portal": "dafb96ebfe48c99964126aefbde358289052e9c5809feb321f99fa9e7a003bfb"
+        },
+        "hover": {
+          "root": "6e9dcd231344da48b68915958407e417f00f987f7be9b82545a1fdfaff2b8524",
+          "portal": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84"
+        },
+        "tooltip": {
+          "root": "79dd1d765b493d5153c5bcabf818f258dd706d3b91d59b6a084d4a09d74c0b26",
+          "portal": "ae64a41669e88930fde275ecffa049a3db7711838403882baf3592fdbe78a080"
+        },
+        "confirm": {
+          "root": "618e42c578bd0e5b4d9d9a5e0f37195a720814afb0d13fa15e9b8fc74028a804",
+          "portal": "ad2ce620688626c3952e921e80b349c5f767a7190f1fa61ad841d7f5ef80f427"
+        },
+        "closed": {
+          "root": "6e9dcd231344da48b68915958407e417f00f987f7be9b82545a1fdfaff2b8524",
+          "portal": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84"
+        }
+      },
+      "themeSha256": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9999680000000003,
+        "minSsim": 0.999808,
+        "p05Ssim": 0.999808,
+        "p95Ssim": 1,
+        "worstFrame": 45,
+        "pass": true,
+        "phaseFrames": {
+          "before": {
+            "frame": 0,
+            "ssim": 1
+          },
+          "hover": {
+            "frame": 25,
+            "ssim": 1
+          },
+          "tooltip": {
+            "frame": 45,
+            "ssim": 0.999808
+          },
+          "confirm": {
+            "frame": 65,
+            "ssim": 1
+          },
+          "closed": {
+            "frame": 95,
+            "ssim": 1
+          }
+        }
+      },
+      "providerState": "The completed conversation and checkpoint are seeded; the confirmation was opened and canceled, so no rewind ran.",
+      "events": {
+        "hover": 25,
+        "tooltip": 45,
+        "confirm": 65,
+        "cancel": 95
+      },
+      "artifacts": {
+        "nativeRecording": "parity/t3-message-rewind-v0042-dark-reference.mkv",
+        "referenceVideo": "public/previews/t3-message-rewind/reference.mp4",
+        "hyperframesVideo": "public/previews/t3-message-rewind/hyperframes.mp4",
+        "frameSsim": "parity/t3-message-rewind-diff/dark/ssim.txt",
+        "hyperframesCheck": "parity/t3-message-rewind-diff/dark/hyperframes-check.json",
+        "installedCheck": "parity/t3-message-rewind-diff/dark/installed-check.json",
+        "customCheck": "parity/t3-message-rewind-diff/dark/custom-check.json",
+        "customized": "parity/t3-message-rewind-diff/dark/customized-state.png"
+      }
+    },
+    "light": {
+      "sourceCommit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+      "referenceSha256": "20f05ac82c1b74e7366b00a7f1d4e009e4600ea434dd8871280087c6642fcda8",
+      "sourceHashes": {
+        "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+        "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+        "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+      },
+      "sourceDomHashes": {
+        "before": {
+          "root": "7504c2e12bfecb16eadd256c09ccc30ca1e039ec19df3067d2eac0b5a0d1a3ff",
+          "portal": "dafb96ebfe48c99964126aefbde358289052e9c5809feb321f99fa9e7a003bfb"
+        },
+        "hover": {
+          "root": "078e2295fef05eb8131e3c3c1972c744f5adcf8a64b677781f634f2beb83bc7e",
+          "portal": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84"
+        },
+        "tooltip": {
+          "root": "de44b4db5d222ae9b56c1ba31b9326565a488b60217498a359629f58293a1f69",
+          "portal": "ae64a41669e88930fde275ecffa049a3db7711838403882baf3592fdbe78a080"
+        },
+        "confirm": {
+          "root": "4dd54a22b0bdec09c406156ff37ea02163a511b050e399ccc2cbc91556fd219e",
+          "portal": "ad2ce620688626c3952e921e80b349c5f767a7190f1fa61ad841d7f5ef80f427"
+        },
+        "closed": {
+          "root": "078e2295fef05eb8131e3c3c1972c744f5adcf8a64b677781f634f2beb83bc7e",
+          "portal": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84"
+        }
+      },
+      "themeSha256": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9999461666666664,
+        "minSsim": 0.999677,
+        "p05Ssim": 0.999677,
+        "p95Ssim": 1,
+        "worstFrame": 45,
+        "pass": true,
+        "phaseFrames": {
+          "before": {
+            "frame": 0,
+            "ssim": 1
+          },
+          "hover": {
+            "frame": 25,
+            "ssim": 1
+          },
+          "tooltip": {
+            "frame": 45,
+            "ssim": 0.999677
+          },
+          "confirm": {
+            "frame": 65,
+            "ssim": 1
+          },
+          "closed": {
+            "frame": 95,
+            "ssim": 1
+          }
+        }
+      },
+      "providerState": "The completed conversation and checkpoint are seeded; the confirmation was opened and canceled, so no rewind ran.",
+      "events": {
+        "hover": 25,
+        "tooltip": 45,
+        "confirm": 65,
+        "cancel": 95
+      },
+      "artifacts": {
+        "nativeRecording": "parity/t3-message-rewind-v0042-light-reference.mkv",
+        "referenceVideo": "public/previews/t3-message-rewind/reference-light.mp4",
+        "hyperframesVideo": "public/previews/t3-message-rewind/hyperframes-light.mp4",
+        "frameSsim": "parity/t3-message-rewind-diff/light/ssim.txt",
+        "hyperframesCheck": "parity/t3-message-rewind-diff/light/hyperframes-check.json",
+        "installedCheck": "parity/t3-message-rewind-diff/light/installed-check.json",
+        "customCheck": "parity/t3-message-rewind-diff/light/custom-check.json",
+        "customized": "parity/t3-message-rewind-diff/light/customized-state.png"
+      }
+    }
+  },
+  "checks": {
+    "hyperframes": "full checks and strict 120-frame renders passed in dark and light",
+    "hyperframesVersion": "0.8.75",
+    "sourceBrowser": "Google Chrome for Testing 152.0.7977.30",
+    "installedThroughCli": true,
+    "customVariables": "Editable DOM mode changed Hyfrme project and thread text, prompt, visible action or dialog, theme, and event timing; full checks, text assertions, and strict 120-frame renders passed in both themes."
+  },
+  "artifacts": {
+    "nativeRecording": "parity/t3-message-rewind-v0042-dark-reference.mkv",
+    "referenceVideo": "public/previews/t3-message-rewind/reference.mp4",
+    "hyperframesVideo": "public/previews/t3-message-rewind/hyperframes.mp4",
+    "frameSsim": "parity/t3-message-rewind-diff/dark/ssim.txt",
+    "hyperframesCheck": "parity/t3-message-rewind-diff/dark/hyperframes-check.json",
+    "installedCheck": "parity/t3-message-rewind-diff/dark/installed-check.json",
+    "customCheck": "parity/t3-message-rewind-diff/dark/custom-check.json",
+    "customized": "parity/t3-message-rewind-diff/dark/customized-state.png",
+    "thumbnail": "public/previews/t3-message-rewind/thumbnail.png",
+    "lightThumbnail": "public/previews/t3-message-rewind/thumbnail-light.png"
+  }
+}

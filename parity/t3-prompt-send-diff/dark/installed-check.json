@@ -1,0 +1,2630 @@
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 2,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div data-composition-id=\"t3-prompt-send\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id=\"t3-prompt-send\"]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-prompt-send-v0042-cli/dark/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "composition_heavy_overlay_count_high",
+        "severity": "warning",
+        "message": "This composition has 80 elements carrying \"heavy overlay\" CSS (filter:blur, radial-gradient, or clip-path). Field signal: a composition with ~40 such elements — including opacity:0 / visibility:hidden ones — captures solid-black for the first ~half of the render, recovering near the end. Reproduces identically via drawElement, forced screenshot capture, and snapshot, so the capture layer itself is the offender (not encoder/mux). Independent of duration. Presence alone matters; only display:none elements are excluded here.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-prompt-send-v0042-cli/dark/compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split this sub-composition further into per-transition mini-compositions and concat the pieces (FFmpeg or the runtime's slideshow) so each capture only sees a small subset of heavy overlays at once. Even hidden overlays (opacity:0 / visibility:hidden) contribute — either remove truly unused ones from the source or scope them into their own per-transition sub-composition. If an overlay is genuinely inert for the whole clip, use display:none so it never enters the render tree. Field ref ts=1784040753 (#hyperframes-cli-feedback)."
+      }
+    ],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 80,
+    "findings": [
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 111.8,
+          "right": 30.91,
+          "bottom": 121.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 21,
+          "y": 111.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 109,
+          "right": 77.69,
+          "bottom": 123,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 41,
+          "y": 109,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 204.31,
+          "top": 109,
+          "right": 237,
+          "bottom": 123,
+          "width": 32.69,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "Failed",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 204.31,
+          "y": 109,
+          "width": 32.69,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 132,
+          "right": 176.2,
+          "bottom": 148,
+          "width": 157.2,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "Build Logo Enter Preview",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 19,
+          "y": 132,
+          "width": 157.2,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 153,
+          "right": 113.73,
+          "bottom": 167,
+          "width": 94.73,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "feature/logo-enter",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 19,
+          "y": 153,
+          "width": 94.73,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 194.8,
+          "right": 30.91,
+          "bottom": 204.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 21,
+          "y": 194.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 192,
+          "right": 77.69,
+          "bottom": 206,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 41,
+          "y": 192,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 216.97,
+          "top": 192,
+          "right": 237,
+          "bottom": 206,
+          "width": 20.03,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "10h",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 216.97,
+          "y": 192,
+          "width": 20.03,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 215,
+          "right": 123.3,
+          "bottom": 231,
+          "width": 104.3,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "Build a logo intro",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 19,
+          "y": 215,
+          "width": 104.3,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 37,
+          "top": 236,
+          "right": 63.02,
+          "bottom": 250,
+          "width": 26.02,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "main",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 37,
+          "y": 236,
+          "width": 26.02,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 277.8,
+          "right": 30.91,
+          "bottom": 287.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 21,
+          "y": 277.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 275,
+          "right": 77.69,
+          "bottom": 289,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 41,
+          "y": 275,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 216.97,
+          "top": 275,
+          "right": 237,
+          "bottom": 289,
+          "width": 20.03,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "12h",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 216.97,
+          "y": 275,
+          "width": 20.03,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 298,
+          "right": 147.42,
+          "bottom": 314,
+          "width": 128.42,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "Catalog motion audit",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 19,
+          "y": 298,
+          "width": 128.42,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 37,
+          "top": 319,
+          "right": 63.02,
+          "bottom": 333,
+          "width": 26.02,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "main",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 37,
+          "y": 319,
+          "width": 26.02,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 360.8,
+          "right": 30.91,
+          "bottom": 370.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 21,
+          "y": 360.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 358,
+          "right": 77.69,
+          "bottom": 372,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 41,
+          "y": 358,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 216.97,
+          "top": 358,
+          "right": 237,
+          "bottom": 372,
+          "width": 20.03,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "17h",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 216.97,
+          "y": 358,
+          "width": 20.03,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 381,
+          "right": 137.3,
+          "bottom": 397,
+          "width": 118.3,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "Grouped logo tests",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 19,
+          "y": 381,
+          "width": 118.3,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 37,
+          "top": 402,
+          "right": 114.39,
+          "bottom": 416,
+          "width": 77.39,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "logo/assemble",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 37,
+          "y": 402,
+          "width": 77.39,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 443.8,
+          "right": 30.91,
+          "bottom": 453.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 21,
+          "y": 443.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 441,
+          "right": 77.69,
+          "bottom": 455,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 41,
+          "y": 441,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 223.64,
+          "top": 441,
+          "right": 237,
+          "bottom": 455,
+          "width": 13.36,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "1d",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 223.64,
+          "y": 441,
+          "width": 13.36,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 464,
+          "right": 124.84,
+          "bottom": 480,
+          "width": 105.84,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "Review final hold",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 19,
+          "y": 464,
+          "width": 105.84,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 37,
+          "top": 485,
+          "right": 111.72,
+          "bottom": 499,
+          "width": 74.72,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "logo/hold-final",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 37,
+          "y": 485,
+          "width": 74.72,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(9) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 592,
+          "right": 74.36,
+          "bottom": 606,
+          "width": 55.36,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "Settled (2)",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 19,
+          "y": 592,
+          "width": 55.36,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 277.75,
+          "top": 22.33,
+          "right": 286.42,
+          "bottom": 31.08,
+          "width": 8.67,
+          "height": 8.75
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 277.75,
+          "y": 22.33,
+          "width": 8.67,
+          "height": 8.75
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 296,
+          "top": 18,
+          "right": 338.8,
+          "bottom": 34,
+          "width": 42.8,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 296,
+          "y": 18,
+          "width": 42.8,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 350.8,
+          "top": 18,
+          "right": 354.69,
+          "bottom": 34,
+          "width": 3.89,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "/",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 350.8,
+          "y": 18,
+          "width": 3.89,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(3) > h2:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 366.69,
+          "top": 18,
+          "right": 438.28,
+          "bottom": 34,
+          "width": 71.59,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "New thread",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-base-ui-tooltip-trigger": "",
+          "data-slot": "tooltip-trigger"
+        },
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 366.69,
+          "y": 18,
+          "width": 71.59,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#base-ui-_r_2t_ > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 841.58,
+          "top": 19,
+          "right": 898.3,
+          "bottom": 33,
+          "width": 56.72,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "Add action",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 841.58,
+          "y": 19,
+          "width": 56.72,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 943.8,
+          "top": 19,
+          "right": 973.16,
+          "bottom": 33,
+          "width": 29.36,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "Open",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 943.8,
+          "y": 19,
+          "width": 29.36,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1042.66,
+          "top": 19,
+          "right": 1084,
+          "bottom": 33,
+          "width": 41.34,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "Commit",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 1042.66,
+          "y": 19,
+          "width": 41.34,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 522.84,
+          "top": 189.5,
+          "right": 933.16,
+          "bottom": 222.5,
+          "width": 410.31,
+          "height": 33
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "What should we build in ?",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 522.84,
+          "y": 189.5,
+          "width": 410.31,
+          "height": 33
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#base-ui-_r_3i_",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 830.03,
+          "top": 189.5,
+          "right": 917.22,
+          "bottom": 222.5,
+          "width": 87.19,
+          "height": 33
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-slot": "tooltip-trigger",
+          "data-base-ui-tooltip-trigger": ""
+        },
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 830.03,
+          "y": 189.5,
+          "width": 87.19,
+          "height": 33
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > form:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 361,
+          "top": 277.5,
+          "right": 796.8,
+          "bottom": 293.5,
+          "width": 435.8,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "Build a four-second Hyfrme Logo Enter preview with a clean final hold.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-lexical-text": "true"
+        },
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 361,
+          "y": 277.5,
+          "width": 435.8,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#base-ui-_r_3p_",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 384,
+          "top": 360.5,
+          "right": 461.8,
+          "bottom": 376.5,
+          "width": 77.8,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "GPT-6-Astra",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-chat-provider-model-picker-label": "true",
+          "data-base-ui-tooltip-trigger": "",
+          "data-slot": "tooltip-trigger"
+        },
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 384,
+          "y": 360.5,
+          "width": 77.8,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#base-ui-_r_3t_ > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 512.8,
+          "top": 360.5,
+          "right": 562.59,
+          "bottom": 376.5,
+          "width": 49.8,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "Medium",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 512.8,
+          "y": 360.5,
+          "width": 49.8,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#base-ui-_r_42_ > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 635.59,
+          "top": 360.5,
+          "right": 705.63,
+          "bottom": 376.5,
+          "width": 70.03,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "Full access",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-slot": "select-value"
+        },
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 635.59,
+          "y": 360.5,
+          "width": 70.03,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#base-ui-_r_4b_ > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 398,
+          "top": 410.5,
+          "right": 489.39,
+          "bottom": 424.5,
+          "width": 91.39,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "Current checkout",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-slot": "select-value"
+        },
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 398,
+          "y": 410.5,
+          "width": 91.39,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#base-ui-_r_4f_ > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 967.27,
+          "top": 410.5,
+          "right": 1062,
+          "bottom": 424.5,
+          "width": 94.73,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "feature/logo-enter",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-composer-label-motion": "true"
+        },
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 967.27,
+          "y": 410.5,
+          "width": 94.73,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 111.8,
+          "right": 30.91,
+          "bottom": 121.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 21,
+          "y": 111.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 109,
+          "right": 77.69,
+          "bottom": 123,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 41,
+          "y": 109,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 204.31,
+          "top": 109,
+          "right": 237,
+          "bottom": 123,
+          "width": 32.69,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "Failed",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 204.31,
+          "y": 109,
+          "width": 32.69,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 132,
+          "right": 176.2,
+          "bottom": 148,
+          "width": 157.2,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "Build Logo Enter Preview",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 19,
+          "y": 132,
+          "width": 157.2,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 153,
+          "right": 113.73,
+          "bottom": 167,
+          "width": 94.73,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "feature/logo-enter",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 19,
+          "y": 153,
+          "width": 94.73,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 194.8,
+          "right": 30.91,
+          "bottom": 204.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 21,
+          "y": 194.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 192,
+          "right": 77.69,
+          "bottom": 206,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 41,
+          "y": 192,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 216.97,
+          "top": 192,
+          "right": 237,
+          "bottom": 206,
+          "width": 20.03,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "10h",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 216.97,
+          "y": 192,
+          "width": 20.03,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 215,
+          "right": 123.3,
+          "bottom": 231,
+          "width": 104.3,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "Build a logo intro",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 19,
+          "y": 215,
+          "width": 104.3,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 37,
+          "top": 236,
+          "right": 63.02,
+          "bottom": 250,
+          "width": 26.02,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "main",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 37,
+          "y": 236,
+          "width": 26.02,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 277.8,
+          "right": 30.91,
+          "bottom": 287.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 21,
+          "y": 277.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 275,
+          "right": 77.69,
+          "bottom": 289,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 41,
+          "y": 275,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 216.97,
+          "top": 275,
+          "right": 237,
+          "bottom": 289,
+          "width": 20.03,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "12h",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 216.97,
+          "y": 275,
+          "width": 20.03,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 298,
+          "right": 147.42,
+          "bottom": 314,
+          "width": 128.42,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "Catalog motion audit",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 19,
+          "y": 298,
+          "width": 128.42,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 37,
+          "top": 319,
+          "right": 63.02,
+          "bottom": 333,
+          "width": 26.02,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "main",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 37,
+          "y": 319,
+          "width": 26.02,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 360.8,
+          "right": 30.91,
+          "bottom": 370.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 21,
+          "y": 360.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 358,
+          "right": 77.69,
+          "bottom": 372,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 41,
+          "y": 358,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 216.97,
+          "top": 358,
+          "right": 237,
+          "bottom": 372,
+          "width": 20.03,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "17h",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 216.97,
+          "y": 358,
+          "width": 20.03,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 381,
+          "right": 137.3,
+          "bottom": 397,
+          "width": 118.3,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "Grouped logo tests",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 19,
+          "y": 381,
+          "width": 118.3,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 37,
+          "top": 402,
+          "right": 114.39,
+          "bottom": 416,
+          "width": 77.39,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "logo/assemble",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 37,
+          "y": 402,
+          "width": 77.39,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 443.8,
+          "right": 30.91,
+          "bottom": 453.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 21,
+          "y": 443.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 441,
+          "right": 77.69,
+          "bottom": 455,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 41,
+          "y": 441,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 223.64,
+          "top": 441,
+          "right": 237,
+          "bottom": 455,
+          "width": 13.36,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "1d",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 223.64,
+          "y": 441,
+          "width": 13.36,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 464,
+          "right": 124.84,
+          "bottom": 480,
+          "width": 105.84,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "Review final hold",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 19,
+          "y": 464,
+          "width": 105.84,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 37,
+          "top": 485,
+          "right": 111.72,
+          "bottom": 499,
+          "width": 74.72,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "logo/hold-final",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 37,
+          "y": 485,
+          "width": 74.72,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(9) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 592,
+          "right": 74.36,
+          "bottom": 606,
+          "width": 55.36,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "Settled (2)",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 19,
+          "y": 592,
+          "width": 55.36,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 277.75,
+          "top": 22.33,
+          "right": 286.42,
+          "bottom": 31.08,
+          "width": 8.67,
+          "height": 8.75
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 277.75,
+          "y": 22.33,
+          "width": 8.67,
+          "height": 8.75
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 296,
+          "top": 18,
+          "right": 338.8,
+          "bottom": 34,
+          "width": 42.8,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 296,
+          "y": 18,
+          "width": 42.8,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 350.8,
+          "top": 18,
+          "right": 354.69,
+          "bottom": 34,
+          "width": 3.89,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "/",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 350.8,
+          "y": 18,
+          "width": 3.89,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(3) > h2:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 366.69,
+          "top": 18,
+          "right": 438.28,
+          "bottom": 34,
+          "width": 71.59,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "New thread",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-base-ui-tooltip-trigger": "",
+          "data-slot": "tooltip-trigger"
+        },
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 366.69,
+          "y": 18,
+          "width": 71.59,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#base-ui-_r_2t_ > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 841.58,
+          "top": 19,
+          "right": 898.3,
+          "bottom": 33,
+          "width": 56.72,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "Add action",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 841.58,
+          "y": 19,
+          "width": 56.72,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 943.8,
+          "top": 19,
+          "right": 973.16,
+          "bottom": 33,
+          "width": 29.36,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "Open",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 943.8,
+          "y": 19,
+          "width": 29.36,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1042.66,
+          "top": 19,
+          "right": 1084,
+          "bottom": 33,
+          "width": 41.34,
+          "height": 14
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "Commit",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 1042.66,
+          "y": 19,
+          "width": 41.34,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 522.84,
+          "top": 189.5,
+          "right": 933.16,
+          "bottom": 222.5,
+          "width": 410.31,
+          "height": 33
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "What should we build in ?",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 522.84,
+          "y": 189.5,
+          "width": 410.31,
+          "height": 33
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#base-ui-_r_3i_",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 830.03,
+          "top": 189.5,
+          "right": 917.22,
+          "bottom": 222.5,
+          "width": 87.19,
+          "height": 33
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-slot": "tooltip-trigger",
+          "data-base-ui-tooltip-trigger": ""
+        },
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 830.03,
+          "y": 189.5,
+          "width": 87.19,
+          "height": 33
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > form:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 361,
+          "top": 277.5,
+          "right": 796.8,
+          "bottom": 293.5,
+          "width": 435.8,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "Build a four-second Hyfrme Logo Enter preview with a clean final hold.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-lexical-text": "true"
+        },
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 361,
+          "y": 277.5,
+          "width": 435.8,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#base-ui-_r_3p_",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 384,
+          "top": 360.5,
+          "right": 461.8,
+          "bottom": 376.5,
+          "width": 77.8,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "GPT-6-Astra",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-chat-provider-model-picker-label": "true",
+          "data-base-ui-tooltip-trigger": "",
+          "data-slot": "tooltip-trigger"
+        },
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 384,
+          "y": 360.5,
+          "width": 77.8,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#base-ui-_r_3t_ > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 512.8,
+          "top": 360.5,
+          "right": 562.59,
+          "bottom": 376.5,
+          "width": 49.8,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "Medium",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 512.8,
+          "y": 360.5,
+          "width": 49.8,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#base-ui-_r_42_ > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 635.59,
+          "top": 360.5,
+          "right": 705.63,
+          "bottom": 376.5,
+          "width": 70.03,
+          "height": 16
+        },
+        "containerSelector": "[data-composition-id=\"t3-prompt-send\"] > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "Full access",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-slot": "select-value"
+        },
+        "sourceFile": "compositions/t3-prompt-send.html",
+        "bbox": {
+          "x": 635.59,
+          "y": 360.5,
+          "width": 70.03,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      }
+    ],
+    "duration": 4,
+    "samples": [
+      0.222,
+      0.667,
+      1.111,
+      1.556,
+      2,
+      2.444,
+      2.889,
+      3.333,
+      3.778
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 383,
+    "truncated": true
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.222,
+      1.111,
+      2,
+      2.889,
+      3.778
+    ],
+    "checked": 0,
+    "passed": 0
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.75",
+    "latestVersion": "0.8.78",
+    "updateAvailable": true
+  }
+}

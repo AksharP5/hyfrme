@@ -40,9 +40,12 @@ Your choices become the installed component's defaults. Keep adjusting them in
 HyperFrames, or edit the copied HTML, CSS, and JavaScript directly. Hyfrme is
 not a runtime dependency.
 
-The catalog includes Hyfrme originals and components adapted from Remocn and
-Snapcn. Use the source filters to browse each collection. Snapcn component names
-start with `snapcn-`, such as `snapcn-phone-frame`.
+The catalog includes Hyfrme originals and components adapted from Remocn,
+Snapcn, and T3 Code. Use the source filters to browse each collection. Snapcn
+component names start with `snapcn-`, such as `snapcn-phone-frame`. T3 Code
+blocks reproduce the desktop app at the pinned v0.0.42 release. The T3 gallery
+shows which desktop themes have passed frame comparison. Native captures and results are listed in the
+[T3 Code coverage record](docs/T3_CODE_COVERAGE.md).
 
 ## Install more
 

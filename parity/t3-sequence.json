@@ -1,0 +1,94 @@
+{
+  "kind": "integration",
+  "blocks": [
+    "t3-brief-to-prompt",
+    "t3-model-swap",
+    "t3-reasoning-level",
+    "t3-permission-choice",
+    "t3-prompt-send"
+  ],
+  "fixture": {
+    "fps": 30,
+    "width": 1200,
+    "height": 659,
+    "cutSeconds": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "modelSwapOverrides": {
+      "threadOneAge": "2h",
+      "threadTwoAge": "4h",
+      "threadThreeAge": "9h",
+      "settledAge": "1h"
+    },
+    "reasoningOverrides": {
+      "threadOneAge": "2h",
+      "threadTwoAge": "4h",
+      "threadThreeAge": "9h",
+      "settledAge": "1h",
+      "prompt": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+      "modelName": "GPT-6-Sol",
+      "reasoningBefore": "Medium"
+    },
+    "permissionOverrides": {
+      "threadOneAge": "2h",
+      "threadTwoAge": "4h",
+      "threadThreeAge": "9h",
+      "settledAge": "1h",
+      "modelName": "GPT-6-Sol",
+      "reasoningLevel": "High",
+      "prompt": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+      "headingOffset": 0
+    },
+    "sendOverrides": {
+      "threadOneAge": "2h",
+      "threadTwoAge": "4h",
+      "threadThreeAge": "9h",
+      "settledAge": "1h",
+      "modelName": "GPT-6-Sol",
+      "reasoningLevel": "High",
+      "permissionMode": "Auto-accept edits",
+      "draftWorkspace": "Current checkout",
+      "prompt": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames."
+    }
+  },
+  "result": {
+    "briefToModelSsim": 0.999952,
+    "modelToReasoningSsim": 0.999998,
+    "pass": true,
+    "reasoningToPermissionSsim": 0.99999998,
+    "permissionToSendSsim": 0.999555
+  },
+  "artifacts": {
+    "beforeCut": "parity/t3-sequence/before-cut.png",
+    "afterCut": "parity/t3-sequence/after-cut.png",
+    "beforeReasoningCut": "parity/t3-sequence/before-reasoning-cut.png",
+    "afterReasoningCut": "parity/t3-sequence/after-reasoning-cut.png",
+    "beforePermissionCut": "parity/t3-sequence/before-permission-cut.png",
+    "afterPermissionCut": "parity/t3-sequence/after-permission-cut.png",
+    "beforeSendCut": "parity/t3-sequence/before-send-cut.png",
+    "afterSendCut": "parity/t3-sequence/after-send-cut.png"
+  },
+  "hashes": {
+    "beforeCut": "19fbc2b7eb6e7795b86b690abf339ba9453325647e22d91a7707ccc53f287fee",
+    "afterCut": "69a9712b0a651f001d6fca19fbc8db34e764060b41d65c3ed2bc0b15ce4ba128",
+    "briefComposition": "a09e08e0d9c4c1b76fd3229ad21c2b2e096c2b9ec310e617ba8a186664fba04b",
+    "modelComposition": "4643bdddd93be8baadad893413b1aee8703f30c8d117317c7b0fc8db44dd5d76",
+    "beforeReasoningCut": "fe0963725cd3a1f828bf69f390418e822c8637438885b9619b6998d6e95e1525",
+    "afterReasoningCut": "7f245e2057edfa970850845545985192573f1a9c568a4bd2c1f67d6565d772b7",
+    "reasoningComposition": "7c1d9f0a7340861e22993c8ae64cd8b223aef485dcd190e836c111ef1d49c600",
+    "beforePermissionCut": "951d8d7156b0c4c40d521be68b172c4c22059373cf7a101b5a7622eca7682d30",
+    "afterPermissionCut": "6131932bb6a16e8d6a06c5ace70e048b6f41e58e531f719f85b6f2d121ea9be7",
+    "permissionComposition": "ce2c15025df2086476b85433b120a404abcd4e2383163cd34d0a4ae587c0ab50",
+    "beforeSendCut": "0a4d6c5118acc52a3b5f1c29a21a7037542f1dbf12655e5ee804804db2b1f32e",
+    "afterSendCut": "f8708fc07fd9611ef5fde5979f0f8db64c249101ada9a230d8309d0a710d6d70",
+    "sendComposition": "991c5e392b86e3563f060f58fc21d52728797c77e7c438c19fd7ad1f50d3a425",
+    "example": "3554d9e0b490d70f8517f38ca683577076416e32a4adf0dd6458ccedfec8d3c9"
+  },
+  "checks": {
+    "hyperframes": "full check passed with no errors",
+    "installedThroughCli": true
+  }
+}

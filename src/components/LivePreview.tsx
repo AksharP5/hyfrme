@@ -40,15 +40,40 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [viewportSize, setViewportSize] = useState({ width: 0, height: 0 });
   const isIcon = item.tags.includes("icon");
+  const nativeViewport = item.tags.includes("app-ui");
   const rendered = useMemo(
     () => item.tags.includes("html-in-canvas") && !supportsHtmlInCanvas(),
     [item],
   );
   const document = useMemo(
-    () => (rendered ? "" : buildPreviewDocument(source, item, values, isIcon)),
-    [isIcon, item, source, values, rendered],
+    () =>
+      rendered
+        ? ""
+        : buildPreviewDocument(source, item, values, isIcon, nativeViewport),
+    [isIcon, item, source, values, rendered, nativeViewport],
   );
+
+  useEffect(() => {
+    if (!nativeViewport || !containerRef.current) return;
+    const element = containerRef.current;
+    const observer = new ResizeObserver(() => {
+      setViewportSize({
+        width: element.clientWidth,
+        height: element.clientHeight,
+      });
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [nativeViewport]);
+
+  const viewportScale = nativeViewport
+    ? Math.min(
+        viewportSize.width / item.dimensions.width,
+        viewportSize.height / item.dimensions.height,
+      )
+    : 1;
 
   useEffect(() => {
     setError(null);
@@ -113,7 +138,7 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
   return (
     <div
       ref={containerRef}
-      className={`live-preview${isIcon ? " is-icon" : ""}`}
+      className={`live-preview${isIcon ? " is-icon" : ""}${nativeViewport ? " is-app-ui" : ""}`}
       data-component-slug={item.name}
     >
       {rendered ? (
@@ -136,6 +161,17 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
           title={`${item.title} customized preview`}
           srcDoc={document}
           sandbox="allow-scripts allow-same-origin"
+          style={
+            nativeViewport
+              ? {
+                  position: "absolute",
+                  width: item.dimensions.width,
+                  height: item.dimensions.height,
+                  transformOrigin: "top left",
+                  transform: `translate(${(viewportSize.width - item.dimensions.width * viewportScale) / 2}px, ${(viewportSize.height - item.dimensions.height * viewportScale) / 2}px) scale(${viewportScale})`,
+                }
+              : undefined
+          }
           onLoad={() => setPaused(false)}
         />
       )}

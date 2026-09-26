@@ -1,0 +1,5 @@
+# T3 Code: Visual Context Remove
+
+This four-second block reproduces the real T3 Code v0.0.35 composer image removal at 1200 × 659 and 30 fps. The attached image is the final frame of Hyfrme's verified Logo Enter render. The native remove button clears the attachment shelf; the removed state remains after reload.
+
+Change imageSrc to a path relative to the project root or an absolute URL, and imageName to its filename. contextPrompt controls the composer text. Set project, branch, thread, and age variables to match adjacent T3 Code clips. removeHoverFrame, removeFrame, and persistedFrame place the real state changes. The supplied frame comes from Hyfrme Logo Enter, which derives from MIT-licensed Remocn source; its license is included. T3 Code source: https://github.com/pingdotgg/t3code/tree/f925d639421844f02b3166d29281905dbba6d529. The T3 Code MIT license and third-party icon notice are included. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.

@@ -147,6 +147,7 @@ function Header() {
         <a href="/showcases">Showcases</a>
       </nav>
       <nav className="utility-navigation" aria-label="Project links">
+        <a href="/ideas/">T3 Code references</a>
         <a
           className="github-star-link"
           href={githubUrl}

@@ -1,0 +1,526 @@
+{
+  "slug": "t3-project-local-open",
+  "origin": {
+    "repository": "https://github.com/pingdotgg/t3code",
+    "commit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+    "source": "apps/web/src/components/CommandPalette.tsx",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1200,
+    "height": 659,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "theme": "dark",
+      "projectName": "hyfrme",
+      "source": 15,
+      "browse": 35,
+      "selected": 60,
+      "added": 85
+    },
+    "sourceHashes": {
+      "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+      "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+      "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+    },
+    "sourceDomHashes": {
+      "before": "52499bfbad9b02a121471c9d7965285c40140d035f782cc771471764cde1de77",
+      "source": "c2bc7c95493675171b9cf3478d73b0e70a8876607f7047b896fcf4853e16dc95",
+      "browse": "c2bc7c95493675171b9cf3478d73b0e70a8876607f7047b896fcf4853e16dc95",
+      "selected": "c2bc7c95493675171b9cf3478d73b0e70a8876607f7047b896fcf4853e16dc95",
+      "added": "31ff35bd92ab63c9aa7b7a8ebea49167470781ae507c959614c5646cfaba222f",
+      "source-portal": "38aaae44106ffa9d13d9ba090cb8216313813f3afebd4763a4da2909bcc0b84e",
+      "browse-portal": "0ea2b7cc9a574fd6430322082cdb088fc3731107fe4f2ef63c750b4275d132f6",
+      "selected-portal": "f61204ee67501e30836ae739ca364920a472911eff9ed278ef957842bc8facec"
+    },
+    "referenceSha256": "bcbacb17b1aeb043dc49e90c51d11203ba7835078f98336a5b14cf66a2a1671a",
+    "compositionSha256": "8267437f9e6a6533ac010d03c12b95ecaac737bccfef5bc248d0de678267c6ea"
+  },
+  "providerState": "The existing Hyfrme workspace is seeded. Native local-folder browsing and Add execute; no GitHub account or AI inference runs.",
+  "interaction": "Native New project opens the source chooser; Local folder searches an isolated Hyfrme path, selects the folder, and Add creates the project.",
+  "defaultPopupPixels": "The three default chooser states use cropped official dark/light pixels. Edited visible content uses source DOM.",
+  "classification": "source-dom-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.989,
+    "minSsim": 0.985,
+    "defaultPopupCrop": 0.995,
+    "addedCrop": 0.95
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.9946789833333334,
+    "minSsim": 0.988561,
+    "worstFrame": 85,
+    "crops": {
+      "source": {
+        "frame": 25,
+        "region": "576:420:312:66",
+        "ssim": 1,
+        "minimumSsim": 0.995,
+        "nativeSha256": "05a357e6f84ba6b538b3e7604f397cb2bbf7810665b47e034bb1383065d16656",
+        "hyperframesSha256": "0f28e60cb64350dd3c64b984d79b62f484d13f236a2166dbabd5ef9578780057"
+      },
+      "browse": {
+        "frame": 45,
+        "region": "576:230:312:66",
+        "ssim": 1,
+        "minimumSsim": 0.995,
+        "nativeSha256": "c321d02417343d55656698a4f788cb9a1c3b5f6bb25da3e1eb8a553334983989",
+        "hyperframesSha256": "84ac10b49f146b6ebfbdf371d4dcf0609bd8af65c34463ee35d258ea60f4de12"
+      },
+      "selected": {
+        "frame": 70,
+        "region": "576:198:312:66",
+        "ssim": 1,
+        "minimumSsim": 0.995,
+        "nativeSha256": "d4fc02bd4f83efea432957fffdd3c115c60f2f4349a5d597f95c2c7d13b323fd",
+        "hyperframesSha256": "834e10579e00192966bd55bcf2c14a6f7c9a20a398dcfa5ab761440e42911781"
+      },
+      "added": {
+        "frame": 105,
+        "region": "576:420:312:66",
+        "ssim": 0.985964,
+        "minimumSsim": 0.95,
+        "nativeSha256": "4379a8694a13614107ee76b8af405381304f98650ba5b69a9088d0e6aed9bcb6",
+        "hyperframesSha256": "ac2d0903c8950d1cb9e29e26732a675a3d6d4d8b2787c5743b3e5a6c11172157"
+      }
+    },
+    "pass": true,
+    "p05Ssim": 0.988561,
+    "p95Ssim": 0.999779,
+    "criticalStates": [
+      {
+        "name": "dark source",
+        "frame": 25,
+        "native": "parity/t3-project-local-open-diff/dark/source-native.png",
+        "hyperframes": "parity/t3-project-local-open-diff/dark/source-hyperframes.png",
+        "nativeSha256": "8966659b58813fa512e475fc243ca7e4e1984b11b609e145a9c7c086e289de0d",
+        "hyperframesSha256": "8966659b58813fa512e475fc243ca7e4e1984b11b609e145a9c7c086e289de0d",
+        "ssim": 1,
+        "minimumSsim": 0.995
+      },
+      {
+        "name": "dark browse",
+        "frame": 45,
+        "native": "parity/t3-project-local-open-diff/dark/browse-native.png",
+        "hyperframes": "parity/t3-project-local-open-diff/dark/browse-hyperframes.png",
+        "nativeSha256": "4733b58ede685deaf919b0a0f364578962e6fd53455de524705a1cc7c8264842",
+        "hyperframesSha256": "4733b58ede685deaf919b0a0f364578962e6fd53455de524705a1cc7c8264842",
+        "ssim": 1,
+        "minimumSsim": 0.995
+      },
+      {
+        "name": "dark selected",
+        "frame": 70,
+        "native": "parity/t3-project-local-open-diff/dark/selected-native.png",
+        "hyperframes": "parity/t3-project-local-open-diff/dark/selected-hyperframes.png",
+        "nativeSha256": "1e9d9bec1bbf2b20f549f11e05d3d6363783f77c597d86dfb4ffe91a38f6c485",
+        "hyperframesSha256": "1e9d9bec1bbf2b20f549f11e05d3d6363783f77c597d86dfb4ffe91a38f6c485",
+        "ssim": 1,
+        "minimumSsim": 0.995
+      },
+      {
+        "name": "dark added",
+        "frame": 105,
+        "native": "parity/t3-project-local-open-diff/dark/added-native.png",
+        "hyperframes": "parity/t3-project-local-open-diff/dark/added-hyperframes.png",
+        "nativeSha256": "302e5b5d1d1d2904d06a2cd6b32a79d00e6096e55dbcb7dfb7134a7a95651f6d",
+        "hyperframesSha256": "12203b6a238956e54429d0150901f56059a05d5209c02da8b2fd31ed0946d942",
+        "ssim": 0.985964,
+        "minimumSsim": 0.95
+      }
+    ]
+  },
+  "themes": {
+    "dark": {
+      "referenceSha256": "bcbacb17b1aeb043dc49e90c51d11203ba7835078f98336a5b14cf66a2a1671a",
+      "sourceDomHashes": {
+        "before": "52499bfbad9b02a121471c9d7965285c40140d035f782cc771471764cde1de77",
+        "source": "c2bc7c95493675171b9cf3478d73b0e70a8876607f7047b896fcf4853e16dc95",
+        "browse": "c2bc7c95493675171b9cf3478d73b0e70a8876607f7047b896fcf4853e16dc95",
+        "selected": "c2bc7c95493675171b9cf3478d73b0e70a8876607f7047b896fcf4853e16dc95",
+        "added": "31ff35bd92ab63c9aa7b7a8ebea49167470781ae507c959614c5646cfaba222f",
+        "source-portal": "38aaae44106ffa9d13d9ba090cb8216313813f3afebd4763a4da2909bcc0b84e",
+        "browse-portal": "0ea2b7cc9a574fd6430322082cdb088fc3731107fe4f2ef63c750b4275d132f6",
+        "selected-portal": "f61204ee67501e30836ae739ca364920a472911eff9ed278ef957842bc8facec"
+      },
+      "themeSha256": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9946789833333334,
+        "minSsim": 0.988561,
+        "worstFrame": 85,
+        "crops": {
+          "source": {
+            "frame": 25,
+            "region": "576:420:312:66",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "05a357e6f84ba6b538b3e7604f397cb2bbf7810665b47e034bb1383065d16656",
+            "hyperframesSha256": "0f28e60cb64350dd3c64b984d79b62f484d13f236a2166dbabd5ef9578780057"
+          },
+          "browse": {
+            "frame": 45,
+            "region": "576:230:312:66",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "c321d02417343d55656698a4f788cb9a1c3b5f6bb25da3e1eb8a553334983989",
+            "hyperframesSha256": "84ac10b49f146b6ebfbdf371d4dcf0609bd8af65c34463ee35d258ea60f4de12"
+          },
+          "selected": {
+            "frame": 70,
+            "region": "576:198:312:66",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "d4fc02bd4f83efea432957fffdd3c115c60f2f4349a5d597f95c2c7d13b323fd",
+            "hyperframesSha256": "834e10579e00192966bd55bcf2c14a6f7c9a20a398dcfa5ab761440e42911781"
+          },
+          "added": {
+            "frame": 105,
+            "region": "576:420:312:66",
+            "ssim": 0.985964,
+            "minimumSsim": 0.95,
+            "nativeSha256": "4379a8694a13614107ee76b8af405381304f98650ba5b69a9088d0e6aed9bcb6",
+            "hyperframesSha256": "ac2d0903c8950d1cb9e29e26732a675a3d6d4d8b2787c5743b3e5a6c11172157"
+          }
+        },
+        "pass": true,
+        "p05Ssim": 0.988561,
+        "p95Ssim": 0.999779,
+        "criticalStates": [
+          {
+            "name": "dark source",
+            "frame": 25,
+            "native": "parity/t3-project-local-open-diff/dark/source-native.png",
+            "hyperframes": "parity/t3-project-local-open-diff/dark/source-hyperframes.png",
+            "nativeSha256": "8966659b58813fa512e475fc243ca7e4e1984b11b609e145a9c7c086e289de0d",
+            "hyperframesSha256": "8966659b58813fa512e475fc243ca7e4e1984b11b609e145a9c7c086e289de0d",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "dark browse",
+            "frame": 45,
+            "native": "parity/t3-project-local-open-diff/dark/browse-native.png",
+            "hyperframes": "parity/t3-project-local-open-diff/dark/browse-hyperframes.png",
+            "nativeSha256": "4733b58ede685deaf919b0a0f364578962e6fd53455de524705a1cc7c8264842",
+            "hyperframesSha256": "4733b58ede685deaf919b0a0f364578962e6fd53455de524705a1cc7c8264842",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "dark selected",
+            "frame": 70,
+            "native": "parity/t3-project-local-open-diff/dark/selected-native.png",
+            "hyperframes": "parity/t3-project-local-open-diff/dark/selected-hyperframes.png",
+            "nativeSha256": "1e9d9bec1bbf2b20f549f11e05d3d6363783f77c597d86dfb4ffe91a38f6c485",
+            "hyperframesSha256": "1e9d9bec1bbf2b20f549f11e05d3d6363783f77c597d86dfb4ffe91a38f6c485",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "dark added",
+            "frame": 105,
+            "native": "parity/t3-project-local-open-diff/dark/added-native.png",
+            "hyperframes": "parity/t3-project-local-open-diff/dark/added-hyperframes.png",
+            "nativeSha256": "302e5b5d1d1d2904d06a2cd6b32a79d00e6096e55dbcb7dfb7134a7a95651f6d",
+            "hyperframesSha256": "12203b6a238956e54429d0150901f56059a05d5209c02da8b2fd31ed0946d942",
+            "ssim": 0.985964,
+            "minimumSsim": 0.95
+          }
+        ]
+      },
+      "observed": {
+        "before": {
+          "projectVisible": false
+        },
+        "triggerBox": {
+          "x": 191,
+          "y": 58,
+          "width": 28,
+          "height": 28
+        },
+        "source": {
+          "projectVisible": false,
+          "query": "",
+          "options": [
+            "Local folderBrowse a folder on disk",
+            "Git URLClone from a remote URL",
+            "GitHub repositoryClone GitHub owner/repo"
+          ],
+          "buttons": [
+            "Setup Required",
+            "Setup Required",
+            "Setup Required",
+            "Setup Required"
+          ],
+          "popupBox": {
+            "x": 312,
+            "y": 65.890625,
+            "width": 576,
+            "height": 420
+          }
+        },
+        "browse": {
+          "projectVisible": true,
+          "query": "/var/tmp/hyfrme-motion",
+          "options": [
+            "..",
+            "hyfrme-motion-lab",
+            "hyfrme-motion-lab-rename"
+          ],
+          "buttons": [
+            "Create & AddEnter"
+          ],
+          "popupBox": {
+            "x": 312,
+            "y": 65.890625,
+            "width": 576,
+            "height": 230
+          }
+        },
+        "selected": {
+          "projectVisible": false,
+          "query": "/var/tmp/hyfrme-motion-lab/",
+          "options": [
+            "..",
+            "docs"
+          ],
+          "buttons": [
+            "AddEnter"
+          ],
+          "popupBox": {
+            "x": 312,
+            "y": 65.890625,
+            "width": 576,
+            "height": 198
+          }
+        },
+        "added": {
+          "projectVisible": true
+        }
+      },
+      "assets": {
+        "project-local-open-v0042-dark-source-crop.png": "0f73968936b7763346c415fb9455d8cebc8308d0c6dcaad523ed7657f0e914fa",
+        "project-local-open-v0042-dark-browse-crop.png": "7a725f1121c317f0bb464b072c9374f5a0c33a97e88186cb72c3f8792b88f7f5",
+        "project-local-open-v0042-dark-selected-crop.png": "66ff110828ac1aad7698049070aa5a37ce32fb77e7c84bf3728bdf590469741b"
+      },
+      "artifacts": {
+        "nativeRecording": "parity/t3-project-local-open-v0042-dark-reference.mkv",
+        "referenceVideo": "public/previews/t3-project-local-open/reference.mp4",
+        "hyperframesVideo": "public/previews/t3-project-local-open/hyperframes.mp4",
+        "frameSsim": "parity/t3-project-local-open-diff/dark/ssim.txt",
+        "hyperframesCheck": "parity/t3-project-local-open-diff/dark/hyperframes-check.json",
+        "installedCheck": "parity/t3-project-local-open-diff/dark/installed-check.json",
+        "customCheck": "parity/t3-project-local-open-diff/dark/custom-check.json",
+        "customized": "parity/t3-project-local-open-diff/dark/customized-selected.png"
+      }
+    },
+    "light": {
+      "referenceSha256": "fe75be3de91a283ffe9fa944b2b8489504cc3bf7274054f3736688044b9f444e",
+      "sourceDomHashes": {
+        "before": "52499bfbad9b02a121471c9d7965285c40140d035f782cc771471764cde1de77",
+        "source": "c2bc7c95493675171b9cf3478d73b0e70a8876607f7047b896fcf4853e16dc95",
+        "browse": "c2bc7c95493675171b9cf3478d73b0e70a8876607f7047b896fcf4853e16dc95",
+        "selected": "c2bc7c95493675171b9cf3478d73b0e70a8876607f7047b896fcf4853e16dc95",
+        "added": "31ff35bd92ab63c9aa7b7a8ebea49167470781ae507c959614c5646cfaba222f",
+        "source-portal": "38aaae44106ffa9d13d9ba090cb8216313813f3afebd4763a4da2909bcc0b84e",
+        "browse-portal": "0ea2b7cc9a574fd6430322082cdb088fc3731107fe4f2ef63c750b4275d132f6",
+        "selected-portal": "f61204ee67501e30836ae739ca364920a472911eff9ed278ef957842bc8facec"
+      },
+      "themeSha256": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.994867433333331,
+        "minSsim": 0.988976,
+        "worstFrame": 85,
+        "crops": {
+          "source": {
+            "frame": 25,
+            "region": "576:420:312:66",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "9f5b32a3ace820e655240eea18d4cc325a3e7d204f4bc6cb31d8e26018ca44bf",
+            "hyperframesSha256": "5516d815d35493a3ef12c85e9a3fcdbb8961ffb4e35967b178f3f9d776a1bd5c"
+          },
+          "browse": {
+            "frame": 45,
+            "region": "576:230:312:66",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "9a905f8273cf98bc5040fc307ec74aaafd6f2927f0a4137c28a6d44d30842f3a",
+            "hyperframesSha256": "f36a0f7702de4cfbb8b39be355ee1d093996ec5da999f2ad42c3b6333b7ff85c"
+          },
+          "selected": {
+            "frame": 70,
+            "region": "576:198:312:66",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "67aa91f37df69b0bc6c5292dc5fe9cac97eff5949f2bdf098926d3ed42acc5cc",
+            "hyperframesSha256": "a36f970dedbbc09b2b20339b565327e6f31ac53707ab565f3b9999e6e11e01e3"
+          },
+          "added": {
+            "frame": 105,
+            "region": "576:420:312:66",
+            "ssim": 0.986472,
+            "minimumSsim": 0.95,
+            "nativeSha256": "be34095a96b19915c5b3fb36bfc4a21983eb36b9a97bd9efbe81fbed0e833116",
+            "hyperframesSha256": "e79078cd5a33822e91cea326cfc102e7c271581eb853e5960c23bc8afccab313"
+          }
+        },
+        "pass": true,
+        "p05Ssim": 0.988976,
+        "p95Ssim": 0.9998,
+        "criticalStates": [
+          {
+            "name": "light source",
+            "frame": 25,
+            "native": "parity/t3-project-local-open-diff/light/source-native.png",
+            "hyperframes": "parity/t3-project-local-open-diff/light/source-hyperframes.png",
+            "nativeSha256": "9e814ca5a86d2820a4c8a2c6e316f99f2cdd1064c34c30c80337ecba86ce88a9",
+            "hyperframesSha256": "9e814ca5a86d2820a4c8a2c6e316f99f2cdd1064c34c30c80337ecba86ce88a9",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "light browse",
+            "frame": 45,
+            "native": "parity/t3-project-local-open-diff/light/browse-native.png",
+            "hyperframes": "parity/t3-project-local-open-diff/light/browse-hyperframes.png",
+            "nativeSha256": "a45accaf9559a68638e60dea5f9aad59a3d8dfe2b6be8767d67669e4b0c6ebd4",
+            "hyperframesSha256": "a45accaf9559a68638e60dea5f9aad59a3d8dfe2b6be8767d67669e4b0c6ebd4",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "light selected",
+            "frame": 70,
+            "native": "parity/t3-project-local-open-diff/light/selected-native.png",
+            "hyperframes": "parity/t3-project-local-open-diff/light/selected-hyperframes.png",
+            "nativeSha256": "b4fd52f594a19fa85e1c0d7c06a074b7d62ab57b58ad07dcc1c53fc8cd7a31ed",
+            "hyperframesSha256": "b4fd52f594a19fa85e1c0d7c06a074b7d62ab57b58ad07dcc1c53fc8cd7a31ed",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "light added",
+            "frame": 105,
+            "native": "parity/t3-project-local-open-diff/light/added-native.png",
+            "hyperframes": "parity/t3-project-local-open-diff/light/added-hyperframes.png",
+            "nativeSha256": "c8957e82f01a5bd2b5d4a8e84f09b84e225cb1523870500c241a9980829f08bb",
+            "hyperframesSha256": "563d778eb569708f87f218213c61006aefd0ed8b0330d93ff19bccaa4c89b3de",
+            "ssim": 0.986472,
+            "minimumSsim": 0.95
+          }
+        ]
+      },
+      "observed": {
+        "before": {
+          "projectVisible": false
+        },
+        "triggerBox": {
+          "x": 191,
+          "y": 58,
+          "width": 28,
+          "height": 28
+        },
+        "source": {
+          "projectVisible": false,
+          "query": "",
+          "options": [
+            "Local folderBrowse a folder on disk",
+            "Git URLClone from a remote URL",
+            "GitHub repositoryClone GitHub owner/repo"
+          ],
+          "buttons": [
+            "Setup Required",
+            "Setup Required",
+            "Setup Required",
+            "Setup Required"
+          ],
+          "popupBox": {
+            "x": 312,
+            "y": 65.890625,
+            "width": 576,
+            "height": 420
+          }
+        },
+        "browse": {
+          "projectVisible": true,
+          "query": "/var/tmp/hyfrme-motion",
+          "options": [
+            "..",
+            "hyfrme-motion-lab",
+            "hyfrme-motion-lab-rename"
+          ],
+          "buttons": [
+            "Create & AddEnter"
+          ],
+          "popupBox": {
+            "x": 312,
+            "y": 65.890625,
+            "width": 576,
+            "height": 230
+          }
+        },
+        "selected": {
+          "projectVisible": false,
+          "query": "/var/tmp/hyfrme-motion-lab/",
+          "options": [
+            "..",
+            "docs"
+          ],
+          "buttons": [
+            "AddEnter"
+          ],
+          "popupBox": {
+            "x": 312,
+            "y": 65.890625,
+            "width": 576,
+            "height": 198
+          }
+        },
+        "added": {
+          "projectVisible": true
+        }
+      },
+      "assets": {
+        "project-local-open-v0042-light-source-crop.png": "f0c1c0d1b42874b6c2db215cbdb5259649bbf7fccdcf7dae493538b955d0b36a",
+        "project-local-open-v0042-light-browse-crop.png": "5354340c7ebb52295b95bf912e50113a03d5f61d835825eb9f568985305ea7de",
+        "project-local-open-v0042-light-selected-crop.png": "cfbd4885811524df7664afdf39fdef1a95dfc92019ce7e3d539087c6d0364caf"
+      },
+      "artifacts": {
+        "nativeRecording": "parity/t3-project-local-open-v0042-light-reference.mkv",
+        "referenceVideo": "public/previews/t3-project-local-open/reference-light.mp4",
+        "hyperframesVideo": "public/previews/t3-project-local-open/hyperframes-light.mp4",
+        "frameSsim": "parity/t3-project-local-open-diff/light/ssim.txt",
+        "hyperframesCheck": "parity/t3-project-local-open-diff/light/hyperframes-check.json",
+        "installedCheck": "parity/t3-project-local-open-diff/light/installed-check.json",
+        "customCheck": "parity/t3-project-local-open-diff/light/custom-check.json",
+        "customized": "parity/t3-project-local-open-diff/light/customized-selected.png"
+      }
+    }
+  },
+  "checks": {
+    "hyperframes": "full checks and strict 120-frame renders passed in both themes",
+    "hyperframesVersion": "0.8.75",
+    "sourceBrowser": "Chrome Headless Shell 152.0.7977.30",
+    "installedThroughCli": true,
+    "customVariables": "Changed old/new project, folder path/results, sidebar, chooser labels, theme and action frames passed full checks, strict renders and OCR in both themes"
+  },
+  "artifacts": {
+    "nativeRecording": "parity/t3-project-local-open-v0042-dark-reference.mkv",
+    "referenceVideo": "public/previews/t3-project-local-open/reference.mp4",
+    "hyperframesVideo": "public/previews/t3-project-local-open/hyperframes.mp4",
+    "frameSsim": "parity/t3-project-local-open-diff/dark/ssim.txt",
+    "hyperframesCheck": "parity/t3-project-local-open-diff/dark/hyperframes-check.json",
+    "installedCheck": "parity/t3-project-local-open-diff/dark/installed-check.json",
+    "customCheck": "parity/t3-project-local-open-diff/dark/custom-check.json",
+    "customized": "parity/t3-project-local-open-diff/dark/customized-selected.png",
+    "thumbnail": "public/previews/t3-project-local-open/thumbnail.png",
+    "lightThumbnail": "public/previews/t3-project-local-open/thumbnail-light.png"
+  }
+}

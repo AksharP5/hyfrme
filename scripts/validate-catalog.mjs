@@ -102,6 +102,44 @@ for (const item of registry.items) {
     );
   }
 
+  if (parity.classification === "source-dom-port") {
+    const composition = manifest.files.find(
+      (file) => file.type === "hyperframes:composition",
+    );
+    const scores = [
+      ...(await readFile(resolve(root, parity.artifacts.frameSsim), "utf8")).matchAll(
+        /^n:\d+ .*?All:([\d.]+)/gm,
+      ),
+    ].map((match) => Number(match[1]));
+    const mean = scores.reduce((total, score) => total + score, 0) / scores.length;
+    const minimum = Math.min(...scores);
+    const source = composition
+      ? await readFile(resolve(blockDirectory, composition.path))
+      : null;
+    const assetsMatch = await Promise.all(
+      Object.entries(parity.fixture.assetSha256 ?? {}).map(async ([path, expected]) => {
+        const bytes = await readFile(resolve(blockDirectory, path));
+        return createHash("sha256").update(bytes).digest("hex") === expected;
+      }),
+    );
+    if (
+      !source ||
+      assetsMatch.includes(false) ||
+      createHash("sha256").update(source).digest("hex") !== parity.fixture.compositionSha256 ||
+      parity.checks?.installedThroughCli !== true ||
+      parity.fixture.width !== manifest.dimensions.width ||
+      parity.fixture.height !== manifest.dimensions.height ||
+      parity.fixture.durationInFrames !== scores.length ||
+      scores.length !== parity.result.frameCount ||
+      Math.abs(mean - parity.result.meanSsim) > 0.000001 ||
+      Math.abs(minimum - parity.result.minSsim) > 0.000001 ||
+      mean < parity.thresholds.meanSsim ||
+      minimum < parity.thresholds.minSsim
+    ) {
+      throw new Error(`${item.name}: native frame-parity evidence is stale or incomplete`);
+    }
+  }
+
   if (manifest.tags?.includes("icon")) {
     const showcase = parity.showcase;
     const hasHighDensityFixture =

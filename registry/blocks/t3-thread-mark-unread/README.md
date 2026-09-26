@@ -1,0 +1,5 @@
+# T3 Code: Mark Thread Unread
+
+This four-second HyperFrames block reproduces official T3 Code v0.0.42 at 1200 × 659 and 30 fps in dark or light mode. The native menu opens beside the inactive Catalog motion audit sidebar row at (128, 220). Mark unread changes its status to Done while Build a logo intro stays open. The unread visited timestamp survives a native reload. The project and completed messages are seeded; the menu action and local persistence execute. No AI provider or GitHub account runs.
+
+Customize project, thread, conversation, action-menu labels, Done status, theme, and all three event frames. The default menu uses cropped official dark/light pixels; changed visible content uses source DOM. Use matching values with adjacent T3 blocks. Source: https://github.com/pingdotgg/t3code/tree/719a76ca1dbf5490f1aa33ffb9966301e02be9a9. Installed licenses include T3 Code MIT and Pierre Trees notices for the file icon. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.

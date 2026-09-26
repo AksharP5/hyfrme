@@ -1,0 +1,5 @@
+# T3 Code: Message Rewind
+
+This four-second, 1200 × 659 block reproduces the T3 Code v0.0.35 user-message rewind flow at 30 fps. The prompt hover reveals the native rewind control, its tooltip appears, and clicking opens T3's themed destructive confirmation. Cancel closes the dialog without changing the thread. The isolated fixture contains actual Git checkpoint refs for the completed Hyfrme thread. A rollback is not executed in this reference.
+
+Customize the project, thread, prompt, answer and changed file, confirmation copy, footer, and timing through HyperFrames variables. Match thread values with adjacent T3 Code blocks for continuity. Source: https://github.com/pingdotgg/t3code/tree/f925d639421844f02b3166d29281905dbba6d529. The installed files include T3 Code's MIT license, its icon notice, and Apache-2.0 licenses for the @pierre/trees sprite and @pierre/diffs styling, plus the @pierre/trees notice. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.

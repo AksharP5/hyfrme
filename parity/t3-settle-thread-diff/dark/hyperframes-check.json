@@ -1,0 +1,339 @@
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 2,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div data-composition-id=\"t3-settle-thread\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id=\"t3-settle-thread\"]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-settle-thread-v0042-dark-verify/project/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "composition_heavy_overlay_count_high",
+        "severity": "warning",
+        "message": "This composition has 272 elements carrying \"heavy overlay\" CSS (filter:blur, radial-gradient, or clip-path). Field signal: a composition with ~40 such elements — including opacity:0 / visibility:hidden ones — captures solid-black for the first ~half of the render, recovering near the end. Reproduces identically via drawElement, forced screenshot capture, and snapshot, so the capture layer itself is the offender (not encoder/mux). Independent of duration. Presence alone matters; only display:none elements are excluded here.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-settle-thread-v0042-dark-verify/project/compositions/t3-settle-thread.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split this sub-composition further into per-transition mini-compositions and concat the pieces (FFmpeg or the runtime's slideshow) so each capture only sees a small subset of heavy overlays at once. Even hidden overlays (opacity:0 / visibility:hidden) contribute — either remove truly unused ones from the source or scope them into their own per-transition sub-composition. If an overlay is genuinely inert for the whole clip, use display:none so it never enters the render tree. Field ref ts=1784040753 (#hyperframes-cli-feedback)."
+      }
+    ],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "infoCount": 3,
+    "findings": [
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.222,
+        "selector": "span.pointer-events-none.absolute",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 153,
+          "top": 48,
+          "right": 201,
+          "bottom": 96,
+          "width": 48,
+          "height": 48
+        },
+        "containerSelector": "#base-ui-_r_6_",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 163,
+          "top": 58,
+          "right": 191,
+          "bottom": 86,
+          "width": 28,
+          "height": 28
+        },
+        "overflow": {
+          "left": 10,
+          "right": 10,
+          "top": 10,
+          "bottom": 10
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-settle-thread.html",
+        "bbox": {
+          "x": 153,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 3.778,
+        "occurrences": 9,
+        "heldMs": 3556
+      },
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.222,
+        "selector": "span.pointer-events-none.absolute",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 181,
+          "top": 48,
+          "right": 229,
+          "bottom": 96,
+          "width": 48,
+          "height": 48
+        },
+        "containerSelector": "#base-ui-_r_c_",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 191,
+          "top": 58,
+          "right": 219,
+          "bottom": 86,
+          "width": 28,
+          "height": 28
+        },
+        "overflow": {
+          "left": 10,
+          "right": 10,
+          "top": 10,
+          "bottom": 10
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-settle-thread.html",
+        "bbox": {
+          "x": 181,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 3.778,
+        "occurrences": 9,
+        "heldMs": 3556
+      },
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.222,
+        "selector": "span.pointer-events-none.absolute",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 209,
+          "top": 48,
+          "right": 257,
+          "bottom": 96,
+          "width": 48,
+          "height": 48
+        },
+        "containerSelector": "#base-ui-_r_e_",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 219,
+          "top": 58,
+          "right": 247,
+          "bottom": 86,
+          "width": 28,
+          "height": 28
+        },
+        "overflow": {
+          "left": 10,
+          "right": 10,
+          "top": 10,
+          "bottom": 10
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-settle-thread.html",
+        "bbox": {
+          "x": 209,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 3.778,
+        "occurrences": 9,
+        "heldMs": 3556
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 1.111,
+        "selector": "div.dark.t3-stage > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 348,
+          "top": 174,
+          "right": 439.55,
+          "bottom": 190,
+          "width": 91.55,
+          "height": 16
+        },
+        "containerSelector": "div.dark.t3-stage > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "text": "Worked for 2m",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.15,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-settle-thread.html",
+        "bbox": {
+          "x": 348,
+          "y": 174,
+          "width": 91.55,
+          "height": 16
+        },
+        "firstSeen": 1.111,
+        "lastSeen": 1.111,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 1.111,
+        "selector": "div.dark.t3-stage > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 348,
+          "top": 214,
+          "right": 1100.44,
+          "bottom": 252.75,
+          "width": 752.44,
+          "height": 38.75
+        },
+        "containerSelector": "div.dark.t3-stage > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "text": "I found the Logo Enter timing in . The final pass can extend the duration while keeping the last rendered frame still.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.15,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-settle-thread.html",
+        "bbox": {
+          "x": 348,
+          "y": 214,
+          "width": 752.44,
+          "height": 38.75
+        },
+        "firstSeen": 1.111,
+        "lastSeen": 1.111,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 3.333,
+        "selector": "div.dark.t3-stage > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(8) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 19,
+          "top": 543.14,
+          "right": 74.36,
+          "bottom": 557.14,
+          "width": 55.36,
+          "height": 14
+        },
+        "containerSelector": "div.dark.t3-stage > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(10) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "text": "Settled (2)",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-settle-thread.html",
+        "bbox": {
+          "x": 19,
+          "y": 543.14,
+          "width": 55.36,
+          "height": 14
+        },
+        "firstSeen": 3.333,
+        "lastSeen": 3.333,
+        "occurrences": 1,
+        "heldMs": 0
+      }
+    ],
+    "duration": 4,
+    "samples": [
+      0.222,
+      0.667,
+      1.111,
+      1.556,
+      2,
+      2.444,
+      2.889,
+      3.333,
+      3.778
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 6,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.222,
+      1.111,
+      2,
+      2.889,
+      3.778
+    ],
+    "checked": 0,
+    "passed": 0
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.75",
+    "latestVersion": "0.8.75",
+    "updateAvailable": false
+  }
+}

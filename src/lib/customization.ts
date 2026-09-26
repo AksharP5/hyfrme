@@ -194,6 +194,14 @@ function rewriteAssetPaths(source: string, item: RegistryItem) {
       relativePath,
       registryFileUrl(item.name, file.path),
     );
+    if (!relativeTarget.includes("/")) {
+      for (const quote of ['"', "'"]) {
+        rewritten = rewritten.replaceAll(
+          `src=${quote}${relativeTarget}${quote}`,
+          `src=${quote}${registryFileUrl(item.name, file.path)}${quote}`,
+        );
+      }
+    }
   }
   return rewritten;
 }
@@ -203,6 +211,7 @@ export function buildPreviewDocument(
   item: RegistryItem,
   values: CustomValues,
   transparent: boolean,
+  nativeViewport = false,
 ) {
   const safeValues = rewriteAssetPaths(JSON.stringify(values), item)
     .replaceAll("<", "\\u003c")
@@ -232,6 +241,7 @@ window.addEventListener("load", () => {
     document.documentElement.style.backgroundColor = parent.getComputedStyle(frameElement).getPropertyValue("--preview");
   }
   const fit = () => {
+    if (${nativeViewport}) return;
     const scale = Math.min(innerWidth / ${width}, innerHeight / ${height}) * ${previewScale};
     const x = (innerWidth - ${width} * scale) / 2;
     const y = (innerHeight - ${height} * scale) / 2;
@@ -308,7 +318,11 @@ body {
   ${backgroundRule}
 }
 </style>`;
-  return rewriteAssetPaths(source, item).replace(
+  const activeSource = source.replace(
+    /<template(?:\s[^>]*)?>([\s\S]*?)<\/template>/i,
+    "$1",
+  );
+  return rewriteAssetPaths(activeSource, item).replace(
     "<head>",
     `<head>${bootstrap}`,
   );

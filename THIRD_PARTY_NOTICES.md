@@ -1,5 +1,49 @@
 # Third-party notices
 
+## T3 Code gallery marks and captures
+
+The T3 Code gallery at `public/ideas/` retains unmodified
+OpenAI, Claude, OpenCode, Cursor, Grok, and Antigravity provider SVG marks from
+the [T3 Code harness page](https://t3.codes/harnesses/). They identify the
+providers illustrated in T3 Code. The marks remain the
+property of their respective owners and do not ship with Hyfrme blocks.
+
+The gallery's T3 wordmark is copied from
+[T3Wordmark.tsx](https://github.com/pingdotgg/t3code/blob/f925d639421844f02b3166d29281905dbba6d529/apps/web/src/components/T3Wordmark.tsx).
+The T3 Code frames and recordings at `public/ideas/t3-frames/` and
+`public/ideas/t3-clips/` were captured from an isolated T3 Code v0.0.42
+instance with synthetic Hyfrme content. T3 Code is
+MIT-licensed, Copyright (c) 2026 T3 Tools Inc. Its complete license is
+preserved at public/ideas/assets/T3-CODE-LICENSE.txt.
+
+Installable blocks tagged `t3-code` use captured DOM and styles from the pinned
+v0.0.42 build. Their installed files include the complete T3 Code MIT
+license. The blocks include GSAP 3.14.2 for offline frame control under the
+[GSAP Standard License](https://gsap.com/standard-license/); its source retains
+the copyright notice.
+
+The `t3-visual-context-shelf` block includes a still from Hyfrme's Logo Enter
+port of Remocn. Its installed source preserves the Remocn license alongside
+the T3 Code license.
+
+The `t3-terminal-check` block also includes six captured Ghostty canvas stills
+from the pinned T3 Code interaction. They preserve the terminal text and cursor
+states in the default fixture; editable terminal content is rendered by the
+installed HyperFrames source.
+
+The `t3-file-surface` block includes the native file tree's shadow DOM and
+styles from `@pierre/trees` 1.0.0-beta.4. Its installed files retain the
+package's Apache-2.0 license and NOTICE, plus T3 Code's third-party notices
+for the file icons.
+
+The `t3-source-file-open` block also includes the native source editor's
+shadow DOM and styles from `@pierre/diffs` 1.3.0-beta.10. Its installed files
+retain the Apache-2.0 license for that package, the file tree's license and
+NOTICE, and T3 Code's third-party notices for the file icons.
+
+The `t3-commit-review` block includes T3 Code's native Git review dialog and
+file icon. Its installed files retain T3 Code's third-party icon notice.
+
 ## Remocn source reference
 
 The original 271 Remocn visual ports are derived from pinned Remocn implementations. Of these,

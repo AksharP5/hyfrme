@@ -1,0 +1,416 @@
+{
+  "slug": "t3-commit-review",
+  "origin": {
+    "repository": "https://github.com/pingdotgg/t3code",
+    "commit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+    "source": "apps/web/src/components/GitActionsControl.tsx; apps/web/src/components/GitActionsControl.logic.ts",
+    "license": "MIT",
+    "thirdPartyLicenses": [
+      "vscode-icons MIT",
+      "@pierre/trees Apache-2.0",
+      "@pierre/diffs Apache-2.0"
+    ]
+  },
+  "fixture": {
+    "width": 1200,
+    "height": 659,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "theme": "dark",
+      "branchName": "feature/logo-enter",
+      "changedFile": "registry/blocks/logo-enter/logo-enter.html",
+      "insertions": 4,
+      "deletions": 1,
+      "menu": 25,
+      "dialog": 50,
+      "message": 85
+    },
+    "sourceHashes": {
+      "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+      "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+      "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+    },
+    "sourceDomHashes": {
+      "before": "bdeebebfd5092d871b99d0e69f3962f9fe88e7b698710b622ea900e58329452d",
+      "menu": "7f65df3678663839e1ae615723e602fcd37604a200838d6d5ddae6e1413925ab",
+      "dialog": "434aca2c7e5f0a04c6a524516b21d43727221cdeabf8407fda3f5a3ca7315614",
+      "message": "434aca2c7e5f0a04c6a524516b21d43727221cdeabf8407fda3f5a3ca7315614",
+      "menu-portal": "3d379edac53778dc6ad3a22ac719823145dcb3f524b16c24e1d36cd3c703c8f6",
+      "dialog-portal": "1bac010b4a08e797462617ffbe44c5f5c38e140f4ff05ba511bce48f6c52fce7",
+      "message-portal": "0a9ffd1c8f63a2102c1204fa9e8d05ceaa2b840832f22bf8ca975786c65ed485"
+    },
+    "referenceSha256": "4b3d2877435b7b5bb840638d93cb8cb9c01d555b4695b7a66e55d78088ac89d8",
+    "compositionSha256": "fa4268ada8b59ba1f24463f82bf936f9bd2132ad70744516fade76ed760455ea"
+  },
+  "providerState": "The Hyfrme project, thread history, and provider state are seeded. The official T3 Code app reads a real isolated Git worktree, opens its native Commit dialog, and accepts a draft message. No commit is created; no remote account runs.",
+  "interaction": "The native Git menu is anchored at x=948,y=42 under its header trigger. The Commit dialog is centered at x=344,y=44.5, lists the real Logo Enter +4/-1 change and draft message, and leaves HEAD and worktree status unchanged.",
+  "classification": "source-dom-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.985,
+    "minSsim": 0.98,
+    "menuCrop": 0.995,
+    "dialogCrop": 0.965
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.9931525416666677,
+    "minSsim": 0.992984,
+    "worstFrame": 50,
+    "crops": {
+      "menu": {
+        "frame": 35,
+        "region": "168:66:948:42",
+        "ssim": 1,
+        "minimumSsim": 0.995,
+        "nativeSha256": "ae3154c9b90c59145824e05a95268d1498a98a25f5d773eeb82773cb118fb10c",
+        "hyperframesSha256": "3891a45423a17095e1c73aff15fc9d258321a86185ccab3bd2f4452948f48877"
+      },
+      "dialog": {
+        "frame": 60,
+        "region": "512:571:344:44",
+        "ssim": 0.981428,
+        "minimumSsim": 0.965,
+        "nativeSha256": "62619e20bf4948352aa138d81a4fe844c579803f329dd1c61c8abc4cc55499ee",
+        "hyperframesSha256": "48c8afd93480eb4f929ecc0fb20c5982f689db23c90a89c5fe37d23452f3c791"
+      },
+      "message": {
+        "frame": 100,
+        "region": "512:571:344:44",
+        "ssim": 0.981987,
+        "minimumSsim": 0.965,
+        "nativeSha256": "3132865410193d1b2e04ed01c15fa03f6859991fe21b0624f7d0b7e11c3bd441",
+        "hyperframesSha256": "2de24e23050ce8fc57164086860fdcc0ff437e6f1eb56a6a4a12cb13d2aa5a2a"
+      }
+    },
+    "pass": true,
+    "p05Ssim": 0.992984,
+    "p95Ssim": 0.993246,
+    "criticalStates": [
+      {
+        "name": "dark menu",
+        "frame": 35,
+        "native": "parity/t3-commit-review-diff/dark/menu-native.png",
+        "hyperframes": "parity/t3-commit-review-diff/dark/menu-hyperframes.png",
+        "nativeSha256": "269b292f653247d7d0bdaf13e42120ce153c953e78735ff4a9b8270705e5aa24",
+        "hyperframesSha256": "269b292f653247d7d0bdaf13e42120ce153c953e78735ff4a9b8270705e5aa24",
+        "ssim": 1,
+        "minimumSsim": 0.995
+      },
+      {
+        "name": "dark dialog",
+        "frame": 60,
+        "native": "parity/t3-commit-review-diff/dark/dialog-native.png",
+        "hyperframes": "parity/t3-commit-review-diff/dark/dialog-hyperframes.png",
+        "nativeSha256": "b43bf68c14943b1a2f894b83b1378a1926da33ed1a07464e382401ee67889580",
+        "hyperframesSha256": "6fc1275b9d1b2b3ecee249eb798ac9b2e6bc9519eff741576f0e60a896f1742b",
+        "ssim": 0.981428,
+        "minimumSsim": 0.965
+      },
+      {
+        "name": "dark message",
+        "frame": 100,
+        "native": "parity/t3-commit-review-diff/dark/message-native.png",
+        "hyperframes": "parity/t3-commit-review-diff/dark/message-hyperframes.png",
+        "nativeSha256": "c3fc4c86a5754dd651d8dbbe318f7157b4bdfc866a8516ef2ce55a765d5b9682",
+        "hyperframesSha256": "233a6655d14eb4f3186930a2870fcd115e4515a0e8adda5449f1dace7bf97f75",
+        "ssim": 0.981987,
+        "minimumSsim": 0.965
+      }
+    ]
+  },
+  "themes": {
+    "dark": {
+      "referenceSha256": "4b3d2877435b7b5bb840638d93cb8cb9c01d555b4695b7a66e55d78088ac89d8",
+      "sourceDomHashes": {
+        "before": "bdeebebfd5092d871b99d0e69f3962f9fe88e7b698710b622ea900e58329452d",
+        "menu": "7f65df3678663839e1ae615723e602fcd37604a200838d6d5ddae6e1413925ab",
+        "dialog": "434aca2c7e5f0a04c6a524516b21d43727221cdeabf8407fda3f5a3ca7315614",
+        "message": "434aca2c7e5f0a04c6a524516b21d43727221cdeabf8407fda3f5a3ca7315614",
+        "menu-portal": "3d379edac53778dc6ad3a22ac719823145dcb3f524b16c24e1d36cd3c703c8f6",
+        "dialog-portal": "1bac010b4a08e797462617ffbe44c5f5c38e140f4ff05ba511bce48f6c52fce7",
+        "message-portal": "0a9ffd1c8f63a2102c1204fa9e8d05ceaa2b840832f22bf8ca975786c65ed485"
+      },
+      "themeSha256": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9931525416666677,
+        "minSsim": 0.992984,
+        "worstFrame": 50,
+        "crops": {
+          "menu": {
+            "frame": 35,
+            "region": "168:66:948:42",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "ae3154c9b90c59145824e05a95268d1498a98a25f5d773eeb82773cb118fb10c",
+            "hyperframesSha256": "3891a45423a17095e1c73aff15fc9d258321a86185ccab3bd2f4452948f48877"
+          },
+          "dialog": {
+            "frame": 60,
+            "region": "512:571:344:44",
+            "ssim": 0.981428,
+            "minimumSsim": 0.965,
+            "nativeSha256": "62619e20bf4948352aa138d81a4fe844c579803f329dd1c61c8abc4cc55499ee",
+            "hyperframesSha256": "48c8afd93480eb4f929ecc0fb20c5982f689db23c90a89c5fe37d23452f3c791"
+          },
+          "message": {
+            "frame": 100,
+            "region": "512:571:344:44",
+            "ssim": 0.981987,
+            "minimumSsim": 0.965,
+            "nativeSha256": "3132865410193d1b2e04ed01c15fa03f6859991fe21b0624f7d0b7e11c3bd441",
+            "hyperframesSha256": "2de24e23050ce8fc57164086860fdcc0ff437e6f1eb56a6a4a12cb13d2aa5a2a"
+          }
+        },
+        "pass": true,
+        "p05Ssim": 0.992984,
+        "p95Ssim": 0.993246,
+        "criticalStates": [
+          {
+            "name": "dark menu",
+            "frame": 35,
+            "native": "parity/t3-commit-review-diff/dark/menu-native.png",
+            "hyperframes": "parity/t3-commit-review-diff/dark/menu-hyperframes.png",
+            "nativeSha256": "269b292f653247d7d0bdaf13e42120ce153c953e78735ff4a9b8270705e5aa24",
+            "hyperframesSha256": "269b292f653247d7d0bdaf13e42120ce153c953e78735ff4a9b8270705e5aa24",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "dark dialog",
+            "frame": 60,
+            "native": "parity/t3-commit-review-diff/dark/dialog-native.png",
+            "hyperframes": "parity/t3-commit-review-diff/dark/dialog-hyperframes.png",
+            "nativeSha256": "b43bf68c14943b1a2f894b83b1378a1926da33ed1a07464e382401ee67889580",
+            "hyperframesSha256": "6fc1275b9d1b2b3ecee249eb798ac9b2e6bc9519eff741576f0e60a896f1742b",
+            "ssim": 0.981428,
+            "minimumSsim": 0.965
+          },
+          {
+            "name": "dark message",
+            "frame": 100,
+            "native": "parity/t3-commit-review-diff/dark/message-native.png",
+            "hyperframes": "parity/t3-commit-review-diff/dark/message-hyperframes.png",
+            "nativeSha256": "c3fc4c86a5754dd651d8dbbe318f7157b4bdfc866a8516ef2ce55a765d5b9682",
+            "hyperframesSha256": "233a6655d14eb4f3186930a2870fcd115e4515a0e8adda5449f1dace7bf97f75",
+            "ssim": 0.981987,
+            "minimumSsim": 0.965
+          }
+        ]
+      },
+      "observed": {
+        "before": {
+          "urlPath": "/draft/1ca9479b-410e-41f8-b421-120af500b4d9",
+          "triggerBox": {
+            "x": 1092,
+            "y": 14,
+            "width": 24,
+            "height": 24
+          }
+        },
+        "menu": {
+          "labels": [
+            "Commit",
+            "Publish repository..."
+          ],
+          "box": {
+            "x": 948,
+            "y": 42,
+            "width": 167.90625,
+            "height": 66
+          }
+        },
+        "dialog": {
+          "text": "Commit changes\n\nReview and confirm your commit. Leave the message blank to auto-generate one.\n\nBranch\nfeature/logo-enter\nFiles\nEdit\nregistry/blocks/logo-enter/logo-enter.html\n+4 / -1\n+4\n/\n-1\n\nCommit message (optional)\n\nCancel\nCommit on new branch\nCommit",
+          "box": {
+            "x": 344,
+            "y": 44.5,
+            "width": 512,
+            "height": 570
+          }
+        },
+        "message": {
+          "value": "Polish Hyfrme Logo Enter timing and final hold",
+          "box": {
+            "x": 344,
+            "y": 44.5,
+            "width": 512,
+            "height": 570
+          }
+        }
+      },
+      "assets": {
+        "commit-review-v0042-dark-menu-crop.png": "269b292f653247d7d0bdaf13e42120ce153c953e78735ff4a9b8270705e5aa24"
+      },
+      "artifacts": {
+        "nativeRecording": "parity/t3-commit-review-v0042-dark-reference.mkv",
+        "referenceVideo": "public/previews/t3-commit-review/reference.mp4",
+        "hyperframesVideo": "public/previews/t3-commit-review/hyperframes.mp4",
+        "frameSsim": "parity/t3-commit-review-diff/dark/ssim.txt",
+        "hyperframesCheck": "parity/t3-commit-review-diff/dark/hyperframes-check.json",
+        "installedCheck": "parity/t3-commit-review-diff/dark/installed-check.json",
+        "customCheck": "parity/t3-commit-review-diff/dark/custom-check.json",
+        "customizedMenu": "parity/t3-commit-review-diff/dark/customized-menu.png",
+        "customizedDialog": "parity/t3-commit-review-diff/dark/customized-dialog.png"
+      }
+    },
+    "light": {
+      "referenceSha256": "6a91023bf8c6a9a1f08579ee4fa1502d4ff927fd03fccc94868224ae5ac619d4",
+      "sourceDomHashes": {
+        "before": "12ff082569f8011191a0b82dff0605df271246aa3b39fdbaf7a43ca931e4462a",
+        "menu": "4d1b9acbdf8b1a924952d85cc4bbd90dd9a27b9db11779123139e4ed4d445ba6",
+        "dialog": "a081f891366162651bd1a1670f5a87d7d44361801f0c970b5977e0eed9a7d307",
+        "message": "a081f891366162651bd1a1670f5a87d7d44361801f0c970b5977e0eed9a7d307",
+        "menu-portal": "bdba16363a313bde16b0911b7e802912ef71355f9caf7bc11562edd123a279cf",
+        "dialog-portal": "e7347a95e7269784eac05f42d70a344d0e7e067d10807d898fd5c5622ca9cadf",
+        "message-portal": "32fb6941601ae1bae89bd425fa8d490af26d58af34b0c21e3b7ead688dd27b97"
+      },
+      "themeSha256": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9923343250000004,
+        "minSsim": 0.98947,
+        "worstFrame": 62,
+        "crops": {
+          "menu": {
+            "frame": 35,
+            "region": "168:66:948:42",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "9abff7be09b93e363a42f952dcf2e7496997d6b403feaebc44445bed4b1f36f6",
+            "hyperframesSha256": "1438ccd0af5dd675a8ec8f89d801ed8cdc3725e34f81939661707fde014e1561"
+          },
+          "dialog": {
+            "frame": 60,
+            "region": "512:571:344:44",
+            "ssim": 0.976704,
+            "minimumSsim": 0.965,
+            "nativeSha256": "cd7e092bfde7a6e65e1a20f94c9af9057170390a82c3ef66a6436073d974a3c7",
+            "hyperframesSha256": "0d9634692a9c9221c87297396fde15d4cbcc900ba478e45b298abbd4d66da9e3"
+          },
+          "message": {
+            "frame": 100,
+            "region": "512:571:344:44",
+            "ssim": 0.981788,
+            "minimumSsim": 0.965,
+            "nativeSha256": "6e39e48e430b7ebe2776cc12c9363385f8b37db1080a2126c871211d2682d16d",
+            "hyperframesSha256": "0d4e9e9116ecc1e20056fdf654405a88d9eef073dfb2a6bc4c1be9c4f81ea24d"
+          }
+        },
+        "pass": true,
+        "p05Ssim": 0.98947,
+        "p95Ssim": 0.99336,
+        "criticalStates": [
+          {
+            "name": "light menu",
+            "frame": 35,
+            "native": "parity/t3-commit-review-diff/light/menu-native.png",
+            "hyperframes": "parity/t3-commit-review-diff/light/menu-hyperframes.png",
+            "nativeSha256": "5a3015dc2b9ee6c77a7c619ae33678da867f6d3294da711791941a6ee1f7471b",
+            "hyperframesSha256": "5a3015dc2b9ee6c77a7c619ae33678da867f6d3294da711791941a6ee1f7471b",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "light dialog",
+            "frame": 60,
+            "native": "parity/t3-commit-review-diff/light/dialog-native.png",
+            "hyperframes": "parity/t3-commit-review-diff/light/dialog-hyperframes.png",
+            "nativeSha256": "b9c6c1140586ac4ba24f7babf730848af2a086242a7199dfffe0b203ded3dac9",
+            "hyperframesSha256": "768c11897719d219eaaa67c54e928ff4e932ef55cd03b58683c11a9592bbf2a1",
+            "ssim": 0.976704,
+            "minimumSsim": 0.965
+          },
+          {
+            "name": "light message",
+            "frame": 100,
+            "native": "parity/t3-commit-review-diff/light/message-native.png",
+            "hyperframes": "parity/t3-commit-review-diff/light/message-hyperframes.png",
+            "nativeSha256": "c6ffb8415d3078ab5d53704c9e7d799c6166d093e2a4e08d982b0c056402d457",
+            "hyperframesSha256": "8587fb4dbdb13306478ff9af6de980b5eca7b12f34f07f3e1a2f7960520cccca",
+            "ssim": 0.981788,
+            "minimumSsim": 0.965
+          }
+        ]
+      },
+      "observed": {
+        "before": {
+          "urlPath": "/draft/1d93d01e-bf5d-45c1-a4e2-35ef641c7253",
+          "triggerBox": {
+            "x": 1092,
+            "y": 14,
+            "width": 24,
+            "height": 24
+          }
+        },
+        "menu": {
+          "labels": [
+            "Commit",
+            "Publish repository..."
+          ],
+          "box": {
+            "x": 948,
+            "y": 42,
+            "width": 167.90625,
+            "height": 66
+          }
+        },
+        "dialog": {
+          "text": "Commit changes\n\nReview and confirm your commit. Leave the message blank to auto-generate one.\n\nBranch\nfeature/logo-enter\nFiles\nEdit\nregistry/blocks/logo-enter/logo-enter.html\n+4 / -1\n+4\n/\n-1\n\nCommit message (optional)\n\nCancel\nCommit on new branch\nCommit",
+          "box": {
+            "x": 344,
+            "y": 44.5,
+            "width": 512,
+            "height": 570
+          }
+        },
+        "message": {
+          "value": "Polish Hyfrme Logo Enter timing and final hold",
+          "box": {
+            "x": 344,
+            "y": 44.5,
+            "width": 512,
+            "height": 570
+          }
+        }
+      },
+      "assets": {
+        "commit-review-v0042-light-menu-crop.png": "5a3015dc2b9ee6c77a7c619ae33678da867f6d3294da711791941a6ee1f7471b"
+      },
+      "artifacts": {
+        "nativeRecording": "parity/t3-commit-review-v0042-light-reference.mkv",
+        "referenceVideo": "public/previews/t3-commit-review/reference-light.mp4",
+        "hyperframesVideo": "public/previews/t3-commit-review/hyperframes-light.mp4",
+        "frameSsim": "parity/t3-commit-review-diff/light/ssim.txt",
+        "hyperframesCheck": "parity/t3-commit-review-diff/light/hyperframes-check.json",
+        "installedCheck": "parity/t3-commit-review-diff/light/installed-check.json",
+        "customCheck": "parity/t3-commit-review-diff/light/custom-check.json",
+        "customizedMenu": "parity/t3-commit-review-diff/light/customized-menu.png",
+        "customizedDialog": "parity/t3-commit-review-diff/light/customized-dialog.png"
+      }
+    }
+  },
+  "checks": {
+    "hyperframes": "full checks and strict 120-frame renders passed in both themes",
+    "hyperframesVersion": "0.8.75",
+    "sourceBrowser": "Chrome Headless Shell 152.0.7977.30",
+    "installedThroughCli": true,
+    "customVariables": "Edited project, branch, file path, diff counts, message, menu copy, theme, and action frames passed full checks, strict renders, OCR, and menu anchor measurement in both themes"
+  },
+  "artifacts": {
+    "nativeRecording": "parity/t3-commit-review-v0042-dark-reference.mkv",
+    "referenceVideo": "public/previews/t3-commit-review/reference.mp4",
+    "hyperframesVideo": "public/previews/t3-commit-review/hyperframes.mp4",
+    "frameSsim": "parity/t3-commit-review-diff/dark/ssim.txt",
+    "hyperframesCheck": "parity/t3-commit-review-diff/dark/hyperframes-check.json",
+    "installedCheck": "parity/t3-commit-review-diff/dark/installed-check.json",
+    "customCheck": "parity/t3-commit-review-diff/dark/custom-check.json",
+    "customizedMenu": "parity/t3-commit-review-diff/dark/customized-menu.png",
+    "customizedDialog": "parity/t3-commit-review-diff/dark/customized-dialog.png",
+    "thumbnail": "public/previews/t3-commit-review/thumbnail.png",
+    "lightThumbnail": "public/previews/t3-commit-review/thumbnail-light.png"
+  }
+}

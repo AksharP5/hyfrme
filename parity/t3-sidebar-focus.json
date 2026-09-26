@@ -1,0 +1,858 @@
+{
+  "slug": "t3-sidebar-focus",
+  "origin": {
+    "repository": "https://github.com/pingdotgg/t3code",
+    "commit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+    "source": "apps/web/src/components/AppSidebarLayout.tsx; apps/web/src/components/ui/sidebar.tsx",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1200,
+    "height": 659,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "theme": "dark",
+      "transitionMs": 0,
+      "sidebarWidth": 256,
+      "collapseFrame": 30,
+      "restoreFrame": 90,
+      "prompt": "Verify the Hyfrme Logo Enter final-frame timing.",
+      "modelName": "GPT-6-Astra",
+      "reasoningLevel": "High",
+      "serviceTier": "Fast"
+    },
+    "sourceHashes": {
+      "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+      "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+      "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+    },
+    "sourceDomHashes": {
+      "open": "f772c2b87601edbe78ff0deab80a7643d31528619c960720c63dbb151906ef54",
+      "collapsed": "490d1d6265375c2b20c517ca297c6f33972626deda4cf1281329aba6337dbbc5",
+      "restored": "cdca9fe58cc5d4afaa7c4773aee0714a2f274aa8a5a6d851df89aac147dffd3f"
+    },
+    "referenceSha256": "a0d559aaa1fa5ef926681d9a99c2804830f67f757f601671d5274285dedc30be",
+    "compositionSha256": "2b653592a8a0c6e633a96be80779323d6141efd5e5ef1daa559f8a33ff91888b"
+  },
+  "providerState": "Seeded local provider/model options; no AI inference runs.",
+  "releaseDefaultPanelMs": 0,
+  "settingsRangeMs": {
+    "min": 0,
+    "max": 400,
+    "step": 25
+  },
+  "settingsEnabledPreviewMs": 200,
+  "sourceBehavior": "The official release defaults to an instant sidebar toggle. Appearance > Motion enables a 200 ms cubic-bezier(0, 0, 0.2, 1) transition for the separately captured preview.",
+  "intentionalOffcanvas": "During Settings-enabled collapse, the native sidebar container leaves the canvas. Only that collapsed container and native clipped labels are annotated for layout; strict whole-frame and focused sidebar crops still score the visible transition.",
+  "sidebarRowTiming": "Official dark and light 200 ms captures hold virtualized row content for one sampled frame after restore, then reveal it at the next frame. The port reproduces that sampled release behavior.",
+  "classification": "source-dom-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.989,
+    "minSsim": 0.985,
+    "sidebarMinSsim": 0.98,
+    "headerMinSsim": 0.98
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.9917574999999983,
+    "minSsim": 0.990237,
+    "worstFrame": 0,
+    "crops": {
+      "sidebar": {
+        "geometry": "500:659:0:0",
+        "meanSsim": 0.9918159999999993,
+        "minSsim": 0.99018,
+        "worstFrame": 0,
+        "minGate": 0.98,
+        "pass": true
+      },
+      "header": {
+        "geometry": "430:120:770:0",
+        "meanSsim": 0.9944540000000015,
+        "minSsim": 0.994454,
+        "worstFrame": 0,
+        "minGate": 0.98,
+        "pass": true
+      }
+    },
+    "pass": true,
+    "p05Ssim": 0.990237,
+    "p95Ssim": 0.993278
+  },
+  "themes": {
+    "dark": {
+      "label": "Release default: instant sidebar toggle (0 ms)",
+      "panelMs": 0,
+      "referenceSha256": "a0d559aaa1fa5ef926681d9a99c2804830f67f757f601671d5274285dedc30be",
+      "sourceDomHashes": {
+        "open": "f772c2b87601edbe78ff0deab80a7643d31528619c960720c63dbb151906ef54",
+        "collapsed": "490d1d6265375c2b20c517ca297c6f33972626deda4cf1281329aba6337dbbc5",
+        "restored": "cdca9fe58cc5d4afaa7c4773aee0714a2f274aa8a5a6d851df89aac147dffd3f"
+      },
+      "themeSha256": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
+      "nativeMotion": {
+        "collapse": [],
+        "restore": []
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9917574999999983,
+        "minSsim": 0.990237,
+        "worstFrame": 0,
+        "crops": {
+          "sidebar": {
+            "geometry": "500:659:0:0",
+            "meanSsim": 0.9918159999999993,
+            "minSsim": 0.99018,
+            "worstFrame": 0,
+            "minGate": 0.98,
+            "pass": true
+          },
+          "header": {
+            "geometry": "430:120:770:0",
+            "meanSsim": 0.9944540000000015,
+            "minSsim": 0.994454,
+            "worstFrame": 0,
+            "minGate": 0.98,
+            "pass": true
+          }
+        },
+        "pass": true,
+        "p05Ssim": 0.990237,
+        "p95Ssim": 0.993278
+      },
+      "artifacts": {
+        "nativeRecording": "parity/t3-sidebar-focus-v0042-dark-default-reference.mkv",
+        "referenceVideo": "public/previews/t3-sidebar-focus/reference.mp4",
+        "hyperframesVideo": "public/previews/t3-sidebar-focus/hyperframes.mp4",
+        "frameSsim": "parity/t3-sidebar-focus-diff/dark/default/ssim.txt",
+        "sidebarSsim": "parity/t3-sidebar-focus-diff/dark/default/sidebar-ssim.txt",
+        "headerSsim": "parity/t3-sidebar-focus-diff/dark/default/header-ssim.txt",
+        "hyperframesCheck": "parity/t3-sidebar-focus-diff/dark/default/hyperframes-check.json",
+        "worstFrame": "parity/t3-sidebar-focus-diff/dark/default/worst-frame.png"
+      },
+      "settingsEnabled200": {
+        "label": "Settings-enabled: Appearance panel animation (200 ms)",
+        "panelMs": 200,
+        "referenceSha256": "b6ec83f77a2f3420456ba8691b3e18b8c0492f40db947bac42e3c6a4f199b70b",
+        "sourceDomHashes": {
+          "open": "bd50947c2619b7c3b74740fc202d2e9bb25dc5c73a7d92a7664d5d602fa7c630",
+          "collapsed": "9666bc13ee6c0eb1a3bed7b00f587caf4ccb6ae0cd777feee2348a57478ed4cd",
+          "restored": "945a465cf93cc667de9d11696c3f2e35b801a4fbf76f8e2fbc55abb6ca392740"
+        },
+        "themeSha256": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
+        "nativeMotion": {
+          "collapse": [
+            {
+              "type": "CSSTransition",
+              "target": "sidebar-gap",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "width": "256px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "width": "0px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CSSTransition",
+              "target": "sidebar-container",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "left": "0px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "left": "-256px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CSSTransition",
+              "target": "sidebar-rail",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "right": "-16px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "right": "-8px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CSSTransition",
+              "target": "sidebar-rail",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "translate": "-50%",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "translate": "0px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CSSTransition",
+              "target": "HEADER",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "paddingLeft": "20px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "paddingLeft": "52px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            }
+          ],
+          "restore": [
+            {
+              "type": "CSSTransition",
+              "target": "sidebar-gap",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "width": "0px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "width": "256px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CSSTransition",
+              "target": "sidebar-container",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "left": "-256px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "left": "0px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CSSTransition",
+              "target": "sidebar-rail",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "right": "-8px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "right": "-16px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CSSTransition",
+              "target": "sidebar-rail",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "translate": "0px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "translate": "-50%",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CSSTransition",
+              "target": "HEADER",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "paddingLeft": "52px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "paddingLeft": "20px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "result": {
+          "frameCount": 120,
+          "meanSsim": 0.9917958749999987,
+          "minSsim": 0.99023,
+          "worstFrame": 30,
+          "crops": {
+            "sidebar": {
+              "geometry": "500:659:0:0",
+              "meanSsim": 0.9919105083333328,
+              "minSsim": 0.990153,
+              "worstFrame": 95,
+              "minGate": 0.98,
+              "pass": true
+            },
+            "header": {
+              "geometry": "430:120:770:0",
+              "meanSsim": 0.9944540000000015,
+              "minSsim": 0.994454,
+              "worstFrame": 0,
+              "minGate": 0.98,
+              "pass": true
+            }
+          },
+          "pass": true,
+          "p05Ssim": 0.990237,
+          "p95Ssim": 0.993278
+        },
+        "artifacts": {
+          "nativeRecording": "parity/t3-sidebar-focus-v0042-dark-animated-reference.mkv",
+          "referenceVideo": "public/previews/t3-sidebar-focus/reference-settings-enabled.mp4",
+          "hyperframesVideo": "public/previews/t3-sidebar-focus/hyperframes-settings-enabled.mp4",
+          "frameSsim": "parity/t3-sidebar-focus-diff/dark/animated/ssim.txt",
+          "sidebarSsim": "parity/t3-sidebar-focus-diff/dark/animated/sidebar-ssim.txt",
+          "headerSsim": "parity/t3-sidebar-focus-diff/dark/animated/header-ssim.txt",
+          "hyperframesCheck": "parity/t3-sidebar-focus-diff/dark/animated/hyperframes-check.json",
+          "worstFrame": "parity/t3-sidebar-focus-diff/dark/animated/worst-frame.png"
+        }
+      }
+    },
+    "light": {
+      "label": "Release default: instant sidebar toggle (0 ms)",
+      "panelMs": 0,
+      "referenceSha256": "a1962d39dfc65aa51395b6b33337a52497d06853075584cadfb02f1d770d9a82",
+      "sourceDomHashes": {
+        "open": "d42212996af0738564dad71525fe3b55ef2ce88d9409a3961c8a0b4384e5b040",
+        "collapsed": "e5a49785ecd716a83ffdbaef911380b33b6b957fd7021d3bdd540a085376a7db",
+        "restored": "f3365e8d4cf0e6f67cb07c72fd75177b26f475920a0b1fcf7eb39330e74bd0fb"
+      },
+      "themeSha256": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
+      "nativeMotion": {
+        "collapse": [],
+        "restore": []
+      },
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9919610000000005,
+        "minSsim": 0.990526,
+        "worstFrame": 0,
+        "crops": {
+          "sidebar": {
+            "geometry": "500:659:0:0",
+            "meanSsim": 0.9919519999999987,
+            "minSsim": 0.990489,
+            "worstFrame": 0,
+            "minGate": 0.98,
+            "pass": true
+          },
+          "header": {
+            "geometry": "430:120:770:0",
+            "meanSsim": 0.994242,
+            "minSsim": 0.994242,
+            "worstFrame": 0,
+            "minGate": 0.98,
+            "pass": true
+          }
+        },
+        "pass": true,
+        "p05Ssim": 0.990526,
+        "p95Ssim": 0.993396
+      },
+      "artifacts": {
+        "nativeRecording": "parity/t3-sidebar-focus-v0042-light-default-reference.mkv",
+        "referenceVideo": "public/previews/t3-sidebar-focus/reference-light.mp4",
+        "hyperframesVideo": "public/previews/t3-sidebar-focus/hyperframes-light.mp4",
+        "frameSsim": "parity/t3-sidebar-focus-diff/light/default/ssim.txt",
+        "sidebarSsim": "parity/t3-sidebar-focus-diff/light/default/sidebar-ssim.txt",
+        "headerSsim": "parity/t3-sidebar-focus-diff/light/default/header-ssim.txt",
+        "hyperframesCheck": "parity/t3-sidebar-focus-diff/light/default/hyperframes-check.json",
+        "worstFrame": "parity/t3-sidebar-focus-diff/light/default/worst-frame.png"
+      },
+      "settingsEnabled200": {
+        "label": "Settings-enabled: Appearance panel animation (200 ms)",
+        "panelMs": 200,
+        "referenceSha256": "63af1b73afe59b47e473efb9f24282f518ef43f6f2e7be053892ce9fd56c21d4",
+        "sourceDomHashes": {
+          "open": "bd50947c2619b7c3b74740fc202d2e9bb25dc5c73a7d92a7664d5d602fa7c630",
+          "collapsed": "9666bc13ee6c0eb1a3bed7b00f587caf4ccb6ae0cd777feee2348a57478ed4cd",
+          "restored": "945a465cf93cc667de9d11696c3f2e35b801a4fbf76f8e2fbc55abb6ca392740"
+        },
+        "themeSha256": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
+        "nativeMotion": {
+          "collapse": [
+            {
+              "type": "CSSTransition",
+              "target": "sidebar-gap",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "width": "256px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "width": "0px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CSSTransition",
+              "target": "sidebar-container",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "left": "0px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "left": "-256px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CSSTransition",
+              "target": "sidebar-rail",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "right": "-16px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "right": "-8px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CSSTransition",
+              "target": "sidebar-rail",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "translate": "-50%",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "translate": "0px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CSSTransition",
+              "target": "HEADER",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "paddingLeft": "20px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "paddingLeft": "52px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            }
+          ],
+          "restore": [
+            {
+              "type": "CSSTransition",
+              "target": "sidebar-gap",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "width": "0px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "width": "256px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CSSTransition",
+              "target": "sidebar-container",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "left": "-256px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "left": "0px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CSSTransition",
+              "target": "sidebar-rail",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "right": "-8px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "right": "-16px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CSSTransition",
+              "target": "sidebar-rail",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "translate": "0px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "translate": "-50%",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "CSSTransition",
+              "target": "HEADER",
+              "durationMs": 200,
+              "easing": "cubic-bezier(0, 0, 0.2, 1)",
+              "keyframes": [
+                {
+                  "offset": 0,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "paddingLeft": "52px",
+                    "computedOffset": 0
+                  }
+                },
+                {
+                  "offset": 1,
+                  "easing": "linear",
+                  "styles": {
+                    "composite": "auto",
+                    "paddingLeft": "20px",
+                    "computedOffset": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "result": {
+          "frameCount": 120,
+          "meanSsim": 0.9919974750000006,
+          "minSsim": 0.99052,
+          "worstFrame": 30,
+          "crops": {
+            "sidebar": {
+              "geometry": "500:659:0:0",
+              "meanSsim": 0.9920437833333323,
+              "minSsim": 0.990463,
+              "worstFrame": 95,
+              "minGate": 0.98,
+              "pass": true
+            },
+            "header": {
+              "geometry": "430:120:770:0",
+              "meanSsim": 0.994242,
+              "minSsim": 0.994242,
+              "worstFrame": 0,
+              "minGate": 0.98,
+              "pass": true
+            }
+          },
+          "pass": true,
+          "p05Ssim": 0.990526,
+          "p95Ssim": 0.993396
+        },
+        "artifacts": {
+          "nativeRecording": "parity/t3-sidebar-focus-v0042-light-animated-reference.mkv",
+          "referenceVideo": "public/previews/t3-sidebar-focus/reference-settings-enabled-light.mp4",
+          "hyperframesVideo": "public/previews/t3-sidebar-focus/hyperframes-settings-enabled-light.mp4",
+          "frameSsim": "parity/t3-sidebar-focus-diff/light/animated/ssim.txt",
+          "sidebarSsim": "parity/t3-sidebar-focus-diff/light/animated/sidebar-ssim.txt",
+          "headerSsim": "parity/t3-sidebar-focus-diff/light/animated/header-ssim.txt",
+          "hyperframesCheck": "parity/t3-sidebar-focus-diff/light/animated/hyperframes-check.json",
+          "worstFrame": "parity/t3-sidebar-focus-diff/light/animated/worst-frame.png"
+        }
+      }
+    }
+  },
+  "fastToSidebarSeam": {
+    "dark": {
+      "native": {
+        "changedPixels": 0
+      },
+      "hyperframes": {
+        "changedPixels": 0
+      }
+    },
+    "light": {
+      "native": {
+        "changedPixels": 0
+      },
+      "hyperframes": {
+        "changedPixels": 0
+      }
+    }
+  },
+  "checks": {
+    "hyperframes": "full check without findings and strict 120-frame render passed for both themes and both settings paths",
+    "hyperframesVersion": "0.8.75",
+    "sourceBrowser": "Chrome Headless Shell 152.0.7977.30",
+    "installedThroughCli": true,
+    "customVariables": "Dark/light edited project, thread, prompt, model, reasoning, service tier, sidebar width, transition duration, and action frames passed full check and strict render."
+  },
+  "artifacts": {
+    "nativeRecording": "parity/t3-sidebar-focus-v0042-dark-default-reference.mkv",
+    "referenceVideo": "public/previews/t3-sidebar-focus/reference.mp4",
+    "hyperframesVideo": "public/previews/t3-sidebar-focus/hyperframes.mp4",
+    "frameSsim": "parity/t3-sidebar-focus-diff/dark/default/ssim.txt",
+    "sidebarSsim": "parity/t3-sidebar-focus-diff/dark/default/sidebar-ssim.txt",
+    "headerSsim": "parity/t3-sidebar-focus-diff/dark/default/header-ssim.txt",
+    "hyperframesCheck": "parity/t3-sidebar-focus-diff/dark/default/hyperframes-check.json",
+    "worstFrame": "parity/t3-sidebar-focus-diff/dark/default/worst-frame.png",
+    "thumbnail": "public/previews/t3-sidebar-focus/thumbnail.png",
+    "settingsEnabledThumbnail": "public/previews/t3-sidebar-focus/thumbnail-settings-enabled.png",
+    "lightThumbnail": "public/previews/t3-sidebar-focus/thumbnail-light.png",
+    "lightSettingsEnabledThumbnail": "public/previews/t3-sidebar-focus/thumbnail-settings-enabled-light.png"
+  }
+}
