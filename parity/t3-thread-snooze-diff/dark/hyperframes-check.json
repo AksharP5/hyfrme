@@ -1,0 +1,311 @@
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 4,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div data-composition-id=\"t3-thread-snooze\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id=\"t3-thread-snooze\"]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-thread-snooze-v0042-dark-verify/project/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "gsap_callback_dom_measurement",
+        "severity": "warning",
+        "message": "Timeline callback reaches DOM measurement (getBoundingClientRect/getTotalLength/getComputedStyle/...). The renderer seeks with suppressEvents=false, so callbacks re-fire on every seek — and a cold render worker runs them against whatever DOM state its own non-linear seek order produced. Measured geometry is seek-order-dependent, and values measured at build time (before the callback ran) are stale or zero.",
+        "selector": "onUpdate: draw",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-thread-snooze-v0042-dark-verify/project/compositions/t3-thread-snooze.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Do all measurement and DOM setup synchronously at build time, before registering the timeline — or derive geometry from fixed composition coordinates instead of measuring."
+      },
+      {
+        "code": "composition_file_too_large",
+        "severity": "warning",
+        "message": "This HTML composition file has 325 lines. Smaller sub-compositions are easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-thread-snooze-v0042-dark-verify/project/compositions/t3-thread-snooze.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split this sub-composition further into smaller .html files, then mount them from the parent with data-composition-src so each file stays small enough to inspect, revise, and validate independently."
+      },
+      {
+        "code": "composition_heavy_overlay_count_high",
+        "severity": "warning",
+        "message": "This composition has 318 elements carrying \"heavy overlay\" CSS (filter:blur, radial-gradient, or clip-path). Field signal: a composition with ~40 such elements — including opacity:0 / visibility:hidden ones — captures solid-black for the first ~half of the render, recovering near the end. Reproduces identically via drawElement, forced screenshot capture, and snapshot, so the capture layer itself is the offender (not encoder/mux). Independent of duration. Presence alone matters; only display:none elements are excluded here.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-thread-snooze-v0042-dark-verify/project/compositions/t3-thread-snooze.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split this sub-composition further into per-transition mini-compositions and concat the pieces (FFmpeg or the runtime's slideshow) so each capture only sees a small subset of heavy overlays at once. Even hidden overlays (opacity:0 / visibility:hidden) contribute — either remove truly unused ones from the source or scope them into their own per-transition sub-composition. If an overlay is genuinely inert for the whole clip, use display:none so it never enters the render tree. Field ref ts=1784040753 (#hyperframes-cli-feedback)."
+      }
+    ],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.222,
+        "selector": "span.pointer-events-none.absolute",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 153,
+          "top": 48,
+          "right": 201,
+          "bottom": 96,
+          "width": 48,
+          "height": 48
+        },
+        "containerSelector": "#base-ui-_r_6_",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 163,
+          "top": 58,
+          "right": 191,
+          "bottom": 86,
+          "width": 28,
+          "height": 28
+        },
+        "overflow": {
+          "left": 10,
+          "right": 10,
+          "top": 10,
+          "bottom": 10
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-thread-snooze.html",
+        "bbox": {
+          "x": 153,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 3.778,
+        "occurrences": 9,
+        "heldMs": 3556
+      },
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.222,
+        "selector": "span.pointer-events-none.absolute",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 181,
+          "top": 48,
+          "right": 229,
+          "bottom": 96,
+          "width": 48,
+          "height": 48
+        },
+        "containerSelector": "#base-ui-_r_c_",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 191,
+          "top": 58,
+          "right": 219,
+          "bottom": 86,
+          "width": 28,
+          "height": 28
+        },
+        "overflow": {
+          "left": 10,
+          "right": 10,
+          "top": 10,
+          "bottom": 10
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-thread-snooze.html",
+        "bbox": {
+          "x": 181,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 3.778,
+        "occurrences": 9,
+        "heldMs": 3556
+      },
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.222,
+        "selector": "span.pointer-events-none.absolute",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 209,
+          "top": 48,
+          "right": 257,
+          "bottom": 96,
+          "width": 48,
+          "height": 48
+        },
+        "containerSelector": "#base-ui-_r_e_",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 219,
+          "top": 58,
+          "right": 247,
+          "bottom": 86,
+          "width": 28,
+          "height": 28
+        },
+        "overflow": {
+          "left": 10,
+          "right": 10,
+          "top": 10,
+          "bottom": 10
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-thread-snooze.html",
+        "bbox": {
+          "x": 209,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 3.778,
+        "occurrences": 9,
+        "heldMs": 3556
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 0.75,
+        "selector": "div.dark.t3-stage > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 216.97,
+          "top": 192,
+          "right": 237,
+          "bottom": 206,
+          "width": 20.03,
+          "height": 14
+        },
+        "containerSelector": "div.dark.t3-stage > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(2) > button:nth-of-type(2)",
+        "text": "16h",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {
+          "data-layout-allow-occlusion": ""
+        },
+        "sourceFile": "compositions/t3-thread-snooze.html",
+        "bbox": {
+          "x": 216.97,
+          "y": 192,
+          "width": 20.03,
+          "height": 14
+        },
+        "firstSeen": 0.75,
+        "lastSeen": 0.75,
+        "occurrences": 1,
+        "heldMs": 0
+      }
+    ],
+    "duration": 4,
+    "samples": [
+      0.222,
+      0.667,
+      1.111,
+      1.556,
+      2,
+      2.444,
+      2.889,
+      3.333,
+      3.778
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 4,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.222,
+      1.111,
+      2,
+      2.889,
+      3.778
+    ],
+    "checked": 0,
+    "passed": 0
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.75",
+    "latestVersion": "0.8.75",
+    "updateAvailable": false
+  }
+}

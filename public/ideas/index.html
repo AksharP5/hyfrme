@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f7f4" />
+    <meta name="description" content="Explore full-size T3 Code interactions captured from the real app and install parity-checked HyperFrames blocks." />
+    <title>T3 Code interactions · Hyfrme</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./scenes.css" />
+    <link rel="stylesheet" href="./t3-scenes.css" />
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Hyfrme catalog home"><span class="brand-symbol" aria-hidden="true"></span><strong>hyfrme</strong></a>
+      <span class="header-divider" aria-hidden="true"></span>
+      <span class="header-label">T3 Code interactions</span>
+      <button id="header-shortlist" class="shortlist-link" type="button">Shortlist <span id="saved-count">0</span></button>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <h1 id="page-title">T3 Code interactions.</h1>
+          <p>Recapturing each interaction against T3 Code v0.0.42 in desktop dark and light. Older references remain labeled.</p>
+        </div>
+        <div class="intro-example">
+          <span>Now showing</span>
+          <b id="captured-count"></b>
+          <p><span id="verified-count">0</span> v0.0.42 blocks checked in both desktop themes. Older fixtures stay labeled.</p>
+        </div>
+      </section>
+
+      <section class="gallery" id="ideas" aria-label="T3 Code interactions">
+        <div class="gallery-toolbar">
+          <div id="filters" class="filters" role="group" aria-label="Filter interactions"></div>
+          <label class="search"><span class="sr-only">Search interactions</span><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Find an interaction" autocomplete="off" /></label>
+        </div>
+        <div id="idea-grid" class="idea-grid"></div>
+        <p id="empty-state" class="empty-state" hidden>No matching interactions. Try another search or filter.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer"><span>hyfrme</span><p>Each recording links to a block after its frame check passes.</p><a href="/components">Open component library ↗</a></footer>
+
+    <div id="shortlist-dock" class="shortlist-dock" hidden><span><strong id="dock-count">0</strong> saved</span><button id="dock-open" type="button">View shortlist ↗</button></div>
+
+    <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-title">
+      <div class="dialog-top"><span id="detail-index"></span><button id="detail-close" class="close-button" type="button" aria-label="Close interaction">Close ×</button></div>
+      <div class="detail-layout">
+        <div class="detail-media">
+          <div id="detail-scene" class="preview-frame detail-frame"></div>
+          <div id="detail-themes" class="detail-themes" role="group" aria-label="Preview theme" hidden><button type="button" data-detail-theme="dark" aria-pressed="true">Dark</button><button type="button" data-detail-theme="light" aria-pressed="false">Light</button></div>
+          <div class="transport"><button id="detail-play" type="button">Replay</button><button id="detail-back" type="button" aria-label="Step back one frame">−1f</button><button id="detail-forward" type="button" aria-label="Step forward one frame">+1f</button><input id="detail-range" type="range" min="0" max="119" value="0" step="1" aria-label="Seek interaction"/><output id="detail-time">000 / 119</output></div>
+          <p class="concept-disclosure"><span id="detail-disclosure-intro"></span><a id="detail-reference-link" href="/components/"></a>. <a id="detail-ui-source" target="_blank" rel="noopener noreferrer" hidden>View T3 Code behavior in source ↗</a> <a id="detail-install-link" hidden>Open v0.0.35 HyperFrames block ↗</a></p>
+        </div>
+        <div class="detail-copy">
+          <p id="detail-group" class="detail-group"></p><h2 id="detail-title"></h2><p id="detail-line" class="detail-line"></p>
+          <h3>The sequence</h3><ol id="detail-beats" class="detail-beats"></ol>
+          <div class="detail-inputs"><span id="detail-inputs-label">Could customize</span><p id="detail-inputs"></p></div>
+          <button id="detail-save" class="detail-save" type="button" aria-pressed="false"></button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="shortlist-dialog" class="shortlist-dialog" aria-labelledby="shortlist-title">
+      <div class="dialog-top"><span>Your picks</span><button id="shortlist-close" class="close-button" type="button" aria-label="Close shortlist">Close ×</button></div>
+      <div class="shortlist-content"><h2 id="shortlist-title">Saved interactions</h2><p>Copy the list or share a link.</p><div id="shortlist-items" class="shortlist-items"></div><div class="shortlist-actions"><button id="copy-names" type="button">Copy names</button><button id="copy-link" type="button">Copy link</button><button id="clear-picks" type="button">Clear picks</button></div><p id="copy-status" role="status" aria-live="polite"></p></div>
+    </dialog>
+  </body>
+</html>

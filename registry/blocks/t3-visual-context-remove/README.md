@@ -1,0 +1,7 @@
+# T3 Code: Visual Context Remove
+
+This four-second block reproduces the T3 Code v0.0.42 pasted-image removal at 1200 × 659 and 30 fps in dark or light. The pointer hovers over the image's remove control, opens the real destructive confirmation, and confirms removal. T3 Code removes both the image and its inline reference. The reference uses a seeded local thread with no provider configured; this interaction does not send a message or run AI inference.
+
+The native destructive Confirm button has white text on red at 3.53:1 contrast, below WCAG AA's 4.5:1. This one button is annotated to preserve its official color in the parity render; the visual and contrast limitation is recorded in the parity manifest.
+
+Set theme to dark or light. Change imageSrc to a local path or URL, imageName to its filename, and imageSize to the size label shown in the chip. Change the warning and button labels if needed. Project, branch, thread, age, previous-message, and answer variables can match adjacent T3 Code clips. hoverFrame, confirmOpenFrame, and removeFrame place the three actions. The supplied frame derives from MIT-licensed Remocn source; its license is included. T3 Code source: https://github.com/pingdotgg/t3code/tree/719a76ca1dbf5490f1aa33ffb9966301e02be9a9. The T3 Code MIT license and icon notice are included. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.

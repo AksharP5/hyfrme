@@ -1,0 +1,911 @@
+{
+  "slug": "t3-return-worktree",
+  "origin": {
+    "repository": "https://github.com/pingdotgg/t3code",
+    "commit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+    "source": "apps/web/src/components/BranchToolbarEnvModeSelector.tsx; apps/web/src/components/BranchToolbarBranchSelector.tsx",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1200,
+    "height": 659,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "theme": "dark",
+      "projectName": "hyfrme",
+      "prompt": "Compare the Hyfrme Logo Enter final frame with the pinned reference; fix any mismatch.",
+      "workspaceBefore": "Current checkout",
+      "workspaceAfter": "Current worktree",
+      "previousWorktree": "Previous worktree (main)",
+      "activeBranch": "feature/logo-enter",
+      "openFrame": 30,
+      "hoverFrame": 60,
+      "selectFrame": 90
+    },
+    "sourceHashes": {
+      "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+      "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+      "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+    },
+    "sourceDomHashes": {
+      "before": "de15680deb58a4b4d1b87ecced2edb693145a26c2f14854a4f9e08769babe3d4",
+      "menu": "4fc777ecca9a83e9e553b20f046a4f9c7ccb28d9c3dbff2a79454ff3fb0255ef",
+      "portal": "ac636a60b3c82d081d97267c67aa881986377ef45cc58e917bc0d1463115dc5b",
+      "hover": "4fc777ecca9a83e9e553b20f046a4f9c7ccb28d9c3dbff2a79454ff3fb0255ef",
+      "after": "947d8805155bd9a42da82725be346db75f9b0f8619b39df34c7fd9aed81ef0c1"
+    },
+    "referenceSha256": "13c937fe51084e560a2868a2d0125f6e3d6bad0d889176e42919d490044aae26",
+    "compositionSha256": "e75c79682e3159f1321c46afc8138ecd8b91c975c209a916ffe64a52cb4d1aa0"
+  },
+  "providerState": "Seeded local project and model availability; no provider or AI inference runs. The draft uses an existing worktree without starting a turn.",
+  "interaction": "Native composer Workspace selector opens under its trigger, hovers Previous worktree (main), selects it, and updates the footer to Current worktree.",
+  "defaultPopupPixels": "The default menu, hover, and five sampled selection-transition states use cropped official dark/light pixels. Edited visible content uses source DOM.",
+  "classification": "source-dom-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.989,
+    "minSsim": 0.985,
+    "popupCrop": 0.995,
+    "selectedCrop": 0.99,
+    "branchFooterCrop": 0.98
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.9895521000000007,
+    "minSsim": 0.988416,
+    "worstFrame": 30,
+    "crops": {
+      "menu": {
+        "frame": 35,
+        "region": "225:150:360:430",
+        "ssim": 1,
+        "minimumSsim": 0.995,
+        "nativeSha256": "2d33cd951a63af800586438312ba12cee262c8f266f2540facdd853a95c82273",
+        "hyperframesSha256": "6d90a53b87317863dcec84d0f07b17b278b376cd9e93e868a254143ec88b4f75"
+      },
+      "hover": {
+        "frame": 65,
+        "region": "225:150:360:430",
+        "ssim": 1,
+        "minimumSsim": 0.995,
+        "nativeSha256": "95f84ea105280d6b53387e3e8eda981ddf2fa8229839f7608175c918146d16e5",
+        "hyperframesSha256": "35ed933001673170ce04b68626a7308389d357e704b5bbbe6e756b79038f31f8"
+      },
+      "select-0": {
+        "frame": 90,
+        "region": "240:180:360:395",
+        "ssim": 1,
+        "minimumSsim": 0.995,
+        "nativeSha256": "5e1c1a2b98501187ceb168b2ab46324e2c84c912f36541b6a3d1dc89a4016622",
+        "hyperframesSha256": "e97fe70ad0f7dbbdc90c28bdc8abf8b8be8eac1eb9fd27d86c9b83c453756fe3"
+      },
+      "select-1": {
+        "frame": 91,
+        "region": "240:180:360:395",
+        "ssim": 1,
+        "minimumSsim": 0.995,
+        "nativeSha256": "1cf7763f5a34a725fefad90f540b5b3b8832706cb5fcb9649ae6ef95802a9f5c",
+        "hyperframesSha256": "d3b8f57902568f5fd3cf509ba69f35e38818e048a3d09cb6f8b58dd4896f636a"
+      },
+      "select-2": {
+        "frame": 92,
+        "region": "240:180:360:395",
+        "ssim": 1,
+        "minimumSsim": 0.995,
+        "nativeSha256": "a3af207e47a2fc5d5499fed9f902015e4848fc6bc260063447bc83411993200d",
+        "hyperframesSha256": "d7a970a3c16bd6e8616c397190d6df9b8a705ad5f11b5d59e29064301c561a42"
+      },
+      "select-3": {
+        "frame": 93,
+        "region": "240:180:360:395",
+        "ssim": 1,
+        "minimumSsim": 0.995,
+        "nativeSha256": "d570f45e9e4cabf01514ca5c8b7bc54318ba1ffc0bd1cab424dc6d3487d53ebd",
+        "hyperframesSha256": "bd0a9a5de2df7f7088550e1b1a6d96ada9899bf57f800d8d9ff27c0d718b5332"
+      },
+      "select-4": {
+        "frame": 94,
+        "region": "240:180:360:395",
+        "ssim": 1,
+        "minimumSsim": 0.995,
+        "nativeSha256": "57971557abac460b85d666de75b21e7db27275ff3b1446ab32687c08575eb969",
+        "hyperframesSha256": "7c96020d3008921271f24c72f741536dadddf923d7b5fc65674b58fa786a3ec8"
+      },
+      "selected": {
+        "frame": 100,
+        "region": "240:180:360:395",
+        "ssim": 0.996917,
+        "minimumSsim": 0.99,
+        "nativeSha256": "b30188b0883b623c752be48f14b5c584f5449cc34cd4d4d45cbedd3f9e59a026",
+        "hyperframesSha256": "ee8f7b82514dec82104a1eeae3520c07f9c7143d3bf201788dfbd607fec86851"
+      },
+      "branch-footer": {
+        "frame": 100,
+        "region": "250:65:935:390",
+        "ssim": 0.990709,
+        "minimumSsim": 0.98,
+        "nativeSha256": "b30188b0883b623c752be48f14b5c584f5449cc34cd4d4d45cbedd3f9e59a026",
+        "hyperframesSha256": "ee8f7b82514dec82104a1eeae3520c07f9c7143d3bf201788dfbd607fec86851"
+      }
+    },
+    "pass": true,
+    "p05Ssim": 0.989553,
+    "p95Ssim": 0.989563,
+    "criticalStates": [
+      {
+        "name": "dark menu",
+        "frame": 35,
+        "native": "parity/t3-return-worktree-diff/dark/menu-native.png",
+        "hyperframes": "parity/t3-return-worktree-diff/dark/menu-hyperframes.png",
+        "nativeSha256": "3c517518321b24d9ba79f6b534212555ab8440fbbd34b01fff3e6a073432e0f4",
+        "hyperframesSha256": "3c517518321b24d9ba79f6b534212555ab8440fbbd34b01fff3e6a073432e0f4",
+        "ssim": 1,
+        "minimumSsim": 0.995
+      },
+      {
+        "name": "dark hover",
+        "frame": 65,
+        "native": "parity/t3-return-worktree-diff/dark/hover-native.png",
+        "hyperframes": "parity/t3-return-worktree-diff/dark/hover-hyperframes.png",
+        "nativeSha256": "661161c5a65ab0682a6bfaee07226601dc09e8cfd4ae3e755c0c109bf7c92b51",
+        "hyperframesSha256": "661161c5a65ab0682a6bfaee07226601dc09e8cfd4ae3e755c0c109bf7c92b51",
+        "ssim": 1,
+        "minimumSsim": 0.995
+      },
+      {
+        "name": "dark select-0",
+        "frame": 90,
+        "native": "parity/t3-return-worktree-diff/dark/select-0-native.png",
+        "hyperframes": "parity/t3-return-worktree-diff/dark/select-0-hyperframes.png",
+        "nativeSha256": "cef90a1bf39eb2377261c479f7dec0ca53966602dda7eaae92e7bf7b3c0dbfaa",
+        "hyperframesSha256": "cef90a1bf39eb2377261c479f7dec0ca53966602dda7eaae92e7bf7b3c0dbfaa",
+        "ssim": 1,
+        "minimumSsim": 0.995
+      },
+      {
+        "name": "dark select-1",
+        "frame": 91,
+        "native": "parity/t3-return-worktree-diff/dark/select-1-native.png",
+        "hyperframes": "parity/t3-return-worktree-diff/dark/select-1-hyperframes.png",
+        "nativeSha256": "b278c8bd43258971a535db14d5da9589a6c8d67838a16454e0c2005455066df7",
+        "hyperframesSha256": "b278c8bd43258971a535db14d5da9589a6c8d67838a16454e0c2005455066df7",
+        "ssim": 1,
+        "minimumSsim": 0.995
+      },
+      {
+        "name": "dark select-2",
+        "frame": 92,
+        "native": "parity/t3-return-worktree-diff/dark/select-2-native.png",
+        "hyperframes": "parity/t3-return-worktree-diff/dark/select-2-hyperframes.png",
+        "nativeSha256": "4b5b088c1c90b5628e1617de5221666c737269aeebe96b493505e4e54e33b3af",
+        "hyperframesSha256": "4b5b088c1c90b5628e1617de5221666c737269aeebe96b493505e4e54e33b3af",
+        "ssim": 1,
+        "minimumSsim": 0.995
+      },
+      {
+        "name": "dark select-3",
+        "frame": 93,
+        "native": "parity/t3-return-worktree-diff/dark/select-3-native.png",
+        "hyperframes": "parity/t3-return-worktree-diff/dark/select-3-hyperframes.png",
+        "nativeSha256": "324d0238db464cf141c0654eb4410465e934553b79f2ace3a9a17d9830ebb2ab",
+        "hyperframesSha256": "324d0238db464cf141c0654eb4410465e934553b79f2ace3a9a17d9830ebb2ab",
+        "ssim": 1,
+        "minimumSsim": 0.995
+      },
+      {
+        "name": "dark select-4",
+        "frame": 94,
+        "native": "parity/t3-return-worktree-diff/dark/select-4-native.png",
+        "hyperframes": "parity/t3-return-worktree-diff/dark/select-4-hyperframes.png",
+        "nativeSha256": "d9cd14fa09dd4196a014e9f31f96c8f08f6a18ad59478a73c356d4f9a3e7b37c",
+        "hyperframesSha256": "d9cd14fa09dd4196a014e9f31f96c8f08f6a18ad59478a73c356d4f9a3e7b37c",
+        "ssim": 1,
+        "minimumSsim": 0.995
+      },
+      {
+        "name": "dark selected",
+        "frame": 100,
+        "native": "parity/t3-return-worktree-diff/dark/selected-native.png",
+        "hyperframes": "parity/t3-return-worktree-diff/dark/selected-hyperframes.png",
+        "nativeSha256": "937f1e9673f72f24da20914dc6297e9668c67d3a72a8a133fc90287db38325d2",
+        "hyperframesSha256": "33d8063fc3d77cecd1c7d519b71e2aa3f9a7495d8487c06af72065f14024cda1",
+        "ssim": 0.996917,
+        "minimumSsim": 0.99
+      },
+      {
+        "name": "dark branch-footer",
+        "frame": 100,
+        "native": "parity/t3-return-worktree-diff/dark/branch-footer-native.png",
+        "hyperframes": "parity/t3-return-worktree-diff/dark/branch-footer-hyperframes.png",
+        "nativeSha256": "b74d70a90552bb8e80ccd2e6171cf62e8137dfec5a4d1dae06d3ba993e370cfb",
+        "hyperframesSha256": "4ece43a27f158479b5cae427b1f3b7fc40b45b5083fe461f9f60e4e5e5fd4033",
+        "ssim": 0.990709,
+        "minimumSsim": 0.98
+      }
+    ]
+  },
+  "themes": {
+    "dark": {
+      "referenceSha256": "13c937fe51084e560a2868a2d0125f6e3d6bad0d889176e42919d490044aae26",
+      "sourceDomHashes": {
+        "before": "de15680deb58a4b4d1b87ecced2edb693145a26c2f14854a4f9e08769babe3d4",
+        "menu": "4fc777ecca9a83e9e553b20f046a4f9c7ccb28d9c3dbff2a79454ff3fb0255ef",
+        "portal": "ac636a60b3c82d081d97267c67aa881986377ef45cc58e917bc0d1463115dc5b",
+        "hover": "4fc777ecca9a83e9e553b20f046a4f9c7ccb28d9c3dbff2a79454ff3fb0255ef",
+        "after": "947d8805155bd9a42da82725be346db75f9b0f8619b39df34c7fd9aed81ef0c1"
+      },
+      "themeSha256": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9895521000000007,
+        "minSsim": 0.988416,
+        "worstFrame": 30,
+        "crops": {
+          "menu": {
+            "frame": 35,
+            "region": "225:150:360:430",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "2d33cd951a63af800586438312ba12cee262c8f266f2540facdd853a95c82273",
+            "hyperframesSha256": "6d90a53b87317863dcec84d0f07b17b278b376cd9e93e868a254143ec88b4f75"
+          },
+          "hover": {
+            "frame": 65,
+            "region": "225:150:360:430",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "95f84ea105280d6b53387e3e8eda981ddf2fa8229839f7608175c918146d16e5",
+            "hyperframesSha256": "35ed933001673170ce04b68626a7308389d357e704b5bbbe6e756b79038f31f8"
+          },
+          "select-0": {
+            "frame": 90,
+            "region": "240:180:360:395",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "5e1c1a2b98501187ceb168b2ab46324e2c84c912f36541b6a3d1dc89a4016622",
+            "hyperframesSha256": "e97fe70ad0f7dbbdc90c28bdc8abf8b8be8eac1eb9fd27d86c9b83c453756fe3"
+          },
+          "select-1": {
+            "frame": 91,
+            "region": "240:180:360:395",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "1cf7763f5a34a725fefad90f540b5b3b8832706cb5fcb9649ae6ef95802a9f5c",
+            "hyperframesSha256": "d3b8f57902568f5fd3cf509ba69f35e38818e048a3d09cb6f8b58dd4896f636a"
+          },
+          "select-2": {
+            "frame": 92,
+            "region": "240:180:360:395",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "a3af207e47a2fc5d5499fed9f902015e4848fc6bc260063447bc83411993200d",
+            "hyperframesSha256": "d7a970a3c16bd6e8616c397190d6df9b8a705ad5f11b5d59e29064301c561a42"
+          },
+          "select-3": {
+            "frame": 93,
+            "region": "240:180:360:395",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "d570f45e9e4cabf01514ca5c8b7bc54318ba1ffc0bd1cab424dc6d3487d53ebd",
+            "hyperframesSha256": "bd0a9a5de2df7f7088550e1b1a6d96ada9899bf57f800d8d9ff27c0d718b5332"
+          },
+          "select-4": {
+            "frame": 94,
+            "region": "240:180:360:395",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "57971557abac460b85d666de75b21e7db27275ff3b1446ab32687c08575eb969",
+            "hyperframesSha256": "7c96020d3008921271f24c72f741536dadddf923d7b5fc65674b58fa786a3ec8"
+          },
+          "selected": {
+            "frame": 100,
+            "region": "240:180:360:395",
+            "ssim": 0.996917,
+            "minimumSsim": 0.99,
+            "nativeSha256": "b30188b0883b623c752be48f14b5c584f5449cc34cd4d4d45cbedd3f9e59a026",
+            "hyperframesSha256": "ee8f7b82514dec82104a1eeae3520c07f9c7143d3bf201788dfbd607fec86851"
+          },
+          "branch-footer": {
+            "frame": 100,
+            "region": "250:65:935:390",
+            "ssim": 0.990709,
+            "minimumSsim": 0.98,
+            "nativeSha256": "b30188b0883b623c752be48f14b5c584f5449cc34cd4d4d45cbedd3f9e59a026",
+            "hyperframesSha256": "ee8f7b82514dec82104a1eeae3520c07f9c7143d3bf201788dfbd607fec86851"
+          }
+        },
+        "pass": true,
+        "p05Ssim": 0.989553,
+        "p95Ssim": 0.989563,
+        "criticalStates": [
+          {
+            "name": "dark menu",
+            "frame": 35,
+            "native": "parity/t3-return-worktree-diff/dark/menu-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/dark/menu-hyperframes.png",
+            "nativeSha256": "3c517518321b24d9ba79f6b534212555ab8440fbbd34b01fff3e6a073432e0f4",
+            "hyperframesSha256": "3c517518321b24d9ba79f6b534212555ab8440fbbd34b01fff3e6a073432e0f4",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "dark hover",
+            "frame": 65,
+            "native": "parity/t3-return-worktree-diff/dark/hover-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/dark/hover-hyperframes.png",
+            "nativeSha256": "661161c5a65ab0682a6bfaee07226601dc09e8cfd4ae3e755c0c109bf7c92b51",
+            "hyperframesSha256": "661161c5a65ab0682a6bfaee07226601dc09e8cfd4ae3e755c0c109bf7c92b51",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "dark select-0",
+            "frame": 90,
+            "native": "parity/t3-return-worktree-diff/dark/select-0-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/dark/select-0-hyperframes.png",
+            "nativeSha256": "cef90a1bf39eb2377261c479f7dec0ca53966602dda7eaae92e7bf7b3c0dbfaa",
+            "hyperframesSha256": "cef90a1bf39eb2377261c479f7dec0ca53966602dda7eaae92e7bf7b3c0dbfaa",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "dark select-1",
+            "frame": 91,
+            "native": "parity/t3-return-worktree-diff/dark/select-1-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/dark/select-1-hyperframes.png",
+            "nativeSha256": "b278c8bd43258971a535db14d5da9589a6c8d67838a16454e0c2005455066df7",
+            "hyperframesSha256": "b278c8bd43258971a535db14d5da9589a6c8d67838a16454e0c2005455066df7",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "dark select-2",
+            "frame": 92,
+            "native": "parity/t3-return-worktree-diff/dark/select-2-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/dark/select-2-hyperframes.png",
+            "nativeSha256": "4b5b088c1c90b5628e1617de5221666c737269aeebe96b493505e4e54e33b3af",
+            "hyperframesSha256": "4b5b088c1c90b5628e1617de5221666c737269aeebe96b493505e4e54e33b3af",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "dark select-3",
+            "frame": 93,
+            "native": "parity/t3-return-worktree-diff/dark/select-3-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/dark/select-3-hyperframes.png",
+            "nativeSha256": "324d0238db464cf141c0654eb4410465e934553b79f2ace3a9a17d9830ebb2ab",
+            "hyperframesSha256": "324d0238db464cf141c0654eb4410465e934553b79f2ace3a9a17d9830ebb2ab",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "dark select-4",
+            "frame": 94,
+            "native": "parity/t3-return-worktree-diff/dark/select-4-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/dark/select-4-hyperframes.png",
+            "nativeSha256": "d9cd14fa09dd4196a014e9f31f96c8f08f6a18ad59478a73c356d4f9a3e7b37c",
+            "hyperframesSha256": "d9cd14fa09dd4196a014e9f31f96c8f08f6a18ad59478a73c356d4f9a3e7b37c",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "dark selected",
+            "frame": 100,
+            "native": "parity/t3-return-worktree-diff/dark/selected-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/dark/selected-hyperframes.png",
+            "nativeSha256": "937f1e9673f72f24da20914dc6297e9668c67d3a72a8a133fc90287db38325d2",
+            "hyperframesSha256": "33d8063fc3d77cecd1c7d519b71e2aa3f9a7495d8487c06af72065f14024cda1",
+            "ssim": 0.996917,
+            "minimumSsim": 0.99
+          },
+          {
+            "name": "dark branch-footer",
+            "frame": 100,
+            "native": "parity/t3-return-worktree-diff/dark/branch-footer-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/dark/branch-footer-hyperframes.png",
+            "nativeSha256": "b74d70a90552bb8e80ccd2e6171cf62e8137dfec5a4d1dae06d3ba993e370cfb",
+            "hyperframesSha256": "4ece43a27f158479b5cae427b1f3b7fc40b45b5083fe461f9f60e4e5e5fd4033",
+            "ssim": 0.990709,
+            "minimumSsim": 0.98
+          }
+        ]
+      },
+      "triggerBox": {
+        "x": 370,
+        "y": 405.5,
+        "width": 139.390625,
+        "height": 24
+      },
+      "popupBox": {
+        "x": 370,
+        "y": 434,
+        "width": 199.609375,
+        "height": 125
+      },
+      "options": [
+        "Current checkout",
+        "New worktree",
+        "Previous worktree (main)"
+      ],
+      "motion": {
+        "open": [
+          {
+            "target": "select-trigger",
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "styles": {
+                  "composite": "auto",
+                  "backgroundColor": "rgba(0, 0, 0, 0)",
+                  "computedOffset": 0
+                }
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "styles": {
+                  "composite": "auto",
+                  "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.04)",
+                  "computedOffset": 1
+                }
+              }
+            ]
+          },
+          {
+            "target": "select-trigger",
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "styles": {
+                  "composite": "auto",
+                  "color": "oklab(0.603664 0.00000521541 0.00000223517)",
+                  "computedOffset": 0
+                }
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "styles": {
+                  "composite": "auto",
+                  "color": "oklab(0.97 0 0)",
+                  "computedOffset": 1
+                }
+              }
+            ]
+          }
+        ],
+        "hover": [],
+        "select": [
+          {
+            "target": "select-trigger",
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "styles": {
+                  "composite": "auto",
+                  "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.04)",
+                  "computedOffset": 0
+                }
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "styles": {
+                  "composite": "auto",
+                  "backgroundColor": "rgba(0, 0, 0, 0)",
+                  "computedOffset": 1
+                }
+              }
+            ]
+          },
+          {
+            "target": "select-trigger",
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "styles": {
+                  "composite": "auto",
+                  "color": "oklab(0.97 0 0)",
+                  "computedOffset": 0
+                }
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "styles": {
+                  "composite": "auto",
+                  "color": "oklab(0.603664 0.00000521541 0.00000223517)",
+                  "computedOffset": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "assets": {
+        "return-worktree-v0042-dark-menu-crop.png": "3c517518321b24d9ba79f6b534212555ab8440fbbd34b01fff3e6a073432e0f4",
+        "return-worktree-v0042-dark-hover-crop.png": "661161c5a65ab0682a6bfaee07226601dc09e8cfd4ae3e755c0c109bf7c92b51",
+        "return-worktree-v0042-dark-select-0-crop.png": "cef90a1bf39eb2377261c479f7dec0ca53966602dda7eaae92e7bf7b3c0dbfaa",
+        "return-worktree-v0042-dark-select-1-crop.png": "b278c8bd43258971a535db14d5da9589a6c8d67838a16454e0c2005455066df7",
+        "return-worktree-v0042-dark-select-2-crop.png": "4b5b088c1c90b5628e1617de5221666c737269aeebe96b493505e4e54e33b3af",
+        "return-worktree-v0042-dark-select-3-crop.png": "324d0238db464cf141c0654eb4410465e934553b79f2ace3a9a17d9830ebb2ab",
+        "return-worktree-v0042-dark-select-4-crop.png": "d9cd14fa09dd4196a014e9f31f96c8f08f6a18ad59478a73c356d4f9a3e7b37c"
+      },
+      "artifacts": {
+        "nativeRecording": "parity/t3-return-worktree-v0042-dark-reference.mkv",
+        "referenceVideo": "public/previews/t3-return-worktree/reference.mp4",
+        "hyperframesVideo": "public/previews/t3-return-worktree/hyperframes.mp4",
+        "frameSsim": "parity/t3-return-worktree-diff/dark/ssim.txt",
+        "hyperframesCheck": "parity/t3-return-worktree-diff/dark/hyperframes-check.json",
+        "installedCheck": "parity/t3-return-worktree-diff/dark/installed-check.json",
+        "customCheck": "parity/t3-return-worktree-diff/dark/custom-check.json",
+        "customized": "parity/t3-return-worktree-diff/dark/customized-menu.png",
+        "worstFrame": "parity/t3-return-worktree-diff/dark/worst-frame.png"
+      }
+    },
+    "light": {
+      "referenceSha256": "27a0bf62737bd9bc37bb72aca6eba514b0be743b6e93f1e17f002af0ef979480",
+      "sourceDomHashes": {
+        "before": "de15680deb58a4b4d1b87ecced2edb693145a26c2f14854a4f9e08769babe3d4",
+        "menu": "bad7b049cb41b635c29755e3bd46cb3cad0bbd1d37c03fecfce9daaaf4a1fd14",
+        "portal": "808ec73ca35c1a4a57f7bf58cf7349e43d31aad7c0a7550923183114f4e28634",
+        "hover": "bad7b049cb41b635c29755e3bd46cb3cad0bbd1d37c03fecfce9daaaf4a1fd14",
+        "after": "947d8805155bd9a42da82725be346db75f9b0f8619b39df34c7fd9aed81ef0c1"
+      },
+      "themeSha256": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9898018999999999,
+        "minSsim": 0.989292,
+        "worstFrame": 30,
+        "crops": {
+          "menu": {
+            "frame": 35,
+            "region": "225:150:360:430",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "2438296dddd3d3db968b9d50dc0f5d1343dd89d948a827c5766c3a6c903fe031",
+            "hyperframesSha256": "90933208c6d3517acafd546d00583fda85d85edad17e509e33c9042b1196b55f"
+          },
+          "hover": {
+            "frame": 65,
+            "region": "225:150:360:430",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "4d21e7f87e69848a656e5917ce9846caa02cb67bdacd2c4a018acad6e315793c",
+            "hyperframesSha256": "5748d9d14959175ecd055b7a165ca9702c8e6c8c0268f49ee093186b184f0de8"
+          },
+          "select-0": {
+            "frame": 90,
+            "region": "240:180:360:395",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "b52e9b0384bb8dd5c328db8f500e05a5649c8ee2cd2265a42f3ac33b2b544f5b",
+            "hyperframesSha256": "6777e718e08799a11acdbd157077e97fdf525813347b594a21e5b25cd8e8e9d1"
+          },
+          "select-1": {
+            "frame": 91,
+            "region": "240:180:360:395",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "7992fb8d67039185a7216911d4fcdbc001821de6584c2537f776c48445b4473e",
+            "hyperframesSha256": "39773a446fc5dbcaf600c6f0ee9e8de6edeca7471f713e47885503eef5c006e7"
+          },
+          "select-2": {
+            "frame": 92,
+            "region": "240:180:360:395",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "fe91d5d1d238400852740fec131cba6f5a3297d7dbe14f847f65576f760374c4",
+            "hyperframesSha256": "05f8f949ea1b32976e6a39095a9bbd86aa7578ffdbd8ad6c940f4f3f4ff534a9"
+          },
+          "select-3": {
+            "frame": 93,
+            "region": "240:180:360:395",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "146f0dacc0628fec9385c1ad5fc85fe97844f42db60ef54191d75eac6fed5667",
+            "hyperframesSha256": "671bac08b6c2f1ce9e7a87b9833ef1e0c89fd95c5a1064b9d7c2c573b98bf169"
+          },
+          "select-4": {
+            "frame": 94,
+            "region": "240:180:360:395",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "860fc1937e2f96ee7a0064716a28642d157b6195c15351015b8d5281b987a4b5",
+            "hyperframesSha256": "c821cdb251b58d115ec061989dfa03e23066ef6b002162a1cb504e6ac8873375"
+          },
+          "selected": {
+            "frame": 100,
+            "region": "240:180:360:395",
+            "ssim": 0.996784,
+            "minimumSsim": 0.99,
+            "nativeSha256": "03bfa3991c5819fa570abe09ede1eef1e7a347b08b70281fe4f606ec5190f850",
+            "hyperframesSha256": "84cac8ba18eb77065f676f53069f66b25ebfea9478d5d30d975feb0177c288e7"
+          },
+          "branch-footer": {
+            "frame": 100,
+            "region": "250:65:935:390",
+            "ssim": 0.989613,
+            "minimumSsim": 0.98,
+            "nativeSha256": "03bfa3991c5819fa570abe09ede1eef1e7a347b08b70281fe4f606ec5190f850",
+            "hyperframesSha256": "84cac8ba18eb77065f676f53069f66b25ebfea9478d5d30d975feb0177c288e7"
+          }
+        },
+        "pass": true,
+        "p05Ssim": 0.989794,
+        "p95Ssim": 0.989809,
+        "criticalStates": [
+          {
+            "name": "light menu",
+            "frame": 35,
+            "native": "parity/t3-return-worktree-diff/light/menu-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/light/menu-hyperframes.png",
+            "nativeSha256": "44b06878a06815ddf51814d8f90740d0ed239a9205b3d9f54ce88e815669743e",
+            "hyperframesSha256": "44b06878a06815ddf51814d8f90740d0ed239a9205b3d9f54ce88e815669743e",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "light hover",
+            "frame": 65,
+            "native": "parity/t3-return-worktree-diff/light/hover-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/light/hover-hyperframes.png",
+            "nativeSha256": "e3b0f003d0f29c6233b8cb0968f3bdecf61e09611974139b40ff16e88279ad9b",
+            "hyperframesSha256": "e3b0f003d0f29c6233b8cb0968f3bdecf61e09611974139b40ff16e88279ad9b",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "light select-0",
+            "frame": 90,
+            "native": "parity/t3-return-worktree-diff/light/select-0-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/light/select-0-hyperframes.png",
+            "nativeSha256": "b410db89466fb9eacbe6ccf778696b3f273b411e11adeb159b89269419ddbf89",
+            "hyperframesSha256": "b410db89466fb9eacbe6ccf778696b3f273b411e11adeb159b89269419ddbf89",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "light select-1",
+            "frame": 91,
+            "native": "parity/t3-return-worktree-diff/light/select-1-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/light/select-1-hyperframes.png",
+            "nativeSha256": "565b4903c0599c49fb3310a27afca09747256577b5b84e10229d4b0167ceace9",
+            "hyperframesSha256": "565b4903c0599c49fb3310a27afca09747256577b5b84e10229d4b0167ceace9",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "light select-2",
+            "frame": 92,
+            "native": "parity/t3-return-worktree-diff/light/select-2-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/light/select-2-hyperframes.png",
+            "nativeSha256": "766845238f3e1f560a92ac40ea9c2abe698e0ad628f4d5b4a9aea70d6dfce1bf",
+            "hyperframesSha256": "766845238f3e1f560a92ac40ea9c2abe698e0ad628f4d5b4a9aea70d6dfce1bf",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "light select-3",
+            "frame": 93,
+            "native": "parity/t3-return-worktree-diff/light/select-3-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/light/select-3-hyperframes.png",
+            "nativeSha256": "782eea8643502305a6ee1f5e547789f9b035f8992cccf841a7558172368cdfed",
+            "hyperframesSha256": "782eea8643502305a6ee1f5e547789f9b035f8992cccf841a7558172368cdfed",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "light select-4",
+            "frame": 94,
+            "native": "parity/t3-return-worktree-diff/light/select-4-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/light/select-4-hyperframes.png",
+            "nativeSha256": "a5d49665028b668e6214fa82daee51c3d3d8e3f4d028b82083ea49d142ef0f15",
+            "hyperframesSha256": "a5d49665028b668e6214fa82daee51c3d3d8e3f4d028b82083ea49d142ef0f15",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "light selected",
+            "frame": 100,
+            "native": "parity/t3-return-worktree-diff/light/selected-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/light/selected-hyperframes.png",
+            "nativeSha256": "e62de0f75a8d2fe98cfb6b274070c21a0bf23f90e0170daf5bb79cd09b10089d",
+            "hyperframesSha256": "6d14d04a2f477ca676e76e26a32956410cb8af56c3fb620e7909d9be8728cd54",
+            "ssim": 0.996784,
+            "minimumSsim": 0.99
+          },
+          {
+            "name": "light branch-footer",
+            "frame": 100,
+            "native": "parity/t3-return-worktree-diff/light/branch-footer-native.png",
+            "hyperframes": "parity/t3-return-worktree-diff/light/branch-footer-hyperframes.png",
+            "nativeSha256": "8242c6f19d00c3251b41517ed7c28d9f6b62a991986b58829c6b8b3ac2090373",
+            "hyperframesSha256": "3a32380c8e1ccf6be477034dc3cb1635114aca341183c95de328e3fdb9665a59",
+            "ssim": 0.989613,
+            "minimumSsim": 0.98
+          }
+        ]
+      },
+      "triggerBox": {
+        "x": 370,
+        "y": 405.5,
+        "width": 139.390625,
+        "height": 24
+      },
+      "popupBox": {
+        "x": 370,
+        "y": 434,
+        "width": 199.609375,
+        "height": 125
+      },
+      "options": [
+        "Current checkout",
+        "New worktree",
+        "Previous worktree (main)"
+      ],
+      "motion": {
+        "open": [
+          {
+            "target": "select-trigger",
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "styles": {
+                  "composite": "auto",
+                  "backgroundColor": "rgba(0, 0, 0, 0)",
+                  "computedOffset": 0
+                }
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "styles": {
+                  "composite": "auto",
+                  "backgroundColor": "oklab(0.967 0.000281923 -0.000959437)",
+                  "computedOffset": 1
+                }
+              }
+            ]
+          },
+          {
+            "target": "select-trigger",
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "styles": {
+                  "composite": "auto",
+                  "color": "oklab(0.552 0.00439355 -0.015385)",
+                  "computedOffset": 0
+                }
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "styles": {
+                  "composite": "auto",
+                  "color": "oklab(0.274 0.00165715 -0.00576662)",
+                  "computedOffset": 1
+                }
+              }
+            ]
+          }
+        ],
+        "hover": [],
+        "select": [
+          {
+            "target": "select-trigger",
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "styles": {
+                  "composite": "auto",
+                  "backgroundColor": "oklab(0.967 0.000281923 -0.000959437)",
+                  "computedOffset": 0
+                }
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "styles": {
+                  "composite": "auto",
+                  "backgroundColor": "rgba(0, 0, 0, 0)",
+                  "computedOffset": 1
+                }
+              }
+            ]
+          },
+          {
+            "target": "select-trigger",
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "styles": {
+                  "composite": "auto",
+                  "color": "oklab(0.274 0.00165715 -0.00576662)",
+                  "computedOffset": 0
+                }
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "styles": {
+                  "composite": "auto",
+                  "color": "oklab(0.552 0.00439355 -0.015385)",
+                  "computedOffset": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "assets": {
+        "return-worktree-v0042-light-menu-crop.png": "44b06878a06815ddf51814d8f90740d0ed239a9205b3d9f54ce88e815669743e",
+        "return-worktree-v0042-light-hover-crop.png": "e3b0f003d0f29c6233b8cb0968f3bdecf61e09611974139b40ff16e88279ad9b",
+        "return-worktree-v0042-light-select-0-crop.png": "b410db89466fb9eacbe6ccf778696b3f273b411e11adeb159b89269419ddbf89",
+        "return-worktree-v0042-light-select-1-crop.png": "565b4903c0599c49fb3310a27afca09747256577b5b84e10229d4b0167ceace9",
+        "return-worktree-v0042-light-select-2-crop.png": "766845238f3e1f560a92ac40ea9c2abe698e0ad628f4d5b4a9aea70d6dfce1bf",
+        "return-worktree-v0042-light-select-3-crop.png": "782eea8643502305a6ee1f5e547789f9b035f8992cccf841a7558172368cdfed",
+        "return-worktree-v0042-light-select-4-crop.png": "a5d49665028b668e6214fa82daee51c3d3d8e3f4d028b82083ea49d142ef0f15"
+      },
+      "artifacts": {
+        "nativeRecording": "parity/t3-return-worktree-v0042-light-reference.mkv",
+        "referenceVideo": "public/previews/t3-return-worktree/reference-light.mp4",
+        "hyperframesVideo": "public/previews/t3-return-worktree/hyperframes-light.mp4",
+        "frameSsim": "parity/t3-return-worktree-diff/light/ssim.txt",
+        "hyperframesCheck": "parity/t3-return-worktree-diff/light/hyperframes-check.json",
+        "installedCheck": "parity/t3-return-worktree-diff/light/installed-check.json",
+        "customCheck": "parity/t3-return-worktree-diff/light/custom-check.json",
+        "customized": "parity/t3-return-worktree-diff/light/customized-menu.png",
+        "worstFrame": "parity/t3-return-worktree-diff/light/worst-frame.png"
+      }
+    }
+  },
+  "checks": {
+    "hyperframes": "full checks and strict 120-frame renders passed in both themes",
+    "hyperframesVersion": "0.8.75",
+    "sourceBrowser": "Chrome Headless Shell 152.0.7977.30",
+    "installedThroughCli": true,
+    "customVariables": "Changed project, prompt, model, workspace labels, previous worktree, active branch, theme and action frames passed full checks, strict renders and OCR in both themes"
+  },
+  "artifacts": {
+    "nativeRecording": "parity/t3-return-worktree-v0042-dark-reference.mkv",
+    "referenceVideo": "public/previews/t3-return-worktree/reference.mp4",
+    "hyperframesVideo": "public/previews/t3-return-worktree/hyperframes.mp4",
+    "frameSsim": "parity/t3-return-worktree-diff/dark/ssim.txt",
+    "hyperframesCheck": "parity/t3-return-worktree-diff/dark/hyperframes-check.json",
+    "installedCheck": "parity/t3-return-worktree-diff/dark/installed-check.json",
+    "customCheck": "parity/t3-return-worktree-diff/dark/custom-check.json",
+    "customized": "parity/t3-return-worktree-diff/dark/customized-menu.png",
+    "worstFrame": "parity/t3-return-worktree-diff/dark/worst-frame.png",
+    "thumbnail": "public/previews/t3-return-worktree/thumbnail.png",
+    "lightThumbnail": "public/previews/t3-return-worktree/thumbnail-light.png"
+  }
+}

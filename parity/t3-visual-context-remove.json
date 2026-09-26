@@ -1,0 +1,1279 @@
+{
+  "slug": "t3-visual-context-remove",
+  "origin": {
+    "repository": "https://github.com/pingdotgg/t3code",
+    "commit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+    "source": "apps/web/src/components/chat/ChatComposer.tsx",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1200,
+    "height": 659,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "projectName": "hyfrme",
+      "contextPrompt": "Use this Hyfrme Logo Enter frame as the reference.",
+      "imageName": "hyfrme-logo-enter-final.png",
+      "imageSrc": "compositions/t3-visual-context-logo-enter.png",
+      "hoverFrame": 35,
+      "confirmOpenFrame": 60,
+      "removeFrame": 90,
+      "theme": "dark"
+    },
+    "sourceHashes": {
+      "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+      "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+      "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+    },
+    "sourceDomHashes": {
+      "attached": "40b17b92ff0068a86943ef08f656fc196cf278b0cde627ad9363f725a71d9dc4",
+      "hover": "79df17898cf917892c96f2be7092e5821d037cff6e08b448f643c5128d425774",
+      "confirm": "de6651aad767b9777d785455c81fd71fd48b176d9bfa6897faf061bc1125eacf",
+      "removed": "671618885978c79dfdcdc326df6ec5a7c022e237636e386fa2b05dc9b5a6edfd"
+    },
+    "portalHashes": {
+      "attached": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "hover": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "confirm": "3c33a381dc3cec870d8f64725aac0faa1403efbf87bfcf462f095d8160579531",
+      "removed": "3217f82fdf0b3aa148cea27f5dbe8eec264f3e7ed9ea6b2d897a9311b4e79eb6"
+    },
+    "referenceSha256": "21a101620cde63a96982efd08e0370b4a1c4c845f716ced3064060077a08164d",
+    "compositionSha256": "5a895a98e178243ff9d5a3f548318dcf5c437f09a658eb0bfc74ce0376542335"
+  },
+  "providerState": "Seeded local thread; no provider configured; no AI inference runs.",
+  "interaction": "Hover a referenced Hyfrme Logo Enter attachment, open T3 Code's destructive confirmation, then remove both its shelf tile and inline reference.",
+  "imageSource": "Hyfrme Logo Enter final frame; MIT-licensed Remocn source",
+  "imageSha256": "074f981ca3bdb4c2171db1305f61dbe435f522ce4a4ca3b1ff82d86be0d66c7e",
+  "nativeMotion": "The confirmation backdrop and popup use 200 ms opacity transitions, with popup scale 0.98 to 1 and back. Both themes were sampled at 30 fps from official v0.0.42 and reproduced by deterministic frame seeking.",
+  "measuredLimitations": "The compact chip and confirmation text are not pixel-identical due glyph rasterization. Popup, title, description, and button computed styles and subpixel bounding boxes match official v0.0.42 exactly in both themes. Official T3 Code uses white text on its destructive red Confirm button at 3.53:1 contrast, below WCAG AA's 4.5:1; this one native control has a checker annotation so its real color is preserved. See focused crop scores and style proofs.",
+  "classification": "source-dom-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.989,
+    "minSsim": 0.985,
+    "regions": {
+      "composer": 0.98,
+      "remove-control": 0.98,
+      "inline-chip": 0.97,
+      "confirmation-dialog": 0.96,
+      "confirmation-chrome": 0.985
+    }
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.9916021250000007,
+    "minSsim": 0.98823,
+    "worstFrame": 62,
+    "crops": {
+      "composer": {
+        "geometry": "860:275:330:375",
+        "frameRange": [
+          0,
+          119
+        ],
+        "meanSsim": 0.9950592249999979,
+        "minSsim": 0.993144,
+        "worstFrame": 60,
+        "minGate": 0.98,
+        "pass": true
+      },
+      "remove-control": {
+        "geometry": "100:100:345:390",
+        "frameRange": [
+          0,
+          59
+        ],
+        "meanSsim": 0.9808915833333328,
+        "minSsim": 0.980757,
+        "worstFrame": 0,
+        "minGate": 0.98,
+        "pass": true
+      },
+      "inline-chip": {
+        "geometry": "300:55:670:470",
+        "frameRange": [
+          0,
+          89
+        ],
+        "meanSsim": 0.9828727222222227,
+        "minSsim": 0.976329,
+        "worstFrame": 0,
+        "minGate": 0.97,
+        "pass": true
+      },
+      "confirmation-dialog": {
+        "geometry": "560:230:320:215",
+        "frameRange": [
+          60,
+          96
+        ],
+        "meanSsim": 0.9663576216216216,
+        "minSsim": 0.962083,
+        "worstFrame": 66,
+        "minGate": 0.96,
+        "pass": true
+      },
+      "confirmation-chrome": {
+        "geometry": "520:18:340:239",
+        "frameRange": [
+          60,
+          96
+        ],
+        "meanSsim": 0.9972510810810807,
+        "minSsim": 0.987909,
+        "worstFrame": 95,
+        "minGate": 0.985,
+        "pass": true
+      }
+    },
+    "pass": true,
+    "p05Ssim": 0.990355,
+    "p95Ssim": 0.995726
+  },
+  "themes": {
+    "dark": {
+      "referenceSha256": "21a101620cde63a96982efd08e0370b4a1c4c845f716ced3064060077a08164d",
+      "themeSha256": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9916021250000007,
+        "minSsim": 0.98823,
+        "worstFrame": 62,
+        "crops": {
+          "composer": {
+            "geometry": "860:275:330:375",
+            "frameRange": [
+              0,
+              119
+            ],
+            "meanSsim": 0.9950592249999979,
+            "minSsim": 0.993144,
+            "worstFrame": 60,
+            "minGate": 0.98,
+            "pass": true
+          },
+          "remove-control": {
+            "geometry": "100:100:345:390",
+            "frameRange": [
+              0,
+              59
+            ],
+            "meanSsim": 0.9808915833333328,
+            "minSsim": 0.980757,
+            "worstFrame": 0,
+            "minGate": 0.98,
+            "pass": true
+          },
+          "inline-chip": {
+            "geometry": "300:55:670:470",
+            "frameRange": [
+              0,
+              89
+            ],
+            "meanSsim": 0.9828727222222227,
+            "minSsim": 0.976329,
+            "worstFrame": 0,
+            "minGate": 0.97,
+            "pass": true
+          },
+          "confirmation-dialog": {
+            "geometry": "560:230:320:215",
+            "frameRange": [
+              60,
+              96
+            ],
+            "meanSsim": 0.9663576216216216,
+            "minSsim": 0.962083,
+            "worstFrame": 66,
+            "minGate": 0.96,
+            "pass": true
+          },
+          "confirmation-chrome": {
+            "geometry": "520:18:340:239",
+            "frameRange": [
+              60,
+              96
+            ],
+            "meanSsim": 0.9972510810810807,
+            "minSsim": 0.987909,
+            "worstFrame": 95,
+            "minGate": 0.985,
+            "pass": true
+          }
+        },
+        "pass": true,
+        "p05Ssim": 0.990355,
+        "p95Ssim": 0.995726
+      },
+      "regions": {
+        "composer": {
+          "geometry": "860:275:330:375",
+          "frameRange": [
+            0,
+            119
+          ],
+          "meanSsim": 0.9950592249999979,
+          "minSsim": 0.993144,
+          "worstFrame": 60,
+          "minGate": 0.98,
+          "pass": true
+        },
+        "remove-control": {
+          "geometry": "100:100:345:390",
+          "frameRange": [
+            0,
+            59
+          ],
+          "meanSsim": 0.9808915833333328,
+          "minSsim": 0.980757,
+          "worstFrame": 0,
+          "minGate": 0.98,
+          "pass": true
+        },
+        "inline-chip": {
+          "geometry": "300:55:670:470",
+          "frameRange": [
+            0,
+            89
+          ],
+          "meanSsim": 0.9828727222222227,
+          "minSsim": 0.976329,
+          "worstFrame": 0,
+          "minGate": 0.97,
+          "pass": true
+        },
+        "confirmation-dialog": {
+          "geometry": "560:230:320:215",
+          "frameRange": [
+            60,
+            96
+          ],
+          "meanSsim": 0.9663576216216216,
+          "minSsim": 0.962083,
+          "worstFrame": 66,
+          "minGate": 0.96,
+          "pass": true
+        },
+        "confirmation-chrome": {
+          "geometry": "520:18:340:239",
+          "frameRange": [
+            60,
+            96
+          ],
+          "meanSsim": 0.9972510810810807,
+          "minSsim": 0.987909,
+          "worstFrame": 95,
+          "minGate": 0.985,
+          "pass": true
+        }
+      },
+      "motion": {
+        "hover": [],
+        "confirm": [
+          {
+            "type": "CSSTransition",
+            "target": "alert-dialog-backdrop",
+            "ariaLabel": null,
+            "durationMs": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "composite": "auto",
+                "opacity": "0",
+                "computedOffset": 0
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "composite": "auto",
+                "opacity": "1",
+                "computedOffset": 1
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "target": "alert-dialog-popup",
+            "ariaLabel": null,
+            "durationMs": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "composite": "auto",
+                "opacity": "0",
+                "computedOffset": 0
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "composite": "auto",
+                "opacity": "1",
+                "computedOffset": 1
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "target": "alert-dialog-popup",
+            "ariaLabel": null,
+            "durationMs": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "composite": "auto",
+                "scale": "0.98",
+                "computedOffset": 0
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "composite": "auto",
+                "scale": "1",
+                "computedOffset": 1
+              }
+            ]
+          }
+        ],
+        "remove": [
+          {
+            "type": "CSSTransition",
+            "target": "alert-dialog-backdrop",
+            "ariaLabel": null,
+            "durationMs": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "composite": "auto",
+                "opacity": "1",
+                "computedOffset": 0
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "composite": "auto",
+                "opacity": "0",
+                "computedOffset": 1
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "target": "alert-dialog-popup",
+            "ariaLabel": null,
+            "durationMs": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "composite": "auto",
+                "opacity": "1",
+                "computedOffset": 0
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "composite": "auto",
+                "opacity": "0",
+                "computedOffset": 1
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "target": "alert-dialog-popup",
+            "ariaLabel": null,
+            "durationMs": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "composite": "auto",
+                "scale": "1",
+                "computedOffset": 0
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "composite": "auto",
+                "scale": "0.98",
+                "computedOffset": 1
+              }
+            ]
+          }
+        ]
+      },
+      "geometry": {
+        "attached": {
+          "removeButton": {
+            "rect": {
+              "x": 396,
+              "y": 409,
+              "width": 24,
+              "height": 24
+            },
+            "backgroundColor": "oklab(0.145 0 0 / 0.8)",
+            "color": "oklab(0.97 0 0)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500"
+          },
+          "attachmentTile": {
+            "rect": {
+              "x": 361,
+              "y": 404,
+              "width": 64,
+              "height": 64
+            },
+            "backgroundColor": "oklch(0.145 0 none)",
+            "color": "oklab(0.97 0 0)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "oklab(0.999994 0.0000458062 0.0000200272 / 0.048)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "composer": {
+            "rect": {
+              "x": 345,
+              "y": 388,
+              "width": 766,
+              "height": 218
+            },
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "color": "oklab(0.97 0 0)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "color(srgb 1 1 1 / 0.06)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "dialog": null,
+          "backdrop": null
+        },
+        "hover": {
+          "removeButton": {
+            "rect": {
+              "x": 396,
+              "y": 409,
+              "width": 24,
+              "height": 24
+            },
+            "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.04)",
+            "color": "oklab(0.97 0 0)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500"
+          },
+          "attachmentTile": {
+            "rect": {
+              "x": 361,
+              "y": 404,
+              "width": 64,
+              "height": 64
+            },
+            "backgroundColor": "oklch(0.145 0 none)",
+            "color": "oklab(0.97 0 0)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "oklab(0.999994 0.0000458062 0.0000200272 / 0.048)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "composer": {
+            "rect": {
+              "x": 345,
+              "y": 388,
+              "width": 766,
+              "height": 218
+            },
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "color": "oklab(0.97 0 0)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "color(srgb 1 1 1 / 0.06)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "dialog": null,
+          "backdrop": null
+        },
+        "confirm": {
+          "removeButton": {
+            "rect": {
+              "x": 396,
+              "y": 409,
+              "width": 24,
+              "height": 24
+            },
+            "backgroundColor": "oklab(0.145 0 0 / 0.8)",
+            "color": "oklab(0.97 0 0)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500"
+          },
+          "attachmentTile": {
+            "rect": {
+              "x": 361,
+              "y": 404,
+              "width": 64,
+              "height": 64
+            },
+            "backgroundColor": "oklch(0.145 0 none)",
+            "color": "oklab(0.97 0 0)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "oklab(0.999994 0.0000458062 0.0000200272 / 0.048)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "composer": {
+            "rect": {
+              "x": 345,
+              "y": 388,
+              "width": 766,
+              "height": 218
+            },
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "color": "oklab(0.97 0 0)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "color(srgb 1 1 1 / 0.06)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "dialog": {
+            "rect": {
+              "x": 349.1199951171875,
+              "y": 239.8300018310547,
+              "width": 501.760009765625,
+              "height": 179.33998107910156
+            },
+            "backgroundColor": "color(srgb 0.0393766 0.039393 0.0393945 / 0.8)",
+            "color": "oklab(0.97 0 0)",
+            "opacity": "0",
+            "scale": "0.98",
+            "transform": "none",
+            "borderColor": "color(srgb 1 1 1 / 0.08)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "backdrop": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1200,
+              "height": 659
+            },
+            "backgroundColor": "color(srgb 0.0393766 0.039393 0.0393945 / 0.64)",
+            "color": "rgb(245, 245, 245)",
+            "opacity": "0",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "color(srgb 1 1 1 / 0.06)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          }
+        },
+        "removed": {
+          "removeButton": null,
+          "attachmentTile": null,
+          "composer": {
+            "rect": {
+              "x": 345,
+              "y": 464,
+              "width": 766,
+              "height": 142
+            },
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "color": "oklab(0.97 0 0)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "color(srgb 1 1 1 / 0.06)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "dialog": {
+            "rect": {
+              "x": 344,
+              "y": 238,
+              "width": 512,
+              "height": 183
+            },
+            "backgroundColor": "color(srgb 0.0393766 0.039393 0.0393945 / 0.8)",
+            "color": "oklab(0.97 0 0)",
+            "opacity": "1",
+            "scale": "1",
+            "transform": "none",
+            "borderColor": "color(srgb 1 1 1 / 0.08)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "backdrop": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1200,
+              "height": 659
+            },
+            "backgroundColor": "color(srgb 0.0393766 0.039393 0.0393945 / 0.64)",
+            "color": "rgb(245, 245, 245)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "color(srgb 1 1 1 / 0.06)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          }
+        }
+      },
+      "attachmentBlobUrls": 1,
+      "thumbnailSha256": "074f981ca3bdb4c2171db1305f61dbe435f522ce4a4ca3b1ff82d86be0d66c7e",
+      "artifacts": {
+        "referenceVideo": "public/previews/t3-visual-context-remove/reference.mp4",
+        "hyperframesVideo": "public/previews/t3-visual-context-remove/hyperframes.mp4",
+        "frameSsim": "parity/t3-visual-context-remove-diff/dark/ssim.txt",
+        "regionSsim": {
+          "composer": "parity/t3-visual-context-remove-diff/dark/composer-ssim.txt",
+          "remove-control": "parity/t3-visual-context-remove-diff/dark/remove-control-ssim.txt",
+          "inline-chip": "parity/t3-visual-context-remove-diff/dark/inline-chip-ssim.txt",
+          "confirmation-dialog": "parity/t3-visual-context-remove-diff/dark/confirmation-dialog-ssim.txt",
+          "confirmation-chrome": "parity/t3-visual-context-remove-diff/dark/confirmation-chrome-ssim.txt"
+        },
+        "hyperframesCheck": "parity/t3-visual-context-remove-diff/dark/hyperframes-check.json",
+        "installedCheck": "parity/t3-visual-context-remove-diff/dark/installed-check.json",
+        "customCheck": "parity/t3-visual-context-remove-diff/dark/custom-check.json",
+        "computedStyleAndBounds": "parity/t3-visual-context-remove-diff/dark/font-and-bounds-proof.json",
+        "worstFrame": "parity/t3-visual-context-remove-diff/dark/worst-frame.png",
+        "customizedDialog": "parity/t3-visual-context-remove-diff/dark/customized-dialog.png",
+        "customizedRemoved": "parity/t3-visual-context-remove-diff/dark/customized-removed.png"
+      }
+    },
+    "light": {
+      "referenceSha256": "7f88d0d3519c52df777fddb6fe7b8be97fee9a65855c63dd1d1a2fa5ff7f18a9",
+      "themeSha256": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9917916083333318,
+        "minSsim": 0.988329,
+        "worstFrame": 62,
+        "crops": {
+          "composer": {
+            "geometry": "860:275:330:375",
+            "frameRange": [
+              0,
+              119
+            ],
+            "meanSsim": 0.9946954999999984,
+            "minSsim": 0.992692,
+            "worstFrame": 60,
+            "minGate": 0.98,
+            "pass": true
+          },
+          "remove-control": {
+            "geometry": "100:100:345:390",
+            "frameRange": [
+              0,
+              59
+            ],
+            "meanSsim": 0.9804187500000008,
+            "minSsim": 0.98041,
+            "worstFrame": 0,
+            "minGate": 0.98,
+            "pass": true
+          },
+          "inline-chip": {
+            "geometry": "300:55:670:470",
+            "frameRange": [
+              0,
+              89
+            ],
+            "meanSsim": 0.9749041333333311,
+            "minSsim": 0.964997,
+            "worstFrame": 0,
+            "minGate": 0.96,
+            "pass": true
+          },
+          "confirmation-dialog": {
+            "geometry": "560:230:320:215",
+            "frameRange": [
+              60,
+              96
+            ],
+            "meanSsim": 0.967575783783784,
+            "minSsim": 0.963148,
+            "worstFrame": 66,
+            "minGate": 0.96,
+            "pass": true
+          },
+          "confirmation-chrome": {
+            "geometry": "520:18:340:239",
+            "frameRange": [
+              60,
+              96
+            ],
+            "meanSsim": 0.9971667027027022,
+            "minSsim": 0.987288,
+            "worstFrame": 61,
+            "minGate": 0.985,
+            "pass": true
+          }
+        },
+        "pass": true,
+        "p05Ssim": 0.990548,
+        "p95Ssim": 0.995809
+      },
+      "regions": {
+        "composer": {
+          "geometry": "860:275:330:375",
+          "frameRange": [
+            0,
+            119
+          ],
+          "meanSsim": 0.9946954999999984,
+          "minSsim": 0.992692,
+          "worstFrame": 60,
+          "minGate": 0.98,
+          "pass": true
+        },
+        "remove-control": {
+          "geometry": "100:100:345:390",
+          "frameRange": [
+            0,
+            59
+          ],
+          "meanSsim": 0.9804187500000008,
+          "minSsim": 0.98041,
+          "worstFrame": 0,
+          "minGate": 0.98,
+          "pass": true
+        },
+        "inline-chip": {
+          "geometry": "300:55:670:470",
+          "frameRange": [
+            0,
+            89
+          ],
+          "meanSsim": 0.9749041333333311,
+          "minSsim": 0.964997,
+          "worstFrame": 0,
+          "minGate": 0.96,
+          "pass": true
+        },
+        "confirmation-dialog": {
+          "geometry": "560:230:320:215",
+          "frameRange": [
+            60,
+            96
+          ],
+          "meanSsim": 0.967575783783784,
+          "minSsim": 0.963148,
+          "worstFrame": 66,
+          "minGate": 0.96,
+          "pass": true
+        },
+        "confirmation-chrome": {
+          "geometry": "520:18:340:239",
+          "frameRange": [
+            60,
+            96
+          ],
+          "meanSsim": 0.9971667027027022,
+          "minSsim": 0.987288,
+          "worstFrame": 61,
+          "minGate": 0.985,
+          "pass": true
+        }
+      },
+      "motion": {
+        "hover": [],
+        "confirm": [
+          {
+            "type": "CSSTransition",
+            "target": "alert-dialog-backdrop",
+            "ariaLabel": null,
+            "durationMs": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "composite": "auto",
+                "opacity": "0",
+                "computedOffset": 0
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "composite": "auto",
+                "opacity": "1",
+                "computedOffset": 1
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "target": "alert-dialog-popup",
+            "ariaLabel": null,
+            "durationMs": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "composite": "auto",
+                "opacity": "0",
+                "computedOffset": 0
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "composite": "auto",
+                "opacity": "1",
+                "computedOffset": 1
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "target": "alert-dialog-popup",
+            "ariaLabel": null,
+            "durationMs": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "composite": "auto",
+                "scale": "0.98",
+                "computedOffset": 0
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "composite": "auto",
+                "scale": "1",
+                "computedOffset": 1
+              }
+            ]
+          }
+        ],
+        "remove": [
+          {
+            "type": "CSSTransition",
+            "target": "alert-dialog-backdrop",
+            "ariaLabel": null,
+            "durationMs": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "composite": "auto",
+                "opacity": "1",
+                "computedOffset": 0
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "composite": "auto",
+                "opacity": "0",
+                "computedOffset": 1
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "target": "alert-dialog-popup",
+            "ariaLabel": null,
+            "durationMs": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "composite": "auto",
+                "opacity": "1",
+                "computedOffset": 0
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "composite": "auto",
+                "opacity": "0",
+                "computedOffset": 1
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "target": "alert-dialog-popup",
+            "ariaLabel": null,
+            "durationMs": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "offset": 0,
+                "easing": "linear",
+                "composite": "auto",
+                "scale": "1",
+                "computedOffset": 0
+              },
+              {
+                "offset": 1,
+                "easing": "linear",
+                "composite": "auto",
+                "scale": "0.98",
+                "computedOffset": 1
+              }
+            ]
+          }
+        ]
+      },
+      "geometry": {
+        "attached": {
+          "removeButton": {
+            "rect": {
+              "x": 396,
+              "y": 409,
+              "width": 24,
+              "height": 24
+            },
+            "backgroundColor": "oklab(0.992 0 0 / 0.8)",
+            "color": "oklab(0.274 0.00165715 -0.00576662)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500"
+          },
+          "attachmentTile": {
+            "rect": {
+              "x": 361,
+              "y": 404,
+              "width": 64,
+              "height": 64
+            },
+            "backgroundColor": "oklch(0.992 0 0)",
+            "color": "oklab(0.274 0.00165715 -0.00576662)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "oklab(0.92 0.00112405 -0.0038389 / 0.8)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "composer": {
+            "rect": {
+              "x": 345,
+              "y": 388,
+              "width": 766,
+              "height": 218
+            },
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "color": "oklab(0.274 0.00165715 -0.00576662)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "color(srgb 0.89436 0.894525 0.906214)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "dialog": null,
+          "backdrop": null
+        },
+        "hover": {
+          "removeButton": {
+            "rect": {
+              "x": 396,
+              "y": 409,
+              "width": 24,
+              "height": 24
+            },
+            "backgroundColor": "oklch(0.967 0.001 286.375)",
+            "color": "oklab(0.274 0.00165715 -0.00576662)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500"
+          },
+          "attachmentTile": {
+            "rect": {
+              "x": 361,
+              "y": 404,
+              "width": 64,
+              "height": 64
+            },
+            "backgroundColor": "oklch(0.992 0 0)",
+            "color": "oklab(0.274 0.00165715 -0.00576662)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "oklab(0.92 0.00112405 -0.0038389 / 0.8)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "composer": {
+            "rect": {
+              "x": 345,
+              "y": 388,
+              "width": 766,
+              "height": 218
+            },
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "color": "oklab(0.274 0.00165715 -0.00576662)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "color(srgb 0.89436 0.894525 0.906214)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "dialog": null,
+          "backdrop": null
+        },
+        "confirm": {
+          "removeButton": {
+            "rect": {
+              "x": 396,
+              "y": 409,
+              "width": 24,
+              "height": 24
+            },
+            "backgroundColor": "oklab(0.992 0 0 / 0.8)",
+            "color": "oklab(0.274 0.00165715 -0.00576662)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500"
+          },
+          "attachmentTile": {
+            "rect": {
+              "x": 361,
+              "y": 404,
+              "width": 64,
+              "height": 64
+            },
+            "backgroundColor": "oklch(0.992 0 0)",
+            "color": "oklab(0.274 0.00165715 -0.00576662)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "oklab(0.92 0.00112405 -0.0038389 / 0.8)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "composer": {
+            "rect": {
+              "x": 345,
+              "y": 388,
+              "width": 766,
+              "height": 218
+            },
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "color": "oklab(0.274 0.00165715 -0.00576662)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "color(srgb 0.89436 0.894525 0.906214)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "dialog": {
+            "rect": {
+              "x": 349.1199951171875,
+              "y": 239.8300018310547,
+              "width": 501.760009765625,
+              "height": 179.33998107910156
+            },
+            "backgroundColor": "color(srgb 0.989332 0.989513 0.98953 / 0.8)",
+            "color": "oklab(0.274 0.00165715 -0.00576662)",
+            "opacity": "0",
+            "scale": "0.98",
+            "transform": "none",
+            "borderColor": "color(srgb 0.152872 0.152897 0.165785 / 0.1)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "backdrop": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1200,
+              "height": 659
+            },
+            "backgroundColor": "color(srgb 0.989332 0.989513 0.98953 / 0.6)",
+            "color": "rgb(38, 38, 38)",
+            "opacity": "0",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "color(srgb 0.89436 0.894525 0.906214)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          }
+        },
+        "removed": {
+          "removeButton": null,
+          "attachmentTile": null,
+          "composer": {
+            "rect": {
+              "x": 345,
+              "y": 464,
+              "width": 766,
+              "height": 142
+            },
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "color": "oklab(0.274 0.00165715 -0.00576662)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "color(srgb 0.89436 0.894525 0.906214)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "dialog": {
+            "rect": {
+              "x": 344,
+              "y": 238,
+              "width": 512,
+              "height": 183
+            },
+            "backgroundColor": "color(srgb 0.989332 0.989513 0.98953 / 0.8)",
+            "color": "oklab(0.274 0.00165715 -0.00576662)",
+            "opacity": "1",
+            "scale": "1",
+            "transform": "none",
+            "borderColor": "color(srgb 0.152872 0.152897 0.165785 / 0.1)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "backdrop": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1200,
+              "height": 659
+            },
+            "backgroundColor": "color(srgb 0.989332 0.989513 0.98953 / 0.6)",
+            "color": "rgb(38, 38, 38)",
+            "opacity": "1",
+            "scale": "none",
+            "transform": "none",
+            "borderColor": "color(srgb 0.89436 0.894525 0.906214)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          }
+        }
+      },
+      "attachmentBlobUrls": 1,
+      "thumbnailSha256": "074f981ca3bdb4c2171db1305f61dbe435f522ce4a4ca3b1ff82d86be0d66c7e",
+      "artifacts": {
+        "referenceVideo": "public/previews/t3-visual-context-remove/reference-light.mp4",
+        "hyperframesVideo": "public/previews/t3-visual-context-remove/hyperframes-light.mp4",
+        "frameSsim": "parity/t3-visual-context-remove-diff/light/ssim.txt",
+        "regionSsim": {
+          "composer": "parity/t3-visual-context-remove-diff/light/composer-ssim.txt",
+          "remove-control": "parity/t3-visual-context-remove-diff/light/remove-control-ssim.txt",
+          "inline-chip": "parity/t3-visual-context-remove-diff/light/inline-chip-ssim.txt",
+          "confirmation-dialog": "parity/t3-visual-context-remove-diff/light/confirmation-dialog-ssim.txt",
+          "confirmation-chrome": "parity/t3-visual-context-remove-diff/light/confirmation-chrome-ssim.txt"
+        },
+        "hyperframesCheck": "parity/t3-visual-context-remove-diff/light/hyperframes-check.json",
+        "installedCheck": "parity/t3-visual-context-remove-diff/light/installed-check.json",
+        "customCheck": "parity/t3-visual-context-remove-diff/light/custom-check.json",
+        "computedStyleAndBounds": "parity/t3-visual-context-remove-diff/light/font-and-bounds-proof.json",
+        "worstFrame": "parity/t3-visual-context-remove-diff/light/worst-frame.png",
+        "customizedDialog": "parity/t3-visual-context-remove-diff/light/customized-dialog.png",
+        "customizedRemoved": "parity/t3-visual-context-remove-diff/light/customized-removed.png"
+      }
+    }
+  },
+  "checks": {
+    "hyperframes": "full check and strict 120-frame render passed in both themes",
+    "hyperframesVersion": "0.8.75",
+    "sourceBrowser": "Chrome Headless Shell 152.0.7977.30",
+    "installedThroughCli": true,
+    "customVariables": "Dark and light edited thread history, prompt, image, filename, size label, warning/button copy, and action frames passed full check, strict 120-frame render, and visible state assertions."
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/t3-visual-context-remove/reference.mp4",
+    "hyperframesVideo": "public/previews/t3-visual-context-remove/hyperframes.mp4",
+    "frameSsim": "parity/t3-visual-context-remove-diff/dark/ssim.txt",
+    "regionSsim": {
+      "composer": "parity/t3-visual-context-remove-diff/dark/composer-ssim.txt",
+      "remove-control": "parity/t3-visual-context-remove-diff/dark/remove-control-ssim.txt",
+      "inline-chip": "parity/t3-visual-context-remove-diff/dark/inline-chip-ssim.txt",
+      "confirmation-dialog": "parity/t3-visual-context-remove-diff/dark/confirmation-dialog-ssim.txt",
+      "confirmation-chrome": "parity/t3-visual-context-remove-diff/dark/confirmation-chrome-ssim.txt"
+    },
+    "hyperframesCheck": "parity/t3-visual-context-remove-diff/dark/hyperframes-check.json",
+    "installedCheck": "parity/t3-visual-context-remove-diff/dark/installed-check.json",
+    "customCheck": "parity/t3-visual-context-remove-diff/dark/custom-check.json",
+    "computedStyleAndBounds": "parity/t3-visual-context-remove-diff/dark/font-and-bounds-proof.json",
+    "worstFrame": "parity/t3-visual-context-remove-diff/dark/worst-frame.png",
+    "customizedDialog": "parity/t3-visual-context-remove-diff/dark/customized-dialog.png",
+    "customizedRemoved": "parity/t3-visual-context-remove-diff/dark/customized-removed.png",
+    "thumbnail": "public/previews/t3-visual-context-remove/thumbnail.png",
+    "lightThumbnail": "public/previews/t3-visual-context-remove/thumbnail-light.png"
+  }
+}

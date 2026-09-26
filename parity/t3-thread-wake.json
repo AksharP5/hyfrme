@@ -1,0 +1,552 @@
+{
+  "slug": "t3-thread-wake",
+  "origin": {
+    "repository": "https://github.com/pingdotgg/t3code",
+    "commit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+    "source": "apps/web/src/components/Sidebar.tsx; apps/web/src/components/threadActionMenu.logic.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1200,
+    "height": 659,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "theme": "dark",
+      "projectName": "hyfrme",
+      "selectedThread": "Catalog motion audit",
+      "wakeThread": "Build a logo intro",
+      "expanded": 20,
+      "menu": 40,
+      "wake": 70,
+      "persisted": 95
+    },
+    "sourceHashes": {
+      "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+      "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+      "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+    },
+    "sourceDomHashes": {
+      "collapsed": "4d0cd25e47986f4d180aced4e70e0bd9815931a3cd4a6fac31075451559b04a0",
+      "expanded": "2f317f1142d3d24c3abba9ee94b0b1da4a3cd88f4c1fc4625362e252b7e2c38b",
+      "menu": "2f317f1142d3d24c3abba9ee94b0b1da4a3cd88f4c1fc4625362e252b7e2c38b",
+      "woke": "4e89df3b579d4e00e475924cc87a8935a56fcb4a146ad762acd36453f578efb7",
+      "persisted": "2cccbb3f37fcfabee5c1329522e1ba99e98efe7fe2bf746bd3345217f4f454c8"
+    },
+    "referenceSha256": "8eb51eda0091e87b081f19d5b76a5711564a3e2658d73ce531de22e302407484",
+    "compositionSha256": "22f201e0e7eef6c867481ae49d08761aebe02bb465981b6d402ea1687121730f"
+  },
+  "providerState": "The Hyfrme project and completed conversation are seeded. Native Wake thread clears the local snooze fields and survives reload; no GitHub account or AI provider runs.",
+  "interaction": "The native Snoozed shelf expands, then the lower row menu opens upward at x=128,y=310. Wake thread restores Build a logo intro to Active and its state persists after reload.",
+  "defaultPopupPixels": "The default row-menu state uses cropped official dark/light pixels. Edited visible content uses source DOM.",
+  "classification": "source-dom-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.985,
+    "minSsim": 0.98,
+    "defaultPopupCrop": 0.995,
+    "snoozedRowCrop": 0.965,
+    "wokenRowCrop": 0.97
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.9882267499999977,
+    "minSsim": 0.98739,
+    "worstFrame": 40,
+    "crops": {
+      "snoozed-row": {
+        "frame": 30,
+        "region": "240:55:9:536",
+        "ssim": 0.969531,
+        "minimumSsim": 0.965,
+        "nativeSha256": "b436096ecb861def2f3b3dacb08c19a192ba2cd84ae350c37e13b4c451146ddc",
+        "hyperframesSha256": "28549b874d41a9ce242d9dd46969886ccf7c70450058148fba049d08656baa6f"
+      },
+      "menu": {
+        "frame": 50,
+        "region": "185:353:124:306",
+        "ssim": 1,
+        "minimumSsim": 0.995,
+        "nativeSha256": "224e12457c446a3dbeffabf46532c7035f3c9cf52564e8293c8fdd4887e5e1d1",
+        "hyperframesSha256": "50b7b994e668e77fb3609ebf24ab127736b5c85a57a5622e1432d63709a7ac6c"
+      },
+      "woken-row": {
+        "frame": 80,
+        "region": "240:90:9:178",
+        "ssim": 0.9822,
+        "minimumSsim": 0.97,
+        "nativeSha256": "9b64c12d2fa84aacdcb2916aedbe7245961f3c808abd350acfda901422ef2b1b",
+        "hyperframesSha256": "aaf52d7f12b9db859e3ab73b8a4321b027f66fdf25d4bec8387cda5c48a42adf"
+      },
+      "persisted-row": {
+        "frame": 105,
+        "region": "240:90:9:178",
+        "ssim": 0.9822,
+        "minimumSsim": 0.97,
+        "nativeSha256": "9b64c12d2fa84aacdcb2916aedbe7245961f3c808abd350acfda901422ef2b1b",
+        "hyperframesSha256": "aaf52d7f12b9db859e3ab73b8a4321b027f66fdf25d4bec8387cda5c48a42adf"
+      }
+    },
+    "pass": true,
+    "p05Ssim": 0.98739,
+    "p95Ssim": 0.988776,
+    "criticalStates": [
+      {
+        "name": "dark snoozed-row",
+        "frame": 30,
+        "native": "parity/t3-thread-wake-diff/dark/snoozed-row-native.png",
+        "hyperframes": "parity/t3-thread-wake-diff/dark/snoozed-row-hyperframes.png",
+        "nativeSha256": "9b8bb431c8ad1488a35c65153721a06aea3ff136447d7fe00a949b2cba1432d0",
+        "hyperframesSha256": "8f752ae2d68360c4856fdb606c62741aada3de47743772b79cb7580e8022c967",
+        "ssim": 0.969531,
+        "minimumSsim": 0.965
+      },
+      {
+        "name": "dark menu",
+        "frame": 50,
+        "native": "parity/t3-thread-wake-diff/dark/menu-native.png",
+        "hyperframes": "parity/t3-thread-wake-diff/dark/menu-hyperframes.png",
+        "nativeSha256": "f9105b46fc5520da93bf70c8b2074ce36fd9f4194fc8d1bc7a78dc2043ed1d8c",
+        "hyperframesSha256": "f9105b46fc5520da93bf70c8b2074ce36fd9f4194fc8d1bc7a78dc2043ed1d8c",
+        "ssim": 1,
+        "minimumSsim": 0.995
+      },
+      {
+        "name": "dark woken-row",
+        "frame": 80,
+        "native": "parity/t3-thread-wake-diff/dark/woken-row-native.png",
+        "hyperframes": "parity/t3-thread-wake-diff/dark/woken-row-hyperframes.png",
+        "nativeSha256": "b4fab5c096fe544638c8f6162cdf4b01631c2d5cfeed65a87e84080e3454c7d6",
+        "hyperframesSha256": "44f92ce302c14b24d9a4e6a6a5bfdf1574f4030b6eedb032de4f86c66886716f",
+        "ssim": 0.9822,
+        "minimumSsim": 0.97
+      },
+      {
+        "name": "dark persisted-row",
+        "frame": 105,
+        "native": "parity/t3-thread-wake-diff/dark/persisted-row-native.png",
+        "hyperframes": "parity/t3-thread-wake-diff/dark/persisted-row-hyperframes.png",
+        "nativeSha256": "b4fab5c096fe544638c8f6162cdf4b01631c2d5cfeed65a87e84080e3454c7d6",
+        "hyperframesSha256": "44f92ce302c14b24d9a4e6a6a5bfdf1574f4030b6eedb032de4f86c66886716f",
+        "ssim": 0.9822,
+        "minimumSsim": 0.97
+      }
+    ]
+  },
+  "themes": {
+    "dark": {
+      "referenceSha256": "8eb51eda0091e87b081f19d5b76a5711564a3e2658d73ce531de22e302407484",
+      "sourceDomHashes": {
+        "collapsed": "4d0cd25e47986f4d180aced4e70e0bd9815931a3cd4a6fac31075451559b04a0",
+        "expanded": "2f317f1142d3d24c3abba9ee94b0b1da4a3cd88f4c1fc4625362e252b7e2c38b",
+        "menu": "2f317f1142d3d24c3abba9ee94b0b1da4a3cd88f4c1fc4625362e252b7e2c38b",
+        "woke": "4e89df3b579d4e00e475924cc87a8935a56fcb4a146ad762acd36453f578efb7",
+        "persisted": "2cccbb3f37fcfabee5c1329522e1ba99e98efe7fe2bf746bd3345217f4f454c8"
+      },
+      "themeSha256": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9882267499999977,
+        "minSsim": 0.98739,
+        "worstFrame": 40,
+        "crops": {
+          "snoozed-row": {
+            "frame": 30,
+            "region": "240:55:9:536",
+            "ssim": 0.969531,
+            "minimumSsim": 0.965,
+            "nativeSha256": "b436096ecb861def2f3b3dacb08c19a192ba2cd84ae350c37e13b4c451146ddc",
+            "hyperframesSha256": "28549b874d41a9ce242d9dd46969886ccf7c70450058148fba049d08656baa6f"
+          },
+          "menu": {
+            "frame": 50,
+            "region": "185:353:124:306",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "224e12457c446a3dbeffabf46532c7035f3c9cf52564e8293c8fdd4887e5e1d1",
+            "hyperframesSha256": "50b7b994e668e77fb3609ebf24ab127736b5c85a57a5622e1432d63709a7ac6c"
+          },
+          "woken-row": {
+            "frame": 80,
+            "region": "240:90:9:178",
+            "ssim": 0.9822,
+            "minimumSsim": 0.97,
+            "nativeSha256": "9b64c12d2fa84aacdcb2916aedbe7245961f3c808abd350acfda901422ef2b1b",
+            "hyperframesSha256": "aaf52d7f12b9db859e3ab73b8a4321b027f66fdf25d4bec8387cda5c48a42adf"
+          },
+          "persisted-row": {
+            "frame": 105,
+            "region": "240:90:9:178",
+            "ssim": 0.9822,
+            "minimumSsim": 0.97,
+            "nativeSha256": "9b64c12d2fa84aacdcb2916aedbe7245961f3c808abd350acfda901422ef2b1b",
+            "hyperframesSha256": "aaf52d7f12b9db859e3ab73b8a4321b027f66fdf25d4bec8387cda5c48a42adf"
+          }
+        },
+        "pass": true,
+        "p05Ssim": 0.98739,
+        "p95Ssim": 0.988776,
+        "criticalStates": [
+          {
+            "name": "dark snoozed-row",
+            "frame": 30,
+            "native": "parity/t3-thread-wake-diff/dark/snoozed-row-native.png",
+            "hyperframes": "parity/t3-thread-wake-diff/dark/snoozed-row-hyperframes.png",
+            "nativeSha256": "9b8bb431c8ad1488a35c65153721a06aea3ff136447d7fe00a949b2cba1432d0",
+            "hyperframesSha256": "8f752ae2d68360c4856fdb606c62741aada3de47743772b79cb7580e8022c967",
+            "ssim": 0.969531,
+            "minimumSsim": 0.965
+          },
+          {
+            "name": "dark menu",
+            "frame": 50,
+            "native": "parity/t3-thread-wake-diff/dark/menu-native.png",
+            "hyperframes": "parity/t3-thread-wake-diff/dark/menu-hyperframes.png",
+            "nativeSha256": "f9105b46fc5520da93bf70c8b2074ce36fd9f4194fc8d1bc7a78dc2043ed1d8c",
+            "hyperframesSha256": "f9105b46fc5520da93bf70c8b2074ce36fd9f4194fc8d1bc7a78dc2043ed1d8c",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "dark woken-row",
+            "frame": 80,
+            "native": "parity/t3-thread-wake-diff/dark/woken-row-native.png",
+            "hyperframes": "parity/t3-thread-wake-diff/dark/woken-row-hyperframes.png",
+            "nativeSha256": "b4fab5c096fe544638c8f6162cdf4b01631c2d5cfeed65a87e84080e3454c7d6",
+            "hyperframesSha256": "44f92ce302c14b24d9a4e6a6a5bfdf1574f4030b6eedb032de4f86c66886716f",
+            "ssim": 0.9822,
+            "minimumSsim": 0.97
+          },
+          {
+            "name": "dark persisted-row",
+            "frame": 105,
+            "native": "parity/t3-thread-wake-diff/dark/persisted-row-native.png",
+            "hyperframes": "parity/t3-thread-wake-diff/dark/persisted-row-hyperframes.png",
+            "nativeSha256": "b4fab5c096fe544638c8f6162cdf4b01631c2d5cfeed65a87e84080e3454c7d6",
+            "hyperframesSha256": "44f92ce302c14b24d9a4e6a6a5bfdf1574f4030b6eedb032de4f86c66886716f",
+            "ssim": 0.9822,
+            "minimumSsim": 0.97
+          }
+        ]
+      },
+      "observed": {
+        "collapsed": {
+          "activeRows": [
+            "HEhyfrme18hSettleCatalog motion auditmain",
+            "HEhyfrme23hSettleGrouped logo testslogo/assemble",
+            "HEhyfrme1dSettleReview final holdlogo/hold-final",
+            "HEhyfrme2dSettleSearch reveal timingmain"
+          ],
+          "snoozedRows": [],
+          "shelfExpanded": "false",
+          "dbState": "2026-09-25T18:01:35.791Z|2026-09-25T21:00:00.000Z"
+        },
+        "expanded": {
+          "activeRows": [
+            "HEhyfrme18hSettleCatalog motion auditmain",
+            "HEhyfrme23hSettleGrouped logo testslogo/assemble",
+            "HEhyfrme1dSettleReview final holdlogo/hold-final",
+            "HEhyfrme2dSettleSearch reveal timingmain"
+          ],
+          "snoozedRows": [
+            "HEBuild a logo intro3h"
+          ],
+          "shelfExpanded": "true",
+          "dbState": "2026-09-25T18:01:35.791Z|2026-09-25T21:00:00.000Z"
+        },
+        "menu": {
+          "activeRows": [
+            "HEhyfrme18hSettleCatalog motion auditmain",
+            "HEhyfrme23hSettleGrouped logo testslogo/assemble",
+            "HEhyfrme1dSettleReview final holdlogo/hold-final",
+            "HEhyfrme2dSettleSearch reveal timingmain"
+          ],
+          "snoozedRows": [
+            "HEBuild a logo intro3h"
+          ],
+          "shelfExpanded": "true",
+          "dbState": "2026-09-25T18:01:35.791Z|2026-09-25T21:00:00.000Z",
+          "menuBox": {
+            "x": 128,
+            "y": 310,
+            "width": 175.296875,
+            "height": 345
+          },
+          "rowBox": {
+            "x": 9,
+            "y": 546,
+            "width": 238,
+            "height": 36
+          },
+          "menuLabels": [
+            "New thread on main",
+            "Pin thread",
+            "Settle thread",
+            "Wake thread",
+            "Rename thread",
+            "Regenerate title",
+            "Mark unread",
+            "Copy",
+            "Project settings",
+            "Archive thread",
+            "Delete"
+          ]
+        },
+        "woke": {
+          "activeRows": [
+            "HEhyfrme18hSettleCatalog motion auditmain",
+            "HEhyfrme16hSettleBuild a logo intromain",
+            "HEhyfrme23hSettleGrouped logo testslogo/assemble",
+            "HEhyfrme1dSettleReview final holdlogo/hold-final",
+            "HEhyfrme2dSettleSearch reveal timingmain"
+          ],
+          "snoozedRows": [],
+          "shelfExpanded": null,
+          "dbState": "|"
+        },
+        "persisted": {
+          "activeRows": [
+            "HEhyfrme18hSettleCatalog motion auditmain",
+            "HEhyfrme16hSettleBuild a logo intromain",
+            "HEhyfrme23hSettleGrouped logo testslogo/assemble",
+            "HEhyfrme1dSettleReview final holdlogo/hold-final",
+            "HEhyfrme2dSettleSearch reveal timingmain"
+          ],
+          "snoozedRows": [],
+          "shelfExpanded": null,
+          "dbState": "|"
+        }
+      },
+      "assets": {
+        "thread-wake-v0042-dark-menu-crop.png": "f9105b46fc5520da93bf70c8b2074ce36fd9f4194fc8d1bc7a78dc2043ed1d8c"
+      },
+      "artifacts": {
+        "nativeRecording": "parity/t3-thread-wake-v0042-dark-reference.mkv",
+        "referenceVideo": "public/previews/t3-thread-wake/reference.mp4",
+        "hyperframesVideo": "public/previews/t3-thread-wake/hyperframes.mp4",
+        "frameSsim": "parity/t3-thread-wake-diff/dark/ssim.txt",
+        "hyperframesCheck": "parity/t3-thread-wake-diff/dark/hyperframes-check.json",
+        "installedCheck": "parity/t3-thread-wake-diff/dark/installed-check.json",
+        "customCheck": "parity/t3-thread-wake-diff/dark/custom-check.json",
+        "customized": "parity/t3-thread-wake-diff/dark/customized-menu.png"
+      }
+    },
+    "light": {
+      "referenceSha256": "1a3fd60be2b0380a1cc252b540cfdaabc87f437a8b97302e81710ad94bc10a46",
+      "sourceDomHashes": {
+        "collapsed": "8ebae048cb2c6fe5e1b1ef31092411c2f61200a1d8bcda3748c537e1f16c519f",
+        "expanded": "25125e38b4be9af89b16a2f519b5e5853374b1cbaf31f3c88170cf3d2de0726e",
+        "menu": "25125e38b4be9af89b16a2f519b5e5853374b1cbaf31f3c88170cf3d2de0726e",
+        "woke": "3c11101d7e58e81fcb7900b549873f8ca1548ab3959dc65af301479ce404fdd4",
+        "persisted": "2cccbb3f37fcfabee5c1329522e1ba99e98efe7fe2bf746bd3345217f4f454c8"
+      },
+      "themeSha256": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9885537499999993,
+        "minSsim": 0.988164,
+        "worstFrame": 40,
+        "crops": {
+          "snoozed-row": {
+            "frame": 30,
+            "region": "240:55:9:536",
+            "ssim": 0.973781,
+            "minimumSsim": 0.97,
+            "nativeSha256": "7f185a7ef27c4385be693421754f0cdd05358de0c946803b729cc11913bb3a4c",
+            "hyperframesSha256": "30300e2441904427e260b68e7af89f330525892fbf06d16d8d7a694bb21cae4b"
+          },
+          "menu": {
+            "frame": 50,
+            "region": "185:353:124:306",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "f29192ea5f8b521562b284c226aa6ae1dfadbdd151b2c95f84b6b868363860a2",
+            "hyperframesSha256": "a25c06314171cbb7c7c9bad2995d0ef328eb6124d13dc4b7e92f97a84fa38856"
+          },
+          "woken-row": {
+            "frame": 80,
+            "region": "240:90:9:178",
+            "ssim": 0.982842,
+            "minimumSsim": 0.97,
+            "nativeSha256": "c7af2a8bdf2573f04294e3ab8a516c69dd6f79e23d54f0ff6f58507d1dafa95b",
+            "hyperframesSha256": "b40bd4a9432e54d3d269b76fa27d149dd29e491ce489d7a9e2e3fd7161c4178e"
+          },
+          "persisted-row": {
+            "frame": 105,
+            "region": "240:90:9:178",
+            "ssim": 0.982842,
+            "minimumSsim": 0.97,
+            "nativeSha256": "c7af2a8bdf2573f04294e3ab8a516c69dd6f79e23d54f0ff6f58507d1dafa95b",
+            "hyperframesSha256": "b40bd4a9432e54d3d269b76fa27d149dd29e491ce489d7a9e2e3fd7161c4178e"
+          }
+        },
+        "pass": true,
+        "p05Ssim": 0.988164,
+        "p95Ssim": 0.988967,
+        "criticalStates": [
+          {
+            "name": "light snoozed-row",
+            "frame": 30,
+            "native": "parity/t3-thread-wake-diff/light/snoozed-row-native.png",
+            "hyperframes": "parity/t3-thread-wake-diff/light/snoozed-row-hyperframes.png",
+            "nativeSha256": "8e484863f3c5f08154887bc38c228a47471d8bfb6cc6a56a422de4dd93d48ab2",
+            "hyperframesSha256": "16775e5394b3f2d9efe2f7761e56bcf923885b62bdf2bc74c55f6e28cc0114f9",
+            "ssim": 0.973781,
+            "minimumSsim": 0.97
+          },
+          {
+            "name": "light menu",
+            "frame": 50,
+            "native": "parity/t3-thread-wake-diff/light/menu-native.png",
+            "hyperframes": "parity/t3-thread-wake-diff/light/menu-hyperframes.png",
+            "nativeSha256": "3f97a2b9e5c22e83520e5d4d5eadd9c3a9e56ebd0c054cc6af9a57b95aa15735",
+            "hyperframesSha256": "3f97a2b9e5c22e83520e5d4d5eadd9c3a9e56ebd0c054cc6af9a57b95aa15735",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "light woken-row",
+            "frame": 80,
+            "native": "parity/t3-thread-wake-diff/light/woken-row-native.png",
+            "hyperframes": "parity/t3-thread-wake-diff/light/woken-row-hyperframes.png",
+            "nativeSha256": "50d774f8ecab32624f8aa8b6e95daec70a614cfaf801f55563b31ba27d0c3994",
+            "hyperframesSha256": "6ebe3a41ee430f836f720f1bdf3f1520fb17bab779746eba6eb5a3857e0b32bb",
+            "ssim": 0.982842,
+            "minimumSsim": 0.97
+          },
+          {
+            "name": "light persisted-row",
+            "frame": 105,
+            "native": "parity/t3-thread-wake-diff/light/persisted-row-native.png",
+            "hyperframes": "parity/t3-thread-wake-diff/light/persisted-row-hyperframes.png",
+            "nativeSha256": "50d774f8ecab32624f8aa8b6e95daec70a614cfaf801f55563b31ba27d0c3994",
+            "hyperframesSha256": "6ebe3a41ee430f836f720f1bdf3f1520fb17bab779746eba6eb5a3857e0b32bb",
+            "ssim": 0.982842,
+            "minimumSsim": 0.97
+          }
+        ]
+      },
+      "observed": {
+        "collapsed": {
+          "activeRows": [
+            "HEhyfrme18hSettleCatalog motion auditmain",
+            "HEhyfrme23hSettleGrouped logo testslogo/assemble",
+            "HEhyfrme1dSettleReview final holdlogo/hold-final",
+            "HEhyfrme2dSettleSearch reveal timingmain"
+          ],
+          "snoozedRows": [],
+          "shelfExpanded": "false",
+          "dbState": "2026-09-25T18:02:10.638Z|2026-09-25T21:00:00.000Z"
+        },
+        "expanded": {
+          "activeRows": [
+            "HEhyfrme18hSettleCatalog motion auditmain",
+            "HEhyfrme23hSettleGrouped logo testslogo/assemble",
+            "HEhyfrme1dSettleReview final holdlogo/hold-final",
+            "HEhyfrme2dSettleSearch reveal timingmain"
+          ],
+          "snoozedRows": [
+            "HEBuild a logo intro3h"
+          ],
+          "shelfExpanded": "true",
+          "dbState": "2026-09-25T18:02:10.638Z|2026-09-25T21:00:00.000Z"
+        },
+        "menu": {
+          "activeRows": [
+            "HEhyfrme18hSettleCatalog motion auditmain",
+            "HEhyfrme23hSettleGrouped logo testslogo/assemble",
+            "HEhyfrme1dSettleReview final holdlogo/hold-final",
+            "HEhyfrme2dSettleSearch reveal timingmain"
+          ],
+          "snoozedRows": [
+            "HEBuild a logo intro3h"
+          ],
+          "shelfExpanded": "true",
+          "dbState": "2026-09-25T18:02:10.638Z|2026-09-25T21:00:00.000Z",
+          "menuBox": {
+            "x": 128,
+            "y": 310,
+            "width": 175.296875,
+            "height": 345
+          },
+          "rowBox": {
+            "x": 9,
+            "y": 546,
+            "width": 238,
+            "height": 36
+          },
+          "menuLabels": [
+            "New thread on main",
+            "Pin thread",
+            "Settle thread",
+            "Wake thread",
+            "Rename thread",
+            "Regenerate title",
+            "Mark unread",
+            "Copy",
+            "Project settings",
+            "Archive thread",
+            "Delete"
+          ]
+        },
+        "woke": {
+          "activeRows": [
+            "HEhyfrme18hSettleCatalog motion auditmain",
+            "HEhyfrme16hSettleBuild a logo intromain",
+            "HEhyfrme23hSettleGrouped logo testslogo/assemble",
+            "HEhyfrme1dSettleReview final holdlogo/hold-final",
+            "HEhyfrme2dSettleSearch reveal timingmain"
+          ],
+          "snoozedRows": [],
+          "shelfExpanded": null,
+          "dbState": "|"
+        },
+        "persisted": {
+          "activeRows": [
+            "HEhyfrme18hSettleCatalog motion auditmain",
+            "HEhyfrme16hSettleBuild a logo intromain",
+            "HEhyfrme23hSettleGrouped logo testslogo/assemble",
+            "HEhyfrme1dSettleReview final holdlogo/hold-final",
+            "HEhyfrme2dSettleSearch reveal timingmain"
+          ],
+          "snoozedRows": [],
+          "shelfExpanded": null,
+          "dbState": "|"
+        }
+      },
+      "assets": {
+        "thread-wake-v0042-light-menu-crop.png": "3f97a2b9e5c22e83520e5d4d5eadd9c3a9e56ebd0c054cc6af9a57b95aa15735"
+      },
+      "artifacts": {
+        "nativeRecording": "parity/t3-thread-wake-v0042-light-reference.mkv",
+        "referenceVideo": "public/previews/t3-thread-wake/reference-light.mp4",
+        "hyperframesVideo": "public/previews/t3-thread-wake/hyperframes-light.mp4",
+        "frameSsim": "parity/t3-thread-wake-diff/light/ssim.txt",
+        "hyperframesCheck": "parity/t3-thread-wake-diff/light/hyperframes-check.json",
+        "installedCheck": "parity/t3-thread-wake-diff/light/installed-check.json",
+        "customCheck": "parity/t3-thread-wake-diff/light/custom-check.json",
+        "customized": "parity/t3-thread-wake-diff/light/customized-menu.png"
+      }
+    }
+  },
+  "checks": {
+    "hyperframes": "full checks and strict 120-frame renders passed in both themes",
+    "hyperframesVersion": "0.8.75",
+    "sourceBrowser": "Chrome Headless Shell 152.0.7977.30",
+    "installedThroughCli": true,
+    "customVariables": "Changed project, thread and conversation copy, shelf and menu actions, theme and action frames passed full checks, strict renders and OCR in both themes"
+  },
+  "artifacts": {
+    "nativeRecording": "parity/t3-thread-wake-v0042-dark-reference.mkv",
+    "referenceVideo": "public/previews/t3-thread-wake/reference.mp4",
+    "hyperframesVideo": "public/previews/t3-thread-wake/hyperframes.mp4",
+    "frameSsim": "parity/t3-thread-wake-diff/dark/ssim.txt",
+    "hyperframesCheck": "parity/t3-thread-wake-diff/dark/hyperframes-check.json",
+    "installedCheck": "parity/t3-thread-wake-diff/dark/installed-check.json",
+    "customCheck": "parity/t3-thread-wake-diff/dark/custom-check.json",
+    "customized": "parity/t3-thread-wake-diff/dark/customized-menu.png",
+    "thumbnail": "public/previews/t3-thread-wake/thumbnail.png",
+    "lightThumbnail": "public/previews/t3-thread-wake/thumbnail-light.png"
+  }
+}

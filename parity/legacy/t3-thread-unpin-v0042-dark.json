@@ -1,0 +1,74 @@
+{
+  "slug": "t3-thread-unpin",
+  "origin": {
+    "repository": "https://github.com/pingdotgg/t3code",
+    "commit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+    "source": "apps/web/src/components/Sidebar.tsx",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1200,
+    "height": 659,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "menu": 25,
+      "unpin": 55,
+      "pinMenu": 85
+    },
+    "sourceHashes": {
+      "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+      "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+      "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+    },
+    "domSha256": {
+      "pinned": "645466b8856bc87b0c4797be701bd55b0ef3d47969423d938cf8049bbddb564b",
+      "unpin-menu": "7ae012e7bf208ee235ad5e5ef35115b3802adf652020946b6d0c1b0f90f804d8",
+      "unpinned": "4881aa5b7f1858aeaf1033390393a6f801f5b4a7dc89f194ab36786716e7cca9",
+      "pin-menu": "4881aa5b7f1858aeaf1033390393a6f801f5b4a7dc89f194ab36786716e7cca9"
+    },
+    "portalSha256": {
+      "unpin-menu": "2a64adda6301df39455a77bfde313b5e1733d5a22a1def52c7581dabd3e81d6d",
+      "pin-menu": "0986d8e2c7385496aaa509c3efc8088a200473b27f0cc4bfba8fa1c3494b4437"
+    },
+    "menuBox": {
+      "x": 128,
+      "y": 137,
+      "width": 175.296875,
+      "height": 345
+    },
+    "referenceSha256": "264c729c01d0bb8ace6f8260bbe26677c62b8823566850fcbcf126f1ec57f658",
+    "compositionSha256": "798dcead2d35bcd9825f94af6ae71ffbb283213ab194d9059c9bfa059f680cc6"
+  },
+  "classification": "source-dom-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.989,
+    "minSsim": 0.985
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.9894984583333333,
+    "minSsim": 0.988789,
+    "worstFrame": 85,
+    "pass": true,
+    "p05Ssim": 0.988789,
+    "p95Ssim": 0.990782
+  },
+  "checks": {
+    "hyperframes": "full check passed with no errors; strict render passed",
+    "sourceBrowser": "Chrome Headless Shell 152",
+    "motionCoverage": "Settled states only; native 150 ms sidebar reorder and hover transitions remain to be captured",
+    "customization": "changed text, project avatar, and all three beat times passed full check and four snapshots",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/t3-thread-unpin/reference.mp4",
+    "hyperframesVideo": "public/previews/t3-thread-unpin/hyperframes.mp4",
+    "thumbnail": "public/previews/t3-thread-unpin/thumbnail.png",
+    "frameSsim": "parity/t3-thread-unpin-diff/ssim.txt",
+    "hyperframesCheck": "parity/t3-thread-unpin-diff/hyperframes-check.json",
+    "worstFrame": "parity/t3-thread-unpin-diff/worst-frame.png"
+  }
+}

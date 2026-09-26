@@ -1,0 +1,67 @@
+{
+  "slug": "t3-fast-service-tier",
+  "origin": {
+    "repository": "https://github.com/pingdotgg/t3code",
+    "commit": "f925d639421844f02b3166d29281905dbba6d529",
+    "source": "apps/web",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1200,
+    "height": 659,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "projectName": "hyfrme",
+      "branchName": "main",
+      "prompt": "Check the Hyfrme catalog build and report any errors.",
+      "reasoningLevel": "Low",
+      "serviceBefore": "Standard",
+      "serviceAfter": "Fast",
+      "openFrame": 30,
+      "selectFrame": 90
+    },
+    "sourceHashes": {
+      "index": "76dc31527cb322caa7fcd43540428d561294ae70edd6e58a7d4ea219460126b8",
+      "css": "7e8c650997b043793b8b073da6b524f7c7460fd70ced779291bca6b66264005c",
+      "js": "990874e9806303c06edff2bd0b9af98453c64843db74b5a0609974a2d686be07"
+    },
+    "domSha256": {
+      "before": "d868a968db12fdf12473d6fcbef1eec14b8f215d0bfa4da95e71241fa81e0dbf",
+      "menu": "e958421ecb1139f93985e0b9c6b2fb58e0c06eeee633be4a19b67d9805d059c7",
+      "portal": "d38e8c943f62c3e7590e65868db7c8d8c15822909830b26e0c65a03466d9843d",
+      "after": "7323d6eaf7e86d47254b8bd057f86fb3c5e3359781f775f5b0600c1b17ff2352"
+    },
+    "referenceSha256": "7f94d15092c237fe32b52f2ed9899ac0f072257a9892a394322570c8e9b0c135",
+    "compositionSha256": "5b3d958ee2b564800df6a9c89202c26b049a18d5f16fd6ad04cd18aa5f40d942"
+  },
+  "classification": "source-dom-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.9895,
+    "minSsim": 0.985
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.9896965000000002,
+    "minSsim": 0.989245,
+    "p05Ssim": 0.989245,
+    "p95Ssim": 0.989848,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed with no errors; strict render passed",
+    "hyperframesVersion": "0.8.75",
+    "sourceBrowser": "Chrome Headless Shell 152.0.7977.30",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true,
+    "intentionalLayoutIgnore": "The native popover intentionally covers the heading and composer; only those underlying text regions are excluded from HyperFrames layout-overlap checks."
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/t3-fast-service-tier/reference.mp4",
+    "hyperframesVideo": "public/previews/t3-fast-service-tier/hyperframes.mp4",
+    "thumbnail": "public/previews/t3-fast-service-tier/thumbnail.png",
+    "frameSsim": "parity/t3-fast-service-tier-ssim.txt"
+  }
+}

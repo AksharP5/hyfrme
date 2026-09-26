@@ -1,0 +1,468 @@
+{
+  "slug": "t3-thread-archive",
+  "origin": {
+    "repository": "https://github.com/pingdotgg/t3code",
+    "commit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+    "source": "apps/web/src/components/threadActionMenu.logic.ts, apps/web/src/hooks/useThreadActionMenu.ts, apps/web/src/hooks/useThreadActions.ts, and apps/web/src/components/settings/SettingsPanels.tsx",
+    "license": "MIT; @pierre/trees and @pierre/diffs Apache-2.0"
+  },
+  "fixture": {
+    "width": 1200,
+    "height": 659,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "theme": "dark",
+      "projectName": "hyfrme",
+      "targetThread": "Build a logo intro",
+      "menu": 25,
+      "archive": 50,
+      "archivedList": 75,
+      "unarchive": 100
+    },
+    "sourceHashes": {
+      "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+      "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+      "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+    },
+    "sourceDomHashes": {
+      "before": "60591050d4b238f36ed04cbf97d1a61ecd800cf84fe90650beba1845c326b3e2",
+      "menu": "5f51abab06e7f17694333269f9626917b31ec500714c41867faea765f041f22d",
+      "archived": "0785a87bff8f584c1675133b8b1154e057d45e8f66d2c72766835c67e16c84a0",
+      "archived-list": "440dd20299454b31b5d4266e0836210014014dbabb32254575cec2a9df7ace74",
+      "unarchived": "ae23b8234998c1e55ae2a8949d14e6cbf08ac180d63c89bde63b1d3cbc4434af"
+    },
+    "referenceSha256": "1420f3d0da1471203cec3b69d90aaced3ba6f0eccde3f5cc3b5d7e8311656694",
+    "compositionSha256": "16cf62e7971413edd1fce51afec0a487ba2430c9437c141a656b051e6b07c11f"
+  },
+  "providerState": "The Hyfrme project, thread, and conversation are seeded. Native Archive and Unarchive execute against an isolated local database; no GitHub account or AI provider runs.",
+  "interaction": "Native header menu opens at x=367,y=40; Archive removes the active thread and navigates to a draft. Settings Archive shows the persisted row, and Unarchive removes it from the archive list.",
+  "defaultPopupPixels": "The default header menu uses cropped official dark/light pixels. Edited visible content uses source DOM anchored to the edited title trigger.",
+  "classification": "source-dom-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.985,
+    "minSsim": 0.98,
+    "defaultPopupCrop": 0.995,
+    "actionCrop": 0.95
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.9929316666666647,
+    "minSsim": 0.989573,
+    "worstFrame": 25,
+    "crops": {
+      "menu": {
+        "frame": 35,
+        "region": "185:353:363:37",
+        "ssim": 1,
+        "minimumSsim": 0.995,
+        "nativeSha256": "9dde6f21363f25998d2cfc6589989d50b2dbf102372aafbb3934bd18c96836e2",
+        "hyperframesSha256": "4319a1742de6fcbdc7f3ba9921c4a2861614b6594c5faa4f7f54939bc9c64538"
+      },
+      "archived-sidebar": {
+        "frame": 65,
+        "region": "266:240:0:80",
+        "ssim": 0.980768,
+        "minimumSsim": 0.97,
+        "nativeSha256": "10899d71d2e20234180fbf93a50c3c00caca440baaa1ff39ce979cf1841e37a6",
+        "hyperframesSha256": "c31d9c32bfe4b0636a9509f26abbe79cc89a0578bbfd5f0dfcb14de0ddbf38cc"
+      },
+      "archive-list": {
+        "frame": 85,
+        "region": "750:180:340:130",
+        "ssim": 0.998209,
+        "minimumSsim": 0.95,
+        "nativeSha256": "bca67e0cc2e99d727b0a23195b9e5f007ce5b99e3bf102a1d6893bd618185374",
+        "hyperframesSha256": "cc0240eed74bdcf451ac4dc191926a5e9ba2ac1aba80633c1c0a8247f7045042"
+      },
+      "unarchived-empty": {
+        "frame": 110,
+        "region": "750:240:340:130",
+        "ssim": 0.997794,
+        "minimumSsim": 0.95,
+        "nativeSha256": "35de264ff584cd08a4c5f5141ff664ffca55c84324c2ef2c9d82dfd17e60ba02",
+        "hyperframesSha256": "e61d7c560f406fe8247f8712a8a3a8a61438344fbd725832e840a43f9beaf1c0"
+      }
+    },
+    "pass": true,
+    "p05Ssim": 0.989573,
+    "p95Ssim": 0.996845,
+    "criticalStates": [
+      {
+        "name": "dark menu",
+        "frame": 35,
+        "native": "parity/t3-thread-archive-diff/dark/menu-native.png",
+        "hyperframes": "parity/t3-thread-archive-diff/dark/menu-hyperframes.png",
+        "nativeSha256": "d382ed9228f62c2e45d39bf40ffa93603d7314679da89e9b5c0380cc652c42b4",
+        "hyperframesSha256": "d382ed9228f62c2e45d39bf40ffa93603d7314679da89e9b5c0380cc652c42b4",
+        "ssim": 1,
+        "minimumSsim": 0.995
+      },
+      {
+        "name": "dark archived-sidebar",
+        "frame": 65,
+        "native": "parity/t3-thread-archive-diff/dark/archived-sidebar-native.png",
+        "hyperframes": "parity/t3-thread-archive-diff/dark/archived-sidebar-hyperframes.png",
+        "nativeSha256": "c3e32dc6c332600a3bc3c1f01b839860c02ff26abd864bdd0db9d38c762220ef",
+        "hyperframesSha256": "2e51dd1104b37efa15b62f67bafee6e1eb46c9fcbe766cb86fa55dcdb9737a89",
+        "ssim": 0.980768,
+        "minimumSsim": 0.97
+      },
+      {
+        "name": "dark archive-list",
+        "frame": 85,
+        "native": "parity/t3-thread-archive-diff/dark/archive-list-native.png",
+        "hyperframes": "parity/t3-thread-archive-diff/dark/archive-list-hyperframes.png",
+        "nativeSha256": "42bcf04dd8a0997291fc6ace1a858f2dfa47407c555c716aa8974defcfe6b11b",
+        "hyperframesSha256": "f6b29323a67cb3cadce87e23b97146cb3ca7a2a8b31cad541f2cc78b900dd85d",
+        "ssim": 0.998209,
+        "minimumSsim": 0.95
+      },
+      {
+        "name": "dark unarchived-empty",
+        "frame": 110,
+        "native": "parity/t3-thread-archive-diff/dark/unarchived-empty-native.png",
+        "hyperframes": "parity/t3-thread-archive-diff/dark/unarchived-empty-hyperframes.png",
+        "nativeSha256": "c6f05c0ce60e4c2edaeb4e1774e319457c844b8ec06557b49a687986e3054de9",
+        "hyperframesSha256": "20de60cf86f88b34edab1af66d784943839f992bbf079ba4ba0334bad1a54d0c",
+        "ssim": 0.997794,
+        "minimumSsim": 0.95
+      }
+    ]
+  },
+  "themes": {
+    "dark": {
+      "referenceSha256": "1420f3d0da1471203cec3b69d90aaced3ba6f0eccde3f5cc3b5d7e8311656694",
+      "sourceDomHashes": {
+        "before": "60591050d4b238f36ed04cbf97d1a61ecd800cf84fe90650beba1845c326b3e2",
+        "menu": "5f51abab06e7f17694333269f9626917b31ec500714c41867faea765f041f22d",
+        "archived": "0785a87bff8f584c1675133b8b1154e057d45e8f66d2c72766835c67e16c84a0",
+        "archived-list": "440dd20299454b31b5d4266e0836210014014dbabb32254575cec2a9df7ace74",
+        "unarchived": "ae23b8234998c1e55ae2a8949d14e6cbf08ac180d63c89bde63b1d3cbc4434af"
+      },
+      "themeSha256": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9929316666666647,
+        "minSsim": 0.989573,
+        "worstFrame": 25,
+        "crops": {
+          "menu": {
+            "frame": 35,
+            "region": "185:353:363:37",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "9dde6f21363f25998d2cfc6589989d50b2dbf102372aafbb3934bd18c96836e2",
+            "hyperframesSha256": "4319a1742de6fcbdc7f3ba9921c4a2861614b6594c5faa4f7f54939bc9c64538"
+          },
+          "archived-sidebar": {
+            "frame": 65,
+            "region": "266:240:0:80",
+            "ssim": 0.980768,
+            "minimumSsim": 0.97,
+            "nativeSha256": "10899d71d2e20234180fbf93a50c3c00caca440baaa1ff39ce979cf1841e37a6",
+            "hyperframesSha256": "c31d9c32bfe4b0636a9509f26abbe79cc89a0578bbfd5f0dfcb14de0ddbf38cc"
+          },
+          "archive-list": {
+            "frame": 85,
+            "region": "750:180:340:130",
+            "ssim": 0.998209,
+            "minimumSsim": 0.95,
+            "nativeSha256": "bca67e0cc2e99d727b0a23195b9e5f007ce5b99e3bf102a1d6893bd618185374",
+            "hyperframesSha256": "cc0240eed74bdcf451ac4dc191926a5e9ba2ac1aba80633c1c0a8247f7045042"
+          },
+          "unarchived-empty": {
+            "frame": 110,
+            "region": "750:240:340:130",
+            "ssim": 0.997794,
+            "minimumSsim": 0.95,
+            "nativeSha256": "35de264ff584cd08a4c5f5141ff664ffca55c84324c2ef2c9d82dfd17e60ba02",
+            "hyperframesSha256": "e61d7c560f406fe8247f8712a8a3a8a61438344fbd725832e840a43f9beaf1c0"
+          }
+        },
+        "pass": true,
+        "p05Ssim": 0.989573,
+        "p95Ssim": 0.996845,
+        "criticalStates": [
+          {
+            "name": "dark menu",
+            "frame": 35,
+            "native": "parity/t3-thread-archive-diff/dark/menu-native.png",
+            "hyperframes": "parity/t3-thread-archive-diff/dark/menu-hyperframes.png",
+            "nativeSha256": "d382ed9228f62c2e45d39bf40ffa93603d7314679da89e9b5c0380cc652c42b4",
+            "hyperframesSha256": "d382ed9228f62c2e45d39bf40ffa93603d7314679da89e9b5c0380cc652c42b4",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "dark archived-sidebar",
+            "frame": 65,
+            "native": "parity/t3-thread-archive-diff/dark/archived-sidebar-native.png",
+            "hyperframes": "parity/t3-thread-archive-diff/dark/archived-sidebar-hyperframes.png",
+            "nativeSha256": "c3e32dc6c332600a3bc3c1f01b839860c02ff26abd864bdd0db9d38c762220ef",
+            "hyperframesSha256": "2e51dd1104b37efa15b62f67bafee6e1eb46c9fcbe766cb86fa55dcdb9737a89",
+            "ssim": 0.980768,
+            "minimumSsim": 0.97
+          },
+          {
+            "name": "dark archive-list",
+            "frame": 85,
+            "native": "parity/t3-thread-archive-diff/dark/archive-list-native.png",
+            "hyperframes": "parity/t3-thread-archive-diff/dark/archive-list-hyperframes.png",
+            "nativeSha256": "42bcf04dd8a0997291fc6ace1a858f2dfa47407c555c716aa8974defcfe6b11b",
+            "hyperframesSha256": "f6b29323a67cb3cadce87e23b97146cb3ca7a2a8b31cad541f2cc78b900dd85d",
+            "ssim": 0.998209,
+            "minimumSsim": 0.95
+          },
+          {
+            "name": "dark unarchived-empty",
+            "frame": 110,
+            "native": "parity/t3-thread-archive-diff/dark/unarchived-empty-native.png",
+            "hyperframes": "parity/t3-thread-archive-diff/dark/unarchived-empty-hyperframes.png",
+            "nativeSha256": "c6f05c0ce60e4c2edaeb4e1774e319457c844b8ec06557b49a687986e3054de9",
+            "hyperframesSha256": "20de60cf86f88b34edab1af66d784943839f992bbf079ba4ba0334bad1a54d0c",
+            "ssim": 0.997794,
+            "minimumSsim": 0.95
+          }
+        ]
+      },
+      "observed": {
+        "before": {
+          "title": "T3 Code (Alpha)",
+          "urlPath": "/012f2550-f1b4-4342-a3b2-5d581802a3b1/hyfrme-fixture-logo-intro",
+          "sidebarRows": [
+            "Build a logo intro",
+            "Catalog motion audit",
+            "Grouped logo tests",
+            "Review final hold",
+            "Search reveal timing"
+          ]
+        },
+        "menu": {
+          "title": "T3 Code (Alpha)",
+          "urlPath": "/012f2550-f1b4-4342-a3b2-5d581802a3b1/hyfrme-fixture-logo-intro",
+          "sidebarRows": [
+            "Build a logo intro",
+            "Catalog motion audit",
+            "Grouped logo tests",
+            "Review final hold",
+            "Search reveal timing"
+          ]
+        },
+        "archived": {
+          "title": "T3 Code (Alpha)",
+          "urlPath": "/draft/04037e25-1cba-48cf-bf3f-6115584112b4",
+          "sidebarRows": [
+            "Catalog motion audit",
+            "Grouped logo tests",
+            "Review final hold",
+            "Search reveal timing"
+          ]
+        },
+        "archived-list": {
+          "title": "T3 Code (Alpha)",
+          "urlPath": "/settings/archived",
+          "sidebarRows": []
+        },
+        "unarchived": {
+          "title": "T3 Code (Alpha)",
+          "urlPath": "/settings/archived",
+          "sidebarRows": []
+        }
+      },
+      "assets": {
+        "thread-archive-v0042-dark-menu-crop.png": "d382ed9228f62c2e45d39bf40ffa93603d7314679da89e9b5c0380cc652c42b4"
+      },
+      "artifacts": {
+        "nativeRecording": "parity/t3-thread-archive-v0042-dark-reference.mkv",
+        "referenceVideo": "public/previews/t3-thread-archive/reference.mp4",
+        "hyperframesVideo": "public/previews/t3-thread-archive/hyperframes.mp4",
+        "frameSsim": "parity/t3-thread-archive-diff/dark/ssim.txt",
+        "hyperframesCheck": "parity/t3-thread-archive-diff/dark/hyperframes-check.json",
+        "installedCheck": "parity/t3-thread-archive-diff/dark/installed-check.json",
+        "customCheck": "parity/t3-thread-archive-diff/dark/custom-check.json",
+        "customizedMenu": "parity/t3-thread-archive-diff/dark/customized-menu.png",
+        "customized": "parity/t3-thread-archive-diff/dark/customized-archive-list.png",
+        "customizedMenuAnchor": "parity/t3-thread-archive-diff/dark/customized-menu-anchor.png"
+      }
+    },
+    "light": {
+      "referenceSha256": "927e1e1b31afef5c1e19456733bbef6f2ce252698f1b1b849d9236e4052c994d",
+      "sourceDomHashes": {
+        "before": "317b76c4edbb308b41790bacb5934bb33aebf6b49a237e3604deb40f573af1a8",
+        "menu": "fd347836f36b055204e6ad9f58aa5dc22e44ad4cb2a3e1a6d65f3186684e904f",
+        "archived": "0785a87bff8f584c1675133b8b1154e057d45e8f66d2c72766835c67e16c84a0",
+        "archived-list": "440dd20299454b31b5d4266e0836210014014dbabb32254575cec2a9df7ace74",
+        "unarchived": "ae23b8234998c1e55ae2a8949d14e6cbf08ac180d63c89bde63b1d3cbc4434af"
+      },
+      "themeSha256": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9930537499999986,
+        "minSsim": 0.98967,
+        "worstFrame": 25,
+        "crops": {
+          "menu": {
+            "frame": 35,
+            "region": "185:353:363:37",
+            "ssim": 1,
+            "minimumSsim": 0.995,
+            "nativeSha256": "662fc674844218b17d98a93f63b15b5516a7d42a3b966ef4c007ab7ee9af7908",
+            "hyperframesSha256": "11ba1bc8128ac2c0154ef2c20246545b06fa0c5db239f635426a764f52bbb741"
+          },
+          "archived-sidebar": {
+            "frame": 65,
+            "region": "266:240:0:80",
+            "ssim": 0.981657,
+            "minimumSsim": 0.97,
+            "nativeSha256": "56c32ac76d251b338216cf78c64a400e528548f913a2f26e092abaf3c4dd7a91",
+            "hyperframesSha256": "e0dac1d385e323f14738971e9ad666f832acb0fee7f4a9e95faeaa8f9c8140cb"
+          },
+          "archive-list": {
+            "frame": 85,
+            "region": "750:180:340:130",
+            "ssim": 0.998349,
+            "minimumSsim": 0.95,
+            "nativeSha256": "004ed858d33f2fd40a5127fe26ae167d418f22c2fa51974e7513ceb3058ec445",
+            "hyperframesSha256": "cdfaf4030cf032abe5fb7337d7ac9627f07bc2b9de7b04dc3d33fb87b5097316"
+          },
+          "unarchived-empty": {
+            "frame": 110,
+            "region": "750:240:340:130",
+            "ssim": 0.99797,
+            "minimumSsim": 0.95,
+            "nativeSha256": "975cdfe38f8300498342ddc8f1a9d68ae8e1100aef2c9afd052938225d1eb4e3",
+            "hyperframesSha256": "589cc5ab58320037b528e27303571cace46bc9f2aab0109313ef585449d83860"
+          }
+        },
+        "pass": true,
+        "p05Ssim": 0.98967,
+        "p95Ssim": 0.9969,
+        "criticalStates": [
+          {
+            "name": "light menu",
+            "frame": 35,
+            "native": "parity/t3-thread-archive-diff/light/menu-native.png",
+            "hyperframes": "parity/t3-thread-archive-diff/light/menu-hyperframes.png",
+            "nativeSha256": "1af907e693146b028603cf65fd65a4752744a469b573171caa64059b30f56c61",
+            "hyperframesSha256": "1af907e693146b028603cf65fd65a4752744a469b573171caa64059b30f56c61",
+            "ssim": 1,
+            "minimumSsim": 0.995
+          },
+          {
+            "name": "light archived-sidebar",
+            "frame": 65,
+            "native": "parity/t3-thread-archive-diff/light/archived-sidebar-native.png",
+            "hyperframes": "parity/t3-thread-archive-diff/light/archived-sidebar-hyperframes.png",
+            "nativeSha256": "e96ad12473ddede176f24f5290488b952ef2b0138698c94deeae551f142ca91b",
+            "hyperframesSha256": "f79dc0c7ebc3b8ff869d86138d7fdedab8c2b9a0d0a92ac76e3f96ef281372a3",
+            "ssim": 0.981657,
+            "minimumSsim": 0.97
+          },
+          {
+            "name": "light archive-list",
+            "frame": 85,
+            "native": "parity/t3-thread-archive-diff/light/archive-list-native.png",
+            "hyperframes": "parity/t3-thread-archive-diff/light/archive-list-hyperframes.png",
+            "nativeSha256": "0ec07fae87b11b5cd6ec7851708ddf306868b292aec3d7781d90bcad5390f695",
+            "hyperframesSha256": "e904e95cd84ad32e2544486c5f04941aded0ba0648289e0c87f95cbdfa25ac51",
+            "ssim": 0.998349,
+            "minimumSsim": 0.95
+          },
+          {
+            "name": "light unarchived-empty",
+            "frame": 110,
+            "native": "parity/t3-thread-archive-diff/light/unarchived-empty-native.png",
+            "hyperframes": "parity/t3-thread-archive-diff/light/unarchived-empty-hyperframes.png",
+            "nativeSha256": "3ff7813a098b6a67682957fdc4cf93c542c9b9ac42fd2f30c9fe7ae77bfa3b23",
+            "hyperframesSha256": "1ec8f99af3d236febc6d7c16f6bcf4fd4ca2fb6029496aecb74c0dc92dcd68a5",
+            "ssim": 0.99797,
+            "minimumSsim": 0.95
+          }
+        ]
+      },
+      "observed": {
+        "before": {
+          "title": "T3 Code (Alpha)",
+          "urlPath": "/012f2550-f1b4-4342-a3b2-5d581802a3b1/hyfrme-fixture-logo-intro",
+          "sidebarRows": [
+            "Build a logo intro",
+            "Catalog motion audit",
+            "Grouped logo tests",
+            "Review final hold",
+            "Search reveal timing"
+          ]
+        },
+        "menu": {
+          "title": "T3 Code (Alpha)",
+          "urlPath": "/012f2550-f1b4-4342-a3b2-5d581802a3b1/hyfrme-fixture-logo-intro",
+          "sidebarRows": [
+            "Build a logo intro",
+            "Catalog motion audit",
+            "Grouped logo tests",
+            "Review final hold",
+            "Search reveal timing"
+          ]
+        },
+        "archived": {
+          "title": "T3 Code (Alpha)",
+          "urlPath": "/draft/daa63ada-899a-4980-8801-00fb58e17c60",
+          "sidebarRows": [
+            "Catalog motion audit",
+            "Grouped logo tests",
+            "Review final hold",
+            "Search reveal timing"
+          ]
+        },
+        "archived-list": {
+          "title": "T3 Code (Alpha)",
+          "urlPath": "/settings/archived",
+          "sidebarRows": []
+        },
+        "unarchived": {
+          "title": "T3 Code (Alpha)",
+          "urlPath": "/settings/archived",
+          "sidebarRows": []
+        }
+      },
+      "assets": {
+        "thread-archive-v0042-light-menu-crop.png": "1af907e693146b028603cf65fd65a4752744a469b573171caa64059b30f56c61"
+      },
+      "artifacts": {
+        "nativeRecording": "parity/t3-thread-archive-v0042-light-reference.mkv",
+        "referenceVideo": "public/previews/t3-thread-archive/reference-light.mp4",
+        "hyperframesVideo": "public/previews/t3-thread-archive/hyperframes-light.mp4",
+        "frameSsim": "parity/t3-thread-archive-diff/light/ssim.txt",
+        "hyperframesCheck": "parity/t3-thread-archive-diff/light/hyperframes-check.json",
+        "installedCheck": "parity/t3-thread-archive-diff/light/installed-check.json",
+        "customCheck": "parity/t3-thread-archive-diff/light/custom-check.json",
+        "customizedMenu": "parity/t3-thread-archive-diff/light/customized-menu.png",
+        "customized": "parity/t3-thread-archive-diff/light/customized-archive-list.png",
+        "customizedMenuAnchor": "parity/t3-thread-archive-diff/light/customized-menu-anchor.png"
+      }
+    }
+  },
+  "checks": {
+    "hyperframes": "full checks and strict 120-frame renders passed in both themes",
+    "hyperframesVersion": "0.8.75",
+    "sourceBrowser": "Chrome Headless Shell 152.0.7977.30",
+    "installedThroughCli": true,
+    "customVariables": "Changed project, thread titles, conversation, menu actions, theme, and four action frames passed full checks, strict renders, OCR, and edited-menu anchor checks in both themes"
+  },
+  "artifacts": {
+    "nativeRecording": "parity/t3-thread-archive-v0042-dark-reference.mkv",
+    "referenceVideo": "public/previews/t3-thread-archive/reference.mp4",
+    "hyperframesVideo": "public/previews/t3-thread-archive/hyperframes.mp4",
+    "frameSsim": "parity/t3-thread-archive-diff/dark/ssim.txt",
+    "hyperframesCheck": "parity/t3-thread-archive-diff/dark/hyperframes-check.json",
+    "installedCheck": "parity/t3-thread-archive-diff/dark/installed-check.json",
+    "customCheck": "parity/t3-thread-archive-diff/dark/custom-check.json",
+    "customizedMenu": "parity/t3-thread-archive-diff/dark/customized-menu.png",
+    "customized": "parity/t3-thread-archive-diff/dark/customized-archive-list.png",
+    "customizedMenuAnchor": "parity/t3-thread-archive-diff/dark/customized-menu-anchor.png",
+    "thumbnail": "public/previews/t3-thread-archive/thumbnail.png",
+    "lightThumbnail": "public/previews/t3-thread-archive/thumbnail-light.png"
+  }
+}

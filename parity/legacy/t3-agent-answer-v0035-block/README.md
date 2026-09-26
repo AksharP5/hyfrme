@@ -1,0 +1,5 @@
+# T3 Code: Agent Answer
+
+This four-second, 1200 × 659 block reproduces a completed T3 Code v0.0.35 assistant reply at 30 fps. It reveals native answer metadata on hover, shows the copy tooltip and confirmation, then clears the feedback. The native reference uses a seeded completed Hyfrme thread and the real T3 Code interface. Its copy interaction was verified against the browser clipboard; it does not claim a live backend generated the response.
+
+Customize the project, thread, prompt, answer text and file link, metadata, footer, copy feedback, and timing through HyperFrames variables. Match thread values with adjacent T3 Code blocks for continuity. Source: https://github.com/pingdotgg/t3code/tree/f925d639421844f02b3166d29281905dbba6d529. The installed files include T3 Code's MIT license, its icon notice, and the Apache-2.0 @pierre/trees license and notice for the source icon sprite. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.

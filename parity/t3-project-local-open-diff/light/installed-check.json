@@ -1,0 +1,117 @@
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 2,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div data-composition-id=\"t3-project-local-open\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id=\"t3-project-local-open\"]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-project-local-open-v0042-cli/light/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "composition_heavy_overlay_count_high",
+        "severity": "warning",
+        "message": "This composition has 75 elements carrying \"heavy overlay\" CSS (filter:blur, radial-gradient, or clip-path). Field signal: a composition with ~40 such elements — including opacity:0 / visibility:hidden ones — captures solid-black for the first ~half of the render, recovering near the end. Reproduces identically via drawElement, forced screenshot capture, and snapshot, so the capture layer itself is the offender (not encoder/mux). Independent of duration. Presence alone matters; only display:none elements are excluded here.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-project-local-open-v0042-cli/light/compositions/t3-project-local-open.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split this sub-composition further into per-transition mini-compositions and concat the pieces (FFmpeg or the runtime's slideshow) so each capture only sees a small subset of heavy overlays at once. Even hidden overlays (opacity:0 / visibility:hidden) contribute — either remove truly unused ones from the source or scope them into their own per-transition sub-composition. If an overlay is genuinely inert for the whole clip, use display:none so it never enters the render tree. Field ref ts=1784040753 (#hyperframes-cli-feedback)."
+      }
+    ],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "duration": 4,
+    "samples": [
+      0.222,
+      0.667,
+      1.111,
+      1.556,
+      2,
+      2.444,
+      2.889,
+      3.333,
+      3.778
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 0,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.222,
+      1.111,
+      2,
+      2.889,
+      3.778
+    ],
+    "checked": 0,
+    "passed": 0
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.75",
+    "latestVersion": "0.8.75",
+    "updateAvailable": false
+  }
+}

@@ -1,0 +1,5 @@
+# T3 Code: Prompt Send
+
+This four-second block reproduces official T3 Code v0.0.42 at 1200 × 659 and 30 fps in dark and light. The default pixel-verified mode replays the lossless native frame capture in ten lightweight strips. Choose editable DOM mode before editing text, project, workspace, thread, or event variables. It drafts a Hyfrme Logo Enter request, sends it through the native composer, follows thread creation and Thinking, and ends with the live codex turn captured in the reference session.
+
+Project, thread list, prompt, response, message time, agent labels, model, permission, workspace, theme, and event frames are editable. Set matching values on adjacent T3 Code blocks for a continuous workspace. The default action and answer were captured live; edited text renders from DOM. Source: https://github.com/pingdotgg/t3code/tree/719a76ca1dbf5490f1aa33ffb9966301e02be9a9. The installed files include the T3 Code MIT license. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.
