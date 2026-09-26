@@ -242,7 +242,7 @@ npm run optimize:thumbnails
 The verifier runs the full HyperFrames check and strict render, then compares
 all 120 PNG frames against the lossless native capture. The pin, frame scores,
 and preview paths are recorded in each block's parity manifest. The
-recordings on `/ideas/` are reference material; only a block with a passing
+recordings under `parity/t3-gallery/` are internal reference material; only a block with a passing
 manifest is installable.
 
 The published v0.0.42 Commit Review, Worked Trace, Prompt Stash, File Mention, Thread Switch, Thread Rename, Thread Archive, Thread Wake, Open Local Project, Mark Thread Unread, Project Scope, and Visual Context Remove fixtures use

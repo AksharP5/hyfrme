@@ -267,7 +267,7 @@ await mkdir(resolve(output, "licenses"), { recursive: true });
 await writeFile(resolve(output, `${name}.html`), html);
 await writeFile(resolve(output, "t3-code-gsap.min.js"), gsap);
 await copyFile(
-  resolve(root, "public/ideas/assets/T3-CODE-LICENSE.txt"),
+  resolve(root, "parity/t3-gallery/assets/T3-CODE-LICENSE.txt"),
   resolve(output, "licenses/T3-CODE-LICENSE.txt"),
 );
 await copyFile(resolve(source, "thread-rename-t3-third-party-notices.md"), resolve(output, "licenses/T3-THIRD_PARTY_NOTICES.md"));

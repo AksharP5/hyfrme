@@ -191,7 +191,7 @@ for (const [phase, frame] of [["stacked", 55], ["split", 86]]) {
   ], { encoding: "utf8" });
   if (crop.status !== 0) throw new Error(crop.stderr);
 }
-await copyFile(resolve(root, "public/ideas/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
+await copyFile(resolve(root, "parity/t3-gallery/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
 for (const [sourceName, targetName] of [
   ["source-file-open-t3-third-party-notices.md", "T3-THIRD_PARTY_NOTICES.md"],
   ["source-file-open-pierre-diffs-license.md", "PIERRE-DIFFS-LICENSE.md"],

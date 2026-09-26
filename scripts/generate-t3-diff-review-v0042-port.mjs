@@ -187,7 +187,7 @@ for (const theme of ["dark", "light"]) for (let row = 0; row < 10; row++) await 
   resolve(source, `${shortName}-v0042-${theme}-capture-${String(row).padStart(2, "0")}.webp`),
   resolve(output, `${name}-capture-${theme}-${String(row).padStart(2, "0")}.webp`));
 for (const [src, dst] of [
-  [resolve(root, "public/ideas/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt")],
+  [resolve(root, "parity/t3-gallery/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt")],
   [resolve(root, "assets/t3-code/v0.0.35/source-file-open-t3-third-party-notices.md"), resolve(output, "licenses/T3-THIRD_PARTY_NOTICES.md")],
   [resolve(root, "assets/t3-code/v0.0.35/source-file-open-pierre-diffs-license.md"), resolve(output, "licenses/PIERRE-DIFFS-LICENSE.md")],
 ]) await copyFile(src, dst);

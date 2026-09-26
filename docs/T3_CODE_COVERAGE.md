@@ -5,8 +5,8 @@ The active catalog is pinned to T3 Code v0.0.42 at commit
 have native dark and light fixtures with parity results for that release.
 The final target requires both desktop themes at 1200 × 659. Existing fixtures
 use isolated Hyfrme project data; connected AI and GitHub actions require live
-captures where available, while seeded states must be labeled. A native recording in
-`/ideas/` is a reference, not a HyperFrames component. A component is complete
+captures where available, while seeded states must be labeled. The recordings in
+`parity/t3-gallery/` are internal references. A component is complete
 only when it installs through the CLI, exposes its visible content and timing,
 passes the full HyperFrames check, and passes an all-frame comparison against
 the native interaction. Parity scores apply to the pinned default fixture;
@@ -15,7 +15,7 @@ edit has no native recording to compare against.
 Thread Unpin's dark and light scores include the native 150 ms sidebar row
 reorder, sampled at 30 fps. The row menu and moving-sidebar crops were checked
 separately in both themes.
-The gallery stills and hover clips are derived from the same lossless native
+The archived stills and clips are derived from the same lossless native
 recording used to check each linked block.
 
 Terminal Check opens the native add-surface menu, creates Terminal 1, types

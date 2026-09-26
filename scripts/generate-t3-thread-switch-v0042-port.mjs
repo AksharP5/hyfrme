@@ -236,7 +236,7 @@ await mkdir(resolve(output, "licenses"), { recursive: true });
 await writeFile(resolve(output, `${name}.html`), html);
 await writeFile(resolve(output, "t3-code-gsap.min.js"), gsap);
 await copyFile(
-  resolve(root, "public/ideas/assets/T3-CODE-LICENSE.txt"),
+  resolve(root, "parity/t3-gallery/assets/T3-CODE-LICENSE.txt"),
   resolve(output, "licenses/T3-CODE-LICENSE.txt"),
 );
 for (const file of ["T3-THIRD_PARTY_NOTICES.md", "PIERRE-TREES-LICENSE.md", "PIERRE-TREES-NOTICE.md"]) {

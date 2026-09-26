@@ -149,7 +149,7 @@ await writeFile(resolve(output, "t3-code-gsap.min.js"), gsap);
 for (const theme of ["dark", "light"]) for (let row = 0; row < 10; row++) await copyFile(
   resolve(source, `${shortName}-v0042-${theme}-capture-${String(row).padStart(2, "0")}.webp`),
   resolve(output, `${name}-capture-${theme}-${String(row).padStart(2, "0")}.webp`));
-await copyFile(resolve(root, "public/ideas/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
+await copyFile(resolve(root, "parity/t3-gallery/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
 await copyFile(resolve(root, "assets/t3-code/v0.0.35/agent-work-t3-third-party-notices.md"), resolve(output, "licenses/T3-THIRD_PARTY_NOTICES.md"));
 await writeFile(resolve(output, "README.md"), `# T3 Code: Agent Answer\n\nThis four-second block reproduces the official T3 Code v0.0.42 completed-answer controls at 1200 × 659 in desktop dark and light. Hovering the seeded Hyfrme answer reveals the native copy action, the tooltip appears, and Copy link places the reply on the browser clipboard before the feedback clears. The answer is seeded; no AI provider runs.\n\nPixel-verified mode reproduces the lossless native capture. Switch to editable DOM mode to change the project, branch, thread labels, prompt, answer, button and tooltip labels, theme, and event timing. Every native frame atlas round-trips at SSIM 1.0. Source: https://github.com/pingdotgg/t3code/tree/${dark.sourceCommit}.\n`);
 await writeFile(resolve(output, "registry-item.json"), `${JSON.stringify({

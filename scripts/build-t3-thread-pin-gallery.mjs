@@ -5,8 +5,8 @@ import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, ".work/t3-thread-pin-reference");
-const clips = resolve(root, "public/ideas/t3-clips");
-const stills = resolve(root, "public/ideas/t3-frames");
+const clips = resolve(root, "parity/t3-gallery/t3-clips");
+const stills = resolve(root, "parity/t3-gallery/t3-frames");
 await mkdir(clips, { recursive: true });
 await mkdir(stills, { recursive: true });
 const run = (command, args) => {

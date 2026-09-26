@@ -198,7 +198,7 @@ await mkdir(resolve(output, "licenses"), { recursive: true });
 await writeFile(resolve(output, `${name}.html`), html);
 await writeFile(resolve(output, "t3-code-gsap.min.js"), gsap);
 for (const asset of Object.keys(fixture.assetSha256)) await copyFile(resolve(source, asset), resolve(output, asset));
-await copyFile(resolve(root, "public/ideas/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
+await copyFile(resolve(root, "parity/t3-gallery/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
 await copyFile(resolve(source, "project-action-run-GHOSTTY-LICENSE.txt"), resolve(output, "licenses/GHOSTTY-LICENSE.txt"));
 await copyFile(resolve(source, "project-action-run-SYMBOLS-NERD-FONT-LICENSE.txt"), resolve(output, "licenses/SYMBOLS-NERD-FONT-LICENSE.txt"));
 await writeFile(resolve(output, "registry-item.json"), `${JSON.stringify({

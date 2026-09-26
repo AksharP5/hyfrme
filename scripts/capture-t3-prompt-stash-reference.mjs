@@ -143,8 +143,8 @@ await writeFile(resolve(source, "prompt-stash-fixture.json"), `${JSON.stringify(
   portalSha256: hash(await readFile(resolve(source, "prompt-stash-menu-portal.html")),
   referenceSha256: hash(await readFile(reference)),
 }, null, 2)}\n`);
-const clips = resolve(root, "public/ideas/t3-clips");
-const stills = resolve(root, "public/ideas/t3-frames");
+const clips = resolve(root, "parity/t3-gallery/t3-clips");
+const stills = resolve(root, "parity/t3-gallery/t3-frames");
 await mkdir(clips, { recursive: true });
 await mkdir(stills, { recursive: true });
 const clip = spawnSync("ffmpeg", [

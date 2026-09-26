@@ -229,7 +229,7 @@ for (const theme of ["dark", "light"]) {
   await copyFile(resolve(source, file), resolve(output, file));
 }
 for (const [file, target] of [
-  ["public/ideas/assets/T3-CODE-LICENSE.txt", "T3-CODE-LICENSE.txt"],
+  ["parity/t3-gallery/assets/T3-CODE-LICENSE.txt", "T3-CODE-LICENSE.txt"],
   ["registry/blocks/t3-thread-switch/licenses/T3-THIRD_PARTY_NOTICES.md", "T3-THIRD_PARTY_NOTICES.md"],
   ["registry/blocks/t3-thread-switch/licenses/PIERRE-TREES-LICENSE.md", "PIERRE-TREES-LICENSE.md"],
   ["registry/blocks/t3-thread-switch/licenses/PIERRE-TREES-NOTICE.md", "PIERRE-TREES-NOTICE.md"],

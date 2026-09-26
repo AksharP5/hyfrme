@@ -198,7 +198,7 @@ for (const themeName of ["dark", "light"]) {
     await copyFile(resolve(source, file), resolve(output, file));
   }
 }
-await copyFile(resolve(root, "public/ideas/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
+await copyFile(resolve(root, "parity/t3-gallery/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
 await copyFile(resolve(root, "registry/blocks/t3-thread-unpin/licenses/T3-THIRD_PARTY_NOTICES.md"),
   resolve(output, "licenses/T3-THIRD_PARTY_NOTICES.md"));
 await writeFile(resolve(output, "registry-item.json"), JSON.stringify({
