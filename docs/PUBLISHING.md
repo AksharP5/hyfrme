@@ -38,6 +38,30 @@ MP4s from `dist/`. Missing or outdated uploads fail the build. Building an
 unchanged checkout needs no Blob credentials. Keep original videos for local
 preview and parity checks. Never put Blob credentials in a `VITE_` variable.
 
+## Storage cleanup
+
+After a successful production deployment, check out its exact commit and run
+`npm run prune:media` with your Blob credentials. This is a dry run. It lists
+unused videos and their total size, retaining the checkout's media manifest and
+all uploads from the last 14 days. It refuses to prune an empty manifest or a
+store missing retained videos. Files outside Hyfrme's immutable media paths
+remain untouched.
+
+Preserve rollback or preview deployments by exporting their media manifests
+and passing `--keep` for each one:
+
+```bash
+git show <retained-deployment-commit>:src/generated/media.json > /tmp/retained-media.json
+npm run prune:media -- --keep /tmp/retained-media.json
+npm run prune:media -- --keep /tmp/retained-media.json --delete
+```
+
+Review and back up the listed files before passing `--delete`. Older deployments
+whose manifests are not retained may lose access to their videos. Run cleanup
+after deployment, never during sync or a build, so the running site keeps its
+current videos. Vercel's monthly average storage metric falls over time after
+cleanup; it does not reset immediately.
+
 ## Delivery encoding
 
 Sync compresses catalog preview videos of 5 MB or larger with FFmpeg, preserving
