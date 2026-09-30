@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/AksharP5/hyfrme/compare/v0.5.0...v0.5.1) (2026-09-30)
+
+
+### Bug Fixes
+
+* **catalog:** correct native previews, variables, and asset paths ([#44](https://github.com/AksharP5/hyfrme/issues/44)) ([217d856](https://github.com/AksharP5/hyfrme/commit/217d8568ad3b0ca80233671cb1f029010ac3be94))
+
 ## [0.5.0](https://github.com/AksharP5/hyfrme/compare/v0.4.0...v0.5.0) (2026-09-30)
 
 
