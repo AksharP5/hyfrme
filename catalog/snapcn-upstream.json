@@ -8,12 +8,12 @@
   "fixtureSource": "catalog/snapcn-fixtures.json",
   "assetManifest": "assets/snapcn/manifest.json",
   "summary": {
-    "totalRegistryItems": 47,
-    "visualItems": 46,
+    "totalRegistryItems": 48,
+    "visualItems": 47,
     "sharedRuntimeItems": 1,
-    "previewRegistryItems": 43,
+    "previewRegistryItems": 44,
     "sourceFamilies": {
-      "snap-cn": 44,
+      "snap-cn": 45,
       "snap-cn-ui": 2
     },
     "missingFixtures": []
@@ -951,6 +951,26 @@
         "shader": false
       },
       "commit": "98809254aa239edfd04119336ff6a774a2df776d"
+    },
+    {
+      "name": "check-cycle",
+      "slug": "snapcn-check-cycle",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/check-cycle/index.tsx",
+      "sourceSha256": "ff66108e3386125996e36676f5579cddc24c075cba5cfa4851e2615aa2310907",
+      "docs": ["content/docs/text/check-cycle.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      },
+      "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3"
     }
   ],
   "dependencyLicenseNotes": [
@@ -1014,24 +1034,24 @@
     }
   ],
   "publishedAudit": {
-    "checkedAt": "2026-09-29",
-    "checkedAtUtc": "2026-09-30T02:28:29.684Z",
+    "checkedAt": "2026-09-30",
+    "checkedAtUtc": "2026-09-30T21:53:58.681Z",
     "repository": "https://github.com/snapcndev/snapcn",
-    "commit": "f915a5f88771bae15b09f5ef8396d5542fe360ee",
+    "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
     "registryUrl": "https://snapcn.dev/r/registry.json",
-    "registrySha256": "105f04cce1ca5bc2371fbbbe84ce54eaf665ef7ddbe8c961dbaa8c6073b18fc5",
+    "registrySha256": "65542470bbcaedda7c4091e9a29c9eea043a33e3f0c8f7cec25e07b29a890e8b",
     "counts": {
-      "totalRegistryItems": 47,
-      "freeVisualItems": 46,
+      "totalRegistryItems": 48,
+      "freeVisualItems": 47,
       "proVisualItems": 0,
       "sharedRuntimeItems": 1,
       "advertisedProVisualItems": 51
     },
     "publicRegistryExcludesPro": true,
-    "proCatalogueUrl": "https://github.com/snapcndev/snapcn/blob/f915a5f88771bae15b09f5ef8396d5542fe360ee/lib/pro-catalogue.json",
+    "proCatalogueUrl": "https://github.com/snapcndev/snapcn/blob/d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3/lib/pro-catalogue.json",
     "proCatalogueSha256": "70b3ef8a5c74235dfc66d87fcefb2e2b73cf886182706053bacfea226a2b8884",
-    "freeSourceUnchangedFrom": "98809254aa239edfd04119336ff6a774a2df776d",
-    "freeSourceUnchanged": true,
+    "freeSourceUnchangedFrom": "f915a5f88771bae15b09f5ef8396d5542fe360ee",
+    "freeSourceUnchanged": false,
     "existingFixturePinsPreserved": true,
     "excludedProItems": [
       {
@@ -1397,7 +1417,7 @@
       "registry/.private/"
     ],
     "exclusionReason": "All 51 advertised Pro components have no source in the public Git tree, and their unauthenticated registry endpoints return HTTP 402 pro_component. Pro names and descriptions are public metadata; the MIT license of the public repository does not establish redistribution rights for unavailable private source. No Pro source is bundled.",
-    "accessImplementationUrl": "https://github.com/snapcndev/snapcn/blob/f915a5f88771bae15b09f5ef8396d5542fe360ee/app/r/%5Bfile%5D/route.ts",
+    "accessImplementationUrl": "https://github.com/snapcndev/snapcn/blob/d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3/app/r/%5Bfile%5D/route.ts",
     "proUrl": "https://snapcn.dev/pro",
     "shadcnAccess": {
       "httpStatus": 200,
@@ -1413,6 +1433,13 @@
         "publishedSourceAlreadyPorted": true,
         "note": "The generated public registry JSON now includes the -12 degree constellation turn already present in the pinned authored source. Its current embedded source differs from that source only by its attribution comment."
       }
-    ]
+    ],
+    "existingSourceFilesUnchanged": true,
+    "newPublicItems": ["check-cycle"],
+    "publishedMetadataRefreshes": {
+      "changedItems": 47,
+      "fields": ["docs"],
+      "embeddedSourcesUnchanged": true
+    }
   }
 }

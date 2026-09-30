@@ -6432,5 +6432,76 @@
       "snapcn",
       "scenes"
     ]
+  },
+  {
+    "slug": "snapcn-check-cycle",
+    "catalogFamily": "snapcn",
+    "title": "Check Cycle",
+    "description": "Rotating words beside a checkbox: a sentence that finishes itself several ways. \"Create your own\" sits left of a ticked shadcn-style checkbox and the word to its right rolls up out of a slot — Intros, Demos, Launches, Changelogs, Tutorials, And more — then the line steps back a little and rests. Every number came off a recording, frame by frame: the two words in the slot move as one strip on the in-out cubic over exactly half a second, a roll every twenty frames. The type moves by fractions of a pixel instead of the whole-pixel steps a browser snaps text to.",
+    "componentName": "CheckCycle",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
+      "source": "registry/snap-cn/check-cycle/index.tsx",
+      "config": "registry/snap-cn/check-cycle/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/check-cycle/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 136,
+      "props": {
+        "headline": "Create your own",
+        "words": "Intros, Demos, Launches, Changelogs, Tutorials, And more",
+        "mode": "light",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "headline": {
+        "type": "text",
+        "default": "Create your own",
+        "label": "Lead-in"
+      },
+      "words": {
+        "type": "text",
+        "default": "Intros, Demos, Launches, Changelogs, Tutorials, And more",
+        "label": "Words (comma separated)"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": ["light", "dark"],
+        "label": "Theme"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": ["snapcn", "text"]
   }
 ]
