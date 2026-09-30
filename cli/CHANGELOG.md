@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0](https://github.com/AksharP5/hyfrme/compare/v0.4.0...v0.5.0) (2026-09-30)
+
+
+### Features
+
+* **cli:** install official components and initialize templates ([#40](https://github.com/AksharP5/hyfrme/issues/40)) ([0678fa9](https://github.com/AksharP5/hyfrme/commit/0678fa93dcb47dd9020e0e0d92053ebea10eb0fe))
+* **t3:** publish 41 verified v0.0.42 catalog blocks ([#35](https://github.com/AksharP5/hyfrme/issues/35)) ([408ec4c](https://github.com/AksharP5/hyfrme/commit/408ec4c2b92f2873b2d3e73e272a0cbb7ebcfe4f))
+
 ## [0.4.0](https://github.com/AksharP5/hyfrme/compare/v0.3.1...v0.4.0) (2026-09-14)
 
 
