@@ -6,6 +6,11 @@ and 8 project templates. It also includes two website-only entries, Week in Merg
 and Simulated Cursor, for 396 official items total. The authoritative import record is
 [`catalog/hyperframes-upstream.json`](../catalog/hyperframes-upstream.json).
 
+Rechecked against upstream main at
+[`ca5463146499dc17f0d7b0350e8325640edba580`](https://github.com/heygen-com/hyperframes/commit/ca5463146499dc17f0d7b0350e8325640edba580)
+on September 30, 2026. Imported source paths, registry membership, and catalog
+navigation remain unchanged, so the original source and navigation pins are preserved.
+
 ## Browse by upstream group
 
 The website preserves the official catalog's category labels, subgroup labels,
@@ -65,10 +70,23 @@ source files stay unchanged.
 
 Preview videos for all eight templates are generated locally. Their source and fixture
 hashes, initialization transforms, render settings, and check results are recorded in
-`catalog/hyperframes-template-previews.json`. Two templates pass the full native check; six retain upstream layout, contrast,
-transform, or optional-resource findings. These findings remain in the evidence; these previews do not assert passing port comparisons. Blocks and
+`catalog/hyperframes-template-previews.json`. Two templates pass the full check
+recorded with HyperFrames 0.8.30; six have automated layout, contrast, transform,
+or optional-resource findings. These are check results, not six confirmed upstream
+template defects. The previews do not assert passing port comparisons. Blocks and
 components retain the official poster/video URLs where published and offer live source
 previews on their detail pages. Items without an official poster display a source tile.
+
+Warm Grain's missing-video warning was reproduced on September 30, 2026 with
+HyperFrames 0.8.81 and Chrome 152. The official no-video initializer removes
+`<video id="a-roll">`, but the template keeps its six GSAP calls targeting
+`#a-roll`. The resulting six `GSAP target #a-roll not found` warnings disappear
+when a video is supplied. Both fixtures have zero runtime errors; separate contrast
+findings remain. This is an empty-scaffold warning, not a missing installed video
+file. Vignelli's missing `caption-overrides.json` is an optional file fetched by
+the HyperFrames runtime, which tolerates its absence; that recorded request failure
+alone does not establish a broken template. Other findings need individual visual
+and current-version verification before being reported as upstream defects.
 
 Official source-level network dependencies remain upstream-owned, including CDN
 libraries, Google Fonts, a Kinetic Type video, and the Warm Grain paper texture.

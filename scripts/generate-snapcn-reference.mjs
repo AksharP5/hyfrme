@@ -132,6 +132,7 @@ export async function referenceFingerprint(entry) {
           path,
           sha256,
           unicodeRange,
+          directFontFace,
         }) => ({
           module,
           family,
@@ -141,6 +142,7 @@ export async function referenceFingerprint(entry) {
           path,
           sha256,
           unicodeRange,
+          directFontFace,
         }),
       ),
       media: manifest.media.map(({ source, path, sha256 }) => ({
@@ -273,7 +275,10 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
     await cp(resolve(root, "assets/snapcn", media.path), target);
   }
   const mediaLoader = resolve(project, "frozen-media-loader.cjs");
-  const mediaReplacements = frozenMedia
+  const mediaReplacements = [
+    ...frozenMedia,
+    ...assets.fonts.filter((font) => font.directFontFace),
+  ]
     .filter((media) => media.source.startsWith("https://"))
     .map((media) => [media.source, `/assets/snapcn/${media.path}`]);
   mediaReplacements.push([
@@ -285,11 +290,17 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
     `const replacements=${JSON.stringify(mediaReplacements)};\nmodule.exports=function(source){for(const [url,path] of replacements)source=source.split(url).join(path);return source;};\n`,
   );
   const fontAliases = {};
-  for (const module of new Set(assets.fonts.map((font) => font.module))) {
+  for (const module of new Set(
+    assets.fonts
+      .filter((font) => !font.directFontFace)
+      .map((font) => font.module),
+  )) {
     const original = require(`@remotion/google-fonts/${module}`);
     const info = original.getInfo();
     const fonts = {};
-    for (const font of assets.fonts.filter((font) => font.module === module)) {
+    for (const font of assets.fonts.filter(
+      (font) => font.module === module && !font.directFontFace,
+    )) {
       fonts[font.style] ??= {};
       fonts[font.style][font.weight] ??= {};
       fonts[font.style][font.weight].latin =

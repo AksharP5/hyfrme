@@ -11,15 +11,41 @@ statuses and a 198-frame fixture. Reel Collage uses
 `7fd048cc7eee397a0e6cb1353c1537aefd245e2c`, checked on September 24, 2026.
 Orb Swarm uses `98809254aa239edfd04119336ff6a774a2df776d`, checked on
 September 27, 2026. Other component pins remain unchanged.
-All 46 free visual components have fixtures in `catalog/snapcn-fixtures.json`.
+Check Cycle uses `d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3`, checked on
+September 30, 2026. Existing component pins remain unchanged.
+All 47 free visual components have fixtures in `catalog/snapcn-fixtures.json`.
 The source inventory is `catalog/snapcn-upstream.json`.
 
-The 43 entries in the merged preview registry retain its exact control defaults,
+The 44 entries in the merged preview registry retain its exact control defaults,
 shared speed control, and minimum-speed overrides. Caret, Input, and Pulsing
 Border are published registry components outside that preview map. Their fixtures
 use their individual configs. No private source was accessed.
 
-## Latest public audit, September 29, 2026
+## Latest public audit, September 30, 2026
+
+Public main at
+[`d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3`](https://github.com/snapcndev/snapcn/commit/d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3)
+adds [Check Cycle](https://snapcn.dev/docs/text/check-cycle). The live and authored
+registries contain 48 items: 47 free visuals and one shared runtime. Check Cycle's
+fixture preserves the official 1280×720 canvas, 30 fps, 136-frame duration, light
+theme, headline, word list, and shared speed control. It is grouped under
+Typography / Dynamic Text in Hyfrme.
+
+The exact Inter 3.19 font loaded by upstream's `FontFace` is frozen with its
+OFL-1.1 notice. The port resolves it through the local asset map and scopes its
+font name to Hyfrme; the reference loads the same unchanged binary. All 136
+frames pass SSIM (mean 0.999991, minimum 0.999986) with identical alpha. The
+installed block passes the full HyperFrames 0.8.30 check with no errors or warnings.
+Upstream's shared speed control is present but unused by this component's source;
+Hyfrme preserves that behavior.
+
+Existing component source files are unchanged. The 47 rebuilt public registry
+manifests changed their documentation field without changing embedded source.
+The 51 advertised Pro components remain unavailable: their public source is absent,
+and all unauthenticated component endpoints return HTTP 402. The current
+`publishedAudit` records those results separately from the pinned port inventory.
+
+## Public audit, September 29, 2026
 
 Public main remains
 [`f915a5f88771bae15b09f5ef8396d5542fe360ee`](https://github.com/snapcndev/snapcn/commit/f915a5f88771bae15b09f5ef8396d5542fe360ee).
@@ -119,8 +145,9 @@ Rail use the pinned repository's preview posters, and Logo Collapse reuses its
 logo image. These additions introduce no shader dependency.
 
 The 14 font families use unmodified Latin binaries selected from
-`@remotion/google-fonts@4.0.473` metadata. Twenty-five unique binaries cover all
-recorded styles and weights. Each family retains its original license text.
+`@remotion/google-fonts@4.0.473` metadata, with a separate Inter 3.19 face from
+the exact Fontsource URL used by Check Cycle. Twenty-six unique binaries cover
+all recorded styles and weights. Each family retains its original license text.
 Ultra is Apache-2.0 and retains Brian J. Bonislawsky's copyright notice. The other
 families use OFL-1.1. Google Sans was checked against Google's official font
 download license rather than assuming its older proprietary terms still apply.

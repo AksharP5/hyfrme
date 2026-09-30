@@ -123,6 +123,28 @@ for (const entry of selected) {
           resolveDir: dependencies,
         }));
         api.onLoad(
+          { filter: /snap-cn\/check-cycle\/index\.tsx$/ },
+          async ({ path }) => {
+            const source = await readFile(path, "utf8");
+            const font = assetManifest.fonts.find(
+              (font) => font.directFontFace && font.slugs?.includes(slug),
+            );
+            if (!font || !source.includes(font.source))
+              throw new Error("Pinned Check Cycle font changed.");
+            return {
+              loader: "tsx",
+              resolveDir: dirname(path),
+              contents: source
+                .replace("  AbsoluteFill,", "  AbsoluteFill,\n  staticFile,")
+                .replace(
+                  'const FACE = "Check Cycle Inter";',
+                  `const FACE = ${JSON.stringify(snapcnFontFamily(font.family))};`,
+                )
+                .replace("url(${FACE_URL})", "url(${staticFile(FACE_URL)})"),
+            };
+          },
+        );
+        api.onLoad(
           { filter: /terminal-simulator\/index\.tsx$/ },
           async ({ path }) => {
             const source = await readFile(path, "utf8");
@@ -325,8 +347,10 @@ window.__hyfrmeReady = ready;
     metafile: true,
     write: false,
   });
-  const fonts = assetManifest.fonts.filter((font) =>
-    usedFonts.has(font.module),
+  const fonts = assetManifest.fonts.filter(
+    (font) =>
+      usedFonts.has(font.module) &&
+      (!font.directFontFace || font.slugs?.includes(slug)),
   );
   const fontCss = fonts
     .map((font) => {
@@ -372,15 +396,13 @@ window.__hyfrmeReady = ready;
         `THIRD_PARTY_LICENSES/snapcn/${assetPath(asset.licensePath).split("/").at(-1)}`,
       );
   }
-  const packagedMedia = Object.fromEntries(
-    [
-      ...selectedMedia.map((asset) => [asset.source, media[asset.source]]),
-      ...fonts.map((font) => [
-        font.source,
-        `../assets/snapcn/${assetPath(font.path)}`,
-      ]),
-    ],
-  );
+  const packagedMedia = Object.fromEntries([
+    ...selectedMedia.map((asset) => [asset.source, media[asset.source]]),
+    ...fonts.map((font) => [
+      font.source,
+      `../assets/snapcn/${assetPath(font.path)}`,
+    ]),
+  ]);
   const packages = new Map();
   packages.set("tailwindcss", resolve(dependencies, "tailwindcss"));
   for (const path of Object.keys(result.metafile.inputs)) {

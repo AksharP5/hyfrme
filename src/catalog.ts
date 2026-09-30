@@ -189,6 +189,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "word-push",
           "caret-swap",
           "snapcn-word-wheel",
+          "snapcn-check-cycle",
         ],
       },
       {
