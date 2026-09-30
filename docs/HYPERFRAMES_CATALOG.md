@@ -83,7 +83,8 @@ not claim those upstream findings have been repaired.
 
 ## Refresh the pinned import
 
-Use an isolated clean checkout at the script's pinned commit:
+Use an isolated clean checkout at the script's pinned commit. Include `registry/`,
+`examples/`, `docs/docs.json`, and `docs/catalog/` when using a sparse checkout:
 
 ```bash
 HYPERFRAMES_SOURCE=.work/hyperframes-daa44fcd npm run import:hyperframes

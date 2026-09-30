@@ -173,10 +173,7 @@ registerNativeFixture("hyperframes-media-template", "hyperframes:example", [
     body: mediaTemplateSource,
   },
 ]);
-for (const name of [
-  "hyperframes-decision-tree",
-  "hyperframes-label-template",
-]) {
+for (const name of ["hyperframes-decision-tree", "hyperframes-label-template"]) {
   registerNativeFixture(name, "hyperframes:example", [
     {
       path: "index.html",
@@ -261,14 +258,8 @@ const server = createServer(async (request, response) => {
             { name: "soft-blur-in", type: "hyperframes:block" },
             { name: "matrix-decode", type: "hyperframes:block" },
             { name: "hyperframes-native-block", type: "hyperframes:block" },
-            {
-              name: "hyperframes-native-component",
-              type: "hyperframes:component",
-            },
-            {
-              name: "hyperframes-native-template",
-              type: "hyperframes:example",
-            },
+            { name: "hyperframes-native-component", type: "hyperframes:component" },
+            { name: "hyperframes-native-template", type: "hyperframes:example" },
           ],
         }),
       );
@@ -318,6 +309,7 @@ try {
       );
     }
   }
+
 
   await writeFile(
     resolve(temporary, "hyperframes.json"),
@@ -468,9 +460,7 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    returnWorktreeVariables.find(
-      (variable) => variable.id === "previousWorktree",
-    ).default,
+    returnWorktreeVariables.find((variable) => variable.id === "previousWorktree").default,
     "logo/final-frame",
   );
 
@@ -536,8 +526,7 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    reasoningVariables.find((variable) => variable.id === "reasoningAfter")
-      .default,
+    reasoningVariables.find((variable) => variable.id === "reasoningAfter").default,
     "Ultra",
   );
   assert.match(t3Reasoning, /src="t3-code-gsap\.min\.js"/);
@@ -571,12 +560,8 @@ try {
     90,
   );
   assert.match(t3FastTier, /src="t3-code-gsap\.min\.js"/);
-  await readFile(
-    resolve(temporary, "motion/hyfrme/fast-tier-v0042-dark-menu-raster.png"),
-  );
-  await readFile(
-    resolve(temporary, "motion/hyfrme/fast-tier-v0042-light-hover-raster.png"),
-  );
+  await readFile(resolve(temporary, "motion/hyfrme/fast-tier-v0042-dark-menu-raster.png"));
+  await readFile(resolve(temporary, "motion/hyfrme/fast-tier-v0042-light-hover-raster.png"));
   await exec(
     process.execPath,
     [
@@ -605,23 +590,15 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    permissionVariables.find((variable) => variable.id === "permissionAfter")
-      .default,
+    permissionVariables.find((variable) => variable.id === "permissionAfter").default,
     "Full access",
   );
   assert.equal(
     permissionVariables.find((variable) => variable.id === "openFrame").default,
     20,
   );
-  await readFile(
-    resolve(temporary, "motion/hyfrme/permission-choice-dark-menu-raster.png"),
-  );
-  await readFile(
-    resolve(
-      temporary,
-      "motion/hyfrme/permission-choice-light-hover-raster.png",
-    ),
-  );
+  await readFile(resolve(temporary, "motion/hyfrme/permission-choice-dark-menu-raster.png"));
+  await readFile(resolve(temporary, "motion/hyfrme/permission-choice-light-hover-raster.png"));
   await exec(
     process.execPath,
     [
@@ -648,8 +625,7 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    threadSwitchVariables.find((variable) => variable.id === "threadOne")
-      .default,
+    threadSwitchVariables.find((variable) => variable.id === "threadOne").default,
     "Logo intro review",
   );
   await exec(
@@ -678,8 +654,7 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    threadSearchVariables.find((variable) => variable.id === "finalQuery")
-      .default,
+    threadSearchVariables.find((variable) => variable.id === "finalQuery").default,
     "logo enter",
   );
   await exec(
@@ -708,8 +683,7 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    sidebarFocusVariables.find((variable) => variable.id === "sidebarWidth")
-      .default,
+    sidebarFocusVariables.find((variable) => variable.id === "sidebarWidth").default,
     300,
   );
   await exec(
@@ -738,13 +712,10 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    visualContextVariables.find((variable) => variable.id === "imageName")
-      .default,
+    visualContextVariables.find((variable) => variable.id === "imageName").default,
     "logo-enter-reference.png",
   );
-  await readFile(
-    resolve(temporary, "motion/hyfrme/t3-visual-context-logo-enter.png"),
-  );
+  await readFile(resolve(temporary, "motion/hyfrme/t3-visual-context-logo-enter.png"));
   await exec(
     process.execPath,
     [
@@ -801,13 +772,11 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    threadActionVariables.find((variable) => variable.id === "branchName")
-      .default,
+    threadActionVariables.find((variable) => variable.id === "branchName").default,
     "logo/final-frame",
   );
   assert.equal(
-    threadActionVariables.find((variable) => variable.id === "menuItem2")
-      .default,
+    threadActionVariables.find((variable) => variable.id === "menuItem2").default,
     "Pin this thread",
   );
   await exec(
@@ -836,13 +805,11 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    settleThreadVariables.find((variable) => variable.id === "settledThread")
-      .default,
+    settleThreadVariables.find((variable) => variable.id === "settledThread").default,
     "Verify motion parity",
   );
   assert.equal(
-    settleThreadVariables.find((variable) => variable.id === "settledCount")
-      .default,
+    settleThreadVariables.find((variable) => variable.id === "settledCount").default,
     4,
   );
   await exec(
@@ -871,14 +838,11 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    sourcePickerVariables.find((variable) => variable.id === "sourcesTitle")
-      .default,
+    sourcePickerVariables.find((variable) => variable.id === "sourcesTitle").default,
     "Choose a source",
   );
   assert.equal(
-    sourcePickerVariables.find(
-      (variable) => variable.id === "searchPlaceholder",
-    ).default,
+    sourcePickerVariables.find((variable) => variable.id === "searchPlaceholder").default,
     "Search source types",
   );
   await exec(
@@ -907,20 +871,15 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    terminalCheckVariables.find((variable) => variable.id === "command")
-      .default,
+    terminalCheckVariables.find((variable) => variable.id === "command").default,
     "git diff --stat",
   );
   assert.equal(
     terminalCheckVariables.find((variable) => variable.id === "output").default,
     "1 file changed",
   );
-  await readFile(
-    resolve(temporary, "motion/hyfrme/terminal-check-canvas-ready-0.png"),
-  );
-  await readFile(
-    resolve(temporary, "motion/hyfrme/terminal-check-canvas-output-12.png"),
-  );
+  await readFile(resolve(temporary, "motion/hyfrme/terminal-check-canvas-ready-0.png"));
+  await readFile(resolve(temporary, "motion/hyfrme/terminal-check-canvas-output-12.png"));
   await exec(
     process.execPath,
     [
@@ -947,20 +906,15 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    fileSurfaceVariables.find((variable) => variable.id === "filesLabel")
-      .default,
+    fileSurfaceVariables.find((variable) => variable.id === "filesLabel").default,
     "Project files",
   );
   assert.equal(
     fileSurfaceVariables.find((variable) => variable.id === "treeRow4").default,
     "HYFRME.md",
   );
-  await readFile(
-    resolve(temporary, "THIRD_PARTY_LICENSES/t3-code/PIERRE-TREES-LICENSE.md"),
-  );
-  await readFile(
-    resolve(temporary, "THIRD_PARTY_LICENSES/pierre/PIERRE-TREES-NOTICE.md"),
-  );
+  await readFile(resolve(temporary, "THIRD_PARTY_LICENSES/t3-code/PIERRE-TREES-LICENSE.md"));
+  await readFile(resolve(temporary, "THIRD_PARTY_LICENSES/pierre/PIERRE-TREES-NOTICE.md"));
   await exec(
     process.execPath,
     [
@@ -987,23 +941,15 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    sourceFileVariables.find((variable) => variable.id === "sourceCaption")
-      .default,
+    sourceFileVariables.find((variable) => variable.id === "sourceCaption").default,
     "Logo Motion",
   );
   assert.equal(
     sourceFileVariables.find((variable) => variable.id === "fileName").default,
     "logo-enter-v2.html",
   );
-  await readFile(
-    resolve(temporary, "THIRD_PARTY_LICENSES/t3-code/PIERRE-DIFFS-LICENSE.md"),
-  );
-  await readFile(
-    resolve(
-      temporary,
-      "THIRD_PARTY_LICENSES/t3-code/T3-THIRD_PARTY_NOTICES.md",
-    ),
-  );
+  await readFile(resolve(temporary, "THIRD_PARTY_LICENSES/t3-code/PIERRE-DIFFS-LICENSE.md"));
+  await readFile(resolve(temporary, "THIRD_PARTY_LICENSES/t3-code/T3-THIRD_PARTY_NOTICES.md"));
   await exec(
     process.execPath,
     [
@@ -1033,18 +979,15 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    commitReviewVariables.find((variable) => variable.id === "branchName")
-      .default,
+    commitReviewVariables.find((variable) => variable.id === "branchName").default,
     "feature/logo-polish",
   );
   assert.equal(
-    commitReviewVariables.find((variable) => variable.id === "commitMessage")
-      .default,
+    commitReviewVariables.find((variable) => variable.id === "commitMessage").default,
     "Tune Hyfrme logo motion",
   );
   assert.equal(
-    commitReviewVariables.find((variable) => variable.id === "insertions")
-      .default,
+    commitReviewVariables.find((variable) => variable.id === "insertions").default,
     12,
   );
   await exec(
@@ -1075,8 +1018,7 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    promptSendVariables.find((variable) => variable.id === "projectName")
-      .default,
+    promptSendVariables.find((variable) => variable.id === "projectName").default,
     "hyfrme-studio",
   );
   assert.equal(
@@ -1115,8 +1057,7 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    agentWorkVariables.find((variable) => variable.id === "projectName")
-      .default,
+    agentWorkVariables.find((variable) => variable.id === "projectName").default,
     "hyfrme-demo",
   );
   assert.equal(
@@ -1124,8 +1065,7 @@ try {
     "bun run verify:logo-enter",
   );
   assert.equal(
-    agentWorkVariables.find((variable) => variable.id === "detailFrame")
-      .default,
+    agentWorkVariables.find((variable) => variable.id === "detailFrame").default,
     62,
   );
   await exec(
@@ -1156,18 +1096,15 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    agentAnswerVariables.find((variable) => variable.id === "threadOne")
-      .default,
+    agentAnswerVariables.find((variable) => variable.id === "threadOne").default,
     "Review Logo Flicker",
   );
   assert.equal(
-    agentAnswerVariables.find((variable) => variable.id === "answerLead")
-      .default,
+    agentAnswerVariables.find((variable) => variable.id === "answerLead").default,
     "I checked the logo timing in",
   );
   assert.equal(
-    agentAnswerVariables.find((variable) => variable.id === "copyFrame")
-      .default,
+    agentAnswerVariables.find((variable) => variable.id === "copyFrame").default,
     76,
   );
   await exec(
@@ -1202,14 +1139,9 @@ try {
     ["dialogTitle", "Revert this Hyfrme thread?"],
     ["confirmFrame", 70],
   ]) {
-    assert.equal(
-      messageRewindVariables.find((variable) => variable.id === id).default,
-      value,
-    );
+    assert.equal(messageRewindVariables.find((variable) => variable.id === id).default, value);
   }
-  await readFile(
-    resolve(temporary, "THIRD_PARTY_LICENSES/t3-code/PIERRE-DIFFS-LICENSE.md"),
-  );
+  await readFile(resolve(temporary, "THIRD_PARTY_LICENSES/t3-code/PIERRE-DIFFS-LICENSE.md"));
   await exec(
     process.execPath,
     [
@@ -1238,18 +1170,15 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    projectActionVariables.find((variable) => variable.id === "actionName")
-      .default,
+    projectActionVariables.find((variable) => variable.id === "actionName").default,
     "Audit Hyfrme",
   );
   assert.equal(
-    projectActionVariables.find((variable) => variable.id === "actionCommand")
-      .default,
+    projectActionVariables.find((variable) => variable.id === "actionCommand").default,
     "npm run build",
   );
   assert.equal(
-    projectActionVariables.find((variable) => variable.id === "shortcutFrame")
-      .default,
+    projectActionVariables.find((variable) => variable.id === "shortcutFrame").default,
     75,
   );
   await exec(
@@ -1287,10 +1216,7 @@ try {
     ["command", "npm run build"],
     ["outputFrame", 20],
   ]) {
-    assert.equal(
-      projectActionRunVariables.find((variable) => variable.id === id).default,
-      value,
-    );
+    assert.equal(projectActionRunVariables.find((variable) => variable.id === id).default, value);
   }
   for (const theme of ["dark", "light"]) {
     for (const index of Array.from({ length: 10 }, (_, index) =>
@@ -1312,15 +1238,8 @@ try {
       );
     }
   }
-  await readFile(
-    resolve(temporary, "THIRD_PARTY_LICENSES/t3-code/GHOSTTY-LICENSE.txt"),
-  );
-  await readFile(
-    resolve(
-      temporary,
-      "THIRD_PARTY_LICENSES/t3-code/SYMBOLS-NERD-FONT-LICENSE.txt",
-    ),
-  );
+  await readFile(resolve(temporary, "THIRD_PARTY_LICENSES/t3-code/GHOSTTY-LICENSE.txt"));
+  await readFile(resolve(temporary, "THIRD_PARTY_LICENSES/t3-code/SYMBOLS-NERD-FONT-LICENSE.txt"));
   await exec(
     process.execPath,
     [
@@ -1349,26 +1268,19 @@ try {
       .replaceAll("&#39;", "'"),
   );
   assert.equal(
-    threadRenameVariables.find((variable) => variable.id === "oldTitle")
-      .default,
+    threadRenameVariables.find((variable) => variable.id === "oldTitle").default,
     "Review Logo Enter",
   );
   assert.equal(
-    threadRenameVariables.find((variable) => variable.id === "newTitle")
-      .default,
+    threadRenameVariables.find((variable) => variable.id === "newTitle").default,
     "Logo Enter parity approved",
   );
   assert.equal(
-    threadRenameVariables.find((variable) => variable.id === "typedFrame")
-      .default,
+    threadRenameVariables.find((variable) => variable.id === "typedFrame").default,
     72,
   );
-  await readFile(
-    resolve(temporary, "motion/hyfrme/thread-rename-v0042-dark-menu-crop.png"),
-  );
-  await readFile(
-    resolve(temporary, "motion/hyfrme/thread-rename-v0042-light-menu-crop.png"),
-  );
+  await readFile(resolve(temporary, "motion/hyfrme/thread-rename-v0042-dark-menu-crop.png"));
+  await readFile(resolve(temporary, "motion/hyfrme/thread-rename-v0042-light-menu-crop.png"));
   await exec(
     process.execPath,
     [
@@ -1401,10 +1313,7 @@ try {
     ["activeBranch", "logo/parity"],
     ["pinFrame", 68],
   ]) {
-    assert.equal(
-      threadPinVariables.find((variable) => variable.id === id).default,
-      value,
-    );
+    assert.equal(threadPinVariables.find((variable) => variable.id === id).default, value);
   }
   await exec(
     process.execPath,
@@ -1438,14 +1347,9 @@ try {
     ["commitMessage", "Refine Hyfrme intro timing"],
     ["insertions", "7"],
   ]) {
-    assert.equal(
-      commitCreationVariables.find((variable) => variable.id === id).default,
-      value,
-    );
+    assert.equal(commitCreationVariables.find((variable) => variable.id === id).default, value);
   }
-  await readFile(
-    resolve(temporary, "THIRD_PARTY_LICENSES/t3-code/VSCODE-ICONS-LICENSE.txt"),
-  );
+  await readFile(resolve(temporary, "THIRD_PARTY_LICENSES/t3-code/VSCODE-ICONS-LICENSE.txt"));
   await exec(
     process.execPath,
     [
@@ -1479,10 +1383,7 @@ try {
     ["toastTitle", "Thread snoozed for review"],
     ["expandFrame", 88],
   ]) {
-    assert.equal(
-      threadSnoozeVariables.find((variable) => variable.id === id).default,
-      value,
-    );
+    assert.equal(threadSnoozeVariables.find((variable) => variable.id === id).default, value);
   }
   await exec(
     process.execPath,
@@ -1517,23 +1418,11 @@ try {
     ["archiveSection", "Stored Hyfrme threads"],
     ["unarchiveFrame", 92],
   ]) {
-    assert.equal(
-      threadArchiveVariables.find((variable) => variable.id === id).default,
-      value,
-    );
+    assert.equal(threadArchiveVariables.find((variable) => variable.id === id).default, value);
   }
-  await readFile(
-    resolve(temporary, "motion/hyfrme/thread-archive-v0042-dark-menu-crop.png"),
-  );
-  await readFile(
-    resolve(
-      temporary,
-      "motion/hyfrme/thread-archive-v0042-light-menu-crop.png",
-    ),
-  );
-  await readFile(
-    resolve(temporary, "THIRD_PARTY_LICENSES/pierre/PIERRE-TREES-LICENSE.md"),
-  );
+  await readFile(resolve(temporary, "motion/hyfrme/thread-archive-v0042-dark-menu-crop.png"));
+  await readFile(resolve(temporary, "motion/hyfrme/thread-archive-v0042-light-menu-crop.png"));
+  await readFile(resolve(temporary, "THIRD_PARTY_LICENSES/pierre/PIERRE-TREES-LICENSE.md"));
   for (const [slug, overrides] of [
     [
       "t3-git-push",
@@ -1639,10 +1528,7 @@ try {
         .replaceAll("&#39;", "'"),
     );
     for (const [id, value] of overrides) {
-      assert.equal(
-        variables.find((variable) => variable.id === id).default,
-        value,
-      );
+      assert.equal(variables.find((variable) => variable.id === id).default, value);
     }
   }
   await exec(
@@ -1677,10 +1563,7 @@ try {
     ["logoText", "Hyfrme Studio"],
     ["splitFrame", 70],
   ]) {
-    assert.equal(
-      diffReviewVariables.find((variable) => variable.id === id).default,
-      value,
-    );
+    assert.equal(diffReviewVariables.find((variable) => variable.id === id).default, value);
   }
   for (const theme of ["dark", "light"]) {
     for (const index of Array.from({ length: 10 }, (_, index) =>
@@ -1727,13 +1610,11 @@ try {
     "Make a Hyfrme Logo Enter cut with a clean final hold",
   );
   assert.equal(
-    promptStashVariables.find((variable) => variable.id === "stashLabel")
-      .default,
+    promptStashVariables.find((variable) => variable.id === "stashLabel").default,
     "Saved Logo Enter draft",
   );
   assert.equal(
-    promptStashVariables.find((variable) => variable.id === "recallFrame")
-      .default,
+    promptStashVariables.find((variable) => variable.id === "recallFrame").default,
     82,
   );
   assert.equal(
@@ -1819,10 +1700,7 @@ try {
     "--dir",
     nativeTemporary,
   ]);
-  assert.match(
-    nativeBlock.stdout,
-    /data-composition-id="original-native-block"/,
-  );
+  assert.match(nativeBlock.stdout, /data-composition-id="original-native-block"/);
   assert.equal(
     await readFile(
       resolve(nativeTemporary, "compositions/native-block.html"),
@@ -1854,10 +1732,7 @@ try {
   assert.doesNotMatch(nativeComponent.stdout, /data-composition-src/);
   await runCli(["add", "hyperframes-hosted-block", "--dir", nativeTemporary]);
   assert.equal(
-    await readFile(
-      resolve(nativeTemporary, "compositions/hosted.html"),
-      "utf8",
-    ),
+    await readFile(resolve(nativeTemporary, "compositions/hosted.html"), "utf8"),
     hostedSource.replace(
       "https://example.com/hyfrme/hosted.txt",
       "assets/hosted.txt",
@@ -1882,17 +1757,11 @@ try {
   );
   assert.match(relocatedNative, /"type":"enum","default":"two"/);
   assert.match(relocatedNative, /src="static\/hyfrme\/native\.txt"/);
-  assert.match(
-    relocatedNative,
-    /src="\.\.\/\.\.\/static\/hyfrme\/native\.txt"/,
-  );
+  assert.match(relocatedNative, /src="\.\.\/\.\.\/static\/hyfrme\/native\.txt"/);
   assert.match(relocatedNative, /src="\.\/native\.runtime\.js"/);
   assert.doesNotMatch(relocatedNative, /<template>/);
   assert.equal(
-    await readFile(
-      resolve(temporary, "motion/hyfrme/native.runtime.js"),
-      "utf8",
-    ),
+    await readFile(resolve(temporary, "motion/hyfrme/native.runtime.js"), "utf8"),
     'window.__hyfrmeRenderFrame = () => "static/hyfrme/native.txt";',
   );
   for (const [setting, error] of [
@@ -1967,21 +1836,13 @@ try {
     resolve(initializedProject, "compositions/native-scene.html"),
     "Hyfrme edited scene",
   );
-  await writeFile(
-    resolve(initializedProject, "notes.txt"),
-    "Keep Hyfrme notes",
-  );
+  await writeFile(resolve(initializedProject, "notes.txt"), "Keep Hyfrme notes");
   await writeFile(
     resolve(initializedProject, "hyperframes.json"),
     '{"userSetting":"keep"}',
   );
   await assert.rejects(
-    runCli([
-      "init",
-      "hyperframes-native-template",
-      "--dir",
-      initializedProject,
-    ]),
+    runCli(["init", "hyperframes-native-template", "--dir", initializedProject]),
     /already exists. Re-run with --force/,
   );
   assert.equal(
@@ -2022,12 +1883,7 @@ try {
     "Hyfrme user source",
   );
   await assert.rejects(
-    runCli([
-      "init",
-      "hyperframes-native-template",
-      "--dir",
-      conflictingProject,
-    ]),
+    runCli(["init", "hyperframes-native-template", "--dir", conflictingProject]),
     /already exists/,
   );
   await assert.rejects(
@@ -2045,10 +1901,7 @@ try {
     await readFile(resolve(mediaProject, "index.html"), "utf8"),
     '<html><head></head><body data-duration="10"><video src="assets/owned.mp4"></video></body></html>',
   );
-  for (const name of [
-    "hyperframes-decision-tree",
-    "hyperframes-label-template",
-  ]) {
+  for (const name of ["hyperframes-decision-tree", "hyperframes-label-template"]) {
     const project = resolve(nativeTemporary, name);
     await runCli(["init", name, "--dir", project]);
     const source = await readFile(
@@ -2065,10 +1918,7 @@ try {
         : decisionTreeSource,
     );
     if (name !== "hyperframes-decision-tree") continue;
-    for (const [timeline, expected] of [
-      [{}, 6.25],
-      [{ labels: { hold5: 7 } }, 7],
-    ]) {
+    for (const [timeline, expected] of [[{}, 6.25], [{ labels: { hold5: 7 } }, 7]]) {
       const window = {};
       runInNewContext(source.match(/<script>([\s\S]*?)<\/script>/)[1], {
         window,
@@ -2096,9 +1946,7 @@ try {
   assert.match(installAllResult.stdout, /1\/4 Soft Blur In/);
   assert.match(installAllResult.stdout, /2\/4 Matrix Decode/);
   assert.match(installAllResult.stdout, /Added 4 Hyfrme components/);
-  await assert.rejects(readFile(resolve(allTemporary, "index.html")), {
-    code: "ENOENT",
-  });
+  await assert.rejects(readFile(resolve(allTemporary, "index.html")), { code: "ENOENT" });
   await readFile(
     resolve(allTemporary, "motion/hyfrme/soft-blur-in.html"),
     "utf8",
@@ -2263,10 +2111,7 @@ try {
     ],
     { env: { ...process.env, HYFRME_REGISTRY_URL: registryUrl } },
   );
-  assert.match(
-    await readFile(resolve(local, "boundary.html"), "utf8"),
-    /fixture/,
-  );
+  assert.match(await readFile(resolve(local, "boundary.html"), "utf8"), /fixture/);
 
   console.log("CLI customization tests passed.");
 } finally {
