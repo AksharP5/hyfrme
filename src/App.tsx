@@ -71,47 +71,87 @@ function entriesForSlugs(slugs: string[]) {
     .filter((entry): entry is CatalogEntry => Boolean(entry));
 }
 
-function taxonomySectionsFor(category: CatalogCategory) {
-  if (category === "all") return [];
-  const sections = catalogTaxonomy[category] ?? [];
+function taxonomySectionsFor(
+  category: CatalogCategory,
+  source: SourceFilter = "all",
+) {
+  if (category === "all" && source !== "hyperframes") return [];
+  const sections =
+    category === "all"
+      ? [
+          ...(catalogTaxonomy.components ?? []),
+          ...(catalogTaxonomy.templates ?? []),
+        ]
+      : (catalogTaxonomy[category] ?? []);
   if (sections.length === 0) return [];
   const assigned = new Set(sections.flatMap(slugsForSection));
   const ungrouped = catalog.filter(
     (entry) =>
       categoryFor(entry) === category && !assigned.has(entry.item.name),
   );
-  return ungrouped.length === 0
-    ? sections
-    : [
-        ...sections,
-        {
-          id: "more",
-          label: `More ${categoryLabels[category].toLowerCase()}`,
-          description:
-            "Newly added blocks awaiting a more specific collection.",
-          featuredSlug: ungrouped[0].item.name,
-          slugs: ungrouped.map((entry) => entry.item.name),
-        },
-      ];
+  const allSections =
+    ungrouped.length === 0
+      ? sections
+      : [
+          ...sections,
+          {
+            id: "more",
+            label: `More ${categoryLabels[category].toLowerCase()}`,
+            description:
+              "Newly added blocks awaiting a more specific collection.",
+            featuredSlug: ungrouped[0].item.name,
+            slugs: ungrouped.map((entry) => entry.item.name),
+          },
+        ];
+  if (source === "all") return allSections;
+  const matchesSource = (slug: string) =>
+    catalogBySlug.get(slug)?.source.id === source;
+  return allSections.flatMap((section) => {
+    const slugs = section.slugs?.filter(matchesSource);
+    const groups = section.groups
+      ?.map((group) => ({ ...group, slugs: group.slugs.filter(matchesSource) }))
+      .filter((group) => group.slugs.length > 0);
+    const names = slugs ?? groups?.flatMap((group) => group.slugs) ?? [];
+    return names.length
+      ? [{ ...section, slugs, groups, featuredSlug: names[0] }]
+      : [];
+  });
+}
+
+function visibleCategories(source: SourceFilter) {
+  return source === "hyperframes"
+    ? (["all", "components", "templates"] as const)
+    : catalogCategories;
+}
+
+function categoryLabel(category: CatalogCategory, source: SourceFilter) {
+  if (source !== "hyperframes") return categoryLabels[category];
+  return category === "all"
+    ? "All HyperFrames"
+    : category === "components"
+      ? "Catalog"
+      : categoryLabels[category];
 }
 
 function taxonomyHref(
   category: CatalogCategory,
   section?: CatalogTaxonomySection,
   group?: CatalogTaxonomyGroup,
+  source: SourceFilter = sourceFromUrl(),
 ) {
   const params = new URLSearchParams();
   if (category !== "all") params.set("category", category);
   if (section) params.set("section", section.id);
   if (group) params.set("group", group.id);
-  const source = sourceFromUrl();
   if (source !== "all") params.set("source", source);
   return `/components${params.size ? `?${params}` : ""}`;
 }
 
 function categoryFromUrl(): CatalogCategory {
   const category = new URLSearchParams(window.location.search).get("category");
-  return catalogCategories.includes(category as CatalogCategory)
+  const categories: readonly CatalogCategory[] =
+    visibleCategories(sourceFromUrl());
+  return categories.includes(category as CatalogCategory)
     ? (category as CatalogCategory)
     : "all";
 }
@@ -162,6 +202,7 @@ function Header() {
 
 type LibrarySidebarProps = {
   activeCategory: CatalogCategory;
+  source?: SourceFilter;
   activeSection?: string;
   activeGroup?: string;
   currentEntry?: CatalogEntry;
@@ -173,6 +214,7 @@ type LibrarySidebarProps = {
 
 function LibrarySidebar({
   activeCategory,
+  source = sourceFromUrl(),
   activeSection,
   activeGroup,
   currentEntry,
@@ -181,7 +223,10 @@ function LibrarySidebar({
   const taxonomy = currentEntry ? taxonomyFor(currentEntry) : undefined;
   const resolvedSection = taxonomy?.section.id ?? activeSection;
   const resolvedGroup = taxonomy?.group?.id ?? activeGroup;
-  const sections = taxonomySectionsFor(activeCategory);
+  const sections = taxonomySectionsFor(activeCategory, source);
+  const sourceEntries = catalog.filter(
+    (entry) => source === "all" || entry.source.id === source,
+  );
   const selectedSection = sections.find(
     (section) => section.id === resolvedSection,
   );
@@ -196,23 +241,31 @@ function LibrarySidebar({
         <span className="sidebar-label">Library</span>
         <a
           className={activeCategory === "all" ? "is-active" : ""}
-          href={taxonomyHref("all")}
+          href={taxonomyHref("all", undefined, undefined, source)}
           onClick={(event) => onSelectCategory?.("all", event)}
         >
-          <span>All components</span>
-          <small>{catalogCategoryCounts.all}</small>
+          <span>{categoryLabel("all", source)}</span>
+          <small>{sourceEntries.length}</small>
         </a>
-        {categoryOrder.map((category) => (
-          <a
-            className={activeCategory === category ? "is-active" : ""}
-            href={taxonomyHref(category)}
-            key={category}
-            onClick={(event) => onSelectCategory?.(category, event)}
-          >
-            <span>{categoryLabels[category]}</span>
-            <small>{catalogCategoryCounts[category]}</small>
-          </a>
-        ))}
+        {visibleCategories(source)
+          .filter((category) => category !== "all")
+          .map((category) => (
+            <a
+              className={activeCategory === category ? "is-active" : ""}
+              href={taxonomyHref(category, undefined, undefined, source)}
+              key={category}
+              onClick={(event) => onSelectCategory?.(category, event)}
+            >
+              <span>{categoryLabel(category, source)}</span>
+              <small>
+                {
+                  sourceEntries.filter(
+                    (entry) => categoryFor(entry) === category,
+                  ).length
+                }
+              </small>
+            </a>
+          ))}
       </nav>
       {sections.length > 0 ? (
         <nav className="sidebar-taxonomy" aria-label="Browse this category">
@@ -221,7 +274,7 @@ function LibrarySidebar({
             <div className="sidebar-taxonomy-section" key={section.id}>
               <a
                 className={resolvedSection === section.id ? "is-active" : ""}
-                href={taxonomyHref(activeCategory, section)}
+                href={taxonomyHref(activeCategory, section, undefined, source)}
               >
                 <span>{section.label}</span>
                 <small>{slugsForSection(section).length}</small>
@@ -231,7 +284,12 @@ function LibrarySidebar({
                   {section.groups.map((group) => (
                     <a
                       className={resolvedGroup === group.id ? "is-active" : ""}
-                      href={taxonomyHref(activeCategory, section, group)}
+                      href={taxonomyHref(
+                        activeCategory,
+                        section,
+                        group,
+                        source,
+                      )}
                       key={group.id}
                     >
                       <span>{group.label}</span>
@@ -299,7 +357,7 @@ function CatalogPage() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<CatalogCategory>(categoryFromUrl);
   const [source, setSource] = useState<SourceFilter>(sourceFromUrl);
-  const taxonomySections = taxonomySectionsFor(category);
+  const taxonomySections = taxonomySectionsFor(category, source);
   const urlParams = new URLSearchParams(window.location.search);
   const selectedSection = taxonomySections.find(
     (section) => section.id === urlParams.get("section"),
@@ -360,7 +418,18 @@ function CatalogPage() {
 
   const selectSource = (next: SourceFilter) => {
     setSource(next);
+    if (
+      next === "hyperframes" &&
+      category !== "all" &&
+      category !== "components" &&
+      category !== "templates"
+    ) {
+      selectCategory("all");
+    }
     const url = new URL(window.location.href);
+    if (category === "all") url.searchParams.delete("category");
+    url.searchParams.delete("section");
+    url.searchParams.delete("group");
     if (next === "all") url.searchParams.delete("source");
     else url.searchParams.set("source", next);
     window.history.replaceState(null, "", url);
@@ -371,8 +440,8 @@ function CatalogPage() {
     : selectedSection
       ? selectedSection.label
       : category === "all"
-        ? "All components"
-        : categoryLabels[category];
+        ? categoryLabel("all", source)
+        : categoryLabel(category, source);
   const selectedDescription =
     selectedGroup?.description ??
     selectedSection?.description ??
@@ -456,6 +525,7 @@ function CatalogPage() {
     <div className="docs-layout" id="catalog">
       <LibrarySidebar
         activeCategory={category}
+        source={source}
         activeSection={selectedSection?.id}
         activeGroup={selectedGroup?.id}
         onSelectCategory={(next, event) => {
@@ -522,14 +592,14 @@ function CatalogPage() {
         </div>
 
         <div className="mobile-filters" aria-label="Filter components">
-          {catalogCategories.map((candidate) => (
+          {visibleCategories(source).map((candidate) => (
             <button
               type="button"
               key={candidate}
               aria-pressed={category === candidate}
               onClick={() => selectCategory(candidate)}
             >
-              {categoryLabels[candidate]}
+              {categoryLabel(candidate, source)}
             </button>
           ))}
         </div>
@@ -727,7 +797,13 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
 
   return (
     <div className="docs-layout detail-layout">
-      <LibrarySidebar activeCategory={category} currentEntry={entry} />
+      <LibrarySidebar
+        activeCategory={category}
+        currentEntry={entry}
+        source={
+          entry.source.id === "hyperframes" ? "hyperframes" : sourceFromUrl()
+        }
+      />
       <article className="detail-page">
         <a
           className="back-link"
@@ -737,6 +813,9 @@ function DetailPage({ entry }: { entry: CatalogEntry }) {
                   entryTaxonomy.category,
                   entryTaxonomy.section,
                   entryTaxonomy.group,
+                  entry.source.id === "hyperframes"
+                    ? "hyperframes"
+                    : sourceFromUrl(),
                 )
               : `/components?category=${category}`
           }

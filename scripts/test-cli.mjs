@@ -288,6 +288,29 @@ const runCli = (args) =>
   });
 
 try {
+  for (const name of [
+    "hyperframes-week-in-merges",
+    "hyperframes-simulated-cursor",
+  ]) {
+    const project = resolve(nativeTemporary, name);
+    await mkdir(project, { recursive: true });
+    await writeFile(resolve(project, "hyperframes.json"), "{}\n");
+    const manifest = JSON.parse(
+      await readFile(
+        resolve(registry, "blocks", name, "registry-item.json"),
+        "utf8",
+      ),
+    );
+    await runCli(["add", name, "--dir", project]);
+    for (const file of manifest.files) {
+      assert.deepEqual(
+        await readFile(resolve(project, file.target)),
+        await readFile(resolve(registry, "blocks", name, file.path)),
+      );
+    }
+  }
+
+
   await writeFile(
     resolve(temporary, "hyperframes.json"),
     JSON.stringify({

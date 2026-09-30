@@ -129,25 +129,95 @@ for (const item of registry.items) {
   }
   names.add(item.name);
 }
+const navigationBytes = await sourceBytes("docs/docs.json");
+const navigation = JSON.parse(navigationBytes);
+const catalogPages = (pages) =>
+  pages.flatMap((page) =>
+    typeof page === "string" ? [page] : catalogPages(page.pages),
+  );
+const documentationItems = [];
+for (const page of catalogPages(
+  navigation.navigation.tabs.find((tab) => tab.tab === "Catalog").groups[0]
+    .pages,
+)) {
+  const match = page.match(/^catalog\/(blocks|components)\/([a-z0-9-]+)$/);
+  if (!match || names.has(match[2])) continue;
+  const [, family, name] = match;
+  const manifestPath = `registry/${family}/${name}/registry-item.json`;
+  if (tracked.has(manifestPath)) {
+    const manifest = JSON.parse(await sourceBytes(manifestPath));
+    documentationItems.push({
+      name,
+      type: manifest.type,
+      catalogPage: `${page}.mdx`,
+    });
+    names.add(name);
+    continue;
+  }
+  const source = `docs/${page}.mdx`;
+  const text = (await sourceBytes(source)).toString("utf8");
+  const code = text.match(
+    new RegExp("```html " + name + "\\.html\\n([\\s\\S]*?)\\n```"),
+  )?.[1];
+  if (family !== "components" || !code)
+    throw new Error(
+      `Missing installable source for upstream catalog page: ${page}`,
+    );
+  const variables = JSON.parse(
+    code.match(/data-composition-variables='([^']+)'/)?.[1] ?? "[]",
+  );
+  const tags = [
+    ...(text.match(/Tagged ([^\n]+)/)?.[1] ?? "").matchAll(/`([^`]+)`/g),
+  ].map((match) => match[1]);
+  const manifest = {
+    $schema: "https://hyperframes.heygen.com/schema/registry-item.json",
+    name,
+    type: "hyperframes:component",
+    title: JSON.parse(text.match(/^title: (".*")$/m)[1]),
+    description: JSON.parse(text.match(/^description: (".*")$/m)[1]),
+    tags,
+    variables,
+    files: [
+      {
+        path: `${name}.html`,
+        target: `compositions/components/${name}.html`,
+        type: "hyperframes:snippet",
+      },
+    ],
+  };
+  documentationItems.push({
+    name,
+    type: manifest.type,
+    catalogPage: `${page}.mdx`,
+    source,
+    manifest,
+    snippet: Buffer.from(`${code}\n`),
+  });
+  names.add(name);
+}
+const listedItems = [...registry.items, ...documentationItems];
 const licenseBytes = await sourceBytes("LICENSE");
 const items = [];
 
-for (const listed of registry.items) {
+for (const listed of listedItems) {
   const name = `hyperframes-${listed.name}`;
   const directory = `registry/${families[listed.type]}/${listed.name}`;
-  const source = `${directory}/registry-item.json`;
+  const source = listed.source ?? `${directory}/registry-item.json`;
   const localDirectory = `registry/blocks/${name}`;
   const record = {
     name,
     originalName: listed.name,
     type: listed.type,
+    ...(listed.catalogPage
+      ? { catalogPage: `docs/${listed.catalogPage}` }
+      : {}),
     status: "imported",
     files: [],
     missingFiles: [],
   };
   try {
     const manifestBytes = await sourceBytes(source);
-    const original = JSON.parse(manifestBytes);
+    const original = listed.manifest ?? JSON.parse(manifestBytes);
     if (
       original.name !== listed.name ||
       original.type !== listed.type ||
@@ -228,11 +298,17 @@ for (const listed of registry.items) {
         const rootNotice = rootNotices.find(
           (notice) => file.path === `licenses/HyperFrames-${notice}`,
         );
-        const path = rootNotice ?? `${directory}/${file.path}`;
+        const extractedSnippet =
+          listed.snippet && file.type === "hyperframes:snippet";
+        const path =
+          rootNotice ??
+          (extractedSnippet ? source : `${directory}/${file.path}`);
         const localPath = resolve(root, localDirectory, file.path);
         const bytes = file.url
           ? await hostedBytes(file.url, localPath)
-          : await sourceBytes(path);
+          : extractedSnippet
+            ? listed.snippet
+            : await sourceBytes(path);
         const originalTarget = original.files.find(
           (candidate) => candidate.path === file.path,
         )?.target;
@@ -249,7 +325,14 @@ for (const listed of registry.items) {
                     : "Avoid overwriting an existing Hyfrme composition.",
               }
             : {}),
-          source: file.url ? { url: file.url } : { path },
+          source: file.url
+            ? { url: file.url }
+            : {
+                path,
+                ...(extractedSnippet
+                  ? { extraction: `html code fence: ${listed.name}.html` }
+                  : {}),
+              },
           sha256: sha256(bytes),
           bytes: bytes.length,
         };
@@ -317,6 +400,12 @@ const summary = {
   },
   verification: "native-source-copy",
   totalRegistryItems: registry.items.length,
+  totalCatalogItems: listedItems.length,
+  documentationItems: documentationItems.map(({ name, catalogPage }) => ({
+    name,
+    source: `docs/${catalogPage}`,
+  })),
+  navigationSha256: sha256(navigationBytes),
   importedItems: imported.length,
   byType: countByType(imported),
   sourceFiles: imported.reduce(

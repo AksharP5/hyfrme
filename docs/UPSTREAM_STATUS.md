@@ -22,7 +22,7 @@ authored registry manifests and the official Remotion-to-HyperFrames source lint
 - 1/1 standalone visual ports published (`soft-blur-in`).
 - 0 visual items remain.
 - 43 local-only registry items.
-- 394 native official HyperFrames items (separate source import).
+- 396 native official HyperFrames items, including 2 website-only entries (separate source import).
 
 | Translation class | Count |
 | --- | ---: |

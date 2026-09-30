@@ -6,6 +6,7 @@ export type RegistryFile = {
 };
 
 import catalogData from "./generated/catalog-data.json";
+import hyperframesNavigation from "../catalog/hyperframes-navigation.json";
 
 export type RegistrySummary = (typeof catalogData)[number]["item"];
 
@@ -867,52 +868,74 @@ const officialItems = catalogData
       entry.sourceRepository === "https://github.com/heygen-com/hyperframes",
   )
   .map((entry) => entry.item);
-const officialSections = (
-  type: string,
-  id: string,
-  label: string,
-  description: string,
-): CatalogTaxonomySection[] => {
-  const slugs = officialItems
-    .filter(
-      (item) =>
-        item.type === type &&
-        (type === "hyperframes:component" ||
-          !(item.tags.includes("shader") || item.tags.includes("shaders"))),
-    )
-    .map((item) => item.name);
-  return slugs.length
-    ? [{ id, label, description, featuredSlug: slugs[0], slugs }]
-    : [];
-};
+const officialNames = new Set(officialItems.map((item) => item.name));
+const officialSlugs = (pages: string[]) =>
+  pages
+    .map((page) => `hyperframes-${page.split("/").at(-1)}`)
+    .filter((slug) => officialNames.has(slug));
+const officialId = (label: string) =>
+  `hyperframes-${label
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/-$/, "")}`;
+
+export const hyperframesTaxonomy: CatalogTaxonomySection[] =
+  hyperframesNavigation.groups.map((section) => {
+    const slugs = officialSlugs(section.items);
+    const groups = section.groups.map((group) => ({
+      id: officialId(group.label),
+      label: group.label,
+      slugs: officialSlugs(group.items),
+    }));
+    return {
+      id: officialId(section.label),
+      label: section.label,
+      description: "",
+      featuredSlug: slugs[0] ?? groups[0].slugs[0],
+      ...(groups.length ? { groups } : { slugs }),
+    };
+  });
+const groupedOfficialNames = new Set(
+  hyperframesTaxonomy.flatMap(
+    (section) =>
+      section.slugs ?? section.groups?.flatMap((group) => group.slugs) ?? [],
+  ),
+);
+const unlistedOfficialSlugs = officialItems
+  .filter(
+    (item) =>
+      item.type !== "hyperframes:example" &&
+      !groupedOfficialNames.has(item.name),
+  )
+  .map((item) => item.name);
+if (unlistedOfficialSlugs.length) {
+  hyperframesTaxonomy.push({
+    id: "hyperframes-other-components",
+    label: "Other components",
+    description: "Published items not yet listed in the upstream navigation.",
+    featuredSlug: unlistedOfficialSlugs[0],
+    slugs: unlistedOfficialSlugs,
+  });
+}
+const templateSlugs = officialItems
+  .filter((item) => item.type === "hyperframes:example")
+  .map((item) => item.name);
+const officialTemplates: CatalogTaxonomySection[] = [
+  {
+    id: "official-templates",
+    label: "HyperFrames templates",
+    description: "Complete projects from the official catalog.",
+    featuredSlug: templateSlugs[0],
+    slugs: templateSlugs,
+  },
+];
 
 export const catalogTaxonomy: Partial<
   Record<Exclude<CatalogCategory, "all">, CatalogTaxonomySection[]>
 > = {
-  components: [
-    ...componentTaxonomy,
-    ...officialSections(
-      "hyperframes:block",
-      "official-motion",
-      "HyperFrames blocks",
-      "Original compositions from the official HyperFrames catalog.",
-    ),
-  ],
-  primitives: [
-    ...primitiveTaxonomy,
-    ...officialSections(
-      "hyperframes:component",
-      "official-components",
-      "HyperFrames components",
-      "Reusable HTML snippets from the official catalog.",
-    ),
-  ],
-  templates: officialSections(
-    "hyperframes:example",
-    "official-templates",
-    "HyperFrames templates",
-    "Complete projects from the official catalog.",
-  ),
+  components: [...componentTaxonomy, ...hyperframesTaxonomy],
+  primitives: primitiveTaxonomy,
+  templates: officialTemplates,
   icons: iconTaxonomy,
 };
 
