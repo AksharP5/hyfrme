@@ -11,7 +11,13 @@ const result = await build({
   format: "esm",
   write: false,
 });
-const { catalog, catalogTaxonomy, categoryFor, taxonomyFor } = await import(
+const {
+  catalog,
+  catalogTaxonomy,
+  hyperframesTaxonomy,
+  categoryFor,
+  taxonomyFor,
+} = await import(
   `data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString("base64")}`
 );
 const directories = await readdir(resolve(root, "registry/blocks"), {
@@ -71,7 +77,7 @@ for (const entry of entries) {
 
 for (const [name, category] of [
   ["hyperframes-data-chart", "components"],
-  ["hyperframes-spring-pop", "primitives"],
+  ["hyperframes-spring-pop", "components"],
   ["hyperframes-product-promo", "templates"],
 ]) {
   const entry = catalog.find((entry) => entry.item.name === name);
@@ -79,6 +85,53 @@ for (const [name, category] of [
   assert.equal(entry.source.id, "hyperframes");
   assert.equal(categoryFor(entry), category);
   assert(taxonomyFor(entry));
+}
+
+const navigation = JSON.parse(
+  await readFile(resolve(root, "catalog/hyperframes-navigation.json"), "utf8"),
+);
+const officialEntries = catalog.filter(
+  (entry) => entry.source.id === "hyperframes",
+);
+const available = new Set(officialEntries.map((entry) => entry.item.name));
+const namesForPages = (pages) =>
+  pages
+    .map((page) => `hyperframes-${page.split("/").at(-1)}`)
+    .filter((name) => available.has(name));
+assert.equal(officialEntries.length, 394);
+for (const [index, upstream] of navigation.groups.entries()) {
+  const section = hyperframesTaxonomy[index];
+  assert.equal(section.label, upstream.label);
+  if (upstream.groups.length) {
+    assert.deepEqual(
+      section.groups.map((group) => ({
+        label: group.label,
+        slugs: group.slugs,
+      })),
+      upstream.groups.map((group) => ({
+        label: group.label,
+        slugs: namesForPages(group.items),
+      })),
+    );
+  } else {
+    assert.deepEqual(section.slugs, namesForPages(upstream.items));
+  }
+}
+assert.equal(hyperframesTaxonomy.length, navigation.groups.length + 1);
+assert.deepEqual(hyperframesTaxonomy.at(-1).slugs, [
+  "hyperframes-colorama-wipe",
+]);
+for (const [name, section, group] of [
+  ["hyperframes-caption-highlight", "Text & captions", "Captions"],
+  ["hyperframes-mk-callout-highlight", "Text & captions", "Captions"],
+  ["hyperframes-code-morph", "Code", "Code Animations"],
+  ["hyperframes-terminal-simulator", "Code", "Code Animations"],
+  ["hyperframes-spring-pop", "Scenes & demos", "Motion Scenes"],
+]) {
+  const taxonomy = taxonomyFor({ item: { name } });
+  assert.equal(taxonomy.category, "components");
+  assert.equal(taxonomy.section.label, section);
+  assert.equal(taxonomy.group.label, group);
 }
 
 const orbit = taxonomyFor({ item: { name: "snapcn-orbit-gallery" } });

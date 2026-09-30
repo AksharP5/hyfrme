@@ -5,6 +5,27 @@ Hyfrme imports every item published in the official registry at
 and 8 project templates. The authoritative import record is
 [`catalog/hyperframes-upstream.json`](../catalog/hyperframes-upstream.json).
 
+## Browse by upstream group
+
+The website preserves the official catalog's category labels, subgroup labels,
+item membership, and order. Blocks and HTML snippets stay together when upstream
+places them together, such as Captions and Code Animations. Select the HyperFrames
+source to browse only these groups; templates remain a separate collection.
+
+[`catalog/hyperframes-navigation.json`](../catalog/hyperframes-navigation.json)
+freezes the Catalog navigation from upstream `docs/docs.json` at
+`4825f792949282d561cdfe32cdcc7fce1cf2605d`, with its source SHA256. All 394 published
+registry names still match this commit. Upstream navigation mentions two unpublished
+items (Week in Merges and Simulated Cursor), which are not installable registry entries.
+Colorama Wipe is published but not in upstream navigation; it appears under Other components.
+
+Refresh navigation from an exact upstream commit, then review coverage and run the usual checks:
+
+```bash
+node scripts/sync-hyperframes-navigation.mjs <upstream-commit-sha>
+npm run test:taxonomy
+```
+
 ## Import contract
 
 Canonical HTML, JavaScript, media, fonts, and licenses retain the original bytes.
