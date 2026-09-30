@@ -17,6 +17,7 @@ const {
   parseCompositionVariables,
   valuesFromUrl,
   customizedSource,
+  numberBounds,
 } = await import(
   `data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString("base64")}`
 );
@@ -100,4 +101,51 @@ test("official enum and image variables normalize to installable controls", () =
   );
   window.location.search = "?v.direction=sideways";
   assert.equal(valuesFromUrl(variables).direction, "out");
+});
+
+test("copied Touch Indicator source keeps both runtime variable carriers in sync", async () => {
+  const source = await readFile(
+    resolve(
+      root,
+      "registry/blocks/hyperframes-touch-indicator/touch-indicator.html",
+    ),
+    "utf8",
+  );
+  const example = `<!-- Example: data-composition-variables='[{"id":"gesture","type":"enum","default":"tap"}]' -->`;
+  const copied = customizedSource(example + source, { gesture: "swipe" });
+  assert(copied.startsWith(example));
+  const carriers = [
+    ...copied
+      .replace(/<!--[\s\S]*?-->/g, "")
+      .matchAll(/data-composition-variables='([^']*)'/g),
+  ].map((match) => JSON.parse(match[1]));
+  assert.equal(carriers.length, 2);
+  for (const variables of carriers) {
+    const gesture = variables.find((variable) => variable.id === "gesture");
+    assert.equal(gesture.default, "swipe");
+    assert.equal(gesture.type, "enum");
+    assert.deepEqual(gesture.options, [
+      { value: "tap", label: "Tap" },
+      { value: "swipe", label: "Swipe" },
+    ]);
+  }
+});
+
+test("angle sliders preserve negative defaults and allow either direction", async () => {
+  for (const [name, id] of [
+    ["page-turn", "angle"],
+    ["crumple-toss", "direction"],
+  ]) {
+    const source = await readFile(
+      resolve(root, "registry/blocks", name, `${name}.html`),
+      "utf8",
+    );
+    const variable = parseCompositionVariables(source).find(
+      (variable) => variable.id === id,
+    );
+    const bounds = numberBounds(variable, { tags: [] });
+    assert(bounds.min <= variable.default);
+    assert(bounds.max > 0);
+    assert.equal(bounds.step, 1);
+  }
 });

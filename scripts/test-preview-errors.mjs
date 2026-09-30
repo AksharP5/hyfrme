@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import test from "node:test";
 import { runInNewContext } from "node:vm";
@@ -14,6 +15,31 @@ const result = await build({
 const { buildPreviewDocument } = await import(
   `data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString("base64")}`
 );
+const root = resolve(import.meta.dirname, "..");
+const catalog = JSON.parse(
+  await readFile(resolve(root, "src/generated/catalog-data.json"), "utf8"),
+);
+
+async function nativePreview(name) {
+  globalThis.window = { location: { origin: "http://localhost:5173" } };
+  const { item } = catalog.find((entry) => entry.item.name === name);
+  const manifest = JSON.parse(
+    await readFile(
+      resolve(root, "registry/blocks", name, "registry-item.json"),
+      "utf8",
+    ),
+  );
+  const source = await readFile(
+    resolve(root, "registry/blocks", name, item.sourcePath),
+    "utf8",
+  );
+  return buildPreviewDocument(
+    source,
+    { ...item, files: manifest.files },
+    {},
+    false,
+  );
+}
 const document = buildPreviewDocument(
   "<html><head></head><body></body></html>",
   {
@@ -127,4 +153,53 @@ test("native snippet previews resolve direct and concatenated declared assets", 
   assert(preview.includes(`url("${root}assets/fonts/Caveat.woff2")`));
   assert(preview.includes(`src="${root}lava.png"`));
   assert(preview.includes(`const texture="${root}" + name + ".png"`));
+});
+
+for (const name of [
+  "hyperframes-oversized-cursor",
+  "hyperframes-touch-indicator",
+]) {
+  test(`${name} preview loads the host-provided GSAP dependency`, async () => {
+    const preview = await nativePreview(name);
+    const dependency =
+      '<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>';
+    assert(preview.includes(dependency));
+    assert(preview.indexOf(dependency) < preview.indexOf("gsap.timeline("));
+  });
+}
+
+test("native block previews resolve bare composition-relative scripts and fonts", async () => {
+  const cuboid = await nativePreview("hyperframes-cuboid-carousel");
+  assert(
+    cuboid.includes(
+      'src="http://localhost:5173/registry/blocks/hyperframes-cuboid-carousel/assets/gsap-3.14.2.min.js"',
+    ),
+  );
+  assert.equal((cuboid.match(/<script\b[^>]*src=[^>]*gsap/g) ?? []).length, 1);
+  const weight = await nativePreview("hyperframes-weight-wave");
+  assert(
+    weight.includes(
+      'url("http://localhost:5173/registry/blocks/hyperframes-weight-wave/assets/fonts/Recursive-wght-slnt-latin.woff2")',
+    ),
+  );
+});
+
+test("native importmap prefixes resolve declared nested addon modules", async () => {
+  const preview = await nativePreview("hyperframes-cuboid-carousel");
+  const base = preview.match(/<base href="([^"]+)">/)[1];
+  const { imports } = JSON.parse(
+    preview.match(/<script type="importmap">([\s\S]*?)<\/script>/)[1],
+  );
+  const root =
+    "http://localhost:5173/registry/blocks/hyperframes-cuboid-carousel/";
+  assert.equal(base, `${root}cuboid-carousel.html`);
+  for (const path of [
+    "environments/RoomEnvironment.js",
+    "utils/BufferGeometryUtils.js",
+  ]) {
+    assert.equal(
+      new URL(`${imports["three/addons/"]}${path}`, base).href,
+      `${root}assets/addons/${path}`,
+    );
+  }
 });

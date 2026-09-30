@@ -1,7 +1,9 @@
 import { access, readFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { resolve } from "node:path";
+import { isDeepStrictEqual } from "node:util";
 import { build } from "esbuild";
+import { parseHyperframesVariables } from "./hyperframes-variables.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const readJson = async (path) => JSON.parse(await readFile(path, "utf8"));
@@ -129,6 +131,25 @@ for (const item of registry.items) {
         );
       }
     }
+    const primary =
+      manifest.files.find((file) => file.target === "index.html") ??
+      manifest.files.find(
+        (file) =>
+          file.type === "hyperframes:composition" ||
+          file.type === "hyperframes:snippet",
+      );
+    if (!primary)
+      throw new Error(`${item.name}: official item has no primary HTML source`);
+    const sourceVariables = parseHyperframesVariables(
+      await readFile(resolve(blockDirectory, primary.path), "utf8"),
+    );
+    if (
+      sourceVariables !== undefined &&
+      !isDeepStrictEqual(sourceVariables, manifest.variables)
+    )
+      throw new Error(
+        `${item.name}: official variables differ from the active HTML declaration`,
+      );
     if (manifest.type === "hyperframes:example") {
       const preview = templateRecords.get(item.name);
       if (

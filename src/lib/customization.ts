@@ -217,25 +217,29 @@ export function changedValues(
 }
 
 export function customizedSource(source: string, values: CustomValues) {
-  const match = source.match(/data-composition-variables='([^']*)'/);
-  if (!match) return source;
-  const metadata: unknown = JSON.parse(decodeHtmlAttribute(match[1]));
-  if (!Array.isArray(metadata)) return source;
-  const variables = metadata.map((variable: unknown) => {
-    if (
-      !variable ||
-      typeof variable !== "object" ||
-      !("id" in variable) ||
-      typeof variable.id !== "string" ||
-      !Object.hasOwn(values, variable.id)
-    )
-      return variable;
-    return { ...variable, default: values[variable.id] };
-  });
-  const encoded = JSON.stringify(variables)
-    .replaceAll("&", "&amp;")
-    .replaceAll("'", "&#39;");
-  return source.replace(match[0], `data-composition-variables='${encoded}'`);
+  return source.replace(
+    /<!--[\s\S]*?-->|data-composition-variables='([^']*)'/g,
+    (match, declaration: string | undefined) => {
+      if (declaration === undefined) return match;
+      const metadata: unknown = JSON.parse(decodeHtmlAttribute(declaration));
+      if (!Array.isArray(metadata)) return match;
+      const variables = metadata.map((variable: unknown) => {
+        if (
+          !variable ||
+          typeof variable !== "object" ||
+          !("id" in variable) ||
+          typeof variable.id !== "string" ||
+          !Object.hasOwn(values, variable.id)
+        )
+          return variable;
+        return { ...variable, default: values[variable.id] };
+      });
+      const encoded = JSON.stringify(variables)
+        .replaceAll("&", "&amp;")
+        .replaceAll("'", "&#39;");
+      return `data-composition-variables='${encoded}'`;
+    },
+  );
 }
 
 export function buildUsageSnippet(
@@ -314,14 +318,13 @@ function rewriteAssetPaths(source: string, item: RegistryItem) {
       relativePath,
       registryFileUrl(item.name, file.path),
     );
-    if (!relativeTarget.includes("/")) {
-      for (const quote of ['"', "'"]) {
-        rewritten = rewritten.replaceAll(
-          `src=${quote}${relativeTarget}${quote}`,
-          `src=${quote}${registryFileUrl(item.name, file.path)}${quote}`,
-        );
-      }
+    for (const quote of ['"', "'", "`"]) {
+      rewritten = rewritten.replaceAll(
+        `${quote}${relativeTarget}${quote}`,
+        `${quote}${url}${quote}`,
+      );
     }
+    rewritten = rewritten.replaceAll(`url(${relativeTarget})`, `url(${url})`);
   }
   const directories = new Map<string, string | null>();
   for (const file of item.files) {
@@ -471,9 +474,20 @@ body {
   const documentSource = /<head(?:\s[^>]*)?>/i.test(activeSource)
     ? activeSource
     : `<!doctype html><html><head><script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script></head><body>${activeSource}</body></html>`;
+  const gsapScript =
+    /\bgsap\s*\./.test(documentSource) &&
+    !/<script\b[^>]*\bsrc\s*=\s*["'][^"']*gsap[^"']*["']/i.test(documentSource)
+      ? '<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>'
+      : "";
+  const moduleBase =
+    item.sourcePath &&
+    /<script\b[^>]*\btype\s*=\s*["']importmap["']/i.test(documentSource) &&
+    !/<base\b/i.test(documentSource)
+      ? `<base href="${registryFileUrl(item.name, item.sourcePath)}">`
+      : "";
   return rewriteAssetPaths(documentSource, item).replace(
-    "<head>",
-    `<head>${bootstrap}`,
+    /<head(?:\s[^>]*)?>/i,
+    (head) => `${head}${moduleBase}${bootstrap}${gsapScript}`,
   );
 }
 
@@ -532,7 +546,7 @@ export function numberBounds(
       step: 1,
     });
   }
-  if (signedNumbers.has(variable.id)) {
+  if (signedNumbers.has(variable.id) || value < 0) {
     const span = Math.max(Math.abs(value) * 2, 1);
     return withOverrides({
       min: -span,

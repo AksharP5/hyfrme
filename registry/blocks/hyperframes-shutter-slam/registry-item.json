@@ -28,6 +28,86 @@
   "preview": {
     "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/shutter-slam.png"
   },
+  "variables": [
+    {
+      "id": "text",
+      "type": "string",
+      "role": "content",
+      "label": "Word",
+      "description": "The word driven through the six beats.",
+      "default": "MOTION"
+    },
+    {
+      "id": "accent",
+      "type": "enum",
+      "role": "style",
+      "label": "Accent",
+      "description": "Word color.",
+      "default": "green",
+      "options": [
+        {
+          "value": "green",
+          "label": "Green"
+        },
+        {
+          "value": "blue",
+          "label": "Blue"
+        },
+        {
+          "value": "violet",
+          "label": "Violet"
+        }
+      ]
+    },
+    {
+      "id": "blur",
+      "type": "enum",
+      "role": "motion",
+      "label": "Blur",
+      "description": "Integrate each frame over the shutter window, or capture one instant per frame.",
+      "default": "shutter",
+      "options": [
+        {
+          "value": "shutter",
+          "label": "Shutter"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ]
+    },
+    {
+      "id": "cues",
+      "type": "string",
+      "role": "motion",
+      "label": "Cues",
+      "description": "Comma seconds from mount start for each of the six beats; empty keeps the authored rhythm.",
+      "default": ""
+    },
+    {
+      "id": "exit",
+      "type": "enum",
+      "role": "motion",
+      "label": "Exit",
+      "description": "How the word leaves.",
+      "default": "none",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "up",
+          "label": "Up"
+        }
+      ]
+    }
+  ],
   "license": "Apache-2.0",
   "origin": {
     "repository": "https://github.com/heygen-com/hyperframes",

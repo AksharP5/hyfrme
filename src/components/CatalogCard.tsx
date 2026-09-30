@@ -12,6 +12,8 @@ type CatalogCardProps = {
 
 export function CatalogCard({ entry }: CatalogCardProps) {
   const [previewing, setPreviewing] = useState(false);
+  const [posterFailed, setPosterFailed] = useState(false);
+  const [videoFailed, setVideoFailed] = useState(false);
   const category = categoryFor(entry);
   const isIcon = category === "icons";
   const { poster, video } = entry.item.preview;
@@ -30,10 +32,11 @@ export function CatalogCard({ entry }: CatalogCardProps) {
       aria-label={`Open ${entry.item.title}`}
     >
       <span className="catalog-card-preview">
-        {previewing && video ? (
+        {previewing && video && !videoFailed ? (
           <video
             src={video}
-            poster={poster ?? undefined}
+            poster={posterFailed ? undefined : (poster ?? undefined)}
+            onError={() => setVideoFailed(true)}
             muted
             autoPlay
             loop
@@ -41,8 +44,13 @@ export function CatalogCard({ entry }: CatalogCardProps) {
             preload="metadata"
             aria-hidden="true"
           />
-        ) : poster ? (
-          <img src={poster} alt="" loading="lazy" />
+        ) : poster && !posterFailed ? (
+          <img
+            src={poster}
+            alt=""
+            loading="lazy"
+            onError={() => setPosterFailed(true)}
+          />
         ) : (
           <span className="source-preview">
             <span aria-hidden="true">&lt;/&gt;</span>

@@ -291,6 +291,9 @@ try {
   for (const name of [
     "hyperframes-week-in-merges",
     "hyperframes-simulated-cursor",
+    "hyperframes-touch-indicator",
+    "hyperframes-caption-texture",
+    "hyperframes-carousel-circle-1",
   ]) {
     const project = resolve(nativeTemporary, name);
     await mkdir(project, { recursive: true });
@@ -310,6 +313,109 @@ try {
     }
   }
 
+
+  const touchSource = await readFile(
+    resolve(
+      registry,
+      "blocks/hyperframes-touch-indicator/touch-indicator.html",
+    ),
+    "utf8",
+  );
+  const touchExample = `<!-- data-composition-variables='[{"id":"gesture","type":"enum","default":"tap","options":[{"value":"tap"},{"value":"swipe"}]}]' -->\n`;
+  registryFixtures.set(
+    "/blocks/hyperframes-touch-indicator/touch-indicator.html",
+    `${touchExample}${touchSource}`,
+  );
+  await runCli([
+    "add",
+    "hyperframes-touch-indicator",
+    "--dir",
+    resolve(nativeTemporary, "hyperframes-touch-indicator"),
+    "--force",
+    "--set",
+    "gesture=swipe",
+    "--set",
+    "targetX=42",
+  ]);
+  registryFixtures.delete(
+    "/blocks/hyperframes-touch-indicator/touch-indicator.html",
+  );
+  const customizedTouch = await readFile(
+    resolve(
+      nativeTemporary,
+      "hyperframes-touch-indicator/compositions/components/touch-indicator.html",
+    ),
+    "utf8",
+  );
+  assert(customizedTouch.startsWith(touchExample));
+  const touchCarriers = [
+    ...customizedTouch
+      .replace(/<!--[\s\S]*?-->/g, "")
+      .matchAll(/data-composition-variables='([^']*)'/g),
+  ];
+  assert.equal(touchCarriers.length, 2);
+  for (const [, metadata] of touchCarriers) {
+    const variables = JSON.parse(metadata);
+    assert.equal(
+      variables.find((variable) => variable.id === "gesture").default,
+      "swipe",
+    );
+    assert.equal(
+      variables.find((variable) => variable.id === "targetX").default,
+      42,
+    );
+  }
+
+  const relocatedProject = resolve(nativeTemporary, "relocated");
+  await mkdir(relocatedProject);
+  await writeFile(
+    resolve(relocatedProject, "hyperframes.json"),
+    JSON.stringify({
+      paths: {
+        blocks: "motion/blocks",
+        components: "motion/components",
+        assets: "static/media",
+      },
+    }),
+  );
+  await runCli([
+    "add",
+    "hyperframes-caption-texture",
+    "hyperframes-carousel-circle-1",
+    "--dir",
+    relocatedProject,
+  ]);
+  const texture = await readFile(
+    resolve(relocatedProject, "motion/components/caption-texture.html"),
+    "utf8",
+  );
+  const texturePath = runInNewContext(
+    `${texture.match(/var TEXTURE_URL[^;]+;/)[0]} TEXTURE_URL;`,
+    { TEXTURE: "lava" },
+  );
+  assert.deepEqual(
+    await readFile(resolve(relocatedProject, texturePath)),
+    await readFile(
+      resolve(registry, "blocks/hyperframes-caption-texture/lava.png"),
+    ),
+  );
+  const carousel = await readFile(
+    resolve(relocatedProject, "motion/blocks/carousel-circle-1.html"),
+    "utf8",
+  );
+  const carouselPrefix = carousel.match(/varUrl\(V\[id\]\) \|\| "([^"]+)"/)[1];
+  assert.deepEqual(
+    await readFile(
+      resolve(relocatedProject, carouselPrefix, "artist-bob-seger.jpg"),
+    ),
+    await readFile(
+      resolve(
+        registry,
+        "blocks/hyperframes-carousel-circle-1/assets/carousel-images/artist-bob-seger.jpg",
+      ),
+    ),
+  );
+  assert.doesNotMatch(carousel, /"assets\/carousel-images\/"/);
 
   await writeFile(
     resolve(temporary, "hyperframes.json"),

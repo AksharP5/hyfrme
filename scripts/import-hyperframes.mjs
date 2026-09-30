@@ -2,6 +2,8 @@ import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { lstat, mkdir, readFile, realpath, writeFile } from "node:fs/promises";
 import { dirname, isAbsolute, relative, resolve } from "node:path";
+import { isDeepStrictEqual } from "node:util";
+import { parseHyperframesVariables } from "./hyperframes-variables.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const repository = "https://github.com/heygen-com/hyperframes";
@@ -339,8 +341,25 @@ for (const listed of listedItems) {
         return { localPath, bytes, provenance };
       }),
     );
+    const primary =
+      files.find((file) => file.target === "index.html") ??
+      files.find(
+        (file) =>
+          file.type === "hyperframes:composition" ||
+          file.type === "hyperframes:snippet",
+      );
+    if (!primary) throw new Error(`Missing primary HTML source in ${name}.`);
+    const sourceVariables = parseHyperframesVariables(
+      payloads
+        .find((payload) => payload.provenance.path === primary.path)
+        .bytes.toString("utf8"),
+    );
+    const normalizeVariables =
+      sourceVariables !== undefined &&
+      !isDeepStrictEqual(sourceVariables, original.variables);
     const manifest = {
       ...original,
+      ...(normalizeVariables ? { variables: sourceVariables } : {}),
       name,
       tags: [...new Set([...(original.tags ?? []), "hyperframes-official"])],
       license: original.license ?? "Apache-2.0",
@@ -369,6 +388,7 @@ for (const listed of listedItems) {
       sha256: sha256(localManifestBytes),
     };
     record.files = payloads.map((payload) => payload.provenance);
+    if (normalizeVariables) record.variablesSource = primary.path;
   } catch (error) {
     record.status = "failed";
     record.missingFiles.push(

@@ -299,31 +299,44 @@ const parseSettingValue = (variable, raw) => {
 
 const customizeSource = (source, settings, name) => {
   if (settings.length === 0) return source;
-  const match = source.match(/data-composition-variables='([^']*)'/);
-  if (!match) {
+  const parsedSettings = parseSettings(settings);
+  let found = false;
+  const customized = source.replace(
+    /<!--[\s\S]*?-->|data-composition-variables='([^']*)'/g,
+    (match, metadata) => {
+      if (metadata === undefined) return match;
+      let variables;
+      try {
+        variables = JSON.parse(decodeHtmlAttribute(metadata));
+      } catch {
+        fail(`component "${name}" has invalid customization metadata`);
+      }
+      let changed = false;
+      for (const setting of parsedSettings) {
+        const variable = variables.find(
+          (candidate) => candidate.id === setting.id,
+        );
+        if (!variable) {
+          if (found) continue;
+          const available = variables
+            .map((candidate) => candidate.id)
+            .join(", ");
+          fail(
+            `unknown setting "${setting.id}" for ${name}. Available: ${available}`,
+          );
+        }
+        variable.default = parseSettingValue(variable, setting.raw);
+        changed = true;
+      }
+      found = true;
+      if (!changed) return match;
+      return `data-composition-variables='${encodeHtmlAttribute(JSON.stringify(variables))}'`;
+    },
+  );
+  if (!found) {
     fail(`component "${name}" does not expose customizable variables`);
   }
-
-  let variables;
-  try {
-    variables = JSON.parse(decodeHtmlAttribute(match[1]));
-  } catch {
-    fail(`component "${name}" has invalid customization metadata`);
-  }
-
-  for (const setting of parseSettings(settings)) {
-    const variable = variables.find((candidate) => candidate.id === setting.id);
-    if (!variable) {
-      const available = variables.map((candidate) => candidate.id).join(", ");
-      fail(
-        `unknown setting "${setting.id}" for ${name}. Available: ${available}`,
-      );
-    }
-    variable.default = parseSettingValue(variable, setting.raw);
-  }
-
-  const metadata = encodeHtmlAttribute(JSON.stringify(variables));
-  return source.replace(match[0], `data-composition-variables='${metadata}'`);
+  return customized;
 };
 
 const rewriteInstalledAssetPaths = (source, configuredPath) => {
@@ -572,6 +585,20 @@ const rewriteNativePaths = (source, file, fetched) => {
     relative(projectDirectory, installedFile.target).replaceAll("\\", "/"),
   );
   const replacements = new Map();
+  const directories = new Map();
+  const directoryPrefix = (path) => {
+    const directory = posix.dirname(path);
+    return directory === "." ? "" : `${directory}/`;
+  };
+  const addDirectory = (original, installed) => {
+    if (!original) return;
+    directories.set(
+      original,
+      directories.has(original) && directories.get(original) !== installed
+        ? null
+        : installed,
+    );
+  };
   for (const download of fetched) {
     const original = download.file.target.replaceAll("\\", "/");
     const installed = relative(projectDirectory, download.target).replaceAll(
@@ -585,6 +612,17 @@ const rewriteNativePaths = (source, file, fetched) => {
     replacements.set(originalRelative, installedRelative);
     replacements.set(`./${originalRelative}`, `./${installedRelative}`);
     if (download.file.url) replacements.set(download.file.url, installed);
+    const originalParent = directoryPrefix(original);
+    const installedParent = directoryPrefix(installed);
+    const originalRelativeParent = directoryPrefix(originalRelative);
+    const installedRelativeParent = directoryPrefix(installedRelative);
+    addDirectory(originalParent, installedParent);
+    addDirectory(`/${originalParent}`, `/${installedParent}`);
+    addDirectory(originalRelativeParent, installedRelativeParent);
+    addDirectory(`./${originalRelativeParent}`, `./${installedRelativeParent}`);
+  }
+  for (const [original, installed] of directories) {
+    if (installed !== null) replacements.set(original, installed);
   }
   const candidates = [...replacements]
     .filter(([original, installed]) => original !== installed)
@@ -654,7 +692,7 @@ const prepareComponent = async (item, componentSettings) => {
             ({ bytes, file }) =>
               file.path.endsWith(".html") &&
               /data-composition-variables='/.test(
-                new TextDecoder().decode(bytes),
+                new TextDecoder().decode(bytes).replace(/<!--[\s\S]*?-->/g, ""),
               ),
           )
         : undefined;
