@@ -48,6 +48,14 @@ Follow the [porting workflow](PORTING.md) for composition ports and the
 See the [native catalog workflow](HYPERFRAMES_CATALOG.md) for the pinned source
 import, local template previews, and file-hash validation.
 
+The native importer uses each primary HTML file's active
+`data-composition-variables` declaration when upstream manifest variables are
+missing or different. It decodes HTML attribute entities and preserves the full
+schema, including enum options and image types. These local manifest corrections
+are recorded as `variablesSource` in `catalog/hyperframes-upstream.json`; canonical
+HTML bytes, upstream manifest hashes, and source pins stay unchanged. Validation
+requires the installed HTML and registry variables to agree.
+
 ## Updating Hyfrme originals
 
 ```bash
