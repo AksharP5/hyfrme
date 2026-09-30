@@ -84,6 +84,39 @@ export function matchesMedia(file, url) {
   return url?.endsWith(`/${blobPath(file)}`) ?? false;
 }
 
+export function unusedMedia(blobs, manifests, before) {
+  if (manifests.some((manifest) => !Object.keys(manifest).length)) {
+    throw new Error("Refusing to prune with an empty media manifest.");
+  }
+  const retained = new Set(manifests.flatMap(Object.values));
+  if (!retained.size) throw new Error("No media manifests to retain.");
+  const stores = new Set([...retained].map((url) => new URL(url).hostname));
+  if (stores.size !== 1) {
+    throw new Error("Retained media manifests must use the same Blob store.");
+  }
+  const available = new Set(blobs.map((blob) => blob.url));
+  for (const url of retained) {
+    if (!available.has(url)) {
+      throw new Error(`Retained media is missing from this Blob store: ${url}`);
+    }
+  }
+  const [store] = stores;
+  return blobs.filter((blob) => {
+    const url = new URL(blob.url);
+    const match = blob.pathname.match(
+      /^media\/(?:h264-v[1-9]\d*\/)?[a-f0-9]{64}(\/.+)$/,
+    );
+    return (
+      url.hostname === store &&
+      url.pathname === `/${blob.pathname}` &&
+      match &&
+      isHostedMedia(match[1]) &&
+      !retained.has(blob.url) &&
+      new Date(blob.uploadedAt).getTime() < before
+    );
+  });
+}
+
 export function validateMedia(files, manifest, redirects) {
   for (const file of files) {
     if (!matchesMedia(file, manifest[file.path])) {

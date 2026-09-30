@@ -23,8 +23,84 @@ import {
   readMediaFiles,
   readMediaManifest,
   root,
+  unusedMedia,
   validateMedia,
 } from "./media.mjs";
+
+test("cleanup removes old versions while retaining current, rollback, and recent videos", () => {
+  const before = Date.parse("2026-09-16T00:00:00Z");
+  const blob = (hash, path, uploadedAt = "2026-09-01T00:00:00Z") => {
+    const pathname = `media/${hash}/previews/${path}/hyperframes.mp4`;
+    return {
+      pathname,
+      url: `https://test.public.blob.vercel-storage.com/${pathname}`,
+      uploadedAt,
+      size: 100,
+    };
+  };
+  const current = blob("a".repeat(64), "demo");
+  const previous = blob("b".repeat(64), "demo");
+  const old = blob("c".repeat(64), "demo");
+  const encoded = blob(`h264-v1/${"d".repeat(64)}`, "demo");
+  const removed = blob("e".repeat(64), "removed");
+  const recent = blob("f".repeat(64), "upload", "2026-09-30T00:00:00Z");
+  const boundary = blob("0".repeat(64), "upload", new Date(before));
+  const unrelated = blob("notes", "upload");
+  const asset = blob("1".repeat(64), "upload");
+  asset.pathname = asset.pathname.replace("hyperframes.mp4", "poster.png");
+  asset.url = asset.url.replace("hyperframes.mp4", "poster.png");
+  const anotherStore = blob("2".repeat(64), "upload");
+  anotherStore.url = anotherStore.url.replace("test.public", "other.public");
+  const manifests = [
+    { "/previews/demo/hyperframes.mp4": current.url },
+    { "/previews/demo/hyperframes.mp4": previous.url },
+  ];
+  assert.deepEqual(
+    unusedMedia(
+      [
+        current,
+        previous,
+        old,
+        encoded,
+        removed,
+        recent,
+        boundary,
+        unrelated,
+        asset,
+        anotherStore,
+      ],
+      manifests,
+      before,
+    ),
+    [old, encoded, removed],
+  );
+});
+
+test("cleanup refuses empty manifests, mixed stores, and missing retained videos", () => {
+  const url = `https://test.public.blob.vercel-storage.com/media/${"a".repeat(64)}/showcases/demo.mp4`;
+  const manifest = { "/showcases/demo.mp4": url };
+  assert.throws(
+    () => unusedMedia([], [{}], Date.now()),
+    /empty media manifest/,
+  );
+  assert.throws(() => unusedMedia([], [], Date.now()), /No media manifests/);
+  assert.throws(
+    () => unusedMedia([], [manifest], Date.now()),
+    /Retained media is missing/,
+  );
+  assert.throws(
+    () =>
+      unusedMedia(
+        [],
+        [
+          manifest,
+          { "/showcases/demo.mp4": url.replace("test.public", "other.public") },
+        ],
+        Date.now(),
+      ),
+    /same Blob store/,
+  );
+});
 
 test("render and encoder arguments preserve exact source frame rates", () => {
   assert.equal(frameRateArgument(60), "60");
