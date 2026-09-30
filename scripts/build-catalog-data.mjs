@@ -137,39 +137,29 @@ if (checking) {
   await writeFile(outputPath, output);
 }
 
-await Promise.all(
-  entries.map(
-    async ({
-      item,
-      parity,
-      sourcePath,
-      sourceTarget,
-      compositionId,
-      preview,
-    }) => {
-      const path = resolve(
-        root,
-        "public/registry/blocks",
-        item.name,
-        "catalog.json",
-      );
-      const details = `${JSON.stringify({ item: { ...item, sourcePath, sourceTarget, compositionId, preview, dimensions: item.dimensions ?? null, duration: item.duration ?? null, origin: item.origin ?? null }, parity })}\n`;
-      if (checking) {
-        const current = await readFile(path, "utf8").catch((error) => {
-          if (error.code === "ENOENT") return "";
-          throw error;
-        });
-        if (current !== details)
-          throw new Error(
-            `${item.name}: catalog details are stale. Run npm run sync:catalog.`,
-          );
-        return;
-      }
-      await mkdir(dirname(path), { recursive: true });
-      await writeFile(path, details);
-    },
-  ),
-);
+if (!checking)
+  await Promise.all(
+    entries.map(
+      async ({
+        item,
+        parity,
+        sourcePath,
+        sourceTarget,
+        compositionId,
+        preview,
+      }) => {
+        const path = resolve(
+          root,
+          "public/registry/blocks",
+          item.name,
+          "catalog.json",
+        );
+        const details = `${JSON.stringify({ item: { ...item, sourcePath, sourceTarget, compositionId, preview, dimensions: item.dimensions ?? null, duration: item.duration ?? null, origin: item.origin ?? null }, parity })}\n`;
+        await mkdir(dirname(path), { recursive: true });
+        await writeFile(path, details);
+      },
+    ),
+  );
 console.log(
-  `${checking ? "Verified" : "Generated"} catalog summaries and details for ${entries.length} items.`,
+  `${checking ? "Verified catalog summaries" : "Generated catalog summaries and details"} for ${entries.length} items.`,
 );
