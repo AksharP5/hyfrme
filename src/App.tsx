@@ -427,6 +427,7 @@ function CatalogPage() {
       selectCategory("all");
     }
     const url = new URL(window.location.href);
+    if (category === "all") url.searchParams.delete("category");
     url.searchParams.delete("section");
     url.searchParams.delete("group");
     if (next === "all") url.searchParams.delete("source");
