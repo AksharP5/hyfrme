@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"seed","type":"number","label":"Seed","default":7,"min":1,"max":99,"step":1},{"id":"splits","type":"number","label":"Splits","default":7,"min":3,"max":12,"step":1},{"id":"lineWeight","type":"number","label":"Line weight","default":14,"min":4,"max":32,"step":1},{"id":"expandCell","type":"number","label":"Expanding cell (0 is the largest)","default":0,"min":0,"max":12,"step":1},{"id":"lineColor","type":"color","label":"Lines","default":"#121212"},{"id":"redColor","type":"color","label":"Red","default":"#d62d20"},{"id":"yellowColor","type":"color","label":"Yellow","default":"#f4c20d"},{"id":"blueColor","type":"color","label":"Blue","default":"#1f4e9e"},{"id":"fieldColor","type":"color","label":"Expanding cell color","default":"#d62d20"},{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #f3efe6; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#f3efe6; }
+
+
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="mondrian-split" data-start="0" data-duration="4.833333333333333" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="4.833333333333333" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
+      </div>
+    </div>
+    <script src="./mondrian-split.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="mondrian-split"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="mondrian-split"] [data-hyfrme-clock]', {
+        frame: 145,
+        duration: 4.833333333333333,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(144, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["mondrian-split"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

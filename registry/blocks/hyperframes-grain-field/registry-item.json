@@ -1,0 +1,84 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "hyperframes-grain-field",
+  "type": "hyperframes:component",
+  "title": "Grain Field",
+  "description": "A clearly visible accent-tinted dot field drifts over a subtle luminance gradient in an exact ambient loop.",
+  "tags": [
+    "motion-primitive",
+    "background",
+    "grain",
+    "dots",
+    "texture",
+    "ambient",
+    "loopable",
+    "hyperframes-official"
+  ],
+  "jobs": [
+    "orient"
+  ],
+  "family": "backgrounds",
+  "profile": "ambient",
+  "evidence": "Wave G U20 grain-field specification",
+  "files": [
+    {
+      "path": "grain-field.html",
+      "target": "compositions/components/grain-field.html",
+      "type": "hyperframes:snippet"
+    },
+    {
+      "path": "licenses/HyperFrames-LICENSE",
+      "target": "THIRD_PARTY_LICENSES/hyperframes/LICENSE",
+      "type": "hyperframes:asset"
+    }
+  ],
+  "variables": [
+    {
+      "id": "density",
+      "type": "enum",
+      "role": "style",
+      "label": "Density",
+      "description": "Dot size and spacing across the grain field.",
+      "default": "fine",
+      "options": [
+        {
+          "value": "fine",
+          "label": "Fine"
+        },
+        {
+          "value": "coarse",
+          "label": "Coarse"
+        }
+      ]
+    },
+    {
+      "id": "accent",
+      "type": "enum",
+      "role": "style",
+      "label": "Accent",
+      "description": "Accent token family used to color the dots and luminance wash.",
+      "default": "green",
+      "options": [
+        {
+          "value": "green",
+          "label": "Green"
+        },
+        {
+          "value": "blue",
+          "label": "Blue"
+        },
+        {
+          "value": "violet",
+          "label": "Violet"
+        }
+      ]
+    }
+  ],
+  "license": "Apache-2.0",
+  "origin": {
+    "repository": "https://github.com/heygen-com/hyperframes",
+    "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+    "source": "registry/components/grain-field/registry-item.json",
+    "name": "grain-field"
+  }
+}

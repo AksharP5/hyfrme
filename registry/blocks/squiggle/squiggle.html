@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"shape","type":"string","label":"Shape","default":"wave","options":["wave","zigzag","loops","coil"]},{"id":"color","type":"color","label":"Line color","default":"#ffffff"},{"id":"weight","type":"number","label":"Stroke weight","default":3,"min":1,"max":12,"step":0.5},{"id":"amplitude","type":"number","label":"Amplitude","default":14,"min":0,"max":60,"step":1},{"id":"wavelength","type":"number","label":"Wavelength","default":48,"min":12,"max":160,"step":2},{"id":"length","type":"number","label":"Length","default":320,"min":40,"max":1200,"step":10},{"id":"angle","type":"number","label":"Angle","default":0,"min":-180,"max":180,"step":5},{"id":"x","type":"number","label":"Start x","default":0.375,"min":0,"max":1,"step":0.005},{"id":"y","type":"number","label":"Start y","default":0.5,"min":0,"max":1,"step":0.005},{"id":"settle","type":"number","label":"Settle","default":0.5,"min":0,"max":1,"step":0.05},{"id":"hold","type":"number","label":"Hold","default":12,"min":0,"max":90,"step":1},{"id":"erase","type":"boolean","label":"Erase","default":true},{"id":"delay","type":"number","label":"Delay","default":0,"min":0,"max":60,"step":1},{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #002fa7; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#002fa7; }
+
+
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="squiggle" data-start="0" data-duration="2.6666666666666665" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="2.6666666666666665" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
+      </div>
+    </div>
+    <script src="./squiggle.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="squiggle"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="squiggle"] [data-hyfrme-clock]', {
+        frame: 80,
+        duration: 2.6666666666666665,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(79, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["squiggle"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

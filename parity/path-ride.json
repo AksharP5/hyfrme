@@ -1,0 +1,83 @@
+{
+  "slug": "path-ride",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "source": "registry/remocn/path-ride/index.tsx",
+    "config": "registry/remocn/path-ride/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 96,
+    "props": {
+      "text": "Follow the line",
+      "path": "M 120 560 C 360 120 560 120 640 360 S 920 600 1160 160",
+      "color": "#111111",
+      "lineColor": "#fafafa",
+      "fontSize": 44,
+      "fontWeight": 700,
+      "lineWidth": 3,
+      "speed": 1
+    },
+    "background": "#ff4d1a"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "0e306a58ebd3dd1bb2abab776fe1a0d3834d24bb60e866b51728f1975b68485f",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 96,
+    "meanSsim": 0.9951568020833316,
+    "minSsim": 0.991322,
+    "p05Ssim": 0.992163,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 96,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check reported 17 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "path-ride",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "source": "registry/remocn/path-ride/index.tsx",
+          "config": "registry/remocn/path-ride/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap"
+        },
+        "reason": "The source lays each character along one shared motion path, so adjacent glyph boxes overlap by design. The 17 inspector hits are those per-letter layers; all 96 frames pass parity (mean/min SSIM 0.995157/0.991322) with exact alpha."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/path-ride/reference.mp4",
+    "hyperframesVideo": "public/previews/path-ride/hyperframes.mp4",
+    "thumbnail": "public/previews/path-ride/thumbnail.png",
+    "summary": "parity/path-ride-diff/summary.json",
+    "perFrameSsim": "parity/path-ride-diff/ssim.log",
+    "hyperframesCheck": "parity/path-ride-diff/hyperframes-check.log",
+    "worstFrame": "parity/path-ride-diff/worst-frame.png",
+    "referenceAlpha": "parity/path-ride-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/path-ride-diff/hyperframes-alpha.framemd5"
+  }
+}

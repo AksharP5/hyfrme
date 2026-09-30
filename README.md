@@ -26,8 +26,11 @@ install command for your version.
 
 ## Customize your components
 
-Every component page provides a live preview and controls for its supported
-variables. You can also set values when installing:
+Component pages provide source, previews, and controls for supported
+composition variables. Official CSS parameters without a declared variable are
+edited directly in the installed source. Shared links keep numbers within the component's declared limits and
+restore defaults for malformed values or unsupported choices. You can also set
+values when installing:
 
 ```bash
 npx hyfrme@latest add screen-lift \
@@ -41,7 +44,7 @@ HyperFrames, or edit the copied HTML, CSS, and JavaScript directly. Hyfrme is
 not a runtime dependency.
 
 The catalog includes Hyfrme originals and components adapted from Remocn,
-Snapcn, and T3 Code. Use the source filters to browse each collection. Snapcn
+Snapcn, and T3 Code, plus the complete pinned official HyperFrames catalog. Use the source filters to browse each collection. Snapcn
 component names start with `snapcn-`, such as `snapcn-phone-frame`. T3 Code
 blocks reproduce the desktop app at the pinned v0.0.42 release. Native dark
 and light captures and parity results are listed in the
@@ -61,11 +64,33 @@ Choose a different project:
 npx hyfrme@latest add screen-lift --dir ./my-video
 ```
 
-Install the full catalog:
+Install all blocks and reusable components (templates are initialized separately):
 
 ```bash
 npx hyfrme@latest add --all
 ```
+
+## Official HyperFrames catalog and templates
+
+The HyperFrames source filter includes 164 blocks, 222 reusable HTML components,
+and all 8 official templates. Names start with `hyperframes-`:
+
+```bash
+npx hyfrme@latest add hyperframes-data-chart hyperframes-spring-pop
+npx hyfrme@latest init hyperframes-product-promo --dir ./product-promo
+```
+
+Block installs print composition markup. Component installs print guidance for
+pasting the snippet's markup, styles, and script into a scene. Template initialization
+copies a complete project and creates `hyperframes.json` when absent. Four templates
+use the official no-video defaults: a 10-second project with placeholder media removed.
+Decision Tree includes a small renderer compatibility fix in the initialized copy.
+Existing conflicting files require `--force`; unrelated files stay intact.
+
+The import preserves the original HTML, scripts, assets, attribution, and Apache 2.0
+license. Its source hashes are checked against the pinned official catalog. Native
+source copies do not claim a Remocn/Snapcn SSIM comparison. See the
+[official catalog record](docs/HYPERFRAMES_CATALOG.md).
 
 ## Use with your coding agent
 

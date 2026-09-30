@@ -70,8 +70,13 @@ for (const entry of selected) {
       source: resolve(root, "assets/snapcn", local),
     });
   };
+  const mediaBySource = new Map();
+  for (const asset of assetManifest.media ?? []) {
+    if (!mediaBySource.has(asset.source) || asset.slugs?.includes(slug))
+      mediaBySource.set(asset.source, asset);
+  }
   const media = Object.fromEntries(
-    (assetManifest.media ?? []).map((asset) => [
+    [...mediaBySource.values()].map((asset) => [
       asset.source,
       `../assets/snapcn/${assetPath(asset.portPath ?? asset.path)}`,
     ]),
@@ -343,11 +348,12 @@ window.__hyfrmeReady = ready;
       )
     ).join("\n") + JSON.stringify(fixture.props);
   const hasVideo = /\bOffthreadVideo\b/.test(sourceText);
-  const selectedMedia = (assetManifest.media ?? []).filter(
+  const selectedMedia = [...mediaBySource.values()].filter(
     (asset) =>
       sourceText.includes(asset.source) ||
       (asset.source.startsWith("/") &&
         sourceText.includes(asset.source.slice(1))) ||
+      asset.slugs?.includes(slug) ||
       (slug === "snapcn-orbit-gallery" &&
         asset.source.startsWith("https://picsum.photos/seed/snap-orbit-")) ||
       (slug === "snapcn-follower-rush" &&
@@ -367,7 +373,13 @@ window.__hyfrmeReady = ready;
       );
   }
   const packagedMedia = Object.fromEntries(
-    selectedMedia.map((asset) => [asset.source, media[asset.source]]),
+    [
+      ...selectedMedia.map((asset) => [asset.source, media[asset.source]]),
+      ...fonts.map((font) => [
+        font.source,
+        `../assets/snapcn/${assetPath(font.path)}`,
+      ]),
+    ],
   );
   const packages = new Map();
   packages.set("tailwindcss", resolve(dependencies, "tailwindcss"));

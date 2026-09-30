@@ -7,14 +7,63 @@ Word Gather, Word Wheel, Channel Thread, Logo Collapse, and Card Rail use
 `1159369742d75d66ae89b3f83d45850861ccc63e`, checked on September 12, 2026.
 Status Cycle uses `0b30e76a3d1e4c9a49390d109a9630b118b1e100`, checked on
 September 17, 2026. Its label roll now takes 0.5 seconds, with 30 frames between
-statuses and a 198-frame fixture. Other component pins remain unchanged.
-All 44 free visual components have fixtures in `catalog/snapcn-fixtures.json`.
+statuses and a 198-frame fixture. Reel Collage uses
+`7fd048cc7eee397a0e6cb1353c1537aefd245e2c`, checked on September 24, 2026.
+Orb Swarm uses `98809254aa239edfd04119336ff6a774a2df776d`, checked on
+September 27, 2026. Other component pins remain unchanged.
+All 46 free visual components have fixtures in `catalog/snapcn-fixtures.json`.
 The source inventory is `catalog/snapcn-upstream.json`.
 
-The 41 entries in the merged preview registry retain its exact control defaults,
+The 43 entries in the merged preview registry retain its exact control defaults,
 shared speed control, and minimum-speed overrides. Caret, Input, and Pulsing
 Border are published registry components outside that preview map. Their fixtures
 use their individual configs. No private source was accessed.
+
+## Latest public audit, September 29, 2026
+
+Public main remains
+[`f915a5f88771bae15b09f5ef8396d5542fe360ee`](https://github.com/snapcndev/snapcn/commit/f915a5f88771bae15b09f5ef8396d5542fe360ee).
+The [live registry](https://snapcn.dev/r/registry.json) and authored free registry
+both contain 47 items: 46 visual components and one shared runtime. All 46 visuals
+are ported. The site advertises 43 free preview components; Caret, Input, and
+Pulsing Border account for the additional public visuals outside that preview map.
+No authored component source changed after the Orb Swarm port at `98809254`.
+Existing fixture and parity pins remain unchanged.
+
+The latest generated `/r/orb-swarm.json` adds the -12° constellation turn that
+was already present in the authored source at our port pin. Its current embedded
+source matches that pinned authored source apart from an attribution comment.
+This registry rebuild requires no composition change.
+
+The [public Pro index](https://github.com/snapcndev/snapcn/blob/f915a5f88771bae15b09f5ef8396d5542fe360ee/lib/pro-catalogue.json)
+and [live Pro page](https://snapcn.dev/pro) list 51 components. These are omitted
+from the current public `/r/registry.json`; only their names and descriptions
+are public. No Pro source is present in the public Git tree. All 51 unauthenticated
+component endpoints returned HTTP 402 with `error: "pro_component"`.
+The [registry route](https://github.com/snapcndev/snapcn/blob/f915a5f88771bae15b09f5ef8396d5542fe360ee/app/r/%5Bfile%5D/route.ts)
+returns HTTP 200 to the shadcn User-Agent with an empty `files` array and upgrade
+instructions. That response contains no source; Manifesto confirmed this behavior.
+All 51 Pro components remain excluded, and `publishedAudit` records their endpoint
+results separately from the pinned port inventory.
+
+## Reel Collage, September 24, 2026
+
+The [live registry](https://snapcn.dev/r/registry.json) has 45 free visuals.
+[Reel Collage](https://github.com/snapcndev/snapcn/commit/7fd048cc7eee397a0e6cb1353c1537aefd245e2c)
+is the new public source. Its eight reel posters and six collage posters are
+frozen locally. The Status Cycle poster changed since the older ports, so Reel
+Collage bundles the image from its own source pin without changing those ports.
+The Pro catalogue remains excluded because its source is private.
+
+## Orb Swarm, September 27, 2026
+
+The [live registry](https://snapcn.dev/r/registry.json) has 46 free visuals.
+[Orb Swarm](https://github.com/snapcndev/snapcn/commit/98809254aa239edfd04119336ff6a774a2df776d)
+is public and its [`/r/orb-swarm.json` endpoint](https://snapcn.dev/r/orb-swarm.json)
+returns HTTP 200. The pinned source includes the measured -12° constellation
+turn added after the initial component commit. Its Inter Tight 500 Latin font
+is frozen locally under its OFL license. The block uses no external image or
+video assets; Pro sources remain excluded.
 
 ## Published coverage, September 12, 2026
 
@@ -70,7 +119,7 @@ Rail use the pinned repository's preview posters, and Logo Collapse reuses its
 logo image. These additions introduce no shader dependency.
 
 The 14 font families use unmodified Latin binaries selected from
-`@remotion/google-fonts@4.0.473` metadata. Twenty-four unique binaries cover all
+`@remotion/google-fonts@4.0.473` metadata. Twenty-five unique binaries cover all
 recorded styles and weights. Each family retains its original license text.
 Ultra is Apache-2.0 and retains Brian J. Bonislawsky's copyright notice. The other
 families use OFL-1.1. Google Sans was checked against Google's official font
@@ -79,7 +128,7 @@ The port uses `Hyfrme Snapcn ...` CSS family aliases to avoid collisions with
 fonts in a host composition. The font binaries and their embedded names remain
 unchanged; public customization labels retain the original family names.
 
-The 89 frozen media files include all 24 follower avatars and 16 Orbit Gallery
+The 93 frozen source media files include all 24 follower avatars and 16 Orbit Gallery
 photographs. Repository media is copied unchanged from the pinned MIT source;
 upstream does not document separate rights or provenance for those individual
 files. This audit records that limitation rather than asserting independent
@@ -140,7 +189,7 @@ The audit covers generated blocks and frozen font/media assets, including the
 original and derived videos. It checks the derived videos' actual
 transfer, matrix, and primaries metadata with `ffprobe` to prevent browser color
 regressions.
-All 608 fixture controls preserve the pinned source defaults, labels, options,
+All 623 fixture controls preserve the pinned source defaults, labels, options,
 and numeric bounds. The config audit also checks the source frame rate,
 dimensions, duration, and background.
 

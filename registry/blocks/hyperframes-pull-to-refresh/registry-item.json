@@ -1,0 +1,89 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "hyperframes-pull-to-refresh",
+  "type": "hyperframes:component",
+  "title": "Pull to Refresh",
+  "description": "A mobile list pulls through nonlinear rubber-band resistance, arms at a threshold, commits to a bounded loading indicator, then snaps exactly back to rest.",
+  "tags": [
+    "pointer",
+    "pointers",
+    "mobile",
+    "gesture",
+    "interaction",
+    "refresh",
+    "demonstrate",
+    "hyperframes-official"
+  ],
+  "jobs": [
+    "demonstrate"
+  ],
+  "family": "pointers",
+  "profile": "interaction",
+  "evidence": "GAP, agent B1 hard miss; mobile gesture-physics-recipes.md section 9 rubber-band curve and quiet/default/forceful register table.",
+  "syncPoints": [
+    {
+      "id": "impact",
+      "phase": "in",
+      "offset": 0.82
+    },
+    {
+      "id": "settle",
+      "phase": "out",
+      "offset": 0.65
+    }
+  ],
+  "files": [
+    {
+      "path": "pull-to-refresh.html",
+      "target": "compositions/components/pull-to-refresh.html",
+      "type": "hyperframes:snippet"
+    },
+    {
+      "path": "licenses/HyperFrames-LICENSE",
+      "target": "THIRD_PARTY_LICENSES/hyperframes/LICENSE",
+      "type": "hyperframes:asset"
+    }
+  ],
+  "variables": [
+    {
+      "id": "pullDistance",
+      "type": "number",
+      "role": "layout",
+      "label": "Pull distance",
+      "description": "Raw pull distance before nonlinear rubber-band resistance.",
+      "default": 120,
+      "min": 60,
+      "max": 220,
+      "step": 5
+    },
+    {
+      "id": "spinnerStyle",
+      "type": "enum",
+      "role": "content",
+      "label": "Spinner style",
+      "description": "Refresh indicator geometry and loading motion.",
+      "default": "ring",
+      "options": [
+        {
+          "value": "arrow",
+          "label": "Arrow"
+        },
+        {
+          "value": "dots",
+          "label": "Dots"
+        },
+        {
+          "value": "ring",
+          "label": "Ring"
+        }
+      ]
+    }
+  ],
+  "license": "Apache-2.0",
+  "origin": {
+    "repository": "https://github.com/heygen-com/hyperframes",
+    "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+    "source": "registry/components/pull-to-refresh/registry-item.json",
+    "name": "pull-to-refresh"
+  }
+}

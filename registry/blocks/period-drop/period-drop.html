@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"remocn"},{"id":"color","type":"color","label":"Text color","default":"#fafafa"},{"id":"dotColor","type":"color","label":"Dot color","default":"#ff4d1a"},{"id":"fontSize","type":"number","label":"Font size","default":160,"min":60,"max":280,"step":2},{"id":"fontWeight","type":"number","label":"Weight","default":800,"min":100,"max":900,"step":50},{"id":"dotSize","type":"number","label":"Dot size (em)","default":0.2,"min":0.08,"max":0.5,"step":0.01},{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+      @font-face { font-family: "Inter"; src: url("../assets/fonts/Inter-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #0a0a0a; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#0a0a0a; }
+
+
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="period-drop" data-start="0" data-duration="2.5" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="2.5" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
+      </div>
+    </div>
+    <script src="./period-drop.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="period-drop"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="period-drop"] [data-hyfrme-clock]', {
+        frame: 75,
+        duration: 2.5,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(74, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["period-drop"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

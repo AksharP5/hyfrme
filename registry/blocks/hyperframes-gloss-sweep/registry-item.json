@@ -1,0 +1,92 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "hyperframes-gloss-sweep",
+  "type": "hyperframes:component",
+  "title": "Gloss Sweep",
+  "description": "A card lands with a restrained slam, catches one diagonal specular gloss, and holds perfectly still.",
+  "tags": [
+    "motion-primitive",
+    "celebration",
+    "gloss",
+    "card",
+    "badge",
+    "payoff",
+    "hyperframes-official"
+  ],
+  "jobs": [
+    "celebrate"
+  ],
+  "family": "celebrations",
+  "profile": "payoff",
+  "evidence": "Wave H U25 gloss-sweep brief",
+  "syncPoints": [
+    {
+      "id": "gloss-complete",
+      "phase": "in",
+      "offset": 1.35
+    }
+  ],
+  "files": [
+    {
+      "path": "gloss-sweep.html",
+      "target": "compositions/components/gloss-sweep.html",
+      "type": "hyperframes:snippet"
+    },
+    {
+      "path": "licenses/HyperFrames-LICENSE",
+      "target": "THIRD_PARTY_LICENSES/hyperframes/LICENSE",
+      "type": "hyperframes:asset"
+    }
+  ],
+  "variables": [
+    {
+      "id": "text",
+      "type": "string",
+      "role": "content",
+      "label": "Label",
+      "description": "Text displayed on the card.",
+      "default": "Pro"
+    },
+    {
+      "id": "accent",
+      "type": "enum",
+      "role": "style",
+      "label": "Accent",
+      "description": "Color treatment for the card.",
+      "default": "green",
+      "options": [
+        {
+          "value": "green",
+          "label": "Green"
+        },
+        {
+          "value": "blue",
+          "label": "Blue"
+        },
+        {
+          "value": "violet",
+          "label": "Violet"
+        }
+      ]
+    },
+    {
+      "id": "sweep_angle",
+      "type": "number",
+      "role": "style",
+      "label": "Sweep angle",
+      "description": "Angle of the specular gloss in degrees.",
+      "default": 25,
+      "min": -60,
+      "max": 60,
+      "step": 1,
+      "unit": "deg"
+    }
+  ],
+  "license": "Apache-2.0",
+  "origin": {
+    "repository": "https://github.com/heygen-com/hyperframes",
+    "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+    "source": "registry/components/gloss-sweep/registry-item.json",
+    "name": "gloss-sweep"
+  }
+}

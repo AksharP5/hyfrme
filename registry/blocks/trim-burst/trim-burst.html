@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"count","type":"number","label":"Strokes","default":8,"min":1,"max":24,"step":1},{"id":"innerRadius","type":"number","label":"Inner radius","default":16,"min":0,"max":160,"step":1},{"id":"reach","type":"number","label":"Reach","default":64,"min":8,"max":240,"step":1},{"id":"strokeLength","type":"number","label":"Stroke length","default":56,"min":4,"max":200,"step":1},{"id":"weight","type":"number","label":"Stroke weight","default":2,"min":0.5,"max":8,"step":0.5},{"id":"rotation","type":"number","label":"Rotation","default":0,"min":-180,"max":180,"step":1},{"id":"spread","type":"number","label":"Spread","default":360,"min":15,"max":360,"step":5},{"id":"jitter","type":"number","label":"Jitter","default":0.5,"min":0,"max":1,"step":0.05},{"id":"dots","type":"boolean","label":"Tip dots","default":false},{"id":"cap","type":"string","label":"Caps","default":"round","options":["round","butt"]},{"id":"color","type":"color","label":"Line color","default":"#ffffff"},{"id":"seed","type":"number","label":"Seed","default":1,"min":1,"max":99,"step":1},{"id":"delay","type":"number","label":"Delay","default":0,"min":0,"max":30,"step":1},{"id":"x","type":"number","label":"Center x","default":0.5,"min":0,"max":1,"step":0.01},{"id":"y","type":"number","label":"Center y","default":0.5,"min":0,"max":1,"step":0.01},{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #002fa7; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#002fa7; }
+
+
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="trim-burst" data-start="0" data-duration="1.4" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="1.4" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
+      </div>
+    </div>
+    <script src="./trim-burst.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="trim-burst"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="trim-burst"] [data-hyfrme-clock]', {
+        frame: 42,
+        duration: 1.4,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(41, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["trim-burst"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

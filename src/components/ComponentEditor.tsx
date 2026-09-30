@@ -13,6 +13,7 @@ import {
   buildInstallCommands,
   buildUsageSnippet,
   defaultValues,
+  customizedSource,
   parseCompositionVariables,
   type CustomValues,
   valuesFromUrl,
@@ -47,7 +48,12 @@ export function ComponentEditor({
     [defaults, values],
   );
   const parity = details?.parity;
-  const sourceUrl = `https://github.com/AksharP5/hyfrme/blob/main/registry/blocks/${entry.item.name}/${entry.item.name}.html`;
+  const native = entry.source.id === "hyperframes";
+  const template = entry.item.type === "hyperframes:example";
+  const snippet = entry.item.type === "hyperframes:component";
+  const sourceUrl = entry.item.origin
+    ? `${entry.item.origin.repository}/blob/${entry.item.origin.commit}/${entry.item.origin.source.replace(/registry-item\.json$/, entry.item.sourcePath)}`
+    : `https://github.com/AksharP5/hyfrme/blob/main/registry/blocks/${entry.item.name}/${entry.item.sourcePath}`;
   const customized = variables.some(
     (variable) => effectiveValues[variable.id] !== variable.default,
   );
@@ -56,12 +62,12 @@ export function ComponentEditor({
     entry.item.name,
     variables,
     effectiveValues,
+    template ? "init" : "add",
   );
-  const usageSnippet = buildUsageSnippet(
-    entry.item,
-    variables,
-    effectiveValues,
-  );
+  const usageSnippet =
+    native && (snippet || template)
+      ? customizedSource(source, effectiveValues)
+      : buildUsageSnippet(entry.item, variables, effectiveValues);
   useEffect(() => {
     let active = true;
     document.title = `${entry.item.title} — Hyfrme`;
@@ -71,7 +77,10 @@ export function ComponentEditor({
     Promise.all([entry.loadSource(), entry.loadDetails()])
       .then(([nextSource, nextDetails]) => {
         if (!active) return;
-        setValues(valuesFromUrl(parseCompositionVariables(nextSource)));
+        const nextVariables = parseCompositionVariables(nextSource);
+        const nextValues = valuesFromUrl(nextVariables);
+        writeValuesToUrl(nextVariables, nextValues);
+        setValues(nextValues);
         setSource(nextSource);
         setDetails(nextDetails);
       })
@@ -110,8 +119,8 @@ export function ComponentEditor({
           href={sourceUrl}
           target="_blank"
           rel="noreferrer"
-          aria-label={`View ${entry.item.title} source on Hyfrme GitHub`}
-          title="View source on Hyfrme GitHub"
+          aria-label={`View ${entry.item.title} source on GitHub`}
+          title="View source on GitHub"
         >
           <span className="source-badge">{entry.source.label}</span>
         </a>
@@ -138,8 +147,9 @@ export function ComponentEditor({
             </button>
           </div>
           <span>
-            {entry.item.dimensions.width} × {entry.item.dimensions.height} ·{" "}
-            {entry.item.duration.toFixed(1)}s
+            {entry.item.dimensions && entry.item.duration !== null
+              ? `${entry.item.dimensions.width} × ${entry.item.dimensions.height} · ${entry.item.duration.toFixed(1)}s`
+              : "HTML snippet"}
           </span>
         </div>
 
@@ -148,6 +158,18 @@ export function ComponentEditor({
             <div className="preview-loading" role="alert">
               {loadError}
             </div>
+          ) : template && entry.item.preview.video ? (
+            <video
+              className="template-preview"
+              src={entry.item.preview.video}
+              poster={entry.item.preview.poster ?? undefined}
+              controls
+              autoPlay
+              loop
+              muted
+              playsInline
+              aria-label={`${entry.item.title} template preview`}
+            />
           ) : source && details ? (
             <LivePreview
               item={details.item}
@@ -160,7 +182,11 @@ export function ComponentEditor({
         ) : (
           <CodePanel.Source
             source={usageSnippet}
-            filename="index.html"
+            filename={
+              native && (snippet || template)
+                ? entry.item.sourcePath
+                : "index.html"
+            }
             copyLabel="Copy code"
           />
         )}
@@ -177,7 +203,44 @@ export function ComponentEditor({
         ) : null}
       </section>
 
-      <InstallPanel commands={installCommands} customized={customized} />
+      <InstallPanel
+        commands={installCommands}
+        customized={customized}
+        template={template}
+        snippet={snippet}
+      />
+
+      {native && details ? (
+        <section className="detail-section">
+          <h2>Official HyperFrames source</h2>
+          <p>
+            Original source and required assets, copied from the pinned official
+            catalog. Apache 2.0 license included.
+          </p>
+          <p>
+            {template
+              ? "Initialize a project, then run npx hyperframes preview in that folder."
+              : snippet
+                ? "Paste the installed snippet into your composition. Its styles and script are included."
+                : "Add the markup above to your composition after installing."}
+          </p>
+          <details className="source-files">
+            <summary>{details.item.files.length} installed files</summary>
+            <ul>
+              {details.item.files.map((file) => (
+                <li key={file.path}>
+                  <a
+                    href={`/registry/blocks/${entry.item.name}/${file.path}`}
+                    download
+                  >
+                    {file.target}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        </section>
+      ) : null}
 
       {variables.length > 0 ? (
         <section className="detail-section variables-section">
@@ -230,7 +293,8 @@ export function ComponentEditor({
                   referenceSrc={parity.artifacts.referenceVideo}
                   portSrc={parity.artifacts.hyperframesVideo}
                   square={
-                    entry.item.dimensions.width === entry.item.dimensions.height
+                    entry.item.dimensions?.width ===
+                    entry.item.dimensions?.height
                   }
                 />
               </Suspense>

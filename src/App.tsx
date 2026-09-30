@@ -196,7 +196,7 @@ function LibrarySidebar({
         <span className="sidebar-label">Library</span>
         <a
           className={activeCategory === "all" ? "is-active" : ""}
-          href="/components"
+          href={taxonomyHref("all")}
           onClick={(event) => onSelectCategory?.("all", event)}
         >
           <span>All components</span>
@@ -205,7 +205,7 @@ function LibrarySidebar({
         {categoryOrder.map((category) => (
           <a
             className={activeCategory === category ? "is-active" : ""}
-            href={`/components?category=${category}`}
+            href={taxonomyHref(category)}
             key={category}
             onClick={(event) => onSelectCategory?.(category, event)}
           >
@@ -385,6 +385,8 @@ function CatalogPage() {
       shaders:
         "Procedural backgrounds, textures, distortions, and GPU-driven motion.",
       icons: "Familiar Lucide shapes re-authored as deterministic motion.",
+      templates:
+        "Complete HyperFrames projects. Install a template and make it yours.",
     }[category];
   const filteredNames = new Set(filtered.map((entry) => entry.item.name));
   const queryActive = query.trim().length > 0;
@@ -457,6 +459,14 @@ function CatalogPage() {
         activeSection={selectedSection?.id}
         activeGroup={selectedGroup?.id}
         onSelectCategory={(next, event) => {
+          if (
+            event.button !== 0 ||
+            event.metaKey ||
+            event.ctrlKey ||
+            event.shiftKey ||
+            event.altKey
+          )
+            return;
           event.preventDefault();
           selectCategory(next);
         }}
@@ -665,6 +675,16 @@ function HomePage() {
       previewPoster: "/previews/icon-sparkles/thumbnail.webp",
       previewAlt: "Animated sparkles icon",
       presentation: "icon",
+    },
+    {
+      title: "Templates",
+      description:
+        "Complete official HyperFrames projects, ready to edit and render.",
+      href: "/components?category=templates&source=hyperframes",
+      countLabel: `${catalogCategoryCounts.templates} templates`,
+      previewVideo: "/previews/hyperframes-swiss-grid/hyperframes.mp4",
+      previewPoster: "/previews/hyperframes-swiss-grid/thumbnail.webp",
+      previewAlt: "Official Swiss Grid template",
     },
     {
       title: "Showcases",

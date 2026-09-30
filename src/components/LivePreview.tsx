@@ -41,7 +41,8 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
   const [paused, setPaused] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [viewportSize, setViewportSize] = useState({ width: 0, height: 0 });
-  const isIcon = item.tags.includes("icon");
+  const isIcon =
+    item.type !== "hyperframes:component" && item.tags.includes("icon");
   const nativeViewport = item.tags.includes("app-ui");
   const rendered = useMemo(
     () => item.tags.includes("html-in-canvas") && !supportsHtmlInCanvas(),
@@ -70,8 +71,8 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
 
   const viewportScale = nativeViewport
     ? Math.min(
-        viewportSize.width / item.dimensions.width,
-        viewportSize.height / item.dimensions.height,
+        viewportSize.width / (item.dimensions?.width ?? 1920),
+        viewportSize.height / (item.dimensions?.height ?? 1080),
       )
     : 1;
 
@@ -93,7 +94,7 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
 
   const previewWindow = () =>
     frameRef.current?.contentWindow as PreviewWindow | null;
-  const timeline = () => previewWindow()?.__timelines?.[item.name];
+  const timeline = () => previewWindow()?.__timelines?.[item.compositionId];
 
   const togglePlayback = () => {
     if (videoRef.current) {
@@ -106,10 +107,16 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
       return;
     }
     const currentTimeline = timeline();
-    if (!currentTimeline) return;
+    const animations = previewWindow()?.document.getAnimations() ?? [];
+    if (!currentTimeline && animations.length === 0) return;
     setError(null);
-    if (paused) currentTimeline.play();
-    else currentTimeline.pause();
+    if (paused) {
+      currentTimeline?.play();
+      animations.forEach((animation) => animation.play());
+    } else {
+      currentTimeline?.pause();
+      animations.forEach((animation) => animation.pause());
+    }
     previewWindow()?.__hyfrmeSyncPreviewMedia?.();
     setPaused((current) => !current);
   };
@@ -124,9 +131,14 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
       return;
     }
     const currentTimeline = timeline();
-    if (!currentTimeline) return;
+    const animations = previewWindow()?.document.getAnimations() ?? [];
+    if (!currentTimeline && animations.length === 0) return;
     setError(null);
-    currentTimeline.restart();
+    currentTimeline?.restart();
+    animations.forEach((animation) => {
+      animation.currentTime = 0;
+      animation.play();
+    });
     previewWindow()?.__hyfrmeSyncPreviewMedia?.();
     setPaused(false);
   };
@@ -145,8 +157,8 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
         <video
           ref={videoRef}
           aria-label={`${item.title} rendered preview with default settings`}
-          src={`/previews/${item.name}/hyperframes.mp4`}
-          poster={`/previews/${item.name}/thumbnail.webp`}
+          src={item.preview.video ?? undefined}
+          poster={item.preview.poster ?? undefined}
           autoPlay
           loop
           muted
@@ -165,10 +177,10 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
             nativeViewport
               ? {
                   position: "absolute",
-                  width: item.dimensions.width,
-                  height: item.dimensions.height,
+                  width: item.dimensions?.width ?? 1920,
+                  height: item.dimensions?.height ?? 1080,
                   transformOrigin: "top left",
-                  transform: `translate(${(viewportSize.width - item.dimensions.width * viewportScale) / 2}px, ${(viewportSize.height - item.dimensions.height * viewportScale) / 2}px) scale(${viewportScale})`,
+                  transform: `translate(${(viewportSize.width - (item.dimensions?.width ?? 1920) * viewportScale) / 2}px, ${(viewportSize.height - (item.dimensions?.height ?? 1080) * viewportScale) / 2}px) scale(${viewportScale})`,
                 }
               : undefined
           }

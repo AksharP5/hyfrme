@@ -21,11 +21,20 @@ const blockDirectory = resolve(root, "registry", "blocks");
 const blockItems = await Promise.all(
   (await readdir(blockDirectory)).map(async (name) =>
     JSON.parse(
-      await readFile(resolve(blockDirectory, name, "registry-item.json"), "utf8"),
+      await readFile(
+        resolve(blockDirectory, name, "registry-item.json"),
+        "utf8",
+      ),
     ),
   ),
 );
-const originalItems = blockItems.filter((item) => item.tags?.includes("hyfrme-original"));
+const officialItems = blockItems.filter(
+  (item) =>
+    item.origin?.repository === "https://github.com/heygen-com/hyperframes",
+);
+const originalItems = blockItems.filter((item) =>
+  item.tags?.includes("hyfrme-original"),
+);
 const t3Items = blockItems.filter((item) => item.tags?.includes("t3-code"));
 const orderedNames = [
   ...originalItems.map((item) => item.name).sort(),
@@ -40,12 +49,24 @@ const orderedNames = [
 const items = [];
 
 for (const name of orderedNames) {
-  const parity = JSON.parse(
-    await readFile(resolve(root, "parity", `${name}.json`), "utf8"),
-  );
+  const proof = await readFile(
+    resolve(root, "parity", `${name}.json`),
+    "utf8",
+  ).catch((error) => {
+    if (error.code === "ENOENT") return null;
+    throw error;
+  });
+  if (!proof) continue;
+  const parity = JSON.parse(proof);
   if (parity.status !== "verified" || parity.result?.pass !== true) continue;
   items.push({ name, type: "hyperframes:block" });
 }
+
+items.push(
+  ...officialItems
+    .sort((left, right) => left.name.localeCompare(right.name))
+    .map(({ name, type }) => ({ name, type })),
+);
 
 await writeFile(
   resolve(root, "registry", "registry.json"),
@@ -61,4 +82,6 @@ await writeFile(
   )}\n`,
 );
 
-console.log(`Published ${items.length} verified block(s) to registry.json.`);
+console.log(
+  `Published ${items.length} verified ports and native official item(s) to registry.json.`,
+);

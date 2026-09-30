@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"Type in motion"},{"id":"separator","type":"string","label":"Separator","default":"•"},{"id":"color","type":"color","label":"Text color","default":"#d4ff1f"},{"id":"band","type":"color","label":"Band color","default":"#0a0a0a"},{"id":"radius","type":"number","label":"Radius","default":210,"min":80,"max":340,"step":5},{"id":"fontSize","type":"number","label":"Font size","default":40,"min":16,"max":90,"step":1},{"id":"tilt","type":"number","label":"Tilt","default":38,"min":0,"max":80,"step":1},{"id":"roll","type":"number","label":"Roll","default":-16,"min":-60,"max":60,"step":1},{"id":"period","type":"number","label":"Frames per turn","default":240,"min":60,"max":900,"step":10},{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+      @font-face { font-family: "Inter"; src: url("../assets/fonts/Inter-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("../assets/fonts/Inter-Latin.woff2") format("woff2"); font-style: normal; font-weight: 900; font-display: block; }
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #d4ff1f; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#d4ff1f; }
+
+
+      #hyfrme-source-root, #hyfrme-source-root * { text-rendering: auto; }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="ring-text" data-start="0" data-duration="6" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="6" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{"https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2":"../assets/fonts/Inter-Latin.woff2"}'></div>
+      </div>
+    </div>
+    <script src="./ring-text.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="ring-text"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="ring-text"] [data-hyfrme-clock]', {
+        frame: 180,
+        duration: 6,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(179, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["ring-text"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

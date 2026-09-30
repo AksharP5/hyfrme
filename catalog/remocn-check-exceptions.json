@@ -788,7 +788,7 @@
     "finding": {
       "code": "contrast_aa_failure",
       "selector": "div > div > div > div > div > div > div > div > div:nth-of-type(1) > span > span:nth-of-type(2)",
-      "text": "Try: draft an email \u00b7 summarize a doc \u00b7 plan your ",
+      "text": "Try: draft an email · summarize a doc · plan your ",
       "fg": "rgb(163,160,151)",
       "bg": "rgb(246,245,241)",
       "ratio": 2.4,
@@ -808,12 +808,225 @@
     "finding": {
       "code": "contrast_aa_failure",
       "selector": "div > div > div > div > div > div > div > div > div:nth-of-type(1) > span > span:nth-of-type(2)",
-      "text": "Try: draft an email \u00b7 summarize a doc \u00b7 plan your ",
+      "text": "Try: draft an email · summarize a doc · plan your ",
       "fg": "rgb(163,160,151)",
       "bg": "rgb(255,255,255)",
       "ratio": 2.61,
       "requiredRatio": 4.5
     },
     "reason": "The pinned Claude Chat light theme defines placeholder #A3A097 on a white card (index.tsx:38-44) and applies that color to its default Try prompt (line 312). Its unchanged source palette yields 2.4:1 during entrance and 2.61:1 once settled. All 150 source frames match with exact alpha and RGB SSIM mean 0.996026/min 0.994703; retain the full contrast findings in the audit."
+  },
+  {
+    "slug": "echo-stack",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/echo-stack/index.tsx",
+      "config": "registry/remocn/echo-stack/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+      "containerSelector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(7)",
+      "text": "Bold."
+    },
+    "reason": "The pinned source intentionally layers outlined echo copies behind the bold word. The overlap is the effect itself; the verified port keeps that treatment at 120 frames with mean/min SSIM 0.999952/0.999496 and exact alpha."
+  },
+  {
+    "slug": "path-ride",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/path-ride/index.tsx",
+      "config": "registry/remocn/path-ride/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap"
+    },
+    "reason": "The source lays each character along one shared motion path, so adjacent glyph boxes overlap by design. The 17 inspector hits are those per-letter layers; all 96 frames pass parity (mean/min SSIM 0.995157/0.991322) with exact alpha."
+  },
+  {
+    "slug": "stripe-type",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/stripe-type/index.tsx",
+      "config": "registry/remocn/stripe-type/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap"
+    },
+    "reason": "The source layers the headline and striped type treatment in the same display zone. The single inspector hit is the intended typographic overlap; all 100 frames pass parity (mean/min SSIM 0.990863/0.986202) with exact alpha."
+  },
+  {
+    "slug": "type-repeater",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/type-repeater/index.tsx",
+      "config": "registry/remocn/type-repeater/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap"
+    },
+    "reason": "Repeated filled and outline copies are the core treatment; the 66 overlap hits are intentional source layers."
+  },
+  {
+    "slug": "type-repeater",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/type-repeater/index.tsx",
+      "config": "registry/remocn/type-repeater/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "contrast_aa_failure"
+    },
+    "reason": "The source uses pale repeated type across its orange accent band during the reveal. The 24 contrast hits describe these low-opacity and stroke states; all 100 frames match exactly with exact alpha."
+  },
+  {
+    "slug": "agent-run",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/agent-run/index.tsx",
+      "config": "registry/remocn/agent-run/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap"
+    },
+    "reason": "The source dashboard title and running transcript share a card boundary; the single bounding-box collision remains legible in the pinned source and is preserved by the pixel-matched port."
+  },
+  {
+    "slug": "agent-run",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/agent-run/index.tsx",
+      "config": "registry/remocn/agent-run/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "contrast_aa_failure"
+    },
+    "reason": "The source uses muted secondary step numbers on white UI surfaces. The 10 contrast hits describe these low-emphasis labels; all 355 frames pass parity (mean/min SSIM 0.991356/0.985317) with exact alpha."
+  },
+  {
+    "slug": "code-morph",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/code-morph/index.tsx",
+      "config": "registry/remocn/code-morph/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "contrast_aa_failure",
+      "fg": "rgb(113,113,122)",
+      "bg": "rgb(17,17,19)",
+      "ratio": 3.9,
+      "requiredRatio": 4.5
+    },
+    "reason": "The pinned PALETTES.dark uses #71717a punctuation and #52525b line numbers on #111113. Its translucent line-highlight band produces the other recorded gutter backgrounds. These exact foreground/background contrast samples inherit the source palette; preserve its code styling and keep the complete findings visible in the audit."
+  },
+  {
+    "slug": "code-morph",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/code-morph/index.tsx",
+      "config": "registry/remocn/code-morph/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "contrast_aa_failure",
+      "fg": "rgb(82,82,91)",
+      "bg": "rgb(17,17,19)",
+      "ratio": 2.44,
+      "requiredRatio": 4.5
+    },
+    "reason": "The pinned PALETTES.dark uses #71717a punctuation and #52525b line numbers on #111113. Its translucent line-highlight band produces the other recorded gutter backgrounds. These exact foreground/background contrast samples inherit the source palette; preserve its code styling and keep the complete findings visible in the audit."
+  },
+  {
+    "slug": "code-morph",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/code-morph/index.tsx",
+      "config": "registry/remocn/code-morph/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "contrast_aa_failure",
+      "fg": "rgb(82,82,91)",
+      "bg": "rgb(17,22,27)",
+      "ratio": 2.35,
+      "requiredRatio": 4.5
+    },
+    "reason": "The pinned PALETTES.dark uses #71717a punctuation and #52525b line numbers on #111113. Its translucent line-highlight band produces the other recorded gutter backgrounds. These exact foreground/background contrast samples inherit the source palette; preserve its code styling and keep the complete findings visible in the audit."
+  },
+  {
+    "slug": "code-morph",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/code-morph/index.tsx",
+      "config": "registry/remocn/code-morph/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "contrast_aa_failure",
+      "fg": "rgb(82,82,91)",
+      "bg": "rgb(16,40,53)",
+      "ratio": 1.97,
+      "requiredRatio": 4.5
+    },
+    "reason": "The pinned PALETTES.dark uses #71717a punctuation and #52525b line numbers on #111113. Its translucent line-highlight band produces the other recorded gutter backgrounds. These exact foreground/background contrast samples inherit the source palette; preserve its code styling and keep the complete findings visible in the audit."
+  },
+  {
+    "slug": "ring-text",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/ring-text/index.tsx",
+      "config": "registry/remocn/ring-text/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "contrast_aa_failure",
+      "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span",
+      "text": "T",
+      "fg": "rgb(212,255,31)",
+      "bg": "rgb(212,255,31)",
+      "ratio": 1,
+      "requiredRatio": 3
+    },
+    "reason": "The pinned source paints lime #d4ff1f characters on black #0a0a0a 3D band panels over a lime canvas. This exact first-character finding samples the canvas behind its rotated panel as the background instead of the visible black band. All 180 lossless frames match exactly in RGB and alpha; preserve the source geometry and retain the full contrast finding in the audit."
+  },
+  {
+    "slug": "ring-text",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/ring-text/index.tsx",
+      "config": "registry/remocn/ring-text/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "contrast_aa_failure",
+      "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span",
+      "text": "T",
+      "fg": "rgb(212,255,31)",
+      "bg": "rgb(190,228,29)",
+      "ratio": 1.27,
+      "requiredRatio": 3
+    },
+    "reason": "The pinned source paints lime #d4ff1f characters on black #0a0a0a 3D band panels over a lime canvas and dims each letter by its angle. This exact first-character finding samples the rotated panel boundary against the composite canvas. All 180 lossless frames match exactly in RGB and alpha; preserve the source geometry and retain the full contrast finding in the audit."
   }
 ]

@@ -50,6 +50,7 @@ const additionManifests = await Promise.all(
     "remocn-additions-2026-09-09",
     "remocn-additions-e3dc260",
     "remocn-templates-7fa2db1",
+    "remocn-additions-2026-09-28",
   ].map(async (directory) =>
     JSON.parse(
       await readFile(
@@ -108,6 +109,16 @@ const textNames = [
   "type-fossil",
   "inline-word-roll",
   "shader-text-reveal",
+  "echo-stack",
+  "glyph-anatomy",
+  "outline-trace",
+  "path-ride",
+  "period-drop",
+  "ring-text",
+  "selection-snap",
+  "stripe-type",
+  "type-repeater",
+  "type-wall",
 ];
 const templateNames = [
   "release-teaser",
@@ -225,6 +236,15 @@ const coreNames = [
   "tv-power-off",
   "underwater-ripple",
   "vhs-filter",
+  "agent-run",
+  "bauhaus-build",
+  "code-morph",
+  "keystroke",
+  "mondrian-split",
+  "speed-lines",
+  "squiggle",
+  "trim-burst",
+  "truchet-flip",
 ];
 const canvasTransitionNames = new Set([
   "displacement",
@@ -861,13 +881,33 @@ const jetBrainsMonoNames = new Set([
   "claude-code",
   "opencode",
 ]);
-const interNames = new Set(["claude-chat", "chat-gpt", "v0", "x-follow-card"]);
+const interNames = new Set([
+  "claude-chat",
+  "chat-gpt",
+  "v0",
+  "x-follow-card",
+  "echo-stack",
+  "glyph-anatomy",
+  "outline-trace",
+  "path-ride",
+  "period-drop",
+  "ring-text",
+  "selection-snap",
+  "stripe-type",
+  "type-repeater",
+  "type-wall",
+]);
+const bundledPackagesByName = new Map([
+  ["glyph-anatomy", ["opentype.js"]],
+  ["outline-trace", ["opentype.js"]],
+  ["path-ride", ["@remotion/paths"]],
+]);
 const manropeNames = new Set([
   "github-sponsors",
   "github-stars",
   "x-followers-overview",
 ]);
-const geistMonoNames = new Set(["github-stars"]);
+const geistMonoNames = new Set(["github-stars", "code-morph"]);
 const sourceTextRenderingNames = new Set([
   ...templateNames,
   "lens-zoom",
@@ -875,6 +915,9 @@ const sourceTextRenderingNames = new Set([
   "inline-word-roll",
   "shader-seam",
   "shader-spiral-pass",
+  "code-morph",
+  "ring-text",
+  "type-wall",
 ]);
 const caveatNames = new Set(["handwrite", "hand-count", "check-list"]);
 const sponsorAvatarIds = [
@@ -1181,23 +1224,29 @@ const jetBrainsMonoPlugin = {
   },
 };
 
-const interPlugin = {
-  name: "hyfrme-inter",
+const typographyFontsPlugin = {
+  name: "hyfrme-typography-fonts",
   setup(buildApi) {
-    buildApi.onResolve({ filter: /^@remotion\/google-fonts\/Inter$/ }, () => ({
-      path: "inter",
-      namespace: "hyfrme-font",
-    }));
-    buildApi.onLoad({ filter: /^inter$/, namespace: "hyfrme-font" }, () => ({
-      loader: "js",
-      contents: `
-        export const fontFamily = "Inter";
+    buildApi.onResolve(
+      { filter: /^@remotion\/google-fonts\/(Inter|Anton)$/ },
+      (args) => ({
+        path: args.path.split("/").at(-1),
+        namespace: "hyfrme-font",
+      }),
+    );
+    buildApi.onLoad(
+      { filter: /^(Inter|Anton)$/, namespace: "hyfrme-font" },
+      (args) => ({
+        loader: "js",
+        contents: `
+        export const fontFamily = ${JSON.stringify(args.path)};
         export const loadFont = () => ({
           fontFamily,
           waitUntilDone: () => Promise.resolve(),
         });
       `,
-    }));
+      }),
+    );
   },
 };
 
@@ -1295,6 +1344,20 @@ const socialAssetsPlugin = {
 const sourceAdjustmentsPlugin = {
   name: "hyfrme-source-adjustments",
   setup(buildApi) {
+    buildApi.onLoad(
+      { filter: /registry\/remocn\/ring-text\/index\.tsx$/ },
+      async (args) => {
+        const source = await readFile(args.path, "utf8");
+        // Adjacent character panels overlap when the 3D ring faces the camera.
+        const contents = source.replace(
+          "<span\n",
+          "<span data-layout-allow-overlap\n",
+        );
+        if (contents === source)
+          throw new Error(`Missing ring character layer in ${args.path}`);
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
     buildApi.onLoad(
       { filter: /registry\/remocn-templates\/brand-guidelines\/ui\.tsx$/ },
       async (args) => {
@@ -1643,6 +1706,7 @@ const jetBrainsMonoSource = resolve(
   "JetBrainsMono-Latin.woff2",
 );
 const interSource = resolve(root, "assets", "fonts", "Inter-Latin.woff2");
+const antonSource = resolve(root, "assets", "fonts", "Anton-Latin.woff2");
 const manropeSource = resolve(root, "assets", "fonts", "Manrope-Latin.woff2");
 const geistMonoSource = resolve(
   root,
@@ -1837,6 +1901,7 @@ for (const name of selectedNames) {
           : ""
       }
       const families = new Set(${JSON.stringify([geistFamily, ...selectedAssets.filter((asset) => asset.family).map((asset) => asset.family)])});
+      ${interNames.has(name) ? 'families.add("Inter");' : ""}
       ${name === "kinetic-warp" ? "families.add(props.fontFamily);" : ""}
       await Promise.all(Array.from(document.fonts).filter(font => families.has(font.family.replaceAll('"', '').replaceAll("'", ''))).map(font => font.load()));
       await document.fonts.ready;
@@ -1858,7 +1923,7 @@ for (const name of selectedNames) {
       remotionPlugin,
       transitionsPlugin,
       jetBrainsMonoPlugin,
-      interPlugin,
+      typographyFontsPlugin,
       socialFontsPlugin,
       caveatPlugin,
       socialAssetsPlugin,
@@ -1901,7 +1966,7 @@ for (const name of selectedNames) {
     const variable = {
       id,
       type:
-        control.type === "text"
+        control.type === "text" || control.type === "text-content"
           ? "string"
           : control.type === "select"
             ? "string"
@@ -1968,6 +2033,44 @@ for (const name of selectedNames) {
     },
   ];
   const packageLicenses = new Set(["MIT", "OFL-1.1"]);
+  const bundledDependencies = [];
+  const bundledModuleNames = new Set(
+    Object.keys(result.metafile.inputs)
+      .filter((path) => path.includes("node_modules/"))
+      .map((path) => {
+        const parts = path.split("node_modules/").at(-1).split("/");
+        return parts[0].startsWith("@")
+          ? parts.slice(0, 2).join("/")
+          : parts[0];
+      }),
+  );
+  for (const packageName of bundledPackagesByName.get(name) ?? []) {
+    if (!bundledModuleNames.has(packageName)) {
+      throw new Error(`${name} did not bundle expected ${packageName}`);
+    }
+    const directory = resolve(upstream, "node_modules", packageName);
+    const manifest = JSON.parse(
+      await readFile(resolve(directory, "package.json"), "utf8"),
+    );
+    packageLicenses.add(manifest.license);
+    bundledDependencies.push({
+      name: packageName,
+      version: manifest.version,
+      license: manifest.license,
+    });
+    const licenses = (await readdir(directory)).filter((file) =>
+      /^(license|copying|notice)([.-]|$)/i.test(file),
+    );
+    if (!licenses.length) throw new Error(`Missing ${packageName} license`);
+    for (const license of licenses) {
+      const filename = `${packageName.replaceAll("/", "-")}-${license}`;
+      packagedAssets.push({
+        path: `licenses/${filename}`,
+        target: `THIRD_PARTY_LICENSES/remocn/${filename}`,
+        source: resolve(directory, license),
+      });
+    }
+  }
   if (addition) {
     packagedAssets.push({
       path: "licenses/Remocn-MIT.txt",
@@ -2039,6 +2142,13 @@ for (const name of selectedNames) {
       path: "licenses/Inter-OFL.txt",
       target: "THIRD_PARTY_LICENSES/Inter-OFL.txt",
       source: resolve(root, "assets", "fonts", "Inter-OFL.txt"),
+    });
+  }
+  if (name === "type-wall") {
+    packagedAssets.push({
+      path: "licenses/Anton-OFL.txt",
+      target: "THIRD_PARTY_LICENSES/Anton-OFL.txt",
+      source: resolve(root, "assets", "fonts", "Anton-OFL.txt"),
     });
   }
   if (manropeNames.has(name)) {
@@ -2136,7 +2246,8 @@ for (const name of selectedNames) {
 ${localFontCss}
       @font-face { font-family: "${geistFamily}"; src: url("../assets/fonts/${usesVariableGeist ? "Geist-Latin.woff2" : "Geist-SemiBold.woff2"}") format("woff2"); font-style: normal; font-weight: ${usesVariableGeist ? "100 900" : "600"}; font-display: block; }
 ${jetBrainsMonoNames.has(name) ? '      @font-face { font-family: "JetBrains Mono"; src: url("../assets/fonts/JetBrainsMono-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 800; font-display: block; }' : ""}
-${interNames.has(name) ? '      @font-face { font-family: "Inter"; src: url("../assets/fonts/Inter-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }' : ""}
+${interNames.has(name) ? (name === "ring-text" ? ["100", "900"] : ["100 900"]).map((weight) => `      @font-face { font-family: "Inter"; src: url("../assets/fonts/Inter-Latin.woff2") format("woff2"); font-style: normal; font-weight: ${weight}; font-display: block; }`).join("\n") : ""}
+${name === "type-wall" ? '      @font-face { font-family: "Anton"; src: url("../assets/fonts/Anton-Latin.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: block; }' : ""}
 ${manropeNames.has(name) ? '      @font-face { font-family: "Manrope"; src: url("../assets/fonts/Manrope-Latin.woff2") format("woff2"); font-style: normal; font-weight: 200 800; font-display: block; }' : ""}
 ${geistMonoNames.has(name) ? '      @font-face { font-family: "Geist Mono"; src: url("../assets/fonts/GeistMono-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }' : ""}
 ${caveatNames.has(name) ? '      @font-face { font-family: "Caveat"; src: url("../assets/fonts/Caveat-Latin.woff2") format("woff2"); font-style: normal; font-weight: 400 700; font-display: block; }' : ""}
@@ -2144,6 +2255,8 @@ ${caveatNames.has(name) ? '      @font-face { font-family: "Caveat"; src: url(".
       html, body { width: ${fixture.width}px; height: ${fixture.height}px; margin: 0; overflow: hidden; background: ${fixture.background}; }
       body { --font-geist-sans: "${geistFamily}"; font-family: "${geistFamily}", -apple-system, BlinkMacSystemFont, sans-serif; }
       #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"${geistFamily}";font-family:"${geistFamily}",sans-serif; background:${fixture.background}; }
+${name === "code-morph" ? '      #hyfrme-source-root { --font-geist-mono: "Geist Mono"; }' : ""}
+${name === "echo-stack" ? "      #hyfrme-source-root { transform: translateY(1px); }" : ""}
 ${sourceTextRenderingNames.has(name) ? "      #hyfrme-source-root, #hyfrme-source-root * { text-rendering: auto; }" : ""}
 ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? "      [data-hyfrme-seek-probe] { position: absolute; width: 1px; height: 1px; pointer-events: none; }" : ""}
     </style>
@@ -2193,6 +2306,9 @@ ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? `      timeli
   if (interNames.has(name)) {
     await copyFile(interSource, resolve(blockDirectory, "Inter-Latin.woff2"));
   }
+  if (name === "type-wall") {
+    await copyFile(antonSource, resolve(blockDirectory, "Anton-Latin.woff2"));
+  }
   if (manropeNames.has(name)) {
     await copyFile(
       manropeSource,
@@ -2231,9 +2347,12 @@ ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? `      timeli
         authorUrl: "https://github.com/AksharP5/hyfrme",
         license: addition
           ? [...packageLicenses].join(" AND ")
-          : paperShaderNames.has(name)
-            ? "MIT + PolyForm Shield 1.0.0"
-            : "MIT",
+          : bundledDependencies.length
+            ? [...new Set(["MIT", "OFL-1.1", ...packageLicenses])].join(" AND ")
+            : paperShaderNames.has(name)
+              ? "MIT + PolyForm Shield 1.0.0"
+              : "MIT",
+        ...(bundledDependencies.length ? { bundledDependencies } : {}),
         dimensions: { width: fixture.width, height: fixture.height },
         duration,
         files: [
@@ -2266,6 +2385,15 @@ ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? `      timeli
                 {
                   path: "Inter-Latin.woff2",
                   target: "assets/fonts/Inter-Latin.woff2",
+                  type: "hyperframes:asset",
+                },
+              ]
+            : []),
+          ...(name === "type-wall"
+            ? [
+                {
+                  path: "Anton-Latin.woff2",
+                  target: "assets/fonts/Anton-Latin.woff2",
                   type: "hyperframes:asset",
                 },
               ]

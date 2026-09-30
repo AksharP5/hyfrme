@@ -13,6 +13,27 @@ const ensure = async (path, label) => {
   }
 };
 
+const nativeInventory = await readJson(
+  resolve(root, "catalog/hyperframes-upstream.json"),
+);
+const templatePreviews = await readJson(
+  resolve(root, "catalog/hyperframes-template-previews.json"),
+);
+const templateRecords = new Map(
+  templatePreviews.items.map((record) => [record.name, record]),
+);
+const nativeRepository = "https://github.com/heygen-com/hyperframes";
+const nativeRecords = new Map(
+  nativeInventory.items.map((record) => [record.name, record]),
+);
+if (
+  nativeInventory.summary.importedItems !==
+    nativeInventory.summary.totalRegistryItems ||
+  nativeInventory.summary.missingFiles.length
+) {
+  throw new Error("The official HyperFrames catalog import is incomplete.");
+}
+
 const registry = await readJson(resolve(root, "registry", "registry.json"));
 const upstreamInventory = await readJson(
   resolve(root, "catalog", "upstream-inventory.json"),
@@ -44,7 +65,11 @@ const catalogModule = await import(
   `data:text/javascript;base64,${Buffer.from(catalogModuleSource).toString("base64")}`
 );
 const unclassifiedTypography = catalogModule.catalog
-  .filter((entry) => entry.item.tags.includes("typography"))
+  .filter(
+    (entry) =>
+      entry.source.id !== "hyperframes" &&
+      entry.item.tags.includes("typography"),
+  )
   .filter(
     (entry) => catalogModule.taxonomyFor(entry)?.section.id !== "typography",
   )
@@ -62,9 +87,88 @@ for (const item of registry.items) {
   const parityPath = resolve(root, "parity", `${item.name}.json`);
 
   await ensure(manifestPath, `${item.name} registry manifest`);
-  await ensure(parityPath, `${item.name} parity manifest`);
-
   const manifest = await readJson(manifestPath);
+  if (manifest.origin?.repository === nativeRepository) {
+    const record = nativeRecords.get(item.name);
+    if (
+      !record ||
+      record.status !== "imported" ||
+      record.type !== item.type ||
+      record.type !== manifest.type ||
+      manifest.name !== item.name ||
+      manifest.origin.commit !== nativeInventory.summary.upstream.commit ||
+      manifest.origin.source !== record.upstreamManifest.path ||
+      !manifest.tags.includes("hyperframes-official")
+    ) {
+      throw new Error(
+        `${item.name}: official source provenance is missing or inconsistent`,
+      );
+    }
+    const manifestBytes = await readFile(manifestPath);
+    if (
+      createHash("sha256").update(manifestBytes).digest("hex") !==
+        record.localManifest.sha256 ||
+      record.files.length !== manifest.files.length
+    ) {
+      throw new Error(
+        `${item.name}: official manifest no longer matches its import`,
+      );
+    }
+    for (const file of record.files) {
+      const declared = manifest.files.find((entry) => entry.path === file.path);
+      const bytes = await readFile(resolve(blockDirectory, file.path));
+      if (
+        !declared ||
+        declared.target !== file.target ||
+        declared.type !== file.type ||
+        bytes.length !== file.bytes ||
+        createHash("sha256").update(bytes).digest("hex") !== file.sha256
+      ) {
+        throw new Error(
+          `${item.name}: native source file changed: ${file.path}`,
+        );
+      }
+    }
+    if (manifest.type === "hyperframes:example") {
+      const preview = templateRecords.get(item.name);
+      if (
+        !preview ||
+        preview.render.status !== "passed" ||
+        preview.origin.commit !== manifest.origin.commit ||
+        preview.sourceManifestSha256 !== record.localManifest.sha256 ||
+        preview.dimensions.width !== manifest.dimensions.width ||
+        preview.dimensions.height !== manifest.dimensions.height ||
+        preview.duration !== manifest.duration ||
+        preview.render.frameCount !== preview.fps * preview.duration ||
+        preview.files.length !== record.files.length
+      ) {
+        throw new Error(
+          `${item.name}: template preview evidence is stale or incomplete`,
+        );
+      }
+      for (const file of preview.files) {
+        if (
+          record.files.find((source) => source.path === file.path)?.sha256 !==
+          file.sourceSha256
+        )
+          throw new Error(
+            `${item.name}: template source hash changed: ${file.path}`,
+          );
+      }
+      for (const artifact of Object.values(preview.artifacts)) {
+        const bytes = await readFile(resolve(root, artifact.path));
+        if (
+          bytes.length !== artifact.bytes ||
+          createHash("sha256").update(bytes).digest("hex") !== artifact.sha256
+        )
+          throw new Error(
+            `${item.name}: template preview changed: ${artifact.path}`,
+          );
+      }
+    }
+    continue;
+  }
+  await ensure(parityPath, `${item.name} parity manifest`);
   const parity = await readJson(parityPath);
   const original = parity.kind === "original";
 
@@ -107,25 +211,29 @@ for (const item of registry.items) {
       (file) => file.type === "hyperframes:composition",
     );
     const scores = [
-      ...(await readFile(resolve(root, parity.artifacts.frameSsim), "utf8")).matchAll(
-        /^n:\d+ .*?All:([\d.]+)/gm,
-      ),
+      ...(
+        await readFile(resolve(root, parity.artifacts.frameSsim), "utf8")
+      ).matchAll(/^n:\d+ .*?All:([\d.]+)/gm),
     ].map((match) => Number(match[1]));
-    const mean = scores.reduce((total, score) => total + score, 0) / scores.length;
+    const mean =
+      scores.reduce((total, score) => total + score, 0) / scores.length;
     const minimum = Math.min(...scores);
     const source = composition
       ? await readFile(resolve(blockDirectory, composition.path))
       : null;
     const assetsMatch = await Promise.all(
-      Object.entries(parity.fixture.assetSha256 ?? {}).map(async ([path, expected]) => {
-        const bytes = await readFile(resolve(blockDirectory, path));
-        return createHash("sha256").update(bytes).digest("hex") === expected;
-      }),
+      Object.entries(parity.fixture.assetSha256 ?? {}).map(
+        async ([path, expected]) => {
+          const bytes = await readFile(resolve(blockDirectory, path));
+          return createHash("sha256").update(bytes).digest("hex") === expected;
+        },
+      ),
     );
     if (
       !source ||
       assetsMatch.includes(false) ||
-      createHash("sha256").update(source).digest("hex") !== parity.fixture.compositionSha256 ||
+      createHash("sha256").update(source).digest("hex") !==
+        parity.fixture.compositionSha256 ||
       parity.checks?.installedThroughCli !== true ||
       parity.fixture.width !== manifest.dimensions.width ||
       parity.fixture.height !== manifest.dimensions.height ||
@@ -136,7 +244,9 @@ for (const item of registry.items) {
       mean < parity.thresholds.meanSsim ||
       minimum < parity.thresholds.minSsim
     ) {
-      throw new Error(`${item.name}: native frame-parity evidence is stale or incomplete`);
+      throw new Error(
+        `${item.name}: native frame-parity evidence is stale or incomplete`,
+      );
     }
   }
 
@@ -223,4 +333,12 @@ for (const item of registry.items) {
   );
 }
 
-console.log(`Validated ${registry.items.length} verified Hyfrme component(s).`);
+for (const record of nativeRecords.values()) {
+  if (!registry.items.some((item) => item.name === record.name))
+    throw new Error(
+      `${record.name}: official catalog item missing from the registry`,
+    );
+}
+console.log(
+  `Validated ${registry.items.length} catalog items, including ${nativeRecords.size} exact official source imports.`,
+);

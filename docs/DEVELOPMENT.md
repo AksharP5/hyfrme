@@ -43,10 +43,17 @@ owner publishes the videos, hosted previews can build again.
 Follow the [porting workflow](PORTING.md) for composition ports and the
 [project instructions](../AGENTS.md) when working with an agent.
 
-## Updating Screen Lift
+## Official HyperFrames catalog
+
+See the [native catalog workflow](HYPERFRAMES_CATALOG.md) for the pinned source
+import, local template previews, and file-hash validation.
+
+## Updating Hyfrme originals
 
 ```bash
 npm run verify:screen-lift
+npm run verify:before-after
+npm run build:catalog
 npm run sync:registry
 npm run sync:catalog
 npm run check
@@ -54,9 +61,11 @@ npm run build
 npm run preview
 ```
 
+Run the verifier for the component you changed. Both commands use the same
+verification flow, with component-specific customization fixtures.
 The verifier checks actual CLI installations, custom paths and variables, and
 all 120 rendered frames. It compares the original Hyfrme source with the installed
-result. Upstream port comparisons do not apply to this original component.
+result. Upstream port comparisons do not apply to originals.
 
 ## T3 Code ports
 

@@ -8,10 +8,31 @@ const root = resolve(import.meta.dirname, "..");
 const registry = JSON.parse(
   await readFile(resolve(root, "registry/registry.json"), "utf8"),
 );
+const onlyIndex = process.argv.indexOf("--only");
+const requested =
+  onlyIndex === -1
+    ? null
+    : new Set((process.argv[onlyIndex + 1] ?? "").split(",").filter(Boolean));
+const items = requested
+  ? registry.items.filter((item) => requested.has(item.name))
+  : registry.items;
+if (requested && (!requested.size || requested.size !== items.length))
+  throw new Error("--only requires existing catalog item names");
 let originalBytes = 0;
 let optimizedBytes = 0;
+let count = 0;
 
-for (const { name } of registry.items) {
+for (const { name } of items) {
+  const manifest = JSON.parse(
+    await readFile(
+      resolve(root, "registry/blocks", name, "registry-item.json"),
+      "utf8",
+    ),
+  );
+  if (
+    manifest.origin?.repository === "https://github.com/heygen-com/hyperframes"
+  )
+    continue;
   const directory = resolve(root, "public/previews", name);
   const input = resolve(directory, "thumbnail.png");
   const original = await readFile(input);
@@ -67,10 +88,11 @@ for (const { name } of registry.items) {
     { encoding: "buffer" },
   );
   await writeFile(resolve(directory, "thumbnail.webp"), stdout);
+  count += 1;
   originalBytes += original.byteLength;
   optimizedBytes += stdout.byteLength;
 }
 
 console.log(
-  `Optimized ${registry.items.length} thumbnails: ${(originalBytes / 1e6).toFixed(2)} MB → ${(optimizedBytes / 1e6).toFixed(2)} MB.`,
+  `Optimized ${count} thumbnails: ${(originalBytes / 1e6).toFixed(2)} MB → ${(optimizedBytes / 1e6).toFixed(2)} MB.`,
 );

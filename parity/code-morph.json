@@ -1,0 +1,142 @@
+{
+  "slug": "code-morph",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "source": "registry/remocn/code-morph/index.tsx",
+    "config": "registry/remocn/code-morph/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 138,
+    "props": {
+      "filename": "invoices.tsx",
+      "theme": "dark",
+      "accentColor": "#0ea5e9",
+      "morphDuration": 36,
+      "fontSize": 20,
+      "highlight": true,
+      "lineNumbers": true,
+      "windowDots": true,
+      "speed": 1
+    },
+    "background": "#f1eee7"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "fbc2f0854adf41947cb00d5b53e9d6def64da5a209934e91387724bf0a34464f",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 138,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 138,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check reported 194 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "code-morph",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "source": "registry/remocn/code-morph/index.tsx",
+          "config": "registry/remocn/code-morph/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "fg": "rgb(113,113,122)",
+          "bg": "rgb(17,17,19)",
+          "ratio": 3.9,
+          "requiredRatio": 4.5
+        },
+        "reason": "The pinned PALETTES.dark uses #71717a punctuation and #52525b line numbers on #111113. Its translucent line-highlight band produces the other recorded gutter backgrounds. These exact foreground/background contrast samples inherit the source palette; preserve its code styling and keep the complete findings visible in the audit."
+      },
+      {
+        "slug": "code-morph",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "source": "registry/remocn/code-morph/index.tsx",
+          "config": "registry/remocn/code-morph/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "fg": "rgb(82,82,91)",
+          "bg": "rgb(17,17,19)",
+          "ratio": 2.44,
+          "requiredRatio": 4.5
+        },
+        "reason": "The pinned PALETTES.dark uses #71717a punctuation and #52525b line numbers on #111113. Its translucent line-highlight band produces the other recorded gutter backgrounds. These exact foreground/background contrast samples inherit the source palette; preserve its code styling and keep the complete findings visible in the audit."
+      },
+      {
+        "slug": "code-morph",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "source": "registry/remocn/code-morph/index.tsx",
+          "config": "registry/remocn/code-morph/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "fg": "rgb(82,82,91)",
+          "bg": "rgb(17,22,27)",
+          "ratio": 2.35,
+          "requiredRatio": 4.5
+        },
+        "reason": "The pinned PALETTES.dark uses #71717a punctuation and #52525b line numbers on #111113. Its translucent line-highlight band produces the other recorded gutter backgrounds. These exact foreground/background contrast samples inherit the source palette; preserve its code styling and keep the complete findings visible in the audit."
+      },
+      {
+        "slug": "code-morph",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "source": "registry/remocn/code-morph/index.tsx",
+          "config": "registry/remocn/code-morph/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "fg": "rgb(82,82,91)",
+          "bg": "rgb(16,40,53)",
+          "ratio": 1.97,
+          "requiredRatio": 4.5
+        },
+        "reason": "The pinned PALETTES.dark uses #71717a punctuation and #52525b line numbers on #111113. Its translucent line-highlight band produces the other recorded gutter backgrounds. These exact foreground/background contrast samples inherit the source palette; preserve its code styling and keep the complete findings visible in the audit."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/code-morph/reference.mp4",
+    "hyperframesVideo": "public/previews/code-morph/hyperframes.mp4",
+    "thumbnail": "public/previews/code-morph/thumbnail.png",
+    "summary": "parity/code-morph-diff/summary.json",
+    "perFrameSsim": "parity/code-morph-diff/ssim.log",
+    "hyperframesCheck": "parity/code-morph-diff/hyperframes-check.log",
+    "worstFrame": "parity/code-morph-diff/worst-frame.png",
+    "referenceAlpha": "parity/code-morph-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/code-morph-diff/hyperframes-alpha.framemd5"
+  }
+}

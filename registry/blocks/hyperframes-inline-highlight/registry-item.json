@@ -1,0 +1,108 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "hyperframes-inline-highlight",
+  "type": "hyperframes:component",
+  "title": "Inline Highlight",
+  "description": "A clean marker-style inline highlight that animates behind text using a CSS scale variable",
+  "tags": [
+    "motion-primitive",
+    "text",
+    "highlight",
+    "caption",
+    "hyperframes-official"
+  ],
+  "files": [
+    {
+      "path": "inline-highlight.html",
+      "target": "compositions/components/inline-highlight.html",
+      "type": "hyperframes:snippet"
+    },
+    {
+      "path": "licenses/HyperFrames-LICENSE",
+      "target": "THIRD_PARTY_LICENSES/hyperframes/LICENSE",
+      "type": "hyperframes:asset"
+    }
+  ],
+  "variables": [
+    {
+      "id": "tint",
+      "type": "enum",
+      "role": "style",
+      "label": "Tint",
+      "description": "Marker colour. Green, blue and violet ride --brand, --accent and --accent-2.",
+      "default": "yellow",
+      "options": [
+        {
+          "value": "yellow",
+          "label": "Yellow"
+        },
+        {
+          "value": "green",
+          "label": "Green"
+        },
+        {
+          "value": "blue",
+          "label": "Blue"
+        },
+        {
+          "value": "violet",
+          "label": "Violet"
+        }
+      ]
+    },
+    {
+      "id": "thickness",
+      "type": "enum",
+      "role": "style",
+      "label": "Thickness",
+      "description": "Height of the marker band behind the text, as a share of the font size.",
+      "default": "standard",
+      "options": [
+        {
+          "value": "thin",
+          "label": "Thin"
+        },
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "thick",
+          "label": "Thick"
+        }
+      ]
+    },
+    {
+      "id": "origin",
+      "type": "enum",
+      "role": "motion",
+      "label": "Origin",
+      "description": "Edge the marker grows out of as the scale variable runs from 0 to 1.",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ]
+    }
+  ],
+  "preview": {
+    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/inline-highlight.png"
+  },
+  "license": "Apache-2.0",
+  "origin": {
+    "repository": "https://github.com/heygen-com/hyperframes",
+    "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+    "source": "registry/components/inline-highlight/registry-item.json",
+    "name": "inline-highlight"
+  }
+}
