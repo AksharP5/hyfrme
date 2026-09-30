@@ -45,6 +45,10 @@ The 51 advertised Pro components remain unavailable: their public source is abse
 and all unauthenticated component endpoints return HTTP 402. The current
 `publishedAudit` records those results separately from the pinned port inventory.
 
+Snapcn Pro stays excluded. Paid access alone does not make an item eligible for
+Hyfrme; reconsider an item only if upstream publishes its source under a compatible
+open-source license.
+
 ## Public audit, September 29, 2026
 
 Public main remains

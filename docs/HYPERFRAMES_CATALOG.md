@@ -83,10 +83,12 @@ HyperFrames 0.8.81 and Chrome 152. The official no-video initializer removes
 `#a-roll`. The resulting six `GSAP target #a-roll not found` warnings disappear
 when a video is supplied. Both fixtures have zero runtime errors; separate contrast
 findings remain. This is an empty-scaffold warning, not a missing installed video
-file. Vignelli's missing `caption-overrides.json` is an optional file fetched by
-the HyperFrames runtime, which tolerates its absence; that recorded request failure
-alone does not establish a broken template. Other findings need individual visual
-and current-version verification before being reported as upstream defects.
+file. The [current template audit](TEMPLATE_AUDIT.md) rechecks all eight examples
+with HyperFrames 0.8.99, verifies actual official initialization against Hyfrme's
+installed source, and separates confirmed defects from unresolved checker findings.
+It includes supplied-video checks and [upstream report drafts](UPSTREAM_TEMPLATE_REPORTS.md).
+Vignelli's optional `caption-overrides.json` request errors no longer occur on
+0.8.99; its verified caption overlap is a separate source layout defect.
 
 Official source-level network dependencies remain upstream-owned, including CDN
 libraries, Google Fonts, a Kinetic Type video, and the Warm Grain paper texture.
