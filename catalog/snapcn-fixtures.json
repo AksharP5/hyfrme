@@ -6237,5 +6237,200 @@
       }
     },
     "tags": ["snapcn", "scenes"]
+  },
+  {
+    "slug": "snapcn-reel-collage",
+    "catalogFamily": "snapcn",
+    "title": "Reel Collage",
+    "description": "A photo reel between two captions shuts like an eyelid, the copy swaps, and a six-picture collage blooms in around the lines on a peach flush.",
+    "componentName": "ReelCollage",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "7fd048cc7eee397a0e6cb1353c1537aefd245e2c",
+      "source": "registry/snap-cn/reel-collage/index.tsx",
+      "config": "registry/snap-cn/reel-collage/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/reel-collage/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 96,
+      "props": {
+        "topLine": "The videos",
+        "bottomLine": "That you ship",
+        "swapTop": "Especially on",
+        "swapBottom": "Launch day",
+        "slides": [
+          "/demos/posters/orbit-gallery.webp",
+          "/demos/posters/card-rail.webp",
+          "/demos/posters/logo-flicker.webp",
+          "/demos/posters/laptop-frame.webp",
+          "/demos/posters/count-grid.webp",
+          "/demos/posters/status-cycle.webp",
+          "/demos/posters/moodboard-reveal.webp",
+          "/demos/posters/announce-title.webp"
+        ],
+        "collage": [
+          "/demos/posters/phone-frame.webp",
+          "/demos/posters/terminal-simulator.webp",
+          "/demos/posters/roster-grant.webp",
+          "/demos/posters/channel-thread.webp",
+          "/demos/posters/hero-launch.webp",
+          "/demos/posters/follower-rush.webp"
+        ],
+        "background": "#f5f4f2",
+        "glowColor": "#dfe7e3",
+        "flushColor": "#fdc7bc",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#f5f4f2"
+    },
+    "controls": {
+      "topLine": {
+        "type": "text",
+        "default": "The videos",
+        "label": "Top caption"
+      },
+      "bottomLine": {
+        "type": "text",
+        "default": "That you ship",
+        "label": "Bottom caption"
+      },
+      "swapTop": {
+        "type": "text",
+        "default": "Especially on",
+        "label": "Swap, first line"
+      },
+      "swapBottom": {
+        "type": "text",
+        "default": "Launch day",
+        "label": "Swap, second line"
+      },
+      "background": {
+        "type": "color",
+        "default": "#f5f4f2",
+        "label": "Page"
+      },
+      "glowColor": {
+        "type": "color",
+        "default": "#dfe7e3",
+        "label": "Glow"
+      },
+      "flushColor": {
+        "type": "color",
+        "default": "#fdc7bc",
+        "label": "Flush",
+        "brand": "accent"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "scenes"
+    ]
+  },
+  {
+    "slug": "snapcn-orb-swarm",
+    "catalogFamily": "snapcn",
+    "title": "Orb Swarm",
+    "description": "Kinetic typography scene with glass orbs: a sentence told one beat at a time while four orbs burst out of it, split into eight and sixteen, wind into a clockwise vortex, collapse into a knot, pay out as a chain, loop around the closing words and shrink away bead by bead. Every phase was measured frame by frame off a 24fps reference and is replayed on the same clock; the orbs are shaded per pixel into a canvas (a scrolling band texture bowed like latitude lines, a soft glass edge) and the type is drawn into the same canvas four times finer than the frame so its baselines land between pixels.",
+    "componentName": "OrbSwarm",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "98809254aa239edfd04119336ff6a774a2df776d",
+      "source": "registry/snap-cn/orb-swarm/index.tsx",
+      "config": "registry/snap-cn/orb-swarm/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/orb-swarm/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 160,
+      "props": {
+        "script": "one command | what if | every launch | you shipped | got a video | in seconds",
+        "background": "#fcf9ff",
+        "ink": "#000000",
+        "orbColor": "#3577e0",
+        "softness": 0.7,
+        "fontFamily": "Default"
+      },
+      "background": "#fcf9ff"
+    },
+    "controls": {
+      "script": {
+        "type": "text",
+        "default": "one command | what if | every launch | you shipped | got a video | in seconds",
+        "label": "Script (| card)"
+      },
+      "background": {
+        "type": "color",
+        "default": "#fcf9ff",
+        "label": "Background"
+      },
+      "ink": {
+        "type": "color",
+        "default": "#000000",
+        "label": "Ink"
+      },
+      "orbColor": {
+        "type": "color",
+        "default": "#3577e0",
+        "label": "Orb colour"
+      },
+      "softness": {
+        "type": "number",
+        "default": 0.7,
+        "min": 0,
+        "max": 2,
+        "step": 0.05,
+        "label": "Type softness"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "scenes"
+    ]
   }
 ]

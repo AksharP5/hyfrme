@@ -48,3 +48,8 @@ Otherwise it uploads the original. Showcase films keep their original encoding.
 Delivery URLs include the source hash and an encoding version. Bump the version
 when changing the encoding recipe. Original files and parity artifacts remain
 untouched. FFmpeg and ffprobe are needed for new large previews, not builds.
+
+When catalog pages depend on new CLI behavior, publish the corresponding CLI release
+before deploying those pages. Official template commands require the release that
+adds `hyfrme init`. The website build creates a local CLI archive; it does not publish
+the npm package.

@@ -1,0 +1,68 @@
+{
+  "slug": "selection-snap",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "source": "registry/remocn/selection-snap/index.tsx",
+    "config": "registry/remocn/selection-snap/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 75,
+    "props": {
+      "text": "Frame",
+      "color": "#fafafa",
+      "accent": "#ff4d1a",
+      "selectionColor": "#3d5afe",
+      "fontSize": 150,
+      "fromWeight": 100,
+      "toWeight": 900,
+      "badge": true,
+      "speed": 1
+    },
+    "background": "#0a0a0a"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "e09adb7046eb9e4af1b82fd415977393901411ce48752892c18111be86dac80e",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 75,
+    "meanSsim": 0.9957133866666662,
+    "minSsim": 0.994476,
+    "p05Ssim": 0.994898,
+    "p95Ssim": 0.996359,
+    "alpha": {
+      "frameCount": 75,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/selection-snap/reference.mp4",
+    "hyperframesVideo": "public/previews/selection-snap/hyperframes.mp4",
+    "thumbnail": "public/previews/selection-snap/thumbnail.png",
+    "summary": "parity/selection-snap-diff/summary.json",
+    "perFrameSsim": "parity/selection-snap-diff/ssim.log",
+    "hyperframesCheck": "parity/selection-snap-diff/hyperframes-check.log",
+    "worstFrame": "parity/selection-snap-diff/worst-frame.png",
+    "referenceAlpha": "parity/selection-snap-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/selection-snap-diff/hyperframes-alpha.framemd5"
+  }
+}

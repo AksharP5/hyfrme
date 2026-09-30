@@ -1,0 +1,93 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "hyperframes-touch-indicator",
+  "type": "hyperframes:component",
+  "title": "Touch Indicator",
+  "description": "A translucent contact-circle gesture actor for mobile UI scenes: it touches the glass on the frame the host target responds, then lifts. Tap or swipe, picked by variable.",
+  "tags": [
+    "cursor",
+    "motion-primitive",
+    "mobile",
+    "gesture",
+    "touch",
+    "pointer",
+    "hyperframes-official"
+  ],
+  "variables": [
+    {
+      "id": "gesture",
+      "type": "enum",
+      "label": "Gesture",
+      "default": "tap",
+      "options": [
+        {
+          "value": "tap",
+          "label": "Tap"
+        },
+        {
+          "value": "swipe",
+          "label": "Swipe"
+        }
+      ]
+    },
+    {
+      "id": "polarity",
+      "type": "enum",
+      "label": "Polarity",
+      "default": "light",
+      "options": [
+        {
+          "value": "light",
+          "label": "Light (on dark UI)"
+        },
+        {
+          "value": "dark",
+          "label": "Dark (on light UI)"
+        }
+      ]
+    },
+    {
+      "id": "targetX",
+      "type": "number",
+      "label": "Target X",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "unit": "%"
+    },
+    {
+      "id": "targetY",
+      "type": "number",
+      "label": "Target Y",
+      "default": 55,
+      "min": 0,
+      "max": 100,
+      "unit": "%"
+    }
+  ],
+  "files": [
+    {
+      "path": "touch-indicator.html",
+      "target": "compositions/components/touch-indicator.html",
+      "type": "hyperframes:snippet"
+    },
+    {
+      "path": "licenses/HyperFrames-LICENSE",
+      "target": "THIRD_PARTY_LICENSES/hyperframes/LICENSE",
+      "type": "hyperframes:asset"
+    }
+  ],
+  "jobs": [
+    "demonstrate"
+  ],
+  "family": "pointers",
+  "profile": "interaction",
+  "evidence": "spec ready (gesture-actor-spec.md)",
+  "license": "Apache-2.0",
+  "origin": {
+    "repository": "https://github.com/heygen-com/hyperframes",
+    "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+    "source": "registry/components/touch-indicator/registry-item.json",
+    "name": "touch-indicator"
+  }
+}

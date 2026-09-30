@@ -1,0 +1,98 @@
+{
+  "slug": "type-repeater",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "source": "registry/remocn/type-repeater/index.tsx",
+    "config": "registry/remocn/type-repeater/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 100,
+    "props": {
+      "text": "Repeat",
+      "mode": "tunnel",
+      "color": "#111111",
+      "accent": "#fafafa",
+      "copies": 12,
+      "fontSize": 110,
+      "fontWeight": 800,
+      "outline": true,
+      "speed": 1
+    },
+    "background": "#ff4d1a"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "94d6d7ec4ddf5741df0d14a8f09516e156af3b9ce695d9503a007ab51a8c7f63",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 100,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check reported 90 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "type-repeater",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "source": "registry/remocn/type-repeater/index.tsx",
+          "config": "registry/remocn/type-repeater/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap"
+        },
+        "reason": "Repeated filled and outline copies are the core treatment; the 66 overlap hits are intentional source layers."
+      },
+      {
+        "slug": "type-repeater",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "source": "registry/remocn/type-repeater/index.tsx",
+          "config": "registry/remocn/type-repeater/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure"
+        },
+        "reason": "The source uses pale repeated type across its orange accent band during the reveal. The 24 contrast hits describe these low-opacity and stroke states; all 100 frames match exactly with exact alpha."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/type-repeater/reference.mp4",
+    "hyperframesVideo": "public/previews/type-repeater/hyperframes.mp4",
+    "thumbnail": "public/previews/type-repeater/thumbnail.png",
+    "summary": "parity/type-repeater-diff/summary.json",
+    "perFrameSsim": "parity/type-repeater-diff/ssim.log",
+    "hyperframesCheck": "parity/type-repeater-diff/hyperframes-check.log",
+    "worstFrame": "parity/type-repeater-diff/worst-frame.png",
+    "referenceAlpha": "parity/type-repeater-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/type-repeater-diff/hyperframes-alpha.framemd5"
+  }
+}

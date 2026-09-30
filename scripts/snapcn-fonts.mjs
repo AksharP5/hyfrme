@@ -34,9 +34,18 @@ function fontProps(type, props) {
         usedFonts.add(path);
         const font = fonts.find((candidate) => candidate.module === path);
         if (!font) throw new Error(`Missing frozen font: ${path}`);
+        const latin500 = fonts.find(
+          (candidate) =>
+            candidate.module === path &&
+            candidate.style === "normal" &&
+            candidate.weight === "500",
+        );
+        const fontInfo = latin500
+          ? `import {staticFile} from "remotion"; export const getInfo = () => ({fonts:{normal:{"500":{latin:staticFile(${JSON.stringify(latin500.source)})}}}});`
+          : "export const getInfo = () => ({fonts:{}});";
         return {
           loader: "js",
-          contents: `export const fontFamily = ${JSON.stringify(snapcnFontFamily(font.family))}; export const loadFont = () => ({fontFamily, waitUntilDone: () => Promise.resolve()});`,
+          contents: `${fontInfo} export const fontFamily = ${JSON.stringify(snapcnFontFamily(font.family))}; export const loadFont = () => ({fontFamily, waitUntilDone: () => Promise.resolve()});`,
         };
       });
 

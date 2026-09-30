@@ -1,0 +1,55 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "hyperframes-vfx-portal",
+  "type": "hyperframes:block",
+  "title": "Portal",
+  "description": "VFX composition block",
+  "stability": "experimental",
+  "dimensions": {
+    "width": 1920,
+    "height": 1080
+  },
+  "duration": 10,
+  "tags": [
+    "html-in-canvas",
+    "webgl",
+    "hyperframes-official"
+  ],
+  "files": [
+    {
+      "path": "vfx-portal.html",
+      "target": "compositions/vfx-portal.html",
+      "type": "hyperframes:composition"
+    },
+    {
+      "path": "licenses/HyperFrames-LICENSE",
+      "target": "THIRD_PARTY_LICENSES/hyperframes/LICENSE",
+      "type": "hyperframes:asset"
+    }
+  ],
+  "preview": {
+    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/vfx-portal.mp4",
+    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/vfx-portal.png"
+  },
+  "params": [
+    {
+      "key": "--bg-color",
+      "label": "Background",
+      "type": "color",
+      "default": "#000000"
+    },
+    {
+      "key": "--portal-color",
+      "label": "Portal color",
+      "type": "color",
+      "default": "#fafafa"
+    }
+  ],
+  "license": "Apache-2.0",
+  "origin": {
+    "repository": "https://github.com/heygen-com/hyperframes",
+    "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+    "source": "registry/blocks/vfx-portal/registry-item.json",
+    "name": "vfx-portal"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "slug": "stripe-type",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "source": "registry/remocn/stripe-type/index.tsx",
+    "config": "registry/remocn/stripe-type/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 100,
+    "props": {
+      "text": "Launch",
+      "color": "#fafafa",
+      "settle": "striped",
+      "fontSize": 180,
+      "fontWeight": 800,
+      "stripes": 8,
+      "gap": 0.35,
+      "hold": 30,
+      "exit": true,
+      "speed": 1
+    },
+    "background": "#2b3bff"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "446521b8cde5b089a4c61f131718ecab6d9225bf7fb4f0aad025f67d97f29091",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 100,
+    "meanSsim": 0.9908632999999996,
+    "minSsim": 0.986202,
+    "p05Ssim": 0.986616,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check reported 1 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "stripe-type",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "source": "registry/remocn/stripe-type/index.tsx",
+          "config": "registry/remocn/stripe-type/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap"
+        },
+        "reason": "The source layers the headline and striped type treatment in the same display zone. The single inspector hit is the intended typographic overlap; all 100 frames pass parity (mean/min SSIM 0.990863/0.986202) with exact alpha."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/stripe-type/reference.mp4",
+    "hyperframesVideo": "public/previews/stripe-type/hyperframes.mp4",
+    "thumbnail": "public/previews/stripe-type/thumbnail.png",
+    "summary": "parity/stripe-type-diff/summary.json",
+    "perFrameSsim": "parity/stripe-type-diff/ssim.log",
+    "hyperframesCheck": "parity/stripe-type-diff/hyperframes-check.log",
+    "worstFrame": "parity/stripe-type-diff/worst-frame.png",
+    "referenceAlpha": "parity/stripe-type-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/stripe-type-diff/hyperframes-alpha.framemd5"
+  }
+}

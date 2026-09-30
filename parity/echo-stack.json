@@ -1,0 +1,87 @@
+{
+  "slug": "echo-stack",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "source": "registry/remocn/echo-stack/index.tsx",
+    "config": "registry/remocn/echo-stack/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "text": "Bold.",
+      "color": "#fafafa",
+      "echoColor": "#fafafa",
+      "direction": "up",
+      "fontSize": 170,
+      "echoes": 3,
+      "echoOpacity": 0.35,
+      "cycle": 60,
+      "speed": 1
+    },
+    "background": "#0a0a0a"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "62dd2bf07d2daa9424ed3befdb2eba158a1a4f6c60adfa944aa0db7e12873859",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.9999522166666666,
+    "minSsim": 0.999496,
+    "p05Ssim": 0.999852,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check reported 1 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "echo-stack",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "source": "registry/remocn/echo-stack/index.tsx",
+          "config": "registry/remocn/echo-stack/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap",
+          "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+          "containerSelector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(7)",
+          "text": "Bold."
+        },
+        "reason": "The pinned source intentionally layers outlined echo copies behind the bold word. The overlap is the effect itself; the verified port keeps that treatment at 120 frames with mean/min SSIM 0.999952/0.999496 and exact alpha."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/echo-stack/reference.mp4",
+    "hyperframesVideo": "public/previews/echo-stack/hyperframes.mp4",
+    "thumbnail": "public/previews/echo-stack/thumbnail.png",
+    "summary": "parity/echo-stack-diff/summary.json",
+    "perFrameSsim": "parity/echo-stack-diff/ssim.log",
+    "hyperframesCheck": "parity/echo-stack-diff/hyperframes-check.log",
+    "worstFrame": "parity/echo-stack-diff/worst-frame.png",
+    "referenceAlpha": "parity/echo-stack-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/echo-stack-diff/hyperframes-alpha.framemd5"
+  }
+}

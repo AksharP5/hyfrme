@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"mode","type":"string","label":"Mode","default":"trail","options":["trail","focus"]},{"id":"count","type":"number","label":"Lines","default":12,"min":3,"max":32,"step":1},{"id":"weight","type":"number","label":"Stroke weight","default":2,"min":1,"max":8,"step":0.5},{"id":"spread","type":"number","label":"Spread","default":96,"min":16,"max":320,"step":4},{"id":"duration","type":"number","label":"Travel frames","default":14,"min":6,"max":40,"step":1},{"id":"bounce","type":"number","label":"Bounce","default":0.5,"min":0,"max":1,"step":0.05},{"id":"squash","type":"number","label":"Squash","default":0.5,"min":0,"max":1,"step":0.05},{"id":"x","type":"number","label":"Point x","default":0.5,"min":0,"max":1,"step":0.01},{"id":"y","type":"number","label":"Point y","default":0.5,"min":0,"max":1,"step":0.01},{"id":"delay","type":"number","label":"Delay","default":0,"min":0,"max":60,"step":1},{"id":"color","type":"color","label":"Line color","default":"#ffffff"},{"id":"seed","type":"number","label":"Seed","default":1,"min":1,"max":9007199254740991,"step":1},{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #002fa7; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#002fa7; }
+
+
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="speed-lines" data-start="0" data-duration="1.8333333333333333" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="1.8333333333333333" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
+      </div>
+    </div>
+    <script src="./speed-lines.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="speed-lines"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="speed-lines"] [data-hyfrme-clock]', {
+        frame: 55,
+        duration: 1.8333333333333333,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(54, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["speed-lines"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

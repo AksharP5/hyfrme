@@ -288,18 +288,51 @@ layers. Other layout, contrast, and motion findings remain visible. Shared Speed
 controls are omitted when the source does not read them. Kinetic Warp keeps
 its transparent output, with a black website preview behind its white text.
 
+## Remocn September 2026 additions
+
+Remocn main at `7b1e6dadf21243bf6369f1392c8e898b8b40943e` adds 19 registry
+entries. Hyfrme integrates all 19 with full-frame SSIM and exact-alpha
+verification: Code Morph, Ring Text, Type Wall, Agent Run, Bauhaus Build, Echo Stack, Glyph Anatomy, Keystroke,
+Mondrian Split, Outline Trace, Path Ride, Period Drop, Selection Snap, Speed
+Lines, Squiggle, Stripe Type, Trim Burst, Truchet Flip, and Type Repeater.
+Seven retain source-specific inspector findings for intentional overlaps or
+muted source colors; exact origins and reasons are recorded in
+`catalog/remocn-check-exceptions.json`.
+
+Code Morph, Ring Text, and Type Wall now match all 468 frames exactly (SSIM
+mean/minimum 1.0, identical RGBA hashes). Ring Text preserves the source's discrete
+Inter font weights; Type Wall preserves automatic text rasterization; Code Morph's
+reference includes the actual upstream Geist Mono font boundary. Frozen Inter, Anton,
+and Geist Mono sources make the fixtures independent of live font downloads. Exact
+source-palette checker findings remain recorded for Code Morph and Ring Text.
+
+All 326 public Remocn visual items are included. Snapcn's live public registry has
+46 visual items, all included; private Pro-only source remains outside the public import.
+
+The source manifest is `assets/remocn-additions-2026-09-28/manifest.json`.
+Reproduce the additions with:
+
+```bash
+export REMOCN_SOURCE=.work/remocn-audit-7b1e6dad
+REMOCN_ASSET_MANIFEST=assets/remocn-additions-2026-09-28/manifest.json npm run setup:remocn-latest
+node scripts/generate-text-ports.mjs --family text --only echo-stack,glyph-anatomy,outline-trace,path-ride,period-drop,selection-snap,stripe-type,type-repeater,ring-text,type-wall
+node scripts/generate-text-ports.mjs --family core --only agent-run,bauhaus-build,keystroke,mondrian-split,speed-lines,squiggle,trim-burst,truchet-flip,code-morph
+node scripts/verify-text-ports.mjs --lossless --only echo-stack,glyph-anatomy,outline-trace,path-ride,period-drop,selection-snap,stripe-type,type-repeater,ring-text,type-wall,agent-run,bauhaus-build,keystroke,mondrian-split,speed-lines,squiggle,trim-burst,truchet-flip
+```
+
 ## Snapcn workflow
 
-All 39 pinned Snapcn visual components are verified across 5,744 frames. The
-frame-weighted mean SSIM is 0.998594; every component averages at least 0.990681,
-and the lowest individual frame scores 0.957827. Together with the 307 Remocn
-ports, the catalog contains 346 components.
+All 46 pinned Snapcn visual components are verified across 6,433 frames. The
+frame-weighted mean SSIM is 0.998592; every component averages at least 0.990681,
+and the lowest individual frame scores 0.957827. Together with the 326 Remocn
+ports, this makes 372 upstream visual components.
 
-Thirty-three Snapcn blocks pass the full HyperFrames check. Answer Highlight,
-Announce Title, Logo Drift, Follower Rush, Roster Grant, and Wordmark Cut retain narrowly reviewed findings
-from the source's contrast choices, gradient text, or photo overlays. Their
-original appearance is preserved; exact findings and reasons remain in the
-parity manifests and `catalog/snapcn-check-exceptions.json`.
+Thirty-eight Snapcn blocks pass the full HyperFrames check. Announce Title,
+Answer Highlight, Follower Rush, Logo Drift, Roster Grant, Status Cycle, Word
+Wheel, and Wordmark Cut retain narrowly reviewed findings from source contrast,
+text layout, gradient text, or photo overlays. Their original appearance is
+preserved; exact findings and reasons remain in the parity manifests and
+`catalog/snapcn-check-exceptions.json`.
 
 Snapcn has its own pinned inventory and fixtures under `catalog/snapcn-*.json`.
 Its blocks use `snapcn-` names to preserve existing installations when names

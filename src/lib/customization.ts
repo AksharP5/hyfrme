@@ -9,6 +9,7 @@ export type CompositionVariable = {
   max?: number;
   step?: number;
   options?: string[];
+  maxLength?: number;
 };
 
 export type CustomValues = Record<string, string | number | boolean>;
@@ -34,7 +35,69 @@ export function parseCompositionVariables(source: string) {
   const match = source.match(/data-composition-variables='([^']*)'/);
   if (!match) return [];
   try {
-    return JSON.parse(decodeHtmlAttribute(match[1])) as CompositionVariable[];
+    const parsed: unknown = JSON.parse(decodeHtmlAttribute(match[1]));
+    if (!Array.isArray(parsed)) return [];
+    return parsed.flatMap((value: unknown): CompositionVariable[] => {
+      if (
+        !value ||
+        typeof value !== "object" ||
+        !("id" in value) ||
+        typeof value.id !== "string" ||
+        !("type" in value) ||
+        !("default" in value)
+      )
+        return [];
+      const type =
+        value.type === "enum" || value.type === "image" ? "string" : value.type;
+      if (
+        type !== "string" &&
+        type !== "number" &&
+        type !== "color" &&
+        type !== "boolean"
+      )
+        return [];
+      const initial = value.default;
+      if (
+        typeof initial !== "string" &&
+        typeof initial !== "number" &&
+        typeof initial !== "boolean"
+      )
+        return [];
+      const options =
+        "options" in value && Array.isArray(value.options)
+          ? value.options.flatMap((option: unknown) => {
+              if (typeof option === "string") return [option];
+              if (
+                option &&
+                typeof option === "object" &&
+                "value" in option &&
+                typeof option.value === "string"
+              )
+                return [option.value];
+              return [];
+            })
+          : undefined;
+      return [
+        {
+          id: value.id,
+          type,
+          default: initial,
+          label:
+            "label" in value && typeof value.label === "string"
+              ? value.label
+              : value.id,
+          ...(options?.length ? { options } : {}),
+          ...Object.fromEntries(
+            ["min", "max", "step", "maxLength"].flatMap((key) => {
+              const bound = Reflect.get(value, key);
+              return typeof bound === "number" && Number.isFinite(bound)
+                ? [[key, bound]]
+                : [];
+            }),
+          ),
+        },
+      ];
+    });
   } catch {
     return [];
   }
@@ -46,13 +109,25 @@ export function defaultValues(variables: CompositionVariable[]): CustomValues {
   );
 }
 
-function parseValue(variable: CompositionVariable, raw: string) {
+export function parseVariableValue(variable: CompositionVariable, raw: string) {
   if (variable.type === "number") {
     const number = Number(raw);
-    return Number.isFinite(number) ? number : variable.default;
+    if (raw.trim() === "" || !Number.isFinite(number)) return variable.default;
+    return Math.min(
+      variable.max ?? Infinity,
+      Math.max(variable.min ?? -Infinity, number),
+    );
   }
-  if (variable.type === "boolean") return raw === "true";
-  return raw;
+  if (variable.type === "boolean") {
+    if (raw === "true") return true;
+    if (raw === "false") return false;
+    return variable.default;
+  }
+  if (variable.options && !variable.options.includes(raw))
+    return variable.default;
+  return variable.maxLength === undefined
+    ? raw
+    : raw.slice(0, variable.maxLength);
 }
 
 export function valuesFromUrl(variables: CompositionVariable[]): CustomValues {
@@ -60,7 +135,7 @@ export function valuesFromUrl(variables: CompositionVariable[]): CustomValues {
   const params = new URLSearchParams(window.location.search);
   for (const variable of variables) {
     const raw = params.get(`v.${variable.id}`);
-    if (raw !== null) values[variable.id] = parseValue(variable, raw);
+    if (raw !== null) values[variable.id] = parseVariableValue(variable, raw);
   }
   return values;
 }
@@ -106,11 +181,17 @@ export function buildInstallCommands(
   name: string,
   variables: CompositionVariable[],
   values: CustomValues,
+  action: "add" | "init" = "add",
 ): InstallCommands {
-  const npm = buildInstallCommand(cliPackage, name, variables, values);
+  const npm =
+    buildInstallCommand(cliPackage, name, variables, values).replace(
+      " add ",
+      ` ${action} `,
+    ) +
+    (action === "init" ? ` --dir ./${name.replace(/^hyperframes-/, "")}` : "");
   const args = npm.slice(`npx ${cliPackage} `.length);
   return {
-    prompt: `Add the Hyfrme ${name} block to my HyperFrames project. Run: ${npm}`,
+    prompt: `Install the Hyfrme ${name} item to my HyperFrames project. Run: ${npm}`,
     pnpm: `pnpm dlx ${cliPackage} ${args}`,
     yarn: `YARN_NPM_PREAPPROVED_PACKAGES=hyfrme yarn dlx ${cliPackage} ${args}`,
     npm,
@@ -135,11 +216,35 @@ export function changedValues(
   ) as CustomValues;
 }
 
+export function customizedSource(source: string, values: CustomValues) {
+  const match = source.match(/data-composition-variables='([^']*)'/);
+  if (!match) return source;
+  const metadata: unknown = JSON.parse(decodeHtmlAttribute(match[1]));
+  if (!Array.isArray(metadata)) return source;
+  const variables = metadata.map((variable: unknown) => {
+    if (
+      !variable ||
+      typeof variable !== "object" ||
+      !("id" in variable) ||
+      typeof variable.id !== "string" ||
+      !Object.hasOwn(values, variable.id)
+    )
+      return variable;
+    return { ...variable, default: values[variable.id] };
+  });
+  const encoded = JSON.stringify(variables)
+    .replaceAll("&", "&amp;")
+    .replaceAll("'", "&#39;");
+  return source.replace(match[0], `data-composition-variables='${encoded}'`);
+}
+
 export function buildUsageSnippet(
   item: RegistrySummary,
   variables: CompositionVariable[],
   values: CustomValues,
 ) {
+  if (!item.dimensions || item.duration === null)
+    return "<!-- Paste the installed HTML snippet into your composition. -->";
   const overrides = changedValues(variables, values);
   const variableLine =
     Object.keys(overrides).length > 0
@@ -148,8 +253,8 @@ export function buildUsageSnippet(
   return `<!-- Add this to your HyperFrames composition -->
 <div
   id="${item.name}"
-  data-composition-id="${item.name}"
-  data-composition-src="compositions/${item.name}.html"
+  data-composition-id="${item.compositionId}"
+  data-composition-src="${item.sourceTarget}"
   ${variableLine.trimStart()}
   data-start="0"
   data-duration="${Number(item.duration.toFixed(3))}"
@@ -167,14 +272,29 @@ function registryFileUrl(name: string, path: string) {
 }
 
 function rewriteAssetPaths(source: string, item: RegistryItem) {
-  const composition = item.files.find(
-    (file) => file.type === "hyperframes:composition",
-  );
+  const composition =
+    item.files.find((file) => file.path === item.sourcePath) ??
+    item.files.find(
+      (file) =>
+        file.type === "hyperframes:composition" ||
+        file.type === "hyperframes:snippet",
+    );
   if (!composition) return source;
   const compositionDirectory = composition.target.split("/").slice(0, -1);
 
   let rewritten = source;
   for (const file of item.files) {
+    const url = registryFileUrl(item.name, file.path);
+    if (file.url) rewritten = rewritten.replaceAll(file.url, url);
+    for (const target of [file.target, `/${file.target}`, `./${file.target}`]) {
+      for (const quote of ['"', "'", "`"]) {
+        rewritten = rewritten.replaceAll(
+          `${quote}${target}${quote}`,
+          `${quote}${url}${quote}`,
+        );
+      }
+      rewritten = rewritten.replaceAll(`url(${target})`, `url(${url})`);
+    }
     const targetParts = file.target.split("/");
     let shared = 0;
     while (
@@ -203,6 +323,32 @@ function rewriteAssetPaths(source: string, item: RegistryItem) {
       }
     }
   }
+  const directories = new Map<string, string | null>();
+  for (const file of item.files) {
+    const target = file.target.split("/");
+    const path = file.path.split("/");
+    const targetName = target.pop();
+    const pathName = path.pop();
+    const targetDirectory = target.join("/");
+    const sourceDirectory = path.join("/");
+    const existing = directories.get(targetDirectory);
+    directories.set(
+      targetDirectory,
+      targetName !== pathName ||
+        (existing !== undefined && existing !== sourceDirectory)
+        ? null
+        : sourceDirectory,
+    );
+  }
+  for (const [target, path] of directories) {
+    if (!target || path === null) continue;
+    const url = registryFileUrl(item.name, path ? `${path}/` : "");
+    for (const prefix of [`${target}/`, `./${target}/`, `/${target}/`]) {
+      for (const quote of ['"', "'", "`"]) {
+        rewritten = rewritten.replaceAll(`${quote}${prefix}`, `${quote}${url}`);
+      }
+    }
+  }
   return rewritten;
 }
 
@@ -216,15 +362,16 @@ export function buildPreviewDocument(
   const safeValues = rewriteAssetPaths(JSON.stringify(values), item)
     .replaceAll("<", "\\u003c")
     .replaceAll(">", "\\u003e");
-  const safeName = JSON.stringify(item.name);
-  const width = item.dimensions.width;
-  const height = item.dimensions.height;
+  const safeName = JSON.stringify(item.compositionId);
+  const width = item.dimensions?.width ?? 1920;
+  const height = item.dimensions?.height ?? 1080;
   const backgroundRule = transparent
     ? "background: transparent !important;"
     : "";
   const previewScale = transparent ? 0.42 : 1;
   const bootstrap = `<script>
 window.__hyperframes = { getVariables: () => (${safeValues}) };
+window.__timelines = {};
 const previewError = (error, paused = false) => {
   console.error("Component preview failed", error);
   parent.postMessage({type: "hyfrme-preview-error", message: error?.message || String(error), paused}, parent.location.origin);
@@ -318,11 +465,13 @@ body {
   ${backgroundRule}
 }
 </style>`;
-  const activeSource = source.replace(
-    /<template(?:\s[^>]*)?>([\s\S]*?)<\/template>/i,
-    "$1",
-  );
-  return rewriteAssetPaths(activeSource, item).replace(
+  const activeSource = source
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/<template(?:\s[^>]*)?>([\s\S]*?)<\/template>/i, "$1");
+  const documentSource = /<head(?:\s[^>]*)?>/i.test(activeSource)
+    ? activeSource
+    : `<!doctype html><html><head><script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script></head><body>${activeSource}</body></html>`;
+  return rewriteAssetPaths(documentSource, item).replace(
     "<head>",
     `<head>${bootstrap}`,
   );
@@ -376,7 +525,10 @@ export function numberBounds(
   if (variable.id === "size" && item.tags.includes("icon")) {
     return withOverrides({
       min: 12,
-      max: Math.max(item.dimensions.width, item.dimensions.height),
+      max: Math.max(
+        item.dimensions?.width ?? 1920,
+        item.dimensions?.height ?? 1080,
+      ),
       step: 1,
     });
   }

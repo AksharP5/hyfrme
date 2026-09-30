@@ -1,0 +1,76 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "hyperframes-svg-mask-reveal",
+  "type": "hyperframes:component",
+  "title": "SVG Mask Reveal",
+  "description": "A soft token-colored sweep reveals media only through an editable SVG wordmark mask.",
+  "tags": [
+    "effect",
+    "svg",
+    "mask",
+    "wordmark",
+    "reveal",
+    "exhibit",
+    "hyperframes-official"
+  ],
+  "jobs": [
+    "exhibit"
+  ],
+  "family": "effects",
+  "profile": "burst",
+  "evidence": "hyperframes-research-css-masks.md: SvgMaskReveal and SVG text as mask over image or video",
+  "files": [
+    {
+      "path": "svg-mask-reveal.html",
+      "target": "compositions/components/svg-mask-reveal.html",
+      "type": "hyperframes:snippet"
+    },
+    {
+      "path": "licenses/HyperFrames-LICENSE",
+      "target": "THIRD_PARTY_LICENSES/hyperframes/LICENSE",
+      "type": "hyperframes:asset"
+    }
+  ],
+  "variables": [
+    {
+      "id": "text",
+      "type": "string",
+      "role": "content",
+      "label": "Wordmark",
+      "description": "Text used as the SVG mask window.",
+      "default": "REVEAL",
+      "maxLength": 16
+    },
+    {
+      "id": "revealProgress",
+      "type": "number",
+      "role": "content",
+      "label": "Reveal progress",
+      "description": "Final revealed width of the wordmark.",
+      "default": 100,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "id": "featherPx",
+      "type": "number",
+      "role": "style",
+      "label": "Edge feather",
+      "description": "Softness of the traveling reveal edge.",
+      "default": 24,
+      "min": 0,
+      "max": 120,
+      "step": 1,
+      "unit": "px"
+    }
+  ],
+  "license": "Apache-2.0",
+  "origin": {
+    "repository": "https://github.com/heygen-com/hyperframes",
+    "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+    "source": "registry/components/svg-mask-reveal/registry-item.json",
+    "name": "svg-mask-reveal"
+  }
+}

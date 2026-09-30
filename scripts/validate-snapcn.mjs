@@ -13,6 +13,7 @@ const [fixtures, inventory, assets, paper] = await Promise.all([
   readJson(resolve(assetRoot, "manifest.json")),
   readJson(resolve(assetRoot, "paper-shaders/provenance.json")),
 ]);
+const frozenAssets = [...assets.media, ...assets.fonts];
 const hashes = new Map();
 const normalizedVideos = new Set();
 async function hash(path) {
@@ -368,10 +369,15 @@ for (const fixture of fixtures) {
   }
   const mediaMap = attributeJson(html, "data-hyfrme-assets");
   for (const [source, target] of Object.entries(mediaMap)) {
-    const asset = assets.media.find((item) => item.source === source);
+    const asset = frozenAssets.find(
+      (item) =>
+        item.source === source &&
+        posix.normalize(`compositions/${target}`) ===
+          `assets/snapcn/${item.portPath ?? item.path}`,
+    );
     assert.ok(
       asset && files.has(asset.portPath ?? asset.path),
-      `${slug}: unaudited media mapping ${source}`,
+      `${slug}: unaudited asset mapping ${source}`,
     );
     assert.equal(
       posix.normalize(`compositions/${target}`),

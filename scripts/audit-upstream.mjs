@@ -293,7 +293,8 @@ authored registry manifests and the official Remotion-to-HyperFrames source lint
 - ${publishedCoreCount}/${coreNames.size} composition/data ports published.
 - ${publishedPrimitiveCount}/${primitiveNames.size} UI primitive ports published.
 ${standaloneNames.size > 0 ? `- ${publishedStandaloneCount}/${standaloneNames.size} standalone visual ports published (${[...standaloneNames].map((name) => `\`${name}\``).join(", ")}).\n` : ""}- ${missingNames.length} visual items remain.
-- ${extraNames.length} local-only registry items.
+- ${extraNames.filter((name) => !name.startsWith("hyperframes-")).length} local-only registry items.
+- ${extraNames.filter((name) => name.startsWith("hyperframes-")).length} native official HyperFrames items (separate source import).
 
 | Translation class | Count |
 | --- | ---: |

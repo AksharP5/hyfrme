@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"Follow the line"},{"id":"path","type":"string","label":"Path (1280×720)","default":"M 120 560 C 360 120 560 120 640 360 S 920 600 1160 160"},{"id":"color","type":"color","label":"Text color","default":"#111111"},{"id":"lineColor","type":"color","label":"Line color","default":"#fafafa"},{"id":"fontSize","type":"number","label":"Font size","default":44,"min":16,"max":120,"step":1},{"id":"fontWeight","type":"number","label":"Weight","default":700,"min":100,"max":900,"step":50},{"id":"lineWidth","type":"number","label":"Line width","default":3,"min":1,"max":12,"step":0.5},{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+      @font-face { font-family: "Inter"; src: url("../assets/fonts/Inter-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #ff4d1a; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#ff4d1a; }
+
+
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="path-ride" data-start="0" data-duration="3.2" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="3.2" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
+      </div>
+    </div>
+    <script src="./path-ride.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="path-ride"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="path-ride"] [data-hyfrme-clock]', {
+        frame: 96,
+        duration: 3.2,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(95, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["path-ride"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

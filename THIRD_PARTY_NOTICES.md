@@ -176,3 +176,17 @@ Version 1.1. Its complete terms are preserved at
 The `github-stars` runtime bundles date-fns 4.1.0 under the MIT License.
 Its complete license installs at `THIRD_PARTY_LICENSES/Date-Fns-MIT.md` and is
 preserved at `assets/licenses/Date-Fns-MIT.md`.
+
+## Official HyperFrames catalog
+
+The `hyperframes-*` blocks, HTML components, and templates are copied from
+[heygen-com/hyperframes at daa44fcd753d9055aa3c954ad74f09a4e4389780](https://github.com/heygen-com/hyperframes/tree/daa44fcd753d9055aa3c954ad74f09a4e4389780/registry).
+The original catalog source is Apache 2.0 licensed. Each item includes the exact
+root license, installed at `THIRD_PARTY_LICENSES/hyperframes/LICENSE`, and its
+per-item third-party license/notice files. Vendored dependencies keep their own
+licenses, including the GSAP Standard License and three.js MIT license. See the
+[pinned upstream credits](https://github.com/heygen-com/hyperframes/blob/daa44fcd753d9055aa3c954ad74f09a4e4389780/CREDITS.md).
+
+Hosted source assets are frozen locally and verified against their content-addressed
+URLs. Original and installed names, file targets, hashes, and collision
+avoidance targets for Whip Pan, Code Morph, and template documentation are recorded in `catalog/hyperframes-upstream.json`.

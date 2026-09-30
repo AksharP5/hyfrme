@@ -5,6 +5,8 @@ import { CopyButton } from "./CopyButton";
 type InstallPanelProps = {
   commands: InstallCommands;
   customized: boolean;
+  template?: boolean;
+  snippet?: boolean;
 };
 
 const modes: InstallMode[] = ["prompt", "pnpm", "yarn", "npm", "bun"];
@@ -16,7 +18,12 @@ function initialMode(): InstallMode {
     : "npm";
 }
 
-export function InstallPanel({ commands, customized }: InstallPanelProps) {
+export function InstallPanel({
+  commands,
+  customized,
+  template,
+  snippet,
+}: InstallPanelProps) {
   const [mode, setMode] = useState<InstallMode>(initialMode);
   const command = commands[mode];
 
@@ -33,9 +40,13 @@ export function InstallPanel({ commands, customized }: InstallPanelProps) {
       <div className="install-panel-copy">
         <h2 id="install-title">Installation</h2>
         <p>
-          {customized
-            ? "This command installs the version you customized above."
-            : "Copy the block and its required assets into your project."}
+          {template
+            ? "Initialize this template in a new project folder."
+            : snippet
+              ? "Copy the HTML snippet and its required assets into your project."
+              : customized
+                ? "This command installs the version you customized above."
+                : "Copy the block and its required assets into your project."}
         </p>
       </div>
       <div className="command-shell">

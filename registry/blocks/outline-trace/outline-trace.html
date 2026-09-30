@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"Outline"},{"id":"color","type":"color","label":"Fill","default":"#111111"},{"id":"strokeColor","type":"color","label":"Stroke","default":"#111111"},{"id":"fontSize","type":"number","label":"Font size","default":150,"min":60,"max":300,"step":2},{"id":"strokeWidth","type":"number","label":"Stroke width","default":2.5,"min":0.5,"max":8,"step":0.5},{"id":"stagger","type":"number","label":"Letter stagger","default":3,"min":0,"max":12,"step":1},{"id":"fill","type":"boolean","label":"Fill","default":true},{"id":"keepStroke","type":"boolean","label":"Keep stroke","default":false},{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+      @font-face { font-family: "Inter"; src: url("../assets/fonts/Inter-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #ff4d1a; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#ff4d1a; }
+
+
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="outline-trace" data-start="0" data-duration="2.5" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="2.5" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
+      </div>
+    </div>
+    <script src="./outline-trace.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="outline-trace"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="outline-trace"] [data-hyfrme-clock]', {
+        frame: 75,
+        duration: 2.5,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(74, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["outline-trace"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

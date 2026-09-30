@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { createRequire } from "node:module";
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { dirname, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import {
   run,
@@ -21,6 +21,7 @@ const referenceGl = "angle-egl";
 const frozenAssetDirectories = [
   "assets/remocn-additions",
   "assets/remocn-templates-7fa2db1",
+  "assets/remocn-additions-2026-09-28",
 ];
 
 async function assertSource(commit) {
@@ -206,12 +207,22 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
   }
 
   const assets = (await frozenAssets()).flatMap((manifest) => manifest.assets);
+  for (const asset of assets.filter((asset) => asset.reused)) {
+    const output = resolve(publicDirectory, asset.path);
+    await mkdir(dirname(output), { recursive: true });
+    await cp(resolve(root, asset.path), output);
+  }
   const replacements = assets
     .filter((asset) => asset.sourceUrl && asset.role !== "upstream-stylesheet")
     .map((asset) => [asset.sourceUrl, `/${asset.path}`]);
   const fontCss = [
     '@font-face { font-family:"Geist";src:url("/assets/fonts/Geist-Latin.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:block; }',
   ];
+  if (pending.some((entry) => entry.slug === "code-morph")) {
+    fontCss.push(
+      '@font-face { font-family:"Geist Mono";src:url("/assets/fonts/GeistMono-Latin.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:block; }',
+    );
+  }
   for (const asset of assets.filter(
     (asset) => asset.role === "local-stylesheet" && !asset.sourceImport,
   )) {
@@ -247,7 +258,7 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
   const wrappers = pending
     .map(
       (entry, index) =>
-        `function Fixture${index}(){return <FontReady><AbsoluteFill style={{background:${JSON.stringify(entry.fixture.background)},fontFamily:"Geist",["--font-geist-sans"]:"Geist"}}><Source${index} {...${JSON.stringify(entry.fixture.props)}} /></AbsoluteFill></FontReady>}`,
+        `function Fixture${index}(){return <FontReady><AbsoluteFill style={{background:${JSON.stringify(entry.fixture.background)},fontFamily:"Geist",["--font-geist-sans"]:"Geist"${entry.slug === "code-morph" ? ',["--font-geist-mono"]:"Geist Mono"' : ""}}}><Source${index} {...${JSON.stringify(entry.fixture.props)}} /></AbsoluteFill></FontReady>}`,
     )
     .join("\n");
   const compositions = pending
@@ -285,7 +296,11 @@ registerRoot(()=> <><style>{${JSON.stringify(fontCss.join("\n"))}}</style>${comp
           ...(config.module?.rules ?? []),
           {
             test: /\.[cm]?[jt]sx?$/,
-            include: [upstream, entryPoint],
+            include: [
+              upstream,
+              entryPoint,
+              dirname(require.resolve("@remotion/google-fonts/package.json")),
+            ],
             enforce: "pre",
             use: [loader],
           },

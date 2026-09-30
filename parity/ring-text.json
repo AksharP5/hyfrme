@@ -1,0 +1,111 @@
+{
+  "slug": "ring-text",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "source": "registry/remocn/ring-text/index.tsx",
+    "config": "registry/remocn/ring-text/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 180,
+    "props": {
+      "text": "Type in motion",
+      "separator": "•",
+      "color": "#d4ff1f",
+      "band": "#0a0a0a",
+      "radius": 210,
+      "fontSize": 40,
+      "tilt": 38,
+      "roll": -16,
+      "period": 240,
+      "speed": 1
+    },
+    "background": "#d4ff1f"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "0b0c7d94d76846d1db868400b24c4038413f133e06b78923dc83cc0f54b05b6c",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 180,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 180,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check reported 2 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "ring-text",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "source": "registry/remocn/ring-text/index.tsx",
+          "config": "registry/remocn/ring-text/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span",
+          "text": "T",
+          "fg": "rgb(212,255,31)",
+          "bg": "rgb(212,255,31)",
+          "ratio": 1,
+          "requiredRatio": 3
+        },
+        "reason": "The pinned source paints lime #d4ff1f characters on black #0a0a0a 3D band panels over a lime canvas. This exact first-character finding samples the canvas behind its rotated panel as the background instead of the visible black band. All 180 lossless frames match exactly in RGB and alpha; preserve the source geometry and retain the full contrast finding in the audit."
+      },
+      {
+        "slug": "ring-text",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "source": "registry/remocn/ring-text/index.tsx",
+          "config": "registry/remocn/ring-text/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span",
+          "text": "T",
+          "fg": "rgb(212,255,31)",
+          "bg": "rgb(190,228,29)",
+          "ratio": 1.27,
+          "requiredRatio": 3
+        },
+        "reason": "The pinned source paints lime #d4ff1f characters on black #0a0a0a 3D band panels over a lime canvas and dims each letter by its angle. This exact first-character finding samples the rotated panel boundary against the composite canvas. All 180 lossless frames match exactly in RGB and alpha; preserve the source geometry and retain the full contrast finding in the audit."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/ring-text/reference.mp4",
+    "hyperframesVideo": "public/previews/ring-text/hyperframes.mp4",
+    "thumbnail": "public/previews/ring-text/thumbnail.png",
+    "summary": "parity/ring-text-diff/summary.json",
+    "perFrameSsim": "parity/ring-text-diff/ssim.log",
+    "hyperframesCheck": "parity/ring-text-diff/hyperframes-check.log",
+    "worstFrame": "parity/ring-text-diff/worst-frame.png",
+    "referenceAlpha": "parity/ring-text-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/ring-text-diff/hyperframes-alpha.framemd5"
+  }
+}
