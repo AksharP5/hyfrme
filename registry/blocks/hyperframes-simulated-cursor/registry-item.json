@@ -1,0 +1,96 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "hyperframes-simulated-cursor",
+  "type": "hyperframes:component",
+  "title": "Simulated Cursor",
+  "description": "A lightweight cursor pointer and click pulse for product walkthroughs and agent UI demos",
+  "tags": [
+    "video-primitive",
+    "motion-primitive",
+    "cursor",
+    "ui",
+    "walkthrough",
+    "hyperframes-official"
+  ],
+  "variables": [
+    {
+      "id": "size",
+      "type": "number",
+      "role": "layout",
+      "label": "Size",
+      "description": "Height and width of the pointer in pixels. The click ring scales with it. Values outside the range clamp to the nearest end and anything that is not a number falls back to 44.",
+      "default": 44,
+      "min": 20,
+      "max": 120,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "id": "tone",
+      "type": "enum",
+      "role": "style",
+      "label": "Tone",
+      "description": "Pointer fill and click ring colour: light reads on dark screens, dark reads on light ones, accent rides --hf-ui-accent.",
+      "default": "light",
+      "options": [
+        {
+          "value": "light",
+          "label": "Light"
+        },
+        {
+          "value": "dark",
+          "label": "Dark"
+        },
+        {
+          "value": "accent",
+          "label": "Accent"
+        }
+      ]
+    },
+    {
+      "id": "pulse",
+      "type": "enum",
+      "role": "style",
+      "label": "Click ring",
+      "description": "Weight of the ring the click animation expands: subtle is a thin small ring, bold a thick wide one, none removes the ring entirely.",
+      "default": "standard",
+      "options": [
+        {
+          "value": "subtle",
+          "label": "Subtle"
+        },
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "bold",
+          "label": "Bold"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "simulated-cursor.html",
+      "target": "compositions/components/simulated-cursor.html",
+      "type": "hyperframes:snippet"
+    },
+    {
+      "path": "licenses/HyperFrames-LICENSE",
+      "target": "THIRD_PARTY_LICENSES/hyperframes/LICENSE",
+      "type": "hyperframes:asset"
+    }
+  ],
+  "license": "Apache-2.0",
+  "origin": {
+    "repository": "https://github.com/heygen-com/hyperframes",
+    "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+    "source": "docs/catalog/components/simulated-cursor.mdx",
+    "name": "simulated-cursor"
+  }
+}

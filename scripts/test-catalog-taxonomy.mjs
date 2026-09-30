@@ -98,7 +98,7 @@ const namesForPages = (pages) =>
   pages
     .map((page) => `hyperframes-${page.split("/").at(-1)}`)
     .filter((name) => available.has(name));
-assert.equal(officialEntries.length, 394);
+assert.equal(officialEntries.length, 396);
 for (const [index, upstream] of navigation.groups.entries()) {
   const section = hyperframesTaxonomy[index];
   assert.equal(section.label, upstream.label);

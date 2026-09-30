@@ -28,7 +28,7 @@ const nativeRecords = new Map(
 );
 if (
   nativeInventory.summary.importedItems !==
-    nativeInventory.summary.totalRegistryItems ||
+    nativeInventory.summary.totalCatalogItems ||
   nativeInventory.summary.missingFiles.length
 ) {
   throw new Error("The official HyperFrames catalog import is incomplete.");

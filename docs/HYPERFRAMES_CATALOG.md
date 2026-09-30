@@ -2,7 +2,8 @@
 
 Hyfrme imports every item published in the official registry at
 `daa44fcd753d9055aa3c954ad74f09a4e4389780`: 164 blocks, 222 HTML components,
-and 8 project templates. The authoritative import record is
+and 8 project templates. It also includes two website-only entries, Week in Merges
+and Simulated Cursor, for 396 official items total. The authoritative import record is
 [`catalog/hyperframes-upstream.json`](../catalog/hyperframes-upstream.json).
 
 ## Browse by upstream group
@@ -15,8 +16,11 @@ source to browse only these groups; templates remain a separate collection.
 [`catalog/hyperframes-navigation.json`](../catalog/hyperframes-navigation.json)
 freezes the Catalog navigation from upstream `docs/docs.json` at
 `4825f792949282d561cdfe32cdcc7fce1cf2605d`, with its source SHA256. All 394 published
-registry names still match this commit. Upstream navigation mentions two unpublished
-items (Week in Merges and Simulated Cursor), which are not installable registry entries.
+registry names still match this commit. Week in Merges has an upstream block manifest omitted from the registry index.
+Simulated Cursor has no registry manifest; its installable HTML is copied from the
+named code fence in the official documentation. Hyfrme derives its title, description,
+tags, and variables from that same page and records the page hash and extraction.
+Both are included in their exact upstream groups.
 Colorama Wipe is published but not in upstream navigation; it appears under Other components.
 
 Refresh navigation from an exact upstream commit, then review coverage and run the usual checks:
@@ -70,6 +74,12 @@ Official source-level network dependencies remain upstream-owned, including CDN
 libraries, Google Fonts, a Kinetic Type video, and the Warm Grain paper texture.
 Installing from the registry uses frozen declared assets; rendering these native sources
 can still require network access, as in the official catalog.
+
+The website-only imports were also checked with HyperFrames 0.8.75. Simulated
+Cursor passes the full check in a host fixture using its documented timeline
+integration. Week in Merges passes lint, runtime, and motion checks; its unchanged
+upstream source retains layout and contrast findings. Source-copy verification does
+not claim those upstream findings have been repaired.
 
 ## Refresh the pinned import
 
