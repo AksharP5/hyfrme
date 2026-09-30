@@ -48,6 +48,11 @@ The [upstream report drafts](UPSTREAM_TEMPLATE_REPORTS.md) include expected vers
 actual behavior, source links, commands, and the screenshots below. They have not
 been submitted upstream.
 
+Existing upstream reports are linked where relevant. The Decision Tree finding
+is related to closed Flowchart issue #3261, and closed, unmerged Warm Grain PR
+#2258 already proposed fixes. Current reproductions can support revisiting those
+reports instead of opening duplicates.
+
 - [Swiss Grid caption clipping](template-audit/2026-09-30/swiss-grid-caption.png)
 - [Swiss Grid statistic contrast](template-audit/2026-09-30/swiss-grid-statistic.png)
 - [Vignelli caption overlap](template-audit/2026-09-30/vignelli-overlap.png)

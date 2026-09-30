@@ -58,6 +58,8 @@ Initializing the timeline emits `GSAP target  not found. https://gsap.com`. Afte
 
 The border is appended by a later timeline callback, but the deselection tween resolves `.selection-border` during initial timeline construction, when that element does not exist. The tween therefore has no target to fade.
 
+Related upstream [issue #3261](https://github.com/heygen-com/hyperframes/issues/3261) is closed and describes the same lifecycle problem in the Flowchart block variants. This Decision Tree example reproduction adds current evidence to that report; avoid opening a duplicate general selection-border issue.
+
 Expected: the border disappears on deselection and initialization produces no missing-target warning. Create the border before constructing its tweens, or resolve and apply the deselection in the timed callback.
 
 Sources: [border creation](https://github.com/heygen-com/hyperframes/blob/132b9909fa75617acac6c9c7ddfc63e5573b3a60/registry/examples/decision-tree/compositions/decision_tree.html#L349-L359), [deselection tween](https://github.com/heygen-com/hyperframes/blob/132b9909fa75617acac6c9c7ddfc63e5573b3a60/registry/examples/decision-tree/compositions/decision_tree.html#L408-L418).
@@ -69,6 +71,8 @@ Evidence: [selection still visible at 9.4 seconds](template-audit/2026-09-30/dec
 Example: `warm-grain`.
 
 The white `62%` statistic on its ochre pill fails the current large-text contrast check at 5 and 7.222 seconds. Measured ratios are 2.77:1 and 2.86:1, below 3:1. The unchanged source pair white/`#cc8832` is 2.943:1 before texture effects, so the failure does not depend on missing video media.
+
+An earlier [fix PR #2258](https://github.com/heygen-com/hyperframes/pull/2258) covered contrast and no-video warnings. Upstream closed it without merging during a backlog review and asked for current reproduction evidence before reconsidering priority. This packet supplies that evidence; reference the existing PR rather than treating the finding as previously unknown.
 
 Expected: the large statistic meets 3:1 against the composited pill background. Adjust the pill/text colors with the grain layer included. The intro subtitle also uses ochre on forest green, whose solid color pair is 2.505:1; its current entrance sample is a warning rather than a held error. The caption's steady cream-on-brown pair passes 5.022:1, so its exit-fade warning is not evidence of a steady-state contrast defect.
 
