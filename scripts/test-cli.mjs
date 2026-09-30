@@ -1,7 +1,14 @@
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
 import { createServer } from "node:http";
-import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import {
+  mkdir,
+  mkdtemp,
+  readFile,
+  rm,
+  symlink,
+  writeFile,
+} from "node:fs/promises";
 import { extname, resolve } from "node:path";
 import { tmpdir } from "node:os";
 import { promisify } from "node:util";
@@ -12,6 +19,8 @@ const root = resolve(import.meta.dirname, "..");
 const registry = resolve(root, "registry");
 const temporary = await mkdtemp(resolve(tmpdir(), "hyfrme-cli-"));
 const allTemporary = await mkdtemp(resolve(tmpdir(), "hyfrme-cli-all-"));
+const linkedTemporary = await mkdtemp(resolve(tmpdir(), "hyfrme-cli-linked-"));
+const nativeTemporary = await mkdtemp(resolve(tmpdir(), "hyfrme-cli-native-"));
 
 const contentTypes = {
   ".html": "text/html",
@@ -21,7 +30,7 @@ const contentTypes = {
   ".woff2": "font/woff2",
 };
 
-const multilineFixture = new Map([
+const registryFixtures = new Map([
   [
     "/blocks/multiline/registry-item.json",
     JSON.stringify({
@@ -49,16 +58,195 @@ const multilineFixture = new Map([
     "/blocks/multiline/multiline.runtime.js",
     "window.lines = window.__hyperframes.getVariables().text.split(`\n`);\nwindow.defaultText = `first\nsecond`;",
   ],
+  [
+    "/blocks/boundary/registry-item.json",
+    JSON.stringify({
+      name: "boundary",
+      files: [
+        {
+          path: "boundary.html",
+          target: "compositions/boundary.html",
+          type: "hyperframes:composition",
+        },
+      ],
+    }),
+  ],
+  [
+    "/blocks/boundary/boundary.html",
+    `<html data-composition-variables='[{"id":"amount","type":"number","default":1,"min":0,"max":4},{"id":"mode","type":"string","default":"one","options":["one","two"]}]'><head></head><body>fixture</body></html>`,
+  ],
 ]);
+
+const nativeBlockSource = `<!doctype html>
+<html data-composition-variables='[{"id":"label","type":"string","default":"Hyfrm","maxLength":5},{"id":"mode","type":"enum","default":"one","options":[{"value":"one","label":"One"},{"value":"two","label":"Two"}]}]'><head><style>body { background: black; }</style></head><body><div data-composition-id="original-native-block"><img src="assets/native.txt"><img src="../assets/native.txt"></div><script src="./native.runtime.js"></script></body></html>`;
+const nativeRuntimeSource =
+  'window.__hyfrmeRenderFrame = () => "assets/native.txt";';
+const nativeSnippetSource =
+  '<div class="hyfrme-snippet">Hyfrme</div><style>.hyfrme-snippet { color: red; }</style>';
+const nativeTemplateSource =
+  '<!doctype html><html><head></head><body><div data-composition-id="native-project" data-composition-src="compositions/native-scene.html"></div></body></html>';
+const nativeSceneSource =
+  '<!doctype html><html><head></head><body><div data-composition-id="native-scene">Hyfrme</div></body></html>';
+const mediaTemplateSource =
+  '<html><head></head><body data-duration="__VIDEO_DURATION__"><video src="__VIDEO_SRC__"><source></video><audio src="__VIDEO_SRC__"></audio><video src="assets/owned.mp4"></video></body></html>';
+const hostedSource =
+  '<html><head></head><body><img src="https://example.com/hyfrme/hosted.txt"><img src="https://example.com/hyfrme/unlisted.txt"></body></html>';
+const decisionTreeSource =
+  '<html><head></head><body><script>window.hold = tl.labels["hold5"];</script></body></html>';
+
+const registerNativeFixture = (name, type, files, metadata = {}) => {
+  registryFixtures.set(
+    `/blocks/${name}/registry-item.json`,
+    JSON.stringify({
+      name,
+      type,
+      origin: {
+        repository: "https://github.com/heygen-com/hyperframes",
+        name: name.replace(/^hyperframes-/, ""),
+      },
+      ...metadata,
+      files: files.map(({ body, ...file }) => file),
+    }),
+  );
+  for (const file of files) {
+    registryFixtures.set(`/blocks/${name}/${file.path}`, file.body);
+  }
+};
+
+registerNativeFixture("hyperframes-native-component", "hyperframes:component", [
+  {
+    path: "native-component.html",
+    target: "compositions/components/native-component.html",
+    type: "hyperframes:snippet",
+    body: nativeSnippetSource,
+  },
+]);
+registerNativeFixture(
+  "hyperframes-native-block",
+  "hyperframes:block",
+  [
+    {
+      path: "native-block.html",
+      target: "compositions/native-block.html",
+      type: "hyperframes:composition",
+      body: nativeBlockSource,
+    },
+    {
+      path: "native.runtime.js",
+      target: "compositions/native.runtime.js",
+      type: "hyperframes:asset",
+      body: nativeRuntimeSource,
+    },
+    {
+      path: "assets/native.txt",
+      target: "assets/native.txt",
+      type: "hyperframes:asset",
+      body: "Hyfrme native asset",
+    },
+  ],
+  {
+    title: "Native Block",
+    dimensions: { width: 1920, height: 1080 },
+    duration: 10,
+    registryDependencies: ["hyperframes-native-component"],
+  },
+);
+registerNativeFixture("hyperframes-native-template", "hyperframes:example", [
+  {
+    path: "index.html",
+    target: "index.html",
+    type: "hyperframes:composition",
+    body: nativeTemplateSource,
+  },
+  {
+    path: "compositions/native-scene.html",
+    target: "compositions/native-scene.html",
+    type: "hyperframes:composition",
+    body: nativeSceneSource,
+  },
+]);
+registerNativeFixture("hyperframes-media-template", "hyperframes:example", [
+  {
+    path: "index.html",
+    target: "index.html",
+    type: "hyperframes:composition",
+    body: mediaTemplateSource,
+  },
+]);
+for (const name of ["hyperframes-decision-tree", "hyperframes-label-template"]) {
+  registerNativeFixture(name, "hyperframes:example", [
+    {
+      path: "index.html",
+      target: "index.html",
+      type: "hyperframes:composition",
+      body: nativeTemplateSource.replace(
+        "compositions/native-scene.html",
+        "compositions/decision_tree.html",
+      ),
+    },
+    {
+      path: "compositions/decision_tree.html",
+      target: "compositions/decision_tree.html",
+      type: "hyperframes:composition",
+      body: decisionTreeSource,
+    },
+  ]);
+}
+registerNativeFixture(
+  "hyperframes-css-only",
+  "hyperframes:block",
+  [
+    {
+      path: "css-only.html",
+      target: "compositions/css-only.html",
+      type: "hyperframes:composition",
+      body: "<html><head><style>body { background: #000; }</style></head><body>Hyfrme</body></html>",
+    },
+  ],
+  { params: [{ key: "--bg-color", type: "color", default: "#000" }] },
+);
+registerNativeFixture("hyperframes-hosted-block", "hyperframes:block", [
+  {
+    path: "hosted.html",
+    target: "compositions/hosted.html",
+    type: "hyperframes:composition",
+    body: hostedSource,
+  },
+  {
+    path: "hosted.txt",
+    target: "assets/hosted.txt",
+    type: "hyperframes:asset",
+    url: "https://example.com/hyfrme/hosted.txt",
+    body: "Hyfrme locally frozen asset",
+  },
+]);
+for (const [name, dependency] of [
+  ["hyperframes-cycle-a", "hyperframes-cycle-b"],
+  ["hyperframes-cycle-b", "hyperframes-cycle-a"],
+]) {
+  registerNativeFixture(
+    name,
+    "hyperframes:component",
+    [
+      {
+        path: "cycle.html",
+        target: "compositions/components/cycle.html",
+        type: "hyperframes:snippet",
+        body: nativeSnippetSource,
+      },
+    ],
+    { registryDependencies: [dependency] },
+  );
+}
 
 const server = createServer(async (request, response) => {
   try {
     const url = new URL(request.url ?? "/", "http://localhost");
-    if (multilineFixture.has(url.pathname)) {
+    if (registryFixtures.has(url.pathname)) {
       response.writeHead(200, {
         "content-type": contentTypes[extname(url.pathname)],
       });
-      response.end(multilineFixture.get(url.pathname));
+      response.end(registryFixtures.get(url.pathname));
       return;
     }
     if (url.pathname === "/registry.json") {
@@ -69,6 +257,9 @@ const server = createServer(async (request, response) => {
           items: [
             { name: "soft-blur-in", type: "hyperframes:block" },
             { name: "matrix-decode", type: "hyperframes:block" },
+            { name: "hyperframes-native-block", type: "hyperframes:block" },
+            { name: "hyperframes-native-component", type: "hyperframes:component" },
+            { name: "hyperframes-native-template", type: "hyperframes:example" },
           ],
         }),
       );
@@ -91,6 +282,10 @@ await new Promise((resolveListening) => server.listen(0, resolveListening));
 const address = server.address();
 assert(address && typeof address === "object");
 const registryUrl = `http://127.0.0.1:${address.port}`;
+const runCli = (args) =>
+  exec(process.execPath, [resolve(root, "cli/bin/hyfrme.mjs"), ...args], {
+    env: { ...process.env, HYFRME_REGISTRY_URL: registryUrl },
+  });
 
 try {
   await writeFile(
@@ -1475,6 +1670,241 @@ try {
   assert.deepEqual(Array.from(preview.lines), ["first", "second"]);
   assert.equal(preview.defaultText, "first\nsecond");
 
+  await writeFile(resolve(nativeTemporary, "hyperframes.json"), "{}");
+  const nativeBlock = await runCli([
+    "add",
+    "hyperframes-native-block",
+    "--dir",
+    nativeTemporary,
+  ]);
+  assert.match(nativeBlock.stdout, /data-composition-id="original-native-block"/);
+  assert.equal(
+    await readFile(
+      resolve(nativeTemporary, "compositions/native-block.html"),
+      "utf8",
+    ),
+    nativeBlockSource,
+  );
+  assert.equal(
+    await readFile(
+      resolve(nativeTemporary, "compositions/native.runtime.js"),
+      "utf8",
+    ),
+    nativeRuntimeSource,
+  );
+  assert.equal(
+    await readFile(
+      resolve(nativeTemporary, "compositions/components/native-component.html"),
+      "utf8",
+    ),
+    nativeSnippetSource,
+  );
+  const nativeComponent = await runCli([
+    "add",
+    "hyperframes-native-component",
+    "--dir",
+    nativeTemporary,
+  ]);
+  assert.match(nativeComponent.stdout, /Paste the installed snippet/);
+  assert.doesNotMatch(nativeComponent.stdout, /data-composition-src/);
+  await runCli(["add", "hyperframes-hosted-block", "--dir", nativeTemporary]);
+  assert.equal(
+    await readFile(resolve(nativeTemporary, "compositions/hosted.html"), "utf8"),
+    hostedSource.replace(
+      "https://example.com/hyfrme/hosted.txt",
+      "assets/hosted.txt",
+    ),
+  );
+  assert.equal(
+    await readFile(resolve(nativeTemporary, "assets/hosted.txt"), "utf8"),
+    "Hyfrme locally frozen asset",
+  );
+
+  await runCli([
+    "add",
+    "hyperframes-native-block",
+    "--dir",
+    temporary,
+    "--set",
+    "mode=two",
+  ]);
+  const relocatedNative = await readFile(
+    resolve(temporary, "motion/hyfrme/native-block.html"),
+    "utf8",
+  );
+  assert.match(relocatedNative, /"type":"enum","default":"two"/);
+  assert.match(relocatedNative, /src="static\/hyfrme\/native\.txt"/);
+  assert.match(relocatedNative, /src="\.\.\/\.\.\/static\/hyfrme\/native\.txt"/);
+  assert.match(relocatedNative, /src="\.\/native\.runtime\.js"/);
+  assert.doesNotMatch(relocatedNative, /<template>/);
+  assert.equal(
+    await readFile(resolve(temporary, "motion/hyfrme/native.runtime.js"), "utf8"),
+    'window.__hyfrmeRenderFrame = () => "static/hyfrme/native.txt";',
+  );
+  for (const [setting, error] of [
+    ["mode=unsupported", /"mode" must be one of: one, two/],
+    ["label=Hyfrme is longer", /"label" must be at most 5 characters/],
+  ]) {
+    await assert.rejects(
+      runCli([
+        "add",
+        "hyperframes-native-block",
+        "--dir",
+        nativeTemporary,
+        "--force",
+        "--set",
+        setting,
+      ]),
+      error,
+    );
+  }
+  await assert.rejects(
+    runCli([
+      "add",
+      "hyperframes-css-only",
+      "--dir",
+      nativeTemporary,
+      "--set",
+      "--bg-color=#fff",
+    ]),
+    /Edit native CSS parameters directly/,
+  );
+  await assert.rejects(
+    runCli(["add", "hyperframes-cycle-a", "--dir", nativeTemporary]),
+    /circular registry dependencies: hyperframes-cycle-a -> hyperframes-cycle-b -> hyperframes-cycle-a/,
+  );
+  await assert.rejects(
+    runCli(["add", "hyperframes-native-template", "--dir", nativeTemporary]),
+    /Use hyfrme init hyperframes-native-template/,
+  );
+  await assert.rejects(
+    runCli(["init", "hyperframes-native-block", "--dir", nativeTemporary]),
+    /is not a project template/,
+  );
+
+  const initializedProject = resolve(nativeTemporary, "initialized");
+  const initialized = await runCli([
+    "init",
+    "hyperframes-native-template",
+    "--dir",
+    initializedProject,
+  ]);
+  assert.match(initialized.stdout, /Initialized hyperframes-native-template/);
+  assert.equal(
+    await readFile(resolve(initializedProject, "index.html"), "utf8"),
+    nativeTemplateSource,
+  );
+  assert.equal(
+    await readFile(
+      resolve(initializedProject, "compositions/native-scene.html"),
+      "utf8",
+    ),
+    nativeSceneSource,
+  );
+  const initializedConfig = JSON.parse(
+    await readFile(resolve(initializedProject, "hyperframes.json"), "utf8"),
+  );
+  assert.equal(initializedConfig.paths.blocks, "compositions");
+  await writeFile(
+    resolve(initializedProject, "index.html"),
+    "Hyfrme edited project",
+  );
+  await writeFile(
+    resolve(initializedProject, "compositions/native-scene.html"),
+    "Hyfrme edited scene",
+  );
+  await writeFile(resolve(initializedProject, "notes.txt"), "Keep Hyfrme notes");
+  await writeFile(
+    resolve(initializedProject, "hyperframes.json"),
+    '{"userSetting":"keep"}',
+  );
+  await assert.rejects(
+    runCli(["init", "hyperframes-native-template", "--dir", initializedProject]),
+    /already exists. Re-run with --force/,
+  );
+  assert.equal(
+    await readFile(resolve(initializedProject, "index.html"), "utf8"),
+    "Hyfrme edited project",
+  );
+  assert.equal(
+    await readFile(
+      resolve(initializedProject, "compositions/native-scene.html"),
+      "utf8",
+    ),
+    "Hyfrme edited scene",
+  );
+  await runCli([
+    "init",
+    "hyperframes-native-template",
+    "--dir",
+    initializedProject,
+    "--force",
+  ]);
+  assert.equal(
+    await readFile(resolve(initializedProject, "index.html"), "utf8"),
+    nativeTemplateSource,
+  );
+  assert.equal(
+    await readFile(resolve(initializedProject, "hyperframes.json"), "utf8"),
+    '{"userSetting":"keep"}',
+  );
+  assert.equal(
+    await readFile(resolve(initializedProject, "notes.txt"), "utf8"),
+    "Keep Hyfrme notes",
+  );
+
+  const conflictingProject = resolve(nativeTemporary, "conflicting");
+  await mkdir(conflictingProject);
+  await writeFile(
+    resolve(conflictingProject, "index.html"),
+    "Hyfrme user source",
+  );
+  await assert.rejects(
+    runCli(["init", "hyperframes-native-template", "--dir", conflictingProject]),
+    /already exists/,
+  );
+  await assert.rejects(
+    readFile(resolve(conflictingProject, "hyperframes.json")),
+    { code: "ENOENT" },
+  );
+  await assert.rejects(
+    readFile(resolve(conflictingProject, "compositions/native-scene.html")),
+    { code: "ENOENT" },
+  );
+
+  const mediaProject = resolve(nativeTemporary, "media");
+  await runCli(["init", "hyperframes-media-template", "--dir", mediaProject]);
+  assert.equal(
+    await readFile(resolve(mediaProject, "index.html"), "utf8"),
+    '<html><head></head><body data-duration="10"><video src="assets/owned.mp4"></video></body></html>',
+  );
+  for (const name of ["hyperframes-decision-tree", "hyperframes-label-template"]) {
+    const project = resolve(nativeTemporary, name);
+    await runCli(["init", name, "--dir", project]);
+    const source = await readFile(
+      resolve(project, "compositions/decision_tree.html"),
+      "utf8",
+    );
+    assert.equal(
+      source,
+      name === "hyperframes-decision-tree"
+        ? decisionTreeSource.replace(
+            'tl.labels["hold5"]',
+            '(tl.labels?.["hold5"] ?? 6.25)',
+          )
+        : decisionTreeSource,
+    );
+    if (name !== "hyperframes-decision-tree") continue;
+    for (const [timeline, expected] of [[{}, 6.25], [{ labels: { hold5: 7 } }, 7]]) {
+      const window = {};
+      runInNewContext(source.match(/<script>([\s\S]*?)<\/script>/)[1], {
+        window,
+        tl: timeline,
+      });
+      assert.equal(window.hold, expected);
+    }
+  }
+
   const installAllResult = await exec(
     process.execPath,
     [
@@ -1488,10 +1918,12 @@ try {
       env: { ...process.env, HYFRME_REGISTRY_URL: registryUrl },
     },
   );
-  assert.match(installAllResult.stdout, /Adding 2 Hyfrme components/);
-  assert.match(installAllResult.stdout, /1\/2 Soft Blur In/);
-  assert.match(installAllResult.stdout, /2\/2 Matrix Decode/);
-  assert.match(installAllResult.stdout, /Added 2 Hyfrme components/);
+  assert.match(installAllResult.stdout, /1 project templates use hyfrme init/);
+  assert.match(installAllResult.stdout, /Adding 4 Hyfrme components/);
+  assert.match(installAllResult.stdout, /1\/4 Soft Blur In/);
+  assert.match(installAllResult.stdout, /2\/4 Matrix Decode/);
+  assert.match(installAllResult.stdout, /Added 4 Hyfrme components/);
+  await assert.rejects(readFile(resolve(allTemporary, "index.html")), { code: "ENOENT" });
   await readFile(
     resolve(allTemporary, "motion/hyfrme/soft-blur-in.html"),
     "utf8",
@@ -1567,9 +1999,102 @@ try {
     /"speed" must be at most 4, received 4.25/,
   );
 
+  for (const setting of ["amount=", "amount=   ", "mode=unsupported"]) {
+    await assert.rejects(
+      exec(
+        process.execPath,
+        [
+          resolve(root, "cli/bin/hyfrme.mjs"),
+          "add",
+          "boundary",
+          "--dir",
+          temporary,
+          "--set",
+          setting,
+        ],
+        { env: { ...process.env, HYFRME_REGISTRY_URL: registryUrl } },
+      ),
+      setting.startsWith("amount=")
+        ? /"amount" requires a number/
+        : /"mode" must be one of: one, two/,
+    );
+  }
+
+  const linkedProject = resolve(linkedTemporary, "project");
+  const outside = resolve(linkedTemporary, "outside");
+  await mkdir(linkedProject);
+  await mkdir(outside);
+  await writeFile(
+    resolve(linkedProject, "hyperframes.json"),
+    JSON.stringify({ paths: { blocks: "motion" } }),
+  );
+  await symlink(outside, resolve(linkedProject, "motion"));
+  await assert.rejects(
+    exec(
+      process.execPath,
+      [
+        resolve(root, "cli/bin/hyfrme.mjs"),
+        "add",
+        "boundary",
+        "--dir",
+        linkedProject,
+        "--force",
+      ],
+      { env: { ...process.env, HYFRME_REGISTRY_URL: registryUrl } },
+    ),
+    /unsafe target path in boundary/,
+  );
+  await assert.rejects(readFile(resolve(outside, "boundary.html")), {
+    code: "ENOENT",
+  });
+
+  await rm(resolve(linkedProject, "motion"));
+  await mkdir(resolve(linkedProject, "motion"));
+  await symlink(
+    resolve(outside, "boundary.html"),
+    resolve(linkedProject, "motion/boundary.html"),
+  );
+  await assert.rejects(
+    exec(
+      process.execPath,
+      [
+        resolve(root, "cli/bin/hyfrme.mjs"),
+        "add",
+        "boundary",
+        "--dir",
+        linkedProject,
+        "--force",
+      ],
+      { env: { ...process.env, HYFRME_REGISTRY_URL: registryUrl } },
+    ),
+    /unsafe target path in boundary/,
+  );
+  await assert.rejects(readFile(resolve(outside, "boundary.html")), {
+    code: "ENOENT",
+  });
+
+  await rm(resolve(linkedProject, "motion"), { recursive: true });
+  const local = resolve(linkedProject, "local");
+  await mkdir(local);
+  await symlink(local, resolve(linkedProject, "motion"));
+  await exec(
+    process.execPath,
+    [
+      resolve(root, "cli/bin/hyfrme.mjs"),
+      "add",
+      "boundary",
+      "--dir",
+      linkedProject,
+    ],
+    { env: { ...process.env, HYFRME_REGISTRY_URL: registryUrl } },
+  );
+  assert.match(await readFile(resolve(local, "boundary.html"), "utf8"), /fixture/);
+
   console.log("CLI customization tests passed.");
 } finally {
   server.close();
   await rm(temporary, { recursive: true, force: true });
   await rm(allTemporary, { recursive: true, force: true });
+  await rm(linkedTemporary, { recursive: true, force: true });
+  await rm(nativeTemporary, { recursive: true, force: true });
 }

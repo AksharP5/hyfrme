@@ -7,14 +7,15 @@ Copy customizable motion components from
 npx hyfrme@latest add soft-blur-in
 ```
 
-The catalog includes Remocn and Snapcn ports with source filters. Snapcn block
+The catalog includes Remocn and Snapcn ports, Hyfrme originals, and the official
+HyperFrames blocks, reusable components, and templates. Snapcn block
 names use a prefix:
 
 ```bash
 npx hyfrme@latest add snapcn-phone-frame
 ```
 
-Install every component:
+Install all blocks and reusable components (templates use `init`):
 
 ```bash
 npx hyfrme@latest add --all
@@ -36,7 +37,25 @@ and asset paths.
 hyfrme add <name>... [--dir <project>] [--force]
 hyfrme add <name> [--set <key=value>]... [--dir <project>] [--force]
 hyfrme add --all [--dir <project>] [--force]
+hyfrme init <template> [--dir <project>] [--force]
 ```
 
 Browse components and build customized commands at
 [hyfrme.vercel.app](https://hyfrme.vercel.app).
+
+Official names start with `hyperframes-`:
+
+```bash
+npx hyfrme@latest add hyperframes-data-chart hyperframes-spring-pop
+npx hyfrme@latest init hyperframes-product-promo --dir ./product-promo
+```
+
+Native blocks retain their composition IDs. Reusable components are HTML snippets;
+paste their markup, styles, and script into your scene. Templates copy a full project
+and create missing configuration. Video scaffold templates use the official no-video
+default: 10 seconds, with placeholder media removed. Existing conflicting files require
+`--force`; unrelated files remain intact. Decision Tree initialization includes a
+renderer compatibility fallback for its measured label timing.
+
+`--set` accepts declared composition variables, including enum options and string
+length limits. Edit CSS parameters without declared variables directly in the source.
