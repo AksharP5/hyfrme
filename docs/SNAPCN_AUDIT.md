@@ -131,10 +131,26 @@ from the fresh PNG alpha planes. The summary records every mismatched selected
 frame. Orbit's maximum alpha delta across its selected frames is 15, at frames
 185 and 222.
 
-The source and port use identical props and matching GPU backends for these seven
-cases. The cause of the remaining alpha differences is unresolved. These three
-extra inputs are not marked verified. Their failed exact-alpha results remain
-explicit, and the gate is unchanged. Selected-frame results do not replace the
+These measurements used the default HyperFrames snapshot mode, which captures
+the viewport without an explicit clip. The pinned Remotion reference uses an
+explicit full-canvas clip with beyond-viewport capture. The public HyperFrames
+options `--zoom 0,0,1280,720 --zoom-scale 1` match that capture region without
+changing the viewport, source, or installed files. Repeating all 26 selected
+frames in the three cases with those options gives:
+
+| Variant       | RGB mean / minimum  | Exact alpha                                                         |
+| ------------- | ------------------- | ------------------------------------------------------------------- |
+| Roster Grant  | 1.000000 / 1.000000 | Yes, all eight frames                                               |
+| Orbit Gallery | 0.999923 / 0.999866 | No, the same edge differences remain                                |
+| Card Rail     | 1.000000 / 1.000000 | No, four frames each differ at one alpha pixel by one channel value |
+
+This isolates the large Card discrepancy to the snapshot capture region.
+Roster passes these selected comparisons; Card and Orbit still fail the exact
+alpha gate. Their residual differences remain unresolved and are not marked
+verified. The settings, image hashes, installed-file hashes, and every frame's
+result are recorded in
+[`parity/snapcn-variants/clipped-capture.json`](../parity/snapcn-variants/clipped-capture.json).
+No thresholds were relaxed. Selected-frame results do not replace the
 full-duration canonical fixture checks.
 
 A separate comparison used software GL and disabled GPU compositing in both
@@ -142,8 +158,9 @@ renderers. Transparent Roster matches RGB and alpha exactly at all eight selecte
 frames in that profile. Orbit and Card still fail exact alpha. The settings and
 per-frame results are recorded in
 [`parity/snapcn-variants/software-compositor.json`](../parity/snapcn-variants/software-compositor.json).
-This diagnosis confirms that the capture profile affects these comparisons; it
-does not replace the hardware results or establish their cause.
+This earlier diagnosis confirms that the capture profile affects these
+comparisons; it does not replace the hardware results or establish the cause of
+the residual differences.
 
 The ports now restore the retained source's layered and inherited
 `text-rendering` styles instead of inheriting HyperFrames' host defaults. This
