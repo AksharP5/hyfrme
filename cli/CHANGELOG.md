@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.4](https://github.com/AksharP5/hyfrme/compare/v0.5.3...v0.5.4) (2026-10-01)
+
+
+### Bug Fixes
+
+* handle malformed links, blocked storage, and missing paths ([#55](https://github.com/AksharP5/hyfrme/issues/55)) ([cfa8529](https://github.com/AksharP5/hyfrme/commit/cfa8529bc1fab801bf637baea374c5a2bece05fd))
+
 ## [0.5.3](https://github.com/AksharP5/hyfrme/compare/v0.5.2...v0.5.3) (2026-10-01)
 
 
