@@ -6,10 +6,21 @@ import { build } from "esbuild";
 
 const root = resolve(import.meta.dirname, "..");
 const result = await build({
-  entryPoints: [resolve(root, "src/lib/customization.ts")],
+  stdin: {
+    contents: `
+      export * from "./src/lib/customization";
+      export { Customizer } from "./src/components/Customizer";
+      export { createElement } from "react";
+      export { renderToStaticMarkup } from "react-dom/server";
+    `,
+    resolveDir: root,
+  },
   bundle: true,
   platform: "node",
   format: "esm",
+  banner: {
+    js: `import { createRequire } from "node:module"; const require = createRequire(${JSON.stringify(resolve(root, "package.json"))});`,
+  },
   write: false,
 });
 const {
@@ -18,6 +29,9 @@ const {
   valuesFromUrl,
   customizedSource,
   numberBounds,
+  Customizer,
+  createElement,
+  renderToStaticMarkup,
 } = await import(
   `data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString("base64")}`
 );
@@ -71,6 +85,36 @@ test("malformed boolean settings retain the default", () => {
   assert.equal(valuesFromUrl(variables).enabled, true);
   window.location.search = "?v.enabled=false";
   assert.equal(valuesFromUrl(variables).enabled, false);
+});
+
+test("shared color and font weight values remain visible in their controls", async () => {
+  const variables = parseCompositionVariables(
+    await readFile(
+      resolve(root, "registry/blocks/infinite-marquee/infinite-marquee.html"),
+      "utf8",
+    ),
+  );
+  window.location.search = "?v.color=%2300000000&v.fontWeight=900";
+  const values = valuesFromUrl(variables);
+  const controls = renderToStaticMarkup(
+    createElement(Customizer, {
+      item: { tags: [] },
+      variables,
+      values,
+      onChange() {},
+      onReset() {},
+      shareUrl: "https://hyfrme.example/components/infinite-marquee",
+    }),
+  );
+  assert.match(
+    controls,
+    /id="control-color" type="text"[^>]*value="#00000000"/,
+  );
+  assert.match(controls, /<option value="900" selected="">900<\/option>/);
+  assert.match(
+    buildInstallCommand("hyfrme@latest", "infinite-marquee", variables, values),
+    /--set 'color=#00000000' --set 'fontWeight=900'/,
+  );
 });
 
 test("official enum and image variables normalize to installable controls", () => {

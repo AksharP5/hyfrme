@@ -33,7 +33,8 @@ Run the command inside a project with `hyperframes.json`, or pass
 `--dir <project>`. Hyfrme respects the project's configured block, component,
 and asset paths.
 References in installed markup, scripts, and default media values follow those
-paths, including dynamically assembled asset URLs and query strings.
+paths, including dynamically assembled asset URLs and query strings. Reserved
+characters in configured paths are URL-encoded; filesystem names stay unchanged.
 
 ```text
 hyfrme add <name>... [--dir <project>] [--force]
@@ -56,7 +57,9 @@ Native blocks retain their composition IDs. Reusable components are HTML snippet
 paste their markup, styles, and script into your scene. Templates copy a full project
 and create missing configuration. Video scaffold templates use the official no-video
 default: 10 seconds, with placeholder media removed. Existing conflicting files require
-`--force`; unrelated files remain intact. Decision Tree initialization includes a
+`--force`; unrelated files remain intact. A directory at a target file path is
+rejected before any files are changed, including with `--force`. Decision Tree
+initialization includes a
 renderer compatibility fallback for its measured label timing.
 
 `--set` accepts declared composition variables, including enum options and string

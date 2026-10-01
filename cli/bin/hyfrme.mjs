@@ -219,6 +219,9 @@ const requireSafeTarget = async (projectRoot, target, name, originalTarget) => {
   ) {
     fail(`unsafe target path in ${name}: ${originalTarget}`);
   }
+  if (existingPath === target && !(await lstat(actualPath)).isFile()) {
+    fail(`cannot install ${originalTarget} in ${name}: target is not a file`);
+  }
 };
 
 const exists = async (path) => {
@@ -339,11 +342,24 @@ const customizeSource = (source, settings, name) => {
   return customized;
 };
 
+const encodeUrlPath = (path) =>
+  path
+    .split("/")
+    .map((segment) =>
+      encodeURIComponent(segment).replace(
+        /[!'()*]/g,
+        (character) => `%${character.charCodeAt(0).toString(16).toUpperCase()}`,
+      ),
+    )
+    .join("/");
+
 const rewriteInstalledAssetPaths = (source, configuredPath) => {
-  const assetPath = configuredPath
-    .replaceAll("\\", "/")
-    .replace(/^\.?\//, "")
-    .replace(/\/+$/, "");
+  const assetPath = encodeUrlPath(
+    configuredPath
+      .replaceAll("\\", "/")
+      .replace(/^\.?\//, "")
+      .replace(/\/+$/, ""),
+  );
   return source
     .replace(/(?:\.\.\/)+assets\//g, `${assetPath}/`)
     .replace(/(["'`(])\/assets\//g, `$1${assetPath}/`);
@@ -366,10 +382,12 @@ const rewriteManifestPaths = (source, item, config, projectDirectory) => {
       compositionDirectory,
       originalTarget,
     );
-    const installedTarget = relative(
-      projectDirectory,
-      targetFor(projectDirectory, config, item, file),
-    ).replaceAll("\\", "/");
+    const installedTarget = encodeUrlPath(
+      relative(
+        projectDirectory,
+        targetFor(projectDirectory, config, item, file),
+      ).replaceAll("\\", "/"),
+    );
     const candidates = new Set([
       originalTarget,
       originalRelative.startsWith(".")
@@ -640,15 +658,17 @@ const rewriteNativePaths = (source, file, fetched) => {
     );
     const originalRelative = posix.relative(originalDirectory, original);
     const installedRelative = posix.relative(installedDirectory, installed);
-    replacements.set(original, installed);
-    replacements.set(`/${original}`, `/${installed}`);
-    replacements.set(originalRelative, installedRelative);
-    replacements.set(`./${originalRelative}`, `./${installedRelative}`);
-    if (download.file.url) replacements.set(download.file.url, installed);
+    const installedUrl = encodeUrlPath(installed);
+    const installedRelativeUrl = encodeUrlPath(installedRelative);
+    replacements.set(original, installedUrl);
+    replacements.set(`/${original}`, `/${installedUrl}`);
+    replacements.set(originalRelative, installedRelativeUrl);
+    replacements.set(`./${originalRelative}`, `./${installedRelativeUrl}`);
+    if (download.file.url) replacements.set(download.file.url, installedUrl);
     const originalParent = directoryPrefix(original);
-    const installedParent = directoryPrefix(installed);
+    const installedParent = directoryPrefix(installedUrl);
     const originalRelativeParent = directoryPrefix(originalRelative);
-    const installedRelativeParent = directoryPrefix(installedRelative);
+    const installedRelativeParent = directoryPrefix(installedRelativeUrl);
     addDirectory(originalParent, installedParent);
     addDirectory(`/${originalParent}`, `/${installedParent}`);
     addDirectory(originalRelativeParent, installedRelativeParent);
@@ -757,7 +777,9 @@ const prepareComponent = async (item, componentSettings) => {
         return [
           file.path,
           {
-            path: relative(projectDirectory, target).replaceAll("\\", "/"),
+            path: encodeUrlPath(
+              relative(projectDirectory, target).replaceAll("\\", "/"),
+            ),
             source: namespaceCompiledPort(relocated, name, true, assetPath),
           },
         ];
@@ -867,7 +889,9 @@ const installComponent = async (name, componentSettings, detailedOutput) => {
         (download) => download.file.type === "hyperframes:composition",
       );
     const compositionPath = composition
-      ? relative(projectDirectory, composition.target).replaceAll("\\", "/")
+      ? encodeUrlPath(
+          relative(projectDirectory, composition.target).replaceAll("\\", "/"),
+        )
       : `compositions/${item.name}.html`;
     const compositionId =
       item.origin?.repository === nativeRepository && composition
