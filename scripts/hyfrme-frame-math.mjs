@@ -5,8 +5,8 @@
 
 export const remocnMitBanner = `/*!
  * This generated port contains source derived from Remocn.
- * Source attribution and the pinned commit are recorded in registry-item.json
- * and the matching parity manifest.
+ * Source attribution and the pinned commit are recorded in the matching
+ * parity manifest in the Hyfrme repository.
  *
  * MIT License
  * Copyright (c) 2026 Remocn
