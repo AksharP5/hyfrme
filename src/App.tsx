@@ -22,6 +22,7 @@ import {
   taxonomySearchTerms,
 } from "./catalog";
 import { CatalogCard } from "./components/CatalogCard";
+import { CatalogArtwork } from "./components/CatalogArtwork";
 import { FamilySection, type LandingFamily } from "./components/FamilySection";
 import { LandingHero } from "./components/LandingHero";
 import { ShowcaseDetailPage, ShowcasesPage } from "./components/Showcases";
@@ -641,6 +642,8 @@ function CatalogPage() {
             <div className="taxonomy-overview">
               {taxonomySections.map((section) => {
                 const count = slugsForSection(section).length;
+                const featured = catalogBySlug.get(section.featuredSlug);
+                if (!featured) return null;
                 return (
                   <a
                     className="taxonomy-card"
@@ -648,11 +651,7 @@ function CatalogPage() {
                     key={section.id}
                   >
                     <span className="taxonomy-card-preview">
-                      <img
-                        src={`/previews/${section.featuredSlug}/thumbnail.webp`}
-                        alt=""
-                        loading="lazy"
-                      />
+                      <CatalogArtwork entry={featured} />
                     </span>
                     <span className="taxonomy-card-copy">
                       <small>

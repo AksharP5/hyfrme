@@ -358,7 +358,8 @@ const rewriteManifestPaths = (source, item, config, projectDirectory) => {
     composition.target.replaceAll("\\", "/"),
   );
 
-  let rewritten = source;
+  const replacements = new Map();
+  const directories = new Map();
   for (const file of item.files) {
     const originalTarget = file.target.replaceAll("\\", "/");
     const originalRelative = posix.relative(
@@ -370,16 +371,48 @@ const rewriteManifestPaths = (source, item, config, projectDirectory) => {
       targetFor(projectDirectory, config, item, file),
     ).replaceAll("\\", "/");
     const candidates = new Set([
+      originalTarget,
       originalRelative.startsWith(".")
         ? originalRelative
         : `./${originalRelative}`,
       `/${originalTarget}`,
     ]);
     for (const candidate of candidates) {
-      rewritten = rewritten.replaceAll(candidate, installedTarget);
+      replacements.set(candidate, installedTarget);
+    }
+    const originalParent = `${posix.dirname(originalTarget)}/`;
+    const installedParent = `${posix.dirname(installedTarget)}/`;
+    if (originalParent === "./") continue;
+    for (const candidate of [originalParent, `/${originalParent}`]) {
+      directories.set(
+        candidate,
+        directories.has(candidate) &&
+          directories.get(candidate) !== installedParent
+          ? null
+          : installedParent,
+      );
     }
   }
-  return rewritten;
+  for (const [original, installed] of directories) {
+    if (installed !== null) replacements.set(original, installed);
+  }
+  return rewritePathReferences(source, replacements);
+};
+
+const rewritePathReferences = (source, replacements) => {
+  const candidates = [...replacements]
+    .filter(([original, installed]) => original !== installed)
+    .sort(([left], [right]) => right.length - left.length)
+    .map(([original]) => {
+      const escaped = original.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return original.endsWith("/") ? escaped : `${escaped}(?=["'\x60)?#])`;
+    });
+  if (candidates.length === 0) return source;
+  const reference = new RegExp(`(["'\x60(])(${candidates.join("|")})`, "g");
+  return source.replace(
+    reference,
+    (_match, prefix, original) => `${prefix}${replacements.get(original)}`,
+  );
 };
 
 const namespaceCompiledPort = (
@@ -624,18 +657,7 @@ const rewriteNativePaths = (source, file, fetched) => {
   for (const [original, installed] of directories) {
     if (installed !== null) replacements.set(original, installed);
   }
-  const candidates = [...replacements]
-    .filter(([original, installed]) => original !== installed)
-    .map(([original]) => original.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
-  if (candidates.length === 0) return source;
-  const reference = new RegExp(
-    `(["'\x60(])(${candidates.join("|")})(?=["'\x60)])`,
-    "g",
-  );
-  return source.replace(
-    reference,
-    (_match, prefix, original) => `${prefix}${replacements.get(original)}`,
-  );
+  return rewritePathReferences(source, replacements);
 };
 
 const materializeTemplate = (source, item, file) => {

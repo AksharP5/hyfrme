@@ -417,6 +417,80 @@ try {
   );
   assert.doesNotMatch(carousel, /"assets\/carousel-images\/"/);
 
+  await runCli([
+    "add",
+    "hyperframes-heygen-avatar-promo-card",
+    "--dir",
+    relocatedProject,
+  ]);
+  const avatarCard = await readFile(
+    resolve(relocatedProject, "motion/blocks/heygen-avatar-promo-card.html"),
+    "utf8",
+  );
+  for (const match of avatarCard.matchAll(
+    /src="([^"]+heygen-logo\.svg\?t=\d+)"/g,
+  )) {
+    assert.match(match[1], /^static\/media\//);
+    await readFile(resolve(relocatedProject, match[1].split("?")[0]));
+  }
+  assert.doesNotMatch(avatarCard, /src="assets\/heygen-logo\.svg\?/);
+
+  for (const blocks of ["motion/blocks", "compositions/hyfrme"]) {
+    const project = resolve(nativeTemporary, blocks.replaceAll("/", "-"));
+    await mkdir(project);
+    await writeFile(
+      resolve(project, "hyperframes.json"),
+      JSON.stringify({ paths: { blocks } }),
+    );
+    await runCli([
+      "add",
+      "t3-commit-creation",
+      "t3-fast-service-tier",
+      "t3-visual-context-shelf",
+      "--dir",
+      project,
+    ]);
+    const commitCreation = await readFile(
+      resolve(project, blocks, "t3-commit-creation.html"),
+      "utf8",
+    );
+    const preloads = [
+      ...commitCreation.matchAll(/data-t3-preload-src="([^"]+)"/g),
+    ];
+    assert.equal(preloads.length, 20);
+    for (const [, path] of preloads) {
+      assert(path.startsWith(`${blocks}/`));
+      await readFile(resolve(project, path));
+    }
+    const fastTier = await readFile(
+      resolve(project, blocks, "t3-fast-service-tier.html"),
+      "utf8",
+    );
+    const rasterPath = runInNewContext(
+      `${fastTier.match(/raster\.src = [^;]+;/)[0]} raster.src;`,
+      {
+        raster: {},
+        options: { theme: "dark" },
+        section: { dataset: { t3Popup: "hover" } },
+      },
+    );
+    assert(rasterPath.startsWith(`${blocks}/`));
+    await readFile(resolve(project, rasterPath));
+    const shelf = await readFile(
+      resolve(project, blocks, "t3-visual-context-shelf.html"),
+      "utf8",
+    );
+    const variables = JSON.parse(
+      shelf.match(/data-composition-variables='([^']+)'/)[1],
+    );
+    const imageSrc = variables.find(
+      (variable) => variable.id === "imageSrc",
+    ).default;
+    assert(imageSrc.startsWith(`${blocks}/`));
+    await readFile(resolve(project, imageSrc));
+  }
+
+
   await writeFile(
     resolve(temporary, "hyperframes.json"),
     JSON.stringify({
