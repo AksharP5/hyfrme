@@ -86,13 +86,15 @@ leave a fully loaded valid current image, which the adapter accepts as the sourc
 renderer does. Authored image-error fallbacks remain available; unhandled decode
 failures still fail the render.
 
-The ten refreshed ports and two theme-selector repairs pass all 1,999 canonical
-lossless frames with exact alpha, weighted mean SSIM 0.998308, and minimum
-frame SSIM 0.984636. All twelve were installed through the CLI, checked with
-HyperFrames 0.8.99, and strictly rendered. Nine full checks have no errors;
-Announce Title, Follower Rush, and Wordmark Cut retain only the explicitly
-reviewed source findings recorded in `catalog/snapcn-check-exceptions.json`.
-No lint or runtime errors remain.
+All 47 ports have been regenerated and pass all 6,569 canonical lossless frames
+with exact alpha, weighted mean SSIM 0.999827, and minimum frame SSIM 0.984636.
+Each was installed through the CLI, checked with HyperFrames 0.8.99, and strictly
+rendered. Thirty-nine full checks have no errors. The other eight retain only
+the explicitly reviewed source findings recorded in
+`catalog/snapcn-check-exceptions.json`. No lint or runtime errors remain.
+Logo Collapse now also packages the Inter Tight 500 font referenced by its
+source; its installed render no longer depends on that font being available
+elsewhere.
 
 The current reference uses Remotion 4.0.473 `angle-egl` and the same Chrome 152
 executable as HyperFrames hardware rendering. A controlled transparent Prompt
@@ -106,24 +108,80 @@ structured cards and messages, empty cards, the four theme selectors, light-mode
 terminal ink, and seven transparent-stage inputs. Their 140 selected frames and
 exact inputs are recorded in
 [`parity/snapcn-variants/summary.json`](../parity/snapcn-variants/summary.json).
-The nine nontransparent cases were captured before the final image-readiness
-guard; the seven transparent cases were reinstalled and captured afterward.
-All cases have zero lint/runtime errors and meet the RGB thresholds.
+All sixteen were freshly installed through the CLI and captured after the
+image-readiness and inherited-text-style fixes, using Remotion 4.0.473
+`angle-egl`, HyperFrames 0.8.99 hardware rendering, and Chrome 152. Their original
+source pins, props, settings, API overrides, backgrounds, and frame selections
+are unchanged. The summary records installed file hashes, source hashes, and
+capture provenance. All cases have zero lint/runtime errors and meet the RGB
+thresholds; sampled layout and contrast findings remain recorded separately.
 
 Terminal, Follower, Prompt, and Moodboard transparent samples also match alpha
-exactly. Three transparent inputs still fail the strict alpha gate:
+exactly. Thirteen of the sixteen cases pass the comparison. Three transparent
+inputs still fail the strict alpha gate:
 
-| Variant       | RGB mean / minimum  | Alpha difference at the lowest RGB frame                       |
-| ------------- | ------------------- | -------------------------------------------------------------- |
-| Roster Grant  | 0.999907 / 0.999259 | 128 pixels differ by one alpha value.                          |
-| Orbit Gallery | 0.990906 / 0.989464 | 11,352 pixels differ, including rotated-image and glyph edges. |
-| Card Rail     | 0.993093 / 0.988291 | 2,211 pixels differ, chiefly at perspective-card boundaries.   |
+| Variant       | RGB mean / minimum  | Lowest RGB frame | Differing alpha pixels | Maximum alpha delta |
+| ------------- | ------------------- | ---------------- | ---------------------- | ------------------- |
+| Roster Grant  | 0.999907 / 0.999259 | 45               | 128                    | 1                   |
+| Orbit Gallery | 0.999923 / 0.999866 | 296              | 6,609                  | 9                   |
+| Card Rail     | 0.993093 / 0.988291 | 52               | 2,211                  | 255                 |
 
-The source and port use identical props and matching GPU backends for these seven
-cases. Inspection found matching content and positions; it did not establish the
-cause of the remaining edge differences. These three extra inputs are not marked
-verified. Their failed exact-alpha results remain explicit, and the gate is
-unchanged. They do not replace the full-duration canonical fixture checks.
+The alpha values above use the 0–255 channel scale and were measured directly
+from the fresh PNG alpha planes. The summary records every mismatched selected
+frame. Orbit's maximum alpha delta across its selected frames is 15, at frames
+185 and 222.
+
+These measurements used the default HyperFrames snapshot mode, which captures
+the viewport without an explicit clip. The pinned Remotion reference uses an
+explicit full-canvas clip with beyond-viewport capture. The public HyperFrames
+options `--zoom 0,0,1280,720 --zoom-scale 1` match that capture region without
+changing the viewport, source, or installed files. Repeating all 26 selected
+frames in the three cases with those options gives:
+
+| Variant       | RGB mean / minimum  | Exact alpha                                                         |
+| ------------- | ------------------- | ------------------------------------------------------------------- |
+| Roster Grant  | 1.000000 / 1.000000 | Yes, all eight frames                                               |
+| Orbit Gallery | 0.999923 / 0.999866 | No, the same edge differences remain                                |
+| Card Rail     | 1.000000 / 1.000000 | No, four frames each differ at one alpha pixel by one channel value |
+
+This isolates the large Card discrepancy to the snapshot capture region.
+Roster passes these selected comparisons; Card and Orbit still fail the exact
+alpha gate. Their residual differences remain unresolved and are not marked
+verified. The settings, image hashes, installed-file hashes, and every frame's
+result are recorded in
+[`parity/snapcn-variants/clipped-capture.json`](../parity/snapcn-variants/clipped-capture.json).
+No thresholds were relaxed. Selected-frame results do not replace the
+full-duration canonical fixture checks.
+
+A separate comparison used software GL and disabled GPU compositing in both
+renderers. Transparent Roster matches RGB and alpha exactly at all eight selected
+frames in that profile. Orbit and Card still fail exact alpha. The settings and
+per-frame results are recorded in
+[`parity/snapcn-variants/software-compositor.json`](../parity/snapcn-variants/software-compositor.json).
+This earlier diagnosis confirms that the capture profile affects these
+comparisons; it does not replace the hardware results or establish the cause of
+the residual differences.
+
+The ports now restore the retained source's layered and inherited
+`text-rendering` styles instead of inheriting HyperFrames' host defaults. This
+preserves the source's glyph rendering without changing the upstream component
+files.
+
+Six additional CLI-installed color cases exercise Moodboard Reveal and Text
+Highlight with `navy`/`white`, blue/red HSL, and
+`rgba(200, 100, 50, 0.3)`/`transparent`. All 26 selected frames meet the same RGB
+thresholds and match alpha exactly. The three Text Highlight presets (`color`,
+`marker`, and `underline`) match RGB exactly; Moodboard's lowest frame SSIM is
+0.999764. The parser preserves the pinned source's 8-bit alpha quantization,
+including a starting interpolated alpha of 0.302 for the RGBA input. Exact
+settings, source pins, frame selections, expected colors, and check findings are
+recorded in
+[`parity/color-interpolation-inputs.json`](../parity/color-interpolation-inputs.json).
+All six have zero lint/runtime errors. The deliberately translucent underline
+case retains one source/input layout finding for fully transparent text and
+seven contrast findings; its full check is not marked passing. These results
+cover the selected inputs and frames, not every supported CSS color or the
+full composition durations.
 
 ## Public catalog audit, September 30, 2026
 
@@ -348,21 +406,29 @@ video seeking, and shader readiness must also pass deterministic render checks.
 Per-component results belong in `parity/snapcn-*.json`; only passing verified
 components may enter the published catalog.
 
-`npm run setup:snapcn` prepares each source pin. Generation and verification
+`npm run setup:snapcn` prepares each source pin, including the published-audit pin
+used for shared preview CSS. Generation and verification
 group fixtures by their recorded commit, preserving existing ports when new
 components arrive. Pass `-- --only snapcn-roster-grant` to either npm command
 to select a component.
+
+Shared preview CSS comes from `publishedAudit.commit` in
+`catalog/snapcn-upstream.json`, falling back to the inventory's base pin when no
+published audit exists. This source is independent of `--only`, so generating an
+older port preserves classes required by newer ports. `SNAPCN_SOURCE` overrides
+the CSS checkout only when the selected fixtures use that same source pin.
 
 Verification compares every frame's RGB with SSIM and requires exact alpha-plane
 matches. Per-frame alpha hashes accompany the parity reports, so transparent
 output cannot pass on RGB alone. `npm run check` includes a regression that
 rejects an invisible frame with unchanged RGB.
 
-The September 17 Status Cycle update passed all 198 lossless frame comparisons
-with mean SSIM 0.999992, minimum 0.999936, and exact alpha. Its CLI-installed
-fixture passed strict rendering. The full check reported three reviewed overlaps
-between animated prefix glyphs and the clipped pill label, also present in the
-pinned source. Exact selectors and source evidence are recorded in
+The September 17 Status Cycle source now passes all 198 lossless frame comparisons
+with identical RGB and alpha. Its CLI-installed fixture passes strict rendering.
+The current full check reports two reviewed findings for the source's rolling
+labels behind their hard clip: the stacked text boxes overlap, and the installed
+label extends past the clipped container during the roll. Exact selectors and
+source evidence are recorded in
 `catalog/snapcn-check-exceptions.json`; the full findings remain in its parity
 report.
 

@@ -1,0 +1,96 @@
+{
+  "scope": "Direct and backward seek regression in fresh CLI-installed block fixtures",
+  "sourcePin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "source": "registry/remocn/selection-snap/index.tsx",
+    "config": "registry/remocn/selection-snap/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 75,
+    "props": {
+      "text": "Frame",
+      "color": "#fafafa",
+      "accent": "#ff4d1a",
+      "selectionColor": "#3d5afe",
+      "fontSize": 150,
+      "fromWeight": 100,
+      "toWeight": 900,
+      "badge": true,
+      "speed": 1
+    },
+    "background": "#0a0a0a"
+  },
+  "frames": [0, 25, 40, 25, 0, 25],
+  "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+  "hyperframesVersion": "0.8.99",
+  "cssOvershootFrames": [22, 23, 24, 25, 26, 27],
+  "before": {
+    "installedRuntimeSha256": "2806cdf6fe4d8e3dcf44732090ea4c58409c0384d8a2b96d6adae23ab6bed859",
+    "errorCount": 1,
+    "frameSamples": [
+      {
+        "frame": 0,
+        "padding": "135px 165px",
+        "width": 754.375,
+        "height": 420
+      },
+      {
+        "frame": 25,
+        "padding": "135px 165px",
+        "width": 793.234375,
+        "height": 420
+      },
+      {
+        "frame": 40,
+        "padding": "0px 18px",
+        "width": 505.125,
+        "height": 150
+      },
+      {
+        "frame": 25,
+        "padding": "0px 18px",
+        "width": 499.234375,
+        "height": 150
+      },
+      {
+        "frame": 0,
+        "padding": "135px 165px",
+        "width": 754.375,
+        "height": 420
+      },
+      {
+        "frame": 25,
+        "padding": "135px 165px",
+        "width": 793.234375,
+        "height": 420
+      }
+    ]
+  },
+  "after": {
+    "installedRuntimeSha256": "487c8e7aac6eae8bb7ea625cb5fb49839e6f92b15a8a63159853da5380fccb21",
+    "fullCheckPassed": true,
+    "errorCount": 0,
+    "assertions": [
+      "All three frame-25 seeks retain 0px 18px padding",
+      "Frame-25 width and height are identical after forward and backward seeks"
+    ]
+  },
+  "fullDurationComparison": {
+    "frameCount": 75,
+    "meanSsim": 0.9947331466666662,
+    "minSsim": 0.98047,
+    "p05Ssim": 0.982966,
+    "p95Ssim": 0.996359,
+    "alpha": {
+      "frameCount": 75,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  }
+}

@@ -459,7 +459,10 @@ window.__hyfrmeReady = ready;
     })
     .join("\n");
   const sourceInputs = Object.keys(result.metafile.inputs).filter(
-    (path) => !path.includes("node_modules") && !path.startsWith("snapcn-"),
+    (path) =>
+      !path.includes("node_modules") &&
+      !path.startsWith("snapcn-") &&
+      basename(path) !== `${slug}-entry.tsx`,
   );
   const sourceText =
     (
@@ -501,6 +504,13 @@ window.__hyfrmeReady = ready;
   ]);
   const packages = new Map();
   packages.set("tailwindcss", resolve(dependencies, "tailwindcss"));
+  const emittedInputs = new Set(
+    Object.values(result.metafile.outputs).flatMap((output) =>
+      Object.entries(output.inputs)
+        .filter(([, input]) => input.bytesInOutput > 0)
+        .map(([path]) => path),
+    ),
+  );
   for (const path of Object.keys(result.metafile.inputs)) {
     if (!path.includes("node_modules/")) continue;
     const absolute = resolve(upstream, path);
@@ -520,7 +530,8 @@ window.__hyfrmeReady = ready;
       throw new Error(
         `Restricted npm shader code leaked into ${slug}; only frozen Apache sources may be bundled.`,
       );
-    packages.set(name, packageRoot);
+    if (name !== "culori" || emittedInputs.has(path))
+      packages.set(name, packageRoot);
   }
   const block = resolve(root, "registry/blocks", slug);
   await mkdir(resolve(block, "licenses"), { recursive: true });
@@ -612,6 +623,8 @@ window.__hyfrmeReady = ready;
     <style>
 ${fontCss}
 #${slug}-source-root {${scopedCss}}
+      /* Preserve the source's inherited text styles against host defaults. */
+      #${slug}-source-root, #${slug}-source-root :where(*) {text-rendering:revert-layer;}
       #${slug}, #${slug} * {box-sizing:border-box;}
       html, body {margin:0;width:${fixture.width}px;height:${fixture.height}px;overflow:hidden;}
       #${slug} {position:relative;width:${fixture.width}px;height:${fixture.height}px;}

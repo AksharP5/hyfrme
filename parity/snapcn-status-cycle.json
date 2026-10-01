@@ -42,16 +42,16 @@
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "51d5bb37d412073c79dd3db494e7d4745a638586e77f11e64928e0d9d68e548d",
+  "fingerprint": "fcc94c1d9b2363abd10ff466fe6828eaf135674663042bb3c9b4867da9cdae17",
   "thresholds": {
     "meanSsim": 0.99,
     "minSsim": 0.95
   },
   "result": {
     "frameCount": 198,
-    "meanSsim": 0.9999918282828284,
-    "minSsim": 0.999936,
-    "p05Ssim": 0.999959,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
     "p95Ssim": 1,
     "alpha": {
       "frameCount": 198,
@@ -61,7 +61,7 @@
     "pass": true
   },
   "checks": {
-    "hyperframes": "full check reported 3 reviewed source-inherited errors (exit 1); strict render passed",
+    "hyperframes": "full check reported 2 reviewed source-inherited errors (exit 1); strict render passed",
     "sourceInheritedFindings": [
       {
         "slug": "snapcn-status-cycle",
@@ -75,11 +75,11 @@
         },
         "finding": {
           "code": "content_overlap",
-          "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(9)",
-          "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
-          "text": "s"
+          "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+          "text": "transitioning",
+          "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2)"
         },
-        "reason": "The pinned source scales prefix glyphs beyond their fixed slots while the status pill grows and recenters (index.tsx lines 510-565 and 668-760). Its clipped label bounds overlap the prefix during those transitions. All 198 lossless frames match the unmodified source with mean SSIM 0.999992, minimum 0.999936, and exact alpha. Preserve the source motion and retain the layout finding."
+        "reason": "The pinned source explicitly stacks two labels and translates them behind a hard, overflow-hidden pill clip (Pill source lines 761–835). Its fixed-height label boxes intentionally overlap during the roll and crop the font line box. All 198 lossless frames match RGB and alpha exactly; preserve the authored clipping and retain the full layout findings."
       },
       {
         "slug": "snapcn-status-cycle",
@@ -92,36 +92,19 @@
           "entry": "registry/snap-cn/status-cycle/index.tsx"
         },
         "finding": {
-          "code": "content_overlap",
-          "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(6)",
-          "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
-          "text": "n"
+          "code": "text_box_overflow",
+          "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+          "text": "installed",
+          "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)"
         },
-        "reason": "The pinned source scales prefix glyphs beyond their fixed slots while the status pill grows and recenters (index.tsx lines 510-565 and 668-760). Its clipped label bounds overlap the prefix during those transitions. All 198 lossless frames match the unmodified source with mean SSIM 0.999992, minimum 0.999936, and exact alpha. Preserve the source motion and retain the layout finding."
-      },
-      {
-        "slug": "snapcn-status-cycle",
-        "origin": {
-          "repository": "https://github.com/snapcndev/snapcn",
-          "commit": "0b30e76a3d1e4c9a49390d109a9630b118b1e100",
-          "source": "registry/snap-cn/status-cycle/index.tsx",
-          "config": "registry/snap-cn/status-cycle/config.ts",
-          "license": "MIT",
-          "entry": "registry/snap-cn/status-cycle/index.tsx"
-        },
-        "finding": {
-          "code": "content_overlap",
-          "selector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(8)",
-          "containerSelector": "#snapcn-status-cycle-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
-          "text": "i"
-        },
-        "reason": "The pinned source scales prefix glyphs beyond their fixed slots while the status pill grows and recenters (index.tsx lines 510-565 and 668-760). Its clipped label bounds overlap the prefix during those transitions. All 198 lossless frames match the unmodified source with mean SSIM 0.999992, minimum 0.999936, and exact alpha. Preserve the source motion and retain the layout finding."
+        "reason": "The pinned source explicitly stacks two labels and translates them behind a hard, overflow-hidden pill clip (Pill source lines 761–835). Its fixed-height label boxes intentionally overlap during the roll and crop the font line box. All 198 lossless frames match RGB and alpha exactly; preserve the authored clipping and retain the full layout findings."
       }
     ],
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.473",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {

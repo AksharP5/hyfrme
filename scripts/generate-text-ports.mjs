@@ -974,6 +974,14 @@ const remotionPlugin = {
       path: "remotion",
       namespace: "hyfrme-remotion",
     }));
+    buildApi.onResolve(
+      { filter: /^culori\/fn$/, namespace: "hyfrme-remotion" },
+      (args) =>
+        buildApi.resolve(args.path, {
+          resolveDir: root,
+          kind: args.kind,
+        }),
+    );
     buildApi.onLoad({ filter: /.*/, namespace: "hyfrme-remotion" }, () => ({
       loader: "js",
       resolveDir: upstream,
@@ -1540,6 +1548,24 @@ const sourceAdjustmentsPlugin = {
       },
     );
     buildApi.onLoad(
+      { filter: /registry\/remocn\/selection-snap\/index\.tsx$/ },
+      async (args) => {
+        const original = await readFile(args.path, "utf8");
+        const padding = "const pad = getSelectionSnapPadding(state.snap);";
+        if (!original.includes(padding))
+          throw new Error(`Missing Selection Snap padding in ${args.path}`);
+        // Negative CSS padding retains an earlier frame's box when seeking.
+        return {
+          contents: original.replace(
+            padding,
+            "const pad = getSelectionSnapPadding(Math.min(1, state.snap));",
+          ),
+          loader: "tsx",
+          resolveDir: dirname(args.path),
+        };
+      },
+    );
+    buildApi.onLoad(
       { filter: /registry\/remocn\/tracking-in\/index\.tsx$/ },
       async (args) => {
         const original = await readFile(args.path, "utf8");
@@ -1740,6 +1766,7 @@ for (const name of selectedNames) {
   );
   const usesVariableGeist =
     Boolean(addition) ||
+    name === "spring-settle" ||
     canvasTransitionNames.has(name) ||
     canvasFilterNames.has(name);
   const geistFamily = addition ? "Hyfrme Remocn Geist" : "Geist";
@@ -2034,21 +2061,36 @@ for (const name of selectedNames) {
   ];
   const packageLicenses = new Set(["MIT", "OFL-1.1"]);
   const bundledDependencies = [];
-  const bundledModuleNames = new Set(
-    Object.keys(result.metafile.inputs)
-      .filter((path) => path.includes("node_modules/"))
-      .map((path) => {
+  const bundledPackages = new Map(
+    Object.values(result.metafile.outputs)
+      .flatMap((output) => Object.entries(output.inputs))
+      .filter(
+        ([path, input]) =>
+          path.includes("node_modules/") && input.bytesInOutput > 0,
+      )
+      .map(([path]) => {
         const parts = path.split("node_modules/").at(-1).split("/");
-        return parts[0].startsWith("@")
+        const packageName = parts[0].startsWith("@")
           ? parts.slice(0, 2).join("/")
           : parts[0];
+        return [
+          packageName,
+          resolve(
+            upstream,
+            path.slice(0, path.lastIndexOf("node_modules/")),
+            "node_modules",
+            packageName,
+          ),
+        ];
       }),
   );
-  for (const packageName of bundledPackagesByName.get(name) ?? []) {
-    if (!bundledModuleNames.has(packageName)) {
+  const requiredPackages = new Set(bundledPackagesByName.get(name) ?? []);
+  if (bundledPackages.has("culori")) requiredPackages.add("culori");
+  for (const packageName of requiredPackages) {
+    const directory = bundledPackages.get(packageName);
+    if (!directory) {
       throw new Error(`${name} did not bundle expected ${packageName}`);
     }
-    const directory = resolve(upstream, "node_modules", packageName);
     const manifest = JSON.parse(
       await readFile(resolve(directory, "package.json"), "utf8"),
     );
@@ -2098,18 +2140,8 @@ for (const name of selectedNames) {
       });
       if (asset.license) packageLicenses.add(asset.license);
     }
-    const packages = new Set(
-      Object.keys(result.metafile.inputs)
-        .filter((path) => path.includes("node_modules/"))
-        .map((path) => {
-          const parts = path.split("node_modules/").at(-1).split("/");
-          return parts[0].startsWith("@")
-            ? parts.slice(0, 2).join("/")
-            : parts[0];
-        }),
-    );
-    for (const packageName of packages) {
-      const directory = resolve(upstream, "node_modules", packageName);
+    for (const [packageName, directory] of bundledPackages) {
+      if (requiredPackages.has(packageName)) continue;
       const manifest = JSON.parse(
         await readFile(resolve(directory, "package.json"), "utf8"),
       );

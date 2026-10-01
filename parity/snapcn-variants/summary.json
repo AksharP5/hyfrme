@@ -1,15 +1,21 @@
 {
-  "scope": "Selected nondefault inputs, not canonical full-duration verification. Strict-alpha failures remain failures.",
+  "scope": "Selected nondefault inputs, not canonical full-duration verification. Strict-alpha failures remain failures. Pass requires the RGB thresholds, exact alpha, and zero lint/runtime errors; sampled layout and contrast findings are recorded separately.",
   "capture": {
     "remotionVersion": "4.0.473",
     "hyperframesVersion": "0.8.99",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
-    "browserGpuMode": "hardware"
+    "browserGpuMode": "hardware",
+    "referenceGl": "angle-egl",
+    "fixtureInstallation": "hyfrme CLI",
+    "preparedGitHead": "9501d4f8ecf0ae74dc3ef6bca2b31ada84848f4e",
+    "generatorSha256": "78c052cae743e29531a44e49b53501d49139d157eec05f99614fd5564a11735f",
+    "cliSha256": "3fb56bec9d0fcfdef2830d03e17e69626c82d7a28d34328e0073dbfde88741dc",
+    "referenceCssSha256": "48aa2df96bbc1853b76076b6f617d03eedd80793b113aa8dc004f07e6ca696cd"
   },
   "cases": [
     {
-      "capturePhase": "before-final-image-readiness-guard",
-      "referenceGl": "swangle",
+      "capturePhase": "after-image-readiness-and-source-text-style-fixes",
+      "referenceGl": "angle-egl",
       "name": "announce-colored-ink",
       "slug": "snapcn-announce-title",
       "kind": "CLI settings",
@@ -44,11 +50,9 @@
       },
       "frames": [0, 21, 42, 63, 84, 105, 126, 147, 168],
       "ssim": {
-        "mean": 0.9962523333333332,
-        "min": 0.984537,
-        "samples": [
-          0.998464, 0.999999, 0.999999, 1, 0.984537, 0.986774, 0.996498, 1, 1
-        ],
+        "mean": 0.9971951111111113,
+        "min": 0.986446,
+        "samples": [0.999998, 1, 1, 1, 0.986446, 0.99042, 0.997892, 1, 1],
         "minSsimThreshold": 0.95,
         "meanSsimThreshold": 0.99
       },
@@ -66,6 +70,49 @@
         "license": "MIT",
         "entry": "registry/snap-cn/announce-title/index.tsx"
       },
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-announce-title.html",
+          "sha256": "a856624ae5f7d8afca2ab1624fc94ac7e4b48c621c11d91b52285d2d260e94a2"
+        },
+        {
+          "path": "compositions/snapcn-announce-title.runtime.js",
+          "sha256": "526ea6afcb8bf9f5d08a26462be4cebd0ac032ae9ad90fae69d6bc2e5ceacb5c"
+        },
+        {
+          "path": "index.html",
+          "sha256": "9e34d7929d4d476ac8ce8fda393daf7c841bff389451077cd5ae9ec6670324dc"
+        }
+      ],
+      "provenance": {
+        "preparedAt": "2026-10-01T03:23:43.782Z",
+        "caseSha256": "13ad9dc40d8577706b552585185922fe6acdc33903bd2b5c2f5114660ea46719",
+        "sourceFiles": [
+          {
+            "path": "registry/snap-cn/announce-title/index.tsx",
+            "sha256": "3467c690d9e075b99192dea6ad7ca5cd6b41351b9e1e4158ae820710dbe286ce"
+          },
+          {
+            "path": "registry/snap-cn/announce-title/config.ts",
+            "sha256": "b3c39d18a6a22201a8685fb7f011e51911b9688687dafb1d6823bd9371f0c9b1"
+          }
+        ],
+        "installedHtmlBeforeApiSha256": "a856624ae5f7d8afca2ab1624fc94ac7e4b48c621c11d91b52285d2d260e94a2",
+        "registryFiles": [
+          {
+            "path": "registry/blocks/snapcn-announce-title/snapcn-announce-title.html",
+            "sha256": "08dd290c0e335e621a5df2ee31ac37a6a5f2728af919c7cda00f6559c25f7ca4"
+          },
+          {
+            "path": "registry/blocks/snapcn-announce-title/snapcn-announce-title.runtime.js",
+            "sha256": "ad0598fb2eb1f9269b87f3d3c47d2711a093c205514959f8738e98cfe11752c5"
+          },
+          {
+            "path": "registry/blocks/snapcn-announce-title/registry-item.json",
+            "sha256": "340fec09beb04fe5aac38fbe80c431f6d9bd093551ca15b454f1064de6b23e60"
+          }
+        ]
+      },
       "sampledHyperframesCheck": {
         "ok": false,
         "lintErrors": 0,
@@ -75,8 +122,8 @@
       }
     },
     {
-      "capturePhase": "before-final-image-readiness-guard",
-      "referenceGl": "swangle",
+      "capturePhase": "after-image-readiness-and-source-text-style-fixes",
+      "referenceGl": "angle-egl",
       "name": "terminal-light",
       "slug": "snapcn-terminal-simulator",
       "kind": "CLI installation plus isolated API override",
@@ -108,12 +155,9 @@
       },
       "frames": [0, 25, 50, 75, 100, 125, 150, 175],
       "ssim": {
-        "mean": 0.999185,
-        "min": 0.997216,
-        "samples": [
-          1, 0.999998, 0.999721, 0.998789, 0.998907, 0.997216, 0.999174,
-          0.999675
-        ],
+        "mean": 1,
+        "min": 1,
+        "samples": [1, 1, 1, 1, 1, 1, 1, 1],
         "minSsimThreshold": 0.95,
         "meanSsimThreshold": 0.99
       },
@@ -131,6 +175,49 @@
         "license": "MIT",
         "entry": "registry/snap-cn/terminal-simulator/index.tsx"
       },
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-terminal-simulator.html",
+          "sha256": "31d7529165ee10c08bcbbc20a7eef05021ccdf5493ab8f833601ccabd145fd9d"
+        },
+        {
+          "path": "compositions/snapcn-terminal-simulator.runtime.js",
+          "sha256": "246ca7fe94f3b226834b53d26186fab936b6593f4c561f8eaeaf770f440b880c"
+        },
+        {
+          "path": "index.html",
+          "sha256": "c208efc83cc76f12657a825880779a949fb1659f2e6b3b8b575b4751f6372aa8"
+        }
+      ],
+      "provenance": {
+        "preparedAt": "2026-10-01T03:23:43.878Z",
+        "caseSha256": "79cc0fab0cec57317ad31fecab0da038c012c559300ca522f14d53265a6f76ee",
+        "sourceFiles": [
+          {
+            "path": "registry/snap-cn/terminal-simulator/index.tsx",
+            "sha256": "088fd41637db73be035e375c7724e0910bbae73a05cb627a6a48626c0b43ab51"
+          },
+          {
+            "path": "registry/snap-cn/terminal-simulator/config.ts",
+            "sha256": "90a67d3c9fb7d5369ec902888293881dfe7da3c922be6ee7f022bab2ba065985"
+          }
+        ],
+        "installedHtmlBeforeApiSha256": "815fd02d5a2975c8224abf2f14adf6833b78016a2c71db949e43d3c5f6c2bb53",
+        "registryFiles": [
+          {
+            "path": "registry/blocks/snapcn-terminal-simulator/snapcn-terminal-simulator.html",
+            "sha256": "07e157dd47cc8c82e4d7a5c8780193164c8e42a562ba523ad6b8554cb42f4b5a"
+          },
+          {
+            "path": "registry/blocks/snapcn-terminal-simulator/snapcn-terminal-simulator.runtime.js",
+            "sha256": "ab8b612ded8cce61089f8bb26fd888e76167aa0bff015f2943f8b6fd7416949a"
+          },
+          {
+            "path": "registry/blocks/snapcn-terminal-simulator/registry-item.json",
+            "sha256": "bcacd66b53da3ad0d04e5afab34756cb0afd50f37b1df31023778f236876c50e"
+          }
+        ]
+      },
       "sampledHyperframesCheck": {
         "ok": true,
         "lintErrors": 0,
@@ -140,8 +227,8 @@
       }
     },
     {
-      "capturePhase": "before-final-image-readiness-guard",
-      "referenceGl": "swangle",
+      "capturePhase": "after-image-readiness-and-source-text-style-fixes",
+      "referenceGl": "angle-egl",
       "name": "card-empty",
       "slug": "snapcn-card-rail",
       "kind": "CLI settings",
@@ -169,11 +256,11 @@
       },
       "frames": [0, 13, 26, 39, 52, 65, 78, 91, 104],
       "ssim": {
-        "mean": 0.9978101111111111,
-        "min": 0.995998,
+        "mean": 0.9980444444444445,
+        "min": 0.996212,
         "samples": [
-          0.999774, 0.99976, 0.998174, 0.997566, 0.995998, 0.997978, 0.998193,
-          0.996389, 0.996459
+          1, 1, 0.998434, 0.997782, 0.996212, 0.998203, 0.998436, 0.996666,
+          0.996667
         ],
         "minSsimThreshold": 0.95,
         "meanSsimThreshold": 0.99
@@ -192,6 +279,49 @@
         "license": "MIT",
         "entry": "registry/snap-cn/card-rail/index.tsx"
       },
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-card-rail.html",
+          "sha256": "5cc90941b0da11f152c37ed65b3e593827931b50c3652b32414408c21cf6fe41"
+        },
+        {
+          "path": "compositions/snapcn-card-rail.runtime.js",
+          "sha256": "3563fa8f452276a98c9abc87243bfa684f613071f89a5b565e8dca3e40f58f0b"
+        },
+        {
+          "path": "index.html",
+          "sha256": "ceb0aeeff738c63820f91937c622c844839978c6dc9d08e3a6223d645a85d3d6"
+        }
+      ],
+      "provenance": {
+        "preparedAt": "2026-10-01T03:23:43.986Z",
+        "caseSha256": "d8178a4f73f3b5eeac6dee2c015dfa42a06236d89ceb9ab08f0bcdcb1d785023",
+        "sourceFiles": [
+          {
+            "path": "registry/snap-cn/card-rail/index.tsx",
+            "sha256": "dbd98365f62affcaf2aca5df51097d2a22d094461fd9e6739a512a9cf6483fd9"
+          },
+          {
+            "path": "registry/snap-cn/card-rail/config.ts",
+            "sha256": "e1e52caca778ecf6c2e1ee0379709dadc015018ff2711f0946d6d2689005f5e3"
+          }
+        ],
+        "installedHtmlBeforeApiSha256": "5cc90941b0da11f152c37ed65b3e593827931b50c3652b32414408c21cf6fe41",
+        "registryFiles": [
+          {
+            "path": "registry/blocks/snapcn-card-rail/snapcn-card-rail.html",
+            "sha256": "dd7ed5acc41c976bd0c56801f96683dacabf98a862563b15a184948064e1d509"
+          },
+          {
+            "path": "registry/blocks/snapcn-card-rail/snapcn-card-rail.runtime.js",
+            "sha256": "bd46986f0d2b8a3b6c81d3c1ab268b0a9f024162529a000cb8f8e1bd1a932ad3"
+          },
+          {
+            "path": "registry/blocks/snapcn-card-rail/registry-item.json",
+            "sha256": "2e1bc7bb22e939eb4ae9e41a8b131c4624f436ae477571a04ef2cfd640f7baf3"
+          }
+        ]
+      },
       "sampledHyperframesCheck": {
         "ok": true,
         "lintErrors": 0,
@@ -201,8 +331,8 @@
       }
     },
     {
-      "capturePhase": "before-final-image-readiness-guard",
-      "referenceGl": "swangle",
+      "capturePhase": "after-image-readiness-and-source-text-style-fixes",
+      "referenceGl": "angle-egl",
       "name": "card-deck",
       "slug": "snapcn-card-rail",
       "kind": "CLI settings",
@@ -234,11 +364,11 @@
       },
       "frames": [0, 13, 26, 39, 52, 65, 78, 91, 104],
       "ssim": {
-        "mean": 0.9975062222222222,
-        "min": 0.992758,
+        "mean": 0.9977881111111111,
+        "min": 0.992992,
         "samples": [
-          0.999695, 0.999506, 0.999454, 0.999261, 0.996812, 0.999308, 0.998004,
-          0.992758, 0.992758
+          1, 0.999767, 0.999775, 0.99955, 0.99708, 0.999607, 0.99833, 0.992992,
+          0.992992
         ],
         "minSsimThreshold": 0.95,
         "meanSsimThreshold": 0.99
@@ -257,6 +387,49 @@
         "license": "MIT",
         "entry": "registry/snap-cn/card-rail/index.tsx"
       },
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-card-rail.html",
+          "sha256": "f85dcbf1d8b07c5515cbd2de82335f576448cd00d62dcd426a31fc1b334baf00"
+        },
+        {
+          "path": "compositions/snapcn-card-rail.runtime.js",
+          "sha256": "3563fa8f452276a98c9abc87243bfa684f613071f89a5b565e8dca3e40f58f0b"
+        },
+        {
+          "path": "index.html",
+          "sha256": "4a57e8e402d6ada8ec496354e30d9adf967bfcaf9c35a823d0854d1c49360ffe"
+        }
+      ],
+      "provenance": {
+        "preparedAt": "2026-10-01T03:23:44.095Z",
+        "caseSha256": "d13b13df057d20dd2b0aaf028140e5cd265668299aa49d82b9163cc187ca7591",
+        "sourceFiles": [
+          {
+            "path": "registry/snap-cn/card-rail/index.tsx",
+            "sha256": "dbd98365f62affcaf2aca5df51097d2a22d094461fd9e6739a512a9cf6483fd9"
+          },
+          {
+            "path": "registry/snap-cn/card-rail/config.ts",
+            "sha256": "e1e52caca778ecf6c2e1ee0379709dadc015018ff2711f0946d6d2689005f5e3"
+          }
+        ],
+        "installedHtmlBeforeApiSha256": "f85dcbf1d8b07c5515cbd2de82335f576448cd00d62dcd426a31fc1b334baf00",
+        "registryFiles": [
+          {
+            "path": "registry/blocks/snapcn-card-rail/snapcn-card-rail.html",
+            "sha256": "dd7ed5acc41c976bd0c56801f96683dacabf98a862563b15a184948064e1d509"
+          },
+          {
+            "path": "registry/blocks/snapcn-card-rail/snapcn-card-rail.runtime.js",
+            "sha256": "bd46986f0d2b8a3b6c81d3c1ab268b0a9f024162529a000cb8f8e1bd1a932ad3"
+          },
+          {
+            "path": "registry/blocks/snapcn-card-rail/registry-item.json",
+            "sha256": "2e1bc7bb22e939eb4ae9e41a8b131c4624f436ae477571a04ef2cfd640f7baf3"
+          }
+        ]
+      },
       "sampledHyperframesCheck": {
         "ok": true,
         "lintErrors": 0,
@@ -266,8 +439,8 @@
       }
     },
     {
-      "capturePhase": "before-final-image-readiness-guard",
-      "referenceGl": "swangle",
+      "capturePhase": "after-image-readiness-and-source-text-style-fixes",
+      "referenceGl": "angle-egl",
       "name": "channel-messages",
       "slug": "snapcn-channel-thread",
       "kind": "CLI settings",
@@ -289,12 +462,9 @@
       },
       "frames": [0, 13, 26, 39, 52, 65, 78, 91, 104],
       "ssim": {
-        "mean": 0.9999790000000002,
-        "min": 0.999957,
-        "samples": [
-          0.99999, 0.99999, 0.99999, 0.999987, 0.999959, 0.999957, 0.999967,
-          0.999987, 0.999984
-        ],
+        "mean": 1,
+        "min": 1,
+        "samples": [1, 1, 1, 1, 1, 1, 1, 1, 1],
         "minSsimThreshold": 0.95,
         "meanSsimThreshold": 0.99
       },
@@ -312,6 +482,49 @@
         "license": "MIT",
         "entry": "registry/snap-cn/channel-thread/index.tsx"
       },
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-channel-thread.html",
+          "sha256": "6cb08dcbb8eb6fc914d5d458601b3c6a77877b167e0a068ce76ff38232a17a17"
+        },
+        {
+          "path": "compositions/snapcn-channel-thread.runtime.js",
+          "sha256": "e88320b5d3b8a7ab6ea5f20a8fd9e9c783f8fe3a827507e79d833bcea022688a"
+        },
+        {
+          "path": "index.html",
+          "sha256": "af12c351c429c6316017e55eca613109227d0d839b28a59e693a08143fa1baca"
+        }
+      ],
+      "provenance": {
+        "preparedAt": "2026-10-01T03:23:44.194Z",
+        "caseSha256": "6c0e69785a475e54b5a8a6bd3771031800ce01df43e70f53adb5c3f24a34a5df",
+        "sourceFiles": [
+          {
+            "path": "registry/snap-cn/channel-thread/index.tsx",
+            "sha256": "4238a14120ef32b1e8ed763ded344ca4290a6f9f64b88a5c9c304ad34f4aa7b2"
+          },
+          {
+            "path": "registry/snap-cn/channel-thread/config.ts",
+            "sha256": "834e9e1c57eb1f69f867873ed099544846f4458e9ef4583bfa9c128d1e30281a"
+          }
+        ],
+        "installedHtmlBeforeApiSha256": "6cb08dcbb8eb6fc914d5d458601b3c6a77877b167e0a068ce76ff38232a17a17",
+        "registryFiles": [
+          {
+            "path": "registry/blocks/snapcn-channel-thread/snapcn-channel-thread.html",
+            "sha256": "be1640f24874825264e8dc16b27845d62035bfd44d9b2cf5e5905ab2ec7a0b62"
+          },
+          {
+            "path": "registry/blocks/snapcn-channel-thread/snapcn-channel-thread.runtime.js",
+            "sha256": "6a625f51279affcd323c1958d220a6c62e668de2f91947de96756951cd5a8d9d"
+          },
+          {
+            "path": "registry/blocks/snapcn-channel-thread/registry-item.json",
+            "sha256": "16259f93aa97c21625992beed3842107cc28e9628b033ddc97bcf0783e011f94"
+          }
+        ]
+      },
       "sampledHyperframesCheck": {
         "ok": true,
         "lintErrors": 0,
@@ -321,8 +534,8 @@
       }
     },
     {
-      "capturePhase": "before-final-image-readiness-guard",
-      "referenceGl": "swangle",
+      "capturePhase": "after-image-readiness-and-source-text-style-fixes",
+      "referenceGl": "angle-egl",
       "name": "follower-dark",
       "slug": "snapcn-follower-rush",
       "kind": "CLI settings",
@@ -346,12 +559,9 @@
       },
       "frames": [0, 37, 74, 111, 148, 185, 222, 259, 296],
       "ssim": {
-        "mean": 0.9999622222222223,
-        "min": 0.999951,
-        "samples": [
-          1, 0.999977, 0.999961, 0.999958, 0.999953, 0.999951, 0.999954,
-          0.999952, 0.999954
-        ],
+        "mean": 1,
+        "min": 1,
+        "samples": [1, 1, 1, 1, 1, 1, 1, 1, 1],
         "minSsimThreshold": 0.95,
         "meanSsimThreshold": 0.99
       },
@@ -369,6 +579,49 @@
         "license": "MIT",
         "entry": "registry/snap-cn/follower-rush/index.tsx"
       },
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-follower-rush.html",
+          "sha256": "5782c307842a263430f764277d2c67b65818d630f3771a6a938c20e09d217e0a"
+        },
+        {
+          "path": "compositions/snapcn-follower-rush.runtime.js",
+          "sha256": "b1b70c693f897c38e5dae78a0c853a89b4fd9c8116dac204dbd5312c4a6012b9"
+        },
+        {
+          "path": "index.html",
+          "sha256": "db449a7b6a72bf80aca7d7a9529a7778e9817d5cda573b2f1c8e023c63d2e1d7"
+        }
+      ],
+      "provenance": {
+        "preparedAt": "2026-10-01T03:23:45.127Z",
+        "caseSha256": "2ee27484f57c540163e5232d06e70b28f0777b944d00063710fb9de3da3bb6cb",
+        "sourceFiles": [
+          {
+            "path": "registry/snap-cn/follower-rush/index.tsx",
+            "sha256": "44618a45f7faa489fe5d15d795a8494d1fcdb796f446cd30aa468d77549ee10c"
+          },
+          {
+            "path": "registry/snap-cn/follower-rush/config.ts",
+            "sha256": "2087ea2d58a4799703877921f13cc6b03590d505f55f7e161406f3369a197b1a"
+          }
+        ],
+        "installedHtmlBeforeApiSha256": "5782c307842a263430f764277d2c67b65818d630f3771a6a938c20e09d217e0a",
+        "registryFiles": [
+          {
+            "path": "registry/blocks/snapcn-follower-rush/snapcn-follower-rush.html",
+            "sha256": "2e951d8fc08539f42d61dbb2846521a29f34ce759e0c1add46eafd09d4f5cd52"
+          },
+          {
+            "path": "registry/blocks/snapcn-follower-rush/snapcn-follower-rush.runtime.js",
+            "sha256": "620361f5a714807fb1b8e63ab69fec59941f2738ec66cfa7833e9a9a59207726"
+          },
+          {
+            "path": "registry/blocks/snapcn-follower-rush/registry-item.json",
+            "sha256": "6ac39d6869059fe33057bf02a5ac4f5897d7f900f79ec5376db34d0dcad965b8"
+          }
+        ]
+      },
       "sampledHyperframesCheck": {
         "ok": false,
         "lintErrors": 0,
@@ -378,8 +631,8 @@
       }
     },
     {
-      "capturePhase": "before-final-image-readiness-guard",
-      "referenceGl": "swangle",
+      "capturePhase": "after-image-readiness-and-source-text-style-fixes",
+      "referenceGl": "angle-egl",
       "name": "roster-dark",
       "slug": "snapcn-roster-grant",
       "kind": "CLI settings",
@@ -402,12 +655,9 @@
       },
       "frames": [0, 15, 30, 45, 60, 75, 90, 105],
       "ssim": {
-        "mean": 0.9980902500000001,
-        "min": 0.998051,
-        "samples": [
-          0.998072, 0.99817, 0.998125, 0.998068, 0.998061, 0.998051, 0.998102,
-          0.998073
-        ],
+        "mean": 1,
+        "min": 1,
+        "samples": [1, 1, 1, 1, 1, 1, 1, 1],
         "minSsimThreshold": 0.95,
         "meanSsimThreshold": 0.99
       },
@@ -425,6 +675,49 @@
         "license": "MIT",
         "entry": "registry/snap-cn/roster-grant/index.tsx"
       },
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-roster-grant.html",
+          "sha256": "38de2d993d88716db119bd6ad83e2de886a9846c8d200e211bb63002de272ccf"
+        },
+        {
+          "path": "compositions/snapcn-roster-grant.runtime.js",
+          "sha256": "86de59ca82a34d2a97826b0a4920e92d8b03acf1798ead199587680ce781ffad"
+        },
+        {
+          "path": "index.html",
+          "sha256": "b33bd4d7e2c6a49f97498d4086ffad71541ef24ba4b1cb511280278b5b7c8a7c"
+        }
+      ],
+      "provenance": {
+        "preparedAt": "2026-10-01T03:23:45.222Z",
+        "caseSha256": "de4884ee4f99ffbbc4d6808bdf278fc9c29a2ca8e7e38015ecf0fee2edf7aafc",
+        "sourceFiles": [
+          {
+            "path": "registry/snap-cn/roster-grant/index.tsx",
+            "sha256": "e6f1e05fffef24c7a536e68bc9579aee65e8be39bf461993f27d985a7e0906e5"
+          },
+          {
+            "path": "registry/snap-cn/roster-grant/config.ts",
+            "sha256": "6a2a9704b4626fbeb4f851a2856c298816900ef349775bb14b40da00cf044b36"
+          }
+        ],
+        "installedHtmlBeforeApiSha256": "38de2d993d88716db119bd6ad83e2de886a9846c8d200e211bb63002de272ccf",
+        "registryFiles": [
+          {
+            "path": "registry/blocks/snapcn-roster-grant/snapcn-roster-grant.html",
+            "sha256": "37810108b66051f7df4136045a3eed506cec7ea1d6165585927f32809fdf2d6e"
+          },
+          {
+            "path": "registry/blocks/snapcn-roster-grant/snapcn-roster-grant.runtime.js",
+            "sha256": "3baec118cf57e489154136b96d867db0a96e395fcc86f80828981d26b117a3d9"
+          },
+          {
+            "path": "registry/blocks/snapcn-roster-grant/registry-item.json",
+            "sha256": "71b171c671d5598093ce80ea44d360139747662da6841929626ff4a935ee0890"
+          }
+        ]
+      },
       "sampledHyperframesCheck": {
         "ok": true,
         "lintErrors": 0,
@@ -434,8 +727,8 @@
       }
     },
     {
-      "capturePhase": "before-final-image-readiness-guard",
-      "referenceGl": "swangle",
+      "capturePhase": "after-image-readiness-and-source-text-style-fixes",
+      "referenceGl": "angle-egl",
       "name": "karaoke-light",
       "slug": "snapcn-karaoke-captions",
       "kind": "CLI settings",
@@ -484,6 +777,49 @@
         "license": "MIT",
         "entry": "registry/snap-cn/karaoke-captions/index.tsx"
       },
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-karaoke-captions.html",
+          "sha256": "68c6b3c58ebee1f1f2e5b617731e0884ba9237b49c146a23e300af143f330e23"
+        },
+        {
+          "path": "compositions/snapcn-karaoke-captions.runtime.js",
+          "sha256": "72d6e9de75b848bb29155470f844d383a1d7df673c0eb20f7e5246a2316f9f55"
+        },
+        {
+          "path": "index.html",
+          "sha256": "d356d808080ae56de3b71226b3a59a882d12cad0c9523b02aae9ecbb33160fac"
+        }
+      ],
+      "provenance": {
+        "preparedAt": "2026-10-01T03:23:45.319Z",
+        "caseSha256": "79b03dd9ce80e1de531ecc2a02d662bc6fdfc6b3a8949736b0d09c8704fe90bc",
+        "sourceFiles": [
+          {
+            "path": "registry/snap-cn/karaoke-captions/index.tsx",
+            "sha256": "c867b49609766a6b76414bbeb0549959d9534cc805476804022e7f4687a66243"
+          },
+          {
+            "path": "registry/snap-cn/karaoke-captions/config.ts",
+            "sha256": "31e95718ee21a6a1068e5388c2ad4df2f3342b1b799e32795f47912ec103eda9"
+          }
+        ],
+        "installedHtmlBeforeApiSha256": "68c6b3c58ebee1f1f2e5b617731e0884ba9237b49c146a23e300af143f330e23",
+        "registryFiles": [
+          {
+            "path": "registry/blocks/snapcn-karaoke-captions/snapcn-karaoke-captions.html",
+            "sha256": "8016a19669e402e88d350f56e2398f4870b198da55505afea6a992a1bc7a0f68"
+          },
+          {
+            "path": "registry/blocks/snapcn-karaoke-captions/snapcn-karaoke-captions.runtime.js",
+            "sha256": "cf32ddd12f218eaa8cdef66394b64971109256cd488efe0d6a6e020d027feae1"
+          },
+          {
+            "path": "registry/blocks/snapcn-karaoke-captions/registry-item.json",
+            "sha256": "8f926040a0584eacac8a9b87f3c850b314098bf0dfb53f801eb33a5a05e9f933"
+          }
+        ]
+      },
       "sampledHyperframesCheck": {
         "ok": true,
         "lintErrors": 0,
@@ -493,8 +829,8 @@
       }
     },
     {
-      "capturePhase": "before-final-image-readiness-guard",
-      "referenceGl": "swangle",
+      "capturePhase": "after-image-readiness-and-source-text-style-fixes",
+      "referenceGl": "angle-egl",
       "name": "wordmark-dark",
       "slug": "snapcn-wordmark-cut",
       "kind": "CLI settings",
@@ -519,12 +855,9 @@
       },
       "frames": [0, 8, 16, 24, 32, 40, 48, 56, 64],
       "ssim": {
-        "mean": 0.999360111111111,
-        "min": 0.998551,
-        "samples": [
-          0.999259, 0.999172, 0.999145, 0.999077, 0.998551, 0.999788, 0.999719,
-          0.999764, 0.999766
-        ],
+        "mean": 1,
+        "min": 1,
+        "samples": [1, 1, 1, 1, 1, 1, 1, 1, 1],
         "minSsimThreshold": 0.95,
         "meanSsimThreshold": 0.99
       },
@@ -542,6 +875,49 @@
         "license": "MIT",
         "entry": "registry/snap-cn/wordmark-cut/index.tsx"
       },
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-wordmark-cut.html",
+          "sha256": "8c8e6af46c1e0f6e4a156364c188047cedf8675709d4e6e8ee517d0f2b3bdba5"
+        },
+        {
+          "path": "compositions/snapcn-wordmark-cut.runtime.js",
+          "sha256": "f4c654d4c9eb872069334837518680e344ebfa0e0f433a365ff423feed280ba9"
+        },
+        {
+          "path": "index.html",
+          "sha256": "7b6d6ab89818301cacc7dcd49e1b2889fed5fd6af73dc1aebcf8e9f8ee95e461"
+        }
+      ],
+      "provenance": {
+        "preparedAt": "2026-10-01T03:23:45.415Z",
+        "caseSha256": "2704837453eb46e7597259ef57edf298016f56b87b0608e7c8ef057cf959a9c2",
+        "sourceFiles": [
+          {
+            "path": "registry/snap-cn/wordmark-cut/index.tsx",
+            "sha256": "17e533480a75a190081a805cc1264bec709d9dcbdd28a9f77b590c085cbbc106"
+          },
+          {
+            "path": "registry/snap-cn/wordmark-cut/config.ts",
+            "sha256": "573730ec71a53cc835dcf43189fe94c175c2e6333d9cf0e04cf659ca36541942"
+          }
+        ],
+        "installedHtmlBeforeApiSha256": "8c8e6af46c1e0f6e4a156364c188047cedf8675709d4e6e8ee517d0f2b3bdba5",
+        "registryFiles": [
+          {
+            "path": "registry/blocks/snapcn-wordmark-cut/snapcn-wordmark-cut.html",
+            "sha256": "1cf0ffac153db010bf45e351a9d3314178d3b3a5ce6ac99cb8f3e132b625ec09"
+          },
+          {
+            "path": "registry/blocks/snapcn-wordmark-cut/snapcn-wordmark-cut.runtime.js",
+            "sha256": "bbfde79dfdf265ff9e0e4df966c18707694ad75b1d733cf6d9262d14bcb98e94"
+          },
+          {
+            "path": "registry/blocks/snapcn-wordmark-cut/registry-item.json",
+            "sha256": "b17e51ba30366a2b63ce94f0313efb968e9e1600ed87553e121c86201037869f"
+          }
+        ]
+      },
       "sampledHyperframesCheck": {
         "ok": false,
         "lintErrors": 0,
@@ -551,7 +927,7 @@
       }
     },
     {
-      "capturePhase": "final",
+      "capturePhase": "after-image-readiness-and-source-text-style-fixes",
       "referenceGl": "angle-egl",
       "name": "terminal-transparent",
       "slug": "snapcn-terminal-simulator",
@@ -604,6 +980,49 @@
         "license": "MIT",
         "entry": "registry/snap-cn/terminal-simulator/index.tsx"
       },
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-terminal-simulator.html",
+          "sha256": "020c3c320c66cd129fae520427599a7db12ac0b387447b61d9537fb1646554dc"
+        },
+        {
+          "path": "compositions/snapcn-terminal-simulator.runtime.js",
+          "sha256": "246ca7fe94f3b226834b53d26186fab936b6593f4c561f8eaeaf770f440b880c"
+        },
+        {
+          "path": "index.html",
+          "sha256": "11fc7339976b702160dbf5f9b5b938e67e4a8f9ffe042dee2995e4cabb614048"
+        }
+      ],
+      "provenance": {
+        "preparedAt": "2026-10-01T03:23:44.293Z",
+        "caseSha256": "564b9da21bc2e276efec6e0ffc272f5dfdbb4e7418abb0f8adb442486b19921c",
+        "sourceFiles": [
+          {
+            "path": "registry/snap-cn/terminal-simulator/index.tsx",
+            "sha256": "088fd41637db73be035e375c7724e0910bbae73a05cb627a6a48626c0b43ab51"
+          },
+          {
+            "path": "registry/snap-cn/terminal-simulator/config.ts",
+            "sha256": "90a67d3c9fb7d5369ec902888293881dfe7da3c922be6ee7f022bab2ba065985"
+          }
+        ],
+        "installedHtmlBeforeApiSha256": "b760641f547772e2596ad3d4bac5cd0f295eff85a9bbc35b3efabb36e16949e3",
+        "registryFiles": [
+          {
+            "path": "registry/blocks/snapcn-terminal-simulator/snapcn-terminal-simulator.html",
+            "sha256": "07e157dd47cc8c82e4d7a5c8780193164c8e42a562ba523ad6b8554cb42f4b5a"
+          },
+          {
+            "path": "registry/blocks/snapcn-terminal-simulator/snapcn-terminal-simulator.runtime.js",
+            "sha256": "ab8b612ded8cce61089f8bb26fd888e76167aa0bff015f2943f8b6fd7416949a"
+          },
+          {
+            "path": "registry/blocks/snapcn-terminal-simulator/registry-item.json",
+            "sha256": "bcacd66b53da3ad0d04e5afab34756cb0afd50f37b1df31023778f236876c50e"
+          }
+        ]
+      },
       "sampledHyperframesCheck": {
         "ok": true,
         "lintErrors": 0,
@@ -613,7 +1032,7 @@
       }
     },
     {
-      "capturePhase": "final",
+      "capturePhase": "after-image-readiness-and-source-text-style-fixes",
       "referenceGl": "angle-egl",
       "name": "follower-transparent",
       "slug": "snapcn-follower-rush",
@@ -662,6 +1081,49 @@
         "license": "MIT",
         "entry": "registry/snap-cn/follower-rush/index.tsx"
       },
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-follower-rush.html",
+          "sha256": "26a7b1185d4b4835aa9c12f71e84cf043ce0ee3857de3ba0ed51a2c0f891b9ff"
+        },
+        {
+          "path": "compositions/snapcn-follower-rush.runtime.js",
+          "sha256": "b1b70c693f897c38e5dae78a0c853a89b4fd9c8116dac204dbd5312c4a6012b9"
+        },
+        {
+          "path": "index.html",
+          "sha256": "f8171785f95262d5c20d978c4fa29ca7e69049c46e329e43e278217da03d12a8"
+        }
+      ],
+      "provenance": {
+        "preparedAt": "2026-10-01T03:23:44.485Z",
+        "caseSha256": "d4e4d7119f14b7b397d6148ce00eaaa9a616fb52fd65eec11f3ec04f77c7d2fa",
+        "sourceFiles": [
+          {
+            "path": "registry/snap-cn/follower-rush/index.tsx",
+            "sha256": "44618a45f7faa489fe5d15d795a8494d1fcdb796f446cd30aa468d77549ee10c"
+          },
+          {
+            "path": "registry/snap-cn/follower-rush/config.ts",
+            "sha256": "2087ea2d58a4799703877921f13cc6b03590d505f55f7e161406f3369a197b1a"
+          }
+        ],
+        "installedHtmlBeforeApiSha256": "b36b835adeb672e6607d08360ffa7ef81e9cf34e9f0ccd86a995fb9f90a7d1c1",
+        "registryFiles": [
+          {
+            "path": "registry/blocks/snapcn-follower-rush/snapcn-follower-rush.html",
+            "sha256": "2e951d8fc08539f42d61dbb2846521a29f34ce759e0c1add46eafd09d4f5cd52"
+          },
+          {
+            "path": "registry/blocks/snapcn-follower-rush/snapcn-follower-rush.runtime.js",
+            "sha256": "620361f5a714807fb1b8e63ab69fec59941f2738ec66cfa7833e9a9a59207726"
+          },
+          {
+            "path": "registry/blocks/snapcn-follower-rush/registry-item.json",
+            "sha256": "6ac39d6869059fe33057bf02a5ac4f5897d7f900f79ec5376db34d0dcad965b8"
+          }
+        ]
+      },
       "sampledHyperframesCheck": {
         "ok": false,
         "lintErrors": 0,
@@ -671,7 +1133,7 @@
       }
     },
     {
-      "capturePhase": "final",
+      "capturePhase": "after-image-readiness-and-source-text-style-fixes",
       "referenceGl": "angle-egl",
       "name": "prompt-transparent",
       "slug": "snapcn-prompt-send",
@@ -688,7 +1150,7 @@
         "durationInFrames": 165,
         "props": {
           "text": "Add a text reveal, a soft blur transition, and a gradient background",
-          "placeholder": "Describe the scene you want\u2026",
+          "placeholder": "Describe the scene you want…",
           "chips": "Add a text reveal, Try a blur transition, Pick a background, Assemble a scene",
           "width": 636.2,
           "fieldHeight": 121.2,
@@ -739,6 +1201,49 @@
         "license": "MIT",
         "entry": "registry/snap-cn/prompt-send/index.tsx"
       },
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-prompt-send.html",
+          "sha256": "ea09de9eedb52a1c7e5e5111b361a47dc21f02cd64fde60a8287b4760243badb"
+        },
+        {
+          "path": "compositions/snapcn-prompt-send.runtime.js",
+          "sha256": "f53e194bdb8239ad6b91990d9813f2629a218178e3b8f16464d990e1265cdf24"
+        },
+        {
+          "path": "index.html",
+          "sha256": "ffcfc6fded21e4e3647ac4d392dafd0bb2f2520f90d572fda44a770a5e107000"
+        }
+      ],
+      "provenance": {
+        "preparedAt": "2026-10-01T03:23:44.579Z",
+        "caseSha256": "95977badd25918eff39424a024f92a50b562315e03cb0c31e220d3241916f839",
+        "sourceFiles": [
+          {
+            "path": "registry/snap-cn/prompt-send/index.tsx",
+            "sha256": "6884020104076009c7bb9b232657098e77758dfcb3e3fcdbf340414aeae03e7e"
+          },
+          {
+            "path": "registry/snap-cn/prompt-send/config.ts",
+            "sha256": "8232113ffb3efa759bd3461979dbcaa743a7d4720fc89b470a0b9e0b76fc052d"
+          }
+        ],
+        "installedHtmlBeforeApiSha256": "ddfced138d4ced51aafdb8130229cd2501cbf84581d11e9bd07885c5b2b5e4d6",
+        "registryFiles": [
+          {
+            "path": "registry/blocks/snapcn-prompt-send/snapcn-prompt-send.html",
+            "sha256": "34ea7ceb81e7810799e3822ea95247d785f2ef9a55045c3afb242652c8ed0175"
+          },
+          {
+            "path": "registry/blocks/snapcn-prompt-send/snapcn-prompt-send.runtime.js",
+            "sha256": "dc225422887e99620cd21331543c5be6d63fb797bad5e0278acdebb65d55bde8"
+          },
+          {
+            "path": "registry/blocks/snapcn-prompt-send/registry-item.json",
+            "sha256": "1e9ca35c953eb5c399f301e92d0d479ae6c6f7d38aac8e493ae005be2beb9b21"
+          }
+        ]
+      },
       "sampledHyperframesCheck": {
         "ok": true,
         "lintErrors": 0,
@@ -748,7 +1253,7 @@
       }
     },
     {
-      "capturePhase": "final",
+      "capturePhase": "after-image-readiness-and-source-text-style-fixes",
       "referenceGl": "angle-egl",
       "name": "moodboard-transparent",
       "slug": "snapcn-moodboard-reveal",
@@ -804,6 +1309,49 @@
         "license": "MIT",
         "entry": "registry/snap-cn/moodboard-reveal/index.tsx"
       },
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-moodboard-reveal.html",
+          "sha256": "40cb469bf37ffb0c6623695d8c6eed50d08e89e1806e45a7ba29c229cb956434"
+        },
+        {
+          "path": "compositions/snapcn-moodboard-reveal.runtime.js",
+          "sha256": "7b7ed437b57227dbca4de6f6542751580dcfa505198827691cee40f88f94ae1e"
+        },
+        {
+          "path": "index.html",
+          "sha256": "75bdce5609faccd7c8e7dbd3ea54372903b0211521f9b2670e667c84ac233eaf"
+        }
+      ],
+      "provenance": {
+        "preparedAt": "2026-10-01T03:23:44.685Z",
+        "caseSha256": "599ad623f248d20d93bc55f5a1e7db6cb8eacb4b5c2863642e9f0adaa9a6dafd",
+        "sourceFiles": [
+          {
+            "path": "registry/snap-cn/moodboard-reveal/index.tsx",
+            "sha256": "696053fd5c4fc19d68ffd44b666fd3a27e3ef03ecdfeb0e2416b20346b3b6cfe"
+          },
+          {
+            "path": "registry/snap-cn/moodboard-reveal/config.ts",
+            "sha256": "8f98711df9ec123daf52de5ea86572730515feb3ea5ce1760000ddededd71af1"
+          }
+        ],
+        "installedHtmlBeforeApiSha256": "cc6dcb4c62aeaa52c22ed89f80d0397f0ccff8e43fea927632e7db9f6a0da5b6",
+        "registryFiles": [
+          {
+            "path": "registry/blocks/snapcn-moodboard-reveal/snapcn-moodboard-reveal.html",
+            "sha256": "e3ad46724853d113e81efa19dbaf23be2506704228bbf6201763c684bc472844"
+          },
+          {
+            "path": "registry/blocks/snapcn-moodboard-reveal/snapcn-moodboard-reveal.runtime.js",
+            "sha256": "16277ac7915edb08d5fcfe72537006cd6669524da50e4ca3261b79c13b8a1823"
+          },
+          {
+            "path": "registry/blocks/snapcn-moodboard-reveal/registry-item.json",
+            "sha256": "181fe4318c96bf500ebb2abeb41a3149d8547b9e227ce5f7e12994e259f2a643"
+          }
+        ]
+      },
       "sampledHyperframesCheck": {
         "ok": true,
         "lintErrors": 0,
@@ -813,7 +1361,7 @@
       }
     },
     {
-      "capturePhase": "final",
+      "capturePhase": "after-image-readiness-and-source-text-style-fixes",
       "referenceGl": "angle-egl",
       "name": "roster-transparent",
       "slug": "snapcn-roster-grant",
@@ -850,7 +1398,27 @@
       "alpha": {
         "frameCount": 8,
         "mismatchedFrames": [1, 2, 3],
-        "pass": false
+        "pass": false,
+        "pixelDifferences": [
+          {
+            "sampleIndex": 1,
+            "frame": 15,
+            "mismatchedPixels": 137,
+            "maxDelta": 1
+          },
+          {
+            "sampleIndex": 2,
+            "frame": 30,
+            "mismatchedPixels": 2,
+            "maxDelta": 1
+          },
+          {
+            "sampleIndex": 3,
+            "frame": 45,
+            "mismatchedPixels": 128,
+            "maxDelta": 1
+          }
+        ]
       },
       "pass": false,
       "origin": {
@@ -861,6 +1429,49 @@
         "license": "MIT",
         "entry": "registry/snap-cn/roster-grant/index.tsx"
       },
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-roster-grant.html",
+          "sha256": "528db018e99c358b1a175b81d0d8a8b57466f3081d25410dd38b947ea51873e1"
+        },
+        {
+          "path": "compositions/snapcn-roster-grant.runtime.js",
+          "sha256": "86de59ca82a34d2a97826b0a4920e92d8b03acf1798ead199587680ce781ffad"
+        },
+        {
+          "path": "index.html",
+          "sha256": "ee9418994d88b348317ebd9e74e413c25ec68a49274744bbfbf9ec17c4d5d50d"
+        }
+      ],
+      "provenance": {
+        "preparedAt": "2026-10-01T03:23:44.786Z",
+        "caseSha256": "cd5705c6657df0850f162b47fdb2d9131bdc4e2bc8994f921c43d18f061669a3",
+        "sourceFiles": [
+          {
+            "path": "registry/snap-cn/roster-grant/index.tsx",
+            "sha256": "e6f1e05fffef24c7a536e68bc9579aee65e8be39bf461993f27d985a7e0906e5"
+          },
+          {
+            "path": "registry/snap-cn/roster-grant/config.ts",
+            "sha256": "6a2a9704b4626fbeb4f851a2856c298816900ef349775bb14b40da00cf044b36"
+          }
+        ],
+        "installedHtmlBeforeApiSha256": "4188fc5f2cb9908a249967957f20654c68b6b8cae46376b7e079817e306b1729",
+        "registryFiles": [
+          {
+            "path": "registry/blocks/snapcn-roster-grant/snapcn-roster-grant.html",
+            "sha256": "37810108b66051f7df4136045a3eed506cec7ea1d6165585927f32809fdf2d6e"
+          },
+          {
+            "path": "registry/blocks/snapcn-roster-grant/snapcn-roster-grant.runtime.js",
+            "sha256": "3baec118cf57e489154136b96d867db0a96e395fcc86f80828981d26b117a3d9"
+          },
+          {
+            "path": "registry/blocks/snapcn-roster-grant/registry-item.json",
+            "sha256": "71b171c671d5598093ce80ea44d360139747662da6841929626ff4a935ee0890"
+          }
+        ]
+      },
       "sampledHyperframesCheck": {
         "ok": false,
         "lintErrors": 0,
@@ -870,7 +1481,7 @@
       }
     },
     {
-      "capturePhase": "final",
+      "capturePhase": "after-image-readiness-and-source-text-style-fixes",
       "referenceGl": "angle-egl",
       "name": "orbit-transparent",
       "slug": "snapcn-orbit-gallery",
@@ -890,7 +1501,7 @@
         "durationInFrames": 300,
         "props": {
           "title": "A whole new universe",
-          "subtitle": "Article \u2014 The Design Process",
+          "subtitle": "Article — The Design Process",
           "buttonLabel": "Explore",
           "turns": 3,
           "spacing": 5,
@@ -911,11 +1522,11 @@
       },
       "frames": [0, 37, 74, 111, 148, 185, 222, 259, 296],
       "ssim": {
-        "mean": 0.9909062222222222,
-        "min": 0.989464,
+        "mean": 0.9999227777777779,
+        "min": 0.999866,
         "samples": [
-          1, 0.98997, 0.989815, 0.989588, 0.989464, 0.989964, 0.989922,
-          0.989806, 0.989627
+          1, 0.999895, 0.999923, 0.999903, 0.999951, 0.999916, 0.99995,
+          0.999901, 0.999866
         ],
         "minSsimThreshold": 0.95,
         "meanSsimThreshold": 0.99
@@ -923,7 +1534,57 @@
       "alpha": {
         "frameCount": 9,
         "mismatchedFrames": [1, 2, 3, 4, 5, 6, 7, 8],
-        "pass": false
+        "pass": false,
+        "pixelDifferences": [
+          {
+            "sampleIndex": 1,
+            "frame": 37,
+            "mismatchedPixels": 4321,
+            "maxDelta": 7
+          },
+          {
+            "sampleIndex": 2,
+            "frame": 74,
+            "mismatchedPixels": 2951,
+            "maxDelta": 8
+          },
+          {
+            "sampleIndex": 3,
+            "frame": 111,
+            "mismatchedPixels": 3634,
+            "maxDelta": 2
+          },
+          {
+            "sampleIndex": 4,
+            "frame": 148,
+            "mismatchedPixels": 6139,
+            "maxDelta": 9
+          },
+          {
+            "sampleIndex": 5,
+            "frame": 185,
+            "mismatchedPixels": 4742,
+            "maxDelta": 15
+          },
+          {
+            "sampleIndex": 6,
+            "frame": 222,
+            "mismatchedPixels": 3021,
+            "maxDelta": 15
+          },
+          {
+            "sampleIndex": 7,
+            "frame": 259,
+            "mismatchedPixels": 953,
+            "maxDelta": 2
+          },
+          {
+            "sampleIndex": 8,
+            "frame": 296,
+            "mismatchedPixels": 6609,
+            "maxDelta": 9
+          }
+        ]
       },
       "pass": false,
       "origin": {
@@ -934,6 +1595,49 @@
         "license": "MIT",
         "entry": "registry/snap-cn/orbit-gallery/index.tsx"
       },
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-orbit-gallery.html",
+          "sha256": "f337373afcb503912f3afa19c69ca81f378e7594ddcbdfa92026d565565854e0"
+        },
+        {
+          "path": "compositions/snapcn-orbit-gallery.runtime.js",
+          "sha256": "5f287b729f93f996b0bfa502da4ac976b433b6400b7cddf5de30190f4f6c267a"
+        },
+        {
+          "path": "index.html",
+          "sha256": "73d5d64d11c2b01d952da66085bfa1bead97931601fb3ba704315e01a607fd51"
+        }
+      ],
+      "provenance": {
+        "preparedAt": "2026-10-01T03:23:44.890Z",
+        "caseSha256": "9378c946667c331bcb48df1540f634540e74625c623ec091471521b97519d71a",
+        "sourceFiles": [
+          {
+            "path": "registry/snap-cn/orbit-gallery/index.tsx",
+            "sha256": "979b83024d10518ddd3e009675dfd4208bd80ebbe56ea584970f8a10d2a749d0"
+          },
+          {
+            "path": "registry/snap-cn/orbit-gallery/config.ts",
+            "sha256": "9861939a27bce76f41458afcbf3cb2f91a863be7723825f319e99cba74fa788e"
+          }
+        ],
+        "installedHtmlBeforeApiSha256": "b16e4881d2d914c41343ecbbc8eed0b5d681c5079f5297558f9c233035b5770f",
+        "registryFiles": [
+          {
+            "path": "registry/blocks/snapcn-orbit-gallery/snapcn-orbit-gallery.html",
+            "sha256": "8a47cbc49b0925cfc7e3b8f1c656216b20b70c864a4a386f29eca512e7cbf684"
+          },
+          {
+            "path": "registry/blocks/snapcn-orbit-gallery/snapcn-orbit-gallery.runtime.js",
+            "sha256": "0aef55672404219dea84c9df1360abbc11dba999c6c543cba22bcb1834a1fb05"
+          },
+          {
+            "path": "registry/blocks/snapcn-orbit-gallery/registry-item.json",
+            "sha256": "f461075cfdc9df838ea8675798c3679de20f505f7dab7baea30bcc8776be6dee"
+          }
+        ]
+      },
       "sampledHyperframesCheck": {
         "ok": true,
         "lintErrors": 0,
@@ -943,7 +1647,7 @@
       }
     },
     {
-      "capturePhase": "final",
+      "capturePhase": "after-image-readiness-and-source-text-style-fixes",
       "referenceGl": "angle-egl",
       "name": "card-transparent",
       "slug": "snapcn-card-rail",
@@ -960,7 +1664,7 @@
         "durationInFrames": 108,
         "props": {
           "heading": "Browse scenes",
-          "cards": "https://media.snapcn.dev/demos/posters/orbit-gallery.webp > Orbit Gallery > Scene \u00b7 300 frames > @snapcn/orbit-gallery | https://media.snapcn.dev/demos/posters/moodboard-reveal.webp > Moodboard Reveal > Scene \u00b7 150 frames > @snapcn/moodboard-reveal | https://media.snapcn.dev/demos/posters/hero-launch.webp > Hero Launch > Scene \u00b7 170 frames > @snapcn/hero-launch | https://media.snapcn.dev/demos/posters/phone-frame.webp > Phone Frame > Scene \u00b7 240 frames > @snapcn/phone-frame | https://media.snapcn.dev/demos/posters/count-grid.webp > Count Grid > Scene \u00b7 47 frames > @snapcn/count-grid | https://media.snapcn.dev/demos/posters/terminal-simulator.webp > Terminal Simulator > Scene \u00b7 200 frames > @snapcn/terminal-simulator | https://media.snapcn.dev/demos/posters/logo-flicker.webp > Logo Flicker > Scene \u00b7 100 frames > @snapcn/logo-flicker | https://media.snapcn.dev/demos/posters/laptop-frame.webp > Laptop Frame > Scene \u00b7 240 frames > @snapcn/laptop-frame | https://media.snapcn.dev/demos/posters/announce-title.webp > Announce Title > Scene \u00b7 170 frames > @snapcn/announce-title",
+          "cards": "https://media.snapcn.dev/demos/posters/orbit-gallery.webp > Orbit Gallery > Scene · 300 frames > @snapcn/orbit-gallery | https://media.snapcn.dev/demos/posters/moodboard-reveal.webp > Moodboard Reveal > Scene · 150 frames > @snapcn/moodboard-reveal | https://media.snapcn.dev/demos/posters/hero-launch.webp > Hero Launch > Scene · 170 frames > @snapcn/hero-launch | https://media.snapcn.dev/demos/posters/phone-frame.webp > Phone Frame > Scene · 240 frames > @snapcn/phone-frame | https://media.snapcn.dev/demos/posters/count-grid.webp > Count Grid > Scene · 47 frames > @snapcn/count-grid | https://media.snapcn.dev/demos/posters/terminal-simulator.webp > Terminal Simulator > Scene · 200 frames > @snapcn/terminal-simulator | https://media.snapcn.dev/demos/posters/logo-flicker.webp > Logo Flicker > Scene · 100 frames > @snapcn/logo-flicker | https://media.snapcn.dev/demos/posters/laptop-frame.webp > Laptop Frame > Scene · 240 frames > @snapcn/laptop-frame | https://media.snapcn.dev/demos/posters/announce-title.webp > Announce Title > Scene · 170 frames > @snapcn/announce-title",
           "offset": 0,
           "flicks": 3,
           "every": 30,
@@ -989,7 +1693,51 @@
       "alpha": {
         "frameCount": 9,
         "mismatchedFrames": [2, 3, 4, 5, 6, 7, 8],
-        "pass": false
+        "pass": false,
+        "pixelDifferences": [
+          {
+            "sampleIndex": 2,
+            "frame": 26,
+            "mismatchedPixels": 971,
+            "maxDelta": 255
+          },
+          {
+            "sampleIndex": 3,
+            "frame": 39,
+            "mismatchedPixels": 1398,
+            "maxDelta": 255
+          },
+          {
+            "sampleIndex": 4,
+            "frame": 52,
+            "mismatchedPixels": 2211,
+            "maxDelta": 255
+          },
+          {
+            "sampleIndex": 5,
+            "frame": 65,
+            "mismatchedPixels": 968,
+            "maxDelta": 255
+          },
+          {
+            "sampleIndex": 6,
+            "frame": 78,
+            "mismatchedPixels": 983,
+            "maxDelta": 255
+          },
+          {
+            "sampleIndex": 7,
+            "frame": 91,
+            "mismatchedPixels": 1957,
+            "maxDelta": 255
+          },
+          {
+            "sampleIndex": 8,
+            "frame": 104,
+            "mismatchedPixels": 1950,
+            "maxDelta": 255
+          }
+        ]
       },
       "pass": false,
       "origin": {
@@ -999,6 +1747,49 @@
         "config": "registry/snap-cn/card-rail/config.ts",
         "license": "MIT",
         "entry": "registry/snap-cn/card-rail/index.tsx"
+      },
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-card-rail.html",
+          "sha256": "afc4cb3a13561999f9675547442237576219bc970b9a4dedebfbbb69249f5e02"
+        },
+        {
+          "path": "compositions/snapcn-card-rail.runtime.js",
+          "sha256": "3563fa8f452276a98c9abc87243bfa684f613071f89a5b565e8dca3e40f58f0b"
+        },
+        {
+          "path": "index.html",
+          "sha256": "fc1df3d3dbaa633d502f733023bd54d0c1509d41af69e7f38eeef8bb50218f14"
+        }
+      ],
+      "provenance": {
+        "preparedAt": "2026-10-01T03:23:45.002Z",
+        "caseSha256": "beab5f728e96aa46117f97cfcff81fdbe716e52250e022d01b32d9fb88ca170b",
+        "sourceFiles": [
+          {
+            "path": "registry/snap-cn/card-rail/index.tsx",
+            "sha256": "dbd98365f62affcaf2aca5df51097d2a22d094461fd9e6739a512a9cf6483fd9"
+          },
+          {
+            "path": "registry/snap-cn/card-rail/config.ts",
+            "sha256": "e1e52caca778ecf6c2e1ee0379709dadc015018ff2711f0946d6d2689005f5e3"
+          }
+        ],
+        "installedHtmlBeforeApiSha256": "425482233659e48172505fe23690d41d78a8e396efeccd96226c2c917850f4d5",
+        "registryFiles": [
+          {
+            "path": "registry/blocks/snapcn-card-rail/snapcn-card-rail.html",
+            "sha256": "dd7ed5acc41c976bd0c56801f96683dacabf98a862563b15a184948064e1d509"
+          },
+          {
+            "path": "registry/blocks/snapcn-card-rail/snapcn-card-rail.runtime.js",
+            "sha256": "bd46986f0d2b8a3b6c81d3c1ab268b0a9f024162529a000cb8f8e1bd1a932ad3"
+          },
+          {
+            "path": "registry/blocks/snapcn-card-rail/registry-item.json",
+            "sha256": "2e1bc7bb22e939eb4ae9e41a8b131c4624f436ae477571a04ef2cfd640f7baf3"
+          }
+        ]
       },
       "sampledHyperframesCheck": {
         "ok": true,

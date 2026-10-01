@@ -7,7 +7,11 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { snapcnRuntimeSource } from "./snapcn-runtime.mjs";
 
 const result = await build({
-  stdin: { contents: snapcnRuntimeSource(), loader: "js" },
+  stdin: {
+    contents: snapcnRuntimeSource(),
+    loader: "js",
+    resolveDir: import.meta.dirname,
+  },
   bundle: true,
   platform: "node",
   format: "cjs",

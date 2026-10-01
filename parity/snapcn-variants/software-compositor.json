@@ -1,0 +1,385 @@
+{
+  "scope": "Selected-frame software GL and software compositor diagnosis; separate from the canonical hardware gate",
+  "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+  "remotionVersion": "4.0.473",
+  "hyperframesVersion": "0.8.99",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95,
+    "alpha": "exact"
+  },
+  "cases": [
+    {
+      "name": "roster-transparent",
+      "referenceGl": "swangle",
+      "referenceAdditionalFlags": [
+        "--disable-gpu-compositing",
+        "--enable-unsafe-swiftshader"
+      ],
+      "portBrowserGpu": "--no-browser-gpu",
+      "sourcePin": {
+        "repository": "https://github.com/snapcndev/snapcn",
+        "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
+        "source": "registry/snap-cn/roster-grant/index.tsx",
+        "config": "registry/snap-cn/roster-grant/config.ts",
+        "license": "MIT",
+        "entry": "registry/snap-cn/roster-grant/index.tsx"
+      },
+      "fixture": {
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "durationInFrames": 120,
+        "props": {
+          "label": "Install all",
+          "accentColor": "#3072db",
+          "theme": {
+            "background": "transparent"
+          },
+          "fontFamily": "Default",
+          "speed": 1
+        },
+        "background": "transparent"
+      },
+      "ssim": {
+        "mean": 1,
+        "min": 1,
+        "samples": [1, 1, 1, 1, 1, 1, 1, 1]
+      },
+      "alphaExact": true,
+      "frames": [
+        {
+          "frame": 0,
+          "alphaExact": true,
+          "pixels": 0,
+          "max": 0,
+          "meanDelta": 0
+        },
+        {
+          "frame": 15,
+          "alphaExact": true,
+          "pixels": 0,
+          "max": 0,
+          "meanDelta": 0
+        },
+        {
+          "frame": 30,
+          "alphaExact": true,
+          "pixels": 0,
+          "max": 0,
+          "meanDelta": 0
+        },
+        {
+          "frame": 45,
+          "alphaExact": true,
+          "pixels": 0,
+          "max": 0,
+          "meanDelta": 0
+        },
+        {
+          "frame": 60,
+          "alphaExact": true,
+          "pixels": 0,
+          "max": 0,
+          "meanDelta": 0
+        },
+        {
+          "frame": 75,
+          "alphaExact": true,
+          "pixels": 0,
+          "max": 0,
+          "meanDelta": 0
+        },
+        {
+          "frame": 90,
+          "alphaExact": true,
+          "pixels": 0,
+          "max": 0,
+          "meanDelta": 0
+        },
+        {
+          "frame": 105,
+          "alphaExact": true,
+          "pixels": 0,
+          "max": 0,
+          "meanDelta": 0
+        }
+      ],
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-roster-grant.html",
+          "sha256": "528db018e99c358b1a175b81d0d8a8b57466f3081d25410dd38b947ea51873e1"
+        },
+        {
+          "path": "compositions/snapcn-roster-grant.runtime.js",
+          "sha256": "86de59ca82a34d2a97826b0a4920e92d8b03acf1798ead199587680ce781ffad"
+        },
+        {
+          "path": "index.html",
+          "sha256": "ee9418994d88b348317ebd9e74e413c25ec68a49274744bbfbf9ec17c4d5d50d"
+        }
+      ],
+      "comparisonPassed": true
+    },
+    {
+      "name": "orbit-transparent",
+      "referenceGl": "swangle",
+      "referenceAdditionalFlags": [
+        "--disable-gpu-compositing",
+        "--enable-unsafe-swiftshader"
+      ],
+      "portBrowserGpu": "--no-browser-gpu",
+      "sourcePin": {
+        "repository": "https://github.com/snapcndev/snapcn",
+        "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
+        "source": "registry/snap-cn/orbit-gallery/index.tsx",
+        "config": "registry/snap-cn/orbit-gallery/config.ts",
+        "license": "MIT",
+        "entry": "registry/snap-cn/orbit-gallery/index.tsx"
+      },
+      "fixture": {
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "durationInFrames": 300,
+        "props": {
+          "title": "A whole new universe",
+          "subtitle": "Article — The Design Process",
+          "buttonLabel": "Explore",
+          "turns": 3,
+          "spacing": 5,
+          "spread": 7,
+          "imageSize": 172,
+          "sizeAttenuation": 2,
+          "cornerRadius": 5,
+          "orbitSeconds": 40,
+          "background": "transparent",
+          "textColor": "#FFFFFF",
+          "fontFamily": "Default",
+          "speed": 1,
+          "theme": {
+            "background": "transparent"
+          }
+        },
+        "background": "transparent"
+      },
+      "ssim": {
+        "mean": 0.9999945555555555,
+        "min": 0.999988,
+        "samples": [
+          1, 0.999999, 0.999994, 0.999988, 0.999994, 0.999997, 0.999995,
+          0.999993, 0.999991
+        ]
+      },
+      "alphaExact": false,
+      "frames": [
+        {
+          "frame": 0,
+          "alphaExact": true,
+          "pixels": 0,
+          "max": 0,
+          "meanDelta": 0
+        },
+        {
+          "frame": 37,
+          "alphaExact": false,
+          "pixels": 163,
+          "max": 20,
+          "meanDelta": 0.0005718315972222223
+        },
+        {
+          "frame": 74,
+          "alphaExact": false,
+          "pixels": 213,
+          "max": 29,
+          "meanDelta": 0.0011555989583333333
+        },
+        {
+          "frame": 111,
+          "alphaExact": false,
+          "pixels": 206,
+          "max": 39,
+          "meanDelta": 0.0015787760416666667
+        },
+        {
+          "frame": 148,
+          "alphaExact": false,
+          "pixels": 245,
+          "max": 38,
+          "meanDelta": 0.0012977430555555555
+        },
+        {
+          "frame": 185,
+          "alphaExact": false,
+          "pixels": 179,
+          "max": 21,
+          "meanDelta": 0.0006553819444444444
+        },
+        {
+          "frame": 222,
+          "alphaExact": false,
+          "pixels": 205,
+          "max": 25,
+          "meanDelta": 0.0009114583333333333
+        },
+        {
+          "frame": 259,
+          "alphaExact": false,
+          "pixels": 219,
+          "max": 24,
+          "meanDelta": 0.0010177951388888888
+        },
+        {
+          "frame": 296,
+          "alphaExact": false,
+          "pixels": 299,
+          "max": 45,
+          "meanDelta": 0.0013313802083333333
+        }
+      ],
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-orbit-gallery.html",
+          "sha256": "f337373afcb503912f3afa19c69ca81f378e7594ddcbdfa92026d565565854e0"
+        },
+        {
+          "path": "compositions/snapcn-orbit-gallery.runtime.js",
+          "sha256": "5f287b729f93f996b0bfa502da4ac976b433b6400b7cddf5de30190f4f6c267a"
+        },
+        {
+          "path": "index.html",
+          "sha256": "73d5d64d11c2b01d952da66085bfa1bead97931601fb3ba704315e01a607fd51"
+        }
+      ],
+      "comparisonPassed": false
+    },
+    {
+      "name": "card-transparent",
+      "referenceGl": "swangle",
+      "referenceAdditionalFlags": [
+        "--disable-gpu-compositing",
+        "--enable-unsafe-swiftshader"
+      ],
+      "portBrowserGpu": "--no-browser-gpu",
+      "sourcePin": {
+        "repository": "https://github.com/snapcndev/snapcn",
+        "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
+        "source": "registry/snap-cn/card-rail/index.tsx",
+        "config": "registry/snap-cn/card-rail/config.ts",
+        "license": "MIT",
+        "entry": "registry/snap-cn/card-rail/index.tsx"
+      },
+      "fixture": {
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "durationInFrames": 108,
+        "props": {
+          "heading": "Browse scenes",
+          "cards": "https://media.snapcn.dev/demos/posters/orbit-gallery.webp > Orbit Gallery > Scene · 300 frames > @snapcn/orbit-gallery | https://media.snapcn.dev/demos/posters/moodboard-reveal.webp > Moodboard Reveal > Scene · 150 frames > @snapcn/moodboard-reveal | https://media.snapcn.dev/demos/posters/hero-launch.webp > Hero Launch > Scene · 170 frames > @snapcn/hero-launch | https://media.snapcn.dev/demos/posters/phone-frame.webp > Phone Frame > Scene · 240 frames > @snapcn/phone-frame | https://media.snapcn.dev/demos/posters/count-grid.webp > Count Grid > Scene · 47 frames > @snapcn/count-grid | https://media.snapcn.dev/demos/posters/terminal-simulator.webp > Terminal Simulator > Scene · 200 frames > @snapcn/terminal-simulator | https://media.snapcn.dev/demos/posters/logo-flicker.webp > Logo Flicker > Scene · 100 frames > @snapcn/logo-flicker | https://media.snapcn.dev/demos/posters/laptop-frame.webp > Laptop Frame > Scene · 240 frames > @snapcn/laptop-frame | https://media.snapcn.dev/demos/posters/announce-title.webp > Announce Title > Scene · 170 frames > @snapcn/announce-title",
+          "offset": 0,
+          "flicks": 3,
+          "every": 30,
+          "from": 0,
+          "backdrop": "",
+          "mode": "light",
+          "fontFamily": "Default",
+          "speed": 1,
+          "theme": {
+            "background": "transparent"
+          }
+        },
+        "background": "transparent"
+      },
+      "ssim": {
+        "mean": 0.9928187777777779,
+        "min": 0.987466,
+        "samples": [
+          1, 0.999791, 0.992318, 0.990273, 0.987466, 0.992618, 0.995834,
+          0.988506, 0.988563
+        ]
+      },
+      "alphaExact": false,
+      "frames": [
+        {
+          "frame": 0,
+          "alphaExact": true,
+          "pixels": 0,
+          "max": 0,
+          "meanDelta": 0
+        },
+        {
+          "frame": 13,
+          "alphaExact": true,
+          "pixels": 0,
+          "max": 0,
+          "meanDelta": 0
+        },
+        {
+          "frame": 26,
+          "alphaExact": false,
+          "pixels": 1021,
+          "max": 254,
+          "meanDelta": 0.12635308159722222
+        },
+        {
+          "frame": 39,
+          "alphaExact": false,
+          "pixels": 1441,
+          "max": 255,
+          "meanDelta": 0.18137803819444445
+        },
+        {
+          "frame": 52,
+          "alphaExact": false,
+          "pixels": 2276,
+          "max": 255,
+          "meanDelta": 0.28143771701388887
+        },
+        {
+          "frame": 65,
+          "alphaExact": false,
+          "pixels": 1005,
+          "max": 254,
+          "meanDelta": 0.12663953993055554
+        },
+        {
+          "frame": 78,
+          "alphaExact": false,
+          "pixels": 1032,
+          "max": 254,
+          "meanDelta": 0.12761827256944444
+        },
+        {
+          "frame": 91,
+          "alphaExact": false,
+          "pixels": 2019,
+          "max": 255,
+          "meanDelta": 0.2553754340277778
+        },
+        {
+          "frame": 104,
+          "alphaExact": false,
+          "pixels": 2026,
+          "max": 255,
+          "meanDelta": 0.25537217881944446
+        }
+      ],
+      "installedFiles": [
+        {
+          "path": "compositions/snapcn-card-rail.html",
+          "sha256": "afc4cb3a13561999f9675547442237576219bc970b9a4dedebfbbb69249f5e02"
+        },
+        {
+          "path": "compositions/snapcn-card-rail.runtime.js",
+          "sha256": "3563fa8f452276a98c9abc87243bfa684f613071f89a5b565e8dca3e40f58f0b"
+        },
+        {
+          "path": "index.html",
+          "sha256": "fc1df3d3dbaa633d502f733023bd54d0c1509d41af69e7f38eeef8bb50218f14"
+        }
+      ],
+      "comparisonPassed": false
+    }
+  ]
+}

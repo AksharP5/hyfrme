@@ -1,0 +1,612 @@
+{
+  "scope": "Selected nondefault CSS-color inputs; separate from canonical full-duration verification.",
+  "capture": {
+    "remotionVersion": "4.0.473",
+    "hyperframesVersion": "0.8.99",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "referenceGl": "angle-egl",
+    "hyperframesBrowserGpu": true
+  },
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95,
+    "alpha": "exact"
+  },
+  "cases": [
+    {
+      "name": "moodboard-named",
+      "slug": "snapcn-moodboard-reveal",
+      "origin": {
+        "repository": "https://github.com/snapcndev/snapcn",
+        "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
+        "source": "registry/snap-cn/moodboard-reveal/index.tsx",
+        "config": "registry/snap-cn/moodboard-reveal/config.ts",
+        "license": "MIT",
+        "entry": "registry/snap-cn/moodboard-reveal/index.tsx"
+      },
+      "settings": {
+        "darkColor": "navy",
+        "lightColor": "white"
+      },
+      "fixture": {
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "durationInFrames": 150,
+        "props": {
+          "leadIn": "that lets you",
+          "emphasis": "filter",
+          "tailIn": "out AI.",
+          "heroImage": "/showcase-assets/821d815affa6496c39cbdeeec7a84603.jpg",
+          "darkColor": "navy",
+          "lightColor": "white",
+          "fontFamily": "Default",
+          "speed": 1
+        },
+        "background": "#0A0A0A"
+      },
+      "frames": [88, 92, 96, 100, 104],
+      "expectedColors": [
+        {
+          "frame": 88,
+          "seconds": 2.933333333333333,
+          "progress": 0,
+          "rgba": "rgba(0, 0, 128, 1)"
+        },
+        {
+          "frame": 92,
+          "seconds": 3.066666666666667,
+          "progress": 0.25,
+          "rgba": "rgba(64, 64, 160, 1)"
+        },
+        {
+          "frame": 96,
+          "seconds": 3.2,
+          "progress": 0.5,
+          "rgba": "rgba(128, 128, 192, 1)"
+        },
+        {
+          "frame": 100,
+          "seconds": 3.3333333333333335,
+          "progress": 0.75,
+          "rgba": "rgba(191, 191, 223, 1)"
+        },
+        {
+          "frame": 104,
+          "seconds": 3.466666666666667,
+          "progress": 1,
+          "rgba": "rgba(255, 255, 255, 1)"
+        }
+      ],
+      "ssim": {
+        "mean": 0.9999638000000001,
+        "min": 0.999836,
+        "samples": [0.999836, 0.999985, 0.999998, 1, 1]
+      },
+      "alpha": {
+        "frameCount": 5,
+        "mismatchedFrames": [],
+        "pass": true
+      },
+      "sampledHyperframesCheck": {
+        "ok": true,
+        "lintErrors": 0,
+        "runtimeErrors": 0,
+        "layoutErrors": 0,
+        "contrastErrors": 0,
+        "findings": []
+      },
+      "comparisonPassed": true
+    },
+    {
+      "name": "moodboard-hsl",
+      "slug": "snapcn-moodboard-reveal",
+      "origin": {
+        "repository": "https://github.com/snapcndev/snapcn",
+        "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
+        "source": "registry/snap-cn/moodboard-reveal/index.tsx",
+        "config": "registry/snap-cn/moodboard-reveal/config.ts",
+        "license": "MIT",
+        "entry": "registry/snap-cn/moodboard-reveal/index.tsx"
+      },
+      "settings": {
+        "darkColor": "hsl(240, 100%, 50%)",
+        "lightColor": "hsl(0, 100%, 50%)"
+      },
+      "fixture": {
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "durationInFrames": 150,
+        "props": {
+          "leadIn": "that lets you",
+          "emphasis": "filter",
+          "tailIn": "out AI.",
+          "heroImage": "/showcase-assets/821d815affa6496c39cbdeeec7a84603.jpg",
+          "darkColor": "hsl(240, 100%, 50%)",
+          "lightColor": "hsl(0, 100%, 50%)",
+          "fontFamily": "Default",
+          "speed": 1
+        },
+        "background": "#0A0A0A"
+      },
+      "frames": [88, 92, 96, 100, 104],
+      "expectedColors": [
+        {
+          "frame": 88,
+          "seconds": 2.933333333333333,
+          "progress": 0,
+          "rgba": "rgba(0, 0, 255, 1)"
+        },
+        {
+          "frame": 92,
+          "seconds": 3.066666666666667,
+          "progress": 0.25,
+          "rgba": "rgba(64, 0, 191, 1)"
+        },
+        {
+          "frame": 96,
+          "seconds": 3.2,
+          "progress": 0.5,
+          "rgba": "rgba(128, 0, 128, 1)"
+        },
+        {
+          "frame": 100,
+          "seconds": 3.3333333333333335,
+          "progress": 0.75,
+          "rgba": "rgba(191, 0, 64, 1)"
+        },
+        {
+          "frame": 104,
+          "seconds": 3.466666666666667,
+          "progress": 1,
+          "rgba": "rgba(255, 0, 0, 1)"
+        }
+      ],
+      "ssim": {
+        "mean": 0.9999378,
+        "min": 0.999764,
+        "samples": [0.999764, 0.999933, 0.999992, 1, 1]
+      },
+      "alpha": {
+        "frameCount": 5,
+        "mismatchedFrames": [],
+        "pass": true
+      },
+      "sampledHyperframesCheck": {
+        "ok": true,
+        "lintErrors": 0,
+        "runtimeErrors": 0,
+        "layoutErrors": 0,
+        "contrastErrors": 0,
+        "findings": []
+      },
+      "comparisonPassed": true
+    },
+    {
+      "name": "moodboard-alpha",
+      "slug": "snapcn-moodboard-reveal",
+      "origin": {
+        "repository": "https://github.com/snapcndev/snapcn",
+        "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
+        "source": "registry/snap-cn/moodboard-reveal/index.tsx",
+        "config": "registry/snap-cn/moodboard-reveal/config.ts",
+        "license": "MIT",
+        "entry": "registry/snap-cn/moodboard-reveal/index.tsx"
+      },
+      "settings": {
+        "darkColor": "rgba(200, 100, 50, 0.3)",
+        "lightColor": "transparent"
+      },
+      "fixture": {
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "durationInFrames": 150,
+        "props": {
+          "leadIn": "that lets you",
+          "emphasis": "filter",
+          "tailIn": "out AI.",
+          "heroImage": "/showcase-assets/821d815affa6496c39cbdeeec7a84603.jpg",
+          "darkColor": "rgba(200, 100, 50, 0.3)",
+          "lightColor": "transparent",
+          "fontFamily": "Default",
+          "speed": 1
+        },
+        "background": "#0A0A0A"
+      },
+      "frames": [88, 92, 96, 100, 104],
+      "expectedColors": [
+        {
+          "frame": 88,
+          "seconds": 2.933333333333333,
+          "progress": 0,
+          "rgba": "rgba(200, 100, 50, 0.302)"
+        },
+        {
+          "frame": 92,
+          "seconds": 3.066666666666667,
+          "progress": 0.25,
+          "rgba": "rgba(150, 75, 38, 0.226)"
+        },
+        {
+          "frame": 96,
+          "seconds": 3.2,
+          "progress": 0.5,
+          "rgba": "rgba(100, 50, 25, 0.151)"
+        },
+        {
+          "frame": 100,
+          "seconds": 3.3333333333333335,
+          "progress": 0.75,
+          "rgba": "rgba(50, 25, 13, 0.075)"
+        },
+        {
+          "frame": 104,
+          "seconds": 3.466666666666667,
+          "progress": 1,
+          "rgba": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "ssim": {
+        "mean": 0.9999649999999999,
+        "min": 0.999849,
+        "samples": [0.999849, 0.999978, 0.999998, 1, 1]
+      },
+      "alpha": {
+        "frameCount": 5,
+        "mismatchedFrames": [],
+        "pass": true
+      },
+      "sampledHyperframesCheck": {
+        "ok": true,
+        "lintErrors": 0,
+        "runtimeErrors": 0,
+        "layoutErrors": 0,
+        "contrastErrors": 0,
+        "findings": []
+      },
+      "comparisonPassed": true
+    },
+    {
+      "name": "highlight-color-named",
+      "slug": "snapcn-text-highlight",
+      "origin": {
+        "repository": "https://github.com/snapcndev/snapcn",
+        "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+        "source": "registry/snap-cn/text-highlight/index.tsx",
+        "config": "registry/snap-cn/text-highlight/config.ts",
+        "license": "MIT",
+        "entry": "registry/snap-cn/text-highlight/index.tsx"
+      },
+      "settings": {
+        "preset": "color",
+        "baseColor": "navy",
+        "highlightedTextColor": "white"
+      },
+      "fixture": {
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "durationInFrames": 56,
+        "props": {
+          "before": "Powered by ",
+          "highlight": "Northwind",
+          "after": "",
+          "preset": "color",
+          "baseColor": "navy",
+          "accentColor": "#266DF0",
+          "highlightedTextColor": "white",
+          "replaceWith": "Acme",
+          "startAt": 6,
+          "drawDuration": 14,
+          "thickness": 4,
+          "shineColor": "#FAFAFA",
+          "logoSrc": "",
+          "logoScale": 1.05,
+          "spinTurns": 1,
+          "holdDuration": 12,
+          "rushDuration": 24,
+          "rushScale": 42,
+          "rushDrift": 0.55,
+          "swingOut": 0.25,
+          "coverColor": "#266DF0",
+          "fontSize": 56,
+          "fontWeight": "600",
+          "fontFamily": "Default",
+          "speed": 1
+        },
+        "background": "#FAFAFA"
+      },
+      "frames": [6, 13, 20],
+      "expectedColors": [
+        {
+          "frame": 6,
+          "seconds": 0.2,
+          "progress": 0,
+          "rgba": "rgba(0, 0, 128, 1)"
+        },
+        {
+          "frame": 13,
+          "seconds": 0.43333333333333335,
+          "progress": 0.5,
+          "rgba": "rgba(128, 128, 192, 1)"
+        },
+        {
+          "frame": 20,
+          "seconds": 0.6666666666666666,
+          "progress": 1,
+          "rgba": "rgba(255, 255, 255, 1)"
+        }
+      ],
+      "ssim": {
+        "mean": 1,
+        "min": 1,
+        "samples": [1, 1, 1]
+      },
+      "alpha": {
+        "frameCount": 3,
+        "mismatchedFrames": [],
+        "pass": true
+      },
+      "sampledHyperframesCheck": {
+        "ok": true,
+        "lintErrors": 0,
+        "runtimeErrors": 0,
+        "layoutErrors": 0,
+        "contrastErrors": 0,
+        "findings": []
+      },
+      "comparisonPassed": true
+    },
+    {
+      "name": "highlight-marker-hsl",
+      "slug": "snapcn-text-highlight",
+      "origin": {
+        "repository": "https://github.com/snapcndev/snapcn",
+        "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+        "source": "registry/snap-cn/text-highlight/index.tsx",
+        "config": "registry/snap-cn/text-highlight/config.ts",
+        "license": "MIT",
+        "entry": "registry/snap-cn/text-highlight/index.tsx"
+      },
+      "settings": {
+        "preset": "marker",
+        "baseColor": "hsl(240, 100%, 50%)",
+        "highlightedTextColor": "hsl(0, 100%, 50%)"
+      },
+      "fixture": {
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "durationInFrames": 56,
+        "props": {
+          "before": "Powered by ",
+          "highlight": "Northwind",
+          "after": "",
+          "preset": "marker",
+          "baseColor": "hsl(240, 100%, 50%)",
+          "accentColor": "#266DF0",
+          "highlightedTextColor": "hsl(0, 100%, 50%)",
+          "replaceWith": "Acme",
+          "startAt": 6,
+          "drawDuration": 14,
+          "thickness": 4,
+          "shineColor": "#FAFAFA",
+          "logoSrc": "",
+          "logoScale": 1.05,
+          "spinTurns": 1,
+          "holdDuration": 12,
+          "rushDuration": 24,
+          "rushScale": 42,
+          "rushDrift": 0.55,
+          "swingOut": 0.25,
+          "coverColor": "#266DF0",
+          "fontSize": 56,
+          "fontWeight": "600",
+          "fontFamily": "Default",
+          "speed": 1
+        },
+        "background": "#FAFAFA"
+      },
+      "frames": [8, 10, 12, 14],
+      "expectedColors": [
+        {
+          "frame": 8,
+          "seconds": 0.26666666666666666,
+          "progress": 0,
+          "rgba": "rgba(0, 0, 255, 1)"
+        },
+        {
+          "frame": 10,
+          "seconds": 0.3333333333333333,
+          "progress": 0.030963904438332843,
+          "rgba": "rgba(8, 0, 247, 1)"
+        },
+        {
+          "frame": 12,
+          "seconds": 0.4,
+          "progress": 0.6932144471562772,
+          "rgba": "rgba(177, 0, 78, 1)"
+        },
+        {
+          "frame": 14,
+          "seconds": 0.4666666666666667,
+          "progress": 1,
+          "rgba": "rgba(255, 0, 0, 1)"
+        }
+      ],
+      "ssim": {
+        "mean": 1,
+        "min": 1,
+        "samples": [1, 1, 1, 1]
+      },
+      "alpha": {
+        "frameCount": 4,
+        "mismatchedFrames": [],
+        "pass": true
+      },
+      "sampledHyperframesCheck": {
+        "ok": true,
+        "lintErrors": 0,
+        "runtimeErrors": 0,
+        "layoutErrors": 0,
+        "contrastErrors": 0,
+        "findings": []
+      },
+      "comparisonPassed": true
+    },
+    {
+      "name": "highlight-underline-alpha",
+      "slug": "snapcn-text-highlight",
+      "origin": {
+        "repository": "https://github.com/snapcndev/snapcn",
+        "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+        "source": "registry/snap-cn/text-highlight/index.tsx",
+        "config": "registry/snap-cn/text-highlight/config.ts",
+        "license": "MIT",
+        "entry": "registry/snap-cn/text-highlight/index.tsx"
+      },
+      "settings": {
+        "preset": "underline",
+        "baseColor": "rgba(200, 100, 50, 0.3)",
+        "highlightedTextColor": "transparent"
+      },
+      "fixture": {
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "durationInFrames": 56,
+        "props": {
+          "before": "Powered by ",
+          "highlight": "Northwind",
+          "after": "",
+          "preset": "underline",
+          "baseColor": "rgba(200, 100, 50, 0.3)",
+          "accentColor": "#266DF0",
+          "highlightedTextColor": "transparent",
+          "replaceWith": "Acme",
+          "startAt": 6,
+          "drawDuration": 14,
+          "thickness": 4,
+          "shineColor": "#FAFAFA",
+          "logoSrc": "",
+          "logoScale": 1.05,
+          "spinTurns": 1,
+          "holdDuration": 12,
+          "rushDuration": 24,
+          "rushScale": 42,
+          "rushDrift": 0.55,
+          "swingOut": 0.25,
+          "coverColor": "#266DF0",
+          "fontSize": 56,
+          "fontWeight": "600",
+          "fontFamily": "Default",
+          "speed": 1
+        },
+        "background": "#FAFAFA"
+      },
+      "frames": [8, 10, 12, 14],
+      "expectedColors": [
+        {
+          "frame": 8,
+          "seconds": 0.26666666666666666,
+          "progress": 0,
+          "rgba": "rgba(200, 100, 50, 0.302)"
+        },
+        {
+          "frame": 10,
+          "seconds": 0.3333333333333333,
+          "progress": 0.030963904438332843,
+          "rgba": "rgba(194, 97, 48, 0.293)"
+        },
+        {
+          "frame": 12,
+          "seconds": 0.4,
+          "progress": 0.6932144471562772,
+          "rgba": "rgba(61, 31, 15, 0.093)"
+        },
+        {
+          "frame": 14,
+          "seconds": 0.4666666666666667,
+          "progress": 1,
+          "rgba": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "ssim": {
+        "mean": 1,
+        "min": 1,
+        "samples": [1, 1, 1, 1]
+      },
+      "alpha": {
+        "frameCount": 4,
+        "mismatchedFrames": [],
+        "pass": true
+      },
+      "sampledHyperframesCheck": {
+        "ok": false,
+        "lintErrors": 0,
+        "runtimeErrors": 0,
+        "layoutErrors": 1,
+        "contrastErrors": 7,
+        "findings": [
+          {
+            "code": "text_not_painted",
+            "selector": "#snapcn-text-highlight-source-root > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+            "text": "Northwind"
+          },
+          {
+            "code": "contrast_aa_failure",
+            "selector": "div > div > div > div > div > div > span",
+            "text": "Powered by Northwind",
+            "ratio": 1.44,
+            "requiredRatio": 3
+          },
+          {
+            "code": "contrast_aa_failure",
+            "selector": "div > div > div > div > div > div > span > span > span:nth-of-type(1)",
+            "text": "Northwind",
+            "ratio": 1.44,
+            "requiredRatio": 3
+          },
+          {
+            "code": "contrast_aa_failure",
+            "selector": "div > div > div > div > div > div > span",
+            "text": "Powered by Northwind",
+            "ratio": 1.44,
+            "requiredRatio": 3
+          },
+          {
+            "code": "contrast_aa_failure",
+            "selector": "div > div > div > div > div > div > span > span > span:nth-of-type(1)",
+            "text": "Northwind",
+            "ratio": 1.44,
+            "requiredRatio": 3
+          },
+          {
+            "code": "contrast_aa_failure",
+            "selector": "div > div > div > div > div > div > span",
+            "text": "Powered by Northwind",
+            "ratio": 1.44,
+            "requiredRatio": 3
+          },
+          {
+            "code": "contrast_aa_failure",
+            "selector": "div > div > div > div > div > div > span > span > span:nth-of-type(1)",
+            "text": "Northwind",
+            "ratio": 1.2,
+            "requiredRatio": 3
+          },
+          {
+            "code": "contrast_aa_failure",
+            "selector": "div > div > div > div > div > div > span",
+            "text": "Powered by Northwind",
+            "ratio": 1.44,
+            "requiredRatio": 3
+          }
+        ]
+      },
+      "comparisonPassed": true
+    }
+  ]
+}

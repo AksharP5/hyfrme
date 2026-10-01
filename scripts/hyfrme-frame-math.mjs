@@ -72,6 +72,22 @@ const interpolate = (input, inputRange, outputRange, options = {}) => {
 `;
 
 export const frameMathSource = `${interpolationSource}
+import {
+  converter as hyfrmeColorConverter,
+  getMode as hyfrmeColorMode,
+  modeHsl,
+  modeHwb,
+  modeLab,
+  modeLab65,
+  modeLch,
+  modeLch65,
+  modeOklab,
+  modeOklch,
+  modeRgb,
+  parse as hyfrmeCssColor,
+  useMode as hyfrmeUseColorMode,
+} from "culori/fn";
+
 const hyfrmeCubicCoordinate = (time, firstControl, secondControl) => {
   const inverse = 1 - time;
   return 3 * inverse * inverse * time * firstControl +
@@ -159,25 +175,38 @@ class Easing {
   static bezier(x1, y1, x2, y2) { return hyfrmeBezier(x1, y1, x2, y2); }
 }
 
+const hyfrmeColors = /* @__PURE__ */ (() => {
+  [modeRgb, modeHsl, modeHwb, modeLab, modeLab65, modeLch, modeLch65, modeOklab, modeOklch].forEach(hyfrmeUseColorMode);
+  return {parse: hyfrmeCssColor, mode: hyfrmeColorMode, toRgb: hyfrmeColorConverter("rgb"), cache: new Map()};
+})();
+
 const hyfrmeParseColor = (color) => {
-  const value = String(color).trim();
-  if (value.toLowerCase() === "transparent") return [0, 0, 0, 0];
-  if (value.startsWith("#")) {
-    const hex = value.slice(1);
-    const expanded = hex.length <= 4
-      ? [...hex].map((character) => character + character).join("")
-      : hex;
-    const opaque = expanded.length === 6 ? expanded + "ff" : expanded;
-    return [
-      Number.parseInt(opaque.slice(0, 2), 16),
-      Number.parseInt(opaque.slice(2, 4), 16),
-      Number.parseInt(opaque.slice(4, 6), 16),
-      Number.parseInt(opaque.slice(6, 8), 16) / 255,
-    ];
+  const value = String(color).trim().toLowerCase();
+  const cached = hyfrmeColors.cache.get(value);
+  if (cached) return cached;
+  const parsed = hyfrmeColors.parse(value);
+  if (!parsed) throw new Error(\`Unsupported Hyfrme color: \${color}\`);
+  const normalized = {...parsed};
+  for (const channel of hyfrmeColors.mode(parsed.mode).channels) {
+    normalized[channel] ??= channel === "alpha" ? 1 : 0;
   }
-  const channels = value.match(/[\\d.]+/g)?.map(Number);
-  if (!channels || channels.length < 3) throw new Error(\`Unsupported Hyfrme color: \${color}\`);
-  return [channels[0], channels[1], channels[2], channels[3] ?? 1];
+  // Match the pinned source's D65 interpretation of Lab/LCH.
+  if (parsed.mode === "lab") normalized.mode = "lab65";
+  if (parsed.mode === "lch") normalized.mode = "lch65";
+  const rgb = hyfrmeColors.toRgb(normalized);
+  const byte = (channel) => Math.round(Math.max(0, Math.min(1, channel)) * 255);
+  const channels = [byte(rgb.r), byte(rgb.g), byte(rgb.b), byte(rgb.alpha) / 255];
+  const legacy = /^rgba?\\(/.test(value) && value.includes(",")
+    ? value.slice(value.indexOf("(") + 1, -1).split(",").slice(0, 3)
+    : [];
+  // The pinned source truncates numeric channels in comma-separated RGB.
+  if (legacy.length === 3 && legacy.every((channel) => /^[-+]?\\d*\\.?\\d+$/.test(channel.trim()))) {
+    for (let index = 0; index < 3; index += 1) {
+      channels[index] = Math.max(0, Math.min(255, Number.parseInt(legacy[index], 10) || 0));
+    }
+  }
+  hyfrmeColors.cache.set(value, channels);
+  return channels;
 };
 
 const interpolateColors = (input, inputRange, outputRange) => {
@@ -185,7 +214,7 @@ const interpolateColors = (input, inputRange, outputRange) => {
   const red = Math.round(interpolate(input, inputRange, colors.map((color) => color[0]), {extrapolateLeft: "clamp", extrapolateRight: "clamp"}));
   const green = Math.round(interpolate(input, inputRange, colors.map((color) => color[1]), {extrapolateLeft: "clamp", extrapolateRight: "clamp"}));
   const blue = Math.round(interpolate(input, inputRange, colors.map((color) => color[2]), {extrapolateLeft: "clamp", extrapolateRight: "clamp"}));
-  const alpha = interpolate(input, inputRange, colors.map((color) => color[3]), {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
+  const alpha = Number(interpolate(input, inputRange, colors.map((color) => color[3]), {extrapolateLeft: "clamp", extrapolateRight: "clamp"}).toFixed(3));
   return \`rgba(\${red}, \${green}, \${blue}, \${alpha})\`;
 };
 

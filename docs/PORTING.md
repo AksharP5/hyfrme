@@ -307,7 +307,22 @@ and Geist Mono sources make the fixtures independent of live font downloads. Exa
 source-palette checker findings remain recorded for Code Morph and Ring Text.
 
 All 326 public Remocn visual items are included. Snapcn's live public registry has
-46 visual items, all included; private Pro-only source remains outside the public import.
+47 visual items, all included; private Pro-only source remains outside the public import.
+
+Selection Snap's source easing overshoots its final padding at frames 22–27.
+The resulting negative vertical padding is invalid CSS: the browser retains an
+earlier style, so seeking directly from frame zero leaves a loose selection box
+around the word. Its adapter caps only the padding progress at 1, keeping the box
+tight on direct and backward seeks. The pinned source, easing, text, and badge
+inputs remain unchanged. All 75 lossless frames pass with mean SSIM 0.994733,
+minimum 0.980470, exact alpha, and zero full-check errors.
+
+Spring Settle packages the same variable Geist font as the reference, preserving
+both its semibold title and regular subtitle. A semibold-only file previously
+made the subtitle heavier and wider. All 213 installed frames now pass with
+SSIM 1.000000 at six-decimal precision and exact alpha, with zero full-check
+errors. A decoded RGBA comparison finds 37 frames with differences of at most
+one channel value, so this result is not a claim of pixel equality.
 
 The source manifest is `assets/remocn-additions-2026-09-28/manifest.json`.
 Reproduce the additions with:
@@ -322,13 +337,13 @@ node scripts/verify-text-ports.mjs --lossless --only echo-stack,glyph-anatomy,ou
 
 ## Snapcn workflow
 
-All 46 pinned Snapcn visual components are verified across 6,433 frames. The
-frame-weighted mean SSIM is 0.998592; every component averages at least 0.990681,
-and the lowest individual frame scores 0.957827. Together with the 326 Remocn
-ports, this makes 372 upstream visual components.
+All 47 pinned Snapcn visual components are verified across 6,569 frames. The
+frame-weighted mean SSIM is 0.999827, and the lowest individual frame scores
+0.984636. Together with the 326 Remocn ports, this makes 373 upstream visual
+components.
 
-Thirty-eight Snapcn blocks pass the full HyperFrames check. Announce Title,
-Answer Highlight, Follower Rush, Logo Drift, Roster Grant, Status Cycle, Word
+Thirty-nine Snapcn blocks pass the full HyperFrames check. Announce Title,
+Answer Highlight, Follower Rush, Logo Drift, Prompt Zoom, Status Cycle, Word
 Wheel, and Wordmark Cut retain narrowly reviewed findings from source contrast,
 text layout, gradient text, or photo overlays. Their original appearance is
 preserved; exact findings and reasons remain in the parity manifests and
