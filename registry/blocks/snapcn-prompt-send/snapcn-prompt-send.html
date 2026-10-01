@@ -81,6 +81,8 @@
 @font-face{font-family:"Segoe UI Symbol";src:local("Segoe UI Symbol")}
 @font-face{font-family:"SFMono-Regular";src:local("SFMono-Regular")}
 }
+      /* Preserve the source's inherited text styles against host defaults. */
+      #snapcn-prompt-send-source-root, #snapcn-prompt-send-source-root :where(*) {text-rendering:revert-layer;}
       #snapcn-prompt-send, #snapcn-prompt-send * {box-sizing:border-box;}
       html, body {margin:0;width:1280px;height:720px;overflow:hidden;}
       #snapcn-prompt-send {position:relative;width:1280px;height:720px;}

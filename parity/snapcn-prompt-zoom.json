@@ -35,30 +35,51 @@
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "ba8963d7bb406b302f5507253d4c03112f22b0951351032f735f274f09a08c30",
+  "fingerprint": "af51e4054bc0c90e62542cce245b7eed2853639c5eb1eb1c95f968e62df39b6a",
   "thresholds": {
     "meanSsim": 0.99,
     "minSsim": 0.95
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.9994331444444426,
-    "minSsim": 0.998384,
-    "p05Ssim": 0.998384,
-    "p95Ssim": 0.999962,
-    "pass": true,
+    "meanSsim": 0.9999966666666656,
+    "minSsim": 0.999995,
+    "p05Ssim": 0.999995,
+    "p95Ssim": 1,
     "alpha": {
       "frameCount": 90,
       "mismatchedFrames": [],
       "pass": true
-    }
+    },
+    "pass": true
   },
   "checks": {
-    "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframes": "full check reported 1 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "snapcn-prompt-zoom",
+        "origin": {
+          "repository": "https://github.com/snapcndev/snapcn",
+          "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+          "source": "registry/snap-cn/prompt-zoom/index.tsx",
+          "config": "registry/snap-cn/prompt-zoom/config.ts",
+          "license": "MIT",
+          "entry": "registry/snap-cn/prompt-zoom/index.tsx"
+        },
+        "finding": {
+          "code": "text_box_overflow",
+          "selector": "#snapcn-prompt-zoom-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+          "text": "Up late?",
+          "containerSelector": "#root"
+        },
+        "reason": "The pinned source intentionally cuts to scale(2.547) at its focal point, cropping the greeting beyond the canvas (source lines 350–358). All 90 lossless frames have exact alpha, mean SSIM 0.999997 and minimum 0.999995. Preserve this authored crop and retain the full layout finding in the audit."
+      }
+    ],
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.473",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {

@@ -9,26 +9,27 @@ export async function snapcnSources() {
   const fixtures = JSON.parse(
     await readFile(resolve(root, "catalog/snapcn-fixtures.json"), "utf8"),
   );
-  const { commit: baseCommit } = JSON.parse(
+  const inventory = JSON.parse(
     await readFile(resolve(root, "catalog/snapcn-upstream.json"), "utf8"),
   );
+  const { commit: baseCommit } = inventory;
   const sources = new Map();
-  for (const { slug, origin } of fixtures) {
-    const key = `${origin.repository}@${origin.commit}`;
+  function sourceFor({ repository, commit }) {
+    const key = `${repository}@${commit}`;
     if (!sources.has(key))
       sources.set(key, {
-        repository: origin.repository,
-        commit: origin.commit,
+        repository,
+        commit,
         directory: resolve(
           root,
-          origin.commit === baseCommit
-            ? ".work/snapcn"
-            : `.work/snapcn-${origin.commit}`,
+          commit === baseCommit ? ".work/snapcn" : `.work/snapcn-${commit}`,
         ),
         slugs: [],
       });
-    sources.get(key).slugs.push(slug);
+    return sources.get(key);
   }
+  for (const { slug, origin } of fixtures) sourceFor(origin).slugs.push(slug);
+  sourceFor(inventory.publishedAudit ?? inventory).previewCss = true;
   return [...sources.values()];
 }
 
@@ -51,7 +52,8 @@ if (
   }
   const only =
     onlyIndex === -1 ? null : new Set(args[onlyIndex + 1].split(","));
-  const sources = (await snapcnSources())
+  const allSources = await snapcnSources();
+  const sources = allSources
     .map((source) => ({
       ...source,
       slugs: source.slugs.filter((slug) => !only || only.has(slug)),
@@ -75,13 +77,22 @@ if (
       onlyIndex === -1 || (index !== onlyIndex && index !== onlyIndex + 1),
   );
   if (task === "generate") {
+    const source = allSources.find((source) => source.previewCss);
     const css = spawnSync(
       process.execPath,
       [resolve(root, "scripts/generate-snapcn-reference.mjs"), "--css-only"],
       {
         cwd: root,
         stdio: "inherit",
-        env: process.env,
+        env: {
+          ...process.env,
+          SNAPCN_SOURCE:
+            process.env.SNAPCN_SOURCE &&
+            sources[0].repository === source.repository &&
+            sources[0].commit === source.commit
+              ? process.env.SNAPCN_SOURCE
+              : source.directory,
+        },
       },
     );
     if (css.error) throw css.error;

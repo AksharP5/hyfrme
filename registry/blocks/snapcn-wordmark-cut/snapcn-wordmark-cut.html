@@ -81,6 +81,8 @@
 @font-face{font-family:"Segoe UI Symbol";src:local("Segoe UI Symbol")}
 @font-face{font-family:"SFMono-Regular";src:local("SFMono-Regular")}
 }
+      /* Preserve the source's inherited text styles against host defaults. */
+      #snapcn-wordmark-cut-source-root, #snapcn-wordmark-cut-source-root :where(*) {text-rendering:revert-layer;}
       #snapcn-wordmark-cut, #snapcn-wordmark-cut * {box-sizing:border-box;}
       html, body {margin:0;width:1280px;height:720px;overflow:hidden;}
       #snapcn-wordmark-cut {position:relative;width:1280px;height:720px;}

@@ -1,6 +1,6 @@
 [hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
 {
-  "ok": true,
+  "ok": false,
   "strict": false,
   "lint": {
     "ok": true,
@@ -18,11 +18,53 @@
     "findings": []
   },
   "layout": {
-    "ok": true,
-    "errorCount": 0,
+    "ok": false,
+    "errorCount": 1,
     "warningCount": 3,
     "infoCount": 6,
     "findings": [
+      {
+        "code": "text_box_overflow",
+        "severity": "error",
+        "time": 1.167,
+        "selector": "#snapcn-prompt-zoom-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 931.8,
+          "top": -3.74,
+          "right": 1383.78,
+          "bottom": 129.08,
+          "width": 451.98,
+          "height": 132.82
+        },
+        "containerSelector": "#root",
+        "text": "Up late?",
+        "fixHint": "Text is 452px x 133px inside 1280px x 720px and overflows by up to 104px; resize the container to at least ~1384px x 724px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 103.78,
+          "top": 3.74
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-prompt-zoom.html",
+        "bbox": {
+          "x": 931.8,
+          "y": -3.74,
+          "width": 451.98,
+          "height": 132.82
+        },
+        "firstSeen": 1.167,
+        "lastSeen": 2.833,
+        "occurrences": 6,
+        "heldMs": 1666.0000000000002
+      },
       {
         "code": "canvas_overflow",
         "severity": "warning",
@@ -62,7 +104,8 @@
         },
         "firstSeen": 1.167,
         "lastSeen": 2.833,
-        "occurrences": 6
+        "occurrences": 6,
+        "heldMs": 1666.0000000000002
       },
       {
         "code": "escaped_container",
@@ -99,7 +142,8 @@
         },
         "firstSeen": 1.833,
         "lastSeen": 2.833,
-        "occurrences": 4
+        "occurrences": 4,
+        "heldMs": 1000.0000000000002
       },
       {
         "code": "panel_out_of_canvas",
@@ -139,7 +183,8 @@
         },
         "firstSeen": 1.833,
         "lastSeen": 2.833,
-        "occurrences": 4
+        "occurrences": 4,
+        "heldMs": 1000.0000000000002
       },
       {
         "code": "canvas_overflow",
@@ -179,7 +224,8 @@
         },
         "firstSeen": 1.167,
         "lastSeen": 2.833,
-        "occurrences": 6
+        "occurrences": 6,
+        "heldMs": 1666.0000000000002
       },
       {
         "code": "canvas_overflow",
@@ -219,7 +265,8 @@
         },
         "firstSeen": 1.167,
         "lastSeen": 2.833,
-        "occurrences": 6
+        "occurrences": 6,
+        "heldMs": 1666.0000000000002
       },
       {
         "code": "escaped_container",
@@ -256,7 +303,8 @@
         },
         "firstSeen": 1.167,
         "lastSeen": 1.167,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "panel_out_of_canvas",
@@ -296,7 +344,8 @@
         },
         "firstSeen": 1.167,
         "lastSeen": 1.167,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "escaped_container",
@@ -333,7 +382,8 @@
         },
         "firstSeen": 1.5,
         "lastSeen": 1.5,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "panel_out_of_canvas",
@@ -373,7 +423,8 @@
         },
         "firstSeen": 1.5,
         "lastSeen": 1.5,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       }
     ],
     "duration": 3,
@@ -391,7 +442,7 @@
     "transitionSamples": [],
     "transitionSamplesDropped": 0,
     "tolerance": 2,
-    "totalIssueCount": 9,
+    "totalIssueCount": 10,
     "truncated": false
   },
   "motion": {
@@ -420,6 +471,10 @@
     "checked": 14,
     "passed": 14
   },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
   "snapshots": {
     "enabled": false,
     "files": [],
@@ -427,8 +482,8 @@
     "findingFiles": []
   },
   "_meta": {
-    "version": "0.8.30",
-    "latestVersion": "0.8.30",
+    "version": "0.8.99",
+    "latestVersion": "0.8.99",
     "updateAvailable": false
   }
 }

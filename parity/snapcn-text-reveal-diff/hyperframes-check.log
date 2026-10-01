@@ -21,8 +21,89 @@
     "ok": true,
     "errorCount": 0,
     "warningCount": 0,
-    "infoCount": 0,
-    "findings": [],
+    "infoCount": 2,
+    "findings": [
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.167,
+        "selector": "#snapcn-text-reveal-source-root > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": 430.18,
+          "top": 230.83,
+          "right": 1843.23,
+          "bottom": 422.61,
+          "width": 1413.05,
+          "height": 191.78
+        },
+        "containerSelector": "#snapcn-text-reveal-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 563.23
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-text-reveal.html",
+        "bbox": {
+          "x": 430.18,
+          "y": 230.83,
+          "width": 1413.05,
+          "height": 191.78
+        },
+        "firstSeen": 0.167,
+        "lastSeen": 0.167,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.5,
+        "selector": "#snapcn-text-reveal-source-root > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": 440.12,
+          "top": 240.6,
+          "right": 1762.66,
+          "bottom": 420.1,
+          "width": 1322.54,
+          "height": 179.5
+        },
+        "containerSelector": "#snapcn-text-reveal-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 482.66
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-text-reveal.html",
+        "bbox": {
+          "x": 440.12,
+          "y": 240.6,
+          "width": 1322.54,
+          "height": 179.5
+        },
+        "firstSeen": 0.5,
+        "lastSeen": 0.5,
+        "occurrences": 1,
+        "heldMs": 0
+      }
+    ],
     "duration": 3,
     "samples": [
       0.167,
@@ -38,7 +119,7 @@
     "transitionSamples": [],
     "transitionSamplesDropped": 0,
     "tolerance": 2,
-    "totalIssueCount": 0,
+    "totalIssueCount": 2,
     "truncated": false
   },
   "motion": {
@@ -67,6 +148,10 @@
     "checked": 13,
     "passed": 13
   },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
   "snapshots": {
     "enabled": false,
     "files": [],
@@ -74,8 +159,8 @@
     "findingFiles": []
   },
   "_meta": {
-    "version": "0.8.30",
-    "latestVersion": "0.8.30",
+    "version": "0.8.99",
+    "latestVersion": "0.8.99",
     "updateAvailable": false
   }
 }

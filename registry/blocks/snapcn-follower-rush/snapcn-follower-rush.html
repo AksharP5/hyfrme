@@ -81,6 +81,8 @@
 @font-face{font-family:"Segoe UI Symbol";src:local("Segoe UI Symbol")}
 @font-face{font-family:"SFMono-Regular";src:local("SFMono-Regular")}
 }
+      /* Preserve the source's inherited text styles against host defaults. */
+      #snapcn-follower-rush-source-root, #snapcn-follower-rush-source-root :where(*) {text-rendering:revert-layer;}
       #snapcn-follower-rush, #snapcn-follower-rush * {box-sizing:border-box;}
       html, body {margin:0;width:1280px;height:720px;overflow:hidden;}
       #snapcn-follower-rush {position:relative;width:1280px;height:720px;}
