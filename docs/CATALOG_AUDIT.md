@@ -1,5 +1,28 @@
 # Catalog browser audit
 
+## October 1 follow-up
+
+Malformed component and showcase slugs now render the existing missing-page
+fallback instead of throwing during URL decoding. The installation panel falls
+back to npm when browser storage is blocked; switching commands still works when
+the selected preference cannot be saved. Focused tests render the actual pages
+and installation panel. A browser check also verified switching to Bun while
+storage writes throw, and found no horizontal overflow on the homepage, component
+page, or eight-template HyperFrames listing at 390px width.
+
+The CLI rejects `--dir` without a path, `--dir --force`, and `--dir=` before
+configuration reads, downloads, or writes. Process-boundary tests cover both
+`add` and `init` and verify zero registry requests and no created files.
+
+A fresh upstream check at 14:16 UTC found no missing eligible items. Remocn
+remains at `8ae853e4` and Snapcn at `d4419a8c`, with unchanged public registries.
+HyperFrames advanced to `3d8325e7`; its catalog, template sources, assets, licenses,
+and navigation are unchanged. All 396 native items, eight templates, ten ordered
+groups, and 1,484 native file hashes still match. Private Snapcn Pro items remain
+excluded.
+
+## Earlier browser comparisons
+
 Checked September 9, 2026; extended through September 17 with Chrome for Testing
 152.0.7977.42.
 [Per-component results](../catalog/browser-audit.json) cover 351 ported catalog

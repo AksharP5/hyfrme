@@ -162,6 +162,17 @@ This earlier diagnosis confirms that the capture profile affects these
 comparisons; it does not replace the hardware results or establish the cause of
 the residual differences.
 
+A fresh encoder diagnostic captured unchanged Card frame 26 and Orbit frame 148
+through Remotion's public `renderStill` API in PNG, WebP, PNG order. Card's two
+PNG captures differ at one alpha pixel by one channel value, demonstrating that
+the source capture itself is not stable at that precision in this test. Orbit's
+two PNG alpha planes, WebP alpha plane, and stored reference agree exactly; the
+port still differs at 6,139 pixels with maximum alpha delta 9. This rules out
+PNG encoding as the cause of Orbit's measured difference. WebP RGB is lossy and
+was not used for parity. The capture settings and image hashes are recorded in
+[`parity/snapcn-variants/encoder-diagnosis.json`](../parity/snapcn-variants/encoder-diagnosis.json).
+Neither case is newly marked verified, and the exact-alpha gate remains unchanged.
+
 The ports now restore the retained source's layered and inherited
 `text-rendering` styles instead of inheriting HyperFrames' host defaults. This
 preserves the source's glyph rendering without changing the upstream component
