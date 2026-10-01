@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.3](https://github.com/AksharP5/hyfrme/compare/v0.5.2...v0.5.3) (2026-10-01)
+
+
+### Bug Fixes
+
+* **catalog:** preserve custom values and safe installs ([#51](https://github.com/AksharP5/hyfrme/issues/51)) ([7723eb5](https://github.com/AksharP5/hyfrme/commit/7723eb5b40c3fb414f8d776018be9918ec62c850))
+
 ## [0.5.2](https://github.com/AksharP5/hyfrme/compare/v0.5.1...v0.5.2) (2026-10-01)
 
 
