@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.2](https://github.com/AksharP5/hyfrme/compare/v0.5.1...v0.5.2) (2026-10-01)
+
+
+### Bug Fixes
+
+* **catalog:** repair previews and custom-path installations ([#48](https://github.com/AksharP5/hyfrme/issues/48)) ([6dd5a9e](https://github.com/AksharP5/hyfrme/commit/6dd5a9e46fa6ab2f12ae233b87fb67e9ef35be82))
+
 ## [0.5.1](https://github.com/AksharP5/hyfrme/compare/v0.5.0...v0.5.1) (2026-09-30)
 
 
