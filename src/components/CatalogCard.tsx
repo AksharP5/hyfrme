@@ -5,6 +5,7 @@ import {
   catalogDescriptor,
   categoryFor,
 } from "../catalog";
+import { CatalogArtwork } from "./CatalogArtwork";
 
 type CatalogCardProps = {
   entry: CatalogEntry;
@@ -12,11 +13,8 @@ type CatalogCardProps = {
 
 export function CatalogCard({ entry }: CatalogCardProps) {
   const [previewing, setPreviewing] = useState(false);
-  const [posterFailed, setPosterFailed] = useState(false);
-  const [videoFailed, setVideoFailed] = useState(false);
   const category = categoryFor(entry);
   const isIcon = category === "icons";
-  const { poster, video } = entry.item.preview;
 
   return (
     <a
@@ -32,36 +30,7 @@ export function CatalogCard({ entry }: CatalogCardProps) {
       aria-label={`Open ${entry.item.title}`}
     >
       <span className="catalog-card-preview">
-        {previewing && video && !videoFailed ? (
-          <video
-            src={video}
-            poster={posterFailed ? undefined : (poster ?? undefined)}
-            onError={() => setVideoFailed(true)}
-            muted
-            autoPlay
-            loop
-            playsInline
-            preload="metadata"
-            aria-hidden="true"
-          />
-        ) : poster && !posterFailed ? (
-          <img
-            src={poster}
-            alt=""
-            loading="lazy"
-            onError={() => setPosterFailed(true)}
-          />
-        ) : (
-          <span className="source-preview">
-            <span aria-hidden="true">&lt;/&gt;</span>
-            <strong>{entry.item.title}</strong>
-            <small>
-              {entry.item.type === "hyperframes:component"
-                ? "HTML snippet"
-                : "HTML composition"}
-            </small>
-          </span>
-        )}
+        <CatalogArtwork entry={entry} previewing={previewing} />
       </span>
       <span className="catalog-card-copy">
         <span className="catalog-card-meta">

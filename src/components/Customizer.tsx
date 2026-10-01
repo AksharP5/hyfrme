@@ -28,6 +28,9 @@ type ControlProps = {
 function NumberControl({ item, variable, value, onChange }: ControlProps) {
   const [draft, setDraft] = useState(String(value));
   const bounds = numberBounds(variable, item);
+  const increments = (Number(value) - bounds.min) / bounds.step;
+  const rangeStep =
+    Math.abs(increments - Math.round(increments)) < 1e-7 ? bounds.step : "any";
 
   useEffect(() => setDraft(String(value)), [value]);
 
@@ -75,7 +78,7 @@ function NumberControl({ item, variable, value, onChange }: ControlProps) {
         value={Number(value)}
         min={bounds.min}
         max={bounds.max}
-        step={bounds.step}
+        step={rangeStep}
         onChange={(event) => {
           setDraft(event.currentTarget.value);
           onChange(event.currentTarget.valueAsNumber);
@@ -105,7 +108,10 @@ function VariableControl({ item, variable, value, onChange }: ControlProps) {
     );
   }
 
-  if (variable.type === "color") {
+  if (
+    variable.type === "color" &&
+    /^#[\da-f]{6}$/i.test(String(variable.default))
+  ) {
     return (
       <label className="control-row control-color" htmlFor={id}>
         <span>{variable.label}</span>
