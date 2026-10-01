@@ -375,11 +375,13 @@ export function buildPreviewDocument(
   const bootstrap = `<script>
 window.__hyperframes = { getVariables: () => (${safeValues}) };
 window.__timelines = {};
+let runtimeFailed = false;
 const previewError = (error, paused = false) => {
   console.error("Component preview failed", error);
   parent.postMessage({type: "hyfrme-preview-error", message: error?.message || String(error), paused}, parent.location.origin);
 };
 const runtimeError = (error) => {
+  runtimeFailed = true;
   window.__timelines?.[${safeName}]?.pause();
   for (const media of document.querySelectorAll("video, audio")) media.pause();
   previewError(error, true);
@@ -401,6 +403,7 @@ window.addEventListener("load", () => {
     fit();
     addEventListener("resize", fit);
     requestAnimationFrame(() => {
+      if (runtimeFailed) return;
       const timeline = window.__timelines?.[${safeName}];
       if (!timeline) return;
       const tracked = new WeakSet();

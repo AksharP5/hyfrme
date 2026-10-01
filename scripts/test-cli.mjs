@@ -78,7 +78,7 @@ const registryFixtures = new Map([
 ]);
 
 const nativeBlockSource = `<!doctype html>
-<html data-composition-variables='[{"id":"label","type":"string","default":"Hyfrm","maxLength":5},{"id":"mode","type":"enum","default":"one","options":[{"value":"one","label":"One"},{"value":"two","label":"Two"}]}]'><head><style>body { background: black; }</style></head><body><div data-composition-id="original-native-block"><img src="assets/native.txt"><img src="../assets/native.txt"></div><script src="./native.runtime.js"></script></body></html>`;
+<html data-composition-variables='[{"id":"label","type":"string","default":"Hyfrm","maxLength":5},{"id":"mode","type":"enum","default":"one","options":[{"value":"one","label":"One"},{"value":"two","label":"Two"}]}]'><head><style>body { background: black; }</style></head><body><div data-composition-id="original-native-block"><img src="assets/native.txt?v=1#demo"><img src="../assets/native.txt"></div><script src="./native.runtime.js"></script></body></html>`;
 const nativeRuntimeSource =
   'window.__hyfrmeRenderFrame = () => "assets/native.txt";';
 const nativeSnippetSource =
@@ -368,15 +368,18 @@ try {
 
   const relocatedProject = resolve(nativeTemporary, "relocated");
   await mkdir(relocatedProject);
+  const relocatedPaths = {
+    blocks: "motion/blocks #?'()%",
+    components: "motion/components #?'()%",
+    assets: "static/media #?'()%",
+  };
+  const fileForUrl = (value) => {
+    const url = new URL(value, "https://hyfrme.test/");
+    return resolve(relocatedProject, `.${decodeURIComponent(url.pathname)}`);
+  };
   await writeFile(
     resolve(relocatedProject, "hyperframes.json"),
-    JSON.stringify({
-      paths: {
-        blocks: "motion/blocks",
-        components: "motion/components",
-        assets: "static/media",
-      },
-    }),
+    JSON.stringify({ paths: relocatedPaths }),
   );
   await runCli([
     "add",
@@ -386,7 +389,7 @@ try {
     relocatedProject,
   ]);
   const texture = await readFile(
-    resolve(relocatedProject, "motion/components/caption-texture.html"),
+    resolve(relocatedProject, relocatedPaths.components, "caption-texture.html"),
     "utf8",
   );
   const texturePath = runInNewContext(
@@ -394,20 +397,18 @@ try {
     { TEXTURE: "lava" },
   );
   assert.deepEqual(
-    await readFile(resolve(relocatedProject, texturePath)),
+    await readFile(fileForUrl(texturePath)),
     await readFile(
       resolve(registry, "blocks/hyperframes-caption-texture/lava.png"),
     ),
   );
   const carousel = await readFile(
-    resolve(relocatedProject, "motion/blocks/carousel-circle-1.html"),
+    resolve(relocatedProject, relocatedPaths.blocks, "carousel-circle-1.html"),
     "utf8",
   );
   const carouselPrefix = carousel.match(/varUrl\(V\[id\]\) \|\| "([^"]+)"/)[1];
   assert.deepEqual(
-    await readFile(
-      resolve(relocatedProject, carouselPrefix, "artist-bob-seger.jpg"),
-    ),
+    await readFile(fileForUrl(`${carouselPrefix}artist-bob-seger.jpg`)),
     await readFile(
       resolve(
         registry,
@@ -424,16 +425,67 @@ try {
     relocatedProject,
   ]);
   const avatarCard = await readFile(
-    resolve(relocatedProject, "motion/blocks/heygen-avatar-promo-card.html"),
+    resolve(
+      relocatedProject,
+      relocatedPaths.blocks,
+      "heygen-avatar-promo-card.html",
+    ),
     "utf8",
   );
   for (const match of avatarCard.matchAll(
     /src="([^"]+heygen-logo\.svg\?t=\d+)"/g,
   )) {
-    assert.match(match[1], /^static\/media\//);
-    await readFile(resolve(relocatedProject, match[1].split("?")[0]));
+    assert.match(match[1], /^static\/media%20%23%3F%27%28%29%25\//);
+    await readFile(fileForUrl(match[1]));
   }
   assert.doesNotMatch(avatarCard, /src="assets\/heygen-logo\.svg\?/);
+
+  const reservedNative = await runCli([
+    "add",
+    "hyperframes-native-block",
+    "--dir",
+    relocatedProject,
+  ]);
+  const nativeWiring = reservedNative.stdout.match(
+    /data-composition-src="([^"]+)"/,
+  )[1];
+  const reservedNativeSource = await readFile(fileForUrl(nativeWiring), "utf8");
+  const nativeMedia = new URL(
+    reservedNativeSource.match(/src="([^"]+native\.txt\?v=1#demo)"/)[1],
+    "https://hyfrme.test/",
+  );
+  assert.equal(nativeMedia.search, "?v=1");
+  assert.equal(nativeMedia.hash, "#demo");
+  assert.equal(
+    await readFile(fileForUrl(nativeMedia), "utf8"),
+    "Hyfrme native asset",
+  );
+
+  const reservedPort = await runCli([
+    "add",
+    "matrix-decode",
+    "--dir",
+    relocatedProject,
+  ]);
+  const portWiring = reservedPort.stdout.match(
+    /data-composition-src="([^"]+)"/,
+  )[1];
+  const reservedPortSource = await readFile(fileForUrl(portWiring), "utf8");
+  const fontUrl = reservedPortSource.match(
+    /url\("([^"]+Geist-SemiBold\.woff2)"\)/,
+  )[1];
+  assert.deepEqual(
+    await readFile(fileForUrl(fontUrl)),
+    await readFile(resolve(registry, "blocks/matrix-decode/Geist-SemiBold.woff2")),
+  );
+  assert.doesNotMatch(
+    reservedPortSource,
+    /src="[^"]+matrix-decode\.runtime\.js"/,
+  );
+  assert.match(
+    reservedPortSource,
+    /window\.__hyfrmeRenderers\["matrix-decode"\]/,
+  );
 
   for (const blocks of ["motion/blocks", "compositions/hyfrme"]) {
     const project = resolve(nativeTemporary, blocks.replaceAll("/", "-"));
@@ -1936,7 +1988,7 @@ try {
     "utf8",
   );
   assert.match(relocatedNative, /"type":"enum","default":"two"/);
-  assert.match(relocatedNative, /src="static\/hyfrme\/native\.txt"/);
+  assert.match(relocatedNative, /src="static\/hyfrme\/native\.txt\?v=1#demo"/);
   assert.match(relocatedNative, /src="\.\.\/\.\.\/static\/hyfrme\/native\.txt"/);
   assert.match(relocatedNative, /src="\.\/native\.runtime\.js"/);
   assert.doesNotMatch(relocatedNative, /<template>/);
@@ -2222,6 +2274,35 @@ try {
         : /"mode" must be one of: one, two/,
     );
   }
+
+  const directoryCollision = resolve(nativeTemporary, "directory-collision");
+  await mkdir(resolve(directoryCollision, "compositions"), { recursive: true });
+  await writeFile(resolve(directoryCollision, "hyperframes.json"), "{}");
+  const ownedSource = "Hyfrme user-owned source";
+  const sourcePath = resolve(
+    directoryCollision,
+    "compositions/soft-blur-in.html",
+  );
+  await writeFile(sourcePath, ownedSource);
+  const fontDirectory = resolve(
+    directoryCollision,
+    "assets/fonts/Geist-SemiBold.woff2",
+  );
+  await mkdir(fontDirectory, { recursive: true });
+  await writeFile(resolve(fontDirectory, "notes.txt"), "Keep Hyfrme notes");
+  await assert.rejects(
+    runCli(["add", "soft-blur-in", "--dir", directoryCollision, "--force"]),
+    /cannot install assets\/fonts\/Geist-SemiBold\.woff2 in soft-blur-in: target is not a file/,
+  );
+  assert.equal(await readFile(sourcePath, "utf8"), ownedSource);
+  assert.equal(
+    await readFile(resolve(fontDirectory, "notes.txt"), "utf8"),
+    "Keep Hyfrme notes",
+  );
+  await assert.rejects(
+    readFile(resolve(directoryCollision, "THIRD_PARTY_LICENSES/Geist-OFL.txt")),
+    { code: "ENOENT" },
+  );
 
   const linkedProject = resolve(linkedTemporary, "project");
   const outside = resolve(linkedTemporary, "outside");

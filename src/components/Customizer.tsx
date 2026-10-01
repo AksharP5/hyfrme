@@ -25,6 +25,52 @@ type ControlProps = {
   onChange: (value: string | number | boolean) => void;
 };
 
+function ColorControl({
+  variable,
+  value,
+  onChange,
+}: Pick<ControlProps, "variable" | "value" | "onChange">) {
+  const id = `control-${variable.id}`;
+  const needsText =
+    !/^#[\da-f]{6}$/i.test(String(variable.default)) ||
+    !/^#[\da-f]{6}$/i.test(String(value));
+  const [textInput, setTextInput] = useState(needsText);
+
+  useEffect(() => {
+    if (needsText) setTextInput(true);
+  }, [needsText]);
+
+  if (textInput || needsText) {
+    return (
+      <label className="control-row control-text" htmlFor={id}>
+        <span>{variable.label}</span>
+        <input
+          id={id}
+          type="text"
+          maxLength={variable.maxLength}
+          value={String(value)}
+          onChange={(event) => onChange(event.target.value)}
+        />
+      </label>
+    );
+  }
+
+  return (
+    <label className="control-row control-color" htmlFor={id}>
+      <span>{variable.label}</span>
+      <span>
+        <code>{String(value).toUpperCase()}</code>
+        <input
+          id={id}
+          type="color"
+          value={String(value)}
+          onInput={(event) => onChange(event.currentTarget.value)}
+        />
+      </span>
+    </label>
+  );
+}
+
 function NumberControl({ item, variable, value, onChange }: ControlProps) {
   const [draft, setDraft] = useState(String(value));
   const bounds = numberBounds(variable, item);
@@ -108,23 +154,9 @@ function VariableControl({ item, variable, value, onChange }: ControlProps) {
     );
   }
 
-  if (
-    variable.type === "color" &&
-    /^#[\da-f]{6}$/i.test(String(variable.default))
-  ) {
+  if (variable.type === "color") {
     return (
-      <label className="control-row control-color" htmlFor={id}>
-        <span>{variable.label}</span>
-        <span>
-          <code>{String(value).toUpperCase()}</code>
-          <input
-            id={id}
-            type="color"
-            value={String(value)}
-            onInput={(event) => onChange(event.currentTarget.value)}
-          />
-        </span>
-      </label>
+      <ColorControl variable={variable} value={value} onChange={onChange} />
     );
   }
 
@@ -141,6 +173,11 @@ function VariableControl({ item, variable, value, onChange }: ControlProps) {
 
   const options = optionsFor(variable);
   if (options) {
+    const current = String(value);
+    const choices =
+      !variable.options && !options.includes(current)
+        ? [...options, current]
+        : options;
     return (
       <label className="control-row control-select" htmlFor={id}>
         <span>{variable.label}</span>
@@ -149,7 +186,7 @@ function VariableControl({ item, variable, value, onChange }: ControlProps) {
           value={String(value)}
           onChange={(event) => onChange(event.target.value)}
         >
-          {options.map((option) => (
+          {choices.map((option) => (
             <option key={option} value={option}>
               {option}
             </option>

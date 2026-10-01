@@ -100,6 +100,56 @@ for (const type of ["error", "unhandledrejection"]) {
   });
 }
 
+test("an initialization error keeps the preview paused after load", async () => {
+  const window = new EventTarget();
+  const messages = [];
+  const frames = [];
+  let paused = false;
+  let plays = 0;
+  runInNewContext(bootstrap, {
+    window,
+    document: { querySelectorAll: () => [], body: { style: {} } },
+    parent: {
+      location: { origin: "https://hyfrme.example" },
+      postMessage: (message) => messages.push(message),
+    },
+    frameElement: null,
+    innerWidth: 1280,
+    innerHeight: 720,
+    addEventListener() {},
+    requestAnimationFrame: (callback) => frames.push(callback),
+    console: { error() {} },
+  });
+  window.__timelines.demo = {
+    pause: () => {
+      paused = true;
+    },
+    eventCallback() {},
+    repeat() {
+      return this;
+    },
+    play: () => {
+      paused = false;
+      plays += 1;
+    },
+    time: () => 0,
+  };
+  window.dispatchEvent(
+    Object.assign(new Event("error"), {
+      error: new Error("Composition initialization failed"),
+    }),
+  );
+  window.dispatchEvent(new Event("load"));
+  await new Promise(setImmediate);
+  assert.equal(frames.length, 1);
+  frames[0]();
+  assert(paused);
+  assert.equal(plays, 0);
+  assert.equal(messages.length, 1);
+  assert.equal(messages[0].paused, true);
+  assert.equal(messages[0].message, "Composition initialization failed");
+});
+
 test("preview mounts the real source template after a documentation example", () => {
   globalThis.window = { location: { origin: "http://localhost:5173" } };
   const preview = buildPreviewDocument(
