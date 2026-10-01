@@ -32,6 +32,7 @@ npx hyfrme@latest add matrix-decode \
 Run the command inside a project with `hyperframes.json`, or pass
 `--dir <project>`. Hyfrme respects the project's configured block, component,
 and asset paths.
+An empty or missing `--dir` path is rejected before files are written.
 References in installed markup, scripts, and default media values follow those
 paths, including dynamically assembled asset URLs and query strings. Reserved
 characters in configured paths are URL-encoded; filesystem names stay unchanged.

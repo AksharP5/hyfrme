@@ -12,10 +12,12 @@ type InstallPanelProps = {
 const modes: InstallMode[] = ["prompt", "pnpm", "yarn", "npm", "bun"];
 
 function initialMode(): InstallMode {
-  const stored = window.localStorage.getItem("hyfrme/install-mode");
-  return modes.includes(stored as InstallMode)
-    ? (stored as InstallMode)
-    : "npm";
+  try {
+    const stored = window.localStorage.getItem("hyfrme/install-mode");
+    return modes.find((mode) => mode === stored) ?? "npm";
+  } catch {
+    return "npm";
+  }
 }
 
 export function InstallPanel({
@@ -29,7 +31,11 @@ export function InstallPanel({
 
   const selectMode = (next: InstallMode) => {
     setMode(next);
-    window.localStorage.setItem("hyfrme/install-mode", next);
+    try {
+      window.localStorage.setItem("hyfrme/install-mode", next);
+    } catch {
+      // The selected command still works when browser storage is unavailable.
+    }
   };
 
   return (

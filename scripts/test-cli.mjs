@@ -5,6 +5,7 @@ import {
   mkdir,
   mkdtemp,
   readFile,
+  readdir,
   rm,
   symlink,
   writeFile,
@@ -239,7 +240,9 @@ for (const [name, dependency] of [
   );
 }
 
+let requestCount = 0;
 const server = createServer(async (request, response) => {
+  requestCount += 1;
   try {
     const url = new URL(request.url ?? "/", "http://localhost");
     if (registryFixtures.has(url.pathname)) {
@@ -288,6 +291,29 @@ const runCli = (args) =>
   });
 
 try {
+  for (const command of ["add", "init"]) {
+    for (const options of [["--dir"], ["--dir", "--force"], ["--dir="]]) {
+      await assert.rejects(
+        exec(
+          process.execPath,
+          [
+            resolve(root, "cli/bin/hyfrme.mjs"),
+            command,
+            "hyperframes-native-template",
+            ...options,
+          ],
+          {
+            cwd: temporary,
+            env: { ...process.env, HYFRME_REGISTRY_URL: registryUrl },
+          },
+        ),
+        (error) => error.code === 1 && /--dir requires a path/.test(error.stderr),
+      );
+    }
+  }
+  assert.equal(requestCount, 0);
+  assert.deepEqual(await readdir(temporary), []);
+
   for (const name of [
     "hyperframes-week-in-merges",
     "hyperframes-simulated-cursor",

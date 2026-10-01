@@ -157,9 +157,17 @@ function categoryFromUrl(): CatalogCategory {
     : "all";
 }
 
+function decodeSlug(encoded: string) {
+  try {
+    return decodeURIComponent(encoded);
+  } catch {
+    return null;
+  }
+}
+
 function slugFromPath() {
   const match = window.location.pathname.match(/^\/components\/([^/]+)\/?$/);
-  return match ? decodeURIComponent(match[1]) : null;
+  return match ? decodeSlug(match[1]) : null;
 }
 
 function ArrowIcon() {
@@ -901,10 +909,9 @@ export function App() {
   const showcaseMatch = window.location.pathname.match(
     /^\/showcases\/([^/]+)\/?$/,
   );
-  const showcase = showcaseMatch
-    ? showcases.find(
-        (candidate) => candidate.slug === decodeURIComponent(showcaseMatch[1]),
-      )
+  const showcaseSlug = showcaseMatch ? decodeSlug(showcaseMatch[1]) : null;
+  const showcase = showcaseSlug
+    ? showcases.find((candidate) => candidate.slug === showcaseSlug)
     : null;
   const isShowcasesIndex = /^\/showcases\/?$/.test(window.location.pathname);
   const isShowcasePath = window.location.pathname.startsWith("/showcases/");

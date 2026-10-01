@@ -81,12 +81,15 @@ const parseOptions = () => {
     }
     if (value === "--dir") {
       directory = args[index + 1];
-      if (!directory) fail("--dir requires a path");
+      if (!directory || directory.startsWith("-")) {
+        fail("--dir requires a path");
+      }
       index += 1;
       continue;
     }
     if (value.startsWith("--dir=")) {
       directory = value.slice("--dir=".length);
+      if (!directory) fail("--dir requires a path");
       continue;
     }
     if (value === "--set") {
