@@ -13,7 +13,8 @@ export const upstream = resolve(
 export const workbench = resolve(root, ".work/snapcn-reference");
 export const deps = resolve(root, ".work/snapcn-deps/node_modules");
 export const remotionVersion = "4.0.473";
-export const hyperframesVersion = "0.8.30";
+export const hyperframesVersion = "0.8.99";
+export const referenceGl = "angle-egl";
 export const run = (command, args, options = {}) =>
   new Promise((accept, reject) => {
     const child = spawn(command, args, {
@@ -391,7 +392,7 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
     serveUrl,
     browserExecutable,
     chromeMode: "headless-shell",
-    chromiumOptions: { gl: "swangle" },
+    chromiumOptions: { gl: referenceGl },
     timeoutInMilliseconds: 120000,
   };
   const compositionsById = new Map(

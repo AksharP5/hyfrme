@@ -1,27 +1,131 @@
 # Snapcn source and license audit
 
-Snapcn's original ports other than Status Cycle retain commit
-`353803b506dba0cb7ca13bb45b0d099690400815`. Roster Grant and Wordmark Cut use
-`bc5b59f3f0fad9657b338fa62349a55fa33f160f`, checked on September 8, 2026.
-Word Gather, Word Wheel, Channel Thread, Logo Collapse, and Card Rail use
-`1159369742d75d66ae89b3f83d45850861ccc63e`, checked on September 12, 2026.
-Status Cycle uses `0b30e76a3d1e4c9a49390d109a9630b118b1e100`, checked on
-September 17, 2026. Its label roll now takes 0.5 seconds, with 30 frames between
-statuses and a 198-frame fixture. Reel Collage uses
-`7fd048cc7eee397a0e6cb1353c1537aefd245e2c`, checked on September 24, 2026.
-Orb Swarm uses `98809254aa239edfd04119336ff6a774a2df776d`, checked on
-September 27, 2026. Other component pins remain unchanged.
-Check Cycle uses `d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3`, checked on
-September 30, 2026. Existing component pins remain unchanged.
 All 47 free visual components have fixtures in `catalog/snapcn-fixtures.json`.
-The source inventory is `catalog/snapcn-upstream.json`.
+The source inventory is `catalog/snapcn-upstream.json`, with a separate source
+pin for each port. Check Cycle and the ten ports in the
+[current refresh](#current-port-refresh) use
+`d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3`.
 
-The 44 entries in the merged preview registry retain its exact control defaults,
-shared speed control, and minimum-speed overrides. Caret, Input, and Pulsing
-Border are published registry components outside that preview map. Their fixtures
-use their individual configs. No private source was accessed.
+The 30 remaining original ports retain
+`353803b506dba0cb7ca13bb45b0d099690400815`. Wordmark Cut retains
+`bc5b59f3f0fad9657b338fa62349a55fa33f160f`. Word Gather, Word Wheel, and
+Logo Collapse retain `1159369742d75d66ae89b3f83d45850861ccc63e`.
+Status Cycle retains `0b30e76a3d1e4c9a49390d109a9630b118b1e100`, with its
+0.5-second label roll, 30 frames between statuses, and 198-frame fixture.
+Reel Collage retains `7fd048cc7eee397a0e6cb1353c1537aefd245e2c`.
 
-## Latest public audit, September 30, 2026
+Forty-four ports use the merged preview configs at their recorded source pins,
+including the shared speed control and minimum-speed overrides. Caret, Input,
+and Pulsing Border are published registry components outside that preview map.
+Their fixtures use their individual configs. No private source was accessed.
+
+## Current port refresh
+
+A comparison against each recorded port pin found 25 changed component entry
+files at public main
+[`d4419a8c`](https://github.com/snapcndev/snapcn/commit/d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3).
+Nine contain new controls or behavior and now use that source pin:
+
+| Port               | Imported change                                                                                                                    |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Announce Title     | Adds `inkColor` for the eyebrow and macro shots.                                                                                   |
+| Card Rail          | Replaces `images`, `titles`, `notes`, and `tags` with `cards`; handles empty decks and transparent backgrounds.                    |
+| Channel Thread     | Replaces `script`, `people`, `beats`, `opens`, and `avatars` with `messages`; supports per-message metadata and schedule defaults. |
+| Terminal Simulator | Uses readable command and argument ink in light mode; removes the stage for transparent backgrounds.                               |
+| Follower Rush      | Removes the scene background for transparent themes while keeping avatar rings.                                                    |
+| Prompt Send        | Removes the full-frame color wash for transparent themes.                                                                          |
+| Moodboard Reveal   | Removes the dotted grid and adjusts intro text and marker ink when both page colors are transparent.                               |
+| Roster Grant       | Removes the backdrop for transparent themes.                                                                                       |
+| Orbit Gallery      | Removes the title scrim for transparent backgrounds and no longer requires CORS headers from image hosts.                          |
+
+Orb Swarm is the tenth refreshed port. Its component and individual config bytes
+are unchanged, but the current
+[merged configs](https://github.com/snapcndev/snapcn/blob/d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3/registry/__configs__.ts)
+now expose shared `speed`, with default 1, minimum 0.25, maximum 4, and step 0.25.
+Its source accepts but does not use this control. Hyfrme preserves that behavior.
+All ten fixtures retain their dimensions, frame rate, duration, and recorded
+render backgrounds. Controls and their defaults come from the current merged
+configs. The 47 fixtures now contain 623 controls; before this refresh they
+contained 628.
+
+The other 16 changed entry files concern Studio selection, media URLs and path
+resolution, React type compatibility, or unused-code cleanup. Their recorded
+source pins remain unchanged. Upstream's
+[`Item`](https://github.com/snapcndev/snapcn/blob/d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3/registry/snap-cn-ui/core/item.tsx)
+returns its child unchanged when
+there is no Studio host, so these selection changes add no wrapper DOM to a
+normal render. URL migrations in Phone Frame, Laptop Frame, Screen Recording,
+Hero Launch, Logo Collapse, Count Grid, and Reel Collage retain their existing
+frozen media. This refresh does not claim byte-identical source for those ports
+against current main.
+
+Card Rail uses nine current `media.snapcn.dev` posters. Each differs from its
+older frozen copy, so the new files use `-d4419a8c.webp` filenames and keep
+separate hashes. Older ports retain their original files. During compilation,
+Hyfrme's Card Rail adapter resolves a frozen asset through `staticFile(src)`
+before the upstream resolver returns an absolute URL. This lets the installed
+block load the packaged poster for a current CDN URL. The upstream TypeScript
+file stays unchanged.
+
+Four published selectors (`theme` in Follower Rush, Roster Grant, Karaoke
+Captions, and Wordmark Cut) declare a light/dark string, while their source
+components expect `theme` to be a token map. The port maps those selector values
+to the source's `mode` prop. Object-valued API themes remain token maps. This
+repairs the visible selectors without changing the upstream control names or
+defaults; Karaoke Captions and Wordmark Cut keep their recorded source pins.
+
+For the seven sources that now support transparent stages, an explicitly
+transparent stage also clears Hyfrme's fixture backdrop. Moodboard's color
+interpolation accepts `transparent` and preserves its zero alpha. The source
+files and frozen media remain unchanged by these compatibility fixes.
+
+The adapters preload frozen images, preserve synchronous native image decoding,
+and register current-image readiness through HyperFrames' `hf-seek.waitUntil`.
+Removed images and replaced URLs cannot fail later seeks. A canceled decode may
+leave a fully loaded valid current image, which the adapter accepts as the source
+renderer does. Authored image-error fallbacks remain available; unhandled decode
+failures still fail the render.
+
+The ten refreshed ports and two theme-selector repairs pass all 1,999 canonical
+lossless frames with exact alpha, weighted mean SSIM 0.998308, and minimum
+frame SSIM 0.984636. All twelve were installed through the CLI, checked with
+HyperFrames 0.8.99, and strictly rendered. Nine full checks have no errors;
+Announce Title, Follower Rush, and Wordmark Cut retain only the explicitly
+reviewed source findings recorded in `catalog/snapcn-check-exceptions.json`.
+No lint or runtime errors remain.
+
+The current reference uses Remotion 4.0.473 `angle-egl` and the same Chrome 152
+executable as HyperFrames hardware rendering. A controlled transparent Prompt
+frame matched RGB and alpha exactly with this backend; `swangle` changed 15,730
+alpha pixels in that same source frame. The comparison setup now records its GL
+backend in the parity manifests. Earlier 0.8.30 results below remain historical
+evidence for their recorded source pins.
+
+Sixteen additional nondefault-input cases cover colored announcement ink,
+structured cards and messages, empty cards, the four theme selectors, light-mode
+terminal ink, and seven transparent-stage inputs. Their 140 selected frames and
+exact inputs are recorded in
+[`parity/snapcn-variants/summary.json`](../parity/snapcn-variants/summary.json).
+The nine nontransparent cases were captured before the final image-readiness
+guard; the seven transparent cases were reinstalled and captured afterward.
+All cases have zero lint/runtime errors and meet the RGB thresholds.
+
+Terminal, Follower, Prompt, and Moodboard transparent samples also match alpha
+exactly. Three transparent inputs still fail the strict alpha gate:
+
+| Variant       | RGB mean / minimum  | Alpha difference at the lowest RGB frame                       |
+| ------------- | ------------------- | -------------------------------------------------------------- |
+| Roster Grant  | 0.999907 / 0.999259 | 128 pixels differ by one alpha value.                          |
+| Orbit Gallery | 0.990906 / 0.989464 | 11,352 pixels differ, including rotated-image and glyph edges. |
+| Card Rail     | 0.993093 / 0.988291 | 2,211 pixels differ, chiefly at perspective-card boundaries.   |
+
+The source and port use identical props and matching GPU backends for these seven
+cases. Inspection found matching content and positions; it did not establish the
+cause of the remaining edge differences. These three extra inputs are not marked
+verified. Their failed exact-alpha results remain explicit, and the gate is
+unchanged. They do not replace the full-duration canonical fixture checks.
+
+## Public catalog audit, September 30, 2026
 
 Public main at
 [`d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3`](https://github.com/snapcndev/snapcn/commit/d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3)
@@ -39,8 +143,12 @@ installed block passes the full HyperFrames 0.8.30 check with no errors or warni
 Upstream's shared speed control is present but unused by this component's source;
 Hyfrme preserves that behavior.
 
-Existing component source files are unchanged. The 47 rebuilt public registry
-manifests changed their documentation field without changing embedded source.
+The component-source comparison for this catalog audit used the preceding
+public head, `f915a5f88771bae15b09f5ef8396d5542fe360ee`, rather than every
+individual port pin. Existing component sources were unchanged between those
+two heads. The 47 rebuilt public registry manifests changed their documentation
+field without changing embedded source. The current port refresh above records
+the older changes missed by that comparison.
 The 51 advertised Pro components remain unavailable: their public source is absent,
 and all unauthenticated component endpoints return HTTP 402. The current
 `publishedAudit` records those results separately from the pinned port inventory.
@@ -57,8 +165,10 @@ The [live registry](https://snapcn.dev/r/registry.json) and authored free regist
 both contain 47 items: 46 visual components and one shared runtime. All 46 visuals
 are ported. The site advertises 43 free preview components; Caret, Input, and
 Pulsing Border account for the additional public visuals outside that preview map.
-No authored component source changed after the Orb Swarm port at `98809254`.
-Existing fixture and parity pins remain unchanged.
+The audit compared authored source with public head `98809254`, rather than
+each older port pin. No authored component source changed between those public
+heads. Fixture and parity pins were left unchanged at that time; the current
+refresh above separately reviews the historical source differences.
 
 The latest generated `/r/orb-swarm.json` adds the -12° constellation turn that
 was already present in the authored source at our port pin. Its current embedded
@@ -145,8 +255,9 @@ and introduce no new media or shader dependency.
 
 The September 12 additions use Figtree, Jost, Barlow, and Inter Tight, each under
 OFL-1.1. Channel Thread reuses two frozen avatar images. Logo Collapse and Card
-Rail use the pinned repository's preview posters, and Logo Collapse reuses its
-logo image. These additions introduce no shader dependency.
+Rail originally used the pinned repository's preview posters, and Logo Collapse
+reuses its logo image. Card Rail's current CDN posters are frozen separately.
+These additions introduce no shader dependency.
 
 The 14 font families use unmodified Latin binaries selected from
 `@remotion/google-fonts@4.0.473` metadata, with a separate Inter 3.19 face from
@@ -159,11 +270,19 @@ The port uses `Hyfrme Snapcn ...` CSS family aliases to avoid collisions with
 fonts in a host composition. The font binaries and their embedded names remain
 unchanged; public customization labels retain the original family names.
 
-The 93 frozen source media files include all 24 follower avatars and 16 Orbit Gallery
-photographs. Repository media is copied unchanged from the pinned MIT source;
-upstream does not document separate rights or provenance for those individual
-files. This audit records that limitation rather than asserting independent
-ownership verification. The external Orbit photographs come from Picsum's
+The 102 frozen source media files include all 24 follower avatars, 16 Orbit Gallery
+photographs, and nine new Card Rail CDN posters. Repository media is copied
+unchanged from the pinned MIT source. The current CDN poster binaries are absent
+from the public Git tree; upstream's public
+[render](https://github.com/snapcndev/snapcn/blob/d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3/scripts/render-previews.mts)
+and
+[upload](https://github.com/snapcndev/snapcn/blob/d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3/scripts/media-upload.mts)
+scripts produce
+these catalog demos. Their records preserve the CDN URLs, exact hashes, source
+commit, and MIT notice. Upstream does not document separate rights or provenance
+for these individual files. This audit records that limitation rather than
+asserting independent ownership verification. The external Orbit photographs
+come from Picsum's
 Unsplash collection. Each records its photographer, original image URL, and
 [Unsplash license](https://unsplash.com/license). They are identified as
 `LicenseRef-Unsplash`, not MIT.
@@ -239,17 +358,17 @@ matches. Per-frame alpha hashes accompany the parity reports, so transparent
 output cannot pass on RGB alone. `npm run check` includes a regression that
 rejects an invisible frame with unchanged RGB.
 
-The September 17 Status Cycle update passes all 198 lossless frame comparisons
+The September 17 Status Cycle update passed all 198 lossless frame comparisons
 with mean SSIM 0.999992, minimum 0.999936, and exact alpha. Its CLI-installed
-fixture passes strict rendering. The full check reports three reviewed overlaps
+fixture passed strict rendering. The full check reported three reviewed overlaps
 between animated prefix glyphs and the clipped pill label, also present in the
 pinned source. Exact selectors and source evidence are recorded in
 `catalog/snapcn-check-exceptions.json`; the full findings remain in its parity
 report.
 
-The five September 12 additions pass all 385 lossless frame comparisons, with
-weighted mean SSIM 0.998264, minimum 0.988421, and exact alpha. All five pass
-strict rendering after CLI installation. Four pass the full HyperFrames check
+At their September 12 pins, the five additions passed all 385 lossless frame
+comparisons, with weighted mean SSIM 0.998264, minimum 0.988421, and exact alpha. All five passed
+strict rendering after CLI installation. Four passed the full HyperFrames check
 without errors. Word Wheel retains one reviewed layout finding: adjacent reel
 text boxes overlap in the unmodified upstream animation. Its exact source pin,
 selectors, and comparison evidence are recorded in

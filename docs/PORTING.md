@@ -351,9 +351,9 @@ npm run build
 npm pack ./cli --dry-run
 ```
 
-The setup and commands preserve each fixture's source pin. The original 37 use
-`353803b506dba0cb7ca13bb45b0d099690400815`; Roster Grant and Wordmark Cut use
-`bc5b59f3f0fad9657b338fa62349a55fa33f160f`.
+The setup and commands preserve each fixture's source pin, recorded in
+`catalog/snapcn-fixtures.json`. The [Snapcn audit](SNAPCN_AUDIT.md) explains
+which ports were refreshed and which retain earlier verified source pins.
 
 For a focused edit, use `npm run generate:snapcn -- --only snapcn-text-reveal`
 and `npm run verify:snapcn -- --only snapcn-text-reveal`. The verifier accepts `--reuse-reference` and `--resume`;
@@ -365,8 +365,9 @@ frame rate, duration, and defaults. RGB must reach at least 0.99 mean SSIM and
 installs each block through the real CLI and renders the nested composition,
 exercising paths and source initialization. Full HyperFrames check results,
 per-frame alpha hashes, and a worst-frame comparison accompany each parity
-manifest. The verifier uses one recorded Chromium executable for
-both engines, hardware browser compositing, and `--video-frame-format png`.
+manifest. The verifier uses one recorded Chromium executable for both engines.
+Remotion uses `angle-egl` to match HyperFrames' hardware browser
+compositing and `--video-frame-format png`.
 Use PNG video extraction when rendering installed Snapcn video blocks to retain
 this fidelity. Software compositing can change blur and image resampling.
 

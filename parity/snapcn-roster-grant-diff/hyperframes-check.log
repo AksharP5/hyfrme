@@ -1,6 +1,6 @@
 [hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
 {
-  "ok": false,
+  "ok": true,
   "strict": false,
   "lint": {
     "ok": true,
@@ -18,735 +18,11 @@
     "findings": []
   },
   "layout": {
-    "ok": false,
-    "errorCount": 18,
+    "ok": true,
+    "errorCount": 0,
     "warningCount": 7,
-    "infoCount": 55,
+    "infoCount": 73,
     "findings": [
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 2.889,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -223.95,
-          "top": 565.39,
-          "right": -113.16,
-          "bottom": 594.28,
-          "width": 110.79,
-          "height": 28.88
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(3)",
-        "text": "Animation",
-        "fixHint": "Text is 111px x 29px inside 358px x 23px and overflows by up to 4px; increase the container height to at least ~27px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -223.95,
-          "top": 569,
-          "right": 134.36,
-          "bottom": 592.47,
-          "width": 358.31,
-          "height": 23.47
-        },
-        "overflow": {
-          "top": 3.61
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -223.95,
-          "y": 565.39,
-          "width": 110.79,
-          "height": 28.88
-        },
-        "firstSeen": 2.889,
-        "lastSeen": 3.333,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 2.889,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 339.24,
-          "top": 565.39,
-          "right": 478.83,
-          "bottom": 594.28,
-          "width": 139.59,
-          "height": 28.88
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(3)",
-        "text": "Composition",
-        "fixHint": "Text is 140px x 29px inside 358px x 23px and overflows by up to 4px; increase the container height to at least ~27px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 339.24,
-          "top": 569,
-          "right": 697.55,
-          "bottom": 592.47,
-          "width": 358.31,
-          "height": 23.47
-        },
-        "overflow": {
-          "top": 3.61
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 339.24,
-          "y": 565.39,
-          "width": 139.59,
-          "height": 28.88
-        },
-        "firstSeen": 2.889,
-        "lastSeen": 3.333,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 2.889,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 902.41,
-          "top": 565.39,
-          "right": 1041.99,
-          "bottom": 594.28,
-          "width": 139.59,
-          "height": 28.88
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(3)",
-        "text": "Composition",
-        "fixHint": "Text is 140px x 29px inside 358px x 23px and overflows by up to 4px; increase the container height to at least ~27px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 902.41,
-          "top": 569,
-          "right": 1260.72,
-          "bottom": 592.47,
-          "width": 358.31,
-          "height": 23.47
-        },
-        "overflow": {
-          "top": 3.61
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 902.41,
-          "y": 565.39,
-          "width": 139.59,
-          "height": 28.88
-        },
-        "firstSeen": 2.889,
-        "lastSeen": 3.333,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 2.889,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(4) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 1465.6,
-          "top": 565.39,
-          "right": 1605.18,
-          "bottom": 594.28,
-          "width": 139.59,
-          "height": 28.88
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(4) > div:nth-of-type(3)",
-        "text": "Composition",
-        "fixHint": "Text is 140px x 29px inside 358px x 23px and overflows by up to 4px; increase the container height to at least ~27px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 1465.6,
-          "top": 569,
-          "right": 1823.91,
-          "bottom": 592.47,
-          "width": 358.31,
-          "height": 23.47
-        },
-        "overflow": {
-          "top": 3.61
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 1465.6,
-          "y": 565.39,
-          "width": 139.59,
-          "height": 28.88
-        },
-        "firstSeen": 2.889,
-        "lastSeen": 3.333,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 2.889,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 2028.79,
-          "top": 565.39,
-          "right": 2139.58,
-          "bottom": 594.28,
-          "width": 110.79,
-          "height": 28.88
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(3)",
-        "text": "Animation",
-        "fixHint": "Text is 111px x 29px inside 358px x 23px and overflows by up to 4px; increase the container height to at least ~27px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 2028.79,
-          "top": 569,
-          "right": 2387.1,
-          "bottom": 592.47,
-          "width": 358.31,
-          "height": 23.47
-        },
-        "overflow": {
-          "top": 3.61
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 2028.79,
-          "y": 565.39,
-          "width": 110.79,
-          "height": 28.88
-        },
-        "firstSeen": 2.889,
-        "lastSeen": 3.333,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 3.333,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -711.15,
-          "top": 170.42,
-          "right": -600.56,
-          "bottom": 199.25,
-          "width": 110.59,
-          "height": 28.83
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
-        "text": "Animation",
-        "fixHint": "Text is 111px x 29px inside 358px x 23px and overflows by up to 4px; increase the container height to at least ~27px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -711.15,
-          "top": 174.02,
-          "right": -353.47,
-          "bottom": 197.45,
-          "width": 357.67,
-          "height": 23.42
-        },
-        "overflow": {
-          "top": 3.6
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -711.15,
-          "y": 170.42,
-          "width": 110.59,
-          "height": 28.83
-        },
-        "firstSeen": 3.333,
-        "lastSeen": 3.778,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 3.333,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -148.96,
-          "top": 170.42,
-          "right": -38.37,
-          "bottom": 199.25,
-          "width": 110.59,
-          "height": 28.83
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
-        "text": "Animation",
-        "fixHint": "Text is 111px x 29px inside 358px x 23px and overflows by up to 4px; increase the container height to at least ~27px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -148.96,
-          "top": 174.02,
-          "right": 208.71,
-          "bottom": 197.45,
-          "width": 357.67,
-          "height": 23.42
-        },
-        "overflow": {
-          "top": 3.6
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -148.96,
-          "y": 170.42,
-          "width": 110.59,
-          "height": 28.83
-        },
-        "firstSeen": 3.333,
-        "lastSeen": 3.778,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 3.333,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 413.23,
-          "top": 170.42,
-          "right": 552.56,
-          "bottom": 199.25,
-          "width": 139.34,
-          "height": 28.83
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(3)",
-        "text": "Composition",
-        "fixHint": "Text is 139px x 29px inside 358px x 23px and overflows by up to 4px; increase the container height to at least ~27px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 413.23,
-          "top": 174.02,
-          "right": 770.9,
-          "bottom": 197.45,
-          "width": 357.67,
-          "height": 23.42
-        },
-        "overflow": {
-          "top": 3.6
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 413.23,
-          "y": 170.42,
-          "width": 139.34,
-          "height": 28.83
-        },
-        "firstSeen": 3.333,
-        "lastSeen": 3.778,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 3.333,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 975.42,
-          "top": 170.42,
-          "right": 1108.5,
-          "bottom": 199.25,
-          "width": 133.09,
-          "height": 28.83
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(3)",
-        "text": "Background",
-        "fixHint": "Text is 133px x 29px inside 358px x 23px and overflows by up to 4px; increase the container height to at least ~27px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 975.42,
-          "top": 174.02,
-          "right": 1333.09,
-          "bottom": 197.45,
-          "width": 357.67,
-          "height": 23.42
-        },
-        "overflow": {
-          "top": 3.6
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 975.42,
-          "y": 170.42,
-          "width": 133.09,
-          "height": 28.83
-        },
-        "firstSeen": 3.333,
-        "lastSeen": 3.778,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 3.333,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 1537.61,
-          "top": 170.42,
-          "right": 1648.2,
-          "bottom": 199.25,
-          "width": 110.59,
-          "height": 28.83
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(3)",
-        "text": "Animation",
-        "fixHint": "Text is 111px x 29px inside 358px x 23px and overflows by up to 4px; increase the container height to at least ~27px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 1537.61,
-          "top": 174.02,
-          "right": 1895.28,
-          "bottom": 197.45,
-          "width": 357.67,
-          "height": 23.42
-        },
-        "overflow": {
-          "top": 3.6
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 1537.61,
-          "y": 170.42,
-          "width": 110.59,
-          "height": 28.83
-        },
-        "firstSeen": 3.333,
-        "lastSeen": 3.778,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 3.333,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -603.06,
-          "top": 319.78,
-          "right": -394.97,
-          "bottom": 363.02,
-          "width": 208.09,
-          "height": 43.25
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2)",
-        "text": "Type Morph",
-        "fixHint": "Text is 208px x 43px inside 358px x 36px and overflows by up to 4px; increase the container height to at least ~43px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -603.06,
-          "top": 323.38,
-          "right": -245.39,
-          "bottom": 359.42,
-          "width": 357.67,
-          "height": 36.04
-        },
-        "overflow": {
-          "top": 3.6,
-          "bottom": 3.6
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -603.06,
-          "y": 319.78,
-          "width": 208.09,
-          "height": 43.25
-        },
-        "firstSeen": 3.333,
-        "lastSeen": 3.778,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 3.333,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -603.06,
-          "top": 367.73,
-          "right": -492.47,
-          "bottom": 396.56,
-          "width": 110.59,
-          "height": 28.83
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3)",
-        "text": "Animation",
-        "fixHint": "Text is 111px x 29px inside 358px x 23px and overflows by up to 4px; increase the container height to at least ~27px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -603.06,
-          "top": 371.33,
-          "right": -245.39,
-          "bottom": 394.75,
-          "width": 357.67,
-          "height": 23.42
-        },
-        "overflow": {
-          "top": 3.6
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -603.06,
-          "y": 367.73,
-          "width": 110.59,
-          "height": 28.83
-        },
-        "firstSeen": 3.333,
-        "lastSeen": 3.778,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 3.333,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -40.87,
-          "top": 319.78,
-          "right": 134.73,
-          "bottom": 363.02,
-          "width": 175.6,
-          "height": 43.25
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2)",
-        "text": "Text Swell",
-        "fixHint": "Text is 176px x 43px inside 358px x 36px and overflows by up to 4px; increase the container height to at least ~43px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -40.87,
-          "top": 323.38,
-          "right": 316.8,
-          "bottom": 359.42,
-          "width": 357.67,
-          "height": 36.04
-        },
-        "overflow": {
-          "top": 3.6,
-          "bottom": 3.6
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -40.87,
-          "y": 319.78,
-          "width": 175.6,
-          "height": 43.25
-        },
-        "firstSeen": 3.333,
-        "lastSeen": 3.778,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 3.333,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -40.87,
-          "top": 367.73,
-          "right": 69.72,
-          "bottom": 396.56,
-          "width": 110.59,
-          "height": 28.83
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(3)",
-        "text": "Animation",
-        "fixHint": "Text is 111px x 29px inside 358px x 23px and overflows by up to 4px; increase the container height to at least ~27px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -40.87,
-          "top": 371.33,
-          "right": 316.8,
-          "bottom": 394.75,
-          "width": 357.67,
-          "height": 23.42
-        },
-        "overflow": {
-          "top": 3.6
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -40.87,
-          "y": 367.73,
-          "width": 110.59,
-          "height": 28.83
-        },
-        "firstSeen": 3.333,
-        "lastSeen": 3.778,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 3.333,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 1079.19,
-          "top": 319.78,
-          "right": 1265.15,
-          "bottom": 363.02,
-          "width": 185.96,
-          "height": 43.25
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2)",
-        "text": "Count Grid",
-        "fixHint": "Text is 186px x 43px inside 358px x 36px and overflows by up to 4px; increase the container height to at least ~43px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 1079.19,
-          "top": 323.38,
-          "right": 1436.86,
-          "bottom": 359.42,
-          "width": 357.67,
-          "height": 36.04
-        },
-        "overflow": {
-          "top": 3.6,
-          "bottom": 3.6
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 1079.19,
-          "y": 319.78,
-          "width": 185.96,
-          "height": 43.25
-        },
-        "firstSeen": 3.333,
-        "lastSeen": 3.778,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 3.333,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 1079.19,
-          "top": 367.73,
-          "right": 1218.52,
-          "bottom": 396.56,
-          "width": 139.34,
-          "height": 28.83
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(3)",
-        "text": "Composition",
-        "fixHint": "Text is 139px x 29px inside 358px x 23px and overflows by up to 4px; increase the container height to at least ~27px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 1079.19,
-          "top": 371.33,
-          "right": 1436.86,
-          "bottom": 394.75,
-          "width": 357.67,
-          "height": 23.42
-        },
-        "overflow": {
-          "top": 3.6
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 1079.19,
-          "y": 367.73,
-          "width": 139.34,
-          "height": 28.83
-        },
-        "firstSeen": 3.333,
-        "lastSeen": 3.778,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 3.333,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 1641.37,
-          "top": 319.78,
-          "right": 1851.77,
-          "bottom": 363.02,
-          "width": 210.4,
-          "height": 43.25
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2)",
-        "text": "Agent Steps",
-        "fixHint": "Text is 210px x 43px inside 358px x 36px and overflows by up to 4px; increase the container height to at least ~43px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 1641.37,
-          "top": 323.38,
-          "right": 1999.05,
-          "bottom": 359.42,
-          "width": 357.67,
-          "height": 36.04
-        },
-        "overflow": {
-          "top": 3.6,
-          "bottom": 3.6
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 1641.37,
-          "y": 319.78,
-          "width": 210.4,
-          "height": 43.25
-        },
-        "firstSeen": 3.333,
-        "lastSeen": 3.778,
-        "occurrences": 2
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "error",
-        "time": 3.333,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 1641.37,
-          "top": 367.73,
-          "right": 1780.71,
-          "bottom": 396.56,
-          "width": 139.34,
-          "height": 28.83
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(3)",
-        "text": "Composition",
-        "fixHint": "Text is 139px x 29px inside 358px x 23px and overflows by up to 4px; increase the container height to at least ~27px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 1641.37,
-          "top": 371.33,
-          "right": 1999.05,
-          "bottom": 394.75,
-          "width": 357.67,
-          "height": 23.42
-        },
-        "overflow": {
-          "top": 3.6
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 1641.37,
-          "y": 367.73,
-          "width": 139.34,
-          "height": 28.83
-        },
-        "firstSeen": 3.333,
-        "lastSeen": 3.778,
-        "occurrences": 2
-      },
       {
         "code": "escaped_container",
         "severity": "warning",
@@ -782,7 +58,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 3.778,
-        "occurrences": 9
+        "occurrences": 9,
+        "heldMs": 3556
       },
       {
         "code": "escaped_container",
@@ -819,7 +96,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 3.778,
-        "occurrences": 9
+        "occurrences": 9,
+        "heldMs": 3556
       },
       {
         "code": "escaped_container",
@@ -856,7 +134,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 3.778,
-        "occurrences": 9
+        "occurrences": 9,
+        "heldMs": 3556
       },
       {
         "code": "escaped_container",
@@ -893,7 +172,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 3.778,
-        "occurrences": 9
+        "occurrences": 9,
+        "heldMs": 3556
       },
       {
         "code": "escaped_container",
@@ -930,7 +210,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 3.778,
-        "occurrences": 9
+        "occurrences": 9,
+        "heldMs": 3556
       },
       {
         "code": "escaped_container",
@@ -967,7 +248,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 3.778,
-        "occurrences": 9
+        "occurrences": 9,
+        "heldMs": 3556
       },
       {
         "code": "escaped_container",
@@ -1004,7 +286,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 3.778,
-        "occurrences": 9
+        "occurrences": 9,
+        "heldMs": 3556
       },
       {
         "code": "canvas_overflow",
@@ -1044,48 +327,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -465.27,
-          "top": 89.34,
-          "right": -279.81,
-          "bottom": 138.57,
-          "width": 185.46,
-          "height": 49.23
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
-        "text": "Word Flip",
-        "fixHint": "Text is 185px x 49px inside 407px x 41px and overflows by up to 4px; increase the container height to at least ~49px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -465.27,
-          "top": 93.44,
-          "right": -58.07,
-          "bottom": 134.47,
-          "width": 407.2,
-          "height": 41.03
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 4.1
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -465.27,
-          "y": 89.34,
-          "width": 185.46,
-          "height": 49.23
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -1125,48 +368,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -465.27,
-          "top": 143.92,
-          "right": -339.36,
-          "bottom": 176.74,
-          "width": 125.9,
-          "height": 32.82
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
-        "text": "Animation",
-        "fixHint": "Text is 126px x 33px inside 407px x 27px and overflows by up to 4px; increase the container height to at least ~33px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -465.27,
-          "top": 148.02,
-          "right": -58.07,
-          "bottom": 174.69,
-          "width": 407.2,
-          "height": 26.67
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 2.05
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -465.27,
-          "y": 143.92,
-          "width": 125.9,
-          "height": 32.82
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -1179,7 +382,7 @@
           "top": 143.92,
           "right": -339.36,
           "bottom": 176.74,
-          "width": 125.9,
+          "width": 125.91,
           "height": 32.82
         },
         "containerSelector": "#root",
@@ -1201,176 +404,13 @@
         "bbox": {
           "x": -465.27,
           "y": 143.92,
-          "width": 125.9,
+          "width": 125.91,
           "height": 32.82
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 174.76,
-          "top": 89.34,
-          "right": 400.32,
-          "bottom": 138.57,
-          "width": 225.56,
-          "height": 49.23
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
-        "text": "Text Reveal",
-        "fixHint": "Text is 226px x 49px inside 407px x 41px and overflows by up to 4px; increase the container height to at least ~49px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 174.76,
-          "top": 93.44,
-          "right": 581.96,
-          "bottom": 134.47,
-          "width": 407.2,
-          "height": 41.03
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 4.1
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 174.76,
-          "y": 89.34,
-          "width": 225.56,
-          "height": 49.23
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 174.76,
-          "top": 143.92,
-          "right": 300.67,
-          "bottom": 176.74,
-          "width": 125.9,
-          "height": 32.82
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
-        "text": "Animation",
-        "fixHint": "Text is 126px x 33px inside 407px x 27px and overflows by up to 4px; increase the container height to at least ~33px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 174.76,
-          "top": 148.02,
-          "right": 581.96,
-          "bottom": 174.69,
-          "width": 407.2,
-          "height": 26.67
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 2.05
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 174.76,
-          "y": 143.92,
-          "width": 125.9,
-          "height": 32.82
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 814.79,
-          "top": 89.34,
-          "right": 1068.33,
-          "bottom": 138.57,
-          "width": 253.54,
-          "height": 49.23
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2)",
-        "text": "Prompt Send",
-        "fixHint": "Text is 254px x 49px inside 407px x 41px and overflows by up to 4px; increase the container height to at least ~49px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 814.79,
-          "top": 93.44,
-          "right": 1221.99,
-          "bottom": 134.47,
-          "width": 407.2,
-          "height": 41.03
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 4.1
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 814.79,
-          "y": 89.34,
-          "width": 253.54,
-          "height": 49.23
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 814.79,
-          "top": 143.92,
-          "right": 973.42,
-          "bottom": 176.74,
-          "width": 158.63,
-          "height": 32.82
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(3)",
-        "text": "Composition",
-        "fixHint": "Text is 159px x 33px inside 407px x 27px and overflows by up to 4px; increase the container height to at least ~33px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 814.79,
-          "top": 148.02,
-          "right": 1221.99,
-          "bottom": 174.69,
-          "width": 407.2,
-          "height": 26.67
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 2.05
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 814.79,
-          "y": 143.92,
-          "width": 158.63,
-          "height": 32.82
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -1383,7 +423,7 @@
           "top": 106.39,
           "right": 1412.64,
           "bottom": 165.88,
-          "width": 63.37,
+          "width": 63.36,
           "height": 59.49
         },
         "containerSelector": "#root",
@@ -1405,53 +445,13 @@
         "bbox": {
           "x": 1349.28,
           "y": 106.39,
-          "width": 63.37,
+          "width": 63.36,
           "height": 59.49
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 1454.83,
-          "top": 89.34,
-          "right": 1648.17,
-          "bottom": 138.57,
-          "width": 193.34,
-          "height": 49.23
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2)",
-        "text": "Logo Drift",
-        "fixHint": "Text is 193px x 49px inside 407px x 41px and overflows by up to 4px; increase the container height to at least ~49px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 1454.83,
-          "top": 93.44,
-          "right": 1862.02,
-          "bottom": 134.47,
-          "width": 407.2,
-          "height": 41.03
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 4.1
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 1454.83,
-          "y": 89.34,
-          "width": 193.34,
-          "height": 49.23
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -1491,48 +491,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 1454.83,
-          "top": 143.92,
-          "right": 1606.34,
-          "bottom": 176.74,
-          "width": 151.51,
-          "height": 32.82
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(3)",
-        "text": "Background",
-        "fixHint": "Text is 152px x 33px inside 407px x 27px and overflows by up to 4px; increase the container height to at least ~33px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 1454.83,
-          "top": 148.02,
-          "right": 1862.02,
-          "bottom": 174.69,
-          "width": 407.2,
-          "height": 26.67
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 2.05
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 1454.83,
-          "y": 143.92,
-          "width": 151.51,
-          "height": 32.82
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -1572,7 +532,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -1612,48 +573,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 2094.86,
-          "top": 89.34,
-          "right": 2280.31,
-          "bottom": 138.57,
-          "width": 185.46,
-          "height": 49.23
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2)",
-        "text": "Word Flip",
-        "fixHint": "Text is 185px x 49px inside 407px x 41px and overflows by up to 4px; increase the container height to at least ~49px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 2094.86,
-          "top": 93.44,
-          "right": 2502.05,
-          "bottom": 134.47,
-          "width": 407.2,
-          "height": 41.03
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 4.1
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 2094.86,
-          "y": 89.34,
-          "width": 185.46,
-          "height": 49.23
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -1666,7 +587,7 @@
           "top": 89.34,
           "right": 2280.31,
           "bottom": 138.57,
-          "width": 185.46,
+          "width": 185.45,
           "height": 49.23
         },
         "containerSelector": "#root",
@@ -1688,53 +609,13 @@
         "bbox": {
           "x": 2094.86,
           "y": 89.34,
-          "width": 185.46,
+          "width": 185.45,
           "height": 49.23
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 2094.86,
-          "top": 143.92,
-          "right": 2220.76,
-          "bottom": 176.74,
-          "width": 125.9,
-          "height": 32.82
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(3)",
-        "text": "Animation",
-        "fixHint": "Text is 126px x 33px inside 407px x 27px and overflows by up to 4px; increase the container height to at least ~33px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 2094.86,
-          "top": 148.02,
-          "right": 2502.05,
-          "bottom": 174.69,
-          "width": 407.2,
-          "height": 26.67
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 2.05
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 2094.86,
-          "y": 143.92,
-          "width": 125.9,
-          "height": 32.82
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -1774,7 +655,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -1787,7 +669,7 @@
           "top": 331.01,
           "right": -881.47,
           "bottom": 390.5,
-          "width": 77.09,
+          "width": 77.08,
           "height": 59.49
         },
         "containerSelector": "#root",
@@ -1809,53 +691,13 @@
         "bbox": {
           "x": -958.55,
           "y": 331.01,
-          "width": 77.09,
+          "width": 77.08,
           "height": 59.49
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -846.14,
-          "top": 313.96,
-          "right": -609.24,
-          "bottom": 363.2,
-          "width": 236.9,
-          "height": 49.23
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2)",
-        "text": "Type Morph",
-        "fixHint": "Text is 237px x 49px inside 407px x 41px and overflows by up to 4px; increase the container height to at least ~49px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -846.14,
-          "top": 318.06,
-          "right": -438.94,
-          "bottom": 359.09,
-          "width": 407.2,
-          "height": 41.03
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 4.11
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -846.14,
-          "y": 313.96,
-          "width": 236.9,
-          "height": 49.23
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -1869,7 +711,7 @@
           "right": -609.24,
           "bottom": 363.2,
           "width": 236.9,
-          "height": 49.23
+          "height": 49.24
         },
         "containerSelector": "#root",
         "text": "Type Morph",
@@ -1891,52 +733,12 @@
           "x": -846.14,
           "y": 313.96,
           "width": 236.9,
-          "height": 49.23
+          "height": 49.24
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -846.14,
-          "top": 368.55,
-          "right": -720.24,
-          "bottom": 401.37,
-          "width": 125.9,
-          "height": 32.82
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3)",
-        "text": "Animation",
-        "fixHint": "Text is 126px x 33px inside 407px x 27px and overflows by up to 4px; increase the container height to at least ~33px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -846.14,
-          "top": 372.65,
-          "right": -438.94,
-          "bottom": 399.32,
-          "width": 407.2,
-          "height": 26.67
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 2.05
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -846.14,
-          "y": 368.55,
-          "width": 125.9,
-          "height": 32.82
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -1976,7 +778,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -2016,48 +819,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -206.11,
-          "top": 313.96,
-          "right": -6.2,
-          "bottom": 363.2,
-          "width": 199.91,
-          "height": 49.23
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2)",
-        "text": "Text Swell",
-        "fixHint": "Text is 200px x 49px inside 407px x 41px and overflows by up to 4px; increase the container height to at least ~49px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -206.11,
-          "top": 318.06,
-          "right": 201.09,
-          "bottom": 359.09,
-          "width": 407.2,
-          "height": 41.03
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 4.11
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -206.11,
-          "y": 313.96,
-          "width": 199.91,
-          "height": 49.23
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -2071,7 +834,7 @@
           "right": -6.2,
           "bottom": 363.2,
           "width": 199.91,
-          "height": 49.23
+          "height": 49.24
         },
         "containerSelector": "#root",
         "text": "Text Swell",
@@ -2093,52 +856,12 @@
           "x": -206.11,
           "y": 313.96,
           "width": 199.91,
-          "height": 49.23
+          "height": 49.24
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -206.11,
-          "top": 368.55,
-          "right": -80.21,
-          "bottom": 401.37,
-          "width": 125.9,
-          "height": 32.82
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(3)",
-        "text": "Animation",
-        "fixHint": "Text is 126px x 33px inside 407px x 27px and overflows by up to 4px; increase the container height to at least ~33px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -206.11,
-          "top": 372.65,
-          "right": 201.09,
-          "bottom": 399.32,
-          "width": 407.2,
-          "height": 26.67
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 2.05
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -206.11,
-          "y": 368.55,
-          "width": 125.9,
-          "height": 32.82
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -2178,48 +901,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 1285.65,
-          "top": 313.96,
-          "right": 1497.36,
-          "bottom": 363.2,
-          "width": 211.71,
-          "height": 49.23
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2)",
-        "text": "Count Grid",
-        "fixHint": "Text is 212px x 49px inside 407px x 41px and overflows by up to 4px; increase the container height to at least ~49px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 1285.65,
-          "top": 318.06,
-          "right": 1692.85,
-          "bottom": 359.09,
-          "width": 407.2,
-          "height": 41.03
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 4.11
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 1285.65,
-          "y": 313.96,
-          "width": 211.71,
-          "height": 49.23
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -2233,7 +916,7 @@
           "right": 1497.36,
           "bottom": 363.2,
           "width": 211.71,
-          "height": 49.23
+          "height": 49.24
         },
         "containerSelector": "#root",
         "text": "Count Grid",
@@ -2255,52 +938,12 @@
           "x": 1285.65,
           "y": 313.96,
           "width": 211.71,
-          "height": 49.23
+          "height": 49.24
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 1285.65,
-          "top": 368.55,
-          "right": 1444.28,
-          "bottom": 401.37,
-          "width": 158.63,
-          "height": 32.82
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(3)",
-        "text": "Composition",
-        "fixHint": "Text is 159px x 33px inside 407px x 27px and overflows by up to 4px; increase the container height to at least ~33px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 1285.65,
-          "top": 372.65,
-          "right": 1692.85,
-          "bottom": 399.32,
-          "width": 407.2,
-          "height": 26.67
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 2.05
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 1285.65,
-          "y": 368.55,
-          "width": 158.63,
-          "height": 32.82
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -2340,7 +983,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -2380,48 +1024,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 1925.68,
-          "top": 313.96,
-          "right": 2165.21,
-          "bottom": 363.2,
-          "width": 239.53,
-          "height": 49.23
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2)",
-        "text": "Agent Steps",
-        "fixHint": "Text is 240px x 49px inside 407px x 41px and overflows by up to 4px; increase the container height to at least ~49px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 1925.68,
-          "top": 318.06,
-          "right": 2332.88,
-          "bottom": 359.09,
-          "width": 407.2,
-          "height": 41.03
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 4.11
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 1925.68,
-          "y": 313.96,
-          "width": 239.53,
-          "height": 49.23
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -2435,7 +1039,7 @@
           "right": 2165.21,
           "bottom": 363.2,
           "width": 239.53,
-          "height": 49.23
+          "height": 49.24
         },
         "containerSelector": "#root",
         "text": "Agent Steps",
@@ -2457,52 +1061,12 @@
           "x": 1925.68,
           "y": 313.96,
           "width": 239.53,
-          "height": 49.23
+          "height": 49.24
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 1925.68,
-          "top": 368.55,
-          "right": 2084.31,
-          "bottom": 401.37,
-          "width": 158.63,
-          "height": 32.82
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(3)",
-        "text": "Composition",
-        "fixHint": "Text is 159px x 33px inside 407px x 27px and overflows by up to 4px; increase the container height to at least ~33px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 1925.68,
-          "top": 372.65,
-          "right": 2332.88,
-          "bottom": 399.32,
-          "width": 407.2,
-          "height": 26.67
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 2.05
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 1925.68,
-          "y": 368.55,
-          "width": 158.63,
-          "height": 32.82
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -2542,7 +1106,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -2582,48 +1147,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -915.44,
-          "top": 538.59,
-          "right": -644.41,
-          "bottom": 587.82,
-          "width": 271.04,
-          "height": 49.23
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(2)",
-        "text": "Text Highlight",
-        "fixHint": "Text is 271px x 49px inside 407px x 41px and overflows by up to 4px; increase the container height to at least ~49px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -915.44,
-          "top": 542.69,
-          "right": -508.25,
-          "bottom": 583.72,
-          "width": 407.2,
-          "height": 41.03
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 4.1
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -915.44,
-          "y": 538.59,
-          "width": 271.04,
-          "height": 49.23
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -2636,7 +1161,7 @@
           "top": 538.59,
           "right": -644.41,
           "bottom": 587.82,
-          "width": 271.04,
+          "width": 271.03,
           "height": 49.23
         },
         "containerSelector": "#root",
@@ -2658,53 +1183,13 @@
         "bbox": {
           "x": -915.44,
           "y": 538.59,
-          "width": 271.04,
+          "width": 271.03,
           "height": 49.23
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -915.44,
-          "top": 593.17,
-          "right": -789.54,
-          "bottom": 626,
-          "width": 125.9,
-          "height": 32.82
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(3)",
-        "text": "Animation",
-        "fixHint": "Text is 126px x 33px inside 407px x 27px and overflows by up to 4px; increase the container height to at least ~33px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -915.44,
-          "top": 597.28,
-          "right": -508.25,
-          "bottom": 623.95,
-          "width": 407.2,
-          "height": 26.67
-        },
-        "overflow": {
-          "top": 4.11,
-          "bottom": 2.05
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -915.44,
-          "y": 593.17,
-          "width": 125.9,
-          "height": 32.82
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -2718,7 +1203,7 @@
           "right": -789.54,
           "bottom": 626,
           "width": 125.9,
-          "height": 32.82
+          "height": 32.83
         },
         "containerSelector": "#root",
         "text": "Animation",
@@ -2740,11 +1225,12 @@
           "x": -915.44,
           "y": 593.17,
           "width": 125.9,
-          "height": 32.82
+          "height": 32.83
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -2784,48 +1270,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -275.41,
-          "top": 538.59,
-          "right": -28,
-          "bottom": 587.82,
-          "width": 247.42,
-          "height": 49.23
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2)",
-        "text": "Orbit Gallery",
-        "fixHint": "Text is 247px x 49px inside 407px x 41px and overflows by up to 4px; increase the container height to at least ~49px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -275.41,
-          "top": 542.69,
-          "right": 131.79,
-          "bottom": 583.72,
-          "width": 407.2,
-          "height": 41.03
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 4.1
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -275.41,
-          "y": 538.59,
-          "width": 247.42,
-          "height": 49.23
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -2838,7 +1284,7 @@
           "top": 538.59,
           "right": -28,
           "bottom": 587.82,
-          "width": 247.42,
+          "width": 247.41,
           "height": 49.23
         },
         "containerSelector": "#root",
@@ -2860,53 +1306,13 @@
         "bbox": {
           "x": -275.41,
           "y": 538.59,
-          "width": 247.42,
+          "width": 247.41,
           "height": 49.23
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": -275.41,
-          "top": 593.17,
-          "right": -116.78,
-          "bottom": 626,
-          "width": 158.63,
-          "height": 32.82
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(3)",
-        "text": "Composition",
-        "fixHint": "Text is 159px x 33px inside 407px x 27px and overflows by up to 4px; increase the container height to at least ~33px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": -275.41,
-          "top": 597.28,
-          "right": 131.79,
-          "bottom": 623.95,
-          "width": 407.2,
-          "height": 26.67
-        },
-        "overflow": {
-          "top": 4.11,
-          "bottom": 2.05
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": -275.41,
-          "y": 593.17,
-          "width": 158.63,
-          "height": 32.82
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -2920,7 +1326,7 @@
           "right": -116.78,
           "bottom": 626,
           "width": 158.63,
-          "height": 32.82
+          "height": 32.83
         },
         "containerSelector": "#root",
         "text": "Composition",
@@ -2942,134 +1348,12 @@
           "x": -275.41,
           "y": 593.17,
           "width": 158.63,
-          "height": 32.82
+          "height": 32.83
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 364.59,
-          "top": 538.59,
-          "right": 711.52,
-          "bottom": 587.82,
-          "width": 346.94,
-          "height": 49.23
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(2)",
-        "text": "Karaoke Captions",
-        "fixHint": "Text is 347px x 49px inside 407px x 41px and overflows by up to 4px; increase the container height to at least ~49px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 364.59,
-          "top": 542.69,
-          "right": 771.78,
-          "bottom": 583.72,
-          "width": 407.2,
-          "height": 41.03
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 4.1
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 364.59,
-          "y": 538.59,
-          "width": 346.94,
-          "height": 49.23
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 364.59,
-          "top": 593.17,
-          "right": 523.21,
-          "bottom": 626,
-          "width": 158.63,
-          "height": 32.82
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(3)",
-        "text": "Composition",
-        "fixHint": "Text is 159px x 33px inside 407px x 27px and overflows by up to 4px; increase the container height to at least ~33px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 364.59,
-          "top": 597.28,
-          "right": 771.78,
-          "bottom": 623.95,
-          "width": 407.2,
-          "height": 26.67
-        },
-        "overflow": {
-          "top": 4.11,
-          "bottom": 2.05
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 364.59,
-          "y": 593.17,
-          "width": 158.63,
-          "height": 32.82
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(4) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 1004.62,
-          "top": 538.59,
-          "right": 1286.94,
-          "bottom": 587.82,
-          "width": 282.32,
-          "height": 49.23
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(4) > div:nth-of-type(2)",
-        "text": "Search Typing",
-        "fixHint": "Text is 282px x 49px inside 407px x 41px and overflows by up to 4px; increase the container height to at least ~49px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 1004.62,
-          "top": 542.69,
-          "right": 1411.82,
-          "bottom": 583.72,
-          "width": 407.2,
-          "height": 41.03
-        },
-        "overflow": {
-          "top": 4.1,
-          "bottom": 4.1
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 1004.62,
-          "y": 538.59,
-          "width": 282.32,
-          "height": 49.23
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -3109,48 +1393,8 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
-      },
-      {
-        "code": "text_box_overflow",
-        "severity": "info",
-        "time": 0.222,
-        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(4) > div:nth-of-type(3)",
-        "message": "Text extends outside its nearest visual/container box.",
-        "rect": {
-          "left": 1004.62,
-          "top": 593.17,
-          "right": 1163.25,
-          "bottom": 626,
-          "width": 158.63,
-          "height": 32.82
-        },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(4) > div:nth-of-type(3)",
-        "text": "Composition",
-        "fixHint": "Text is 159px x 33px inside 407px x 27px and overflows by up to 4px; increase the container height to at least ~33px or shrink font-size from 13px to ~11px, or allow wrapping with max-width/fitTextFontSize.",
-        "containerRect": {
-          "left": 1004.62,
-          "top": 597.28,
-          "right": 1411.82,
-          "bottom": 623.95,
-          "width": 407.2,
-          "height": 26.67
-        },
-        "overflow": {
-          "top": 4.11,
-          "bottom": 2.05
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/snapcn-roster-grant.html",
-        "bbox": {
-          "x": 1004.62,
-          "y": 593.17,
-          "width": 158.63,
-          "height": 32.82
-        },
-        "firstSeen": 0.222,
-        "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -3190,14 +1434,15 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
-        "code": "text_box_overflow",
+        "code": "canvas_overflow",
         "severity": "info",
         "time": 0.222,
         "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(2)",
-        "message": "Text extends outside its nearest visual/container box.",
+        "message": "Text extends outside the composition canvas.",
         "rect": {
           "left": 1644.65,
           "top": 538.59,
@@ -3206,20 +1451,19 @@
           "width": 271.04,
           "height": 49.23
         },
-        "containerSelector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(2)",
+        "containerSelector": "#root",
         "text": "Text Highlight",
-        "fixHint": "Text is 271px x 49px inside 407px x 41px and overflows by up to 4px; increase the container height to at least ~49px or shrink font-size from 20px to ~17px, or allow wrapping with max-width/fitTextFontSize.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
         "containerRect": {
-          "left": 1644.65,
-          "top": 542.69,
-          "right": 2051.85,
-          "bottom": 583.72,
-          "width": 407.2,
-          "height": 41.03
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
         },
         "overflow": {
-          "top": 4.1,
-          "bottom": 4.1
+          "right": 635.69
         },
         "dataAttributes": {},
         "sourceFile": "compositions/snapcn-roster-grant.html",
@@ -3231,7 +1475,1812 @@
         },
         "firstSeen": 0.222,
         "lastSeen": 0.222,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1644.65,
+          "top": 593.17,
+          "right": 1770.55,
+          "bottom": 626,
+          "width": 125.9,
+          "height": 32.83
+        },
+        "containerSelector": "#root",
+        "text": "Animation",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 490.55
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1644.65,
+          "y": 593.17,
+          "width": 125.9,
+          "height": 32.83
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": -365.1,
+          "top": 283.83,
+          "right": 221.6,
+          "bottom": 439.74,
+          "width": 586.69,
+          "height": 155.9
+        },
+        "containerSelector": "#root",
+        "text": "TS Text Swell Animation",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 365.1
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -365.1,
+          "y": 283.83,
+          "width": 586.69,
+          "height": 155.9
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 1126.67,
+          "top": 283.83,
+          "right": 1713.37,
+          "bottom": 439.74,
+          "width": 586.69,
+          "height": 155.9
+        },
+        "containerSelector": "#root",
+        "text": "CG Count Grid Composition",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 433.37
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1126.67,
+          "y": 283.83,
+          "width": 586.69,
+          "height": 155.9
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(4)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 845.63,
+          "top": 508.46,
+          "right": 1432.33,
+          "bottom": 664.36,
+          "width": 586.69,
+          "height": 155.9
+        },
+        "containerSelector": "#root",
+        "text": "ST Search Typing Composition",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 152.33
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 845.63,
+          "y": 508.46,
+          "width": 586.69,
+          "height": 155.9
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -646.84,
+          "top": 120.97,
+          "right": -572.91,
+          "bottom": 177.07,
+          "width": 73.93,
+          "height": 56.1
+        },
+        "containerSelector": "#root",
+        "text": "WF",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 646.84
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -646.84,
+          "y": 120.97,
+          "width": 73.93,
+          "height": 56.1
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -540.24,
+          "top": 104.9,
+          "right": -365.38,
+          "bottom": 151.32,
+          "width": 174.86,
+          "height": 46.42
+        },
+        "containerSelector": "#root",
+        "text": "Word Flip",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 540.24
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -540.24,
+          "y": 104.9,
+          "width": 174.86,
+          "height": 46.42
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -540.24,
+          "top": 156.36,
+          "right": -421.53,
+          "bottom": 187.31,
+          "width": 118.71,
+          "height": 30.95
+        },
+        "containerSelector": "#root",
+        "text": "Animation",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 540.24
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -540.24,
+          "y": 156.36,
+          "width": 118.71,
+          "height": 30.95
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -36.59,
+          "top": 120.97,
+          "right": 23.79,
+          "bottom": 177.07,
+          "width": 60.38,
+          "height": 56.1
+        },
+        "containerSelector": "#root",
+        "text": "TR",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 36.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -36.59,
+          "y": 120.97,
+          "width": 60.38,
+          "height": 56.1
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1270.19,
+          "top": 104.9,
+          "right": 1452.49,
+          "bottom": 151.32,
+          "width": 182.3,
+          "height": 46.42
+        },
+        "containerSelector": "#root",
+        "text": "Logo Drift",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 172.49
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1270.19,
+          "y": 104.9,
+          "width": 182.3,
+          "height": 46.42
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1270.19,
+          "top": 156.36,
+          "right": 1413.05,
+          "bottom": 187.31,
+          "width": 142.86,
+          "height": 30.95
+        },
+        "containerSelector": "#root",
+        "text": "Background",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 133.05
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1270.19,
+          "y": 156.36,
+          "width": 142.86,
+          "height": 30.95
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1767.08,
+          "top": 120.97,
+          "right": 1841,
+          "bottom": 177.07,
+          "width": 73.92,
+          "height": 56.1
+        },
+        "containerSelector": "#root",
+        "text": "WF",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 561
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1767.08,
+          "y": 120.97,
+          "width": 73.92,
+          "height": 56.1
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1873.67,
+          "top": 104.9,
+          "right": 2048.54,
+          "bottom": 151.32,
+          "width": 174.87,
+          "height": 46.42
+        },
+        "containerSelector": "#root",
+        "text": "Word Flip",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 768.54
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1873.67,
+          "y": 104.9,
+          "width": 174.87,
+          "height": 46.42
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1873.67,
+          "top": 156.36,
+          "right": 1992.38,
+          "bottom": 187.31,
+          "width": 118.71,
+          "height": 30.95
+        },
+        "containerSelector": "#root",
+        "text": "Animation",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 712.38
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1873.67,
+          "y": 156.36,
+          "width": 118.71,
+          "height": 30.95
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -829.23,
+          "top": 332.77,
+          "right": -756.54,
+          "bottom": 388.86,
+          "width": 72.69,
+          "height": 56.09
+        },
+        "containerSelector": "#root",
+        "text": "TM",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 829.23
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -829.23,
+          "y": 332.77,
+          "width": 72.69,
+          "height": 56.09
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -723.24,
+          "top": 316.69,
+          "right": -499.86,
+          "bottom": 363.11,
+          "width": 223.38,
+          "height": 46.42
+        },
+        "containerSelector": "#root",
+        "text": "Type Morph",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 723.24
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -723.24,
+          "y": 316.69,
+          "width": 223.38,
+          "height": 46.42
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -723.24,
+          "top": 368.16,
+          "right": -604.52,
+          "bottom": 399.11,
+          "width": 118.72,
+          "height": 30.95
+        },
+        "containerSelector": "#root",
+        "text": "Animation",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 723.24
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -723.24,
+          "y": 368.16,
+          "width": 118.72,
+          "height": 30.95
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -219.52,
+          "top": 332.77,
+          "right": -159.29,
+          "bottom": 388.86,
+          "width": 60.23,
+          "height": 56.09
+        },
+        "containerSelector": "#root",
+        "text": "TS",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 219.52
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -219.52,
+          "y": 332.77,
+          "width": 60.23,
+          "height": 56.09
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -119.76,
+          "top": 316.69,
+          "right": 68.74,
+          "bottom": 363.11,
+          "width": 188.5,
+          "height": 46.42
+        },
+        "containerSelector": "#root",
+        "text": "Text Swell",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 119.76
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -119.76,
+          "y": 316.69,
+          "width": 188.5,
+          "height": 46.42
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -119.76,
+          "top": 368.16,
+          "right": -1.05,
+          "bottom": 399.11,
+          "width": 118.71,
+          "height": 30.95
+        },
+        "containerSelector": "#root",
+        "text": "Animation",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 119.76
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -119.76,
+          "y": 368.16,
+          "width": 118.71,
+          "height": 30.95
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1199.13,
+          "top": 316.69,
+          "right": 1398.75,
+          "bottom": 363.11,
+          "width": 199.62,
+          "height": 46.42
+        },
+        "containerSelector": "#root",
+        "text": "Count Grid",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 118.75
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1199.13,
+          "y": 316.69,
+          "width": 199.62,
+          "height": 46.42
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1199.13,
+          "top": 368.16,
+          "right": 1348.7,
+          "bottom": 399.11,
+          "width": 149.57,
+          "height": 30.95
+        },
+        "containerSelector": "#root",
+        "text": "Composition",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 68.7
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1199.13,
+          "y": 368.16,
+          "width": 149.57,
+          "height": 30.95
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1701.64,
+          "top": 332.77,
+          "right": 1764.32,
+          "bottom": 388.86,
+          "width": 62.68,
+          "height": 56.09
+        },
+        "containerSelector": "#root",
+        "text": "AS",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 484.32
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1701.64,
+          "y": 332.77,
+          "width": 62.68,
+          "height": 56.09
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1802.61,
+          "top": 316.69,
+          "right": 2028.46,
+          "bottom": 363.11,
+          "width": 225.85,
+          "height": 46.42
+        },
+        "containerSelector": "#root",
+        "text": "Agent Steps",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 748.46
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1802.61,
+          "y": 316.69,
+          "width": 225.85,
+          "height": 46.42
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1802.61,
+          "top": 368.16,
+          "right": 1952.18,
+          "bottom": 399.11,
+          "width": 149.57,
+          "height": 30.95
+        },
+        "containerSelector": "#root",
+        "text": "Composition",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 672.18
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1802.61,
+          "y": 368.16,
+          "width": 149.57,
+          "height": 30.95
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -697.65,
+          "top": 544.57,
+          "right": -632.76,
+          "bottom": 600.66,
+          "width": 64.89,
+          "height": 56.09
+        },
+        "containerSelector": "#root",
+        "text": "TH",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 697.65
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -697.65,
+          "y": 544.57,
+          "width": 64.89,
+          "height": 56.09
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -595.56,
+          "top": 528.49,
+          "right": -340,
+          "bottom": 574.91,
+          "width": 255.56,
+          "height": 46.42
+        },
+        "containerSelector": "#root",
+        "text": "Text Highlight",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 595.56
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -595.56,
+          "y": 528.49,
+          "width": 255.56,
+          "height": 46.42
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -595.56,
+          "top": 579.96,
+          "right": -476.84,
+          "bottom": 610.91,
+          "width": 118.72,
+          "height": 30.95
+        },
+        "containerSelector": "#root",
+        "text": "Animation",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 595.56
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -595.56,
+          "y": 579.96,
+          "width": 118.72,
+          "height": 30.95
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -96.86,
+          "top": 544.57,
+          "right": -26.56,
+          "bottom": 600.66,
+          "width": 70.3,
+          "height": 56.09
+        },
+        "containerSelector": "#root",
+        "text": "OG",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 96.86
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -96.86,
+          "y": 544.57,
+          "width": 70.3,
+          "height": 56.09
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(4) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1214.85,
+          "top": 528.49,
+          "right": 1481.05,
+          "bottom": 574.91,
+          "width": 266.2,
+          "height": 46.42
+        },
+        "containerSelector": "#root",
+        "text": "Search Typing",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 201.05
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1214.85,
+          "y": 528.49,
+          "width": 266.2,
+          "height": 46.42
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(4) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1214.85,
+          "top": 579.96,
+          "right": 1364.42,
+          "bottom": 610.91,
+          "width": 149.57,
+          "height": 30.95
+        },
+        "containerSelector": "#root",
+        "text": "Composition",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 84.42
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1214.85,
+          "y": 579.96,
+          "width": 149.57,
+          "height": 30.95
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1716.24,
+          "top": 544.57,
+          "right": 1781.12,
+          "bottom": 600.66,
+          "width": 64.88,
+          "height": 56.09
+        },
+        "containerSelector": "#root",
+        "text": "TH",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 501.12
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1716.24,
+          "y": 544.57,
+          "width": 64.88,
+          "height": 56.09
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1818.33,
+          "top": 528.49,
+          "right": 2073.89,
+          "bottom": 574.91,
+          "width": 255.56,
+          "height": 46.42
+        },
+        "containerSelector": "#root",
+        "text": "Text Highlight",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 793.89
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1818.33,
+          "y": 528.49,
+          "width": 255.56,
+          "height": 46.42
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(5) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1818.33,
+          "top": 579.96,
+          "right": 1937.04,
+          "bottom": 610.91,
+          "width": 118.71,
+          "height": 30.95
+        },
+        "containerSelector": "#root",
+        "text": "Animation",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 657.04
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1818.33,
+          "y": 579.96,
+          "width": 118.71,
+          "height": 30.95
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": -86.67,
+          "top": 76.49,
+          "right": 466.52,
+          "bottom": 223.49,
+          "width": 553.19,
+          "height": 147
+        },
+        "containerSelector": "#root",
+        "text": "TR Text Reveal Animation",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 86.67
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -86.67,
+          "y": 76.49,
+          "width": 553.19,
+          "height": 147
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 1120.29,
+          "top": 76.49,
+          "right": 1673.48,
+          "bottom": 223.49,
+          "width": 553.19,
+          "height": 147
+        },
+        "containerSelector": "#root",
+        "text": "LD Logo Drift Background",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 393.48
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1120.29,
+          "y": 76.49,
+          "width": 553.19,
+          "height": 147
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": -269.66,
+          "top": 288.28,
+          "right": 283.53,
+          "bottom": 435.29,
+          "width": 553.19,
+          "height": 147
+        },
+        "containerSelector": "#root",
+        "text": "TS Text Swell Animation",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 269.66
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -269.66,
+          "y": 288.28,
+          "width": 553.19,
+          "height": 147
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 1049.23,
+          "top": 288.28,
+          "right": 1602.42,
+          "bottom": 435.29,
+          "width": 553.19,
+          "height": 147
+        },
+        "containerSelector": "#root",
+        "text": "CG Count Grid Composition",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 322.42
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1049.23,
+          "y": 288.28,
+          "width": 553.19,
+          "height": 147
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(4)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 1064.95,
+          "top": 500.08,
+          "right": 1618.13,
+          "bottom": 647.08,
+          "width": 553.19,
+          "height": 147
+        },
+        "containerSelector": "#root",
+        "text": "ST Search Typing Composition",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 338.13
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1064.95,
+          "y": 500.08,
+          "width": 553.19,
+          "height": 147
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.111,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -680.08,
+          "top": 128.41,
+          "right": -608.44,
+          "bottom": 182.77,
+          "width": 71.64,
+          "height": 54.36
+        },
+        "containerSelector": "#root",
+        "text": "WF",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 680.08
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -680.08,
+          "y": 128.41,
+          "width": 71.64,
+          "height": 54.36
+        },
+        "firstSeen": 1.111,
+        "lastSeen": 1.111,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.111,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -576.78,
+          "top": 112.83,
+          "right": -407.31,
+          "bottom": 157.81,
+          "width": 169.47,
+          "height": 44.98
+        },
+        "containerSelector": "#root",
+        "text": "Word Flip",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 576.78
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -576.78,
+          "y": 112.83,
+          "width": 169.47,
+          "height": 44.98
+        },
+        "firstSeen": 1.111,
+        "lastSeen": 1.111,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.111,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -576.78,
+          "top": 162.71,
+          "right": -461.73,
+          "bottom": 192.7,
+          "width": 115.05,
+          "height": 29.99
+        },
+        "containerSelector": "#root",
+        "text": "Animation",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 576.78
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -576.78,
+          "y": 162.71,
+          "width": 115.05,
+          "height": 29.99
+        },
+        "firstSeen": 1.111,
+        "lastSeen": 1.111,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.111,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -88.67,
+          "top": 128.41,
+          "right": -30.15,
+          "bottom": 182.77,
+          "width": 58.52,
+          "height": 54.36
+        },
+        "containerSelector": "#root",
+        "text": "TR",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 88.67
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": -88.67,
+          "y": 128.41,
+          "width": 58.52,
+          "height": 54.36
+        },
+        "firstSeen": 1.111,
+        "lastSeen": 1.111,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.111,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1177.76,
+          "top": 112.83,
+          "right": 1354.44,
+          "bottom": 157.81,
+          "width": 176.68,
+          "height": 44.98
+        },
+        "containerSelector": "#root",
+        "text": "Logo Drift",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 74.44
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1177.76,
+          "y": 112.83,
+          "width": 176.68,
+          "height": 44.98
+        },
+        "firstSeen": 1.111,
+        "lastSeen": 1.111,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.111,
+        "selector": "#snapcn-roster-grant-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1177.76,
+          "top": 162.71,
+          "right": 1316.21,
+          "bottom": 192.7,
+          "width": 138.45,
+          "height": 29.99
+        },
+        "containerSelector": "#root",
+        "text": "Background",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 36.21
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-roster-grant.html",
+        "bbox": {
+          "x": 1177.76,
+          "y": 162.71,
+          "width": 138.45,
+          "height": 29.99
+        },
+        "firstSeen": 1.111,
+        "lastSeen": 1.111,
+        "occurrences": 1,
+        "heldMs": 0
       }
     ],
     "duration": 4,
@@ -3249,7 +3298,7 @@
     "transitionSamples": [],
     "transitionSamplesDropped": 0,
     "tolerance": 2,
-    "totalIssueCount": 534,
+    "totalIssueCount": 300,
     "truncated": true
   },
   "motion": {
@@ -3278,6 +3327,10 @@
     "checked": 105,
     "passed": 105
   },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
   "snapshots": {
     "enabled": false,
     "files": [],
@@ -3285,8 +3338,8 @@
     "findingFiles": []
   },
   "_meta": {
-    "version": "0.8.30",
-    "latestVersion": "0.8.32",
-    "updateAvailable": true
+    "version": "0.8.99",
+    "latestVersion": "0.8.94",
+    "updateAvailable": false
   }
 }

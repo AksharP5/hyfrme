@@ -161,6 +161,23 @@ for (const entry of selected) {
             };
           },
         );
+        api.onLoad({ filter: /card-rail\/index\.tsx$/ }, async ({ path }) => {
+          const source = await readFile(path, "utf8");
+          const resolver = "function resolveSrc(src: string): string {";
+          if (
+            source.includes("https://media.snapcn.dev/") &&
+            !source.includes(resolver)
+          )
+            throw new Error("Pinned Card Rail media resolver changed.");
+          return {
+            loader: "tsx",
+            resolveDir: dirname(path),
+            contents: source.replace(
+              resolver,
+              `${resolver}\n  const frozen = staticFile(src);\n  if (frozen !== src) return frozen;`,
+            ),
+          };
+        });
         api.onLoad(
           { filter: /paper-shaders\/shaders\/src\/shader-mount\.ts$/ },
           async ({ path }) => {
@@ -280,18 +297,58 @@ for (const entry of selected) {
     };
   });
   const duration = fixture.durationInFrames / fixture.fps;
+  const stageColors =
+    slug === "snapcn-moodboard-reveal"
+      ? [
+          "props.darkColor ?? props.theme?.background",
+          "props.lightColor ?? props.theme?.background",
+        ]
+      : slug === "snapcn-orbit-gallery"
+        ? ["props.background ?? props.theme?.background"]
+        : [
+              "snapcn-terminal-simulator",
+              "snapcn-follower-rush",
+              "snapcn-prompt-send",
+              "snapcn-roster-grant",
+              "snapcn-card-rail",
+            ].includes(slug)
+          ? ["props.theme?.background"]
+          : null;
   const contents = `
 import React from 'react';
 import {createRoot} from 'react-dom/client';
 import {flushSync} from 'react-dom';
 import {__configure, __setFrame, __waitForSource} from 'remotion';
 import {${componentName}} from ${JSON.stringify(resolve(upstream, entry.origin.entry ?? entry.origin.source))};
+${stageColors ? `import {parseColor as parseStageColor} from ${JSON.stringify(resolve(upstream, "registry/snap-cn-ui/core/color.ts"))};` : ""}
 const slug = ${JSON.stringify(slug)};
 const config = ${JSON.stringify({ width: fixture.width, height: fixture.height, fps: fixture.fps, durationInFrames: fixture.durationInFrames })};
 const container = document.getElementById(slug + '-source-root');
 const assets = JSON.parse(container.dataset.hyfrmeAssets);
 __configure(config, assets, slug);
 const props = {...${scriptJson(fixture.props)}, ...window.__hyperframes.getVariables()};
+${
+  [
+    "snapcn-follower-rush",
+    "snapcn-roster-grant",
+    "snapcn-karaoke-captions",
+    "snapcn-wordmark-cut",
+  ].includes(slug)
+    ? `// The published theme selector names a mode; the source theme prop is a token map.
+if (props.theme === 'light' || props.theme === 'dark') {
+  props.mode = props.theme;
+  delete props.theme;
+}`
+    : ""
+}
+${
+  stageColors
+    ? `// The reference backdrop must not cover an explicitly transparent source stage.
+if ([${stageColors.join(", ")}].every(color => typeof color === 'string' && parseStageColor(color).alpha === 0)) {
+  container.style.background = 'transparent';
+}`
+    : ""
+}
 const component = createRoot(container, {identifierPrefix: container.closest('[data-composition-file]')?.dataset.compositionId ?? slug});
 const renderFrame = (frame) => {
   __setFrame(frame);
@@ -305,16 +362,55 @@ const renderFrame = (frame) => {
       : ""
   }
 };
+const imageDecodes = new WeakMap();
+window.addEventListener('hf-seek', ({detail}) => {
+  if (typeof detail.waitUntil !== 'function') return;
+  // Collect after every synchronous timeline has applied its new image URLs.
+  detail.waitUntil(Promise.resolve().then(() => Promise.all([...container.querySelectorAll('img')].map(image => {
+    const src = image.src;
+    const previous = imageDecodes.get(image);
+    if (previous?.src === src) return previous.ready;
+    const ready = (async () => {
+      for (let attempt = 0; attempt < 2; attempt += 1) {
+        try {
+          await image.decode();
+          return;
+        } catch (error) {
+          // React may replace this image or its URL while an earlier seek is pending.
+          if (!image.isConnected || image.src !== src) return;
+          // A canceled decode can leave a fully loaded current image, as in the source renderer.
+          if (image.complete && image.naturalWidth > 0 && image.naturalHeight > 0) return;
+          if (image.complete && image.naturalWidth === 0) {
+            if (image.hasAttribute('data-hyfrme-image-fallback')) return;
+            throw error;
+          }
+          // Binding a new request to the same URL can abort the first decode.
+          if (attempt === 1) throw error;
+        }
+      }
+    })();
+    imageDecodes.set(image, {src, ready});
+    return ready;
+  }))));
+});
 window.__hyfrmeRenderers = window.__hyfrmeRenderers || {};
 window.__hyfrmeRenderers[slug] = renderFrame;
 window.__hyfrmeReadiness = window.__hyfrmeReadiness || {};
 const ready = (async () => {
+  // Source galleries swap image URLs while seeking. Decode their frozen assets first.
+  const images = [...new Set(Object.values(assets))].filter(src => /\\.(avif|gif|jpe?g|png|svg|webp)(?:[?#].*)?$/i.test(src)).map(src => {
+    const image = new Image();
+    image.src = src;
+    return image;
+  });
+  await Promise.all(images.map(image => image.decode()));
   const families = new Set(JSON.parse(container.dataset.hyfrmeFonts));
   await Promise.all(Array.from(document.fonts).filter(font => families.has(font.family.replaceAll('"', '').replaceAll("'", ''))).map(font => font.load()));
   await document.fonts.ready;
   renderFrame(0);
   await __waitForSource();
   renderFrame(0);
+  return images;
 })();
 window.__hyfrmeReadiness[slug] = ready;
 window.__hyfrmeReady = ready;

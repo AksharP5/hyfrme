@@ -161,6 +161,7 @@ class Easing {
 
 const hyfrmeParseColor = (color) => {
   const value = String(color).trim();
+  if (value.toLowerCase() === "transparent") return [0, 0, 0, 0];
   if (value.startsWith("#")) {
     const hex = value.slice(1);
     const expanded = hex.length <= 4

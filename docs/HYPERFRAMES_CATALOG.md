@@ -7,7 +7,7 @@ and Simulated Cursor, for 396 official items total. The authoritative import rec
 [`catalog/hyperframes-upstream.json`](../catalog/hyperframes-upstream.json).
 
 Rechecked against upstream main at
-[`ca5463146499dc17f0d7b0350e8325640edba580`](https://github.com/heygen-com/hyperframes/commit/ca5463146499dc17f0d7b0350e8325640edba580)
+[`c777f36d47d7fb914c7b3be4a9536ff343c4075f`](https://github.com/heygen-com/hyperframes/commit/c777f36d47d7fb914c7b3be4a9536ff343c4075f)
 on September 30, 2026. Imported source paths, registry membership, and catalog
 navigation remain unchanged, so the original source and navigation pins are preserved.
 

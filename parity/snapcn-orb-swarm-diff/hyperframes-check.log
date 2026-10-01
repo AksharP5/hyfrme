@@ -20,9 +20,47 @@
   "layout": {
     "ok": true,
     "errorCount": 0,
-    "warningCount": 0,
+    "warningCount": 1,
     "infoCount": 0,
-    "findings": [],
+    "findings": [
+      {
+        "code": "canvas_content_at_edge",
+        "severity": "warning",
+        "time": 2.074,
+        "selector": "#snapcn-orb-swarm-source-root > div:nth-of-type(1) > canvas:nth-of-type(1)",
+        "message": "Canvas content touches the frame edge (bottom).",
+        "rect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "containerSelector": "#root",
+        "fixHint": "Keep drawn text inside the visible part of the canvas, or mark intentional full-bleed art with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-orb-swarm.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "firstSeen": 2.074,
+        "lastSeen": 3.852,
+        "occurrences": 4,
+        "heldMs": 1778
+      }
+    ],
     "duration": 5.333333333333333,
     "samples": [
       0.296,
@@ -38,7 +76,7 @@
     "transitionSamples": [],
     "transitionSamplesDropped": 0,
     "tolerance": 2,
-    "totalIssueCount": 0,
+    "totalIssueCount": 1,
     "truncated": false
   },
   "motion": {
@@ -67,6 +105,10 @@
     "checked": 0,
     "passed": 0
   },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
   "snapshots": {
     "enabled": false,
     "files": [],
@@ -74,8 +116,8 @@
     "findingFiles": []
   },
   "_meta": {
-    "version": "0.8.30",
-    "latestVersion": "0.8.80",
-    "updateAvailable": true
+    "version": "0.8.99",
+    "latestVersion": "0.8.94",
+    "updateAvailable": false
   }
 }

@@ -35,16 +35,23 @@ export const continueRender = (handle) => {
 export const __waitForSource = () => pending.size === 0 ? Promise.resolve() : new Promise(resolve => waiting.add(resolve));
 export const __configure = (value, files, name) => {config = value; assets = files; slug = name;};
 export const __setFrame = (value) => {frame = value;};
-${scopeSvgIds ? `export const __instanceId = (id) => {
+${
+  scopeSvgIds
+    ? `export const __instanceId = (id) => {
   instanceId ??= document.getElementById(slug + '-source-root').closest('[data-composition-file]')?.dataset.compositionId ?? slug;
   return instanceId + '-' + id;
 };
-` : ""}export const staticFile = (path) => assets?.[path] ?? assets?.['/' + path.replace(/^\\//, '')] ?? path;
+`
+    : ""
+}export const staticFile = (path) => assets?.[path] ?? assets?.['/' + path.replace(/^\\//, '')] ?? path;
 export const AbsoluteFill = ({children, style, ...props}) => React.createElement('div', {
   ...props,
   style: {position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, width: '100%', height: '100%', display: 'flex', flexDirection: 'column', ...style},
 }, children);
-export const Img = ({src, ...props}) => React.createElement('img', {...props, src: staticFile(src)});
+export const Img = ({src, ...props}) => React.createElement('img', {
+  ...props, src: staticFile(src), decoding: 'sync',
+  'data-hyfrme-image-fallback': typeof props.onError === 'function' ? '' : undefined,
+});
 export const OffthreadVideo = ({src, trimBefore = 0, startFrom = trimBefore, playbackRate = 1, volume, ...props}) => {
   const id = slug + '-video-' + useId().replace(/[^a-zA-Z0-9_-]/g, '');
   return React.createElement('video', {

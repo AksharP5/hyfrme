@@ -303,7 +303,7 @@
     "componentName": "AnnounceTitle",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
       "source": "registry/snap-cn/announce-title/index.tsx",
       "config": "registry/snap-cn/announce-title/config.ts",
       "license": "MIT",
@@ -329,6 +329,7 @@
         "glowColor": "#08ff4b",
         "glowStrength": 0.139,
         "taglineColor": "#f2f8ff",
+        "inkColor": "#ffffff",
         "fontFamily": "Default",
         "speed": 1
       },
@@ -411,6 +412,11 @@
         "type": "color",
         "default": "#f2f8ff",
         "label": "Tagline ink"
+      },
+      "inkColor": {
+        "type": "color",
+        "default": "#ffffff",
+        "label": "Shot ink"
       },
       "fontFamily": {
         "type": "select",
@@ -3419,7 +3425,7 @@
     "componentName": "TerminalSimulator",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
       "source": "registry/snap-cn/terminal-simulator/index.tsx",
       "config": "registry/snap-cn/terminal-simulator/config.ts",
       "license": "MIT",
@@ -3893,7 +3899,7 @@
     "componentName": "FollowerRush",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
       "source": "registry/snap-cn/follower-rush/index.tsx",
       "config": "registry/snap-cn/follower-rush/config.ts",
       "license": "MIT",
@@ -3975,7 +3981,7 @@
     "componentName": "PromptSend",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
       "source": "registry/snap-cn/prompt-send/index.tsx",
       "config": "registry/snap-cn/prompt-send/config.ts",
       "license": "MIT",
@@ -4651,7 +4657,7 @@
     "componentName": "OrbitGallery",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
       "source": "registry/snap-cn/orbit-gallery/index.tsx",
       "config": "registry/snap-cn/orbit-gallery/config.ts",
       "license": "MIT",
@@ -4866,7 +4872,7 @@
     "componentName": "MoodboardReveal",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
       "source": "registry/snap-cn/moodboard-reveal/index.tsx",
       "config": "registry/snap-cn/moodboard-reveal/config.ts",
       "license": "MIT",
@@ -5604,7 +5610,7 @@
     "componentName": "RosterGrant",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "bc5b59f3f0fad9657b338fa62349a55fa33f160f",
+      "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
       "source": "registry/snap-cn/roster-grant/index.tsx",
       "config": "registry/snap-cn/roster-grant/config.ts",
       "license": "MIT",
@@ -5925,7 +5931,7 @@
     "componentName": "ChannelThread",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "1159369742d75d66ae89b3f83d45850861ccc63e",
+      "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
       "source": "registry/snap-cn/channel-thread/index.tsx",
       "config": "registry/snap-cn/channel-thread/config.ts",
       "license": "MIT",
@@ -5937,11 +5943,7 @@
       "fps": 30,
       "durationInFrames": 110,
       "props": {
-        "script": "Launch video by Thursday?|We have nothing shot.;Already done.|Built it out of snapcn.",
-        "people": "rhea 9:41 AM;sam 9:42 AM",
-        "beats": "0,12,60,84",
-        "opens": "0,12,37,72",
-        "avatars": "/avatars/07.jpg|/avatars/13.jpg",
+        "messages": "/avatars/07.jpg > rhea 9:41 AM > Launch video by Thursday? | We have nothing shot. | /avatars/13.jpg > sam 9:42 AM > Already done. | Built it out of snapcn.",
         "mode": "dark",
         "fontFamily": "Default",
         "speed": 1
@@ -5949,30 +5951,10 @@
       "background": "transparent"
     },
     "controls": {
-      "script": {
+      "messages": {
         "type": "text",
-        "default": "Launch video by Thursday?|We have nothing shot.;Already done.|Built it out of snapcn.",
-        "label": "Script (; group, | line)"
-      },
-      "people": {
-        "type": "text",
-        "default": "rhea 9:41 AM;sam 9:42 AM",
-        "label": "Who, and when"
-      },
-      "beats": {
-        "type": "text",
-        "default": "0,12,60,84",
-        "label": "Message lands (frame)"
-      },
-      "opens": {
-        "type": "text",
-        "default": "0,12,37,72",
-        "label": "Row opens (frame)"
-      },
-      "avatars": {
-        "type": "text",
-        "default": "/avatars/07.jpg|/avatars/13.jpg",
-        "label": "Avatar images (| separated)"
+        "default": "/avatars/07.jpg > rhea 9:41 AM > Launch video by Thursday? | We have nothing shot. | /avatars/13.jpg > sam 9:42 AM > Already done. | Built it out of snapcn.",
+        "label": "Messages (avatar > name time > text | …)"
       },
       "mode": {
         "type": "select",
@@ -6115,7 +6097,7 @@
     "componentName": "CardRail",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "1159369742d75d66ae89b3f83d45850861ccc63e",
+      "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
       "source": "registry/snap-cn/card-rail/index.tsx",
       "config": "registry/snap-cn/card-rail/config.ts",
       "license": "MIT",
@@ -6128,10 +6110,7 @@
       "durationInFrames": 108,
       "props": {
         "heading": "Browse scenes",
-        "images": "/demos/posters/orbit-gallery.webp|/demos/posters/moodboard-reveal.webp|/demos/posters/hero-launch.webp|/demos/posters/phone-frame.webp|/demos/posters/count-grid.webp|/demos/posters/terminal-simulator.webp|/demos/posters/logo-flicker.webp|/demos/posters/laptop-frame.webp|/demos/posters/announce-title.webp",
-        "titles": "Orbit Gallery|Moodboard Reveal|Hero Launch|Phone Frame|Count Grid|Terminal Simulator|Logo Flicker|Laptop Frame|Announce Title",
-        "notes": "Scene · 300 frames|Scene · 150 frames|Scene · 170 frames|Scene · 240 frames|Scene · 47 frames|Scene · 200 frames|Scene · 100 frames|Scene · 240 frames|Scene · 170 frames",
-        "tags": "@snapcn/orbit-gallery|@snapcn/moodboard-reveal|@snapcn/hero-launch|@snapcn/phone-frame|@snapcn/count-grid|@snapcn/terminal-simulator|@snapcn/logo-flicker|@snapcn/laptop-frame|@snapcn/announce-title",
+        "cards": "https://media.snapcn.dev/demos/posters/orbit-gallery.webp > Orbit Gallery > Scene · 300 frames > @snapcn/orbit-gallery | https://media.snapcn.dev/demos/posters/moodboard-reveal.webp > Moodboard Reveal > Scene · 150 frames > @snapcn/moodboard-reveal | https://media.snapcn.dev/demos/posters/hero-launch.webp > Hero Launch > Scene · 170 frames > @snapcn/hero-launch | https://media.snapcn.dev/demos/posters/phone-frame.webp > Phone Frame > Scene · 240 frames > @snapcn/phone-frame | https://media.snapcn.dev/demos/posters/count-grid.webp > Count Grid > Scene · 47 frames > @snapcn/count-grid | https://media.snapcn.dev/demos/posters/terminal-simulator.webp > Terminal Simulator > Scene · 200 frames > @snapcn/terminal-simulator | https://media.snapcn.dev/demos/posters/logo-flicker.webp > Logo Flicker > Scene · 100 frames > @snapcn/logo-flicker | https://media.snapcn.dev/demos/posters/laptop-frame.webp > Laptop Frame > Scene · 240 frames > @snapcn/laptop-frame | https://media.snapcn.dev/demos/posters/announce-title.webp > Announce Title > Scene · 170 frames > @snapcn/announce-title",
         "offset": 0,
         "flicks": 3,
         "every": 30,
@@ -6149,25 +6128,10 @@
         "default": "Browse scenes",
         "label": "Title"
       },
-      "images": {
+      "cards": {
         "type": "text",
-        "default": "/demos/posters/orbit-gallery.webp|/demos/posters/moodboard-reveal.webp|/demos/posters/hero-launch.webp|/demos/posters/phone-frame.webp|/demos/posters/count-grid.webp|/demos/posters/terminal-simulator.webp|/demos/posters/logo-flicker.webp|/demos/posters/laptop-frame.webp|/demos/posters/announce-title.webp",
-        "label": "Pictures (| separated)"
-      },
-      "titles": {
-        "type": "text",
-        "default": "Orbit Gallery|Moodboard Reveal|Hero Launch|Phone Frame|Count Grid|Terminal Simulator|Logo Flicker|Laptop Frame|Announce Title",
-        "label": "Card titles"
-      },
-      "notes": {
-        "type": "text",
-        "default": "Scene · 300 frames|Scene · 150 frames|Scene · 170 frames|Scene · 240 frames|Scene · 47 frames|Scene · 200 frames|Scene · 100 frames|Scene · 240 frames|Scene · 170 frames",
-        "label": "Card small print"
-      },
-      "tags": {
-        "type": "text",
-        "default": "@snapcn/orbit-gallery|@snapcn/moodboard-reveal|@snapcn/hero-launch|@snapcn/phone-frame|@snapcn/count-grid|@snapcn/terminal-simulator|@snapcn/logo-flicker|@snapcn/laptop-frame|@snapcn/announce-title",
-        "label": "Card tags"
+        "default": "https://media.snapcn.dev/demos/posters/orbit-gallery.webp > Orbit Gallery > Scene · 300 frames > @snapcn/orbit-gallery | https://media.snapcn.dev/demos/posters/moodboard-reveal.webp > Moodboard Reveal > Scene · 150 frames > @snapcn/moodboard-reveal | https://media.snapcn.dev/demos/posters/hero-launch.webp > Hero Launch > Scene · 170 frames > @snapcn/hero-launch | https://media.snapcn.dev/demos/posters/phone-frame.webp > Phone Frame > Scene · 240 frames > @snapcn/phone-frame | https://media.snapcn.dev/demos/posters/count-grid.webp > Count Grid > Scene · 47 frames > @snapcn/count-grid | https://media.snapcn.dev/demos/posters/terminal-simulator.webp > Terminal Simulator > Scene · 200 frames > @snapcn/terminal-simulator | https://media.snapcn.dev/demos/posters/logo-flicker.webp > Logo Flicker > Scene · 100 frames > @snapcn/logo-flicker | https://media.snapcn.dev/demos/posters/laptop-frame.webp > Laptop Frame > Scene · 240 frames > @snapcn/laptop-frame | https://media.snapcn.dev/demos/posters/announce-title.webp > Announce Title > Scene · 170 frames > @snapcn/announce-title",
+        "label": "Cards (picture > title > small print > tag | …)"
       },
       "offset": {
         "type": "number",
@@ -6349,10 +6313,7 @@
         "label": "Speed"
       }
     },
-    "tags": [
-      "snapcn",
-      "scenes"
-    ]
+    "tags": ["snapcn", "scenes"]
   },
   {
     "slug": "snapcn-orb-swarm",
@@ -6362,7 +6323,7 @@
     "componentName": "OrbSwarm",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "98809254aa239edfd04119336ff6a774a2df776d",
+      "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
       "source": "registry/snap-cn/orb-swarm/index.tsx",
       "config": "registry/snap-cn/orb-swarm/config.ts",
       "license": "MIT",
@@ -6379,7 +6340,8 @@
         "ink": "#000000",
         "orbColor": "#3577e0",
         "softness": 0.7,
-        "fontFamily": "Default"
+        "fontFamily": "Default",
+        "speed": 1
       },
       "background": "#fcf9ff"
     },
@@ -6426,12 +6388,17 @@
         ],
         "label": "Font",
         "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
       }
     },
-    "tags": [
-      "snapcn",
-      "scenes"
-    ]
+    "tags": ["snapcn", "scenes"]
   },
   {
     "slug": "snapcn-check-cycle",
