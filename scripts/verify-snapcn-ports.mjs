@@ -23,6 +23,7 @@ const {
   referenceFingerprint,
   remotionVersion,
   hyperframesVersion,
+  referenceGl,
   verificationBrowser,
   root,
   run,
@@ -470,6 +471,7 @@ try {
           remotionVersion,
           browserVersion: browser.version,
           browserGpuMode: browserGpu ? "hardware" : "software",
+          referenceGl,
           installedThroughCli: true,
         },
         artifacts: {

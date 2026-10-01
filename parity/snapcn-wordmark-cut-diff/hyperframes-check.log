@@ -20,8 +20,8 @@
   "layout": {
     "ok": false,
     "errorCount": 1,
-    "warningCount": 2,
-    "infoCount": 21,
+    "warningCount": 3,
+    "infoCount": 43,
     "findings": [
       {
         "code": "text_occluded",
@@ -51,7 +51,49 @@
         },
         "firstSeen": 1.344,
         "lastSeen": 2.078,
-        "occurrences": 4
+        "occurrences": 4,
+        "heldMs": 733.9999999999998
+      },
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.122,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -75.51,
+          "top": 316.99,
+          "right": 1545.17,
+          "bottom": 757.44,
+          "width": 1620.67,
+          "height": 440.45
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 49.66,
+          "right": 1280,
+          "bottom": 765.16,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 75.51,
+          "right": 265.17
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -75.51,
+          "y": 316.99,
+          "width": 1620.67,
+          "height": 440.45
+        },
+        "firstSeen": 0.122,
+        "lastSeen": 1.1,
+        "occurrences": 4,
+        "heldMs": 978.0000000000001
       },
       {
         "code": "escaped_container",
@@ -88,7 +130,8 @@
         },
         "firstSeen": 1.344,
         "lastSeen": 2.078,
-        "occurrences": 4
+        "occurrences": 4,
+        "heldMs": 733.9999999999998
       },
       {
         "code": "escaped_container",
@@ -125,7 +168,51 @@
         },
         "firstSeen": 1.344,
         "lastSeen": 2.078,
-        "occurrences": 4
+        "occurrences": 4,
+        "heldMs": 733.9999999999998
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 0.122,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -75.51,
+          "top": 316.09,
+          "right": 1415.37,
+          "bottom": 756.54,
+          "width": 1490.88,
+          "height": 440.45
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "snapcn",
+        "fixHint": "Text is 1491px x 440px inside 1280px x 716px and overflows by up to 135px; resize the container to at least ~1491px x 754px or shrink font-size from 245px to ~210px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 75.51,
+          "right": 135.37,
+          "bottom": 38.8
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -75.51,
+          "y": 316.09,
+          "width": 1490.88,
+          "height": 440.45
+        },
+        "firstSeen": 0.122,
+        "lastSeen": 0.122,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -138,7 +225,7 @@
           "top": 270.25,
           "right": 1415.37,
           "bottom": 802.38,
-          "width": 1490.87,
+          "width": 1490.88,
           "height": 532.13
         },
         "containerSelector": "#root",
@@ -162,12 +249,13 @@
         "bbox": {
           "x": -75.51,
           "y": 270.25,
-          "width": 1490.87,
+          "width": 1490.88,
           "height": 532.13
         },
         "firstSeen": 0.122,
         "lastSeen": 0.122,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -206,7 +294,51 @@
         },
         "firstSeen": 0.122,
         "lastSeen": 0.122,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 0.367,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -75.51,
+          "top": 283.29,
+          "right": 1415.37,
+          "bottom": 723.74,
+          "width": 1490.88,
+          "height": 440.45
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "snapcn",
+        "fixHint": "Text is 1491px x 440px inside 1280px x 716px and overflows by up to 135px; resize the container to at least ~1491px x 722px or shrink font-size from 245px to ~210px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 75.51,
+          "right": 135.37,
+          "bottom": 6
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -75.51,
+          "y": 283.29,
+          "width": 1490.88,
+          "height": 440.45
+        },
+        "firstSeen": 0.367,
+        "lastSeen": 0.367,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -219,7 +351,7 @@
           "top": 237.45,
           "right": 1415.37,
           "bottom": 769.58,
-          "width": 1490.87,
+          "width": 1490.88,
           "height": 532.13
         },
         "containerSelector": "#root",
@@ -243,12 +375,13 @@
         "bbox": {
           "x": -75.51,
           "y": 237.45,
-          "width": 1490.87,
+          "width": 1490.88,
           "height": 532.13
         },
         "firstSeen": 0.367,
         "lastSeen": 0.367,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -287,7 +420,50 @@
         },
         "firstSeen": 0.367,
         "lastSeen": 0.367,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 0.611,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -75.51,
+          "top": 272.71,
+          "right": 1415.37,
+          "bottom": 713.16,
+          "width": 1490.88,
+          "height": 440.45
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "snapcn",
+        "fixHint": "Text is 1491px x 440px inside 1280px x 716px and overflows by up to 135px; widen the container to at least ~1491px or shrink font-size from 245px to ~210px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 75.51,
+          "right": 135.37
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -75.51,
+          "y": 272.71,
+          "width": 1490.88,
+          "height": 440.45
+        },
+        "firstSeen": 0.611,
+        "lastSeen": 0.611,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -300,7 +476,7 @@
           "top": 226.87,
           "right": 1415.37,
           "bottom": 759,
-          "width": 1490.87,
+          "width": 1490.88,
           "height": 532.13
         },
         "containerSelector": "#root",
@@ -324,12 +500,13 @@
         "bbox": {
           "x": -75.51,
           "y": 226.87,
-          "width": 1490.87,
+          "width": 1490.88,
           "height": 532.13
         },
         "firstSeen": 0.611,
         "lastSeen": 0.611,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -368,7 +545,50 @@
         },
         "firstSeen": 0.611,
         "lastSeen": 0.611,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 0.856,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -76.96,
+          "top": 268.66,
+          "right": 1413.91,
+          "bottom": 709.12,
+          "width": 1490.87,
+          "height": 440.46
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "snapcn",
+        "fixHint": "Text is 1491px x 440px inside 1280px x 716px and overflows by up to 134px; widen the container to at least ~1491px or shrink font-size from 245px to ~210px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 76.96,
+          "right": 133.91
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -76.96,
+          "y": 268.66,
+          "width": 1490.87,
+          "height": 440.46
+        },
+        "firstSeen": 0.856,
+        "lastSeen": 0.856,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -382,7 +602,7 @@
           "right": 1413.91,
           "bottom": 754.96,
           "width": 1490.87,
-          "height": 532.13
+          "height": 532.14
         },
         "containerSelector": "#root",
         "text": "snapcn",
@@ -406,11 +626,95 @@
           "x": -76.96,
           "y": 222.82,
           "width": 1490.87,
-          "height": 532.13
+          "height": 532.14
         },
         "firstSeen": 0.856,
         "lastSeen": 0.856,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.856,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -76.96,
+          "top": 269.57,
+          "right": 1543.71,
+          "bottom": 710.02,
+          "width": 1620.67,
+          "height": 440.45
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": -1.45,
+          "top": 2.23,
+          "right": 1278.55,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 75.51,
+          "right": 265.16
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -76.96,
+          "y": 269.57,
+          "width": 1620.67,
+          "height": 440.45
+        },
+        "firstSeen": 0.856,
+        "lastSeen": 0.856,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 1.1,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -101.15,
+          "top": 268.66,
+          "right": 1389.72,
+          "bottom": 709.12,
+          "width": 1490.87,
+          "height": 440.46
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "snapcn",
+        "fixHint": "Text is 1491px x 440px inside 1280px x 716px and overflows by up to 110px; widen the container to at least ~1491px or shrink font-size from 245px to ~210px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 101.15,
+          "right": 109.72
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -101.15,
+          "y": 268.66,
+          "width": 1490.87,
+          "height": 440.46
+        },
+        "firstSeen": 1.1,
+        "lastSeen": 1.1,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -424,7 +728,7 @@
           "right": 1389.72,
           "bottom": 754.96,
           "width": 1490.87,
-          "height": 532.13
+          "height": 532.14
         },
         "containerSelector": "#root",
         "text": "snapcn",
@@ -448,11 +752,12 @@
           "x": -101.15,
           "y": 222.82,
           "width": 1490.87,
-          "height": 532.13
+          "height": 532.14
         },
         "firstSeen": 1.1,
         "lastSeen": 1.1,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -491,7 +796,50 @@
         },
         "firstSeen": 1.1,
         "lastSeen": 1.1,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 1.344,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -1925.42,
+          "top": -95.21,
+          "right": 622.41,
+          "bottom": 657.49,
+          "width": 2547.83,
+          "height": 752.7
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "snapcn",
+        "fixHint": "Text is 2548px x 753px inside 1280px x 716px and overflows by up to 1925px; resize the container to at least ~3205px x 813px or shrink font-size from 419px to ~211px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 1925.42,
+          "top": 97.44
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -1925.42,
+          "y": -95.21,
+          "width": 2547.83,
+          "height": 752.7
+        },
+        "firstSeen": 1.344,
+        "lastSeen": 1.344,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -505,7 +853,7 @@
           "right": 622.41,
           "bottom": 736.53,
           "width": 2547.83,
-          "height": 910.79
+          "height": 910.78
         },
         "containerSelector": "#root",
         "text": "snapcn",
@@ -529,11 +877,54 @@
           "x": -1925.42,
           "y": -174.25,
           "width": 2547.83,
-          "height": 910.79
+          "height": 910.78
         },
         "firstSeen": 1.344,
         "lastSeen": 1.344,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 1.344,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -1925.42,
+          "top": -95.21,
+          "right": 622.41,
+          "bottom": 657.49,
+          "width": 2547.83,
+          "height": 752.7
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "snapcn",
+        "fixHint": "Text is 2548px x 753px inside 1280px x 716px and overflows by up to 1925px; resize the container to at least ~3205px x 813px or shrink font-size from 419px to ~211px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 1925.42,
+          "top": 97.44
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -1925.42,
+          "y": -95.21,
+          "width": 2547.83,
+          "height": 752.7
+        },
+        "firstSeen": 1.344,
+        "lastSeen": 1.344,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -547,7 +938,7 @@
           "right": 622.41,
           "bottom": 736.53,
           "width": 2547.83,
-          "height": 910.79
+          "height": 910.78
         },
         "containerSelector": "#root",
         "text": "snapcn",
@@ -571,11 +962,12 @@
           "x": -1925.42,
           "y": -174.25,
           "width": 2547.83,
-          "height": 910.79
+          "height": 910.78
         },
         "firstSeen": 1.344,
         "lastSeen": 1.344,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -614,7 +1006,130 @@
         },
         "firstSeen": 1.344,
         "lastSeen": 1.344,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.344,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -1925.42,
+          "top": -95.21,
+          "right": 844.27,
+          "bottom": 657.49,
+          "width": 2769.69,
+          "height": 752.7
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 4.07,
+          "top": 0.59,
+          "right": 1283.13,
+          "bottom": 715.57,
+          "width": 1279.05,
+          "height": 714.98
+        },
+        "overflow": {
+          "left": 1929.49
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -1925.42,
+          "y": -95.21,
+          "width": 2769.69,
+          "height": 752.7
+        },
+        "firstSeen": 1.344,
+        "lastSeen": 1.344,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.344,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -1925.42,
+          "top": -95.21,
+          "right": 844.27,
+          "bottom": 657.49,
+          "width": 2769.69,
+          "height": 752.7
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 4.07,
+          "top": 0.59,
+          "right": 1283.13,
+          "bottom": 715.57,
+          "width": 1279.05,
+          "height": 714.98
+        },
+        "overflow": {
+          "left": 1929.49
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -1925.42,
+          "y": -95.21,
+          "width": 2769.69,
+          "height": 752.7
+        },
+        "firstSeen": 1.344,
+        "lastSeen": 1.344,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 1.589,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -1935.83,
+          "top": -98.23,
+          "right": 618.38,
+          "bottom": 656.36,
+          "width": 2554.21,
+          "height": 754.59
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "snapcn",
+        "fixHint": "Text is 2554px x 755px inside 1280px x 716px and overflows by up to 1936px; resize the container to at least ~3216px x 816px or shrink font-size from 419px to ~210px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 1935.83,
+          "top": 100.46
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -1935.83,
+          "y": -98.23,
+          "width": 2554.21,
+          "height": 754.59
+        },
+        "firstSeen": 1.589,
+        "lastSeen": 1.589,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -656,7 +1171,50 @@
         },
         "firstSeen": 1.589,
         "lastSeen": 1.589,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 1.589,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -1935.83,
+          "top": -98.23,
+          "right": 618.38,
+          "bottom": 656.36,
+          "width": 2554.21,
+          "height": 754.59
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "snapcn",
+        "fixHint": "Text is 2554px x 755px inside 1280px x 716px and overflows by up to 1936px; resize the container to at least ~3216px x 816px or shrink font-size from 419px to ~210px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 1935.83,
+          "top": 100.46
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -1935.83,
+          "y": -98.23,
+          "width": 2554.21,
+          "height": 754.59
+        },
+        "firstSeen": 1.589,
+        "lastSeen": 1.589,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -698,7 +1256,8 @@
         },
         "firstSeen": 1.589,
         "lastSeen": 1.589,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -737,7 +1296,130 @@
         },
         "firstSeen": 1.589,
         "lastSeen": 1.589,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.589,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -1935.83,
+          "top": -98.23,
+          "right": 840.8,
+          "bottom": 656.36,
+          "width": 2776.62,
+          "height": 754.59
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": -1.5,
+          "top": -2.19,
+          "right": 1280.75,
+          "bottom": 714.58,
+          "width": 1282.26,
+          "height": 716.77
+        },
+        "overflow": {
+          "left": 1934.33
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -1935.83,
+          "y": -98.23,
+          "width": 2776.62,
+          "height": 754.59
+        },
+        "firstSeen": 1.589,
+        "lastSeen": 1.589,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.589,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -1935.83,
+          "top": -98.23,
+          "right": 840.8,
+          "bottom": 656.36,
+          "width": 2776.62,
+          "height": 754.59
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": -1.5,
+          "top": -2.19,
+          "right": 1280.75,
+          "bottom": 714.58,
+          "width": 1282.26,
+          "height": 716.77
+        },
+        "overflow": {
+          "left": 1934.33
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -1935.83,
+          "y": -98.23,
+          "width": 2776.62,
+          "height": 754.59
+        },
+        "firstSeen": 1.589,
+        "lastSeen": 1.589,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 1.833,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -2015.92,
+          "top": -113.19,
+          "right": 613.09,
+          "bottom": 663.49,
+          "width": 2629.01,
+          "height": 776.68
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "snapcn",
+        "fixHint": "Text is 2629px x 777px inside 1280px x 716px and overflows by up to 2016px; resize the container to at least ~3296px x 831px or shrink font-size from 419px to ~204px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 2015.92,
+          "top": 115.42
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -2015.92,
+          "y": -113.19,
+          "width": 2629.01,
+          "height": 776.68
+        },
+        "firstSeen": 1.833,
+        "lastSeen": 1.833,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -751,7 +1433,7 @@
           "right": 613.09,
           "bottom": 745.05,
           "width": 2629.01,
-          "height": 939.81
+          "height": 939.8
         },
         "containerSelector": "#root",
         "text": "snapcn",
@@ -775,11 +1457,54 @@
           "x": -2015.92,
           "y": -194.75,
           "width": 2629.01,
-          "height": 939.81
+          "height": 939.8
         },
         "firstSeen": 1.833,
         "lastSeen": 1.833,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 1.833,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -2015.92,
+          "top": -113.19,
+          "right": 613.09,
+          "bottom": 663.49,
+          "width": 2629.01,
+          "height": 776.68
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "snapcn",
+        "fixHint": "Text is 2629px x 777px inside 1280px x 716px and overflows by up to 2016px; resize the container to at least ~3296px x 831px or shrink font-size from 419px to ~204px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 2015.92,
+          "top": 115.42
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -2015.92,
+          "y": -113.19,
+          "width": 2629.01,
+          "height": 776.68
+        },
+        "firstSeen": 1.833,
+        "lastSeen": 1.833,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -793,7 +1518,7 @@
           "right": 613.09,
           "bottom": 745.05,
           "width": 2629.01,
-          "height": 939.81
+          "height": 939.8
         },
         "containerSelector": "#root",
         "text": "snapcn",
@@ -817,11 +1542,12 @@
           "x": -2015.92,
           "y": -194.75,
           "width": 2629.01,
-          "height": 939.81
+          "height": 939.8
         },
         "firstSeen": 1.833,
         "lastSeen": 1.833,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -863,7 +1589,130 @@
         },
         "firstSeen": 1.833,
         "lastSeen": 1.833,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.833,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -2015.92,
+          "top": -113.19,
+          "right": 842.02,
+          "bottom": 663.49,
+          "width": 2857.94,
+          "height": 776.68
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": -24.94,
+          "top": -14.34,
+          "right": 1294.87,
+          "bottom": 723.42,
+          "width": 1319.81,
+          "height": 737.76
+        },
+        "overflow": {
+          "left": 1990.98
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -2015.92,
+          "y": -113.19,
+          "width": 2857.94,
+          "height": 776.68
+        },
+        "firstSeen": 1.833,
+        "lastSeen": 1.833,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.833,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -2015.92,
+          "top": -113.19,
+          "right": 842.02,
+          "bottom": 663.49,
+          "width": 2857.94,
+          "height": 776.68
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": -24.94,
+          "top": -14.34,
+          "right": 1294.87,
+          "bottom": 723.42,
+          "width": 1319.81,
+          "height": 737.76
+        },
+        "overflow": {
+          "left": 1990.98
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -2015.92,
+          "y": -113.19,
+          "width": 2857.94,
+          "height": 776.68
+        },
+        "firstSeen": 1.833,
+        "lastSeen": 1.833,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 2.078,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -2297.15,
+          "top": -177.13,
+          "right": 595.96,
+          "bottom": 677.59,
+          "width": 2893.11,
+          "height": 854.72
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "snapcn",
+        "fixHint": "Text is 2893px x 855px inside 1280px x 716px and overflows by up to 2297px; resize the container to at least ~3577px x 895px or shrink font-size from 419px to ~185px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 2297.15,
+          "top": 179.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -2297.15,
+          "y": -177.13,
+          "width": 2893.11,
+          "height": 854.72
+        },
+        "firstSeen": 2.078,
+        "lastSeen": 2.078,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -876,8 +1725,8 @@
           "top": -266.88,
           "right": 595.96,
           "bottom": 767.34,
-          "width": 2893.1,
-          "height": 1034.21
+          "width": 2893.11,
+          "height": 1034.22
         },
         "containerSelector": "#root",
         "text": "snapcn",
@@ -900,12 +1749,55 @@
         "bbox": {
           "x": -2297.15,
           "y": -266.88,
-          "width": 2893.1,
-          "height": 1034.21
+          "width": 2893.11,
+          "height": 1034.22
         },
         "firstSeen": 2.078,
         "lastSeen": 2.078,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 2.078,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -2297.15,
+          "top": -177.13,
+          "right": 595.96,
+          "bottom": 677.59,
+          "width": 2893.11,
+          "height": 854.72
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "snapcn",
+        "fixHint": "Text is 2893px x 855px inside 1280px x 716px and overflows by up to 2297px; resize the container to at least ~3577px x 895px or shrink font-size from 419px to ~185px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 2.23,
+          "right": 1280,
+          "bottom": 717.74,
+          "width": 1280,
+          "height": 715.51
+        },
+        "overflow": {
+          "left": 2297.15,
+          "top": 179.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -2297.15,
+          "y": -177.13,
+          "width": 2893.11,
+          "height": 854.72
+        },
+        "firstSeen": 2.078,
+        "lastSeen": 2.078,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -918,8 +1810,8 @@
           "top": -266.88,
           "right": 595.96,
           "bottom": 767.34,
-          "width": 2893.1,
-          "height": 1034.21
+          "width": 2893.11,
+          "height": 1034.22
         },
         "containerSelector": "#root",
         "text": "snapcn",
@@ -942,12 +1834,13 @@
         "bbox": {
           "x": -2297.15,
           "y": -266.88,
-          "width": 2893.1,
-          "height": 1034.21
+          "width": 2893.11,
+          "height": 1034.22
         },
         "firstSeen": 2.078,
         "lastSeen": 2.078,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -989,7 +1882,88 @@
         },
         "firstSeen": 2.078,
         "lastSeen": 2.078,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 2.078,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -2297.15,
+          "top": -177.12,
+          "right": 847.88,
+          "bottom": 677.58,
+          "width": 3145.03,
+          "height": 854.7
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": -106.17,
+          "top": -68.34,
+          "right": 1346.22,
+          "bottom": 743.53,
+          "width": 1452.38,
+          "height": 811.87
+        },
+        "overflow": {
+          "left": 2190.98
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -2297.15,
+          "y": -177.12,
+          "width": 3145.03,
+          "height": 854.7
+        },
+        "firstSeen": 2.078,
+        "lastSeen": 2.078,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 2.078,
+        "selector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -2297.15,
+          "top": -177.12,
+          "right": 847.88,
+          "bottom": 677.58,
+          "width": 3145.03,
+          "height": 854.7
+        },
+        "containerSelector": "#snapcn-wordmark-cut-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": -106.17,
+          "top": -68.34,
+          "right": 1346.22,
+          "bottom": 743.53,
+          "width": 1452.38,
+          "height": 811.87
+        },
+        "overflow": {
+          "left": 2190.98
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-wordmark-cut.html",
+        "bbox": {
+          "x": -2297.15,
+          "y": -177.12,
+          "width": 3145.03,
+          "height": 854.7
+        },
+        "firstSeen": 2.078,
+        "lastSeen": 2.078,
+        "occurrences": 1,
+        "heldMs": 0
       }
     ],
     "duration": 2.2,
@@ -1007,7 +1981,7 @@
     "transitionSamples": [],
     "transitionSamplesDropped": 0,
     "tolerance": 2,
-    "totalIssueCount": 24,
+    "totalIssueCount": 47,
     "truncated": false
   },
   "motion": {
@@ -1036,6 +2010,10 @@
     "checked": 0,
     "passed": 0
   },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
   "snapshots": {
     "enabled": false,
     "files": [],
@@ -1043,8 +2021,8 @@
     "findingFiles": []
   },
   "_meta": {
-    "version": "0.8.30",
-    "latestVersion": "0.8.32",
-    "updateAvailable": true
+    "version": "0.8.99",
+    "latestVersion": "0.8.94",
+    "updateAvailable": false
   }
 }

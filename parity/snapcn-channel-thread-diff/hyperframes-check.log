@@ -20,9 +20,50 @@
   "layout": {
     "ok": true,
     "errorCount": 0,
-    "warningCount": 0,
-    "infoCount": 9,
+    "warningCount": 1,
+    "infoCount": 13,
     "findings": [
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.204,
+        "selector": "#snapcn-channel-thread-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -8.81,
+          "top": 0,
+          "right": 1288.81,
+          "bottom": 720,
+          "width": 1297.63,
+          "height": 720
+        },
+        "containerSelector": "#snapcn-channel-thread-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 8.81,
+          "right": 8.81
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-channel-thread.html",
+        "bbox": {
+          "x": -8.81,
+          "y": 0,
+          "width": 1297.63,
+          "height": 720
+        },
+        "firstSeen": 0.204,
+        "lastSeen": 3.463,
+        "occurrences": 9,
+        "heldMs": 3259
+      },
       {
         "code": "canvas_overflow",
         "severity": "info",
@@ -61,7 +102,49 @@
         },
         "firstSeen": 2.241,
         "lastSeen": 2.241,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 2.648,
+        "selector": "#snapcn-channel-thread-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 402.03,
+          "top": -41.39,
+          "right": 528.66,
+          "bottom": 22.07,
+          "width": 126.63,
+          "height": 63.46
+        },
+        "containerSelector": "#snapcn-channel-thread-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "rhea",
+        "fixHint": "Text is 127px x 63px inside 1298px x 720px and overflows by up to 41px; increase the container height to at least ~761px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": -8.81,
+          "top": 0,
+          "right": 1288.81,
+          "bottom": 720,
+          "width": 1297.63,
+          "height": 720
+        },
+        "overflow": {
+          "top": 41.39
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-channel-thread.html",
+        "bbox": {
+          "x": 402.03,
+          "y": -41.39,
+          "width": 126.63,
+          "height": 63.46
+        },
+        "firstSeen": 2.648,
+        "lastSeen": 2.648,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -101,7 +184,49 @@
         },
         "firstSeen": 2.648,
         "lastSeen": 2.648,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 2.648,
+        "selector": "#snapcn-channel-thread-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 555.91,
+          "top": -29.48,
+          "right": 720.23,
+          "bottom": 21.16,
+          "width": 164.32,
+          "height": 50.64
+        },
+        "containerSelector": "#snapcn-channel-thread-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "9:41 AM",
+        "fixHint": "Text is 164px x 51px inside 1298px x 720px and overflows by up to 29px; increase the container height to at least ~749px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": -8.81,
+          "top": 0,
+          "right": 1288.81,
+          "bottom": 720,
+          "width": 1297.63,
+          "height": 720
+        },
+        "overflow": {
+          "top": 29.48
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-channel-thread.html",
+        "bbox": {
+          "x": 555.91,
+          "y": -29.48,
+          "width": 164.32,
+          "height": 50.64
+        },
+        "firstSeen": 2.648,
+        "lastSeen": 2.648,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -114,7 +239,7 @@
           "top": -34.66,
           "right": 720.23,
           "bottom": 26.34,
-          "width": 164.33,
+          "width": 164.32,
           "height": 61
         },
         "containerSelector": "#root",
@@ -136,12 +261,13 @@
         "bbox": {
           "x": 555.91,
           "y": -34.66,
-          "width": 164.33,
+          "width": 164.32,
           "height": 61
         },
         "firstSeen": 2.648,
         "lastSeen": 2.648,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -181,7 +307,8 @@
         },
         "firstSeen": 3.056,
         "lastSeen": 3.056,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -194,7 +321,7 @@
           "top": -75.09,
           "right": 720.23,
           "bottom": -14.09,
-          "width": 164.33,
+          "width": 164.32,
           "height": 61
         },
         "containerSelector": "#root",
@@ -216,12 +343,54 @@
         "bbox": {
           "x": 555.91,
           "y": -75.09,
-          "width": 164.33,
+          "width": 164.32,
           "height": 61
         },
         "firstSeen": 3.056,
         "lastSeen": 3.056,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 3.056,
+        "selector": "#snapcn-channel-thread-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 402.03,
+          "top": -5.37,
+          "right": 1138.98,
+          "bottom": 58.09,
+          "width": 736.95,
+          "height": 63.46
+        },
+        "containerSelector": "#snapcn-channel-thread-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Launch video by Thursday?",
+        "fixHint": "Text is 737px x 63px inside 1298px x 720px and overflows by up to 5px; increase the container height to at least ~725px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": -8.81,
+          "top": 0,
+          "right": 1288.81,
+          "bottom": 720,
+          "width": 1297.63,
+          "height": 720
+        },
+        "overflow": {
+          "top": 5.37
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-channel-thread.html",
+        "bbox": {
+          "x": 402.03,
+          "y": -5.37,
+          "width": 736.95,
+          "height": 63.46
+        },
+        "firstSeen": 3.056,
+        "lastSeen": 3.056,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -261,7 +430,8 @@
         },
         "firstSeen": 3.056,
         "lastSeen": 3.056,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -301,7 +471,8 @@
         },
         "firstSeen": 3.463,
         "lastSeen": 3.463,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -314,7 +485,7 @@
           "top": -85.28,
           "right": 720.23,
           "bottom": -24.28,
-          "width": 164.33,
+          "width": 164.32,
           "height": 61
         },
         "containerSelector": "#root",
@@ -336,12 +507,54 @@
         "bbox": {
           "x": 555.91,
           "y": -85.28,
-          "width": 164.33,
+          "width": 164.32,
           "height": 61
         },
         "firstSeen": 3.463,
         "lastSeen": 3.463,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 3.463,
+        "selector": "#snapcn-channel-thread-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 402.03,
+          "top": -15.56,
+          "right": 1138.98,
+          "bottom": 47.9,
+          "width": 736.95,
+          "height": 63.46
+        },
+        "containerSelector": "#snapcn-channel-thread-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Launch video by Thursday?",
+        "fixHint": "Text is 737px x 63px inside 1298px x 720px and overflows by up to 16px; increase the container height to at least ~736px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": -8.81,
+          "top": 0,
+          "right": 1288.81,
+          "bottom": 720,
+          "width": 1297.63,
+          "height": 720
+        },
+        "overflow": {
+          "top": 15.56
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-channel-thread.html",
+        "bbox": {
+          "x": 402.03,
+          "y": -15.56,
+          "width": 736.95,
+          "height": 63.46
+        },
+        "firstSeen": 3.463,
+        "lastSeen": 3.463,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -381,7 +594,8 @@
         },
         "firstSeen": 3.463,
         "lastSeen": 3.463,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       }
     ],
     "duration": 3.6666666666666665,
@@ -399,7 +613,7 @@
     "transitionSamples": [],
     "transitionSamplesDropped": 0,
     "tolerance": 2,
-    "totalIssueCount": 9,
+    "totalIssueCount": 14,
     "truncated": false
   },
   "motion": {
@@ -428,6 +642,10 @@
     "checked": 26,
     "passed": 26
   },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
   "snapshots": {
     "enabled": false,
     "files": [],
@@ -435,8 +653,8 @@
     "findingFiles": []
   },
   "_meta": {
-    "version": "0.8.30",
-    "latestVersion": "0.8.35",
-    "updateAvailable": true
+    "version": "0.8.99",
+    "latestVersion": "0.8.94",
+    "updateAvailable": false
   }
 }
