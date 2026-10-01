@@ -7,10 +7,11 @@ and Simulated Cursor, for 396 official items total. The authoritative import rec
 [`catalog/hyperframes-upstream.json`](../catalog/hyperframes-upstream.json).
 
 Rechecked against upstream main at
-[`f2ef034fabedef79ae7f312703a8bb490de5af4a`](https://github.com/heygen-com/hyperframes/commit/f2ef034fabedef79ae7f312703a8bb490de5af4a)
+[`be80a308023b224b27a6c8739315d1b6598f149c`](https://github.com/heygen-com/hyperframes/commit/be80a308023b224b27a6c8739315d1b6598f149c)
 on October 1, 2026. Imported source paths, registry membership, and catalog
 navigation remain unchanged. All 1,484 native files and eight template manifests
-still match; the new changes affect Studio code and release metadata. The original source and
+still match; the new changes affect Studio code and release metadata, including
+the v0.8.101 release. The original source and
 navigation pins are preserved.
 
 ## Browse by upstream group
