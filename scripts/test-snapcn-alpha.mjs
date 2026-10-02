@@ -1,8 +1,18 @@
 import assert from "node:assert/strict";
-import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
+import {
+  mkdtemp,
+  mkdir,
+  readFile,
+  readdir,
+  rm,
+  writeFile,
+} from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { resolve } from "node:path";
-import { compareAlphaFrames } from "./snapcn-alpha.mjs";
+import {
+  compareAlphaFrames,
+  normalizeSnapshotFrames,
+} from "./snapcn-alpha.mjs";
 import { run } from "./generate-snapcn-reference.mjs";
 
 const directory = await mkdtemp(resolve(tmpdir(), "hyfrme-alpha-"));
@@ -46,6 +56,34 @@ try {
     mismatchedFrames: [0],
     pass: false,
   });
+  const snapshots = resolve(directory, "snapshots");
+  await mkdir(snapshots);
+  await Promise.all(
+    Array.from({ length: 101 }, (_, frame) =>
+      writeFile(
+        resolve(
+          snapshots,
+          `frame-${String(frame).padStart(2, "0")}-at-${frame}s.png`,
+        ),
+        String(frame),
+      ),
+    ),
+  );
+  await normalizeSnapshotFrames(snapshots, 101);
+  const ordered = (await readdir(snapshots)).sort();
+  for (const frame of [9, 10, 99, 100])
+    assert.equal(
+      await readFile(resolve(snapshots, ordered[frame]), "utf8"),
+      String(frame),
+    );
+  const missing = resolve(directory, "missing-snapshots");
+  await mkdir(missing);
+  await writeFile(resolve(missing, "frame-01-at-1s.png"), "1");
+  await assert.rejects(
+    normalizeSnapshotFrames(missing, 1),
+    /consecutive snapshot frames/,
+  );
+  assert.deepEqual(await readdir(missing), ["frame-01-at-1s.png"]);
   console.log(
     "Alpha verification rejects an invisible frame with unchanged RGB.",
   );

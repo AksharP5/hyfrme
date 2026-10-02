@@ -1,0 +1,236 @@
+{
+  "scope": "Full-duration transparent source API fixtures. Original component source and exact-alpha thresholds are unchanged. Canonical default reports remain separate.",
+  "capture": {
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "remotionVersion": "4.0.473",
+    "hyperframesVersion": "0.8.99",
+    "referenceGl": "angle-egl",
+    "browserGpuMode": "hardware",
+    "rasterization": "cpu",
+    "browserArguments": [
+      "--disable-gpu-rasterization"
+    ],
+    "documentOverflow": "visible",
+    "explicitFullCanvasClip": true,
+    "referenceRepeated": true,
+    "fixtureInstallation": "hyfrme CLI",
+    "cliSha256": "b3ebe31fcb7618917193a5fb1096fc6769f17615634f6718b90f7605a1f5073f",
+    "referenceCssSha256": "48aa2df96bbc1853b76076b6f617d03eedd80793b113aa8dc004f07e6ca696cd",
+    "scriptSha256": "83c307b5295232f6079e3b1128b0181585cc25cbe2b1d299670103a4e548bce6",
+    "workspace": ".work/verify-snapcn-transparency-WQncwX"
+  },
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95,
+    "exactAlpha": true
+  },
+  "cases": [
+    {
+      "name": "orbit-gallery-transparent",
+      "slug": "snapcn-orbit-gallery",
+      "sourcePin": {
+        "repository": "https://github.com/snapcndev/snapcn",
+        "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
+        "source": "registry/snap-cn/orbit-gallery/index.tsx",
+        "config": "registry/snap-cn/orbit-gallery/config.ts",
+        "license": "MIT",
+        "entry": "registry/snap-cn/orbit-gallery/index.tsx"
+      },
+      "fixture": {
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "durationInFrames": 300,
+        "props": {
+          "title": "A whole new universe",
+          "subtitle": "Article — The Design Process",
+          "buttonLabel": "Explore",
+          "turns": 3,
+          "spacing": 5,
+          "spread": 7,
+          "imageSize": 172,
+          "sizeAttenuation": 2,
+          "cornerRadius": 5,
+          "orbitSeconds": 40,
+          "background": "transparent",
+          "textColor": "#FFFFFF",
+          "fontFamily": "Default",
+          "speed": 1,
+          "theme": {
+            "background": "transparent"
+          }
+        },
+        "background": "transparent"
+      },
+      "settings": {
+        "background": "transparent"
+      },
+      "api": {
+        "theme": {
+          "background": "transparent"
+        }
+      },
+      "installedFiles": [
+        {
+          "path": "index.html",
+          "sha256": "8583da7613cba2c73e295807193bc44046dbf67c81a9930a45f71ab42c5d78c2"
+        },
+        {
+          "path": "compositions/snapcn-orbit-gallery.html",
+          "sha256": "f337373afcb503912f3afa19c69ca81f378e7594ddcbdfa92026d565565854e0"
+        },
+        {
+          "path": "compositions/snapcn-orbit-gallery.runtime.js",
+          "sha256": "5f287b729f93f996b0bfa502da4ac976b433b6400b7cddf5de30190f4f6c267a"
+        }
+      ],
+      "registryFiles": [
+        {
+          "path": "registry/blocks/snapcn-orbit-gallery/snapcn-orbit-gallery.html",
+          "sha256": "8a47cbc49b0925cfc7e3b8f1c656216b20b70c864a4a386f29eca512e7cbf684"
+        },
+        {
+          "path": "registry/blocks/snapcn-orbit-gallery/snapcn-orbit-gallery.runtime.js",
+          "sha256": "0aef55672404219dea84c9df1360abbc11dba999c6c543cba22bcb1834a1fb05"
+        },
+        {
+          "path": "registry/blocks/snapcn-orbit-gallery/registry-item.json",
+          "sha256": "f461075cfdc9df838ea8675798c3679de20f505f7dab7baea30bcc8776be6dee"
+        }
+      ],
+      "installedHtmlBeforeApiSha256": "b16e4881d2d914c41343ecbbc8eed0b5d681c5079f5297558f9c233035b5770f",
+      "sourceFiles": [
+        {
+          "path": "registry/snap-cn/orbit-gallery/index.tsx",
+          "sha256": "979b83024d10518ddd3e009675dfd4208bd80ebbe56ea584970f8a10d2a749d0"
+        },
+        {
+          "path": "registry/snap-cn/orbit-gallery/config.ts",
+          "sha256": "9861939a27bce76f41458afcbf3cb2f91a863be7723825f319e99cba74fa788e"
+        }
+      ],
+      "sourceRepeat": {
+        "frameCount": 300,
+        "mismatchedFrames": [],
+        "pass": true
+      },
+      "frameCount": 300,
+      "meanSsim": 1,
+      "minSsim": 1,
+      "alpha": {
+        "frameCount": 300,
+        "mismatchedFrames": [],
+        "pass": true
+      },
+      "checks": {
+        "ok": true,
+        "lintErrors": 0,
+        "runtimeErrors": 0,
+        "layoutErrors": 0,
+        "contrastErrors": 0
+      },
+      "pass": true
+    },
+    {
+      "name": "card-rail-transparent",
+      "slug": "snapcn-card-rail",
+      "sourcePin": {
+        "repository": "https://github.com/snapcndev/snapcn",
+        "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
+        "source": "registry/snap-cn/card-rail/index.tsx",
+        "config": "registry/snap-cn/card-rail/config.ts",
+        "license": "MIT",
+        "entry": "registry/snap-cn/card-rail/index.tsx"
+      },
+      "fixture": {
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "durationInFrames": 108,
+        "props": {
+          "heading": "Browse scenes",
+          "cards": "https://media.snapcn.dev/demos/posters/orbit-gallery.webp > Orbit Gallery > Scene · 300 frames > @snapcn/orbit-gallery | https://media.snapcn.dev/demos/posters/moodboard-reveal.webp > Moodboard Reveal > Scene · 150 frames > @snapcn/moodboard-reveal | https://media.snapcn.dev/demos/posters/hero-launch.webp > Hero Launch > Scene · 170 frames > @snapcn/hero-launch | https://media.snapcn.dev/demos/posters/phone-frame.webp > Phone Frame > Scene · 240 frames > @snapcn/phone-frame | https://media.snapcn.dev/demos/posters/count-grid.webp > Count Grid > Scene · 47 frames > @snapcn/count-grid | https://media.snapcn.dev/demos/posters/terminal-simulator.webp > Terminal Simulator > Scene · 200 frames > @snapcn/terminal-simulator | https://media.snapcn.dev/demos/posters/logo-flicker.webp > Logo Flicker > Scene · 100 frames > @snapcn/logo-flicker | https://media.snapcn.dev/demos/posters/laptop-frame.webp > Laptop Frame > Scene · 240 frames > @snapcn/laptop-frame | https://media.snapcn.dev/demos/posters/announce-title.webp > Announce Title > Scene · 170 frames > @snapcn/announce-title",
+          "offset": 0,
+          "flicks": 3,
+          "every": 30,
+          "from": 0,
+          "backdrop": "",
+          "mode": "light",
+          "fontFamily": "Default",
+          "speed": 1,
+          "theme": {
+            "background": "transparent"
+          }
+        },
+        "background": "transparent"
+      },
+      "settings": {},
+      "api": {
+        "theme": {
+          "background": "transparent"
+        }
+      },
+      "installedFiles": [
+        {
+          "path": "index.html",
+          "sha256": "6d4f362f71b0a28b4116a8a4167079ee550c6ad20360eeab79f55c43790f83c1"
+        },
+        {
+          "path": "compositions/snapcn-card-rail.html",
+          "sha256": "afc4cb3a13561999f9675547442237576219bc970b9a4dedebfbbb69249f5e02"
+        },
+        {
+          "path": "compositions/snapcn-card-rail.runtime.js",
+          "sha256": "3563fa8f452276a98c9abc87243bfa684f613071f89a5b565e8dca3e40f58f0b"
+        }
+      ],
+      "registryFiles": [
+        {
+          "path": "registry/blocks/snapcn-card-rail/snapcn-card-rail.html",
+          "sha256": "dd7ed5acc41c976bd0c56801f96683dacabf98a862563b15a184948064e1d509"
+        },
+        {
+          "path": "registry/blocks/snapcn-card-rail/snapcn-card-rail.runtime.js",
+          "sha256": "bd46986f0d2b8a3b6c81d3c1ab268b0a9f024162529a000cb8f8e1bd1a932ad3"
+        },
+        {
+          "path": "registry/blocks/snapcn-card-rail/registry-item.json",
+          "sha256": "2e1bc7bb22e939eb4ae9e41a8b131c4624f436ae477571a04ef2cfd640f7baf3"
+        }
+      ],
+      "installedHtmlBeforeApiSha256": "425482233659e48172505fe23690d41d78a8e396efeccd96226c2c917850f4d5",
+      "sourceFiles": [
+        {
+          "path": "registry/snap-cn/card-rail/index.tsx",
+          "sha256": "dbd98365f62affcaf2aca5df51097d2a22d094461fd9e6739a512a9cf6483fd9"
+        },
+        {
+          "path": "registry/snap-cn/card-rail/config.ts",
+          "sha256": "e1e52caca778ecf6c2e1ee0379709dadc015018ff2711f0946d6d2689005f5e3"
+        }
+      ],
+      "sourceRepeat": {
+        "frameCount": 108,
+        "mismatchedFrames": [],
+        "pass": true
+      },
+      "frameCount": 108,
+      "meanSsim": 1,
+      "minSsim": 1,
+      "alpha": {
+        "frameCount": 108,
+        "mismatchedFrames": [],
+        "pass": true
+      },
+      "checks": {
+        "ok": true,
+        "lintErrors": 0,
+        "runtimeErrors": 0,
+        "layoutErrors": 0,
+        "contrastErrors": 0
+      },
+      "pass": true
+    }
+  ],
+  "pass": true
+}
