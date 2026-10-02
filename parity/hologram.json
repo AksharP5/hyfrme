@@ -23,25 +23,45 @@
     "background": "#04070d"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "c3baf7574c083261f38b91831c2583f4247285500f1c27260aad5c1ccaf52476",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.986615,
-    "minSsim": 0.986226,
-    "p05Ssim": 0.986281,
-    "p95Ssim": 0.987049,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/hologram/remocn.mp4",
+    "referenceVideo": "public/previews/hologram/reference.mp4",
     "hyperframesVideo": "public/previews/hologram/hyperframes.mp4",
-    "summary": "parity/hologram-diff/summary.json"
+    "thumbnail": "public/previews/hologram/thumbnail.png",
+    "summary": "parity/hologram-diff/summary.json",
+    "perFrameSsim": "parity/hologram-diff/ssim.log",
+    "hyperframesCheck": "parity/hologram-diff/hyperframes-check.log",
+    "worstFrame": "parity/hologram-diff/worst-frame.png",
+    "referenceAlpha": "parity/hologram-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/hologram-diff/hyperframes-alpha.framemd5"
   }
 }

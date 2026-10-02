@@ -1028,5 +1028,90 @@
       "requiredRatio": 3
     },
     "reason": "The pinned source paints lime #d4ff1f characters on black #0a0a0a 3D band panels over a lime canvas and dims each letter by its angle. This exact first-character finding samples the rotated panel boundary against the composite canvas. All 180 lossless frames match exactly in RGB and alpha; preserve the source geometry and retain the full contrast finding in the audit."
+  },
+  {
+    "slug": "perspective-marquee",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/perspective-marquee/index.tsx",
+      "config": "registry/remocn/perspective-marquee/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#perspective-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#perspective-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(3)",
+      "text": "Vercel"
+    },
+    "reason": "The pinned source intentionally fades the marquee's edges with a full-size vertical gradient. Its center is fully transparent from y180 to y540 at 720px; the reported text lies inside that band. The inspector treats the gradient box as opaque. Preserve the source vignette; all 240 frames have RGB SSIM 1 and matching alpha. The complete findings remain in the parity check log."
+  },
+  {
+    "slug": "perspective-marquee",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/perspective-marquee/index.tsx",
+      "config": "registry/remocn/perspective-marquee/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#perspective-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+      "containerSelector": "#perspective-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(3)",
+      "text": "Linear"
+    },
+    "reason": "The pinned source intentionally fades the marquee's edges with a full-size vertical gradient. Its center is fully transparent from y180 to y540 at 720px; the reported text lies inside that band. The inspector treats the gradient box as opaque. Preserve the source vignette; all 240 frames have RGB SSIM 1 and matching alpha. The complete findings remain in the parity check log."
+  },
+  {
+    "slug": "perspective-marquee",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/perspective-marquee/index.tsx",
+      "config": "registry/remocn/perspective-marquee/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#perspective-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+      "containerSelector": "#perspective-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(3)",
+      "text": "Stripe"
+    },
+    "reason": "The pinned source intentionally fades the marquee's edges with a full-size vertical gradient. Its center is fully transparent from y180 to y540 at 720px; the reported text lies inside that band. The inspector treats the gradient box as opaque. Preserve the source vignette; all 240 frames have RGB SSIM 1 and matching alpha. The complete findings remain in the parity check log."
+  },
+  {
+    "slug": "perspective-marquee",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/perspective-marquee/index.tsx",
+      "config": "registry/remocn/perspective-marquee/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#perspective-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4)",
+      "containerSelector": "#perspective-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(3)",
+      "text": "Figma"
+    },
+    "reason": "The pinned source intentionally fades the marquee's edges with a full-size vertical gradient. Its center is fully transparent from y180 to y540 at 720px; the reported text lies inside that band. The inspector treats the gradient box as opaque. Preserve the source vignette; all 240 frames have RGB SSIM 1 and matching alpha. The complete findings remain in the parity check log."
+  },
+  {
+    "slug": "perspective-marquee",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn/perspective-marquee/index.tsx",
+      "config": "registry/remocn/perspective-marquee/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#perspective-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5)",
+      "containerSelector": "#perspective-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(3)",
+      "text": "Notion"
+    },
+    "reason": "The pinned source intentionally fades the marquee's edges with a full-size vertical gradient. Its center is fully transparent from y180 to y540 at 720px; the reported text lies inside that band. The inspector treats the gradient box as opaque. Preserve the source vignette; all 240 frames have RGB SSIM 1 and matching alpha. The complete findings remain in the parity check log."
   }
 ]

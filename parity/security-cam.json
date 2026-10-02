@@ -24,23 +24,43 @@
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "4e6c5a0ebfa6d11dbcdee4e6fcb575dc7dac661641aee8ffd643a314f216cd44",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.994616,
-    "minSsim": 0.994592,
-    "p05Ssim": 0.994598,
-    "p95Ssim": 0.994633,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/security-cam/remocn.mp4",
+    "referenceVideo": "public/previews/security-cam/reference.mp4",
     "hyperframesVideo": "public/previews/security-cam/hyperframes.mp4",
-    "summary": "parity/security-cam-diff/summary.json"
+    "thumbnail": "public/previews/security-cam/thumbnail.png",
+    "summary": "parity/security-cam-diff/summary.json",
+    "perFrameSsim": "parity/security-cam-diff/ssim.log",
+    "hyperframesCheck": "parity/security-cam-diff/hyperframes-check.log",
+    "worstFrame": "parity/security-cam-diff/worst-frame.png",
+    "referenceAlpha": "parity/security-cam-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/security-cam-diff/hyperframes-alpha.framemd5"
   }
 }

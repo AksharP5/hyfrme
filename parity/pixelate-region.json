@@ -19,25 +19,45 @@
     "background": "#0a0a0a"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "7e535a63ed9aaa0659a5912be2fef9f92a9dcc9d74f34817265ceb83eeead8c7",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.995235,
-    "minSsim": 0.99522,
-    "p05Ssim": 0.995233,
-    "p95Ssim": 0.995237,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/pixelate-region/remocn.mp4",
+    "referenceVideo": "public/previews/pixelate-region/reference.mp4",
     "hyperframesVideo": "public/previews/pixelate-region/hyperframes.mp4",
-    "summary": "parity/pixelate-region-diff/summary.json"
+    "thumbnail": "public/previews/pixelate-region/thumbnail.png",
+    "summary": "parity/pixelate-region-diff/summary.json",
+    "perFrameSsim": "parity/pixelate-region-diff/ssim.log",
+    "hyperframesCheck": "parity/pixelate-region-diff/hyperframes-check.log",
+    "worstFrame": "parity/pixelate-region-diff/worst-frame.png",
+    "referenceAlpha": "parity/pixelate-region-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/pixelate-region-diff/hyperframes-alpha.framemd5"
   }
 }

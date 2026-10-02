@@ -24,25 +24,45 @@
     "background": "#0a0a0a"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "98249ade1e0ed4cf915e2a7589ff49641add8ecfe6c042dc5d3a5ed6bcc42edd",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 84,
-    "meanSsim": 0.98938,
-    "minSsim": 0.959038,
-    "p05Ssim": 0.964186,
-    "p95Ssim": 0.995215,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 84,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/particle-dissolve/remocn.mp4",
+    "referenceVideo": "public/previews/particle-dissolve/reference.mp4",
     "hyperframesVideo": "public/previews/particle-dissolve/hyperframes.mp4",
-    "summary": "parity/particle-dissolve-diff/summary.json"
+    "thumbnail": "public/previews/particle-dissolve/thumbnail.png",
+    "summary": "parity/particle-dissolve-diff/summary.json",
+    "perFrameSsim": "parity/particle-dissolve-diff/ssim.log",
+    "hyperframesCheck": "parity/particle-dissolve-diff/hyperframes-check.log",
+    "worstFrame": "parity/particle-dissolve-diff/worst-frame.png",
+    "referenceAlpha": "parity/particle-dissolve-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/particle-dissolve-diff/hyperframes-alpha.framemd5"
   }
 }

@@ -35,9 +35,23 @@ const {
     : "./generate-snapcn-reference.mjs"
 );
 const label = profile === "remocn" ? "Remocn" : "Snapcn";
+const browserFallback = args.includes("--browser-fallback");
+if (browserFallback && profile !== "remocn") {
+  throw new Error("--browser-fallback requires the Remocn source profile");
+}
+const parityRoot = browserFallback
+  ? "parity/remocn-browser-fallback"
+  : "parity";
+const previewsRoot = browserFallback
+  ? `${parityRoot}/previews`
+  : "public/previews";
 const workbench = resolve(
   root,
-  profile === "remocn" ? ".work/verify-remocn-lossless" : ".work/verify-snapcn",
+  browserFallback
+    ? ".work/verify-remocn-browser-fallback"
+    : profile === "remocn"
+      ? ".work/verify-remocn-lossless"
+      : ".work/verify-snapcn",
 );
 const fixtures = await selectFixtures(args);
 const resume = args.includes("--resume");
@@ -54,6 +68,8 @@ const sourceCheckExceptions = await readFile(
     throw error;
   });
 await mkdir(workbench, { recursive: true });
+if (browserFallback)
+  await mkdir(resolve(root, parityRoot), { recursive: true });
 
 async function fingerprint(entry) {
   const hash = createHash("sha256")
@@ -84,7 +100,7 @@ const selected = [];
 for (const entry of fixtures) {
   if (resume) {
     const parity = await readFile(
-      resolve(root, "parity", `${entry.slug}.json`),
+      resolve(root, parityRoot, `${entry.slug}.json`),
       "utf8",
     )
       .then(JSON.parse)
@@ -405,8 +421,8 @@ try {
           `${slug}: verification inputs changed during rendering`,
         );
       }
-      const parityDiff = resolve(root, "parity", `${slug}-diff`);
-      const previews = resolve(root, "public/previews", slug);
+      const parityDiff = resolve(root, parityRoot, `${slug}-diff`);
+      const previews = resolve(root, previewsRoot, slug);
       await mkdir(parityDiff, { recursive: true });
       await mkdir(previews, { recursive: true });
       for (const name of [
@@ -460,6 +476,13 @@ try {
           pass,
         },
         checks: {
+          ...(profile === "remocn"
+            ? {
+                canvasMode: browserFallback
+                  ? "browser-fallback"
+                  : "source-capability",
+              }
+            : {}),
           hyperframes:
             check.code === 0
               ? "full check passed; strict render passed"
@@ -475,15 +498,15 @@ try {
           installedThroughCli: true,
         },
         artifacts: {
-          referenceVideo: `public/previews/${slug}/reference.mp4`,
-          hyperframesVideo: `public/previews/${slug}/hyperframes.mp4`,
-          thumbnail: `public/previews/${slug}/thumbnail.png`,
-          summary: `parity/${slug}-diff/summary.json`,
-          perFrameSsim: `parity/${slug}-diff/ssim.log`,
-          hyperframesCheck: `parity/${slug}-diff/hyperframes-check.log`,
-          worstFrame: `parity/${slug}-diff/worst-frame.png`,
-          referenceAlpha: `parity/${slug}-diff/reference-alpha.framemd5`,
-          hyperframesAlpha: `parity/${slug}-diff/hyperframes-alpha.framemd5`,
+          referenceVideo: `${previewsRoot}/${slug}/reference.mp4`,
+          hyperframesVideo: `${previewsRoot}/${slug}/hyperframes.mp4`,
+          thumbnail: `${previewsRoot}/${slug}/thumbnail.png`,
+          summary: `${parityRoot}/${slug}-diff/summary.json`,
+          perFrameSsim: `${parityRoot}/${slug}-diff/ssim.log`,
+          hyperframesCheck: `${parityRoot}/${slug}-diff/hyperframes-check.log`,
+          worstFrame: `${parityRoot}/${slug}-diff/worst-frame.png`,
+          referenceAlpha: `${parityRoot}/${slug}-diff/reference-alpha.framemd5`,
+          hyperframesAlpha: `${parityRoot}/${slug}-diff/hyperframes-alpha.framemd5`,
         },
       };
       if (inputFingerprint !== (await fingerprint(entry))) {
@@ -492,7 +515,7 @@ try {
         );
       }
       await writeFile(
-        resolve(root, "parity", `${slug}.json`),
+        resolve(root, parityRoot, `${slug}.json`),
         `${JSON.stringify(parity, null, 2)}\n`,
       );
       console.log(
@@ -509,7 +532,7 @@ try {
       await mkdir(directory, { recursive: true });
       await writeFile(resolve(directory, "failure.log"), `${error.stack}\n`);
       await writeFile(
-        resolve(root, "parity", `${slug}.json`),
+        resolve(root, parityRoot, `${slug}.json`),
         `${JSON.stringify({ slug, origin: entry.origin, fixture, classification: "compiled-source-port", measurement: "lossless-png", status: "failed", result: { pass: false }, checks: { hyperframesVersion, remotionVersion }, error: error.message.replaceAll(root, "<project>") }, null, 2)}\n`,
       );
       failures.push({ slug, error: error.message });

@@ -24,25 +24,45 @@
     "background": "#0a0a0a"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "b221a5d6f751504db05a2d0f31cddee621935e5fa1612cdd2f60fa2de9279f9d",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 84,
-    "meanSsim": 0.994924,
-    "minSsim": 0.994142,
-    "p05Ssim": 0.994436,
-    "p95Ssim": 0.995208,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 84,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/grid-wave/remocn.mp4",
+    "referenceVideo": "public/previews/grid-wave/reference.mp4",
     "hyperframesVideo": "public/previews/grid-wave/hyperframes.mp4",
-    "summary": "parity/grid-wave-diff/summary.json"
+    "thumbnail": "public/previews/grid-wave/thumbnail.png",
+    "summary": "parity/grid-wave-diff/summary.json",
+    "perFrameSsim": "parity/grid-wave-diff/ssim.log",
+    "hyperframesCheck": "parity/grid-wave-diff/hyperframes-check.log",
+    "worstFrame": "parity/grid-wave-diff/worst-frame.png",
+    "referenceAlpha": "parity/grid-wave-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/grid-wave-diff/hyperframes-alpha.framemd5"
   }
 }

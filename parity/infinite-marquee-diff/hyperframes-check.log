@@ -1,0 +1,2218 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 52,
+    "findings": [
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.333,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1197.59,
+          "top": 281.28,
+          "right": -44.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1197.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1197.59,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 0.333,
+        "lastSeen": 0.333,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 0.333,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 1204.53,
+          "top": 281.28,
+          "right": 2357.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 1078px; widen the container to at least ~2358px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 1077.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 1204.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 0.333,
+        "lastSeen": 0.333,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.333,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1204.53,
+          "top": 281.28,
+          "right": 2357.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 1077.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 1204.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 0.333,
+        "lastSeen": 0.333,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 0.333,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -1197.59,
+          "top": 274.28,
+          "right": 2405.59,
+          "bottom": 445.7,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "containerSelector": "#infinite-marquee-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1197.59,
+          "right": 1125.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1197.59,
+          "y": 274.28,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "firstSeen": 0.333,
+        "lastSeen": 0.333,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1281.59,
+          "top": 281.28,
+          "right": -128.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1281.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1281.59,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 1,
+        "lastSeen": 1,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 1,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -80.53,
+          "top": 281.28,
+          "right": 1072.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 81px; widen the container to at least ~1361px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 80.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -80.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 1,
+        "lastSeen": 1,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -80.53,
+          "top": 281.28,
+          "right": 1072.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 80.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -80.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 1,
+        "lastSeen": 1,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 1,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 1120.53,
+          "top": 281.28,
+          "right": 2273.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 994px; widen the container to at least ~2274px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 993.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 1120.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 1,
+        "lastSeen": 1,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1120.53,
+          "top": 281.28,
+          "right": 2273.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 993.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 1120.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 1,
+        "lastSeen": 1,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -1281.59,
+          "top": 274.28,
+          "right": 2321.59,
+          "bottom": 445.7,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "containerSelector": "#infinite-marquee-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1281.59,
+          "right": 1041.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1281.59,
+          "y": 274.28,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "firstSeen": 1,
+        "lastSeen": 1,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1361.59,
+          "top": 281.28,
+          "right": -208.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1361.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1361.59,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 1.667,
+        "lastSeen": 1.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 1.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -160.53,
+          "top": 281.28,
+          "right": 992.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 161px; widen the container to at least ~1441px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 160.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -160.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 1.667,
+        "lastSeen": 1.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -160.53,
+          "top": 281.28,
+          "right": 992.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 160.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -160.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 1.667,
+        "lastSeen": 1.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 1.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 1040.53,
+          "top": 281.28,
+          "right": 2193.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 914px; widen the container to at least ~2194px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 913.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 1040.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 1.667,
+        "lastSeen": 1.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1040.53,
+          "top": 281.28,
+          "right": 2193.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 913.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 1040.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 1.667,
+        "lastSeen": 1.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -1361.59,
+          "top": 274.28,
+          "right": 2241.59,
+          "bottom": 445.7,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "containerSelector": "#infinite-marquee-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1361.59,
+          "right": 961.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1361.59,
+          "y": 274.28,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "firstSeen": 1.667,
+        "lastSeen": 1.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.333,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1437.59,
+          "top": 281.28,
+          "right": -284.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1437.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1437.59,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 2.333,
+        "lastSeen": 2.333,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 2.333,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -236.53,
+          "top": 281.28,
+          "right": 916.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 237px; widen the container to at least ~1517px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 236.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -236.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 2.333,
+        "lastSeen": 2.333,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.333,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -236.53,
+          "top": 281.28,
+          "right": 916.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 236.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -236.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 2.333,
+        "lastSeen": 2.333,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 2.333,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 964.53,
+          "top": 281.28,
+          "right": 2117.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 838px; widen the container to at least ~2118px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 837.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 964.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 2.333,
+        "lastSeen": 2.333,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.333,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 964.53,
+          "top": 281.28,
+          "right": 2117.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 837.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 964.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 2.333,
+        "lastSeen": 2.333,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 2.333,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -1437.59,
+          "top": 274.28,
+          "right": 2165.59,
+          "bottom": 445.7,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "containerSelector": "#infinite-marquee-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1437.59,
+          "right": 885.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1437.59,
+          "y": 274.28,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "firstSeen": 2.333,
+        "lastSeen": 2.333,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 3,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1521.59,
+          "top": 281.28,
+          "right": -368.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1521.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1521.59,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 3,
+        "lastSeen": 3,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 3,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -320.53,
+          "top": 281.28,
+          "right": 832.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 321px; widen the container to at least ~1601px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 320.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -320.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 3,
+        "lastSeen": 3,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 3,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -320.53,
+          "top": 281.28,
+          "right": 832.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 320.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -320.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 3,
+        "lastSeen": 3,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 3,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 880.53,
+          "top": 281.28,
+          "right": 2033.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 754px; widen the container to at least ~2034px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 753.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 880.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 3,
+        "lastSeen": 3,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 3,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 880.53,
+          "top": 281.28,
+          "right": 2033.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 753.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 880.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 3,
+        "lastSeen": 3,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 3,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -1521.59,
+          "top": 274.28,
+          "right": 2081.59,
+          "bottom": 445.7,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "containerSelector": "#infinite-marquee-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1521.59,
+          "right": 801.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1521.59,
+          "y": 274.28,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "firstSeen": 3,
+        "lastSeen": 3,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 3.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1601.59,
+          "top": 281.28,
+          "right": -448.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1601.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1601.59,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 3.667,
+        "lastSeen": 3.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 3.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -400.53,
+          "top": 281.28,
+          "right": 752.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 401px; widen the container to at least ~1681px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 400.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -400.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 3.667,
+        "lastSeen": 3.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 3.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -400.53,
+          "top": 281.28,
+          "right": 752.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 400.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -400.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 3.667,
+        "lastSeen": 3.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 3.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 800.53,
+          "top": 281.28,
+          "right": 1953.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 674px; widen the container to at least ~1954px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 673.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 800.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 3.667,
+        "lastSeen": 3.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 3.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 800.53,
+          "top": 281.28,
+          "right": 1953.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 673.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 800.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 3.667,
+        "lastSeen": 3.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 3.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -1601.59,
+          "top": 274.28,
+          "right": 2001.59,
+          "bottom": 445.7,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "containerSelector": "#infinite-marquee-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1601.59,
+          "right": 721.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1601.59,
+          "y": 274.28,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "firstSeen": 3.667,
+        "lastSeen": 3.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 4.333,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1677.59,
+          "top": 281.28,
+          "right": -524.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1677.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1677.59,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 4.333,
+        "lastSeen": 4.333,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 4.333,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -476.53,
+          "top": 281.28,
+          "right": 676.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 477px; widen the container to at least ~1757px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 476.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -476.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 4.333,
+        "lastSeen": 4.333,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 4.333,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -476.53,
+          "top": 281.28,
+          "right": 676.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 476.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -476.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 4.333,
+        "lastSeen": 4.333,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 4.333,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 724.53,
+          "top": 281.28,
+          "right": 1877.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 598px; widen the container to at least ~1878px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 597.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 724.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 4.333,
+        "lastSeen": 4.333,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 4.333,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 724.53,
+          "top": 281.28,
+          "right": 1877.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 597.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 724.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 4.333,
+        "lastSeen": 4.333,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 4.333,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -1677.59,
+          "top": 274.28,
+          "right": 1925.59,
+          "bottom": 445.7,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "containerSelector": "#infinite-marquee-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1677.59,
+          "right": 645.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1677.59,
+          "y": 274.28,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "firstSeen": 4.333,
+        "lastSeen": 4.333,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1761.59,
+          "top": 281.28,
+          "right": -608.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1761.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1761.59,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 5,
+        "lastSeen": 5,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 5,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -560.53,
+          "top": 281.28,
+          "right": 592.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 561px; widen the container to at least ~1841px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 560.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -560.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 5,
+        "lastSeen": 5,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -560.53,
+          "top": 281.28,
+          "right": 592.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 560.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -560.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 5,
+        "lastSeen": 5,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 5,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 640.53,
+          "top": 281.28,
+          "right": 1793.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 514px; widen the container to at least ~1794px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 513.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 640.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 5,
+        "lastSeen": 5,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 640.53,
+          "top": 281.28,
+          "right": 1793.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 513.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 640.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 5,
+        "lastSeen": 5,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 5,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -1761.59,
+          "top": 274.28,
+          "right": 1841.59,
+          "bottom": 445.7,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "containerSelector": "#infinite-marquee-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1761.59,
+          "right": 561.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1761.59,
+          "y": 274.28,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "firstSeen": 5,
+        "lastSeen": 5,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1841.59,
+          "top": 281.28,
+          "right": -688.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1841.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1841.59,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 5.667,
+        "lastSeen": 5.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 5.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -640.53,
+          "top": 281.28,
+          "right": 512.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 641px; widen the container to at least ~1921px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 640.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -640.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 5.667,
+        "lastSeen": 5.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -640.53,
+          "top": 281.28,
+          "right": 512.53,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 640.53
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -640.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 5.667,
+        "lastSeen": 5.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 5.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 560.53,
+          "top": 281.28,
+          "right": 1713.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#scene > div:nth-of-type(1)",
+        "text": "ship · build · animate ·",
+        "fixHint": "Text is 1153px x 156px inside 1280px x 720px and overflows by up to 434px; widen the container to at least ~1714px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 433.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 560.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 5.667,
+        "lastSeen": 5.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 560.53,
+          "top": 281.28,
+          "right": 1713.59,
+          "bottom": 437.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "containerSelector": "#root",
+        "text": "ship · build · animate ·",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 433.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": 560.53,
+          "y": 281.28,
+          "width": 1153.06,
+          "height": 156
+        },
+        "firstSeen": 5.667,
+        "lastSeen": 5.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 5.667,
+        "selector": "#infinite-marquee-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": -1841.59,
+          "top": 274.28,
+          "right": 1761.59,
+          "bottom": 445.7,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "containerSelector": "#infinite-marquee-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 1841.59,
+          "right": 481.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/infinite-marquee.html",
+        "bbox": {
+          "x": -1841.59,
+          "y": 274.28,
+          "width": 3603.19,
+          "height": 171.42
+        },
+        "firstSeen": 5.667,
+        "lastSeen": 5.667,
+        "occurrences": 1,
+        "heldMs": 0
+      }
+    ],
+    "duration": 6,
+    "samples": [
+      0.333,
+      1,
+      1.667,
+      2.333,
+      3,
+      3.667,
+      4.333,
+      5,
+      5.667
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 52,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.333,
+      1.667,
+      3,
+      4.333,
+      5.667
+    ],
+    "checked": 10,
+    "passed": 10
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.99",
+    "latestVersion": "0.8.107",
+    "updateAvailable": true
+  }
+}

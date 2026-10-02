@@ -22,25 +22,45 @@
     "background": "#0a0a0a"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "e6e1582982160426b2eac8c7f18241fd37d74f6444f7beffd00b0f4163a0d16d",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.994716,
-    "minSsim": 0.990055,
-    "p05Ssim": 0.991417,
-    "p95Ssim": 0.995127,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/sustained-glitch/remocn.mp4",
+    "referenceVideo": "public/previews/sustained-glitch/reference.mp4",
     "hyperframesVideo": "public/previews/sustained-glitch/hyperframes.mp4",
-    "summary": "parity/sustained-glitch-diff/summary.json"
+    "thumbnail": "public/previews/sustained-glitch/thumbnail.png",
+    "summary": "parity/sustained-glitch-diff/summary.json",
+    "perFrameSsim": "parity/sustained-glitch-diff/ssim.log",
+    "hyperframesCheck": "parity/sustained-glitch-diff/hyperframes-check.log",
+    "worstFrame": "parity/sustained-glitch-diff/worst-frame.png",
+    "referenceAlpha": "parity/sustained-glitch-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/sustained-glitch-diff/hyperframes-alpha.framemd5"
   }
 }

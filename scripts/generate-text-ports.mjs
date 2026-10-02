@@ -11,6 +11,12 @@ import { basename, dirname, relative, resolve } from "node:path";
 import { frameMathSource, remocnMitBanner } from "./hyfrme-frame-math.mjs";
 import { readRemocnRegistry } from "./remocn-registry.mjs";
 import { frameRateArgument } from "./frame-rate.mjs";
+import {
+  canvasTransitionNames,
+  canvasFilterNames,
+  sourcePreviewNames,
+  sourcePreviewCss,
+} from "./remocn-canvas.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const upstream = resolve(root, process.env.REMOCN_SOURCE ?? ".work/remocn");
@@ -29,14 +35,6 @@ await copyFile(
 await copyFile(
   resolve(root, "fixtures/remocn/stage-example.tsx"),
   resolve(upstream, "components/docs/examples/hyfrme-stage-example.tsx"),
-);
-const asciiRenderWrapperPath = resolve(
-  upstream,
-  "components/docs/examples/hyfrme-ascii-render-example.tsx",
-);
-await copyFile(
-  resolve(root, "fixtures/remocn/ascii-render-example.tsx"),
-  asciiRenderWrapperPath,
 );
 const upstreamRegistry = await readRemocnRegistry(upstream);
 const upstreamCommit = execFileSync(
@@ -246,26 +244,6 @@ const coreNames = [
   "trim-burst",
   "truchet-flip",
 ];
-const canvasTransitionNames = new Set([
-  "displacement",
-  "ember-burn",
-  "glitch-cut",
-  "grid-wave",
-  "particle-dissolve",
-]);
-const canvasFilterNames = new Set([
-  "ascii-render",
-  "camera-lens",
-  "crt-screen",
-  "halftone-print",
-  "hologram",
-  "pixelate-region",
-  "security-cam",
-  "sustained-glitch",
-  "tv-power-off",
-  "underwater-ripple",
-  "vhs-filter",
-]);
 const speedMinOneNames = new Set([
   "chat-gpt",
   "claude-chat",
@@ -544,11 +522,8 @@ const sceneOverrides = {
     componentName: "ParticleDissolveExampleScene",
   },
   "ascii-render": {
-    source: "components/docs/examples/hyfrme-ascii-render-example.tsx",
-    originEntry: "components/docs/examples/ascii-render-recipes.tsx",
-    originComponentName: "AsciiResolveExampleScene",
-    componentName: "HyfrmeAsciiRenderExampleScene",
-    durationInFrames: 96,
+    source: "components/docs/examples/ascii-render-example.tsx",
+    componentName: "AsciiRenderExampleScene",
   },
   "camera-lens": {
     source: "components/docs/examples/camera-lens-example.tsx",
@@ -907,7 +882,20 @@ const manropeNames = new Set([
   "github-stars",
   "x-followers-overview",
 ]);
-const geistMonoNames = new Set(["github-stars", "code-morph"]);
+const geistMonoNames = new Set([
+  "github-stars",
+  "code-morph",
+  "displacement",
+  "ember-burn",
+  "glitch-cut",
+  "grid-wave",
+  "particle-dissolve",
+  "camera-lens",
+  "crt-screen",
+  "security-cam",
+  "tv-power-off",
+  "pixelate-region",
+]);
 const sourceTextRenderingNames = new Set([
   ...templateNames,
   "lens-zoom",
@@ -1767,8 +1755,7 @@ for (const name of selectedNames) {
   const usesVariableGeist =
     Boolean(addition) ||
     name === "spring-settle" ||
-    canvasTransitionNames.has(name) ||
-    canvasFilterNames.has(name);
+    sourcePreviewNames.has(name);
   const geistFamily = addition ? "Hyfrme Remocn Geist" : "Geist";
   const registryItem = upstreamRegistry.items.find(
     (item) => item.name === name,
@@ -1929,6 +1916,7 @@ for (const name of selectedNames) {
       }
       const families = new Set(${JSON.stringify([geistFamily, ...selectedAssets.filter((asset) => asset.family).map((asset) => asset.family)])});
       ${interNames.has(name) ? 'families.add("Inter");' : ""}
+      ${geistMonoNames.has(name) ? 'families.add("Geist Mono");' : ""}
       ${name === "kinetic-warp" ? "families.add(props.fontFamily);" : ""}
       await Promise.all(Array.from(document.fonts).filter(font => families.has(font.family.replaceAll('"', '').replaceAll("'", ''))).map(font => font.load()));
       await document.fonts.ready;
@@ -2003,7 +1991,12 @@ for (const name of selectedNames) {
       label: control.label ?? id,
       default: Object.hasOwn(props, id) ? props[id] : control.default,
     };
-    if (Array.isArray(control.options)) variable.options = control.options;
+    // Published marquee links accept weights beyond the upstream control menu.
+    const unrestrictedWeight =
+      id === "fontWeight" &&
+      (name === "infinite-marquee" || name === "perspective-marquee");
+    if (Array.isArray(control.options) && !unrestrictedWeight)
+      variable.options = control.options;
     if (!["string", "number", "boolean", "color"].includes(variable.type)) {
       throw new Error(
         `${name}.${id}: unsupported variable type ${variable.type}`,
@@ -2287,9 +2280,10 @@ ${caveatNames.has(name) ? '      @font-face { font-family: "Caveat"; src: url(".
       html, body { width: ${fixture.width}px; height: ${fixture.height}px; margin: 0; overflow: hidden; background: ${fixture.background}; }
       body { --font-geist-sans: "${geistFamily}"; font-family: "${geistFamily}", -apple-system, BlinkMacSystemFont, sans-serif; }
       #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"${geistFamily}";font-family:"${geistFamily}",sans-serif; background:${fixture.background}; }
-${name === "code-morph" ? '      #hyfrme-source-root { --font-geist-mono: "Geist Mono"; }' : ""}
+${geistMonoNames.has(name) ? '      #hyfrme-source-root { --font-geist-mono: "Geist Mono"; }' : ""}
 ${name === "echo-stack" ? "      #hyfrme-source-root { transform: translateY(1px); }" : ""}
 ${sourceTextRenderingNames.has(name) ? "      #hyfrme-source-root, #hyfrme-source-root * { text-rendering: auto; }" : ""}
+${sourcePreviewNames.has(name) ? sourcePreviewCss : ""}
 ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? "      [data-hyfrme-seek-probe] { position: absolute; width: 1px; height: 1px; pointer-events: none; }" : ""}
     </style>
   </head>

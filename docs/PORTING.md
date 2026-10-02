@@ -132,10 +132,22 @@ compiled-source runtime.
   known heuristic false positives. Per-item manifests state the exact result.
 - A previous pin adds five WebGL transitions, ten continuous canvas filters,
   and TV Power Off. All 16 use Remocn's `canvas-presentation` helper through a
-  deterministic HyperFrames frame clock. Their mean SSIM is 0.990547, with a
-  0.967230–0.997402 range. Security Cam and VHS use lossless PNG comparisons
-  because their full-frame noise is distorted differently by independent
-  H.264 encoders.
+  deterministic HyperFrames frame clock. All 1,420 canonical frames now match
+  the pinned upstream source with mean/minimum RGB SSIM of 1 and identical
+  alpha. Every installed block passes the full HyperFrames check. Comparisons
+  use lossless PNGs so independent H.264 encoders cannot distort the result.
+  ASCII Render uses the same 90-frame primary example shown in Remocn's docs.
+- Infinite Marquee and Perspective Marquee package upstream's variable Geist
+  font instead of synthesizing every weight from a semibold file. All 420 frames
+  match the source with mean/minimum RGB SSIM of 1 and identical alpha. Infinite
+  Marquee passes the full check. Perspective Marquee retains five reviewed
+  `text_occluded` findings: the inspector treats its transparent gradient center
+  as opaque. Exact selectors and reasons are recorded in
+  `catalog/remocn-check-exceptions.json` and its parity manifest.
+
+The 18-component audit also compares decoded RGBA frame hashes. All 1,840 frames
+are byte-for-byte identical. The hash files and source pins are listed in
+`parity/remocn-preview-audit.json`.
 
 The original 45 UI primitives and flows are verified.
 
@@ -398,7 +410,29 @@ Verify the detail page as well as the saved render: a correct render does not
 prove browser asset paths work. Browser video tests must use a server that
 supports HTTP range requests, such as `vite preview`.
 
-The 16 `html-in-canvas` blocks require browser capture APIs unavailable in
-standard Chrome. When these APIs are absent, the detail page plays the verified
-HyperFrames render and labels it as default settings. Customized values still
-appear in the install command, but cannot be previewed live in that browser.
+The 16 Remocn `html-in-canvas` blocks use the same capability check and browser
+fallback as upstream. In standard Chrome, their detail pages show that fallback
+and apply customized values. ASCII Render, Halftone Print, and Underwater Ripple
+leave the scene unchanged in this mode, matching upstream. The comparison player
+shows the full shader effect rendered with HTML-in-canvas enabled.
+
+The frozen canvas demo environment includes upstream's Geist and Geist Mono
+fonts, `cv11` and `ss01` features, text-rendering settings, and the preview
+container's 14px font size and unitless `20 / 14` line height. Both the reference
+and installed port must include them; a reference missing the same font or
+inherited styles as a port can falsely verify a visible mismatch.
+
+Lossless verification asserts that the source's HTML-in-canvas capability is
+available. To verify its CSS fallback separately, run the same command with
+`--browser-fallback` and browser executables that disable `CanvasDrawElement`.
+This mode asserts that the capability is unavailable and writes its evidence
+under `parity/remocn-browser-fallback/`, preserving canonical shader previews.
+All 1,420 fallback frames pass the same thresholds with identical alpha.
+TV Power Off's 62 fallback frames match exactly. Ember Burn and VHS Filter have
+at most a one-level RGB difference in the 8-bit captures, with minimum SSIM of
+0.999637 and 0.999999 respectively. Their source animation inputs match; these
+fallbacks retain the recorded precision differences rather than claiming exact
+pixel parity.
+
+Official HyperFrames items without a verified browser fallback retain their
+rendered default preview when HTML-in-canvas is unavailable.
