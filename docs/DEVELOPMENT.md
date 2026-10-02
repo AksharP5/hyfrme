@@ -56,6 +56,22 @@ are recorded as `variablesSource` in `catalog/hyperframes-upstream.json`; canoni
 HTML bytes, upstream manifest hashes, and source pins stay unchanged. Validation
 requires the installed HTML and registry variables to agree.
 
+## Snapcn transparency comparisons
+
+With the pinned Snapcn checkout and reference dependencies already prepared, run:
+
+```bash
+npm run verify:snapcn-transparency
+```
+
+This compares all Card Rail and Orbit Gallery transparent frames after a fresh
+CLI installation and repeats the source alpha sequence to check determinism.
+It uses the same Chrome executable for both renderers, CPU rasterization with
+GPU compositing, visible document paint bounds, and an explicit full-canvas
+screenshot clip. Set `HYFRME_BROWSER_EXECUTABLE` to an existing Chrome Headless
+Shell if needed. This capture profile uses `/bin/sh` and `angle-egl` on Linux.
+The [Snapcn audit](SNAPCN_AUDIT.md) records the causes and full-duration results.
+
 ## Updating Hyfrme originals
 
 ```bash

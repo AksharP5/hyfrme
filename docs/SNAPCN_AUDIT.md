@@ -117,8 +117,8 @@ capture provenance. All cases have zero lint/runtime errors and meet the RGB
 thresholds; sampled layout and contrast findings remain recorded separately.
 
 Terminal, Follower, Prompt, and Moodboard transparent samples also match alpha
-exactly. Thirteen of the sixteen cases pass the comparison. Three transparent
-inputs still fail the strict alpha gate:
+exactly. The original capture profile passed thirteen of the sixteen cases.
+These three historical failures led to the capture corrections below:
 
 | Variant       | RGB mean / minimum  | Lowest RGB frame | Differing alpha pixels | Maximum alpha delta |
 | ------------- | ------------------- | ---------------- | ---------------------- | ------------------- |
@@ -145,10 +145,9 @@ frames in the three cases with those options gives:
 | Card Rail     | 1.000000 / 1.000000 | No, four frames each differ at one alpha pixel by one channel value |
 
 This isolates the large Card discrepancy to the snapshot capture region.
-Roster passes these selected comparisons; Card and Orbit still fail the exact
-alpha gate. Their residual differences remain unresolved and are not marked
-verified. The settings, image hashes, installed-file hashes, and every frame's
-result are recorded in
+Roster passes these selected comparisons. Card and Orbit retained residual
+differences in this earlier profile. The settings, image hashes, installed-file
+hashes, and every frame's result are recorded in
 [`parity/snapcn-variants/clipped-capture.json`](../parity/snapcn-variants/clipped-capture.json).
 No thresholds were relaxed. Selected-frame results do not replace the
 full-duration canonical fixture checks.
@@ -171,7 +170,36 @@ port still differs at 6,139 pixels with maximum alpha delta 9. This rules out
 PNG encoding as the cause of Orbit's measured difference. WebP RGB is lossy and
 was not used for parity. The capture settings and image hashes are recorded in
 [`parity/snapcn-variants/encoder-diagnosis.json`](../parity/snapcn-variants/encoder-diagnosis.json).
-Neither case is newly marked verified, and the exact-alpha gate remains unchanged.
+
+The remaining differences were caused by the comparison setup. Orbit's host
+clipped `html`, `body`, and `#root`; Remotion leaves those paint bounds visible.
+Changing only the host to `overflow:visible` preserves the authored shadows and
+removes Orbit's mismatch. Neither a root-only nor a document-only override is
+enough. Card's rounded corners vary by one alpha value under hardware
+rasterization. Passing `--disable-gpu-rasterization` to both browser executables
+removes that instability while retaining hardware GL and GPU compositing.
+
+`npm run verify:snapcn-transparency` now repeats each pinned source's complete
+PNG sequence, installs a fresh CLI fixture, runs the full HyperFrames check,
+and compares every frame with identical full-canvas capture bounds. It uses
+the same explicit source API theme overrides as the earlier cases. The source
+files, installed component runtime, shadows, and acceptance thresholds remain
+unchanged.
+
+| Variant       | Frames | RGB mean / minimum  | Exact alpha |
+| ------------- | ------ | ------------------- | ----------- |
+| Card Rail     | 108    | 1.000000 / 1.000000 | Yes         |
+| Orbit Gallery | 300    | 1.000000 / 1.000000 | Yes         |
+
+Both full-duration source alpha sequences also repeat exactly. The results,
+source pins, fixture inputs, file hashes, and capture profile are recorded in
+[`parity/snapcn-variants/transparent-full-duration.json`](../parity/snapcn-variants/transparent-full-duration.json).
+Per-frame alpha hashes and SSIM logs accompany the report. Snapshot filenames
+are normalized by their numeric frame index before comparison, because the
+CLI's two-digit padding would otherwise sort frame 100 before frame 11.
+These full-duration checks resolve the Card and Orbit transparency findings.
+The earlier reports retain their original measurements; canonical default
+fixture reports remain separate.
 
 The ports now restore the retained source's layered and inherited
 `text-rendering` styles instead of inheriting HyperFrames' host defaults. This

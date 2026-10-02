@@ -208,10 +208,13 @@ export async function generatePreviewCss() {
   await writeFile(cssPath, `${css}\n${systemFaces}\n`);
 }
 
-export async function renderReferences(fixtures, { reuse = false } = {}) {
+export async function renderReferences(
+  fixtures,
+  { reuse = false, workspace = workbench } = {},
+) {
   const pending = [];
   for (const entry of fixtures) {
-    const directory = resolve(workbench, "renders", entry.slug);
+    const directory = resolve(workspace, "renders", entry.slug);
     if (reuse) {
       const state = await readFile(
         resolve(directory, "reference-state.json"),
@@ -233,7 +236,7 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
   }
   if (!pending.length) return;
   const project = resolve(
-    workbench,
+    workspace,
     "projects",
     createHash("sha256")
       .update(pending.map((entry) => entry.slug).join(","))
@@ -402,7 +405,7 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
     ]),
   );
   for (const entry of pending) {
-    const directory = resolve(workbench, "renders", entry.slug);
+    const directory = resolve(workspace, "renders", entry.slug);
     const outputDir = resolve(directory, "reference-frames");
     await rm(outputDir, { recursive: true, force: true });
     await mkdir(directory, { recursive: true });

@@ -1,6 +1,34 @@
-import { readFile } from "node:fs/promises";
+import { readFile, readdir, rename } from "node:fs/promises";
 import { resolve } from "node:path";
 import { run } from "./generate-snapcn-reference.mjs";
+
+export async function normalizeSnapshotFrames(directory, frameCount) {
+  const files = (await readdir(directory)).filter((file) =>
+    file.endsWith(".png"),
+  );
+  const frames = files
+    .map((file) => {
+      const match = file.match(/^frame-(\d+)-at-.+\.png$/);
+      if (!match) throw new Error(`Unexpected snapshot frame: ${file}`);
+      return { file, frame: Number(match[1]) };
+    })
+    .sort((a, b) => a.frame - b.frame);
+  if (
+    frames.length !== frameCount ||
+    frames.some(({ frame }, index) => frame !== index)
+  ) {
+    throw new Error(
+      `Expected ${frameCount} consecutive snapshot frames from zero`,
+    );
+  }
+  // Snapshot indices have a two-digit minimum, so lexical order breaks at 100.
+  for (const { file, frame } of frames) {
+    await rename(
+      resolve(directory, file),
+      resolve(directory, `frame_${String(frame).padStart(6, "0")}.png`),
+    );
+  }
+}
 
 export async function compareAlphaFrames(reference, port, frameCount, output) {
   const files = ["reference-alpha.framemd5", "hyperframes-alpha.framemd5"];
