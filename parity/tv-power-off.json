@@ -22,25 +22,45 @@
     "background": "#050505"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "000a241ff71ddf907b7d6dde35ed96d09bf9993326fb0450a301502e30dd0645",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 62,
-    "meanSsim": 0.997402,
-    "minSsim": 0.994915,
-    "p05Ssim": 0.99493,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
     "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 62,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/tv-power-off/remocn.mp4",
+    "referenceVideo": "public/previews/tv-power-off/reference.mp4",
     "hyperframesVideo": "public/previews/tv-power-off/hyperframes.mp4",
-    "summary": "parity/tv-power-off-diff/summary.json"
+    "thumbnail": "public/previews/tv-power-off/thumbnail.png",
+    "summary": "parity/tv-power-off-diff/summary.json",
+    "perFrameSsim": "parity/tv-power-off-diff/ssim.log",
+    "hyperframesCheck": "parity/tv-power-off-diff/hyperframes-check.log",
+    "worstFrame": "parity/tv-power-off-diff/worst-frame.png",
+    "referenceAlpha": "parity/tv-power-off-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/tv-power-off-diff/hyperframes-alpha.framemd5"
   }
 }

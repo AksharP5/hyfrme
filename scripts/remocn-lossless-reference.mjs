@@ -4,6 +4,12 @@ import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import {
+  canvasTransitionNames,
+  canvasFilterNames,
+  sourcePreviewNames,
+  sourcePreviewCss,
+} from "./remocn-canvas.mjs";
+import {
   run,
   verificationBrowser,
   hyperframesVersion,
@@ -15,9 +21,15 @@ export const upstream = resolve(
   root,
   process.env.REMOCN_SOURCE ?? ".work/remocn",
 );
-export const workbench = resolve(root, ".work/remocn-lossless-reference");
+const browserFallback = process.argv.includes("--browser-fallback");
+export const workbench = resolve(
+  root,
+  browserFallback
+    ? ".work/remocn-browser-fallback-reference"
+    : ".work/remocn-lossless-reference",
+);
 export const remotionVersion = "4.0.513";
-const referenceGl = "angle-egl";
+export const referenceGl = "angle-egl";
 const frozenAssetDirectories = [
   "assets/remocn-additions",
   "assets/remocn-templates-7fa2db1",
@@ -90,6 +102,15 @@ export async function selectFixtures(args = process.argv.slice(2)) {
   await assertSource(commit);
   await assertDependencies();
   for (const entry of fixtures) {
+    if (
+      browserFallback &&
+      !canvasTransitionNames.has(entry.slug) &&
+      !canvasFilterNames.has(entry.slug)
+    ) {
+      throw new Error(
+        `${entry.slug}: browser-fallback verification requires a Remocn canvas fixture`,
+      );
+    }
     if (entry.origin.commit !== commit) {
       throw new Error(
         `${entry.slug}: reference checkout ${commit} differs from pinned source ${entry.origin.commit}`,
@@ -131,9 +152,12 @@ export async function referenceFingerprint(entry) {
   await assertDependencies();
   return createHash("sha256")
     .update(JSON.stringify(entry))
+    .update(JSON.stringify({ browserFallback }))
     .update(JSON.stringify(await frozenAssets()))
     .update(await readFile(resolve(root, "assets/fonts/Geist-Latin.woff2")))
+    .update(await readFile(resolve(root, "assets/fonts/GeistMono-Latin.woff2")))
     .update(await readFile(import.meta.filename))
+    .update(await readFile(resolve(root, "scripts/remocn-canvas.mjs")))
     .update(
       await readFile(resolve(root, "fixtures/remocn-latest/package-lock.json")),
     )
@@ -200,6 +224,10 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
     resolve(root, "assets/fonts/Geist-Latin.woff2"),
     resolve(publicDirectory, "assets/fonts/Geist-Latin.woff2"),
   );
+  await cp(
+    resolve(root, "assets/fonts/GeistMono-Latin.woff2"),
+    resolve(publicDirectory, "assets/fonts/GeistMono-Latin.woff2"),
+  );
   for (const directory of frozenAssetDirectories) {
     await cp(resolve(root, directory), resolve(publicDirectory, directory), {
       recursive: true,
@@ -217,11 +245,10 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
     .map((asset) => [asset.sourceUrl, `/${asset.path}`]);
   const fontCss = [
     '@font-face { font-family:"Geist";src:url("/assets/fonts/Geist-Latin.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:block; }',
+    '@font-face { font-family:"Geist Mono";src:url("/assets/fonts/GeistMono-Latin.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:block; }',
   ];
-  if (pending.some((entry) => entry.slug === "code-morph")) {
-    fontCss.push(
-      '@font-face { font-family:"Geist Mono";src:url("/assets/fonts/GeistMono-Latin.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:block; }',
-    );
+  if (pending.some((entry) => sourcePreviewNames.has(entry.slug))) {
+    fontCss.push(sourcePreviewCss);
   }
   for (const asset of assets.filter(
     (asset) => asset.role === "local-stylesheet" && !asset.sourceImport,
@@ -256,10 +283,15 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
     )
     .join("\n");
   const wrappers = pending
-    .map(
-      (entry, index) =>
-        `function Fixture${index}(){return <FontReady><AbsoluteFill style={{background:${JSON.stringify(entry.fixture.background)},fontFamily:"Geist",["--font-geist-sans"]:"Geist"${entry.slug === "code-morph" ? ',["--font-geist-mono"]:"Geist Mono"' : ""}}}><Source${index} {...${JSON.stringify(entry.fixture.props)}} /></AbsoluteFill></FontReady>}`,
-    )
+    .map((entry, index) => {
+      const canvas =
+        canvasTransitionNames.has(entry.slug) ||
+        canvasFilterNames.has(entry.slug);
+      const guard = canvas
+        ? `if(isHtmlInCanvasSupported() !== ${!browserFallback}) throw new Error("Expected Remocn ${browserFallback ? "browser fallback" : "HTML-in-canvas shader"} capability");`
+        : "";
+      return `function Fixture${index}(){${guard}return <FontReady><AbsoluteFill ${sourcePreviewNames.has(entry.slug) ? 'id="hyfrme-source-root"' : ""} style={{background:${JSON.stringify(entry.fixture.background)},fontFamily:"Geist",["--font-geist-sans"]:"Geist",["--font-geist-mono"]:"Geist Mono"}}><Source${index} {...${JSON.stringify(entry.fixture.props)}} /></AbsoluteFill></FontReady>}`;
+    })
     .join("\n");
   const compositions = pending
     .map(
@@ -271,7 +303,7 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
   await writeFile(
     entryPoint,
     `import React,{useEffect,useState} from "react";
-import {AbsoluteFill,Composition,registerRoot,delayRender,continueRender,cancelRender} from "remotion";
+import {AbsoluteFill,Composition,registerRoot,delayRender,continueRender,cancelRender,isHtmlInCanvasSupported} from "remotion";
 ${imports}
 function FontReady({children}){
   const [handle]=useState(()=>delayRender("Frozen source fonts"));

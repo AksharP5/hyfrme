@@ -44,10 +44,12 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
   const isIcon =
     item.type !== "hyperframes:component" && item.tags.includes("icon");
   const nativeViewport = item.tags.includes("app-ui");
-  const rendered = useMemo(
+  const browserFallback = useMemo(
     () => item.tags.includes("html-in-canvas") && !supportsHtmlInCanvas(),
     [item],
   );
+  const sourceFallback = browserFallback && item.tags.includes("remocn-port");
+  const rendered = browserFallback && !sourceFallback;
   const document = useMemo(
     () =>
       rendered
@@ -189,12 +191,22 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
       )}
       <span className="live-indicator">
         <span aria-hidden="true" />{" "}
-        {rendered ? "Rendered preview" : "Live preview"}
+        {rendered
+          ? "Rendered preview"
+          : sourceFallback
+            ? "Browser fallback"
+            : "Live preview"}
       </span>
       {rendered && !error ? (
         <p className="preview-notice">
           This browser cannot preview this effect live. Showing default
           settings.
+        </p>
+      ) : null}
+      {sourceFallback && !error ? (
+        <p className="preview-notice">
+          Showing Remocn's browser fallback. HyperFrames renders the full
+          effect.
         </p>
       ) : null}
       {error ? (

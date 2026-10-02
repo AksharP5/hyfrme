@@ -25,24 +25,45 @@
     "background": "#fafafa"
   },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "bc668fbe56a45c52e5504d23d8062b91a9bae8b94b180188e25d361d0cef89ba",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 180,
-    "meanSsim": 0.952963,
-    "minSsim": 0.94507,
-    "p05Ssim": 0.946375,
-    "p95Ssim": 0.957304,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 180,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/infinite-marquee/remocn.mp4",
+    "referenceVideo": "public/previews/infinite-marquee/reference.mp4",
     "hyperframesVideo": "public/previews/infinite-marquee/hyperframes.mp4",
-    "summary": "parity/infinite-marquee-diff/summary.json"
+    "thumbnail": "public/previews/infinite-marquee/thumbnail.png",
+    "summary": "parity/infinite-marquee-diff/summary.json",
+    "perFrameSsim": "parity/infinite-marquee-diff/ssim.log",
+    "hyperframesCheck": "parity/infinite-marquee-diff/hyperframes-check.log",
+    "worstFrame": "parity/infinite-marquee-diff/worst-frame.png",
+    "referenceAlpha": "parity/infinite-marquee-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/infinite-marquee-diff/hyperframes-alpha.framemd5"
   }
 }

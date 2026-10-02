@@ -1,0 +1,66 @@
+{
+  "slug": "security-cam",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "source": "registry/remocn/security-cam/index.tsx",
+    "entry": "components/docs/examples/security-cam-example.tsx",
+    "config": "registry/remocn/security-cam/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 90,
+    "props": {
+      "compression": 0.7,
+      "blockSize": 10,
+      "noise": 0.6,
+      "intensity": 1
+    },
+    "background": "#0a0a0a"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "8fdaab1491c620b2db86e62a35a923bf8ca7863a1c8714517fcbe8d8c091c9f9",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 90,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "canvasMode": "browser-fallback",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "parity/remocn-browser-fallback/previews/security-cam/reference.mp4",
+    "hyperframesVideo": "parity/remocn-browser-fallback/previews/security-cam/hyperframes.mp4",
+    "thumbnail": "parity/remocn-browser-fallback/previews/security-cam/thumbnail.png",
+    "summary": "parity/remocn-browser-fallback/security-cam-diff/summary.json",
+    "perFrameSsim": "parity/remocn-browser-fallback/security-cam-diff/ssim.log",
+    "hyperframesCheck": "parity/remocn-browser-fallback/security-cam-diff/hyperframes-check.log",
+    "worstFrame": "parity/remocn-browser-fallback/security-cam-diff/worst-frame.png",
+    "referenceAlpha": "parity/remocn-browser-fallback/security-cam-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/remocn-browser-fallback/security-cam-diff/hyperframes-alpha.framemd5"
+  }
+}

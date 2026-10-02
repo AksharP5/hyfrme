@@ -22,25 +22,45 @@
     "background": "#06171c"
   },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "aaddbbe829b1106729aaefc04f20266232c27bf023b9e90ebfb0563df57d1783",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.993765,
-    "minSsim": 0.993234,
-    "p05Ssim": 0.993335,
-    "p95Ssim": 0.99432,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/underwater-ripple/remocn.mp4",
+    "referenceVideo": "public/previews/underwater-ripple/reference.mp4",
     "hyperframesVideo": "public/previews/underwater-ripple/hyperframes.mp4",
-    "summary": "parity/underwater-ripple-diff/summary.json"
+    "thumbnail": "public/previews/underwater-ripple/thumbnail.png",
+    "summary": "parity/underwater-ripple-diff/summary.json",
+    "perFrameSsim": "parity/underwater-ripple-diff/ssim.log",
+    "hyperframesCheck": "parity/underwater-ripple-diff/hyperframes-check.log",
+    "worstFrame": "parity/underwater-ripple-diff/worst-frame.png",
+    "referenceAlpha": "parity/underwater-ripple-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/underwater-ripple-diff/hyperframes-alpha.framemd5"
   }
 }
