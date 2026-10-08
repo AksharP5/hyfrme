@@ -258,6 +258,37 @@ captured key in `parity/command-menu.json` remains the new proof's recorded
 fingerprint, not a regenerated current-helper key. Fresh capture backend
 remains unobserved; the actual separate strict CLI hardware probes are retained.
 
+Onboarding Stepper Flow now pins the same Remocn commit and packages its
+variable Geist font and source preview typography. Its authored example has
+no customization controls; the 1280×720, 30 fps, 175-frame fixture remains
+unchanged, with empty installed variables and the Geist OFL and culori MIT
+notices.
+
+The native panels intentionally crossfade. Only the direct `Pro` text leaf
+receives `data-layout-allow-overlap`, and only while both native panel opacities
+are at least 0.2, matching the checker's solid-text visibility threshold.
+Incoming `Email notifications` remains eligible for other overlap checks.
+The marker is removed outside that window. It also excludes Pro from other
+pairs during the window, so the adapter supports only the exact authored scene:
+20 native source/configuration hashes reject any changed source closure.
+No pixels, props, styles, timing or motion are changed by the marker.
+
+All 175 cold native and fresh production frames match ordered RGBA exactly,
+with SSIM 1 and five source-valid repeats. The new full installed checker has
+zero errors, warnings, informational findings and snapshot findings; its
+layout issue count is zero. Both new mandatory and debug strict renders match
+the independently saved original strict 175-frame sequence. The original single warning remains in
+its unchanged hashed checker log, alongside original source runtime `84d92668…`.
+The new standalone runtime is `8279950f…`. Strict/source differences remain at
+frames 144–174: 1,333 RGB pixels, maximum channel difference 2 and exact alpha.
+Original native and cold native histories match. These residuals remain
+qualified beside the exact fresh proof; no strict/source pixel equality is claimed.
+
+The captured fingerprint in `parity/onboarding-stepper-flow.json` remains
+`6307b73a…`; regeneration does not rewrite that recorded key or establish a
+new proof. The fresh capture backend remains unobserved, separately from the
+requested hardware mode and successful strict CLI hardware probes.
+
 ## Coverage status
 
 The audited Remocn inventory at

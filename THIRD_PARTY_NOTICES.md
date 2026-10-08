@@ -77,6 +77,13 @@ as a bundled MIT dependency, with its complete license installed at
 `THIRD_PARTY_LICENSES/remocn/culori-LICENSE`. The block declares
 `MIT AND OFL-1.1` and installs Geist's complete OFL notice.
 
+Onboarding Stepper Flow's refreshed standalone source pins Remocn
+`8ae853e4c08108105684d4b8cac7f22400840d2a`. It packages the unmodified Latin
+Geist variable font and complete OFL-1.1 notice. Its runtime retains the Remocn,
+React, ReactDOM and Bézier MIT notices. Culori 4.0.2 is a bundled MIT dependency,
+with its complete license installed at
+`THIRD_PARTY_LICENSES/remocn/culori-LICENSE`; the block declares `MIT AND OFL-1.1`.
+
 ## Snapcn source reference
 
 Snapcn ports derive from `snapcndev/snapcn` at commit
