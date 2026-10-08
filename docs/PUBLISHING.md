@@ -6,7 +6,7 @@ changed video files without uploading them.
 
 Catalog previews and showcase MP4s are served from public Vercel Blob storage.
 Development uses the original files in `public/previews/` and
-`public/showcases/`. Production registry downloads are cached from a pinned
+`public/showcases/`. Production registry downloads come from a pinned
 public GitHub commit through the same `/registry/` URLs. Installed source and
 assets remain self-contained.
 
@@ -19,7 +19,7 @@ npm run pin:registry -- <full-reviewed-commit-sha>
 ```
 
 This checks that the registry matches the public commit and updates
-`src/generated/registry-source.json` and the cached route in `vercel.json`.
+`src/generated/registry-source.json` and the route in `vercel.json`.
 Unchanged registry files reuse the existing pin. This step needs no publishing
 credentials and uploads no extra copies.
 
@@ -51,9 +51,11 @@ Production builds verify every video's hash and redirect before omitting those
 MP4s from `dist/`. They also omit original preview PNGs because the catalog uses
 WebP posters. Registry source and assets are omitted after their fingerprint and
 routing match the pinned commit; generated `catalog.json` details stay local.
-The cached GitHub route supplies JavaScript, fonts, images, and other files with
-their original MIME types. Browser requests revalidate so publishing a new pin
-does not leave users with a year-old registry. Direct HTML previews retain
+The GitHub route supplies JavaScript, fonts, images, and other files with
+their original MIME types. Vercel rewrite caching is disabled because cached
+responses can restore GitHub's plain-text and sandbox headers. Browser requests
+revalidate, so they receive current registry files when the pin changes.
+Direct HTML previews retain
 same-origin scripting and framing.
 
 Keep original PNGs, videos, and registry files for local preview, installation,

@@ -56,7 +56,7 @@ vercel.rewrites = [
   ),
 ];
 vercel.headers = [
-  registryHeaders(source),
+  registryHeaders(),
   (vercel.headers ?? []).filter(
     ({ source }) => !source.startsWith("/registry/"),
   ),

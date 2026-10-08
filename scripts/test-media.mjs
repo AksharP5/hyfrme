@@ -216,7 +216,7 @@ test("Vercel defers unpublished video or registry previews without skipping the 
     JSON.stringify({
       redirects: mediaRedirects(manifest),
       rewrites: [registryRewrite(source)],
-      headers: registryHeaders(source),
+      headers: registryHeaders(),
     }),
   );
   const run = (environment) =>
@@ -421,7 +421,7 @@ test("registry hosting rejects changed source, removed files, and outdated route
   };
   const vercel = {
     rewrites: [registryRewrite(source)],
-    headers: registryHeaders(source),
+    headers: registryHeaders(),
   };
   await validateRegistry(directory, source, vercel);
   await writeFile(

@@ -82,16 +82,16 @@ export function registryRewrite(source) {
   };
 }
 
-export function registryHeaders(source) {
+export function registryHeaders() {
   return [
     {
       source: "/registry/:path*",
       headers: [
         { key: "Content-Type", value: "application/octet-stream" },
         { key: "Cache-Control", value: "public, max-age=0, must-revalidate" },
-        { key: "Vercel-CDN-Cache-Control", value: "public, max-age=86400" },
-        { key: "x-vercel-enable-rewrite-caching", value: "1" },
-        { key: "Vercel-Cache-Tag", value: `hyfrme-registry-${source.commit}` },
+        // Cached rewrites can restore GitHub's MIME and sandbox headers.
+        { key: "Vercel-CDN-Cache-Control", value: "private, no-store" },
+        { key: "x-vercel-enable-rewrite-caching", value: "0" },
         { key: "Content-Security-Policy", value: "frame-ancestors 'self'" },
         { key: "X-Frame-Options", value: "SAMEORIGIN" },
       ],
@@ -117,7 +117,7 @@ export async function validateRegistry(directory, source, vercel) {
   );
   if (
     JSON.stringify(rewrites) !== JSON.stringify([registryRewrite(source)]) ||
-    JSON.stringify(headers) !== JSON.stringify(registryHeaders(source))
+    JSON.stringify(headers) !== JSON.stringify(registryHeaders())
   ) {
     throw new Error("Registry routing is outdated. Run npm run pin:registry.");
   }
