@@ -319,7 +319,7 @@ and Geist Mono sources make the fixtures independent of live font downloads. Exa
 source-palette checker findings remain recorded for Code Morph and Ring Text.
 
 All 326 public Remocn visual items are included. Snapcn's live public registry has
-47 visual items, all included; private Pro-only source remains outside the public import.
+48 visual items, all included; private Pro-only source remains outside the public import.
 
 Selection Snap's source easing overshoots its final padding at frames 22–27.
 The resulting negative vertical padding is invalid CSS: the browser retains an
@@ -349,12 +349,13 @@ node scripts/verify-text-ports.mjs --lossless --only echo-stack,glyph-anatomy,ou
 
 ## Snapcn workflow
 
-All 47 pinned Snapcn visual components are verified across 6,569 frames. The
-frame-weighted mean SSIM is 0.999827, and the lowest individual frame scores
-0.984636. Together with the 326 Remocn ports, this makes 373 upstream visual
+The original 47 pinned Snapcn visual components were verified across 6,569
+frames, with frame-weighted mean SSIM 0.999827 and minimum 0.984636. Capture
+Reveal adds 130 frames that match RGBA exactly and score SSIM 1. Together
+with the 326 Remocn ports, the catalog now includes 374 upstream visual
 components.
 
-Thirty-nine Snapcn blocks pass the full HyperFrames check. Announce Title,
+Forty Snapcn blocks pass the full HyperFrames check. Announce Title,
 Answer Highlight, Follower Rush, Logo Drift, Prompt Zoom, Status Cycle, Word
 Wheel, and Wordmark Cut retain narrowly reviewed findings from source contrast,
 text layout, gradient text, or photo overlays. Their original appearance is

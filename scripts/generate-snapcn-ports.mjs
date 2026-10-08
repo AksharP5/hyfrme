@@ -123,6 +123,40 @@ for (const entry of selected) {
           resolveDir: dependencies,
         }));
         api.onLoad(
+          { filter: /snap-cn\/capture-reveal\/index\.tsx$/ },
+          async ({ path }) => {
+            const source = await readFile(path, "utf8");
+            const font = assetManifest.fonts.find(
+              (font) => font.directFontFace && font.slugs?.includes(slug),
+            );
+            const face = 'const FACE = "Capture Reveal DM Sans";';
+            const resolver = "function resolveSrc(src: string): string {";
+            if (
+              !font ||
+              !source.includes(font.source) ||
+              !source.includes(face) ||
+              !source.includes(resolver)
+            )
+              throw new Error(
+                "Pinned Capture Reveal font or media resolver changed.",
+              );
+            return {
+              loader: "tsx",
+              resolveDir: dirname(path),
+              contents: source
+                .replace(
+                  face,
+                  `const FACE = ${JSON.stringify(snapcnFontFamily(font.family))};`,
+                )
+                .replace("url(${FACE_URL})", "url(${staticFile(FACE_URL)})")
+                .replace(
+                  resolver,
+                  `${resolver}\n  const frozen = staticFile(src);\n  if (frozen !== src) return frozen;`,
+                ),
+            };
+          },
+        );
+        api.onLoad(
           { filter: /snap-cn\/check-cycle\/index\.tsx$/ },
           async ({ path }) => {
             const source = await readFile(path, "utf8");

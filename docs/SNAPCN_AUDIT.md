@@ -1,6 +1,6 @@
 # Snapcn source and license audit
 
-All 47 free visual components have fixtures in `catalog/snapcn-fixtures.json`.
+All 48 free visual components have fixtures in `catalog/snapcn-fixtures.json`.
 The source inventory is `catalog/snapcn-upstream.json`, with a separate source
 pin for each port. Check Cycle and the ten ports in the
 [current refresh](#current-port-refresh) use
@@ -18,6 +18,14 @@ Forty-four ports use the merged preview configs at their recorded source pins,
 including the shared speed control and minimum-speed overrides. Caret, Input,
 and Pulsing Border are published registry components outside that preview map.
 Their fixtures use their individual configs. No private source was accessed.
+
+## October 7 addition
+
+[Snapcn added Capture Reveal](https://github.com/snapcndev/snapcn/commit/f31be8a493cd836bbef36ac4f5a182fc40ee983e). Its fixture uses that exact commit and exposes all seven published controls. Existing port pins remain unchanged. The public registry now contains 48 free visual components.
+
+Capture Reveal packages its original screenshot, Google DM Sans fallback and optical-size variable font, with the original MIT and OFL licenses. Installed renders use those frozen bytes without external font or image requests. The adapter preserves upstream measurement and image readiness while resolving assets locally.
+
+All 130 frames at 1280×720 and 30 fps match the pinned source byte for byte in RGBA, with mean and minimum SSIM 1. The CLI-installed block passes the full HyperFrames check and strict render. The check retains two source-authored layout warnings, with no errors or lint/runtime warnings.
 
 ## Current port refresh
 
