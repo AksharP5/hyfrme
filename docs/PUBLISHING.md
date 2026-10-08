@@ -1,4 +1,4 @@
-# Publishing website videos
+# Publishing website assets
 
 This workflow is for the repository owner, who controls the production Blob
 credentials. Contributors follow [DEVELOPMENT.md](DEVELOPMENT.md) and submit
@@ -6,10 +6,23 @@ changed video files without uploading them.
 
 Catalog previews and showcase MP4s are served from public Vercel Blob storage.
 Development uses the original files in `public/previews/` and
-`public/showcases/`. Registry assets and CLI installs remain self-contained.
+`public/showcases/`. Production registry downloads come from a pinned
+public GitHub commit through the same `/registry/` URLs. Installed source and
+assets remain self-contained.
 
 After approving a PR, check out the reviewed changes locally. If it changes
 website videos, run `npm run sync:media` using your existing local credentials.
+If it changes `registry/`, commit and push those files, then run:
+
+```bash
+npm run pin:registry -- <full-reviewed-commit-sha>
+```
+
+This checks that the registry matches the public commit and updates
+`src/generated/registry-source.json` and the route in `vercel.json`.
+Unchanged registry files reuse the existing pin. This step needs no publishing
+credentials and uploads no extra copies.
+
 Then validate the result:
 
 ```bash
@@ -18,7 +31,8 @@ npm run build:production
 npm pack ./cli --dry-run
 ```
 
-Commit any generated changes to `src/generated/media.json` and `vercel.json`
+Commit any generated changes to `src/generated/media.json`,
+`src/generated/registry-source.json`, and `vercel.json`
 with the reviewed contribution, then merge or push the completed change to
 `main`. If the fork does not allow maintainer edits, integrate it on a local
 branch and include the publishing commit there before merging.
@@ -35,11 +49,19 @@ preserve the original video URLs. To inspect a production build locally, run
 
 Production builds verify every video's hash and redirect before omitting those
 MP4s from `dist/`. They also omit original preview PNGs because the catalog uses
-WebP posters. Keep the PNGs in `public/previews/` for local preview and parity
-evidence; registry PNG assets are included in production. Missing or outdated
-uploads fail the build. An unchanged checkout needs no Blob credentials. Keep
-original videos for local
-preview and parity checks. Never put Blob credentials in a `VITE_` variable.
+WebP posters. Registry source and assets are omitted after their fingerprint and
+routing match the pinned commit; generated `catalog.json` details stay local.
+The GitHub route supplies JavaScript, fonts, images, and other files with
+their original MIME types. Vercel rewrite caching is disabled because cached
+responses can restore GitHub's plain-text and sandbox headers. Browser requests
+revalidate, so they receive current registry files when the pin changes.
+Direct HTML previews retain
+same-origin scripting and framing.
+
+Keep original PNGs, videos, and registry files for local preview, installation,
+and parity checks. Missing or outdated publishing data fails the production
+build. An unchanged checkout needs no publishing credentials. Never put Blob
+credentials in a `VITE_` variable.
 
 ## Storage cleanup
 

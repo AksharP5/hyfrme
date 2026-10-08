@@ -36,9 +36,11 @@ files, including new renders. PR CI runs the same checks and build. No upload or
 changes to `src/generated/media.json` or media redirects in `vercel.json` are
 required from contributors.
 
-Vercel skips hosted previews when videos have not been published yet. This does
-not skip PR CI; use the local preview to review these contributions. Once the
-owner publishes the videos, hosted previews can build again.
+Vercel skips hosted previews when videos are unpublished or registry files have
+changed since their public source pin. This does not skip PR CI; use the local
+preview to review these contributions. The repository owner publishes videos
+and pins reviewed registry changes before deployment, as described in
+[PUBLISHING.md](PUBLISHING.md). Contributor builds use local registry files.
 
 Follow the [porting workflow](PORTING.md) for composition ports and the
 [project instructions](../AGENTS.md) when working with an agent.
