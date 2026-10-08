@@ -141,10 +141,10 @@ export function validateMedia(files, manifest, redirects) {
 export async function copyPublicWithoutMedia(publicDirectory, outputDirectory) {
   await cp(publicDirectory, outputDirectory, {
     recursive: true,
-    filter: (source) =>
-      !isHostedMedia(
-        `/${relative(publicDirectory, source).split(sep).join("/")}`,
-      ),
+    filter: (source) => {
+      const path = `/${relative(publicDirectory, source).split(sep).join("/")}`;
+      return !isHostedMedia(path) && !/^\/previews\/.+\.png$/.test(path);
+    },
   });
 }
 

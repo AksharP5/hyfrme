@@ -117,9 +117,11 @@ async function fixture(t) {
   for (const path of [
     "previews/demo/hyperframes.mp4",
     "previews/demo/thumbnail.png",
+    "previews/demo/thumbnail.webp",
     "showcases/demo.mp4",
     "showcases/demo/asset.mp4",
     "registry/blocks/demo/asset.mp4",
+    "registry/blocks/demo/asset.png",
     "cli.tgz",
   ]) {
     const target = resolve(publicDirectory, path);
@@ -266,7 +268,7 @@ test("production preview redirects video requests and serves other assets normal
   );
 });
 
-test("production omits only catalog videos and preserves installable assets and source", async (t) => {
+test("production omits catalog videos and original preview PNGs while preserving WebP posters and installable assets", async (t) => {
   const { directory, publicDirectory, files } = await fixture(t);
   assert.deepEqual(
     files.map(({ path }) => path),
@@ -277,10 +279,12 @@ test("production omits only catalog videos and preserves installable assets and 
   const emitted = await readdir(output, { recursive: true });
   assert(!emitted.includes("previews/demo/hyperframes.mp4"));
   assert(!emitted.includes("showcases/demo.mp4"));
+  assert(!emitted.includes("previews/demo/thumbnail.png"));
   for (const path of [
     "registry/blocks/demo/asset.mp4",
+    "registry/blocks/demo/asset.png",
     "showcases/demo/asset.mp4",
-    "previews/demo/thumbnail.png",
+    "previews/demo/thumbnail.webp",
     "cli.tgz",
   ]) {
     assert.equal(await readFile(resolve(output, path), "utf8"), path);
@@ -288,6 +292,13 @@ test("production omits only catalog videos and preserves installable assets and 
   assert.equal(
     await readFile(files[0].filename, "utf8"),
     "previews/demo/hyperframes.mp4",
+  );
+  assert.equal(
+    await readFile(
+      resolve(publicDirectory, "previews/demo/thumbnail.png"),
+      "utf8",
+    ),
+    "previews/demo/thumbnail.png",
   );
 });
 
