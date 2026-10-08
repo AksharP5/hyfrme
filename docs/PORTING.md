@@ -213,6 +213,28 @@ The original 45 UI primitives and flows are verified.
 - Alert Dialog and Combobox retain strict-render-only claims because the full
   checker flags their intentional overlay and ghost-text layering.
 
+Switch now uses source pin `8ae853e4c08108105684d4b8cac7f22400840d2a`,
+the original variable Geist font, source preview typography, and the same
+supported controls and defaults. The block includes the Geist OFL and culori
+4.0.2 MIT notices. Its 1280×720, 30 fps fixture remains 100 frames long.
+
+The cold native reference and fresh production producer match every ordered
+RGBA frame, with SSIM 1 and five source-valid repeats on each side. The full
+installed check has zero errors, warnings, informational findings, or snapshot
+findings. Both complete strict producer renders match the independently saved
+original strict producer. They retain 47 source-relative residual frames,
+32–78, with at most 43 pixels per frame, a maximum channel difference of 2,
+and exact alpha. The preserved original rejected proof is not relabeled.
+Fresh capture requested hardware rendering; its actual backend remains
+unobserved. Separate strict CLI hardware probes are retained.
+
+The catalog validator authenticates Switch's installed files, full check,
+strict stages, complete fresh RGBA and SSIM sequences, lossless archives,
+repeats, and original producer history. This applies to compiled proofs carrying
+fresh capture evidence; existing legacy thresholds stay unchanged. The
+fingerprint in `parity/switch.json` identifies the recorded capture inputs.
+Regeneration does not rewrite that historical key or establish a new proof.
+
 ## Coverage status
 
 The audited Remocn inventory at

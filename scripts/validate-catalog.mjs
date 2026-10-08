@@ -5,6 +5,10 @@ import { isDeepStrictEqual } from "node:util";
 import { build } from "esbuild";
 import { parseHyperframesVariables } from "./hyperframes-variables.mjs";
 import { iconShowcaseThreshold } from "./icon-showcase-history.mjs";
+import {
+  assertFreshCompiledEvidence,
+  hasFreshCompiledEvidence,
+} from "./fresh-parity-evidence.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const readJson = async (path) => JSON.parse(await readFile(path, "utf8"));
@@ -226,6 +230,25 @@ for (const item of registry.items) {
     throw new Error(
       `${item.name}: only verified, passing components can enter the catalog`,
     );
+  }
+
+  if (hasFreshCompiledEvidence(parity)) {
+    const fixtures = (
+      await Promise.all(
+        ["text", "core", "primitive", "icon"].map((family) =>
+          readJson(resolve(root, `catalog/${family}-fixtures.json`)),
+        ),
+      )
+    ).flat();
+    const entry = fixtures.find((fixture) => fixture.slug === item.name);
+    if (!entry) throw new Error(`${item.name}: pinned fresh fixture missing`);
+    await assertFreshCompiledEvidence({
+      parity,
+      manifest,
+      fixture: entry.fixture,
+      origin: entry.origin,
+      readBytes: (path) => readFile(resolve(root, path)),
+    });
   }
 
   if (parity.classification === "source-dom-port") {
