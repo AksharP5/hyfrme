@@ -8,12 +8,12 @@
   "fixtureSource": "catalog/snapcn-fixtures.json",
   "assetManifest": "assets/snapcn/manifest.json",
   "summary": {
-    "totalRegistryItems": 48,
-    "visualItems": 47,
+    "totalRegistryItems": 49,
+    "visualItems": 48,
     "sharedRuntimeItems": 1,
-    "previewRegistryItems": 44,
+    "previewRegistryItems": 45,
     "sourceFamilies": {
-      "snap-cn": 45,
+      "snap-cn": 46,
       "snap-cn-ui": 2
     },
     "missingFixtures": []
@@ -977,6 +977,26 @@
         "shader": false
       },
       "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3"
+    },
+    {
+      "name": "capture-reveal",
+      "slug": "snapcn-capture-reveal",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/capture-reveal/index.tsx",
+      "sourceSha256": "4f28de57e108b7b775d4007591bee553dd3664c5848779cd935cb3273616e638",
+      "docs": ["content/docs/screens/capture-reveal.mdx"],
+      "inPreviewRegistry": true,
+      "dependencies": ["remotion", "@remotion/google-fonts"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
+      "mechanics": {
+        "layoutMeasurement": true,
+        "effects": true,
+        "state": true,
+        "media": true,
+        "shader": false
+      },
+      "commit": "f31be8a493cd836bbef36ac4f5a182fc40ee983e"
     }
   ],
   "dependencyLicenseNotes": [
@@ -1037,26 +1057,36 @@
       "checkedAt": "2026-09-27",
       "added": ["snapcn-orb-swarm"],
       "existingFixturePinsPreserved": true
+    },
+    {
+      "commit": "f31be8a493cd836bbef36ac4f5a182fc40ee983e",
+      "checkedAt": "2026-10-07",
+      "checkedAtUtc": "2026-10-08T01:08:47.987697Z",
+      "added": ["snapcn-capture-reveal"],
+      "existingFixturePinsPreserved": true,
+      "existingSourceFilesUnchanged": true,
+      "previousCommit": "def45f50ff9b7ee7353be0a0bbf636c84b311cc0",
+      "controls": 7
     }
   ],
   "publishedAudit": {
-    "checkedAt": "2026-09-30",
-    "checkedAtUtc": "2026-09-30T21:53:58.681Z",
+    "checkedAt": "2026-10-07",
+    "checkedAtUtc": "2026-10-08T01:08:47.987697Z",
     "repository": "https://github.com/snapcndev/snapcn",
-    "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
+    "commit": "f31be8a493cd836bbef36ac4f5a182fc40ee983e",
     "registryUrl": "https://snapcn.dev/r/registry.json",
-    "registrySha256": "65542470bbcaedda7c4091e9a29c9eea043a33e3f0c8f7cec25e07b29a890e8b",
+    "registrySha256": "08adf34b2a2a5048119d578e8ec065509772f8cb906a1ebe9a1653e7eee4dbb0",
     "counts": {
-      "totalRegistryItems": 48,
-      "freeVisualItems": 47,
+      "totalRegistryItems": 49,
+      "freeVisualItems": 48,
       "proVisualItems": 0,
       "sharedRuntimeItems": 1,
       "advertisedProVisualItems": 51
     },
     "publicRegistryExcludesPro": true,
-    "proCatalogueUrl": "https://github.com/snapcndev/snapcn/blob/d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3/lib/pro-catalogue.json",
+    "proCatalogueUrl": "https://github.com/snapcndev/snapcn/blob/f31be8a493cd836bbef36ac4f5a182fc40ee983e/lib/pro-catalogue.json",
     "proCatalogueSha256": "70b3ef8a5c74235dfc66d87fcefb2e2b73cf886182706053bacfea226a2b8884",
-    "freeSourceUnchangedFrom": "f915a5f88771bae15b09f5ef8396d5542fe360ee",
+    "freeSourceUnchangedFrom": "def45f50ff9b7ee7353be0a0bbf636c84b311cc0",
     "freeSourceUnchanged": false,
     "existingFixturePinsPreserved": true,
     "excludedProItems": [
@@ -1441,11 +1471,18 @@
       }
     ],
     "existingSourceFilesUnchanged": true,
-    "newPublicItems": ["check-cycle"],
+    "newPublicItems": ["capture-reveal"],
     "publishedMetadataRefreshes": {
       "changedItems": 47,
       "fields": ["docs"],
       "embeddedSourcesUnchanged": true
+    },
+    "newPublicSource": {
+      "name": "capture-reveal",
+      "sourceUrl": "https://snapcn.dev/r/capture-reveal.json",
+      "httpStatus": 200,
+      "publishedJsonSha256": "bae8d7738585db6f13e0f0a3c2cd48ebb6ccbd664c700c093dd5bee5fd033aa7",
+      "sourceMatchesGitApartFromAttribution": true
     }
   }
 }

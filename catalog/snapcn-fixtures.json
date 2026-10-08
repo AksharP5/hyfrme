@@ -6470,5 +6470,88 @@
       }
     },
     "tags": ["snapcn", "text"]
+  },
+  {
+    "slug": "snapcn-capture-reveal",
+    "catalogFamily": "snapcn",
+    "title": "Capture Reveal",
+    "description": "Screenshot capture animation: a toast counts \"Capturing selection…\" up to 100% over a browser window, the window drops away and shrinks, the toast pops to \"Copied to clipboard.\" and a two-line headline rises out from behind the window while the cursor glides up. Every curve was measured off a recording frame by frame: the window's drop and shrink share one cubic-bezier, the toast pops on another, the headline rises without scaling or blurring, and type moves by fractions of a pixel.",
+    "componentName": "CaptureReveal",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "f31be8a493cd836bbef36ac4f5a182fc40ee983e",
+      "source": "registry/snap-cn/capture-reveal/index.tsx",
+      "config": "registry/snap-cn/capture-reveal/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/capture-reveal/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 130,
+      "props": {
+        "headline": "no more | keyframes",
+        "capturing": "Capturing selection...",
+        "copied": "Copied to clipboard.",
+        "src": "https://media.snapcn.dev/stills/capture-reveal-window.webp",
+        "mode": "light",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "headline": {
+        "type": "text",
+        "default": "no more | keyframes",
+        "label": "Headline (| breaks a line)"
+      },
+      "capturing": {
+        "type": "text",
+        "default": "Capturing selection...",
+        "label": "Toast while capturing"
+      },
+      "copied": {
+        "type": "text",
+        "default": "Copied to clipboard.",
+        "label": "Toast when done"
+      },
+      "src": {
+        "type": "image",
+        "default": "https://media.snapcn.dev/stills/capture-reveal-window.webp",
+        "label": "Screenshot"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": ["light", "dark"],
+        "label": "Theme"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": ["snapcn", "screens"]
   }
 ]
