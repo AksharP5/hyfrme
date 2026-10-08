@@ -59,19 +59,16 @@ Hyfrme frame math reproduces the reference behavior without bundling Remotion.
 Each block is a standalone HTML composition with no React dependency at playback
 time.
 
-- All 100 strict renders passed.
-- Five representative icons passed full HyperFrames lint, runtime, layout, and
-  motion checks with zero errors or warnings.
-- Family mean SSIM: 0.993872.
-- Per-item range: 0.985560–0.998621.
+- All 100 full installed checks and strict renders passed with zero findings.
+- All 7,270 canonical frames match ordered RGBA exactly, with SSIM 1.
 - Canonical icon fixtures cover 60–90 frames at 30 fps.
 - Website previews are independently rendered and compared at 384×384 (8×
   the canonical 48×48 fixture), so the vector strokes stay sharp when enlarged
   without changing the installable block or its canonical parity result.
 
-Inbox's 384px showcase uses native 384px source props and canvas with render
+Inbox's preserved EA730 384px showcase uses native 384px source props and canvas with render
 scale 1. Enlarging a 48px render also enlarged its CSS translation, producing
-the old mismatch. The corrected 48px and 384px installed fixtures pass all
+the old mismatch. Its historical 48px and 384px installed proof records all
 140 lossless frames with exact RGBA and zero full-check warnings or errors.
 The icon generator also initializes its renderer map for the published CLI's
 inline-script namespacing.
@@ -108,9 +105,26 @@ node scripts/verify-snapcn-ports.mjs --source-profile remocn --only icon-check,i
 ```
 
 The canonical lossless outputs use `public/previews/<slug>/canonical-48/`.
+All 100 icon fixtures now pin Remocn `8ae853e4c08108105684d4b8cac7f22400840d2a`.
+The remaining 97 icons contribute 7,070 exact ordered RGBA frames with SSIM 1
+and zero findings from their full installed checks. Their native control options,
+bounds and dependency notices are installed with the standalone source. Three
+customized Arrow Left, Arrow Down and Check Circle fixtures add 195 exact frames
+using action animation, looping, size 36, blue, stroke width 1.5 and speed 2.
+
+The remaining 97 authored 384px previews retain their original EA730 source pin,
+fixture, measured result and recorded 0.95 mean SSIM gate. Their original reports
+are preserved under `parity/historical-showcases/`, and the validator checks the
+old preview video hashes. These historical previews are not new exact 384px
+proofs for the updated source. Catalog comparisons attribute them to their own
+origin; the current canonical gate remains 0.99 with exact ordered RGBA evidence.
+
 The catalog comparison uses the separately preserved 384px source and producer
 videos and their measured result. The legacy icon MP4 verifier is not used for
 this update.
+
+Live icon customization uses the native white fixture background without color
+inversion, so the preview displays the selected stroke color.
 
 The first 24-item typography/effect family is verified as exact compiled-source
 ports. Each block preserves the upstream React component and editable controls,
