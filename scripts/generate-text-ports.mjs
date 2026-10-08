@@ -1,5 +1,6 @@
 import { build } from "esbuild";
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import {
   copyFile,
   mkdir,
@@ -1796,6 +1797,35 @@ for (const name of selectedNames) {
     ? await readFile(renderSourcePath, "utf8")
     : null;
   const source = await readFile(sourcePath, "utf8");
+  if (name === "onboarding-stepper-flow") {
+    // This annotation supports only the fixed native example and its exact source closure.
+    for (const [path, sha256] of [
+      ["components/docs/examples/onboarding-stepper-flow-example.tsx", "1ac7ae03bb7432ddcdbffbad26d75572b0a3a14776e8b38ea0ffd3beea9596b9"],
+      ["registry/remocn-ui/button/index.tsx", "c2bf393d4ea20b619738310f64672783103793e1f7182d4c4af63c120c1896e7"],
+      ["registry/remocn-ui/button/use-button-transition.ts", "3ab316118b0a3d2de98b19fb6b376bb505d3cb6581fbed077f557476f92cb97a"],
+      ["registry/remocn-ui/caret/index.tsx", "c52f1aa250a37622bd0fa613df3302d941eaa5153ff8999f39afc9b514f853f5"],
+      ["registry/remocn-ui/core/color.ts", "83a639cd92569711df94052348b5e7df2f70179f797de808e2ca2e24cdb26a17"],
+      ["registry/remocn-ui/core/index.ts", "344175d0513969fb586b1a9af7a6dc69d5aca1cb4ef59f53bf109bead4818c5d"],
+      ["registry/remocn-ui/core/motion.ts", "1c9758812db916ff045448ca3d5252568d6a83a13a82da1c2dbdb531f16c0d85"],
+      ["registry/remocn-ui/core/theme.ts", "d6242ad9b60689dd0c65dd1a3f8a097de96a625a5c407f815249e04773e2f608"],
+      ["registry/remocn-ui/core/timeline.ts", "468fec7f9e053d2a4f69f0accb83e364eeb382cd09e3ad74bd83e9ea1097f231"],
+      ["registry/remocn-ui/input/index.tsx", "9d1eea9545f7f70cc72d8aea1b9b6beb18aca83fda3c7b1a8d15188a51f2e394"],
+      ["registry/remocn-ui/input/use-input-transition.ts", "cd0d0d35f8d4d890ee42ce5a76bfca784bae0d3a739f2710914de6f22989e3cf"],
+      ["registry/remocn-ui/onboarding-stepper-flow/index.tsx", "66e2b417920a36f0e53973e4c3b60383ee5a70920205e4b09cfc2fa6f6714572"],
+      ["registry/remocn-ui/radio/index.tsx", "d291b604ac093213947290b1a5bcc5cfb7193725ddaf8d03e9b67cf1fa86bc7e"],
+      ["registry/remocn-ui/radio/use-radio-transition.ts", "081c7c0ebe2a297d92c72528379e080d89a66766d1e3ec51feb21d51b8bb9a19"],
+      ["registry/remocn-ui/spinner/index.tsx", "caf497ecb00ecbbecc1260a796bd965c6019cadb18edd005419128c912284c40"],
+      ["registry/remocn-ui/stepper/index.tsx", "eb7869fcbe233807a762d82324378b309bcf38d70173d175d58900a42a26183e"],
+      ["registry/remocn-ui/stepper/use-stepper-transition.ts", "44141f2af38a095f1da60fa83b2aa7040c7f3620b61939e864a4c0f6cd496ceb"],
+      ["registry/remocn-ui/switch/index.tsx", "bf52ea0fdd95f35c6ae321b1c7f68cc9ab8a817158c32dc60492ddc9a2e36ab7"],
+      ["registry/remocn-ui/switch/use-switch-transition.ts", "074b16ab3612dc4853959262f87e1a807d3a5ab4ecbd5e8b3b47b06e48d0f622"],
+      ["tsconfig.json", "2514c9043c7bff2a906fa79bd74b448eb5ad0e40353d87946542d31e4d830cfd"]
+    ]) {
+      const bytes = await readFile(resolve(upstream, path));
+      if (createHash("sha256").update(bytes).digest("hex") !== sha256)
+        throw new Error(`Pinned Onboarding source changed: ${path}`);
+    }
+  }
   const interTtfUrl =
     ["glyph-anatomy", "outline-trace"].includes(name)
       ? source.match(/export const interExtraBoldTtf =\s*"([^"]+)";/)?.[1]
@@ -1908,6 +1938,14 @@ for (const name of selectedNames) {
     const renderFrame = (frame) => {
       __setHyfrmeFrame(frame, config);
       flushSync(() => root.render(React.createElement(${renderComponentName}, props)));
+    ${name === "onboarding-stepper-flow" ? `
+      const planLabel = container.querySelector(":scope > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2)");
+      if (!planLabel) throw new Error("Pinned Onboarding plan label is missing");
+      const planPanel = planLabel.parentElement.parentElement.parentElement;
+      const settingsPanel = planPanel.nextElementSibling;
+      planLabel.toggleAttribute("data-layout-allow-overlap",
+        Number(planPanel.style.opacity) >= 0.2 && Number(settingsPanel.style.opacity) >= 0.2);
+    ` : ""}
     };
     window.__hyfrmeRenderFrame = renderFrame;
     ${
