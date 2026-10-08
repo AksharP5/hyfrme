@@ -46,6 +46,7 @@ npm pack ./cli --dry-run
 
 Contributor builds and PR CI use local media and require no publishing credentials.
 After review, the repository owner uploads changed videos with `npm run sync:media`,
+runs `npm run pin:registry -- <reviewed-public-commit>` for changed registry files,
 runs `npm run build:production`, and includes the generated publishing files before
 merging to main. See `docs/DEVELOPMENT.md` and `docs/PUBLISHING.md`.
 

@@ -1,20 +1,30 @@
 import assert from "node:assert/strict";
 import {
+  cp,
   mkdtemp,
   mkdir,
   readFile,
   readdir,
   rm,
+  symlink,
   writeFile,
 } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { createServer } from "node:http";
 import { dirname, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
+import { Writable } from "node:stream";
 import test from "node:test";
 import { build, preview } from "vite";
 import { mediaContent } from "./encode-media.mjs";
 import { frameRateArgument } from "./frame-rate.mjs";
+import {
+  readRegistrySource,
+  registryFingerprint,
+  registryHeaders,
+  registryRewrite,
+  validateRegistry,
+} from "./registry-hosting.mjs";
 import {
   blobPath,
   copyPublicWithoutMedia,
@@ -122,6 +132,7 @@ async function fixture(t) {
     "showcases/demo/asset.mp4",
     "registry/blocks/demo/asset.mp4",
     "registry/blocks/demo/asset.png",
+    "registry/blocks/demo/catalog.json",
     "cli.tgz",
   ]) {
     const target = resolve(publicDirectory, path);
@@ -170,10 +181,14 @@ test("contributors build and preview unpublished videos while production rejects
   );
 });
 
-test("Vercel defers unpublished previews without skipping the production check", async (t) => {
+test("Vercel defers unpublished video or registry previews without skipping the production check", async (t) => {
   const { directory, files, manifest } = await fixture(t);
   await mkdir(resolve(directory, "scripts"));
-  for (const file of ["media.mjs", "ignore-unpublished-preview.mjs"]) {
+  for (const file of [
+    "media.mjs",
+    "registry-hosting.mjs",
+    "ignore-unpublished-preview.mjs",
+  ]) {
     await writeFile(
       resolve(directory, "scripts", file),
       await readFile(resolve(root, "scripts", file)),
@@ -184,9 +199,25 @@ test("Vercel defers unpublished previews without skipping the production check",
     resolve(directory, "src/generated/media.json"),
     JSON.stringify(manifest),
   );
+  const registryDirectory = resolve(directory, "registry");
+  await cp(resolve(directory, "public/registry"), registryDirectory, {
+    recursive: true,
+  });
+  const source = {
+    commit: "a".repeat(40),
+    sha256: await registryFingerprint(registryDirectory),
+  };
+  await writeFile(
+    resolve(directory, "src/generated/registry-source.json"),
+    JSON.stringify(source),
+  );
   await writeFile(
     resolve(directory, "vercel.json"),
-    JSON.stringify({ redirects: mediaRedirects(manifest) }),
+    JSON.stringify({
+      redirects: mediaRedirects(manifest),
+      rewrites: [registryRewrite(source)],
+      headers: registryHeaders(source),
+    }),
   );
   const run = (environment) =>
     spawnSync(
@@ -198,6 +229,15 @@ test("Vercel defers unpublished previews without skipping the production check",
       },
     );
   assert.equal(run("preview").status, 1);
+  const registryAsset = resolve(registryDirectory, "blocks/demo/asset.png");
+  await writeFile(registryAsset, "changed source");
+  const deferredRegistry = run("preview");
+  assert.equal(deferredRegistry.status, 0);
+  assert.match(
+    deferredRegistry.stdout,
+    /Hosted preview skipped: Registry source pin is outdated/,
+  );
+  await writeFile(registryAsset, "registry/blocks/demo/asset.png");
   await writeFile(files[0].filename, "new render");
   const deferred = run("preview");
   assert.equal(deferred.status, 0);
@@ -263,12 +303,12 @@ test("production preview redirects video requests and serves other assets normal
   assert.equal(video.status, 307);
   assert.equal(video.headers.get("location"), manifest[path]);
   assert.equal(
-    await (await fetch(`${origin}/registry/block.html`)).text(),
+    await (await fetch(`${origin}/fonts/Geist-SemiBold.woff2`)).text(),
     "static asset",
   );
 });
 
-test("production omits catalog videos and original preview PNGs while preserving WebP posters and installable assets", async (t) => {
+test("production keeps generated catalog details and WebP posters while omitting externally hosted files", async (t) => {
   const { directory, publicDirectory, files } = await fixture(t);
   assert.deepEqual(
     files.map(({ path }) => path),
@@ -280,15 +320,23 @@ test("production omits catalog videos and original preview PNGs while preserving
   assert(!emitted.includes("previews/demo/hyperframes.mp4"));
   assert(!emitted.includes("showcases/demo.mp4"));
   assert(!emitted.includes("previews/demo/thumbnail.png"));
+  assert(!emitted.includes("registry/blocks/demo/asset.mp4"));
+  assert(!emitted.includes("registry/blocks/demo/asset.png"));
   for (const path of [
-    "registry/blocks/demo/asset.mp4",
-    "registry/blocks/demo/asset.png",
+    "registry/blocks/demo/catalog.json",
     "showcases/demo/asset.mp4",
     "previews/demo/thumbnail.webp",
     "cli.tgz",
   ]) {
     assert.equal(await readFile(resolve(output, path), "utf8"), path);
   }
+  assert.equal(
+    await readFile(
+      resolve(publicDirectory, "registry/blocks/demo/asset.png"),
+      "utf8",
+    ),
+    "registry/blocks/demo/asset.png",
+  );
   assert.equal(
     await readFile(files[0].filename, "utf8"),
     "previews/demo/hyperframes.mp4",
@@ -300,6 +348,149 @@ test("production omits catalog videos and original preview PNGs while preserving
     ),
     "previews/demo/thumbnail.png",
   );
+});
+
+test("hosted registry preview preserves byte ranges and avoids compressed content lengths", async (t) => {
+  let middleware;
+  await hostedMedia().configurePreviewServer({
+    middlewares: { use: (handler) => (middleware = handler) },
+  });
+  const upstream = t.mock.method(globalThis, "fetch", async (_url, options) => {
+    assert.equal(options.headers["Accept-Encoding"], "identity");
+    if (options.headers.Range) {
+      return new Response("ab", {
+        status: 206,
+        headers: {
+          "Content-Range": "bytes 0-1/10",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "2",
+        },
+      });
+    }
+    return new Response("decoded body", {
+      headers: { "Content-Encoding": "gzip", "Content-Length": "3" },
+    });
+  });
+  const serve = async (range) => {
+    let status;
+    let headers;
+    let body = "";
+    const finished = new Promise((done, reject) => {
+      const response = new Writable({
+        write(chunk, _encoding, callback) {
+          body += chunk.toString();
+          callback();
+        },
+      });
+      response.writeHead = (value, fields) => {
+        status = value;
+        headers = fields;
+      };
+      response.on("finish", done).on("error", reject);
+      middleware(
+        {
+          url: "/registry/blocks/demo/asset.mp4",
+          method: "GET",
+          headers: range ? { range } : {},
+        },
+        response,
+        reject,
+      );
+    });
+    await finished;
+    return { status, headers, body };
+  };
+  const ranged = await serve("bytes=0-1");
+  assert.equal(ranged.status, 206);
+  assert.equal(ranged.headers["Content-Range"], "bytes 0-1/10");
+  assert.equal(ranged.headers["Accept-Ranges"], "bytes");
+  assert.equal(ranged.headers["Content-Length"], "2");
+  assert.equal(ranged.body, "ab");
+  const compressed = await serve();
+  assert.equal(compressed.headers["Content-Length"], undefined);
+  assert.equal(compressed.body, "decoded body");
+  assert.equal(upstream.mock.callCount(), 2);
+});
+
+test("registry hosting rejects changed source, removed files, and outdated routes while allowing generated catalog updates", async (t) => {
+  const { publicDirectory } = await fixture(t);
+  const directory = resolve(publicDirectory, "registry");
+  const source = {
+    commit: "a".repeat(40),
+    sha256: await registryFingerprint(directory),
+  };
+  const vercel = {
+    rewrites: [registryRewrite(source)],
+    headers: registryHeaders(source),
+  };
+  await validateRegistry(directory, source, vercel);
+  await writeFile(
+    resolve(directory, "blocks/demo/catalog.json"),
+    "updated details",
+  );
+  await validateRegistry(directory, source, vercel);
+  await assert.rejects(
+    validateRegistry(directory, source, { ...vercel, rewrites: [] }),
+    /routing is outdated/,
+  );
+  await writeFile(resolve(directory, "blocks/demo/asset.png"), "new image");
+  await assert.rejects(
+    validateRegistry(directory, source, vercel),
+    /source pin is outdated/,
+  );
+  await rm(resolve(directory, "blocks/demo/asset.png"));
+  await assert.rejects(
+    validateRegistry(directory, source, vercel),
+    /source pin is outdated/,
+  );
+  const pin = resolve(publicDirectory, "source.json");
+  await writeFile(pin, JSON.stringify({ ...source, commit: "main" }));
+  await assert.rejects(readRegistrySource(pin), /Invalid registry source pin/);
+  await symlink("asset.mp4", resolve(directory, "blocks/demo/link.mp4"));
+  await assert.rejects(registryFingerprint(directory), /symbolic links/);
+});
+
+test("registry publisher rejects ignored files that are absent from the public commit", async (t) => {
+  const { directory, publicDirectory } = await fixture(t);
+  await cp(
+    resolve(publicDirectory, "registry"),
+    resolve(directory, "registry"),
+    { recursive: true },
+  );
+  await mkdir(resolve(directory, "scripts"));
+  for (const file of ["pin-registry.mjs", "registry-hosting.mjs"]) {
+    await cp(
+      resolve(root, "scripts", file),
+      resolve(directory, "scripts", file),
+    );
+  }
+  await writeFile(resolve(directory, ".gitignore"), "/registry/ignored.txt\n");
+  const git = (args) => {
+    const result = spawnSync("git", args, { cwd: directory, encoding: "utf8" });
+    assert.equal(result.status, 0, result.stderr);
+    return result.stdout.trim();
+  };
+  git(["init", "--quiet"]);
+  git(["add", "registry", ".gitignore"]);
+  git([
+    "-c",
+    "user.name=Fixture",
+    "-c",
+    "user.email=fixture@example.invalid",
+    "commit",
+    "--quiet",
+    "-m",
+    "fixture",
+  ]);
+  const commit = git(["rev-parse", "HEAD"]);
+  await writeFile(resolve(directory, "registry/ignored.txt"), "unpublished");
+  const result = spawnSync(
+    process.execPath,
+    [resolve(directory, "scripts/pin-registry.mjs"), commit],
+    { encoding: "utf8" },
+  );
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /Commit all registry files before pinning/);
 });
 
 test("manifest accepts only public immutable Blob URLs matching the file hash", async (t) => {

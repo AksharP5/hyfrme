@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { readRegistrySource, validateRegistry } from "./registry-hosting.mjs";
 import {
   readMediaFiles,
   readMediaManifest,
@@ -17,6 +18,11 @@ try {
     await readFile(resolve(root, "vercel.json"), "utf8"),
   );
   validateMedia(files, manifest, vercel.redirects);
+  await validateRegistry(
+    resolve(root, "registry"),
+    await readRegistrySource(),
+    vercel,
+  );
 } catch (error) {
   console.log(`Hosted preview skipped: ${error.message}`);
   console.log(

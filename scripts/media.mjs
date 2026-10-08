@@ -1,6 +1,14 @@
 import { createHash } from "node:crypto";
-import { cp, readFile, readdir } from "node:fs/promises";
+import { cp, readFile, readdir, stat } from "node:fs/promises";
 import { relative, resolve, sep } from "node:path";
+import { Readable } from "node:stream";
+import {
+  isHostedRegistry,
+  readRegistrySource,
+  registryContentType,
+  registryOrigin,
+  validateRegistry,
+} from "./registry-hosting.mjs";
 
 export const root = resolve(import.meta.dirname, "..");
 export const manifestPath = resolve(root, "src/generated/media.json");
@@ -141,8 +149,9 @@ export function validateMedia(files, manifest, redirects) {
 export async function copyPublicWithoutMedia(publicDirectory, outputDirectory) {
   await cp(publicDirectory, outputDirectory, {
     recursive: true,
-    filter: (source) => {
+    filter: async (source) => {
       const path = `/${relative(publicDirectory, source).split(sep).join("/")}`;
+      if (isHostedRegistry(path)) return (await stat(source)).isDirectory();
       return !isHostedMedia(path) && !/^\/previews\/.+\.png$/.test(path);
     },
   });
@@ -164,15 +173,56 @@ export function hostedMedia() {
         await readFile(resolve(root, "vercel.json"), "utf8"),
       );
       validateMedia(files, manifest, vercel.redirects);
+      await validateRegistry(
+        resolve(publicDirectory, "registry"),
+        await readRegistrySource(),
+        vercel,
+      );
     },
     async configurePreviewServer(server) {
       const manifest = await readMediaManifest();
+      const registrySource = await readRegistrySource();
       server.middlewares.use((request, response, next) => {
         const path = new URL(request.url, "http://localhost").pathname;
         const destination = manifest[path];
-        if (!destination) return next();
-        response.writeHead(307, { Location: destination });
-        response.end();
+        if (destination) {
+          response.writeHead(307, { Location: destination });
+          response.end();
+          return;
+        }
+        if (!isHostedRegistry(path)) return next();
+        fetch(
+          `${registryOrigin(registrySource)}${path.slice("/registry".length)}`,
+          {
+            method: request.method,
+            headers: {
+              "Accept-Encoding": "identity",
+              ...(request.headers.range
+                ? { Range: request.headers.range }
+                : {}),
+            },
+          },
+        )
+          .then((upstream) => {
+            const headers = {
+              "Content-Type": registryContentType(path),
+              "Cache-Control": "public, max-age=0, must-revalidate",
+            };
+            for (const name of ["Content-Range", "Accept-Ranges"]) {
+              const value = upstream.headers.get(name);
+              if (value) headers[name] = value;
+            }
+            if (!upstream.headers.has("Content-Encoding")) {
+              const length = upstream.headers.get("Content-Length");
+              if (length) headers["Content-Length"] = length;
+            }
+            response.writeHead(upstream.status, headers);
+            if (!upstream.body) return response.end();
+            Readable.fromWeb(upstream.body)
+              .on("error", (error) => response.destroy(error))
+              .pipe(response);
+          })
+          .catch(next);
       });
     },
     async writeBundle() {

@@ -5,6 +5,10 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
+      "source": "/registry/:path*",
+      "destination": "https://raw.githubusercontent.com/AksharP5/hyfrme/bc22b18daaea8a76afe65185a5c7f9ba7fba1c4c/registry/:path*"
+    },
+    {
       "source": "/cli",
       "destination": "/cli.tgz"
     },
@@ -5836,5 +5840,211 @@
       "permanent": false
     }
   ],
-  "ignoreCommand": "node scripts/ignore-unpublished-preview.mjs"
+  "ignoreCommand": "node scripts/ignore-unpublished-preview.mjs",
+  "headers": [
+    {
+      "source": "/registry/:path*",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/octet-stream"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, max-age=86400"
+        },
+        {
+          "key": "x-vercel-enable-rewrite-caching",
+          "value": "1"
+        },
+        {
+          "key": "Vercel-Cache-Tag",
+          "value": "hyfrme-registry-bc22b18daaea8a76afe65185a5c7f9ba7fba1c4c"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors 'self'"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.html)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.js)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.mjs)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.css)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/css; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.json)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.svg)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.png)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/png"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.jpg)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.jpeg)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.webp)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/webp"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.woff2)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "font/woff2"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.woff)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "font/woff"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.ttf)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "font/ttf"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.mp4)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "video/mp4"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.wav)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "audio/wav"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.m4a)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "audio/mp4"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.glb)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "model/gltf-binary"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.txt)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/registry/:path(.*\\.md)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
+    }
+  ]
 }
