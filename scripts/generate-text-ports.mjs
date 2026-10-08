@@ -1789,6 +1789,21 @@ for (const name of selectedNames) {
     ? await readFile(renderSourcePath, "utf8")
     : null;
   const source = await readFile(sourcePath, "utf8");
+  const interTtfUrl =
+    ["glyph-anatomy", "outline-trace"].includes(name)
+      ? source.match(/export const interExtraBoldTtf =\s*"([^"]+)";/)?.[1]
+      : null;
+  if (
+    interTtfUrl !== null &&
+    (!interTtfUrl ||
+      !selectedAssets.some(
+        (asset) =>
+          asset.role === "font" &&
+          asset.sourceUrl === interTtfUrl &&
+          asset.path.endsWith(".ttf"),
+      ))
+  )
+    throw new Error(`Missing frozen upstream Inter TTF in ${sourcePath}`);
   const controlKeys =
     sceneOverride?.controls ??
     (sceneOverride?.uiExample
@@ -1882,6 +1897,7 @@ for (const name of selectedNames) {
       return result;
     }, {});
     ${name === "stretch-in" ? `props.fontUrl = assets[${JSON.stringify(selectedAssets.find((asset) => asset.role === "font").sourceUrl)}];` : ""}
+    ${interTtfUrl !== null ? `props.fontUrl ??= assets[${JSON.stringify(interTtfUrl)}];` : ""}
     const renderFrame = (frame) => {
       __setHyfrmeFrame(frame, config);
       flushSync(() => root.render(React.createElement(${renderComponentName}, props)));

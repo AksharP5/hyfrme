@@ -318,6 +318,23 @@ reference includes the actual upstream Geist Mono font boundary. Frozen Inter, A
 and Geist Mono sources make the fixtures independent of live font downloads. Exact
 source-palette checker findings remain recorded for Code Morph and Ring Text.
 
+Glyph Anatomy and Outline Trace also package upstream's original Inter ExtraBold
+TTF and its matching OFL notice. Both parse that TTF with opentype.js to build
+glyph contours; the default `fontUrl` resolves to the installed frozen asset.
+Source, controls and timing stay unchanged. The asset manifest records the exact
+original URL, bytes and SHA256.
+
+Their 171-frame lossless comparison passes full checks and strict rendering with
+SSIM mean/minimum 1 and exact alpha. Outline Trace's 75 ordered RGBA hashes also
+match exactly. Glyph Anatomy's standard capture differs in 7/96 frames, totaling
+12 RGB pixels with maximum channel delta 1. A separate cold-browser diagnostic
+differs in 5/96 frames, and its unchanged debug producer differs from the original
+producer history in 4/96 frames. Glyph's independent exact RGBA gate remains
+rejected. The [Glyph report](../parity/glyph-anatomy-diff/rgba-review.json) and
+[Outline report](../parity/outline-trace-diff/rgba-review.json) retain the full
+ordered hash files and measured residuals; the existing SSIM/alpha thresholds
+and original standard-proof fingerprints are preserved.
+
 All 326 public Remocn visual items are included. Snapcn's live public registry has
 48 visual items, all included; private Pro-only source remains outside the public import.
 

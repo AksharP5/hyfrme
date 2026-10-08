@@ -28,7 +28,7 @@
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "c32e4ef2642a635c77736bd471385606c6d4b055c467da1b684ac6da7917ac7a",
+  "fingerprint": "578925810b2cf07adaf2371901d4b29babaf6882b01d41bc1a50cfb9ed1114f3",
   "thresholds": {
     "meanSsim": 0.99,
     "minSsim": 0.95
@@ -47,12 +47,15 @@
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
-    "installedThroughCli": true
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true,
+    "independentRgba": "75/75 standard lossless frames have identical ordered RGBA hashes"
   },
   "artifacts": {
     "referenceVideo": "public/previews/outline-trace/reference.mp4",
@@ -63,6 +66,7 @@
     "hyperframesCheck": "parity/outline-trace-diff/hyperframes-check.log",
     "worstFrame": "parity/outline-trace-diff/worst-frame.png",
     "referenceAlpha": "parity/outline-trace-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/outline-trace-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/outline-trace-diff/hyperframes-alpha.framemd5",
+    "rgbaReview": "parity/outline-trace-diff/rgba-review.json"
   }
 }
