@@ -26,6 +26,7 @@ export const sourcePreviewNames = new Set([
   "infinite-marquee",
   "perspective-marquee",
   "switch",
+  "command-menu",
 ]);
 
 export const sourcePreviewCss = `

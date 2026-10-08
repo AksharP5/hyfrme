@@ -2,7 +2,7 @@
   "slug": "command-menu",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-ui/command-menu/index.tsx",
     "entry": "components/docs/examples/command-menu-example.tsx",
     "config": "registry/remocn-ui/command-menu/config.ts",
@@ -16,25 +16,253 @@
     "props": {},
     "background": "oklch(1 0 0)"
   },
+  "filesSha256": {
+    "registry-item.json": "a725655ac12387bf16512229285f5e5ff79a82e5816e76c1a0534aea124f1677",
+    "command-menu.html": "e4af155ad89bd974d9f308c2291d1934c845e2bababc043da6e8870e24e87cbb",
+    "command-menu.runtime.js": "d90b71542aeb8077d4608ea9a74f1d43672412018c790566a0c756454b338481",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "1f5b16f39e65049ea51d7cb720bc181bbbf9d80842344ae3d4e9e484f9ec79a1",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 130,
-    "meanSsim": 0.999748,
-    "minSsim": 0.999277,
-    "p05Ssim": 0.999396,
-    "p95Ssim": 0.999995,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 130,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 130,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuRequestedMode": "hardware",
+    "browserGpuProbes": {
+      "render": {
+        "logSha256": "f10ce5d8c9d9cfe442b19615f90544757efd1e1f24ea44b5a336392130fe0853",
+        "observations": [
+          {
+            "mode": "hardware",
+            "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+          }
+        ]
+      },
+      "debugRender": {
+        "logSha256": "8456e5914df08faf5d35e9ebd7587348499482f3cd5d01617d368934115dc205",
+        "observations": [
+          {
+            "mode": "hardware",
+            "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+          }
+        ]
+      }
+    },
+    "captureBackend": "unobserved",
+    "rasterization": "browser-default",
+    "frameCapture": "fresh-browser native/production-producer; strict sequential CLI render retained separately",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true,
+    "captureLifecycle": "fresh-browser native/production-producer",
+    "captureProfile": {
+      "reference": "Remotion renderStill; fresh browser and page per frame",
+      "hyperframes": "Production producer API; fresh session/page per frame",
+      "sequential": "Full installed CLI check and strict sequential PNG render retained separately",
+      "rasterization": "browser-default; requested hardware ANGLE EGL; DPR 1; fresh capture backend unobserved",
+      "referenceScreenshot": {
+        "fromSurface": true,
+        "captureBeyondViewport": true,
+        "optimizeForSpeed": true
+      },
+      "producerScreenshot": {
+        "fromSurface": true,
+        "captureBeyondViewport": false,
+        "optimizeForSpeed": false
+      },
+      "virtualTime": "Unchanged pinned CLI virtual-time shim; seedRandomFromFrame:false",
+      "referenceBrowserLifecycle": "fresh browser per frame",
+      "producerBrowserLifecycle": "fresh browser per frame required and observed"
+    },
+    "repeatFrames": [
+      0,
+      32,
+      65,
+      97,
+      129
+    ],
+    "strictSequentialCaptureComplete": true,
+    "sequentialRgbaExact": false,
+    "sequentialMismatchedFrames": [
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      96
+    ],
+    "originalReferenceVsOriginalProducerMismatchedFrames": [
+      96
+    ],
+    "freshReferenceVsDebugProducerMismatchedFrames": [
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      96
+    ],
+    "debugProducerMatchesOriginalSequentialProducer": true,
+    "freshRepeatFrames": [
+      0,
+      32,
+      65,
+      97,
+      129
+    ]
   },
   "artifacts": {
-    "remocnVideo": "public/previews/command-menu/remocn.mp4",
+    "referenceVideo": "public/previews/command-menu/reference.mp4",
     "hyperframesVideo": "public/previews/command-menu/hyperframes.mp4",
-    "summary": "parity/command-menu-diff/summary.json"
+    "thumbnail": "public/previews/command-menu/thumbnail.png",
+    "summary": "parity/command-menu-diff/summary.json",
+    "perFrameSsim": "parity/command-menu-diff/ssim.log",
+    "hyperframesCheck": "parity/command-menu-diff/hyperframes-check.log",
+    "hyperframesRender": "parity/command-menu-diff/hyperframes-render.log",
+    "worstFrame": "parity/command-menu-diff/worst-frame.png",
+    "referenceAlpha": "parity/command-menu-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/command-menu-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/command-menu-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/command-menu-diff/hyperframes-rgba.framemd5",
+    "hyperframesDebugRender": "parity/command-menu-diff/sequential/debug-render.log",
+    "freshCapture": "parity/command-menu-diff/fresh/capture.json",
+    "freshInputs": "parity/command-menu-diff/fresh/inputs.json",
+    "freshRepeatability": "parity/command-menu-diff/fresh/repeatability.json",
+    "sequentialParity": "parity/command-menu-diff/sequential/parity.json",
+    "sequentialComparison": "parity/command-menu-diff/fresh/sequential-comparison.json",
+    "referenceLossless": "parity/command-menu-diff/fresh/reference-lossless.mkv",
+    "hyperframesLossless": "parity/command-menu-diff/fresh/hyperframes-lossless.mkv",
+    "referenceArchiveRgba": "parity/command-menu-diff/fresh/reference-archive-rgba.framemd5",
+    "hyperframesArchiveRgba": "parity/command-menu-diff/fresh/hyperframes-archive-rgba.framemd5",
+    "freshReferenceWithRepeatsRgba": "parity/command-menu-diff/fresh/reference-full-plus-repeats-rgba.framemd5",
+    "freshReferenceWithRepeatsSha256": "parity/command-menu-diff/fresh/reference-full-plus-repeats-rgba.sha256",
+    "freshProducerWithRepeatsRgba": "parity/command-menu-diff/fresh/producer-full-plus-repeats-rgba.framemd5",
+    "freshProducerWithRepeatsSha256": "parity/command-menu-diff/fresh/producer-full-plus-repeats-rgba.sha256",
+    "originalNativeSha256": "parity/command-menu-diff/fresh/original-native-rgba.sha256",
+    "originalStrictSha256": "parity/command-menu-diff/fresh/original-strict-rgba.sha256",
+    "mandatoryStrictSha256": "parity/command-menu-diff/fresh/mandatory-strict-rgba.sha256",
+    "actualDebugSha256": "parity/command-menu-diff/fresh/actual-debug-rgba.sha256",
+    "originalStrictParity": "parity/command-menu-diff/fresh/original-strict-parity.json",
+    "originalStrictRgba": "parity/command-menu-diff/fresh/original-strict-rgba.framemd5",
+    "originalNativeRgba": "parity/command-menu-diff/fresh/original-native-rgba.framemd5",
+    "originalStrictRender": "parity/command-menu-diff/fresh/original-strict-render.log",
+    "originalStrictProvenance": "parity/command-menu-diff/fresh/original-history-provenance.json",
+    "strictSourcePixelResiduals": "parity/command-menu-diff/fresh/strict-source-pixel-residuals.json",
+    "mandatoryStrictRgba": "parity/command-menu-diff/sequential/hyperframesRgba-hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/command-menu/reference.mp4": "c8a3d5cf53c2e57a5777c8626406d21a8041c0f868b7220af8344ad1644e2c1a",
+    "public/previews/command-menu/hyperframes.mp4": "c8a3d5cf53c2e57a5777c8626406d21a8041c0f868b7220af8344ad1644e2c1a",
+    "public/previews/command-menu/thumbnail.png": "2682b1c5c659407e35bf91fc20f7930c4d4f4e4674d0801d679e080ccb3f2f0a",
+    "parity/command-menu-diff/summary.json": "c40dbb3b6d6ad360b7a5f8f0fdb8e5f1e9ef6b95cd07e94a78b87d970f131eac",
+    "parity/command-menu-diff/ssim.log": "1280b4be66cc310bfa38417486842b99e37a922000990073cd4ea3e49cc10aca",
+    "parity/command-menu-diff/hyperframes-check.log": "6e1a914ebd08c9a291287be5c2769fccf2a1cc249c71b40a90c03e9fe14e4f7a",
+    "parity/command-menu-diff/hyperframes-render.log": "f10ce5d8c9d9cfe442b19615f90544757efd1e1f24ea44b5a336392130fe0853",
+    "parity/command-menu-diff/worst-frame.png": "3bd60d967f81a3da925b4982addffb1cb010e16c8a51fecae6eaf19ee8bec45e",
+    "parity/command-menu-diff/reference-alpha.framemd5": "d15e89c64f342a4ac77e78af374cc8ed31b659a4424662e614836020b5136e7d",
+    "parity/command-menu-diff/hyperframes-alpha.framemd5": "d15e89c64f342a4ac77e78af374cc8ed31b659a4424662e614836020b5136e7d",
+    "parity/command-menu-diff/reference-rgba.framemd5": "9a30a4bce17ed19462e56612e9f76c28ebd7209ad77bc03d8bf3d9301fc34e1c",
+    "parity/command-menu-diff/hyperframes-rgba.framemd5": "9a30a4bce17ed19462e56612e9f76c28ebd7209ad77bc03d8bf3d9301fc34e1c",
+    "parity/command-menu-diff/sequential/debug-render.log": "8456e5914df08faf5d35e9ebd7587348499482f3cd5d01617d368934115dc205",
+    "parity/command-menu-diff/fresh/capture.json": "4d0b442a3972c9441ce42ade6a4f12d85780f7d331b476f68277b003c9ef0c57",
+    "parity/command-menu-diff/fresh/inputs.json": "06bd50118a04e058f25c3072e803701fe434c4d0d48c746da7cafdea86ca05e0",
+    "parity/command-menu-diff/fresh/repeatability.json": "7b6a349f04fc1ed2af036dc637381902d00c8d18f52b2459c85ee675e1c0637e",
+    "parity/command-menu-diff/sequential/parity.json": "5fa0ee11817d9a48e3355327b1e63e213880fbf5cf1b0b33ba2ef40835b5b6e5",
+    "parity/command-menu-diff/fresh/sequential-comparison.json": "829cad620c0668157599eb82bd2c2fa8e1b725b2d76df536591882cf9de11db7",
+    "parity/command-menu-diff/fresh/reference-lossless.mkv": "53208625c4d70325d62df2710b57ed2f72d65f5c508d5d33ffe80902565749ab",
+    "parity/command-menu-diff/fresh/hyperframes-lossless.mkv": "50d268272b061af18f609bd9004616951b485346c2e389dfb8d62c3e42351f29",
+    "parity/command-menu-diff/fresh/reference-archive-rgba.framemd5": "9a30a4bce17ed19462e56612e9f76c28ebd7209ad77bc03d8bf3d9301fc34e1c",
+    "parity/command-menu-diff/fresh/hyperframes-archive-rgba.framemd5": "9a30a4bce17ed19462e56612e9f76c28ebd7209ad77bc03d8bf3d9301fc34e1c",
+    "parity/command-menu-diff/sequential/debug-gpu-probe.json": "5a9baf18efeaa8ceb3f44cc0a63a3d2b3c0691128c6cc55c130b85a48f21a943",
+    "parity/command-menu-diff/sequential/debug-producer-history-rgba.framemd5": "f9d347eec5e8dcb106a6c5d8a394c11e15539f517ed315c3dd2b56053be518c4",
+    "parity/command-menu-diff/sequential/debug-render-rgba.framemd5": "0e5f2a4e60941d5be3a9e401bfe26ee3a39b5faea39b5428de227bc340306849",
+    "parity/command-menu-diff/sequential/hyperframesAlpha-hyperframes-alpha.framemd5": "d15e89c64f342a4ac77e78af374cc8ed31b659a4424662e614836020b5136e7d",
+    "parity/command-menu-diff/sequential/hyperframesCheck-hyperframes-check.log": "6e1a914ebd08c9a291287be5c2769fccf2a1cc249c71b40a90c03e9fe14e4f7a",
+    "parity/command-menu-diff/sequential/hyperframesRender-hyperframes-render.log": "f10ce5d8c9d9cfe442b19615f90544757efd1e1f24ea44b5a336392130fe0853",
+    "parity/command-menu-diff/sequential/hyperframesRgba-hyperframes-rgba.framemd5": "fa19aa6100f88ef11962874f60d141aa07835e3508e83c4791fa3731a0506c7a",
+    "parity/command-menu-diff/sequential/hyperframesVideo-hyperframes.mp4": "a589f37318509db6950b4ef2ae144d4a4bbb9beffb6aba0c2d6145ab1c27c616",
+    "parity/command-menu-diff/sequential/perFrameSsim-ssim.log": "b5394f3058d1bd1a926f0fda382c7f1d35d17747266eb284144a7d9b4db2a327",
+    "parity/command-menu-diff/sequential/referenceAlpha-reference-alpha.framemd5": "d15e89c64f342a4ac77e78af374cc8ed31b659a4424662e614836020b5136e7d",
+    "parity/command-menu-diff/sequential/referenceRgba-reference-rgba.framemd5": "22aed8b42338e99be033731e8ab52023380b85ad9250d9ecaa5a2af06f0792f7",
+    "parity/command-menu-diff/sequential/referenceVideo-reference.mp4": "a589f37318509db6950b4ef2ae144d4a4bbb9beffb6aba0c2d6145ab1c27c616",
+    "parity/command-menu-diff/sequential/summary-summary.json": "f972ce1333471baed3bf179572ecb93bce30844a5a237b2226426800da45e224",
+    "parity/command-menu-diff/sequential/thumbnail-thumbnail.png": "c93f0be4eb7b3cafd7eb3d6039ee77b7b80d692b33d01d1b9eb3f8a31f875584",
+    "parity/command-menu-diff/sequential/verification.log": "0372273d9b548f4eb796b72aaa201e665bb0cca11adf0e58ce9780970c25b4b7",
+    "parity/command-menu-diff/sequential/worstFrame-worst-frame.png": "b6b80f4263bf6c8c16375e4217852feab2c6e68f51a427bd3f5d799e52aa49c4",
+    "parity/command-menu-diff/fresh/hyperframes-rgba.framemd5": "9a30a4bce17ed19462e56612e9f76c28ebd7209ad77bc03d8bf3d9301fc34e1c",
+    "parity/command-menu-diff/fresh/reference-rgba.framemd5": "9a30a4bce17ed19462e56612e9f76c28ebd7209ad77bc03d8bf3d9301fc34e1c",
+    "parity/command-menu-diff/fresh/sequential/debug-gpu-probe.json": "5a9baf18efeaa8ceb3f44cc0a63a3d2b3c0691128c6cc55c130b85a48f21a943",
+    "parity/command-menu-diff/fresh/sequential/debug-producer-history-rgba.framemd5": "f9d347eec5e8dcb106a6c5d8a394c11e15539f517ed315c3dd2b56053be518c4",
+    "parity/command-menu-diff/fresh/sequential/debug-render-rgba.framemd5": "0e5f2a4e60941d5be3a9e401bfe26ee3a39b5faea39b5428de227bc340306849",
+    "parity/command-menu-diff/fresh/sequential/debug-render.log": "8456e5914df08faf5d35e9ebd7587348499482f3cd5d01617d368934115dc205",
+    "parity/command-menu-diff/fresh/sequential/hyperframesAlpha-hyperframes-alpha.framemd5": "d15e89c64f342a4ac77e78af374cc8ed31b659a4424662e614836020b5136e7d",
+    "parity/command-menu-diff/fresh/sequential/hyperframesCheck-hyperframes-check.log": "6e1a914ebd08c9a291287be5c2769fccf2a1cc249c71b40a90c03e9fe14e4f7a",
+    "parity/command-menu-diff/fresh/sequential/hyperframesRender-hyperframes-render.log": "f10ce5d8c9d9cfe442b19615f90544757efd1e1f24ea44b5a336392130fe0853",
+    "parity/command-menu-diff/fresh/sequential/hyperframesRgba-hyperframes-rgba.framemd5": "fa19aa6100f88ef11962874f60d141aa07835e3508e83c4791fa3731a0506c7a",
+    "parity/command-menu-diff/fresh/sequential/hyperframesVideo-hyperframes.mp4": "a589f37318509db6950b4ef2ae144d4a4bbb9beffb6aba0c2d6145ab1c27c616",
+    "parity/command-menu-diff/fresh/sequential/parity.json": "5fa0ee11817d9a48e3355327b1e63e213880fbf5cf1b0b33ba2ef40835b5b6e5",
+    "parity/command-menu-diff/fresh/sequential/perFrameSsim-ssim.log": "b5394f3058d1bd1a926f0fda382c7f1d35d17747266eb284144a7d9b4db2a327",
+    "parity/command-menu-diff/fresh/sequential/referenceAlpha-reference-alpha.framemd5": "d15e89c64f342a4ac77e78af374cc8ed31b659a4424662e614836020b5136e7d",
+    "parity/command-menu-diff/fresh/sequential/referenceRgba-reference-rgba.framemd5": "22aed8b42338e99be033731e8ab52023380b85ad9250d9ecaa5a2af06f0792f7",
+    "parity/command-menu-diff/fresh/sequential/referenceVideo-reference.mp4": "a589f37318509db6950b4ef2ae144d4a4bbb9beffb6aba0c2d6145ab1c27c616",
+    "parity/command-menu-diff/fresh/sequential/summary-summary.json": "f972ce1333471baed3bf179572ecb93bce30844a5a237b2226426800da45e224",
+    "parity/command-menu-diff/fresh/sequential/thumbnail-thumbnail.png": "c93f0be4eb7b3cafd7eb3d6039ee77b7b80d692b33d01d1b9eb3f8a31f875584",
+    "parity/command-menu-diff/fresh/sequential/verification.log": "0372273d9b548f4eb796b72aaa201e665bb0cca11adf0e58ce9780970c25b4b7",
+    "parity/command-menu-diff/fresh/sequential/worstFrame-worst-frame.png": "b6b80f4263bf6c8c16375e4217852feab2c6e68f51a427bd3f5d799e52aa49c4",
+    "parity/command-menu-diff/fresh/ssim.log": "1280b4be66cc310bfa38417486842b99e37a922000990073cd4ea3e49cc10aca",
+    "parity/command-menu-diff/fresh/summary.json": "c40dbb3b6d6ad360b7a5f8f0fdb8e5f1e9ef6b95cd07e94a78b87d970f131eac",
+    "parity/command-menu-diff/fresh/reference-full-plus-repeats-rgba.framemd5": "bc7fa35f3b20545d9318c0faae4a193e0608a6592229ada6096d10a29cacf921",
+    "parity/command-menu-diff/fresh/reference-full-plus-repeats-rgba.sha256": "cf8df2259dd37057cca32354316e2b63ead2c283a5323417e71c9d252606c985",
+    "parity/command-menu-diff/fresh/producer-full-plus-repeats-rgba.framemd5": "bc7fa35f3b20545d9318c0faae4a193e0608a6592229ada6096d10a29cacf921",
+    "parity/command-menu-diff/fresh/producer-full-plus-repeats-rgba.sha256": "cf8df2259dd37057cca32354316e2b63ead2c283a5323417e71c9d252606c985",
+    "parity/command-menu-diff/fresh/original-native-rgba.sha256": "c3ea782a3d49e92768bcb97a51bc64591031cfe0d6e729bf47f18ca1c21bd86f",
+    "parity/command-menu-diff/fresh/original-strict-rgba.sha256": "d7f2bb69b9b00ea0d32392e27052f3f876647998b2d9233bfc36ad6a8cd942a6",
+    "parity/command-menu-diff/fresh/mandatory-strict-rgba.sha256": "37af67af3fecb08fd775bb1eeed66a6d609acb34a8f467761e2cbb33f6a6a4e3",
+    "parity/command-menu-diff/fresh/actual-debug-rgba.sha256": "37af67af3fecb08fd775bb1eeed66a6d609acb34a8f467761e2cbb33f6a6a4e3",
+    "parity/command-menu-diff/fresh/original-strict-parity.json": "3ebdbd9e786b1d147671446e33d590629f56cc74f657fd1f231606049644ba91",
+    "parity/command-menu-diff/fresh/original-strict-rgba.framemd5": "fa19aa6100f88ef11962874f60d141aa07835e3508e83c4791fa3731a0506c7a",
+    "parity/command-menu-diff/fresh/original-native-rgba.framemd5": "22aed8b42338e99be033731e8ab52023380b85ad9250d9ecaa5a2af06f0792f7",
+    "parity/command-menu-diff/fresh/original-strict-render.log": "02d4e7756e0acb46ac9041ad9ea60ab0d1a23df87f65ab9a34752098d0286f38",
+    "parity/command-menu-diff/fresh/original-history-provenance.json": "6fffa563e160fdebe7861c42558e211f2793ab895bf30a907587b1a08f1920ae",
+    "parity/command-menu-diff/fresh/strict-source-pixel-residuals.json": "7423f4eb393fb2bd520e16b4af9c679df1fb2d0ca1237ce1fe07c4412fb7782c"
   }
 }
