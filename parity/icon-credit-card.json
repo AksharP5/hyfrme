@@ -2,7 +2,7 @@
   "slug": "icon-credit-card",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-icons/icon-credit-card/index.tsx",
     "config": "registry/remocn-icons/icon-credit-card/config.ts",
     "license": "MIT"
@@ -15,32 +15,92 @@
     "props": {
       "animation": "both",
       "loop": false,
-      "speed": 1,
       "size": 48,
       "color": "#171717",
-      "strokeWidth": 2
-    }
+      "strokeWidth": 2,
+      "speed": 1
+    },
+    "background": "#ffffff"
   },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "60e4dea54725f65b1c012a544c9044c4311b564a484fdab0f2172d2dc765bca7",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 70,
-    "meanSsim": 0.9971,
-    "minSsim": 0.980374,
-    "p05Ssim": 0.988967,
-    "p95Ssim": 0.99923,
-    "pass": true
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 70,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true,
+    "rgba": {
+      "frameCount": 70,
+      "mismatchedFrames": [],
+      "pass": true
+    }
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuRequestedMode": "hardware",
+    "browserGpuProbes": {
+      "render": {
+        "logSha256": "32d718d6f6d2d686bf73b3d55dd1832bf931596279760e99272ce7c2606c1ba8",
+        "observations": [
+          {
+            "mode": "hardware",
+            "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+          }
+        ]
+      }
+    },
+    "captureBackend": "unobserved",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true,
+    "rasterization": "cpu",
+    "canonicalFrameCapture": "Normal Remotion renderFrames and installed CLI strict sequential PNG render, one worker, existing CPU-raster browser wrapper"
   },
   "artifacts": {
-    "remocnVideo": "public/previews/icon-credit-card/remocn.mp4",
-    "hyperframesVideo": "public/previews/icon-credit-card/hyperframes.mp4",
-    "summary": "parity/icon-credit-card-diff/summary.json"
+    "referenceVideo": "public/previews/icon-credit-card/canonical-48/reference.mp4",
+    "hyperframesVideo": "public/previews/icon-credit-card/canonical-48/hyperframes.mp4",
+    "thumbnail": "public/previews/icon-credit-card/canonical-48/thumbnail.png",
+    "summary": "parity/icon-credit-card-diff/summary.json",
+    "perFrameSsim": "parity/icon-credit-card-diff/ssim.log",
+    "hyperframesCheck": "parity/icon-credit-card-diff/hyperframes-check.log",
+    "hyperframesRender": "parity/icon-credit-card-diff/hyperframes-render.log",
+    "worstFrame": "parity/icon-credit-card-diff/worst-frame.png",
+    "referenceAlpha": "parity/icon-credit-card-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/icon-credit-card-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/icon-credit-card-diff/reference-rgba.json",
+    "hyperframesRgba": "parity/icon-credit-card-diff/hyperframes-rgba.json",
+    "rgbaReview": "parity/icon-credit-card-diff/rgba-review.json"
+  },
+  "artifactHashes": {
+    "public/previews/icon-credit-card/canonical-48/reference.mp4": "a96ed7198cbd5295a7e36ebc8288ed639308a482371dbc83da37220dac13873f",
+    "public/previews/icon-credit-card/canonical-48/hyperframes.mp4": "a96ed7198cbd5295a7e36ebc8288ed639308a482371dbc83da37220dac13873f",
+    "public/previews/icon-credit-card/canonical-48/thumbnail.png": "2dd218c4f01238ee293c1c811e72fea6c810b5449e94c8d91bce46ec0392eacf",
+    "parity/icon-credit-card-diff/summary.json": "8b7057bc32b8485e28b83f330feb1809720db87b48175b23f3529e82ecef15fc",
+    "parity/icon-credit-card-diff/ssim.log": "96458132206082c5ebad840c5869d54e8aaeb4a9a604575fa4f606d0492f59fc",
+    "parity/icon-credit-card-diff/hyperframes-check.log": "b470ea07fc1893aab22478627184508f76981f4c5ea81dfa8d3312454e6d0893",
+    "parity/icon-credit-card-diff/hyperframes-render.log": "32d718d6f6d2d686bf73b3d55dd1832bf931596279760e99272ce7c2606c1ba8",
+    "parity/icon-credit-card-diff/worst-frame.png": "9e494e7891cccdb0686fdfdb87031fcb0cccc5b25f8716d109b895fc8a93e6cd",
+    "parity/icon-credit-card-diff/reference-alpha.framemd5": "d0fe7e38e19ab8f16f04b90c0a73abd1edf7dc292569c0e8d6eaa852ab134d01",
+    "parity/icon-credit-card-diff/hyperframes-alpha.framemd5": "d0fe7e38e19ab8f16f04b90c0a73abd1edf7dc292569c0e8d6eaa852ab134d01",
+    "parity/icon-credit-card-diff/reference-rgba.json": "fc28c48858343578f4bb56a170617fa9366dc056c9c42b6a55e69368696a2e3b",
+    "parity/icon-credit-card-diff/hyperframes-rgba.json": "fc28c48858343578f4bb56a170617fa9366dc056c9c42b6a55e69368696a2e3b",
+    "parity/icon-credit-card-diff/rgba-review.json": "0ce484b4dd73f190b66cd66a852bdfdd73a1ea3e57b7c7d6b53fcde383a837ca"
   },
   "showcase": {
     "fixture": {
@@ -63,6 +123,36 @@
       "p05Ssim": 0.996643,
       "p95Ssim": 0.999311,
       "pass": true
+    },
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn-icons/icon-credit-card/index.tsx",
+      "config": "registry/remocn-icons/icon-credit-card/config.ts",
+      "license": "MIT"
+    },
+    "thresholds": {
+      "meanSsim": 0.95
+    },
+    "artifacts": {
+      "referenceVideo": "public/previews/icon-credit-card/remocn.mp4",
+      "hyperframesVideo": "public/previews/icon-credit-card/hyperframes.mp4"
+    },
+    "artifactHashes": {
+      "public/previews/icon-credit-card/remocn.mp4": "84ab99ebc88a4e6d424da50197782017376d53d007bb3b5a074e7716a7ec5897",
+      "public/previews/icon-credit-card/hyperframes.mp4": "7c51e8cc1a1f07b36b18edc9c430f0742c76fe2dd15b0f82500bf4d224063e25"
+    },
+    "provenance": {
+      "kind": "historical-preview",
+      "originalReport": {
+        "path": "parity/historical-showcases/icon-credit-card.json",
+        "sha256": "10148a4c5957d40b674c6b0be11d1d331d0d02240ad47b696e522d03c9d7cc1d"
+      },
+      "preservedShippedSource": {
+        "commit": "6c404c30b0d7504c353ca356825a138a60789c40",
+        "sha256": "2bb2bc8a8c2a14291348201356a73e2f8617f9dc66dd9e0cf06f28c35712aceb"
+      },
+      "qualification": "Preserved EA730 authored384 evidence under its original recorded threshold. No new source8ae384 exact claim. The preserved shipped-source snapshot is not a captured-runtime hash; the original primary48 summary is not used as384 evidence."
     }
   }
 }

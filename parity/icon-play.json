@@ -2,7 +2,7 @@
   "slug": "icon-play",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-icons/icon-play/index.tsx",
     "config": "registry/remocn-icons/icon-play/config.ts",
     "license": "MIT"
@@ -15,32 +15,92 @@
     "props": {
       "animation": "both",
       "loop": false,
-      "speed": 1,
       "size": 48,
       "color": "#171717",
-      "strokeWidth": 2
-    }
+      "strokeWidth": 2,
+      "speed": 1
+    },
+    "background": "#ffffff"
   },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "bf4963cf97bf081eda1fb2a2e366c854be3bebb25f33454a5a188e0cd88ee34d",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 60,
-    "meanSsim": 0.992458,
-    "minSsim": 0.986525,
-    "p05Ssim": 0.988344,
-    "p95Ssim": 0.994409,
-    "pass": true
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 60,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true,
+    "rgba": {
+      "frameCount": 60,
+      "mismatchedFrames": [],
+      "pass": true
+    }
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuRequestedMode": "hardware",
+    "browserGpuProbes": {
+      "render": {
+        "logSha256": "5d3ff192708e6a0e69d63391f9102f615f9b016d25283fb6a27d4f7d572e93c5",
+        "observations": [
+          {
+            "mode": "hardware",
+            "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+          }
+        ]
+      }
+    },
+    "captureBackend": "unobserved",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true,
+    "rasterization": "cpu",
+    "canonicalFrameCapture": "Normal Remotion renderFrames and installed CLI strict sequential PNG render, one worker, existing CPU-raster browser wrapper"
   },
   "artifacts": {
-    "remocnVideo": "public/previews/icon-play/remocn.mp4",
-    "hyperframesVideo": "public/previews/icon-play/hyperframes.mp4",
-    "summary": "parity/icon-play-diff/summary.json"
+    "referenceVideo": "public/previews/icon-play/canonical-48/reference.mp4",
+    "hyperframesVideo": "public/previews/icon-play/canonical-48/hyperframes.mp4",
+    "thumbnail": "public/previews/icon-play/canonical-48/thumbnail.png",
+    "summary": "parity/icon-play-diff/summary.json",
+    "perFrameSsim": "parity/icon-play-diff/ssim.log",
+    "hyperframesCheck": "parity/icon-play-diff/hyperframes-check.log",
+    "hyperframesRender": "parity/icon-play-diff/hyperframes-render.log",
+    "worstFrame": "parity/icon-play-diff/worst-frame.png",
+    "referenceAlpha": "parity/icon-play-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/icon-play-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/icon-play-diff/reference-rgba.json",
+    "hyperframesRgba": "parity/icon-play-diff/hyperframes-rgba.json",
+    "rgbaReview": "parity/icon-play-diff/rgba-review.json"
+  },
+  "artifactHashes": {
+    "public/previews/icon-play/canonical-48/reference.mp4": "c38b0fae9570ebc58184963b2cdb874471297256b433d08bbce2b7cb2a8ae157",
+    "public/previews/icon-play/canonical-48/hyperframes.mp4": "c38b0fae9570ebc58184963b2cdb874471297256b433d08bbce2b7cb2a8ae157",
+    "public/previews/icon-play/canonical-48/thumbnail.png": "e7f2437107930af07a91107c2a8e5fbf875b406fbf8b19054902b592d7a30d40",
+    "parity/icon-play-diff/summary.json": "ef147441a7121aeef9af64abf740bf949db0ebf93e4c121f2ef022d995a20605",
+    "parity/icon-play-diff/ssim.log": "e5de144aa23e764f1d14fe248acd94330063b3ce5a1953536c4766924aff2bf1",
+    "parity/icon-play-diff/hyperframes-check.log": "a430c67c0d21143b0ae0252d6bee6788ca003fa911404dec67e265731d6881ef",
+    "parity/icon-play-diff/hyperframes-render.log": "5d3ff192708e6a0e69d63391f9102f615f9b016d25283fb6a27d4f7d572e93c5",
+    "parity/icon-play-diff/worst-frame.png": "9e494e7891cccdb0686fdfdb87031fcb0cccc5b25f8716d109b895fc8a93e6cd",
+    "parity/icon-play-diff/reference-alpha.framemd5": "f4ba0db340e6caf000b877431070645bae562963aad76ed9fa47ea8bb2d1c449",
+    "parity/icon-play-diff/hyperframes-alpha.framemd5": "f4ba0db340e6caf000b877431070645bae562963aad76ed9fa47ea8bb2d1c449",
+    "parity/icon-play-diff/reference-rgba.json": "6d8b5f8bc85e02602933c31a2fb2f91adcb74d0c44fde28d9c3a54400218eeed",
+    "parity/icon-play-diff/hyperframes-rgba.json": "6d8b5f8bc85e02602933c31a2fb2f91adcb74d0c44fde28d9c3a54400218eeed",
+    "parity/icon-play-diff/rgba-review.json": "26aba6ef2b1507e69052384d8721be06c3ba4ae8468b209e83fefc830f05d047"
   },
   "showcase": {
     "fixture": {
@@ -63,6 +123,36 @@
       "p05Ssim": 0.889688,
       "p95Ssim": 0.998634,
       "pass": true
+    },
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn-icons/icon-play/index.tsx",
+      "config": "registry/remocn-icons/icon-play/config.ts",
+      "license": "MIT"
+    },
+    "thresholds": {
+      "meanSsim": 0.95
+    },
+    "artifacts": {
+      "referenceVideo": "public/previews/icon-play/remocn.mp4",
+      "hyperframesVideo": "public/previews/icon-play/hyperframes.mp4"
+    },
+    "artifactHashes": {
+      "public/previews/icon-play/remocn.mp4": "237a8f847bb135427e81cb3ac6da89f74709c0f4a5b72ddd636b735cd253d020",
+      "public/previews/icon-play/hyperframes.mp4": "01c37f9d091916be36a450ede999671b26a660d4ca9da787012e8736799cfc26"
+    },
+    "provenance": {
+      "kind": "historical-preview",
+      "originalReport": {
+        "path": "parity/historical-showcases/icon-play.json",
+        "sha256": "70fcbc850f32f968b62242ce22b8df8e14385538c4f6f0de218933f7882094dc"
+      },
+      "preservedShippedSource": {
+        "commit": "6c404c30b0d7504c353ca356825a138a60789c40",
+        "sha256": "25c4904beb70bf5015e1b53be5245fe4a941badc763f5f1054a91528d372e089"
+      },
+      "qualification": "Preserved EA730 authored384 evidence under its original recorded threshold. No new source8ae384 exact claim. The preserved shipped-source snapshot is not a captured-runtime hash; the original primary48 summary is not used as384 evidence."
     }
   }
 }

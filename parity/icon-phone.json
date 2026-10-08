@@ -2,7 +2,7 @@
   "slug": "icon-phone",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-icons/icon-phone/index.tsx",
     "config": "registry/remocn-icons/icon-phone/config.ts",
     "license": "MIT"
@@ -15,32 +15,92 @@
     "props": {
       "animation": "both",
       "loop": false,
-      "speed": 1,
       "size": 48,
       "color": "#171717",
-      "strokeWidth": 2
-    }
+      "strokeWidth": 2,
+      "speed": 1
+    },
+    "background": "#ffffff"
   },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "e909d9eb69b9abe9d87da153bc625c9794a856d7c13c840dc4d6db84256cf9aa",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 70,
-    "meanSsim": 0.990571,
-    "minSsim": 0.985309,
-    "p05Ssim": 0.988701,
-    "p95Ssim": 0.99334,
-    "pass": true
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 70,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true,
+    "rgba": {
+      "frameCount": 70,
+      "mismatchedFrames": [],
+      "pass": true
+    }
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuRequestedMode": "hardware",
+    "browserGpuProbes": {
+      "render": {
+        "logSha256": "7ddd9789d7dfcd462ba210de9bcd41a28d74ef2ad03892aa5fa8973be50380c2",
+        "observations": [
+          {
+            "mode": "hardware",
+            "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+          }
+        ]
+      }
+    },
+    "captureBackend": "unobserved",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true,
+    "rasterization": "cpu",
+    "canonicalFrameCapture": "Normal Remotion renderFrames and installed CLI strict sequential PNG render, one worker, existing CPU-raster browser wrapper"
   },
   "artifacts": {
-    "remocnVideo": "public/previews/icon-phone/remocn.mp4",
-    "hyperframesVideo": "public/previews/icon-phone/hyperframes.mp4",
-    "summary": "parity/icon-phone-diff/summary.json"
+    "referenceVideo": "public/previews/icon-phone/canonical-48/reference.mp4",
+    "hyperframesVideo": "public/previews/icon-phone/canonical-48/hyperframes.mp4",
+    "thumbnail": "public/previews/icon-phone/canonical-48/thumbnail.png",
+    "summary": "parity/icon-phone-diff/summary.json",
+    "perFrameSsim": "parity/icon-phone-diff/ssim.log",
+    "hyperframesCheck": "parity/icon-phone-diff/hyperframes-check.log",
+    "hyperframesRender": "parity/icon-phone-diff/hyperframes-render.log",
+    "worstFrame": "parity/icon-phone-diff/worst-frame.png",
+    "referenceAlpha": "parity/icon-phone-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/icon-phone-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/icon-phone-diff/reference-rgba.json",
+    "hyperframesRgba": "parity/icon-phone-diff/hyperframes-rgba.json",
+    "rgbaReview": "parity/icon-phone-diff/rgba-review.json"
+  },
+  "artifactHashes": {
+    "public/previews/icon-phone/canonical-48/reference.mp4": "638d83dc82086a488bfcf1b78f80ec0fc3a0abefcfdded5189941d02b2f17afe",
+    "public/previews/icon-phone/canonical-48/hyperframes.mp4": "638d83dc82086a488bfcf1b78f80ec0fc3a0abefcfdded5189941d02b2f17afe",
+    "public/previews/icon-phone/canonical-48/thumbnail.png": "5b29ee6e7d50a35b4e76cf609748d7615be1c0c4258d29aa54f7b78e998fef8e",
+    "parity/icon-phone-diff/summary.json": "8b7057bc32b8485e28b83f330feb1809720db87b48175b23f3529e82ecef15fc",
+    "parity/icon-phone-diff/ssim.log": "96458132206082c5ebad840c5869d54e8aaeb4a9a604575fa4f606d0492f59fc",
+    "parity/icon-phone-diff/hyperframes-check.log": "b470ea07fc1893aab22478627184508f76981f4c5ea81dfa8d3312454e6d0893",
+    "parity/icon-phone-diff/hyperframes-render.log": "7ddd9789d7dfcd462ba210de9bcd41a28d74ef2ad03892aa5fa8973be50380c2",
+    "parity/icon-phone-diff/worst-frame.png": "9e494e7891cccdb0686fdfdb87031fcb0cccc5b25f8716d109b895fc8a93e6cd",
+    "parity/icon-phone-diff/reference-alpha.framemd5": "d0fe7e38e19ab8f16f04b90c0a73abd1edf7dc292569c0e8d6eaa852ab134d01",
+    "parity/icon-phone-diff/hyperframes-alpha.framemd5": "d0fe7e38e19ab8f16f04b90c0a73abd1edf7dc292569c0e8d6eaa852ab134d01",
+    "parity/icon-phone-diff/reference-rgba.json": "c4cebd493c62394de3876a0401c4370c6cf01bc0cd5d69956ec61392fdba4812",
+    "parity/icon-phone-diff/hyperframes-rgba.json": "c4cebd493c62394de3876a0401c4370c6cf01bc0cd5d69956ec61392fdba4812",
+    "parity/icon-phone-diff/rgba-review.json": "32e8aebdba9e059dbe176d295fcf0540afbf903a069d4fd6fc29291c1afdc3a0"
   },
   "showcase": {
     "fixture": {
@@ -63,6 +123,36 @@
       "p05Ssim": 0.99633,
       "p95Ssim": 0.997929,
       "pass": true
+    },
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+      "source": "registry/remocn-icons/icon-phone/index.tsx",
+      "config": "registry/remocn-icons/icon-phone/config.ts",
+      "license": "MIT"
+    },
+    "thresholds": {
+      "meanSsim": 0.95
+    },
+    "artifacts": {
+      "referenceVideo": "public/previews/icon-phone/remocn.mp4",
+      "hyperframesVideo": "public/previews/icon-phone/hyperframes.mp4"
+    },
+    "artifactHashes": {
+      "public/previews/icon-phone/remocn.mp4": "9a0d3ead0668b8adec551473f05d43ef6fa221f82b579a67b06ef82568e7f71c",
+      "public/previews/icon-phone/hyperframes.mp4": "8412e02d59ea1b3188ebe065bbd6241b4003b92d4472513914955b4f9ab982cd"
+    },
+    "provenance": {
+      "kind": "historical-preview",
+      "originalReport": {
+        "path": "parity/historical-showcases/icon-phone.json",
+        "sha256": "346ba78bb2e012ae1e5e043a91424201da7f573761aaca69aa7c6742eb7d8372"
+      },
+      "preservedShippedSource": {
+        "commit": "6c404c30b0d7504c353ca356825a138a60789c40",
+        "sha256": "a4e5f24e561445b6b47b990aae2a3f903fb78e70dd54e0d37ff39b6173db493a"
+      },
+      "qualification": "Preserved EA730 authored384 evidence under its original recorded threshold. No new source8ae384 exact claim. The preserved shipped-source snapshot is not a captured-runtime hash; the original primary48 summary is not used as384 evidence."
     }
   }
 }

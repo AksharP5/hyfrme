@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 import { isDeepStrictEqual } from "node:util";
 import { build } from "esbuild";
 import { parseHyperframesVariables } from "./hyperframes-variables.mjs";
+import { iconShowcaseThreshold } from "./icon-showcase-history.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const readJson = async (path) => JSON.parse(await readFile(path, "utf8"));
@@ -277,9 +278,10 @@ for (const item of registry.items) {
       showcase?.fixture?.width === 384 &&
       showcase.fixture.height === 384 &&
       showcase.fixture.scale === 8;
+    const showcaseThreshold = await iconShowcaseThreshold(root, item.name, parity);
     const hasPassingShowcase =
       showcase?.result?.pass === true &&
-      showcase.result.meanSsim >= parity.thresholds.meanSsim;
+      showcase.result.meanSsim >= showcaseThreshold;
 
     if (!hasHighDensityFixture || !hasPassingShowcase) {
       throw new Error(

@@ -52,6 +52,7 @@ const entries = await Promise.all(
       parity.showcase.artifacts.hyperframesVideo
         ? parity.showcase
         : parity;
+    const comparisonOrigin = comparison?.origin ?? parity?.origin;
 
     return {
       item,
@@ -76,9 +77,9 @@ const entries = await Promise.all(
           : {
               slug: parity.slug,
               origin: {
-                repository: parity.origin.repository,
-                commit: parity.origin.commit,
-                source: parity.origin.source,
+                repository: comparisonOrigin.repository,
+                commit: comparisonOrigin.commit,
+                source: comparisonOrigin.source,
               },
               artifacts: {
                 referenceVideo: (
