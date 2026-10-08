@@ -34,8 +34,11 @@ preserve the original video URLs. To inspect a production build locally, run
 `npm run preview -- --mode hosted`. Regular builds and previews use local videos.
 
 Production builds verify every video's hash and redirect before omitting those
-MP4s from `dist/`. Missing or outdated uploads fail the build. Building an
-unchanged checkout needs no Blob credentials. Keep original videos for local
+MP4s from `dist/`. They also omit original preview PNGs because the catalog uses
+WebP posters. Keep the PNGs in `public/previews/` for local preview and parity
+evidence; registry PNG assets are included in production. Missing or outdated
+uploads fail the build. An unchanged checkout needs no Blob credentials. Keep
+original videos for local
 preview and parity checks. Never put Blob credentials in a `VITE_` variable.
 
 ## Storage cleanup
