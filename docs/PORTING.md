@@ -289,6 +289,32 @@ The captured fingerprint in `parity/onboarding-stepper-flow.json` remains
 new proof. The fresh capture backend remains unobserved, separately from the
 requested hardware mode and successful strict CLI hardware probes.
 
+Context Menu pins the same Remocn commit and preserves its 135-frame,
+1280×720, 30 fps fixture with variable Geist and native preview typography.
+Its authored example accepts optional `items: string[]`; the pinned control
+metadata does not describe that array. The canonical example keeps its fixed
+items, empty installed variables and `{}` props. No `items --set` support is
+claimed. Geist's OFL and culori 4.0.2's MIT license install with the block.
+
+All 135 cold native and fresh production frames match ordered RGBA exactly,
+with SSIM 1 and five source-valid repeats on each side. Every full-check error,
+warning, informational and snapshot-finding count is zero. Both new complete
+mandatory and debug strict renders equal the saved original strict producer.
+The original rejected native/strict comparison keeps 39 frames, 54–92. Cold
+native history and current source/strict comparisons retain 54 frames, 46–99:
+267,501 and 268,048 changed RGB pixels respectively, maximum channel difference
+1 and exact alpha. These residuals remain alongside the exact fresh proof.
+
+Context Menu's original runtime is `f172f3e2…`; the newly verified runtime is
+`87fb6266…`. The earlier capture's first environment outcome remains
+`accepted: false`, with a null exit code and three guard errors. The later
+accepted CPU completion reused that capture without rendering again. The new
+runtime has a separate accepted one-shot proof. Original failed parity,
+render, source hashes and MD5 decode headers remain unchanged. Captured
+fingerprints describe their recorded inputs and do not become current-helper
+keys. Fresh capture backend remains unobserved; separate actual strict CLI
+hardware probes are retained.
+
 ## Coverage status
 
 The audited Remocn inventory at

@@ -28,6 +28,7 @@ export const sourcePreviewNames = new Set([
   "switch",
   "command-menu",
   "onboarding-stepper-flow",
+  "context-menu",
 ]);
 
 export const sourcePreviewCss = `
