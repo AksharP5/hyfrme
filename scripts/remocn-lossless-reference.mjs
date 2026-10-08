@@ -81,7 +81,7 @@ export async function selectFixtures(args = process.argv.slice(2)) {
   const requested = new Set(args[onlyIndex + 1].split(","));
   const fixtures = (
     await Promise.all(
-      ["text", "core", "primitive"].map(async (family) =>
+      ["text", "core", "primitive", "icon"].map(async (family) =>
         JSON.parse(
           await readFile(
             resolve(root, `catalog/${family}-fixtures.json`),
@@ -92,7 +92,12 @@ export async function selectFixtures(args = process.argv.slice(2)) {
     )
   )
     .flat()
-    .filter((entry) => requested.has(entry.slug));
+    .filter((entry) => requested.has(entry.slug))
+    .map((entry) =>
+      entry.origin.source.startsWith("registry/remocn-icons/")
+        ? { ...entry, fixture: { ...entry.fixture, background: "#ffffff" } }
+        : entry,
+    );
   if (fixtures.length !== requested.size) {
     throw new Error(
       `Expected ${requested.size} fixtures, found ${fixtures.length}`,
@@ -290,7 +295,10 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
       const guard = canvas
         ? `if(isHtmlInCanvasSupported() !== ${!browserFallback}) throw new Error("Expected Remocn ${browserFallback ? "browser fallback" : "HTML-in-canvas shader"} capability");`
         : "";
-      return `function Fixture${index}(){${guard}return <FontReady><AbsoluteFill ${sourcePreviewNames.has(entry.slug) ? 'id="hyfrme-source-root"' : ""} style={{background:${JSON.stringify(entry.fixture.background)},fontFamily:"Geist",["--font-geist-sans"]:"Geist",["--font-geist-mono"]:"Geist Mono"}}><Source${index} {...${JSON.stringify(entry.fixture.props)}} /></AbsoluteFill></FontReady>}`;
+      const center = entry.origin.source.startsWith("registry/remocn-icons/")
+        ? ',display:"flex",alignItems:"center",justifyContent:"center"'
+        : "";
+      return `function Fixture${index}(){${guard}return <FontReady><AbsoluteFill ${sourcePreviewNames.has(entry.slug) ? 'id="hyfrme-source-root"' : ""} style={{background:${JSON.stringify(entry.fixture.background)},fontFamily:"Geist",["--font-geist-sans"]:"Geist",["--font-geist-mono"]:"Geist Mono"${center}}}><Source${index} {...${JSON.stringify(entry.fixture.props)}} /></AbsoluteFill></FontReady>}`;
     })
     .join("\n");
   const compositions = pending
@@ -317,6 +325,9 @@ registerRoot(()=> <><style>{${JSON.stringify(fontCss.join("\n"))}}</style>${comp
   );
   const serveUrl = await bundle({
     entryPoint,
+    enableCaching: !pending.every((entry) =>
+      entry.origin.source.startsWith("registry/remocn-icons/"),
+    ),
     rootDir: upstream,
     publicDir: publicDirectory,
     outDir: resolve(project, "bundle"),

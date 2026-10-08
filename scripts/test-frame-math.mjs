@@ -23,6 +23,16 @@ const [colorModule, numericModule] = await Promise.all([
 const { interpolateColors } = await import(
   `data:text/javascript;base64,${Buffer.from(colorModule.outputFiles[0].contents).toString("base64")}`
 );
+const { interpolate } = await import(
+  `data:text/javascript;base64,${Buffer.from(numericModule.outputFiles[0].contents).toString("base64")}`
+);
+assert.equal(
+  interpolate(1, [0, 1, 2], [0, 10, 100], {
+    easing: (progress) => progress / 2,
+  }),
+  5,
+  "An exact interior knot uses the preceding interpolation segment",
+);
 
 assert.equal(
   interpolateColors(0, [0, 1], [" transparent ", "#ffffff"]),
