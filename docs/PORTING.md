@@ -235,6 +235,29 @@ fresh capture evidence; existing legacy thresholds stay unchanged. The
 fingerprint in `parity/switch.json` identifies the recorded capture inputs.
 Regeneration does not rewrite that historical key or establish a new proof.
 
+Command Menu uses the same pinned Remocn commit, variable Geist font, and
+source preview typography. Its authored example exposes no controls; installed
+variables are empty, and its fixed query is `settings`. The block preserves
+the 130-frame, 1280×720, 30 fps fixture and installs Geist's OFL and culori
+4.0.2's MIT notice.
+
+All 130 cold native and fresh production frames match ordered RGBA exactly,
+with SSIM 1 and five source-valid repeats on each side. Every full-check error,
+warning, informational and snapshot-finding count is zero. Both new complete
+mandatory and debug strict renders match the saved original strict producer.
+The original rejected native/strict comparison retains frame 96. The new cold
+source/strict comparison retains frames 18–27 and 96, totaling 111,059 RGB
+pixels with maximum channel difference 2 and exact alpha. The cold native
+history differs from the original native capture at frames 18–27. These
+residuals remain recorded alongside the exact fresh proof.
+
+Command Menu's original runtime was `8c9bfdf2…`; the new runtime is
+`d90b7154…`. Original rejected parity, render and file hashes remain unchanged.
+The actual new mandatory proof authenticates the new installed files. The
+captured key in `parity/command-menu.json` remains the new proof's recorded
+fingerprint, not a regenerated current-helper key. Fresh capture backend
+remains unobserved; the actual separate strict CLI hardware probes are retained.
+
 ## Coverage status
 
 The audited Remocn inventory at

@@ -69,6 +69,14 @@ Licensed under the MIT License. The full upstream license is available at
 The full Remocn MIT notice is also preserved inside every generated port that
 contains derived source.
 
+Command Menu's refreshed standalone source pins Remocn
+`8ae853e4c08108105684d4b8cac7f22400840d2a`. It packages the unmodified Latin
+Geist variable font under OFL-1.1 and retains the upstream Remocn, React,
+ReactDOM and Bézier MIT notices inside its runtime. Culori 4.0.2 is declared
+as a bundled MIT dependency, with its complete license installed at
+`THIRD_PARTY_LICENSES/remocn/culori-LICENSE`. The block declares
+`MIT AND OFL-1.1` and installs Geist's complete OFL notice.
+
 ## Snapcn source reference
 
 Snapcn ports derive from `snapcndev/snapcn` at commit
