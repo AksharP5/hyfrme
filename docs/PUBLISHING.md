@@ -42,6 +42,14 @@ PR CI uses the contributor build and does not need uploads. After a push to
 build for deployments and rejects unpublished media. Hosted previews with
 unpublished videos are skipped until the owner completes this step.
 
+After a successful preview, pushes that only change root `README.md` or
+`AGENTS.md`, `docs/`, `fixtures/`, `examples/`, `.github/`, or nested `parity/`
+evidence skip another hosted build. Root parity JSON, CLI files, media, registry,
+website, and build changes still require a preview. The comparison uses Vercel's
+last successful deployment for the branch, so earlier unpublished changes remain
+included. A first preview, missing Git history, or a deliberate redeploy still
+runs the publishing checks. PR CI and production builds always run.
+
 Sync uploads changed videos to immutable paths containing their SHA-256 hash,
 resumes interrupted uploads, and never removes remote files. Temporary redirects
 preserve the original video URLs. To inspect a production build locally, run
