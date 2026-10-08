@@ -12,6 +12,10 @@ import {
 import { extname, resolve, sep } from "node:path";
 import { compareAlphaFrames } from "./snapcn-alpha.mjs";
 import { frameRateArgument } from "./frame-rate.mjs";
+import {
+  assertHardwareGpuProbe,
+  browserGpuProbeEvidence,
+} from "./browser-gpu-evidence.mjs";
 const args = process.argv.slice(2);
 const profileIndex = args.indexOf("--source-profile");
 const profile = profileIndex === -1 ? "snapcn" : args[profileIndex + 1];
@@ -78,6 +82,7 @@ async function fingerprint(entry) {
     .update(JSON.stringify({ browserGpu }))
     .update(await readFile(import.meta.filename))
     .update(await readFile(resolve(root, "scripts/snapcn-alpha.mjs")))
+    .update(await readFile(resolve(root, "scripts/browser-gpu-evidence.mjs")))
     .update(await readFile(resolve(root, "cli/bin/hyfrme.mjs")))
     .update(
       JSON.stringify(
@@ -116,9 +121,18 @@ for (const entry of fixtures) {
           ),
         )
       ).every(Boolean);
+    const renderLogPath = parity?.artifacts?.hyperframesRender;
+    const renderLog = renderLogPath
+      ? await readFile(resolve(root, renderLogPath), "utf8").catch(() => null)
+      : null;
+    const renderLogCurrent =
+      renderLog !== null &&
+      browserGpuProbeEvidence(renderLog).logSha256 ===
+        parity?.checks?.browserGpuProbes?.render?.logSha256;
     if (
       parity?.status === "verified" &&
       artifactsExist &&
+      renderLogCurrent &&
       parity.fingerprint === (await fingerprint(entry))
     ) {
       console.log(`Reusing verified ${entry.slug}`);
@@ -239,6 +253,7 @@ try {
     );
     const portFrames = resolve(directory, "hyperframes-frames");
     const { fixture, slug } = entry;
+    const browserGpuProbes = {};
     console.log(
       `[${index + 1}/${selected.length}] ${slug}: install, full check, strict PNG render`,
     );
@@ -314,10 +329,11 @@ try {
         ],
         { cwd: project, env: { HYPERFRAMES_BROWSER_PATH: browser.path } },
       );
-      await writeFile(
-        resolve(diff, "hyperframes-render.log"),
-        render.output.replaceAll(root, "<project>"),
-      );
+      const renderLog = render.output.replaceAll(root, "<project>");
+      await writeFile(resolve(diff, "hyperframes-render.log"), renderLog);
+      browserGpuProbes.render = browserGpuProbeEvidence(renderLog);
+      if (browserGpu)
+        assertHardwareGpuProbe(browserGpuProbes.render, `${slug} strict render`);
       const [referenceNames, portNames] = await Promise.all([
         pngs(referenceFrames, fixture.durationInFrames),
         pngs(portFrames, fixture.durationInFrames),
@@ -493,7 +509,9 @@ try {
           hyperframesVersion,
           remotionVersion,
           browserVersion: browser.version,
-          browserGpuMode: browserGpu ? "hardware" : "software",
+          browserGpuRequestedMode: browserGpu ? "hardware" : "software",
+          browserGpuProbes,
+          captureBackend: "unobserved",
           referenceGl,
           installedThroughCli: true,
         },
@@ -504,6 +522,7 @@ try {
           summary: `${parityRoot}/${slug}-diff/summary.json`,
           perFrameSsim: `${parityRoot}/${slug}-diff/ssim.log`,
           hyperframesCheck: `${parityRoot}/${slug}-diff/hyperframes-check.log`,
+          hyperframesRender: `${parityRoot}/${slug}-diff/hyperframes-render.log`,
           worstFrame: `${parityRoot}/${slug}-diff/worst-frame.png`,
           referenceAlpha: `${parityRoot}/${slug}-diff/reference-alpha.framemd5`,
           hyperframesAlpha: `${parityRoot}/${slug}-diff/hyperframes-alpha.framemd5`,
@@ -533,7 +552,7 @@ try {
       await writeFile(resolve(directory, "failure.log"), `${error.stack}\n`);
       await writeFile(
         resolve(root, parityRoot, `${slug}.json`),
-        `${JSON.stringify({ slug, origin: entry.origin, fixture, classification: "compiled-source-port", measurement: "lossless-png", status: "failed", result: { pass: false }, checks: { hyperframesVersion, remotionVersion }, error: error.message.replaceAll(root, "<project>") }, null, 2)}\n`,
+        `${JSON.stringify({ slug, origin: entry.origin, fixture, classification: "compiled-source-port", measurement: "lossless-png", status: "failed", result: { pass: false }, checks: { hyperframesVersion, remotionVersion, browserGpuRequestedMode: browserGpu ? "hardware" : "software", browserGpuProbes, captureBackend: "unobserved" }, error: error.message.replaceAll(root, "<project>") }, null, 2)}\n`,
       );
       failures.push({ slug, error: error.message });
       console.error(`${slug}: ${error.message}`);

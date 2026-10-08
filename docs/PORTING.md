@@ -286,8 +286,13 @@ npm pack ./cli --dry-run
 ```
 
 The lossless verifier installs through the CLI, runs the full HyperFrames check,
-and compares every PNG frame. Remotion uses `angle-egl` to match the hardware
-HyperFrames renderer; software canvas downsampling changes alpha edges. Each component must reach 0.99 mean and 0.95
+and compares every PNG frame. Remotion requests `angle-egl`, and HyperFrames
+requests hardware rendering; software canvas downsampling changes alpha edges.
+Hardware requests require a successful SDK hardware probe. The verifier retains
+the first render output and log if that precondition fails, records the probe
+separately from the requested mode, and binds its log SHA256 to the evidence.
+The SDK probes a separate browser, so the actual capture backend remains
+unobserved. Each component must reach 0.99 mean and 0.95
 minimum frame SSIM with exact alpha. `--reuse-reference` reuses unchanged source
 frames; `--resume` skips only fixtures whose source, installed files, checker
 exceptions, browser, and verifier fingerprints still match.
