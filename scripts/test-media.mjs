@@ -181,7 +181,7 @@ test("contributors build and preview unpublished videos while production rejects
   );
 });
 
-test("Vercel defers unpublished video or registry previews without skipping the production check", async (t) => {
+async function vercelPreviewFixture(t) {
   const { directory, files, manifest } = await fixture(t);
   await mkdir(resolve(directory, "scripts"));
   for (const file of [
@@ -219,15 +219,24 @@ test("Vercel defers unpublished video or registry previews without skipping the 
       headers: registryHeaders(),
     }),
   );
-  const run = (environment) =>
+  const run = (environment, previous = "") =>
     spawnSync(
       process.execPath,
       [resolve(directory, "scripts/ignore-unpublished-preview.mjs")],
       {
-        env: { ...process.env, VERCEL_ENV: environment },
+        env: {
+          ...process.env,
+          VERCEL_ENV: environment,
+          VERCEL_GIT_PREVIOUS_SHA: previous,
+        },
         encoding: "utf8",
       },
     );
+  return { directory, files, registryDirectory, run };
+}
+
+test("Vercel defers unpublished video or registry previews without skipping the production check", async (t) => {
+  const { files, registryDirectory, run } = await vercelPreviewFixture(t);
   assert.equal(run("preview").status, 1);
   const registryAsset = resolve(registryDirectory, "blocks/demo/asset.png");
   await writeFile(registryAsset, "changed source");
@@ -246,6 +255,79 @@ test("Vercel defers unpublished video or registry previews without skipping the 
     /Hosted preview skipped: Missing or outdated media/,
   );
   assert.equal(run("production").status, 1);
+});
+
+test("Vercel skips documentation and audit previews using the last successful deployment", async (t) => {
+  const { directory, run } = await vercelPreviewFixture(t);
+  const git = (...args) => {
+    const result = spawnSync(
+      "git",
+      [
+        "-c",
+        "user.name=Hyfrme",
+        "-c",
+        "user.email=tests@hyfrme.local",
+        "-c",
+        "commit.gpgsign=false",
+        "-c",
+        "core.hooksPath=/dev/null",
+        ...args,
+      ],
+      { cwd: directory, encoding: "utf8" },
+    );
+    assert.equal(result.status, 0, result.stderr);
+    return result.stdout.trim();
+  };
+  const commit = () => {
+    git("add", ".");
+    git("commit", "--quiet", "-m", "Fixture change");
+    return git("rev-parse", "HEAD");
+  };
+  const change = async (path, content = "changed") => {
+    const filename = resolve(directory, path);
+    await mkdir(dirname(filename), { recursive: true });
+    await writeFile(filename, content);
+    return commit();
+  };
+
+  git("init", "--quiet");
+  const baseline = commit();
+  await change("docs/audit\nnotes.md");
+  await change("fixtures/reference/source.ts");
+  const documentation = await change("parity/demo/frames/report.json");
+  const skipped = run("preview", baseline);
+  assert.equal(skipped.status, 0);
+  assert.match(skipped.stdout, /only documentation or audit files changed/);
+  assert.equal(run("production", baseline).status, 1);
+
+  for (const previous of ["", "not-a-sha", "f".repeat(40), documentation]) {
+    assert.equal(run("preview", previous).status, 1);
+  }
+
+  for (const path of [
+    "src/App.tsx",
+    "parity/demo.json",
+    "public/previews/demo/thumbnail.webp",
+    "registry/blocks/demo/catalog.json",
+    "cli/README.md",
+    "vite.config.ts",
+    "unknown-input.txt",
+  ]) {
+    const previous = git("rev-parse", "HEAD");
+    await change(path);
+    assert.equal(run("preview", previous).status, 1, path);
+  }
+
+  const beforeRename = git("rev-parse", "HEAD");
+  git("mv", "src/App.tsx", "docs/moved-site.md");
+  commit();
+  assert.equal(run("preview", beforeRename).status, 1);
+
+  const beforeSource = git("rev-parse", "HEAD");
+  const sourceCommit = await change("src/App.tsx", "new source");
+  await change("README.md", "new documentation");
+  assert.equal(run("preview", beforeSource).status, 1);
+  assert.equal(run("preview", sourceCommit).status, 0);
 });
 
 test("production requires uploaded current media and matching legacy redirects", async (t) => {

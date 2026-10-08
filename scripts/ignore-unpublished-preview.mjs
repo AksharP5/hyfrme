@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { spawnSync } from "node:child_process";
 import { readRegistrySource, validateRegistry } from "./registry-hosting.mjs";
 import {
   readMediaFiles,
@@ -10,6 +11,33 @@ import {
 
 // Vercel skips a deployment on exit 0 and builds on exit 1.
 if (process.env.VERCEL_ENV !== "preview") process.exit(1);
+
+const previous = process.env.VERCEL_GIT_PREVIOUS_SHA;
+if (/^[a-f0-9]{40}$/i.test(previous ?? "")) {
+  const diff = spawnSync(
+    "git",
+    ["diff", "--no-renames", "--name-only", "-z", previous, "HEAD", "--"],
+    { cwd: root, encoding: "utf8" },
+  );
+  const paths =
+    diff.status === 0 ? diff.stdout.split("\0").filter(Boolean) : [];
+  const documentation = new Set(["README.md", "AGENTS.md"]);
+  const directories = ["docs/", "fixtures/", "examples/", ".github/"];
+  if (
+    paths.length > 0 &&
+    paths.every(
+      (path) =>
+        documentation.has(path) ||
+        directories.some((directory) => path.startsWith(directory)) ||
+        (path.startsWith("parity/") && path.slice(7).includes("/")),
+    )
+  ) {
+    console.log(
+      "Hosted preview skipped: only documentation or audit files changed.",
+    );
+    process.exit(0);
+  }
+}
 
 try {
   const files = await readMediaFiles(resolve(root, "public"));
