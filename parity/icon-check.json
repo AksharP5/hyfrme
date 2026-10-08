@@ -2,7 +2,7 @@
   "slug": "icon-check",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-icons/icon-check/index.tsx",
     "config": "registry/remocn-icons/icon-check/config.ts",
     "license": "MIT"
@@ -15,54 +15,466 @@
     "props": {
       "animation": "both",
       "loop": false,
-      "speed": 1,
       "size": 48,
       "color": "#171717",
-      "strokeWidth": 2
-    }
+      "strokeWidth": 2,
+      "speed": 1
+    },
+    "background": "#ffffff"
   },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "6f54210379e0180b67703d62a9b917dcf78c71b5a340b4e11826571b8eda1bc8",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 0.99,
+    "minSsim": 0.95
   },
   "result": {
     "frameCount": 60,
-    "meanSsim": 0.995303,
-    "minSsim": 0.99098,
-    "p05Ssim": 0.992462,
-    "p95Ssim": 0.997355,
-    "pass": true
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 60,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true,
+    "rgba": {
+      "frameCount": 60,
+      "mismatchedFrames": [],
+      "pass": true
+    }
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuRequestedMode": "hardware",
+    "browserGpuProbes": {
+      "render": {
+        "logSha256": "361427853290ff6808658f8fcc01c86dc74ae17cca7498df7da5c424071f50e2",
+        "observations": [
+          {
+            "mode": "hardware",
+            "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+          }
+        ]
+      }
+    },
+    "captureBackend": "unobserved",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true,
+    "rasterization": "cpu",
+    "canonicalFrameCapture": "Normal Remotion renderFrames and installed CLI strict sequential PNG render, one worker, existing CPU-raster browser wrapper"
   },
   "artifacts": {
-    "remocnVideo": "public/previews/icon-check/remocn.mp4",
-    "hyperframesVideo": "public/previews/icon-check/hyperframes.mp4",
-    "summary": "parity/icon-check-diff/summary.json"
+    "referenceVideo": "public/previews/icon-check/canonical-48/reference.mp4",
+    "hyperframesVideo": "public/previews/icon-check/canonical-48/hyperframes.mp4",
+    "thumbnail": "public/previews/icon-check/canonical-48/thumbnail.png",
+    "summary": "parity/icon-check-diff/summary.json",
+    "perFrameSsim": "parity/icon-check-diff/ssim.log",
+    "hyperframesCheck": "parity/icon-check-diff/hyperframes-check.log",
+    "hyperframesRender": "parity/icon-check-diff/hyperframes-render.log",
+    "worstFrame": "parity/icon-check-diff/worst-frame.png",
+    "referenceAlpha": "parity/icon-check-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/icon-check-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/icon-check-diff/reference-rgba.json",
+    "hyperframesRgba": "parity/icon-check-diff/hyperframes-rgba.json",
+    "rgbaReview": "parity/icon-check-diff/rgba-review.json"
   },
   "showcase": {
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+      "source": "registry/remocn-icons/icon-check/index.tsx",
+      "config": "registry/remocn-icons/icon-check/config.ts",
+      "license": "MIT"
+    },
     "fixture": {
       "width": 384,
       "height": 384,
-      "scale": 8,
+      "fps": 30,
+      "durationInFrames": 60,
       "props": {
         "animation": "both",
         "loop": false,
-        "speed": 1,
         "size": 384,
         "color": "#171717",
-        "strokeWidth": 2
-      }
+        "strokeWidth": 2,
+        "speed": 1
+      },
+      "background": "#ffffff",
+      "scale": 8,
+      "renderScale": 1
     },
+    "measurement": "lossless-png",
+    "fingerprint": "19f8d518f5da962c14ddacd280f56062d57c564f2c87bdb2f532203961a0aaba",
     "result": {
       "frameCount": 60,
-      "meanSsim": 0.998958,
-      "minSsim": 0.998549,
-      "p05Ssim": 0.998752,
-      "p95Ssim": 0.999448,
+      "meanSsim": 1,
+      "minSsim": 1,
+      "p05Ssim": 1,
+      "p95Ssim": 1,
+      "alpha": {
+        "frameCount": 60,
+        "mismatchedFrames": [],
+        "pass": true
+      },
+      "rgba": {
+        "frameCount": 60,
+        "mismatchedFrames": [],
+        "pass": true
+      },
       "pass": true
+    },
+    "checks": {
+      "hyperframes": "full check passed; strict render passed",
+      "hyperframesVersion": "0.8.99",
+      "remotionVersion": "4.0.513",
+      "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+      "installedThroughCli": true,
+      "captureProfile": {
+        "reference": "Remotion renderStill; fresh browser and page per frame",
+        "hyperframes": "Production producer API; fresh session/page per frame",
+        "sequential": "Full installed CLI check and strict sequential PNG render retained separately",
+        "rasterization": "browser-default; requested hardware ANGLE EGL; DPR 1; fresh capture backend unobserved",
+        "referenceScreenshot": {
+          "fromSurface": true,
+          "captureBeyondViewport": true,
+          "optimizeForSpeed": true
+        },
+        "producerScreenshot": {
+          "fromSurface": true,
+          "captureBeyondViewport": false,
+          "optimizeForSpeed": false
+        },
+        "virtualTime": "Unchanged pinned CLI virtual-time shim; seedRandomFromFrame:false",
+        "referenceBrowserLifecycle": "fresh browser per frame",
+        "producerBrowserLifecycle": "fresh browser per frame required and observed"
+      },
+      "browserGpuRequestedMode": "hardware",
+      "browserGpuProbes": {
+        "render": {
+          "logSha256": "359574d23578564e925b9dccb7ef4b96ab506ae92a1809899f6fc393e2ccdc9f",
+          "observations": [
+            {
+              "mode": "hardware",
+              "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+            }
+          ]
+        },
+        "debugRender": {
+          "logSha256": "3e6d5835356a44ec24028e18bd3fea913aa671d35a2ec28e7df575940c899a84",
+          "observations": [
+            {
+              "mode": "hardware",
+              "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+            }
+          ]
+        }
+      },
+      "captureBackend": "unobserved",
+      "repeatFrames": [
+        0,
+        15,
+        30,
+        45,
+        59
+      ],
+      "debugProducerMatchesNewMandatorySequentialProducer": true
+    },
+    "strictSequential": {
+      "captureComplete": true,
+      "sourceRgbaExact": false,
+      "residuals": [
+        {
+          "frame": 11,
+          "changedPixels": 3,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 12,
+          "changedPixels": 52,
+          "maximumChannel": 1,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 13,
+          "changedPixels": 16,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 14,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 15,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 16,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 17,
+          "changedPixels": 6,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 18,
+          "changedPixels": 3,
+          "maximumChannel": 1,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 19,
+          "changedPixels": 2,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 30,
+          "changedPixels": 3,
+          "maximumChannel": 3,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 31,
+          "changedPixels": 3,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 33,
+          "changedPixels": 6,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 34,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 35,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 36,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 37,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 38,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 39,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 40,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 41,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 42,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 43,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 44,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 45,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 46,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 47,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 48,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 49,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 50,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 51,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 52,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 53,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 54,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 55,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 56,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 57,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 58,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        },
+        {
+          "frame": 59,
+          "changedPixels": 10,
+          "maximumChannel": 2,
+          "alphaPixels": 0
+        }
+      ]
+    },
+    "qualification": "All authored384 cold-native/fresh-producer frames and four-way repeat controls match exactly. The complete actual strict sequential render matches its new mandatory producer baseline, but differs from the cold native source in the retained RGB residuals. This focused update preserves the audited384 outcome and does not rerun that capture profile.",
+    "artifacts": {
+      "referenceVideo": "public/previews/icon-check/reference.mp4",
+      "hyperframesVideo": "public/previews/icon-check/hyperframes.mp4",
+      "thumbnail": "public/previews/icon-check/thumbnail.png",
+      "summary": "parity/icon-check-showcase-diff/summary.json",
+      "perFrameSsim": "parity/icon-check-showcase-diff/ssim.log",
+      "worstFrame": "parity/icon-check-showcase-diff/worst-frame.png",
+      "referenceAlpha": "parity/icon-check-showcase-diff/reference-alpha.framemd5",
+      "hyperframesAlpha": "parity/icon-check-showcase-diff/hyperframes-alpha.framemd5",
+      "referenceRgba": "parity/icon-check-showcase-diff/reference-rgba.framemd5",
+      "hyperframesRgba": "parity/icon-check-showcase-diff/hyperframes-rgba.framemd5",
+      "referenceLossless": "parity/icon-check-showcase-diff/reference-lossless.mkv",
+      "hyperframesLossless": "parity/icon-check-showcase-diff/hyperframes-lossless.mkv",
+      "referenceArchiveRgba": "parity/icon-check-showcase-diff/reference-archive-rgba.framemd5",
+      "hyperframesArchiveRgba": "parity/icon-check-showcase-diff/hyperframes-archive-rgba.framemd5",
+      "freshRepeatability": "parity/icon-check-showcase-diff/repeatability.json",
+      "sequentialComparison": "parity/icon-check-showcase-diff/sequential-comparison.json",
+      "sourceProof": "parity/icon-check-showcase-diff/source-proof.json"
+    },
+    "artifactHashes": {
+      "public/previews/icon-check/reference.mp4": "fe3a1301294c34ec20531ad8130c69288f38ad4e16f2784f35e5ec7c2f36844a",
+      "public/previews/icon-check/hyperframes.mp4": "fe3a1301294c34ec20531ad8130c69288f38ad4e16f2784f35e5ec7c2f36844a",
+      "public/previews/icon-check/thumbnail.png": "380a1d50a5c174798e85f2229b07cfb6e1542fd9500405535c0b18a4a3f09cbb",
+      "parity/icon-check-showcase-diff/summary.json": "53afe1505ac330e9a858ffe8a5005963ff5f8ba7de9ea1cafc5074fbd19e0c47",
+      "parity/icon-check-showcase-diff/ssim.log": "e5de144aa23e764f1d14fe248acd94330063b3ce5a1953536c4766924aff2bf1",
+      "parity/icon-check-showcase-diff/worst-frame.png": "cc7c51714ff4eeb931786f28fcdbacca4213166d0894cdf9ae01f1d831cdc50c",
+      "parity/icon-check-showcase-diff/reference-alpha.framemd5": "0366453b8f1458ce22ceb778663d11d128b4e66d01b1b8d5abef0c54ce83a89d",
+      "parity/icon-check-showcase-diff/hyperframes-alpha.framemd5": "0366453b8f1458ce22ceb778663d11d128b4e66d01b1b8d5abef0c54ce83a89d",
+      "parity/icon-check-showcase-diff/reference-rgba.framemd5": "523c48216bfb15368d8e9187dc1f141da67650e271a17db7c787d44651ea2c1e",
+      "parity/icon-check-showcase-diff/hyperframes-rgba.framemd5": "523c48216bfb15368d8e9187dc1f141da67650e271a17db7c787d44651ea2c1e",
+      "parity/icon-check-showcase-diff/reference-lossless.mkv": "31e30326c795eb32badb218f4e064f914afd5316d92298119815ceada54563fd",
+      "parity/icon-check-showcase-diff/hyperframes-lossless.mkv": "1330877fd7106f6054a18c1e21249b0abbca54e5427240db6f13031b3f7a575b",
+      "parity/icon-check-showcase-diff/reference-archive-rgba.framemd5": "523c48216bfb15368d8e9187dc1f141da67650e271a17db7c787d44651ea2c1e",
+      "parity/icon-check-showcase-diff/hyperframes-archive-rgba.framemd5": "523c48216bfb15368d8e9187dc1f141da67650e271a17db7c787d44651ea2c1e",
+      "parity/icon-check-showcase-diff/repeatability.json": "f2322f1c3f2fac956ad80ac0c0a50eebab30f068d32645aaac82132797bc4726",
+      "parity/icon-check-showcase-diff/sequential-comparison.json": "2a3a5a6f0cd889d70a88c123d406ab1bc9f311c134eab1801ff3af39c6cd223b",
+      "parity/icon-check-showcase-diff/source-proof.json": "87da25f5bb21b2ca32329edc1ccfc980f66eba93b032c8d107b016b3c083b691"
     }
+  },
+  "artifactHashes": {
+    "public/previews/icon-check/canonical-48/reference.mp4": "35af66c3357f29f6fbeb4e482e6f7401543dd75ad5785a2107d5af5647481d1b",
+    "public/previews/icon-check/canonical-48/hyperframes.mp4": "35af66c3357f29f6fbeb4e482e6f7401543dd75ad5785a2107d5af5647481d1b",
+    "public/previews/icon-check/canonical-48/thumbnail.png": "7c28fb416c08cf27be3710d870fb6f0df6ba44e3f5d2a69e8501708913f4d011",
+    "parity/icon-check-diff/summary.json": "ef147441a7121aeef9af64abf740bf949db0ebf93e4c121f2ef022d995a20605",
+    "parity/icon-check-diff/ssim.log": "e5de144aa23e764f1d14fe248acd94330063b3ce5a1953536c4766924aff2bf1",
+    "parity/icon-check-diff/hyperframes-check.log": "a430c67c0d21143b0ae0252d6bee6788ca003fa911404dec67e265731d6881ef",
+    "parity/icon-check-diff/hyperframes-render.log": "361427853290ff6808658f8fcc01c86dc74ae17cca7498df7da5c424071f50e2",
+    "parity/icon-check-diff/worst-frame.png": "9e494e7891cccdb0686fdfdb87031fcb0cccc5b25f8716d109b895fc8a93e6cd",
+    "parity/icon-check-diff/reference-alpha.framemd5": "f4ba0db340e6caf000b877431070645bae562963aad76ed9fa47ea8bb2d1c449",
+    "parity/icon-check-diff/hyperframes-alpha.framemd5": "f4ba0db340e6caf000b877431070645bae562963aad76ed9fa47ea8bb2d1c449",
+    "parity/icon-check-diff/reference-rgba.json": "afb4720fca2b5aac4111a578b5d90a9c9f60cda8a9ee15668b0244af5ab1b7b6",
+    "parity/icon-check-diff/hyperframes-rgba.json": "afb4720fca2b5aac4111a578b5d90a9c9f60cda8a9ee15668b0244af5ab1b7b6",
+    "parity/icon-check-diff/rgba-review.json": "57290d1ad805285a3c8eee78a3296986e6ed84c23660aeb60d150a950d74f736"
   }
 }

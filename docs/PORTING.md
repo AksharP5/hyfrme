@@ -76,6 +76,42 @@ the old mismatch. The corrected 48px and 384px installed fixtures pass all
 The icon generator also initializes its renderer map for the published CLI's
 inline-script namespacing.
 
+Check, Wallet, and Moon use source commit
+`8ae853e4c08108105684d4b8cac7f22400840d2a`. Their installed variables preserve
+the upstream animation options and size, stroke-width, and speed bounds. The
+blocks install the Remotion Paths MIT, Lucide ISC, Feather MIT, and Bézier MIT
+notices alongside the composition.
+
+Their canonical 48px fixtures pass all 200 ordered RGBA frames exactly, with
+SSIM 1 and zero errors or warnings from the full installed checks.
+
+Their preserved authored 384px proofs cover 200 frames and 15 repeated control
+frames with exact RGBA and SSIM 1. Native capture starts a new browser for each
+frame; the production producer starts a new session and page. Full installed
+checks and strict sequential renders also complete. Those strict captures
+retain 38, 49, and 63 RGB residual frames respectively against the cold native
+reference, with maximum channel difference 3 and exact alpha. The
+`parity/icon-*-showcase-diff/source-proof.json` reports retain that qualification;
+the preserved authored proof does not claim strict sequential pixel equality.
+The hardware request and separate successful SDK probe are recorded separately
+from the unobserved capture backend.
+
+Regenerate these blocks individually and verify their canonical 48px fixtures
+with the current lossless workflow:
+
+```bash
+export REMOCN_SOURCE=.work/remocn-8ae853e4c08108105684d4b8cac7f22400840d2a
+node scripts/generate-icon-ports.mjs --only icon-check
+node scripts/generate-icon-ports.mjs --only icon-wallet
+node scripts/generate-icon-ports.mjs --only icon-moon
+node scripts/verify-snapcn-ports.mjs --source-profile remocn --only icon-check,icon-wallet,icon-moon
+```
+
+The canonical lossless outputs use `public/previews/<slug>/canonical-48/`.
+The catalog comparison uses the separately preserved 384px source and producer
+videos and their measured result. The legacy icon MP4 verifier is not used for
+this update.
+
 The first 24-item typography/effect family is verified as exact compiled-source
 ports. Each block preserves the upstream React component and editable controls,
 uses Hyfrme-owned Remotion-compatible easing/interpolation behavior, and

@@ -1,14 +1,21 @@
 import { build } from "esbuild";
+import { execFileSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, relative, resolve } from "node:path";
-import { interpolationSource, remocnMitBanner } from "./hyfrme-frame-math.mjs";
+import {
+  bezierMitNotice,
+  interpolationSource,
+  remocnMitBanner,
+} from "./hyfrme-frame-math.mjs";
 import { readRemocnRegistry } from "./remocn-registry.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const upstream = resolve(root, process.env.REMOCN_SOURCE ?? ".work/remocn");
-const upstreamCommit = (
-  await readFile(resolve(root, "catalog", "upstream-inventory.json"), "utf8")
-).match(/"commit":\s*"([a-f0-9]+)"/)?.[1];
+const upstreamCommit = execFileSync(
+  "git",
+  ["-C", upstream, "rev-parse", "HEAD"],
+  { encoding: "utf8" },
+).trim();
 const inventory = JSON.parse(
   await readFile(resolve(root, "catalog", "upstream-inventory.json"), "utf8"),
 );
@@ -21,35 +28,65 @@ const allIcons = inventory.items.filter(
 );
 const icons = only ? allIcons.filter((item) => item.name === only) : allIcons;
 const generatedFixtures = [];
+const pathsPackage = JSON.parse(
+  await readFile(
+    resolve(upstream, "node_modules/@remotion/paths/package.json"),
+    "utf8",
+  ),
+);
+if (pathsPackage.license !== "MIT") {
+  throw new Error("Unexpected @remotion/paths license");
+}
+const bezierNotice = bezierMitNotice;
+const iconLicenses = [
+  {
+    path: "licenses/remotion-paths-MIT.md",
+    target: "THIRD_PARTY_LICENSES/remocn/remotion-paths-MIT.md",
+    source: "node_modules/@remotion/paths/LICENSE.md",
+  },
+  {
+    path: "licenses/Lucide-ISC-and-Feather-MIT.txt",
+    target: "THIRD_PARTY_LICENSES/remocn/Lucide-ISC-and-Feather-MIT.txt",
+    source: "node_modules/lucide-react/LICENSE",
+  },
+  {
+    path: "licenses/Bezier-MIT.txt",
+    target: "THIRD_PARTY_LICENSES/remocn/Bezier-MIT.txt",
+    contents: `${bezierNotice}\n`,
+  },
+];
+const iconLicenseBytes = await Promise.all(
+  iconLicenses.map((notice) =>
+    "source" in notice
+      ? readFile(resolve(upstream, notice.source))
+      : Buffer.from(notice.contents),
+  ),
+);
 
 if (only && icons.length !== 1) {
   throw new Error(`Unknown icon: ${only}`);
 }
 
-const numberField = (source, name) => {
-  const value = source.match(new RegExp(`${name}:\\s*(\\d+(?:\\.\\d+)?)`))?.[1];
-  if (!value) throw new Error(`Could not read ${name} from icon config`);
-  return Number(value);
-};
-
-const stringDefault = (source, control, fallback) =>
-  source.match(
-    new RegExp(`${control}:\\s*\\{[\\s\\S]*?default:\\s*["']([^"']+)["']`),
-  )?.[1] ?? fallback;
-
-const numberDefault = (source, control, fallback) => {
-  const match = source.match(
-    new RegExp(`${control}:\\s*\\{[\\s\\S]*?default:\\s*(-?\\d+(?:\\.\\d+)?)`),
+const loadSourceModule = async (path) => {
+  const result = await build({
+    absWorkingDir: upstream,
+    bundle: true,
+    entryPoints: [path],
+    format: "esm",
+    platform: "node",
+    tsconfig: resolve(upstream, "tsconfig.json"),
+    write: false,
+  });
+  return import(
+    `data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString("base64")}`
   );
-  return match ? Number(match[1]) : fallback;
 };
-
-const booleanDefault = (source, control, fallback) => {
-  const match = source.match(
-    new RegExp(`${control}:\\s*\\{[\\s\\S]*?default:\\s*(true|false)`),
-  );
-  return match ? match[1] === "true" : fallback;
-};
+const sourceCustomizer = await loadSourceModule(
+  resolve(upstream, "lib/customizer-config.ts"),
+);
+const resolveControls =
+  sourceCustomizer.resolveControls ??
+  ((_name, controls) => ({ ...sourceCustomizer.SHARED_CONTROLS, ...controls }));
 
 const escapeInlineScript = (source) =>
   source.replaceAll("</script", "<\\/script");
@@ -388,29 +425,28 @@ for (const icon of icons) {
   );
   const sourcePath = resolve(upstream, icon.files[0].path);
   const configPath = resolve(dirname(sourcePath), "config.ts");
-  const configSource = await readFile(configPath, "utf8");
-  const componentName = configSource.match(
-    /componentName:\s*["']([^"']+)["']/,
-  )?.[1];
-
-  if (!componentName) {
-    throw new Error(`Could not read componentName from ${configPath}`);
+  const configs = Object.values(await loadSourceModule(configPath)).filter(
+    (value) =>
+      value &&
+      typeof value === "object" &&
+      "controls" in value &&
+      "componentName" in value,
+  );
+  if (configs.length !== 1) {
+    throw new Error(`Expected one icon component config in ${configPath}`);
   }
-
-  const fps = configSource.includes("fps: FPS")
-    ? 30
-    : numberField(configSource, "fps");
-  const durationInFrames = numberField(configSource, "durationInFrames");
-  const width = numberField(configSource, "compositionWidth");
-  const height = numberField(configSource, "compositionHeight");
-  const defaults = {
-    animation: stringDefault(configSource, "animation", "both"),
-    loop: booleanDefault(configSource, "loop", false),
-    speed: numberDefault(configSource, "speed", 1),
-    size: numberDefault(configSource, "size", Math.min(width, height)),
-    color: stringDefault(configSource, "color", "#171717"),
-    strokeWidth: numberDefault(configSource, "strokeWidth", 2),
-  };
+  const config = configs[0];
+  const {
+    componentName,
+    fps,
+    durationInFrames,
+    compositionWidth: width,
+    compositionHeight: height,
+  } = config;
+  const controls = resolveControls(icon.name, config.controls);
+  const defaults = Object.fromEntries(
+    Object.entries(controls).map(([id, control]) => [id, control.default]),
+  );
   const importPath = `./${relative(upstream, sourcePath).replaceAll("\\", "/")}`;
   const entry = `
     import {renderHyfrmeVNode} from "react/jsx-runtime";
@@ -456,24 +492,29 @@ for (const icon of icons) {
   });
   const bundle = result.outputFiles[0].text;
   const duration = durationInFrames / fps;
-  const variableSchema = [
-    {
-      id: "animation",
-      type: "string",
-      label: "Animation",
-      default: defaults.animation,
-    },
-    { id: "loop", type: "boolean", label: "Loop", default: defaults.loop },
-    { id: "speed", type: "number", label: "Speed", default: defaults.speed },
-    { id: "size", type: "number", label: "Size", default: defaults.size },
-    { id: "color", type: "color", label: "Color", default: defaults.color },
-    {
-      id: "strokeWidth",
-      type: "number",
-      label: "Stroke width",
-      default: defaults.strokeWidth,
-    },
-  ];
+  const variableSchema = Object.entries(controls).map(([id, control]) => {
+    const variable = {
+      id,
+      type:
+        control.type === "select" || control.type === "text"
+          ? "string"
+          : control.type === "number-input"
+            ? "number"
+            : control.type,
+      label: control.label,
+      default: control.default,
+    };
+    if (!["string", "number", "boolean", "color"].includes(variable.type)) {
+      throw new Error(
+        `${icon.name}.${id}: unsupported variable type ${variable.type}`,
+      );
+    }
+    if (Array.isArray(control.options)) variable.options = control.options;
+    for (const key of ["min", "max", "step"]) {
+      if (typeof control[key] === "number") variable[key] = control[key];
+    }
+    return variable;
+  });
   const html = `<!doctype html>
 <html lang="en" data-composition-variables='${JSON.stringify(variableSchema)}'>
   <head>
@@ -511,6 +552,10 @@ for (const icon of icons) {
   const blockDirectory = resolve(root, "registry", "blocks", icon.name);
   await mkdir(blockDirectory, { recursive: true });
   await writeFile(resolve(blockDirectory, `${icon.name}.html`), html);
+  await mkdir(resolve(blockDirectory, "licenses"), { recursive: true });
+  for (const [index, { path }] of iconLicenses.entries()) {
+    await writeFile(resolve(blockDirectory, path), iconLicenseBytes[index]);
+  }
   await writeFile(
     resolve(blockDirectory, "registry-item.json"),
     `${JSON.stringify(
@@ -523,7 +568,14 @@ for (const icon of icons) {
         tags: ["icon", "svg", "remocn-port"],
         author: "Hyfrme",
         authorUrl: "https://github.com/AksharP5/hyfrme",
-        license: "MIT",
+        license: "MIT AND ISC",
+        bundledDependencies: [
+          {
+            name: pathsPackage.name,
+            version: pathsPackage.version,
+            license: pathsPackage.license,
+          },
+        ],
         dimensions: { width, height },
         duration,
         files: [
@@ -532,6 +584,11 @@ for (const icon of icons) {
             target: `compositions/${icon.name}.html`,
             type: "hyperframes:composition",
           },
+          ...iconLicenses.map(({ path, target }) => ({
+            path,
+            target,
+            type: "hyperframes:asset",
+          })),
         ],
       },
       null,
@@ -557,9 +614,12 @@ for (const icon of icons) {
   );
 }
 
-if (!only) {
-  await writeFile(
-    resolve(root, "catalog", "icon-fixtures.json"),
-    `${JSON.stringify(generatedFixtures, null, 2)}\n`,
-  );
-}
+const fixturesPath = resolve(root, "catalog", "icon-fixtures.json");
+const fixtures = only
+  ? JSON.parse(await readFile(fixturesPath, "utf8")).map(
+      (entry) =>
+        generatedFixtures.find((fixture) => fixture.slug === entry.slug) ??
+        entry,
+    )
+  : generatedFixtures;
+await writeFile(fixturesPath, `${JSON.stringify(fixtures, null, 2)}\n`);

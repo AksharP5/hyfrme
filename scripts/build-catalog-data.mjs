@@ -46,6 +46,12 @@ const entries = await Promise.all(
             video: `/previews/${name}/hyperframes.mp4`,
           }
         : null;
+    const comparison =
+      item.tags?.includes("icon") &&
+      parity?.showcase?.artifacts?.referenceVideo &&
+      parity.showcase.artifacts.hyperframesVideo
+        ? parity.showcase
+        : parity;
 
     return {
       item,
@@ -76,18 +82,18 @@ const entries = await Promise.all(
               },
               artifacts: {
                 referenceVideo: (
-                  parity.artifacts.referenceVideo ??
-                  parity.artifacts.remocnVideo
+                  comparison.artifacts.referenceVideo ??
+                  comparison.artifacts.remocnVideo
                 ).replace(/^public\//, "/"),
-                hyperframesVideo: parity.artifacts.hyperframesVideo.replace(
+                hyperframesVideo: comparison.artifacts.hyperframesVideo.replace(
                   /^public\//,
                   "/",
                 ),
               },
               result: {
-                frameCount: parity.result.frameCount,
-                meanSsim: parity.result.meanSsim,
-                pass: parity.result.pass,
+                frameCount: comparison.result.frameCount,
+                meanSsim: comparison.result.meanSsim,
+                pass: comparison.result.pass,
               },
             },
     };

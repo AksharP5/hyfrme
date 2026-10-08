@@ -253,6 +253,11 @@ try {
     );
     const portFrames = resolve(directory, "hyperframes-frames");
     const { fixture, slug } = entry;
+    const previewDirectory =
+      profile === "remocn" &&
+      entry.origin.source.startsWith("registry/remocn-icons/")
+        ? `${previewsRoot}/${slug}/canonical-48`
+        : `${previewsRoot}/${slug}`;
     const browserGpuProbes = {};
     console.log(
       `[${index + 1}/${selected.length}] ${slug}: install, full check, strict PNG render`,
@@ -333,7 +338,10 @@ try {
       await writeFile(resolve(diff, "hyperframes-render.log"), renderLog);
       browserGpuProbes.render = browserGpuProbeEvidence(renderLog);
       if (browserGpu)
-        assertHardwareGpuProbe(browserGpuProbes.render, `${slug} strict render`);
+        assertHardwareGpuProbe(
+          browserGpuProbes.render,
+          `${slug} strict render`,
+        );
       const [referenceNames, portNames] = await Promise.all([
         pngs(referenceFrames, fixture.durationInFrames),
         pngs(portFrames, fixture.durationInFrames),
@@ -438,7 +446,7 @@ try {
         );
       }
       const parityDiff = resolve(root, parityRoot, `${slug}-diff`);
-      const previews = resolve(root, previewsRoot, slug);
+      const previews = resolve(root, previewDirectory);
       await mkdir(parityDiff, { recursive: true });
       await mkdir(previews, { recursive: true });
       for (const name of [
@@ -516,9 +524,9 @@ try {
           installedThroughCli: true,
         },
         artifacts: {
-          referenceVideo: `${previewsRoot}/${slug}/reference.mp4`,
-          hyperframesVideo: `${previewsRoot}/${slug}/hyperframes.mp4`,
-          thumbnail: `${previewsRoot}/${slug}/thumbnail.png`,
+          referenceVideo: `${previewDirectory}/reference.mp4`,
+          hyperframesVideo: `${previewDirectory}/hyperframes.mp4`,
+          thumbnail: `${previewDirectory}/thumbnail.png`,
           summary: `${parityRoot}/${slug}-diff/summary.json`,
           perFrameSsim: `${parityRoot}/${slug}-diff/ssim.log`,
           hyperframesCheck: `${parityRoot}/${slug}-diff/hyperframes-check.log`,
