@@ -25,6 +25,7 @@ export const sourcePreviewNames = new Set([
   ...canvasFilterNames,
   "infinite-marquee",
   "perspective-marquee",
+  "switch",
 ]);
 
 export const sourcePreviewCss = `

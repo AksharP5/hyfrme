@@ -19,6 +19,12 @@ import {
 } from "./remocn-canvas.mjs";
 
 const root = resolve(import.meta.dirname, "..");
+const outputIndex = process.argv.indexOf("--output-dir");
+if (outputIndex !== -1 && !process.argv[outputIndex + 1])
+  throw new Error("--output-dir requires a destination");
+const outputRoot = outputIndex === -1
+  ? root
+  : resolve(root, process.argv[outputIndex + 1]);
 const upstream = resolve(root, process.env.REMOCN_SOURCE ?? ".work/remocn");
 const fieldWrapperPath = resolve(
   upstream,
@@ -1772,12 +1778,13 @@ for (const name of selectedNames) {
     ? sourcePath
     : resolve(dirname(sourcePath), "config.ts");
   const sourceConfig = sceneOverride?.config ?? (await loadConfig(configPath));
-  if (addition)
+  const resolvedControls = Boolean(addition) || name === "switch";
+  if (resolvedControls)
     resolveControls ??= await loadConfig(
       resolve(upstream, "lib/customizer-config.ts"),
       "resolveControls",
     );
-  const config = addition
+  const config = resolvedControls
     ? {
         ...sourceConfig,
         controls: resolveControls(name, sourceConfig.controls),
@@ -2052,7 +2059,7 @@ for (const name of selectedNames) {
         ),
     )
   ).join("\n");
-  const blockDirectory = resolve(root, "registry", "blocks", name);
+  const blockDirectory = resolve(outputRoot, "registry", "blocks", name);
   await mkdir(blockDirectory, { recursive: true });
   const packagedAssets = [
     {
@@ -2297,9 +2304,7 @@ ${caveatNames.has(name) ? '      @font-face { font-family: "Caveat"; src: url(".
       body { --font-geist-sans: "${geistFamily}"; font-family: "${geistFamily}", -apple-system, BlinkMacSystemFont, sans-serif; }
       #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"${geistFamily}";font-family:"${geistFamily}",sans-serif; background:${fixture.background}; }
 ${geistMonoNames.has(name) ? '      #hyfrme-source-root { --font-geist-mono: "Geist Mono"; }' : ""}
-${name === "echo-stack" ? "      #hyfrme-source-root { transform: translateY(1px); }" : ""}
-${sourceTextRenderingNames.has(name) ? "      #hyfrme-source-root, #hyfrme-source-root * { text-rendering: auto; }" : ""}
-${sourcePreviewNames.has(name) ? sourcePreviewCss : ""}
+${name === "echo-stack" ? "      #hyfrme-source-root { transform: translateY(1px); }\n" : ""}${sourceTextRenderingNames.has(name) ? "      #hyfrme-source-root, #hyfrme-source-root * { text-rendering: auto; }\n" : ""}${sourcePreviewNames.has(name) ? sourcePreviewCss : ""}
 ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? "      [data-hyfrme-seek-probe] { position: absolute; width: 1px; height: 1px; pointer-events: none; }" : ""}
     </style>
   </head>
@@ -2527,8 +2532,9 @@ const writeFixtures = async (catalogFamily, filename, orderedNames) => {
       )
       .map(([, entry]) => entry);
   }
+  await mkdir(resolve(outputRoot, "catalog"), { recursive: true });
   await writeFile(
-    resolve(root, "catalog", filename),
+    resolve(outputRoot, "catalog", filename),
     `${JSON.stringify(output, null, 2)}\n`,
   );
 };

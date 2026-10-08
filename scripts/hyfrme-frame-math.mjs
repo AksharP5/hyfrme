@@ -110,6 +110,7 @@ import {
   useMode as hyfrmeUseColorMode,
 } from "culori/fn";
 
+${bezierMitNotice}
 const hyfrmeCubicCoordinate = (time, firstControl, secondControl) => {
   const inverse = 1 - time;
   return 3 * inverse * inverse * time * firstControl +
