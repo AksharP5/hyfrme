@@ -315,6 +315,35 @@ fingerprints describe their recorded inputs and do not become current-helper
 keys. Fresh capture backend remains unobserved; separate actual strict CLI
 hardware probes are retained.
 
+Signup Flow pins Remocn `8ae853e4c08108105684d4b8cac7f22400840d2a` and
+preserves its 380-frame, 1280×720, 30 fps authored fixture. Installed variables
+remain empty and props remain `{}`. The example declares `googleLabel` and
+`signinText` but does not consume those props; neither is advertised as an
+installed control. Variable Geist, its OFL notice, native preview typography
+and culori 4.0.2's MIT license install with the block.
+
+All 380 cold native and fresh production frames match ordered RGBA exactly,
+with SSIM 1 and five repeats per side at frames 0, 95, 190, 285 and 379.
+Every full-check error, warning, informational and finding count is zero.
+Both actual new mandatory and debug strict renders match all 380 saved
+original strict producer hashes. Original native/strict history retains 78
+residual frames. Cold native/original-native and current source/strict
+comparisons retain 71 and 89 frames, respectively. Their saved pixel reports
+record 25,618 and 44,263 changed RGB pixel comparisons, maximum channel delta
+1 and exact alpha. The new cold source matches the saved accepted cold source
+in all 380 ordered RGBA SHA256 rows, preserving that qualification.
+
+The original runtime is `58b57aaaa…`; the new verified runtime is `86a170a6…`.
+Both old and new first environment outcomes remain accepted with exit code 0;
+the new runtime has its own one-shot capture. Original source, render, parity
+and MD5 decode headers remain unchanged. The historical MD5 timebase `1/25`
+describes hash decoding, not capture fps. The new captured fingerprint remains
+`f9794c407c517ff7ddd8aabed1931471e59f95a16dadef5154c40efcce4be048`, bound to
+its frozen c7 preparation. It is not rekeyed to the later main helper. Fresh
+capture backend remains unobserved; separate actual strict CLI hardware
+requests and probe evidence are retained. See the
+[Signup evidence](../parity/signup-flow-diff/fresh/source-proof.json).
+
 ## Coverage status
 
 The audited Remocn inventory at
