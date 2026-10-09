@@ -4,6 +4,8 @@ Copy-paste motion components for [HyperFrames](https://hyperframes.heygen.com/).
 Preview a component, customize it in your browser, and add it to your video with
 one command. The source is yours to edit.
 
+https://github.com/user-attachments/assets/74855edd-7a1a-4291-8d90-ecf137d8511d
+
 [Browse components](https://hyfrme.vercel.app/components) ·
 [See examples](https://hyfrme.vercel.app/showcases)
 
