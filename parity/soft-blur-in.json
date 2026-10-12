@@ -2,8 +2,9 @@
   "slug": "soft-blur-in",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/soft-blur-in/index.tsx",
+    "entry": "registry/remocn/soft-blur-in/index.tsx",
     "config": "registry/remocn/soft-blur-in/config.ts",
     "license": "MIT"
   },
@@ -19,25 +20,79 @@
       "color": "#171717",
       "fontWeight": 600,
       "speed": 1
-    }
+    },
+    "background": "#ffffff"
   },
-  "classification": "mechanical-port",
+  "filesSha256": {
+    "registry-item.json": "0410ca39345b6c17c952010547f6e5c646359162c3197808167e280e7158c604",
+    "soft-blur-in.html": "c47081494b534a5c96c0458e110e8f29c1d8d48dc38b79481af3b3a930ecd7f0",
+    "soft-blur-in.runtime.js": "92246fa7311f40a26d00afe5fe3d1fb7273594196a774f685179e6655a6df474",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "17e2eba7461cce1551baa3c00f194c02ff9bcd9d7f00d8f97e682c143afed863",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 60,
-    "meanSsim": 0.998647,
-    "minSsim": 0.997987,
-    "p05Ssim": 0.998076,
-    "p95Ssim": 0.999938,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 60,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 60,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
+  "checks": {
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
+  },
   "artifacts": {
-    "remocnVideo": "public/previews/soft-blur-in/remocn.mp4",
+    "referenceVideo": "public/previews/soft-blur-in/reference.mp4",
     "hyperframesVideo": "public/previews/soft-blur-in/hyperframes.mp4",
+    "thumbnail": "public/previews/soft-blur-in/thumbnail.png",
     "summary": "parity/soft-blur-in-diff/summary.json",
-    "frameStrip": "parity/soft-blur-in-strip/strip.png"
+    "perFrameSsim": "parity/soft-blur-in-diff/ssim.log",
+    "hyperframesCheck": "parity/soft-blur-in-diff/hyperframes-check.log",
+    "worstFrame": "parity/soft-blur-in-diff/worst-frame.png",
+    "referenceAlpha": "parity/soft-blur-in-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/soft-blur-in-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/soft-blur-in-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/soft-blur-in-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/soft-blur-in/reference.mp4": "bd271dc7d32be004ae1905e2059560ba49d89856ac913f5cfbc6307ca93bf043",
+    "public/previews/soft-blur-in/hyperframes.mp4": "bd271dc7d32be004ae1905e2059560ba49d89856ac913f5cfbc6307ca93bf043",
+    "public/previews/soft-blur-in/thumbnail.png": "66827f6096ec82e42b9b53eba05e517bfd9c937a4314b6145ba84082d20167c0",
+    "parity/soft-blur-in-diff/summary.json": "53afe1505ac330e9a858ffe8a5005963ff5f8ba7de9ea1cafc5074fbd19e0c47",
+    "parity/soft-blur-in-diff/ssim.log": "e5de144aa23e764f1d14fe248acd94330063b3ce5a1953536c4766924aff2bf1",
+    "parity/soft-blur-in-diff/hyperframes-check.log": "550fdfeba3e94b39cd788302913986ea37b1a786f7e12800cac2e51aaaeb5371",
+    "parity/soft-blur-in-diff/worst-frame.png": "b6b80f4263bf6c8c16375e4217852feab2c6e68f51a427bd3f5d799e52aa49c4",
+    "parity/soft-blur-in-diff/reference-alpha.framemd5": "ab7861b3aa0dbf0bdab8958a5cae36aeb17941934f19b376609ac43f71a40d6a",
+    "parity/soft-blur-in-diff/hyperframes-alpha.framemd5": "ab7861b3aa0dbf0bdab8958a5cae36aeb17941934f19b376609ac43f71a40d6a",
+    "parity/soft-blur-in-diff/reference-rgba.framemd5": "657de7fcf55d2d6b3fe71f77cc821ea5de0edca56ef50b70751ced4f76b38eda",
+    "parity/soft-blur-in-diff/hyperframes-rgba.framemd5": "657de7fcf55d2d6b3fe71f77cc821ea5de0edca56ef50b70751ced4f76b38eda"
   }
 }

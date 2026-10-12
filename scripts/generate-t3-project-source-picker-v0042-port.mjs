@@ -1,5 +1,6 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
@@ -12,11 +13,15 @@ const lightFixture = JSON.parse(await readFile(resolve(source, "project-source-p
 if (fixture.sourceCommit !== lightFixture.sourceCommit || fixture.frames !== lightFixture.frames || fixture.fps !== lightFixture.fps) {
   throw new Error("Official dark and light fixture metadata differs");
 }
+const generatedIds = { dark: new Map(), light: new Map() };
+const normalizeIds = (html, ids) => html.replace(/_r_[^_]+_/g, (id) => {
+  if (!ids.has(id)) ids.set(id, `_r_${ids.size}_`);
+  return ids.get(id);
+});
 for (const phase of ["before", "open", "portal", "after"]) {
   const [dark, light] = await Promise.all(["dark", "light"].map((appearance) =>
     readFile(resolve(source, `project-source-picker-v0042-${appearance}-${phase}.html`), "utf8")));
-  const normalizeIds = (html) => html.replace(/_r_[^_]+_/g, "_r_X_");
-  if (normalizeIds(dark) !== normalizeIds(light)) throw new Error(`Native ${phase} DOM differs beyond generated IDs`);
+  if (normalizeIds(dark, generatedIds.dark) !== normalizeIds(light, generatedIds.light)) throw new Error(`Native ${phase} DOM differs beyond generated IDs`);
 }
 const theme = JSON.parse(
   await readFile(resolve(source, "dark-theme.json"), "utf8"),
@@ -161,6 +166,10 @@ const html = `<!doctype html>
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { ${stageTheme} position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-state[hidden] { display: none !important; }
   .t3-state:not([hidden]) { display: contents; }
   .t3-native-picker { position: absolute; z-index: 300; left: 280px; top: 40px; width: 640px; height: 500px; pointer-events: none; }
@@ -171,6 +180,7 @@ const html = `<!doctype html>
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
   <div class="dark t3-stage">
@@ -187,12 +197,12 @@ const defaults = ${scriptJson(defaults)};
 const options = { ...defaults, ...(window.__hyperframes?.getVariables() ?? {}) };
 const stage = document.querySelector('#root .t3-stage');
 const nativePicker = stage.querySelector('.t3-native-picker');
+nativePicker.src = options.theme === 'light' ? 'compositions/project-source-picker-v0042-light-menu-crop.png' : 'compositions/project-source-picker-v0042-dark-menu-crop.png';
 const nativePickerAllowed = Object.keys(defaults).every(key => ['theme', 'openFrame', 'closeFrame'].includes(key) || options[key] === defaults[key]);
 if (options.theme === 'light') {
   stage.classList.remove('dark');
   stage.classList.add('light');
   for (const [key, value] of Object.entries(${scriptJson(lightTheme)})) stage.style.setProperty(key, value);
-  nativePicker.src = nativePicker.src.replace('dark-', 'light-');
 }
 for (const [key, value] of Object.entries(${scriptJson(fontTheme)})) stage.style.setProperty(key, value);
 stage.style.fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';

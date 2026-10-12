@@ -2,7 +2,7 @@
   "slug": "button",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-ui/button/index.tsx",
     "entry": "components/docs/examples/button-example.tsx",
     "config": "registry/remocn-ui/button/config.ts",
@@ -21,25 +21,89 @@
     },
     "background": "oklch(1 0 0)"
   },
+  "filesSha256": {
+    "registry-item.json": "2a01c88b59a31961fd1d7999948d32d05beee9b281cd3bc911a19b32b1784ef0",
+    "button.html": "8b4061af403425e436571cc855db08a256d090e280e6a28b0a81a378a09433c3",
+    "button.runtime.js": "60311f65bac76ce2599903934657cfa3497058805f91a8d4fc85f87fde3c8b64",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
   "classification": "compiled-source-port",
-  "status": "verified",
+  "measurement": "lossless-png",
+  "status": "failed",
+  "fingerprint": "c9cd6e9fe63cd5797cab49ab54592f3f3293a853feb45792cccdf8c2b59dbb9a",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 132,
-    "meanSsim": 0.99993,
-    "minSsim": 0.999812,
-    "p05Ssim": 0.999816,
-    "p95Ssim": 0.999967,
-    "pass": true
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 132,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 132,
+      "mismatchedFrames": [
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/button/remocn.mp4",
+    "referenceVideo": "public/previews/button/reference.mp4",
     "hyperframesVideo": "public/previews/button/hyperframes.mp4",
-    "summary": "parity/button-diff/summary.json"
+    "thumbnail": "public/previews/button/thumbnail.png",
+    "summary": "parity/button-diff/summary.json",
+    "perFrameSsim": "parity/button-diff/ssim.log",
+    "hyperframesCheck": "parity/button-diff/hyperframes-check.log",
+    "worstFrame": "parity/button-diff/worst-frame.png",
+    "referenceAlpha": "parity/button-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/button-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/button-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/button-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/button/reference.mp4": "17b8f2e5a5168be7fdfc8f8ea3fd6beb3b613f4336459aa6fa154681e53e401a",
+    "public/previews/button/hyperframes.mp4": "09414c78d0671f5716ddb0c52bc2f28bb1e1d1c3e499bebae45bc1bf2cb8c986",
+    "public/previews/button/thumbnail.png": "b33bffa0bddf128ac63b2f46c74960569570f95e71e600769d135b3044e8cbc9",
+    "parity/button-diff/summary.json": "29043e6deb72e5cc08720ca65d6ee44a8d7ab116b2749fa08d385603f82a2c3c",
+    "parity/button-diff/ssim.log": "faad1bf65b5eb95b7f6007e5454c145add56ce4668ea872af50d5eed4bf815cd",
+    "parity/button-diff/hyperframes-check.log": "da6d0079a01c3ecc0c26071142a52df664db0dab52875ab89cf8c12a5e846de6",
+    "parity/button-diff/worst-frame.png": "dd5e031fddac9f5263f99e24b0e3f2a855ec5746531dceb0cfc43bbcd4a2155d",
+    "parity/button-diff/reference-alpha.framemd5": "9be97dae7a4e2051f1bebee4c2c16e31f7f52ad00308d4310e6f709cc176cc8f",
+    "parity/button-diff/hyperframes-alpha.framemd5": "9be97dae7a4e2051f1bebee4c2c16e31f7f52ad00308d4310e6f709cc176cc8f",
+    "parity/button-diff/reference-rgba.framemd5": "330af168978160d52d84b2481503086448227d3dce4d23515bbe39a08ed54127",
+    "parity/button-diff/hyperframes-rgba.framemd5": "55a8ca9e935532ab0120e892474c6f835eb66426226146d1a8eb18e49495becd"
   }
 }

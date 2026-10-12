@@ -63,11 +63,25 @@ try {
   await page.goto(url, { waitUntil: "domcontentloaded" });
   await page.locator('[data-testid="composer-editor"]').waitFor({ timeout: 20000 });
   await page.waitForTimeout(1200);
-  await page.locator('button[data-slot="toast-close"]').evaluateAll((buttons) => buttons.forEach((button) => button.click()));
+  await page.locator('button[data-slot="toast-close"]').evaluateAll((buttons) => {
+    window.__hyfrmeDismissedToasts = buttons.map(button => button.closest('[data-position]'));
+    if(window.__hyfrmeDismissedToasts.some(node => !node)) throw new Error('Toast root absent');
+    buttons.forEach(button => button.click());
+  });
   await page.evaluate(() => document.fonts.ready);
   await page.mouse.move(800, 50);
   await page.waitForTimeout(350);
+  await page.waitForFunction(() => window.__hyfrmeDismissedToasts.every(node => !node.isConnected) && document.querySelectorAll('[data-slot="toast-viewport"] [data-ending-style]').length === 0, undefined, {timeout:3000});
+  await writeFile(resolve(source,'toast-readiness.json'),JSON.stringify(await page.evaluate(()=>({dismissedCount:window.__hyfrmeDismissedToasts.length,allDetached:window.__hyfrmeDismissedToasts.every(node=>!node.isConnected),exitingCount:document.querySelectorAll('[data-slot="toast-viewport"] [data-ending-style]').length})),null,2));
   if (!page.url().includes("/draft/")) throw new Error("File Surface must begin on a real new-thread draft");
+  const originalActiveLabels = ["Build a logo intro", "Catalog motion audit", "Grouped logo tests", "Review final hold", "Search reveal timing"];
+  const originalFixture = JSON.parse(await readFile(resolve(source, "file-surface-fixture.json"), 'utf8'));
+  const baseline = await page.evaluate(() => {
+    const cards=[...document.querySelectorAll('[data-testid="sidebar-row-card"]')];
+    return {rows:cards.map(row=>({text:row.textContent,age:row.querySelector('span.tabular-nums.text-secondary-label')?.textContent.trim(),branch:row.querySelector('span.whitespace-nowrap')?.textContent.trim()})),shelf:document.querySelector('[data-testid="sidebar-settled-shelf-toggle"]')?.textContent.trim(),prompt:document.querySelector('[data-testid="composer-editor"]')?.textContent.trim(),model:document.querySelector('[data-chat-provider-model-picker-label="true"]')?.textContent.trim(),workspace:document.querySelector('[data-composer-shortcut="composer.workspace"]')?.textContent.trim(),viewport:{width:innerWidth,height:innerHeight}};
+  });
+  if(baseline.rows.length!==5 || baseline.rows.some((row,i)=>!row.text.includes(originalActiveLabels[i])) || JSON.stringify(baseline.rows.map(row=>row.age))!==JSON.stringify(originalFixture.threadAges) || JSON.stringify(baseline.rows.map(row=>row.branch))!==JSON.stringify(originalFixture.threadBranches) || !/^Settled\s*\(1\)$/.test(baseline.shelf) || baseline.prompt!=='' || baseline.model!=='GPT-6-Astra' || baseline.workspace!=='Current checkout' || baseline.viewport.width!==1200 || baseline.viewport.height!==659) throw new Error('Original File Surface initial state was not restored: '+JSON.stringify(baseline));
+  await writeFile(resolve(source,'initial-state-guard.json'),JSON.stringify(baseline,null,2));
   threadAges = await page.locator('[data-testid="sidebar-row-card"]')
     .evaluateAll((rows) => rows.map((row) => row.querySelector('span.tabular-nums.text-secondary-label')?.textContent.trim()));
   threadBranches = await page.locator('[data-testid="sidebar-row-card"]')

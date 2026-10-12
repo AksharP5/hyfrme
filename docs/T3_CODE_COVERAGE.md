@@ -27,156 +27,107 @@ first frame joins Source File Open's final frame at SSIM 1.000000 in both
 themes (`parity/t3-terminal-check.json`).
 
 Reasoning Level reproduces the native menu, hover, and selected state with a
-seeded model list; it does not run an AI provider. Its focused popup crop
-scores 0.974306 dark and 0.972846 light, below the original 0.980 target.
-The accepted 0.970 focused gate and residual font and geometry differences
-are recorded in `parity/t3-reasoning-level.json` and the block README.
+seeded model list. Both themes match all 120 frames exactly; no AI provider runs.
 
-Permission Choice reproduces the official v0.0.42 Runtime mode menu beside the
-full-size composer in dark and light. Its default popup uses pinned native
-pixels and scores 1.000000 SSIM in the menu and hovered-row crops in both
-themes; changing visible content switches to editable DOM. Whole-frame
-mean/minimum SSIM is 0.990274/0.990196 dark and 0.989950/0.989371 light.
-Changed copy, model, Fast tier, permission text, and event timing passed full
-checks and strict renders; the CLI-installed block passed full checks in both
-themes. The local workspace is seeded and no AI provider runs.
+Permission Choice reproduces the Runtime mode menu beside the full composer.
+Fast Service Tier opens the Traits picker, hovers Fast, and selects it. Both
+blocks match all 120 frames in each theme. Changed inputs use editable DOM;
+provider and model availability remain seeded.
 
-Fast Service Tier opens the native Traits picker, hovers Fast, and selects it.
-Dark whole-frame mean/minimum SSIM is 0.991248/0.990237; light is
-0.991545/0.990526. Its default popup and Fast hover-row crops score 1.000000
-in both themes using pinned native pixels; edited content uses source DOM.
-Changed inputs, strict renders, and CLI-installed full checks pass in both
-themes. The cut from Reasoning Level is pixel-exact in both native and
-HyperFrames captures. Provider and model options are seeded; no inference runs.
+Thread Snooze captures the In 3 hours action, moving row, toast, Snoozed shelf,
+and inline banner. Native state persists after reload. Its current exact
+all-frame proof remains pending while source transition timing is investigated.
+No provider executes.
 
-Thread Snooze executes the native In 3 hours action from the selected sidebar
-row. The capture includes its menu, moving row, toast, Snoozed shelf, and
-inline banner; the local thread remains snoozed after reload. Dark
-whole-frame mean/minimum SSIM is 0.989678/0.986068 and light is
-0.990821/0.987622. Focused crops, edited snapshots, and CLI-installed
-dark/light checks pass. No provider executes.
+Sidebar Focus verifies the release-default instant toggle with exact RGBA for
+all 120 frames in each theme. The Appearance setting's 200 ms variant has a
+separate fixture; its final proof and publication must be checked separately.
+The block defaults to the official 0 ms behavior and exposes the duration.
 
-Sidebar Focus has four 120-frame native comparisons: dark and light at the
-release-default instant toggle, and dark and light at the Appearance setting’s
-200 ms animation. Its hover clip shows the latter and labels the setting.
-The block defaults to the official 0 ms behavior and exposes the duration for
-custom videos. All four strict comparisons, edited-input renders, and
-CLI-installed dark/light full checks passed. The native and HyperFrames cuts
-from Fast Service Tier to Sidebar Focus are pixel-exact in both themes.
+New Worktree Choice opens the native Workspace menu, hovers New worktree, and
+selects it before sending. Both themes match all 120 frames exactly. The
+isolated project and model availability are seeded. The separate eight-second
+Brief to Prompt sequence is recorded in
+`parity/t3-brief-worktree-v0042-sequence.json`.
 
-New Worktree Choice opens the native Workspace menu under the composer trigger,
-hovers New worktree, and selects it before sending. Dark whole-frame mean/minimum
-SSIM is 0.989827/0.989710; light is 0.990072/0.989607. The default menu,
-hover, and five sampled selection-transition crops score 1.000000 in both themes
-using pinned native pixels; edited content uses source DOM. Thirty-two editable
-values, dark/light changed-input renders, and CLI-installed full checks passed.
-The isolated project and model availability are seeded. The native ID 11→12 cut
-scores 0.999999 dark and 0.999985 light; the HyperFrames block cut scores
-1.000000 in both themes. The CLI-installed eight-second two-block composition
-passed a full check and strict 240-frame render in both themes; its actual cut
-scores 0.999999 dark and 1.000000 light (`parity/t3-brief-worktree-v0042-sequence.json`).
+Thread Search types and refines a query, moves the result highlight with
+ArrowDown/ArrowUp, clears the query, and selects a thread with Enter. The route
+persists after reload while the query resets. Both themes match all 120 frames
+exactly. Threads are seeded; no provider or GitHub action executes.
 
-Thread Search types and refines a query in the native sidebar, moves the result
-highlight with ArrowDown/ArrowUp, clears the query, and selects a thread with
-Enter. The selected route persists after reload while the query resets. Dark
-whole-frame mean/minimum SSIM is 0.992926/0.991452; light is
-0.992907/0.991562. Focused input/result crops, changed titles and timing,
-six edited snapshots per theme, and CLI-installed checks passed. The local
-threads are seeded; no provider or GitHub action executes.
-
-Return to a Worktree opens the native Workspace selector below the composer
-trigger, hovers Previous worktree (main), and selects it. The footer becomes
-Current worktree. Dark whole-frame mean/minimum SSIM is 0.989552/0.988416;
-light is 0.989802/0.989292. Menu, hover, and five sampled selection-transition
-crops score 1.000000 in both themes using pinned native pixels; edited content
-uses source DOM. Thirty-one editable values, changed-input dark/light renders,
-and CLI-installed full checks passed. The local workspace is seeded and no
-provider runs (`parity/t3-return-worktree.json`).
+Return to a Worktree opens the Workspace selector, hovers Previous worktree
+(main), and selects it. The footer becomes Current worktree. Both themes match
+all 120 frames exactly. The workspace is seeded and no provider runs.
 
 Visual Context Shelf captures a native image paste and a follow-up instruction
-in the full composer. Dark whole-frame mean/minimum SSIM is 0.990007/0.989313;
-light is 0.990257/0.989598. The attached image and editable filename, size,
-prompt, thread, and timing passed strict dark/light renders, custom-input
-checks, and CLI installation. Tight text-chip crops score 0.971119 dark and
-0.964997 light at their worst frames; computed font properties and bounding
-boxes match the native capture, while glyph rasterization does not. The local
-thread is seeded and no provider runs (`parity/t3-visual-context-shelf.json`).
+in the full composer. Both themes match all 120 native frames exactly in RGBA,
+with mean/minimum SSIM 1.000000. The expanded preview uses the upstream
+256-pixel square thumbnail pipeline while the inline chip retains the original
+image. Strict renders, full checks, and CLI installation passed, including
+the preview asset in custom block directories. The local thread is seeded and
+no provider runs (`parity/t3-visual-context-shelf.json`).
 
-Visual Context Remove captures the native attachment remove hover, destructive
-confirmation, Confirm action, and removal of both the image tile and inline
-draft reference. Dark mean/minimum SSIM is 0.991602/0.988230; light is
-0.991792/0.988329. Dialog text raster differs slightly despite measured
-matching styles and bounds. Edited dark/light renders and CLI-installed checks
-passed. The capture does not test persistence after reload; the thread is
-seeded and no provider runs (`parity/t3-visual-context-remove.json`).
+Visual Context Remove captures the attachment remove hover, destructive
+confirmation, Confirm action, and removal of the image tile and inline draft
+reference. Exact all-frame parity remains pending. The capture does not test
+persistence after reload; the thread is seeded and no provider runs.
 
-Project Source Picker captures the native New project chooser opening and closing
-over the full workspace. Dark whole-frame mean/minimum SSIM is 0.994966/0.990130;
-light is 0.995134/0.990454. The default chooser crop scores 1.000000 in
-both themes using pinned native pixels; edited labels use source DOM. Forty-five
-editable values, changed-input strict renders, and CLI-installed checks passed
-in both themes. Provider availability is seeded; no GitHub account or AI
-provider runs (`parity/t3-project-source-picker.json`).
+Project Source Picker captures the New project chooser opening and closing.
+Both themes match all 120 frames exactly. Edited labels use source DOM.
+Provider availability is seeded; no GitHub account or AI provider runs.
 
-Open Local Project captures native Local folder search, selection, and Add into
-a new workspace. Dark mean/minimum SSIM is 0.994679/0.988561; light is
-0.994867/0.988976. The three default chooser states match native crops exactly
-in both themes; edited labels use source DOM. Fifty-three editable values,
-changed-input strict renders, and CLI-installed checks passed. The existing
-threads are seeded, while local filesystem browsing and Add execute in the
-official app (`parity/t3-project-local-open.json`).
+Open Local Project captures Local folder search, selection, and Add into a new
+workspace. Both themes match all 120 frames exactly. Existing threads are
+seeded; filesystem browsing and Add execute in the official app.
 
-Thread Switch uses native sidebar clicks from a full new-thread draft into two
-completed Hyfrme conversations. Dark mean/minimum SSIM is 0.988991/0.988349;
-light is 0.989183/0.988571. Focused conversation and selected-row crops pass.
-The small HTML file icon uses T3 Code's pinned SVG sprite. Remaining text-raster
-differences are recorded against a 0.9888 mean gate. Edited inputs, strict
-dark/light renders, and CLI-installed full checks passed. The threads and
-replies are seeded, with no provider inference (`parity/t3-thread-switch.json`).
+Thread Switch uses native sidebar clicks from a new-thread draft into two
+completed Hyfrme conversations. Both themes match all 120 frames exactly.
+The HTML file icon uses the pinned SVG sprite. Threads and replies are seeded,
+with no provider inference.
 
-| Interaction           | Native reference | Installable block    | All-frame parity                                 |
+| Interaction           | Native reference | Installable block    | Default all-frame parity                         |
 | --------------------- | ---------------- | -------------------- | ------------------------------------------------ |
-| Brief to Prompt (v0.0.42, dark + light) | 11 | `t3-brief-to-prompt` | dark mean/min 0.990238/0.989647; light 0.990530/0.989931, 120 frames each |
-| New Worktree Choice (v0.0.42, dark + light) | 12 | `t3-new-worktree-choice` | dark mean/min 0.989827/0.989710; light 0.990072/0.989607, 120 frames each |
-| Return to a Worktree (v0.0.42, dark + light) | 13 | `t3-return-worktree` | dark mean/min 0.989552/0.988416; light 0.989802/0.989292, 120 frames each |
-| Model Swap (v0.0.42, dark + light) | 14 | `t3-model-swap` | dark mean/min 0.990701/0.988189; light 0.990946/0.988520, 120 frames each |
-| Reasoning Level (v0.0.42, dark + light) | 15 | `t3-reasoning-level` | dark mean/min 0.990339/0.990201; light 0.990613/0.990483, 120 frames each |
-| Fast Service Tier (v0.0.42, dark + light) | 16 | `t3-fast-service-tier` | dark mean/min 0.991248/0.990237; light 0.991545/0.990526, 120 frames each |
-| Permission Choice (v0.0.42, dark + light) | 17 | `t3-permission-choice` | dark mean/min 0.990274/0.990196; light 0.989950/0.989371, 120 frames each |
-| Sidebar Focus (v0.0.42, dark + light; 0 and 200 ms) | 18 | `t3-sidebar-focus` | 0 ms dark 0.991757/0.990237, light 0.991961/0.990526; 200 ms dark 0.991796/0.990230, light 0.991997/0.990520, 120 frames each |
-| Visual Context Shelf (v0.0.42, dark + light) | 19 | `t3-visual-context-shelf` | dark mean/min 0.990007/0.989313; light 0.990257/0.989598, 120 frames each |
-| Project Source Picker (v0.0.42, dark + light) | 20 | `t3-project-source-picker` | dark mean/min 0.994966/0.990130; light 0.995134/0.990454, 120 frames each |
-| Thread Search (v0.0.42, dark + light) | 21 | `t3-thread-search` | dark mean/min 0.992926/0.991452; light 0.992907/0.991562, 120 frames each |
-| Thread Switch (v0.0.42, dark + light) | 22 | `t3-thread-switch` | dark mean/min 0.988991/0.988349; light 0.989183/0.988571, 120 frames each |
-| Worked Trace (v0.0.42, dark + light) | 23 | `t3-worked-trace` | dark mean/min 0.991299/0.991097; light 0.991371/0.991169, 120 frames each |
-| Thread Actions (v0.0.42, dark + light) | 24 | `t3-thread-actions` | dark mean/min 0.989115/0.986363; light 0.989279/0.986556, 120 frames each |
-| Settle a Thread (v0.0.42, dark + light) | 25 | `t3-settle-thread` | dark mean/min 0.989514/0.988543; light 0.989703/0.988716, 120 frames each |
-| File Surface (v0.0.42, dark + light) | 26 | `t3-file-surface` | dark mean/min 0.992881/0.992082; light 0.992983/0.992181, 120 frames each |
-| Source File Open (v0.0.42, dark + light) | 27 | `t3-source-file-open` | dark mean/min 0.992008/0.988809; light 0.992071/0.988740, 120 frames each |
-| Terminal Check (v0.0.42, dark + light) | 28 | `t3-terminal-check` | dark mean/min 0.991957/0.988543; light 0.992011/0.988650, 120 frames each |
-| Commit Review (v0.0.42, dark + light) | 29 | `t3-commit-review` | dark mean/min 0.993153/0.992984; light 0.992334/0.989470, 120 frames each; default menu crop 1.000000 |
-| Project Action (v0.0.42, dark + light) | 30 | `t3-project-action` | dark mean/min 0.996422/0.989516; light 0.996255/0.989816, 120 frames each; editor and saved-action menu crops 1.000000 |
-| Prompt Send (v0.0.42, dark + light) | 31 | `t3-prompt-send` | dark mean/min 0.999913/0.996025; light 0.999982/0.997834, 120 frames each; live Codex send, response pending |
-| Agent Work (v0.0.42, dark + light) | 32 | `t3-agent-work` | dark mean/min 1.000000/1.000000; light 0.999938/0.992502, 120 frames each; seeded command activity |
-| Diff Review (v0.0.42, dark + light) | 33 | `t3-diff-review` | dark mean/min 1.000000/1.000000; light 1.000000/1.000000, 120 frames each |
-| Prompt Stash and Recall (v0.0.42, dark + light) | 34 | `t3-prompt-stash` | dark mean/min 0.991177/0.990861; light 0.991279/0.990892, 120 frames each; live local stash and reload |
-| Thread Rename (v0.0.42, dark + light) | 35 | `t3-thread-rename` | dark mean/min 0.989543/0.988632; light 0.989761/0.988699, 120 frames each; default menu crop 1.000000 |
-| Project Action Run (v0.0.42, dark + light) | 36 | `t3-project-action-run` | dark mean/min 1.000000/1.000000; light 1.000000/1.000000, 120 frames each |
-| Agent Answer (v0.0.42, dark + light) | 37 | `t3-agent-answer` | dark mean/min 0.990616/0.987654; light 0.990411/0.987257, 120 frames each |
-| Message Rewind (v0.0.42, dark + light) | 38 | `t3-message-rewind` | dark mean/min 0.999968/0.999808; light 0.999946/0.999677, 120 frames each |
-| Thread Pin (v0.0.42, dark + light) | 39 | `t3-thread-pin` | dark mean/min 0.989814/0.988789; light 0.989948/0.989003, 120 frames each |
-| Commit Creation (v0.0.42, dark + light) | 40 | `t3-commit-creation` | dark mean/min 1.000000/1.000000; light 1.000000/1.000000, 120 frames each |
-| Thread Snooze (v0.0.42, dark + light) | 41 | `t3-thread-snooze` | dark mean/min 0.989678/0.986068; light 0.990821/0.987622, 120 frames each |
-| Thread Archive (v0.0.42, dark + light) | 42 | `t3-thread-archive` | dark mean/min 0.992932/0.989573; light 0.993054/0.989670, 120 frames each; default menu crop 1.000000 |
-| Publish Repository (v0.0.42, dark + light) | 43 | `t3-git-push` | dark mean/min 1.000000/1.000000; light 1.000000/1.000000, 120 frames each |
-| File Mention (v0.0.42, dark + light) | 44 | `t3-file-mention` | dark mean/min 0.990672/0.988874; light 0.990792/0.988948, 120 frames each; default drawer crops 1.000000 |
-| Thread Unpin (v0.0.42, dark + light) | 45 | `t3-thread-unpin` | dark mean/min 0.989324/0.988497; light 0.989483/0.988652, 120 frames each |
-| Thread Wake (v0.0.42, dark + light) | 46 | `t3-thread-wake` | dark mean/min 0.988227/0.987390; light 0.988554/0.988164, 120 frames each; default menu crop 1.000000 |
-| Open Local Project (v0.0.42, dark + light) | 47 | `t3-project-local-open` | dark mean/min 0.994679/0.988561; light 0.994867/0.988976, 120 frames each |
-| Mark Thread Unread (v0.0.42, dark + light) | 48 | `t3-thread-mark-unread` | dark mean/min 0.988873/0.988730; light 0.988977/0.988865, 120 frames each; menu crop 1.000000 |
-| Project Scope (v0.0.42, dark + light) | 49 | `t3-project-switch` | dark mean/min 0.989971/0.988855; light 0.989804/0.988925, 120 frames each; all three menu crops 1.000000 |
-| Pinned Thread Reorder (v0.0.42, dark + light) | 50 | `t3-thread-reorder` | dark mean/min 1.000000/1.000000; light 1.000000/1.000000, 120 frames each |
-| Visual Context Remove (v0.0.42, dark + light) | 51 | `t3-visual-context-remove` | dark mean/min 0.991602/0.988230; light 0.991792/0.988329, 120 frames each |
+| Brief to Prompt (v0.0.42, dark + light) | 11 | `t3-brief-to-prompt` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| New Worktree Choice (v0.0.42, dark + light) | 12 | `t3-new-worktree-choice` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Return to a Worktree (v0.0.42, dark + light) | 13 | `t3-return-worktree` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Model Swap (v0.0.42, dark + light) | 14 | `t3-model-swap` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Reasoning Level (v0.0.42, dark + light) | 15 | `t3-reasoning-level` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Fast Service Tier (v0.0.42, dark + light) | 16 | `t3-fast-service-tier` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Permission Choice (v0.0.42, dark + light) | 17 | `t3-permission-choice` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Sidebar Focus (v0.0.42, dark + light; 0 and 200 ms) | 18 | `t3-sidebar-focus` | Instant default: exact RGBA and SSIM 1.000000, all 120 frames in each theme. Final publication of the 200 ms variant remains pending. |
+| Visual Context Shelf (v0.0.42, dark + light) | 19 | `t3-visual-context-shelf` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Project Source Picker (v0.0.42, dark + light) | 20 | `t3-project-source-picker` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Thread Search (v0.0.42, dark + light) | 21 | `t3-thread-search` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Thread Switch (v0.0.42, dark + light) | 22 | `t3-thread-switch` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Worked Trace (v0.0.42, dark + light) | 23 | `t3-worked-trace` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Thread Actions (v0.0.42, dark + light) | 24 | `t3-thread-actions` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Settle a Thread (v0.0.42, dark + light) | 25 | `t3-settle-thread` | Exact all-frame parity pending; see current parity manifest |
+| File Surface (v0.0.42, dark + light) | 26 | `t3-file-surface` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Source File Open (v0.0.42, dark + light) | 27 | `t3-source-file-open` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Terminal Check (v0.0.42, dark + light) | 28 | `t3-terminal-check` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Commit Review (v0.0.42, dark + light) | 29 | `t3-commit-review` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Project Action (v0.0.42, dark + light) | 30 | `t3-project-action` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Prompt Send (v0.0.42, dark + light) | 31 | `t3-prompt-send` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Agent Work (v0.0.42, dark + light) | 32 | `t3-agent-work` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Diff Review (v0.0.42, dark + light) | 33 | `t3-diff-review` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Prompt Stash and Recall (v0.0.42, dark + light) | 34 | `t3-prompt-stash` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Thread Rename (v0.0.42, dark + light) | 35 | `t3-thread-rename` | Exact all-frame parity pending; see current parity manifest |
+| Project Action Run (v0.0.42, dark + light) | 36 | `t3-project-action-run` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Agent Answer (v0.0.42, dark + light) | 37 | `t3-agent-answer` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Message Rewind (v0.0.42, dark + light) | 38 | `t3-message-rewind` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Thread Pin (v0.0.42, dark + light) | 39 | `t3-thread-pin` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Commit Creation (v0.0.42, dark + light) | 40 | `t3-commit-creation` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Thread Snooze (v0.0.42, dark + light) | 41 | `t3-thread-snooze` | Exact all-frame parity pending; see current parity manifest |
+| Thread Archive (v0.0.42, dark + light) | 42 | `t3-thread-archive` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Publish Repository (v0.0.42, dark + light) | 43 | `t3-git-push` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| File Mention (v0.0.42, dark + light) | 44 | `t3-file-mention` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Thread Unpin (v0.0.42, dark + light) | 45 | `t3-thread-unpin` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Thread Wake (v0.0.42, dark + light) | 46 | `t3-thread-wake` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Open Local Project (v0.0.42, dark + light) | 47 | `t3-project-local-open` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Mark Thread Unread (v0.0.42, dark + light) | 48 | `t3-thread-mark-unread` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Project Scope (v0.0.42, dark + light) | 49 | `t3-project-switch` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Pinned Thread Reorder (v0.0.42, dark + light) | 50 | `t3-thread-reorder` | Exact RGBA and mean/min SSIM 1.000000, all 120 frames in each theme |
+| Visual Context Remove (v0.0.42, dark + light) | 51 | `t3-visual-context-remove` | Exact all-frame parity pending; see current parity manifest |
 
 The following source interactions still need v0.0.42 native fixtures and installable
 blocks. They cannot be counted as covered by the 41 catalog recordings above:

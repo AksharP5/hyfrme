@@ -1,5 +1,6 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
@@ -75,17 +76,21 @@ const scriptJson = (value) => JSON.stringify(value).replaceAll("</", "<\\/");
 const escapeAttribute = (value) => value.replaceAll("&", "&amp;").replaceAll("'", "&#39;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 const stages = ["dark", "light"].flatMap((theme) => phases.map((phase) =>
   `<div class="${theme} t3-stage t3-state" data-t3-theme="${theme}" data-t3-state="${phase}" style="${escapeAttribute(themesCss[theme])}"${theme === "light" || (theme === "dark" && phase !== "before") ? " hidden" : ""}>${themes[theme].states[phase]}</div>`)).join("\n");
-const captures = ["dark", "light"].flatMap((theme) => Array.from({ length: 10 }, (_, row) =>
-  `<div data-layout-ignore class="t3-pixel-capture" data-t3-pixel-theme="${theme}" data-t3-pixel-row="${row}" style="background-image:url(compositions/${name}-capture-${theme}-${String(row).padStart(2, "0")}.webp)" hidden></div>`)).join("\n");
+const captures = '<canvas data-layout-ignore class="t3-pixel-capture" width="1200" height="659" hidden></canvas>';
 const html = `<!doctype html>
 <html lang="en" data-composition-variables='${escapeAttribute(JSON.stringify(variables))}'>
 <head><meta charset="utf-8"></head><body><template>
 <style>${css}</style><style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-stage[hidden], .t3-state[hidden] { display: none !important; }
   .t3-state:not([hidden]) { display: contents; }
-  .t3-pixel-capture { position: absolute; inset: 0; z-index: 100; pointer-events: none; background-repeat: no-repeat; background-size: 14400px 659px; background-position: 0 0; }
+  /* Captured frames already include native tooltips at z-index 140. */
+  .t3-pixel-capture { position: absolute; inset: 0; z-index: 200; pointer-events: none; width: 1200px; height: 659px; }
   .t3-pixel-capture[hidden] { display: none !important; }
   .base-ui-disable-scrollbar { scrollbar-width: none; }
   .base-ui-disable-scrollbar::-webkit-scrollbar { display: none; }
@@ -93,6 +98,7 @@ const html = `<!doctype html>
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
 ${stages}
@@ -102,6 +108,7 @@ ${captures}
 window.__timelines = window.__timelines || {};
 const defaults = ${scriptJson(defaults)};
 const options = { ...defaults, ...(window.__hyperframes?.getVariables() ?? {}) };
+const pixelMode = options.renderMode === 'pixel-verified' && Object.entries(defaults).every(([key, value]) => key === 'theme' || key === 'renderMode' || options[key] === value);
 const replacements = ${scriptJson(replacements)};
 const shadowStates = ${scriptJson(Object.fromEntries(Object.entries(themes).map(([theme, info]) => [theme, info.shadows])))};
 for (const stage of document.querySelectorAll('#root .t3-stage')) {
@@ -158,6 +165,11 @@ for (const stage of document.querySelectorAll('#root .t3-stage')) {
     }
   }
 }
+const capture = document.querySelector('canvas.t3-pixel-capture');
+const captureContext = capture.getContext('2d');
+if (!captureContext) throw new Error('Native frame capture requires Canvas 2D');
+captureContext.imageSmoothingEnabled = false;
+let captureImages = [];
 const clock = { frame: 0 };
 function draw() {
   const frame = Math.min(119, Math.max(0, Math.round(clock.frame)));
@@ -165,19 +177,28 @@ function draw() {
   const stacked = Math.max(Number(options.stackedFrame), chooser + 1);
   const split = Math.max(Number(options.splitFrame), stacked + 1);
   const phase = frame < chooser ? 'before' : frame < stacked ? 'chooser' : frame < split ? 'stacked' : 'split';
-  for (const stage of document.querySelectorAll('#root .t3-stage')) stage.hidden = stage.dataset.t3Theme !== options.theme || stage.dataset.t3State !== phase;
-  const pixelMode = options.renderMode === 'pixel-verified';
+  for (const stage of document.querySelectorAll('#root .t3-stage')) stage.hidden = pixelMode || stage.dataset.t3Theme !== options.theme || stage.dataset.t3State !== phase;
   const row = Math.floor(frame / 12);
-  for (const capture of document.querySelectorAll('[data-t3-pixel-theme]')) {
-    const active = pixelMode && capture.dataset.t3PixelTheme === options.theme && Number(capture.dataset.t3PixelRow) === row;
-    capture.hidden = !active;
-    if (active) capture.style.backgroundPosition = '-' + ((frame % 12) * 1200) + 'px 0px';
-  }
+  capture.hidden = !pixelMode;
+  if (pixelMode && captureImages[row]) captureContext.drawImage(captureImages[row], (frame % 12) * 1200, 0, 1200, 659, 0, 0, 1200, 659);
 }
 draw();
-const timeline = gsap.timeline({ paused: true });
-timeline.to(clock, { frame: 120, duration: 4, ease: 'none', onUpdate: draw });
-window.__timelines['${name}'] = timeline;
+const captureReady = pixelMode
+  ? Promise.all(Array.from({ length: 10 }, async (_, row) => {
+      const image = new Image();
+      image.src = ${scriptJson(['dark', 'light'].map((theme) => Array.from({ length: 10 }, (_, row) => `compositions/${name}-capture-${theme}-${String(row).padStart(2, '0')}.webp`)))}[options.theme === 'light' ? 1 : 0][row];
+      await image.decode();
+      return image;
+    }))
+  : Promise.resolve([]);
+window.__hyfrmeReady = captureReady.then((images) => {
+  captureImages = images;
+  draw();
+  const timeline = gsap.timeline({ paused: true });
+  timeline.to(clock, { frame: 120, duration: 4, ease: 'none', onUpdate: draw });
+  window.__timelines['${name}'] = timeline;
+  window.__hfForceTimelineRebind?.();
+});
 </script></template></body></html>`;
 
 await mkdir(resolve(output, "licenses"), { recursive: true });
@@ -191,7 +212,7 @@ for (const [src, dst] of [
   [resolve(root, "assets/t3-code/v0.0.35/source-file-open-t3-third-party-notices.md"), resolve(output, "licenses/T3-THIRD_PARTY_NOTICES.md")],
   [resolve(root, "assets/t3-code/v0.0.35/source-file-open-pierre-diffs-license.md"), resolve(output, "licenses/PIERRE-DIFFS-LICENSE.md")],
 ]) await copyFile(src, dst);
-await writeFile(resolve(output, "README.md"), `# T3 Code: Diff Review\n\nThis four-second block reproduces the T3 Code v0.0.42 Working tree diff for a real Hyfrme Logo Enter +4/-1 change, then switches from stacked to split review. Desktop dark and light captures use the pinned T3 release at 1200 × 659 and 30 fps.\n\nPixel-verified mode matches the native recording frame for frame. Editable DOM mode exposes project, thread, prompt, reply, changed file and code, diff counts, theme, view states, and timing. The diff viewer is restored from captured shadow DOM and styles. Source: https://github.com/pingdotgg/t3code/tree/${dark.sourceCommit}.\n`);
+await writeFile(resolve(output, "README.md"), `# T3 Code: Diff Review\n\nThis four-second block reproduces the T3 Code v0.0.42 Working tree diff for a real Hyfrme Logo Enter +4/-1 change, then switches from stacked to split review. Desktop dark and light captures use the pinned T3 release at 1200 × 659 and 30 fps.\n\nUnchanged content and timing use the native recording frame for frame. Editing content or timing automatically uses editable DOM. Editable DOM mode exposes project, thread, prompt, reply, changed file and code, diff counts, theme, view states, and timing. The diff viewer is restored from captured shadow DOM and styles. Source: https://github.com/pingdotgg/t3code/tree/${dark.sourceCommit}.\n`);
 await writeFile(resolve(output, "registry-item.json"), `${JSON.stringify({
   $schema: "https://hyperframes.heygen.com/schema/registry-item.json", name, type: "hyperframes:block", title: "T3 Code: Diff Review",
   description: "Open a seeded Hyfrme source change in T3 Code’s Working tree diff, then change from stacked to split review.",

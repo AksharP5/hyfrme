@@ -4,29 +4,38 @@ import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import {
+  assertRemocnFonts,
+  remocnFonts,
+  remocnFontUrls,
+} from "./remocn-fonts.mjs";
+import {
   canvasTransitionNames,
   canvasFilterNames,
-  sourcePreviewNames,
   sourcePreviewCss,
 } from "./remocn-canvas.mjs";
 import {
   run,
-  verificationBrowser,
+  verificationBrowser as snapcnVerificationBrowser,
   hyperframesVersion,
 } from "./generate-snapcn-reference.mjs";
 
-export { run, verificationBrowser, hyperframesVersion };
+export { run, hyperframesVersion };
+export const verificationBrowser = () =>
+  snapcnVerificationBrowser({ cpuRasterization: false });
 export const root = resolve(import.meta.dirname, "..");
 export const upstream = resolve(
   root,
   process.env.REMOCN_SOURCE ?? ".work/remocn",
 );
 const browserFallback = process.argv.includes("--browser-fallback");
+const iconShowcase = process.argv.includes("--icon-showcase");
 export const workbench = resolve(
   root,
-  browserFallback
-    ? ".work/remocn-browser-fallback-reference"
-    : ".work/remocn-lossless-reference",
+  iconShowcase
+    ? ".work/remocn-icon-showcase-reference"
+    : browserFallback
+      ? ".work/remocn-browser-fallback-reference"
+      : ".work/remocn-lossless-reference",
 );
 export const remotionVersion = "4.0.513";
 export const referenceGl = "angle-egl";
@@ -34,6 +43,7 @@ const frozenAssetDirectories = [
   "assets/remocn-additions",
   "assets/remocn-templates-7fa2db1",
   "assets/remocn-additions-2026-09-28",
+  "assets/social",
 ];
 
 async function assertSource(commit) {
@@ -81,7 +91,7 @@ export async function selectFixtures(args = process.argv.slice(2)) {
   const requested = new Set(args[onlyIndex + 1].split(","));
   const fixtures = (
     await Promise.all(
-      ["text", "core", "primitive"].map(async (family) =>
+      ["text", "core", "primitive", "icon"].map(async (family) =>
         JSON.parse(
           await readFile(
             resolve(root, `catalog/${family}-fixtures.json`),
@@ -92,7 +102,21 @@ export async function selectFixtures(args = process.argv.slice(2)) {
     )
   )
     .flat()
-    .filter((entry) => requested.has(entry.slug));
+    .filter((entry) => requested.has(entry.slug))
+    .map((entry) => {
+      if (!entry.origin.source.startsWith("registry/remocn-icons/")) {
+        if (iconShowcase)
+          throw new Error("--icon-showcase requires icon fixtures");
+        return entry;
+      }
+      const fixture = { ...entry.fixture, background: "#ffffff" };
+      if (iconShowcase) {
+        fixture.width *= 8;
+        fixture.height *= 8;
+        fixture.props = { ...fixture.props, size: fixture.props.size * 8 };
+      }
+      return { ...entry, fixture };
+    });
   if (fixtures.length !== requested.size) {
     throw new Error(
       `Expected ${requested.size} fixtures, found ${fixtures.length}`,
@@ -150,30 +174,37 @@ async function frozenAssets() {
 export async function referenceFingerprint(entry) {
   await assertSource(entry.origin.commit);
   await assertDependencies();
+  await assertRemocnFonts();
+  const backdropBytes = entry.fixture.previewBackdrop
+    ? await readFile(resolve(upstream, "public", `.${entry.fixture.previewBackdrop.src}`))
+    : "";
   return createHash("sha256")
     .update(JSON.stringify(entry))
+    .update(backdropBytes)
     .update(JSON.stringify({ browserFallback }))
     .update(JSON.stringify(await frozenAssets()))
     .update(await readFile(resolve(root, "assets/fonts/Geist-Latin.woff2")))
     .update(await readFile(resolve(root, "assets/fonts/GeistMono-Latin.woff2")))
     .update(await readFile(import.meta.filename))
     .update(await readFile(resolve(root, "scripts/remocn-canvas.mjs")))
+    .update(await readFile(resolve(root, "scripts/remocn-fonts.mjs")))
+    .update(JSON.stringify(remocnFonts))
     .update(
       await readFile(resolve(root, "fixtures/remocn-latest/package-lock.json")),
     )
     .update(remotionVersion)
-    .update((await verificationBrowser()).version)
+    .update(
+      JSON.stringify({
+        version: (await verificationBrowser()).version,
+        rasterization: (await verificationBrowser()).rasterization,
+      }),
+    )
     .digest("hex");
 }
 
 export async function renderReferences(fixtures, { reuse = false } = {}) {
-  // Template CSS imports must not add font faces to another fixture's document.
-  if (
-    fixtures.length > 1 &&
-    fixtures.some((entry) =>
-      entry.origin.source.startsWith("registry/remocn-templates/"),
-    )
-  ) {
+  // Imported font faces and their weight descriptors belong to one source fixture.
+  if (fixtures.length > 1) {
     for (const entry of fixtures) {
       await renderReferences([entry], { reuse });
     }
@@ -206,6 +237,16 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
   }
   const { bundle } = require("@remotion/bundler");
   const { getCompositions, renderFrames } = require("@remotion/renderer");
+  const sourceTsconfig = JSON.parse(
+    await readFile(resolve(upstream, "tsconfig.json"), "utf8"),
+  );
+  if (sourceTsconfig.compilerOptions.jsx !== "react-jsx") {
+    throw new Error("Expected pinned Remocn automatic JSX compilation");
+  }
+  const esbuildLoader = resolve(
+    dirname(require.resolve("@remotion/bundler/package.json")),
+    "dist/esbuild-loader/index.js",
+  );
   const { tsconfigWebpackAlias } = await import(
     pathToFileURL(resolve(upstream, "scripts/tsconfig-webpack-alias.mts")).href
   );
@@ -228,6 +269,11 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
     resolve(root, "assets/fonts/GeistMono-Latin.woff2"),
     resolve(publicDirectory, "assets/fonts/GeistMono-Latin.woff2"),
   );
+  for (const font of remocnFonts) {
+    const output = resolve(publicDirectory, font.path);
+    await mkdir(dirname(output), { recursive: true });
+    await cp(resolve(root, font.path), output);
+  }
   for (const directory of frozenAssetDirectories) {
     await cp(resolve(root, directory), resolve(publicDirectory, directory), {
       recursive: true,
@@ -240,16 +286,22 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
     await mkdir(dirname(output), { recursive: true });
     await cp(resolve(root, asset.path), output);
   }
-  const replacements = assets
-    .filter((asset) => asset.sourceUrl && asset.role !== "upstream-stylesheet")
-    .map((asset) => [asset.sourceUrl, `/${asset.path}`]);
+  const replacements = [
+    ...remocnFontUrls,
+    ...assets
+      .filter(
+        (asset) => asset.sourceUrl && asset.role !== "upstream-stylesheet",
+      )
+      .map((asset) => [
+        asset.sourceUrl,
+        `${asset.path.startsWith("assets/social/") ? "/public" : ""}/${asset.path}`,
+      ]),
+  ];
   const fontCss = [
     '@font-face { font-family:"Geist";src:url("/assets/fonts/Geist-Latin.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:block; }',
     '@font-face { font-family:"Geist Mono";src:url("/assets/fonts/GeistMono-Latin.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:block; }',
   ];
-  if (pending.some((entry) => sourcePreviewNames.has(entry.slug))) {
-    fontCss.push(sourcePreviewCss);
-  }
+  fontCss.push(sourcePreviewCss);
   for (const asset of assets.filter(
     (asset) => asset.role === "local-stylesheet" && !asset.sourceImport,
   )) {
@@ -274,7 +326,7 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
   const loader = resolve(project, "frozen-assets.cjs");
   await writeFile(
     loader,
-    `const replacements=${JSON.stringify(replacements)};module.exports=function(source){for(const [url,path] of replacements)source=source.split(url).join(path);return source;};\n`,
+    `const replacements=${JSON.stringify(replacements)};module.exports=function(source){for(const [url,path] of replacements)source=source.split(url).join(path);if(this.resourcePath.includes("/@remotion/google-fonts/"))source=source.replace("return loadFonts(getInfo(), style, options);", 'return loadFonts(getInfo(), style ?? "normal", {...options, subsets: options?.subsets ?? ["latin"]});');return source;};\n`,
   );
   const imports = pending
     .map(
@@ -290,7 +342,21 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
       const guard = canvas
         ? `if(isHtmlInCanvasSupported() !== ${!browserFallback}) throw new Error("Expected Remocn ${browserFallback ? "browser fallback" : "HTML-in-canvas shader"} capability");`
         : "";
-      return `function Fixture${index}(){${guard}return <FontReady><AbsoluteFill ${sourcePreviewNames.has(entry.slug) ? 'id="hyfrme-source-root"' : ""} style={{background:${JSON.stringify(entry.fixture.background)},fontFamily:"Geist",["--font-geist-sans"]:"Geist",["--font-geist-mono"]:"Geist Mono"}}><Source${index} {...${JSON.stringify(entry.fixture.props)}} /></AbsoluteFill></FontReady>}`;
+      const center = entry.origin.source.startsWith("registry/remocn-icons/")
+        ? ',alignItems:"center",justifyContent:"center"'
+        : "";
+      const socialImages = entry.slug === "x-follow-card"
+        ? ' avatarUrl={staticFile("logo.svg")} coverUrl={staticFile("imgs/x-cover.png")}'
+        : entry.slug === "x-followers-overview"
+          ? ' avatarUrl={staticFile("logo.svg")}'
+          : entry.slug === "github-stars" && entry.fixture.props.repo === "Remocn/remocn"
+            ? ' repoAvatarUrl={staticFile("assets/social/repository-remocn.png")}'
+            : "";
+      const scene = `<Source${index} {...${JSON.stringify(entry.fixture.props)}}${socialImages} />`;
+      const content = entry.fixture.previewBackdrop
+        ? `<Backdrop fill={{...${JSON.stringify(entry.fixture.previewBackdrop)},src:staticFile(${JSON.stringify(entry.fixture.previewBackdrop.src.replace(/^\//, ""))})}} padding={0} radius={0} shadow="">${scene}</Backdrop>`
+        : scene;
+      return `function Fixture${index}(){${guard}return <FontReady><AbsoluteFill id="hyfrme-source-root" style={{background:${JSON.stringify(entry.fixture.background)},fontFamily:"Geist",["--font-geist-sans"]:"Geist",["--font-geist-mono"]:"Geist Mono"${center}}}>${content}</AbsoluteFill></FontReady>}`;
     })
     .join("\n");
   const compositions = pending
@@ -303,8 +369,9 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
   await writeFile(
     entryPoint,
     `import React,{useEffect,useState} from "react";
-import {AbsoluteFill,Composition,registerRoot,delayRender,continueRender,cancelRender,isHtmlInCanvasSupported} from "remotion";
+import {AbsoluteFill,Composition,registerRoot,delayRender,continueRender,cancelRender,isHtmlInCanvasSupported,staticFile} from "remotion";
 ${imports}
+${pending.some(entry => entry.fixture.previewBackdrop) ? `import {Backdrop} from ${JSON.stringify(resolve(upstream, "registry/remocn/backdrop/index.tsx"))};` : ""}
 function FontReady({children}){
   const [handle]=useState(()=>delayRender("Frozen source fonts"));
   const [ready,setReady]=useState(false);
@@ -325,7 +392,17 @@ registerRoot(()=> <><style>{${JSON.stringify(fontCss.join("\n"))}}</style>${comp
       module: {
         ...config.module,
         rules: [
-          ...(config.module?.rules ?? []),
+          ...(config.module?.rules ?? []).map((rule) => {
+            if (!Array.isArray(rule.use)) return rule;
+            return {
+              ...rule,
+              use: rule.use.map((entry) =>
+                entry.loader === esbuildLoader
+                  ? { ...entry, options: { ...entry.options, jsx: "automatic" } }
+                  : entry,
+              ),
+            };
+          }),
           {
             test: /\.[cm]?[jt]sx?$/,
             include: [

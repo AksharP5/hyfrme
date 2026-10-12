@@ -31,7 +31,26 @@ export async function normalizeSnapshotFrames(directory, frameCount) {
 }
 
 export async function compareAlphaFrames(reference, port, frameCount, output) {
-  const files = ["reference-alpha.framemd5", "hyperframes-alpha.framemd5"];
+  return compareFrameHashes(reference, port, frameCount, output, "alpha");
+}
+
+export async function compareRgbaFrames(reference, port, frameCount, output) {
+  return compareFrameHashes(reference, port, frameCount, output, "rgba");
+}
+
+async function compareFrameHashes(
+  reference,
+  port,
+  frameCount,
+  output,
+  channel,
+) {
+  const files = [
+    `reference-${channel}.framemd5`,
+    `hyperframes-${channel}.framemd5`,
+  ];
+  const format =
+    channel === "alpha" ? "format=rgba,alphaextract" : "format=rgba";
   await run("ffmpeg", [
     "-hide_banner",
     "-loglevel",
@@ -46,7 +65,7 @@ export async function compareAlphaFrames(reference, port, frameCount, output) {
     "-i",
     resolve(port, "*.png"),
     "-filter_complex",
-    "[0:v]format=rgba,alphaextract[a];[1:v]format=rgba,alphaextract[b]",
+    `[0:v]${format}[a];[1:v]${format}[b]`,
     "-map",
     "[a]",
     "-f",
@@ -66,7 +85,7 @@ export async function compareAlphaFrames(reference, port, frameCount, output) {
         .filter((line) => line && !line.startsWith("#"));
       if (frames.length !== frameCount) {
         throw new Error(
-          `${file}: expected ${frameCount} alpha frames, found ${frames.length}`,
+          `${file}: expected ${frameCount} ${channel} frames, found ${frames.length}`,
         );
       }
       return frames.map((line) => line.split(",").at(-1).trim());

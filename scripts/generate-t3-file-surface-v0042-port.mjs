@@ -1,5 +1,6 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
@@ -83,15 +84,19 @@ const html = `<!doctype html>
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { ${stageTheme} position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-state[hidden] { display: none !important; }
   .t3-state:not([hidden]) { display: contents; }
   .base-ui-disable-scrollbar { scrollbar-width: none; }
   .base-ui-disable-scrollbar::-webkit-scrollbar { display: none; }
-  .t3-stage [style*="t3-mobile-draft-headline"] h1 { transform: translateY(1px); }
   @font-face { font-family: "Apple Color Emoji"; src: local("Apple Color Emoji"); }
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
   <div class="dark t3-stage">
@@ -115,6 +120,7 @@ if (options.theme === 'light') {
 for (const [key, value] of Object.entries(${scriptJson(fontTheme)})) stage.style.setProperty(key, value);
 stage.style.fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
 const treeHost = stage.querySelector('[data-t3-state="files"] file-tree-container');
+treeHost.style.colorScheme = options.theme;
 const treeShadow = treeHost.attachShadow({ mode: 'open' });
 treeShadow.innerHTML = ${scriptJson(treeHtml)};
 const treeSheet = new CSSStyleSheet();
@@ -220,7 +226,7 @@ await writeFile(resolve(output, "registry-item.json"), `${JSON.stringify({
 }, null, 2)}\n`);
 await writeFile(resolve(output, "README.md"), `# T3 Code: File Surface
 
-This four-second, 1200 × 659 block reproduces T3 Code v${fixture.sourceTag.slice(1)} at 30 fps. A new Hyfrme thread opens the native right-panel chooser, highlights Files, and reveals the real workspace tree. The tree uses the captured T3 Code shadow DOM and stylesheet.
+This four-second, 1200 × 659 block reproduces T3 Code v${fixture.sourceTag.slice(1)} at 30 fps. A new Hyfrme thread opens the native right-panel chooser, highlights Files, and reveals the real workspace tree. The tree uses the captured T3 Code shadow DOM and stylesheet. Default and customized content and timing use source DOM throughout.
 
 Customize the project, draft, sidebar, chooser, tree rows, composer, and transition frames through HyperFrames variables. Match project and thread values with adjacent T3 Code blocks for continuity. Source: https://github.com/pingdotgg/t3code/tree/${fixture.sourceCommit}. The installed files include T3 Code's MIT license and third-party icon notice, plus @pierre/trees 1.0.0-beta.4's Apache-2.0 license and NOTICE for the captured tree markup and CSS. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.
 `);

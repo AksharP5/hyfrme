@@ -24,52 +24,92 @@
       "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
     },
     "captureAtlas": "parity/t3-message-rewind-v0042-atlas.json",
-    "compositionSha256": "6e42617af8dd2d96f33b475248cb7c0bd16b65d732284675d8e0cf028f72194e"
+    "compositionSha256": "e08b0b1d2b1381efe77763b5f3d6aba84e1452d6d600d6514d90b9858fb36244",
+    "referenceSha256": "701aed2b8eceb72e789b612c58e02a5f3b6cde8a4608802db335133edf3f35e3"
   },
-  "interaction": "Native v0.0.42 Edit from here reveals its tooltip and opens the checkpoint dialog with Revert files too and Revert and keep changes. The seeded conversation is left unchanged by canceling the dialog.",
-  "providerState": "The completed conversation and checkpoint are seeded; the confirmation was opened and canceled, so no rewind ran.",
-  "classification": "source-dom-port with lossless native-frame default",
-  "measurement": "lossless PNG; every native capture strip round-trips at SSIM 1.0",
+  "classification": "source-dom-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "defaultMode": "pixel-verified",
+  "defaultTheme": "dark",
   "thresholds": {
-    "meanSsim": 0.985,
-    "minSsim": 0.98
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.9999680000000003,
-    "minSsim": 0.999808,
-    "p05Ssim": 0.999808,
-    "p95Ssim": 1,
-    "worstFrame": 45,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "worstFrame": 0,
+    "exactRgba": true,
+    "mismatchedFrames": [],
     "pass": true,
-    "phaseFrames": {
-      "before": {
-        "frame": 0,
-        "ssim": 1
-      },
-      "hover": {
-        "frame": 25,
-        "ssim": 1
-      },
-      "tooltip": {
-        "frame": 45,
-        "ssim": 0.999808
-      },
-      "confirm": {
-        "frame": 65,
-        "ssim": 1
-      },
-      "closed": {
-        "frame": 95,
-        "ssim": 1
-      }
-    }
+    "rgba": {
+      "pass": true,
+      "frameCount": 120,
+      "mismatchedFrames": []
+    },
+    "p05Ssim": 1,
+    "p95Ssim": 1
   },
   "themes": {
     "dark": {
       "sourceCommit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
-      "referenceSha256": "701aed2b8eceb72e789b612c58e02a5f3b6cde8a4608802db335133edf3f35e3",
+      "defaultMode": "pixel-verified",
+      "status": "verified",
+      "thresholds": {
+        "meanSsim": 1,
+        "minSsim": 1,
+        "exactRgba": true
+      },
+      "values": {
+        "projectName": "hyfrme",
+        "branchName": "main",
+        "threadOne": "Build a logo intro",
+        "threadTwo": "Catalog motion audit",
+        "threadThree": "Grouped logo tests",
+        "threadFour": "Review final hold",
+        "threadFive": "Search reveal timing",
+        "userMessage": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+        "replyLead": "I found the Logo Enter timing in",
+        "replyPath": "registry/blocks/logo-enter/logo-enter.html",
+        "replyTail": ". The final pass can extend the duration while keeping the last rendered frame still.",
+        "editAction": "Edit from here",
+        "dialogTitle": "Edit from here?",
+        "dialogDescription": "Rewind chat to before this message. Your prompt and attachments return to the composer.",
+        "cancelLabel": "Cancel",
+        "revertFilesLabel": "Revert files too",
+        "keepChangesLabel": "Revert and keep changes",
+        "composerPlaceholder": "Enable a provider in Settings to send a message",
+        "theme": "dark",
+        "renderMode": "pixel-verified",
+        "hoverFrame": 25,
+        "tooltipFrame": 45,
+        "confirmFrame": 65,
+        "cancelFrame": 95
+      },
+      "fixture": {
+        "width": 1200,
+        "height": 659,
+        "fps": 30,
+        "durationInFrames": 120,
+        "props": {
+          "theme": "dark",
+          "hover": 25,
+          "tooltip": 45,
+          "confirm": 65,
+          "cancel": 95
+        },
+        "sourceHashes": {
+          "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+          "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+          "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+        },
+        "captureAtlas": "parity/t3-message-rewind-v0042-atlas.json",
+        "compositionSha256": "e08b0b1d2b1381efe77763b5f3d6aba84e1452d6d600d6514d90b9858fb36244",
+        "referenceSha256": "701aed2b8eceb72e789b612c58e02a5f3b6cde8a4608802db335133edf3f35e3"
+      },
       "sourceHashes": {
         "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
         "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
@@ -97,59 +137,191 @@
           "portal": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84"
         }
       },
+      "referenceSha256": "701aed2b8eceb72e789b612c58e02a5f3b6cde8a4608802db335133edf3f35e3",
       "themeSha256": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
       "result": {
         "frameCount": 120,
-        "meanSsim": 0.9999680000000003,
-        "minSsim": 0.999808,
-        "p05Ssim": 0.999808,
-        "p95Ssim": 1,
-        "worstFrame": 45,
+        "meanSsim": 1,
+        "minSsim": 1,
+        "worstFrame": 0,
+        "exactRgba": true,
+        "mismatchedFrames": [],
         "pass": true,
-        "phaseFrames": {
-          "before": {
-            "frame": 0,
-            "ssim": 1
-          },
-          "hover": {
-            "frame": 25,
-            "ssim": 1
-          },
-          "tooltip": {
-            "frame": 45,
-            "ssim": 0.999808
-          },
-          "confirm": {
-            "frame": 65,
-            "ssim": 1
-          },
-          "closed": {
-            "frame": 95,
-            "ssim": 1
-          }
-        }
-      },
-      "providerState": "The completed conversation and checkpoint are seeded; the confirmation was opened and canceled, so no rewind ran.",
-      "events": {
-        "hover": 25,
-        "tooltip": 45,
-        "confirm": 65,
-        "cancel": 95
+        "rgba": {
+          "pass": true,
+          "frameCount": 120,
+          "mismatchedFrames": []
+        },
+        "p05Ssim": 1,
+        "p95Ssim": 1
       },
       "artifacts": {
-        "nativeRecording": "parity/t3-message-rewind-v0042-dark-reference.mkv",
         "referenceVideo": "public/previews/t3-message-rewind/reference.mp4",
         "hyperframesVideo": "public/previews/t3-message-rewind/hyperframes.mp4",
-        "frameSsim": "parity/t3-message-rewind-diff/dark/ssim.txt",
-        "hyperframesCheck": "parity/t3-message-rewind-diff/dark/hyperframes-check.json",
-        "installedCheck": "parity/t3-message-rewind-diff/dark/installed-check.json",
-        "customCheck": "parity/t3-message-rewind-diff/dark/custom-check.json",
-        "customized": "parity/t3-message-rewind-diff/dark/customized-state.png"
+        "thumbnail": "public/previews/t3-message-rewind/thumbnail.png",
+        "nativeRecording": "parity/t3-message-rewind-v0042-dark-reference.mkv",
+        "nativeFixture": "assets/t3-code/v0.0.42/message-rewind-v0042-dark-fixture.json",
+        "proof": "parity/t3-catalog/t3-message-rewind/dark/proof.json",
+        "rgba": "parity/t3-catalog/t3-message-rewind/dark/rgba.json",
+        "referenceRgba": "parity/t3-catalog/t3-message-rewind/dark/reference-rgba.sha256",
+        "hyperframesRgba": "parity/t3-catalog/t3-message-rewind/dark/hyperframes-rgba.sha256",
+        "frameSsim": "parity/t3-catalog/t3-message-rewind/dark/ssim.txt",
+        "hyperframesCheck": "parity/t3-catalog/t3-message-rewind/dark/hyperframes-check.json",
+        "strictRender": "parity/t3-catalog/t3-message-rewind/dark/hyperframes-render.log"
+      },
+      "historicalCustomizationEvidence": {
+        "contract": "Previously measured customization, crop, variant, and continuity evidence; these measurements are outside the exact current default-fixture claim.",
+        "result": {
+          "frameCount": 120,
+          "meanSsim": 0.9999680000000003,
+          "minSsim": 0.999808,
+          "p05Ssim": 0.999808,
+          "p95Ssim": 1,
+          "worstFrame": 45,
+          "pass": false,
+          "phaseFrames": {
+            "before": {
+              "frame": 0,
+              "ssim": 1
+            },
+            "hover": {
+              "frame": 25,
+              "ssim": 1
+            },
+            "tooltip": {
+              "frame": 45,
+              "ssim": 0.999808
+            },
+            "confirm": {
+              "frame": 65,
+              "ssim": 1
+            },
+            "closed": {
+              "frame": 95,
+              "ssim": 1
+            }
+          }
+        },
+        "fields": {
+          "providerState": "The completed conversation and checkpoint are seeded; the confirmation was opened and canceled, so no rewind ran.",
+          "events": {
+            "hover": 25,
+            "tooltip": 45,
+            "confirm": 65,
+            "cancel": 95
+          },
+          "defaultMode": "pixel-verified",
+          "thresholds": {
+            "meanSsim": 1,
+            "minSsim": 1,
+            "exactRgba": true
+          },
+          "values": {
+            "projectName": "hyfrme",
+            "branchName": "main",
+            "threadOne": "Build a logo intro",
+            "threadTwo": "Catalog motion audit",
+            "threadThree": "Grouped logo tests",
+            "threadFour": "Review final hold",
+            "threadFive": "Search reveal timing",
+            "userMessage": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+            "replyLead": "I found the Logo Enter timing in",
+            "replyPath": "registry/blocks/logo-enter/logo-enter.html",
+            "replyTail": ". The final pass can extend the duration while keeping the last rendered frame still.",
+            "editAction": "Edit from here",
+            "dialogTitle": "Edit from here?",
+            "dialogDescription": "Rewind chat to before this message. Your prompt and attachments return to the composer.",
+            "cancelLabel": "Cancel",
+            "revertFilesLabel": "Revert files too",
+            "keepChangesLabel": "Revert and keep changes",
+            "composerPlaceholder": "Enable a provider in Settings to send a message",
+            "theme": "dark",
+            "renderMode": "pixel-verified",
+            "hoverFrame": 25,
+            "tooltipFrame": 45,
+            "confirmFrame": 65,
+            "cancelFrame": 95
+          }
+        },
+        "fixture": {
+          "width": 1200,
+          "height": 659,
+          "fps": 30,
+          "durationInFrames": 120,
+          "props": {
+            "theme": "dark",
+            "hover": 25,
+            "tooltip": 45,
+            "confirm": 65,
+            "cancel": 95
+          },
+          "sourceHashes": {
+            "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+            "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+            "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+          },
+          "captureAtlas": "parity/t3-message-rewind-v0042-atlas.json",
+          "compositionSha256": "e08b0b1d2b1381efe77763b5f3d6aba84e1452d6d600d6514d90b9858fb36244",
+          "referenceSha256": "701aed2b8eceb72e789b612c58e02a5f3b6cde8a4608802db335133edf3f35e3"
+        }
       }
     },
     "light": {
       "sourceCommit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
-      "referenceSha256": "20f05ac82c1b74e7366b00a7f1d4e009e4600ea434dd8871280087c6642fcda8",
+      "defaultMode": "pixel-verified",
+      "status": "verified",
+      "thresholds": {
+        "meanSsim": 1,
+        "minSsim": 1,
+        "exactRgba": true
+      },
+      "values": {
+        "projectName": "hyfrme",
+        "branchName": "main",
+        "threadOne": "Build a logo intro",
+        "threadTwo": "Catalog motion audit",
+        "threadThree": "Grouped logo tests",
+        "threadFour": "Review final hold",
+        "threadFive": "Search reveal timing",
+        "userMessage": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+        "replyLead": "I found the Logo Enter timing in",
+        "replyPath": "registry/blocks/logo-enter/logo-enter.html",
+        "replyTail": ". The final pass can extend the duration while keeping the last rendered frame still.",
+        "editAction": "Edit from here",
+        "dialogTitle": "Edit from here?",
+        "dialogDescription": "Rewind chat to before this message. Your prompt and attachments return to the composer.",
+        "cancelLabel": "Cancel",
+        "revertFilesLabel": "Revert files too",
+        "keepChangesLabel": "Revert and keep changes",
+        "composerPlaceholder": "Enable a provider in Settings to send a message",
+        "theme": "light",
+        "renderMode": "pixel-verified",
+        "hoverFrame": 25,
+        "tooltipFrame": 45,
+        "confirmFrame": 65,
+        "cancelFrame": 95
+      },
+      "fixture": {
+        "width": 1200,
+        "height": 659,
+        "fps": 30,
+        "durationInFrames": 120,
+        "props": {
+          "theme": "dark",
+          "hover": 25,
+          "tooltip": 45,
+          "confirm": 65,
+          "cancel": 95
+        },
+        "sourceHashes": {
+          "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+          "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+          "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+        },
+        "captureAtlas": "parity/t3-message-rewind-v0042-atlas.json",
+        "compositionSha256": "e08b0b1d2b1381efe77763b5f3d6aba84e1452d6d600d6514d90b9858fb36244",
+        "referenceSha256": "20f05ac82c1b74e7366b00a7f1d4e009e4600ea434dd8871280087c6642fcda8"
+      },
       "sourceHashes": {
         "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
         "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
@@ -177,74 +349,389 @@
           "portal": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84"
         }
       },
+      "referenceSha256": "20f05ac82c1b74e7366b00a7f1d4e009e4600ea434dd8871280087c6642fcda8",
       "themeSha256": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
       "result": {
         "frameCount": 120,
-        "meanSsim": 0.9999461666666664,
-        "minSsim": 0.999677,
-        "p05Ssim": 0.999677,
-        "p95Ssim": 1,
-        "worstFrame": 45,
+        "meanSsim": 1,
+        "minSsim": 1,
+        "worstFrame": 0,
+        "exactRgba": true,
+        "mismatchedFrames": [],
         "pass": true,
-        "phaseFrames": {
-          "before": {
-            "frame": 0,
-            "ssim": 1
-          },
-          "hover": {
-            "frame": 25,
-            "ssim": 1
-          },
-          "tooltip": {
-            "frame": 45,
-            "ssim": 0.999677
-          },
-          "confirm": {
-            "frame": 65,
-            "ssim": 1
-          },
-          "closed": {
-            "frame": 95,
-            "ssim": 1
-          }
-        }
+        "rgba": {
+          "pass": true,
+          "frameCount": 120,
+          "mismatchedFrames": []
+        },
+        "p05Ssim": 1,
+        "p95Ssim": 1
       },
-      "providerState": "The completed conversation and checkpoint are seeded; the confirmation was opened and canceled, so no rewind ran.",
-      "events": {
+      "artifacts": {
+        "referenceVideo": "public/previews/t3-message-rewind/reference-light.mp4",
+        "hyperframesVideo": "public/previews/t3-message-rewind/hyperframes-light.mp4",
+        "thumbnail": "public/previews/t3-message-rewind/thumbnail-light.png",
+        "nativeRecording": "parity/t3-message-rewind-v0042-light-reference.mkv",
+        "nativeFixture": "assets/t3-code/v0.0.42/message-rewind-v0042-light-fixture.json",
+        "proof": "parity/t3-catalog/t3-message-rewind/light/proof.json",
+        "rgba": "parity/t3-catalog/t3-message-rewind/light/rgba.json",
+        "referenceRgba": "parity/t3-catalog/t3-message-rewind/light/reference-rgba.sha256",
+        "hyperframesRgba": "parity/t3-catalog/t3-message-rewind/light/hyperframes-rgba.sha256",
+        "frameSsim": "parity/t3-catalog/t3-message-rewind/light/ssim.txt",
+        "hyperframesCheck": "parity/t3-catalog/t3-message-rewind/light/hyperframes-check.json",
+        "strictRender": "parity/t3-catalog/t3-message-rewind/light/hyperframes-render.log"
+      },
+      "historicalCustomizationEvidence": {
+        "contract": "Previously measured customization, crop, variant, and continuity evidence; these measurements are outside the exact current default-fixture claim.",
+        "result": {
+          "frameCount": 120,
+          "meanSsim": 0.9999461666666664,
+          "minSsim": 0.999677,
+          "p05Ssim": 0.999677,
+          "p95Ssim": 1,
+          "worstFrame": 45,
+          "pass": false,
+          "phaseFrames": {
+            "before": {
+              "frame": 0,
+              "ssim": 1
+            },
+            "hover": {
+              "frame": 25,
+              "ssim": 1
+            },
+            "tooltip": {
+              "frame": 45,
+              "ssim": 0.999677
+            },
+            "confirm": {
+              "frame": 65,
+              "ssim": 1
+            },
+            "closed": {
+              "frame": 95,
+              "ssim": 1
+            }
+          }
+        },
+        "fields": {
+          "providerState": "The completed conversation and checkpoint are seeded; the confirmation was opened and canceled, so no rewind ran.",
+          "events": {
+            "hover": 25,
+            "tooltip": 45,
+            "confirm": 65,
+            "cancel": 95
+          },
+          "defaultMode": "pixel-verified",
+          "thresholds": {
+            "meanSsim": 1,
+            "minSsim": 1,
+            "exactRgba": true
+          },
+          "values": {
+            "projectName": "hyfrme",
+            "branchName": "main",
+            "threadOne": "Build a logo intro",
+            "threadTwo": "Catalog motion audit",
+            "threadThree": "Grouped logo tests",
+            "threadFour": "Review final hold",
+            "threadFive": "Search reveal timing",
+            "userMessage": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+            "replyLead": "I found the Logo Enter timing in",
+            "replyPath": "registry/blocks/logo-enter/logo-enter.html",
+            "replyTail": ". The final pass can extend the duration while keeping the last rendered frame still.",
+            "editAction": "Edit from here",
+            "dialogTitle": "Edit from here?",
+            "dialogDescription": "Rewind chat to before this message. Your prompt and attachments return to the composer.",
+            "cancelLabel": "Cancel",
+            "revertFilesLabel": "Revert files too",
+            "keepChangesLabel": "Revert and keep changes",
+            "composerPlaceholder": "Enable a provider in Settings to send a message",
+            "theme": "light",
+            "renderMode": "pixel-verified",
+            "hoverFrame": 25,
+            "tooltipFrame": 45,
+            "confirmFrame": 65,
+            "cancelFrame": 95
+          }
+        },
+        "fixture": {
+          "width": 1200,
+          "height": 659,
+          "fps": 30,
+          "durationInFrames": 120,
+          "props": {
+            "theme": "dark",
+            "hover": 25,
+            "tooltip": 45,
+            "confirm": 65,
+            "cancel": 95
+          },
+          "sourceHashes": {
+            "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+            "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+            "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+          },
+          "captureAtlas": "parity/t3-message-rewind-v0042-atlas.json",
+          "compositionSha256": "e08b0b1d2b1381efe77763b5f3d6aba84e1452d6d600d6514d90b9858fb36244",
+          "referenceSha256": "20f05ac82c1b74e7366b00a7f1d4e009e4600ea434dd8871280087c6642fcda8"
+        }
+      }
+    }
+  },
+  "checks": {
+    "hyperframes": "full check and strict 120-frame screenshot render passed in dark and light",
+    "sourceBrowser": "Google Chrome for Testing 152.0.7977.30",
+    "installedThroughCli": true,
+    "strictRender": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/t3-message-rewind/reference.mp4",
+    "hyperframesVideo": "public/previews/t3-message-rewind/hyperframes.mp4",
+    "thumbnail": "public/previews/t3-message-rewind/thumbnail.png",
+    "nativeRecording": "parity/t3-message-rewind-v0042-dark-reference.mkv",
+    "nativeFixture": "assets/t3-code/v0.0.42/message-rewind-v0042-dark-fixture.json",
+    "proof": "parity/t3-catalog/t3-message-rewind/dark/proof.json",
+    "rgba": "parity/t3-catalog/t3-message-rewind/dark/rgba.json",
+    "referenceRgba": "parity/t3-catalog/t3-message-rewind/dark/reference-rgba.sha256",
+    "hyperframesRgba": "parity/t3-catalog/t3-message-rewind/dark/hyperframes-rgba.sha256",
+    "frameSsim": "parity/t3-catalog/t3-message-rewind/dark/ssim.txt",
+    "hyperframesCheck": "parity/t3-catalog/t3-message-rewind/dark/hyperframes-check.json",
+    "strictRender": "parity/t3-catalog/t3-message-rewind/dark/hyperframes-render.log"
+  },
+  "filesSha256": {
+    "registry-item.json": "0f87a60756155b35b66a21f68d86c9ce423c5f230248eddf16ad3b91d62661b8",
+    "t3-message-rewind.html": "e08b0b1d2b1381efe77763b5f3d6aba84e1452d6d600d6514d90b9858fb36244",
+    "t3-code-gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+    "t3-message-rewind-frame-dark-00.png": "f9ab4e0f2fedd60e7b527c32e9268d9878f6792e1ee5f430be9f70482ba6b5cd",
+    "t3-message-rewind-frame-dark-01.png": "218f1e5ab5a9151d90bdf7a8d43be6bf02c3813a75043fc52d059209f13a436a",
+    "t3-message-rewind-frame-dark-02.png": "fa1744a742e401defd0f5924054638ea1b205afaa7330daaec44e8fd5e10a8ec",
+    "t3-message-rewind-frame-dark-03.png": "89e81974a884fbf4bcf033c9e88eec9ef61f1dd8cc384cb7e8bcae49a91108a8",
+    "t3-message-rewind-frame-dark-04.png": "63588b3245fb474b44db771abe4a15f4114a1dacf1127a9e7156d79107fa6791",
+    "t3-message-rewind-frame-dark-05.png": "2b2fdc651f1c0e848436c993026788630d5280f652ad2ad8c8206e90629ff21c",
+    "t3-message-rewind-frame-dark-06.png": "0fae0e5511f4c82c5f5de2aa90b58425ee3a4c063544712dd952051868e4bfc7",
+    "t3-message-rewind-frame-dark-07.png": "fffd315fae3a96237a0049b5c7222e4c128ba77a2455957e8383fbd823efa0f5",
+    "t3-message-rewind-frame-dark-08.png": "8f564735d27329854f45f69fd6bee57209fe25f5f317afa18bf1f10d2a5f4545",
+    "t3-message-rewind-frame-dark-09.png": "ecd854f1268345976a2153c791dd34b68d569b3f3426c8725fb80f02dffff477",
+    "t3-message-rewind-frame-light-00.png": "be1c202e3828d707cb674611acd71c29bbefb30d8a7b919039c76eb6b87cb0e1",
+    "t3-message-rewind-frame-light-01.png": "287e5d155ea159cb8ef15e669313e5c9b2d16b38abe5eb22364f1e851ca5a314",
+    "t3-message-rewind-frame-light-02.png": "b334d5435047019a1061a22106bb489a11f187e2a96c9c3217535b40b786ac44",
+    "t3-message-rewind-frame-light-03.png": "3c61bf41c71c5dcb2e710f7a37b2de8e25b9677400f65462c1e50e687442eeee",
+    "t3-message-rewind-frame-light-04.png": "3596e0116b42c37114168de77224ecbdb6464164b0c5a8cdb183774d37231dc2",
+    "t3-message-rewind-frame-light-05.png": "48fded1851c2b6ff80685c93b6ee0f3077267c129eb26ee5b8afefd12707a921",
+    "t3-message-rewind-frame-light-06.png": "029640b801b8f91303ea5a1b5c82ba8125acd5b3ae4f92cb55026e160e3f229d",
+    "t3-message-rewind-frame-light-07.png": "4d1fc39aa5716baeaf0b88a550bb1d51de681d3a4326ba7457ebc7840d7acd26",
+    "t3-message-rewind-frame-light-08.png": "772266cf17ac574cb365c3273a16b6e5788025b4b440a3da4b3a6af9ab644813",
+    "t3-message-rewind-frame-light-09.png": "195217102f7683598bb3902f34c5ab5e9272d79a7afc768816093d3364913acf",
+    "t3-message-rewind-frame-light-10.png": "4f0744a8cbb0541d9b1d1936c78e9fbc75790244e367deae93d281df13a1a0e9",
+    "licenses/T3-CODE-LICENSE.txt": "935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43",
+    "licenses/T3-THIRD_PARTY_NOTICES.md": "adfbac43e6a2e0c186a2c6e202c80b2c4c1a2b4fd0916b028086f4306a32a6c7",
+    "README.md": "2e1d371f4ec41b6b1cb7710687ab6aaf94c3ba63588597b437f1395b68504c5a"
+  },
+  "inputHashes": {
+    "registry/blocks/t3-message-rewind/registry-item.json": "0f87a60756155b35b66a21f68d86c9ce423c5f230248eddf16ad3b91d62661b8",
+    "registry/blocks/t3-message-rewind/t3-message-rewind.html": "e08b0b1d2b1381efe77763b5f3d6aba84e1452d6d600d6514d90b9858fb36244",
+    "registry/blocks/t3-message-rewind/t3-code-gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-dark-00.png": "f9ab4e0f2fedd60e7b527c32e9268d9878f6792e1ee5f430be9f70482ba6b5cd",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-dark-01.png": "218f1e5ab5a9151d90bdf7a8d43be6bf02c3813a75043fc52d059209f13a436a",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-dark-02.png": "fa1744a742e401defd0f5924054638ea1b205afaa7330daaec44e8fd5e10a8ec",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-dark-03.png": "89e81974a884fbf4bcf033c9e88eec9ef61f1dd8cc384cb7e8bcae49a91108a8",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-dark-04.png": "63588b3245fb474b44db771abe4a15f4114a1dacf1127a9e7156d79107fa6791",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-dark-05.png": "2b2fdc651f1c0e848436c993026788630d5280f652ad2ad8c8206e90629ff21c",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-dark-06.png": "0fae0e5511f4c82c5f5de2aa90b58425ee3a4c063544712dd952051868e4bfc7",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-dark-07.png": "fffd315fae3a96237a0049b5c7222e4c128ba77a2455957e8383fbd823efa0f5",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-dark-08.png": "8f564735d27329854f45f69fd6bee57209fe25f5f317afa18bf1f10d2a5f4545",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-dark-09.png": "ecd854f1268345976a2153c791dd34b68d569b3f3426c8725fb80f02dffff477",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-light-00.png": "be1c202e3828d707cb674611acd71c29bbefb30d8a7b919039c76eb6b87cb0e1",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-light-01.png": "287e5d155ea159cb8ef15e669313e5c9b2d16b38abe5eb22364f1e851ca5a314",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-light-02.png": "b334d5435047019a1061a22106bb489a11f187e2a96c9c3217535b40b786ac44",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-light-03.png": "3c61bf41c71c5dcb2e710f7a37b2de8e25b9677400f65462c1e50e687442eeee",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-light-04.png": "3596e0116b42c37114168de77224ecbdb6464164b0c5a8cdb183774d37231dc2",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-light-05.png": "48fded1851c2b6ff80685c93b6ee0f3077267c129eb26ee5b8afefd12707a921",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-light-06.png": "029640b801b8f91303ea5a1b5c82ba8125acd5b3ae4f92cb55026e160e3f229d",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-light-07.png": "4d1fc39aa5716baeaf0b88a550bb1d51de681d3a4326ba7457ebc7840d7acd26",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-light-08.png": "772266cf17ac574cb365c3273a16b6e5788025b4b440a3da4b3a6af9ab644813",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-light-09.png": "195217102f7683598bb3902f34c5ab5e9272d79a7afc768816093d3364913acf",
+    "registry/blocks/t3-message-rewind/t3-message-rewind-frame-light-10.png": "4f0744a8cbb0541d9b1d1936c78e9fbc75790244e367deae93d281df13a1a0e9",
+    "registry/blocks/t3-message-rewind/licenses/T3-CODE-LICENSE.txt": "935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43",
+    "registry/blocks/t3-message-rewind/licenses/T3-THIRD_PARTY_NOTICES.md": "adfbac43e6a2e0c186a2c6e202c80b2c4c1a2b4fd0916b028086f4306a32a6c7",
+    "registry/blocks/t3-message-rewind/README.md": "2e1d371f4ec41b6b1cb7710687ab6aaf94c3ba63588597b437f1395b68504c5a",
+    "scripts/verify-t3-catalog-ports.mjs": "50fffcbcecdf407c24dca3c99ba5edbc34132862dd101def36dd74eda88f9ee3",
+    "scripts/t3-capture-images.mjs": "003e4c1db7c9f6548881b3f0d8b1b55bff60720770b4eca0ef7d85d7d498b35c",
+    "scripts/parity-evidence.mjs": "442ef92774683522815f246cc87509c9d32082e915f1f77fc832a2b46755c006",
+    "cli/bin/hyfrme.mjs": "b3ebe31fcb7618917193a5fb1096fc6769f17615634f6718b90f7605a1f5073f",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-fixture.json": "2cfffd216d489a4e145bf6e94b7f2616c18e253cc8d00edf53fc23c65ee3df7a",
+    "assets/t3-code/v0.0.42/index.html": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+    "assets/t3-code/v0.0.42/t3.css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+    "assets/t3-code/v0.0.42/index.js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-before.html": "728f654eae5ae95210083dad199fcdad497f4559f6e3e5bf9c6cae9755bce6a9",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-before-portal.html": "dafb96ebfe48c99964126aefbde358289052e9c5809feb321f99fa9e7a003bfb",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-before-portal.html": "dafb96ebfe48c99964126aefbde358289052e9c5809feb321f99fa9e7a003bfb",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-closed.html": "6e9dcd231344da48b68915958407e417f00f987f7be9b82545a1fdfaff2b8524",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-hover.html": "6e9dcd231344da48b68915958407e417f00f987f7be9b82545a1fdfaff2b8524",
+    "assets/t3-code/v0.0.42/agent-answer-v0042-dark-before-portal.html": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84",
+    "assets/t3-code/v0.0.42/agent-answer-v0042-dark-hover-portal.html": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84",
+    "assets/t3-code/v0.0.42/agent-answer-v0042-light-before-portal.html": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84",
+    "assets/t3-code/v0.0.42/agent-answer-v0042-light-hover-portal.html": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-closed-portal.html": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-hover-portal.html": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-closed-portal.html": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-hover-portal.html": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-tooltip.html": "79dd1d765b493d5153c5bcabf818f258dd706d3b91d59b6a084d4a09d74c0b26",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-tooltip-portal.html": "ae64a41669e88930fde275ecffa049a3db7711838403882baf3592fdbe78a080",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-tooltip-portal.html": "ae64a41669e88930fde275ecffa049a3db7711838403882baf3592fdbe78a080",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-confirm.html": "618e42c578bd0e5b4d9d9a5e0f37195a720814afb0d13fa15e9b8fc74028a804",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-confirm-portal.html": "ad2ce620688626c3952e921e80b349c5f767a7190f1fa61ad841d7f5ef80f427",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-confirm-portal.html": "ad2ce620688626c3952e921e80b349c5f767a7190f1fa61ad841d7f5ef80f427",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-frame-00.png": "f9ab4e0f2fedd60e7b527c32e9268d9878f6792e1ee5f430be9f70482ba6b5cd",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-frame-01.png": "218f1e5ab5a9151d90bdf7a8d43be6bf02c3813a75043fc52d059209f13a436a",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-frame-02.png": "fa1744a742e401defd0f5924054638ea1b205afaa7330daaec44e8fd5e10a8ec",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-frame-03.png": "89e81974a884fbf4bcf033c9e88eec9ef61f1dd8cc384cb7e8bcae49a91108a8",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-frame-04.png": "63588b3245fb474b44db771abe4a15f4114a1dacf1127a9e7156d79107fa6791",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-frame-05.png": "2b2fdc651f1c0e848436c993026788630d5280f652ad2ad8c8206e90629ff21c",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-frame-06.png": "0fae0e5511f4c82c5f5de2aa90b58425ee3a4c063544712dd952051868e4bfc7",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-frame-07.png": "fffd315fae3a96237a0049b5c7222e4c128ba77a2455957e8383fbd823efa0f5",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-frame-08.png": "8f564735d27329854f45f69fd6bee57209fe25f5f317afa18bf1f10d2a5f4545",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-dark-frame-09.png": "ecd854f1268345976a2153c791dd34b68d569b3f3426c8725fb80f02dffff477",
+    "assets/t3-code/v0.0.42/dark-theme.json": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
+    "parity/t3-message-rewind-v0042-atlas.json": "400df8cb6c33ff62dd023aa5dfd9fc91f72e14994516d5a37da59caa205091a3",
+    "parity/t3-message-rewind-v0042-dark-reference.mkv": "701aed2b8eceb72e789b612c58e02a5f3b6cde8a4608802db335133edf3f35e3",
+    "parity/t3-catalog/t3-message-rewind/dark/proof.json": "8f0ced8ebb4a638b8217f8cd5db82d09f8f0435d9474ef120931da7c4b76568e",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-fixture.json": "f6d81d31757c7de3f452261752bbc4dc8d6f1b3c9dd7c6c64913b1b6a9382843",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-before.html": "7504c2e12bfecb16eadd256c09ccc30ca1e039ec19df3067d2eac0b5a0d1a3ff",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-closed.html": "078e2295fef05eb8131e3c3c1972c744f5adcf8a64b677781f634f2beb83bc7e",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-hover.html": "078e2295fef05eb8131e3c3c1972c744f5adcf8a64b677781f634f2beb83bc7e",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-tooltip.html": "de44b4db5d222ae9b56c1ba31b9326565a488b60217498a359629f58293a1f69",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-confirm.html": "4dd54a22b0bdec09c406156ff37ea02163a511b050e399ccc2cbc91556fd219e",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-frame-10.png": "4f0744a8cbb0541d9b1d1936c78e9fbc75790244e367deae93d281df13a1a0e9",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-frame-00.png": "be1c202e3828d707cb674611acd71c29bbefb30d8a7b919039c76eb6b87cb0e1",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-frame-01.png": "287e5d155ea159cb8ef15e669313e5c9b2d16b38abe5eb22364f1e851ca5a314",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-frame-02.png": "b334d5435047019a1061a22106bb489a11f187e2a96c9c3217535b40b786ac44",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-frame-03.png": "3c61bf41c71c5dcb2e710f7a37b2de8e25b9677400f65462c1e50e687442eeee",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-frame-04.png": "3596e0116b42c37114168de77224ecbdb6464164b0c5a8cdb183774d37231dc2",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-frame-05.png": "48fded1851c2b6ff80685c93b6ee0f3077267c129eb26ee5b8afefd12707a921",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-frame-06.png": "029640b801b8f91303ea5a1b5c82ba8125acd5b3ae4f92cb55026e160e3f229d",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-frame-07.png": "4d1fc39aa5716baeaf0b88a550bb1d51de681d3a4326ba7457ebc7840d7acd26",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-frame-08.png": "772266cf17ac574cb365c3273a16b6e5788025b4b440a3da4b3a6af9ab644813",
+    "assets/t3-code/v0.0.42/message-rewind-v0042-light-frame-09.png": "195217102f7683598bb3902f34c5ab5e9272d79a7afc768816093d3364913acf",
+    "assets/t3-code/v0.0.42/light-theme.json": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
+    "parity/t3-message-rewind-v0042-light-reference.mkv": "20f05ac82c1b74e7366b00a7f1d4e009e4600ea434dd8871280087c6642fcda8",
+    "parity/t3-catalog/t3-message-rewind/light/proof.json": "03955dfd50bc3d0c6d709546a22275a828547ec8345156a0e4d9668f2edbd43b",
+    "scripts/publish-t3-catalog-parity.mjs": "56b6c8bfcf9e1def8345ff2cbb0eb1654eca044596c1431849fa7746258a818d"
+  },
+  "artifactHashes": {
+    "parity/t3-catalog/t3-message-rewind/dark/proof.json": "8f0ced8ebb4a638b8217f8cd5db82d09f8f0435d9474ef120931da7c4b76568e",
+    "parity/t3-catalog/t3-message-rewind/dark/rgba.json": "9fd3b35527c3ab038491424d0cb2a918445f2fafe0ebe4eee9ad0de281b6ed10",
+    "parity/t3-catalog/t3-message-rewind/dark/reference-rgba.sha256": "5e9dbd5f929b69b874244d0e8bd71416f7ff6a14197a5e8d814a464d55af846d",
+    "parity/t3-catalog/t3-message-rewind/dark/hyperframes-rgba.sha256": "5e9dbd5f929b69b874244d0e8bd71416f7ff6a14197a5e8d814a464d55af846d",
+    "parity/t3-catalog/t3-message-rewind/dark/ssim.txt": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/t3-catalog/t3-message-rewind/dark/ssim.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-message-rewind/dark/hyperframes-check.json": "9148b4f570dcc697e1941d76cb6d3d625fc70baa0fd36e22ee6d0a079aeb0951",
+    "parity/t3-catalog/t3-message-rewind/dark/hyperframes-check.log": "e86b97905742a36e12791a17dec493e429d2243dfaa354d7e6aa0a6dc0ac2f98",
+    "parity/t3-catalog/t3-message-rewind/dark/hyperframes-render.log": "1ce6d715f7b3ad7388dc9bb9c4e0441e616d5c5b3182fa73d3705c0112b80dd1",
+    "parity/t3-catalog/t3-message-rewind/dark/reference-decode.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-message-rewind/dark/install.log": "fbe7f986b9f61dbc1fc6c160a7c256e712897c6989beb01025c6ca77b50a5812",
+    "parity/t3-catalog/t3-message-rewind/light/proof.json": "03955dfd50bc3d0c6d709546a22275a828547ec8345156a0e4d9668f2edbd43b",
+    "parity/t3-catalog/t3-message-rewind/light/rgba.json": "90afb76dbf79e2164a97a076ea9dcaa569dde6985fdd6b9f112421e4fef2b905",
+    "parity/t3-catalog/t3-message-rewind/light/reference-rgba.sha256": "5f34cfb6b0dcdd14b96b2a100822fecee5f6476f47ba70e35dd7d065553d7587",
+    "parity/t3-catalog/t3-message-rewind/light/hyperframes-rgba.sha256": "5f34cfb6b0dcdd14b96b2a100822fecee5f6476f47ba70e35dd7d065553d7587",
+    "parity/t3-catalog/t3-message-rewind/light/ssim.txt": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/t3-catalog/t3-message-rewind/light/ssim.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-message-rewind/light/hyperframes-check.json": "18dd499f1fe5215aa00e26b8f326cc97581b8abb603f1abe2bc6da1fe6ef05c6",
+    "parity/t3-catalog/t3-message-rewind/light/hyperframes-check.log": "474cf5fff9f96112e59c24e6dce3c5523e28abe2104bea5eb87459ec8a1190a8",
+    "parity/t3-catalog/t3-message-rewind/light/hyperframes-render.log": "7c2ba260c5a0126af71795e83ed7ebaf6759d44bca1b8c95a34256b8ebe0e1c7",
+    "parity/t3-catalog/t3-message-rewind/light/reference-decode.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-message-rewind/light/install.log": "59cc137d9cffa0473584ec6f6234c40a7d3def0c78dbe422ebf6d14f72770146",
+    "public/previews/t3-message-rewind/reference.mp4": "f0e14bec900ce0659f607af436d7646e3f9dc09a95b23ce74a3246989552519b",
+    "public/previews/t3-message-rewind/hyperframes.mp4": "f0e14bec900ce0659f607af436d7646e3f9dc09a95b23ce74a3246989552519b",
+    "public/previews/t3-message-rewind/thumbnail.png": "d08f88d6b6048e2bb999eb94c6e9e627abfaf1bc06c838d71865eb44ea5d6b96",
+    "public/previews/t3-message-rewind/reference-light.mp4": "51cadcf14926a130949642404445e945cf119ef1a7c2dd996a9b9159e04c2c85",
+    "public/previews/t3-message-rewind/hyperframes-light.mp4": "51cadcf14926a130949642404445e945cf119ef1a7c2dd996a9b9159e04c2c85",
+    "public/previews/t3-message-rewind/thumbnail-light.png": "81b2c96993d1beb2c16c9a33ecc57011994624f26b0dc8fe43da417b98eef43b"
+  },
+  "previewEncoding": {
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1200,
+    "height": 660,
+    "fps": 30,
+    "frameCount": 120,
+    "bottomPadding": 1,
+    "thumbnailFrame": 90
+  },
+  "historicalCustomizationEvidence": {
+    "contract": "Previously measured customization, crop, variant, and continuity evidence; these measurements are outside the exact current default-fixture claim.",
+    "result": {
+      "frameCount": 120,
+      "meanSsim": 0.9999680000000003,
+      "minSsim": 0.999808,
+      "p05Ssim": 0.999808,
+      "p95Ssim": 1,
+      "worstFrame": 45,
+      "pass": false,
+      "phaseFrames": {
+        "before": {
+          "frame": 0,
+          "ssim": 1
+        },
+        "hover": {
+          "frame": 25,
+          "ssim": 1
+        },
+        "tooltip": {
+          "frame": 45,
+          "ssim": 0.999808
+        },
+        "confirm": {
+          "frame": 65,
+          "ssim": 1
+        },
+        "closed": {
+          "frame": 95,
+          "ssim": 1
+        }
+      }
+    },
+    "fixture": {
+      "width": 1200,
+      "height": 659,
+      "fps": 30,
+      "durationInFrames": 120,
+      "props": {
+        "theme": "dark",
         "hover": 25,
         "tooltip": 45,
         "confirm": 65,
         "cancel": 95
       },
-      "artifacts": {
-        "nativeRecording": "parity/t3-message-rewind-v0042-light-reference.mkv",
-        "referenceVideo": "public/previews/t3-message-rewind/reference-light.mp4",
-        "hyperframesVideo": "public/previews/t3-message-rewind/hyperframes-light.mp4",
-        "frameSsim": "parity/t3-message-rewind-diff/light/ssim.txt",
-        "hyperframesCheck": "parity/t3-message-rewind-diff/light/hyperframes-check.json",
-        "installedCheck": "parity/t3-message-rewind-diff/light/installed-check.json",
-        "customCheck": "parity/t3-message-rewind-diff/light/custom-check.json",
-        "customized": "parity/t3-message-rewind-diff/light/customized-state.png"
-      }
+      "sourceHashes": {
+        "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+        "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+        "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+      },
+      "captureAtlas": "parity/t3-message-rewind-v0042-atlas.json",
+      "compositionSha256": "6e42617af8dd2d96f33b475248cb7c0bd16b65d732284675d8e0cf028f72194e"
+    },
+    "checks": {
+      "hyperframes": "full checks and strict 120-frame renders passed in dark and light",
+      "hyperframesVersion": "0.8.75",
+      "sourceBrowser": "Google Chrome for Testing 152.0.7977.30",
+      "installedThroughCli": true,
+      "customVariables": "Editable DOM mode changed Hyfrme project and thread text, prompt, visible action or dialog, theme, and event timing; full checks, text assertions, and strict 120-frame renders passed in both themes."
+    },
+    "fields": {
+      "previewEncoding": {
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "width": 1200,
+        "height": 660,
+        "fps": 30,
+        "frameCount": 120,
+        "bottomPadding": 1,
+        "thumbnailFrame": 90
+      },
+      "interaction": "Native v0.0.42 Edit from here reveals its tooltip and opens the checkpoint dialog with Revert files too and Revert and keep changes. The seeded conversation is left unchanged by canceling the dialog.",
+      "providerState": "The completed conversation and checkpoint are seeded; the confirmation was opened and canceled, so no rewind ran."
     }
-  },
-  "checks": {
-    "hyperframes": "full checks and strict 120-frame renders passed in dark and light",
-    "hyperframesVersion": "0.8.75",
-    "sourceBrowser": "Google Chrome for Testing 152.0.7977.30",
-    "installedThroughCli": true,
-    "customVariables": "Editable DOM mode changed Hyfrme project and thread text, prompt, visible action or dialog, theme, and event timing; full checks, text assertions, and strict 120-frame renders passed in both themes."
-  },
-  "artifacts": {
-    "nativeRecording": "parity/t3-message-rewind-v0042-dark-reference.mkv",
-    "referenceVideo": "public/previews/t3-message-rewind/reference.mp4",
-    "hyperframesVideo": "public/previews/t3-message-rewind/hyperframes.mp4",
-    "frameSsim": "parity/t3-message-rewind-diff/dark/ssim.txt",
-    "hyperframesCheck": "parity/t3-message-rewind-diff/dark/hyperframes-check.json",
-    "installedCheck": "parity/t3-message-rewind-diff/dark/installed-check.json",
-    "customCheck": "parity/t3-message-rewind-diff/dark/custom-check.json",
-    "customized": "parity/t3-message-rewind-diff/dark/customized-state.png",
-    "thumbnail": "public/previews/t3-message-rewind/thumbnail.png",
-    "lightThumbnail": "public/previews/t3-message-rewind/thumbnail-light.png"
   }
 }

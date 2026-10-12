@@ -253,3 +253,58 @@ test("native importmap prefixes resolve declared nested addon modules", async ()
     );
   }
 });
+
+for (const [name, count, extension] of [
+  ["t3-thread-pin", 20, "png"],
+  ["t3-diff-review", 10, "webp"],
+]) {
+  test(`${name} native frame URLs resolve despite its renamed installed README`, async () => {
+    const preview = await nativePreview(name);
+    const declaration = preview.match(/image\.src = (\[\[[^;]+)\[options\.theme/);
+    assert(declaration, "Native frames use explicit declared asset URLs");
+    const images = JSON.parse(declaration[1]);
+    const assignment = preview.match(/image\.src = [^;]+;/)[0];
+    assert.deepEqual(images.map((theme) => theme.length), [count, count]);
+    for (const [index, theme] of ["dark", "light"].entries()) {
+      for (const [frame, url] of images[index].entries()) {
+        const image = {};
+        runInNewContext(assignment, { image, options: { theme }, row: frame });
+        assert.equal(image.src, url);
+        assert.equal(url, `http://localhost:5173/registry/blocks/${name}/${name}-capture-${theme}-${String(frame).padStart(2, "0")}.${extension}`);
+      }
+    }
+  });
+}
+
+test("Commit Review native image assignments use declared registry URLs", async () => {
+  const preview = await nativePreview("t3-commit-review");
+  const nativeStates = JSON.parse(preview.match(/const nativeStates = ([^\n]+);/)[1]);
+  const initialization = preview.match(/const captureReady = ([\s\S]+?)\nwindow\.__hyfrmeReady/)[0].split("\nwindow.__hyfrmeReady")[0];
+  for (const theme of ["dark", "light"]) {
+    const images = await runInNewContext(`${initialization}; captureReady`, {
+      pixelMode: true,
+      options: { theme },
+      nativeStates,
+      Image: class { async decode() {} },
+    });
+    assert(images.length > 0);
+    assert.deepEqual(Array.from(images, (image) => image.src), nativeStates[theme].map((state) => state.file));
+  }
+});
+
+test("Project Action Run editable terminal assigns declared registry URLs", async () => {
+  const preview = await nativePreview("t3-project-action-run");
+  const canvasSequence = JSON.parse(preview.match(/const canvasSequence = ([^\n]+);/)[1]);
+  const assignment = preview.match(/const asset = sequence\[sourceFrame\][\s\S]+?image\.src = [^;]+;/)[0];
+  const item = JSON.parse(await readFile(resolve(root, "registry/blocks/t3-project-action-run/registry-item.json"), "utf8"));
+  const declared = new Set(item.files.map((file) => `http://localhost:5173/registry/blocks/t3-project-action-run/${file.path}`));
+  for (const sequence of Object.values(canvasSequence)) {
+    assert(sequence.length > 0);
+    for (let sourceFrame = 0; sourceFrame < sequence.length; sourceFrame++) {
+      const image = {};
+      runInNewContext(assignment, { sequence, sourceFrame, image });
+      if (sequence[sourceFrame] ?? sequence.at(-1)) assert(declared.has(image.src), `Terminal frame ${sourceFrame} uses a declared registry asset`);
+      else assert.equal(image.src, undefined);
+    }
+  }
+});

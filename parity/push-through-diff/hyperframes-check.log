@@ -1,0 +1,147 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 1.742,
+        "selector": "#push-through-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 345.89,
+          "top": 257.55,
+          "right": 934.11,
+          "bottom": 460.56,
+          "width": 588.22,
+          "height": 203.01
+        },
+        "containerSelector": "#push-through-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "text": "Scene A",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/push-through.html",
+        "bbox": {
+          "x": 345.89,
+          "y": 257.55,
+          "width": 588.22,
+          "height": 203.01
+        },
+        "firstSeen": 1.742,
+        "lastSeen": 1.867,
+        "occurrences": 2,
+        "heldMs": 125
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 1.867,
+        "selector": "#push-through-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 345.89,
+          "top": 257.55,
+          "right": 934.11,
+          "bottom": 460.56,
+          "width": 588.23,
+          "height": 203.02
+        },
+        "containerSelector": "#push-through-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Scene A",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/push-through.html",
+        "bbox": {
+          "x": 345.89,
+          "y": 257.55,
+          "width": 588.23,
+          "height": 203.02
+        },
+        "firstSeen": 1.867,
+        "lastSeen": 1.867,
+        "occurrences": 1,
+        "heldMs": 0
+      }
+    ],
+    "duration": 3.7333333333333334,
+    "samples": [
+      0.207,
+      0.622,
+      1.037,
+      1.452,
+      1.867,
+      2.281,
+      2.696,
+      3.111,
+      3.526
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 2,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.207,
+      1.037,
+      1.867,
+      2.696,
+      3.526
+    ],
+    "checked": 6,
+    "passed": 6
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.99",
+    "latestVersion": "0.8.114",
+    "updateAvailable": true
+  }
+}

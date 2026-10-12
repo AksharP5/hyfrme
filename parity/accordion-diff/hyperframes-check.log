@@ -1,0 +1,127 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 2.778,
+        "selector": "#accordion-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 437,
+          "top": 381.36,
+          "right": 733.56,
+          "bottom": 399.36,
+          "width": 296.56,
+          "height": 18
+        },
+        "containerSelector": "#accordion-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Yes. It adheres to the WAI-ARIA design pattern.",
+        "fixHint": "Text is 297px x 18px inside 440px x 68px and overflows by up to 5px; increase the container height to at least ~73px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 420,
+          "top": 325.94,
+          "right": 860,
+          "bottom": 394.06,
+          "width": 440,
+          "height": 68.13
+        },
+        "overflow": {
+          "bottom": 5.3
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/accordion.html",
+        "bbox": {
+          "x": 437,
+          "y": 381.36,
+          "width": 296.56,
+          "height": 18
+        },
+        "firstSeen": 2.778,
+        "lastSeen": 2.778,
+        "occurrences": 1,
+        "heldMs": 0
+      }
+    ],
+    "duration": 3.3333333333333335,
+    "samples": [
+      0.185,
+      0.556,
+      0.926,
+      1.296,
+      1.667,
+      2.037,
+      2.407,
+      2.778,
+      3.148
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 1,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.185,
+      0.926,
+      1.667,
+      2.407,
+      3.148
+    ],
+    "checked": 0,
+    "passed": 0
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.99",
+    "latestVersion": "0.8.140",
+    "updateAvailable": true
+  }
+}

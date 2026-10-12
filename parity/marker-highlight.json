@@ -2,7 +2,7 @@
   "slug": "marker-highlight",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/marker-highlight/index.tsx",
     "config": "registry/remocn/marker-highlight/config.ts",
     "license": "MIT"
@@ -25,21 +25,35 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "f2959279066cbfe146a9ef3d956152e00bae27df8d6057f79036e51cb311b2f9",
+    "marker-highlight.html": "2fd0a7a8745ffdb2345ccf8980a70ef3adae4cf3715b5533267a7203a4c69de9",
+    "marker-highlight.runtime.js": "f207b6aa9796e31dafb4e363c872650984e49d3c17b4fe1955ea5277719d8ca1",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "ce9b851790fdbef9284e1cd43eaae9a153479b23b478bcb29f6c3806a38cf81e",
+  "fingerprint": "54a26b0433f45658223a0d095b11ae7bafca114f641411f79bbe238e51128987",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.9960946222222222,
-    "minSsim": 0.995523,
-    "p05Ssim": 0.995523,
-    "p95Ssim": 0.996332,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
     "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 90,
       "mismatchedFrames": [],
       "pass": true
@@ -47,12 +61,86 @@
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
     "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
-    "installedThroughCli": true
+    "rasterization": "browser-default",
+    "frameCapture": "fresh-page native/production-producer; strict sequential CLI render retained separately",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true,
+    "captureLifecycle": "fresh-page native/production-producer",
+    "captureProfile": {
+      "reference": "Remotion renderStill; fresh page per frame in one browser",
+      "hyperframes": "Production producer API; fresh session/page per frame",
+      "sequential": "Full installed CLI check and strict sequential PNG render retained separately",
+      "rasterization": "browser-default; hardware ANGLE EGL; DPR 1",
+      "referenceScreenshot": {
+        "fromSurface": true,
+        "captureBeyondViewport": true,
+        "optimizeForSpeed": true
+      },
+      "producerScreenshot": {
+        "fromSurface": true,
+        "captureBeyondViewport": false,
+        "optimizeForSpeed": false
+      },
+      "virtualTime": "Unchanged pinned CLI virtual-time shim; seedRandomFromFrame:false"
+    },
+    "repeatFrames": [
+      0,
+      22,
+      45,
+      67,
+      89
+    ],
+    "strictSequentialCaptureComplete": true,
+    "sequentialRgbaExact": false,
+    "sequentialMismatchedFrames": [
+      42,
+      51,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86
+    ],
+    "freshRepeatFrames": [
+      0,
+      22,
+      45,
+      67,
+      89
+    ]
   },
   "artifacts": {
     "referenceVideo": "public/previews/marker-highlight/reference.mp4",
@@ -63,6 +151,53 @@
     "hyperframesCheck": "parity/marker-highlight-diff/hyperframes-check.log",
     "worstFrame": "parity/marker-highlight-diff/worst-frame.png",
     "referenceAlpha": "parity/marker-highlight-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/marker-highlight-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/marker-highlight-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/marker-highlight-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/marker-highlight-diff/hyperframes-rgba.framemd5",
+    "freshCapture": "parity/marker-highlight-diff/fresh/capture.json",
+    "freshInputs": "parity/marker-highlight-diff/fresh/inputs.json",
+    "freshRepeatability": "parity/marker-highlight-diff/fresh/repeatability.json",
+    "sequentialParity": "parity/marker-highlight-diff/sequential/parity.json",
+    "sequentialComparison": "parity/marker-highlight-diff/fresh/sequential-comparison.json",
+    "referenceLossless": "parity/marker-highlight-diff/fresh/reference-lossless.mkv",
+    "hyperframesLossless": "parity/marker-highlight-diff/fresh/hyperframes-lossless.mkv",
+    "referenceArchiveRgba": "parity/marker-highlight-diff/fresh/reference-archive-rgba.framemd5",
+    "hyperframesArchiveRgba": "parity/marker-highlight-diff/fresh/hyperframes-archive-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/marker-highlight/reference.mp4": "b9dac57677da29e7051d56476edea07e8638aa345c453fb85e4e226652d95c77",
+    "public/previews/marker-highlight/hyperframes.mp4": "b9dac57677da29e7051d56476edea07e8638aa345c453fb85e4e226652d95c77",
+    "public/previews/marker-highlight/thumbnail.png": "851a2fcf2d9a1d72a7005e3fada8f8fd4a42e0348a04a06f0af6de8e6e4a57ad",
+    "parity/marker-highlight-diff/summary.json": "b836772793766404c0492e741437d4fb40b614cf31be7aace9f9b10b16c85450",
+    "parity/marker-highlight-diff/ssim.log": "4638ac3b2b03d74f8b056c3824e13d904997bddfbc1c0f3b8d655822a1eb000b",
+    "parity/marker-highlight-diff/hyperframes-check.log": "bfc40c2e1421ccd8f1c5faf75e901bd6f0ea7ab6d11d1ed630be1dc47fa34976",
+    "parity/marker-highlight-diff/worst-frame.png": "37f1228d112ff5fc948c0e9b6bf4f9ec02dda012241a67f293e7424184e29ffe",
+    "parity/marker-highlight-diff/reference-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/marker-highlight-diff/hyperframes-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/marker-highlight-diff/reference-rgba.framemd5": "0cc60903504ac25add2c4230bd2b4c5ac484ad8e956adb0b6b6743372e6316d2",
+    "parity/marker-highlight-diff/hyperframes-rgba.framemd5": "0cc60903504ac25add2c4230bd2b4c5ac484ad8e956adb0b6b6743372e6316d2",
+    "parity/marker-highlight-diff/fresh/capture.json": "bc9ec356a168f2f0bf64ee575e4a463f30ded455f0834f4a8ff8b6b3c2e0892b",
+    "parity/marker-highlight-diff/fresh/inputs.json": "6adfd9d57ea6e94961f84865ad9223d76697d48c53fc27de644926967e627ede",
+    "parity/marker-highlight-diff/fresh/repeatability.json": "0209a7ed227dd4446ce064e7c0ef888b77e33c2701f7ad390fe830e9c83483a6",
+    "parity/marker-highlight-diff/sequential/parity.json": "2e58ed614e5215055612d7783c209a5a4853a1f0b04668b21b2365edd6165a6e",
+    "parity/marker-highlight-diff/fresh/sequential-comparison.json": "cb1e6f3d88823cc37465d5f89bd4e47eb55ea05a6071f584db96f72c3b4107c6",
+    "parity/marker-highlight-diff/fresh/reference-lossless.mkv": "b419698062064c5af598fa9342c137cc9bb5988fc388bf2755cf618400a0d599",
+    "parity/marker-highlight-diff/fresh/hyperframes-lossless.mkv": "1717c3992ce03a47ffb7022c7e89ea07bb46b4ee0375604eacdfd6b829aa3bc7",
+    "parity/marker-highlight-diff/fresh/reference-archive-rgba.framemd5": "0cc60903504ac25add2c4230bd2b4c5ac484ad8e956adb0b6b6743372e6316d2",
+    "parity/marker-highlight-diff/fresh/hyperframes-archive-rgba.framemd5": "0cc60903504ac25add2c4230bd2b4c5ac484ad8e956adb0b6b6743372e6316d2",
+    "parity/marker-highlight-diff/sequential/debug-render-rgba.framemd5": "defb3d3a2d0ca5493ca8f6dcce3014bf8146003b8931667b12e70752d79a4fe6",
+    "parity/marker-highlight-diff/sequential/debug-render.log": "ac922178596bc9694411d79d63b1a3948549b981dad555c849a1045881cdc7e0",
+    "parity/marker-highlight-diff/sequential/hyperframesAlpha-hyperframes-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/marker-highlight-diff/sequential/hyperframesCheck-hyperframes-check.log": "bfc40c2e1421ccd8f1c5faf75e901bd6f0ea7ab6d11d1ed630be1dc47fa34976",
+    "parity/marker-highlight-diff/sequential/hyperframesRgba-hyperframes-rgba.framemd5": "e5f644a258a523330a2a80e973d6385473e5431a62aea5a47339d99075a974e6",
+    "parity/marker-highlight-diff/sequential/hyperframesVideo-hyperframes.mp4": "221455ab2efdbae94da38c96c424c073238d61bfece8739cd246ae225094b1e0",
+    "parity/marker-highlight-diff/sequential/perFrameSsim-ssim.log": "1a397df9cdd096df635a77ef0e48544b00f023fff33be1e43dc91486a1817a7f",
+    "parity/marker-highlight-diff/sequential/referenceAlpha-reference-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/marker-highlight-diff/sequential/referenceRgba-reference-rgba.framemd5": "43d4da9ef3c8c42ad14b981a5c7ee7890636cbd9874601b9090ee5b291654af0",
+    "parity/marker-highlight-diff/sequential/referenceVideo-reference.mp4": "497e67c60d4088a6931b581a831e56ef5e71e1a34c3e6089d91eaf2681381b16",
+    "parity/marker-highlight-diff/sequential/summary-summary.json": "94512b13f796becea9f742278d5cf3ac0bfad673537fd730593096d53385403c",
+    "parity/marker-highlight-diff/sequential/thumbnail-thumbnail.png": "cd231ea9f4e07a734a617f438636d1c3bf8dc5f27a9a09ed16c5b48bd618536b",
+    "parity/marker-highlight-diff/sequential/verification.log": "86fc969ac70241d9ed9db8c4b2e5075490d4fbce48d14086453097cd705c9e04",
+    "parity/marker-highlight-diff/sequential/worstFrame-worst-frame.png": "0c91df17ca6d26ef508dffc62fe95b8e245d6da666e4c23b3a524ebcf4598631"
   }
 }

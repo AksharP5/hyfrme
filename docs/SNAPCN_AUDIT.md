@@ -1,30 +1,78 @@
 # Snapcn source and license audit
 
-All 47 free visual components have fixtures in `catalog/snapcn-fixtures.json`.
-The source inventory is `catalog/snapcn-upstream.json`, with a separate source
-pin for each port. Check Cycle and the ten ports in the
-[current refresh](#current-port-refresh) use
-`d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3`.
-
-The 30 remaining original ports retain
-`353803b506dba0cb7ca13bb45b0d099690400815`. Wordmark Cut retains
-`bc5b59f3f0fad9657b338fa62349a55fa33f160f`. Word Gather, Word Wheel, and
-Logo Collapse retain `1159369742d75d66ae89b3f83d45850861ccc63e`.
-Status Cycle retains `0b30e76a3d1e4c9a49390d109a9630b118b1e100`, with its
-0.5-second label roll, 30 frames between statuses, and 198-frame fixture.
-Reel Collage retains `7fd048cc7eee397a0e6cb1353c1537aefd245e2c`.
+All 48 free visual components have fixtures in `catalog/snapcn-fixtures.json`.
+The source inventory is `catalog/snapcn-upstream.json`. The existing 47 fixtures
+use `def45f50ff9b7ee7353be0a0bbf636c84b311cc0`; Capture Reveal uses
+`f31be8a493cd836bbef36ac4f5a182fc40ee983e`. Asset records retain their original
+provenance pins alongside the current source refresh. Closed Pro items are
+excluded.
 
 Forty-four ports use the merged preview configs at their recorded source pins,
 including the shared speed control and minimum-speed overrides. Caret, Input,
 and Pulsing Border are published registry components outside that preview map.
 Their fixtures use their individual configs. No private source was accessed.
 
-## Current port refresh
+## October 7 public component update
+
+Public main at
+[`f31be8a4`](https://github.com/snapcndev/snapcn/commit/f31be8a493cd836bbef36ac4f5a182fc40ee983e)
+adds Capture Reveal. The published free registry has 48 visual components and
+one shared runtime. Existing component sources and configs are unchanged from
+the October 2 pin, so their fixture pins and assets stay unchanged.
+
+Capture Reveal preserves the merged preview config's seven controls and its
+1280 × 720, 30 fps, 130-frame fixture. Its screenshot and two DM Sans font
+binaries are frozen without modification. The optical-size font comes from
+the source's exact Fontsource 5.3.0 URL and retains the OFL license. Installed
+source resolves those public URLs to packaged files and preserves the source's
+font loading, image dimensions, SVG measurements, and subpixel text blending.
+This addition has no Paper shader dependency. The public `/r/capture-reveal.json`
+source matches the pinned Git source apart from its attribution comment.
+
+The existing 620 controls and Capture Reveal's seven controls total 627.
+Its complete 130-frame CLI-installed strict render matches the pinned native
+source byte for byte in RGBA, with SSIM 1. The full HyperFrames 0.8.99 check
+passes without errors or exceptions. Its two authored overflow warnings remain
+in the parity report. The source grid extends beyond the viewport and the
+browser window exits through its bottom edge.
+
+## October 2 source refresh
+
+Public main at
+[`def45f50`](https://github.com/snapcndev/snapcn/commit/def45f50ff9b7ee7353be0a0bbf636c84b311cc0)
+changes three published components. Count Grid and Orb Swarm now derive their
+page, text, and card colors from the shared theme and expose a light/dark `mode`
+selector. Orb Swarm also mirrors its measured word tints on dark pages. Their
+removed palette controls are replaced by the exact current merged `CONFIGS`
+controls and defaults. Screen Recording gives its footage the same `speed` as
+its camera through `playbackRate`. All 47 ports have been regenerated from that
+source, including Studio wrappers, URL resolution, and cleanup changes that
+were previously left at older pins. The fixtures contain 620 controls.
+
+Screen Recording's current config points at the public CDN's Answer Stream
+demo. Its bytes differ from the older repository demo, so both are retained
+under separate filenames. The new port packages an sRGB metadata adaptation of
+the current demo while preserving its BT.709 matrix, primaries, and limited
+range. No video or audio is re-encoded; all 300 decoded RGB frames match the
+current original exactly. The asset manifest records the source URL, config
+pin, hashes, command, license, and installed notice.
+
+Laptop Frame uses that same current Answer Stream file. Hero Launch packages
+the current Moodboard Reveal and Orbit Gallery demos, with metadata-only sRGB
+adaptations preserving all 900 decoded RGB frames. Logo Collapse uses its six
+current CDN posters. Reel Collage's 14 default slides preserve the current
+nested source defaults, including five newly frozen posters. Phone Frame's
+current CDN URL resolves to the same bytes as its existing frozen sample.
+The source audit compares all 23 unique default media URLs, used 40 times,
+against their frozen originals.
+
+## September 30 source refresh
 
 A comparison against each recorded port pin found 25 changed component entry
 files at public main
 [`d4419a8c`](https://github.com/snapcndev/snapcn/commit/d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3).
-Nine contain new controls or behavior and now use that source pin:
+Nine contained new controls or behavior and used that source pin before the
+October 2 refresh:
 
 | Port               | Imported change                                                                                                                    |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -45,19 +93,18 @@ now expose shared `speed`, with default 1, minimum 0.25, maximum 4, and step 0.2
 Its source accepts but does not use this control. Hyfrme preserves that behavior.
 All ten fixtures retain their dimensions, frame rate, duration, and recorded
 render backgrounds. Controls and their defaults come from the current merged
-configs. The 47 fixtures now contain 623 controls; before this refresh they
+configs. That refresh contained 623 controls; before it the fixtures
 contained 628.
 
-The other 16 changed entry files concern Studio selection, media URLs and path
-resolution, React type compatibility, or unused-code cleanup. Their recorded
-source pins remain unchanged. Upstream's
+The other 16 changed entry files concerned Studio selection, media URLs and path
+resolution, React type compatibility, or unused-code cleanup. Before October 2,
+their recorded source pins remained unchanged. Upstream's
 [`Item`](https://github.com/snapcndev/snapcn/blob/d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3/registry/snap-cn-ui/core/item.tsx)
 returns its child unchanged when
 there is no Studio host, so these selection changes add no wrapper DOM to a
-normal render. URL migrations in Phone Frame, Laptop Frame, Screen Recording,
-Hero Launch, Logo Collapse, Count Grid, and Reel Collage retain their existing
-frozen media. This refresh does not claim byte-identical source for those ports
-against current main.
+normal render. The October 2 refresh now includes those entry changes and the
+current default media, rather than treating URL migrations as equivalent to
+the older frozen demos.
 
 Card Rail uses nine current `media.snapcn.dev` posters. Each differs from its
 older frozen copy, so the new files use `-d4419a8c.webp` filenames and keep
@@ -367,7 +414,7 @@ The port uses `Hyfrme Snapcn ...` CSS family aliases to avoid collisions with
 fonts in a host composition. The font binaries and their embedded names remain
 unchanged; public customization labels retain the original family names.
 
-The 102 frozen source media files include all 24 follower avatars, 16 Orbit Gallery
+The 103 frozen source media files include all 24 follower avatars, 16 Orbit Gallery
 photographs, and nine new Card Rail CDN posters. Repository media is copied
 unchanged from the pinned MIT source. The current CDN poster binaries are absent
 from the public Git tree; upstream's public
@@ -392,15 +439,21 @@ unprofiled BMP frames. The original remains frozen and supplies the reference
 render. Both hashes, the command, pixel-comparison evidence, and an installed
 adaptation notice are recorded in the asset manifest.
 
-Laptop Frame, Screen Recording, and Hero Launch also install derived copies of
-`answer-stream.mp4`, `moodboard-reveal.mp4`, and `orbit-gallery.mp4`. Their source
-videos leave transfer and color primaries unspecified. Native Chrome playback
-darkens those videos compared with the reference's decoded RGB. The derived
-copies declare sRGB transfer and Rec.709 primaries while retaining the original
-BT.601 color matrix and full-range values. All 1,200 decoded RGB frames match
-their originals exactly, with no video or audio re-encoding. Each copy carries
-its source and derived hashes, normalization command, and an installed notice.
-The original files continue to supply reference renders.
+Laptop Frame, Screen Recording, and Hero Launch install derived copies of the
+current Answer Stream, Moodboard Reveal, and Orbit Gallery demos. Native Chrome
+playback and decoded-frame injection otherwise use different color paths. The
+derived copies declare sRGB transfer while preserving each original color
+matrix and range. All 1,200 decoded RGB frames match their originals exactly,
+with no video or audio re-encoding. Each copy carries its source and derived
+hashes, normalization command, and installed notice. Earlier originals and
+adaptations remain frozen under separate filenames. Reference renders use the
+original selected by the fixture's current source URL.
+
+The current Answer Stream demo contains 300 frames at 60 fps. Laptop Frame keeps
+showing it after its five-second duration. Hyfrme freezes its final decoded RGB
+sample as an sRGB PNG so a 30 fps extraction cannot hold the preceding sample.
+The video bytes stay unchanged. The final sample, timing, extraction command,
+source hash, and copied asset hash are recorded and checked independently.
 
 ## Paper shader license
 
@@ -436,7 +489,7 @@ The audit covers generated blocks and frozen font/media assets, including the
 original and derived videos. It checks the derived videos' actual
 transfer, matrix, and primaries metadata with `ffprobe` to prevent browser color
 regressions.
-All 623 fixture controls preserve the pinned source defaults, labels, options,
+All 620 fixture controls preserve the pinned source defaults, labels, options,
 and numeric bounds. The config audit also checks the source frame rate,
 dimensions, duration, and background.
 
@@ -457,27 +510,15 @@ published audit exists. This source is independent of `--only`, so generating an
 older port preserves classes required by newer ports. `SNAPCN_SOURCE` overrides
 the CSS checkout only when the selected fixtures use that same source pin.
 
-Verification compares every frame's RGB with SSIM and requires exact alpha-plane
-matches. Per-frame alpha hashes accompany the parity reports, so transparent
-output cannot pass on RGB alone. `npm run check` includes a regression that
-rejects an invisible frame with unchanged RGB.
+Verification requires every decoded RGBA frame to match upstream exactly, with
+SSIM 1. Per-frame RGB and alpha diagnostics accompany the complete RGBA hashes.
+`npm run check` rejects an invisible frame, a one-channel pixel change, missing
+frame evidence, and source files modified after verification.
 
-The September 17 Status Cycle source now passes all 198 lossless frame comparisons
-with identical RGB and alpha. Its CLI-installed fixture passes strict rendering.
-The current full check reports two reviewed findings for the source's rolling
-labels behind their hard clip: the stacked text boxes overlap, and the installed
-label extends past the clipped container during the roll. Exact selectors and
-source evidence are recorded in
-`catalog/snapcn-check-exceptions.json`; the full findings remain in its parity
-report.
-
-At their September 12 pins, the five additions passed all 385 lossless frame
-comparisons, with weighted mean SSIM 0.998264, minimum 0.988421, and exact alpha. All five passed
-strict rendering after CLI installation. Four passed the full HyperFrames check
-without errors. Word Wheel retains one reviewed layout finding: adjacent reel
-text boxes overlap in the unmodified upstream animation. Its exact source pin,
-selectors, and comparison evidence are recorded in
-`catalog/snapcn-check-exceptions.json` and its parity report.
+Reviewed findings for authored clipped labels, overlays, and source palettes
+retain exact selectors and source evidence in
+`catalog/snapcn-check-exceptions.json`; the full findings remain in each parity
+report. Those findings do not relax the pixel-equality requirement.
 
 Screen Recording's audio control also declares the native video audio track for
 HyperFrames exports. An installed fixture with a synthetic tone confirms that

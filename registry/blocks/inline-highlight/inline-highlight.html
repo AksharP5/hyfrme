@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en" data-composition-variables='[{"id":"before","type":"string","label":"Before","default":"Ship faster with "},{"id":"highlight","type":"string","label":"Highlight","default":"remocn"},{"id":"after","type":"string","label":"After","default":"."},{"id":"baseColor","type":"color","label":"Base color","default":"#171717"},{"id":"highlightColor","type":"color","label":"Highlight color","default":"#ff5e3a"},{"id":"fontSize","type":"number","label":"Font size","default":72,"min":12,"max":160,"step":1},{"id":"fontWeight","type":"string","label":"Font weight","default":"600","options":["400","500","600","700"]},{"id":"speed","type":"number","label":"Speed","default":1}]'>
+<html lang="en" data-composition-variables='[{"id":"before","type":"string","label":"Before","default":"Ship faster with "},{"id":"highlight","type":"string","label":"Highlight","default":"remocn"},{"id":"after","type":"string","label":"After","default":"."},{"id":"baseColor","type":"color","label":"Base color","default":"#171717"},{"id":"highlightColor","type":"color","label":"Highlight color","default":"#ff5e3a"},{"id":"fontSize","type":"number","label":"Font size","default":72,"min":12,"max":160,"step":1},{"id":"fontWeight","type":"string","label":"Font weight","default":"600","options":["400","500","600","700"]},{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25}]'>
   <head>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <style>
 
-      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
 
 
 
@@ -18,7 +18,16 @@
       #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Geist";font-family:"Geist",sans-serif; background:#ffffff; }
 
 
-
+#hyfrme-source-root {
+  font-size: 14px;
+  line-height: calc(20 / 14);
+  font-feature-settings: "cv11", "ss01";
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+#hyfrme-source-root, #hyfrme-source-root * {
+  text-rendering: optimizeLegibility;
+}
 
     </style>
   </head>

@@ -20,9 +20,46 @@
   "layout": {
     "ok": true,
     "errorCount": 0,
-    "warningCount": 0,
+    "warningCount": 1,
     "infoCount": 7,
     "findings": [
+      {
+        "code": "canvas_content_at_edge",
+        "severity": "warning",
+        "time": 0.89,
+        "selector": "#release-teaser-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > canvas:nth-of-type(1)",
+        "message": "Canvas content touches the frame edge (top).",
+        "rect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "containerSelector": "#root",
+        "fixHint": "Keep drawn text inside the visible part of the canvas, or mark intentional full-bleed art with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/release-teaser.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "firstSeen": 0.89,
+        "lastSeen": 9.788,
+        "occurrences": 6,
+        "heldMs": 0
+      },
       {
         "code": "container_overflow",
         "severity": "info",
@@ -63,7 +100,8 @@
         },
         "firstSeen": 0.89,
         "lastSeen": 0.89,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -105,7 +143,8 @@
         },
         "firstSeen": 2.669,
         "lastSeen": 2.669,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -147,7 +186,8 @@
         },
         "firstSeen": 4.449,
         "lastSeen": 4.449,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -187,7 +227,8 @@
         },
         "firstSeen": 6.228,
         "lastSeen": 6.228,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -229,7 +270,8 @@
         },
         "firstSeen": 9.788,
         "lastSeen": 9.788,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -269,7 +311,8 @@
         },
         "firstSeen": 13.347,
         "lastSeen": 13.347,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -311,7 +354,8 @@
         },
         "firstSeen": 15.126,
         "lastSeen": 15.126,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       }
     ],
     "duration": 16.016000000000002,
@@ -329,7 +373,7 @@
     "transitionSamples": [],
     "transitionSamplesDropped": 0,
     "tolerance": 2,
-    "totalIssueCount": 7,
+    "totalIssueCount": 8,
     "truncated": false
   },
   "motion": {
@@ -358,6 +402,10 @@
     "checked": 70,
     "passed": 70
   },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
   "snapshots": {
     "enabled": false,
     "files": [],
@@ -365,8 +413,8 @@
     "findingFiles": []
   },
   "_meta": {
-    "version": "0.8.30",
-    "latestVersion": "0.8.35",
+    "version": "0.8.99",
+    "latestVersion": "0.8.114",
     "updateAvailable": true
   }
 }

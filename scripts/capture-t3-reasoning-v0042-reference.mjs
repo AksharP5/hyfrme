@@ -1,28 +1,30 @@
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import { createRequire } from "node:module";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.HYFRME_PLAYWRIGHT_CORE ?? "playwright-core");
 const root = resolve(import.meta.dirname, "..");
 const release = resolve(root, ".work/t3-v0042-bin/t3-0.0.42-linux-x64");
-const source = resolve(root, "assets/t3-code/v0.0.42");
-const project = resolve(root, ".work/t3-v0042-composer-project");
+const fixtureSource = resolve(root, "assets/t3-code/v0.0.42");
+const source = resolve(process.env.T3_CAPTURE_OUTPUT_DIR ?? fixtureSource);
+const project = resolve(process.env.T3_CAPTURE_PROJECT ?? resolve(root, ".work/t3-v0042-composer-project"));
 const theme = process.env.T3_CAPTURE_THEME ?? "dark";
 const probeOnly = process.env.T3_PROBE_ONLY === "1";
 if (!["dark", "light"].includes(theme)) throw new Error("T3_CAPTURE_THEME must be dark or light");
 const prefix = `reasoning-v0042-${theme}`;
-const work = resolve(root, `.work/t3-reasoning-v0042-${theme}-reference`);
-const reference = resolve(root, `parity/t3-reasoning-level-v0042-${theme}-reference.mkv`);
+const work = resolve(process.env.T3_CAPTURE_WORK_DIR ?? resolve(root, `.work/t3-reasoning-v0042-${theme}-reference`));
+const reference = resolve(process.env.T3_CAPTURE_REFERENCE ?? resolve(root, `parity/t3-reasoning-level-v0042-${theme}-reference.mkv`));
+await access(reference).then(() => { throw new Error("Native reference already exists; choose a new capture path"); }, (error) => { if (error.code !== "ENOENT") throw error; });
 const executablePath = process.env.HYFRME_CHROMIUM;
 if (!executablePath) throw new Error("Set HYFRME_CHROMIUM to the pinned Chrome executable");
-const log = await readFile(resolve(root, ".work/t3-v0042-composer-server.log"), "utf8");
-const pairingUrl = log.match(/Pairing URL: (\S+)/)?.[1];
+const log = process.env.T3_REFERENCE_URL ? "" : await readFile(resolve(root, ".work/t3-v0042-composer-server.log"), "utf8");
+const pairingUrl = process.env.T3_REFERENCE_URL ?? log.match(/Pairing URL: (\S+)/)?.[1];
 if (!pairingUrl) throw new Error("Start the isolated v0.0.42 composer server before capture");
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
-const brief = JSON.parse(await readFile(resolve(source, "brief-v0042-fixture.json"), "utf8"));
+const brief = JSON.parse(await readFile(resolve(fixtureSource, "brief-v0042-fixture.json"), "utf8"));
 for (const [key, path] of [["index", "/"], ["css", "/assets/main-x9o7QJ8O.css"], ["js", "/assets/index-BMH8bO9q.js"]]) {
   const response = await fetch(new URL(path, pairingUrl));
   if (!response.ok || hash(Buffer.from(await response.arrayBuffer())) !== brief.sourceHashes[key]) {
@@ -46,6 +48,7 @@ const reasoningAfter = "High";
 const prompt = "Verify the Hyfrme Logo Enter final-frame timing.";
 const phases = ["before", "menu", "portal", "hover", "hover-portal", "after"];
 await mkdir(work, { recursive: true });
+await mkdir(source, { recursive: true });
 const browser = await chromium.launch({ executablePath, headless: true, args: [
   "--no-sandbox", "--disable-dev-shm-usage", "--font-render-hinting=none",
   "--force-color-profile=srgb", "--use-gl=angle", "--use-angle=gl-egl",
@@ -78,7 +81,11 @@ try {
   const editor = page.locator('[data-testid="composer-editor"]');
   await editor.waitFor({ timeout: 20000 });
   await page.waitForTimeout(950);
-  await page.locator('button[data-slot="toast-close"]').evaluateAll((buttons) => buttons.forEach((button) => button.click()));
+  await page.locator('button[data-slot="toast-close"]').evaluateAll((buttons) => {
+    window.__hyfrmeDismissedToasts = buttons.map(button => button.closest('[data-position]'));
+    if (window.__hyfrmeDismissedToasts.some(node => !node)) throw new Error('Toast root absent');
+    buttons.forEach(button => button.click());
+  });
   await page.evaluate(() => document.fonts.ready);
   const nativeTheme = await page.evaluate(() => ({
     className: document.documentElement.className,
@@ -90,7 +97,7 @@ try {
   if (theme === "light" ? nativeThemeClass.includes("dark") : !nativeThemeClass.includes("dark")) {
     throw new Error(`Official app did not enter ${theme} appearance`);
   }
-  const expectedTheme = JSON.parse(await readFile(resolve(source, `${theme}-theme.json`), "utf8"));
+  const expectedTheme = JSON.parse(await readFile(resolve(fixtureSource, `${theme}-theme.json`), "utf8"));
   const sortedEntries = (values) => JSON.stringify(Object.entries(values).sort(([left], [right]) => left.localeCompare(right)));
   if (sortedEntries(nativeTheme.variables) !== sortedEntries(expectedTheme)) {
     throw new Error(`${theme} release theme variables differ from the pinned fixture`);
@@ -110,10 +117,24 @@ try {
   await editor.evaluate((element) => element.blur());
   await page.mouse.move(800, 80);
   await page.waitForTimeout(250);
+  await page.waitForFunction(() => window.__hyfrmeDismissedToasts.every(node => !node.isConnected) && document.querySelectorAll('[data-slot="toast-viewport"] [data-ending-style]').length === 0, undefined, { timeout: 3000 });
+  const readiness = await page.evaluate(() => ({ dismissedCount: window.__hyfrmeDismissedToasts.length, allDetached: window.__hyfrmeDismissedToasts.every(node => !node.isConnected), exitingCount: document.querySelectorAll('[data-slot="toast-viewport"] [data-ending-style]').length }));
+  await writeFile(resolve(source, 'toast-readiness.json'), JSON.stringify(readiness, null, 2) + '\n');
   const saveRoot = async (phase) => {
     const dom = (await page.locator("#root").evaluate((element) => element.innerHTML)).replaceAll(project, "hyfrme-project");
     if (/\/home\/|auth[_-]?token|session[_-]?token|127\.0\.0\.1:3906/i.test(dom)) {
       throw new Error(`Private data in ${phase} DOM`);
+    }
+    if (phase === "before") {
+      const expected = await readFile(resolve(fixtureSource, `${prefix}-before.html`), "utf8");
+      const normalizeIds = (html) => {
+        const ids = new Map();
+        return html.replace(/_r_[^_]+_/g, (id) => {
+          if (!ids.has(id)) ids.set(id, `_r_${ids.size}_`);
+          return ids.get(id);
+        });
+      };
+      if (normalizeIds(dom) !== normalizeIds(expected)) throw new Error("Native reasoning starting DOM differs from the recorded fixture");
     }
     await writeFile(resolve(source, `${prefix}-${phase}.html`), dom);
   };

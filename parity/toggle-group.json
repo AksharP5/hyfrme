@@ -2,7 +2,7 @@
   "slug": "toggle-group",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-ui/toggle-group/index.tsx",
     "entry": "components/docs/examples/toggle-group-example.tsx",
     "config": "registry/remocn-ui/toggle-group/config.ts",
@@ -16,25 +16,156 @@
     "props": {},
     "background": "oklch(1 0 0)"
   },
+  "filesSha256": {
+    "registry-item.json": "2168433c41b6790ba646bf319cbd2b99ca8bd15c84098fe1bcabaec97cc3369a",
+    "toggle-group.html": "4537d0e513aa7091678b2a5eda1c35583ec60e3dcf95cce7257972cceed8208c",
+    "toggle-group.runtime.js": "c8d6b9c7e3220bd39a34c2fbff430a787a6ffc26319244a8825ea48025e5a872",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "d1bc3a9c38c2f1ca143383522779c63d6531fea28e7d069ce5fbea2f031b5e2b",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 115,
-    "meanSsim": 0.999926,
-    "minSsim": 0.999841,
-    "p05Ssim": 0.999867,
-    "p95Ssim": 0.999944,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 115,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 115,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check reported 5 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "toggle-group",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn-ui/toggle-group/index.tsx",
+          "entry": "components/docs/examples/toggle-group-example.tsx",
+          "config": "registry/remocn-ui/toggle-group/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(1) > div > span:nth-of-type(2)",
+          "text": "Yearly",
+          "fg": "rgb(115,115,115)",
+          "bg": "rgb(245,245,245)",
+          "ratio": 4.35,
+          "requiredRatio": 4.5
+        },
+        "reason": "The pinned ToggleGroup uses mutedForeground oklch(0.556 0 0) on muted oklch(0.97 0 0) for inactive labels and interpolates that source color during indicator motion. Preserve the original palette. Full checker findings remain recorded; exact frame parity is required separately."
+      },
+      {
+        "slug": "toggle-group",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn-ui/toggle-group/index.tsx",
+          "entry": "components/docs/examples/toggle-group-example.tsx",
+          "config": "registry/remocn-ui/toggle-group/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(1) > div > span:nth-of-type(1)",
+          "text": "Monthly",
+          "fg": "rgb(114,114,114)",
+          "bg": "rgb(245,245,245)",
+          "ratio": 4.41,
+          "requiredRatio": 4.5
+        },
+        "reason": "The pinned ToggleGroup uses mutedForeground oklch(0.556 0 0) on muted oklch(0.97 0 0) for inactive labels and interpolates that source color during indicator motion. Preserve the original palette. Full checker findings remain recorded; exact frame parity is required separately."
+      },
+      {
+        "slug": "toggle-group",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn-ui/toggle-group/index.tsx",
+          "entry": "components/docs/examples/toggle-group-example.tsx",
+          "config": "registry/remocn-ui/toggle-group/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(1) > div > span:nth-of-type(1)",
+          "text": "Monthly",
+          "fg": "rgb(115,115,115)",
+          "bg": "rgb(245,245,245)",
+          "ratio": 4.35,
+          "requiredRatio": 4.5
+        },
+        "reason": "The pinned ToggleGroup uses mutedForeground oklch(0.556 0 0) on muted oklch(0.97 0 0) for inactive labels and interpolates that source color during indicator motion. Preserve the original palette. Full checker findings remain recorded; exact frame parity is required separately."
+      }
+    ],
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuRequestedMode": "hardware",
+    "browserGpuProbes": {
+      "render": {
+        "logSha256": "21a68159e54d1ae89b7de2f5056e4b762fea2209eb0ffdf4478a1df37f4174ae",
+        "observations": [
+          {
+            "mode": "hardware",
+            "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+          }
+        ]
+      }
+    },
+    "captureBackend": "unobserved",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/toggle-group/remocn.mp4",
+    "referenceVideo": "public/previews/toggle-group/reference.mp4",
     "hyperframesVideo": "public/previews/toggle-group/hyperframes.mp4",
-    "summary": "parity/toggle-group-diff/summary.json"
+    "thumbnail": "public/previews/toggle-group/thumbnail.png",
+    "summary": "parity/toggle-group-diff/summary.json",
+    "perFrameSsim": "parity/toggle-group-diff/ssim.log",
+    "hyperframesCheck": "parity/toggle-group-diff/hyperframes-check.log",
+    "hyperframesRender": "parity/toggle-group-diff/hyperframes-render.log",
+    "worstFrame": "parity/toggle-group-diff/worst-frame.png",
+    "referenceAlpha": "parity/toggle-group-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/toggle-group-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/toggle-group-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/toggle-group-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/toggle-group/reference.mp4": "7cd7e3e535cef2f2bc8f776b649118764502849eed05421a0803d29004238fff",
+    "public/previews/toggle-group/hyperframes.mp4": "7cd7e3e535cef2f2bc8f776b649118764502849eed05421a0803d29004238fff",
+    "public/previews/toggle-group/thumbnail.png": "a24cded4e40bb0a8477dd5955b2e1916fa1cd9827edee324e9d28d6b398e8508",
+    "parity/toggle-group-diff/summary.json": "b3389463afe3e64ccc528b539692f12063821f84231493a0265567ec6f2f7a33",
+    "parity/toggle-group-diff/ssim.log": "137fe1281ffbbb7e1b4d1bafe65996c63667644b669271afc04d711bf93588ef",
+    "parity/toggle-group-diff/hyperframes-check.log": "8cbd52c857390e7033ac222962775e04162580f714c597b1a3401ff7e938c699",
+    "parity/toggle-group-diff/hyperframes-render.log": "21a68159e54d1ae89b7de2f5056e4b762fea2209eb0ffdf4478a1df37f4174ae",
+    "parity/toggle-group-diff/worst-frame.png": "1757abe2f8fe4efa907efb84d79c5c1f1999d68a4ce78a4dfcfb772f37a4523d",
+    "parity/toggle-group-diff/reference-alpha.framemd5": "ce87931491e39244f23966f4ed09bf939d0babd39102324e37a435f2e811cc2f",
+    "parity/toggle-group-diff/hyperframes-alpha.framemd5": "ce87931491e39244f23966f4ed09bf939d0babd39102324e37a435f2e811cc2f",
+    "parity/toggle-group-diff/reference-rgba.framemd5": "d7d294afbf93941eceab314c3c8748d1caabddfdcb32c802447f98c932a9b2f3",
+    "parity/toggle-group-diff/hyperframes-rgba.framemd5": "d7d294afbf93941eceab314c3c8748d1caabddfdcb32c802447f98c932a9b2f3"
   }
 }

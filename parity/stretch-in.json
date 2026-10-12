@@ -2,7 +2,7 @@
   "slug": "stretch-in",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/stretch-in/index.tsx",
     "config": "registry/remocn/stretch-in/config.ts",
     "license": "MIT"
@@ -22,13 +22,28 @@
     },
     "background": "#141318"
   },
+  "filesSha256": {
+    "registry-item.json": "825bef1fd2965236a24cc0df20ba70cf343579ffb5cb951ace49c55189ccf5a7",
+    "stretch-in.html": "6780b3e1de4c041d9874606999ff5b09eb724b82d98d0c240f8c3bf2bb4b47ee",
+    "stretch-in.runtime.js": "11f42588369284129982ce5cecaafade5ec5aad4801f456975a3fc62f5b6127d",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "remocn-additions/Anton-v27.ttf": "fd9301f2837c99df2be07cc7f0be66e9470f5354d8fcf1606027c67fcd637a53",
+    "licenses/Anton-OFL.txt": "ee67e6ee22790b7929f1a3769ca2801d565c64b5a9096942c1adf5596de9c9e4",
+    "licenses/Opentype-MIT.txt": "a5b87c9bc191e7f9c06b07bd7cbbed3ed846dfdb50e859484b2c245aa1ab2e61",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "ca52f2307a8170fd035041fa2dc8e9ef7733fed2e224895067f3ef347d5af69b",
+  "fingerprint": "bd3268292d664a7db36b21e98fdcdefa7bce5245fc6c547e40759fdc3fe33707",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 60,
@@ -41,14 +56,23 @@
       "mismatchedFrames": [],
       "pass": true
     },
+    "rgba": {
+      "frameCount": 60,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -60,6 +84,21 @@
     "hyperframesCheck": "parity/stretch-in-diff/hyperframes-check.log",
     "worstFrame": "parity/stretch-in-diff/worst-frame.png",
     "referenceAlpha": "parity/stretch-in-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/stretch-in-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/stretch-in-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/stretch-in-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/stretch-in-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/stretch-in/reference.mp4": "b38164b7d7fd074595be162fa2b99bae8c582a8f4f8fddd97b08237f3e4678e6",
+    "public/previews/stretch-in/hyperframes.mp4": "b38164b7d7fd074595be162fa2b99bae8c582a8f4f8fddd97b08237f3e4678e6",
+    "public/previews/stretch-in/thumbnail.png": "14f28bc519d8037dddac79f523ec582548d57ad7fa072f22fd9913b3883abaa2",
+    "parity/stretch-in-diff/summary.json": "53afe1505ac330e9a858ffe8a5005963ff5f8ba7de9ea1cafc5074fbd19e0c47",
+    "parity/stretch-in-diff/ssim.log": "e5de144aa23e764f1d14fe248acd94330063b3ce5a1953536c4766924aff2bf1",
+    "parity/stretch-in-diff/hyperframes-check.log": "2b58953b1944923b928651f51c12ea5e7b27b9bb4b63a0b19cf8549441c9a943",
+    "parity/stretch-in-diff/worst-frame.png": "95385efc5cd403cbc7f4941065da7ac69a0d845c7176e6d6c4c86c7d340c9f27",
+    "parity/stretch-in-diff/reference-alpha.framemd5": "ab7861b3aa0dbf0bdab8958a5cae36aeb17941934f19b376609ac43f71a40d6a",
+    "parity/stretch-in-diff/hyperframes-alpha.framemd5": "ab7861b3aa0dbf0bdab8958a5cae36aeb17941934f19b376609ac43f71a40d6a",
+    "parity/stretch-in-diff/reference-rgba.framemd5": "d2c9621f20cedeb29e5518371799562b9f580f4b26441a32168b029425bec26d",
+    "parity/stretch-in-diff/hyperframes-rgba.framemd5": "d2c9621f20cedeb29e5518371799562b9f580f4b26441a32168b029425bec26d"
   }
 }

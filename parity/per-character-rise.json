@@ -2,7 +2,7 @@
   "slug": "per-character-rise",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/per-character-rise/index.tsx",
     "config": "registry/remocn/per-character-rise/config.ts",
     "license": "MIT"
@@ -22,25 +22,76 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "bb9508c56e281670459a301cff95214d365c9b0e9d3cd1e8c39e761780a9835c",
+    "per-character-rise.html": "6c4f35cb6a26755989adbf74b74e1bba30d7bc86000d69b3e0b557b3d28a0e10",
+    "per-character-rise.runtime.js": "df07bcaed79a17b1b156fb5ea0fdd789393da8af87fd506db96fa00e698e347b",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "3d475f8c7c7867090dc2713afcfb9e1cd8d395a6af398af630a462b8ecb3d700",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 60,
-    "meanSsim": 0.998666,
-    "minSsim": 0.998374,
-    "p05Ssim": 0.998412,
-    "p95Ssim": 0.999777,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 60,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 60,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/per-character-rise/remocn.mp4",
+    "referenceVideo": "public/previews/per-character-rise/reference.mp4",
     "hyperframesVideo": "public/previews/per-character-rise/hyperframes.mp4",
-    "summary": "parity/per-character-rise-diff/summary.json"
+    "thumbnail": "public/previews/per-character-rise/thumbnail.png",
+    "summary": "parity/per-character-rise-diff/summary.json",
+    "perFrameSsim": "parity/per-character-rise-diff/ssim.log",
+    "hyperframesCheck": "parity/per-character-rise-diff/hyperframes-check.log",
+    "worstFrame": "parity/per-character-rise-diff/worst-frame.png",
+    "referenceAlpha": "parity/per-character-rise-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/per-character-rise-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/per-character-rise-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/per-character-rise-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/per-character-rise/reference.mp4": "983213c039b05ef432e932e25d3f776ceab1b56b1c4b09090dd53ef9a342db4b",
+    "public/previews/per-character-rise/hyperframes.mp4": "983213c039b05ef432e932e25d3f776ceab1b56b1c4b09090dd53ef9a342db4b",
+    "public/previews/per-character-rise/thumbnail.png": "2648952d8b3b249a0200576172674bf3e7b7681dc64b782d746936d6b5a7c862",
+    "parity/per-character-rise-diff/summary.json": "53afe1505ac330e9a858ffe8a5005963ff5f8ba7de9ea1cafc5074fbd19e0c47",
+    "parity/per-character-rise-diff/ssim.log": "e5de144aa23e764f1d14fe248acd94330063b3ce5a1953536c4766924aff2bf1",
+    "parity/per-character-rise-diff/hyperframes-check.log": "9859637ae12a066f55a8389a02b3b74c293bdd87a925ceda334701230cf2a0bf",
+    "parity/per-character-rise-diff/worst-frame.png": "b6b80f4263bf6c8c16375e4217852feab2c6e68f51a427bd3f5d799e52aa49c4",
+    "parity/per-character-rise-diff/reference-alpha.framemd5": "ab7861b3aa0dbf0bdab8958a5cae36aeb17941934f19b376609ac43f71a40d6a",
+    "parity/per-character-rise-diff/hyperframes-alpha.framemd5": "ab7861b3aa0dbf0bdab8958a5cae36aeb17941934f19b376609ac43f71a40d6a",
+    "parity/per-character-rise-diff/reference-rgba.framemd5": "2bd0900f7dacc53b3feaae0c848b73e0281d0919eb7081f531a6b573507e7cfb",
+    "parity/per-character-rise-diff/hyperframes-rgba.framemd5": "2bd0900f7dacc53b3feaae0c848b73e0281d0919eb7081f531a6b573507e7cfb"
   }
 }

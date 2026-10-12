@@ -2,7 +2,7 @@
   "slug": "rolling-number",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/rolling-number/index.tsx",
     "config": "registry/remocn/rolling-number/config.ts",
     "license": "MIT"
@@ -21,26 +21,78 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "04b19ecb87dff99d807b862fb66d7087838a9c088705d928961214e3f2ce1be9",
+    "rolling-number.html": "4648502fe007fc2919b96c2e4538bacaf379bbfa80f2344c62f34366fbcdf243",
+    "rolling-number.runtime.js": "189e11029630bdea6f478f2c6687854c209aa7d9036d0208ed3d30c1b1cad723",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "JetBrainsMono-Latin.woff2": "18be452724bfdc236c074ca94a249a7f41a86752c7d04ab258ce9ed5651f6a7e",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/JetBrainsMono-OFL.txt": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d"
+  },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "d1b07f4bfa5e2f749447dae85a6faf0bedbe74dd72cc3648661798b91d839df6",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.998289,
-    "minSsim": 0.997803,
-    "p05Ssim": 0.997953,
-    "p95Ssim": 0.998606,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/rolling-number/remocn.mp4",
+    "referenceVideo": "public/previews/rolling-number/reference.mp4",
     "hyperframesVideo": "public/previews/rolling-number/hyperframes.mp4",
-    "summary": "parity/rolling-number-diff/summary.json"
+    "thumbnail": "public/previews/rolling-number/thumbnail.png",
+    "summary": "parity/rolling-number-diff/summary.json",
+    "perFrameSsim": "parity/rolling-number-diff/ssim.log",
+    "hyperframesCheck": "parity/rolling-number-diff/hyperframes-check.log",
+    "worstFrame": "parity/rolling-number-diff/worst-frame.png",
+    "referenceAlpha": "parity/rolling-number-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/rolling-number-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/rolling-number-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/rolling-number-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/rolling-number/reference.mp4": "bd8bb12d3e9065ae8214ca8fad7f78d8b48c16dd6040f6219625c71b3ea0c0f4",
+    "public/previews/rolling-number/hyperframes.mp4": "bd8bb12d3e9065ae8214ca8fad7f78d8b48c16dd6040f6219625c71b3ea0c0f4",
+    "public/previews/rolling-number/thumbnail.png": "2f81d3454032dde7c2b8d192d2c410e3c40b55f22c886e6ddedac5cc077ca7a6",
+    "parity/rolling-number-diff/summary.json": "ad55b29e05e75e155f68631a7d07dcf33cfd0beba9f35e6e6cb01ccc34051e53",
+    "parity/rolling-number-diff/ssim.log": "c4fbedb2045d104b60568467b9860d7ee5ffeee1f88dedd0034e5cf393a3221a",
+    "parity/rolling-number-diff/hyperframes-check.log": "4a751a73e21309c0210a3f76cef4e5274d31e658fb4034006b46713fd3d86e70",
+    "parity/rolling-number-diff/worst-frame.png": "a0aa183d5eedea1e0b3d674002c8e174e60f2bc004834a635260df4be2af26fd",
+    "parity/rolling-number-diff/reference-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/rolling-number-diff/hyperframes-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/rolling-number-diff/reference-rgba.framemd5": "08a9540374c7e834311e8aa66ea8f22b3f1354bae7b55f376f2ea34642707686",
+    "parity/rolling-number-diff/hyperframes-rgba.framemd5": "08a9540374c7e834311e8aa66ea8f22b3f1354bae7b55f376f2ea34642707686"
   }
 }

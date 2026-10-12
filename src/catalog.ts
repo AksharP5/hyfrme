@@ -120,7 +120,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "screen-captures",
         label: "Screen Captures",
-        slugs: ["snapcn-screen-recording"],
+        slugs: ["snapcn-screen-recording", "snapcn-capture-reveal"],
       },
     ],
   },

@@ -2,7 +2,7 @@
   "slug": "shimmer-sweep",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shimmer-sweep/index.tsx",
     "config": "registry/remocn/shimmer-sweep/config.ts",
     "license": "MIT"
@@ -22,25 +22,76 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "e7bbf8d376596b0bd91f2bd9f288ec014803e15b47aa0e97bf52a50caaf54550",
+    "shimmer-sweep.html": "db5680a4fc551f15900301584ae7b340708d5e763aa2765d43d57cae4186b7bb",
+    "shimmer-sweep.runtime.js": "0690607c8a52ed29134b6ab9e05d9ebe3034e9bd78058656e886372029859f24",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "0ca004e3324b9ffb9934dc3e2635f722cdfbe3db06066872739ccae7073ea67a",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.986619,
-    "minSsim": 0.986122,
-    "p05Ssim": 0.986146,
-    "p95Ssim": 0.987203,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/shimmer-sweep/remocn.mp4",
+    "referenceVideo": "public/previews/shimmer-sweep/reference.mp4",
     "hyperframesVideo": "public/previews/shimmer-sweep/hyperframes.mp4",
-    "summary": "parity/shimmer-sweep-diff/summary.json"
+    "thumbnail": "public/previews/shimmer-sweep/thumbnail.png",
+    "summary": "parity/shimmer-sweep-diff/summary.json",
+    "perFrameSsim": "parity/shimmer-sweep-diff/ssim.log",
+    "hyperframesCheck": "parity/shimmer-sweep-diff/hyperframes-check.log",
+    "worstFrame": "parity/shimmer-sweep-diff/worst-frame.png",
+    "referenceAlpha": "parity/shimmer-sweep-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shimmer-sweep-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shimmer-sweep-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shimmer-sweep-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shimmer-sweep/reference.mp4": "ec8e17148a0394a4aba7b4b2cc9eb9b8bb1c2227536fe70e211bd6801e61144b",
+    "public/previews/shimmer-sweep/hyperframes.mp4": "ec8e17148a0394a4aba7b4b2cc9eb9b8bb1c2227536fe70e211bd6801e61144b",
+    "public/previews/shimmer-sweep/thumbnail.png": "8839256faf62fe669935190c26c2536e4abd4d94bf7164e50c7a1adae629d80b",
+    "parity/shimmer-sweep-diff/summary.json": "c38069d7cb90acc2a693a754a1caeffaf324f128e7d118e6f20808613c950e44",
+    "parity/shimmer-sweep-diff/ssim.log": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/shimmer-sweep-diff/hyperframes-check.log": "9d01dba1a9c8656866a230bc9c9e45a2fc5ecfb92f1f69a3d17e05278623a9ee",
+    "parity/shimmer-sweep-diff/worst-frame.png": "4362d027b62465b72397fa823c181e37408c259620a3bd4b0e242b9cebc1a126",
+    "parity/shimmer-sweep-diff/reference-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/shimmer-sweep-diff/hyperframes-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/shimmer-sweep-diff/reference-rgba.framemd5": "bb0771d0e410cb484b74d4bffc4cbb85934f0b91e3f26babc8d8d4078b2eb006",
+    "parity/shimmer-sweep-diff/hyperframes-rgba.framemd5": "bb0771d0e410cb484b74d4bffc4cbb85934f0b91e3f26babc8d8d4078b2eb006"
   }
 }

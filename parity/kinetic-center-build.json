@@ -2,7 +2,7 @@
   "slug": "kinetic-center-build",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/kinetic-center-build/index.tsx",
     "config": "registry/remocn/kinetic-center-build/config.ts",
     "license": "MIT"
@@ -22,25 +22,76 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "0b052d23147baee5d362c791e6812d3642a9f09dbe63f0d0aeb37a1c9a0dc348",
+    "kinetic-center-build.html": "7c93cbc9454ec8825536d0b93be964352ad52d319797a0f48fc483c041d774a3",
+    "kinetic-center-build.runtime.js": "df0872f6b9c599d8dd71a27d070d15d2df603dee4284ac8b97674c57de637393",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "e377da09bf23fe89e7e14471a3967ef5048e249705e861968bddf14d8e41bdb9",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 60,
-    "meanSsim": 0.998642,
-    "minSsim": 0.997961,
-    "p05Ssim": 0.998144,
-    "p95Ssim": 0.999726,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 60,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 60,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/kinetic-center-build/remocn.mp4",
+    "referenceVideo": "public/previews/kinetic-center-build/reference.mp4",
     "hyperframesVideo": "public/previews/kinetic-center-build/hyperframes.mp4",
-    "summary": "parity/kinetic-center-build-diff/summary.json"
+    "thumbnail": "public/previews/kinetic-center-build/thumbnail.png",
+    "summary": "parity/kinetic-center-build-diff/summary.json",
+    "perFrameSsim": "parity/kinetic-center-build-diff/ssim.log",
+    "hyperframesCheck": "parity/kinetic-center-build-diff/hyperframes-check.log",
+    "worstFrame": "parity/kinetic-center-build-diff/worst-frame.png",
+    "referenceAlpha": "parity/kinetic-center-build-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/kinetic-center-build-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/kinetic-center-build-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/kinetic-center-build-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/kinetic-center-build/reference.mp4": "cf682731a04bb6930099a137cbd57b30bee33ccd0d1dc19100e52f16c9f6d7df",
+    "public/previews/kinetic-center-build/hyperframes.mp4": "cf682731a04bb6930099a137cbd57b30bee33ccd0d1dc19100e52f16c9f6d7df",
+    "public/previews/kinetic-center-build/thumbnail.png": "c19bc8fdf26d324a68db94d69c4c5d4649bfbd32ce37da2c4239bff361c71562",
+    "parity/kinetic-center-build-diff/summary.json": "53afe1505ac330e9a858ffe8a5005963ff5f8ba7de9ea1cafc5074fbd19e0c47",
+    "parity/kinetic-center-build-diff/ssim.log": "e5de144aa23e764f1d14fe248acd94330063b3ce5a1953536c4766924aff2bf1",
+    "parity/kinetic-center-build-diff/hyperframes-check.log": "0745e87f0573f23b440080121808c9438cece91327132098330ab98fdb1ea43f",
+    "parity/kinetic-center-build-diff/worst-frame.png": "b6b80f4263bf6c8c16375e4217852feab2c6e68f51a427bd3f5d799e52aa49c4",
+    "parity/kinetic-center-build-diff/reference-alpha.framemd5": "ab7861b3aa0dbf0bdab8958a5cae36aeb17941934f19b376609ac43f71a40d6a",
+    "parity/kinetic-center-build-diff/hyperframes-alpha.framemd5": "ab7861b3aa0dbf0bdab8958a5cae36aeb17941934f19b376609ac43f71a40d6a",
+    "parity/kinetic-center-build-diff/reference-rgba.framemd5": "e4c7a5681272de46b26cdded6cda9e377a06ac9aace595fbe1e97a19aee53f77",
+    "parity/kinetic-center-build-diff/hyperframes-rgba.framemd5": "e4c7a5681272de46b26cdded6cda9e377a06ac9aace595fbe1e97a19aee53f77"
   }
 }

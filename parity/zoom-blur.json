@@ -2,7 +2,7 @@
   "slug": "zoom-blur",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/zoom-blur/index.tsx",
     "entry": "components/docs/examples/zoom-blur-example.tsx",
     "config": "registry/remocn/zoom-blur/config.ts",
@@ -15,29 +15,99 @@
     "durationInFrames": 114,
     "props": {
       "blur": 16,
-      "rise": 0
+      "rise": 0,
+      "speed": 1
     },
     "background": "#141318"
   },
+  "filesSha256": {
+    "registry-item.json": "29390cc2b3d3b4464e508d27959606c2a82bd011f1b3e0694980fc305f45cca1",
+    "zoom-blur.html": "e0ed68fec6eaf4c5adfd06e92a7697e304b7f11e8e7c7c0491b558fc116c85ab",
+    "zoom-blur.runtime.js": "36f578a2fe4875b2db06d37439b24a9e66ef557cef9472f4710aa6afb2c8312a",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
-  "status": "verified",
+  "measurement": "lossless-png",
+  "status": "failed",
+  "fingerprint": "f326923b9f4ca59cf127b9f60d2f828b6296529976497032776e1f3dff506e51",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 114,
-    "meanSsim": 0.997838,
-    "minSsim": 0.997591,
-    "p05Ssim": 0.997591,
-    "p95Ssim": 0.999103,
-    "pass": true
+    "meanSsim": 0.9999895701754387,
+    "minSsim": 0.999759,
+    "p05Ssim": 0.999874,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 114,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 114,
+      "mismatchedFrames": [
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/zoom-blur/remocn.mp4",
+    "referenceVideo": "public/previews/zoom-blur/reference.mp4",
     "hyperframesVideo": "public/previews/zoom-blur/hyperframes.mp4",
-    "summary": "parity/zoom-blur-diff/summary.json"
+    "thumbnail": "public/previews/zoom-blur/thumbnail.png",
+    "summary": "parity/zoom-blur-diff/summary.json",
+    "perFrameSsim": "parity/zoom-blur-diff/ssim.log",
+    "hyperframesCheck": "parity/zoom-blur-diff/hyperframes-check.log",
+    "worstFrame": "parity/zoom-blur-diff/worst-frame.png",
+    "referenceAlpha": "parity/zoom-blur-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/zoom-blur-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/zoom-blur-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/zoom-blur-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/zoom-blur/reference.mp4": "3a6fb0ace9a957348131c7776abd2438b41c97018f29016d8eb02e8586a7139a",
+    "public/previews/zoom-blur/hyperframes.mp4": "668bddcd68427ffc9458fae7b20e12438e5b0e3d9192b36b569404a92fd47c67",
+    "public/previews/zoom-blur/thumbnail.png": "97ba273d34053bd2f822baf9eeb41a04475ad67d810d00116cad2065ec30c869",
+    "parity/zoom-blur-diff/summary.json": "2aed08d3c43ec26cec2a505312f8b3ca647ce7a38f75cc1902efad23c6dd123b",
+    "parity/zoom-blur-diff/ssim.log": "3209bca2e06b4aec4153373a73f75b583c616f13794165f5acc02b7df2605037",
+    "parity/zoom-blur-diff/hyperframes-check.log": "a46ee2eca607ba57a14a6144d5884dc74f8c8e810eb418e827127610502f0f11",
+    "parity/zoom-blur-diff/worst-frame.png": "06e82a3f8e9216e889ba2de7cf044b69cd2019a72027469eb5004163e9c865e8",
+    "parity/zoom-blur-diff/reference-alpha.framemd5": "d0e75db81c2592164d8f37cabd6cc267b41740ea4441aa05d783f8cd2b423bc9",
+    "parity/zoom-blur-diff/hyperframes-alpha.framemd5": "d0e75db81c2592164d8f37cabd6cc267b41740ea4441aa05d783f8cd2b423bc9",
+    "parity/zoom-blur-diff/reference-rgba.framemd5": "f86b310047d862b6feb41e1adac04e37d0c681d79daa31905af05c1974fdd006",
+    "parity/zoom-blur-diff/hyperframes-rgba.framemd5": "1d3a4f1fa1fd260c716b669f92f9e72951cddfd7899eb09aa22f7530a373622f"
   }
 }

@@ -2,7 +2,7 @@
   "slug": "ink-underline",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/ink-underline/index.tsx",
     "entry": "components/docs/examples/ink-underline-example.tsx",
     "config": "registry/remocn/ink-underline/config.ts",
@@ -22,29 +22,83 @@
       "grain": 1,
       "durationSteps": 5,
       "seed": "ink",
-      "step": 3
+      "step": 3,
+      "speed": 1
     },
     "background": "#f1eee7"
   },
+  "filesSha256": {
+    "registry-item.json": "054e98ecf48d2c0c11938ab7b50d4a483ede6eaf552c99428373f71d8f06ca34",
+    "ink-underline.html": "3d0bdca15cd9d75582b9f9a34c4e332001f6ddc9958a075cfdb01d505cfa2cd2",
+    "ink-underline.runtime.js": "545dca565caa4c34982ea3be32fe0e85fdaa574e33dcc6d001fdd02295cfbefe",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "Caveat-Latin.woff2": "891951df5e8b5b0f0bc760d31375405e795c666b5add70437de12d4a6482b33f",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Caveat-OFL.txt": "163a2b400e16916ad3196296c946c526d0efce6baf22a2164269ffc62fb9f671"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "9e71ed75f26090ecc0b17198f5398f55b0c128202bb3aa53463eec64c25859f1",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.992466,
-    "minSsim": 0.991731,
-    "p05Ssim": 0.991734,
-    "p95Ssim": 0.998759,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/ink-underline/remocn.mp4",
+    "referenceVideo": "public/previews/ink-underline/reference.mp4",
     "hyperframesVideo": "public/previews/ink-underline/hyperframes.mp4",
-    "summary": "parity/ink-underline-diff/summary.json"
+    "thumbnail": "public/previews/ink-underline/thumbnail.png",
+    "summary": "parity/ink-underline-diff/summary.json",
+    "perFrameSsim": "parity/ink-underline-diff/ssim.log",
+    "hyperframesCheck": "parity/ink-underline-diff/hyperframes-check.log",
+    "worstFrame": "parity/ink-underline-diff/worst-frame.png",
+    "referenceAlpha": "parity/ink-underline-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/ink-underline-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/ink-underline-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/ink-underline-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/ink-underline/reference.mp4": "2a988e4ba50c33744609e57e55b4f34d9c8bb1bdff1c2b777b7bd3b4c8a14d0f",
+    "public/previews/ink-underline/hyperframes.mp4": "2a988e4ba50c33744609e57e55b4f34d9c8bb1bdff1c2b777b7bd3b4c8a14d0f",
+    "public/previews/ink-underline/thumbnail.png": "58839bf69c1066a963165277f4fea69ab72aaa07090aa22a22c8dafe96e7f439",
+    "parity/ink-underline-diff/summary.json": "c38069d7cb90acc2a693a754a1caeffaf324f128e7d118e6f20808613c950e44",
+    "parity/ink-underline-diff/ssim.log": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/ink-underline-diff/hyperframes-check.log": "532f8382020ba47683719d16b2e9f4ff4a20f2fe3335c0a5378cbe6f41fe23c8",
+    "parity/ink-underline-diff/worst-frame.png": "f2d7f03785b7a7e67ac49fe44da5c40fda854c0ed92b07363dd688e63752328d",
+    "parity/ink-underline-diff/reference-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/ink-underline-diff/hyperframes-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/ink-underline-diff/reference-rgba.framemd5": "5d173e713198f089aaf50f0af49fbfc90f85d131c59bb14747a399373d1cb947",
+    "parity/ink-underline-diff/hyperframes-rgba.framemd5": "5d173e713198f089aaf50f0af49fbfc90f85d131c59bb14747a399373d1cb947"
   }
 }

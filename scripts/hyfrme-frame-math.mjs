@@ -1,7 +1,6 @@
 // Hyfrme-owned, framework-neutral frame math used by generated ports.
-// The implementations are intentionally small and derived from the public
-// definitions of linear interpolation and cubic Bézier curves—not bundled
-// from Remotion. Remotion remains the reference renderer in the parity bench.
+// Preserve the pinned reference's arithmetic order without shipping its runtime.
+// The Bézier evaluator carries the original MIT attribution below.
 
 export const remocnMitBanner = `/*!
  * This generated port contains source derived from Remocn.
@@ -56,7 +55,7 @@ const interpolate = (input, inputRange, outputRange, options = {}) => {
   const value = normalized.value;
   let segment = inputRange.length - 2;
   for (let index = 0; index < inputRange.length - 1; index += 1) {
-    if (value < inputRange[index + 1]) {
+    if (value <= inputRange[index + 1]) {
       segment = index;
       break;
     }
@@ -88,24 +87,76 @@ import {
   useMode as hyfrmeUseColorMode,
 } from "culori/fn";
 
-const hyfrmeCubicCoordinate = (time, firstControl, secondControl) => {
-  const inverse = 1 - time;
-  return 3 * inverse * inverse * time * firstControl +
-    3 * inverse * time * time * secondControl +
-    time * time * time;
-};
+/*!
+ * Cubic Bézier evaluation adapted from Gaëtan Renaudeau's bezier-easing
+ * and the React Native implementation. Copyright (c) 2014-2015 Gaëtan
+ * Renaudeau. Portions copyright (c) Facebook, Inc. and its affiliates.
+ * MIT License
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+const hyfrmeCubicCoordinate = (time, first, second) =>
+  (((1 - 3 * second + 3 * first) * time + (3 * second - 6 * first)) * time + 3 * first) * time;
+const hyfrmeCubicSlope = (time, first, second) =>
+  3 * (1 - 3 * second + 3 * first) * time * time + 2 * (3 * second - 6 * first) * time + 3 * first;
 
-const hyfrmeBezier = (x1, y1, x2, y2) => (input) => {
-  const progress = Math.min(1, Math.max(0, input));
-  if (progress === 0 || progress === 1) return progress;
-  let lower = 0;
-  let upper = 1;
-  for (let iteration = 0; iteration < 36; iteration += 1) {
-    const time = (lower + upper) / 2;
-    if (hyfrmeCubicCoordinate(time, x1, x2) < progress) lower = time;
-    else upper = time;
+const hyfrmeBezier = (x1, y1, x2, y2) => {
+  if (!(x1 >= 0 && x1 <= 1 && x2 >= 0 && x2 <= 1)) {
+    throw new Error("bezier x values must be in [0, 1] range");
   }
-  return hyfrmeCubicCoordinate((lower + upper) / 2, y1, y2);
+  const samples = new Float32Array(11);
+  const step = 1 / 10;
+  const linear = x1 === y1 && x2 === y2;
+  if (!linear) {
+    for (let index = 0; index < samples.length; index += 1) {
+      samples[index] = hyfrmeCubicCoordinate(index * step, x1, x2);
+    }
+  }
+  return (input) => {
+    const progress = Math.min(1, Math.max(0, input));
+    if (linear || progress === 0 || progress === 1) return progress;
+    let start = 0;
+    let index = 1;
+    while (index !== 10 && samples[index] <= progress) {
+      start += step;
+      index += 1;
+    }
+    index -= 1;
+    const fraction = (progress - samples[index]) / (samples[index + 1] - samples[index]);
+    let time = start + fraction * step;
+    const slope = hyfrmeCubicSlope(time, x1, x2);
+    if (slope >= 0.001) {
+      for (let iteration = 0; iteration < 4; iteration += 1) {
+        const currentSlope = hyfrmeCubicSlope(time, x1, x2);
+        if (currentSlope === 0) break;
+        time -= (hyfrmeCubicCoordinate(time, x1, x2) - progress) / currentSlope;
+      }
+    } else if (slope !== 0) {
+      let end = start + step;
+      let difference;
+      let iteration = 0;
+      do {
+        time = start + (end - start) / 2;
+        difference = hyfrmeCubicCoordinate(time, x1, x2) - progress;
+        if (difference > 0) end = time;
+        else start = time;
+      } while (Math.abs(difference) > 0.0000001 && ++iteration < 10);
+    }
+    return hyfrmeCubicCoordinate(time, y1, y2);
+  };
 };
 
 class Easing {
@@ -218,59 +269,90 @@ const interpolateColors = (input, inputRange, outputRange) => {
   return \`rgba(\${red}, \${green}, \${blue}, \${alpha})\`;
 };
 
+const hyfrmeSpringStates = new Map();
+const hyfrmeSpringDurations = new Map();
+
+// Advance the oscillator at frame timestamps. Evaluating once at total elapsed
+// time is algebraically equivalent, but changes the source's floating-point result.
+const hyfrmeSpringAdvance = (state, milliseconds, stiffness, damping, mass) => {
+  const time = Math.min(milliseconds - state.milliseconds, 64) / 1000;
+  const displacement = 1 - state.position;
+  const initialVelocity = -state.velocity;
+  const ratio = damping / (2 * Math.sqrt(stiffness * mass));
+  const frequency = Math.sqrt(stiffness / mass);
+  let position;
+  let velocity;
+  if (ratio < 1) {
+    const dampedFrequency = frequency * Math.sqrt(1 - ratio ** 2);
+    const sine = Math.sin(dampedFrequency * time);
+    const cosine = Math.cos(dampedFrequency * time);
+    const envelope = Math.exp(-ratio * frequency * time);
+    const offset = envelope * (sine * ((initialVelocity + ratio * frequency * displacement) / dampedFrequency) + displacement * cosine);
+    position = 1 - offset;
+    velocity = ratio * frequency * offset - envelope * (cosine * (initialVelocity + ratio * frequency * displacement) - dampedFrequency * displacement * sine);
+  } else {
+    const envelope = Math.exp(-frequency * time);
+    position = 1 - envelope * (displacement + (initialVelocity + frequency * displacement) * time);
+    velocity = envelope * (initialVelocity * (time * frequency - 1) + time * displacement * frequency * frequency);
+  }
+  return {position, velocity, milliseconds};
+};
+
 const hyfrmeSpringUnit = (frame, fps, config = {}) => {
-  if (frame <= 0) return 0;
   const stiffness = config.stiffness ?? 100;
   const damping = config.damping ?? 10;
   const mass = config.mass ?? 1;
-  const velocity = config.velocity ?? 0;
-  const time = frame / fps;
-  const naturalFrequency = Math.sqrt(stiffness / mass);
-  const dampingRatio = damping / (2 * Math.sqrt(stiffness * mass));
-  let value;
-
-  if (dampingRatio >= 1) {
-    const envelope = Math.exp(-naturalFrequency * time);
-    value = 1 - envelope * (1 + (naturalFrequency - velocity) * time);
-  } else {
-    const dampedFrequency = naturalFrequency * Math.sqrt(1 - dampingRatio * dampingRatio);
-    const envelope = Math.exp(-dampingRatio * naturalFrequency * time);
-    value = 1 - envelope * (
-      Math.cos(dampedFrequency * time) +
-      ((dampingRatio * naturalFrequency - velocity) / dampedFrequency) *
-        Math.sin(dampedFrequency * time)
-    );
+  if (damping <= 0) throw new Error("Spring damping must be greater than 0");
+  const key = [fps, stiffness, damping, mass].join(":");
+  let states = hyfrmeSpringStates.get(key);
+  if (!states) {
+    states = [{position: 0, velocity: 0, milliseconds: 0}];
+    hyfrmeSpringStates.set(key, states);
   }
-
-  return config.overshootClamping
-    ? Math.min(1, Math.max(0, value))
-    : value;
+  const clamped = Math.max(0, frame);
+  const whole = Math.floor(clamped);
+  const fractional = clamped % 1;
+  const lastWhole = fractional === 0 ? whole : Math.max(0, whole - 1);
+  for (let index = states.length; index <= lastWhole; index += 1) {
+    states.push(hyfrmeSpringAdvance(states[index - 1], (index / fps) * 1000, stiffness, damping, mass));
+  }
+  if (fractional === 0) return states[whole].position;
+  return hyfrmeSpringAdvance(states[lastWhole], (clamped / fps) * 1000, stiffness, damping, mass).position;
 };
 
 const hyfrmeMeasureSpring = (fps, config, threshold) => {
-  let lastUnsettledFrame = -1;
-  for (let frame = 0; frame <= fps * 20; frame += 1) {
+  if (threshold === 0) return Infinity;
+  if (threshold === 1) return 0;
+  if (!Number.isFinite(threshold) || threshold < 0) throw new Error("Invalid spring rest threshold");
+  const key = [fps, config.stiffness ?? 100, config.damping ?? 10, config.mass ?? 1, threshold].join(":");
+  if (hyfrmeSpringDurations.has(key)) return hyfrmeSpringDurations.get(key);
+  let frame = 0;
+  while (Math.abs(1 - hyfrmeSpringUnit(frame, fps, config)) >= threshold) frame += 1;
+  let duration = frame;
+  for (let settled = 0; settled < 20; settled += 1) {
+    frame += 1;
     if (Math.abs(1 - hyfrmeSpringUnit(frame, fps, config)) >= threshold) {
-      lastUnsettledFrame = frame;
+      settled = 0;
+      duration = frame + 1;
     }
   }
-  return lastUnsettledFrame + 1;
+  hyfrmeSpringDurations.set(key, duration);
+  return duration;
 };
 
-const spring = ({
-  frame,
-  fps,
-  config = {},
-  from = 0,
-  to = 1,
-  durationInFrames,
-  durationRestThreshold = 0.005,
-}) => {
-  const scaledFrame = durationInFrames === undefined
-    ? frame
-    : frame * hyfrmeMeasureSpring(fps, config, durationRestThreshold) / durationInFrames;
-  const progress = hyfrmeSpringUnit(scaledFrame, fps, config);
-  return from + (to - from) * progress;
+const spring = ({frame, fps, config = {}, from = 0, to = 1, durationInFrames, durationRestThreshold = 0.005, delay = 0, reverse = false}) => {
+  const naturalDuration = reverse || durationInFrames !== undefined
+    ? hyfrmeMeasureSpring(fps, config, durationRestThreshold)
+    : undefined;
+  const reversed = reverse ? (durationInFrames ?? naturalDuration) - frame : frame;
+  const delayed = reversed + (reverse ? delay : -delay);
+  const scaled = durationInFrames === undefined ? delayed : delayed / (durationInFrames / naturalDuration);
+  if (durationInFrames && delayed > durationInFrames) return to;
+  const position = hyfrmeSpringUnit(scaled, fps, config);
+  const progress = config.overshootClamping
+    ? to >= from ? Math.min(position, to) : Math.max(position, to)
+    : position;
+  return from === 0 && to === 1 ? progress : interpolate(progress, [0, 1], [from, to]);
 };
 
 const hyfrmeMulberry32 = (seed) => {

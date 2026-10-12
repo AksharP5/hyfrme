@@ -263,10 +263,7 @@ export function ComponentEditor({
           onToggle={(event) => setVerificationOpen(event.currentTarget.open)}
         >
           <summary>
-            <span>
-              Verified against {entry.source.label} ·{" "}
-              {(parity.result.meanSsim * 100).toFixed(3)}% match
-            </span>
+            <span>Default comparison with {entry.source.label}</span>
             <span>{parity.result.frameCount} frames</span>
             <span aria-hidden="true">↓</span>
           </summary>
@@ -274,8 +271,8 @@ export function ComponentEditor({
             <div className="verification-body">
               <div className="verification-copy">
                 <p>
-                  Synchronized renders of the pinned upstream source and this
-                  HyperFrames port.
+                  Synchronized default renders of the pinned upstream source and
+                  this HyperFrames port.
                 </p>
                 <a href={sourceUrl} target="_blank" rel="noreferrer">
                   Hyfrme source <span aria-hidden="true">↗</span>

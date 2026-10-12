@@ -2,7 +2,7 @@
   "slug": "squeeze-in",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/squeeze-in/index.tsx",
     "config": "registry/remocn/squeeze-in/config.ts",
     "license": "MIT"
@@ -23,21 +23,38 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "5ee7169ae5bf1a8c32fa423621854ff83b4bc1b91374ccadc9aca783a32e7bb5",
+    "squeeze-in.html": "d0ce496d3438da1e2749e34664cb299e2e1244f504bf63acac18d6870f23cc02",
+    "squeeze-in.runtime.js": "6ef00aee72a7761d88c7d17b853574b5c430baae963f6fc7993727860d039343",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "da471650ee3b2c32c9ab2109f3d3950289ea61a16c4e17eff9281f059ba39ba8",
+  "fingerprint": "24a4493f4d9aaa0bdbed0a5ef278b0af34afec38ba596dabc9e8629bbd3f1ab3",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 60,
-    "meanSsim": 0.9980623166666661,
-    "minSsim": 0.997666,
-    "p05Ssim": 0.997699,
-    "p95Ssim": 0.999648,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
     "alpha": {
+      "frameCount": 60,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 60,
       "mismatchedFrames": [],
       "pass": true
@@ -45,11 +62,15 @@
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -61,6 +82,21 @@
     "hyperframesCheck": "parity/squeeze-in-diff/hyperframes-check.log",
     "worstFrame": "parity/squeeze-in-diff/worst-frame.png",
     "referenceAlpha": "parity/squeeze-in-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/squeeze-in-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/squeeze-in-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/squeeze-in-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/squeeze-in-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/squeeze-in/reference.mp4": "bcf22d0156e5a7f718a227d67c7402a665a4450a34085e9e52d961df3391bd1e",
+    "public/previews/squeeze-in/hyperframes.mp4": "bcf22d0156e5a7f718a227d67c7402a665a4450a34085e9e52d961df3391bd1e",
+    "public/previews/squeeze-in/thumbnail.png": "a4dceae14a98f00f1ea622ba708f88474f89a4577d1ee09f80a002f861d94c9e",
+    "parity/squeeze-in-diff/summary.json": "53afe1505ac330e9a858ffe8a5005963ff5f8ba7de9ea1cafc5074fbd19e0c47",
+    "parity/squeeze-in-diff/ssim.log": "e5de144aa23e764f1d14fe248acd94330063b3ce5a1953536c4766924aff2bf1",
+    "parity/squeeze-in-diff/hyperframes-check.log": "58fd086683357a42a3fa96da51a5af09236041fc7b8944ea288e9df57cb1e1e0",
+    "parity/squeeze-in-diff/worst-frame.png": "b6b80f4263bf6c8c16375e4217852feab2c6e68f51a427bd3f5d799e52aa49c4",
+    "parity/squeeze-in-diff/reference-alpha.framemd5": "ab7861b3aa0dbf0bdab8958a5cae36aeb17941934f19b376609ac43f71a40d6a",
+    "parity/squeeze-in-diff/hyperframes-alpha.framemd5": "ab7861b3aa0dbf0bdab8958a5cae36aeb17941934f19b376609ac43f71a40d6a",
+    "parity/squeeze-in-diff/reference-rgba.framemd5": "a303fd28d281ffe2e5ea53d003166a5fcf6b40a2eae2cbfc29b25887ab0c759a",
+    "parity/squeeze-in-diff/hyperframes-rgba.framemd5": "a303fd28d281ffe2e5ea53d003166a5fcf6b40a2eae2cbfc29b25887ab0c759a"
   }
 }

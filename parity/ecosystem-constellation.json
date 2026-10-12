@@ -2,7 +2,7 @@
   "slug": "ecosystem-constellation",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/ecosystem-constellation/index.tsx",
     "config": "registry/remocn/ecosystem-constellation/config.ts",
     "license": "MIT"
@@ -20,25 +20,107 @@
     },
     "background": "radial-gradient(ellipse at center, #14101e 0%, #05030a 75%)"
   },
+  "filesSha256": {
+    "registry-item.json": "5a73e5c3a54de9eed8d9b537745bd8c5e7afcc5ed54294c0b4a67c23b7f57bc1",
+    "ecosystem-constellation.html": "887b922848ed8f0ce4f3f93b772b237cd53052489e5f0c4207d6c3f1290c5d08",
+    "ecosystem-constellation.runtime.js": "6ee81d97fd0a8506e6ac1a8dfbec2214942477df70d66d3bc36434348a65b415",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
-  "status": "verified",
+  "measurement": "lossless-png",
+  "status": "failed",
+  "fingerprint": "e561241ca67dd45c6baa46e216c2758b5b9132dabdb98b26aae22c1ce3ec74b9",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 240,
-    "meanSsim": 0.99047,
-    "minSsim": 0.970968,
-    "p05Ssim": 0.972272,
-    "p95Ssim": 0.996255,
-    "pass": true
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 240,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 240,
+      "mismatchedFrames": [
+        90,
+        112,
+        113,
+        119,
+        126,
+        134,
+        135,
+        136,
+        137,
+        153,
+        154,
+        155,
+        156,
+        172,
+        173,
+        174,
+        175,
+        191,
+        192,
+        193,
+        194,
+        195,
+        200,
+        203,
+        204,
+        213,
+        215,
+        223,
+        226,
+        227
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/ecosystem-constellation/remocn.mp4",
+    "referenceVideo": "public/previews/ecosystem-constellation/reference.mp4",
     "hyperframesVideo": "public/previews/ecosystem-constellation/hyperframes.mp4",
-    "summary": "parity/ecosystem-constellation-diff/summary.json"
+    "thumbnail": "public/previews/ecosystem-constellation/thumbnail.png",
+    "summary": "parity/ecosystem-constellation-diff/summary.json",
+    "perFrameSsim": "parity/ecosystem-constellation-diff/ssim.log",
+    "hyperframesCheck": "parity/ecosystem-constellation-diff/hyperframes-check.log",
+    "worstFrame": "parity/ecosystem-constellation-diff/worst-frame.png",
+    "referenceAlpha": "parity/ecosystem-constellation-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/ecosystem-constellation-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/ecosystem-constellation-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/ecosystem-constellation-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/ecosystem-constellation/reference.mp4": "5ce1cd6101bc0e883c85af084a92d9e2ae26652981bece420323fee034a06da5",
+    "public/previews/ecosystem-constellation/hyperframes.mp4": "5ce1cd6101bc0e883c85af084a92d9e2ae26652981bece420323fee034a06da5",
+    "public/previews/ecosystem-constellation/thumbnail.png": "8a2135ad66ed872ccdc6a970c5027b338aa7bd850398204be32b04568233ca4d",
+    "parity/ecosystem-constellation-diff/summary.json": "0a236d3dd00f32af9401f77af3d07205c57c26cee5debe42e7324aeb2f1bd4c6",
+    "parity/ecosystem-constellation-diff/ssim.log": "9fde39cfaa2f7bea205da4a983340211c7eaa9b79a72f67d43fdd7502020006d",
+    "parity/ecosystem-constellation-diff/hyperframes-check.log": "7913a51e42d4322d321a15ad692b5e85d1c57f96a42bda983d7e4ebca8676908",
+    "parity/ecosystem-constellation-diff/worst-frame.png": "9f751ff38a5d31f80687ac65f61ebf44072670e6994614a1a7b7152fc4aff22a",
+    "parity/ecosystem-constellation-diff/reference-alpha.framemd5": "4071e86f97a48760b4f6dd7d9195ffe8d4ecf9c59f1f90094dafb3cbdb3d96cb",
+    "parity/ecosystem-constellation-diff/hyperframes-alpha.framemd5": "4071e86f97a48760b4f6dd7d9195ffe8d4ecf9c59f1f90094dafb3cbdb3d96cb",
+    "parity/ecosystem-constellation-diff/reference-rgba.framemd5": "0e9667c838a11b95fc4c3a39bfb6f9c396061f0911c5f1f499e01ad308953780",
+    "parity/ecosystem-constellation-diff/hyperframes-rgba.framemd5": "01a2399a60619c2018d4b80d7dc32c5e5574c16e458a5f4d3b8374b4f86f11d7"
   }
 }

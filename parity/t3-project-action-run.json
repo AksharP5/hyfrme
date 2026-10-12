@@ -22,30 +22,87 @@
       "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
     },
     "captureAtlas": "parity/t3-project-action-run-v0042-atlas.json",
-    "compositionSha256": "87cbbd31abc14f8c898a5f37b2be6890065c7bfb025eb51b0ecab9df0c3fa4a2"
+    "compositionSha256": "f39421bb028e1846276563d4317a1911c542885ba8b00b111eba8386365145e7",
+    "referenceSha256": "6bf38c8c9f88e4d5b6cd751e17e1da6bc0a0d3b02112c42d0a82222b03fad0f2"
   },
-  "interaction": "Native v0.0.42 runs the saved Verify Hyfrme action in the workspace terminal. Its real git diff --check and scoped git diff --stat output come from an isolated local repository.",
-  "providerState": "Hyfrme project and Git changes are isolated fixtures; no AI provider, GitHub account, or external remote is used.",
-  "classification": "source-dom-port with lossless native-frame default",
-  "measurement": "lossless PNG; every native capture strip round-trips at SSIM 1.0",
+  "classification": "source-dom-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "defaultMode": "pixel-verified",
+  "defaultTheme": "dark",
   "thresholds": {
-    "meanSsim": 0.985,
-    "minSsim": 0.98
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
     "meanSsim": 1,
     "minSsim": 1,
-    "p05Ssim": 1,
-    "p95Ssim": 1,
     "worstFrame": 0,
-    "pass": true
+    "exactRgba": true,
+    "mismatchedFrames": [],
+    "pass": true,
+    "rgba": {
+      "pass": true,
+      "frameCount": 120,
+      "mismatchedFrames": []
+    },
+    "p05Ssim": 1,
+    "p95Ssim": 1
   },
   "themes": {
     "dark": {
       "sourceCommit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
-      "referenceSha256": "6bf38c8c9f88e4d5b6cd751e17e1da6bc0a0d3b02112c42d0a82222b03fad0f2",
+      "defaultMode": "pixel-verified",
+      "status": "verified",
+      "thresholds": {
+        "meanSsim": 1,
+        "minSsim": 1,
+        "exactRgba": true
+      },
+      "values": {
+        "projectName": "hyfrme",
+        "branchName": "feature/logo-enter",
+        "selectedThread": "Build a logo intro",
+        "otherThread": "Catalog motion audit",
+        "userMessage": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+        "replyBeforeFile": "I found the Logo Enter timing in",
+        "replyFile": "logo-enter.html",
+        "replyAfterFile": ". The final pass can extend the duration while keeping the last rendered frame still.",
+        "workedDuration": "2m",
+        "actionName": "Verify Hyfrme",
+        "terminalPrompt": "hyfrme",
+        "command": "git diff --check && git diff --stat -- registry/blocks/logo-enter/logo-enter.html",
+        "output": "registry/blocks/logo-enter/logo-enter.html | 5 ++++-\n 1 file changed, 4 insertions(+), 1 deletion(-)",
+        "composerPlaceholder": "Enable a provider in Settings to send a message",
+        "providerStatus": "No provider available",
+        "permissionMode": "Full access",
+        "workspaceMode": "Worktree",
+        "theme": "dark",
+        "renderMode": "pixel-verified",
+        "openedFrame": 30,
+        "outputFrame": 52
+      },
+      "fixture": {
+        "width": 1200,
+        "height": 659,
+        "fps": 30,
+        "durationInFrames": 120,
+        "props": {
+          "theme": "dark",
+          "opened": 30,
+          "output": 52
+        },
+        "sourceHashes": {
+          "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+          "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+          "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+        },
+        "captureAtlas": "parity/t3-project-action-run-v0042-atlas.json",
+        "compositionSha256": "f39421bb028e1846276563d4317a1911c542885ba8b00b111eba8386365145e7",
+        "referenceSha256": "6bf38c8c9f88e4d5b6cd751e17e1da6bc0a0d3b02112c42d0a82222b03fad0f2"
+      },
       "sourceHashes": {
         "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
         "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
@@ -56,35 +113,109 @@
         "opened": "95100cce7191d7e05ec265d24b79b8fe90e38f3ffb65d0fa54cf7705f466491d",
         "output": "95100cce7191d7e05ec265d24b79b8fe90e38f3ffb65d0fa54cf7705f466491d"
       },
+      "referenceSha256": "6bf38c8c9f88e4d5b6cd751e17e1da6bc0a0d3b02112c42d0a82222b03fad0f2",
       "themeSha256": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
       "result": {
         "frameCount": 120,
         "meanSsim": 1,
         "minSsim": 1,
-        "p05Ssim": 1,
-        "p95Ssim": 1,
         "worstFrame": 0,
-        "pass": true
-      },
-      "providerState": "Hyfrme project and Git changes are isolated fixtures; no AI provider, GitHub account, or external remote is used.",
-      "events": {
-        "opened": 30,
-        "output": 52
+        "exactRgba": true,
+        "mismatchedFrames": [],
+        "pass": true,
+        "rgba": {
+          "pass": true,
+          "frameCount": 120,
+          "mismatchedFrames": []
+        },
+        "p05Ssim": 1,
+        "p95Ssim": 1
       },
       "artifacts": {
-        "nativeRecording": "parity/t3-project-action-run-v0042-dark-reference.mkv",
         "referenceVideo": "public/previews/t3-project-action-run/reference.mp4",
         "hyperframesVideo": "public/previews/t3-project-action-run/hyperframes.mp4",
-        "frameSsim": "parity/t3-project-action-run-diff/dark/ssim.txt",
-        "hyperframesCheck": "parity/t3-project-action-run-diff/dark/hyperframes-check.json",
-        "installedCheck": "parity/t3-project-action-run-diff/dark/installed-check.json",
-        "customCheck": "parity/t3-project-action-run-diff/dark/custom-check.json",
-        "customized": "parity/t3-project-action-run-diff/dark/customized-state.png"
+        "thumbnail": "public/previews/t3-project-action-run/thumbnail.png",
+        "nativeRecording": "parity/t3-project-action-run-v0042-dark-reference.mkv",
+        "nativeFixture": "assets/t3-code/v0.0.42/project-action-run-v0042-dark-fixture.json",
+        "proof": "parity/t3-catalog/t3-project-action-run/dark/proof.json",
+        "rgba": "parity/t3-catalog/t3-project-action-run/dark/rgba.json",
+        "referenceRgba": "parity/t3-catalog/t3-project-action-run/dark/reference-rgba.sha256",
+        "hyperframesRgba": "parity/t3-catalog/t3-project-action-run/dark/hyperframes-rgba.sha256",
+        "frameSsim": "parity/t3-catalog/t3-project-action-run/dark/ssim.txt",
+        "hyperframesCheck": "parity/t3-catalog/t3-project-action-run/dark/hyperframes-check.json",
+        "strictRender": "parity/t3-catalog/t3-project-action-run/dark/hyperframes-render.log"
+      },
+      "historicalCustomizationEvidence": {
+        "contract": "Previously measured customization, crop, variant, and continuity evidence; these measurements are outside the exact current default-fixture claim.",
+        "result": {
+          "frameCount": 120,
+          "meanSsim": 1,
+          "minSsim": 1,
+          "p05Ssim": 1,
+          "p95Ssim": 1,
+          "worstFrame": 0,
+          "pass": true
+        },
+        "fields": {
+          "providerState": "Hyfrme project and Git changes are isolated fixtures; no AI provider, GitHub account, or external remote is used.",
+          "events": {
+            "opened": 30,
+            "output": 52
+          }
+        }
       }
     },
     "light": {
       "sourceCommit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
-      "referenceSha256": "791224a21f3ac3b8f25c1bfcbff991314fee4e29f8367258747fc8be26412b1f",
+      "defaultMode": "pixel-verified",
+      "status": "verified",
+      "thresholds": {
+        "meanSsim": 1,
+        "minSsim": 1,
+        "exactRgba": true
+      },
+      "values": {
+        "projectName": "hyfrme",
+        "branchName": "feature/logo-enter",
+        "selectedThread": "Build a logo intro",
+        "otherThread": "Catalog motion audit",
+        "userMessage": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+        "replyBeforeFile": "I found the Logo Enter timing in",
+        "replyFile": "logo-enter.html",
+        "replyAfterFile": ". The final pass can extend the duration while keeping the last rendered frame still.",
+        "workedDuration": "2m",
+        "actionName": "Verify Hyfrme",
+        "terminalPrompt": "hyfrme",
+        "command": "git diff --check && git diff --stat -- registry/blocks/logo-enter/logo-enter.html",
+        "output": "registry/blocks/logo-enter/logo-enter.html | 5 ++++-\n 1 file changed, 4 insertions(+), 1 deletion(-)",
+        "composerPlaceholder": "Enable a provider in Settings to send a message",
+        "providerStatus": "No provider available",
+        "permissionMode": "Full access",
+        "workspaceMode": "Worktree",
+        "theme": "light",
+        "renderMode": "pixel-verified",
+        "openedFrame": 30,
+        "outputFrame": 52
+      },
+      "fixture": {
+        "width": 1200,
+        "height": 659,
+        "fps": 30,
+        "durationInFrames": 120,
+        "props": {
+          "theme": "dark",
+          "opened": 30,
+          "output": 52
+        },
+        "sourceHashes": {
+          "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+          "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+          "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+        },
+        "captureAtlas": "parity/t3-project-action-run-v0042-atlas.json",
+        "compositionSha256": "f39421bb028e1846276563d4317a1911c542885ba8b00b111eba8386365145e7",
+        "referenceSha256": "791224a21f3ac3b8f25c1bfcbff991314fee4e29f8367258747fc8be26412b1f"
+      },
       "sourceHashes": {
         "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
         "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
@@ -95,50 +226,271 @@
         "opened": "a6c503c066bbe82abd18f04a27d37a2cc3f1d42e626e5e6b74828235580e5463",
         "output": "a6c503c066bbe82abd18f04a27d37a2cc3f1d42e626e5e6b74828235580e5463"
       },
+      "referenceSha256": "791224a21f3ac3b8f25c1bfcbff991314fee4e29f8367258747fc8be26412b1f",
       "themeSha256": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
       "result": {
         "frameCount": 120,
         "meanSsim": 1,
         "minSsim": 1,
-        "p05Ssim": 1,
-        "p95Ssim": 1,
         "worstFrame": 0,
-        "pass": true
-      },
-      "providerState": "Hyfrme project and Git changes are isolated fixtures; no AI provider, GitHub account, or external remote is used.",
-      "events": {
-        "opened": 30,
-        "output": 52
+        "exactRgba": true,
+        "mismatchedFrames": [],
+        "pass": true,
+        "rgba": {
+          "pass": true,
+          "frameCount": 120,
+          "mismatchedFrames": []
+        },
+        "p05Ssim": 1,
+        "p95Ssim": 1
       },
       "artifacts": {
-        "nativeRecording": "parity/t3-project-action-run-v0042-light-reference.mkv",
         "referenceVideo": "public/previews/t3-project-action-run/reference-light.mp4",
         "hyperframesVideo": "public/previews/t3-project-action-run/hyperframes-light.mp4",
-        "frameSsim": "parity/t3-project-action-run-diff/light/ssim.txt",
-        "hyperframesCheck": "parity/t3-project-action-run-diff/light/hyperframes-check.json",
-        "installedCheck": "parity/t3-project-action-run-diff/light/installed-check.json",
-        "customCheck": "parity/t3-project-action-run-diff/light/custom-check.json",
-        "customized": "parity/t3-project-action-run-diff/light/customized-state.png"
+        "thumbnail": "public/previews/t3-project-action-run/thumbnail-light.png",
+        "nativeRecording": "parity/t3-project-action-run-v0042-light-reference.mkv",
+        "nativeFixture": "assets/t3-code/v0.0.42/project-action-run-v0042-light-fixture.json",
+        "proof": "parity/t3-catalog/t3-project-action-run/light/proof.json",
+        "rgba": "parity/t3-catalog/t3-project-action-run/light/rgba.json",
+        "referenceRgba": "parity/t3-catalog/t3-project-action-run/light/reference-rgba.sha256",
+        "hyperframesRgba": "parity/t3-catalog/t3-project-action-run/light/hyperframes-rgba.sha256",
+        "frameSsim": "parity/t3-catalog/t3-project-action-run/light/ssim.txt",
+        "hyperframesCheck": "parity/t3-catalog/t3-project-action-run/light/hyperframes-check.json",
+        "strictRender": "parity/t3-catalog/t3-project-action-run/light/hyperframes-render.log"
+      },
+      "historicalCustomizationEvidence": {
+        "contract": "Previously measured customization, crop, variant, and continuity evidence; these measurements are outside the exact current default-fixture claim.",
+        "result": {
+          "frameCount": 120,
+          "meanSsim": 1,
+          "minSsim": 1,
+          "p05Ssim": 1,
+          "p95Ssim": 1,
+          "worstFrame": 0,
+          "pass": true
+        },
+        "fields": {
+          "providerState": "Hyfrme project and Git changes are isolated fixtures; no AI provider, GitHub account, or external remote is used.",
+          "events": {
+            "opened": 30,
+            "output": 52
+          }
+        }
       }
     }
   },
   "checks": {
-    "hyperframes": "full checks and strict 120-frame renders passed in dark and light",
-    "hyperframesVersion": "0.8.75",
+    "hyperframes": "full check and strict 120-frame screenshot render passed in dark and light",
     "sourceBrowser": "Google Chrome for Testing 152.0.7977.30",
     "installedThroughCli": true,
-    "customVariables": "Editable DOM mode changed Hyfrme project and branch, thread and reply copy, action name, terminal command/output, theme, and run timing; full checks, visible-text assertions, and strict 120-frame renders passed in both themes."
+    "strictRender": true
   },
   "artifacts": {
-    "nativeRecording": "parity/t3-project-action-run-v0042-dark-reference.mkv",
     "referenceVideo": "public/previews/t3-project-action-run/reference.mp4",
     "hyperframesVideo": "public/previews/t3-project-action-run/hyperframes.mp4",
-    "frameSsim": "parity/t3-project-action-run-diff/dark/ssim.txt",
-    "hyperframesCheck": "parity/t3-project-action-run-diff/dark/hyperframes-check.json",
-    "installedCheck": "parity/t3-project-action-run-diff/dark/installed-check.json",
-    "customCheck": "parity/t3-project-action-run-diff/dark/custom-check.json",
-    "customized": "parity/t3-project-action-run-diff/dark/customized-state.png",
     "thumbnail": "public/previews/t3-project-action-run/thumbnail.png",
-    "lightThumbnail": "public/previews/t3-project-action-run/thumbnail-light.png"
+    "nativeRecording": "parity/t3-project-action-run-v0042-dark-reference.mkv",
+    "nativeFixture": "assets/t3-code/v0.0.42/project-action-run-v0042-dark-fixture.json",
+    "proof": "parity/t3-catalog/t3-project-action-run/dark/proof.json",
+    "rgba": "parity/t3-catalog/t3-project-action-run/dark/rgba.json",
+    "referenceRgba": "parity/t3-catalog/t3-project-action-run/dark/reference-rgba.sha256",
+    "hyperframesRgba": "parity/t3-catalog/t3-project-action-run/dark/hyperframes-rgba.sha256",
+    "frameSsim": "parity/t3-catalog/t3-project-action-run/dark/ssim.txt",
+    "hyperframesCheck": "parity/t3-catalog/t3-project-action-run/dark/hyperframes-check.json",
+    "strictRender": "parity/t3-catalog/t3-project-action-run/dark/hyperframes-render.log"
+  },
+  "filesSha256": {
+    "registry-item.json": "d2c67d106b9b8ddecff80d881e47a1bc8e43a3577a6c1b414b4a24bac290d0c4",
+    "t3-project-action-run.html": "f39421bb028e1846276563d4317a1911c542885ba8b00b111eba8386365145e7",
+    "t3-code-gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+    "project-action-run-v0042-dark-capture-00.webp": "0214b7151ed2f6c91e204a548949088137bdc0ecfc2c7116701914aa3250c9bc",
+    "project-action-run-v0042-dark-capture-01.webp": "8d2d9887adf35ce8b060f3c49a2ea549545a77f9e9f81a792b2e721717b40753",
+    "project-action-run-v0042-dark-capture-02.webp": "fc8460957f9da361eb868cb5f4ff252538d2348e5b02a29c10d7fab83dbec627",
+    "project-action-run-v0042-dark-capture-03.webp": "014f8bb445e13bda1dd2e3f4fcfd3f0a5fb86fd481175eb44fa090392d1f5695",
+    "project-action-run-v0042-dark-capture-04.webp": "54e0dd3ce8b0dacb0c950670408622c815c70ed5a43695bc18589d66e7b7ef28",
+    "project-action-run-v0042-dark-capture-05.webp": "efdabc1e57059f6ffbb8d0d95d1dba6c47896f32894975a0651fd8462d0e52a5",
+    "project-action-run-v0042-dark-capture-06.webp": "15c4e040b52015b665cd98af661fded98f6263fe0407e27f8662f55bb07798ec",
+    "project-action-run-v0042-dark-capture-07.webp": "8145750c157db0c72d92c5fcc6c47fa5d11abc70a64b25f7478d3cbaac3390be",
+    "project-action-run-v0042-dark-capture-08.webp": "5fc3691299051a16fb19bd48ad22f257d9a7ee884fd84b92bcb1498b4758e65a",
+    "project-action-run-v0042-dark-capture-09.webp": "6d0b1f265fba5fd9e6dda66c0b53fd3562faa955641ea2a6400d50af90c1b21d",
+    "project-action-run-v0042-light-capture-00.webp": "c575344a99874701df261f26561fba1dc811f30c03fc4bba78d4ea25d33db3df",
+    "project-action-run-v0042-light-capture-01.webp": "53956d2c363c77d04c6c0b6d13e836861c8904e6626e65d78bf85e87b301d962",
+    "project-action-run-v0042-light-capture-02.webp": "eb39028ab2822b7e0f0470e3b6e32da29671e8497401aa89a5a28d5a8887d3d3",
+    "project-action-run-v0042-light-capture-03.webp": "f85ca596bb5596db3f64752815f038421841b4baa634f92ab46388047052614d",
+    "project-action-run-v0042-light-capture-04.webp": "e809a37571cbdaf2adfe118061daf66e5a4d1c2df06df0dcadea6f2f424843ad",
+    "project-action-run-v0042-light-capture-05.webp": "6ba017bbd3479b080d07276ef004c3dc8886c4a68933f9e3d120c129c51998ef",
+    "project-action-run-v0042-light-capture-06.webp": "6e8aeedff519187a2c52dae4e1f419ae715ee1e33c3df7c73e74d9c6c9743e4a",
+    "project-action-run-v0042-light-capture-07.webp": "fe8287aa13b04d3fa6cb8a744731cd6ef9ad557f851b45b0cc25b60ec83c3888",
+    "project-action-run-v0042-light-capture-08.webp": "0ae2a5963c6770a18e90e58be2d3e7dd21e0928020356d5f29238bef887588fc",
+    "project-action-run-v0042-light-capture-09.webp": "6ba017bbd3479b080d07276ef004c3dc8886c4a68933f9e3d120c129c51998ef",
+    "project-action-run-v0042-dark-terminal-00.png": "66fb13cfc0a200715353426c3acf71e7ff02dd8affccbc016216aa9bf55d93c9",
+    "project-action-run-v0042-dark-terminal-01.png": "9a8432ff707ce8dda9959c3425c31955e4552250ced0df67cec2d464c9a20228",
+    "project-action-run-v0042-light-terminal-00.png": "005aefbb2b0a18bf94c8d3027c6eafb304ee46f0dcbe2a40343b859d580d0923",
+    "project-action-run-v0042-light-terminal-01.png": "753b3fd4ba755f60105ddfc35e62c451f496d6699e2f2204239dc5de290ea123",
+    "licenses/T3-CODE-LICENSE.txt": "935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43",
+    "licenses/GHOSTTY-LICENSE.txt": "386211873e5b7a02f663ae4d7adf96285999f91608f8f9f31fecfd0f4095e6f1",
+    "licenses/SYMBOLS-NERD-FONT-LICENSE.txt": "84a7a98c82140fb12c37fe42b93805baa16024cb3e5acc599b7ffe612c55d847",
+    "README.md": "9b95c85435cd076e6d8d4e81f0a5fcd7715d2318c0e3ad8e8792f87d9c599c5c"
+  },
+  "inputHashes": {
+    "registry/blocks/t3-project-action-run/registry-item.json": "d2c67d106b9b8ddecff80d881e47a1bc8e43a3577a6c1b414b4a24bac290d0c4",
+    "registry/blocks/t3-project-action-run/t3-project-action-run.html": "f39421bb028e1846276563d4317a1911c542885ba8b00b111eba8386365145e7",
+    "registry/blocks/t3-project-action-run/t3-code-gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-dark-capture-00.webp": "0214b7151ed2f6c91e204a548949088137bdc0ecfc2c7116701914aa3250c9bc",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-dark-capture-01.webp": "8d2d9887adf35ce8b060f3c49a2ea549545a77f9e9f81a792b2e721717b40753",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-dark-capture-02.webp": "fc8460957f9da361eb868cb5f4ff252538d2348e5b02a29c10d7fab83dbec627",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-dark-capture-03.webp": "014f8bb445e13bda1dd2e3f4fcfd3f0a5fb86fd481175eb44fa090392d1f5695",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-dark-capture-04.webp": "54e0dd3ce8b0dacb0c950670408622c815c70ed5a43695bc18589d66e7b7ef28",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-dark-capture-05.webp": "efdabc1e57059f6ffbb8d0d95d1dba6c47896f32894975a0651fd8462d0e52a5",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-dark-capture-06.webp": "15c4e040b52015b665cd98af661fded98f6263fe0407e27f8662f55bb07798ec",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-dark-capture-07.webp": "8145750c157db0c72d92c5fcc6c47fa5d11abc70a64b25f7478d3cbaac3390be",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-dark-capture-08.webp": "5fc3691299051a16fb19bd48ad22f257d9a7ee884fd84b92bcb1498b4758e65a",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-dark-capture-09.webp": "6d0b1f265fba5fd9e6dda66c0b53fd3562faa955641ea2a6400d50af90c1b21d",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-light-capture-00.webp": "c575344a99874701df261f26561fba1dc811f30c03fc4bba78d4ea25d33db3df",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-light-capture-01.webp": "53956d2c363c77d04c6c0b6d13e836861c8904e6626e65d78bf85e87b301d962",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-light-capture-02.webp": "eb39028ab2822b7e0f0470e3b6e32da29671e8497401aa89a5a28d5a8887d3d3",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-light-capture-03.webp": "f85ca596bb5596db3f64752815f038421841b4baa634f92ab46388047052614d",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-light-capture-04.webp": "e809a37571cbdaf2adfe118061daf66e5a4d1c2df06df0dcadea6f2f424843ad",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-light-capture-05.webp": "6ba017bbd3479b080d07276ef004c3dc8886c4a68933f9e3d120c129c51998ef",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-light-capture-06.webp": "6e8aeedff519187a2c52dae4e1f419ae715ee1e33c3df7c73e74d9c6c9743e4a",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-light-capture-07.webp": "fe8287aa13b04d3fa6cb8a744731cd6ef9ad557f851b45b0cc25b60ec83c3888",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-light-capture-08.webp": "0ae2a5963c6770a18e90e58be2d3e7dd21e0928020356d5f29238bef887588fc",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-light-capture-09.webp": "6ba017bbd3479b080d07276ef004c3dc8886c4a68933f9e3d120c129c51998ef",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-dark-terminal-00.png": "66fb13cfc0a200715353426c3acf71e7ff02dd8affccbc016216aa9bf55d93c9",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-dark-terminal-01.png": "9a8432ff707ce8dda9959c3425c31955e4552250ced0df67cec2d464c9a20228",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-light-terminal-00.png": "005aefbb2b0a18bf94c8d3027c6eafb304ee46f0dcbe2a40343b859d580d0923",
+    "registry/blocks/t3-project-action-run/project-action-run-v0042-light-terminal-01.png": "753b3fd4ba755f60105ddfc35e62c451f496d6699e2f2204239dc5de290ea123",
+    "registry/blocks/t3-project-action-run/licenses/T3-CODE-LICENSE.txt": "935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43",
+    "registry/blocks/t3-project-action-run/licenses/GHOSTTY-LICENSE.txt": "386211873e5b7a02f663ae4d7adf96285999f91608f8f9f31fecfd0f4095e6f1",
+    "registry/blocks/t3-project-action-run/licenses/SYMBOLS-NERD-FONT-LICENSE.txt": "84a7a98c82140fb12c37fe42b93805baa16024cb3e5acc599b7ffe612c55d847",
+    "registry/blocks/t3-project-action-run/README.md": "9b95c85435cd076e6d8d4e81f0a5fcd7715d2318c0e3ad8e8792f87d9c599c5c",
+    "scripts/verify-t3-catalog-ports.mjs": "50fffcbcecdf407c24dca3c99ba5edbc34132862dd101def36dd74eda88f9ee3",
+    "scripts/t3-capture-images.mjs": "003e4c1db7c9f6548881b3f0d8b1b55bff60720770b4eca0ef7d85d7d498b35c",
+    "scripts/parity-evidence.mjs": "442ef92774683522815f246cc87509c9d32082e915f1f77fc832a2b46755c006",
+    "cli/bin/hyfrme.mjs": "b3ebe31fcb7618917193a5fb1096fc6769f17615634f6718b90f7605a1f5073f",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-dark-fixture.json": "3b44699286631aa2e15978379b9dfbbe02e379a583568dc74e4f7f1e52c7ed12",
+    "assets/t3-code/v0.0.42/index.html": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+    "assets/t3-code/v0.0.42/t3.css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+    "assets/t3-code/v0.0.42/index.js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-dark-before.html": "43e42dc4987b78a675c2d96c087bcc9ba7fba63f4b2740a87dc186c8265d89ab",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-dark-opened.html": "95100cce7191d7e05ec265d24b79b8fe90e38f3ffb65d0fa54cf7705f466491d",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-dark-output.html": "95100cce7191d7e05ec265d24b79b8fe90e38f3ffb65d0fa54cf7705f466491d",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-dark-terminal-00.png": "66fb13cfc0a200715353426c3acf71e7ff02dd8affccbc016216aa9bf55d93c9",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-dark-terminal-01.png": "9a8432ff707ce8dda9959c3425c31955e4552250ced0df67cec2d464c9a20228",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-dark-capture-00.webp": "0214b7151ed2f6c91e204a548949088137bdc0ecfc2c7116701914aa3250c9bc",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-dark-capture-01.webp": "8d2d9887adf35ce8b060f3c49a2ea549545a77f9e9f81a792b2e721717b40753",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-dark-capture-02.webp": "fc8460957f9da361eb868cb5f4ff252538d2348e5b02a29c10d7fab83dbec627",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-dark-capture-03.webp": "014f8bb445e13bda1dd2e3f4fcfd3f0a5fb86fd481175eb44fa090392d1f5695",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-dark-capture-04.webp": "54e0dd3ce8b0dacb0c950670408622c815c70ed5a43695bc18589d66e7b7ef28",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-dark-capture-05.webp": "efdabc1e57059f6ffbb8d0d95d1dba6c47896f32894975a0651fd8462d0e52a5",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-dark-capture-06.webp": "15c4e040b52015b665cd98af661fded98f6263fe0407e27f8662f55bb07798ec",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-dark-capture-07.webp": "8145750c157db0c72d92c5fcc6c47fa5d11abc70a64b25f7478d3cbaac3390be",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-dark-capture-08.webp": "5fc3691299051a16fb19bd48ad22f257d9a7ee884fd84b92bcb1498b4758e65a",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-dark-capture-09.webp": "6d0b1f265fba5fd9e6dda66c0b53fd3562faa955641ea2a6400d50af90c1b21d",
+    "assets/t3-code/v0.0.42/dark-theme.json": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
+    "parity/t3-project-action-run-v0042-atlas.json": "da3940a22d04b506fa6820e86bd6aaef1ad4c08c3461ee5462abee49d28cc172",
+    "parity/t3-project-action-run-v0042-dark-reference.mkv": "6bf38c8c9f88e4d5b6cd751e17e1da6bc0a0d3b02112c42d0a82222b03fad0f2",
+    "parity/t3-catalog/t3-project-action-run/dark/proof.json": "c4781a0196290de6ed64c72b473d4825a990d4bdd48f3b893fcabc0788da3612",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-light-fixture.json": "6a139ae360820eaa8e639109e84711718afe568b83c1260d4aaf05d626680cbf",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-light-before.html": "3fd234bb122fa658650d3ffc07e05cb634ef4f0bf7b9b284cde64480c258a549",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-light-opened.html": "a6c503c066bbe82abd18f04a27d37a2cc3f1d42e626e5e6b74828235580e5463",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-light-output.html": "a6c503c066bbe82abd18f04a27d37a2cc3f1d42e626e5e6b74828235580e5463",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-light-terminal-00.png": "005aefbb2b0a18bf94c8d3027c6eafb304ee46f0dcbe2a40343b859d580d0923",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-light-terminal-01.png": "753b3fd4ba755f60105ddfc35e62c451f496d6699e2f2204239dc5de290ea123",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-light-capture-00.webp": "c575344a99874701df261f26561fba1dc811f30c03fc4bba78d4ea25d33db3df",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-light-capture-01.webp": "53956d2c363c77d04c6c0b6d13e836861c8904e6626e65d78bf85e87b301d962",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-light-capture-02.webp": "eb39028ab2822b7e0f0470e3b6e32da29671e8497401aa89a5a28d5a8887d3d3",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-light-capture-03.webp": "f85ca596bb5596db3f64752815f038421841b4baa634f92ab46388047052614d",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-light-capture-04.webp": "e809a37571cbdaf2adfe118061daf66e5a4d1c2df06df0dcadea6f2f424843ad",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-light-capture-05.webp": "6ba017bbd3479b080d07276ef004c3dc8886c4a68933f9e3d120c129c51998ef",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-light-capture-09.webp": "6ba017bbd3479b080d07276ef004c3dc8886c4a68933f9e3d120c129c51998ef",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-light-capture-06.webp": "6e8aeedff519187a2c52dae4e1f419ae715ee1e33c3df7c73e74d9c6c9743e4a",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-light-capture-07.webp": "fe8287aa13b04d3fa6cb8a744731cd6ef9ad557f851b45b0cc25b60ec83c3888",
+    "assets/t3-code/v0.0.42/project-action-run-v0042-light-capture-08.webp": "0ae2a5963c6770a18e90e58be2d3e7dd21e0928020356d5f29238bef887588fc",
+    "assets/t3-code/v0.0.42/light-theme.json": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
+    "parity/t3-project-action-run-v0042-light-reference.mkv": "791224a21f3ac3b8f25c1bfcbff991314fee4e29f8367258747fc8be26412b1f",
+    "parity/t3-catalog/t3-project-action-run/light/proof.json": "00ac252e76e47258ab4412e76fdc22b14f3677d2ec78d5b58b30dc123c39ac9b",
+    "scripts/publish-t3-catalog-parity.mjs": "56b6c8bfcf9e1def8345ff2cbb0eb1654eca044596c1431849fa7746258a818d"
+  },
+  "artifactHashes": {
+    "parity/t3-catalog/t3-project-action-run/dark/proof.json": "c4781a0196290de6ed64c72b473d4825a990d4bdd48f3b893fcabc0788da3612",
+    "parity/t3-catalog/t3-project-action-run/dark/rgba.json": "60b225e3d18da84a4900609fdf1b63890923b89357c80ca09b5b4ace11de277e",
+    "parity/t3-catalog/t3-project-action-run/dark/reference-rgba.sha256": "2d0adc70d5b8c95889f55b77d062f1d1aaf8bab0b1c9f2f82e1d06c24e7999e4",
+    "parity/t3-catalog/t3-project-action-run/dark/hyperframes-rgba.sha256": "2d0adc70d5b8c95889f55b77d062f1d1aaf8bab0b1c9f2f82e1d06c24e7999e4",
+    "parity/t3-catalog/t3-project-action-run/dark/ssim.txt": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/t3-catalog/t3-project-action-run/dark/ssim.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-project-action-run/dark/hyperframes-check.json": "ccb6ee4304cf1c69096b7bf722d157b07eaca89b355e25d1600dc210f616c872",
+    "parity/t3-catalog/t3-project-action-run/dark/hyperframes-check.log": "532e81b40e5f76566e59ab81f2bdeb8fa311721b3600fbadf0b20d837fbc45d4",
+    "parity/t3-catalog/t3-project-action-run/dark/hyperframes-render.log": "44e76b7fdf8c4b4a3dda2861e2f2896f227a73b18bfc1bd250332845a096497d",
+    "parity/t3-catalog/t3-project-action-run/dark/reference-decode.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-project-action-run/dark/install.log": "ae06537497d3091a77fffb1e305980c9e4083d9a4fc30697e3de8014e66d5de4",
+    "parity/t3-catalog/t3-project-action-run/light/proof.json": "00ac252e76e47258ab4412e76fdc22b14f3677d2ec78d5b58b30dc123c39ac9b",
+    "parity/t3-catalog/t3-project-action-run/light/rgba.json": "fcc4042d6f6fc0340f8d4510201785d4b3e9e930ff1c107e6c9b7c06900908bc",
+    "parity/t3-catalog/t3-project-action-run/light/reference-rgba.sha256": "84ff76c24d877937bb5cc015d10f9b6c64a21d7b528108ae105f2406145b4921",
+    "parity/t3-catalog/t3-project-action-run/light/hyperframes-rgba.sha256": "84ff76c24d877937bb5cc015d10f9b6c64a21d7b528108ae105f2406145b4921",
+    "parity/t3-catalog/t3-project-action-run/light/ssim.txt": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/t3-catalog/t3-project-action-run/light/ssim.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-project-action-run/light/hyperframes-check.json": "f3b51a50478df5279074223f2bdc498c1d37f15945e598e412a7e032d458bc1f",
+    "parity/t3-catalog/t3-project-action-run/light/hyperframes-check.log": "45946fb5c77330d78168bcbad5a9848c912bbfff4a0657da0e644aa9c285fa28",
+    "parity/t3-catalog/t3-project-action-run/light/hyperframes-render.log": "d67c03cc0a4bb15014741c4e8d2404fc73df4a631b9ba4012223f93bd793ca75",
+    "parity/t3-catalog/t3-project-action-run/light/reference-decode.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-project-action-run/light/install.log": "c4e1512f301e4499c10a9bad1d68d65a624a6e983d9f70494e833d908c82bb09",
+    "public/previews/t3-project-action-run/reference.mp4": "b8554d9855ebc8c02d391b2b6bd57b7983cbf43955bcd5575df6502f8f878a72",
+    "public/previews/t3-project-action-run/hyperframes.mp4": "b8554d9855ebc8c02d391b2b6bd57b7983cbf43955bcd5575df6502f8f878a72",
+    "public/previews/t3-project-action-run/thumbnail.png": "a848a4cb67fa62eaed13e55ebe28545a3620f7bad2516ecc1dbbfd7216729f45",
+    "public/previews/t3-project-action-run/reference-light.mp4": "91b48012f41deeba3a70f47a26021fcce36c40430eb5ca921dba924073bccf31",
+    "public/previews/t3-project-action-run/hyperframes-light.mp4": "91b48012f41deeba3a70f47a26021fcce36c40430eb5ca921dba924073bccf31",
+    "public/previews/t3-project-action-run/thumbnail-light.png": "eed8512d32eb5cdd3ac15c3746b1f85a67b79f3186cb5702f48de8000ef24135"
+  },
+  "previewEncoding": {
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1200,
+    "height": 660,
+    "fps": 30,
+    "frameCount": 120,
+    "bottomPadding": 1,
+    "thumbnailFrame": 90
+  },
+  "historicalCustomizationEvidence": {
+    "contract": "Previously measured customization, crop, variant, and continuity evidence; these measurements are outside the exact current default-fixture claim.",
+    "result": {
+      "frameCount": 120,
+      "meanSsim": 1,
+      "minSsim": 1,
+      "p05Ssim": 1,
+      "p95Ssim": 1,
+      "worstFrame": 0,
+      "pass": true
+    },
+    "fixture": {
+      "width": 1200,
+      "height": 659,
+      "fps": 30,
+      "durationInFrames": 120,
+      "props": {
+        "theme": "dark",
+        "opened": 30,
+        "output": 52
+      },
+      "sourceHashes": {
+        "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+        "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+        "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+      },
+      "captureAtlas": "parity/t3-project-action-run-v0042-atlas.json",
+      "compositionSha256": "87cbbd31abc14f8c898a5f37b2be6890065c7bfb025eb51b0ecab9df0c3fa4a2"
+    },
+    "checks": {
+      "hyperframes": "full checks and strict 120-frame renders passed in dark and light",
+      "hyperframesVersion": "0.8.75",
+      "sourceBrowser": "Google Chrome for Testing 152.0.7977.30",
+      "installedThroughCli": true,
+      "customVariables": "Editable DOM mode changed Hyfrme project and branch, thread and reply copy, action name, terminal command/output, theme, and run timing; full checks, visible-text assertions, and strict 120-frame renders passed in both themes."
+    },
+    "fields": {
+      "interaction": "Native v0.0.42 runs the saved Verify Hyfrme action in the workspace terminal. Its real git diff --check and scoped git diff --stat output come from an isolated local repository.",
+      "providerState": "Hyfrme project and Git changes are isolated fixtures; no AI provider, GitHub account, or external remote is used."
+    }
   }
 }

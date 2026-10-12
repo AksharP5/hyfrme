@@ -2,7 +2,7 @@
   "slug": "shader-text-reveal",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "e3dc260ff1965440d1f64fb65a8c9a9373e78328",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shader-text-reveal/index.tsx",
     "config": "registry/remocn/shader-text-reveal/config.ts",
     "license": "MIT"
@@ -20,13 +20,25 @@
     },
     "background": "#000000"
   },
+  "filesSha256": {
+    "registry-item.json": "6775d29b355d0308320b3dfe4a4baf1ac3e13a4ce9f944d20eebfc557cd09819",
+    "shader-text-reveal.html": "58123bceb4c2da8a9f6d59614c5ea4ad4449a67c5a2cd49572a60e831c1589de",
+    "shader-text-reveal.runtime.js": "87746f8778b22fa2aea2fb43b902724bcb72fbd701cff9327c1fa8db71b28f7f",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "d44f4dfc380d3d4dcd91ec7d2111f27c9b8a5a8a0d79e5304e6991b66358031a",
+  "fingerprint": "cfa88e05d5f9b3b367ce6edb0d0723dabd41a311bbd6701f586445ba5573de85",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 75,
@@ -39,14 +51,23 @@
       "mismatchedFrames": [],
       "pass": true
     },
+    "rgba": {
+      "frameCount": 75,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -58,6 +79,21 @@
     "hyperframesCheck": "parity/shader-text-reveal-diff/hyperframes-check.log",
     "worstFrame": "parity/shader-text-reveal-diff/worst-frame.png",
     "referenceAlpha": "parity/shader-text-reveal-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/shader-text-reveal-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/shader-text-reveal-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shader-text-reveal-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shader-text-reveal-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shader-text-reveal/reference.mp4": "2634d03b281cfed9de784a14e81d36a3afbc90e6fc53900aa7d79431be47491f",
+    "public/previews/shader-text-reveal/hyperframes.mp4": "2634d03b281cfed9de784a14e81d36a3afbc90e6fc53900aa7d79431be47491f",
+    "public/previews/shader-text-reveal/thumbnail.png": "f9d2cecbc649b38e39e9f6b623cf61c9235ad4a9511a92df9472b79cb230981b",
+    "parity/shader-text-reveal-diff/summary.json": "e0c8c9e1bfb9cecff4b1fb1eb064290b44d838e0707802157ba1a8a551a907fa",
+    "parity/shader-text-reveal-diff/ssim.log": "8b52ef55cb81c0a9c5f763071c72572dec8b473b0544f1e9b6a731a7124f164e",
+    "parity/shader-text-reveal-diff/hyperframes-check.log": "91291109e7086060bd47e6c3cd14af80dd32cfff80e3cd1f6bd9d2424b3f5d09",
+    "parity/shader-text-reveal-diff/worst-frame.png": "5d24ef624e3ef78500b9dfdaad4cd1e8ec9e49f5cfb1495e067043f62cacf594",
+    "parity/shader-text-reveal-diff/reference-alpha.framemd5": "852e25155c4f8ce6e8ddd025e674406fa0e557a685ec942593579384eb4a9fb4",
+    "parity/shader-text-reveal-diff/hyperframes-alpha.framemd5": "852e25155c4f8ce6e8ddd025e674406fa0e557a685ec942593579384eb4a9fb4",
+    "parity/shader-text-reveal-diff/reference-rgba.framemd5": "99e1d8578f65b7f11e4193b77f5c61d7fa9d0a560bfdec04eb877310ef9144c2",
+    "parity/shader-text-reveal-diff/hyperframes-rgba.framemd5": "99e1d8578f65b7f11e4193b77f5c61d7fa9d0a560bfdec04eb877310ef9144c2"
   }
 }

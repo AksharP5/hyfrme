@@ -1,5 +1,6 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
@@ -116,6 +117,10 @@ const html = `<!doctype html>
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-stage[hidden], .t3-state[hidden], .t3-native-popup[hidden] { display: none !important; }
   .t3-native-popup { position:absolute; left:363px; top:37px; width:185px; height:353px; z-index:10001; pointer-events:none; }
   .t3-state:not([hidden]) { display: contents; }
@@ -125,6 +130,7 @@ const html = `<!doctype html>
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
   <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" data-layout-ignore>${sprite}</svg>
@@ -168,6 +174,16 @@ for (const section of sections) {
     const age = row.querySelector('span.tabular-nums.text-secondary-label');
     if (age && ages.has(title)) age.textContent = ages.get(title);
   });
+  if (section.dataset.t3State === 'menu') {
+    const metadata = [...section.querySelectorAll('[class~="opacity-0"][class~="group-hover:opacity-100"]')];
+    if (metadata.length !== 1) throw new Error('Native message metadata hover target missing');
+    metadata[0].style.opacity = '1';
+  }
+  if (section.dataset.t3State === 'archived-list' && options.archiveAge === defaults.archiveAge) {
+    const description = [...section.querySelectorAll('p')].find(node => node.textContent === defaults.archiveAge);
+    if (!description) throw new Error('Native archived description missing');
+    description.replaceChildren(...['Archived ', 'just now', ' · Created ', '11h ago'].map(text => document.createTextNode(text)));
+  }
   const settledAge = section.querySelector('[data-testid="sidebar-row-slim"] .text-xs');
   if (settledAge) settledAge.textContent = options.settledAge;
   for (const editor of section.querySelectorAll('[data-testid="composer-editor"]')) {

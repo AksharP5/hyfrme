@@ -2,7 +2,7 @@
   "slug": "slider",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-ui/slider/index.tsx",
     "entry": "components/docs/examples/slider-example.tsx",
     "config": "registry/remocn-ui/slider/config.ts",
@@ -18,25 +18,91 @@
     },
     "background": "oklch(1 0 0)"
   },
+  "filesSha256": {
+    "registry-item.json": "00cd4e93db37ac07684d1a5efaca48fae484dd1601eda11268bbb76c414a19b9",
+    "slider.html": "8d77d5a72ae2ae18dfad514b766f650bee4d851e714f105300a3cc9ae6b30366",
+    "slider.runtime.js": "cbb200b25841a3139ed6cc480b6147dba666fbadf64a6d66a3ad6507c81b1f87",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "61e8b4277f1463d35f7764b83bd6350601c70947cda41d4a6e2fc5bb7459d480",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.999957,
-    "minSsim": 0.999941,
-    "p05Ssim": 0.99995,
-    "p95Ssim": 0.999963,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuRequestedMode": "hardware",
+    "browserGpuProbes": {
+      "render": {
+        "logSha256": "6dfef27ec2da66321820648ac8b1534bb672f58123bc1b1fdd5c7ba93ebc45c3",
+        "observations": [
+          {
+            "mode": "hardware",
+            "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+          }
+        ]
+      }
+    },
+    "captureBackend": "unobserved",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/slider/remocn.mp4",
+    "referenceVideo": "public/previews/slider/reference.mp4",
     "hyperframesVideo": "public/previews/slider/hyperframes.mp4",
-    "summary": "parity/slider-diff/summary.json"
+    "thumbnail": "public/previews/slider/thumbnail.png",
+    "summary": "parity/slider-diff/summary.json",
+    "perFrameSsim": "parity/slider-diff/ssim.log",
+    "hyperframesCheck": "parity/slider-diff/hyperframes-check.log",
+    "hyperframesRender": "parity/slider-diff/hyperframes-render.log",
+    "worstFrame": "parity/slider-diff/worst-frame.png",
+    "referenceAlpha": "parity/slider-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/slider-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/slider-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/slider-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/slider/reference.mp4": "f88748c9ce6e23660b69a3c0cb341fb44381e6b263899c319d9470613f07e848",
+    "public/previews/slider/hyperframes.mp4": "f88748c9ce6e23660b69a3c0cb341fb44381e6b263899c319d9470613f07e848",
+    "public/previews/slider/thumbnail.png": "50c73196d091167749f1e0d21a560a9ced315c41e1c7d88017b7615b6b93e963",
+    "parity/slider-diff/summary.json": "c38069d7cb90acc2a693a754a1caeffaf324f128e7d118e6f20808613c950e44",
+    "parity/slider-diff/ssim.log": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/slider-diff/hyperframes-check.log": "18551aca16eee63bd669510f7b103eaa202e0e09a3fd8634641d3e6bb1147640",
+    "parity/slider-diff/hyperframes-render.log": "6dfef27ec2da66321820648ac8b1534bb672f58123bc1b1fdd5c7ba93ebc45c3",
+    "parity/slider-diff/worst-frame.png": "0f19d0a14a5bddcfe2be4e60355220b59b810762241d31433216b7491271b82c",
+    "parity/slider-diff/reference-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/slider-diff/hyperframes-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/slider-diff/reference-rgba.framemd5": "711d900dc7780fd412709cbf36c62bd5e0b866718900279f4d2d93667cd46fa7",
+    "parity/slider-diff/hyperframes-rgba.framemd5": "711d900dc7780fd412709cbf36c62bd5e0b866718900279f4d2d93667cd46fa7"
   }
 }

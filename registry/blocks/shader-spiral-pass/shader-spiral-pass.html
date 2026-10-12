@@ -11,11 +11,23 @@
 
 
 
+
       * { box-sizing: border-box; }
       html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #15111c; }
       body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
       #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#15111c; }
-      #hyfrme-source-root, #hyfrme-source-root * { text-rendering: auto; }
+
+
+#hyfrme-source-root {
+  font-size: 14px;
+  line-height: calc(20 / 14);
+  font-feature-settings: "cv11", "ss01";
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+#hyfrme-source-root, #hyfrme-source-root * {
+  text-rendering: optimizeLegibility;
+}
 
     </style>
   </head>

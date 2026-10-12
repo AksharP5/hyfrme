@@ -72,6 +72,16 @@ screenshot clip. Set `HYFRME_BROWSER_EXECUTABLE` to an existing Chrome Headless
 Shell if needed. This capture profile uses `/bin/sh` and `angle-egl` on Linux.
 The [Snapcn audit](SNAPCN_AUDIT.md) records the causes and full-duration results.
 
+## Collection comparisons
+
+Run `npm run verify:showcase-pixels -- --resume` to compare all six existing
+Collection films. Both renderers use Chrome Headless Shell 152.0.7977.30 with
+CPU rasterization and hardware WebGL. Native screenshots use the same
+`fromSurface`, `captureBeyondViewport`, and `optimizeForSpeed` settings as the
+HyperFrames producer. The browser wrapper, capture profile, source files, and
+installed files are fingerprinted. Promotion requires every RGBA frame and
+SSIM score to match exactly; an earlier pass cannot survive changed inputs.
+
 ## Updating Hyfrme originals
 
 ```bash
@@ -94,11 +104,51 @@ result. Upstream port comparisons do not apply to originals.
 ## T3 Code ports
 
 The active T3 Code blocks use the pinned v0.0.42 official binary and source fixture
-under `.work/t3-v0042-bin/` and `assets/t3-code/v0.0.42/`. Their capture scripts
-read the pairing URL from their own local v0.0.42 server log instead of using
-`T3_REFERENCE_URL`. Never commit or print a pairing URL. Each migrated block
+under `.work/t3-v0042-bin/` and `assets/t3-code/v0.0.42/`. Capture against an
+isolated local v0.0.42 server. Some helpers start that server; others require
+`T3_REFERENCE_URL` pointing to it. Never commit or print a pairing URL. Each migrated block
 requires separate dark and light native captures, strict 120-frame comparisons,
 focused interaction crops, custom-value checks, and a CLI-installed check.
+
+Verify the published blocks with `node scripts/verify-t3-catalog-ports.mjs`.
+Pass `--only t3-brief-to-prompt` for one block or `--resume` to reuse proofs whose
+source, installed files, inputs, and artifacts still match their fingerprints.
+The verifier installs the shipped default mode through the CLI and requires all
+120 decoded RGBA frames to match the native recording in each theme. It also
+records the full HyperFrames check and SSIM results.
+
+After both themes pass, run `node scripts/publish-t3-catalog-parity.mjs --prepare`
+to validate all 41 blocks without writing files, then run the same command
+without `--prepare` to update local previews and canonical parity records.
+Use `--only t3-brief-to-prompt` for a focused update. Publication rejects stale
+source, installed files, captures, or proof artifacts. Uploading website media
+remains a separate step in [PUBLISHING.md](PUBLISHING.md).
+
+`capture-t3-brief-v0042-reference.mjs` starts its own isolated composer server.
+Its synthetic seed must contain the original five active Hyfrme threads and an
+empty draft. A fixed date preserves sidebar ages. Native CSS animations advance
+by `1000 / fps` milliseconds per frame through their own `currentTime`; capture
+does not use wall-clock waits to sample fades. Use `T3_CAPTURE_OUTPUT_DIR`,
+`T3_CAPTURE_WORK_DIR`, and `T3_CAPTURE_REFERENCE` to capture into scratch paths.
+Before replacing a reference, capture each theme twice and confirm that all 120
+PNG hashes match. Other capture helpers retain their existing initial thread.
+
+Project Action has a [measured exception](../assets/t3-code/v0.0.42/project-action-v0042-ready-v2-provenance.json): native dialog frames 20–99 vary between
+captures despite matching source inputs, geometry, and styles. Preserve the
+repeat comparisons and animation observations; require all other frames to
+repeat exactly after readiness checks. Select one complete, unchanged native
+recording per theme as the immutable reference. Do not combine frames from
+different captures or alter pixels. The installed port must still match all
+120 reference frames exactly in each theme.
+
+Wait for dismissed toast nodes to detach before capturing frame 0; a fixed wait
+can retain pixels from their exit animation. Check the expected synthetic
+workspace state before recording. File Surface, Permission Choice, Reasoning
+Level, Return Worktree, and Project Switch preserve the original authority and
+versioned readiness corrections under
+`assets/t3-code/v0.0.42/`; independent clean captures must match every frame
+before a corrected reference is accepted, subject to the Project Action
+exception above.
 
 Historical v0.0.35 captures use a local fixture containing only synthetic
 Hyfrme projects and threads. Set `T3_REFERENCE_URL` to that isolated server,
@@ -195,10 +245,8 @@ node scripts/generate-t3-agent-answer-port.mjs
 node scripts/verify-t3-agent-answer-port.mjs
 node scripts/capture-t3-prompt-stash-v0042-reference.mjs
 node scripts/generate-t3-prompt-stash-v0042-port.mjs
-node scripts/verify-t3-prompt-stash-v0042-port.mjs
-node scripts/snapshot-t3-prompt-stash-v0042-custom.mjs
-node scripts/install-t3-v0042-candidate-cli.mjs t3-prompt-stash
-node scripts/publish-t3-prompt-stash-v0042.mjs
+node scripts/verify-t3-catalog-ports.mjs --only t3-prompt-stash
+node scripts/publish-t3-catalog-parity.mjs --only t3-prompt-stash
 node scripts/capture-t3-thread-rename-reference.mjs
 node scripts/generate-t3-thread-rename-port.mjs
 node scripts/verify-t3-thread-rename-port.mjs
@@ -286,6 +334,17 @@ v0.0.35 workflows. Capture both
 values, then run both `T3_CUSTOM_THEME` snapshots and the CLI check before
 publishing. See `docs/T3_V0042_AUDIT.md` for the required evidence.
 
+Prompt Stash uses the retained clock-ready-v5 capture policy. Its capture helper
+requires `T3_REFERENCE_SEED` pointing to a prepared, owned synthetic sidebar seed
+and `T3_REFERENCE_OUTPUT` pointing to a fresh, separate directory under `.work`,
+along with the pinned `HYFRME_PLAYWRIGHT_CORE`, `HYFRME_CHROMIUM`, and
+`T3_REFERENCE_THEME`. It writes scratch captures without replacing catalog
+authorities. Capture each theme twice and compare all 120 RGBA frames before
+considering a replacement. See the
+[capture authority instructions](../assets/t3-code/v0.0.42/prompt-stash-clock-ready-v5-authority/README.md).
+The shared catalog verifier and publisher above validate its current canonical
+installed source in both themes.
+
 After a new block passes, run `npm run build:catalog`, `npm run sync:registry`,
 and `npm run sync:catalog` in that order. The catalog builder discovers verified
 T3 Code blocks by their `t3-code` tag.
@@ -316,6 +375,50 @@ Catalog pages load component summaries. Opening a component loads its HTML and
 and `prebuild` run it automatically. Keep generated catalog files synchronized
 with component manifests.
 
+During a parity audit, pending ports still block the full catalog build. After
+`npm run sync:registry`, update only passing items explicitly with
+`npm run sync:catalog -- --only t3-visual-context-shelf` (comma-separated names
+are supported). This updates selected summaries and details while preserving
+other summaries; it does not restore details for pending ports. Check that
+subset with `node scripts/build-catalog-data.mjs --check --only t3-visual-context-shelf`.
+The normal full build and check still require every port to pass.
+Both registry publication and catalog generation require exact all-frame evidence
+and source file hashes matching each compiled block; an older verified status
+is insufficient.
+
 The editor loads only on component pages, and the comparison player loads when
 its panel opens. Showcase cards load video on hover or keyboard focus. Homepage
 family cards load when visible and respect reduced motion.
+
+### Sidebar Focus 200 ms verification
+
+The release default is 0 ms. Verify the Appearance setting’s 200 ms variant
+with the same installed CLI, full HyperFrames 0.8.99 check, and strict 120-frame
+RGBA/SSIM contract as the default catalog:
+
+```bash
+node scripts/verify-t3-sidebar-focus-v0042-port.mjs --prepare
+node scripts/verify-t3-sidebar-focus-v0042-port.mjs
+```
+
+The wrapper prints an isolated repository path. It copies the current verifier
+and publisher unchanged, selects the pinned animated native authority, and sets
+only the supported `transitionMs=200` input and original native event metadata.
+It checks both themes and leaves canonical default proofs and previews untouched.
+To reuse that isolation, pass `--isolation <printed-path>` with `--resume`.
+`T3_PANEL_MS=0` delegates to the canonical default catalog verifier; single-theme
+`T3_VERIFY_THEME` runs are no longer supported.
+
+After all default ports have been published, validate and bind the variant:
+
+```bash
+node scripts/publish-t3-sidebar-focus-variant.mjs <printed-path>
+node scripts/publish-t3-sidebar-focus-variant.mjs <printed-path> --publish
+```
+
+The first command validates evidence without writing. The second reuses the
+isolated generic publisher, archives unchanged strict proofs, and binds each
+canonical theme’s `settingsEnabled200` record with its own fingerprint and input
+hashes. Variant previews keep their `*-settings-enabled` filenames; default
+proofs and previews stay unchanged. Existing variant archives are never replaced.
+Gallery synchronization rejects missing or stale variant inputs.

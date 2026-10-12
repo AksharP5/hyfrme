@@ -2,7 +2,7 @@
   "slug": "perspective-squeeze",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/perspective-squeeze/index.tsx",
     "config": "registry/remocn/perspective-squeeze/config.ts",
     "license": "MIT"
@@ -22,21 +22,38 @@
     },
     "background": "#141318"
   },
+  "filesSha256": {
+    "registry-item.json": "bb44b414c2988691619c37d8035f1838385b0f87e2090884da9143bd0ba4a9c8",
+    "perspective-squeeze.html": "7e1e19c79b72e2e624debd8e35ef1a2a24cc7364eb32cb292ccfb7492093691b",
+    "perspective-squeeze.runtime.js": "a62ba49b9a6b75cc962f0816b4f0e4fc5ade19d0552d1725b9dcb4fcdc699ee6",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "1f961e4bef8360b03e2388bbe418c75eea57380491a7762aa82d93eba31821f3",
+  "fingerprint": "fcb626c77eac203c036623a41bb9700c24fe7b17f3114aa6f41b4e42484da044",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 225,
-    "meanSsim": 0.9999662711111108,
-    "minSsim": 0.999455,
-    "p05Ssim": 0.999856,
-    "p95Ssim": 0.999997,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
     "alpha": {
+      "frameCount": 225,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 225,
       "mismatchedFrames": [],
       "pass": true
@@ -44,13 +61,14 @@
     "pass": true
   },
   "checks": {
-    "hyperframes": "full check reported 3 reviewed source-inherited errors (exit 1); strict render passed",
+    "canvasMode": "source-capability",
+    "hyperframes": "full check reported 2 reviewed source-inherited errors (exit 1); strict render passed",
     "sourceInheritedFindings": [
       {
         "slug": "perspective-squeeze",
         "origin": {
           "repository": "https://github.com/Remocn/remocn",
-          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
           "source": "registry/remocn/perspective-squeeze/index.tsx",
           "config": "registry/remocn/perspective-squeeze/config.ts",
           "license": "MIT"
@@ -61,13 +79,13 @@
           "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
           "text": "REMOCN"
         },
-        "reason": "The pinned source projects two SVG blocks through cornerPinMatrix and squashes their REMOCN/BEST lines with textLength and per-line matrix transforms. These exact line bounds overlap in the unchanged source geometry. Preserve that source treatment; RGB SSIM is mean 0.999910/min 0.996864 and all 225 alpha planes match exactly."
+        "reason": "The source intentionally overlaps letter boxes while squeezing and rotating the word in perspective. The complete inspector finding remains in the parity check log; visual parity is checked separately against every upstream frame."
       },
       {
         "slug": "perspective-squeeze",
         "origin": {
           "repository": "https://github.com/Remocn/remocn",
-          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
           "source": "registry/remocn/perspective-squeeze/index.tsx",
           "config": "registry/remocn/perspective-squeeze/config.ts",
           "license": "MIT"
@@ -78,13 +96,13 @@
           "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
           "text": "BEST"
         },
-        "reason": "The pinned source projects two SVG blocks through cornerPinMatrix and squashes their REMOCN/BEST lines with textLength and per-line matrix transforms. These exact line bounds overlap in the unchanged source geometry. Preserve that source treatment; RGB SSIM is mean 0.999910/min 0.996864 and all 225 alpha planes match exactly."
+        "reason": "The source intentionally overlaps letter boxes while squeezing and rotating the word in perspective. The complete inspector finding remains in the parity check log; visual parity is checked separately against every upstream frame."
       },
       {
         "slug": "perspective-squeeze",
         "origin": {
           "repository": "https://github.com/Remocn/remocn",
-          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
           "source": "registry/remocn/perspective-squeeze/index.tsx",
           "config": "registry/remocn/perspective-squeeze/config.ts",
           "license": "MIT"
@@ -95,13 +113,16 @@
           "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
           "text": "REMOCN"
         },
-        "reason": "The pinned source projects two SVG blocks through cornerPinMatrix and squashes their REMOCN/BEST lines with textLength and per-line matrix transforms. These exact line bounds overlap in the unchanged source geometry. Preserve that source treatment; RGB SSIM is mean 0.999910/min 0.996864 and all 225 alpha planes match exactly."
+        "reason": "The source intentionally overlaps letter boxes while squeezing and rotating the word in perspective. The complete inspector finding remains in the parity check log; visual parity is checked separately against every upstream frame."
       }
     ],
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -113,6 +134,21 @@
     "hyperframesCheck": "parity/perspective-squeeze-diff/hyperframes-check.log",
     "worstFrame": "parity/perspective-squeeze-diff/worst-frame.png",
     "referenceAlpha": "parity/perspective-squeeze-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/perspective-squeeze-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/perspective-squeeze-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/perspective-squeeze-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/perspective-squeeze-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/perspective-squeeze/reference.mp4": "297e5be5b8f3c4ab0d1ad707840bd829dd36de804b2d76d207d7c246baed80ea",
+    "public/previews/perspective-squeeze/hyperframes.mp4": "297e5be5b8f3c4ab0d1ad707840bd829dd36de804b2d76d207d7c246baed80ea",
+    "public/previews/perspective-squeeze/thumbnail.png": "98381ecab170f89677907afd1d7943876febcbd45c6cdf58d085712f4f8f400f",
+    "parity/perspective-squeeze-diff/summary.json": "c5de6e411ecd6f49eecac447b2e527fd3eddc6e85e55b2a3429a7c9a82ae1292",
+    "parity/perspective-squeeze-diff/ssim.log": "5051e37ca859ccdd8e8a03a92d5681b58ca4a0840a6869dfbcfd0c9e19471ce2",
+    "parity/perspective-squeeze-diff/hyperframes-check.log": "128cbcc44d824f20ed793c1c083014feb2ff708b417d4387f34449790b0dfd9d",
+    "parity/perspective-squeeze-diff/worst-frame.png": "6f8989ac486f2feb1f77514829cd92eb6cb61a4a781417c627c6b65d5dc07779",
+    "parity/perspective-squeeze-diff/reference-alpha.framemd5": "fd2d0107085874fa5df0cc7cc23e29dfc443091e9c63e4361cbcce61c7370bc5",
+    "parity/perspective-squeeze-diff/hyperframes-alpha.framemd5": "fd2d0107085874fa5df0cc7cc23e29dfc443091e9c63e4361cbcce61c7370bc5",
+    "parity/perspective-squeeze-diff/reference-rgba.framemd5": "01923c5ebb93ac4daf6ffb11be481fdc0b0b29689d1bf992c77a44456d0bf35f",
+    "parity/perspective-squeeze-diff/hyperframes-rgba.framemd5": "01923c5ebb93ac4daf6ffb11be481fdc0b0b29689d1bf992c77a44456d0bf35f"
   }
 }

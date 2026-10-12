@@ -2,7 +2,7 @@
   "slug": "word-push",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/word-push/index.tsx",
     "config": "registry/remocn/word-push/config.ts",
     "license": "MIT"
@@ -23,21 +23,38 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "57aa823940b6dcb49bdde4cdaa735426417927f1ee5131d2e4c029ef748a5d5a",
+    "word-push.html": "22238bfdcc55d01e71a337d44c12e4b88f55ade97b6a43ec43cd4b115d64fd82",
+    "word-push.runtime.js": "dc0dcc43825fc0fc57585cbfbf05e9d1db8bce1e5995ecc318a650acd8e0bbd6",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "92cc780fa9b11bee866fbb2c19aa14ef172bb1ccbf4481c35df26bab3d76b8ac",
+  "fingerprint": "7b13ca08e3fc6e6d27fd33fd7602b3e5f66af3b0a53e0c8833ed66bf0f53ace3",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.9956071444444433,
-    "minSsim": 0.994414,
-    "p05Ssim": 0.994474,
-    "p95Ssim": 0.998687,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
     "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 90,
       "mismatchedFrames": [],
       "pass": true
@@ -45,11 +62,15 @@
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -61,6 +82,21 @@
     "hyperframesCheck": "parity/word-push-diff/hyperframes-check.log",
     "worstFrame": "parity/word-push-diff/worst-frame.png",
     "referenceAlpha": "parity/word-push-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/word-push-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/word-push-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/word-push-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/word-push-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/word-push/reference.mp4": "56b4793f9c4af9c3317519c59d97d405aa7f175baeb9c4eada91c5a2b78b8f27",
+    "public/previews/word-push/hyperframes.mp4": "56b4793f9c4af9c3317519c59d97d405aa7f175baeb9c4eada91c5a2b78b8f27",
+    "public/previews/word-push/thumbnail.png": "77abcd6319aecb64a1aa7bb4a00acb2b61f38e8c48ea98ce77c31092eca24b5a",
+    "parity/word-push-diff/summary.json": "b836772793766404c0492e741437d4fb40b614cf31be7aace9f9b10b16c85450",
+    "parity/word-push-diff/ssim.log": "4638ac3b2b03d74f8b056c3824e13d904997bddfbc1c0f3b8d655822a1eb000b",
+    "parity/word-push-diff/hyperframes-check.log": "8d29203ad7ee8df4c4bbf296efa3c52c7c879a807389e222a6e5eb190a5544c0",
+    "parity/word-push-diff/worst-frame.png": "b6b80f4263bf6c8c16375e4217852feab2c6e68f51a427bd3f5d799e52aa49c4",
+    "parity/word-push-diff/reference-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/word-push-diff/hyperframes-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/word-push-diff/reference-rgba.framemd5": "5e6d255950c0c0d9bb83a6ec387f83847da8f33425df7f16176b32faf2d62065",
+    "parity/word-push-diff/hyperframes-rgba.framemd5": "5e6d255950c0c0d9bb83a6ec387f83847da8f33425df7f16176b32faf2d62065"
   }
 }

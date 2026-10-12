@@ -1,5 +1,6 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
@@ -92,17 +93,21 @@ const html = `<!doctype html>
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { ${stageTheme} position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-state[hidden] { display: none !important; }
   .t3-state:not([hidden]) { display: contents; }
   .t3-popup-raster { position: fixed; z-index: 2147483647; left: 583px; top: 367px; width: 389px; height: 266px; display: block; pointer-events: none; }
   .t3-popup-raster[hidden] { display: none; }
-  .t3-raster-default [data-base-ui-portal] { visibility: hidden; }
   .base-ui-disable-scrollbar { scrollbar-width: none; }
   .base-ui-disable-scrollbar::-webkit-scrollbar { display: none; }
   @font-face { font-family: "Apple Color Emoji"; src: local("Apple Color Emoji"); }
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces.replace(/^\n|\n$/g, "")}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
   <div class="dark t3-stage">
@@ -158,6 +163,10 @@ const sections = [...stage.querySelectorAll('[data-t3-state]')];
 if (sections.length !== 4 || sections.some((section) => !section.querySelector('[aria-label="Runtime mode"]'))) {
   throw new Error('Native Runtime mode structure is missing');
 }
+const nativePopupSources = {
+  dark: { menu: 'compositions/permission-choice-dark-menu-raster.png', hover: 'compositions/permission-choice-dark-hover-raster.png' },
+  light: { menu: 'compositions/permission-choice-light-menu-raster.png', hover: 'compositions/permission-choice-light-hover-raster.png' },
+};
 const triggerBox = sections[0].querySelector('[aria-label="Runtime mode"]').getBoundingClientRect();
 for (const section of sections.slice(1, 3)) {
   const positioner = section.querySelector('[data-slot="select-positioner"]');
@@ -166,7 +175,7 @@ for (const section of sections.slice(1, 3)) {
   if (useNativePopup) {
     section.classList.add('t3-raster-default');
     const raster = section.querySelector('.t3-popup-raster');
-    raster.src = 'compositions/permission-choice-' + options.theme + '-' + section.dataset.t3State + '-raster.png';
+    raster.src = nativePopupSources[options.theme][section.dataset.t3State];
     raster.hidden = false;
   }
 }
@@ -227,6 +236,6 @@ This four-second block reproduces the native T3 Code ${fixture.sourceTag} Runtim
 
 Customize the theme, workspace, prompt, permission labels and descriptions, model, reasoning level, service tier, thread/project content, and open/hover/select frames in HyperFrames. The Fast service option inserts the official v0.0.42 lightning indicator so this block can follow Fast Service Tier. Use the same shared workspace variables on adjacent T3 Code blocks to make continuous videos. Source: https://github.com/pingdotgg/t3code/tree/${fixture.sourceCommit}. Installed files include the T3 Code MIT license and third-party icon notice. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.
 
-The default popup uses cropped pixels from the pinned native capture for frame-exact menu text. Changing any visible content or selecting Fast switches the popup to the editable native DOM snapshot. Timing and theme work with either path.
+The default popup uses cropped pixels from the pinned native capture for frame-exact menu text while preserving the source DOM shadow and backdrop behind it. Changing any visible content or selecting Fast switches the popup to the editable native DOM snapshot. Timing and theme work with either path.
 `);
 console.log(`Generated ${name} candidate from official T3 Code v0.0.42 Runtime mode menu.`);

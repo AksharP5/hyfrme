@@ -1,5 +1,6 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
@@ -99,8 +100,15 @@ const html = `<!doctype html>
 <style>
 #root { position:relative; width:100%; height:100%; overflow:hidden; }
 .t3-stage { position:relative; width:100%; height:100%; overflow:hidden; background:var(--background); color:var(--foreground); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; }
+/* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
 .t3-stage[hidden], .t3-state[hidden], .t3-native-popup[hidden] { display:none !important; }
 .t3-state:not([hidden]) { display:contents; }
+.t3-state [class~="opacity-0"][class~="group-hover:opacity-100"] { opacity:1; }
+.t3-state[data-t3-state="menu"] [data-testid="sidebar-row-slim"] [class~="group-focus-within/sidebar-row:opacity-100"] { opacity:1; --tw-grayscale:grayscale(0%); }
+.t3-state[data-t3-state="menu"] [data-testid="sidebar-row-slim"] [class~="group-focus-within/sidebar-row:text-foreground"] { color:var(--contrast-foreground); }
 .t3-native-popup { position:absolute; left:124px; top:306px; width:185px; height:353px; z-index:10001; pointer-events:none; }
 .base-ui-disable-scrollbar { scrollbar-width:none; }
 .base-ui-disable-scrollbar::-webkit-scrollbar { display:none; }
@@ -108,6 +116,7 @@ const html = `<!doctype html>
 @font-face { font-family:"Segoe UI Emoji"; src:local("Segoe UI Emoji"); }
 @font-face { font-family:"Segoe UI Symbol"; src:local("Segoe UI Symbol"); }
 @font-face { font-family:"SFMono-Regular"; src:local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
 <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" data-layout-ignore>${sprite}</svg>
@@ -152,6 +161,8 @@ for (const stage of stages) {
     if (key && options[key] !== defaults[key]) node.textContent = node.textContent.replace(current, String(options[key]));
   }
   for (const section of stage.querySelectorAll('[data-t3-state]')) {
+    const metadata = [...section.querySelectorAll('[class~="opacity-0"][class~="group-hover:opacity-100"]')];
+    if (metadata.length !== 1) throw new Error('Native message metadata hover target missing');
     const editor = section.querySelector('[data-testid="composer-editor"]');
     if (editor) editor.setAttribute('aria-placeholder', options.composerPlaceholder);
     const ageKeys = section.dataset.t3State === 'woke' || section.dataset.t3State === 'persisted'
@@ -168,6 +179,11 @@ for (const stage of stages) {
     const shelfLabel = shelf?.querySelector('span');
     if (shelfLabel) shelfLabel.textContent = section.dataset.t3State === 'collapsed'
       ? options.snoozedShelfCollapsed : options.snoozedShelfExpanded;
+    if (section.dataset.t3State === 'menu') {
+      const avatar = snoozedRow?.querySelector('[class~="group-focus-within/sidebar-row:opacity-100"]');
+      const title = snoozedRow?.querySelector('[class~="group-focus-within/sidebar-row:text-foreground"]');
+      if (!avatar || !title) throw new Error('Native wake menu focus targets missing');
+    }
     for (const element of section.querySelectorAll('[aria-label], [title]')) {
       for (const attribute of ['aria-label', 'title']) {
         const value = element.getAttribute(attribute);

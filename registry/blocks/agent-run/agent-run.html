@@ -6,17 +6,29 @@
     <style>
 
       @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
 
 
 
 
+      @font-face { font-family: "Geist Mono"; src: url("../assets/fonts/GeistMono-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
 
       * { box-sizing: border-box; }
       html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #ececea; }
       body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
       #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#ececea; }
+      #hyfrme-source-root { --font-geist-mono: "Geist Mono"; }
 
-
+#hyfrme-source-root {
+  font-size: 14px;
+  line-height: calc(20 / 14);
+  font-feature-settings: "cv11", "ss01";
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+#hyfrme-source-root, #hyfrme-source-root * {
+  text-rendering: optimizeLegibility;
+}
 
     </style>
   </head>

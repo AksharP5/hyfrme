@@ -2,7 +2,7 @@
   "slug": "shader-strata",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shader-strata/index.tsx",
     "config": "registry/remocn/shader-strata/config.ts",
     "license": "MIT"
@@ -21,25 +21,76 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "12a3953ab25a4ec0a31f644835c25f57a2053b88a1bd33d71aac7f2c947981aa",
+    "shader-strata.html": "0675c40fcc4cc95d06d78b027dd985eed03313ec4abd1faf2dc009d1587059ab",
+    "shader-strata.runtime.js": "dfff3a8c8fbb9f21fc26992da3634f3e4fe7f18113003ca19c42724e9023f215",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "84a930092037944ae69c0630fdc73977af545bf6b863185840ed9740bdde7064",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.9903,
-    "minSsim": 0.989697,
-    "p05Ssim": 0.989925,
-    "p95Ssim": 0.990681,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/shader-strata/remocn.mp4",
+    "referenceVideo": "public/previews/shader-strata/reference.mp4",
     "hyperframesVideo": "public/previews/shader-strata/hyperframes.mp4",
-    "summary": "parity/shader-strata-diff/summary.json"
+    "thumbnail": "public/previews/shader-strata/thumbnail.png",
+    "summary": "parity/shader-strata-diff/summary.json",
+    "perFrameSsim": "parity/shader-strata-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-strata-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-strata-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-strata-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-strata-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shader-strata-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shader-strata-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shader-strata/reference.mp4": "f5a1f8dbbcd0226904128be3f632c9cdc5d0256ef42cb18f5ef85cf09a1ea712",
+    "public/previews/shader-strata/hyperframes.mp4": "f5a1f8dbbcd0226904128be3f632c9cdc5d0256ef42cb18f5ef85cf09a1ea712",
+    "public/previews/shader-strata/thumbnail.png": "790fd03b0936544dca7d88283f1c2df0260813591afe484cc3c716991915a869",
+    "parity/shader-strata-diff/summary.json": "ad55b29e05e75e155f68631a7d07dcf33cfd0beba9f35e6e6cb01ccc34051e53",
+    "parity/shader-strata-diff/ssim.log": "c4fbedb2045d104b60568467b9860d7ee5ffeee1f88dedd0034e5cf393a3221a",
+    "parity/shader-strata-diff/hyperframes-check.log": "8258343d79654723604d6ad3f137e02961d34e3ad42968c060314f983e44db9e",
+    "parity/shader-strata-diff/worst-frame.png": "08b4d88c5144ab5604207f4be077c8c7aeb7a633272230e3a22509942e3ecc8f",
+    "parity/shader-strata-diff/reference-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-strata-diff/hyperframes-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-strata-diff/reference-rgba.framemd5": "4742fa403babc49fbb42ee96c98bf6f6dce1d9821ef77a6cca8d6804b8f5802a",
+    "parity/shader-strata-diff/hyperframes-rgba.framemd5": "4742fa403babc49fbb42ee96c98bf6f6dce1d9821ef77a6cca8d6804b8f5802a"
   }
 }

@@ -1,18 +1,21 @@
 # Official HyperFrames catalog
 
 Hyfrme imports every item published in the official registry at
-`daa44fcd753d9055aa3c954ad74f09a4e4389780`: 164 blocks, 222 HTML components,
+`5c52f72399e21f8dcf3ede2bf2d24978c6522a94`: 164 blocks, 222 HTML components,
 and 8 project templates. It also includes two website-only entries, Week in Merges
 and Simulated Cursor, for 396 official items total. The authoritative import record is
 [`catalog/hyperframes-upstream.json`](../catalog/hyperframes-upstream.json).
 
 Rechecked against upstream main at
-[`be80a308023b224b27a6c8739315d1b6598f149c`](https://github.com/heygen-com/hyperframes/commit/be80a308023b224b27a6c8739315d1b6598f149c)
-on October 1, 2026. Imported source paths, registry membership, and catalog
-navigation remain unchanged. All 1,484 native files and eight template manifests
-still match; the new changes affect Studio code and release metadata, including
-the v0.8.101 release. The original source and
-navigation pins are preserved.
+[`5c52f72399e21f8dcf3ede2bf2d24978c6522a94`](https://github.com/heygen-com/hyperframes/commit/5c52f72399e21f8dcf3ede2bf2d24978c6522a94)
+on October 2, 2026. Registry membership, catalog navigation, and licenses remain unchanged. AI Answer Rank, Cinemagraph, Caret Swap,
+and Pendulum Swing now contain their latest upstream source and metadata.
+Caret Swap also includes the upstream local Geist font and license. Five template
+updates are included in this refresh. Play Mode, Swiss Grid, Vignelli, and Warm
+Grain now keep sound on the authored video instead of a separate audio element. Product Promo removes a CSS
+transition that depended on the browser clock. Those exact source updates are
+imported, and all 1,484 native files match the new source pin. The unchanged
+navigation retains its recorded pin.
 
 ## Browse by upstream group
 
@@ -110,7 +113,7 @@ Use an isolated clean checkout at the script's pinned commit. Include `registry/
 `examples/`, `docs/docs.json`, and `docs/catalog/` when using a sparse checkout:
 
 ```bash
-HYPERFRAMES_SOURCE=.work/hyperframes-daa44fcd npm run import:hyperframes
+HYPERFRAMES_SOURCE=.work/hyperframes-5c52f723 npm run import:hyperframes
 npm run preview:templates
 npm run build:catalog
 npm run sync:registry

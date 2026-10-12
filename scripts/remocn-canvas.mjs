@@ -20,13 +20,6 @@ export const canvasFilterNames = new Set([
   "vhs-filter",
 ]);
 
-export const sourcePreviewNames = new Set([
-  ...canvasTransitionNames,
-  ...canvasFilterNames,
-  "infinite-marquee",
-  "perspective-marquee",
-]);
-
 export const sourcePreviewCss = `
 #hyfrme-source-root {
   font-size: 14px;

@@ -2,7 +2,7 @@
   "slug": "radio",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-ui/radio/index.tsx",
     "entry": "components/docs/examples/radio-example.tsx",
     "config": "registry/remocn-ui/radio/config.ts",
@@ -20,25 +20,77 @@
     },
     "background": "oklch(1 0 0)"
   },
+  "filesSha256": {
+    "registry-item.json": "385d625b4015d8e8c90512c7e6f8442734e498024ed89582ddeccf04a2521c1d",
+    "radio.html": "0a0bc570d3c4ceeb1c2732e51b3f0d4a45001f4204a17bf69ff51efed733829d",
+    "radio.runtime.js": "40a6b860e0294504e883b6e00a4b4f327126d81b4b24709034b24181f5c6955f",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "505c6ce9fdffeb8dd005dfdb716503b6f638a82290b7a408821a54037bb914da",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 100,
-    "meanSsim": 0.999967,
-    "minSsim": 0.999959,
-    "p05Ssim": 0.99996,
-    "p95Ssim": 0.999978,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/radio/remocn.mp4",
+    "referenceVideo": "public/previews/radio/reference.mp4",
     "hyperframesVideo": "public/previews/radio/hyperframes.mp4",
-    "summary": "parity/radio-diff/summary.json"
+    "thumbnail": "public/previews/radio/thumbnail.png",
+    "summary": "parity/radio-diff/summary.json",
+    "perFrameSsim": "parity/radio-diff/ssim.log",
+    "hyperframesCheck": "parity/radio-diff/hyperframes-check.log",
+    "worstFrame": "parity/radio-diff/worst-frame.png",
+    "referenceAlpha": "parity/radio-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/radio-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/radio-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/radio-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/radio/reference.mp4": "102f2629272fdbae397e8743eb2b148e75b7d7b93b14e98e777098a30c1abe7a",
+    "public/previews/radio/hyperframes.mp4": "102f2629272fdbae397e8743eb2b148e75b7d7b93b14e98e777098a30c1abe7a",
+    "public/previews/radio/thumbnail.png": "37a6305920213012f088d4d4da95f9556268f55c8b4fc9855d74455f6dc4a1e3",
+    "parity/radio-diff/summary.json": "fa82c25c31adc9e19a6584c3ec9334d4f3e0235e8d5eae2f1afd6c757108a452",
+    "parity/radio-diff/ssim.log": "56672b2c92229915a0dd393cc8a60627dbdc8ce3eba9f6efc2ed3a64381e3a73",
+    "parity/radio-diff/hyperframes-check.log": "b98ffe76d9ea477d54c9a88ae7fe4afd4e55d9e14bc66478994b19118e3e93be",
+    "parity/radio-diff/worst-frame.png": "9c304eef0392c6daa8f7c7241e6948db217acdad9d7577a3610af08f9a3ec219",
+    "parity/radio-diff/reference-alpha.framemd5": "a2937ec0be21934918c79b7fbd71e3b549036e98282df13982dd5a56ed01cea8",
+    "parity/radio-diff/hyperframes-alpha.framemd5": "a2937ec0be21934918c79b7fbd71e3b549036e98282df13982dd5a56ed01cea8",
+    "parity/radio-diff/reference-rgba.framemd5": "e2c2b7e16c65991c280b79f8e4a93d93a0cfd8c5b96087f896394d1ad7438532",
+    "parity/radio-diff/hyperframes-rgba.framemd5": "e2c2b7e16c65991c280b79f8e4a93d93a0cfd8c5b96087f896394d1ad7438532"
   }
 }

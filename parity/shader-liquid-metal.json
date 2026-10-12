@@ -2,7 +2,7 @@
   "slug": "shader-liquid-metal",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shader-liquid-metal/index.tsx",
     "config": "registry/remocn/shader-liquid-metal/config.ts",
     "license": "MIT"
@@ -22,25 +22,77 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "715d036276b18f9acc333808ed24c9626f89cbbaddf9ba7c8ad147fe66b407bd",
+    "shader-liquid-metal.html": "533188a44e971d33107f22b1fe7eb317fdae345ceb34c27a797e42f9ed7e5332",
+    "shader-liquid-metal.runtime.js": "71c41e5dbe1f839f79fdbdd9504c0645df7dc363a066403085f5f3477fc01e4e",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md": "fc408cbbf99a20fbc88c2296a04bac7dadbe7114f2456673de3e5b7986cfd19d"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "8edf34e27508347493e2f62671a8ba221b75ff61ebaf98150c5a43e38099cce3",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.995583,
-    "minSsim": 0.995008,
-    "p05Ssim": 0.995083,
-    "p95Ssim": 0.996246,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/shader-liquid-metal/remocn.mp4",
+    "referenceVideo": "public/previews/shader-liquid-metal/reference.mp4",
     "hyperframesVideo": "public/previews/shader-liquid-metal/hyperframes.mp4",
-    "summary": "parity/shader-liquid-metal-diff/summary.json"
+    "thumbnail": "public/previews/shader-liquid-metal/thumbnail.png",
+    "summary": "parity/shader-liquid-metal-diff/summary.json",
+    "perFrameSsim": "parity/shader-liquid-metal-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-liquid-metal-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-liquid-metal-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-liquid-metal-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-liquid-metal-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shader-liquid-metal-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shader-liquid-metal-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shader-liquid-metal/reference.mp4": "193b5b94c49b76915b29a6e93dfbd84debd74dba93db0aff9d214bf51e697741",
+    "public/previews/shader-liquid-metal/hyperframes.mp4": "193b5b94c49b76915b29a6e93dfbd84debd74dba93db0aff9d214bf51e697741",
+    "public/previews/shader-liquid-metal/thumbnail.png": "1ca9d2f7967824716bd49c63090c29637db29b8552811583f26142534b0727a3",
+    "parity/shader-liquid-metal-diff/summary.json": "ad55b29e05e75e155f68631a7d07dcf33cfd0beba9f35e6e6cb01ccc34051e53",
+    "parity/shader-liquid-metal-diff/ssim.log": "c4fbedb2045d104b60568467b9860d7ee5ffeee1f88dedd0034e5cf393a3221a",
+    "parity/shader-liquid-metal-diff/hyperframes-check.log": "8258343d79654723604d6ad3f137e02961d34e3ad42968c060314f983e44db9e",
+    "parity/shader-liquid-metal-diff/worst-frame.png": "868c916ca709cdfaaf8df5dca773d288f4923f1be26ed29b72e4e016ea486fe6",
+    "parity/shader-liquid-metal-diff/reference-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-liquid-metal-diff/hyperframes-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-liquid-metal-diff/reference-rgba.framemd5": "4cd33cebf07b05675cab0daddc97d9c989969afcb2596502d93e196468b0fbaa",
+    "parity/shader-liquid-metal-diff/hyperframes-rgba.framemd5": "4cd33cebf07b05675cab0daddc97d9c989969afcb2596502d93e196468b0fbaa"
   }
 }

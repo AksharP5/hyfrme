@@ -2,7 +2,7 @@
   "slug": "number-wheel",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/number-wheel/index.tsx",
     "config": "registry/remocn/number-wheel/config.ts",
     "license": "MIT"
@@ -21,26 +21,78 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "bd16b48568eac691a034026203de0992cef281431c4e113e86b3cfb0b44cce1e",
+    "number-wheel.html": "91260aab270596aec2dd316cbfc1140297cd72b4166f1a22ee36776b9a7eae43",
+    "number-wheel.runtime.js": "b6acdfaaff12719785c64d512b1acfc76a0a67af8c8bad82ddbfc7b3404cc9ea",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "JetBrainsMono-Latin.woff2": "18be452724bfdc236c074ca94a249a7f41a86752c7d04ab258ce9ed5651f6a7e",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/JetBrainsMono-OFL.txt": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d"
+  },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "1a1e7485908a8f6c7d5314db3f9d205b01c4fb59b810c361466e41513ceb1653",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 112,
-    "meanSsim": 0.998355,
-    "minSsim": 0.997994,
-    "p05Ssim": 0.998136,
-    "p95Ssim": 0.998776,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 112,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 112,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/number-wheel/remocn.mp4",
+    "referenceVideo": "public/previews/number-wheel/reference.mp4",
     "hyperframesVideo": "public/previews/number-wheel/hyperframes.mp4",
-    "summary": "parity/number-wheel-diff/summary.json"
+    "thumbnail": "public/previews/number-wheel/thumbnail.png",
+    "summary": "parity/number-wheel-diff/summary.json",
+    "perFrameSsim": "parity/number-wheel-diff/ssim.log",
+    "hyperframesCheck": "parity/number-wheel-diff/hyperframes-check.log",
+    "worstFrame": "parity/number-wheel-diff/worst-frame.png",
+    "referenceAlpha": "parity/number-wheel-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/number-wheel-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/number-wheel-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/number-wheel-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/number-wheel/reference.mp4": "de4265ef068365271f6af4a37da4bd77f9c29dcedcc68e2b072b29ac5ee71ec7",
+    "public/previews/number-wheel/hyperframes.mp4": "de4265ef068365271f6af4a37da4bd77f9c29dcedcc68e2b072b29ac5ee71ec7",
+    "public/previews/number-wheel/thumbnail.png": "52a8932b1b90c2adaa32d758052396b4c0547cc62562de505f5d8f6cfcdb06a9",
+    "parity/number-wheel-diff/summary.json": "7f166b7370953862bb37b12462d85e9f8595e5cd8e6ce8b4d040cc0e61d00d23",
+    "parity/number-wheel-diff/ssim.log": "a08be349e79b3d28482a48bed3b0f2c87115dceb0d49407e2f469df63e658ff6",
+    "parity/number-wheel-diff/hyperframes-check.log": "357f6bf4dedb7542235bd5c5340af0ad709662054b7c664b0c76ad30d573c1a0",
+    "parity/number-wheel-diff/worst-frame.png": "2a37b19c1c1250dbdd280550b8aa5da349008399e2c059681c5cb4fd609cf0a9",
+    "parity/number-wheel-diff/reference-alpha.framemd5": "5198e1666082f7f8ffa772ce264337853dc8ac0fc27e4d0cec5a9f5665c17454",
+    "parity/number-wheel-diff/hyperframes-alpha.framemd5": "5198e1666082f7f8ffa772ce264337853dc8ac0fc27e4d0cec5a9f5665c17454",
+    "parity/number-wheel-diff/reference-rgba.framemd5": "9b742c6887052bff707f44e3fe67eeeac2328adc6a03bc663b655963bc0c1bfb",
+    "parity/number-wheel-diff/hyperframes-rgba.framemd5": "9b742c6887052bff707f44e3fe67eeeac2328adc6a03bc663b655963bc0c1bfb"
   }
 }

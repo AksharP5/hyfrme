@@ -1,5 +1,6 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
@@ -81,6 +82,10 @@ const html = `<!doctype html>
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { ${stageTheme} position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-popup-state[hidden] { display: none !important; }
   .t3-popup-state:not([hidden]) { display: contents; }
   .base-ui-disable-scrollbar { scrollbar-width: none; }
@@ -89,6 +94,7 @@ const html = `<!doctype html>
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
   <div class="dark t3-stage">
@@ -190,6 +196,7 @@ function draw() {
   popups[1].hidden = phase !== 2;
   trigger.toggleAttribute('data-popup-open', phase === 1 || phase === 2);
   trigger.toggleAttribute('data-pressed', phase === 1 || phase === 2);
+  trigger.style.color = phase === 1 ? 'var(--foreground)' : '';
   if (phase === 1 || phase === 2) trigger.setAttribute('aria-controls', '_r_3r_');
   else trigger.removeAttribute('aria-controls');
   label.textContent = phase === 3 ? options.reasoningAfter : options.reasoningBefore;

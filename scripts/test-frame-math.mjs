@@ -18,10 +18,55 @@ const bundle = (exportName) =>
   });
 const [colorModule, numericModule] = await Promise.all([
   bundle("interpolateColors"),
-  bundle("interpolate"),
+  bundle("interpolate,Easing,spring"),
 ]);
 const { interpolateColors } = await import(
   `data:text/javascript;base64,${Buffer.from(colorModule.outputFiles[0].contents).toString("base64")}`
+);
+const { interpolate, Easing, spring } = await import(
+  `data:text/javascript;base64,${Buffer.from(numericModule.outputFiles[0].contents).toString("base64")}`
+);
+
+assert.equal(Easing.bezier(0.42, 0, 0.58, 1)(0.5), 0.5);
+assert.equal(Easing.bezier(0, 0, 1, 1)(0.5), 0.5);
+
+// Values captured from all three pinned reference versions (.473/.481/.513).
+// Flat slopes exercise subdivision; the ordinary curve exercises Newton steps.
+for (const [curve, input, expected] of [
+  [[0.4, 0, 0.2, 1], 0.23333333333333334, 0.19846205948855705],
+  [[0, 0.2, 0, 0.8], 0.0001, 0.03033425519242883],
+  [[1, 0.2, 1, 0.8], 0.9999, 0.9696657448075712],
+])
+  assert.equal(Easing.bezier(...curve)(input), expected);
+assert.throws(() => Easing.bezier(-0.1, 0, 1, 1));
+
+for (const [params, expected] of [
+  [
+    { frame: 3, fps: 30, config: { damping: 13, stiffness: 170, mass: 0.7 } },
+    0.5976414005119413,
+  ],
+  [{ frame: 12.2, fps: 30, durationInFrames: 87 }, 0.5068703244825342],
+  [{ frame: 45, fps: 30, durationInFrames: 30 }, 1],
+  [{ frame: 3.25, fps: 15, config: { damping: 200 } }, 0.5719076705793775],
+  [
+    { frame: 5, fps: 30, delay: 2, reverse: true, durationInFrames: 30 },
+    0.9845451519290561,
+  ],
+]) {
+  assert.equal(spring(params), expected);
+  assert.equal(
+    spring(params),
+    expected,
+    "Cached frame evaluation preserves the result",
+  );
+}
+
+assert.equal(
+  interpolate(9, [0, 9, 30], [1.42, 0.985, 0.97], {
+    easing: Easing.out(Easing.exp),
+  }),
+  0.9854248046875,
+  "An exact interior keyframe uses the incoming segment's easing endpoint",
 );
 
 assert.equal(
@@ -95,5 +140,5 @@ assert.equal(
 );
 
 console.log(
-  "Color interpolation supports CSS colors, matches reference quantization, and tree-shakes when unused.",
+  "Frame math preserves reference easing and springs, CSS color quantization, and unused parser tree-shaking.",
 );

@@ -1,0 +1,157 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": false,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 0,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 0.204,
+        "selector": "#rolodex-flip-source-root > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 713.67,
+          "top": 333.64,
+          "right": 845.59,
+          "bottom": 378.09,
+          "width": 131.92,
+          "height": 44.45
+        },
+        "containerSelector": "#rolodex-flip-source-root > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "button",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/rolodex-flip.html",
+        "bbox": {
+          "x": 713.67,
+          "y": 333.64,
+          "width": 131.92,
+          "height": 44.45
+        },
+        "firstSeen": 0.204,
+        "lastSeen": 2.322,
+        "occurrences": 7,
+        "heldMs": 2118
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 2.241,
+        "selector": "#rolodex-flip-source-root > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "message": "Nowrap text is wider than its container.",
+        "rect": {
+          "left": 710.84,
+          "top": 351.22,
+          "right": 936.36,
+          "bottom": 387.71,
+          "width": 225.52,
+          "height": 36.49
+        },
+        "containerSelector": "#rolodex-flip-source-root > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 715.59,
+          "top": 334.28,
+          "right": 931.61,
+          "bottom": 385.7,
+          "width": 216.02,
+          "height": 51.42
+        },
+        "overflow": {
+          "left": 4.75,
+          "right": 4.75
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/rolodex-flip.html",
+        "bbox": {
+          "x": 710.84,
+          "y": 351.22,
+          "width": 225.52,
+          "height": 36.49
+        },
+        "firstSeen": 2.241,
+        "lastSeen": 2.241,
+        "occurrences": 1,
+        "heldMs": 0
+      }
+    ],
+    "duration": 3.6666666666666665,
+    "samples": [
+      0.204,
+      0.611,
+      1.019,
+      1.426,
+      1.833,
+      2.241,
+      2.648,
+      3.056,
+      3.463
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 2,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.204,
+      1.019,
+      1.833,
+      2.648,
+      3.463
+    ],
+    "checked": 16,
+    "passed": 16
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.99",
+    "latestVersion": "0.8.114",
+    "updateAvailable": true
+  }
+}

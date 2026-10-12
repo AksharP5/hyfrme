@@ -2,7 +2,7 @@
   "slug": "matrix-decode",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/matrix-decode/index.tsx",
     "config": "registry/remocn/matrix-decode/config.ts",
     "license": "MIT"
@@ -23,25 +23,122 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "e3d1fd7a41fd4d7bbadd35743303245c168e4f9af0a4a4c9815ef404b507519e",
+    "matrix-decode.html": "4eac221d676271277dc8d4949054366bac91b291924d277812c38f0e88538092",
+    "matrix-decode.runtime.js": "c7bb6987515180bd2e67cfb158aaa56c8cf7183a2600c86f496661e1589e3808",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "GeistMono-Latin.woff2": "af61b969e7f999969f6af576e584ee85dca301a008a76be1251d172d56b9904c",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/GeistMono-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "bc77b47773122cc0a424dc8da0cf373896d6cf5859d4b834d133db3395048724",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.997835,
-    "minSsim": 0.99739,
-    "p05Ssim": 0.997539,
-    "p95Ssim": 0.998223,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check reported 2 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "matrix-decode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/matrix-decode/index.tsx",
+          "config": "registry/remocn/matrix-decode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > span",
+          "text": "DECRYPTED",
+          "fg": "rgb(34,197,94)",
+          "bg": "rgb(255,255,255)",
+          "ratio": 2.28,
+          "requiredRatio": 3,
+          "time": 2.167
+        },
+        "reason": "The pinned MatrixDecode source renders #22c55e text on the upstream white preview backdrop. Preserve that source palette; all 90 native RGBA frames match. These two complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "matrix-decode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/matrix-decode/index.tsx",
+          "config": "registry/remocn/matrix-decode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > span",
+          "text": "DECRYPTED",
+          "fg": "rgb(34,197,94)",
+          "bg": "rgb(255,255,255)",
+          "ratio": 2.28,
+          "requiredRatio": 3,
+          "time": 2.833
+        },
+        "reason": "The pinned MatrixDecode source renders #22c55e text on the upstream white preview backdrop. Preserve that source palette; all 90 native RGBA frames match. These two complete contrast findings remain in the full check log."
+      }
+    ],
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/matrix-decode/remocn.mp4",
+    "referenceVideo": "public/previews/matrix-decode/reference.mp4",
     "hyperframesVideo": "public/previews/matrix-decode/hyperframes.mp4",
-    "summary": "parity/matrix-decode-diff/summary.json"
+    "thumbnail": "public/previews/matrix-decode/thumbnail.png",
+    "summary": "parity/matrix-decode-diff/summary.json",
+    "perFrameSsim": "parity/matrix-decode-diff/ssim.log",
+    "hyperframesCheck": "parity/matrix-decode-diff/hyperframes-check.log",
+    "worstFrame": "parity/matrix-decode-diff/worst-frame.png",
+    "referenceAlpha": "parity/matrix-decode-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/matrix-decode-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/matrix-decode-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/matrix-decode-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/matrix-decode/reference.mp4": "6c80ffd76638b1da9a7cb3b838d87fd84a25481282357660579c65418d0d84af",
+    "public/previews/matrix-decode/hyperframes.mp4": "6c80ffd76638b1da9a7cb3b838d87fd84a25481282357660579c65418d0d84af",
+    "public/previews/matrix-decode/thumbnail.png": "61623e126f1b416dc71aa9844e8b05d5787203274dd30ff70e856b1e3003d6cc",
+    "parity/matrix-decode-diff/summary.json": "b836772793766404c0492e741437d4fb40b614cf31be7aace9f9b10b16c85450",
+    "parity/matrix-decode-diff/ssim.log": "4638ac3b2b03d74f8b056c3824e13d904997bddfbc1c0f3b8d655822a1eb000b",
+    "parity/matrix-decode-diff/hyperframes-check.log": "6636694ca5778a474fcee56f9a825527309b1a4c250f651c8c221f32b573e545",
+    "parity/matrix-decode-diff/worst-frame.png": "d33c8e66c86975296f3e4d6914a2caf68f0d8de6ff2602254086b64d57f0f6ef",
+    "parity/matrix-decode-diff/reference-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/matrix-decode-diff/hyperframes-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/matrix-decode-diff/reference-rgba.framemd5": "5a08c5be8764067fd2fcc5e59e53f5676f02be68c88a3dfb3cdaef5f5ff82364",
+    "parity/matrix-decode-diff/hyperframes-rgba.framemd5": "5a08c5be8764067fd2fcc5e59e53f5676f02be68c88a3dfb3cdaef5f5ff82364"
   }
 }

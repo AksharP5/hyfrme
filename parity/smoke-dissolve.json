@@ -2,7 +2,7 @@
   "slug": "smoke-dissolve",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/smoke-dissolve/index.tsx",
     "entry": "components/docs/examples/smoke-dissolve-example.tsx",
     "config": "registry/remocn/smoke-dissolve/config.ts",
@@ -20,25 +20,145 @@
     },
     "background": "#141318"
   },
+  "filesSha256": {
+    "registry-item.json": "c1ab3f2a106a9d30d9f84e6fba6cc246a4bb67d82f9c7320c1b05277ca9dc10c",
+    "smoke-dissolve.html": "b959c9c524f9519a56a610044cb177d321033b2800944a09fee4dbab74aa4520",
+    "smoke-dissolve.runtime.js": "cf91b2ed73c109d6667685567c84bf921d70caf98a6e7147419298d604e8a7f4",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md": "fc408cbbf99a20fbc88c2296a04bac7dadbe7114f2456673de3e5b7986cfd19d"
+  },
   "classification": "compiled-source-port",
-  "status": "verified",
+  "measurement": "lossless-png",
+  "status": "failed",
+  "fingerprint": "9626b4b2b8123b3d4cd166c80b9b2b9ae5980039e3b9a9211a3f3f8821b2c870",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 116,
-    "meanSsim": 0.995176,
-    "minSsim": 0.991117,
-    "p05Ssim": 0.991581,
-    "p95Ssim": 0.997669,
-    "pass": true
+    "meanSsim": 0.9574824310344828,
+    "minSsim": 0.728418,
+    "p05Ssim": 0.754238,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 116,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 116,
+      "mismatchedFrames": [
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19,
+        21,
+        23,
+        25,
+        27,
+        29,
+        31,
+        33,
+        35,
+        37,
+        39,
+        41,
+        43,
+        45,
+        47,
+        49,
+        51,
+        53,
+        55,
+        57,
+        59,
+        61,
+        63,
+        65,
+        67,
+        69,
+        71,
+        73,
+        75,
+        77,
+        79,
+        81,
+        83,
+        85,
+        87,
+        89,
+        91,
+        93,
+        95
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check reported 1 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "smoke-dissolve",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/smoke-dissolve/index.tsx",
+          "entry": "components/docs/examples/smoke-dissolve-example.tsx",
+          "config": "registry/remocn/smoke-dissolve/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "text": "Scene A",
+          "selector": "#smoke-dissolve-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "containerSelector": "#smoke-dissolve-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > canvas:nth-of-type(1)",
+          "coveredFraction": 1,
+          "sourceFile": "compositions/smoke-dissolve.html"
+        },
+        "reason": "The pinned transition covers Scene A with its entering shader during the authored fade. See registry/remocn/smoke-dissolve/index.tsx:34-70. Preserve the source layer order; the original finding remains recorded and every RGBA frame must still match."
+      }
+    ],
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/smoke-dissolve/remocn.mp4",
+    "referenceVideo": "public/previews/smoke-dissolve/reference.mp4",
     "hyperframesVideo": "public/previews/smoke-dissolve/hyperframes.mp4",
-    "summary": "parity/smoke-dissolve-diff/summary.json"
+    "thumbnail": "public/previews/smoke-dissolve/thumbnail.png",
+    "summary": "parity/smoke-dissolve-diff/summary.json",
+    "perFrameSsim": "parity/smoke-dissolve-diff/ssim.log",
+    "hyperframesCheck": "parity/smoke-dissolve-diff/hyperframes-check.log",
+    "worstFrame": "parity/smoke-dissolve-diff/worst-frame.png",
+    "referenceAlpha": "parity/smoke-dissolve-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/smoke-dissolve-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/smoke-dissolve-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/smoke-dissolve-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/smoke-dissolve/reference.mp4": "191b46cdc8b1c6bc801d3f96f1cd560fdf3d25da317bb686662059b0129eca3f",
+    "public/previews/smoke-dissolve/hyperframes.mp4": "9c4112342e5cd7c7e4aed540377fccbd0aead8623676227a5cee58277deeb7ae",
+    "public/previews/smoke-dissolve/thumbnail.png": "30fe32a4815d6b66555412765c65b2b6b4c65e40f685b666a7009237f1eae948",
+    "parity/smoke-dissolve-diff/summary.json": "7061707d42d8350bf75c32f20a26cd7dad4f7d689f4ac133b584c7b17906a35c",
+    "parity/smoke-dissolve-diff/ssim.log": "d189d2dd94fb50bc4e5e54ef0f4fdfb97107685c3117393575bcdfd2a84f6dd4",
+    "parity/smoke-dissolve-diff/hyperframes-check.log": "364d8c90e047992c2eae5cc89e1dab8032ab4f6335ddf01f20506e80866fa7e4",
+    "parity/smoke-dissolve-diff/worst-frame.png": "51c9c734d0ee3e372124a6bf3e4099223e8f36b23d913812e6b9eac09157aa41",
+    "parity/smoke-dissolve-diff/reference-alpha.framemd5": "adfd21ad9324abcc9e7e316f5491b18ba1c49f3330160e5ec3b693dc6720e2e1",
+    "parity/smoke-dissolve-diff/hyperframes-alpha.framemd5": "adfd21ad9324abcc9e7e316f5491b18ba1c49f3330160e5ec3b693dc6720e2e1",
+    "parity/smoke-dissolve-diff/reference-rgba.framemd5": "3509fc6fbe4520408738d601d44b65e624a8069aeebb6d344d7c434eb6be5ac3",
+    "parity/smoke-dissolve-diff/hyperframes-rgba.framemd5": "7e2fde142b435af685fc32a9a302f9a97099cdc562d76b866ba682cc5fb78c84"
   }
 }

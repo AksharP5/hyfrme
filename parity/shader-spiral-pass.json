@@ -2,7 +2,7 @@
   "slug": "shader-spiral-pass",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "e3dc260ff1965440d1f64fb65a8c9a9373e78328",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shader-spiral-pass/index.tsx",
     "entry": "components/docs/examples/shader-spiral-pass-example.tsx",
     "config": "registry/remocn/shader-spiral-pass/config.ts",
@@ -23,13 +23,25 @@
     },
     "background": "#15111c"
   },
+  "filesSha256": {
+    "registry-item.json": "f3a7ef917356b9fdf96a1792749447f813d5e70e7fe7c6ff56c400f9f1c66787",
+    "shader-spiral-pass.html": "e0010d8e498f9cef3a5990df80e9f56eaa21b198854a5928b47a45afbe41d779",
+    "shader-spiral-pass.runtime.js": "f3e5d46466445c7da0c6919ae2d1a451105192357b4cfa643ff14e077c1765c0",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "9e7dcb20821b623cd97e77800d2ff5471a364d8f9f1a74e53a4ad0e122c6a633",
+  "fingerprint": "3b0324f939a0d4efe29bf301b9b23ccc74d6a43e858b1ba2016c9d5ff1973c47",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 168,
@@ -42,14 +54,23 @@
       "mismatchedFrames": [],
       "pass": true
     },
+    "rgba": {
+      "frameCount": 168,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -61,6 +82,21 @@
     "hyperframesCheck": "parity/shader-spiral-pass-diff/hyperframes-check.log",
     "worstFrame": "parity/shader-spiral-pass-diff/worst-frame.png",
     "referenceAlpha": "parity/shader-spiral-pass-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/shader-spiral-pass-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/shader-spiral-pass-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shader-spiral-pass-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shader-spiral-pass-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shader-spiral-pass/reference.mp4": "7983878fa6ba4b509030c2c39197dbfb3d17374d19f0225e0329e4b30cce5def",
+    "public/previews/shader-spiral-pass/hyperframes.mp4": "7983878fa6ba4b509030c2c39197dbfb3d17374d19f0225e0329e4b30cce5def",
+    "public/previews/shader-spiral-pass/thumbnail.png": "8cdf3be09455362fccda3e9468bc41f6f73d18fbf28f6df2c2bb817ac25d613f",
+    "parity/shader-spiral-pass-diff/summary.json": "06c74e80562ea5fc5352426c7846825d619c1b1b1ca9dc6b484f4cd48b50e09a",
+    "parity/shader-spiral-pass-diff/ssim.log": "835daf762820a2b6050a1f014d244b15c01a5e0d924ddd74eb6d6a5db5b32c96",
+    "parity/shader-spiral-pass-diff/hyperframes-check.log": "729dfa1930424d14a950b03f362937ee50e1375d839d3554f71dd779014582ed",
+    "parity/shader-spiral-pass-diff/worst-frame.png": "8c83feb46003adfd114dfdb1d54d151599875db278eba5959015111059e8691e",
+    "parity/shader-spiral-pass-diff/reference-alpha.framemd5": "3df160b35b562d2fb4d8dab303f006a5866e1c9fa25814ff27c82f4c61f412c4",
+    "parity/shader-spiral-pass-diff/hyperframes-alpha.framemd5": "3df160b35b562d2fb4d8dab303f006a5866e1c9fa25814ff27c82f4c61f412c4",
+    "parity/shader-spiral-pass-diff/reference-rgba.framemd5": "93fdfcf236e357a372cb67ac584622831bd119d47c44173a3dab8a0e7c8be64e",
+    "parity/shader-spiral-pass-diff/hyperframes-rgba.framemd5": "93fdfcf236e357a372cb67ac584622831bd119d47c44173a3dab8a0e7c8be64e"
   }
 }

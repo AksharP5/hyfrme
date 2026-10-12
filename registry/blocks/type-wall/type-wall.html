@@ -18,7 +18,16 @@
       #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#2b3bff; }
 
 
-      #hyfrme-source-root, #hyfrme-source-root * { text-rendering: auto; }
+#hyfrme-source-root {
+  font-size: 14px;
+  line-height: calc(20 / 14);
+  font-feature-settings: "cv11", "ss01";
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+#hyfrme-source-root, #hyfrme-source-root * {
+  text-rendering: optimizeLegibility;
+}
 
     </style>
   </head>

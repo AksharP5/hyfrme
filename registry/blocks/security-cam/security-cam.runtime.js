@@ -116,7 +116,28 @@ void main() {
   color += grain * 0.16 * u_noise * amount * (0.25 + shadow);
 
   outColor = vec4(clamp(color, 0.0, 1.0), src.a);
-}`,Uv=Pm(Rv,({gl:t,uniform:l,passedProps:e})=>{let{compression:a,cellX:u,cellY:n,noise:c,intensity:i}=e;t.uniform1f(l("u_compression"),a),t.uniform2f(l("u_cell"),u,n),t.uniform1f(l("u_noise"),c),t.uniform1f(l("u_intensity"),i)}),xv=({children:t,intensity:l})=>(0,Sa.jsxs)(te,{children:[(0,Sa.jsx)(te,{style:{filter:`saturate(${1-.38*l}) contrast(${1+.22*l}) brightness(${1-.05*l})`},children:t}),(0,Sa.jsx)(te,{style:{background:"radial-gradient(ellipse 82% 80% at 50% 50%, transparent 50%, rgba(0, 0, 0, 0.55) 100%)",opacity:l}})]}),Hv=t1({shader:Uv,fallback:xv}),l1=({compression:t=lc.compression,blockSize:l=lc.blockSize,noise:e=lc.noise,intensity:a=lc.intensity,children:u})=>{let{width:n,height:c}=Pn();return(0,Sa.jsx)(Hv,{compression:t,cellX:Math.max(l,1)/n,cellY:Math.max(l,1)/c,noise:e,intensity:a,children:u})};var Vf=_t(Al());function e1({compression:t,blockSize:l,noise:e,intensity:a}){return(0,Vf.jsx)(l1,{compression:t,blockSize:l,noise:e,intensity:a,children:(0,Vf.jsx)(Wm,{})})}var ec=document.getElementById("hyfrme-source-root"),i1=JSON.parse(ec.dataset.hyfrmeAssets??"{}");Qm(i1);var Nv=(0,c1.createRoot)(ec,{identifierPrefix:ec.closest("[data-composition-file]")?.dataset.compositionId??"security-cam"}),a1=window.__hyperframes.getVariables(),qv={fps:30,width:1280,height:720,durationInFrames:90},Bv=["compression","blockSize","noise","intensity"].reduce((t,l)=>(t[l]=i1[a1[l]]??a1[l],t),{}),Kf=t=>{Vm(t,qv),(0,n1.flushSync)(()=>Nv.render(u1.default.createElement(e1,Bv)))};window.__hyfrmeRenderFrame=Kf;window.__hyfrmeReady=(async()=>{let t=new Set(["Geist"]);t.add("Geist Mono"),await Promise.all(Array.from(document.fonts).filter(l=>t.has(l.family.replaceAll('"',"").replaceAll("'",""))).map(l=>l.load())),await document.fonts.ready,Kf(0),await Xm(),Kf(0),await Promise.all(Array.from(ec.querySelectorAll("img")).map(l=>l.decode()))})();})();
+}`,Uv=Pm(Rv,({gl:t,uniform:l,passedProps:e})=>{let{compression:a,cellX:u,cellY:n,noise:c,intensity:i}=e;t.uniform1f(l("u_compression"),a),t.uniform2f(l("u_cell"),u,n),t.uniform1f(l("u_noise"),c),t.uniform1f(l("u_intensity"),i)}),xv=({children:t,intensity:l})=>(0,Sa.jsxs)(te,{children:[(0,Sa.jsx)(te,{style:{filter:`saturate(${1-.38*l}) contrast(${1+.22*l}) brightness(${1-.05*l})`},children:t}),(0,Sa.jsx)(te,{style:{background:"radial-gradient(ellipse 82% 80% at 50% 50%, transparent 50%, rgba(0, 0, 0, 0.55) 100%)",opacity:l}})]}),Hv=t1({shader:Uv,fallback:xv}),l1=({compression:t=lc.compression,blockSize:l=lc.blockSize,noise:e=lc.noise,intensity:a=lc.intensity,children:u})=>{let{width:n,height:c}=Pn();return(0,Sa.jsx)(Hv,{compression:t,cellX:Math.max(l,1)/n,cellY:Math.max(l,1)/c,noise:e,intensity:a,children:u})};var Vf=_t(Al());function e1({compression:t,blockSize:l,noise:e,intensity:a}){return(0,Vf.jsx)(l1,{compression:t,blockSize:l,noise:e,intensity:a,children:(0,Vf.jsx)(Wm,{})})}var ec=document.getElementById("hyfrme-source-root"),i1=JSON.parse(ec.dataset.hyfrmeAssets??"{}");Qm(i1);var Nv=(0,c1.createRoot)(ec,{identifierPrefix:ec.closest("[data-composition-file]")?.dataset.compositionId??"security-cam"}),a1=window.__hyperframes.getVariables(),qv={fps:30,width:1280,height:720,durationInFrames:90},Bv=["compression","blockSize","noise","intensity","speed"].reduce((t,l)=>(t[l]=i1[a1[l]]??a1[l],t),{}),Kf=t=>{Vm(t,qv),(0,n1.flushSync)(()=>Nv.render(u1.default.createElement(e1,Bv)))};window.__hyfrmeRenderFrame=Kf;window.__hyfrmeReady=(async()=>{let t=new Set(["Geist"]);t.add("Geist Mono"),await Promise.all(Array.from(document.fonts).filter(l=>t.has(l.family.replaceAll('"',"").replaceAll("'",""))).map(l=>l.load())),await document.fonts.ready,Kf(0),await Xm(),Kf(0),await Promise.all(Array.from(ec.querySelectorAll("img")).map(l=>l.decode()))})();})();
+/*!
+ * Cubic Bézier evaluation adapted from Gaëtan Renaudeau's bezier-easing
+ * and the React Native implementation. Copyright (c) 2014-2015 Gaëtan
+ * Renaudeau. Portions copyright (c) Facebook, Inc. and its affiliates.
+ * MIT License
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 /*! Bundled license information:
 
 react/cjs/react.production.js:

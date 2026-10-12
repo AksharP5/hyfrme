@@ -1,16 +1,50 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { createHash } from "node:crypto";
+import { spawnSync } from "node:child_process";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
+import { readNativeSourceCode, nativeSourceCodeRuntime } from "./t3-native-source-code.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
 const name = "t3-terminal-check";
 const output = resolve(root, `.work/${name}-v0042-candidate`);
 const themes = ["dark", "light"];
+const nativeCode = await readNativeSourceCode(root);
 const phases = ["source", "add-menu", "ready", "typed", "output"];
 const fileFixture = JSON.parse(await readFile(resolve(source, "file-surface-fixture.json"), "utf8"));
 const fixtures = Object.fromEntries(await Promise.all(themes.map(async (theme) => [theme,
   JSON.parse(await readFile(resolve(source, `terminal-check${theme === "light" ? "-light" : ""}-fixture.json`), "utf8")),
 ])));
+const nativeMenuControls = JSON.parse(await readFile(resolve(source, "native-terminal-menu-controls-v0042-provenance.json"), "utf8"));
+const sha256 = bytes => createHash("sha256").update(bytes).digest("hex");
+if (nativeMenuControls.sourceCommit !== fixtures.dark.sourceCommit ||
+    JSON.stringify(nativeMenuControls.crop) !== JSON.stringify({ x: 1095, y: 12, width: 92, height: 28 }) ||
+    JSON.stringify(nativeMenuControls.range) !== "[20,39]" ||
+    Object.keys(nativeMenuControls.themes).sort().join(",") !== "dark,light") {
+  throw new Error("Native menu controls differ from the pinned source region");
+}
+for (const theme of themes) {
+  const entry = nativeMenuControls.themes[theme];
+  const suffix = theme === "light" ? "-light" : "";
+  const fixturePath = `assets/t3-code/v0.0.42/terminal-check${suffix}-fixture.json`;
+  const videoPath = `parity/t3-terminal-check-v0042${suffix}-reference.mkv`;
+  const asset = `native-terminal-menu-controls-v0042-${theme}.png`;
+  if (entry.fixturePath !== fixturePath || entry.videoPath !== videoPath || entry.asset !== asset ||
+      sha256(await readFile(resolve(root, fixturePath))) !== entry.fixtureSha256 ||
+      sha256(await readFile(resolve(root, videoPath))) !== entry.videoSha256 ||
+      fixtures[theme].referenceSha256 !== entry.videoSha256 || entry.frames.length !== 20 ||
+      entry.frames.some((row, index) => row.frame !== 20 + index || row.rgbaSha256 !== entry.rgbaSha256)) {
+    throw new Error(`${theme} native menu controls provenance differs`);
+  }
+  const png = await readFile(resolve(source, asset));
+  const decoded = spawnSync("ffmpeg", ["-v", "error", "-i", resolve(source, asset), "-f", "rawvideo", "-pix_fmt", "rgba", "pipe:1"]);
+  if (sha256(png) !== entry.pngSha256 || png.subarray(0, 8).toString("hex") !== "89504e470d0a1a0a" ||
+      png.readUInt32BE(16) !== 92 || png.readUInt32BE(20) !== 28 || decoded.status !== 0 ||
+      decoded.stdout.length !== 92 * 28 * 4 || sha256(decoded.stdout) !== entry.rgbaSha256) {
+    throw new Error(`${theme} native menu controls PNG differs`);
+  }
+}
 const themeVars = Object.fromEntries(await Promise.all(themes.map(async (theme) => [theme,
   JSON.parse(await readFile(resolve(source, `${theme}-theme.json`), "utf8")),
 ])));
@@ -37,6 +71,20 @@ const captures = await Promise.all(themes.flatMap((theme) => phases.map(async (p
 const portal = Object.fromEntries(await Promise.all(themes.map(async (theme) => [theme,
   await readFile(resolve(source, `terminal-check${theme === "light" ? "-light" : ""}-add-menu-portal.html`), "utf8"),
 ])));
+const nativePositioner = JSON.parse(await readFile(resolve(source, "terminal-check-native-positioner.json"), "utf8"));
+if (nativePositioner.sourceCommit !== fixtures.dark.sourceCommit || nativePositioner.sourceTag !== "v0.0.42" ||
+    nativePositioner.frame !== 20 || Object.keys(nativePositioner.themes).sort().join(',') !== 'dark,light') {
+  throw new Error('Native terminal menu positioner source differs');
+}
+for (const theme of themes) {
+  const positioner = nativePositioner.themes[theme];
+  if (positioner.referenceSha256 !== fixtures[theme].referenceSha256 || positioner.positionerAttrs['data-slot'] !== 'menu-positioner' ||
+      positioner.positionerAttrs.class !== 'z-[130]' || positioner.portalAttrs['data-base-ui-portal'] !== '' ||
+      positioner.positionerRect.x !== fixtures[theme].menuBox.x || positioner.positionerRect.y !== fixtures[theme].menuBox.y ||
+      !positioner.positionerAttrs.style.startsWith('position: absolute; left: 0px; top: 0px; transform: translate(' + fixtures[theme].menuBox.x + 'px, ' + fixtures[theme].menuBox.y + 'px);')) {
+    throw new Error('Native terminal menu positioner geometry/context differs');
+  }
+}
 const css = await readFile(resolve(source, "t3.css"), "utf8");
 const gsap = await readFile(resolve(root, "registry/blocks/before-after/gsap.min.js"), "utf8");
 const fields = [
@@ -82,8 +130,11 @@ const defaults = Object.fromEntries(variables.map(({ id, default: value }) => [i
 const escapeAttribute = (value) => value.replaceAll("&", "&amp;").replaceAll("'", "&#39;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 const scriptJson = (value) => JSON.stringify(value).replaceAll("</", "<\\/");
 const states = captures.map(({ theme, phase, markup }, index) => {
-  const menu = phase === "add-menu" ? `<div class="t3-menu-portal" style="left:${fixtures[theme].menuBox.x}px;top:${fixtures[theme].menuBox.y}px">${portal[theme]}</div>` : "";
-  return `<div class="t3-state" data-t3-theme="${theme}" data-t3-phase="${phase}"${index ? " hidden" : ""}>${markup}${menu}</div>`;
+  const attributes = (values) => Object.entries(values).map(([key, value]) => ` ${key}='${escapeAttribute(value)}'`).join('');
+  const positioner = nativePositioner.themes[theme];
+  const menu = phase === "add-menu"
+    ? `<div class="t3-menu-portal" data-t3-menu-theme="${theme}" hidden${attributes(positioner.portalAttrs)}><div${attributes(positioner.positionerAttrs)}>${portal[theme]}</div></div>` : "";
+  return `<div class="t3-state" data-t3-theme="${theme}" data-t3-phase="${phase}"${index ? " hidden" : ""}>${markup}</div>${menu}`;
 }).join("\n");
 const symbol = captures.find(({ theme, phase }) => theme === "dark" && phase === "source")?.shadows
   .find(({ tag }) => tag === "FILE-TREE-CONTAINER")?.html.match(/<symbol id="file-tree-builtin-html"[\s\S]*?<\/symbol>/)?.[0];
@@ -98,12 +149,15 @@ const html = `<!doctype html>
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { ${stageTheme} position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-state[hidden] { display: none !important; }
   .t3-state:not([hidden]) { display: contents; }
-  .t3-menu-portal { position: absolute; z-index: 200; }
+  .t3-menu-portal[hidden] { display: none !important; }
   .base-ui-disable-scrollbar { scrollbar-width: none; }
   .base-ui-disable-scrollbar::-webkit-scrollbar { display: none; }
-  .t3-stage [style*="t3-mobile-draft-headline"] h1 { transform: translateY(1px); }
   .terminal-custom { position: absolute; inset: 0; box-sizing: border-box; padding: 21px 4px 0; background: var(--terminal-background); color: var(--terminal-foreground); font: 13px/18px "JetBrains Mono", monospace; white-space: pre-wrap; }
   .terminal-custom[hidden] { display: none !important; }
   .terminal-custom .directory { color: #8fbfc4; font-weight: 600; }
@@ -114,6 +168,7 @@ const html = `<!doctype html>
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
   <div class="dark t3-stage"><svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">${symbol}</svg>${states}</div>
@@ -131,6 +186,7 @@ if (options.theme === 'light') {
 for (const [key, value] of Object.entries(${scriptJson(fontTheme)})) stage.style.setProperty(key, value);
 stage.style.fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
 const states = [...stage.querySelectorAll('[data-t3-phase]')];
+const menuPortals = [...stage.querySelectorAll('[data-t3-menu-theme]')];
 const shadowStates = ${scriptJson(captures.map(({ shadows }) => shadows))};
 const roots = [stage];
 for (const [index, state] of states.entries()) {
@@ -140,11 +196,6 @@ for (const [index, state] of states.entries()) {
     const root = host.attachShadow({ mode: 'open' });
     root.innerHTML = shadow.html;
     root.adoptedStyleSheets = shadow.css.map((css) => { const sheet = new CSSStyleSheet(); sheet.replaceSync(css); return sheet; });
-    if (host.tagName === 'DIFFS-CONTAINER') {
-      const alignment = document.createElement('style');
-      alignment.textContent = '[data-code] { position: relative; top: -1px; }';
-      root.append(alignment);
-    }
     roots.push(root);
   }
 }
@@ -235,11 +286,14 @@ for (const state of states.filter((item) => ['source', 'add-menu'].includes(item
     if (span.textContent === 'Logo Enter' && options.sourceCaption !== defaults.sourceCaption) span.textContent = options.sourceCaption;
   }
 }
-const sequences = ${scriptJson(Object.fromEntries(themes.map((theme) => [theme, fixtures[theme].canvasSequence])))};
+const sequences = ${scriptJson(Object.fromEntries(themes.map((theme) => [theme, fixtures[theme].canvasSequence.map((file) => file ? `compositions/${file}` : file)])))};
 const active = states.filter((state) => state.dataset.t3Theme === options.theme);
 const customTerminal = ['terminalPrompt', 'terminalBranch', 'command', 'output'].some((key) => options[key] !== defaults[key]);
 for (const state of active.filter((item) => ['ready', 'typed', 'output'].includes(item.dataset.t3Phase))) {
   const image = state.querySelector('[data-terminal-canvas]');
+  const toolbar = state.querySelector('.thread-terminal-drawer > .pointer-events-none.absolute.right-2.top-2.z-20');
+  if (!toolbar) throw new Error('Native terminal floating toolbar is missing');
+  toolbar.hidden = !customTerminal;
   const overlay = document.createElement('div');
   overlay.className = 'terminal-custom';
   overlay.hidden = !customTerminal;
@@ -264,6 +318,23 @@ for (const state of active.filter((item) => ['ready', 'typed', 'output'].include
   image.insertAdjacentElement('afterend', overlay);
   image.hidden = customTerminal;
 }
+${nativeSourceCodeRuntime}
+const nativeMenuControlImages = [];
+if (nativeCodeAllowed) {
+  const image = document.createElement('img');
+  image.dataset.nativeMenuControls = '';
+  image.alt = '';
+  image.setAttribute('aria-hidden', 'true');
+  image.setAttribute('data-layout-ignore', '');
+  image.style.cssText = 'position:absolute;left:1095px;top:12px;width:92px;height:28px;z-index:51;pointer-events:none';
+  image.src = options.theme === 'light'
+    ? 'compositions/native-terminal-menu-controls-v0042-light.png'
+    : 'compositions/native-terminal-menu-controls-v0042-dark.png';
+  active[1].append(image);
+  nativeMenuControlImages.push(image);
+}
+const nativeMenuControlsReady = Promise.all(nativeMenuControlImages.map(image => image.decode()));
+window.addEventListener('hf-seek', event => event.detail?.waitUntil?.(nativeMenuControlsReady));
 const clock = { frame: 0 };
 function draw() {
   const frame = Math.max(0, Math.min(119, Math.round(clock.frame)));
@@ -272,13 +343,14 @@ function draw() {
   let phase = 0;
   for (let index = 1; index < starts.length; index++) if (frame >= starts[index]) phase = index;
   for (const state of states) state.hidden = state !== active[phase];
+  for (const menu of menuPortals) menu.hidden = phase !== 1 || menu.dataset.t3MenuTheme !== options.theme;
   if (phase > 1 && !customTerminal) {
     const sequence = sequences[options.theme];
     const phaseStart = starts[phase];
     const sourceStart = [0, 0, ${fixtures.dark.events.terminal}, ${fixtures.dark.events.type}, ${fixtures.dark.events.run}][phase];
     const sourceEnd = [0, 0, ${fixtures.dark.events.type}, ${fixtures.dark.events.run}, 120][phase];
     const sourceFrame = sourceStart + ((frame - phaseStart) % (sourceEnd - sourceStart));
-    active[phase].querySelector('[data-terminal-canvas]').src = 'compositions/' + sequence[sourceFrame];
+    active[phase].querySelector('[data-terminal-canvas]').src = sequence[sourceFrame];
   }
 }
 draw();
@@ -300,12 +372,16 @@ for (const [from, to] of [
   ["source-file-open-pierre-trees-notice.md", "PIERRE-TREES-NOTICE.md"],
   ["source-file-open-pierre-diffs-license.md", "PIERRE-DIFFS-LICENSE.md"],
 ]) await copyFile(resolve(root, "assets/t3-code/v0.0.35", from), resolve(output, "licenses", to));
+for (const theme of themes) await copyFile(resolve(source, nativeCode.themes[theme].asset), resolve(output, nativeCode.themes[theme].asset));
+for (const theme of themes) await copyFile(resolve(source, nativeMenuControls.themes[theme].asset), resolve(output, nativeMenuControls.themes[theme].asset));
 const files = [
   { path: `${name}.html`, target: `compositions/${name}.html`, type: "hyperframes:composition" },
   { path: "t3-code-gsap.min.js", target: "compositions/t3-code-gsap.min.js", type: "hyperframes:asset" },
   ...themes.flatMap((theme) => Object.keys(fixtures[theme].canvasAssets).map((path) => ({
     path, target: `compositions/${path}`, type: "hyperframes:asset",
   }))),
+  ...themes.map(theme => ({ path: nativeCode.themes[theme].asset, target: `compositions/${nativeCode.themes[theme].asset}`, type: "hyperframes:asset" })),
+  ...themes.map(theme => ({ path: nativeMenuControls.themes[theme].asset, target: `compositions/${nativeMenuControls.themes[theme].asset}`, type: "hyperframes:asset" })),
   ...["T3-CODE-LICENSE.txt", "T3-THIRD_PARTY_NOTICES.md", "PIERRE-TREES-LICENSE.md", "PIERRE-TREES-NOTICE.md", "PIERRE-DIFFS-LICENSE.md"].map((file) => ({
     path: `licenses/${file}`, target: `THIRD_PARTY_LICENSES/t3-code/${file}`, type: "hyperframes:asset",
   })),
@@ -319,5 +395,5 @@ await writeFile(resolve(output, "registry-item.json"), JSON.stringify({
   author: "Hyfrme", authorUrl: "https://github.com/AksharP5/hyfrme", license: "MIT",
   dimensions: fixtures.dark.viewport, duration: 4, files,
 }, null, 2) + "\n");
-await writeFile(resolve(output, "README.md"), `# T3 Code: Terminal Check\n\nThis four-second block captures the official T3 Code v0.0.42 source-file tab, add-surface menu, and live local terminal command at 1200 × 659 and 30 fps in dark and light themes. The real shell runs \`git status --short\` in an isolated Hyfrme demo repository; no AI provider or GitHub account is involved.\n\nProject, source file, thread labels, shell prompt/branch/command/output, theme, and interaction frames are HyperFrames variables. The default terminal pixels come from the native Ghostty canvas, including cursor states; edited command/output values use a customizable HTML terminal surface. Source: https://github.com/pingdotgg/t3code/tree/${fixtures.dark.sourceCommit}. Installed files include T3 Code and Pierre attribution and license files.\n`);
+await writeFile(resolve(output, "README.md"), `# T3 Code: Terminal Check\n\nThis four-second block captures the official T3 Code v0.0.42 source-file tab, add-surface menu, and live local terminal command at 1200 × 659 and 30 fps in dark and light themes. The real shell runs \`git status --short\` in an isolated Hyfrme demo repository; no AI provider or GitHub account is involved.\n\nProject, source file, thread labels, shell prompt/branch/command/output, theme, and interaction frames are HyperFrames variables. The default terminal pixels come from the native Ghostty canvas, including cursor states and the floating toolbar; edited command/output values restore the genuine toolbar and use a customizable HTML terminal surface. The unchanged default source viewer uses a 283 × 256 native code-region image, and its add-surface menu shows a 92 × 28 native control-group image at frames 20–39. Any content or timing edit restores the editable source DOM and controls and loads neither image. Source: https://github.com/pingdotgg/t3code/tree/${fixtures.dark.sourceCommit}. Installed files include T3 Code and Pierre attribution and license files.\n`);
 console.log(`Generated ${name} from dual-theme native v0.0.42 terminal captures.`);

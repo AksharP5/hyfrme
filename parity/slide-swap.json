@@ -2,7 +2,7 @@
   "slug": "slide-swap",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "16eef5d3727eb258ce345a305d67a86eeca02908",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/slide-swap/index.tsx",
     "entry": "components/docs/examples/slide-swap-example.tsx",
     "config": "registry/remocn/slide-swap/config.ts",
@@ -17,29 +17,81 @@
       "axis": "x",
       "inDistance": 0.28,
       "outDistance": 0.1,
-      "slideFrames": 30
+      "slideFrames": 30,
+      "speed": 1
     },
     "background": "#141318"
   },
+  "filesSha256": {
+    "registry-item.json": "7c19df5de0856906dc4be65bc87c66f5bbc9271f9824c9779d7992fc629b36ef",
+    "slide-swap.html": "b7336aa806407fc302008fb9ef72dc6145fa67720084a3ea08e1dc3c3cfca05d",
+    "slide-swap.runtime.js": "6f89a66f5024ac7699847683e1447a6b7f66ae8a55515beba377e6dd578a539e",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "04eb3b776b737e0e4393d700844b51c06c873ba62c3e3ebdf8a1805650f21591",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 210,
-    "meanSsim": 0.997717,
-    "minSsim": 0.996521,
-    "p05Ssim": 0.996528,
-    "p95Ssim": 0.998796,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 210,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 210,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/slide-swap/remocn.mp4",
+    "referenceVideo": "public/previews/slide-swap/reference.mp4",
     "hyperframesVideo": "public/previews/slide-swap/hyperframes.mp4",
-    "summary": "parity/slide-swap-diff/summary.json"
+    "thumbnail": "public/previews/slide-swap/thumbnail.png",
+    "summary": "parity/slide-swap-diff/summary.json",
+    "perFrameSsim": "parity/slide-swap-diff/ssim.log",
+    "hyperframesCheck": "parity/slide-swap-diff/hyperframes-check.log",
+    "worstFrame": "parity/slide-swap-diff/worst-frame.png",
+    "referenceAlpha": "parity/slide-swap-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/slide-swap-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/slide-swap-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/slide-swap-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/slide-swap/reference.mp4": "32dd3f76fa239d54deae8c6f0bf54385324454837ea8500fd9b43cab4108856e",
+    "public/previews/slide-swap/hyperframes.mp4": "32dd3f76fa239d54deae8c6f0bf54385324454837ea8500fd9b43cab4108856e",
+    "public/previews/slide-swap/thumbnail.png": "bc2c1dd673901158f33b7a3dd16b9f299295a5b0e99b2799bbe368a01cab1593",
+    "parity/slide-swap-diff/summary.json": "c22600b61aec8af819ad11fd8056ccaf0da71dafed84152ad53867a9c63bce66",
+    "parity/slide-swap-diff/ssim.log": "cc7671e80431fecf8a4fff522cf2595a1d5c3b0dea1a1c69e23ca7783c82a0ce",
+    "parity/slide-swap-diff/hyperframes-check.log": "ebbeb7d7b7bbd0fa744505d0254ddff63d4b97e6bc2351c5ca24d6e6e7b09ced",
+    "parity/slide-swap-diff/worst-frame.png": "a6a87a823d63e11d7db6d3df6127d40dab68780d0ef6d9c903a08f5221abf99c",
+    "parity/slide-swap-diff/reference-alpha.framemd5": "d27e9e1cd04cec8060673e785d3b12a2526adeb6c10c8bd693c046f32a2af1d9",
+    "parity/slide-swap-diff/hyperframes-alpha.framemd5": "d27e9e1cd04cec8060673e785d3b12a2526adeb6c10c8bd693c046f32a2af1d9",
+    "parity/slide-swap-diff/reference-rgba.framemd5": "21416027ca70fb064b658a047c3dc1d308719e3ba9ca03cae3046c4f5a9f7456",
+    "parity/slide-swap-diff/hyperframes-rgba.framemd5": "21416027ca70fb064b658a047c3dc1d308719e3ba9ca03cae3046c4f5a9f7456"
   }
 }

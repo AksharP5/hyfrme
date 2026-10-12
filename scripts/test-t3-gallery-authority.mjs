@@ -1,0 +1,60 @@
+import assert from "node:assert/strict";
+import { test } from "node:test";
+import { createHash } from "node:crypto";
+import { mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { galleryNativeAuthority } from "./sync-t3-gallery-fixtures.mjs";
+
+const hash = value => createHash("sha256").update(value).digest("hex");
+test("gallery follows verified versioned authority and refuses pending or changed evidence", async () => {
+  const root = await mkdtemp(join(tmpdir(), "t3-gallery-authority-"));
+  try {
+    await mkdir(join(root, "registry/blocks/t3-example"), { recursive: true });
+    await mkdir(join(root, "parity"));
+    const composition = "editable source";
+    const sourceVideo = "parity/t3-example-ready-v2-reference.mkv";
+    const native = "whole native recording";
+    await writeFile(join(root, sourceVideo), native);
+    const block = join(root, "registry/blocks/t3-example");
+    await writeFile(join(block, "t3-example.html"), composition);
+    await writeFile(join(block, "registry-item.json"), JSON.stringify({name:"t3-example",files:[{path:"t3-example.html",type:"hyperframes:composition"}]}));
+    const parity = {status:"verified",result:{pass:true,frameCount:120},checks:{installedThroughCli:true},fixture:{width:1200,height:659,fps:30,compositionSha256:hash(composition)},themes:{dark:{result:{pass:true,frameCount:120},referenceSha256:hash(native),artifacts:{nativeRecording:sourceVideo}}}};
+    const path = join(root, "parity/t3-example.json");
+    const save = () => writeFile(path, JSON.stringify(parity));
+    const idea = {block:"t3-example"};
+    await save();
+    assert.deepEqual(await galleryNativeAuthority(idea, root), {sourceVideo,sourceVideoSha256:hash(native)});
+    parity.status = "pending";await save();
+    await assert.rejects(galleryNativeAuthority(idea, root), /current verified native/);
+    parity.status = "verified";await save();
+    await writeFile(join(block,"t3-example.html"), "changed source");
+    await assert.rejects(galleryNativeAuthority(idea, root), /composition changed/);
+    await writeFile(join(block,"t3-example.html"), composition);
+    await writeFile(join(root,sourceVideo), "changed native");
+    await assert.rejects(galleryNativeAuthority(idea, root), /native authority changed/);
+    await writeFile(join(root,sourceVideo), native);
+    const defaultProof = "parity/default-proof.json";
+    await writeFile(join(root,defaultProof), "strict-default-proof");
+    parity.inputHashes = {[defaultProof]:hash("strict-default-proof")};await save();
+    await writeFile(join(root,defaultProof), "changed default proof");
+    await assert.rejects(galleryNativeAuthority(idea, root), /native proof input changed/);
+    await writeFile(join(root,defaultProof), "strict-default-proof");
+    const variantIdea = {...idea,previewVariant:"settingsEnabled200"};
+    await assert.rejects(galleryNativeAuthority(variantIdea, root), /current verified variant/);
+    parity.themes.dark.settingsEnabled200 = {...parity.themes.dark,fixture:{compositionSha256:"old-source"}};await save();
+    await assert.rejects(galleryNativeAuthority(variantIdea, root), /current verified variant/);
+    const animatedVideo = "parity/t3-example-dark-animated-reference.mkv";
+    await writeFile(join(root,animatedVideo), "native200ms");
+    const variantProof = "parity/variant-proof.json";
+    await writeFile(join(root,variantProof), "strict200ms-proof");
+    parity.themes.dark.settingsEnabled200 = {...parity.themes.dark,status:"verified",checks:{installedThroughCli:true,strictRender:true},inputHashes:{[variantProof]:hash("strict200ms-proof")},fixture:{compositionSha256:hash(composition)},referenceSha256:hash("native200ms"),artifacts:{nativeRecording:animatedVideo}};await save();
+    assert.equal((await galleryNativeAuthority(variantIdea, root)).sourceVideo, animatedVideo);
+    await writeFile(join(root,variantProof), "changed variant proof");
+    await assert.rejects(galleryNativeAuthority(variantIdea, root), /variant proof input changed/);
+    assert.equal((await galleryNativeAuthority(idea, root)).sourceVideo, sourceVideo);
+    assert.equal(await readFile(join(block,"t3-example.html"),"utf8"), composition);
+  } finally {
+    await rm(root, {recursive:true,force:true});
+  }
+});

@@ -1,83 +1,64 @@
-import { createHash } from "node:crypto";
+import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { copyFile, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { createHash } from "node:crypto";
+import { copyFile, mkdir, mkdtemp, readFile, symlink, writeFile } from "node:fs/promises";
+import { resolve, join } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
-const source = resolve(root, "assets/t3-code/v0.0.42");
-const name = "t3-sidebar-focus";
-const theme = process.env.T3_VERIFY_THEME ?? "dark";
-if (!["dark", "light"].includes(theme)) throw new Error("T3_VERIFY_THEME must be dark or light");
-const panelMs = Number(process.env.T3_PANEL_MS ?? 0);
+const slug = "t3-sidebar-focus";
+const args = process.argv.slice(2);
+const panelMs = Number(process.env.T3_PANEL_MS ?? 200);
 if (![0, 200].includes(panelMs)) throw new Error("T3_PANEL_MS must be 0 or 200");
-const variant = panelMs === 0 ? "default" : "animated";
-const block = resolve(root, ".work/t3-sidebar-focus-v0042-candidate");
-const work = resolve(root, `.work/t3-sidebar-focus-v0042-${theme}-${variant}-verify`);
-const project = resolve(work, "project");
-const nativeFrames = resolve(work, "native");
-const outputFrames = resolve(work, "hyperframes");
-const reference = resolve(root, `parity/${name}-v0042-${theme}-${variant}-reference.mkv`);
-const fixture = JSON.parse(await readFile(resolve(source, `sidebar-focus-v0042-${theme}-${variant}-fixture.json`), "utf8"));
-const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
-const fileHash = async (path) => hash(await readFile(path));
-const run = (command, args) => {
-  const result = spawnSync(command, args, { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
-  if (result.status !== 0) throw new Error(`${command} failed:\n${result.stderr.slice(-3000)}\n${result.stdout.slice(-1500)}`);
-  return result;
-};
-if (fixture.sourceCommit !== "719a76ca1dbf5490f1aa33ffb9966301e02be9a9") throw new Error("Wrong source commit");
-for (const [key, file] of [["index", "index.html"], ["css", "t3.css"], ["js", "index.js"]]) {
-  if (await fileHash(resolve(source, file)) !== fixture.sourceHashes[key]) throw new Error(`${file} differs from T3 v0.0.42 release`);
-}
-for (const [phase, expected] of Object.entries(fixture.sourceDomHashes)) {
-  if (await fileHash(resolve(source, `sidebar-focus-v0042-${theme}-${variant}-${phase}.html`)) !== expected) {
-    throw new Error(`${theme} ${phase} native DOM changed`);
+if (process.env.T3_VERIFY_THEME) throw new Error("The current strict verifier checks both themes; omit T3_VERIFY_THEME");
+const isolationIndex = args.indexOf("--isolation");
+const allowed = new Set(["--prepare", "--resume", "--isolation"]);
+for (let i = 0; i < args.length; i++) {
+  if (!allowed.has(args[i])) throw new Error(`Unknown argument: ${args[i]}`);
+  if (args[i] === "--isolation") {
+    if (!args[++i]) throw new Error("--isolation requires a path");
   }
 }
-if (await fileHash(reference) !== fixture.referenceSha256) throw new Error("Native v0.0.42 recording changed");
-
-await rm(work, { recursive: true, force: true });
-await mkdir(resolve(project, "compositions"), { recursive: true });
-await mkdir(nativeFrames, { recursive: true });
-for (const file of [`${name}.html`, "t3-code-gsap.min.js"]) {
-  await copyFile(resolve(block, file), resolve(project, "compositions", file));
+function run(script, flags) {
+  const result = spawnSync(process.execPath, [script, ...flags], { cwd: root, stdio: "inherit" });
+  if (result.status !== 0) throw new Error(`${script} failed (${result.status})`);
 }
-const variables = JSON.stringify({ theme, transitionMs: panelMs });
-await writeFile(resolve(project, "index.html"), `<!doctype html><html lang="en"><head><meta charset="utf-8"><script src="compositions/t3-code-gsap.min.js"></script><style>html,body{margin:0;width:1200px;height:659px;overflow:hidden;background:${theme === "light" ? "#fff" : "#0a0a0a"}}#root{width:100%;height:100%}</style></head><body><div id="root" data-composition-id="t3-sidebar-focus-v0042-fixture" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659"><div id="t3-sidebar-focus-slot" data-composition-id="${name}" data-composition-src="compositions/${name}.html" data-variable-values='${variables}' data-start="0" data-duration="4" data-track-index="1" data-width="1200" data-height="659"></div></div><script>window.__timelines=window.__timelines||{};window.__timelines['t3-sidebar-focus-v0042-fixture']=gsap.timeline({paused:true});</script></body></html>`);
-const checked = spawnSync("npx", ["--yes", "hyperframes@0.8.75", "check", project, "--json"], {
-  encoding: "utf8", maxBuffer: 64 * 1024 * 1024,
-});
-await writeFile(resolve(work, "hyperframes-check-raw.json"), checked.stdout);
-const checkJson = JSON.parse(checked.stdout.slice(checked.stdout.indexOf("{")));
-if (checked.status !== 0 || !checkJson.ok || ["lint", "runtime", "layout", "motion", "contrast"].some((gate) => checkJson[gate]?.findings?.length)) {
-  const findings = Object.entries(checkJson).flatMap(([gate, value]) => value?.findings?.map((finding) => `${gate}: ${finding.message}`) ?? []);
-  throw new Error(`Full HyperFrames check has findings: ${findings.slice(0, 12).join("; ")}`);
+if (panelMs === 0) {
+  if (isolationIndex !== -1) throw new Error("Default verification uses the canonical repository");
+  run(resolve(root, "scripts/verify-t3-catalog-ports.mjs"), ["--only", slug, ...args]);
+} else {
+  const hash = bytes => createHash("sha256").update(bytes).digest("hex");
+  const work = resolve(root, ".work/full-parity-audit/sidebar-settings-enabled");
+  await mkdir(work, { recursive: true });
+  const isolated = isolationIndex === -1 ? await mkdtemp(join(work, "isolated-")) : resolve(root, args[isolationIndex + 1]);
+  const scripts = ["verify-t3-catalog-ports.mjs", "publish-t3-catalog-parity.mjs", "t3-capture-images.mjs", "parity-evidence.mjs", "hyperframes-variables.mjs"];
+  if (isolationIndex === -1) {
+    for (const directory of ["scripts", "registry/blocks", "assets/t3-code", "parity"]) await mkdir(resolve(isolated, directory), { recursive: true });
+    for (const file of scripts) await copyFile(resolve(root, "scripts", file), resolve(isolated, "scripts", file));
+    await copyFile(resolve(root, "registry/registry.json"), resolve(isolated, "registry/registry.json"));
+    for (const path of [`registry/blocks/${slug}`, "assets/t3-code/v0.0.42", "cli"]) await symlink(resolve(root, path), resolve(isolated, path), "dir");
+    const parity = JSON.parse(await readFile(resolve(root, `parity/${slug}.json`), "utf8"));
+    const source = resolve(root, "assets/t3-code/v0.0.42");
+    for (const theme of ["dark", "light"]) {
+      const native = JSON.parse(await readFile(resolve(source, `sidebar-focus-v0042-${theme}-animated-fixture.json`), "utf8"));
+      assert.equal(native.panelMs, 200);
+      assert.equal(native.variant, "animated");
+      assert.deepEqual(native.events, { collapse: 30, restore: 90 });
+      const recording = parity.themes[theme].settingsEnabled200.artifacts.nativeRecording;
+      assert.equal(hash(await readFile(resolve(root, recording))), native.referenceSha256);
+      await symlink(resolve(root, recording), resolve(isolated, recording));
+      Object.assign(parity.themes[theme], { status: "pending", referenceSha256: native.referenceSha256, sourceDomHashes: native.sourceDomHashes });
+      parity.themes[theme].result.pass = false;
+      parity.themes[theme].artifacts.nativeRecording = recording;
+    }
+    parity.status = "pending";
+    parity.result.pass = false;
+    parity.fixture.compositionSha256 = hash(await readFile(resolve(root, `registry/blocks/${slug}/${slug}.html`)));
+    Object.assign(parity.fixture.props, { transitionMs: 200, panelMs: 200, variant: "animated" });
+    parity.fixture.referenceSha256 = parity.themes.dark.referenceSha256;
+    await writeFile(resolve(isolated, `parity/${slug}.json`), JSON.stringify(parity, null, 2) + "\n");
+  }
+  for (const file of scripts) assert.equal(hash(await readFile(resolve(isolated, "scripts", file))), hash(await readFile(resolve(root, "scripts", file))), `${file}: isolated engine is stale`);
+  console.log(`Sidebar settingsEnabled200 isolation: ${isolated}`);
+  run(resolve(isolated, "scripts/verify-t3-catalog-ports.mjs"), ["--only", slug, ...args.filter(arg => ["--prepare", "--resume"].includes(arg))]);
+  if (!args.includes("--prepare")) run(resolve(isolated, "scripts/publish-t3-catalog-parity.mjs"), ["--only", slug, "--prepare"]);
 }
-run("npx", ["--yes", "hyperframes@0.8.75", "render", project, "--format=png-sequence", "-o", outputFrames, "--strict", "--workers=2"]);
-run("ffmpeg", ["-hide_banner", "-loglevel", "error", "-i", reference, "-start_number", "0", resolve(nativeFrames, "frame-%04d.png")]);
-const rendered = (await readdir(outputFrames)).filter((file) => file.endsWith(".png"));
-const native = (await readdir(nativeFrames)).filter((file) => file.endsWith(".png"));
-if (rendered.length !== fixture.frames || native.length !== fixture.frames) {
-  throw new Error(`Expected ${fixture.frames} frames; got native=${native.length}, HyperFrames=${rendered.length}`);
-}
-const stats = resolve(work, "ssim.txt");
-run("ffmpeg", ["-hide_banner", "-loglevel", "error", "-framerate", String(fixture.fps), "-start_number", "0", "-i", resolve(nativeFrames, "frame-%04d.png"), "-framerate", String(fixture.fps), "-start_number", "1", "-i", resolve(outputFrames, "frame_%06d.png"), "-lavfi", `ssim=stats_file=${stats}`, "-f", "null", "-"]);
-const scores = [...(await readFile(stats, "utf8")).matchAll(/^n:\d+ .*?All:([\d.]+)/gm)].map((match) => Number(match[1]));
-if (scores.length !== fixture.frames) throw new Error(`Expected ${fixture.frames} scores`);
-const meanSsim = scores.reduce((sum, score) => sum + score, 0) / scores.length;
-const minSsim = Math.min(...scores);
-const cropResults = {};
-for (const [label, geometry, minGate] of [["sidebar", "500:659:0:0", 0.980], ["header", "430:120:770:0", 0.980]]) {
-  const cropStats = resolve(work, `${label}-ssim.txt`);
-  run("ffmpeg", ["-hide_banner", "-loglevel", "error", "-framerate", String(fixture.fps), "-start_number", "0", "-i", resolve(nativeFrames, "frame-%04d.png"), "-framerate", String(fixture.fps), "-start_number", "1", "-i", resolve(outputFrames, "frame_%06d.png"), "-filter_complex", `[0:v]crop=${geometry}[native];[1:v]crop=${geometry}[port];[native][port]ssim=stats_file=${cropStats}`, "-f", "null", "-"]);
-  const cropScores = [...(await readFile(cropStats, "utf8")).matchAll(/^n:\d+ .*?All:([\d.]+)/gm)].map((match) => Number(match[1]));
-  if (cropScores.length !== fixture.frames) throw new Error(`Expected ${fixture.frames} ${label} crop scores`);
-  const cropMin = Math.min(...cropScores);
-  cropResults[label] = { geometry, meanSsim: cropScores.reduce((sum, score) => sum + score, 0) / cropScores.length,
-    minSsim: cropMin, worstFrame: cropScores.indexOf(cropMin), minGate, pass: cropMin >= minGate };
-}
-const result = { frameCount: scores.length, meanSsim, minSsim, worstFrame: scores.indexOf(minSsim), crops: cropResults,
-  pass: meanSsim >= 0.989 && minSsim >= 0.985 && Object.values(cropResults).every((crop) => crop.pass) };
-await writeFile(resolve(work, "result.json"), JSON.stringify({ fixture: { theme, panelMs, variant, sourceCommit: fixture.sourceCommit, referenceSha256: fixture.referenceSha256, compositionSha256: await fileHash(resolve(block, `${name}.html`)) }, result }, null, 2) + "\n");
-console.log(`${name} v0.0.42 ${theme} ${variant}: ${scores.length} frames, mean=${meanSsim.toFixed(6)}, min=${minSsim.toFixed(6)}, sidebar=${cropResults.sidebar.minSsim.toFixed(6)}, header=${cropResults.header.minSsim.toFixed(6)}, worst=${result.worstFrame}, pass=${result.pass}`);
-if (!result.pass) throw new Error("T3 v0.0.42 sidebar parity did not pass");

@@ -2,7 +2,7 @@
   "slug": "terminal-simulator",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/terminal-simulator/index.tsx",
     "config": "registry/remocn/terminal-simulator/config.ts",
     "license": "MIT"
@@ -24,25 +24,185 @@
     },
     "background": "#050505"
   },
+  "filesSha256": {
+    "registry-item.json": "6d74eebc9aff0889294fdd853079cb609cb7012bb55f8f540ec7bc9d35c70ebb",
+    "terminal-simulator.html": "646657cea506e023ddaf2afa58efc5471899a2de46834e57f5450fb019b9b04e",
+    "terminal-simulator.runtime.js": "943d3e7fab355e44f2f39d09c07f8e2ebec4b16e915cc023e6b4e3ce0df8b23b",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "GeistMono-Latin.woff2": "af61b969e7f999969f6af576e584ee85dca301a008a76be1251d172d56b9904c",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/GeistMono-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "512e7cbccaa6e8296435fff1eb7c615dfaaf6ed74c8008572f843b3d4a86d32e",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 240,
-    "meanSsim": 0.998785,
-    "minSsim": 0.998209,
-    "p05Ssim": 0.998271,
-    "p95Ssim": 0.99921,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 240,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 240,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check reported 5 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "terminal-simulator",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/terminal-simulator/index.tsx",
+          "config": "registry/remocn/terminal-simulator/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > div:nth-of-type(4)",
+          "text": "~/projects/remocn",
+          "fg": "rgb(113,113,122)",
+          "bg": "rgb(26,26,26)",
+          "ratio": 3.6,
+          "requiredRatio": 4.5,
+          "time": 0.444
+        },
+        "reason": "The pinned TerminalSimulator source renders its 13px title in #71717a on #1a1a1a chrome. Terminal Cursor Zoom uses the same source component. Preserve that upstream palette; every native RGBA frame matches. The complete contrast finding remains in the full check log."
+      },
+      {
+        "slug": "terminal-simulator",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/terminal-simulator/index.tsx",
+          "config": "registry/remocn/terminal-simulator/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > div:nth-of-type(4)",
+          "text": "~/projects/remocn",
+          "fg": "rgb(113,113,122)",
+          "bg": "rgb(26,26,26)",
+          "ratio": 3.6,
+          "requiredRatio": 4.5,
+          "time": 2.222
+        },
+        "reason": "The pinned TerminalSimulator source renders its 13px title in #71717a on #1a1a1a chrome. Terminal Cursor Zoom uses the same source component. Preserve that upstream palette; every native RGBA frame matches. The complete contrast finding remains in the full check log."
+      },
+      {
+        "slug": "terminal-simulator",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/terminal-simulator/index.tsx",
+          "config": "registry/remocn/terminal-simulator/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > div:nth-of-type(4)",
+          "text": "~/projects/remocn",
+          "fg": "rgb(113,113,122)",
+          "bg": "rgb(26,26,26)",
+          "ratio": 3.6,
+          "requiredRatio": 4.5,
+          "time": 4
+        },
+        "reason": "The pinned TerminalSimulator source renders its 13px title in #71717a on #1a1a1a chrome. Terminal Cursor Zoom uses the same source component. Preserve that upstream palette; every native RGBA frame matches. The complete contrast finding remains in the full check log."
+      },
+      {
+        "slug": "terminal-simulator",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/terminal-simulator/index.tsx",
+          "config": "registry/remocn/terminal-simulator/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > div:nth-of-type(4)",
+          "text": "~/projects/remocn",
+          "fg": "rgb(113,113,122)",
+          "bg": "rgb(26,26,26)",
+          "ratio": 3.6,
+          "requiredRatio": 4.5,
+          "time": 5.778
+        },
+        "reason": "The pinned TerminalSimulator source renders its 13px title in #71717a on #1a1a1a chrome. Terminal Cursor Zoom uses the same source component. Preserve that upstream palette; every native RGBA frame matches. The complete contrast finding remains in the full check log."
+      },
+      {
+        "slug": "terminal-simulator",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/terminal-simulator/index.tsx",
+          "config": "registry/remocn/terminal-simulator/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > div:nth-of-type(4)",
+          "text": "~/projects/remocn",
+          "fg": "rgb(113,113,122)",
+          "bg": "rgb(26,26,26)",
+          "ratio": 3.6,
+          "requiredRatio": 4.5,
+          "time": 7.556
+        },
+        "reason": "The pinned TerminalSimulator source renders its 13px title in #71717a on #1a1a1a chrome. Terminal Cursor Zoom uses the same source component. Preserve that upstream palette; every native RGBA frame matches. The complete contrast finding remains in the full check log."
+      }
+    ],
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/terminal-simulator/remocn.mp4",
+    "referenceVideo": "public/previews/terminal-simulator/reference.mp4",
     "hyperframesVideo": "public/previews/terminal-simulator/hyperframes.mp4",
-    "summary": "parity/terminal-simulator-diff/summary.json"
+    "thumbnail": "public/previews/terminal-simulator/thumbnail.png",
+    "summary": "parity/terminal-simulator-diff/summary.json",
+    "perFrameSsim": "parity/terminal-simulator-diff/ssim.log",
+    "hyperframesCheck": "parity/terminal-simulator-diff/hyperframes-check.log",
+    "worstFrame": "parity/terminal-simulator-diff/worst-frame.png",
+    "referenceAlpha": "parity/terminal-simulator-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/terminal-simulator-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/terminal-simulator-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/terminal-simulator-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/terminal-simulator/reference.mp4": "a9877a81d12ec77eaaea986967c7d449cb524d7b81c646f58b8285bd1a9c037e",
+    "public/previews/terminal-simulator/hyperframes.mp4": "a9877a81d12ec77eaaea986967c7d449cb524d7b81c646f58b8285bd1a9c037e",
+    "public/previews/terminal-simulator/thumbnail.png": "3305e5a5e7130e7495f5acbe341f89814cb175e133e4f611bf4577dbe2858f63",
+    "parity/terminal-simulator-diff/summary.json": "afa4d406f2d0877d4470cb8efad9e09113c7c05018629c5d3190af2d97d22294",
+    "parity/terminal-simulator-diff/ssim.log": "21486846970a0382af9241d89033cb39841dbd7a07b6089f7b83f7b2f9fe5f1f",
+    "parity/terminal-simulator-diff/hyperframes-check.log": "8f7e628e3146cc9b8be7ed84c1a69eb6df547bc36be5ec4c6e97c1218064d93b",
+    "parity/terminal-simulator-diff/worst-frame.png": "12441093b78a72fa253f12cff0b2a64a939b4e955fab957fea0fc61ffcf0a071",
+    "parity/terminal-simulator-diff/reference-alpha.framemd5": "4071e86f97a48760b4f6dd7d9195ffe8d4ecf9c59f1f90094dafb3cbdb3d96cb",
+    "parity/terminal-simulator-diff/hyperframes-alpha.framemd5": "4071e86f97a48760b4f6dd7d9195ffe8d4ecf9c59f1f90094dafb3cbdb3d96cb",
+    "parity/terminal-simulator-diff/reference-rgba.framemd5": "a2897243f15f3e317a0577c7f3382e73ec6a07517b44215d09ef013fca5aedf6",
+    "parity/terminal-simulator-diff/hyperframes-rgba.framemd5": "a2897243f15f3e317a0577c7f3382e73ec6a07517b44215d09ef013fca5aedf6"
   }
 }

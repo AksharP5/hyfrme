@@ -2,7 +2,7 @@
   "slug": "shader-mesh-gradient",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shader-mesh-gradient/index.tsx",
     "config": "registry/remocn/shader-mesh-gradient/config.ts",
     "license": "MIT"
@@ -19,25 +19,77 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "cd7241fe3bd0b83595529319c8060cbcd4b2c9b6153dd57b9595fb86f1359758",
+    "shader-mesh-gradient.html": "92be0cf187f81b6d69f8a618f07a57a7d29df8d39808b9607e329452ffb8526f",
+    "shader-mesh-gradient.runtime.js": "9687cca457668830f27e4f57a092fdeaa6f132453a382e43f82189f68dbb88f8",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md": "fc408cbbf99a20fbc88c2296a04bac7dadbe7114f2456673de3e5b7986cfd19d"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "0eed53d7d3a363c18927e367fba855f994eca045dc47e8e20489bfed3691b88a",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.999021,
-    "minSsim": 0.998617,
-    "p05Ssim": 0.99865,
-    "p95Ssim": 0.999406,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/shader-mesh-gradient/remocn.mp4",
+    "referenceVideo": "public/previews/shader-mesh-gradient/reference.mp4",
     "hyperframesVideo": "public/previews/shader-mesh-gradient/hyperframes.mp4",
-    "summary": "parity/shader-mesh-gradient-diff/summary.json"
+    "thumbnail": "public/previews/shader-mesh-gradient/thumbnail.png",
+    "summary": "parity/shader-mesh-gradient-diff/summary.json",
+    "perFrameSsim": "parity/shader-mesh-gradient-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-mesh-gradient-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-mesh-gradient-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-mesh-gradient-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-mesh-gradient-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shader-mesh-gradient-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shader-mesh-gradient-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shader-mesh-gradient/reference.mp4": "ba1f9c004a7fb16fb5e7943d3b7eb53c56fae71c41abda4dccfc4f904bc523a8",
+    "public/previews/shader-mesh-gradient/hyperframes.mp4": "ba1f9c004a7fb16fb5e7943d3b7eb53c56fae71c41abda4dccfc4f904bc523a8",
+    "public/previews/shader-mesh-gradient/thumbnail.png": "a95e9bfa35fca332ea9cbd2c4b96994c7491825181875622d70058d95ae72161",
+    "parity/shader-mesh-gradient-diff/summary.json": "ad55b29e05e75e155f68631a7d07dcf33cfd0beba9f35e6e6cb01ccc34051e53",
+    "parity/shader-mesh-gradient-diff/ssim.log": "c4fbedb2045d104b60568467b9860d7ee5ffeee1f88dedd0034e5cf393a3221a",
+    "parity/shader-mesh-gradient-diff/hyperframes-check.log": "8258343d79654723604d6ad3f137e02961d34e3ad42968c060314f983e44db9e",
+    "parity/shader-mesh-gradient-diff/worst-frame.png": "217747b911937b584566fa0059516230d7e16441c9ac856f285f8f3bd1de1f38",
+    "parity/shader-mesh-gradient-diff/reference-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-mesh-gradient-diff/hyperframes-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-mesh-gradient-diff/reference-rgba.framemd5": "966279d0ccfd5558c66fbca2ee405ae8ff6b7bc13ba704b49cd884c19343c8b5",
+    "parity/shader-mesh-gradient-diff/hyperframes-rgba.framemd5": "966279d0ccfd5558c66fbca2ee405ae8ff6b7bc13ba704b49cd884c19343c8b5"
   }
 }

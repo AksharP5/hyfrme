@@ -2,8 +2,9 @@
   "slug": "skeleton-block",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-ui/skeleton-block/index.tsx",
+    "entry": "registry/remocn-ui/skeleton-block/preview.tsx",
     "config": "registry/remocn-ui/skeleton-block/config.ts",
     "license": "MIT"
   },
@@ -20,25 +21,77 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "6779fc79883a23cbf47a41f4cf0dcf32805f52883fd347d2f469c5c2233dd383",
+    "skeleton-block.html": "2b86ec71f071d8282a5e64cecda09494e289e85aa1f6cccc76f0a968cb5abc98",
+    "skeleton-block.runtime.js": "34557746d970861bafa2deb85e05a8fe84bcd0e1bd0d30bfe674f1183c4e4756",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "d89aeff4207ae653a8284254363c2e7f376d4806c049c016e3940b1dfc692668",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.999981,
-    "minSsim": 0.999969,
-    "p05Ssim": 0.999975,
-    "p95Ssim": 0.999989,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/skeleton-block/remocn.mp4",
+    "referenceVideo": "public/previews/skeleton-block/reference.mp4",
     "hyperframesVideo": "public/previews/skeleton-block/hyperframes.mp4",
-    "summary": "parity/skeleton-block-diff/summary.json"
+    "thumbnail": "public/previews/skeleton-block/thumbnail.png",
+    "summary": "parity/skeleton-block-diff/summary.json",
+    "perFrameSsim": "parity/skeleton-block-diff/ssim.log",
+    "hyperframesCheck": "parity/skeleton-block-diff/hyperframes-check.log",
+    "worstFrame": "parity/skeleton-block-diff/worst-frame.png",
+    "referenceAlpha": "parity/skeleton-block-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/skeleton-block-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/skeleton-block-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/skeleton-block-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/skeleton-block/reference.mp4": "2e33d9976ec6215f6332132be061ef3bcf728d773376c524643656a0606c4779",
+    "public/previews/skeleton-block/hyperframes.mp4": "2e33d9976ec6215f6332132be061ef3bcf728d773376c524643656a0606c4779",
+    "public/previews/skeleton-block/thumbnail.png": "d21220c0141f90751904a43ad922ffc0d719db4aee6aa107d7d017a5ff1b29b0",
+    "parity/skeleton-block-diff/summary.json": "c38069d7cb90acc2a693a754a1caeffaf324f128e7d118e6f20808613c950e44",
+    "parity/skeleton-block-diff/ssim.log": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/skeleton-block-diff/hyperframes-check.log": "9d01dba1a9c8656866a230bc9c9e45a2fc5ecfb92f1f69a3d17e05278623a9ee",
+    "parity/skeleton-block-diff/worst-frame.png": "7d9e9616ffec6cc1905b2e5784a04519ff56767ac32cb13fac1d243f66f95c29",
+    "parity/skeleton-block-diff/reference-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/skeleton-block-diff/hyperframes-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/skeleton-block-diff/reference-rgba.framemd5": "b0d51cd351d426d46ae1b3a017b147d9f90a82dbd8a2cb18a72f87d8b2c4a266",
+    "parity/skeleton-block-diff/hyperframes-rgba.framemd5": "b0d51cd351d426d46ae1b3a017b147d9f90a82dbd8a2cb18a72f87d8b2c4a266"
   }
 }

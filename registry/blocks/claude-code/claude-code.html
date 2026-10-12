@@ -1,38 +1,62 @@
 <!doctype html>
-<html lang="en" data-composition-variables='[{"id":"title","type":"string","label":"Title","default":"Claude Code v2.0.0"},{"id":"userName","type":"string","label":"User name","default":"Remocn"},{"id":"model","type":"string","label":"Model","default":"Opus 4.8 • Max 20x"},{"id":"cwd","type":"string","label":"Cwd","default":"/users/remocn/code/apps"},{"id":"placeholder","type":"string","label":"Placeholder","default":"Try \"edit <filepath> to ...\""},{"id":"prompt","type":"string","label":"Prompt","default":"edit src/theme.ts to add a dark mode toggle"},{"id":"accentColor","type":"color","label":"Accent","default":"#D97757"},{"id":"speed","type":"number","label":"Speed","default":1,"min":1,"max":4,"step":0.25}]'>
+<html lang="en" data-composition-variables='[{"id":"title","type":"string","label":"Title","default":"Claude Code v2.0.0"},{"id":"userName","type":"string","label":"User name","default":"Remocn"},{"id":"model","type":"string","label":"Model","default":"Opus 4.8 • Max 20x"},{"id":"cwd","type":"string","label":"Cwd","default":"/users/remocn/code/apps"},{"id":"placeholder","type":"string","label":"Placeholder","default":"Try \"edit &lt;filepath&gt; to ...\""},{"id":"prompt","type":"string","label":"Prompt","default":"edit src/theme.ts to add a dark mode toggle"},{"id":"accentColor","type":"color","label":"Accent","default":"#D97757"},{"id":"speed","type":"number","label":"Speed","default":1,"min":1,"max":4,"step":0.25}]'>
   <head>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <style>
-      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
+
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
       @font-face { font-family: "JetBrains Mono"; src: url("../assets/fonts/JetBrainsMono-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 800; font-display: block; }
+
+
 
 
 
       * { box-sizing: border-box; }
       html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #2B2A28; }
       body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
-      #hyfrme-source-root { position: absolute; inset: 0; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Geist";font-family:"Geist",sans-serif; background:#2B2A28; }
+
+
+#hyfrme-source-root {
+  font-size: 14px;
+  line-height: calc(20 / 14);
+  font-feature-settings: "cv11", "ss01";
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+#hyfrme-source-root, #hyfrme-source-root * {
+  text-rendering: optimizeLegibility;
+}
+
     </style>
   </head>
   <body>
     <div id="root" data-composition-id="claude-code" data-start="0" data-duration="5.333333333333333" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
       <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="5.333333333333333" data-track-index="0">
-        <div id="hyfrme-source-root"></div>
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
       </div>
     </div>
     <script src="./claude-code.runtime.js"></script>
     <script>
       window.__timelines = window.__timelines || {};
-      const clock = { frame: 0 };
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="claude-code"] [data-hyfrme-clock]');
+      clock.frame = 0;
       const timeline = gsap.timeline({ paused: true });
-      timeline.to(clock, {
+      timeline.to('[data-composition-id="claude-code"] [data-hyfrme-clock]', {
         frame: 160,
         duration: 5.333333333333333,
         ease: "none",
-        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(159, Math.round(clock.frame)))),
+        onUpdate: () => renderFrame(Math.max(0, Math.min(159, Math.round(clock.frame)))),
       });
+
       window.__timelines["claude-code"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
     </script>
   </body>
 </html>

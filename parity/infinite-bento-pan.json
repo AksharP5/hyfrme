@@ -2,7 +2,7 @@
   "slug": "infinite-bento-pan",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/infinite-bento-pan/index.tsx",
     "config": "registry/remocn/infinite-bento-pan/config.ts",
     "license": "MIT"
@@ -19,25 +19,76 @@
     },
     "background": "#050505"
   },
+  "filesSha256": {
+    "registry-item.json": "575d1e03dd5182c9a9389b896f74fb04405d6c1c36af6998a2f9a0ab19c4868b",
+    "infinite-bento-pan.html": "b16ab943f695284e6239b0ebdc6ed170d8756a46a6e36849f91ae9cd2cf65d3d",
+    "infinite-bento-pan.runtime.js": "a171825565a24530e675f27230c1b806634b4095ead9d5dab2ce80dbada7de4e",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "8a28de3a92ac253419375a8941eb0ce6815dbecf1b32a1791f11ff5ceb81a814",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 300,
-    "meanSsim": 0.990018,
-    "minSsim": 0.984191,
-    "p05Ssim": 0.986936,
-    "p95Ssim": 0.995717,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 300,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 300,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/infinite-bento-pan/remocn.mp4",
+    "referenceVideo": "public/previews/infinite-bento-pan/reference.mp4",
     "hyperframesVideo": "public/previews/infinite-bento-pan/hyperframes.mp4",
-    "summary": "parity/infinite-bento-pan-diff/summary.json"
+    "thumbnail": "public/previews/infinite-bento-pan/thumbnail.png",
+    "summary": "parity/infinite-bento-pan-diff/summary.json",
+    "perFrameSsim": "parity/infinite-bento-pan-diff/ssim.log",
+    "hyperframesCheck": "parity/infinite-bento-pan-diff/hyperframes-check.log",
+    "worstFrame": "parity/infinite-bento-pan-diff/worst-frame.png",
+    "referenceAlpha": "parity/infinite-bento-pan-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/infinite-bento-pan-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/infinite-bento-pan-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/infinite-bento-pan-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/infinite-bento-pan/reference.mp4": "09f6feee08c120a16f41028e16f02b1f496fa66034edbdedd3713eaca88dd4d0",
+    "public/previews/infinite-bento-pan/hyperframes.mp4": "09f6feee08c120a16f41028e16f02b1f496fa66034edbdedd3713eaca88dd4d0",
+    "public/previews/infinite-bento-pan/thumbnail.png": "0ed3ca1c352fa5966278dcda3cd7c5c1f80b360244f53c45f70950ffac66acd7",
+    "parity/infinite-bento-pan-diff/summary.json": "f7378f2f3da6ecf79e5663d03b00182a84e7070e78dacfcf8166d5e77925bc01",
+    "parity/infinite-bento-pan-diff/ssim.log": "74362ffa946e0ec1c0b1c223a118b09c41e43961ba583b12dd21e956b93f338e",
+    "parity/infinite-bento-pan-diff/hyperframes-check.log": "d7a57abd3a0a45d984bba3d3c0b87d1f90ac3f10c0fafeb9f07129d690cdedff",
+    "parity/infinite-bento-pan-diff/worst-frame.png": "46dc3c122d57c25e959d971924b6039bb8b4f10f7dddbcd9176ec1eb00621590",
+    "parity/infinite-bento-pan-diff/reference-alpha.framemd5": "922a1bc4c552a6ab56eba51f821d41bfa60273d786dc5f7d948147f8f81bdb2b",
+    "parity/infinite-bento-pan-diff/hyperframes-alpha.framemd5": "922a1bc4c552a6ab56eba51f821d41bfa60273d786dc5f7d948147f8f81bdb2b",
+    "parity/infinite-bento-pan-diff/reference-rgba.framemd5": "fcf0cc97b5d15e556a9bd48748f8e8f031797005fe15ce24734dc454769e8f7c",
+    "parity/infinite-bento-pan-diff/hyperframes-rgba.framemd5": "fcf0cc97b5d15e556a9bd48748f8e8f031797005fe15ce24734dc454769e8f7c"
   }
 }

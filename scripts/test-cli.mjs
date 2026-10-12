@@ -497,12 +497,46 @@ try {
     /data-composition-src="([^"]+)"/,
   )[1];
   const reservedPortSource = await readFile(fileForUrl(portWiring), "utf8");
+  const compositionVariables = (source) => {
+    const metadata = source.match(/data-composition-variables='([^']*)'/);
+    assert(metadata);
+    return JSON.parse(
+      metadata[1]
+        .replaceAll("&quot;", '"')
+        .replaceAll("&#39;", "'")
+        .replaceAll("&lt;", "<")
+        .replaceAll("&gt;", ">")
+        .replaceAll("&amp;", "&"),
+    );
+  };
+  const matrixMetadata = [
+    await readFile(resolve(registry, "blocks/matrix-decode/matrix-decode.html"), "utf8"),
+    reservedPortSource,
+  ].map(compositionVariables);
+  assert.equal(
+    matrixMetadata[0].find((variable) => variable.id === "charset").default,
+    "!@#$%^&*()_+-=<>?/\\|",
+  );
+  assert.deepEqual(matrixMetadata[1], matrixMetadata[0]);
+
+  const claudeInstall = await runCli(["add", "claude-code", "--dir", relocatedProject]);
+  const claudeVariables = compositionVariables(await readFile(fileForUrl(
+    claudeInstall.stdout.match(/data-composition-src="([^"]+)"/)[1],
+  ), "utf8"));
+  assert.equal(
+    claudeVariables.find((variable) => variable.id === "placeholder").default,
+    'Try "edit <filepath> to ..."',
+  );
+  assert.deepEqual(claudeVariables, compositionVariables(await readFile(
+    resolve(registry, "blocks/claude-code/claude-code.html"), "utf8",
+  )));
+
   const fontUrl = reservedPortSource.match(
-    /url\("([^"]+Geist-SemiBold\.woff2)"\)/,
+    /url\("([^"]+Geist-Latin\.woff2)"\)/,
   )[1];
   assert.deepEqual(
     await readFile(fileForUrl(fontUrl)),
-    await readFile(resolve(registry, "blocks/matrix-decode/Geist-SemiBold.woff2")),
+    await readFile(resolve(registry, "blocks/matrix-decode/Geist-Latin.woff2")),
   );
   assert.doesNotMatch(
     reservedPortSource,
@@ -512,6 +546,70 @@ try {
     reservedPortSource,
     /window\.__hyfrmeRenderers\["matrix-decode"\]/,
   );
+
+  for (const [name, aliases] of [
+    ["x-follow-card", [["/logo.svg", "logo.svg", "social/logo.svg"], ["/imgs/x-cover.png", "imgs/x-cover.png", "social/imgs/x-cover.png"]]],
+    ["github-stars", [["https://unavatar.io/github/Remocn", "repository-avatar.png", "social/repository-remocn.png"]]],
+  ]) {
+    const installed = await runCli(["add", name, "--dir", relocatedProject]);
+    const source = await readFile(fileForUrl(
+      installed.stdout.match(/data-composition-src="([^"]+)"/)[1],
+    ), "utf8");
+    const variables = compositionVariables(source);
+    assert.deepEqual(variables, compositionVariables(await readFile(
+      resolve(registry, "blocks", name, `${name}.html`), "utf8",
+    )));
+    if (name === "x-follow-card") {
+      assert.equal(variables.find((variable) => variable.id === "avatarUrl").default, "/logo.svg");
+      assert.equal(variables.find((variable) => variable.id === "coverUrl").default, "/imgs/x-cover.png");
+    }
+    const assets = JSON.parse(source.match(/data-hyfrme-assets='([^']*)'/)[1]
+      .replaceAll("&#39;", "'").replaceAll("&amp;", "&"));
+    for (const [alias, original, target] of aliases) {
+      const installedAsset = fileForUrl(assets[alias]);
+      assert.equal(installedAsset, resolve(relocatedProject, relocatedPaths.assets, target));
+      assert.deepEqual(await readFile(installedAsset), await readFile(
+        resolve(registry, "blocks", name, original),
+      ));
+    }
+  }
+
+  const backdropInstall = await runCli([
+    "add", "backdrop", "--dir", relocatedProject, "--set", "fillType=image",
+  ]);
+  const backdropPath = fileForUrl(
+    backdropInstall.stdout.match(/data-composition-src="([^"]+)"/)[1],
+  );
+  const backdropSource = await readFile(backdropPath, "utf8");
+  const backdropAssets = JSON.parse(
+    backdropSource.match(/data-hyfrme-assets='([^']*)'/)[1]
+      .replaceAll("&#39;", "'").replaceAll("&amp;", "&"),
+  );
+  const backdropVariables = JSON.parse(
+    backdropSource.match(/data-composition-variables='([^']*)'/)[1]
+      .replaceAll("&amp;", "&"),
+  );
+  assert.equal(backdropVariables.find((variable) => variable.id === "fillType").default, "image");
+  assert.equal(backdropVariables.find((variable) => variable.id === "image").default, "/hero.png");
+  const heroPath = fileForUrl(backdropAssets["/hero.png"]);
+  assert.equal(heroPath, resolve(relocatedProject, relocatedPaths.assets, "remocn-preview/hero.png"));
+  assert.deepEqual(
+    await readFile(heroPath),
+    await readFile(resolve(registry, "blocks/backdrop/preview/hero.png")),
+  );
+  const customBackdropImage = "https://example.com/hyfrme/custom.png?size=256&mode=cover";
+  await runCli([
+    "add", "backdrop", "--dir", relocatedProject, "--force",
+    "--set", "fillType=image", "--set", `image=${customBackdropImage}`,
+  ]);
+  const customBackdropSource = await readFile(backdropPath, "utf8");
+  const customBackdropVariables = JSON.parse(
+    customBackdropSource.match(/data-composition-variables='([^']*)'/)[1]
+      .replaceAll("&amp;", "&"),
+  );
+  const customImage = customBackdropVariables.find((variable) => variable.id === "image").default;
+  assert.equal(customImage, customBackdropImage);
+  assert.equal(backdropAssets[customImage] ?? customImage, customBackdropImage);
 
   for (const blocks of ["motion/blocks", "compositions/hyfrme"]) {
     const project = resolve(nativeTemporary, blocks.replaceAll("/", "-"));
@@ -525,6 +623,9 @@ try {
       "t3-commit-creation",
       "t3-fast-service-tier",
       "t3-visual-context-shelf",
+      "t3-prompt-stash",
+      "t3-source-file-open",
+      "t3-terminal-check",
       "--dir",
       project,
     ]);
@@ -544,16 +645,52 @@ try {
       resolve(project, blocks, "t3-fast-service-tier.html"),
       "utf8",
     );
-    const rasterPath = runInNewContext(
-      `${fastTier.match(/raster\.src = [^;]+;/)[0]} raster.src;`,
-      {
-        raster: {},
-        options: { theme: "dark" },
-        section: { dataset: { t3Popup: "hover" } },
-      },
+    const popupSources = fastTier.match(/const nativePopupSources = [\s\S]*?;/)[0];
+    const popupAssignment = fastTier.match(/raster\.src = [^;]+;/)[0];
+    for (const theme of ["dark", "light"]) {
+      for (const popup of ["menu", "hover"]) {
+        const rasterPath = runInNewContext(
+          `${popupSources} ${popupAssignment} raster.src;`,
+          {
+            raster: {},
+            options: { theme },
+            section: { dataset: { t3Popup: popup } },
+          },
+        );
+        assert(rasterPath.startsWith(`${blocks}/`));
+        await readFile(resolve(project, rasterPath));
+      }
+    }
+    const promptStash = await readFile(
+      resolve(project, blocks, "t3-prompt-stash.html"),
+      "utf8",
     );
-    assert(rasterPath.startsWith(`${blocks}/`));
-    await readFile(resolve(project, rasterPath));
+    const nativeFrames = JSON.parse(
+      promptStash.match(/const nativeFrames = (\{[^;]+\});/)[1],
+    );
+    assert(nativeFrames.images.length > 0);
+    for (const path of nativeFrames.images) {
+      assert(path.startsWith(`${blocks}/`));
+      await readFile(resolve(project, path));
+    }
+    for (const name of ["t3-source-file-open", "t3-terminal-check"]) {
+      const installed = await readFile(resolve(project, blocks, `${name}.html`), "utf8");
+      const assignments = [...installed.matchAll(/image\.src = [^;]+;/g)];
+      assert(assignments.length > 0);
+      for (const [assignment] of assignments) {
+        for (const theme of ["dark", "light"]) {
+          const path = runInNewContext(`${assignment} image.src;`, {
+            image: {},
+            options: { theme },
+          });
+          assert(path.startsWith(`${blocks}/`));
+          assert.deepEqual(
+            await readFile(resolve(project, path)),
+            await readFile(resolve(registry, "blocks", name, path.split("/").at(-1))),
+          );
+        }
+      }
+    }
     const shelf = await readFile(
       resolve(project, blocks, "t3-visual-context-shelf.html"),
       "utf8",
@@ -566,6 +703,12 @@ try {
     ).default;
     assert(imageSrc.startsWith(`${blocks}/`));
     await readFile(resolve(project, imageSrc));
+    const previewPath = shelf.match(/fetch\('([^']+t3-visual-context-logo-enter-preview\.png)'\)/)[1];
+    assert(previewPath.startsWith(`${blocks}/`));
+    assert.deepEqual(
+      await readFile(resolve(project, previewPath)),
+      await readFile(resolve(registry, "blocks/t3-visual-context-shelf/t3-visual-context-logo-enter-preview.png")),
+    );
   }
 
 
@@ -1884,7 +2027,7 @@ try {
   assert.doesNotMatch(installed, /\/gsap(?:\.min)?\.js/);
   assert.match(installed, /\(\(\) => \{/);
   assert.doesNotMatch(installed, /\.\.\/assets\//);
-  assert.match(installed, /static\/hyfrme\/fonts\/Geist-SemiBold\.woff2/);
+  assert.match(installed, /static\/hyfrme\/fonts\/Geist-Latin\.woff2/);
   assert.doesNotMatch(
     installed,
     /src="motion\/hyfrme\/matrix-decode\.runtime\.js"/,
@@ -2312,13 +2455,13 @@ try {
   await writeFile(sourcePath, ownedSource);
   const fontDirectory = resolve(
     directoryCollision,
-    "assets/fonts/Geist-SemiBold.woff2",
+    "assets/fonts/Geist-Latin.woff2",
   );
   await mkdir(fontDirectory, { recursive: true });
   await writeFile(resolve(fontDirectory, "notes.txt"), "Keep Hyfrme notes");
   await assert.rejects(
     runCli(["add", "soft-blur-in", "--dir", directoryCollision, "--force"]),
-    /cannot install assets\/fonts\/Geist-SemiBold\.woff2 in soft-blur-in: target is not a file/,
+    /cannot install assets\/fonts\/Geist-Latin\.woff2 in soft-blur-in: target is not a file/,
   );
   assert.equal(await readFile(sourcePath, "utf8"), ownedSource);
   assert.equal(

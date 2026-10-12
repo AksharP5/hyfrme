@@ -2,7 +2,7 @@
   "slug": "gradient-scale-cut-text",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/gradient-scale-cut-text/index.tsx",
     "config": "registry/remocn/gradient-scale-cut-text/config.ts",
     "license": "MIT"
@@ -31,21 +31,38 @@
     },
     "background": "#000000"
   },
+  "filesSha256": {
+    "registry-item.json": "9870d6935ee19b21993838932316fb1c84bc63717fa0c878b8ab3162aeed51b9",
+    "gradient-scale-cut-text.html": "5dcab99fe3263c6aa9c62510c491eebbfb68d5339d05b7dd9acab9c26b39fc33",
+    "gradient-scale-cut-text.runtime.js": "58490d9b8de0e1093d91fb1963a1ae465bf10c60e420b06888c1b73e4e480e5c",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "7e3da7d91235e1e360e7decf39f232a4adaae84a97a1c766da963cc85d219257",
+  "fingerprint": "8b648b8747f6e8750cb1721b74a219a271ec080a2e697d28fc6768e5c45feef3",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 36,
-    "meanSsim": 0.9962815555555563,
-    "minSsim": 0.98916,
-    "p05Ssim": 0.989169,
-    "p95Ssim": 0.999774,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
     "alpha": {
+      "frameCount": 36,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 36,
       "mismatchedFrames": [],
       "pass": true
@@ -53,13 +70,14 @@
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check reported 6 reviewed source-inherited errors (exit 1); strict render passed",
     "sourceInheritedFindings": [
       {
         "slug": "gradient-scale-cut-text",
         "origin": {
           "repository": "https://github.com/Remocn/remocn",
-          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
           "source": "registry/remocn/gradient-scale-cut-text/index.tsx",
           "config": "registry/remocn/gradient-scale-cut-text/config.ts",
           "license": "MIT"
@@ -70,13 +88,13 @@
           "containerSelector": "#gradient-scale-cut-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
           "text": "Introducing"
         },
-        "reason": "The pinned TextLayer deliberately overlays its ghost text with the same glyphs painted through a transparent background-clip:text gradient and reveal mask. The inspector treats that overlay as opaque. Preserve this source layering; RGB SSIM is mean 0.996167/min 0.988119 and all 36 alpha  planes match exactly."
+        "reason": "The source animates layered gradient text over its configured preview palette. Preserve its layering and foreground/background colors. The complete inspector finding remains in the parity check log; visual parity is checked separately against every upstream frame."
       },
       {
         "slug": "gradient-scale-cut-text",
         "origin": {
           "repository": "https://github.com/Remocn/remocn",
-          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
           "source": "registry/remocn/gradient-scale-cut-text/index.tsx",
           "config": "registry/remocn/gradient-scale-cut-text/config.ts",
           "license": "MIT"
@@ -90,13 +108,16 @@
           "ratio": 1.09,
           "requiredRatio": 3
         },
-        "reason": "The pinned source explicitly paints its initial ghost copy #170b0a on #000000, beneath the separate animated gradient copy. The low-contrast ghost is part of the reveal design. Preserve the source colors; RGB SSIM is mean 0.996167/min 0.988119 and all 36 alpha  planes match exactly."
+        "reason": "The source animates layered gradient text over its configured preview palette. Preserve its layering and foreground/background colors. The complete inspector finding remains in the parity check log; visual parity is checked separately against every upstream frame."
       }
     ],
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -108,6 +129,21 @@
     "hyperframesCheck": "parity/gradient-scale-cut-text-diff/hyperframes-check.log",
     "worstFrame": "parity/gradient-scale-cut-text-diff/worst-frame.png",
     "referenceAlpha": "parity/gradient-scale-cut-text-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/gradient-scale-cut-text-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/gradient-scale-cut-text-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/gradient-scale-cut-text-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/gradient-scale-cut-text-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/gradient-scale-cut-text/reference.mp4": "9f5e4fb273800e17ddb3037b3c5a20190d86349ababee0aefeb9e63036fd4af8",
+    "public/previews/gradient-scale-cut-text/hyperframes.mp4": "9f5e4fb273800e17ddb3037b3c5a20190d86349ababee0aefeb9e63036fd4af8",
+    "public/previews/gradient-scale-cut-text/thumbnail.png": "b49694bab29e1f78fd8862fb5a66e2e8184dd0fb219491db477100c3a39e0afa",
+    "parity/gradient-scale-cut-text-diff/summary.json": "2bf938ef77b3c234405da5d7cd0c38cc9f4d5d0510c63e6f838cf2a51de8510c",
+    "parity/gradient-scale-cut-text-diff/ssim.log": "041a93b8cf64d1ef5d9be81bc9b4f080ba8af6c1e6c3898d6adb406999884c10",
+    "parity/gradient-scale-cut-text-diff/hyperframes-check.log": "05c862a5dda968aee56f3c1e7a5d738fb9b10cd947bd40a47c9a285579c15b53",
+    "parity/gradient-scale-cut-text-diff/worst-frame.png": "0ccee4a57a85e3b3dc5279fd5e6e86306806630937d2a0eabade96b57599223d",
+    "parity/gradient-scale-cut-text-diff/reference-alpha.framemd5": "95cb82a688c2da121940bf8560967e1ca8b404590c1ad2c8be848a151ae5426e",
+    "parity/gradient-scale-cut-text-diff/hyperframes-alpha.framemd5": "95cb82a688c2da121940bf8560967e1ca8b404590c1ad2c8be848a151ae5426e",
+    "parity/gradient-scale-cut-text-diff/reference-rgba.framemd5": "2b3326da0c4081bb0863dc23ba4cfbb7aa080839d2eec1bf1422d5baa005f716",
+    "parity/gradient-scale-cut-text-diff/hyperframes-rgba.framemd5": "2b3326da0c4081bb0863dc23ba4cfbb7aa080839d2eec1bf1422d5baa005f716"
   }
 }

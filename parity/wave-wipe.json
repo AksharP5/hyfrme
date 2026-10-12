@@ -2,7 +2,7 @@
   "slug": "wave-wipe",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/wave-wipe/index.tsx",
     "entry": "components/docs/examples/wave-wipe-example.tsx",
     "config": "registry/remocn/wave-wipe/config.ts",
@@ -22,25 +22,77 @@
     },
     "background": "#141318"
   },
+  "filesSha256": {
+    "registry-item.json": "494e9df8cc61a59c9de90e655e235f49b2a47dc9c9f54b962ffeef5a8350ca76",
+    "wave-wipe.html": "0ef8522a9faa0d806ba48575e80e91f62784022ca67a87bce67c03ceeae8b846",
+    "wave-wipe.runtime.js": "35e4ce85ce954e544cde097c2d85220507e7d361475d29b8e792352b8a3630a5",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md": "fc408cbbf99a20fbc88c2296a04bac7dadbe7114f2456673de3e5b7986cfd19d"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "4e0f622e8651862f682075ecfbca753f86080bebfe7e552b53a82caa43e62e6c",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 116,
-    "meanSsim": 0.981779,
-    "minSsim": 0.954358,
-    "p05Ssim": 0.961174,
-    "p95Ssim": 0.997602,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 116,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 116,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/wave-wipe/remocn.mp4",
+    "referenceVideo": "public/previews/wave-wipe/reference.mp4",
     "hyperframesVideo": "public/previews/wave-wipe/hyperframes.mp4",
-    "summary": "parity/wave-wipe-diff/summary.json"
+    "thumbnail": "public/previews/wave-wipe/thumbnail.png",
+    "summary": "parity/wave-wipe-diff/summary.json",
+    "perFrameSsim": "parity/wave-wipe-diff/ssim.log",
+    "hyperframesCheck": "parity/wave-wipe-diff/hyperframes-check.log",
+    "worstFrame": "parity/wave-wipe-diff/worst-frame.png",
+    "referenceAlpha": "parity/wave-wipe-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/wave-wipe-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/wave-wipe-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/wave-wipe-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/wave-wipe/reference.mp4": "ce9caa4926355c17b3f8901ee1ef431b51268348a3d2afd052c6aa5c29a15065",
+    "public/previews/wave-wipe/hyperframes.mp4": "ce9caa4926355c17b3f8901ee1ef431b51268348a3d2afd052c6aa5c29a15065",
+    "public/previews/wave-wipe/thumbnail.png": "858952c6b21cd5f495a9fec233478df25a0eb0b86be41233bff511030089b361",
+    "parity/wave-wipe-diff/summary.json": "d7e710947361461fdcd97c76647631958531144be3e0af1d22763fb5d3a9dd34",
+    "parity/wave-wipe-diff/ssim.log": "32e914e429e725b9b39afe883e834de18098f48a0369e5c950f77f9cc1a8281b",
+    "parity/wave-wipe-diff/hyperframes-check.log": "2a045bcf99c551a0041702225c0e9ad38f25cdf0b4f4357fcc0c3ccaa89897b2",
+    "parity/wave-wipe-diff/worst-frame.png": "71aa101bb1155fb665e399f3ba143d3420be1319b195bc1c83f8682b145cc76c",
+    "parity/wave-wipe-diff/reference-alpha.framemd5": "adfd21ad9324abcc9e7e316f5491b18ba1c49f3330160e5ec3b693dc6720e2e1",
+    "parity/wave-wipe-diff/hyperframes-alpha.framemd5": "adfd21ad9324abcc9e7e316f5491b18ba1c49f3330160e5ec3b693dc6720e2e1",
+    "parity/wave-wipe-diff/reference-rgba.framemd5": "800e8f9fa414cf889565d79919e31d1530124553c13626b8372c3a0a89243c00",
+    "parity/wave-wipe-diff/hyperframes-rgba.framemd5": "800e8f9fa414cf889565d79919e31d1530124553c13626b8372c3a0a89243c00"
   }
 }

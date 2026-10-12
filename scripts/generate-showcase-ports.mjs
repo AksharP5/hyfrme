@@ -1,10 +1,16 @@
 import { build } from "esbuild";
 import { execFile } from "node:child_process";
+import { createHash } from "node:crypto";
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { dirname, relative, resolve } from "node:path";
 import { promisify } from "node:util";
 import { frameMathSource } from "./hyfrme-frame-math.mjs";
+import { frameDrivenPaperPlugin } from "./remocn-frame-driven-paper.mjs";
+import {
+  adaptSourcePaintGate,
+  sourcePaintShim,
+} from "./remocn-source-paint.mjs";
 
 const execFileAsync = promisify(execFile);
 const root = resolve(import.meta.dirname, "..");
@@ -12,8 +18,26 @@ const upstream = resolve(
   root,
   process.env.REMOCN_COLLECTIONS_SOURCE ?? ".work/remocn-collections",
 );
-const currentCommit = "2ec2e52e38854da2b6b6e7a90477dce1a3d742a5";
-const tenkitCommit = "df2cb173c00a6a0e5dd1141543854a79e8ac291a";
+const fixtures = JSON.parse(
+  await readFile(resolve(root, "catalog/showcase-fixtures.json"), "utf8"),
+);
+const sourceCommits = new Set(fixtures.map((entry) => entry.origin.commit));
+if (sourceCommits.size !== 1) {
+  throw new Error("Showcases must share one current upstream source commit");
+}
+const currentCommit = [...sourceCommits][0];
+const frozenAssets = JSON.parse(
+  await readFile(
+    resolve(root, "assets/remocn-collections/manifest.json"),
+    "utf8",
+  ),
+);
+if (frozenAssets.commit !== currentCommit) {
+  throw new Error("Frozen showcase assets do not match the source fixtures");
+}
+const frozenFonts = new Map(
+  frozenAssets.fonts.map((font) => [font.module, font]),
+);
 const outputRoot = resolve(root, "showcases");
 const compositionsRoot = resolve(outputRoot, "compositions");
 const assetsRoot = resolve(outputRoot, "assets");
@@ -22,74 +46,11 @@ const licensesRoot = resolve(assetsRoot, "licenses");
 const demoAssetsRoot = resolve(assetsRoot, "demo");
 const normalizeGeneratedText = (value) =>
   value.replace(/\r\n?/g, "\n").replace(/^[ \t]+$/gm, "");
-const normalizeLicenseText = (value) =>
-  normalizeGeneratedText(value).replace(/[ \t]+$/gm, "");
-
-const showcases = [
-  {
-    slug: "introducing-nextjs",
-    title: "Introducing Next.js",
-    componentName: "IntroducingNextjsDemo",
-    durationInFrames: 976,
-    sourceCommit: currentCommit,
-    author: { name: "kapish_dima", url: "https://github.com/kapishdima" },
-    description:
-      "A monochrome flight through the framework, its command, and its core platform features.",
-  },
-  {
-    slug: "introducing-tenkit",
-    title: "Introducing Tenkit",
-    componentName: "IntroducingTenkitDemo",
-    durationInFrames: 1152,
-    sourceCommit: tenkitCommit,
-    author: {
-      name: "brilliantinsane",
-      url: "https://github.com/brilliantinsane",
-    },
-    description:
-      "One codebase becomes many branded apps through a continuous multi-tenant product story.",
-  },
-  {
-    slug: "paper-shaders",
-    title: "Paper Shaders",
-    componentName: "PaperShadersDemo",
-    durationInFrames: 984,
-    sourceCommit: currentCommit,
-    author: { name: "kapish_dima", url: "https://github.com/kapishdima" },
-    description:
-      "A cinematic tour of GPU shader backgrounds and the copy-paste workflow behind them.",
-  },
-  {
-    slug: "introducing-videorc",
-    title: "Introducing Videorc",
-    componentName: "IntroducingVideorcDemo",
-    durationInFrames: 756,
-    sourceCommit: currentCommit,
-    author: { name: "kapish_dima", url: "https://github.com/kapishdima" },
-    description:
-      "A red recording signal moves through capture, multistream, and AI publishing.",
-  },
-  {
-    slug: "introducing-shadcn",
-    title: "Introducing shadcn/ui",
-    componentName: "IntroducingShadcnDemo",
-    durationInFrames: 2178,
-    sourceCommit: currentCommit,
-    author: { name: "kapish_dima", url: "https://github.com/kapishdima" },
-    description:
-      "A component-field tour that turns the shadcn/ui philosophy into a full product film.",
-  },
-  {
-    slug: "introducing-remocn",
-    title: "Introducing Remocn",
-    componentName: "IntroducingRemocnDemo",
-    durationInFrames: 1012,
-    sourceCommit: currentCommit,
-    author: { name: "kapish_dima", url: "https://github.com/kapishdima" },
-    description:
-      "The original Remocn launch story, translated to a HyperFrames-owned frame clock.",
-  },
-];
+const showcases = fixtures.map(({ origin, fixture, ...metadata }) => ({
+  ...metadata,
+  durationInFrames: fixture.durationInFrames,
+  sourceCommit: origin.commit,
+}));
 
 const paperShaderNotice = `/*!
  * Includes @paper-design/shaders-react 0.0.76 under the PolyForm Shield
@@ -115,6 +76,14 @@ if (checkedOutCommit.trim() !== currentCommit) {
     `Expected remocn-collections at ${currentCommit}, found ${checkedOutCommit.trim()}`,
   );
 }
+const { stdout: sourceStatus } = await execFileAsync(
+  "git",
+  ["status", "--porcelain", "--untracked-files=no"],
+  { cwd: upstream },
+);
+if (sourceStatus.trim()) {
+  throw new Error("Remocn Collections source has modified tracked files");
+}
 
 await mkdir(compositionsRoot, { recursive: true });
 await mkdir(fontsRoot, { recursive: true });
@@ -123,14 +92,6 @@ await mkdir(demoAssetsRoot, { recursive: true });
 
 const sourceFor = (showcase) =>
   resolve(upstream, "src", "demos", showcase.slug, "index.tsx");
-
-const historicTenkitSource = (
-  await execFileAsync(
-    "git",
-    ["show", `${tenkitCommit}:src/demos/introducing-tenkit/index.tsx`],
-    { cwd: upstream, maxBuffer: 10 * 1024 * 1024 },
-  )
-).stdout;
 
 const remotionPlugin = {
   name: "hyfrme-showcase-remotion-clock",
@@ -148,12 +109,35 @@ const remotionPlugin = {
         let currentFrame = 0;
         let videoConfig = {fps: 30, width: 1280, height: 720, durationInFrames: 1};
         const LocalFrameContext = createContext(null);
+        const LocalVideoContext = createContext(null);
 
         export {Easing, interpolate, interpolateColors, random, spring};
-        export const delayRender = () => 0;
-        export const continueRender = () => {};
+        let nextHandle = 0;
+        const pending = new Map();
+        const waiting = new Set();
+        let sourceError;
+        export const delayRender = (label) => {
+          const handle = nextHandle++;
+          pending.set(handle, label);
+          return handle;
+        };
+        export const continueRender = (handle) => {
+          pending.delete(handle);
+          if (pending.size === 0) {
+            for (const {resolve} of waiting) resolve();
+            waiting.clear();
+          }
+        };
+        export const cancelRender = (error) => {
+          sourceError = error instanceof Error ? error : new Error(String(error));
+          for (const {reject} of waiting) reject(sourceError);
+          waiting.clear();
+          throw sourceError;
+        };
+        export const __waitForSource = () => sourceError ? Promise.reject(sourceError) : pending.size === 0 ? Promise.resolve() : new Promise((resolve, reject) => waiting.add({resolve, reject}));
+        ${sourcePaintShim}
         export const useCurrentFrame = () => useContext(LocalFrameContext) ?? currentFrame;
-        export const useVideoConfig = () => videoConfig;
+        export const useVideoConfig = () => useContext(LocalVideoContext) ?? videoConfig;
         export const staticFile = (path) => "/assets/demo/" + path.replace(/^\\//, "");
         export const Img = ({children, ...props}) => React.createElement("img", props, children);
         export const AbsoluteFill = ({children, className, style, ...props}) =>
@@ -178,18 +162,38 @@ const remotionPlugin = {
           layout,
           style,
           className,
+          width,
+          height,
         }) => {
           const localFrame = useCurrentFrame() - from;
+          const parentConfig = useVideoConfig();
           if (localFrame < 0 || localFrame >= durationInFrames) return null;
           const content = React.createElement(
             LocalFrameContext.Provider,
             {value: localFrame},
-            children,
+            React.createElement(
+              LocalVideoContext.Provider,
+              {value: {
+                ...parentConfig,
+                width: width ?? parentConfig.width,
+                height: height ?? parentConfig.height,
+                durationInFrames: Math.max(0, Math.min(
+                  durationInFrames,
+                  parentConfig.durationInFrames - from,
+                )),
+              }},
+              children,
+            ),
           );
           if (layout === "none") return content;
-          return React.createElement("div", {
+          return React.createElement(AbsoluteFill, {
             className,
-            style: {position: "absolute", inset: 0, ...style},
+            style: {
+              flexDirection: undefined,
+              ...(width ? {width} : {}),
+              ...(height ? {height} : {}),
+              ...style,
+            },
           }, content);
         };
 
@@ -259,7 +263,7 @@ const transitionsPlugin = {
             ),
           });
 
-          export const TransitionSeries = ({children}) => {
+          const TransitionSeriesChildren = ({children}) => {
             const frame = useCurrentFrame();
             const {fps} = useVideoConfig();
             const entries = React.Children.toArray(children);
@@ -288,47 +292,31 @@ const transitionsPlugin = {
               timelineCursor += entry.props.durationInFrames + (entry.props.offset ?? 0);
               let content = entry.props.children;
 
-              if (nextTransition) {
-                const duration = nextTransition.props.timing.getDurationInFrames({fps});
-                const progress = nextTransition.props.timing.getProgress({
-                  frame: frame - start - entry.props.durationInFrames + duration,
+              const wrapTransition = (transition, direction) => {
+                if (!transition) return;
+                const duration = transition.props.timing.getDurationInFrames({fps});
+                const progress = transition.props.timing.getProgress({
+                  frame: direction === "entering"
+                    ? frame - start
+                    : frame - start - entry.props.durationInFrames + duration,
                   fps,
                 });
-                const presentation = nextTransition.props.presentation;
+                const presentation = transition.props.presentation;
                 const Presentation = presentation.component;
                 content = React.createElement(
                   Presentation,
                   {
                     passedProps: presentation.props ?? {},
-                    presentationDirection: "exiting",
+                    presentationDirection: direction,
                     presentationProgress: progress,
                     presentationDurationInFrames: duration,
-                    bothEnteringAndExiting: false,
+                    bothEnteringAndExiting: Boolean(previousTransition && nextTransition),
                   },
                   content,
                 );
-              }
-
-              if (previousTransition) {
-                const duration = previousTransition.props.timing.getDurationInFrames({fps});
-                const progress = previousTransition.props.timing.getProgress({
-                  frame: frame - start,
-                  fps,
-                });
-                const presentation = previousTransition.props.presentation;
-                const Presentation = presentation.component;
-                content = React.createElement(
-                  Presentation,
-                  {
-                    passedProps: presentation.props ?? {},
-                    presentationDirection: "entering",
-                    presentationProgress: progress,
-                    presentationDurationInFrames: duration,
-                    bothEnteringAndExiting: false,
-                  },
-                  content,
-                );
-              }
+              };
+              wrapTransition(previousTransition, "entering");
+              wrapTransition(nextTransition, "exiting");
 
               rendered.push(
                 React.createElement(
@@ -344,6 +332,9 @@ const transitionsPlugin = {
             }
             return React.createElement(React.Fragment, null, ...rendered);
           };
+          export const TransitionSeries = ({children, ...props}) =>
+            React.createElement(Sequence, props,
+              React.createElement(TransitionSeriesChildren, {children}));
           TransitionSeries.Sequence = TransitionSequence;
           TransitionSeries.Transition = Transition;
         `,
@@ -363,17 +354,17 @@ const fadePlugin = {
       resolveDir: upstream,
       contents: `
         import React from "react";
-        const Fade = ({children, presentationDirection, presentationProgress}) =>
-          React.createElement("div", {
+        import {AbsoluteFill} from "remotion";
+        const Fade = ({children, presentationDirection, presentationProgress, passedProps}) =>
+          React.createElement(AbsoluteFill, {
             style: {
-              position: "absolute",
-              inset: 0,
               opacity: presentationDirection === "entering"
                 ? presentationProgress
-                : 1 - presentationProgress,
+                : passedProps.shouldFadeOutExitingScene ? 1 - presentationProgress : 1,
+              ...(presentationDirection === "entering" ? passedProps.enterStyle : passedProps.exitStyle),
             },
           }, children);
-        export const fade = () => ({component: Fade, props: {}});
+        export const fade = (props) => ({component: Fade, props: props ?? {}});
       `,
     }));
   },
@@ -393,13 +384,9 @@ const fontPlugin = {
       }),
     );
     buildApi.onLoad({ filter: /.*/, namespace: "hyfrme-font" }, (args) => {
-      const family = {
-        Geist: "Geist",
-        GeistMono: "Geist Mono",
-        Inter: "Inter",
-        Manrope: "Manrope",
-        SpaceGrotesk: "Space Grotesk",
-      }[args.path];
+      const font = frozenFonts.get(args.path);
+      if (!font) throw new Error(`Missing frozen showcase font: ${args.path}`);
+      const family = font.family;
       return {
         loader: "js",
         contents: `
@@ -418,42 +405,24 @@ const sourceRewritePlugin = {
   name: "hyfrme-showcase-source-rewrites",
   setup(buildApi) {
     buildApi.onLoad(
-      { filter: /src\/demos\/introducing-tenkit\/index\.tsx$/ },
-      (args) =>
-        args.path === sourceFor(showcases[1])
-          ? {
-              contents: historicTenkitSource,
-              loader: "tsx",
-              resolveDir: dirname(args.path),
-            }
-          : null,
-    );
-    buildApi.onLoad(
       { filter: /src\/components\/remocn\/shader-[^/]+\.tsx$/ },
       async (args) => {
-        const original = await readFile(args.path, "utf8");
-        const contents = original.replace(
-          /const \[handle\] = useState\(\(\) => delayRender\("shader-[^"]+"\)\);/,
-          "const handle = 0;",
-        );
-        if (contents === original) {
-          throw new Error(
-            `Missing expected shader render gate in ${args.path}`,
-          );
-        }
-        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+        const source = await readFile(args.path, "utf8");
+        return {
+          loader: "tsx",
+          resolveDir: dirname(args.path),
+          contents: source.includes("requestAnimationFrame")
+            ? adaptSourcePaintGate(source, args.path)
+            : source,
+        };
       },
     );
-    buildApi.onLoad({ filter: /src\/demos\/_ui\/use-mobile\.ts$/ }, () => ({
-      loader: "ts",
-      contents:
-        "export const useIsMobile = () => false; // Canonical 1280px showcase fixture",
-    }));
     buildApi.onLoad(
       { filter: /src\/demos\/_ui\/app-sidebar\.tsx$/ },
       async (args) => ({
         loader: "tsx",
         resolveDir: dirname(args.path),
+        // The missing upstream image and empty src both render Radix's CN fallback.
         contents: (await readFile(args.path, "utf8")).replace(
           'avatar: "/avatars/shadcn.jpg"',
           'avatar: ""',
@@ -472,27 +441,66 @@ const sourceRewritePlugin = {
 };
 
 for (const showcase of showcases) {
+  const fontRequests = frozenAssets.fontRequests[showcase.slug];
+  if (!fontRequests?.length) {
+    throw new Error(`Missing source font requests: ${showcase.slug}`);
+  }
+  const fontFaces = fontRequests
+    .flatMap((request) => {
+      const font = frozenFonts.get(request.module);
+      if (
+        !font ||
+        request.style !== font.style ||
+        request.subsets.length !== 1 ||
+        request.subsets[0] !== font.subset
+      ) {
+        throw new Error(
+          `Unsupported source font request: ${showcase.slug}/${request.module}`,
+        );
+      }
+      return request.weights.map(
+        (weight) =>
+          `@font-face { font-family: "${font.family}"; src: url("assets/fonts/${font.module}-Latin.woff2") format("woff2"); font-style: ${request.style}; font-weight: ${weight}; unicode-range: ${font.unicodeRange}; }`,
+      );
+    })
+    .join("\n      ");
   const entry = `
     import React from "react";
     import {flushSync} from "react-dom";
     import {createRoot} from "react-dom/client";
-    import {__setHyfrmeFrame} from "remotion";
+    import {__setHyfrmeFrame, __waitForSource} from "remotion";
     import {${showcase.componentName}} from ${JSON.stringify(
       `./${relative(upstream, sourceFor(showcase)).replaceAll("\\", "/")}`,
     )};
 
-    const root = createRoot(document.getElementById("hyfrme-showcase-root"));
-    const config = ${JSON.stringify({
-      fps: 30,
-      width: 1280,
-      height: 720,
-      durationInFrames: showcase.durationInFrames,
-    })};
-    window.__hyfrmeRenderFrame = (frame) => {
-      __setHyfrmeFrame(frame, config);
-      flushSync(() => root.render(React.createElement(${showcase.componentName})));
-    };
-    window.__hyfrmeRenderFrame(0);
+    const container = document.getElementById("hyfrme-showcase-root");
+    window.addEventListener("hf-seek", (event) => {
+      event.detail.waitUntil(Promise.resolve().then(async () => {
+        await __waitForSource();
+        await Promise.all(Array.from(container.querySelectorAll('img')).map(image => image.decode()));
+      }));
+    });
+    window.__hyfrmeShowcaseReady = new Promise((resolve) => {
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", resolve, {once: true});
+      } else resolve();
+    }).then(async () => {
+      const root = createRoot(container);
+      const config = ${JSON.stringify({
+        fps: 30,
+        width: 1280,
+        height: 720,
+        durationInFrames: showcase.durationInFrames,
+      })};
+      window.__hyfrmeRenderFrame = (frame) => {
+        __setHyfrmeFrame(frame, config);
+        flushSync(() => root.render(React.createElement(${showcase.componentName})));
+      };
+      window.__hyfrmeRenderFrame(0);
+      await document.fonts.ready;
+      await __waitForSource();
+      await Promise.all(Array.from(document.querySelectorAll('img')).map(image => image.decode()));
+    });
   `;
 
   const result = await build({
@@ -501,9 +509,11 @@ for (const showcase of showcases) {
     format: "iife",
     legalComments: "eof",
     minify: true,
+    supported: { "template-literal": false },
     platform: "browser",
     plugins: [
       sourceRewritePlugin,
+      frameDrivenPaperPlugin,
       remotionPlugin,
       transitionsPlugin,
       fadePlugin,
@@ -530,14 +540,10 @@ for (const showcase of showcases) {
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1280">
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
-    ${showcase.slug === "introducing-shadcn" ? '<link rel="stylesheet" href="assets/shadcn.css">' : ""}
+    <script src="assets/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/shadcn.css">
     <style>
-      @font-face { font-family: "Geist"; src: url("assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
-      @font-face { font-family: "Geist Mono"; src: url("assets/fonts/GeistMono-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
-      @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
-      @font-face { font-family: "Manrope"; src: url("assets/fonts/Manrope-Latin.woff2") format("woff2"); font-style: normal; font-weight: 200 800; font-display: block; }
-      @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-Latin.woff2") format("woff2"); font-style: normal; font-weight: 300 700; font-display: block; }
+      ${fontFaces}
       @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"), local("SF Mono"); }
       @font-face { font-family: "Apple Color Emoji"; src: local("Apple Color Emoji"); }
       @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
@@ -545,21 +551,25 @@ for (const showcase of showcases) {
       * { box-sizing: border-box; }
       html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #09090b; }
       #hyfrme-showcase-root { position: absolute; inset: 0; width: 1280px; height: 720px; overflow: hidden; }
+      #hyfrme-showcase-root, #hyfrme-showcase-root * { text-rendering: auto; }
     </style>
   </head>
   <body>
     <div id="${showcase.slug}" data-composition-id="${showcase.slug}" data-start="0" data-duration="${duration}" data-fps="30" data-width="1280" data-height="720">
-      <div id="${showcase.slug}-source-stage" class="clip" data-start="0" data-duration="${duration}" data-track-index="0">
-        <div
-          id="hyfrme-showcase-root"
-          data-layout-allow-overflow
-          data-layout-allow-overlap
-          data-layout-allow-occlusion
-        ></div>
-      </div>
+      <div
+        id="hyfrme-showcase-root"
+        class="clip"
+        data-start="0"
+        data-duration="${duration}"
+        data-track-index="0"
+        data-layout-allow-overflow
+        data-layout-allow-overlap
+        data-layout-allow-occlusion
+      ></div>
     </div>
     <script src="compositions/${showcase.slug}.runtime.js"></script>
     <script>
+      window.__hyfrmeShowcaseReady.then(() => {
       window.__timelines = window.__timelines || {};
       const clock = { frame: 0 };
       const timeline = gsap.timeline({ paused: true });
@@ -572,6 +582,7 @@ for (const showcase of showcases) {
         ),
       });
       window.__timelines["${showcase.slug}"] = timeline;
+      });
     </script>
   </body>
 </html>
@@ -601,91 +612,73 @@ const landingHtml = await readFile(
 await writeFile(resolve(outputRoot, "index.html"), landingHtml);
 
 const requireFromUpstream = createRequire(resolve(upstream, "package.json"));
-const postcss = requireFromUpstream("postcss");
-const tailwind = requireFromUpstream("@tailwindcss/postcss");
+const tailwindLoader = requireFromUpstream("@tailwindcss/webpack");
 const tailwindSource = resolve(upstream, "styles", "global.css");
-const compiledCss = await postcss([tailwind()]).process(
-  await readFile(tailwindSource, "utf8"),
-  { from: tailwindSource },
-);
-await writeFile(resolve(assetsRoot, "shadcn.css"), compiledCss.css);
-
-await copyFile(
-  resolve(
-    upstream,
-    "node_modules",
-    "geist",
-    "dist",
-    "fonts",
-    "geist-sans",
-    "Geist-Variable.woff2",
+const stylesheet = await readFile(tailwindSource, "utf8");
+// Use Remotion's own loader and source scan root, including its pinned compiler.
+const compiledCss = await new Promise((accept, reject) =>
+  tailwindLoader.call(
+    {
+      resourcePath: tailwindSource,
+      getOptions: () => ({ base: upstream, optimize: false }),
+      async: () => (error, css) => (error ? reject(error) : accept(css)),
+      addDependency() {},
+      addContextDependency() {},
+    },
+    stylesheet,
   ),
-  resolve(fontsRoot, "Geist-Latin.woff2"),
 );
-await copyFile(
-  resolve(root, "assets", "fonts", "GeistMono-Latin.woff2"),
-  resolve(fontsRoot, "GeistMono-Latin.woff2"),
-);
-await copyFile(
-  resolve(root, "assets", "fonts", "Inter-Latin.woff2"),
-  resolve(fontsRoot, "Inter-Latin.woff2"),
-);
-await copyFile(
-  resolve(root, "assets", "fonts", "Manrope-Latin.woff2"),
-  resolve(fontsRoot, "Manrope-Latin.woff2"),
-);
+await writeFile(resolve(assetsRoot, "shadcn.css"), compiledCss);
+const gsapPath = resolve(root, "registry/blocks/before-after/gsap.min.js");
+const gsap = await readFile(gsapPath, "utf8");
+if (
+  createHash("sha256").update(gsap).digest("hex") !==
+  "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280"
+)
+  throw new Error("Collections require the frozen GSAP 3.14.2 asset");
+await copyFile(gsapPath, resolve(assetsRoot, "gsap.min.js"));
 
-const spaceGroteskFont = await fetch(
-  "https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2",
-);
-if (!spaceGroteskFont.ok) {
-  throw new Error(`Space Grotesk download failed: ${spaceGroteskFont.status}`);
-}
-await writeFile(
-  resolve(fontsRoot, "SpaceGrotesk-Latin.woff2"),
-  Buffer.from(await spaceGroteskFont.arrayBuffer()),
-);
-
-for (const license of [
-  "Geist-OFL.txt",
-  "GeistMono-OFL.txt",
-  "Inter-OFL.txt",
-  "Manrope-OFL.txt",
-]) {
-  await writeFile(
-    resolve(licensesRoot, license),
-    normalizeLicenseText(
-      await readFile(resolve(root, "assets", "fonts", license), "utf8"),
-    ),
+for (const font of frozenAssets.fonts) {
+  for (const [path, expected] of [
+    [font.path, font.sha256],
+    [font.licensePath, font.licenseSha256],
+  ]) {
+    const actual = createHash("sha256")
+      .update(await readFile(resolve(root, path)))
+      .digest("hex");
+    if (actual !== expected) {
+      throw new Error(`Frozen showcase asset checksum mismatch: ${path}`);
+    }
+  }
+  await copyFile(
+    resolve(root, font.path),
+    resolve(fontsRoot, `${font.module}-Latin.woff2`),
+  );
+  await copyFile(
+    resolve(root, font.licensePath),
+    resolve(licensesRoot, `${font.module}-OFL.txt`),
   );
 }
+await copyFile(
+  resolve(root, frozenAssets.noticePath),
+  resolve(licensesRoot, "Fonts-NOTICE.txt"),
+);
 await copyFile(
   resolve(root, "assets", "licenses", "Paper-Shaders-POLYFORM-SHIELD-1.0.0.md"),
   resolve(licensesRoot, "Paper-Shaders-POLYFORM-SHIELD-1.0.0.md"),
 );
 
-const spaceGroteskLicense = await fetch(
-  "https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/OFL.txt",
-);
-if (!spaceGroteskLicense.ok) {
-  throw new Error(
-    `Space Grotesk license download failed: ${spaceGroteskLicense.status}`,
-  );
-}
-await writeFile(
-  resolve(licensesRoot, "SpaceGrotesk-OFL.txt"),
-  normalizeLicenseText(await spaceGroteskLicense.text()),
-);
-
-for (const asset of [
-  "videorc-icon.png",
-  "videorc-logo.png",
-  "videorc-orb.png",
-]) {
-  await copyFile(
-    resolve(upstream, "public", asset),
-    resolve(demoAssetsRoot, asset),
-  );
+for (const asset of frozenAssets.media) {
+  const source = resolve(upstream, asset.upstreamPath);
+  const actual = createHash("sha256")
+    .update(await readFile(source))
+    .digest("hex");
+  if (actual !== asset.sha256) {
+    throw new Error(
+      `Frozen showcase media checksum mismatch: ${asset.upstreamPath}`,
+    );
+  }
+  await copyFile(source, resolve(root, asset.path));
 }
 
 const demoMeta = JSON.parse(

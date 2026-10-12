@@ -2,7 +2,7 @@
   "slug": "blur-out-up",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/blur-out-up/index.tsx",
     "config": "registry/remocn/blur-out-up/config.ts",
     "license": "MIT"
@@ -22,25 +22,76 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "c83b924781131f4c9a6886dc4c47d4115986ea598ef487783310855e675d1883",
+    "blur-out-up.html": "fbc4e83e87b3c1c3d6a4d1db54bb90efff52efa8fcedac31b92a3b9dc7988b06",
+    "blur-out-up.runtime.js": "fab607cbf3056c7d5b44a393d01f8cdf1b50e5e56d43c9c45557a16d0127c7de",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "984304742d5980d63af386576107a277abc00474b464caec6eb83d879d3f720b",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.998674,
-    "minSsim": 0.998478,
-    "p05Ssim": 0.998493,
-    "p95Ssim": 0.999808,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/blur-out-up/remocn.mp4",
+    "referenceVideo": "public/previews/blur-out-up/reference.mp4",
     "hyperframesVideo": "public/previews/blur-out-up/hyperframes.mp4",
-    "summary": "parity/blur-out-up-diff/summary.json"
+    "thumbnail": "public/previews/blur-out-up/thumbnail.png",
+    "summary": "parity/blur-out-up-diff/summary.json",
+    "perFrameSsim": "parity/blur-out-up-diff/ssim.log",
+    "hyperframesCheck": "parity/blur-out-up-diff/hyperframes-check.log",
+    "worstFrame": "parity/blur-out-up-diff/worst-frame.png",
+    "referenceAlpha": "parity/blur-out-up-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/blur-out-up-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/blur-out-up-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/blur-out-up-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/blur-out-up/reference.mp4": "3d3abe4eeff3a83dad365ffd027551f7be44ab2970e6d2d10c3be4d45caea0d4",
+    "public/previews/blur-out-up/hyperframes.mp4": "3d3abe4eeff3a83dad365ffd027551f7be44ab2970e6d2d10c3be4d45caea0d4",
+    "public/previews/blur-out-up/thumbnail.png": "7dbb57ffb380aa038c205aee367abd897c636df02486f778c40cdf13223cdce1",
+    "parity/blur-out-up-diff/summary.json": "b836772793766404c0492e741437d4fb40b614cf31be7aace9f9b10b16c85450",
+    "parity/blur-out-up-diff/ssim.log": "4638ac3b2b03d74f8b056c3824e13d904997bddfbc1c0f3b8d655822a1eb000b",
+    "parity/blur-out-up-diff/hyperframes-check.log": "5cb0d07336e4c5425ed40f793e4372f96781e695da5e5535ac7d5fa929526e40",
+    "parity/blur-out-up-diff/worst-frame.png": "b6b80f4263bf6c8c16375e4217852feab2c6e68f51a427bd3f5d799e52aa49c4",
+    "parity/blur-out-up-diff/reference-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/blur-out-up-diff/hyperframes-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/blur-out-up-diff/reference-rgba.framemd5": "e7d419cb00e0a3ea383327c77a0c6f6371d1a879704c596d58b7ecd55ea3c8e6",
+    "parity/blur-out-up-diff/hyperframes-rgba.framemd5": "e7d419cb00e0a3ea383327c77a0c6f6371d1a879704c596d58b7ecd55ea3c8e6"
   }
 }

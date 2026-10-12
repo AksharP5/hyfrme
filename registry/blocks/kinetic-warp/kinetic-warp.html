@@ -65,11 +65,23 @@
 
 
 
+
       * { box-sizing: border-box; }
       html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: transparent; }
       body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
       #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:transparent; }
 
+
+#hyfrme-source-root {
+  font-size: 14px;
+  line-height: calc(20 / 14);
+  font-feature-settings: "cv11", "ss01";
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+#hyfrme-source-root, #hyfrme-source-root * {
+  text-rendering: optimizeLegibility;
+}
 
     </style>
   </head>
@@ -78,7 +90,7 @@
       <span hidden data-layout-ignore data-hyfrme-clock></span>
 
       <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="4" data-track-index="0">
-        <div id="hyfrme-source-root" data-hyfrme-assets='{"https://fonts.gstatic.com/s/passionone/v20/PbynFmL8HhTPqbjUzux3JEuf9lvQ6Q.woff2":"../assets/remocn-additions/PassionOne-400-latin-ext.woff2","https://fonts.gstatic.com/s/passionone/v20/PbynFmL8HhTPqbjUzux3JEuR9ls.woff2":"../assets/remocn-additions/PassionOne-400-latin.woff2","https://fonts.gstatic.com/s/passionone/v20/Pby6FmL8HhTPqbjUzux3JEMq007hyJcsuA.woff2":"../assets/remocn-additions/PassionOne-700-latin-ext.woff2","https://fonts.gstatic.com/s/passionone/v20/Pby6FmL8HhTPqbjUzux3JEMq007vyJc.woff2":"../assets/remocn-additions/PassionOne-700-latin.woff2","https://fonts.gstatic.com/s/passionone/v20/Pby6FmL8HhTPqbjUzux3JEMS0U7hyJcsuA.woff2":"../assets/remocn-additions/PassionOne-900-latin-ext.woff2","https://fonts.gstatic.com/s/passionone/v20/Pby6FmL8HhTPqbjUzux3JEMS0U7vyJc.woff2":"../assets/remocn-additions/PassionOne-900-latin.woff2","https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&amp;display=block":"../assets/remocn-additions/PassionOne.css"}'></div>
+        <div id="hyfrme-source-root" data-hyfrme-assets='{"https://fonts.gstatic.com/s/passionone/v20/PbynFmL8HhTPqbjUzux3JEuf9lvQ6Q.woff2":"../assets/remocn-additions/PassionOne-400-latin-ext.woff2","https://fonts.gstatic.com/s/passionone/v20/PbynFmL8HhTPqbjUzux3JEuR9ls.woff2":"../assets/remocn-additions/PassionOne-400-latin.woff2","https://fonts.gstatic.com/s/passionone/v20/Pby6FmL8HhTPqbjUzux3JEMq007hyJcsuA.woff2":"../assets/remocn-additions/PassionOne-700-latin-ext.woff2","https://fonts.gstatic.com/s/passionone/v20/Pby6FmL8HhTPqbjUzux3JEMq007vyJc.woff2":"../assets/remocn-additions/PassionOne-700-latin.woff2","https://fonts.gstatic.com/s/passionone/v20/Pby6FmL8HhTPqbjUzux3JEMS0U7hyJcsuA.woff2":"../assets/remocn-additions/PassionOne-900-latin-ext.woff2","https://fonts.gstatic.com/s/passionone/v20/Pby6FmL8HhTPqbjUzux3JEMS0U7vyJc.woff2":"../assets/remocn-additions/PassionOne-900-latin.woff2","https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&amp;display=block":"../assets/remocn-additions/PassionOne.css","/assets/remocn-additions/PassionOne-400-latin-ext.woff2":"../assets/remocn-additions/PassionOne-400-latin-ext.woff2","/assets/remocn-additions/PassionOne-400-latin.woff2":"../assets/remocn-additions/PassionOne-400-latin.woff2","/assets/remocn-additions/PassionOne-700-latin-ext.woff2":"../assets/remocn-additions/PassionOne-700-latin-ext.woff2","/assets/remocn-additions/PassionOne-700-latin.woff2":"../assets/remocn-additions/PassionOne-700-latin.woff2","/assets/remocn-additions/PassionOne-900-latin-ext.woff2":"../assets/remocn-additions/PassionOne-900-latin-ext.woff2","/assets/remocn-additions/PassionOne-900-latin.woff2":"../assets/remocn-additions/PassionOne-900-latin.woff2","/assets/remocn-additions/PassionOne.css":"../assets/remocn-additions/PassionOne.css"}'></div>
       </div>
     </div>
     <script src="./kinetic-warp.runtime.js"></script>

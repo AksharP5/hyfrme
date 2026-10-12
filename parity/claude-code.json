@@ -2,7 +2,7 @@
   "slug": "claude-code",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/claude-code/index.tsx",
     "config": "registry/remocn/claude-code/config.ts",
     "license": "MIT"
@@ -24,26 +24,83 @@
     },
     "background": "#2B2A28"
   },
+  "filesSha256": {
+    "registry-item.json": "4ca880907d6e6ba0d36bd650666feef57a16d857741404c3d76ba086bfc642f5",
+    "claude-code.html": "9cf65bbacc6658325018e482a791dbfd855b4f34ff17df45065e8896f2957ce9",
+    "claude-code.runtime.js": "72ed841f6285299e713d08c2e40fd0932e2370a19b35a006251662ad7829ffd7",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "JetBrainsMono-Latin.woff2": "18be452724bfdc236c074ca94a249a7f41a86752c7d04ab258ce9ed5651f6a7e",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077",
+    "licenses/JetBrainsMono-OFL.txt": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d"
+  },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
-  "status": "verified",
+  "measurement": "lossless-png",
+  "status": "failed",
+  "fingerprint": "f80828cac331cd57793cefc65934e9c3904787e9c29ccff6c1e5b14223d25e75",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 160,
-    "meanSsim": 0.996308,
-    "minSsim": 0.995834,
-    "p05Ssim": 0.995896,
-    "p95Ssim": 0.999018,
-    "pass": true
+    "meanSsim": 0.99999999375,
+    "minSsim": 0.999999,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 160,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 160,
+      "mismatchedFrames": [
+        13,
+        20,
+        24
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check reported 4 unreviewed errors (exit 1); strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/claude-code/remocn.mp4",
+    "referenceVideo": "public/previews/claude-code/reference.mp4",
     "hyperframesVideo": "public/previews/claude-code/hyperframes.mp4",
-    "summary": "parity/claude-code-diff/summary.json"
+    "thumbnail": "public/previews/claude-code/thumbnail.png",
+    "summary": "parity/claude-code-diff/summary.json",
+    "perFrameSsim": "parity/claude-code-diff/ssim.log",
+    "hyperframesCheck": "parity/claude-code-diff/hyperframes-check.log",
+    "worstFrame": "parity/claude-code-diff/worst-frame.png",
+    "referenceAlpha": "parity/claude-code-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/claude-code-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/claude-code-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/claude-code-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/claude-code/reference.mp4": "5af0be74d894bc48fd458c719660ae608ac206b6dad5e1539871f8ad7c525ded",
+    "public/previews/claude-code/hyperframes.mp4": "298de5dbc5878bfbac44ffa0e075eb0a3339292aa8e8b2437ddd3e834052e3b9",
+    "public/previews/claude-code/thumbnail.png": "59940751d57219979348cbd84a95680efb460d88fc47c4a7c70f5579597ab554",
+    "parity/claude-code-diff/summary.json": "84de784efd05d659ed5653019472520a375b687073939c21937ce40d8d155d6a",
+    "parity/claude-code-diff/ssim.log": "63e08d9dee9a34322a6fe8cf8813f4948740aabbf3fce591d7f0e3e846ca93d5",
+    "parity/claude-code-diff/hyperframes-check.log": "b4dfe2a14bf0e7df801b23504106cf5e13f78774da9414a46adf890121929b3d",
+    "parity/claude-code-diff/worst-frame.png": "8a5cb3257cb8a8dc9764274b3107ac1d45f0dc9fd12cc30ae822afa92bfe4755",
+    "parity/claude-code-diff/reference-alpha.framemd5": "7f20de6b8a3d83cce3a22460aca451220096bc56fa7eb7a4bc74fe7d22a548ea",
+    "parity/claude-code-diff/hyperframes-alpha.framemd5": "7f20de6b8a3d83cce3a22460aca451220096bc56fa7eb7a4bc74fe7d22a548ea",
+    "parity/claude-code-diff/reference-rgba.framemd5": "e88102cc8259afd21a5039bbe152315992cbc23be19ea1579650e8ab04d78641",
+    "parity/claude-code-diff/hyperframes-rgba.framemd5": "e70c899622719ab2ea8b36866b789729b5a6faa21c4dd07e787b098a45fca12e"
   }
 }

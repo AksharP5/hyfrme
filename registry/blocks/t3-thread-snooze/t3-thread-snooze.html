@@ -9,6 +9,10 @@
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-stage[hidden], .t3-state[hidden] { display: none !important; }
   .t3-state:not([hidden]) { display: contents; }
   .t3-stage * { transition: none !important; }
@@ -18,6 +22,31 @@
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+  /* Keep native local mono faces instead of HyperFrames font aliases. */
+  @font-face { font-family: "SF Mono"; src: local("SFMono-Light"); font-weight: 300; font-style: normal; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-LightItalic"); font-weight: 300; font-style: italic; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-Regular"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-RegularItalic"); font-weight: 400; font-style: italic; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-Medium"); font-weight: 500; font-style: normal; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-MediumItalic"); font-weight: 500; font-style: italic; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-Semibold"); font-weight: 600; font-style: normal; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-SemiboldItalic"); font-weight: 600; font-style: italic; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-Bold"); font-weight: 700; font-style: normal; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-BoldItalic"); font-weight: 700; font-style: italic; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-Heavy"); font-weight: 800; font-style: normal; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-HeavyItalic"); font-weight: 800; font-style: italic; }
+  @font-face { font-family: "Menlo"; src: local("Menlo-Regular"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "Menlo"; src: local("Menlo-Bold"); font-weight: 700; font-style: normal; }
+  @font-face { font-family: "Menlo"; src: local("Menlo-Italic"); font-weight: 400; font-style: italic; }
+  @font-face { font-family: "Menlo"; src: local("Menlo-BoldItalic"); font-weight: 700; font-style: italic; }
+  @font-face { font-family: "Consolas"; src: local("Consolas"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "Consolas"; src: local("Consolas-Bold"); font-weight: 700; font-style: normal; }
+  @font-face { font-family: "Consolas"; src: local("Consolas-Italic"); font-weight: 400; font-style: italic; }
+  @font-face { font-family: "Consolas"; src: local("Consolas-BoldItalic"); font-weight: 700; font-style: italic; }
+  @font-face { font-family: "Liberation Mono"; src: local("LiberationMono"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "Liberation Mono"; src: local("LiberationMono-Bold"); font-weight: 700; font-style: normal; }
+  @font-face { font-family: "Liberation Mono"; src: local("LiberationMono-Italic"); font-weight: 400; font-style: italic; }
+  @font-face { font-family: "Liberation Mono"; src: local("LiberationMono-BoldItalic"); font-weight: 700; font-style: italic; }
 </style>
 <div id="root" data-composition-id="t3-thread-snooze" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
 <svg data-layout-ignore aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="file-tree-builtin-html" viewBox="0 0 16 16">

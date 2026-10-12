@@ -2,7 +2,7 @@
   "slug": "trim-burst",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/trim-burst/index.tsx",
     "config": "registry/remocn/trim-burst/config.ts",
     "license": "MIT"
@@ -32,13 +32,25 @@
     },
     "background": "#002fa7"
   },
+  "filesSha256": {
+    "registry-item.json": "063965f574477bc561db1c95d12a2a724b9a8d4cd4cc4864d3a6c6391c6992f9",
+    "trim-burst.html": "8fc3880efea8cc841f26d2e477c9a782748f91b58e2f2a91df1b6124143dd739",
+    "trim-burst.runtime.js": "eeb37256cb2dd538612c321dea58b3bdf51f30d782b88e6be4e4f8e6cb6625f0",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "41f155a5e4813b72583b4aa6ef655ad4ae193de19a268cac5ae1845d17619e8e",
+  "fingerprint": "50ef29888a53116121d808b9ea15b0b4e81b91d2b0ae8860006f824c8c540466",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 42,
@@ -51,14 +63,23 @@
       "mismatchedFrames": [],
       "pass": true
     },
+    "rgba": {
+      "frameCount": 42,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -70,6 +91,21 @@
     "hyperframesCheck": "parity/trim-burst-diff/hyperframes-check.log",
     "worstFrame": "parity/trim-burst-diff/worst-frame.png",
     "referenceAlpha": "parity/trim-burst-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/trim-burst-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/trim-burst-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/trim-burst-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/trim-burst-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/trim-burst/reference.mp4": "771b16511c9c6a6ae39b6d7718eb50c77e7401e67c5b6011bf3f9d2ea5806efd",
+    "public/previews/trim-burst/hyperframes.mp4": "771b16511c9c6a6ae39b6d7718eb50c77e7401e67c5b6011bf3f9d2ea5806efd",
+    "public/previews/trim-burst/thumbnail.png": "fa690031e9c6a0cd6246f70f7ba357a1812a19697d92bf1d8037b80fb7a2d1b3",
+    "parity/trim-burst-diff/summary.json": "080634051d0590b16bc850598a521298fd993a1098d7249fd213ff8f32f6c390",
+    "parity/trim-burst-diff/ssim.log": "73f09e7788dc0d8a1fab70e5454ccb60634aa4955b93c1979fbdae8e1cd2a6bb",
+    "parity/trim-burst-diff/hyperframes-check.log": "a00396fe77da9e3e486a23acf02dd75d1acc9ae457af0effbefc23f5fdf8ea04",
+    "parity/trim-burst-diff/worst-frame.png": "4b4edb89768066c9de3488d86cf7d9b2c2c6537f063f42607b8ecfa784edd10a",
+    "parity/trim-burst-diff/reference-alpha.framemd5": "5868b2c1003f4e07c4dd5272ddbdfd677c7fec85f07519d2fb3786bca2afc472",
+    "parity/trim-burst-diff/hyperframes-alpha.framemd5": "5868b2c1003f4e07c4dd5272ddbdfd677c7fec85f07519d2fb3786bca2afc472",
+    "parity/trim-burst-diff/reference-rgba.framemd5": "c642ebc85fc58bca69fd070d14eaf49c8ed77ab49a5ec73ab3ebc758e0b4dae6",
+    "parity/trim-burst-diff/hyperframes-rgba.framemd5": "c642ebc85fc58bca69fd070d14eaf49c8ed77ab49a5ec73ab3ebc758e0b4dae6"
   }
 }

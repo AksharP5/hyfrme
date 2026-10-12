@@ -2,7 +2,7 @@
   "slug": "stepper",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-ui/stepper/index.tsx",
     "entry": "components/docs/examples/stepper-example.tsx",
     "config": "registry/remocn-ui/stepper/config.ts",
@@ -16,25 +16,91 @@
     "props": {},
     "background": "oklch(1 0 0)"
   },
+  "filesSha256": {
+    "registry-item.json": "e70d1fdd6adff9e5bcd3c5aed19f5185c6280a5a3a83a1b5b7796e13497de883",
+    "stepper.html": "64235303635119f378d9d1c7aa9f38377583a69b91c6ac6c96726ffb9810d0a8",
+    "stepper.runtime.js": "230dcd25191f94ba6c42588ce91488ef9d7dd8312e87423ffa9636f9d9eb0238",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "561c5c4ef0c93ad02961a0cd88b73496d089181add3d2a09295dee7d2aef29b2",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.99991,
-    "minSsim": 0.999894,
-    "p05Ssim": 0.999898,
-    "p95Ssim": 0.999914,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuRequestedMode": "hardware",
+    "browserGpuProbes": {
+      "render": {
+        "logSha256": "2c94de78d9fe515cc631f07d7b9ffa69911e22e53c76ded40574b7bb15545be0",
+        "observations": [
+          {
+            "mode": "hardware",
+            "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+          }
+        ]
+      }
+    },
+    "captureBackend": "unobserved",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/stepper/remocn.mp4",
+    "referenceVideo": "public/previews/stepper/reference.mp4",
     "hyperframesVideo": "public/previews/stepper/hyperframes.mp4",
-    "summary": "parity/stepper-diff/summary.json"
+    "thumbnail": "public/previews/stepper/thumbnail.png",
+    "summary": "parity/stepper-diff/summary.json",
+    "perFrameSsim": "parity/stepper-diff/ssim.log",
+    "hyperframesCheck": "parity/stepper-diff/hyperframes-check.log",
+    "hyperframesRender": "parity/stepper-diff/hyperframes-render.log",
+    "worstFrame": "parity/stepper-diff/worst-frame.png",
+    "referenceAlpha": "parity/stepper-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/stepper-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/stepper-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/stepper-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/stepper/reference.mp4": "3c451e970d36d36cdfc75106759a673e745a839754153a8dcfa306dc7aa15c52",
+    "public/previews/stepper/hyperframes.mp4": "3c451e970d36d36cdfc75106759a673e745a839754153a8dcfa306dc7aa15c52",
+    "public/previews/stepper/thumbnail.png": "1ec0bd2b555e7fed7c33631ad46385cb700259ed4ab7e0555e0bdc542586978e",
+    "parity/stepper-diff/summary.json": "ad55b29e05e75e155f68631a7d07dcf33cfd0beba9f35e6e6cb01ccc34051e53",
+    "parity/stepper-diff/ssim.log": "c4fbedb2045d104b60568467b9860d7ee5ffeee1f88dedd0034e5cf393a3221a",
+    "parity/stepper-diff/hyperframes-check.log": "228edd6037f023d5018fd40b4a898c08bcef4b4844b253b201976413c1f1d394",
+    "parity/stepper-diff/hyperframes-render.log": "2c94de78d9fe515cc631f07d7b9ffa69911e22e53c76ded40574b7bb15545be0",
+    "parity/stepper-diff/worst-frame.png": "2aa1fd34b59591cbd0e2e565c18f590d24df8cd3b9bf5dcba7e0e969bc9333fe",
+    "parity/stepper-diff/reference-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/stepper-diff/hyperframes-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/stepper-diff/reference-rgba.framemd5": "10e3dd2ef79f6c54661e9a786185a73107e24690adc6a46c62c427930ecd86cf",
+    "parity/stepper-diff/hyperframes-rgba.framemd5": "10e3dd2ef79f6c54661e9a786185a73107e24690adc6a46c62c427930ecd86cf"
   }
 }

@@ -2,7 +2,7 @@
   "slug": "perlin-dissolve",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/perlin-dissolve/index.tsx",
     "entry": "components/docs/examples/perlin-dissolve-example.tsx",
     "config": "registry/remocn/perlin-dissolve/config.ts",
@@ -21,25 +21,464 @@
     },
     "background": "#141318"
   },
+  "filesSha256": {
+    "registry-item.json": "ab30f439a409153da9a57ad96735f82de15e9a37cf5d02a8641566f537f3f1d9",
+    "perlin-dissolve.html": "cf329eb147e5827b771ac10cec8bf64c64d750812efee94d9a56d3a2c14a6e76",
+    "perlin-dissolve.runtime.js": "bba1c83489204f290ff02c1f2a5e0a22a52596effbe5c422280a8d04fc6e2c27",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md": "fc408cbbf99a20fbc88c2296a04bac7dadbe7114f2456673de3e5b7986cfd19d"
+  },
   "classification": "compiled-source-port",
-  "status": "verified",
+  "measurement": "lossless-png",
+  "status": "failed",
+  "fingerprint": "49cb8b34d5da55f388c137e4f94b41e616907d7b6f7102442a1e701b70ef8af7",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 116,
-    "meanSsim": 0.997436,
-    "minSsim": 0.985678,
-    "p05Ssim": 0.989241,
-    "p95Ssim": 0.999992,
-    "pass": true
+    "meanSsim": 0.9185577931034483,
+    "minSsim": 0.189171,
+    "p05Ssim": 0.318465,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 116,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 116,
+      "mismatchedFrames": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check reported 29 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "perlin-dissolve",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/perlin-dissolve/index.tsx",
+          "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+          "config": "registry/remocn/perlin-dissolve/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "text": "Scene A",
+          "selector": "#perlin-dissolve-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "containerSelector": "#perlin-dissolve-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > canvas:nth-of-type(1)",
+          "coveredFraction": 1,
+          "sourceFile": "compositions/perlin-dissolve.html"
+        },
+        "reason": "The pinned transition covers Scene A with its entering shader during the authored fade. See registry/remocn/perlin-dissolve/index.tsx:34-63. Preserve the source layer order; the original finding remains recorded and every RGBA frame must still match."
+      },
+      {
+        "slug": "perlin-dissolve",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/perlin-dissolve/index.tsx",
+          "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+          "config": "registry/remocn/perlin-dissolve/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "text": "P",
+          "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(1)",
+          "fg": "rgb(242,242,242)",
+          "bg": "rgb(143,136,174)",
+          "large": true,
+          "requiredRatio": 3,
+          "sourceFile": "compositions/perlin-dissolve.html"
+        },
+        "reason": "The pinned example uses #f2f2f2 text over the source shader's #8f88ae palette. See components/docs/examples/perlin-dissolve-example.tsx:64 and registry/remocn/perlin-dissolve/index.tsx:31-35. This exact glyph, selector and color pair is inherited; the original finding remains recorded and every RGBA frame must still match."
+      },
+      {
+        "slug": "perlin-dissolve",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/perlin-dissolve/index.tsx",
+          "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+          "config": "registry/remocn/perlin-dissolve/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "text": "e",
+          "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(2)",
+          "fg": "rgb(242,242,242)",
+          "bg": "rgb(143,136,174)",
+          "large": true,
+          "requiredRatio": 3,
+          "sourceFile": "compositions/perlin-dissolve.html"
+        },
+        "reason": "The pinned example uses #f2f2f2 text over the source shader's #8f88ae palette. See components/docs/examples/perlin-dissolve-example.tsx:64 and registry/remocn/perlin-dissolve/index.tsx:31-35. This exact glyph, selector and color pair is inherited; the original finding remains recorded and every RGBA frame must still match."
+      },
+      {
+        "slug": "perlin-dissolve",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/perlin-dissolve/index.tsx",
+          "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+          "config": "registry/remocn/perlin-dissolve/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "text": "r",
+          "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(3)",
+          "fg": "rgb(242,242,242)",
+          "bg": "rgb(143,136,174)",
+          "large": true,
+          "requiredRatio": 3,
+          "sourceFile": "compositions/perlin-dissolve.html"
+        },
+        "reason": "The pinned example uses #f2f2f2 text over the source shader's #8f88ae palette. See components/docs/examples/perlin-dissolve-example.tsx:64 and registry/remocn/perlin-dissolve/index.tsx:31-35. This exact glyph, selector and color pair is inherited; the original finding remains recorded and every RGBA frame must still match."
+      },
+      {
+        "slug": "perlin-dissolve",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/perlin-dissolve/index.tsx",
+          "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+          "config": "registry/remocn/perlin-dissolve/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "text": "l",
+          "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(4)",
+          "fg": "rgb(242,242,242)",
+          "bg": "rgb(143,136,174)",
+          "large": true,
+          "requiredRatio": 3,
+          "sourceFile": "compositions/perlin-dissolve.html"
+        },
+        "reason": "The pinned example uses #f2f2f2 text over the source shader's #8f88ae palette. See components/docs/examples/perlin-dissolve-example.tsx:64 and registry/remocn/perlin-dissolve/index.tsx:31-35. This exact glyph, selector and color pair is inherited; the original finding remains recorded and every RGBA frame must still match."
+      },
+      {
+        "slug": "perlin-dissolve",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/perlin-dissolve/index.tsx",
+          "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+          "config": "registry/remocn/perlin-dissolve/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "text": "i",
+          "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(5)",
+          "fg": "rgb(242,242,242)",
+          "bg": "rgb(143,136,174)",
+          "large": true,
+          "requiredRatio": 3,
+          "sourceFile": "compositions/perlin-dissolve.html"
+        },
+        "reason": "The pinned example uses #f2f2f2 text over the source shader's #8f88ae palette. See components/docs/examples/perlin-dissolve-example.tsx:64 and registry/remocn/perlin-dissolve/index.tsx:31-35. This exact glyph, selector and color pair is inherited; the original finding remains recorded and every RGBA frame must still match."
+      },
+      {
+        "slug": "perlin-dissolve",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/perlin-dissolve/index.tsx",
+          "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+          "config": "registry/remocn/perlin-dissolve/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "text": "n",
+          "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(6)",
+          "fg": "rgb(242,242,242)",
+          "bg": "rgb(143,136,174)",
+          "large": true,
+          "requiredRatio": 3,
+          "sourceFile": "compositions/perlin-dissolve.html"
+        },
+        "reason": "The pinned example uses #f2f2f2 text over the source shader's #8f88ae palette. See components/docs/examples/perlin-dissolve-example.tsx:64 and registry/remocn/perlin-dissolve/index.tsx:31-35. This exact glyph, selector and color pair is inherited; the original finding remains recorded and every RGBA frame must still match."
+      },
+      {
+        "slug": "perlin-dissolve",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/perlin-dissolve/index.tsx",
+          "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+          "config": "registry/remocn/perlin-dissolve/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "text": "D",
+          "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(8)",
+          "fg": "rgb(242,242,242)",
+          "bg": "rgb(143,136,174)",
+          "large": true,
+          "requiredRatio": 3,
+          "sourceFile": "compositions/perlin-dissolve.html"
+        },
+        "reason": "The pinned example uses #f2f2f2 text over the source shader's #8f88ae palette. See components/docs/examples/perlin-dissolve-example.tsx:64 and registry/remocn/perlin-dissolve/index.tsx:31-35. This exact glyph, selector and color pair is inherited; the original finding remains recorded and every RGBA frame must still match."
+      },
+      {
+        "slug": "perlin-dissolve",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/perlin-dissolve/index.tsx",
+          "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+          "config": "registry/remocn/perlin-dissolve/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "text": "i",
+          "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(9)",
+          "fg": "rgb(242,242,242)",
+          "bg": "rgb(143,136,174)",
+          "large": true,
+          "requiredRatio": 3,
+          "sourceFile": "compositions/perlin-dissolve.html"
+        },
+        "reason": "The pinned example uses #f2f2f2 text over the source shader's #8f88ae palette. See components/docs/examples/perlin-dissolve-example.tsx:64 and registry/remocn/perlin-dissolve/index.tsx:31-35. This exact glyph, selector and color pair is inherited; the original finding remains recorded and every RGBA frame must still match."
+      },
+      {
+        "slug": "perlin-dissolve",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/perlin-dissolve/index.tsx",
+          "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+          "config": "registry/remocn/perlin-dissolve/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "text": "s",
+          "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(10)",
+          "fg": "rgb(242,242,242)",
+          "bg": "rgb(143,136,174)",
+          "large": true,
+          "requiredRatio": 3,
+          "sourceFile": "compositions/perlin-dissolve.html"
+        },
+        "reason": "The pinned example uses #f2f2f2 text over the source shader's #8f88ae palette. See components/docs/examples/perlin-dissolve-example.tsx:64 and registry/remocn/perlin-dissolve/index.tsx:31-35. This exact glyph, selector and color pair is inherited; the original finding remains recorded and every RGBA frame must still match."
+      },
+      {
+        "slug": "perlin-dissolve",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/perlin-dissolve/index.tsx",
+          "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+          "config": "registry/remocn/perlin-dissolve/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "text": "s",
+          "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(11)",
+          "fg": "rgb(242,242,242)",
+          "bg": "rgb(143,136,174)",
+          "large": true,
+          "requiredRatio": 3,
+          "sourceFile": "compositions/perlin-dissolve.html"
+        },
+        "reason": "The pinned example uses #f2f2f2 text over the source shader's #8f88ae palette. See components/docs/examples/perlin-dissolve-example.tsx:64 and registry/remocn/perlin-dissolve/index.tsx:31-35. This exact glyph, selector and color pair is inherited; the original finding remains recorded and every RGBA frame must still match."
+      },
+      {
+        "slug": "perlin-dissolve",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/perlin-dissolve/index.tsx",
+          "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+          "config": "registry/remocn/perlin-dissolve/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "text": "o",
+          "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(12)",
+          "fg": "rgb(242,242,242)",
+          "bg": "rgb(143,136,174)",
+          "large": true,
+          "requiredRatio": 3,
+          "sourceFile": "compositions/perlin-dissolve.html"
+        },
+        "reason": "The pinned example uses #f2f2f2 text over the source shader's #8f88ae palette. See components/docs/examples/perlin-dissolve-example.tsx:64 and registry/remocn/perlin-dissolve/index.tsx:31-35. This exact glyph, selector and color pair is inherited; the original finding remains recorded and every RGBA frame must still match."
+      },
+      {
+        "slug": "perlin-dissolve",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/perlin-dissolve/index.tsx",
+          "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+          "config": "registry/remocn/perlin-dissolve/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "text": "l",
+          "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(13)",
+          "fg": "rgb(242,242,242)",
+          "bg": "rgb(143,136,174)",
+          "large": true,
+          "requiredRatio": 3,
+          "sourceFile": "compositions/perlin-dissolve.html"
+        },
+        "reason": "The pinned example uses #f2f2f2 text over the source shader's #8f88ae palette. See components/docs/examples/perlin-dissolve-example.tsx:64 and registry/remocn/perlin-dissolve/index.tsx:31-35. This exact glyph, selector and color pair is inherited; the original finding remains recorded and every RGBA frame must still match."
+      },
+      {
+        "slug": "perlin-dissolve",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/perlin-dissolve/index.tsx",
+          "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+          "config": "registry/remocn/perlin-dissolve/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "text": "v",
+          "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(14)",
+          "fg": "rgb(242,242,242)",
+          "bg": "rgb(143,136,174)",
+          "large": true,
+          "requiredRatio": 3,
+          "sourceFile": "compositions/perlin-dissolve.html"
+        },
+        "reason": "The pinned example uses #f2f2f2 text over the source shader's #8f88ae palette. See components/docs/examples/perlin-dissolve-example.tsx:64 and registry/remocn/perlin-dissolve/index.tsx:31-35. This exact glyph, selector and color pair is inherited; the original finding remains recorded and every RGBA frame must still match."
+      },
+      {
+        "slug": "perlin-dissolve",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/perlin-dissolve/index.tsx",
+          "entry": "components/docs/examples/perlin-dissolve-example.tsx",
+          "config": "registry/remocn/perlin-dissolve/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "text": "e",
+          "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(15)",
+          "fg": "rgb(242,242,242)",
+          "bg": "rgb(143,136,174)",
+          "large": true,
+          "requiredRatio": 3,
+          "sourceFile": "compositions/perlin-dissolve.html"
+        },
+        "reason": "The pinned example uses #f2f2f2 text over the source shader's #8f88ae palette. See components/docs/examples/perlin-dissolve-example.tsx:64 and registry/remocn/perlin-dissolve/index.tsx:31-35. This exact glyph, selector and color pair is inherited; the original finding remains recorded and every RGBA frame must still match."
+      }
+    ],
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/perlin-dissolve/remocn.mp4",
+    "referenceVideo": "public/previews/perlin-dissolve/reference.mp4",
     "hyperframesVideo": "public/previews/perlin-dissolve/hyperframes.mp4",
-    "summary": "parity/perlin-dissolve-diff/summary.json"
+    "thumbnail": "public/previews/perlin-dissolve/thumbnail.png",
+    "summary": "parity/perlin-dissolve-diff/summary.json",
+    "perFrameSsim": "parity/perlin-dissolve-diff/ssim.log",
+    "hyperframesCheck": "parity/perlin-dissolve-diff/hyperframes-check.log",
+    "worstFrame": "parity/perlin-dissolve-diff/worst-frame.png",
+    "referenceAlpha": "parity/perlin-dissolve-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/perlin-dissolve-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/perlin-dissolve-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/perlin-dissolve-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/perlin-dissolve/reference.mp4": "ec3de55992e0382d68e9e17c4fd919ebf0d42d51af5cfc8ca48076cfcfa88f32",
+    "public/previews/perlin-dissolve/hyperframes.mp4": "7394ecdf3f930c908dd069de26373b3478c3ca48524cd824d09dd1f5d93f250e",
+    "public/previews/perlin-dissolve/thumbnail.png": "77b1dbc6c53fcb7d10040e8278a08175c57f5c58814768f4bd797cb1755caf0a",
+    "parity/perlin-dissolve-diff/summary.json": "e88f8e7616919acb70af62888e3a33d05ecd5c9b05b093f26fd8376c7b0631a1",
+    "parity/perlin-dissolve-diff/ssim.log": "7c762be84c60d4558334cdf17b454f4553b42ff007b305d913e8a3ac68a8ce3b",
+    "parity/perlin-dissolve-diff/hyperframes-check.log": "692fdcd2c83ff5b7ed91f9dcd3dbbdb541b22691c4d03e6cf009e59724d27853",
+    "parity/perlin-dissolve-diff/worst-frame.png": "837249be9f27e02512d3ba07597e0eff1b57921ac289537b7705ec3d97d3d667",
+    "parity/perlin-dissolve-diff/reference-alpha.framemd5": "adfd21ad9324abcc9e7e316f5491b18ba1c49f3330160e5ec3b693dc6720e2e1",
+    "parity/perlin-dissolve-diff/hyperframes-alpha.framemd5": "adfd21ad9324abcc9e7e316f5491b18ba1c49f3330160e5ec3b693dc6720e2e1",
+    "parity/perlin-dissolve-diff/reference-rgba.framemd5": "f024ec62474fd0dba1300d1decdaeffcbafca07f0440a152200fbc4c2ea16526",
+    "parity/perlin-dissolve-diff/hyperframes-rgba.framemd5": "c96fe0e0824b8e69ff0fc1ee7537e2fbe83d47482a1f5cb7c6f9ad5d60fc5b32"
   }
 }

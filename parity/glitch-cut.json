@@ -2,7 +2,7 @@
   "slug": "glitch-cut",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/glitch-cut/index.tsx",
     "entry": "components/docs/examples/glitch-cut-example.tsx",
     "config": "registry/remocn/glitch-cut/config.ts",
@@ -17,17 +17,28 @@
       "intensity": 1,
       "slices": 24,
       "rgbSplit": 1,
-      "blockNoise": 0.6
+      "blockNoise": 0.6,
+      "speed": 1
     },
     "background": "#0a0a0a"
+  },
+  "filesSha256": {
+    "registry-item.json": "93de4c3a95467a9bac92c730d677b87c3c4d78f3aab5e6e3776026a3e3e2068f",
+    "glitch-cut.html": "7df39a35205b68fababe36817c5f91adebbf15bce8206271ea56106f8db0e6f2",
+    "glitch-cut.runtime.js": "c41a5689f230e6abc9e8b32af4326c72af892291d8c54b5c01e7f61976d8f73b",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "GeistMono-Latin.woff2": "af61b969e7f999969f6af576e584ee85dca301a008a76be1251d172d56b9904c",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/GeistMono-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f"
   },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "cfb01c16293619877ab5ff227d329a015f0e46845e7af2558234f4f2e68e7eed",
+  "fingerprint": "54f0e066ee9a159e7f92fa56a06eaaf7d1e73b9dce5f0a989c9ecd88dba44e59",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 78,
@@ -36,6 +47,11 @@
     "p05Ssim": 1,
     "p95Ssim": 1,
     "alpha": {
+      "frameCount": 78,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 78,
       "mismatchedFrames": [],
       "pass": true
@@ -49,6 +65,8 @@
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
     "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
@@ -61,6 +79,21 @@
     "hyperframesCheck": "parity/glitch-cut-diff/hyperframes-check.log",
     "worstFrame": "parity/glitch-cut-diff/worst-frame.png",
     "referenceAlpha": "parity/glitch-cut-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/glitch-cut-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/glitch-cut-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/glitch-cut-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/glitch-cut-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/glitch-cut/reference.mp4": "8ce7265f881ee7a9c69bb784e7edefa26e9ac748ebdf824f11ca3ed31500a883",
+    "public/previews/glitch-cut/hyperframes.mp4": "8ce7265f881ee7a9c69bb784e7edefa26e9ac748ebdf824f11ca3ed31500a883",
+    "public/previews/glitch-cut/thumbnail.png": "24a2874b1a8e5e8846e85cd39d5b30b8cb270de5a8d0584622f7259bd1bf3fe7",
+    "parity/glitch-cut-diff/summary.json": "24b88d282ebacf1adf5c0a81e31c88224852fe40f95c49e9bdded49734ed1975",
+    "parity/glitch-cut-diff/ssim.log": "04dc131114aea7b75acd96fd3d754c5e706f74bfd6afc86e03abfb81ea4d4b2c",
+    "parity/glitch-cut-diff/hyperframes-check.log": "41870c244af48678821af4d8a4e5c3c1b56367b08b2857ca7173850d7f83a0df",
+    "parity/glitch-cut-diff/worst-frame.png": "0016e0bc88a136ae11edb8a3d4311a8f0cf7fe9ed73741da05aabd6e2d859173",
+    "parity/glitch-cut-diff/reference-alpha.framemd5": "2a0365026e5102227b7e3738d2560a35dfaa3e498994b34013a8f6a7ddf9f686",
+    "parity/glitch-cut-diff/hyperframes-alpha.framemd5": "2a0365026e5102227b7e3738d2560a35dfaa3e498994b34013a8f6a7ddf9f686",
+    "parity/glitch-cut-diff/reference-rgba.framemd5": "6272072df66cc05e75a3afccf7c4f7056ad3865a20d9249f369c42169b97f90c",
+    "parity/glitch-cut-diff/hyperframes-rgba.framemd5": "6272072df66cc05e75a3afccf7c4f7056ad3865a20d9249f369c42169b97f90c"
   }
 }

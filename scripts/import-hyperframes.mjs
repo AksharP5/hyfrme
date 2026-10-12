@@ -7,10 +7,10 @@ import { parseHyperframesVariables } from "./hyperframes-variables.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const repository = "https://github.com/heygen-com/hyperframes";
-const commit = "daa44fcd753d9055aa3c954ad74f09a4e4389780";
+const commit = "5c52f72399e21f8dcf3ede2bf2d24978c6522a94";
 const sourceRoot = resolve(
   root,
-  process.env.HYPERFRAMES_SOURCE ?? ".work/hyperframes-daa44fcd",
+  process.env.HYPERFRAMES_SOURCE ?? ".work/hyperframes-5c52f723",
 );
 const inventoryPath = resolve(root, "catalog/hyperframes-upstream.json");
 const families = {

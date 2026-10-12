@@ -2,7 +2,7 @@
   "slug": "shader-perlin-noise",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shader-perlin-noise/index.tsx",
     "config": "registry/remocn/shader-perlin-noise/config.ts",
     "license": "MIT"
@@ -21,25 +21,77 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "2a674d4583d1e61c7cdcebdf0905ca3de4097d8758a33b565cfd7b17b71b6d75",
+    "shader-perlin-noise.html": "b1a0beccc70dcdf4893a06ada3e2b84c9cc46de3ae6b68bfc18ea3def83e97a5",
+    "shader-perlin-noise.runtime.js": "1a5b7894ffa70efc551465435442ac56173390e5586d40ede0d8fe0b6fb3ba4d",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md": "fc408cbbf99a20fbc88c2296a04bac7dadbe7114f2456673de3e5b7986cfd19d"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "c4b798bd7337ad3b615349fbffb41a6394c69250a809b82bccae0da3c9dae97c",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.994323,
-    "minSsim": 0.992592,
-    "p05Ssim": 0.993943,
-    "p95Ssim": 0.994834,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/shader-perlin-noise/remocn.mp4",
+    "referenceVideo": "public/previews/shader-perlin-noise/reference.mp4",
     "hyperframesVideo": "public/previews/shader-perlin-noise/hyperframes.mp4",
-    "summary": "parity/shader-perlin-noise-diff/summary.json"
+    "thumbnail": "public/previews/shader-perlin-noise/thumbnail.png",
+    "summary": "parity/shader-perlin-noise-diff/summary.json",
+    "perFrameSsim": "parity/shader-perlin-noise-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-perlin-noise-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-perlin-noise-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-perlin-noise-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-perlin-noise-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shader-perlin-noise-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shader-perlin-noise-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shader-perlin-noise/reference.mp4": "641c831646e46786e17fd9505dc6819620499b22487a862c31f7c1915164c0de",
+    "public/previews/shader-perlin-noise/hyperframes.mp4": "641c831646e46786e17fd9505dc6819620499b22487a862c31f7c1915164c0de",
+    "public/previews/shader-perlin-noise/thumbnail.png": "752c8d11cc92deed602b7f1bdd5fa0df7c234d19fa5ecc39737da44255bce6a0",
+    "parity/shader-perlin-noise-diff/summary.json": "ad55b29e05e75e155f68631a7d07dcf33cfd0beba9f35e6e6cb01ccc34051e53",
+    "parity/shader-perlin-noise-diff/ssim.log": "c4fbedb2045d104b60568467b9860d7ee5ffeee1f88dedd0034e5cf393a3221a",
+    "parity/shader-perlin-noise-diff/hyperframes-check.log": "8258343d79654723604d6ad3f137e02961d34e3ad42968c060314f983e44db9e",
+    "parity/shader-perlin-noise-diff/worst-frame.png": "f31c1e35643370e3186310ed776ef43acdb734e71d826aea80d7d1113d972636",
+    "parity/shader-perlin-noise-diff/reference-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-perlin-noise-diff/hyperframes-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-perlin-noise-diff/reference-rgba.framemd5": "21fd14da02e9a1b452826108994142bda6d5ac9a76887fecf6d6e6b3f9e9338f",
+    "parity/shader-perlin-noise-diff/hyperframes-rgba.framemd5": "21fd14da02e9a1b452826108994142bda6d5ac9a76887fecf6d6e6b3f9e9338f"
   }
 }

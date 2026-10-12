@@ -2,7 +2,7 @@
   "slug": "scale-down-fade",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/scale-down-fade/index.tsx",
     "config": "registry/remocn/scale-down-fade/config.ts",
     "license": "MIT"
@@ -21,25 +21,76 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "e9e07d02b1ed87fc049134bb739ecd389eae41e379ad8f4749e30dae50a500ae",
+    "scale-down-fade.html": "1cf0fe2217c686b32d7fececa057ff43547822f89c07f5ddae79370ba701d9fe",
+    "scale-down-fade.runtime.js": "03b71d30dbf10a821f6215549bf2b7f812a219ea6789ab5c5aab916c4ed51904",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "cfc9b468fe20f82c9d0b853dddcadb1961faedf23c0beadb60bf11773b1b4f79",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.998361,
-    "minSsim": 0.9981,
-    "p05Ssim": 0.998208,
-    "p95Ssim": 0.998581,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/scale-down-fade/remocn.mp4",
+    "referenceVideo": "public/previews/scale-down-fade/reference.mp4",
     "hyperframesVideo": "public/previews/scale-down-fade/hyperframes.mp4",
-    "summary": "parity/scale-down-fade-diff/summary.json"
+    "thumbnail": "public/previews/scale-down-fade/thumbnail.png",
+    "summary": "parity/scale-down-fade-diff/summary.json",
+    "perFrameSsim": "parity/scale-down-fade-diff/ssim.log",
+    "hyperframesCheck": "parity/scale-down-fade-diff/hyperframes-check.log",
+    "worstFrame": "parity/scale-down-fade-diff/worst-frame.png",
+    "referenceAlpha": "parity/scale-down-fade-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/scale-down-fade-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/scale-down-fade-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/scale-down-fade-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/scale-down-fade/reference.mp4": "3dc73bcce61bef70d14a9e1760cc8d39fff95be1db3af912d32e934e82bedf66",
+    "public/previews/scale-down-fade/hyperframes.mp4": "3dc73bcce61bef70d14a9e1760cc8d39fff95be1db3af912d32e934e82bedf66",
+    "public/previews/scale-down-fade/thumbnail.png": "b83cc35bb554a979cdd09cfbf79ae01f49c2878956d6e49d0224ec283d353d19",
+    "parity/scale-down-fade-diff/summary.json": "b836772793766404c0492e741437d4fb40b614cf31be7aace9f9b10b16c85450",
+    "parity/scale-down-fade-diff/ssim.log": "4638ac3b2b03d74f8b056c3824e13d904997bddfbc1c0f3b8d655822a1eb000b",
+    "parity/scale-down-fade-diff/hyperframes-check.log": "9e48fc3c1c3e07c87a805640438aa7ceaad3126b676a6815443d4168a36a618a",
+    "parity/scale-down-fade-diff/worst-frame.png": "b6b80f4263bf6c8c16375e4217852feab2c6e68f51a427bd3f5d799e52aa49c4",
+    "parity/scale-down-fade-diff/reference-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/scale-down-fade-diff/hyperframes-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/scale-down-fade-diff/reference-rgba.framemd5": "869f4cef2ea70e71a71611972160454328631179ae48ff6850d33d561fc7310d",
+    "parity/scale-down-fade-diff/hyperframes-rgba.framemd5": "869f4cef2ea70e71a71611972160454328631179ae48ff6850d33d561fc7310d"
   }
 }

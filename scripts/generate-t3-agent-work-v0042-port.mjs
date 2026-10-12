@@ -1,5 +1,6 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
@@ -75,8 +76,7 @@ const scriptJson = (value) => JSON.stringify(value).replaceAll("</", "<\\/");
 
 const stages = ["dark", "light"].flatMap((theme) => phases.map((phase) =>
   `<div class="${theme} t3-stage t3-state" data-t3-theme="${theme}" data-t3-state="${phase}" style="${themesCss[theme].replaceAll('"', "&quot;")}"${theme === "light" || (theme === "dark" && phase !== "thinking") ? " hidden" : ""}>${states[theme][phase]}</div>`)).join("\n");
-const captures = ["dark", "light"].flatMap((theme) => Array.from({ length: 10 }, (_, row) =>
-  `<div data-layout-ignore class="t3-pixel-capture" data-t3-pixel-theme="${theme}" data-t3-pixel-row="${row}" style="background-image:url(compositions/${name}-capture-${theme}-${String(row).padStart(2, "0")}.webp)" hidden></div>`)).join("\n");
+const captures = '<canvas data-layout-ignore class="t3-pixel-capture" width="1200" height="659" hidden></canvas>';
 const html = `<!doctype html>
 <html lang="en" data-composition-variables='${escapeAttribute(JSON.stringify(variables))}'>
 <head><meta charset="utf-8"></head><body><template>
@@ -84,9 +84,14 @@ const html = `<!doctype html>
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-stage[hidden], .t3-state[hidden] { display: none !important; }
   .t3-state:not([hidden]) { display: contents; }
-  .t3-pixel-capture { position: absolute; inset: 0; z-index: 100; pointer-events: none; background-repeat: no-repeat; background-size: 14400px 659px; background-position: 0 0; }
+  /* Captured frames already include native tooltips at z-index 140. */
+  .t3-pixel-capture { position: absolute; inset: 0; z-index: 200; pointer-events: none; width: 1200px; height: 659px; }
   .t3-pixel-capture[hidden] { display: none !important; }
   .base-ui-disable-scrollbar { scrollbar-width: none; }
   .base-ui-disable-scrollbar::-webkit-scrollbar { display: none; }
@@ -94,6 +99,7 @@ const html = `<!doctype html>
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
 ${stages}
@@ -104,6 +110,7 @@ ${captures}
 window.__timelines = window.__timelines || {};
 const defaults = ${scriptJson(defaults)};
 const options = { ...defaults, ...(window.__hyperframes?.getVariables() ?? {}) };
+const pixelMode = options.renderMode === 'pixel-verified' && Object.entries(defaults).every(([key, value]) => key === 'theme' || key === 'renderMode' || options[key] === value);
 const stages = [...document.querySelectorAll('#root .t3-stage')];
 for (const stage of stages) {
   for (const [key, value] of Object.entries(${scriptJson(fontTheme)})) stage.style.setProperty(key, value);
@@ -123,6 +130,11 @@ for (const stage of stages) {
   const editor = stage.querySelector('[data-testid="composer-editor"]');
   if (editor && options.composerPlaceholder) editor.setAttribute('aria-placeholder', String(options.composerPlaceholder));
 }
+const capture = document.querySelector('canvas.t3-pixel-capture');
+const captureContext = capture.getContext('2d');
+if (!captureContext) throw new Error('Native frame capture requires Canvas 2D');
+captureContext.imageSmoothingEnabled = false;
+let captureImages = [];
 const clock = { frame: 0 };
 function draw() {
   const frame = Math.min(119, Math.max(0, Math.round(clock.frame)));
@@ -131,24 +143,33 @@ function draw() {
   const collapseFrame = Math.min(119, Math.max(detailFrame + 1, Number(options.collapseFrame)));
   const phase = frame < commandFrame ? 'thinking' : frame < detailFrame ? 'command' : frame < collapseFrame ? 'detail' : 'collapsed';
   for (const stage of stages) {
-    stage.hidden = stage.dataset.t3Theme !== options.theme || stage.dataset.t3State !== phase;
+    stage.hidden = pixelMode || stage.dataset.t3Theme !== options.theme || stage.dataset.t3State !== phase;
     if (!stage.hidden) {
       const timer = stage.querySelector('[data-timeline-row-kind="working"] span.tabular-nums');
       if (timer) timer.textContent = String(options.workingDuration);
     }
   }
-  const pixelMode = options.renderMode === 'pixel-verified';
   const row = Math.floor(frame / 12);
-  for (const capture of document.querySelectorAll('[data-t3-pixel-theme]')) {
-    const active = pixelMode && capture.dataset.t3PixelTheme === options.theme && Number(capture.dataset.t3PixelRow) === row;
-    capture.hidden = !active;
-    if (active) capture.style.backgroundPosition = '-' + ((frame % 12) * 1200) + 'px 0px';
-  }
+  capture.hidden = !pixelMode;
+  if (pixelMode && captureImages[row]) captureContext.drawImage(captureImages[row], (frame % 12) * 1200, 0, 1200, 659, 0, 0, 1200, 659);
 }
 draw();
-const timeline = gsap.timeline({ paused: true });
-timeline.to(clock, { frame: 120, duration: 4, ease: 'none', onUpdate: draw });
-window.__timelines['${name}'] = timeline;
+const captureReady = pixelMode
+  ? Promise.all(${scriptJson(['dark', 'light'].map((theme) => Array.from({ length: 10 }, (_, row) => `compositions/${name}-capture-${theme}-${String(row).padStart(2, '0')}.webp`)))}[options.theme === 'light' ? 1 : 0].map(async (source) => {
+      const image = new Image();
+      image.src = source;
+      await image.decode();
+      return image;
+    }))
+  : Promise.resolve([]);
+window.__hyfrmeReady = captureReady.then((images) => {
+  captureImages = images;
+  draw();
+  const timeline = gsap.timeline({ paused: true });
+  timeline.to(clock, { frame: 120, duration: 4, ease: 'none', onUpdate: draw });
+  window.__timelines['${name}'] = timeline;
+  window.__hfForceTimelineRebind?.();
+});
 </script></template></body></html>`;
 
 await mkdir(resolve(output, "licenses"), { recursive: true });
@@ -160,7 +181,7 @@ for (const theme of ["dark", "light"]) for (let row = 0; row < 10; row++) {
 }
 await copyFile(resolve(root, "parity/t3-gallery/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
 await copyFile(resolve(root, "assets/t3-code/v0.0.35/agent-work-t3-third-party-notices.md"), resolve(output, "licenses/T3-THIRD_PARTY_NOTICES.md"));
-await writeFile(resolve(output, "README.md"), `# T3 Code: Agent Work\n\nThis four-second block reproduces the official T3 Code v0.0.42 workspace at 1200 × 659 in desktop dark and light. Its native capture follows a Hyfrme prompt from Thinking to a live npm command, expands the command details, then collapses them. The live command state is seeded in an isolated local workspace; no AI provider executes.\n\nThe default pixel-verified mode replays the lossless native capture. Switch to editable DOM mode before changing project, branch, thread, prompt, command, age, duration, theme, or event-frame variables. The pinned default native capture strips round-trip every frame at SSIM 1.0. Source: https://github.com/pingdotgg/t3code/tree/${dark.sourceCommit}.\n`);
+await writeFile(resolve(output, "README.md"), `# T3 Code: Agent Work\n\nThis four-second block reproduces the official T3 Code v0.0.42 workspace at 1200 × 659 in desktop dark and light. Its native capture follows a Hyfrme prompt from Thinking to a live npm command, expands the command details, then collapses them. The live command state is seeded in an isolated local workspace; no AI provider executes.\n\nThe default pixel-verified mode replays the lossless native capture through one persistent canvas with synchronous frame draws. Editing content or event timing automatically uses editable DOM. Unchanged content and timing retain the native recording in either theme; editable DOM mode can also be selected explicitly. The pinned default native capture strips round-trip every frame at SSIM 1.0. Source: https://github.com/pingdotgg/t3code/tree/${dark.sourceCommit}.\n`);
 await writeFile(resolve(output, "registry-item.json"), `${JSON.stringify({
   $schema: "https://hyperframes.heygen.com/schema/registry-item.json",
   name, type: "hyperframes:block", title: "T3 Code: Agent Work",

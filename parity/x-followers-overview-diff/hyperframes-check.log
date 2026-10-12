@@ -24,34 +24,45 @@
     "infoCount": 2,
     "findings": [
       {
-        "code": "text_occluded",
+        "code": "container_overflow",
         "severity": "info",
-        "time": 7.333,
-        "selector": "#x-followers-overview-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
-        "message": "Text is hidden beneath an opaque element.",
+        "time": 4.667,
+        "selector": "#x-followers-overview-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+        "message": "Nowrap text is wider than its container.",
         "rect": {
-          "left": 600.81,
-          "top": 271,
-          "right": 757.19,
-          "bottom": 317,
-          "width": 156.38,
-          "height": 46
+          "left": 284.38,
+          "top": 333.77,
+          "right": 635.82,
+          "bottom": 387.02,
+          "width": 351.45,
+          "height": 53.24
         },
-        "containerSelector": "#x-followers-overview-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(92)",
-        "text": "@remocn",
-        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
-        "coveredFraction": 0.02,
+        "containerSelector": "#x-followers-overview-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 287.03,
+          "top": 327.8,
+          "right": 633.17,
+          "bottom": 392.19,
+          "width": 346.14,
+          "height": 64.39
+        },
+        "overflow": {
+          "left": 2.65,
+          "right": 2.65
+        },
         "dataAttributes": {},
         "sourceFile": "compositions/x-followers-overview.html",
         "bbox": {
-          "x": 600.81,
-          "y": 271,
-          "width": 156.38,
-          "height": 46
+          "x": 284.38,
+          "y": 333.77,
+          "width": 351.45,
+          "height": 53.24
         },
-        "firstSeen": 7.333,
-        "lastSeen": 7.333,
-        "occurrences": 1
+        "firstSeen": 4.667,
+        "lastSeen": 4.667,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "text_occluded",
@@ -81,7 +92,8 @@
         },
         "firstSeen": 7.333,
         "lastSeen": 7.333,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       }
     ],
     "duration": 12,
@@ -128,6 +140,10 @@
     "checked": 12,
     "passed": 12
   },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
   "snapshots": {
     "enabled": false,
     "files": [],
@@ -135,8 +151,8 @@
     "findingFiles": []
   },
   "_meta": {
-    "version": "0.8.30",
-    "latestVersion": "0.8.32",
+    "version": "0.8.99",
+    "latestVersion": "0.8.114",
     "updateAvailable": true
   }
 }

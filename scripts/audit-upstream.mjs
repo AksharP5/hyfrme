@@ -285,14 +285,18 @@ authored registry manifests and the official Remotion-to-HyperFrames source lint
   .map(([family, count]) => `${family} ${count}`)
   .join(", ")}
 
-## Verified progress
+## Published inventory
+
+These counts describe catalog coverage. They do not establish current 1:1
+render parity. That requires complete, exact decoded RGBA comparisons against
+the pinned source, with proof fingerprints matching the current installed files.
 
 - ${publishedCount}/${visualNames.size} visual ports published in the local verified registry.
 - ${publishedIconCount}/${iconNames.size} animated icons published.
 - ${publishedTextCount}/${textNames.size} typography/effect ports published.
 - ${publishedCoreCount}/${coreNames.size} composition/data ports published.
 - ${publishedPrimitiveCount}/${primitiveNames.size} UI primitive ports published.
-${standaloneNames.size > 0 ? `- ${publishedStandaloneCount}/${standaloneNames.size} standalone visual ports published (${[...standaloneNames].map((name) => `\`${name}\``).join(", ")}).\n` : ""}- ${missingNames.length} visual items remain.
+${standaloneNames.size > 0 ? `- ${publishedStandaloneCount}/${standaloneNames.size} standalone visual ports published (${[...standaloneNames].map((name) => `\`${name}\``).join(", ")}).\n` : ""}- ${missingNames.length} visual items missing.
 - ${extraNames.filter((name) => !name.startsWith("hyperframes-")).length} local-only registry items.
 - ${extraNames.filter((name) => name.startsWith("hyperframes-")).length} native official HyperFrames items (separate source import).
 

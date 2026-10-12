@@ -99,7 +99,28 @@ void main() {
   color *= 1.0 - yellow * YELLOW_ABSORB;
 
   outColor = vec4(color * source.a, source.a);
-}`;function _y(t){let l=t.replace("#",""),e=l.length===3?l.split("").map(u=>u+u).join(""):l,a=Number.parseInt(e,16);return Number.isNaN(a)?[1,1,1]:[(a>>16&255)/255,(a>>8&255)/255,(a&255)/255]}var My=Pm(Ay,({gl:t,uniform:l,passedProps:e})=>{let{cell:a,angle:u,shift:n,paper:c}=e;t.uniform1f(l("u_cell"),a),t.uniform1f(l("u_angle"),u),t.uniform1f(l("u_shift"),n),t.uniform3fv(l("u_paper"),_y(c))}),Oy=({children:t})=>(0,Zf.jsx)(ha,{children:t}),Dy=t1({shader:My,fallback:Oy}),l1=({dotSize:t=tc.dotSize,angle:l=tc.angle,misregistration:e=tc.misregistration,paperTint:a=tc.paperTint,children:u})=>{let{height:n}=In();return(0,Zf.jsx)(Dy,{cell:Math.max(t,1)/n,angle:l*Math.PI/180,shift:e/n,paper:a,children:u})};var Vf=_t(Al());function e1({dotSize:t,angle:l,misregistration:e,paperTint:a}){return(0,Vf.jsx)(l1,{dotSize:t,angle:l,misregistration:e,paperTint:a,children:(0,Vf.jsx)(Wm,{})})}var lc=document.getElementById("hyfrme-source-root"),i1=JSON.parse(lc.dataset.hyfrmeAssets??"{}");Qm(i1);var Ry=(0,c1.createRoot)(lc,{identifierPrefix:lc.closest("[data-composition-file]")?.dataset.compositionId??"halftone-print"}),a1=window.__hyperframes.getVariables(),Uy={fps:30,width:1280,height:720,durationInFrames:90},Cy=["dotSize","angle","misregistration","paperTint"].reduce((t,l)=>(t[l]=i1[a1[l]]??a1[l],t),{}),Kf=t=>{Vm(t,Uy),(0,n1.flushSync)(()=>Ry.render(u1.default.createElement(e1,Cy)))};window.__hyfrmeRenderFrame=Kf;window.__hyfrmeReady=(async()=>{let t=new Set(["Geist"]);await Promise.all(Array.from(document.fonts).filter(l=>t.has(l.family.replaceAll('"',"").replaceAll("'",""))).map(l=>l.load())),await document.fonts.ready,Kf(0),await Xm(),Kf(0),await Promise.all(Array.from(lc.querySelectorAll("img")).map(l=>l.decode()))})();})();
+}`;function _y(t){let l=t.replace("#",""),e=l.length===3?l.split("").map(u=>u+u).join(""):l,a=Number.parseInt(e,16);return Number.isNaN(a)?[1,1,1]:[(a>>16&255)/255,(a>>8&255)/255,(a&255)/255]}var My=Pm(Ay,({gl:t,uniform:l,passedProps:e})=>{let{cell:a,angle:u,shift:n,paper:c}=e;t.uniform1f(l("u_cell"),a),t.uniform1f(l("u_angle"),u),t.uniform1f(l("u_shift"),n),t.uniform3fv(l("u_paper"),_y(c))}),Oy=({children:t})=>(0,Zf.jsx)(ha,{children:t}),Dy=t1({shader:My,fallback:Oy}),l1=({dotSize:t=tc.dotSize,angle:l=tc.angle,misregistration:e=tc.misregistration,paperTint:a=tc.paperTint,children:u})=>{let{height:n}=In();return(0,Zf.jsx)(Dy,{cell:Math.max(t,1)/n,angle:l*Math.PI/180,shift:e/n,paper:a,children:u})};var Vf=_t(Al());function e1({dotSize:t,angle:l,misregistration:e,paperTint:a}){return(0,Vf.jsx)(l1,{dotSize:t,angle:l,misregistration:e,paperTint:a,children:(0,Vf.jsx)(Wm,{})})}var lc=document.getElementById("hyfrme-source-root"),i1=JSON.parse(lc.dataset.hyfrmeAssets??"{}");Qm(i1);var Ry=(0,c1.createRoot)(lc,{identifierPrefix:lc.closest("[data-composition-file]")?.dataset.compositionId??"halftone-print"}),a1=window.__hyperframes.getVariables(),Uy={fps:30,width:1280,height:720,durationInFrames:90},Cy=["dotSize","angle","misregistration","paperTint","speed"].reduce((t,l)=>(t[l]=i1[a1[l]]??a1[l],t),{}),Kf=t=>{Vm(t,Uy),(0,n1.flushSync)(()=>Ry.render(u1.default.createElement(e1,Cy)))};window.__hyfrmeRenderFrame=Kf;window.__hyfrmeReady=(async()=>{let t=new Set(["Geist"]);await Promise.all(Array.from(document.fonts).filter(l=>t.has(l.family.replaceAll('"',"").replaceAll("'",""))).map(l=>l.load())),await document.fonts.ready,Kf(0),await Xm(),Kf(0),await Promise.all(Array.from(lc.querySelectorAll("img")).map(l=>l.decode()))})();})();
+/*!
+ * Cubic Bézier evaluation adapted from Gaëtan Renaudeau's bezier-easing
+ * and the React Native implementation. Copyright (c) 2014-2015 Gaëtan
+ * Renaudeau. Portions copyright (c) Facebook, Inc. and its affiliates.
+ * MIT License
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 /*! Bundled license information:
 
 react/cjs/react.production.js:

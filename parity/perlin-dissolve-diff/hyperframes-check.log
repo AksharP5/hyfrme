@@ -1,0 +1,734 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": false,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 0.215,
+        "selector": "#perlin-dissolve-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 460.36,
+          "top": 297.42,
+          "right": 819.64,
+          "bottom": 421.42,
+          "width": 359.28,
+          "height": 124
+        },
+        "containerSelector": "#perlin-dissolve-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > canvas:nth-of-type(1)",
+        "text": "Scene A",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 460.36,
+          "y": 297.42,
+          "width": 359.28,
+          "height": 124
+        },
+        "firstSeen": 0.215,
+        "lastSeen": 0.644,
+        "occurrences": 2,
+        "heldMs": 429.00000000000006
+      }
+    ],
+    "duration": 3.8666666666666667,
+    "samples": [
+      0.215,
+      0.644,
+      1.074,
+      1.504,
+      1.933,
+      2.363,
+      2.793,
+      3.222,
+      3.652
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 1,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": false,
+    "errorCount": 28,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "P",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 329.15625,
+          "y": 291.421875,
+          "width": 58.953125,
+          "height": 137.140625
+        },
+        "time": 2.793
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "e",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 388.109375,
+          "y": 291.421875,
+          "width": 51.9375,
+          "height": 137.140625
+        },
+        "time": 2.793
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "r",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 440.046875,
+          "y": 291.421875,
+          "width": 34.46875,
+          "height": 137.140625
+        },
+        "time": 2.793
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "l",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 474.515625,
+          "y": 291.421875,
+          "width": 23.71875,
+          "height": 137.140625
+        },
+        "time": 2.793
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "i",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(5)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 498.234375,
+          "y": 291.421875,
+          "width": 21.03125,
+          "height": 137.140625
+        },
+        "time": 2.793
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "n",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(6)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 519.265625,
+          "y": 291.421875,
+          "width": 52.90625,
+          "height": 137.140625
+        },
+        "time": 2.793
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "D",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(8)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 590.03125,
+          "y": 291.421875,
+          "width": 63.171875,
+          "height": 137.140625
+        },
+        "time": 2.793
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "i",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(9)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 653.203125,
+          "y": 291.421875,
+          "width": 21.03125,
+          "height": 137.140625
+        },
+        "time": 2.793
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "s",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(10)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 674.234375,
+          "y": 291.421875,
+          "width": 48.296875,
+          "height": 137.140625
+        },
+        "time": 2.793
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "s",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(11)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 722.53125,
+          "y": 291.421875,
+          "width": 48.296875,
+          "height": 137.140625
+        },
+        "time": 2.793
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "o",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(12)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 770.828125,
+          "y": 291.421875,
+          "width": 53.09375,
+          "height": 137.140625
+        },
+        "time": 2.793
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "l",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(13)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 823.921875,
+          "y": 291.421875,
+          "width": 23.71875,
+          "height": 137.140625
+        },
+        "time": 2.793
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "v",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(14)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 847.640625,
+          "y": 291.421875,
+          "width": 51.265625,
+          "height": 137.140625
+        },
+        "time": 2.793
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "e",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(15)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 898.90625,
+          "y": 291.421875,
+          "width": 51.9375,
+          "height": 137.140625
+        },
+        "time": 2.793
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "P",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 329.15625,
+          "y": 291.421875,
+          "width": 58.953125,
+          "height": 137.140625
+        },
+        "time": 3.652
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "e",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 388.109375,
+          "y": 291.421875,
+          "width": 51.9375,
+          "height": 137.140625
+        },
+        "time": 3.652
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "r",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 440.046875,
+          "y": 291.421875,
+          "width": 34.46875,
+          "height": 137.140625
+        },
+        "time": 3.652
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "l",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 474.515625,
+          "y": 291.421875,
+          "width": 23.71875,
+          "height": 137.140625
+        },
+        "time": 3.652
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "i",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(5)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 498.234375,
+          "y": 291.421875,
+          "width": 21.03125,
+          "height": 137.140625
+        },
+        "time": 3.652
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "n",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(6)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 519.265625,
+          "y": 291.421875,
+          "width": 52.90625,
+          "height": 137.140625
+        },
+        "time": 3.652
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "D",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(8)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 590.03125,
+          "y": 291.421875,
+          "width": 63.171875,
+          "height": 137.140625
+        },
+        "time": 3.652
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "i",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(9)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 653.203125,
+          "y": 291.421875,
+          "width": 21.03125,
+          "height": 137.140625
+        },
+        "time": 3.652
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "s",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(10)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 674.234375,
+          "y": 291.421875,
+          "width": 48.296875,
+          "height": 137.140625
+        },
+        "time": 3.652
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "s",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(11)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 722.53125,
+          "y": 291.421875,
+          "width": 48.296875,
+          "height": 137.140625
+        },
+        "time": 3.652
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "o",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(12)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 770.828125,
+          "y": 291.421875,
+          "width": 53.09375,
+          "height": 137.140625
+        },
+        "time": 3.652
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "l",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(13)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 823.921875,
+          "y": 291.421875,
+          "width": 23.71875,
+          "height": 137.140625
+        },
+        "time": 3.652
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "v",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(14)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 847.640625,
+          "y": 291.421875,
+          "width": 51.265625,
+          "height": 137.140625
+        },
+        "time": 3.652
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.98:1; WCAG AA requires 3:1.",
+        "text": "e",
+        "fg": "rgb(242,242,242)",
+        "bg": "rgb(143,136,174)",
+        "ratio": 2.98,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(66,66,66)",
+        "large": true,
+        "selector": "div > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div > div > span > span:nth-of-type(15)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/perlin-dissolve.html",
+        "bbox": {
+          "x": 898.90625,
+          "y": 291.421875,
+          "width": 51.9375,
+          "height": 137.140625
+        },
+        "time": 3.652
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      0.215,
+      1.074,
+      1.933,
+      2.793,
+      3.652
+    ],
+    "checked": 29,
+    "passed": 1
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.99",
+    "latestVersion": "0.8.140",
+    "updateAvailable": true
+  }
+}

@@ -2,7 +2,7 @@
   "slug": "accordion",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-ui/accordion/index.tsx",
     "entry": "components/docs/examples/accordion-example.tsx",
     "config": "registry/remocn-ui/accordion/config.ts",
@@ -20,25 +20,77 @@
     },
     "background": "oklch(1 0 0)"
   },
+  "filesSha256": {
+    "registry-item.json": "7f4b82f44f9d5a2800566bb4a013fd8ae364d67149263f962d224a424862d61d",
+    "accordion.html": "7e38570cebf69f625585269b8ab62e2e3f6c8b3ae4227d607f649ca40ac6bc19",
+    "accordion.runtime.js": "08df7084c85c79dc9b8a24b7bdb4f8e0a3aed77564f9c8cfb3c6b9fd2f7aca79",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "415cdf03377a531303550c18a900ac5c6f41902248f028c5bd8b22fab3c89af7",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 100,
-    "meanSsim": 0.999846,
-    "minSsim": 0.999759,
-    "p05Ssim": 0.99979,
-    "p95Ssim": 0.999937,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/accordion/remocn.mp4",
+    "referenceVideo": "public/previews/accordion/reference.mp4",
     "hyperframesVideo": "public/previews/accordion/hyperframes.mp4",
-    "summary": "parity/accordion-diff/summary.json"
+    "thumbnail": "public/previews/accordion/thumbnail.png",
+    "summary": "parity/accordion-diff/summary.json",
+    "perFrameSsim": "parity/accordion-diff/ssim.log",
+    "hyperframesCheck": "parity/accordion-diff/hyperframes-check.log",
+    "worstFrame": "parity/accordion-diff/worst-frame.png",
+    "referenceAlpha": "parity/accordion-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/accordion-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/accordion-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/accordion-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/accordion/reference.mp4": "bd464ebb39ff86f5ec88e0413bcbd9f59b912de6e60ea04a2384d5630e670d7a",
+    "public/previews/accordion/hyperframes.mp4": "bd464ebb39ff86f5ec88e0413bcbd9f59b912de6e60ea04a2384d5630e670d7a",
+    "public/previews/accordion/thumbnail.png": "59c32739ee6689ff61d578be5016c3ec78308d75e7808c3f89c4a5170ee264be",
+    "parity/accordion-diff/summary.json": "fa82c25c31adc9e19a6584c3ec9334d4f3e0235e8d5eae2f1afd6c757108a452",
+    "parity/accordion-diff/ssim.log": "56672b2c92229915a0dd393cc8a60627dbdc8ce3eba9f6efc2ed3a64381e3a73",
+    "parity/accordion-diff/hyperframes-check.log": "265a3c52b3abf8788b97f11200443ae14ef3e9a54dce8a249286b3dc4848acd5",
+    "parity/accordion-diff/worst-frame.png": "02cdfb163ea82da0b6ae0cedd5a3dfcf907692b7fb894457454d9bda03c3cb85",
+    "parity/accordion-diff/reference-alpha.framemd5": "a2937ec0be21934918c79b7fbd71e3b549036e98282df13982dd5a56ed01cea8",
+    "parity/accordion-diff/hyperframes-alpha.framemd5": "a2937ec0be21934918c79b7fbd71e3b549036e98282df13982dd5a56ed01cea8",
+    "parity/accordion-diff/reference-rgba.framemd5": "05e6ee422691bf753c11c8781d02433037e1cfb8f50bb17395f3ea0895560199",
+    "parity/accordion-diff/hyperframes-rgba.framemd5": "05e6ee422691bf753c11c8781d02433037e1cfb8f50bb17395f3ea0895560199"
   }
 }

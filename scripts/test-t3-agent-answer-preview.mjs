@@ -10,7 +10,8 @@ const project = await mkdtemp(join(tmpdir(), `${name}-direct-preview-`));
 const source = await readFile(resolve(block, `${name}.html`), "utf8");
 const template = /<template(?:\s[^>]*)?>([\s\S]*?)<\/template>/i;
 
-if (!template.test(source)) throw new Error(`${name} registry source has no preview template`);
+if (!template.test(source))
+  throw new Error(`${name} registry source has no preview template`);
 
 const preview = source
   .replace(template, "$1")
@@ -29,11 +30,14 @@ const preview = source
 
 try {
   await writeFile(resolve(project, "index.html"), preview);
-  await copyFile(resolve(block, "t3-code-gsap.min.js"), resolve(project, "t3-code-gsap.min.js"));
+  await copyFile(
+    resolve(block, "t3-code-gsap.min.js"),
+    resolve(project, "t3-code-gsap.min.js"),
+  );
 
   const result = spawnSync(
     "npx",
-    ["--yes", "hyperframes@0.8.75", "check", project, "--json"],
+    ["--offline", "--no", "hyperframes@0.8.99", "check", project, "--json"],
     { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 },
   );
   const jsonStart = result.stdout.indexOf("{");
@@ -46,11 +50,17 @@ try {
 
   const report = JSON.parse(result.stdout.slice(jsonStart));
   if (result.status !== 0 || !report.ok) {
-    const errors = report.layout?.findings?.filter(({ severity }) => severity === "error") ?? [];
-    throw new Error(`${name} direct catalog preview check failed (exit ${result.status}): ${JSON.stringify(errors).slice(0, 3000)}`);
+    const errors =
+      report.layout?.findings?.filter(({ severity }) => severity === "error") ??
+      [];
+    throw new Error(
+      `${name} direct catalog preview check failed (exit ${result.status}): ${JSON.stringify(errors).slice(0, 3000)}`,
+    );
   }
 
-  console.log(`${name} direct catalog preview root passed the full HyperFrames check.`);
+  console.log(
+    `${name} direct catalog preview root passed the full HyperFrames check.`,
+  );
 } finally {
   await rm(project, { recursive: true, force: true });
 }

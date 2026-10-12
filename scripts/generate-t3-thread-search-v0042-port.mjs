@@ -1,5 +1,8 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { createHash } from "node:crypto";
+import { spawnSync } from "node:child_process";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
@@ -19,6 +22,41 @@ const snapshots = await Promise.all(fixtures.map(async (fixture) => Object.fromE
     .replace(/(<span[^>]*class="[^"]*\[text-box:trim-both_cap_alphabetic\][^"]*")/g, "$1 data-layout-ignore")
     .replaceAll('<span class="pointer-events-none absolute', '<span data-layout-allow-overflow class="pointer-events-none absolute')]),
 ))));
+const inputCropName = "native-thread-search-input-v0042-provenance.json";
+const inputCrop = JSON.parse(await readFile(resolve(source, inputCropName), "utf8"));
+const hash = bytes => createHash("sha256").update(bytes).digest("hex");
+if (JSON.stringify(inputCrop.crop) !== JSON.stringify({ left:40, top:57, width:83, height:30 }) ||
+    Object.keys(inputCrop.themes).sort().join(",") !== "dark,light" ||
+    JSON.stringify(inputCrop.allowedFrames) !== JSON.stringify([106,107,108,109]) ||
+    inputCrop.nativeRepeat?.all120FramesExactBothThemes !== true || inputCrop.nativeRepeat.browserVersion !== "152.0.7977.30" ||
+    inputCrop.nativeRepeat.backendVersion !== "0.0.42" || inputCrop.nativeRepeat.driverModule !== "@xmorse/playwright-core" ||
+    inputCrop.nativeRepeat.driverVersion !== "1.59.10" || inputCrop.nativeRepeat.fixedDate !== "2026-09-25T11:30:00.000Z" ||
+    ["driverSha256","browserSha256","backendExecutableSha256","fullRepeatComparisonSha256"].some(key =>
+      !/^[a-f0-9]{64}$/.test(inputCrop.nativeRepeat[key]))) throw new Error("Native search input crop contract differs");
+for (const theme of variants) {
+  const entry = inputCrop.themes[theme];
+  const fixturePath = `assets/t3-code/v0.0.42/thread-search-${theme}-fixture.json`;
+  const videoPath = `parity/t3-thread-search-v0042${theme === "light" ? "-light" : ""}-reference.mkv`;
+  const fixtureBytes = await readFile(resolve(root, fixturePath));
+  const fixture = JSON.parse(fixtureBytes);
+  const png = await readFile(resolve(source, entry.asset));
+  if (entry.asset !== `native-thread-search-input-v0042-${theme}.png` || entry.fixture !== fixturePath || entry.video !== videoPath ||
+      entry.sourceCommit !== "719a76ca1dbf5490f1aa33ffb9966301e02be9a9" || fixture.sourceCommit !== entry.sourceCommit ||
+      hash(fixtureBytes) !== entry.fixtureSha256 || fixture.referenceSha256 !== entry.videoSha256 ||
+      hash(await readFile(resolve(root, videoPath))) !== entry.videoSha256 || fixture.theme !== theme ||
+      fixture.frames !== 120 || fixture.fps !== 30 || fixture.viewport.width !== 1200 || fixture.viewport.height !== 659 ||
+      hash(png) !== entry.pngSha256 || png.subarray(0,8).toString("hex") !== "89504e470d0a1a0a" ||
+      png.readUInt32BE(16) !== 83 || png.readUInt32BE(20) !== 30 || entry.frames.length !== 4 ||
+      entry.frames.some((row,index) => row.frame !== 106+index || row.rgbaSha256 !== entry.rgbaSha256 ||
+        row.freshRgbaSha256 !== entry.rgbaSha256 || !/^[a-f0-9]{64}$/.test(row.freshPngSha256))) {
+    throw new Error("Native search input authority differs");
+  }
+  const decoded = spawnSync("ffmpeg", ["-hide_banner","-loglevel","error","-i",resolve(source,entry.asset),
+    "-frames:v","1","-pix_fmt","rgba","-f","rawvideo","pipe:1"], { maxBuffer:83*30*4+1024 });
+  if (decoded.status !== 0 || decoded.stdout.length !== 83*30*4 || hash(decoded.stdout) !== entry.rgbaSha256) {
+    throw new Error("Native search input PNG pixels differ");
+  }
+}
 const css = await readFile(resolve(source, "t3.css"), "utf8");
 const gsap = await readFile(resolve(root, "registry/blocks/before-after/gsap.min.js"), "utf8");
 const icons = await readFile(resolve(root, ".work/t3-v0042-bin/t3-0.0.42-linux-x64/client/assets/pierre-icons-vHQ4qnbe.js"), "utf8");
@@ -74,14 +112,20 @@ const html = `<!doctype html>
 <style>
   #root,.t3-stage,.t3-source-root { position:relative; width:100%; height:100%; overflow:hidden; }
   .t3-stage { background:var(--background); color:var(--foreground); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-stage * { transition:none !important; }
   .t3-stage.t3-search-hover .t3-source-root div:has(> span > input[aria-label="Search threads"]):has(> svg.lucide-search) { background-color:var(--sidebar-row-hover); color:var(--sidebar-foreground); }
+  .t3-stage.t3-clear-hover button[aria-label="Clear thread search"] { background-color:var(--accent); color:var(--contrast-sidebar-foreground); }
   .base-ui-disable-scrollbar { scrollbar-width:none; }
   .base-ui-disable-scrollbar::-webkit-scrollbar { display:none; }
   @font-face { font-family:"Apple Color Emoji"; src:local("Apple Color Emoji"); }
   @font-face { font-family:"Segoe UI Emoji"; src:local("Segoe UI Emoji"); }
   @font-face { font-family:"Segoe UI Symbol"; src:local("Segoe UI Symbol"); }
   @font-face { font-family:"SFMono-Regular"; src:local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
   <div class="dark t3-stage" style='${escapeAttribute(themeStyles[0])}'><svg data-layout-ignore aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">${htmlIcon}</svg><div class="t3-source-root"></div></div>
@@ -102,6 +146,25 @@ const entries = ${scriptJson([
 ])};
 const stage = document.querySelector('#root .t3-stage');
 const surface = stage.querySelector('.t3-source-root');
+const nativeInputAllowed = ['dark','light'].includes(options.theme) && Object.keys(defaults).every(key => key === 'theme' || options[key] === defaults[key]);
+let nativeInputImage;
+function updateNativeInput(sourceFrame) {
+  const active = nativeInputAllowed && sourceFrame >= 106 && sourceFrame <= 109;
+  if (active && !nativeInputImage) {
+    nativeInputImage = document.createElement('img');
+    nativeInputImage.dataset.nativeSearchInput = '';
+    nativeInputImage.alt = '';
+    nativeInputImage.setAttribute('aria-hidden','true');
+    nativeInputImage.setAttribute('data-layout-ignore','');
+    nativeInputImage.style.cssText = 'position:absolute;left:40px;top:57px;width:83px;height:30px;z-index:10;pointer-events:none';
+    nativeInputImage.src = options.theme === 'light' ? 'compositions/native-thread-search-input-v0042-light.png' : 'compositions/native-thread-search-input-v0042-dark.png';
+    stage.append(nativeInputImage);
+  }
+  if (nativeInputImage) nativeInputImage.hidden = !active;
+}
+window.addEventListener('hf-seek', event => {
+  if (nativeInputImage && !nativeInputImage.hidden) event.detail.waitUntil(nativeInputImage.decode());
+});
 const themeIndex = options.theme === 'light' ? 1 : 0;
 stage.classList.toggle('dark', themeIndex === 0);
 stage.classList.toggle('light', themeIndex === 1);
@@ -199,6 +262,7 @@ const clock = { frame: 0 };
 function draw() {
   const frame = Math.max(0, Math.min(119, Math.round(clock.frame)));
   const sourceFrame = sourceFrameAt(frame);
+  updateNativeInput(sourceFrame);
   const stateKey = source.stateKeys[sourceFrame];
   const nativeState = source.states[stateKey];
   const query = queryFor(nativeState.query, sourceFrame);
@@ -206,6 +270,7 @@ function draw() {
   if (rendered === cacheKey) return;
   rendered = cacheKey;
   stage.classList.toggle('t3-search-hover', sourceFrame < source.events.reload);
+  stage.classList.toggle('t3-clear-hover', sourceFrame >= source.events.clear && sourceFrame < source.events.select);
   surface.innerHTML = snapshots[themeIndex][stateKey];
   const input = surface.querySelector('input[aria-label="Search threads"]');
   if (input) {
@@ -216,7 +281,6 @@ function draw() {
       input.focus({ preventScroll:true });
       input.setSelectionRange(query.length, query.length);
     }
-    if (query.length >= defaults.finalQuery.length) input.style.transform = 'translateX(-2px)';
   }
   replaceText();
   setAges();
@@ -231,6 +295,9 @@ window.__timelines['${name}'] = timeline;
 await mkdir(resolve(output, "licenses"), { recursive: true });
 await writeFile(resolve(output, `${name}.html`), html);
 await writeFile(resolve(output, "t3-code-gsap.min.js"), gsap);
+for (const file of [inputCropName, ...variants.map(theme => inputCrop.themes[theme].asset)]) {
+  await copyFile(resolve(source,file), resolve(output,file));
+}
 await copyFile(resolve(root, "parity/t3-gallery/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
 await writeFile(resolve(output, "registry-item.json"), `${JSON.stringify({
   $schema: "https://hyperframes.heygen.com/schema/registry-item.json",
@@ -244,7 +311,8 @@ await writeFile(resolve(output, "registry-item.json"), `${JSON.stringify({
     { path: "t3-code-gsap.min.js", target: "compositions/t3-code-gsap.min.js", type: "hyperframes:asset" },
     { path: "licenses/T3-CODE-LICENSE.txt", target: "THIRD_PARTY_LICENSES/t3-code/T3-CODE-LICENSE.txt", type: "hyperframes:asset" },
     { path: "README.md", target: `compositions/${name}.README.md`, type: "hyperframes:asset" },
+    ...[inputCropName, ...variants.map(theme => inputCrop.themes[theme].asset)].map(path => ({ path, target:`compositions/${path}`, type:"hyperframes:asset" })),
   ],
 }, null, 2)}\n`);
-await writeFile(resolve(output, "README.md"), `# T3 Code: Thread Search\n\nThis standalone 120-frame block reproduces the official desktop T3 Code v0.0.42 sidebar search at 1200 × 659 in dark and light. It shows native query filtering, keyboard result navigation, Clear, Enter selection, and the selected thread after reload. The project, conversations, and ages are seeded local Hyfrme data; no provider or GitHub action runs in the block.\n\nCustomize theme, thread titles and ages, both search queries, message copy, composer copy, and beat timing. Installed source has no Hyfrme runtime dependency. Official source: https://github.com/pingdotgg/t3code/tree/719a76ca1dbf5490f1aa33ffb9966301e02be9a9. The T3 Code MIT notice is included. GSAP 3.14.2 is included for offline frame control under its Standard License: https://gsap.com/standard-license/.\n`);
+await writeFile(resolve(output, "README.md"), `# T3 Code: Thread Search\n\nThis standalone 120-frame block reproduces the official desktop T3 Code v0.0.42 sidebar search at 1200 × 659 in dark and light. It shows native query filtering, keyboard result navigation, Clear, Enter selection, and the selected thread after reload. The project, conversations, and ages are seeded local Hyfrme data; no provider or GitHub action runs in the block.\n\nCustomize theme, thread titles and ages, both search queries, message copy, composer copy, and beat timing. Installed source has no Hyfrme runtime dependency. Official source: https://github.com/pingdotgg/t3code/tree/719a76ca1dbf5490f1aa33ffb9966301e02be9a9. The T3 Code MIT notice is included. GSAP 3.14.2 is included for offline frame control under its Standard License: https://gsap.com/standard-license/.\n\nThe unchanged default input uses original native pixels only at frames106–109 to preserve upstream caret scrolling. Any edited content or event frame uses the live editable source input and loads no native input image.\n`);
 console.log(`Generated ${name} v0.0.42 candidate from ${Object.keys(fixtures[0].states).length} states per theme.`);

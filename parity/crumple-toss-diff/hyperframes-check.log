@@ -1,0 +1,162 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 2,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "escaped_container",
+        "severity": "warning",
+        "time": 0.5,
+        "selector": "#crumple-toss-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 925.42,
+          "top": 488.63,
+          "right": 1075.42,
+          "bottom": 518.63,
+          "width": 150,
+          "height": 30
+        },
+        "containerSelector": "#crumple-toss-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 450,
+          "top": 250,
+          "right": 830,
+          "bottom": 470,
+          "width": 380,
+          "height": 220
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/crumple-toss.html",
+        "bbox": {
+          "x": 925.42,
+          "y": 488.63,
+          "width": 150,
+          "height": 30
+        },
+        "firstSeen": 0.5,
+        "lastSeen": 2.833,
+        "occurrences": 8,
+        "heldMs": 2333
+      },
+      {
+        "code": "escaped_container",
+        "severity": "warning",
+        "time": 0.5,
+        "selector": "#crumple-toss-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 925.42,
+          "top": 503.63,
+          "right": 1075.42,
+          "bottom": 673.63,
+          "width": 150,
+          "height": 170
+        },
+        "containerSelector": "#crumple-toss-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 450,
+          "top": 250,
+          "right": 830,
+          "bottom": 470,
+          "width": 380,
+          "height": 220
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/crumple-toss.html",
+        "bbox": {
+          "x": 925.42,
+          "y": 503.63,
+          "width": 150,
+          "height": 170
+        },
+        "firstSeen": 0.5,
+        "lastSeen": 2.833,
+        "occurrences": 8,
+        "heldMs": 2333
+      }
+    ],
+    "duration": 3,
+    "samples": [
+      0.167,
+      0.5,
+      0.833,
+      1.167,
+      1.5,
+      1.833,
+      2.167,
+      2.5,
+      2.833
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 2,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.167,
+      0.833,
+      1.5,
+      2.167,
+      2.833
+    ],
+    "checked": 0,
+    "passed": 0
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.99",
+    "latestVersion": "0.8.140",
+    "updateAvailable": true
+  }
+}

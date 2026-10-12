@@ -2,7 +2,7 @@
   "slug": "tabs",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-ui/tabs/index.tsx",
     "entry": "components/docs/examples/tabs-example.tsx",
     "config": "registry/remocn-ui/tabs/config.ts",
@@ -18,25 +18,142 @@
     },
     "background": "oklch(1 0 0)"
   },
+  "filesSha256": {
+    "registry-item.json": "ad372c703ee1034e911f7152b1885171d98cc3fe02b181eb09c4d5e9c273dbcb",
+    "tabs.html": "7f79c23262ad766ebb66e198c7f776d941f065cc72dd6febecea0edbea63d989",
+    "tabs.runtime.js": "bfe8b5d264bb6eb74e179fe394a909fb27308fa239b6a4bdd8c737c51c1da95e",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "677bc95aa754348dcc3e2a907ce334f5761a92e45cb6eaee4a3493a281b80c9a",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.999855,
-    "minSsim": 0.99979,
-    "p05Ssim": 0.999819,
-    "p95Ssim": 0.999865,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check reported 9 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "tabs",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn-ui/tabs/index.tsx",
+          "entry": "components/docs/examples/tabs-example.tsx",
+          "config": "registry/remocn-ui/tabs/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span:nth-of-type(2)",
+          "text": "Password",
+          "fg": "rgb(115,115,115)",
+          "bg": "rgb(245,245,245)",
+          "ratio": 4.35,
+          "requiredRatio": 4.5
+        },
+        "reason": "The pinned Tabs uses its light theme mutedForeground oklch(0.556 0 0) on muted oklch(0.97 0 0) for inactive labels, producing the source contrast ratio of 4.35. Preserve the source palette. Full findings remain recorded and every upstream frame is compared separately."
+      },
+      {
+        "slug": "tabs",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn-ui/tabs/index.tsx",
+          "entry": "components/docs/examples/tabs-example.tsx",
+          "config": "registry/remocn-ui/tabs/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span:nth-of-type(3)",
+          "text": "Settings",
+          "fg": "rgb(115,115,115)",
+          "bg": "rgb(245,245,245)",
+          "ratio": 4.35,
+          "requiredRatio": 4.5
+        },
+        "reason": "The pinned Tabs uses its light theme mutedForeground oklch(0.556 0 0) on muted oklch(0.97 0 0) for inactive labels, producing the source contrast ratio of 4.35. Preserve the source palette. Full findings remain recorded and every upstream frame is compared separately."
+      },
+      {
+        "slug": "tabs",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn-ui/tabs/index.tsx",
+          "entry": "components/docs/examples/tabs-example.tsx",
+          "config": "registry/remocn-ui/tabs/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span:nth-of-type(1)",
+          "text": "Account",
+          "fg": "rgb(115,115,115)",
+          "bg": "rgb(245,245,245)",
+          "ratio": 4.35,
+          "requiredRatio": 4.5
+        },
+        "reason": "The pinned Tabs uses its light theme mutedForeground oklch(0.556 0 0) on muted oklch(0.97 0 0) for inactive labels, producing the source contrast ratio of 4.35. Preserve the source palette. Full findings remain recorded and every upstream frame is compared separately."
+      }
+    ],
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/tabs/remocn.mp4",
+    "referenceVideo": "public/previews/tabs/reference.mp4",
     "hyperframesVideo": "public/previews/tabs/hyperframes.mp4",
-    "summary": "parity/tabs-diff/summary.json"
+    "thumbnail": "public/previews/tabs/thumbnail.png",
+    "summary": "parity/tabs-diff/summary.json",
+    "perFrameSsim": "parity/tabs-diff/ssim.log",
+    "hyperframesCheck": "parity/tabs-diff/hyperframes-check.log",
+    "worstFrame": "parity/tabs-diff/worst-frame.png",
+    "referenceAlpha": "parity/tabs-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/tabs-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/tabs-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/tabs-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/tabs/reference.mp4": "f9819533817921c770eb89eceb8d5d1229a65a1d719dbbdebff4c16172698fa2",
+    "public/previews/tabs/hyperframes.mp4": "f9819533817921c770eb89eceb8d5d1229a65a1d719dbbdebff4c16172698fa2",
+    "public/previews/tabs/thumbnail.png": "f6ada91773eb8b5adbc74861997bc631ca39b9a24cd51d839c58b72df2f8ca5a",
+    "parity/tabs-diff/summary.json": "c38069d7cb90acc2a693a754a1caeffaf324f128e7d118e6f20808613c950e44",
+    "parity/tabs-diff/ssim.log": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/tabs-diff/hyperframes-check.log": "0f130a9f4522c23d82108082a2ccb00755699f9616cb339549f49e1ba7258460",
+    "parity/tabs-diff/worst-frame.png": "3086db07b11da5f196a031d58ad729dd359e44419d877a07cfdc7bb10c72ac5e",
+    "parity/tabs-diff/reference-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/tabs-diff/hyperframes-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/tabs-diff/reference-rgba.framemd5": "b6caa65be67d9e8c78276fbfa52a1f5b5c0dd01f67aafc07e59004835cc0f7f0",
+    "parity/tabs-diff/hyperframes-rgba.framemd5": "b6caa65be67d9e8c78276fbfa52a1f5b5c0dd01f67aafc07e59004835cc0f7f0"
   }
 }

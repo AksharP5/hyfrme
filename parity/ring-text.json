@@ -2,7 +2,7 @@
   "slug": "ring-text",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/ring-text/index.tsx",
     "config": "registry/remocn/ring-text/config.ts",
     "license": "MIT"
@@ -26,13 +26,27 @@
     },
     "background": "#d4ff1f"
   },
+  "filesSha256": {
+    "registry-item.json": "34280fc0135d32b980c82f6781baa3ac9a722f8510c05d5cdd1b419d9f3a9208",
+    "ring-text.html": "5c63d1fe5b5d8b4ab9e79211d6551ba23e1bdaf7539540c22f1019098ed896f0",
+    "ring-text.runtime.js": "33cbb50580eed5c4d4d95d5304336cb4f47cce5f58256618353210cbf3288e50",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "Inter-Latin.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/Inter-OFL.txt": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "0b0c7d94d76846d1db868400b24c4038413f133e06b78923dc83cc0f54b05b6c",
+  "fingerprint": "e1ad79a79d435811b62334d2159439455c69729e3ebf1e1bd45a0fa122c34d30",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 180,
@@ -45,16 +59,22 @@
       "mismatchedFrames": [],
       "pass": true
     },
+    "rgba": {
+      "frameCount": 180,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check reported 2 reviewed source-inherited errors (exit 1); strict render passed",
     "sourceInheritedFindings": [
       {
         "slug": "ring-text",
         "origin": {
           "repository": "https://github.com/Remocn/remocn",
-          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
           "source": "registry/remocn/ring-text/index.tsx",
           "config": "registry/remocn/ring-text/config.ts",
           "license": "MIT"
@@ -68,13 +88,13 @@
           "ratio": 1,
           "requiredRatio": 3
         },
-        "reason": "The pinned source paints lime #d4ff1f characters on black #0a0a0a 3D band panels over a lime canvas. This exact first-character finding samples the canvas behind its rotated panel as the background instead of the visible black band. All 180 lossless frames match exactly in RGB and alpha; preserve the source geometry and retain the full contrast finding in the audit."
+        "reason": "These foreground/background colors are unchanged in the source ring text. Preserve its configured palette. The complete inspector finding remains in the parity check log; visual parity is checked separately against every upstream frame."
       },
       {
         "slug": "ring-text",
         "origin": {
           "repository": "https://github.com/Remocn/remocn",
-          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
           "source": "registry/remocn/ring-text/index.tsx",
           "config": "registry/remocn/ring-text/config.ts",
           "license": "MIT"
@@ -88,13 +108,16 @@
           "ratio": 1.27,
           "requiredRatio": 3
         },
-        "reason": "The pinned source paints lime #d4ff1f characters on black #0a0a0a 3D band panels over a lime canvas and dims each letter by its angle. This exact first-character finding samples the rotated panel boundary against the composite canvas. All 180 lossless frames match exactly in RGB and alpha; preserve the source geometry and retain the full contrast finding in the audit."
+        "reason": "These foreground/background colors are unchanged in the source ring text. Preserve its configured palette. The complete inspector finding remains in the parity check log; visual parity is checked separately against every upstream frame."
       }
     ],
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -106,6 +129,21 @@
     "hyperframesCheck": "parity/ring-text-diff/hyperframes-check.log",
     "worstFrame": "parity/ring-text-diff/worst-frame.png",
     "referenceAlpha": "parity/ring-text-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/ring-text-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/ring-text-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/ring-text-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/ring-text-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/ring-text/reference.mp4": "de26c7a3f0b83f88258bdacd9d9e46194566982fc104e8b919567b2c1dc8b4b2",
+    "public/previews/ring-text/hyperframes.mp4": "de26c7a3f0b83f88258bdacd9d9e46194566982fc104e8b919567b2c1dc8b4b2",
+    "public/previews/ring-text/thumbnail.png": "739593f7ae930b94e4a5b230aac2f316fe348143fcf39e199557f754e6d199a9",
+    "parity/ring-text-diff/summary.json": "da0a070035c9c7e18d1b4d3a8508a4890f5288e5e208e69e639533653db382b2",
+    "parity/ring-text-diff/ssim.log": "33bf02e5c55547904a0901c9803b24a4225e07e1f95699d1c5ea9bfafd5aa44a",
+    "parity/ring-text-diff/hyperframes-check.log": "45adfc90826bc6823f2eb7412667c1577a8336941bf544c3cbfe35f00f14e637",
+    "parity/ring-text-diff/worst-frame.png": "531a75c5b2c138d99b45740e4c7043534fc05102c01a5ef1b45c970d2d992506",
+    "parity/ring-text-diff/reference-alpha.framemd5": "b71918b5822c020f6c476b9ff3a201418248408324f7c9ed8ef8943c81e0c802",
+    "parity/ring-text-diff/hyperframes-alpha.framemd5": "b71918b5822c020f6c476b9ff3a201418248408324f7c9ed8ef8943c81e0c802",
+    "parity/ring-text-diff/reference-rgba.framemd5": "852d4fd3f9d8ae74ae4125f7cd478a0d03b3e7610a39b3d32bf0f47569926428",
+    "parity/ring-text-diff/hyperframes-rgba.framemd5": "852d4fd3f9d8ae74ae4125f7cd478a0d03b3e7610a39b3d32bf0f47569926428"
   }
 }

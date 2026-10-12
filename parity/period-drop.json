@@ -2,7 +2,7 @@
   "slug": "period-drop",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/period-drop/index.tsx",
     "config": "registry/remocn/period-drop/config.ts",
     "license": "MIT"
@@ -23,13 +23,27 @@
     },
     "background": "#0a0a0a"
   },
+  "filesSha256": {
+    "registry-item.json": "6befa458d54eab88ba6759958dd2fb0f627f0c507270917034f399304b1e94bc",
+    "period-drop.html": "2091e6c53e5b8531f704246a4cf7cbb68c9060e1433a94211625d09cd20aaea8",
+    "period-drop.runtime.js": "5e529410b0fad8ba4b5b84b4f4cdb5d9c1318a9b8e21d8caaa3218aacf097c05",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "Inter-Latin.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/Inter-OFL.txt": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "3cd569097359e93db08998520754265e6a775e2f105efbd672c3dd5b60769e18",
+  "fingerprint": "c6bf95c6d9c655dd4b6d39f9d33318201194a96027e23b38c927fd62c0ec5478",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 75,
@@ -42,14 +56,23 @@
       "mismatchedFrames": [],
       "pass": true
     },
+    "rgba": {
+      "frameCount": 75,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -61,6 +84,21 @@
     "hyperframesCheck": "parity/period-drop-diff/hyperframes-check.log",
     "worstFrame": "parity/period-drop-diff/worst-frame.png",
     "referenceAlpha": "parity/period-drop-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/period-drop-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/period-drop-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/period-drop-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/period-drop-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/period-drop/reference.mp4": "36ef0aa43a1dc2f19fac4b3c0ddc6ca764518ed4336cae8e68480783b21f14bc",
+    "public/previews/period-drop/hyperframes.mp4": "36ef0aa43a1dc2f19fac4b3c0ddc6ca764518ed4336cae8e68480783b21f14bc",
+    "public/previews/period-drop/thumbnail.png": "ded2dc67f3e8762f4cf303bc7d3e1440ada250a7861bece5349e60ac51743983",
+    "parity/period-drop-diff/summary.json": "e0c8c9e1bfb9cecff4b1fb1eb064290b44d838e0707802157ba1a8a551a907fa",
+    "parity/period-drop-diff/ssim.log": "8b52ef55cb81c0a9c5f763071c72572dec8b473b0544f1e9b6a731a7124f164e",
+    "parity/period-drop-diff/hyperframes-check.log": "aa91a516a79a2ca501f3a26a8f52b3f8ea26a442152e268f5eb4e8254e4043a8",
+    "parity/period-drop-diff/worst-frame.png": "97f062d3eff6c8ab3b51cec6cb3ced4d8d421b4b721f63e51c1650c4518aa8d3",
+    "parity/period-drop-diff/reference-alpha.framemd5": "852e25155c4f8ce6e8ddd025e674406fa0e557a685ec942593579384eb4a9fb4",
+    "parity/period-drop-diff/hyperframes-alpha.framemd5": "852e25155c4f8ce6e8ddd025e674406fa0e557a685ec942593579384eb4a9fb4",
+    "parity/period-drop-diff/reference-rgba.framemd5": "a12b28ad4809fe814ada33b2edf0789c451d67eee58c88d8e7cb62099e45e90f",
+    "parity/period-drop-diff/hyperframes-rgba.framemd5": "a12b28ad4809fe814ada33b2edf0789c451d67eee58c88d8e7cb62099e45e90f"
   }
 }

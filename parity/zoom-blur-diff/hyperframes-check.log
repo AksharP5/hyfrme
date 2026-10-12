@@ -1,0 +1,147 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 1.9,
+        "selector": "#zoom-blur-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 454.37,
+          "top": 295.34,
+          "right": 825.63,
+          "bottom": 423.47,
+          "width": 371.26,
+          "height": 128.13
+        },
+        "containerSelector": "#zoom-blur-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "text": "Scene A",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/zoom-blur.html",
+        "bbox": {
+          "x": 454.37,
+          "y": 295.34,
+          "width": 371.26,
+          "height": 128.13
+        },
+        "firstSeen": 1.9,
+        "lastSeen": 2.206,
+        "occurrences": 4,
+        "heldMs": 306.00000000000006
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 2.322,
+        "selector": "#zoom-blur-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 440,
+          "top": 290.33,
+          "right": 840,
+          "bottom": 428.38,
+          "width": 400,
+          "height": 138.05
+        },
+        "containerSelector": "#zoom-blur-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Scene A",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/zoom-blur.html",
+        "bbox": {
+          "x": 440,
+          "y": 290.33,
+          "width": 400,
+          "height": 138.05
+        },
+        "firstSeen": 2.322,
+        "lastSeen": 2.322,
+        "occurrences": 1,
+        "heldMs": 0
+      }
+    ],
+    "duration": 3.8,
+    "samples": [
+      0.211,
+      0.633,
+      1.056,
+      1.478,
+      1.9,
+      2.322,
+      2.744,
+      3.167,
+      3.589
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 2,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.211,
+      1.056,
+      1.9,
+      2.744,
+      3.589
+    ],
+    "checked": 6,
+    "passed": 6
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.99",
+    "latestVersion": "0.8.114",
+    "updateAvailable": true
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "slug": "combobox",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+    "source": "registry/remocn-ui/combobox/index.tsx",
+    "entry": "components/docs/examples/combobox-example.tsx",
+    "config": "registry/remocn-ui/combobox/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "placeholder": "Select a fruit…"
+    },
+    "background": "oklch(1 0 0)"
+  },
+  "filesSha256": {
+    "registry-item.json": "d3487e9aa55b2163226219a5cca21f7e02910d5c0197600fc0b38f6954a451f5",
+    "combobox.html": "86c3f84e9d960c79bf6ce8a2486b8dd04ec6ea7f489f07de3e9eb7377d14392a",
+    "combobox.runtime.js": "effde3abf7f3f9849f7c38c1b0b0464a1ad181c19c853186400ddbd4d8757145",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "failed",
+  "fingerprint": "a06682a5f5d4885c5a510db2ca1888dec8a8a9690f9ec1532acdd40cfc6b2794",
+  "thresholds": {
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 120,
+      "mismatchedFrames": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "pass": false
+    },
+    "pass": false
+  },
+  "checks": {
+    "canvasMode": "source-capability",
+    "hyperframes": "full check reported 1 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "combobox",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn-ui/combobox/index.tsx",
+          "entry": "components/docs/examples/combobox-example.tsx",
+          "config": "registry/remocn-ui/combobox/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#combobox-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "containerSelector": "#combobox-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+          "text": "b",
+          "coveredFraction": 0.33
+        },
+        "reason": "The pinned Combobox allocates 8 px per query character and puts its 2 px caret after an overflow-hidden value span. The source glyph extends beyond that allocation, producing this inherited occlusion. Preserve the original source layout. Full checker findings remain recorded; this does not waive any frame mismatch."
+      }
+    ],
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuRequestedMode": "hardware",
+    "browserGpuProbes": {
+      "render": {
+        "logSha256": "0c4027a1af1bed675aeb70210d044aa55a48fd0e2a5dbb42698990a32a4d6d9b",
+        "observations": [
+          {
+            "mode": "hardware",
+            "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+          }
+        ]
+      }
+    },
+    "captureBackend": "unobserved",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/combobox/reference.mp4",
+    "hyperframesVideo": "public/previews/combobox/hyperframes.mp4",
+    "thumbnail": "public/previews/combobox/thumbnail.png",
+    "summary": "parity/combobox-diff/summary.json",
+    "perFrameSsim": "parity/combobox-diff/ssim.log",
+    "hyperframesCheck": "parity/combobox-diff/hyperframes-check.log",
+    "hyperframesRender": "parity/combobox-diff/hyperframes-render.log",
+    "worstFrame": "parity/combobox-diff/worst-frame.png",
+    "referenceAlpha": "parity/combobox-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/combobox-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/combobox-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/combobox-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/combobox/reference.mp4": "21dae41a68d2184cf59fdd5975294c5265e099d17132e9c831e58d5ca8e48ceb",
+    "public/previews/combobox/hyperframes.mp4": "be41d9fae9f09ce7a0b622cbbea38e8f15f0c6c06fbf22ef79ddf79436091120",
+    "public/previews/combobox/thumbnail.png": "47fc87f22ce0ff0e9c7f9a13c80db30dbb976e04ad8017f0ecd1b48358039018",
+    "parity/combobox-diff/summary.json": "3973511d3a8c82dd1b292ca6eaef8015a714eee0744f8a9c2141212a7afc2122",
+    "parity/combobox-diff/ssim.log": "21a5dbeee984d5ef704e04f425a17ae44b4ff59b53757d1c335cd49cf71e10f0",
+    "parity/combobox-diff/hyperframes-check.log": "4bde3ba4b77203ebc8978080a47b1e49a32cab201c4d7519b653b7d98da8ab07",
+    "parity/combobox-diff/hyperframes-render.log": "0c4027a1af1bed675aeb70210d044aa55a48fd0e2a5dbb42698990a32a4d6d9b",
+    "parity/combobox-diff/worst-frame.png": "6d34f174458497fbd397b8f2bc68b2b547c51001b78fd9c145854fabcd2fb865",
+    "parity/combobox-diff/reference-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/combobox-diff/hyperframes-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/combobox-diff/reference-rgba.framemd5": "fe4c19691def50c6a86977b4f1a4b958d46417b65ca2f13dd8f8d067e0578992",
+    "parity/combobox-diff/hyperframes-rgba.framemd5": "c10a6adaad076a96edf6a0becd4994987e428ef25481cdd38147ee56d9df7fcb"
+  }
+}

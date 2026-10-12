@@ -2,7 +2,7 @@
   "slug": "typed-split-wipe",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "7fa2db1cd29dfb36743e54e3d078dd9107c879a2",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/typed-split-wipe/index.tsx",
     "config": "registry/remocn/typed-split-wipe/config.ts",
     "license": "MIT"
@@ -28,21 +28,38 @@
     },
     "background": "#101010"
   },
+  "filesSha256": {
+    "registry-item.json": "1148bbc889fc8a6eade907874d80e36205f3c1ae88b4d4b4079bfdd4dc0bf963",
+    "typed-split-wipe.html": "1c48acc0e51e4449cfed871201092c546b389d8212a61eb7b79c7741fcc9d73f",
+    "typed-split-wipe.runtime.js": "a3d22bec45a2c3ad945a618311fd1bfb345979b3ab42d5d792ea32deb004b4dc",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "7464bf12a37c3438e3c343100b60979a2e3362eaafee0887eff2bffe5a92a1f9",
+  "fingerprint": "80d338f912ae3f9409e20573a994d90cf3b3f40e788f393efd0a43894e1a0330",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 75,
-    "meanSsim": 0.9981613466666666,
-    "minSsim": 0.996948,
-    "p05Ssim": 0.996992,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
     "p95Ssim": 1,
     "alpha": {
+      "frameCount": 75,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 75,
       "mismatchedFrames": [],
       "pass": true
@@ -50,11 +67,15 @@
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -66,6 +87,21 @@
     "hyperframesCheck": "parity/typed-split-wipe-diff/hyperframes-check.log",
     "worstFrame": "parity/typed-split-wipe-diff/worst-frame.png",
     "referenceAlpha": "parity/typed-split-wipe-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/typed-split-wipe-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/typed-split-wipe-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/typed-split-wipe-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/typed-split-wipe-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/typed-split-wipe/reference.mp4": "25e2a5332138e5e3b28fef04b1acdf37e3f223ed81857c30d0a413e9e9733074",
+    "public/previews/typed-split-wipe/hyperframes.mp4": "25e2a5332138e5e3b28fef04b1acdf37e3f223ed81857c30d0a413e9e9733074",
+    "public/previews/typed-split-wipe/thumbnail.png": "148dd683a3b2c08db477726b5f4b44762e46d2ae5c607144f29f338cc2010739",
+    "parity/typed-split-wipe-diff/summary.json": "e0c8c9e1bfb9cecff4b1fb1eb064290b44d838e0707802157ba1a8a551a907fa",
+    "parity/typed-split-wipe-diff/ssim.log": "8b52ef55cb81c0a9c5f763071c72572dec8b473b0544f1e9b6a731a7124f164e",
+    "parity/typed-split-wipe-diff/hyperframes-check.log": "29e8c1742f1e5033502c8e54054977b20482cfca36325ecb70e1345409443a93",
+    "parity/typed-split-wipe-diff/worst-frame.png": "b16124fc7cf2738304fcadcd9e6143041a60d3b84e9659467138c9fd01b6c938",
+    "parity/typed-split-wipe-diff/reference-alpha.framemd5": "852e25155c4f8ce6e8ddd025e674406fa0e557a685ec942593579384eb4a9fb4",
+    "parity/typed-split-wipe-diff/hyperframes-alpha.framemd5": "852e25155c4f8ce6e8ddd025e674406fa0e557a685ec942593579384eb4a9fb4",
+    "parity/typed-split-wipe-diff/reference-rgba.framemd5": "150f5ac8b1447b013e931a92b40af23d9dda5532a694284e29fd750a7b9d0645",
+    "parity/typed-split-wipe-diff/hyperframes-rgba.framemd5": "150f5ac8b1447b013e931a92b40af23d9dda5532a694284e29fd750a7b9d0645"
   }
 }

@@ -1,0 +1,17 @@
+import{readFile,writeFile}from'node:fs/promises';import{resolve}from'node:path';import{spawnSync}from'node:child_process';import{createHash}from'node:crypto';import{isDeepStrictEqual}from'node:util';
+const root=process.cwd(),dir=resolve(import.meta.dirname),source=resolve(root,'assets/t3-code/v0.0.42'),hash=b=>createHash('sha256').update(b).digest('hex');
+function rgba(path){const r=spawnSync('ffmpeg',['-v','error','-i',path,'-map','0:v:0','-frames:v','120','-pix_fmt','rgba','-f','framehash','-hash','sha256','-'],{encoding:'utf8',maxBuffer:4*1024*1024});if(r.status)throw Error(r.stderr);const rows=r.stdout.split('\n').filter(x=>x&&!x.startsWith('#')).map(x=>x.split(',').map(y=>y.trim()));if(rows.length!==120||rows.some(x=>x.length!==6||x[4]!=='3163200'||!/^[a-f0-9]{64}$/.test(x[5])))throw Error('IncompleteRGBAframes');return rows.map(x=>x[5]);}
+function normal(html,ids){return html.replace(/_r_[^_]+_/g,id=>{if(!ids.has(id))ids.set(id,`_r_${ids.size}_`);return ids.get(id)})}
+const report={kind:'Independent whole native Reasoning readiness capture comparison',normalization:'Bijective generated IDs only; no CSS/value changes',themes:{}};
+for(const theme of['dark','light']){
+ const originalFixture=JSON.parse(await readFile(resolve(source,`reasoning-v0042-${theme}-fixture.json`))),originalPath=resolve(root,`parity/t3-reasoning-level-v0042-${theme}-reference.mkv`),original=rgba(originalPath),captures=[];
+ for(const run of['a','b']){const work=resolve(dir,`${theme}-${run}`),video=resolve(work,'reference.mkv'),fixture=JSON.parse(await readFile(resolve(work,'source',`reasoning-v0042-${theme}-fixture.json`))),frames=rgba(video),dom=[],oldIds=new Map(),newIds=new Map();
+  for(const key of['sourceTag','sourceCommit','sourceHashes','theme','nativeThemeClass','viewport','fps','frames','prompt','openFrame','hoverFrame','selectFrame','reasoningBefore','reasoningAfter','modelName','providerState','interaction','popupBox','triggerBox','closingPortal','motion'])if(!isDeepStrictEqual(fixture[key],originalFixture[key]))throw Error(`${theme}/${run} source metadata changed: ${key}`);
+  for(const phase of Object.keys(originalFixture.sourceDomHashes)){
+   const old=await readFile(resolve(source,`reasoning-v0042-${theme}-${phase}.html`)),now=await readFile(resolve(work,'source',`reasoning-v0042-${theme}-${phase}.html`));const equal=normal(old.toString(),oldIds)===normal(now.toString(),newIds);dom.push({phase,originalSha256:hash(old),captureSha256:hash(now),equal});if(!equal)throw Error(`${theme}/${run} ${phase} DOM changed beyond generated IDs`)
+  }
+  captures.push({run,reference:video,referenceSha256:hash(await readFile(video)),rgbaSha256:frames,originalDifferingFrames:frames.flatMap((x,i)=>x===original[i]?[]:[i]),dom,readiness:JSON.parse(await readFile(resolve(work,'source/toast-readiness.json')))});
+ }
+ const mismatches=captures[0].rgbaSha256.flatMap((x,i)=>x===captures[1].rgbaSha256[i]?[]:[i]);report.themes[theme]={originalReference:originalPath,originalReferenceSha256:hash(await readFile(originalPath)),originalRgbaSha256:original,captures,repeatDifferingFrames:mismatches};if(mismatches.length)throw Error(`${theme} independentnative repeats differ ${mismatches}`);console.log(theme,'independent120exact; originalchanges',captures.map(x=>x.originalDifferingFrames));
+}
+report.pass=true;await writeFile(resolve(dir,'comparison.json'),JSON.stringify(report,null,2)+'\n');

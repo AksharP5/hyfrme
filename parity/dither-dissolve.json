@@ -2,7 +2,7 @@
   "slug": "dither-dissolve",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/dither-dissolve/index.tsx",
     "entry": "components/docs/examples/dither-dissolve-example.tsx",
     "config": "registry/remocn/dither-dissolve/config.ts",
@@ -21,25 +21,77 @@
     },
     "background": "#141318"
   },
+  "filesSha256": {
+    "registry-item.json": "965ad6301b7f3701765f0ee34f7df8cc6b8ca1348d990296f6b3826f8c2679f9",
+    "dither-dissolve.html": "90cbd0a608e7d5a8b8b9b7176c73fa9ab0cca7f1affada68001d505c8ba88b24",
+    "dither-dissolve.runtime.js": "cd2e42e70dafaa7790d13a8efe9ca93aa9529ee66d5239dd1b8aa9ef66da2279",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md": "fc408cbbf99a20fbc88c2296a04bac7dadbe7114f2456673de3e5b7986cfd19d"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "8a018345b86f12e53aa5ed8125f9db7c462c8440fbed724823206dbb28e913c3",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 100,
-    "meanSsim": 0.991858,
-    "minSsim": 0.958778,
-    "p05Ssim": 0.97884,
-    "p95Ssim": 0.997598,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/dither-dissolve/remocn.mp4",
+    "referenceVideo": "public/previews/dither-dissolve/reference.mp4",
     "hyperframesVideo": "public/previews/dither-dissolve/hyperframes.mp4",
-    "summary": "parity/dither-dissolve-diff/summary.json"
+    "thumbnail": "public/previews/dither-dissolve/thumbnail.png",
+    "summary": "parity/dither-dissolve-diff/summary.json",
+    "perFrameSsim": "parity/dither-dissolve-diff/ssim.log",
+    "hyperframesCheck": "parity/dither-dissolve-diff/hyperframes-check.log",
+    "worstFrame": "parity/dither-dissolve-diff/worst-frame.png",
+    "referenceAlpha": "parity/dither-dissolve-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/dither-dissolve-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/dither-dissolve-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/dither-dissolve-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/dither-dissolve/reference.mp4": "819038cffc0a910a4e3bf3e88fbeee352643986cf6d94652bde9dbfb7b01c205",
+    "public/previews/dither-dissolve/hyperframes.mp4": "819038cffc0a910a4e3bf3e88fbeee352643986cf6d94652bde9dbfb7b01c205",
+    "public/previews/dither-dissolve/thumbnail.png": "5907559ec57b417b2c9f4fe4d95f6d54e884c1f1474778298e67a478b00be91a",
+    "parity/dither-dissolve-diff/summary.json": "fa82c25c31adc9e19a6584c3ec9334d4f3e0235e8d5eae2f1afd6c757108a452",
+    "parity/dither-dissolve-diff/ssim.log": "56672b2c92229915a0dd393cc8a60627dbdc8ce3eba9f6efc2ed3a64381e3a73",
+    "parity/dither-dissolve-diff/hyperframes-check.log": "b034a6308c421c270f55d703726fae74e94b9eff6ea0a99045be60822ba5ed81",
+    "parity/dither-dissolve-diff/worst-frame.png": "71aa101bb1155fb665e399f3ba143d3420be1319b195bc1c83f8682b145cc76c",
+    "parity/dither-dissolve-diff/reference-alpha.framemd5": "a2937ec0be21934918c79b7fbd71e3b549036e98282df13982dd5a56ed01cea8",
+    "parity/dither-dissolve-diff/hyperframes-alpha.framemd5": "a2937ec0be21934918c79b7fbd71e3b549036e98282df13982dd5a56ed01cea8",
+    "parity/dither-dissolve-diff/reference-rgba.framemd5": "d285340c4117a2cd1a8090c630f52fa38d550190bdc9acfab411f177a2264498",
+    "parity/dither-dissolve-diff/hyperframes-rgba.framemd5": "d285340c4117a2cd1a8090c630f52fa38d550190bdc9acfab411f177a2264498"
   }
 }

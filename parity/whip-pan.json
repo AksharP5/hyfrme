@@ -2,7 +2,7 @@
   "slug": "whip-pan",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/whip-pan/index.tsx",
     "entry": "components/docs/examples/whip-pan-example.tsx",
     "config": "registry/remocn/whip-pan/config.ts",
@@ -15,29 +15,101 @@
     "durationInFrames": 114,
     "props": {
       "direction": "left",
-      "blur": 24
+      "blur": 24,
+      "speed": 1
     },
     "background": "#141318"
   },
+  "filesSha256": {
+    "registry-item.json": "f72f577237905f4abf2bcb56c51ac94f131795872d42d526075de3b380f97039",
+    "whip-pan.html": "fe818015d8c0141bb5fe60d5c114a5d8305d63241d1c986d84c969a2d63b68b9",
+    "whip-pan.runtime.js": "d35995fee6df6d9520a1d7a52abc72fe3b89b45243fb99f530e25c9835e8a9c5",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
-  "status": "verified",
+  "measurement": "lossless-png",
+  "status": "failed",
+  "fingerprint": "9990250b2bdc9cf34378ac77cd8be46fad161d61996de966d650236c28ce1d90",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 114,
-    "meanSsim": 0.99782,
-    "minSsim": 0.997334,
-    "p05Ssim": 0.997411,
-    "p95Ssim": 0.999454,
-    "pass": true
+    "meanSsim": 0.9999554999999999,
+    "minSsim": 0.999338,
+    "p05Ssim": 0.999604,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 114,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 114,
+      "mismatchedFrames": [
+        47,
+        48,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/whip-pan/remocn.mp4",
+    "referenceVideo": "public/previews/whip-pan/reference.mp4",
     "hyperframesVideo": "public/previews/whip-pan/hyperframes.mp4",
-    "summary": "parity/whip-pan-diff/summary.json"
+    "thumbnail": "public/previews/whip-pan/thumbnail.png",
+    "summary": "parity/whip-pan-diff/summary.json",
+    "perFrameSsim": "parity/whip-pan-diff/ssim.log",
+    "hyperframesCheck": "parity/whip-pan-diff/hyperframes-check.log",
+    "worstFrame": "parity/whip-pan-diff/worst-frame.png",
+    "referenceAlpha": "parity/whip-pan-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/whip-pan-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/whip-pan-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/whip-pan-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/whip-pan/reference.mp4": "63a6f831c4a8f69f1e095afeca7f4a940c1bd5359ce82314ae5a0a11f560edb5",
+    "public/previews/whip-pan/hyperframes.mp4": "b8f7d2d1ad2d0047554236f851935679dc921f5bc2de800c0634219732563951",
+    "public/previews/whip-pan/thumbnail.png": "21daed06b360511048ae7b4d3f0eb768047e0ac52bf0d7cd2cc18d5148981e00",
+    "parity/whip-pan-diff/summary.json": "a08c5f37b3fa173b9775c9778dae1f85b9a9e40dbb7fc4d7db8aa2c7aae4a899",
+    "parity/whip-pan-diff/ssim.log": "0d675b201afae48d0ad348124de2ec69ae84bbbebeebdf9f81b88075bde54950",
+    "parity/whip-pan-diff/hyperframes-check.log": "d09d5a32ceac6cc5c85f09cb1e11bfeac3b23a8e561034b48ae76d08e0c7b93c",
+    "parity/whip-pan-diff/worst-frame.png": "225fb15fafdebae3c75a79dfe5926302e16bd72016fe735605c5e4f12cb9fb55",
+    "parity/whip-pan-diff/reference-alpha.framemd5": "d0e75db81c2592164d8f37cabd6cc267b41740ea4441aa05d783f8cd2b423bc9",
+    "parity/whip-pan-diff/hyperframes-alpha.framemd5": "d0e75db81c2592164d8f37cabd6cc267b41740ea4441aa05d783f8cd2b423bc9",
+    "parity/whip-pan-diff/reference-rgba.framemd5": "699e68b1e88d2a57946f61366c219db4375d61b8f31053edce2719fd6615cb14",
+    "parity/whip-pan-diff/hyperframes-rgba.framemd5": "b2c2d674b66605052094598870e85bc7f1090e88f73bd90f843e3fd677922b83"
   }
 }

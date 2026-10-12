@@ -2,7 +2,7 @@
   "slug": "select-item",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-ui/select-item/index.tsx",
     "config": "registry/remocn-ui/select-item/config.ts",
     "license": "MIT"
@@ -14,29 +14,96 @@
     "durationInFrames": 120,
     "props": {
       "label": "Banana",
-      "state": "selected"
+      "state": "selected",
+      "speed": 1
     },
     "background": "oklch(1 0 0)"
   },
+  "filesSha256": {
+    "registry-item.json": "4ff7556e8f49707e5806e6b11850beb39aa04195e314beb7fc92a10dc1e7fd01",
+    "select-item.html": "5ef95eba71b4d6b592e485b6f4103f779d4a836227a09c44d2a351f5b2d8a03e",
+    "select-item.runtime.js": "1a23641a463bcb8a8c1a5a719ba984922932df0fcf7694e5491bf31624088fd9",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "891a39e9f9a8bb4479d75ada6672b4ca2f8afd7238803fec5ee194b4ea4a747d",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.999967,
-    "minSsim": 0.999965,
-    "p05Ssim": 0.999967,
-    "p95Ssim": 0.999967,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuRequestedMode": "hardware",
+    "browserGpuProbes": {
+      "render": {
+        "logSha256": "0070a17555b471c39f7cbd6a81734a98d10a67d774ca2d9760e794dfca1c0158",
+        "observations": [
+          {
+            "mode": "hardware",
+            "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+          }
+        ]
+      }
+    },
+    "captureBackend": "unobserved",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/select-item/remocn.mp4",
+    "referenceVideo": "public/previews/select-item/reference.mp4",
     "hyperframesVideo": "public/previews/select-item/hyperframes.mp4",
-    "summary": "parity/select-item-diff/summary.json"
+    "thumbnail": "public/previews/select-item/thumbnail.png",
+    "summary": "parity/select-item-diff/summary.json",
+    "perFrameSsim": "parity/select-item-diff/ssim.log",
+    "hyperframesCheck": "parity/select-item-diff/hyperframes-check.log",
+    "hyperframesRender": "parity/select-item-diff/hyperframes-render.log",
+    "worstFrame": "parity/select-item-diff/worst-frame.png",
+    "referenceAlpha": "parity/select-item-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/select-item-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/select-item-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/select-item-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/select-item/reference.mp4": "e2ce9c7698a89c8b20e0a7c4c4e4ad102fb94f4acc2437fc9f67892719389aa7",
+    "public/previews/select-item/hyperframes.mp4": "e2ce9c7698a89c8b20e0a7c4c4e4ad102fb94f4acc2437fc9f67892719389aa7",
+    "public/previews/select-item/thumbnail.png": "f0bb22db3a4c189d75e7feee6aeca176bcf61eb9bd062677af7ab7aebe344b9b",
+    "parity/select-item-diff/summary.json": "c38069d7cb90acc2a693a754a1caeffaf324f128e7d118e6f20808613c950e44",
+    "parity/select-item-diff/ssim.log": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/select-item-diff/hyperframes-check.log": "18551aca16eee63bd669510f7b103eaa202e0e09a3fd8634641d3e6bb1147640",
+    "parity/select-item-diff/hyperframes-render.log": "0070a17555b471c39f7cbd6a81734a98d10a67d774ca2d9760e794dfca1c0158",
+    "parity/select-item-diff/worst-frame.png": "55468cbcf5b999a84ee2d0f197a5c51aaaf59fe2231372138e02d83eb166c938",
+    "parity/select-item-diff/reference-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/select-item-diff/hyperframes-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/select-item-diff/reference-rgba.framemd5": "3b2af561af89320e622175b3b1a4531ad12a0a5a0cca8cfcf2e9ca30dcabf645",
+    "parity/select-item-diff/hyperframes-rgba.framemd5": "3b2af561af89320e622175b3b1a4531ad12a0a5a0cca8cfcf2e9ca30dcabf645"
   }
 }

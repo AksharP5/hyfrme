@@ -2,7 +2,7 @@
   "slug": "shared-axis-z",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shared-axis-z/index.tsx",
     "config": "registry/remocn/shared-axis-z/config.ts",
     "license": "MIT"
@@ -22,25 +22,76 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "15ab729f2a8ea8e8ab37131b4f3ee3dc86a66d4b5dbb31f31ee5da9dcad9c312",
+    "shared-axis-z.html": "d24a8804504b41f38f5f54c4a9fd533d16975ccf6c5a813609223196d8796a50",
+    "shared-axis-z.runtime.js": "06826d8b73e49a282edf7ea735cb54bcf090b7e6d2e9c43990dca38dbb3a697c",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "49f93ce50702534b13a7eb6e8cbf03d70219e747a6620f30e01a11d71de93efd",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.998057,
-    "minSsim": 0.99746,
-    "p05Ssim": 0.997688,
-    "p95Ssim": 0.998183,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/shared-axis-z/remocn.mp4",
+    "referenceVideo": "public/previews/shared-axis-z/reference.mp4",
     "hyperframesVideo": "public/previews/shared-axis-z/hyperframes.mp4",
-    "summary": "parity/shared-axis-z-diff/summary.json"
+    "thumbnail": "public/previews/shared-axis-z/thumbnail.png",
+    "summary": "parity/shared-axis-z-diff/summary.json",
+    "perFrameSsim": "parity/shared-axis-z-diff/ssim.log",
+    "hyperframesCheck": "parity/shared-axis-z-diff/hyperframes-check.log",
+    "worstFrame": "parity/shared-axis-z-diff/worst-frame.png",
+    "referenceAlpha": "parity/shared-axis-z-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shared-axis-z-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shared-axis-z-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shared-axis-z-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shared-axis-z/reference.mp4": "bd5b5677fb4dd4228de1185fdebadc4d9bc65bfe15df88717a263729b7b30cd1",
+    "public/previews/shared-axis-z/hyperframes.mp4": "bd5b5677fb4dd4228de1185fdebadc4d9bc65bfe15df88717a263729b7b30cd1",
+    "public/previews/shared-axis-z/thumbnail.png": "f623f95e08d3ed6e1360175979f611489417387ac03ec0ef9e3b919e09453951",
+    "parity/shared-axis-z-diff/summary.json": "b836772793766404c0492e741437d4fb40b614cf31be7aace9f9b10b16c85450",
+    "parity/shared-axis-z-diff/ssim.log": "4638ac3b2b03d74f8b056c3824e13d904997bddfbc1c0f3b8d655822a1eb000b",
+    "parity/shared-axis-z-diff/hyperframes-check.log": "9e48fc3c1c3e07c87a805640438aa7ceaad3126b676a6815443d4168a36a618a",
+    "parity/shared-axis-z-diff/worst-frame.png": "270467f7de0375a42c0d7ce0a35751a4669ee6977df096f4e67fef967bf8ef6b",
+    "parity/shared-axis-z-diff/reference-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/shared-axis-z-diff/hyperframes-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/shared-axis-z-diff/reference-rgba.framemd5": "ce8d153bc7943973a103f11415661486e2e29ac64ba3984bfef6263bfb16e60f",
+    "parity/shared-axis-z-diff/hyperframes-rgba.framemd5": "ce8d153bc7943973a103f11415661486e2e29ac64ba3984bfef6263bfb16e60f"
   }
 }

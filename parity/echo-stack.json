@@ -2,7 +2,7 @@
   "slug": "echo-stack",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/echo-stack/index.tsx",
     "config": "registry/remocn/echo-stack/config.ts",
     "license": "MIT"
@@ -25,21 +25,40 @@
     },
     "background": "#0a0a0a"
   },
+  "filesSha256": {
+    "registry-item.json": "e4fcb8d1e4d5710e0135cffe5ca127ee0f2406d1fae43a09dad6e4991ad28a40",
+    "echo-stack.html": "56265e58fd68305e925139756d5b4193b249058dfaf9e1be7ada94d33ef0f7a0",
+    "echo-stack.runtime.js": "2cf77d997d5d6b1e978c1600e3455446b66ad1fa389e86556f21ba381b9ca5eb",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "Inter-Latin.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/Inter-OFL.txt": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "62dd2bf07d2daa9424ed3befdb2eba158a1a4f6c60adfa944aa0db7e12873859",
+  "fingerprint": "e54a1e6745d1e1be4ed86cb8e8a4b1e0666fe1c4baa48a481c769921333478cd",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.9999522166666666,
-    "minSsim": 0.999496,
-    "p05Ssim": 0.999852,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
     "p95Ssim": 1,
     "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 120,
       "mismatchedFrames": [],
       "pass": true
@@ -47,30 +66,15 @@
     "pass": true
   },
   "checks": {
-    "hyperframes": "full check reported 1 reviewed source-inherited errors (exit 1); strict render passed",
-    "sourceInheritedFindings": [
-      {
-        "slug": "echo-stack",
-        "origin": {
-          "repository": "https://github.com/Remocn/remocn",
-          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
-          "source": "registry/remocn/echo-stack/index.tsx",
-          "config": "registry/remocn/echo-stack/config.ts",
-          "license": "MIT"
-        },
-        "finding": {
-          "code": "content_overlap",
-          "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
-          "containerSelector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(7)",
-          "text": "Bold."
-        },
-        "reason": "The pinned source intentionally layers outlined echo copies behind the bold word. The overlap is the effect itself; the verified port keeps that treatment at 120 frames with mean/min SSIM 0.999952/0.999496 and exact alpha."
-      }
-    ],
-    "hyperframesVersion": "0.8.30",
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -82,6 +86,21 @@
     "hyperframesCheck": "parity/echo-stack-diff/hyperframes-check.log",
     "worstFrame": "parity/echo-stack-diff/worst-frame.png",
     "referenceAlpha": "parity/echo-stack-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/echo-stack-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/echo-stack-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/echo-stack-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/echo-stack-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/echo-stack/reference.mp4": "dd3b2fdb53096ea8a5ca8b00e5526063ce121f14fe5d6adb1b09f0e9989689c5",
+    "public/previews/echo-stack/hyperframes.mp4": "dd3b2fdb53096ea8a5ca8b00e5526063ce121f14fe5d6adb1b09f0e9989689c5",
+    "public/previews/echo-stack/thumbnail.png": "27ba3eb0f240f8cdd5de349e0b9c0c866ab009ef701c7ab0d21261e20a54eae8",
+    "parity/echo-stack-diff/summary.json": "c38069d7cb90acc2a693a754a1caeffaf324f128e7d118e6f20808613c950e44",
+    "parity/echo-stack-diff/ssim.log": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/echo-stack-diff/hyperframes-check.log": "afa02f95ddd537d91ceb953a3162c315db68bf068772b25306895f294649e74b",
+    "parity/echo-stack-diff/worst-frame.png": "97f062d3eff6c8ab3b51cec6cb3ced4d8d421b4b721f63e51c1650c4518aa8d3",
+    "parity/echo-stack-diff/reference-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/echo-stack-diff/hyperframes-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/echo-stack-diff/reference-rgba.framemd5": "2706c3f16fef179490c5a88e20d07fa4fecd7d5c37ac229c823cd21b843985db",
+    "parity/echo-stack-diff/hyperframes-rgba.framemd5": "2706c3f16fef179490c5a88e20d07fa4fecd7d5c37ac229c823cd21b843985db"
   }
 }

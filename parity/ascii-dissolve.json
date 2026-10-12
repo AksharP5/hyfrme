@@ -2,7 +2,7 @@
   "slug": "ascii-dissolve",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/ascii-dissolve/index.tsx",
     "entry": "components/docs/examples/ascii-dissolve-example.tsx",
     "config": "registry/remocn/ascii-dissolve/config.ts",
@@ -16,29 +16,88 @@
     "props": {
       "colorBack": "#0d0d10",
       "colorFront": "#f2f2f2",
-      "cellSize": 22
+      "cellSize": 22,
+      "speed": 1
     },
     "background": "#0d0d10"
   },
+  "filesSha256": {
+    "registry-item.json": "00ef0346be347608e0cc851572ac8ad8fc09727a8f706fb9c844113861945617",
+    "ascii-dissolve.html": "028d16d45cf63e786fd7a2a5e64eda21baaf38fe158cb44f431b6664cfbeea0b",
+    "ascii-dissolve.runtime.js": "b7ae832531da09083effbad887139a9fc78bf22574bea902c26ceb8ed13c5131",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
-  "status": "verified",
+  "measurement": "lossless-png",
+  "status": "failed",
+  "fingerprint": "221f8e440469ad9e076016eb9cfab5d3883b3fdbf583505744ad4806383d9f3d",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 100,
-    "meanSsim": 0.987572,
-    "minSsim": 0.955444,
-    "p05Ssim": 0.956157,
-    "p95Ssim": 0.997586,
-    "pass": true
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 100,
+      "mismatchedFrames": [
+        57,
+        58,
+        59,
+        60,
+        62,
+        63
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/ascii-dissolve/remocn.mp4",
+    "referenceVideo": "public/previews/ascii-dissolve/reference.mp4",
     "hyperframesVideo": "public/previews/ascii-dissolve/hyperframes.mp4",
-    "summary": "parity/ascii-dissolve-diff/summary.json"
+    "thumbnail": "public/previews/ascii-dissolve/thumbnail.png",
+    "summary": "parity/ascii-dissolve-diff/summary.json",
+    "perFrameSsim": "parity/ascii-dissolve-diff/ssim.log",
+    "hyperframesCheck": "parity/ascii-dissolve-diff/hyperframes-check.log",
+    "worstFrame": "parity/ascii-dissolve-diff/worst-frame.png",
+    "referenceAlpha": "parity/ascii-dissolve-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/ascii-dissolve-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/ascii-dissolve-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/ascii-dissolve-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/ascii-dissolve/reference.mp4": "aab0d89d7cc4e2fa044c52b7e05047f98d54c8ea971ab0b55299fae64c0c2f26",
+    "public/previews/ascii-dissolve/hyperframes.mp4": "e0c378191eccab558bcc01542fdab7dcb2ca66ff33a9e61fef8575016233641e",
+    "public/previews/ascii-dissolve/thumbnail.png": "315472a673d488c76944ee445899405a8c64c0d3cc4167cce99a73e66b8aebc0",
+    "parity/ascii-dissolve-diff/summary.json": "a0c6c72bb3113393d8b6f2610599c199dcc1481827eb6fcf92946f445e4dcb70",
+    "parity/ascii-dissolve-diff/ssim.log": "cd87db510d715c1598c00f797ba2fd1c2aebcf64958f10528c46a538b7d3a3db",
+    "parity/ascii-dissolve-diff/hyperframes-check.log": "d99bdb1684b01ebe50b2645597810d7f731951f050d3a8a3f6807a40a7c8d0a9",
+    "parity/ascii-dissolve-diff/worst-frame.png": "d90f2fe03faadaa403e756ff0ae350c5585074649678cdaee7e2ff57731782e7",
+    "parity/ascii-dissolve-diff/reference-alpha.framemd5": "a2937ec0be21934918c79b7fbd71e3b549036e98282df13982dd5a56ed01cea8",
+    "parity/ascii-dissolve-diff/hyperframes-alpha.framemd5": "a2937ec0be21934918c79b7fbd71e3b549036e98282df13982dd5a56ed01cea8",
+    "parity/ascii-dissolve-diff/reference-rgba.framemd5": "d660029d7604ed8d38ac959e24618f6e43022c499e82936255a1ae7af584874e",
+    "parity/ascii-dissolve-diff/hyperframes-rgba.framemd5": "889b78fe5d19fbba759799296f7fd9b09855b52e1471d40f23da18f933bfa048"
   }
 }

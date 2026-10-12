@@ -2,7 +2,7 @@
   "slug": "inline-pill-takeover",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/inline-pill-takeover/index.tsx",
     "config": "registry/remocn/inline-pill-takeover/config.ts",
     "license": "MIT"
@@ -36,21 +36,38 @@
     },
     "background": "radial-gradient(circle at 50% 108%, #ffd77a 0%, #ff6840 31%, #f13d21 78%)"
   },
+  "filesSha256": {
+    "registry-item.json": "7ae6b2b244ed8d6708eed49edd04081c228d5d11697b871a54f3dd3af3ceaa3d",
+    "inline-pill-takeover.html": "783896ff7ecda9b29e1b59d29b351d2b0d37dfef98fd46a038f555f2acff888c",
+    "inline-pill-takeover.runtime.js": "c97a975024ff00e43f9718743f952290d9989bfa2567cea663426808500e323a",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "ff0039fc820bcc47e3fad2b517e70666673d9cf581d6407b60712df3954878d4",
+  "fingerprint": "d8c42f9d181de00e46dde2bb38a69e9b968245c211a63b614f2797a4bb9df116",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 45,
-    "meanSsim": 0.9992808666666668,
-    "minSsim": 0.996897,
-    "p05Ssim": 0.996931,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
     "p95Ssim": 1,
     "alpha": {
+      "frameCount": 45,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 45,
       "mismatchedFrames": [],
       "pass": true
@@ -58,12 +75,54 @@
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
-    "installedThroughCli": true
+    "rasterization": "browser-default",
+    "frameCapture": "fresh-page native/production-producer; strict sequential CLI render retained separately",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true,
+    "captureLifecycle": "fresh-page native/production-producer",
+    "captureProfile": {
+      "reference": "Remotion renderStill; fresh page per frame in one browser",
+      "hyperframes": "Production producer API; fresh session/page per frame",
+      "sequential": "Full installed CLI check and strict sequential PNG render retained separately",
+      "rasterization": "browser-default; hardware ANGLE EGL; DPR 1",
+      "referenceScreenshot": {
+        "fromSurface": true,
+        "captureBeyondViewport": true,
+        "optimizeForSpeed": true
+      },
+      "producerScreenshot": {
+        "fromSurface": true,
+        "captureBeyondViewport": false,
+        "optimizeForSpeed": false
+      },
+      "virtualTime": "Unchanged pinned CLI virtual-time shim; seedRandomFromFrame:false"
+    },
+    "repeatFrames": [
+      0,
+      11,
+      22,
+      33,
+      44
+    ],
+    "strictSequentialCaptureComplete": true,
+    "sequentialRgbaExact": false,
+    "sequentialMismatchedFrames": [
+      17,
+      26
+    ],
+    "freshRepeatFrames": [
+      0,
+      11,
+      22,
+      33,
+      44
+    ]
   },
   "artifacts": {
     "referenceVideo": "public/previews/inline-pill-takeover/reference.mp4",
@@ -74,6 +133,53 @@
     "hyperframesCheck": "parity/inline-pill-takeover-diff/hyperframes-check.log",
     "worstFrame": "parity/inline-pill-takeover-diff/worst-frame.png",
     "referenceAlpha": "parity/inline-pill-takeover-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/inline-pill-takeover-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/inline-pill-takeover-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/inline-pill-takeover-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/inline-pill-takeover-diff/hyperframes-rgba.framemd5",
+    "freshCapture": "parity/inline-pill-takeover-diff/fresh/capture.json",
+    "freshInputs": "parity/inline-pill-takeover-diff/fresh/inputs.json",
+    "freshRepeatability": "parity/inline-pill-takeover-diff/fresh/repeatability.json",
+    "sequentialParity": "parity/inline-pill-takeover-diff/sequential/parity.json",
+    "sequentialComparison": "parity/inline-pill-takeover-diff/fresh/sequential-comparison.json",
+    "referenceLossless": "parity/inline-pill-takeover-diff/fresh/reference-lossless.mkv",
+    "hyperframesLossless": "parity/inline-pill-takeover-diff/fresh/hyperframes-lossless.mkv",
+    "referenceArchiveRgba": "parity/inline-pill-takeover-diff/fresh/reference-archive-rgba.framemd5",
+    "hyperframesArchiveRgba": "parity/inline-pill-takeover-diff/fresh/hyperframes-archive-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/inline-pill-takeover/reference.mp4": "df85c7427e2b2c7e19740ecf44c574e582bf2946616b2356a14a24536e825fd4",
+    "public/previews/inline-pill-takeover/hyperframes.mp4": "df85c7427e2b2c7e19740ecf44c574e582bf2946616b2356a14a24536e825fd4",
+    "public/previews/inline-pill-takeover/thumbnail.png": "be8d8b1aec4c9010cb056fe7f8a54c52031cffbfff72f6d05890ef8c68d86b5f",
+    "parity/inline-pill-takeover-diff/summary.json": "05773bdee46178a02ebfd40cb7ceb155475cace471dcfde34bc77d1216a52c22",
+    "parity/inline-pill-takeover-diff/ssim.log": "586718afc8e5124a18dcf1f46d854f5e1ac2e2c6ab969a7a02b20f42c89ccc7e",
+    "parity/inline-pill-takeover-diff/hyperframes-check.log": "2c20807632b629ddb7a8f7e8a03a4234b2201c029862ab943859d66cd9486901",
+    "parity/inline-pill-takeover-diff/worst-frame.png": "6340e3da54b6d8e7dbaca57877b64e01035f60ea6da5e7871b3fde4b3f9ae694",
+    "parity/inline-pill-takeover-diff/reference-alpha.framemd5": "ebefd57b7d574b4746f0de9d5f42c0cdc025c6701c7f97f4f131c18c05c02bed",
+    "parity/inline-pill-takeover-diff/hyperframes-alpha.framemd5": "ebefd57b7d574b4746f0de9d5f42c0cdc025c6701c7f97f4f131c18c05c02bed",
+    "parity/inline-pill-takeover-diff/reference-rgba.framemd5": "7d99738891170171def03225b2561d21ae34fe33baa49cd946cf07966f616a5b",
+    "parity/inline-pill-takeover-diff/hyperframes-rgba.framemd5": "7d99738891170171def03225b2561d21ae34fe33baa49cd946cf07966f616a5b",
+    "parity/inline-pill-takeover-diff/fresh/capture.json": "8b46ffe78fb070ae52ce8f7932d88b8495290c92cfafc5fe4fedde159a928edb",
+    "parity/inline-pill-takeover-diff/fresh/inputs.json": "a01e2201252574fc8ac26c28c2683b6f6b3ce665d281fc60f954a141801e3cc3",
+    "parity/inline-pill-takeover-diff/fresh/repeatability.json": "6c51ba2a7729e09133daeb6002faba6e14c167a4adfa8e9b4817675fb803d953",
+    "parity/inline-pill-takeover-diff/sequential/parity.json": "e5b0278a9e98f8f92296a33a52433f2ffe5587d50c3e5b56a5a5be70a192fb91",
+    "parity/inline-pill-takeover-diff/fresh/sequential-comparison.json": "90c013454df401ef82f4ed0de66adc999e710f56b9e62d5354ae8b55636d2e6d",
+    "parity/inline-pill-takeover-diff/fresh/reference-lossless.mkv": "9613a1ca820eab25ce7e81b0e7ff5ed89e53eb9272c649c00bfbe2a0bb00fc17",
+    "parity/inline-pill-takeover-diff/fresh/hyperframes-lossless.mkv": "a0d1b1219a65d1494c32698ecd2a6f05203069db544b19570ca623da0cb982a6",
+    "parity/inline-pill-takeover-diff/fresh/reference-archive-rgba.framemd5": "7d99738891170171def03225b2561d21ae34fe33baa49cd946cf07966f616a5b",
+    "parity/inline-pill-takeover-diff/fresh/hyperframes-archive-rgba.framemd5": "7d99738891170171def03225b2561d21ae34fe33baa49cd946cf07966f616a5b",
+    "parity/inline-pill-takeover-diff/sequential/debug-render-rgba.framemd5": "db84ead4ddc25fcce2351ba19ec00029900a09ecb692b7c2b099335b01aaec97",
+    "parity/inline-pill-takeover-diff/sequential/debug-render.log": "f9f188b5c13527706c73ff5e04feea01860f17e46d5bba7d79ef15e726d43285",
+    "parity/inline-pill-takeover-diff/sequential/hyperframesAlpha-hyperframes-alpha.framemd5": "ebefd57b7d574b4746f0de9d5f42c0cdc025c6701c7f97f4f131c18c05c02bed",
+    "parity/inline-pill-takeover-diff/sequential/hyperframesCheck-hyperframes-check.log": "2c20807632b629ddb7a8f7e8a03a4234b2201c029862ab943859d66cd9486901",
+    "parity/inline-pill-takeover-diff/sequential/hyperframesRgba-hyperframes-rgba.framemd5": "b4d59b9e1202bf702214304815437c537dee889f2b0ea2cee21e90b76e3f94bc",
+    "parity/inline-pill-takeover-diff/sequential/hyperframesVideo-hyperframes.mp4": "cbdb0b53381bd6775be43c68a0335013958d82d20d7511a07ef70d1081fce347",
+    "parity/inline-pill-takeover-diff/sequential/perFrameSsim-ssim.log": "0859e74e52192634e25bdb54cd2e60a864503e17159df43367ae386d50cb929d",
+    "parity/inline-pill-takeover-diff/sequential/referenceAlpha-reference-alpha.framemd5": "ebefd57b7d574b4746f0de9d5f42c0cdc025c6701c7f97f4f131c18c05c02bed",
+    "parity/inline-pill-takeover-diff/sequential/referenceRgba-reference-rgba.framemd5": "2fa153ad579ee9a1fb4c884e4b6694d3b0aa424b9a93326d637cfdcdbc41487b",
+    "parity/inline-pill-takeover-diff/sequential/referenceVideo-reference.mp4": "cbdb0b53381bd6775be43c68a0335013958d82d20d7511a07ef70d1081fce347",
+    "parity/inline-pill-takeover-diff/sequential/summary-summary.json": "97d5b32328b7f12cf326196af3024632d37f75a64bbedbb60c275641b294cc1a",
+    "parity/inline-pill-takeover-diff/sequential/thumbnail-thumbnail.png": "5a6e1239a222b568c202ef08eef0e7670ca3022afe770055f36c2147416e423c",
+    "parity/inline-pill-takeover-diff/sequential/verification.log": "8d8d181f455e442ed7966826954e255b1c053bd0121c4f4945f5f9d3374fe153",
+    "parity/inline-pill-takeover-diff/sequential/worstFrame-worst-frame.png": "45ed0c4dae1bd35d7a3a7a1acdc2b5514e557308bff034e406b9648cb5ffb694"
   }
 }

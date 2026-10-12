@@ -2,7 +2,7 @@
   "slug": "inline-highlight",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/inline-highlight/index.tsx",
     "config": "registry/remocn/inline-highlight/config.ts",
     "license": "MIT"
@@ -24,21 +24,35 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "ad3b0c96e0ca67367c3c9d6674850acc81e8f3c4a714563fb14f0d78a1e7d0cb",
+    "inline-highlight.html": "2ea95dae65e4d3f1e94b4c0a41aa2d3a402a359d7429c30ec11711b6067c927a",
+    "inline-highlight.runtime.js": "d7f283f2ce5fc5d8b26a47b8b624a4980556123c9d94fb77199cccad04621d30",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "462ca05e8cfda5cc33e6e399f52baf4e04a5d3f195a6b99b2f21317f13e55ecc",
+  "fingerprint": "98f732ae9dc2279b4ee8b83e89ae29589415b476a861b4f211caed698a157b8a",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.994324444444446,
-    "minSsim": 0.994044,
-    "p05Ssim": 0.994044,
-    "p95Ssim": 0.994735,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
     "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 90,
       "mismatchedFrames": [],
       "pass": true
@@ -46,11 +60,15 @@
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
     "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -62,6 +80,21 @@
     "hyperframesCheck": "parity/inline-highlight-diff/hyperframes-check.log",
     "worstFrame": "parity/inline-highlight-diff/worst-frame.png",
     "referenceAlpha": "parity/inline-highlight-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/inline-highlight-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/inline-highlight-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/inline-highlight-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/inline-highlight-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/inline-highlight/reference.mp4": "318fbc726144caf63fb1e360c82cc1f584f9d30a7dc4d3af55ab10bb9bafce80",
+    "public/previews/inline-highlight/hyperframes.mp4": "318fbc726144caf63fb1e360c82cc1f584f9d30a7dc4d3af55ab10bb9bafce80",
+    "public/previews/inline-highlight/thumbnail.png": "5f253f8e68aa5ebb3b39df3577bff88ec45369330a2bd7128b17e3e55b5b993a",
+    "parity/inline-highlight-diff/summary.json": "b836772793766404c0492e741437d4fb40b614cf31be7aace9f9b10b16c85450",
+    "parity/inline-highlight-diff/ssim.log": "4638ac3b2b03d74f8b056c3824e13d904997bddfbc1c0f3b8d655822a1eb000b",
+    "parity/inline-highlight-diff/hyperframes-check.log": "4fa42dfafa4513ea3e96c3fd87721d10792c674392ec02289a5208335693fd21",
+    "parity/inline-highlight-diff/worst-frame.png": "6655f6f5982a2a14e77b5551ab6a8a40838ea8a4890bacb13ae41cf7c38be3ec",
+    "parity/inline-highlight-diff/reference-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/inline-highlight-diff/hyperframes-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/inline-highlight-diff/reference-rgba.framemd5": "f3bc016b2cefacbb99946a8b3cb4d48e595cbca0cb02d24ac380423a2d059408",
+    "parity/inline-highlight-diff/hyperframes-rgba.framemd5": "f3bc016b2cefacbb99946a8b3cb4d48e595cbca0cb02d24ac380423a2d059408"
   }
 }

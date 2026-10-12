@@ -2,7 +2,7 @@
   "slug": "chat-gpt",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/chat-gpt/index.tsx",
     "config": "registry/remocn/chat-gpt/config.ts",
     "license": "MIT"
@@ -21,33 +21,69 @@
     },
     "background": "#FFFFFF"
   },
+  "filesSha256": {
+    "registry-item.json": "7b1cb675943406c1d264f6a165739dd3f3d42c3487ba3952f7fe758b93d11275",
+    "chat-gpt.html": "49956cf6614831971e2ec5ef55f4fd5388883f9dd5a32d70f9c8abf9dd3fec34",
+    "chat-gpt.runtime.js": "84842ad56775c58ea7c09f6a98b7d67d75a87a785024e336f27865986cd78110",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "Inter-Latin.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077",
+    "licenses/Inter-OFL.txt": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
-  "status": "verified",
-  "fingerprint": "ea36314b939c219ca51d4ef5a87f4a9a9c95c260ca34c3dcc58e25a93669eb71",
+  "status": "failed",
+  "fingerprint": "2ac4a5f1d0bdb1d12e9b8ed0cb47cb76656bf30d9892aa972426b72bc6e0c4c3",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.9999933599999999,
-    "minSsim": 0.999874,
-    "p05Ssim": 0.999897,
+    "meanSsim": 0.9999934200000001,
+    "minSsim": 0.999872,
+    "p05Ssim": 0.999896,
     "p95Ssim": 1,
     "alpha": {
       "frameCount": 150,
       "mismatchedFrames": [],
       "pass": true
     },
-    "pass": true
+    "rgba": {
+      "frameCount": 150,
+      "mismatchedFrames": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
-    "remotionVersion": "4.0.473",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -59,6 +95,21 @@
     "hyperframesCheck": "parity/chat-gpt-diff/hyperframes-check.log",
     "worstFrame": "parity/chat-gpt-diff/worst-frame.png",
     "referenceAlpha": "parity/chat-gpt-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/chat-gpt-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/chat-gpt-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/chat-gpt-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/chat-gpt-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/chat-gpt/reference.mp4": "78125210c0b9ba89f6f35f7be1c6f86f058a2092c58be8aedcd333f0720d0880",
+    "public/previews/chat-gpt/hyperframes.mp4": "2fcacda2b1e362756ec3d7bc5ddc5f25e320bce5008c1d2617837d2563d6a28d",
+    "public/previews/chat-gpt/thumbnail.png": "5ec5456553bf3a0796b8940985b035f36166553cdec1c50b2d098842624bf6f5",
+    "parity/chat-gpt-diff/summary.json": "00e9a1336bae11b9611a67a2e36c89f6c9ce99dacf84ff6edd424cfe5c29512b",
+    "parity/chat-gpt-diff/ssim.log": "a6764da1dcb55f6302b446fed330f9da10774a109d5f281524e65cd690603660",
+    "parity/chat-gpt-diff/hyperframes-check.log": "ac232edce8528dade23c277eb1d707a799b4cda7663dbceec2167fa1a1886438",
+    "parity/chat-gpt-diff/worst-frame.png": "0eab5de6a5152bf228970b1ffcf83ab0d7b1f99fd8066e01948ee7fbea97d652",
+    "parity/chat-gpt-diff/reference-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/chat-gpt-diff/hyperframes-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/chat-gpt-diff/reference-rgba.framemd5": "fe4cefc56184e091b0660338a5993737cd2aadcd35ea74b51528c40a91c0c2f1",
+    "parity/chat-gpt-diff/hyperframes-rgba.framemd5": "0da382bc04d33fae10a24bcb7cedeb1bc5efe352290aded8348fed8c7e3e08d4"
   }
 }

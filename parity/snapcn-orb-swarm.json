@@ -2,7 +2,7 @@
   "slug": "snapcn-orb-swarm",
   "origin": {
     "repository": "https://github.com/snapcndev/snapcn",
-    "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
+    "commit": "def45f50ff9b7ee7353be0a0bbf636c84b311cc0",
     "source": "registry/snap-cn/orb-swarm/index.tsx",
     "config": "registry/snap-cn/orb-swarm/config.ts",
     "license": "MIT",
@@ -15,19 +15,18 @@
     "durationInFrames": 160,
     "props": {
       "script": "one command | what if | every launch | you shipped | got a video | in seconds",
-      "background": "#fcf9ff",
-      "ink": "#000000",
       "orbColor": "#3577e0",
+      "mode": "light",
       "softness": 0.7,
       "fontFamily": "Default",
       "speed": 1
     },
-    "background": "#fcf9ff"
+    "background": "transparent"
   },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "ecc566b611c25c135d8bec0fc5f7dfb50d2986544c906b66f9a392b2265e21ea",
+  "fingerprint": "458fe16666cba52ab285c8b0d8dc250ba17f052b7cbea28bc52b63db8911025e",
   "thresholds": {
     "meanSsim": 0.99,
     "minSsim": 0.95
@@ -43,6 +42,44 @@
       "mismatchedFrames": [],
       "pass": true
     },
+    "rgba": {
+      "frameCount": 160,
+      "mismatchedFrames": [
+        112,
+        113,
+        114,
+        115,
+        116,
+        118,
+        121,
+        122,
+        123,
+        124,
+        125,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        146,
+        148,
+        152,
+        153,
+        154
+      ],
+      "pass": false
+    },
     "pass": true
   },
   "checks": {
@@ -51,6 +88,8 @@
     "remotionVersion": "4.0.473",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "cpu",
+    "frameCapture": "full-canvas screenshot",
     "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
@@ -63,6 +102,8 @@
     "hyperframesCheck": "parity/snapcn-orb-swarm-diff/hyperframes-check.log",
     "worstFrame": "parity/snapcn-orb-swarm-diff/worst-frame.png",
     "referenceAlpha": "parity/snapcn-orb-swarm-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/snapcn-orb-swarm-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/snapcn-orb-swarm-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/snapcn-orb-swarm-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/snapcn-orb-swarm-diff/hyperframes-rgba.framemd5"
   }
 }

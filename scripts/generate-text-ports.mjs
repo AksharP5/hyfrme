@@ -1,5 +1,6 @@
 import { build } from "esbuild";
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import {
   copyFile,
   mkdir,
@@ -11,10 +12,15 @@ import { basename, dirname, relative, resolve } from "node:path";
 import { frameMathSource, remocnMitBanner } from "./hyfrme-frame-math.mjs";
 import { readRemocnRegistry } from "./remocn-registry.mjs";
 import { frameRateArgument } from "./frame-rate.mjs";
+import { annotateShaderSeam } from "./remocn-shader-seam.mjs";
+import { frameDrivenPaperPlugin } from "./remocn-frame-driven-paper.mjs";
+import {
+  adaptSourcePaintGate,
+  sourcePaintShim,
+} from "./remocn-source-paint.mjs";
 import {
   canvasTransitionNames,
   canvasFilterNames,
-  sourcePreviewNames,
   sourcePreviewCss,
 } from "./remocn-canvas.mjs";
 
@@ -59,6 +65,7 @@ const additionManifests = await Promise.all(
   ),
 );
 const textNames = [
+  "soft-blur-in",
   "per-character-rise",
   "bottom-up-letters",
   "top-down-letters",
@@ -347,6 +354,29 @@ const uiFlowConfig = (compositionWidth = 1280, compositionHeight = 720) => ({
   controls: {},
 });
 const sceneOverrides = {
+  caret: {
+    source: "registry/remocn-ui/caret/preview.tsx",
+    componentName: "CaretPreview",
+  },
+  "skeleton-block": {
+    source: "registry/remocn-ui/skeleton-block/preview.tsx",
+    componentName: "SkeletonBlockPreview",
+  },
+  "typing-indicator": {
+    source: "components/docs/examples/typing-indicator-example.tsx",
+    componentName: "TypingIndicatorExampleScene",
+    uiExample: true,
+  },
+  "soft-blur-in": {
+    source: "registry/remocn/soft-blur-in/index.tsx",
+    componentName: "SoftBlurIn",
+    extraControls: {
+      // Keep the numeric inputs accepted by published customizer links.
+      fontWeight: { type: "number", default: 600, label: "Font weight" },
+      blur: { type: "number", default: 12, label: "Blur" },
+      fontSize: { type: "number", default: 72, label: "Font size" },
+    },
+  },
   "shader-seam": {
     source: "components/docs/examples/shader-seam-example.tsx",
     componentName: "ShaderSeamExampleScene",
@@ -872,7 +902,17 @@ const interNames = new Set([
   "type-repeater",
   "type-wall",
 ]);
+const discreteInterNames = new Set([
+  "echo-stack",
+  "path-ride",
+  "period-drop",
+  "ring-text",
+  "selection-snap",
+  "stripe-type",
+  "type-repeater",
+]);
 const bundledPackagesByName = new Map([
+  ["imessage-chat-flow", ["lucide-react"]],
   ["glyph-anatomy", ["opentype.js"]],
   ["outline-trace", ["opentype.js"]],
   ["path-ride", ["@remotion/paths"]],
@@ -883,7 +923,16 @@ const manropeNames = new Set([
   "x-followers-overview",
 ]);
 const geistMonoNames = new Set([
+  "agent-run",
   "github-stars",
+  "live-code-compilation",
+  "terminal-simulator",
+  "terminal-cursor-zoom",
+  "glass-code-block",
+  "glass-code-walk",
+  "matrix-decode",
+  "rolodex-flip",
+  "paper-sticker",
   "code-morph",
   "displacement",
   "ember-burn",
@@ -896,18 +945,13 @@ const geistMonoNames = new Set([
   "tv-power-off",
   "pixelate-region",
 ]);
-const sourceTextRenderingNames = new Set([
-  ...templateNames,
-  "lens-zoom",
-  "github-stars",
-  "inline-word-roll",
-  "shader-seam",
-  "shader-spiral-pass",
-  "code-morph",
-  "ring-text",
-  "type-wall",
+const caveatNames = new Set([
+  "handwrite",
+  "hand-count",
+  "check-list",
+  "ink-underline",
+  "polaroid",
 ]);
-const caveatNames = new Set(["handwrite", "hand-count", "check-list"]);
 const sponsorAvatarIds = [
   1, 2, 3, 4, 70, 5, 6, 38, 14, 15, 18, 16, 9, 21, 22, 25, 26, 28, 30, 31, 7,
   12, 13, 19,
@@ -939,15 +983,6 @@ if (only && selectedNames.length !== only.size) {
   );
 }
 for (const name of selectedNames) {
-  const manifests = additionManifests.filter((item) => item.components[name]);
-  if (
-    manifests.length &&
-    !manifests.some((manifest) => upstreamCommit === manifest.upstream.commit)
-  ) {
-    throw new Error(
-      `${name} requires source ${manifests.map((manifest) => manifest.upstream.commit).join(" or ")}. Select --only names from that pin.`,
-    );
-  }
   if (!upstreamRegistry.items.some((item) => item.name === name)) {
     throw new Error(
       `Source ${upstreamCommit} does not contain ${name}. Select --only names from one source pin.`,
@@ -1004,6 +1039,7 @@ const remotionPlugin = {
             throw sourceError;
           };
           export const __waitForSource = () => sourceError ? Promise.reject(sourceError) : pending.size === 0 ? Promise.resolve() : new Promise((resolve, reject) => waiting.add({resolve, reject}));
+          ${sourcePaintShim}
           export const __setHyfrmeAssets = (assets) => {assetMap = assets;};
           export const useDelayRender = () => ({delayRender, continueRender, cancelRender});
           export const isHtmlInCanvasSupported = () => {
@@ -1015,8 +1051,8 @@ const remotionPlugin = {
               typeof canvas.captureElementImage === "function" &&
               "transferControlToOffscreen" in HTMLCanvasElement.prototype;
           };
-          export const useCurrentFrame = () => useContext(LocalFrameContext) ?? currentFrame;
-          export const useVideoConfig = () => videoConfig;
+          export const useCurrentFrame = () => useContext(LocalFrameContext)?.frame ?? currentFrame;
+          export const useVideoConfig = () => useContext(LocalFrameContext)?.config ?? videoConfig;
           export const AbsoluteFill = ({children, className, style, ...props}) => React.createElement("div", {
             ...props,
             className,
@@ -1030,14 +1066,23 @@ const remotionPlugin = {
           export const Interactive = {Div: ({name, children, ...props}) => React.createElement("div", props, children)};
           export const useRemotionEnvironment = () => ({isStudio: false, isRendering: true, isPlayer: false});
           export const staticFile = (path) => assetMap[path] ?? "/assets/" + path.replace(/^\\//, "");
-          export const Sequence = ({from = 0, durationInFrames = Infinity, children, layout, style, className}) => {
+          export const Sequence = ({from = 0, durationInFrames = Infinity, children, layout, style, className, width, height}) => {
             const localFrame = useCurrentFrame() - from;
+            const parentConfig = useVideoConfig();
             if (localFrame < 0 || localFrame >= durationInFrames) return null;
-            const content = React.createElement(LocalFrameContext.Provider, {value: localFrame}, children);
+            const content = React.createElement(LocalFrameContext.Provider, {value: {
+              frame: localFrame,
+              config: {
+                ...parentConfig,
+                width: width ?? parentConfig.width,
+                height: height ?? parentConfig.height,
+                durationInFrames: Math.max(0, Math.min(durationInFrames, parentConfig.durationInFrames - from)),
+              },
+            }}, children);
             if (layout === "none") return content;
-            return React.createElement("div", {
+            return React.createElement(AbsoluteFill, {
               className,
-              style: {position: "absolute", inset: 0, ...style},
+              style: {flexDirection: undefined, ...(width ? {width} : {}), ...(height ? {height} : {}), ...style},
             }, content);
           };
           export const __setHyfrmeFrame = (frame, config) => {
@@ -1302,34 +1347,85 @@ const socialAssetsPlugin = {
     buildApi.onLoad(
       {
         filter:
+          /registry\/remocn-ui\/(chat-flow|telegram-chat-flow|imessage-chat-flow)\/index\.tsx$/,
+      },
+      async (args) => {
+        const source = await readFile(args.path, "utf8");
+        const name = basename(dirname(args.path));
+        const sourceHashes = {
+          "chat-flow":
+            "1e2e4d7787f7101071f0c3fae46d78a356f09fb8f5626e5d63c0a7872710b4cf",
+          "telegram-chat-flow":
+            "8471dfb2451fa08a475aff227bce09d66fb6dacea645226c5ea219bd6daef46a",
+          "imessage-chat-flow":
+            "f57a7ebec304c720c3142138dce199aaf084aa4b0da66be571f27188c2929be8",
+        };
+        const avatar = socialMedia.find((asset) =>
+          asset.components.includes(name),
+        );
+        const image = "src={contact.avatar}";
+        const imports =
+          'import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";';
+        if (
+          !avatar ||
+          createHash("sha256").update(source).digest("hex") !==
+            sourceHashes[name] ||
+          source.split(image).length !== 2 ||
+          source.split(imports).length !== 2
+        )
+          throw new Error(`Unreviewed chat contact image source: ${args.path}`);
+        return {
+          contents: source
+            .replace(imports, imports.replace("spring,", "spring, staticFile,"))
+            .replace(
+              image,
+              `src={contact.avatar === ${JSON.stringify(avatar.sourceUrl)} ? staticFile(contact.avatar) : contact.avatar}`,
+            ),
+          loader: "tsx",
+          resolveDir: dirname(args.path),
+        };
+      },
+    );
+    buildApi.onLoad(
+      {
+        filter:
           /registry\/remocn\/(github-sponsors|github-stars|x-follow-card|x-followers-overview)\/index\.tsx$/,
       },
       async (args) => {
         const original = await readFile(args.path, "utf8");
-        let contents = original
-          .replaceAll(
-            /https:\/\/avatars\.githubusercontent\.com\/u\/(\d+)\?v=4/g,
-            "/assets/social/avatars/u$1.png",
-          )
-          .replaceAll(
-            "const [errored, setErrored] = useState(false);",
-            "const errored = false; const setErrored = () => {};",
-          );
+        let contents = original.replaceAll(
+          /https:\/\/avatars\.githubusercontent\.com\/u\/(\d+)\?v=4/g,
+          "/assets/social/avatars/u$1.png",
+        );
         if (args.path.includes("/github-stars/")) {
-          // Odometer digits and scrolling rows intentionally cross their clipping zones.
-          contents = contents
-            .replaceAll(
-              "<Odometer current={current} fontSize={counterSize} color={t.fg} />",
-              '<span data-layout-ignore style={{display:"contents"}}><Odometer current={current} fontSize={counterSize} color={t.fg} /></span>',
-            )
-            .replace(
-              "const listViewport = (\n    <div",
-              "const listViewport = (\n    <div data-layout-allow-occlusion",
-            )
-            .replace(
-              "<div\n            style={{\n              fontSize: loginSize,",
-              "<div data-layout-allow-overflow\n            style={{\n              fontSize: loginSize,",
+          if (
+            createHash("sha256").update(original).digest("hex") !==
+            "17df5fafc029c13f5337ff09a122a58c2cc01aad36a0613b938f11042ea0576a"
+          )
+            throw new Error(
+              `Unreviewed GitHub Stars fade mask source: ${args.path}`,
             );
+          // The authored fade masks cover scrolling row labels as they leave the viewport.
+          for (const [needle, replacement] of [
+            [
+              "<div\n            style={{\n              fontSize: loginSize,",
+              "<div data-layout-allow-overflow data-layout-allow-occlusion\n            style={{\n              fontSize: loginSize,",
+            ],
+            [
+              "<div\n            style={{\n              fontSize: 18,\n              fontWeight: 400,\n              color: theme.fgMuted,",
+              "<div data-layout-allow-occlusion\n            style={{\n              fontSize: 18,\n              fontWeight: 400,\n              color: theme.fgMuted,",
+            ],
+            [
+              "<span>#{index + 1}</span>",
+              "<span data-layout-allow-occlusion>#{index + 1}</span>",
+            ],
+          ]) {
+            if (contents.split(needle).length !== 2)
+              throw new Error(
+                `Missing GitHub Stars scrolling row boundary: ${args.path}`,
+              );
+            contents = contents.replace(needle, replacement);
+          }
         }
         return { contents, loader: "tsx", resolveDir: dirname(args.path) };
       },
@@ -1340,6 +1436,155 @@ const socialAssetsPlugin = {
 const sourceAdjustmentsPlugin = {
   name: "hyfrme-source-adjustments",
   setup(buildApi) {
+    buildApi.onLoad(
+      { filter: /registry\/remocn\/chat-to-preview-layout\/index\.tsx$/ },
+      async (args) => {
+        const source = await readFile(args.path, "utf8");
+        if (
+          createHash("sha256").update(source).digest("hex") !==
+          "e3b6bacecbe65583e4d3569bb498260638797dfa354a5f792be3e07770ba1ff1"
+        )
+          throw new Error("Pinned Chat to Preview Layout source changed");
+        const bubble =
+          "<div\n          key={i}\n          style={{\n            alignSelf: m.from";
+        if (source.split(bubble).length !== 2)
+          throw new Error("Expected one native chat bubble definition");
+        // User bubbles remain under the preview as the fixed-width chat clips.
+        const contents = source.replace(
+          bubble,
+          bubble.replace(
+            "key={i}",
+            'key={i} data-layout-allow-occlusion={m.from === "user" || undefined}',
+          ),
+        );
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
+
+    buildApi.onLoad(
+      { filter: /registry\/remocn\/type-wall\/index\.tsx$/ },
+      async (args) => {
+        const source = await readFile(args.path, "utf8");
+        const contracts = [
+          "<span key={i}>{token}</span>",
+          "const NARROW_SCALE = 0.7275 / 0.8594;",
+          "const rowHeight = Math.max(8, fontSize * unit);",
+          "top: height / 2 + (row - 0.5) * rowHeight,\n              height: rowHeight,",
+          "clipPath:\n                state.direction < 0\n                  ? `inset(0 0 0 ${hidden})`\n                  : `inset(0 ${hidden} 0 0)`,",
+          'alignItems: "center",\n                whiteSpace: "pre",',
+          "lineHeight: 1,\n                fontWeight: narrow ? 400 : 900,",
+        ];
+        if (contracts.some((contract) => source.split(contract).length !== 2))
+          throw new Error(
+            `Missing clipped upstream Type Wall row in ${args.path}`,
+          );
+        // Adjacent streamed rows clip full font boxes to their cap-height bands.
+        const contents = source.replace(
+          contracts[0],
+          "<span data-layout-allow-overlap key={i}>{token}</span>",
+        );
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
+
+    buildApi.onLoad(
+      { filter: /registry\/remocn\/number-wheel\/index\.tsx$/ },
+      async (args) => {
+        const source = await readFile(args.path, "utf8");
+        if (
+          createHash("sha256").update(source).digest("hex") !==
+          "9c1ac7a6af5ac367a0c7b7928d2ec70326c111258b7bb32a2cf4d38d202dfbd5"
+        )
+          throw new Error(`Pinned Number Wheel source changed in ${args.path}`);
+        const digit =
+          "<span\n            key={i}\n            style={{ height: cellHeight, lineHeight: `${cellHeight}px` }}";
+        if (source.split(digit).length !== 2)
+          throw new Error(
+            `Missing mapped upstream Number Wheel digit in ${args.path}`,
+          );
+        // Each wheel deliberately clips its translated eleven-digit stack to one cell.
+        const contents = source.replace(
+          digit,
+          digit.replace(
+            "key={i}",
+            "key={i} data-layout-allow-overlap data-layout-allow-occlusion data-layout-allow-overflow",
+          ),
+        );
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
+
+    buildApi.onLoad(
+      { filter: /registry\/remocn\/zoom-words\/index\.tsx$/ },
+      async (args) => {
+        const source = await readFile(args.path, "utf8");
+        const camera =
+          '<span\n            className={className}\n            style={{\n              display: "inline-flex",\n              alignItems: "baseline",\n              transform: `translateX(-${cameraPct.toFixed(3)}%)`,';
+        if (
+          source.split(camera).length !== 2 ||
+          !source.includes('overflow: "hidden",') ||
+          !source.includes("scale: `${zoom}`,")
+        )
+          throw new Error(`Missing intentional source camera in ${args.path}`);
+        // The upstream camera pans words through its clipped viewport.
+        const contents = source.replace(
+          camera,
+          camera.replace("<span", "<span data-layout-allow-overflow"),
+        );
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
+    buildApi.onLoad(
+      {
+        filter:
+          /registry\/remocn\/(shimmer-sweep|infinite-bento-pan)\/index\.tsx$/,
+      },
+      async (args) => {
+        let contents = await readFile(args.path, "utf8");
+        // These text layers intentionally sit under the source's sheen or vignette.
+        const edits = args.path.includes("/shimmer-sweep/")
+          ? [
+              [
+                "<span style={{ ...textStyle, color: baseColor }}>",
+                "<span data-layout-allow-occlusion style={{ ...textStyle, color: baseColor }}>",
+              ],
+            ]
+          : [
+              [
+                "const labelEl = card.label ? (\n    <div\n",
+                "const labelEl = card.label ? (\n    <div data-layout-allow-occlusion\n",
+              ],
+              [
+                '<div\n          style={{\n            flex: 1,\n            display: "flex",\n            alignItems: "center",\n            justifyContent: "flex-start",',
+                '<div data-layout-allow-occlusion\n          style={{\n            flex: 1,\n            display: "flex",\n            alignItems: "center",\n            justifyContent: "flex-start",',
+              ],
+              [
+                "<div style={{ fontSize: 12, color: accent, fontWeight: 600 }}>",
+                "<div data-layout-allow-occlusion style={{ fontSize: 12, color: accent, fontWeight: 600 }}>",
+              ],
+              [
+                '<div\n          style={{\n            flex: 1,\n            display: "flex",\n            alignItems: "center",\n            fontSize: 48,',
+                '<div data-layout-allow-occlusion\n          style={{\n            flex: 1,\n            display: "flex",\n            alignItems: "center",\n            fontSize: 48,',
+              ],
+              [
+                "<span\n            style={{\n              fontSize: 20,",
+                "<span data-layout-allow-occlusion\n            style={{\n              fontSize: 20,",
+              ],
+              [
+                "<div style={{ flex: 1 }}>\n          <ChartCard",
+                "<div data-layout-allow-overflow style={{ flex: 1 }}>\n          <ChartCard",
+              ],
+            ];
+        for (const [before, after] of edits) {
+          if (!contents.includes(before))
+            throw new Error(
+              `Missing intentional source overlay in ${args.path}`,
+            );
+          contents = contents.replace(before, after);
+        }
+        return { contents, loader: "tsx", resolveDir: dirname(args.path) };
+      },
+    );
     buildApi.onLoad(
       { filter: /registry\/remocn\/ring-text\/index\.tsx$/ },
       async (args) => {
@@ -1542,11 +1787,17 @@ const sourceAdjustmentsPlugin = {
         const padding = "const pad = getSelectionSnapPadding(state.snap);";
         if (!original.includes(padding))
           throw new Error(`Missing Selection Snap padding in ${args.path}`);
-        // Negative CSS padding retains an earlier frame's box when seeking.
+        // The source's invalid overshoot padding retains the last valid frame.
         return {
           contents: original.replace(
             padding,
-            "const pad = getSelectionSnapPadding(Math.min(1, state.snap));",
+            `let pad = getSelectionSnapPadding(state.snap);
+  for (let previousFrame = Math.ceil(frame) - 1;
+    (pad.x < 0 || pad.y < 0) && previousFrame >= 0;
+    previousFrame--) {
+    const previousTime = getSelectionSnapTime(previousFrame, { fps, speed });
+    pad = getSelectionSnapPadding(getSelectionSnapState(previousTime).snap);
+  }`,
           ),
           loader: "tsx",
           resolveDir: dirname(args.path),
@@ -1608,9 +1859,9 @@ const shaderGatePlugin = {
         const original = await readFile(args.path, "utf8");
         if (/\buseDelayRender\b/.test(original)) {
           let contents = original.replace("/* @remocn", "/*! @remocn");
-          if (
-            /\/(shader-seam|shader-spiral-pass)\/index\.tsx$/.test(args.path)
-          ) {
+          if (/\/shader-seam\/index\.tsx$/.test(args.path)) {
+            contents = annotateShaderSeam(original);
+          } else if (/\/shader-spiral-pass\/index\.tsx$/.test(args.path)) {
             // The scene is intentionally covered while the transition is active.
             const scene =
               "<AbsoluteFill\n        style={{\n          visibility: entering !== phase.showNext";
@@ -1630,13 +1881,7 @@ const shaderGatePlugin = {
             resolveDir: dirname(args.path),
           };
         }
-        const contents = original.replace(
-          /const \[handle\] = useState\(\(\) => delayRender\("shader-[^"]+"\)\);/,
-          "const handle = 0;",
-        );
-        if (contents === original) {
-          throw new Error(`Missing shader render gate in ${args.path}`);
-        }
+        const contents = adaptSourcePaintGate(original, args.path);
         return { contents, loader: "tsx", resolveDir: dirname(args.path) };
       },
     );
@@ -1692,7 +1937,11 @@ const loadConfig = async (path, exportName) => {
 };
 
 const escapeHtmlAttribute = (value) =>
-  value.replaceAll("&", "&amp;").replaceAll("'", "&#39;");
+  value
+    .replaceAll("&", "&amp;")
+    .replaceAll("'", "&#39;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
 
 const parseUiExampleControls = (source, name) => {
   const declaration = source.match(
@@ -1705,13 +1954,6 @@ const parseUiExampleControls = (source, name) => {
 };
 
 const fixtures = [];
-const fontSource = resolve(
-  root,
-  "registry",
-  "blocks",
-  "soft-blur-in",
-  "Geist-SemiBold.woff2",
-);
 const geistLatinSource = resolve(root, "assets", "fonts", "Geist-Latin.woff2");
 const jetBrainsMonoSource = resolve(
   root,
@@ -1728,12 +1970,23 @@ const geistMonoSource = resolve(
   "fonts",
   "GeistMono-Latin.woff2",
 );
-const caveatSource = resolve(root, "assets", "fonts", "Caveat-Latin.woff2");
+const caveatSource = resolve(
+  root,
+  "assets/remocn-fonts/Caveat-v23-Latin.woff2",
+);
 let resolveControls;
+const socialMedia = JSON.parse(
+  await readFile(resolve(root, "assets/social/manifest.json"), "utf8"),
+).assets;
+for (const asset of socialMedia) {
+  const bytes = await readFile(resolve(root, asset.path));
+  if (createHash("sha256").update(bytes).digest("hex") !== asset.sha256)
+    throw new Error(`Frozen social media checksum mismatch: ${asset.path}`);
+}
 
 for (const name of selectedNames) {
   const additionManifest = additionManifests.find(
-    (item) => item.components[name] && item.upstream.commit === upstreamCommit,
+    (item) => item.components[name],
   );
   const addition = additionManifest?.components[name];
   const selectedAssets = (additionManifest?.assets ?? []).filter(
@@ -1752,11 +2005,11 @@ for (const name of selectedNames) {
           : []),
       ]),
   );
-  const usesVariableGeist =
-    Boolean(addition) ||
-    name === "spring-settle" ||
-    sourcePreviewNames.has(name);
   const geistFamily = addition ? "Hyfrme Remocn Geist" : "Geist";
+  const monoFile =
+    name === "github-stars"
+      ? "GeistMono-v6-Latin.woff2"
+      : "GeistMono-Latin.woff2";
   const registryItem = upstreamRegistry.items.find(
     (item) => item.name === name,
   );
@@ -1764,6 +2017,16 @@ for (const name of selectedNames) {
     upstream,
     addition?.source ?? registryItem.files[0].path,
   );
+  if (discreteInterNames.has(name)) {
+    const source = await readFile(sourcePath, "utf8");
+    const fontRequest =
+      'loadFont("normal", {\n  weights: ["100", "900"],\n  subsets: ["latin"],\n})';
+    if (
+      !source.includes('from "@remotion/google-fonts/Inter"') ||
+      source.split(fontRequest).length !== 2
+    )
+      throw new Error(`Missing discrete upstream Inter faces in ${sourcePath}`);
+  }
   const sceneOverride = sceneOverrides[name];
   const renderSourcePath = sceneOverride
     ? resolve(upstream, sceneOverride.source)
@@ -1772,12 +2035,12 @@ for (const name of selectedNames) {
     ? sourcePath
     : resolve(dirname(sourcePath), "config.ts");
   const sourceConfig = sceneOverride?.config ?? (await loadConfig(configPath));
-  if (addition)
+  if (!sceneOverride?.config)
     resolveControls ??= await loadConfig(
       resolve(upstream, "lib/customizer-config.ts"),
       "resolveControls",
     );
-  const config = addition
+  const config = !sceneOverride?.config
     ? {
         ...sourceConfig,
         controls: resolveControls(name, sourceConfig.controls),
@@ -1789,6 +2052,21 @@ for (const name of selectedNames) {
     ? await readFile(renderSourcePath, "utf8")
     : null;
   const source = await readFile(sourcePath, "utf8");
+  const interTtfUrl =
+    ["glyph-anatomy", "outline-trace"].includes(name)
+      ? source.match(/export const interExtraBoldTtf =\s*"([^"]+)";/)?.[1]
+      : null;
+  if (
+    interTtfUrl !== null &&
+    (!interTtfUrl ||
+      !selectedAssets.some(
+        (asset) =>
+          asset.role === "font" &&
+          asset.sourceUrl === interTtfUrl &&
+          asset.path.endsWith(".ttf"),
+      ))
+  )
+    throw new Error(`Missing frozen upstream Inter TTF in ${sourcePath}`);
   const controlKeys =
     sceneOverride?.controls ??
     (sceneOverride?.uiExample
@@ -1809,12 +2087,6 @@ for (const name of selectedNames) {
   const props = Object.fromEntries(
     Object.entries(controls).map(([key, control]) => [key, control.default]),
   );
-  if (name === "x-follow-card") {
-    props.avatarUrl = "/assets/social/logo.svg";
-    props.coverUrl = "/assets/social/imgs/x-cover.png";
-  } else if (name === "x-followers-overview") {
-    props.avatarUrl = "/assets/social/logo.svg";
-  }
   if (
     /\bspeed\??:/.test(source) &&
     !("speed" in props) &&
@@ -1831,6 +2103,9 @@ for (const name of selectedNames) {
         ? config.durationInFrames(props)
         : config.durationInFrames),
     props,
+    ...(config.previewBackdrop?.type === "image" && !sceneOverride
+      ? { previewBackdrop: config.previewBackdrop }
+      : {}),
     background:
       sceneOverride?.background ??
       (config.previewBackdrop?.type === "color" ||
@@ -1850,6 +2125,7 @@ for (const name of selectedNames) {
     import {createRoot} from "react-dom/client";
     import {__setHyfrmeFrame, __setHyfrmeAssets, __waitForSource} from "remotion";
     import {${renderComponentName}} from ${JSON.stringify(importPath)};
+    ${fixture.previewBackdrop ? `import {Backdrop} from "./registry/remocn/backdrop/index.tsx";` : ""}
     const container = document.getElementById("hyfrme-source-root");
     const assets = JSON.parse(container.dataset.hyfrmeAssets ?? '{}');
     __setHyfrmeAssets(assets);
@@ -1882,9 +2158,10 @@ for (const name of selectedNames) {
       return result;
     }, {});
     ${name === "stretch-in" ? `props.fontUrl = assets[${JSON.stringify(selectedAssets.find((asset) => asset.role === "font").sourceUrl)}];` : ""}
+    ${interTtfUrl !== null ? `props.fontUrl ??= assets[${JSON.stringify(interTtfUrl)}];` : ""}
     const renderFrame = (frame) => {
       __setHyfrmeFrame(frame, config);
-      flushSync(() => root.render(React.createElement(${renderComponentName}, props)));
+      flushSync(() => root.render(${fixture.previewBackdrop ? `React.createElement(Backdrop, {fill: ${JSON.stringify(fixture.previewBackdrop)}, padding: 0, radius: 0, shadow: ""}, React.createElement(${renderComponentName}, props))` : `React.createElement(${renderComponentName}, ${name === "animated-bar-chart" ? "{...props,key:frame}" : "props"})`}));
     };
     window.__hyfrmeRenderFrame = renderFrame;
     ${
@@ -1915,13 +2192,19 @@ for (const name of selectedNames) {
           : ""
       }
       const families = new Set(${JSON.stringify([geistFamily, ...selectedAssets.filter((asset) => asset.family).map((asset) => asset.family)])});
+      ${jetBrainsMonoNames.has(name) ? 'families.add("JetBrains Mono");' : ""}
       ${interNames.has(name) ? 'families.add("Inter");' : ""}
+      ${name === "agent-run" ? 'families.add("Geist");' : ""}
       ${geistMonoNames.has(name) ? 'families.add("Geist Mono");' : ""}
+      ${manropeNames.has(name) ? 'families.add("Manrope");' : ""}
+      ${caveatNames.has(name) ? 'families.add("Caveat");' : ""}
+      ${name === "type-wall" ? 'families.add("Anton");' : ""}
       ${name === "kinetic-warp" ? "families.add(props.fontFamily);" : ""}
       await Promise.all(Array.from(document.fonts).filter(font => families.has(font.family.replaceAll('"', '').replaceAll("'", ''))).map(font => font.load()));
       await document.fonts.ready;
       renderFrame(0);
       await __waitForSource();
+      ${fixture.previewBackdrop ? "await Promise.all(Array.from(container.querySelectorAll('img')).map(image => image.decode()));" : ""}
       renderFrame(0);
       await Promise.all(Array.from(container.querySelectorAll('img')).map(image => image.decode()));
     })();
@@ -1932,7 +2215,9 @@ for (const name of selectedNames) {
     format: "iife",
     minify: true,
     metafile: true,
-    ...(addition ? { supported: { "template-literal": false } } : {}),
+    ...(addition || name.startsWith("shader-") || paperShaderNames.has(name)
+      ? { supported: { "template-literal": false } }
+      : {}),
     platform: "browser",
     plugins: [
       remotionPlugin,
@@ -1944,6 +2229,7 @@ for (const name of selectedNames) {
       socialAssetsPlugin,
       sourceAdjustmentsPlugin,
       shaderGatePlugin,
+      ...(paperShaderNames.has(name) ? [frameDrivenPaperPlugin] : []),
       fontSourcePlugin,
     ],
     stdin: {
@@ -2215,6 +2501,29 @@ for (const name of selectedNames) {
       target: "THIRD_PARTY_LICENSES/Date-Fns-MIT.md",
       source: resolve(root, "assets", "licenses", "Date-Fns-MIT.md"),
     });
+    const repoOwner = props.repo.split("/")[0] || props.repo;
+    const avatar = socialMedia.find(
+      (asset) => asset.sourceUrl === `https://unavatar.io/github/${repoOwner}`,
+    );
+    if (!avatar) throw new Error("Missing frozen upstream repository avatar");
+    packagedAssets.push({
+      path: "repository-avatar.png",
+      target: avatar.path,
+      source: resolve(root, avatar.path),
+    });
+    assetMap[avatar.sourceUrl] = `../${avatar.path}`;
+  }
+  if (
+    ["chat-flow", "telegram-chat-flow", "imessage-chat-flow"].includes(name)
+  ) {
+    const avatar = socialMedia.find((asset) => asset.components.includes(name));
+    if (!avatar) throw new Error(`Missing frozen chat contact avatar: ${name}`);
+    packagedAssets.push({
+      path: "contact-avatar.jpg",
+      target: avatar.path,
+      source: resolve(root, avatar.path),
+    });
+    assetMap[avatar.sourceUrl] = `../${avatar.path}`;
   }
   const avatarIds =
     name === "github-sponsors"
@@ -2231,18 +2540,24 @@ for (const name of selectedNames) {
     });
   }
   if (name === "x-follow-card" || name === "x-followers-overview") {
+    if (props.avatarUrl !== "/logo.svg")
+      throw new Error(`${name}: pinned avatar default changed`);
     packagedAssets.push({
       path: "logo.svg",
       target: "assets/social/logo.svg",
       source: resolve(root, "assets", "social", "logo.svg"),
     });
+    assetMap[props.avatarUrl] = "../assets/social/logo.svg";
   }
   if (name === "x-follow-card") {
+    if (props.coverUrl !== "/imgs/x-cover.png")
+      throw new Error("Pinned X Follow Card cover default changed");
     packagedAssets.push({
       path: "imgs/x-cover.png",
       target: "assets/social/imgs/x-cover.png",
       source: resolve(root, "assets", "social", "imgs", "x-cover.png"),
     });
+    assetMap[props.coverUrl] = "../assets/social/imgs/x-cover.png";
   }
   if (name === "reel") {
     for (let index = 1; index <= 6; index += 1) {
@@ -2253,6 +2568,29 @@ for (const name of selectedNames) {
         source: resolve(upstream, "public", path),
       });
     }
+  }
+  if (name === "backdrop") {
+    if (controls.image.default !== "/hero.png")
+      throw new Error("Pinned Backdrop image default changed");
+    packagedAssets.push({
+      path: "preview/hero.png",
+      target: "assets/remocn-preview/hero.png",
+      source: resolve(upstream, "public/hero.png"),
+    });
+    assetMap["/hero.png"] = "../assets/remocn-preview/hero.png";
+  }
+  if (fixture.previewBackdrop) {
+    const sourcePath = fixture.previewBackdrop.src;
+    if (sourcePath !== "/bg.jpg")
+      throw new Error(
+        `${name}: unsupported preview backdrop asset ${sourcePath}`,
+      );
+    packagedAssets.push({
+      path: "preview/bg.jpg",
+      target: "assets/remocn-preview/bg.jpg",
+      source: resolve(upstream, "public/bg.jpg"),
+    });
+    assetMap[sourcePath] = "../assets/remocn-preview/bg.jpg";
   }
   for (const asset of packagedAssets) {
     if (asset.target.startsWith("assets/")) {
@@ -2269,21 +2607,20 @@ for (const name of selectedNames) {
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <style>
 ${localFontCss}
-      @font-face { font-family: "${geistFamily}"; src: url("../assets/fonts/${usesVariableGeist ? "Geist-Latin.woff2" : "Geist-SemiBold.woff2"}") format("woff2"); font-style: normal; font-weight: ${usesVariableGeist ? "100 900" : "600"}; font-display: block; }
+      @font-face { font-family: "${geistFamily}"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+${name === "agent-run" ? '      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }' : ""}
 ${jetBrainsMonoNames.has(name) ? '      @font-face { font-family: "JetBrains Mono"; src: url("../assets/fonts/JetBrainsMono-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 800; font-display: block; }' : ""}
-${interNames.has(name) ? (name === "ring-text" ? ["100", "900"] : ["100 900"]).map((weight) => `      @font-face { font-family: "Inter"; src: url("../assets/fonts/Inter-Latin.woff2") format("woff2"); font-style: normal; font-weight: ${weight}; font-display: block; }`).join("\n") : ""}
+${interNames.has(name) ? (discreteInterNames.has(name) ? ["100", "900"] : ["100 900"]).map((weight) => `      @font-face { font-family: "Inter"; src: url("../assets/fonts/Inter-Latin.woff2") format("woff2"); font-style: normal; font-weight: ${weight}; font-display: block; }`).join("\n") : ""}
 ${name === "type-wall" ? '      @font-face { font-family: "Anton"; src: url("../assets/fonts/Anton-Latin.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: block; }' : ""}
 ${manropeNames.has(name) ? '      @font-face { font-family: "Manrope"; src: url("../assets/fonts/Manrope-Latin.woff2") format("woff2"); font-style: normal; font-weight: 200 800; font-display: block; }' : ""}
-${geistMonoNames.has(name) ? '      @font-face { font-family: "Geist Mono"; src: url("../assets/fonts/GeistMono-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }' : ""}
+${geistMonoNames.has(name) ? `      @font-face { font-family: "Geist Mono"; src: url("../assets/fonts/${monoFile}") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }` : ""}
 ${caveatNames.has(name) ? '      @font-face { font-family: "Caveat"; src: url("../assets/fonts/Caveat-Latin.woff2") format("woff2"); font-style: normal; font-weight: 400 700; font-display: block; }' : ""}
       * { box-sizing: border-box; }
       html, body { width: ${fixture.width}px; height: ${fixture.height}px; margin: 0; overflow: hidden; background: ${fixture.background}; }
       body { --font-geist-sans: "${geistFamily}"; font-family: "${geistFamily}", -apple-system, BlinkMacSystemFont, sans-serif; }
       #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"${geistFamily}";font-family:"${geistFamily}",sans-serif; background:${fixture.background}; }
 ${geistMonoNames.has(name) ? '      #hyfrme-source-root { --font-geist-mono: "Geist Mono"; }' : ""}
-${name === "echo-stack" ? "      #hyfrme-source-root { transform: translateY(1px); }" : ""}
-${sourceTextRenderingNames.has(name) ? "      #hyfrme-source-root, #hyfrme-source-root * { text-rendering: auto; }" : ""}
-${sourcePreviewNames.has(name) ? sourcePreviewCss : ""}
+${sourcePreviewCss}
 ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? "      [data-hyfrme-seek-probe] { position: absolute; width: 1px; height: 1px; pointer-events: none; }" : ""}
     </style>
   </head>
@@ -2319,9 +2656,7 @@ ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? `      timeli
 `;
   await writeFile(resolve(blockDirectory, `${name}.html`), html);
   await writeFile(resolve(blockDirectory, `${name}.runtime.js`), runtime);
-  const geistFile = usesVariableGeist
-    ? { source: geistLatinSource, name: "Geist-Latin.woff2" }
-    : { source: fontSource, name: "Geist-SemiBold.woff2" };
+  const geistFile = { source: geistLatinSource, name: "Geist-Latin.woff2" };
   await copyFile(geistFile.source, resolve(blockDirectory, geistFile.name));
   if (jetBrainsMonoNames.has(name)) {
     await copyFile(
@@ -2343,8 +2678,10 @@ ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? `      timeli
   }
   if (geistMonoNames.has(name)) {
     await copyFile(
-      geistMonoSource,
-      resolve(blockDirectory, "GeistMono-Latin.woff2"),
+      name === "github-stars"
+        ? resolve(root, "assets/remocn-fonts", monoFile)
+        : geistMonoSource,
+      resolve(blockDirectory, monoFile),
     );
   }
   if (caveatNames.has(name)) {
@@ -2436,8 +2773,8 @@ ${canvasTransitionNames.has(name) || canvasFilterNames.has(name) ? `      timeli
           ...(geistMonoNames.has(name)
             ? [
                 {
-                  path: "GeistMono-Latin.woff2",
-                  target: "assets/fonts/GeistMono-Latin.woff2",
+                  path: monoFile,
+                  target: `assets/fonts/${monoFile}`,
                   type: "hyperframes:asset",
                 },
               ]

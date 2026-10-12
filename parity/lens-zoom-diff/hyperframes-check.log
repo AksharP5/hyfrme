@@ -21,8 +21,49 @@
     "ok": true,
     "errorCount": 0,
     "warningCount": 0,
-    "infoCount": 6,
+    "infoCount": 7,
     "findings": [
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 1.867,
+        "selector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(10) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 10.27,
+          "top": 39.33,
+          "right": 1295.48,
+          "bottom": 681.54,
+          "width": 1285.21,
+          "height": 642.21
+        },
+        "containerSelector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1)",
+        "text": "Lens Zoom",
+        "fixHint": "Text is 1285px x 642px inside 1280px x 720px and overflows by up to 15px; widen the container to at least ~1295px or shrink font-size from 96px to ~96px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 15.48
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/lens-zoom.html",
+        "bbox": {
+          "x": 10.27,
+          "y": 39.33,
+          "width": 1285.21,
+          "height": 642.21
+        },
+        "firstSeen": 1.867,
+        "lastSeen": 1.867,
+        "occurrences": 1,
+        "heldMs": 0
+      },
       {
         "code": "canvas_overflow",
         "severity": "info",
@@ -30,10 +71,10 @@
         "selector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(10) > div:nth-of-type(1) > span:nth-of-type(1)",
         "message": "Text extends outside the composition canvas.",
         "rect": {
-          "left": 10.67,
-          "top": 40.82,
-          "right": 1295.88,
-          "bottom": 683.02,
+          "left": 10.27,
+          "top": 39.33,
+          "right": 1295.48,
+          "bottom": 681.54,
           "width": 1285.21,
           "height": 642.21
         },
@@ -49,19 +90,20 @@
           "height": 720
         },
         "overflow": {
-          "right": 15.88
+          "right": 15.48
         },
         "dataAttributes": {},
         "sourceFile": "compositions/lens-zoom.html",
         "bbox": {
-          "x": 10.67,
-          "y": 40.82,
+          "x": 10.27,
+          "y": 39.33,
           "width": 1285.21,
           "height": 642.21
         },
         "firstSeen": 1.867,
         "lastSeen": 1.867,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -101,7 +143,8 @@
         },
         "firstSeen": 1.867,
         "lastSeen": 1.867,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "content_overlap",
@@ -110,11 +153,11 @@
         "selector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(9) > div:nth-of-type(1) > span:nth-of-type(1)",
         "message": "Two text blocks overlap and may render unreadable.",
         "rect": {
-          "left": 48.29,
-          "top": 59.62,
-          "right": 1258.25,
-          "bottom": 664.22,
-          "width": 1209.96,
+          "left": 47.92,
+          "top": 58.22,
+          "right": 1257.87,
+          "bottom": 662.82,
+          "width": 1209.95,
           "height": 604.6
         },
         "containerSelector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(10) > div:nth-of-type(1) > span:nth-of-type(1)",
@@ -123,14 +166,15 @@
         "dataAttributes": {},
         "sourceFile": "compositions/lens-zoom.html",
         "bbox": {
-          "x": 48.29,
-          "y": 59.62,
-          "width": 1209.96,
+          "x": 47.92,
+          "y": 58.22,
+          "width": 1209.95,
           "height": 604.6
         },
         "firstSeen": 1.867,
         "lastSeen": 1.867,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "escaped_container",
@@ -167,7 +211,8 @@
         },
         "firstSeen": 1.867,
         "lastSeen": 1.867,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "content_overlap",
@@ -176,10 +221,10 @@
         "selector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(9) > div:nth-of-type(1) > span:nth-of-type(1)",
         "message": "Two text blocks overlap and may render unreadable.",
         "rect": {
-          "left": 311.19,
-          "top": 194.47,
-          "right": 1027.72,
-          "bottom": 495.37,
+          "left": 311.04,
+          "top": 193.62,
+          "right": 1027.58,
+          "bottom": 494.52,
           "width": 716.54,
           "height": 300.9
         },
@@ -189,14 +234,15 @@
         "dataAttributes": {},
         "sourceFile": "compositions/lens-zoom.html",
         "bbox": {
-          "x": 311.19,
-          "y": 194.47,
+          "x": 311.04,
+          "y": 193.62,
           "width": 716.54,
           "height": 300.9
         },
         "firstSeen": 1.991,
         "lastSeen": 1.991,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "content_overlap",
@@ -205,12 +251,12 @@
         "selector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(9) > div:nth-of-type(1) > span:nth-of-type(1)",
         "message": "Two text blocks overlap and may render unreadable.",
         "rect": {
-          "left": 380.37,
-          "top": 295.29,
-          "right": 905.78,
-          "bottom": 468.83,
+          "left": 380.33,
+          "top": 294.65,
+          "right": 905.74,
+          "bottom": 468.19,
           "width": 525.41,
-          "height": 173.55
+          "height": 173.54
         },
         "containerSelector": "#lens-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(10) > div:nth-of-type(1) > span:nth-of-type(1)",
         "text": "Lens Zoom",
@@ -218,14 +264,15 @@
         "dataAttributes": {},
         "sourceFile": "compositions/lens-zoom.html",
         "bbox": {
-          "x": 380.37,
-          "y": 295.29,
+          "x": 380.33,
+          "y": 294.65,
           "width": 525.41,
-          "height": 173.55
+          "height": 173.54
         },
         "firstSeen": 2.116,
         "lastSeen": 2.116,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       }
     ],
     "duration": 3.7333333333333334,
@@ -243,7 +290,7 @@
     "transitionSamples": [],
     "transitionSamplesDropped": 0,
     "tolerance": 2,
-    "totalIssueCount": 6,
+    "totalIssueCount": 7,
     "truncated": false
   },
   "motion": {
@@ -272,6 +319,10 @@
     "checked": 6,
     "passed": 6
   },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
   "snapshots": {
     "enabled": false,
     "files": [],
@@ -279,8 +330,8 @@
     "findingFiles": []
   },
   "_meta": {
-    "version": "0.8.30",
-    "latestVersion": "0.8.32",
+    "version": "0.8.99",
+    "latestVersion": "0.8.114",
     "updateAvailable": true
   }
 }

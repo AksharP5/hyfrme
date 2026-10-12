@@ -51,7 +51,7 @@
       "reloaded": "99a480747bbc61e339566a3d0105531b0aec09d14ddb6770317f3c2dbc7bdf9a"
     },
     "referenceSha256": "79cbff56eabda25c91540a989916b631800d926fb81fd71e00472dcf9a4478f7",
-    "compositionSha256": "c8022e9d691bf9f09c3c5d417a1ab3d2f3898e07eaefb5e51143d46359b088fd",
+    "compositionSha256": "cc75183a8d844918b2527e03263e011a1460da82b1ac23509491d88fc08dcbf1",
     "boxes": {
       "input": {
         "x": 40,
@@ -87,172 +87,965 @@
   "classification": "source-dom-port",
   "measurement": "lossless-png",
   "status": "verified",
+  "defaultMode": "pixel-verified",
+  "defaultTheme": "dark",
   "thresholds": {
-    "meanSsim": 0.989,
-    "minSsim": 0.985,
-    "controlCrops": 0.97
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.9929258500000014,
-    "minSsim": 0.991452,
+    "meanSsim": 1,
+    "minSsim": 1,
     "worstFrame": 0,
+    "exactRgba": true,
+    "mismatchedFrames": [],
     "pass": true,
-    "p05Ssim": 0.991452,
-    "p95Ssim": 0.99399
-  },
-  "checks": {
-    "hyperframes": "full check and strict 120-frame render passed in both desktop themes",
-    "hyperframesVersion": "0.8.75",
-    "sourceBrowser": "Chrome Headless Shell 152.0.7977.30",
-    "browserGpuMode": "hardware",
-    "installedThroughCli": true,
-    "motionCoverage": "native query typing, ArrowDown/ArrowUp result highlight, Clear, Enter selection, and route reload at frame precision",
-    "customVariables": "dark and light edited titles, ages, queries, copy, and timing passed full checks and visible snapshots"
-  },
-  "artifacts": {
-    "referenceVideo": "public/previews/t3-thread-search/reference.mp4",
-    "hyperframesVideo": "public/previews/t3-thread-search/hyperframes.mp4",
-    "thumbnail": "public/previews/t3-thread-search/thumbnail.png",
-    "frameSsim": "parity/t3-thread-search-diff/dark/ssim.txt",
-    "hyperframesCheck": "parity/t3-thread-search-diff/dark/hyperframes-check.json",
-    "controlCrops": "parity/t3-thread-search-diff/dark/crops.json",
-    "installedCheck": "parity/t3-thread-search-diff/dark/installed-check.json",
-    "worstFrame": "parity/t3-thread-search-diff/dark/worst-frame.png",
-    "lightThumbnail": "public/previews/t3-thread-search/thumbnail-light.png"
+    "rgba": {
+      "pass": true,
+      "frameCount": 120,
+      "mismatchedFrames": []
+    },
+    "p05Ssim": 1,
+    "p95Ssim": 1
   },
   "themes": {
     "dark": {
+      "sourceCommit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+      "defaultMode": "pixel-verified",
+      "status": "verified",
+      "thresholds": {
+        "meanSsim": 1,
+        "minSsim": 1,
+        "exactRgba": true
+      },
+      "values": {
+        "theme": "dark",
+        "projectName": "hyfrme",
+        "projectAvatar": "HE",
+        "branchName": "main",
+        "firstThread": "Catalog motion audit",
+        "secondThread": "Build a logo intro",
+        "thirdThread": "Grouped logo tests",
+        "fourthThread": "Review final hold",
+        "fifthThread": "Search reveal timing",
+        "settledThread": "Verify Logo Enter parity",
+        "firstAge": "12h",
+        "secondAge": "10h",
+        "thirdAge": "17h",
+        "fourthAge": "1d",
+        "fifthAge": "2d",
+        "settledAge": "10h",
+        "firstQuery": "logo",
+        "finalQuery": "grouped logo",
+        "firstPrompt": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+        "firstReplyLead": "I found the Logo Enter timing in",
+        "firstReplyFile": "logo-enter.html",
+        "firstReplyTail": ". The final pass can extend the duration while keeping the last rendered frame still.",
+        "selectedPrompt": "Gather the source marks into a Hyfrme logo lockup.",
+        "selectedReply": "The marks should arrive separately, align on the same baseline, and resolve into the Hyfrme wordmark. Keep the source credit visible at the final hold.",
+        "composerPlaceholder": "Enable a provider in Settings to send a message",
+        "focusFrame": 10,
+        "firstQueryFrame": 16,
+        "arrowDownFrame": 40,
+        "arrowUpFrame": 50,
+        "clearFrame": 60,
+        "finalQueryFrame": 66,
+        "selectFrame": 110,
+        "reloadFrame": 116
+      },
+      "fixture": {
+        "width": 1200,
+        "height": 659,
+        "fps": 30,
+        "durationInFrames": 120,
+        "props": {
+          "focus": 10,
+          "firstQuery": "logo",
+          "arrowDown": 40,
+          "arrowUp": 50,
+          "clear": 60,
+          "finalQuery": "grouped logo",
+          "select": 110,
+          "reload": 116
+        },
+        "sourceHashes": {
+          "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+          "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+          "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+        },
+        "domSha256": {
+          "before": "5b2d4572feafa2edf5e054449ee27ccb9b09f4b2f8bc8caddded07d8a9c9720b",
+          "focused": "ec8de8e0422b24754684f9f701f5bf2b99b1f1ba9ae8d458424e1ffe3cf4a7e4",
+          "query-016": "fa421455b8ffb84b08dcc48d2f2176c6f3ac521e9296c836f6ea6a72b0a72aa6",
+          "query-020": "92cd47b6e18e5c6525d56f5ea34166b2f432395b13d2c8c15da43b12cfee557f",
+          "query-024": "0f9c656cefc354dada9fd82c34f45bd8f68d59ceb47ec1c61d705051e5f2f281",
+          "query-028": "5061cd418153d6f08aee6f094377354551052563fecfde21047435c349833718",
+          "arrow-down": "8be2c5b0457cba68274f46779fe74b1e0219e104e4e458803305f7b093ba0954",
+          "arrow-up": "5061cd418153d6f08aee6f094377354551052563fecfde21047435c349833718",
+          "cleared": "5cea9d0dd8d5cc18944447e9a95b562e4ecb4802bac1b4e6b7ccff9c24f3c3f2",
+          "query-066": "da6b9a0204f5a17cadee3653363adacfc0dd59f628f579b87070438e79719896",
+          "query-070": "152ba45d9e674e77e6ea949ee605732160e9f86288cc150e1e042dbe724d9a18",
+          "query-074": "283000ab320990bc722127b72d7cfdadbe3a75fc3ddcd39dbcd964bb9d2a0274",
+          "query-078": "5ce6cd4b46ecbd45126667061f2d2ecad57bbdcf8eea58b5a612400ca8877d9f",
+          "query-082": "1d3520400482b0fbc7d97ee1077dd5b0dfc0b380d298aa4d3d8bdae0ba1decfd",
+          "query-086": "888614b546c9203aba458002e8523e109c36635c4c943c79b3253788ef574e3b",
+          "query-090": "fb455ad7fd990a05ae70cf641ecaae842ca12829a623d6fac2faefe5570c0d65",
+          "query-094": "4ed4333f39fc1874dc3699b1535ed0b0d1a13273e7f79479f12444b02ec1e343",
+          "query-098": "e99f929c1451672a6c25afddca3e369fdf774272f67ee1129fea17f5e65a4b6c",
+          "query-102": "b78142448abbaf19a15d72f29c874869a7bd4b5502cb50d007f0c4ac2d980f66",
+          "query-106": "de7db2d9db0d9c226af1b0722942fbde680031580f7e6c880d1281187ab3db43",
+          "selected": "44471e36b924bccb7c6a9edec6abf4e2a88068ec7c59c7a42a8612a921e4ccbc",
+          "reloaded": "99a480747bbc61e339566a3d0105531b0aec09d14ddb6770317f3c2dbc7bdf9a"
+        },
+        "referenceSha256": "79cbff56eabda25c91540a989916b631800d926fb81fd71e00472dcf9a4478f7",
+        "compositionSha256": "cc75183a8d844918b2527e03263e011a1460da82b1ac23509491d88fc08dcbf1",
+        "boxes": {
+          "input": {
+            "x": 40,
+            "y": 57,
+            "width": 111,
+            "height": 30
+          },
+          "results": {
+            "x": 9,
+            "y": 96,
+            "width": 238,
+            "height": 110
+          },
+          "selectedResult": {
+            "x": 9,
+            "y": 96,
+            "width": 238,
+            "height": 36
+          }
+        },
+        "provenance": {
+          "app": "official desktop T3 Code v0.0.42 binary and bundled client",
+          "data": "seeded local Hyfrme project and conversation; provider unavailable",
+          "interaction": "native header search, query typing, keyboard highlight, clear, Enter selection, and route reload",
+          "clock": "2026-09-25T11:30:00Z"
+        },
+        "selectedRoute": "/012f2550-f1b4-4342-a3b2-5d581802a3b1/hyfrme-fixture-grouped-logos",
+        "persisted": {
+          "selectedRoute": true,
+          "query": false
+        }
+      },
+      "sourceHashes": {
+        "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+        "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+        "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+      },
       "referenceSha256": "79cbff56eabda25c91540a989916b631800d926fb81fd71e00472dcf9a4478f7",
       "themeSha256": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
-      "boxes": {
-        "input": {
-          "x": 40,
-          "y": 57,
-          "width": 111,
-          "height": 30
-        },
-        "results": {
-          "x": 9,
-          "y": 96,
-          "width": 238,
-          "height": 110
-        },
-        "selectedResult": {
-          "x": 9,
-          "y": 96,
-          "width": 238,
-          "height": 36
-        }
-      },
-      "selectedRoute": "/012f2550-f1b4-4342-a3b2-5d581802a3b1/hyfrme-fixture-grouped-logos",
-      "persisted": {
-        "selectedRoute": true,
-        "query": false
-      },
       "result": {
         "frameCount": 120,
-        "meanSsim": 0.9929258500000014,
-        "minSsim": 0.991452,
+        "meanSsim": 1,
+        "minSsim": 1,
         "worstFrame": 0,
+        "exactRgba": true,
+        "mismatchedFrames": [],
         "pass": true,
-        "p05Ssim": 0.991452,
-        "p95Ssim": 0.99399
-      },
-      "crops": {
-        "search-field": {
-          "box": {
-            "x": 0,
-            "y": 45,
-            "width": 256,
-            "height": 52
-          },
-          "frameCount": 100,
-          "meanSsim": 0.992585320000001,
-          "minSsim": 0.972707,
-          "worstFrame": 106,
-          "threshold": 0.97
+        "rgba": {
+          "pass": true,
+          "frameCount": 120,
+          "mismatchedFrames": []
         },
-        "first-results": {
-          "box": {
-            "x": 0,
-            "y": 90,
-            "width": 256,
-            "height": 125
-          },
-          "frameCount": 44,
-          "meanSsim": 0.9711824545454543,
-          "minSsim": 0.971047,
-          "worstFrame": 28,
-          "threshold": 0.97
-        },
-        "keyboard-highlight": {
-          "box": {
-            "x": 0,
-            "y": 90,
-            "width": 256,
-            "height": 125
-          },
-          "frameCount": 10,
-          "meanSsim": 0.9713670000000001,
-          "minSsim": 0.971367,
-          "worstFrame": 40,
-          "threshold": 0.97
-        },
-        "selected-result": {
-          "box": {
-            "x": 0,
-            "y": 90,
-            "width": 256,
-            "height": 70
-          },
-          "frameCount": 4,
-          "meanSsim": 0.981196,
-          "minSsim": 0.981196,
-          "worstFrame": 106,
-          "threshold": 0.97
-        },
-        "selected-sidebar": {
-          "box": {
-            "x": 0,
-            "y": 0,
-            "width": 268,
-            "height": 659
-          },
-          "frameCount": 10,
-          "meanSsim": 0.9867632000000001,
-          "minSsim": 0.986741,
-          "worstFrame": 116,
-          "threshold": 0.97
-        },
-        "selected-conversation": {
-          "box": {
-            "x": 300,
-            "y": 55,
-            "width": 820,
-            "height": 310
-          },
-          "frameCount": 10,
-          "meanSsim": 0.99024,
-          "minSsim": 0.99024,
-          "worstFrame": 110,
-          "threshold": 0.97
-        }
+        "p05Ssim": 1,
+        "p95Ssim": 1
       },
       "artifacts": {
         "referenceVideo": "public/previews/t3-thread-search/reference.mp4",
         "hyperframesVideo": "public/previews/t3-thread-search/hyperframes.mp4",
         "thumbnail": "public/previews/t3-thread-search/thumbnail.png",
-        "frameSsim": "parity/t3-thread-search-diff/dark/ssim.txt",
-        "hyperframesCheck": "parity/t3-thread-search-diff/dark/hyperframes-check.json",
-        "controlCrops": "parity/t3-thread-search-diff/dark/crops.json",
-        "installedCheck": "parity/t3-thread-search-diff/dark/installed-check.json",
-        "worstFrame": "parity/t3-thread-search-diff/dark/worst-frame.png"
+        "nativeRecording": "parity/t3-thread-search-v0042-reference.mkv",
+        "nativeFixture": "assets/t3-code/v0.0.42/thread-search-dark-fixture.json",
+        "proof": "parity/t3-catalog/t3-thread-search/dark/proof.json",
+        "rgba": "parity/t3-catalog/t3-thread-search/dark/rgba.json",
+        "referenceRgba": "parity/t3-catalog/t3-thread-search/dark/reference-rgba.sha256",
+        "hyperframesRgba": "parity/t3-catalog/t3-thread-search/dark/hyperframes-rgba.sha256",
+        "frameSsim": "parity/t3-catalog/t3-thread-search/dark/ssim.txt",
+        "hyperframesCheck": "parity/t3-catalog/t3-thread-search/dark/hyperframes-check.json",
+        "strictRender": "parity/t3-catalog/t3-thread-search/dark/hyperframes-render.log"
+      },
+      "historicalCustomizationEvidence": {
+        "contract": "Previously measured customization, crop, variant, and continuity evidence; these measurements are outside the exact current default-fixture claim.",
+        "result": {
+          "frameCount": 120,
+          "pass": false
+        },
+        "fields": {
+          "boxes": {
+            "input": {
+              "x": 40,
+              "y": 57,
+              "width": 111,
+              "height": 30
+            },
+            "results": {
+              "x": 9,
+              "y": 96,
+              "width": 238,
+              "height": 110
+            },
+            "selectedResult": {
+              "x": 9,
+              "y": 96,
+              "width": 238,
+              "height": 36
+            }
+          },
+          "selectedRoute": "/012f2550-f1b4-4342-a3b2-5d581802a3b1/hyfrme-fixture-grouped-logos",
+          "persisted": {
+            "selectedRoute": true,
+            "query": false
+          },
+          "crops": {
+            "search-field": {
+              "box": {
+                "x": 0,
+                "y": 45,
+                "width": 256,
+                "height": 52
+              },
+              "frameCount": 100,
+              "meanSsim": 0.992585320000001,
+              "minSsim": 0.972707,
+              "worstFrame": 106,
+              "threshold": 0.97
+            },
+            "first-results": {
+              "box": {
+                "x": 0,
+                "y": 90,
+                "width": 256,
+                "height": 125
+              },
+              "frameCount": 44,
+              "meanSsim": 0.9711824545454543,
+              "minSsim": 0.971047,
+              "worstFrame": 28,
+              "threshold": 0.97
+            },
+            "keyboard-highlight": {
+              "box": {
+                "x": 0,
+                "y": 90,
+                "width": 256,
+                "height": 125
+              },
+              "frameCount": 10,
+              "meanSsim": 0.9713670000000001,
+              "minSsim": 0.971367,
+              "worstFrame": 40,
+              "threshold": 0.97
+            },
+            "selected-result": {
+              "box": {
+                "x": 0,
+                "y": 90,
+                "width": 256,
+                "height": 70
+              },
+              "frameCount": 4,
+              "meanSsim": 0.981196,
+              "minSsim": 0.981196,
+              "worstFrame": 106,
+              "threshold": 0.97
+            },
+            "selected-sidebar": {
+              "box": {
+                "x": 0,
+                "y": 0,
+                "width": 268,
+                "height": 659
+              },
+              "frameCount": 10,
+              "meanSsim": 0.9867632000000001,
+              "minSsim": 0.986741,
+              "worstFrame": 116,
+              "threshold": 0.97
+            },
+            "selected-conversation": {
+              "box": {
+                "x": 300,
+                "y": 55,
+                "width": 820,
+                "height": 310
+              },
+              "frameCount": 10,
+              "meanSsim": 0.99024,
+              "minSsim": 0.99024,
+              "worstFrame": 110,
+              "threshold": 0.97
+            }
+          },
+          "defaultMode": "pixel-verified",
+          "thresholds": {
+            "meanSsim": 1,
+            "minSsim": 1,
+            "exactRgba": true
+          },
+          "values": {
+            "theme": "dark",
+            "projectName": "hyfrme",
+            "projectAvatar": "HE",
+            "branchName": "main",
+            "firstThread": "Catalog motion audit",
+            "secondThread": "Build a logo intro",
+            "thirdThread": "Grouped logo tests",
+            "fourthThread": "Review final hold",
+            "fifthThread": "Search reveal timing",
+            "settledThread": "Verify Logo Enter parity",
+            "firstAge": "12h",
+            "secondAge": "10h",
+            "thirdAge": "17h",
+            "fourthAge": "1d",
+            "fifthAge": "2d",
+            "settledAge": "10h",
+            "firstQuery": "logo",
+            "finalQuery": "grouped logo",
+            "firstPrompt": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+            "firstReplyLead": "I found the Logo Enter timing in",
+            "firstReplyFile": "logo-enter.html",
+            "firstReplyTail": ". The final pass can extend the duration while keeping the last rendered frame still.",
+            "selectedPrompt": "Gather the source marks into a Hyfrme logo lockup.",
+            "selectedReply": "The marks should arrive separately, align on the same baseline, and resolve into the Hyfrme wordmark. Keep the source credit visible at the final hold.",
+            "composerPlaceholder": "Enable a provider in Settings to send a message",
+            "focusFrame": 10,
+            "firstQueryFrame": 16,
+            "arrowDownFrame": 40,
+            "arrowUpFrame": 50,
+            "clearFrame": 60,
+            "finalQueryFrame": 66,
+            "selectFrame": 110,
+            "reloadFrame": 116
+          }
+        },
+        "fixture": {
+          "width": 1200,
+          "height": 659,
+          "fps": 30,
+          "durationInFrames": 120,
+          "props": {
+            "focus": 10,
+            "firstQuery": "logo",
+            "arrowDown": 40,
+            "arrowUp": 50,
+            "clear": 60,
+            "finalQuery": "grouped logo",
+            "select": 110,
+            "reload": 116
+          },
+          "sourceHashes": {
+            "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+            "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+            "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+          },
+          "domSha256": {
+            "before": "5b2d4572feafa2edf5e054449ee27ccb9b09f4b2f8bc8caddded07d8a9c9720b",
+            "focused": "ec8de8e0422b24754684f9f701f5bf2b99b1f1ba9ae8d458424e1ffe3cf4a7e4",
+            "query-016": "fa421455b8ffb84b08dcc48d2f2176c6f3ac521e9296c836f6ea6a72b0a72aa6",
+            "query-020": "92cd47b6e18e5c6525d56f5ea34166b2f432395b13d2c8c15da43b12cfee557f",
+            "query-024": "0f9c656cefc354dada9fd82c34f45bd8f68d59ceb47ec1c61d705051e5f2f281",
+            "query-028": "5061cd418153d6f08aee6f094377354551052563fecfde21047435c349833718",
+            "arrow-down": "8be2c5b0457cba68274f46779fe74b1e0219e104e4e458803305f7b093ba0954",
+            "arrow-up": "5061cd418153d6f08aee6f094377354551052563fecfde21047435c349833718",
+            "cleared": "5cea9d0dd8d5cc18944447e9a95b562e4ecb4802bac1b4e6b7ccff9c24f3c3f2",
+            "query-066": "da6b9a0204f5a17cadee3653363adacfc0dd59f628f579b87070438e79719896",
+            "query-070": "152ba45d9e674e77e6ea949ee605732160e9f86288cc150e1e042dbe724d9a18",
+            "query-074": "283000ab320990bc722127b72d7cfdadbe3a75fc3ddcd39dbcd964bb9d2a0274",
+            "query-078": "5ce6cd4b46ecbd45126667061f2d2ecad57bbdcf8eea58b5a612400ca8877d9f",
+            "query-082": "1d3520400482b0fbc7d97ee1077dd5b0dfc0b380d298aa4d3d8bdae0ba1decfd",
+            "query-086": "888614b546c9203aba458002e8523e109c36635c4c943c79b3253788ef574e3b",
+            "query-090": "fb455ad7fd990a05ae70cf641ecaae842ca12829a623d6fac2faefe5570c0d65",
+            "query-094": "4ed4333f39fc1874dc3699b1535ed0b0d1a13273e7f79479f12444b02ec1e343",
+            "query-098": "e99f929c1451672a6c25afddca3e369fdf774272f67ee1129fea17f5e65a4b6c",
+            "query-102": "b78142448abbaf19a15d72f29c874869a7bd4b5502cb50d007f0c4ac2d980f66",
+            "query-106": "de7db2d9db0d9c226af1b0722942fbde680031580f7e6c880d1281187ab3db43",
+            "selected": "44471e36b924bccb7c6a9edec6abf4e2a88068ec7c59c7a42a8612a921e4ccbc",
+            "reloaded": "99a480747bbc61e339566a3d0105531b0aec09d14ddb6770317f3c2dbc7bdf9a"
+          },
+          "referenceSha256": "79cbff56eabda25c91540a989916b631800d926fb81fd71e00472dcf9a4478f7",
+          "compositionSha256": "cc75183a8d844918b2527e03263e011a1460da82b1ac23509491d88fc08dcbf1",
+          "boxes": {
+            "input": {
+              "x": 40,
+              "y": 57,
+              "width": 111,
+              "height": 30
+            },
+            "results": {
+              "x": 9,
+              "y": 96,
+              "width": 238,
+              "height": 110
+            },
+            "selectedResult": {
+              "x": 9,
+              "y": 96,
+              "width": 238,
+              "height": 36
+            }
+          },
+          "provenance": {
+            "app": "official desktop T3 Code v0.0.42 binary and bundled client",
+            "data": "seeded local Hyfrme project and conversation; provider unavailable",
+            "interaction": "native header search, query typing, keyboard highlight, clear, Enter selection, and route reload",
+            "clock": "2026-09-25T11:30:00Z"
+          },
+          "selectedRoute": "/012f2550-f1b4-4342-a3b2-5d581802a3b1/hyfrme-fixture-grouped-logos",
+          "persisted": {
+            "selectedRoute": true,
+            "query": false
+          }
+        }
       }
     },
     "light": {
+      "sourceCommit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+      "defaultMode": "pixel-verified",
+      "status": "verified",
+      "thresholds": {
+        "meanSsim": 1,
+        "minSsim": 1,
+        "exactRgba": true
+      },
+      "values": {
+        "theme": "light",
+        "projectName": "hyfrme",
+        "projectAvatar": "HE",
+        "branchName": "main",
+        "firstThread": "Catalog motion audit",
+        "secondThread": "Build a logo intro",
+        "thirdThread": "Grouped logo tests",
+        "fourthThread": "Review final hold",
+        "fifthThread": "Search reveal timing",
+        "settledThread": "Verify Logo Enter parity",
+        "firstAge": "12h",
+        "secondAge": "10h",
+        "thirdAge": "17h",
+        "fourthAge": "1d",
+        "fifthAge": "2d",
+        "settledAge": "10h",
+        "firstQuery": "logo",
+        "finalQuery": "grouped logo",
+        "firstPrompt": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+        "firstReplyLead": "I found the Logo Enter timing in",
+        "firstReplyFile": "logo-enter.html",
+        "firstReplyTail": ". The final pass can extend the duration while keeping the last rendered frame still.",
+        "selectedPrompt": "Gather the source marks into a Hyfrme logo lockup.",
+        "selectedReply": "The marks should arrive separately, align on the same baseline, and resolve into the Hyfrme wordmark. Keep the source credit visible at the final hold.",
+        "composerPlaceholder": "Enable a provider in Settings to send a message",
+        "focusFrame": 10,
+        "firstQueryFrame": 16,
+        "arrowDownFrame": 40,
+        "arrowUpFrame": 50,
+        "clearFrame": 60,
+        "finalQueryFrame": 66,
+        "selectFrame": 110,
+        "reloadFrame": 116
+      },
+      "fixture": {
+        "width": 1200,
+        "height": 659,
+        "fps": 30,
+        "durationInFrames": 120,
+        "props": {
+          "focus": 10,
+          "firstQuery": "logo",
+          "arrowDown": 40,
+          "arrowUp": 50,
+          "clear": 60,
+          "finalQuery": "grouped logo",
+          "select": 110,
+          "reload": 116
+        },
+        "sourceHashes": {
+          "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+          "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+          "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+        },
+        "domSha256": {
+          "before": "5b2d4572feafa2edf5e054449ee27ccb9b09f4b2f8bc8caddded07d8a9c9720b",
+          "focused": "ec8de8e0422b24754684f9f701f5bf2b99b1f1ba9ae8d458424e1ffe3cf4a7e4",
+          "query-016": "fa421455b8ffb84b08dcc48d2f2176c6f3ac521e9296c836f6ea6a72b0a72aa6",
+          "query-020": "92cd47b6e18e5c6525d56f5ea34166b2f432395b13d2c8c15da43b12cfee557f",
+          "query-024": "0f9c656cefc354dada9fd82c34f45bd8f68d59ceb47ec1c61d705051e5f2f281",
+          "query-028": "5061cd418153d6f08aee6f094377354551052563fecfde21047435c349833718",
+          "arrow-down": "8be2c5b0457cba68274f46779fe74b1e0219e104e4e458803305f7b093ba0954",
+          "arrow-up": "5061cd418153d6f08aee6f094377354551052563fecfde21047435c349833718",
+          "cleared": "5cea9d0dd8d5cc18944447e9a95b562e4ecb4802bac1b4e6b7ccff9c24f3c3f2",
+          "query-066": "da6b9a0204f5a17cadee3653363adacfc0dd59f628f579b87070438e79719896",
+          "query-070": "152ba45d9e674e77e6ea949ee605732160e9f86288cc150e1e042dbe724d9a18",
+          "query-074": "283000ab320990bc722127b72d7cfdadbe3a75fc3ddcd39dbcd964bb9d2a0274",
+          "query-078": "5ce6cd4b46ecbd45126667061f2d2ecad57bbdcf8eea58b5a612400ca8877d9f",
+          "query-082": "1d3520400482b0fbc7d97ee1077dd5b0dfc0b380d298aa4d3d8bdae0ba1decfd",
+          "query-086": "888614b546c9203aba458002e8523e109c36635c4c943c79b3253788ef574e3b",
+          "query-090": "fb455ad7fd990a05ae70cf641ecaae842ca12829a623d6fac2faefe5570c0d65",
+          "query-094": "4ed4333f39fc1874dc3699b1535ed0b0d1a13273e7f79479f12444b02ec1e343",
+          "query-098": "e99f929c1451672a6c25afddca3e369fdf774272f67ee1129fea17f5e65a4b6c",
+          "query-102": "b78142448abbaf19a15d72f29c874869a7bd4b5502cb50d007f0c4ac2d980f66",
+          "query-106": "de7db2d9db0d9c226af1b0722942fbde680031580f7e6c880d1281187ab3db43",
+          "selected": "44471e36b924bccb7c6a9edec6abf4e2a88068ec7c59c7a42a8612a921e4ccbc",
+          "reloaded": "99a480747bbc61e339566a3d0105531b0aec09d14ddb6770317f3c2dbc7bdf9a"
+        },
+        "referenceSha256": "7dff5ced1142f27bb2fe7932bc7453de7c214658105aa4bb6c55c7a188153994",
+        "compositionSha256": "cc75183a8d844918b2527e03263e011a1460da82b1ac23509491d88fc08dcbf1",
+        "boxes": {
+          "input": {
+            "x": 40,
+            "y": 57,
+            "width": 111,
+            "height": 30
+          },
+          "results": {
+            "x": 9,
+            "y": 96,
+            "width": 238,
+            "height": 110
+          },
+          "selectedResult": {
+            "x": 9,
+            "y": 96,
+            "width": 238,
+            "height": 36
+          }
+        },
+        "provenance": {
+          "app": "official desktop T3 Code v0.0.42 binary and bundled client",
+          "data": "seeded local Hyfrme project and conversation; provider unavailable",
+          "interaction": "native header search, query typing, keyboard highlight, clear, Enter selection, and route reload",
+          "clock": "2026-09-25T11:30:00Z"
+        },
+        "selectedRoute": "/012f2550-f1b4-4342-a3b2-5d581802a3b1/hyfrme-fixture-grouped-logos",
+        "persisted": {
+          "selectedRoute": true,
+          "query": false
+        }
+      },
+      "sourceHashes": {
+        "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+        "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+        "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+      },
       "referenceSha256": "7dff5ced1142f27bb2fe7932bc7453de7c214658105aa4bb6c55c7a188153994",
       "themeSha256": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 1,
+        "minSsim": 1,
+        "worstFrame": 0,
+        "exactRgba": true,
+        "mismatchedFrames": [],
+        "pass": true,
+        "rgba": {
+          "pass": true,
+          "frameCount": 120,
+          "mismatchedFrames": []
+        },
+        "p05Ssim": 1,
+        "p95Ssim": 1
+      },
+      "artifacts": {
+        "referenceVideo": "public/previews/t3-thread-search/reference-light.mp4",
+        "hyperframesVideo": "public/previews/t3-thread-search/hyperframes-light.mp4",
+        "thumbnail": "public/previews/t3-thread-search/thumbnail-light.png",
+        "nativeRecording": "parity/t3-thread-search-v0042-light-reference.mkv",
+        "nativeFixture": "assets/t3-code/v0.0.42/thread-search-light-fixture.json",
+        "proof": "parity/t3-catalog/t3-thread-search/light/proof.json",
+        "rgba": "parity/t3-catalog/t3-thread-search/light/rgba.json",
+        "referenceRgba": "parity/t3-catalog/t3-thread-search/light/reference-rgba.sha256",
+        "hyperframesRgba": "parity/t3-catalog/t3-thread-search/light/hyperframes-rgba.sha256",
+        "frameSsim": "parity/t3-catalog/t3-thread-search/light/ssim.txt",
+        "hyperframesCheck": "parity/t3-catalog/t3-thread-search/light/hyperframes-check.json",
+        "strictRender": "parity/t3-catalog/t3-thread-search/light/hyperframes-render.log"
+      },
+      "historicalCustomizationEvidence": {
+        "contract": "Previously measured customization, crop, variant, and continuity evidence; these measurements are outside the exact current default-fixture claim.",
+        "result": {
+          "frameCount": 120,
+          "pass": false
+        },
+        "fields": {
+          "boxes": {
+            "input": {
+              "x": 40,
+              "y": 57,
+              "width": 111,
+              "height": 30
+            },
+            "results": {
+              "x": 9,
+              "y": 96,
+              "width": 238,
+              "height": 110
+            },
+            "selectedResult": {
+              "x": 9,
+              "y": 96,
+              "width": 238,
+              "height": 36
+            }
+          },
+          "selectedRoute": "/012f2550-f1b4-4342-a3b2-5d581802a3b1/hyfrme-fixture-grouped-logos",
+          "persisted": {
+            "selectedRoute": true,
+            "query": false
+          },
+          "crops": {
+            "search-field": {
+              "box": {
+                "x": 0,
+                "y": 45,
+                "width": 256,
+                "height": 52
+              },
+              "frameCount": 100,
+              "meanSsim": 0.9914279200000006,
+              "minSsim": 0.970815,
+              "worstFrame": 106,
+              "threshold": 0.97
+            },
+            "first-results": {
+              "box": {
+                "x": 0,
+                "y": 90,
+                "width": 256,
+                "height": 125
+              },
+              "frameCount": 44,
+              "meanSsim": 0.9714292727272723,
+              "minSsim": 0.970962,
+              "worstFrame": 16,
+              "threshold": 0.97
+            },
+            "keyboard-highlight": {
+              "box": {
+                "x": 0,
+                "y": 90,
+                "width": 256,
+                "height": 125
+              },
+              "frameCount": 10,
+              "meanSsim": 0.9712029999999998,
+              "minSsim": 0.971203,
+              "worstFrame": 40,
+              "threshold": 0.97
+            },
+            "selected-result": {
+              "box": {
+                "x": 0,
+                "y": 90,
+                "width": 256,
+                "height": 70
+              },
+              "frameCount": 4,
+              "meanSsim": 0.980484,
+              "minSsim": 0.980484,
+              "worstFrame": 106,
+              "threshold": 0.97
+            },
+            "selected-sidebar": {
+              "box": {
+                "x": 0,
+                "y": 0,
+                "width": 268,
+                "height": 659
+              },
+              "frameCount": 10,
+              "meanSsim": 0.9869346,
+              "minSsim": 0.986934,
+              "worstFrame": 116,
+              "threshold": 0.97
+            },
+            "selected-conversation": {
+              "box": {
+                "x": 300,
+                "y": 55,
+                "width": 820,
+                "height": 310
+              },
+              "frameCount": 10,
+              "meanSsim": 0.9895159999999998,
+              "minSsim": 0.989516,
+              "worstFrame": 110,
+              "threshold": 0.97
+            }
+          },
+          "defaultMode": "pixel-verified",
+          "thresholds": {
+            "meanSsim": 1,
+            "minSsim": 1,
+            "exactRgba": true
+          },
+          "values": {
+            "theme": "light",
+            "projectName": "hyfrme",
+            "projectAvatar": "HE",
+            "branchName": "main",
+            "firstThread": "Catalog motion audit",
+            "secondThread": "Build a logo intro",
+            "thirdThread": "Grouped logo tests",
+            "fourthThread": "Review final hold",
+            "fifthThread": "Search reveal timing",
+            "settledThread": "Verify Logo Enter parity",
+            "firstAge": "12h",
+            "secondAge": "10h",
+            "thirdAge": "17h",
+            "fourthAge": "1d",
+            "fifthAge": "2d",
+            "settledAge": "10h",
+            "firstQuery": "logo",
+            "finalQuery": "grouped logo",
+            "firstPrompt": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+            "firstReplyLead": "I found the Logo Enter timing in",
+            "firstReplyFile": "logo-enter.html",
+            "firstReplyTail": ". The final pass can extend the duration while keeping the last rendered frame still.",
+            "selectedPrompt": "Gather the source marks into a Hyfrme logo lockup.",
+            "selectedReply": "The marks should arrive separately, align on the same baseline, and resolve into the Hyfrme wordmark. Keep the source credit visible at the final hold.",
+            "composerPlaceholder": "Enable a provider in Settings to send a message",
+            "focusFrame": 10,
+            "firstQueryFrame": 16,
+            "arrowDownFrame": 40,
+            "arrowUpFrame": 50,
+            "clearFrame": 60,
+            "finalQueryFrame": 66,
+            "selectFrame": 110,
+            "reloadFrame": 116
+          }
+        },
+        "fixture": {
+          "width": 1200,
+          "height": 659,
+          "fps": 30,
+          "durationInFrames": 120,
+          "props": {
+            "focus": 10,
+            "firstQuery": "logo",
+            "arrowDown": 40,
+            "arrowUp": 50,
+            "clear": 60,
+            "finalQuery": "grouped logo",
+            "select": 110,
+            "reload": 116
+          },
+          "sourceHashes": {
+            "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+            "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+            "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+          },
+          "domSha256": {
+            "before": "5b2d4572feafa2edf5e054449ee27ccb9b09f4b2f8bc8caddded07d8a9c9720b",
+            "focused": "ec8de8e0422b24754684f9f701f5bf2b99b1f1ba9ae8d458424e1ffe3cf4a7e4",
+            "query-016": "fa421455b8ffb84b08dcc48d2f2176c6f3ac521e9296c836f6ea6a72b0a72aa6",
+            "query-020": "92cd47b6e18e5c6525d56f5ea34166b2f432395b13d2c8c15da43b12cfee557f",
+            "query-024": "0f9c656cefc354dada9fd82c34f45bd8f68d59ceb47ec1c61d705051e5f2f281",
+            "query-028": "5061cd418153d6f08aee6f094377354551052563fecfde21047435c349833718",
+            "arrow-down": "8be2c5b0457cba68274f46779fe74b1e0219e104e4e458803305f7b093ba0954",
+            "arrow-up": "5061cd418153d6f08aee6f094377354551052563fecfde21047435c349833718",
+            "cleared": "5cea9d0dd8d5cc18944447e9a95b562e4ecb4802bac1b4e6b7ccff9c24f3c3f2",
+            "query-066": "da6b9a0204f5a17cadee3653363adacfc0dd59f628f579b87070438e79719896",
+            "query-070": "152ba45d9e674e77e6ea949ee605732160e9f86288cc150e1e042dbe724d9a18",
+            "query-074": "283000ab320990bc722127b72d7cfdadbe3a75fc3ddcd39dbcd964bb9d2a0274",
+            "query-078": "5ce6cd4b46ecbd45126667061f2d2ecad57bbdcf8eea58b5a612400ca8877d9f",
+            "query-082": "1d3520400482b0fbc7d97ee1077dd5b0dfc0b380d298aa4d3d8bdae0ba1decfd",
+            "query-086": "888614b546c9203aba458002e8523e109c36635c4c943c79b3253788ef574e3b",
+            "query-090": "fb455ad7fd990a05ae70cf641ecaae842ca12829a623d6fac2faefe5570c0d65",
+            "query-094": "4ed4333f39fc1874dc3699b1535ed0b0d1a13273e7f79479f12444b02ec1e343",
+            "query-098": "e99f929c1451672a6c25afddca3e369fdf774272f67ee1129fea17f5e65a4b6c",
+            "query-102": "b78142448abbaf19a15d72f29c874869a7bd4b5502cb50d007f0c4ac2d980f66",
+            "query-106": "de7db2d9db0d9c226af1b0722942fbde680031580f7e6c880d1281187ab3db43",
+            "selected": "44471e36b924bccb7c6a9edec6abf4e2a88068ec7c59c7a42a8612a921e4ccbc",
+            "reloaded": "99a480747bbc61e339566a3d0105531b0aec09d14ddb6770317f3c2dbc7bdf9a"
+          },
+          "referenceSha256": "7dff5ced1142f27bb2fe7932bc7453de7c214658105aa4bb6c55c7a188153994",
+          "compositionSha256": "cc75183a8d844918b2527e03263e011a1460da82b1ac23509491d88fc08dcbf1",
+          "boxes": {
+            "input": {
+              "x": 40,
+              "y": 57,
+              "width": 111,
+              "height": 30
+            },
+            "results": {
+              "x": 9,
+              "y": 96,
+              "width": 238,
+              "height": 110
+            },
+            "selectedResult": {
+              "x": 9,
+              "y": 96,
+              "width": 238,
+              "height": 36
+            }
+          },
+          "provenance": {
+            "app": "official desktop T3 Code v0.0.42 binary and bundled client",
+            "data": "seeded local Hyfrme project and conversation; provider unavailable",
+            "interaction": "native header search, query typing, keyboard highlight, clear, Enter selection, and route reload",
+            "clock": "2026-09-25T11:30:00Z"
+          },
+          "selectedRoute": "/012f2550-f1b4-4342-a3b2-5d581802a3b1/hyfrme-fixture-grouped-logos",
+          "persisted": {
+            "selectedRoute": true,
+            "query": false
+          }
+        }
+      }
+    }
+  },
+  "checks": {
+    "hyperframes": "full check and strict 120-frame screenshot render passed in dark and light",
+    "sourceBrowser": "Google Chrome for Testing 152.0.7977.30",
+    "installedThroughCli": true,
+    "strictRender": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/t3-thread-search/reference.mp4",
+    "hyperframesVideo": "public/previews/t3-thread-search/hyperframes.mp4",
+    "thumbnail": "public/previews/t3-thread-search/thumbnail.png",
+    "nativeRecording": "parity/t3-thread-search-v0042-reference.mkv",
+    "nativeFixture": "assets/t3-code/v0.0.42/thread-search-dark-fixture.json",
+    "proof": "parity/t3-catalog/t3-thread-search/dark/proof.json",
+    "rgba": "parity/t3-catalog/t3-thread-search/dark/rgba.json",
+    "referenceRgba": "parity/t3-catalog/t3-thread-search/dark/reference-rgba.sha256",
+    "hyperframesRgba": "parity/t3-catalog/t3-thread-search/dark/hyperframes-rgba.sha256",
+    "frameSsim": "parity/t3-catalog/t3-thread-search/dark/ssim.txt",
+    "hyperframesCheck": "parity/t3-catalog/t3-thread-search/dark/hyperframes-check.json",
+    "strictRender": "parity/t3-catalog/t3-thread-search/dark/hyperframes-render.log"
+  },
+  "filesSha256": {
+    "registry-item.json": "b208700b4fa0301c0765b17b101e475c0915466ee9231f85e92a11e28b0edf4e",
+    "t3-thread-search.html": "cc75183a8d844918b2527e03263e011a1460da82b1ac23509491d88fc08dcbf1",
+    "t3-code-gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+    "licenses/T3-CODE-LICENSE.txt": "935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43",
+    "README.md": "3d620e65502a75bc8d11cad0258d482029ba9e33942fb8443c03c888176dbefd",
+    "native-thread-search-input-v0042-provenance.json": "9dc56295c2c77e3687f1386089338cdfd3377f7eb3e7db23479b32e32c29b2c8",
+    "native-thread-search-input-v0042-dark.png": "4f393fb9b9d410c01a404ee9a32c90f28e56c28b6c48d641462181f583c7c01b",
+    "native-thread-search-input-v0042-light.png": "983c17e4a7d038e3685775571c4a8ec5835c0c29dc91af7c9e0667cc971ee02c"
+  },
+  "inputHashes": {
+    "registry/blocks/t3-thread-search/registry-item.json": "b208700b4fa0301c0765b17b101e475c0915466ee9231f85e92a11e28b0edf4e",
+    "registry/blocks/t3-thread-search/t3-thread-search.html": "cc75183a8d844918b2527e03263e011a1460da82b1ac23509491d88fc08dcbf1",
+    "registry/blocks/t3-thread-search/t3-code-gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+    "registry/blocks/t3-thread-search/licenses/T3-CODE-LICENSE.txt": "935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43",
+    "registry/blocks/t3-thread-search/README.md": "3d620e65502a75bc8d11cad0258d482029ba9e33942fb8443c03c888176dbefd",
+    "registry/blocks/t3-thread-search/native-thread-search-input-v0042-provenance.json": "9dc56295c2c77e3687f1386089338cdfd3377f7eb3e7db23479b32e32c29b2c8",
+    "registry/blocks/t3-thread-search/native-thread-search-input-v0042-dark.png": "4f393fb9b9d410c01a404ee9a32c90f28e56c28b6c48d641462181f583c7c01b",
+    "registry/blocks/t3-thread-search/native-thread-search-input-v0042-light.png": "983c17e4a7d038e3685775571c4a8ec5835c0c29dc91af7c9e0667cc971ee02c",
+    "scripts/verify-t3-catalog-ports.mjs": "50fffcbcecdf407c24dca3c99ba5edbc34132862dd101def36dd74eda88f9ee3",
+    "scripts/t3-capture-images.mjs": "003e4c1db7c9f6548881b3f0d8b1b55bff60720770b4eca0ef7d85d7d498b35c",
+    "scripts/parity-evidence.mjs": "442ef92774683522815f246cc87509c9d32082e915f1f77fc832a2b46755c006",
+    "cli/bin/hyfrme.mjs": "b3ebe31fcb7618917193a5fb1096fc6769f17615634f6718b90f7605a1f5073f",
+    "assets/t3-code/v0.0.42/thread-search-dark-fixture.json": "e12569141002ba57b7cc2b9a27f4ee70360b21e429d38ea29da52336dc88695c",
+    "assets/t3-code/v0.0.42/index.html": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+    "assets/t3-code/v0.0.42/t3.css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+    "assets/t3-code/v0.0.42/index.js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0",
+    "assets/t3-code/v0.0.42/dark-theme.json": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
+    "parity/t3-thread-search-v0042-reference.mkv": "79cbff56eabda25c91540a989916b631800d926fb81fd71e00472dcf9a4478f7",
+    "parity/t3-catalog/t3-thread-search/dark/proof.json": "3d593edb71e984a30f7a3f7aebd10e0f463d9bae8366a4aa17cd9cc84bc8509d",
+    "assets/t3-code/v0.0.42/thread-search-light-fixture.json": "e321b461b666aaefe7163e310a3ca8eecf6678d80527f35c73200fefd2f25730",
+    "assets/t3-code/v0.0.42/light-theme.json": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
+    "parity/t3-thread-search-v0042-light-reference.mkv": "7dff5ced1142f27bb2fe7932bc7453de7c214658105aa4bb6c55c7a188153994",
+    "parity/t3-catalog/t3-thread-search/light/proof.json": "5e2f55c616cd8055307b1f8e35b8383cabe1924241461ca864f7debcf7ad879a",
+    "scripts/publish-t3-catalog-parity.mjs": "56b6c8bfcf9e1def8345ff2cbb0eb1654eca044596c1431849fa7746258a818d"
+  },
+  "artifactHashes": {
+    "parity/t3-catalog/t3-thread-search/dark/proof.json": "3d593edb71e984a30f7a3f7aebd10e0f463d9bae8366a4aa17cd9cc84bc8509d",
+    "parity/t3-catalog/t3-thread-search/dark/rgba.json": "926f29b5fa050dc9906fe8311d91e7d4a53b549d8defa3430cfa38001d2b6895",
+    "parity/t3-catalog/t3-thread-search/dark/reference-rgba.sha256": "02361eb2ed6179abd5a71c15028bb984841fa813031201ff5ecd2ea2eb46d304",
+    "parity/t3-catalog/t3-thread-search/dark/hyperframes-rgba.sha256": "02361eb2ed6179abd5a71c15028bb984841fa813031201ff5ecd2ea2eb46d304",
+    "parity/t3-catalog/t3-thread-search/dark/ssim.txt": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/t3-catalog/t3-thread-search/dark/ssim.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-thread-search/dark/hyperframes-check.json": "c256ea8e2c333b79288bff02d4523baeff93165c7bbdf64bf90703560b26b5e5",
+    "parity/t3-catalog/t3-thread-search/dark/hyperframes-check.log": "000083e397364133c2d63ab4b23585f1c7a5037e8991a2fd9be58e73cbbbc441",
+    "parity/t3-catalog/t3-thread-search/dark/hyperframes-render.log": "41d532df268a561bd400f82d70fc9f876661d146aacc110cad35759ef37d969c",
+    "parity/t3-catalog/t3-thread-search/dark/reference-decode.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-thread-search/dark/install.log": "d17c8a772a8d32f904e582d5e0d6df61fd79167c5240fba79a7bd026f52bac92",
+    "parity/t3-catalog/t3-thread-search/light/proof.json": "5e2f55c616cd8055307b1f8e35b8383cabe1924241461ca864f7debcf7ad879a",
+    "parity/t3-catalog/t3-thread-search/light/rgba.json": "5860f8404174fa30d4bf859529cd4b0cd405c9116e86cd96c414ee0a971f02f0",
+    "parity/t3-catalog/t3-thread-search/light/reference-rgba.sha256": "5e9e0418778ffc9b6b4096cae36ad5a69b24c26c4f97231888d5d0c9db89190d",
+    "parity/t3-catalog/t3-thread-search/light/hyperframes-rgba.sha256": "5e9e0418778ffc9b6b4096cae36ad5a69b24c26c4f97231888d5d0c9db89190d",
+    "parity/t3-catalog/t3-thread-search/light/ssim.txt": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/t3-catalog/t3-thread-search/light/ssim.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-thread-search/light/hyperframes-check.json": "c256ea8e2c333b79288bff02d4523baeff93165c7bbdf64bf90703560b26b5e5",
+    "parity/t3-catalog/t3-thread-search/light/hyperframes-check.log": "000083e397364133c2d63ab4b23585f1c7a5037e8991a2fd9be58e73cbbbc441",
+    "parity/t3-catalog/t3-thread-search/light/hyperframes-render.log": "1160846aa5b0be9568bc57570c3bff602212aa123da7e0bb72eae2718d0dcffa",
+    "parity/t3-catalog/t3-thread-search/light/reference-decode.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-thread-search/light/install.log": "7e1b8d672862ccf95c73dc6dea39db33136ea320ab29377493a1c0b3d08b229f",
+    "public/previews/t3-thread-search/reference.mp4": "d033b8c81d6ef4fcf2660cc662386390b570b161da62508e4b5e94c7413021b3",
+    "public/previews/t3-thread-search/hyperframes.mp4": "d033b8c81d6ef4fcf2660cc662386390b570b161da62508e4b5e94c7413021b3",
+    "public/previews/t3-thread-search/thumbnail.png": "80844dc41eee36b3cfce5813c930a7e2e516b34f852b678d8572a36a10b1be53",
+    "public/previews/t3-thread-search/reference-light.mp4": "7b3b6d5d3173f91bafafff06e6645f292444722f760a61fe04a62bfb7d07207d",
+    "public/previews/t3-thread-search/hyperframes-light.mp4": "7b3b6d5d3173f91bafafff06e6645f292444722f760a61fe04a62bfb7d07207d",
+    "public/previews/t3-thread-search/thumbnail-light.png": "89fbb872f8d00b402bf053117883ba4ab7ef34f332028bacfbe1d2b8755fadbf"
+  },
+  "previewEncoding": {
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1200,
+    "height": 660,
+    "fps": 30,
+    "frameCount": 120,
+    "bottomPadding": 1,
+    "thumbnailFrame": 90
+  },
+  "historicalCustomizationEvidence": {
+    "contract": "Previously measured customization, crop, variant, and continuity evidence; these measurements are outside the exact current default-fixture claim.",
+    "result": {
+      "frameCount": 120,
+      "pass": false
+    },
+    "fixture": {
+      "width": 1200,
+      "height": 659,
+      "fps": 30,
+      "durationInFrames": 120,
+      "props": {
+        "focus": 10,
+        "firstQuery": "logo",
+        "arrowDown": 40,
+        "arrowUp": 50,
+        "clear": 60,
+        "finalQuery": "grouped logo",
+        "select": 110,
+        "reload": 116
+      },
+      "sourceHashes": {
+        "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+        "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+        "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+      },
+      "domSha256": {
+        "before": "5b2d4572feafa2edf5e054449ee27ccb9b09f4b2f8bc8caddded07d8a9c9720b",
+        "focused": "ec8de8e0422b24754684f9f701f5bf2b99b1f1ba9ae8d458424e1ffe3cf4a7e4",
+        "query-016": "fa421455b8ffb84b08dcc48d2f2176c6f3ac521e9296c836f6ea6a72b0a72aa6",
+        "query-020": "92cd47b6e18e5c6525d56f5ea34166b2f432395b13d2c8c15da43b12cfee557f",
+        "query-024": "0f9c656cefc354dada9fd82c34f45bd8f68d59ceb47ec1c61d705051e5f2f281",
+        "query-028": "5061cd418153d6f08aee6f094377354551052563fecfde21047435c349833718",
+        "arrow-down": "8be2c5b0457cba68274f46779fe74b1e0219e104e4e458803305f7b093ba0954",
+        "arrow-up": "5061cd418153d6f08aee6f094377354551052563fecfde21047435c349833718",
+        "cleared": "5cea9d0dd8d5cc18944447e9a95b562e4ecb4802bac1b4e6b7ccff9c24f3c3f2",
+        "query-066": "da6b9a0204f5a17cadee3653363adacfc0dd59f628f579b87070438e79719896",
+        "query-070": "152ba45d9e674e77e6ea949ee605732160e9f86288cc150e1e042dbe724d9a18",
+        "query-074": "283000ab320990bc722127b72d7cfdadbe3a75fc3ddcd39dbcd964bb9d2a0274",
+        "query-078": "5ce6cd4b46ecbd45126667061f2d2ecad57bbdcf8eea58b5a612400ca8877d9f",
+        "query-082": "1d3520400482b0fbc7d97ee1077dd5b0dfc0b380d298aa4d3d8bdae0ba1decfd",
+        "query-086": "888614b546c9203aba458002e8523e109c36635c4c943c79b3253788ef574e3b",
+        "query-090": "fb455ad7fd990a05ae70cf641ecaae842ca12829a623d6fac2faefe5570c0d65",
+        "query-094": "4ed4333f39fc1874dc3699b1535ed0b0d1a13273e7f79479f12444b02ec1e343",
+        "query-098": "e99f929c1451672a6c25afddca3e369fdf774272f67ee1129fea17f5e65a4b6c",
+        "query-102": "b78142448abbaf19a15d72f29c874869a7bd4b5502cb50d007f0c4ac2d980f66",
+        "query-106": "de7db2d9db0d9c226af1b0722942fbde680031580f7e6c880d1281187ab3db43",
+        "selected": "44471e36b924bccb7c6a9edec6abf4e2a88068ec7c59c7a42a8612a921e4ccbc",
+        "reloaded": "99a480747bbc61e339566a3d0105531b0aec09d14ddb6770317f3c2dbc7bdf9a"
+      },
+      "referenceSha256": "79cbff56eabda25c91540a989916b631800d926fb81fd71e00472dcf9a4478f7",
+      "compositionSha256": "c8022e9d691bf9f09c3c5d417a1ab3d2f3898e07eaefb5e51143d46359b088fd",
       "boxes": {
         "input": {
           "x": 40,
@@ -273,109 +1066,37 @@
           "height": 36
         }
       },
+      "provenance": {
+        "app": "official desktop T3 Code v0.0.42 binary and bundled client",
+        "data": "seeded local Hyfrme project and conversation; provider unavailable",
+        "interaction": "native header search, query typing, keyboard highlight, clear, Enter selection, and route reload",
+        "clock": "2026-09-25T11:30:00Z"
+      },
       "selectedRoute": "/012f2550-f1b4-4342-a3b2-5d581802a3b1/hyfrme-fixture-grouped-logos",
       "persisted": {
         "selectedRoute": true,
         "query": false
-      },
-      "result": {
+      }
+    },
+    "checks": {
+      "hyperframes": "full check and strict 120-frame render passed in both desktop themes",
+      "hyperframesVersion": "0.8.75",
+      "sourceBrowser": "Chrome Headless Shell 152.0.7977.30",
+      "browserGpuMode": "hardware",
+      "installedThroughCli": true,
+      "motionCoverage": "native query typing, ArrowDown/ArrowUp result highlight, Clear, Enter selection, and route reload at frame precision",
+      "customVariables": "dark and light edited titles, ages, queries, copy, and timing passed full checks and visible snapshots"
+    },
+    "fields": {
+      "previewEncoding": {
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "width": 1200,
+        "height": 660,
+        "fps": 30,
         "frameCount": 120,
-        "meanSsim": 0.9929066833333337,
-        "minSsim": 0.991562,
-        "worstFrame": 0,
-        "pass": true,
-        "p05Ssim": 0.991562,
-        "p95Ssim": 0.993868
-      },
-      "crops": {
-        "search-field": {
-          "box": {
-            "x": 0,
-            "y": 45,
-            "width": 256,
-            "height": 52
-          },
-          "frameCount": 100,
-          "meanSsim": 0.9914279200000006,
-          "minSsim": 0.970815,
-          "worstFrame": 106,
-          "threshold": 0.97
-        },
-        "first-results": {
-          "box": {
-            "x": 0,
-            "y": 90,
-            "width": 256,
-            "height": 125
-          },
-          "frameCount": 44,
-          "meanSsim": 0.9714292727272723,
-          "minSsim": 0.970962,
-          "worstFrame": 16,
-          "threshold": 0.97
-        },
-        "keyboard-highlight": {
-          "box": {
-            "x": 0,
-            "y": 90,
-            "width": 256,
-            "height": 125
-          },
-          "frameCount": 10,
-          "meanSsim": 0.9712029999999998,
-          "minSsim": 0.971203,
-          "worstFrame": 40,
-          "threshold": 0.97
-        },
-        "selected-result": {
-          "box": {
-            "x": 0,
-            "y": 90,
-            "width": 256,
-            "height": 70
-          },
-          "frameCount": 4,
-          "meanSsim": 0.980484,
-          "minSsim": 0.980484,
-          "worstFrame": 106,
-          "threshold": 0.97
-        },
-        "selected-sidebar": {
-          "box": {
-            "x": 0,
-            "y": 0,
-            "width": 268,
-            "height": 659
-          },
-          "frameCount": 10,
-          "meanSsim": 0.9869346,
-          "minSsim": 0.986934,
-          "worstFrame": 116,
-          "threshold": 0.97
-        },
-        "selected-conversation": {
-          "box": {
-            "x": 300,
-            "y": 55,
-            "width": 820,
-            "height": 310
-          },
-          "frameCount": 10,
-          "meanSsim": 0.9895159999999998,
-          "minSsim": 0.989516,
-          "worstFrame": 110,
-          "threshold": 0.97
-        }
-      },
-      "artifacts": {
-        "referenceVideo": "public/previews/t3-thread-search/reference-light.mp4",
-        "hyperframesVideo": "public/previews/t3-thread-search/hyperframes-light.mp4",
-        "thumbnail": "public/previews/t3-thread-search/thumbnail-light.png",
-        "frameSsim": "parity/t3-thread-search-diff/light/ssim.txt",
-        "hyperframesCheck": "parity/t3-thread-search-diff/light/hyperframes-check.json",
-        "controlCrops": "parity/t3-thread-search-diff/light/crops.json",
-        "installedCheck": "parity/t3-thread-search-diff/light/installed-check.json",
-        "worstFrame": "parity/t3-thread-search-diff/light/worst-frame.png"
+        "bottomPadding": 1,
+        "thumbnailFrame": 90
       }
     }
   }

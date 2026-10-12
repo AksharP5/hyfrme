@@ -2,7 +2,7 @@
   "slug": "icon-scatter",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/icon-scatter/index.tsx",
     "entry": "components/docs/examples/icon-scatter-example.tsx",
     "config": "registry/remocn/icon-scatter/config.ts",
@@ -17,29 +17,81 @@
       "count": 15,
       "color": "#fafafa",
       "coverColor": "#0a0a0a",
-      "flyDistance": 260
+      "flyDistance": 260,
+      "speed": 1
     },
     "background": "#0a0a0a"
   },
+  "filesSha256": {
+    "registry-item.json": "ff258b6659442579f6aa8c830a2a2db6e2612af4b5c213197dfc39af43b1a87e",
+    "icon-scatter.html": "6327c433e1ce5c9ea4b15d81b898782b2cca1dc79003ad829374ef27ab253855",
+    "icon-scatter.runtime.js": "1e728a5c37b18a64fd9e0544839e44550286c5bc564b4842cc3cef361497b9f2",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "5ddf65f9cf5d101cdb7e8493f7798879d16a8d0e73607e0c8192c12127f56ec1",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 100,
-    "meanSsim": 0.997702,
-    "minSsim": 0.997038,
-    "p05Ssim": 0.997038,
-    "p95Ssim": 0.999128,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/icon-scatter/remocn.mp4",
+    "referenceVideo": "public/previews/icon-scatter/reference.mp4",
     "hyperframesVideo": "public/previews/icon-scatter/hyperframes.mp4",
-    "summary": "parity/icon-scatter-diff/summary.json"
+    "thumbnail": "public/previews/icon-scatter/thumbnail.png",
+    "summary": "parity/icon-scatter-diff/summary.json",
+    "perFrameSsim": "parity/icon-scatter-diff/ssim.log",
+    "hyperframesCheck": "parity/icon-scatter-diff/hyperframes-check.log",
+    "worstFrame": "parity/icon-scatter-diff/worst-frame.png",
+    "referenceAlpha": "parity/icon-scatter-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/icon-scatter-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/icon-scatter-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/icon-scatter-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/icon-scatter/reference.mp4": "8f3989424b1d5dfb56964c91f74095a3a3af3bb3b17b5fe32cb12f55695839ee",
+    "public/previews/icon-scatter/hyperframes.mp4": "8f3989424b1d5dfb56964c91f74095a3a3af3bb3b17b5fe32cb12f55695839ee",
+    "public/previews/icon-scatter/thumbnail.png": "aeb454155c7fe9f0a65f036b95ea74ebff631837c855e87bdfcd94d3fd0f29c4",
+    "parity/icon-scatter-diff/summary.json": "fa82c25c31adc9e19a6584c3ec9334d4f3e0235e8d5eae2f1afd6c757108a452",
+    "parity/icon-scatter-diff/ssim.log": "56672b2c92229915a0dd393cc8a60627dbdc8ce3eba9f6efc2ed3a64381e3a73",
+    "parity/icon-scatter-diff/hyperframes-check.log": "4dd3f8c4968928283c0e22190f10fa22a4f84897c6a65451b03b7a586cab0ee7",
+    "parity/icon-scatter-diff/worst-frame.png": "26f933830316c02292cbfb5176a7419dbe27d8ffbfedcedac6d5cf765af66662",
+    "parity/icon-scatter-diff/reference-alpha.framemd5": "a2937ec0be21934918c79b7fbd71e3b549036e98282df13982dd5a56ed01cea8",
+    "parity/icon-scatter-diff/hyperframes-alpha.framemd5": "a2937ec0be21934918c79b7fbd71e3b549036e98282df13982dd5a56ed01cea8",
+    "parity/icon-scatter-diff/reference-rgba.framemd5": "85186bef7990344578f32942b406d527ee9b8c12adb24460b4e9b68ad44f481c",
+    "parity/icon-scatter-diff/hyperframes-rgba.framemd5": "85186bef7990344578f32942b406d527ee9b8c12adb24460b4e9b68ad44f481c"
   }
 }

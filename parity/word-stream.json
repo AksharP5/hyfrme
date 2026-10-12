@@ -2,7 +2,7 @@
   "slug": "word-stream",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/word-stream/index.tsx",
     "config": "registry/remocn/word-stream/config.ts",
     "license": "MIT"
@@ -24,21 +24,38 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "0c3b89dd5aa3f606f6c8c1c3d2d12861b54b6bfa7d61471007995e50fe495dc2",
+    "word-stream.html": "1c799721759dd9ce23a0c1ed0e95d996a699c21287da801ff5f5f0400d1cf1a6",
+    "word-stream.runtime.js": "f438e276c14cdb7b4ee58fb3f6034ee9971bac3b4fcdb2d641da578acb4830fb",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "13c7d47c535091e4986ea64d1203be619199b9e3b0039b36955cfa6ba3d7ad7b",
+  "fingerprint": "aa8439606ed4b5110c70f45d0d58adc23f958795724eccacc9c9b3de920ae6d6",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 100,
-    "meanSsim": 0.9969547600000006,
-    "minSsim": 0.995158,
-    "p05Ssim": 0.995158,
-    "p95Ssim": 0.999312,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
     "alpha": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 100,
       "mismatchedFrames": [],
       "pass": true
@@ -46,11 +63,15 @@
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -62,6 +83,21 @@
     "hyperframesCheck": "parity/word-stream-diff/hyperframes-check.log",
     "worstFrame": "parity/word-stream-diff/worst-frame.png",
     "referenceAlpha": "parity/word-stream-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/word-stream-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/word-stream-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/word-stream-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/word-stream-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/word-stream/reference.mp4": "2a56338d5396a6f4fb239a60ab3c8a9f23a3a3de5566bba05ae1ae03aa95c6a1",
+    "public/previews/word-stream/hyperframes.mp4": "2a56338d5396a6f4fb239a60ab3c8a9f23a3a3de5566bba05ae1ae03aa95c6a1",
+    "public/previews/word-stream/thumbnail.png": "ce0cf14b9296c7b08479e12d25609d12797ab7d729bc570eb8fbdad294a95c38",
+    "parity/word-stream-diff/summary.json": "fa82c25c31adc9e19a6584c3ec9334d4f3e0235e8d5eae2f1afd6c757108a452",
+    "parity/word-stream-diff/ssim.log": "56672b2c92229915a0dd393cc8a60627dbdc8ce3eba9f6efc2ed3a64381e3a73",
+    "parity/word-stream-diff/hyperframes-check.log": "5b70b654665c637103f4a55a4aa74cdbc680515bef921c0146411c992e9c02da",
+    "parity/word-stream-diff/worst-frame.png": "b6b80f4263bf6c8c16375e4217852feab2c6e68f51a427bd3f5d799e52aa49c4",
+    "parity/word-stream-diff/reference-alpha.framemd5": "a2937ec0be21934918c79b7fbd71e3b549036e98282df13982dd5a56ed01cea8",
+    "parity/word-stream-diff/hyperframes-alpha.framemd5": "a2937ec0be21934918c79b7fbd71e3b549036e98282df13982dd5a56ed01cea8",
+    "parity/word-stream-diff/reference-rgba.framemd5": "ce0a391fc7b835b19c1667d024c7b1e975f3d43bb20752407f940ecc7850e5cc",
+    "parity/word-stream-diff/hyperframes-rgba.framemd5": "ce0a391fc7b835b19c1667d024c7b1e975f3d43bb20752407f940ecc7850e5cc"
   }
 }

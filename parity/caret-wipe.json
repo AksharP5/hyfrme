@@ -2,7 +2,7 @@
   "slug": "caret-wipe",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/caret-wipe/index.tsx",
     "entry": "components/docs/examples/caret-wipe-example.tsx",
     "config": "registry/remocn/caret-wipe/config.ts",
@@ -16,29 +16,84 @@
     "props": {
       "direction": "right",
       "caretColor": "#C3E88D",
-      "caretWidth": 3
+      "caretWidth": 3,
+      "speed": 1
     },
     "background": "#0d0d10"
   },
+  "filesSha256": {
+    "registry-item.json": "defb7337d36308e3b101390d19e61f7e3b311ddb86a735c8099a5cd5ccd873ed",
+    "caret-wipe.html": "f7901d15ca08bfb21a56e19501f478f0e03705606b217671c263d55f1265a445",
+    "caret-wipe.runtime.js": "6372a474a854fcacc42866d73fd52d5a5a4578f3ee47869451f9901862b82ead",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
-  "status": "verified",
+  "measurement": "lossless-png",
+  "status": "failed",
+  "fingerprint": "3ad28e70a883370390dfcfd0819a1e70ed0f012a3855ff2a1166de0bcfb1ce92",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 100,
-    "meanSsim": 0.997675,
-    "minSsim": 0.997157,
-    "p05Ssim": 0.997218,
-    "p95Ssim": 0.998732,
-    "pass": true
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 100,
+      "mismatchedFrames": [
+        33,
+        69
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/caret-wipe/remocn.mp4",
+    "referenceVideo": "public/previews/caret-wipe/reference.mp4",
     "hyperframesVideo": "public/previews/caret-wipe/hyperframes.mp4",
-    "summary": "parity/caret-wipe-diff/summary.json"
+    "thumbnail": "public/previews/caret-wipe/thumbnail.png",
+    "summary": "parity/caret-wipe-diff/summary.json",
+    "perFrameSsim": "parity/caret-wipe-diff/ssim.log",
+    "hyperframesCheck": "parity/caret-wipe-diff/hyperframes-check.log",
+    "worstFrame": "parity/caret-wipe-diff/worst-frame.png",
+    "referenceAlpha": "parity/caret-wipe-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/caret-wipe-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/caret-wipe-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/caret-wipe-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/caret-wipe/reference.mp4": "6a15e6b5000ecec7aae0b7e842183ff21963d15e93775388e85c9a28d6dec8bc",
+    "public/previews/caret-wipe/hyperframes.mp4": "6a15e6b5000ecec7aae0b7e842183ff21963d15e93775388e85c9a28d6dec8bc",
+    "public/previews/caret-wipe/thumbnail.png": "2fa63f73ecd1bb7fa907d660a25fe3c03f519c313b008fa7d552123db6f501a8",
+    "parity/caret-wipe-diff/summary.json": "8e968cece45f063f25c3bf380caed4b3985a7ed54b6244fd920c6724d3fa6d8b",
+    "parity/caret-wipe-diff/ssim.log": "11bdf100e397909722a37d582a10d69166efe35a60ea038f36ed95397e118367",
+    "parity/caret-wipe-diff/hyperframes-check.log": "734e5427b5974949f96e404a3c8146d20a6a872ceee0edb9f7d3b47a27aa54ce",
+    "parity/caret-wipe-diff/worst-frame.png": "d90f2fe03faadaa403e756ff0ae350c5585074649678cdaee7e2ff57731782e7",
+    "parity/caret-wipe-diff/reference-alpha.framemd5": "a2937ec0be21934918c79b7fbd71e3b549036e98282df13982dd5a56ed01cea8",
+    "parity/caret-wipe-diff/hyperframes-alpha.framemd5": "a2937ec0be21934918c79b7fbd71e3b549036e98282df13982dd5a56ed01cea8",
+    "parity/caret-wipe-diff/reference-rgba.framemd5": "9b08ef409583280ebebd9b8d17bb012cf05004fa559da4b32e76b13b834d5151",
+    "parity/caret-wipe-diff/hyperframes-rgba.framemd5": "3c0100215d6dacf3714094125b276229c174e53d2752503f4b0060160385cc59"
   }
 }

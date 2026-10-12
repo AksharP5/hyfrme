@@ -2,7 +2,7 @@
   "slug": "confetti",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/confetti/index.tsx",
     "config": "registry/remocn/confetti/config.ts",
     "license": "MIT"
@@ -22,25 +22,115 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "0ed94d7a235724cbd042a7fb982dd356eaf4508c9ffec2228dd6f07f6d49a2f6",
+    "confetti.html": "0e6c2687a0c44483be4d957e12ec56d64b22662435ecd4fdd003edad7803c346",
+    "confetti.runtime.js": "2bcd8c142cea3ac592c141d5d84dbb12256027a8dca0cf1e2cd2751e8598ffd1",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
-  "status": "verified",
+  "measurement": "lossless-png",
+  "status": "failed",
+  "fingerprint": "d86bc3e7296806425990363c8d06734cf0989d3a3f1cf17953940937723bca50",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.999125,
-    "minSsim": 0.997962,
-    "p05Ssim": 0.998058,
-    "p95Ssim": 0.99997,
-    "pass": true
+    "meanSsim": 0.9999999222222224,
+    "minSsim": 0.999999,
+    "p05Ssim": 0.999999,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 90,
+      "mismatchedFrames": [
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        67,
+        69,
+        71,
+        73,
+        75,
+        77,
+        78,
+        79,
+        81,
+        83
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/confetti/remocn.mp4",
+    "referenceVideo": "public/previews/confetti/reference.mp4",
     "hyperframesVideo": "public/previews/confetti/hyperframes.mp4",
-    "summary": "parity/confetti-diff/summary.json"
+    "thumbnail": "public/previews/confetti/thumbnail.png",
+    "summary": "parity/confetti-diff/summary.json",
+    "perFrameSsim": "parity/confetti-diff/ssim.log",
+    "hyperframesCheck": "parity/confetti-diff/hyperframes-check.log",
+    "worstFrame": "parity/confetti-diff/worst-frame.png",
+    "referenceAlpha": "parity/confetti-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/confetti-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/confetti-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/confetti-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/confetti/reference.mp4": "de1649b939298232fd7555207a7d528b47eb89c85d4307b017abc1660b3b4d41",
+    "public/previews/confetti/hyperframes.mp4": "a7e3e6039f853441e62ce8a89847d7377ff41eb811bd2c9cbeb9b1a19a143309",
+    "public/previews/confetti/thumbnail.png": "e9592b53db201aed0b29319cf00fde530847fb894652a7209521d0568783e23e",
+    "parity/confetti-diff/summary.json": "a6e12a6e37eff46a0d4fa6766541fabbcda3a313f6602b6440a75a2bc8a8bfd0",
+    "parity/confetti-diff/ssim.log": "e2f2a833fb48ffbcd663993ba701e67f3a69613adada524c7602da3c48ff9a84",
+    "parity/confetti-diff/hyperframes-check.log": "35260e0b825d6f79455beddf17012c5c7b1b366575c5cc47e57ab14c3e399f00",
+    "parity/confetti-diff/worst-frame.png": "c4a5958bba786cc0545514a565af218255982c9a8e33da559d181c9ff7cd04d8",
+    "parity/confetti-diff/reference-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/confetti-diff/hyperframes-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/confetti-diff/reference-rgba.framemd5": "4f5206ae942f513cbb03d03dff1cc2fc28b099f7660ade0429f58271c71ea206",
+    "parity/confetti-diff/hyperframes-rgba.framemd5": "9dd7cb700b126e72980517c41550d0e6d0533163129cce8c9d4a2d1f30bb3788"
   }
 }

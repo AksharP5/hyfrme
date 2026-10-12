@@ -2,7 +2,7 @@
   "slug": "halftone-print",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/halftone-print/index.tsx",
     "entry": "components/docs/examples/halftone-print-example.tsx",
     "config": "registry/remocn/halftone-print/config.ts",
@@ -17,17 +17,26 @@
       "dotSize": 10,
       "angle": 0,
       "misregistration": 1.2,
-      "paperTint": "#f4efe4"
+      "paperTint": "#f4efe4",
+      "speed": 1
     },
     "background": "#26231d"
+  },
+  "filesSha256": {
+    "registry-item.json": "da438323b201caaf7df214a6be2c72cb131189988989fdf58c2f09c204db66e1",
+    "halftone-print.html": "2ac474fbf25d68661cf778ecbda81dd42c9df03fd41f16c9829518a696cf6299",
+    "halftone-print.runtime.js": "023c708b90263be92ac5483f3521acc173e8f1073eb9362ecd25bc91ef6ff58e",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
   },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "6d16f24ad83325d3aef5ce6084e677bc70dd3cdb07a5fd41a34af7b93c58207b",
+  "fingerprint": "a5752cdcf8f1bf3b3c28721afb55a1acb0916b5199a3e46cd868da1efe9005ca",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 90,
@@ -36,6 +45,11 @@
     "p05Ssim": 1,
     "p95Ssim": 1,
     "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 90,
       "mismatchedFrames": [],
       "pass": true
@@ -49,6 +63,8 @@
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
     "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
@@ -61,6 +77,21 @@
     "hyperframesCheck": "parity/halftone-print-diff/hyperframes-check.log",
     "worstFrame": "parity/halftone-print-diff/worst-frame.png",
     "referenceAlpha": "parity/halftone-print-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/halftone-print-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/halftone-print-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/halftone-print-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/halftone-print-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/halftone-print/reference.mp4": "5c3e1f0dfd7619a14ef38bc44ec1e13575d5d9f718e517528266009c9b4cb99d",
+    "public/previews/halftone-print/hyperframes.mp4": "5c3e1f0dfd7619a14ef38bc44ec1e13575d5d9f718e517528266009c9b4cb99d",
+    "public/previews/halftone-print/thumbnail.png": "e52f0cbddac1d8a8bf2c2eff847097120e58f69e6f2c59db7b3db35bf5c95ec8",
+    "parity/halftone-print-diff/summary.json": "b836772793766404c0492e741437d4fb40b614cf31be7aace9f9b10b16c85450",
+    "parity/halftone-print-diff/ssim.log": "4638ac3b2b03d74f8b056c3824e13d904997bddfbc1c0f3b8d655822a1eb000b",
+    "parity/halftone-print-diff/hyperframes-check.log": "35260e0b825d6f79455beddf17012c5c7b1b366575c5cc47e57ab14c3e399f00",
+    "parity/halftone-print-diff/worst-frame.png": "9bb60446287ade106fcac1789c07ba0595e5f686235fa93d3638be649c52f996",
+    "parity/halftone-print-diff/reference-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/halftone-print-diff/hyperframes-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/halftone-print-diff/reference-rgba.framemd5": "e6fe9705fa2b6313fffe076f60f5de1e38dc3c46e32ea7ba52a64dccc48cd142",
+    "parity/halftone-print-diff/hyperframes-rgba.framemd5": "e6fe9705fa2b6313fffe076f60f5de1e38dc3c46e32ea7ba52a64dccc48cd142"
   }
 }

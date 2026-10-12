@@ -2,7 +2,7 @@
   "slug": "tv-power-off",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/tv-power-off/index.tsx",
     "entry": "components/docs/examples/tv-power-off-example.tsx",
     "config": "registry/remocn/tv-power-off/config.ts",
@@ -17,17 +17,28 @@
       "durationInFrames": 18,
       "gain": 1,
       "afterglow": 1,
-      "phosphor": "#d8ecff"
+      "phosphor": "#d8ecff",
+      "speed": 1
     },
     "background": "#050505"
+  },
+  "filesSha256": {
+    "registry-item.json": "42e98216c83944e1033d931d4bfc3c205dea54a5f3224c6b5c8587302999ed0b",
+    "tv-power-off.html": "350b899bc29f374743efd0308eb135cc52ce466828a3e42de605924299220d56",
+    "tv-power-off.runtime.js": "47e6c8824d97c075df876ebb243d1ca9f536d71b4e683be2122fc48cdd508d46",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "GeistMono-Latin.woff2": "af61b969e7f999969f6af576e584ee85dca301a008a76be1251d172d56b9904c",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/GeistMono-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f"
   },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "000a241ff71ddf907b7d6dde35ed96d09bf9993326fb0450a301502e30dd0645",
+  "fingerprint": "6f69aaa69b85b13a296ca99230d82a164867d0bef41af6ea0293dff1945af0a1",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 62,
@@ -36,6 +47,11 @@
     "p05Ssim": 1,
     "p95Ssim": 1,
     "alpha": {
+      "frameCount": 62,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 62,
       "mismatchedFrames": [],
       "pass": true
@@ -49,6 +65,8 @@
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
     "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
@@ -61,6 +79,21 @@
     "hyperframesCheck": "parity/tv-power-off-diff/hyperframes-check.log",
     "worstFrame": "parity/tv-power-off-diff/worst-frame.png",
     "referenceAlpha": "parity/tv-power-off-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/tv-power-off-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/tv-power-off-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/tv-power-off-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/tv-power-off-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/tv-power-off/reference.mp4": "6aec642e0802bcc3d7f0960dffbade64c38ef05d202e8dd0cbca802a88544a71",
+    "public/previews/tv-power-off/hyperframes.mp4": "6aec642e0802bcc3d7f0960dffbade64c38ef05d202e8dd0cbca802a88544a71",
+    "public/previews/tv-power-off/thumbnail.png": "db54f062810fde8956c8d6a6bd7d34f8b87bd403ec29bc31d492abb3e3b04cf7",
+    "parity/tv-power-off-diff/summary.json": "6b940dc7e9c979de2f5df37ea96d8c55b510573b33a2fd6e0c31edb0487365f1",
+    "parity/tv-power-off-diff/ssim.log": "4e694b2241c09b4192e6482b977b0e09463e52ea77f7e97863474a2e9880dcb3",
+    "parity/tv-power-off-diff/hyperframes-check.log": "be562e33bc48fd32dc3ed8a924addf2bd5bfbb54c6d21e3d42154f3f3aaee6ad",
+    "parity/tv-power-off-diff/worst-frame.png": "1c8cbaef54cf556dcb0aa67af1e058f20777915db33b16f7693eb61560249e0d",
+    "parity/tv-power-off-diff/reference-alpha.framemd5": "9787a46493884775a30fa54887719561f5c77eff65b473f10ed8d22d65e2aa02",
+    "parity/tv-power-off-diff/hyperframes-alpha.framemd5": "9787a46493884775a30fa54887719561f5c77eff65b473f10ed8d22d65e2aa02",
+    "parity/tv-power-off-diff/reference-rgba.framemd5": "248fcecbd9bec700eb642a4fee44a268d8a6f1462cb67e611269941244204a93",
+    "parity/tv-power-off-diff/hyperframes-rgba.framemd5": "248fcecbd9bec700eb642a4fee44a268d8a6f1462cb67e611269941244204a93"
   }
 }

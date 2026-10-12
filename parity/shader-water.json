@@ -2,7 +2,7 @@
   "slug": "shader-water",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shader-water/index.tsx",
     "config": "registry/remocn/shader-water/config.ts",
     "license": "MIT"
@@ -21,25 +21,77 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "b49ce713b0f281b9ce224f76b95c81a3c837fcbe82a01c30b58a7a44d3bd04b1",
+    "shader-water.html": "c1619fbafac66f5ee91db3c20fb3c723560a536036a9a66ba2014baeed6530a6",
+    "shader-water.runtime.js": "3c5644e43426d66b139856f48effefc60ddad84eba33c8e02faed41cb5152436",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md": "fc408cbbf99a20fbc88c2296a04bac7dadbe7114f2456673de3e5b7986cfd19d"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "6b516078084321ed08a17f53c5877f4d6b95462b51fc8574faf45b20b04530d6",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.998967,
-    "minSsim": 0.998765,
-    "p05Ssim": 0.998797,
-    "p95Ssim": 0.9992,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/shader-water/remocn.mp4",
+    "referenceVideo": "public/previews/shader-water/reference.mp4",
     "hyperframesVideo": "public/previews/shader-water/hyperframes.mp4",
-    "summary": "parity/shader-water-diff/summary.json"
+    "thumbnail": "public/previews/shader-water/thumbnail.png",
+    "summary": "parity/shader-water-diff/summary.json",
+    "perFrameSsim": "parity/shader-water-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-water-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-water-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-water-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-water-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shader-water-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shader-water-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shader-water/reference.mp4": "d24a1669b76821ab894acb53d87bcf5f97fa6a5b9f9d5cd901b4ad14b06f697c",
+    "public/previews/shader-water/hyperframes.mp4": "d24a1669b76821ab894acb53d87bcf5f97fa6a5b9f9d5cd901b4ad14b06f697c",
+    "public/previews/shader-water/thumbnail.png": "4507dbf27baa8cc7812e4e99aeaf22613cb1627a99928d42a029fd7b4223fe47",
+    "parity/shader-water-diff/summary.json": "ad55b29e05e75e155f68631a7d07dcf33cfd0beba9f35e6e6cb01ccc34051e53",
+    "parity/shader-water-diff/ssim.log": "c4fbedb2045d104b60568467b9860d7ee5ffeee1f88dedd0034e5cf393a3221a",
+    "parity/shader-water-diff/hyperframes-check.log": "8258343d79654723604d6ad3f137e02961d34e3ad42968c060314f983e44db9e",
+    "parity/shader-water-diff/worst-frame.png": "8a015dbfdd8d111760d2c808c32573fa1ff71b276bff6b0d1ac4bc220005a3ae",
+    "parity/shader-water-diff/reference-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-water-diff/hyperframes-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-water-diff/reference-rgba.framemd5": "b626d2afe522063058ef65e07e8377eef13447734685789b8dfd0c43c12192e6",
+    "parity/shader-water-diff/hyperframes-rgba.framemd5": "b626d2afe522063058ef65e07e8377eef13447734685789b8dfd0c43c12192e6"
   }
 }

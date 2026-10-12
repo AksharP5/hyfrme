@@ -2,7 +2,7 @@
   "slug": "staggered-fade-up",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/staggered-fade-up/index.tsx",
     "config": "registry/remocn/staggered-fade-up/config.ts",
     "license": "MIT"
@@ -23,25 +23,76 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "f573dff653a3c547a0d77117f6f7daf1326e358b9e4e9f5e54201d3c05988c1e",
+    "staggered-fade-up.html": "479cedf444c90ca6a5bb62a872b830c6025e78b463934db79f2d487576bfa411",
+    "staggered-fade-up.runtime.js": "26e84e3f6e7da06d696ad49a8c56d860703e458f7095cd573e92131f40c3ae5a",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "b7d8d5ef8e0c0d719103b1f7ebfefde88ab5b555b2013c3b71e12bd2c09de760",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.997838,
-    "minSsim": 0.997529,
-    "p05Ssim": 0.997586,
-    "p95Ssim": 0.999542,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/staggered-fade-up/remocn.mp4",
+    "referenceVideo": "public/previews/staggered-fade-up/reference.mp4",
     "hyperframesVideo": "public/previews/staggered-fade-up/hyperframes.mp4",
-    "summary": "parity/staggered-fade-up-diff/summary.json"
+    "thumbnail": "public/previews/staggered-fade-up/thumbnail.png",
+    "summary": "parity/staggered-fade-up-diff/summary.json",
+    "perFrameSsim": "parity/staggered-fade-up-diff/ssim.log",
+    "hyperframesCheck": "parity/staggered-fade-up-diff/hyperframes-check.log",
+    "worstFrame": "parity/staggered-fade-up-diff/worst-frame.png",
+    "referenceAlpha": "parity/staggered-fade-up-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/staggered-fade-up-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/staggered-fade-up-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/staggered-fade-up-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/staggered-fade-up/reference.mp4": "cfca26ca8a643b1e9466d429d406542e709495e1df11870bf02e285b851eacff",
+    "public/previews/staggered-fade-up/hyperframes.mp4": "cfca26ca8a643b1e9466d429d406542e709495e1df11870bf02e285b851eacff",
+    "public/previews/staggered-fade-up/thumbnail.png": "714c8f9a32e0b83c5b616a9e6251cc66fe4d0d10f696ef3db037b9787194124c",
+    "parity/staggered-fade-up-diff/summary.json": "b836772793766404c0492e741437d4fb40b614cf31be7aace9f9b10b16c85450",
+    "parity/staggered-fade-up-diff/ssim.log": "4638ac3b2b03d74f8b056c3824e13d904997bddfbc1c0f3b8d655822a1eb000b",
+    "parity/staggered-fade-up-diff/hyperframes-check.log": "ae6089147d7aaa6b5511b7f0321039d2088e00d1e58410a5aefa0eace82d41cd",
+    "parity/staggered-fade-up-diff/worst-frame.png": "b6b80f4263bf6c8c16375e4217852feab2c6e68f51a427bd3f5d799e52aa49c4",
+    "parity/staggered-fade-up-diff/reference-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/staggered-fade-up-diff/hyperframes-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/staggered-fade-up-diff/reference-rgba.framemd5": "939180f8bd9021d35aedc79854c86f068e7c34954e3ae57c5ee4e838d695e4f1",
+    "parity/staggered-fade-up-diff/hyperframes-rgba.framemd5": "939180f8bd9021d35aedc79854c86f068e7c34954e3ae57c5ee4e838d695e4f1"
   }
 }

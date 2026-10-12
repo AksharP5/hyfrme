@@ -1,5 +1,7 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
+import { nativeTransitionRuntime } from "./t3-native-transition-runtime.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
@@ -9,11 +11,51 @@ const fixture = JSON.parse(
   await readFile(resolve(source, "worktree-choice-v0042-dark-fixture.json"), "utf8"),
 );
 const lightFixture = JSON.parse(await readFile(resolve(source, "worktree-choice-v0042-light-fixture.json"), "utf8"));
+const openTransitions = Object.fromEntries([["dark", fixture], ["light", lightFixture]].map(([appearance, captured]) => [appearance, captured.motion.open.map((motion) => {
+  if (motion.keyframes.length !== 2) throw new Error("Unsupported native Workspace opening transition");
+  const [first, last] = motion.keyframes;
+  const property = ["backgroundColor", "color"].find((key) => key in first.styles);
+  if (
+    motion.target !== "select-trigger" ||
+    motion.easing !== "cubic-bezier(0.4, 0, 0.2, 1)" ||
+    motion.duration !== 150 ||
+    !property ||
+    !(property in last.styles)
+  ) throw new Error("Unsupported native Workspace opening transition");
+  return {
+    property: property === "backgroundColor" ? "background-color" : property,
+    from: first.styles[property],
+    to: last.styles[property],
+    duration: motion.duration,
+  };
+})]));
 for (const phase of ["before", "menu", "portal", "hover", "after"]) {
   const [dark, light] = await Promise.all(["dark", "light"].map((appearance) =>
     readFile(resolve(source, `worktree-choice-v0042-${appearance}-${phase}.html`), "utf8")));
-  const normalizeIds = (html) => html.replace(/_r_[^_]+_/g, "_r_X_");
-  if (normalizeIds(dark) !== normalizeIds(light)) throw new Error(`Native ${phase} DOM differs beyond generated IDs`);
+  const normalizeSource = (html, appearance) => {
+    const worktreeLabel = `aria-label="Worktree: t3-brief-v0042-${appearance}-project (`;
+    if (html.split(worktreeLabel).length - 1 !== (phase === "portal" ? 0 : 5)) {
+      throw new Error(`Unexpected seeded Worktree labels in ${appearance} ${phase}`);
+    }
+    const ids = new Map();
+    let normalized = html.replace(/_r_[^_]+_/g, (id) => {
+      if (!ids.has(id)) ids.set(id, `_r_${ids.size}_`);
+      return ids.get(id);
+    }).replaceAll(worktreeLabel, 'aria-label="Worktree: hyfrme-project (');
+    if (phase !== "portal") return normalized;
+    // Native portal attributes and this unique CSS declaration serialize in different orders.
+    normalized = normalized.replace(/<[^>]+>/g, (tag) => {
+      if (tag.includes(' data-open=""')) tag = tag.replace(' data-open=""', '').replace(/>$/, ' data-open="">');
+      return tag.replace(/style="([^"]+)"/g, (attribute, style) => {
+        const origin = style.match(/ --transform-origin: [^;]+;/);
+        if (!origin) return attribute;
+        if (style.split('--transform-origin:').length !== 2) throw new Error('Duplicate native transform origin');
+        return `style="${style.replace(origin[0], '')}${origin[0]}"`;
+      });
+    });
+    return normalized;
+  };
+  if (normalizeSource(dark, "dark") !== normalizeSource(light, "light")) throw new Error(`Native ${phase} DOM differs beyond recorded serialization and seeded labels`);
 }
 const theme = JSON.parse(
   await readFile(resolve(source, "dark-theme.json"), "utf8"),
@@ -139,6 +181,10 @@ const html = `<!doctype html>
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { ${stageTheme} position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-state[hidden] { display: none !important; }
   .t3-state:not([hidden]) { display: contents; }
   .t3-hover-worktree { background: var(--accent); color: var(--accent-foreground); }
@@ -152,6 +198,7 @@ const html = `<!doctype html>
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
   <div class="dark t3-stage">
@@ -178,10 +225,13 @@ for (const [key, value] of Object.entries(${scriptJson(fontTheme)})) stage.style
 stage.style.fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
 const nativePopup = [...stage.querySelectorAll('[data-t3-native-popup]')];
 const nativeSelection = [...stage.querySelectorAll('[data-t3-native-selection]')];
+const nativeSources = ${scriptJson(Object.fromEntries(["dark", "light"].map((appearance) => [appearance, Object.fromEntries([
+  ...["menu", "hover"].map((phase) => [phase, `compositions/worktree-choice-v0042-${appearance}-${phase}-crop.png`]),
+  ...Array.from({ length: 5 }, (_, index) => [`select-${index}`, `compositions/worktree-choice-v0042-${appearance}-select-${index}-crop.png`]),
+])])))};
+for (const image of nativePopup) image.src = nativeSources[options.theme][image.dataset.t3NativePopup];
+for (const image of nativeSelection) image.src = nativeSources[options.theme]['select-' + image.dataset.t3NativeSelection];
 const nativePopupAllowed = Object.keys(defaults).every(key => ['theme', 'openFrame', 'hoverFrame', 'selectFrame'].includes(key) || options[key] === defaults[key]);
-if (options.theme === 'light') {
-  for (const image of [...nativePopup, ...nativeSelection]) image.src = image.src.replace('dark-', 'light-');
-}
 const replacements = ${scriptJson(textReplacements)};
 const walker = document.createTreeWalker(stage, NodeFilter.SHOW_TEXT);
 let node;
@@ -214,6 +264,15 @@ for (const hero of stage.querySelectorAll('h1')) {
   if (hero.lastChild?.nodeType === Node.TEXT_NODE) hero.lastChild.textContent = options.heroTail;
 }
 const sections = [...stage.querySelectorAll('[data-t3-state]')];
+${nativeTransitionRuntime}
+const trigger = sections[1].querySelector('[data-composer-shortcut="composer.workspace"]');
+for (const motion of ${scriptJson(openTransitions)}[options.theme]) {
+  sourceTransition(trigger, motion.property, motion.from, motion.to, Number(options.openFrame), motion.duration);
+}
+let nativeReady = Promise.resolve();
+window.addEventListener('hf-seek', (event) => {
+  event.detail.waitUntil(Promise.resolve().then(() => nativeReady));
+});
 const ageKeys = ['threadOneAge', 'threadTwoAge', 'threadThreeAge', 'threadFourAge', 'threadFiveAge'];
 for (const section of sections) {
   section.querySelectorAll('[data-testid="sidebar-row-card"]').forEach((row, index) => {
@@ -262,6 +321,7 @@ function draw() {
   for (let index = 0; index < nativeSelection.length; index++) {
     nativeSelection[index].hidden = !nativePopupAllowed || phase !== 2 || frame - selectFrame !== index;
   }
+  window.__hyfrmeReady = nativeReady = seekNativeTransitions(sections[phase], frame);
 }
 draw();
 const timeline = gsap.timeline({ paused: true });
@@ -347,7 +407,7 @@ await writeFile(
 
 This four-second block reproduces the official T3 Code v${fixture.sourceTag.slice(1)} Workspace selector at 1200 × 659 and 30 fps in dark and light. It opens the actual composer control, hovers New worktree, and selects it. The native footer changes from Current checkout to New worktree, with From origin/feature/logo-enter as its base branch. No worktree is created until a prompt is sent; this block shows the native choice before that send.
 
-Customize the project, thread rows, prompt, model, permission, workspace labels, previous worktree option, base branch, theme, and open/hover/select frames. The default menu, hover, and five selection-transition frames use cropped official dark/light captures for close parity; changing visible content switches to editable source DOM. Use matching values on adjacent blocks for a continuous workspace. The project, model, and conversation are seeded; no AI provider executes. Source: https://github.com/pingdotgg/t3code/tree/${fixture.sourceCommit}. The installed files include the T3 Code MIT license. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.
+Customize the project, thread rows, prompt, model, permission, workspace labels, previous worktree option, base branch, theme, and open/hover/select frames. Both appearances preserve the native Workspace trigger's 150ms background and text transitions when opening the picker, including customized open timing. The default menu, hover, and five selection-transition frames use cropped official dark/light captures for close parity; changing visible content switches to editable source DOM. Use matching values on adjacent blocks for a continuous workspace. The project, model, and conversation are seeded; no AI provider executes. Source: https://github.com/pingdotgg/t3code/tree/${fixture.sourceCommit}. The installed files include the T3 Code MIT license. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.
 `,
 );
 console.log(`Generated ${name} from the pinned T3 Code Workspace selector.`);

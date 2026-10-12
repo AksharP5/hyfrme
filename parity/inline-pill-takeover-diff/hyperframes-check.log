@@ -21,7 +21,7 @@
     "ok": true,
     "errorCount": 0,
     "warningCount": 2,
-    "infoCount": 6,
+    "infoCount": 5,
     "findings": [
       {
         "code": "escaped_container",
@@ -58,7 +58,8 @@
         },
         "firstSeen": 0.917,
         "lastSeen": 1.417,
-        "occurrences": 4
+        "occurrences": 4,
+        "heldMs": 500
       },
       {
         "code": "container_overflow",
@@ -100,65 +101,50 @@
         },
         "firstSeen": 1.083,
         "lastSeen": 1.417,
-        "occurrences": 3
+        "occurrences": 3,
+        "heldMs": 334.00000000000006
       },
       {
-        "code": "content_overlap",
+        "code": "text_box_overflow",
         "severity": "info",
-        "time": 0.125,
-        "selector": "#inline-pill-takeover-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
-        "message": "Two text blocks overlap and may render unreadable.",
-        "rect": {
-          "left": 234.95,
-          "top": 326,
-          "right": 564.28,
-          "bottom": 393,
-          "width": 329.33,
-          "height": 67
-        },
-        "containerSelector": "#inline-pill-takeover-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
-        "text": "powering 20%",
-        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
-        "dataAttributes": {},
-        "sourceFile": "compositions/inline-pill-takeover.html",
-        "bbox": {
-          "x": 234.95,
-          "y": 326,
-          "width": 329.33,
-          "height": 67
-        },
-        "firstSeen": 0.125,
-        "lastSeen": 0.125,
-        "occurrences": 1
-      },
-      {
-        "code": "content_overlap",
-        "severity": "info",
-        "time": 0.125,
+        "time": 0.25,
         "selector": "#inline-pill-takeover-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
-        "message": "Two text blocks overlap and may render unreadable.",
+        "message": "Text extends outside its nearest visual/container box.",
         "rect": {
           "left": 513.1,
-          "top": 331.14,
+          "top": 337.8,
           "right": 766.87,
-          "bottom": 388.14,
+          "bottom": 381.48,
           "width": 253.77,
-          "height": 57
+          "height": 43.68
         },
-        "containerSelector": "#inline-pill-takeover-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+        "containerSelector": "#inline-pill-takeover-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
         "text": "Start building",
-        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "fixHint": "Text is 254px x 44px inside 221px x 56px and overflows by up to 16px; widen the container to at least ~254px or shrink font-size from 44px to ~38px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 529.31,
+          "top": 331.86,
+          "right": 750.67,
+          "bottom": 388.13,
+          "width": 221.36,
+          "height": 56.27
+        },
+        "overflow": {
+          "left": 16.21,
+          "right": 16.2
+        },
         "dataAttributes": {},
         "sourceFile": "compositions/inline-pill-takeover.html",
         "bbox": {
           "x": 513.1,
-          "y": 331.14,
+          "y": 337.8,
           "width": 253.77,
-          "height": 57
+          "height": 43.68
         },
-        "firstSeen": 0.125,
-        "lastSeen": 0.125,
-        "occurrences": 1
+        "firstSeen": 0.25,
+        "lastSeen": 0.25,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -198,7 +184,8 @@
         },
         "firstSeen": 0.25,
         "lastSeen": 0.25,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -240,7 +227,8 @@
         },
         "firstSeen": 0.583,
         "lastSeen": 0.583,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -282,7 +270,8 @@
         },
         "firstSeen": 0.75,
         "lastSeen": 0.75,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -324,7 +313,8 @@
         },
         "firstSeen": 0.917,
         "lastSeen": 0.917,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       }
     ],
     "duration": 1.5,
@@ -342,7 +332,7 @@
     "transitionSamples": [],
     "transitionSamplesDropped": 0,
     "tolerance": 2,
-    "totalIssueCount": 8,
+    "totalIssueCount": 7,
     "truncated": false
   },
   "motion": {
@@ -371,6 +361,10 @@
     "checked": 8,
     "passed": 8
   },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
   "snapshots": {
     "enabled": false,
     "files": [],
@@ -378,8 +372,8 @@
     "findingFiles": []
   },
   "_meta": {
-    "version": "0.8.30",
-    "latestVersion": "0.8.32",
+    "version": "0.8.99",
+    "latestVersion": "0.8.127",
     "updateAvailable": true
   }
 }

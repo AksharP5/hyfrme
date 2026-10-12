@@ -2,7 +2,7 @@
   "slug": "check-list",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/check-list/index.tsx",
     "entry": "components/docs/examples/check-list-example.tsx",
     "config": "registry/remocn/check-list/config.ts",
@@ -21,29 +21,83 @@
       "strokeWidth": 3,
       "color": "#26242c",
       "tickColor": "#6f7f35",
-      "step": 3
+      "step": 3,
+      "speed": 1
     },
     "background": "#f1eee7"
   },
+  "filesSha256": {
+    "registry-item.json": "c464e6f7d3046b563825be6e80c27a1e75c5f565fec356970c73b6c811c0378c",
+    "check-list.html": "af6782c2bfdd8a2436fcc48d68e4e2a1b54696742c031c09529a0f232bde794e",
+    "check-list.runtime.js": "c6892446986ba06da355b67cdcef5fc0ff89bfcbf7dd8998e619c16b0cc9fb90",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "Caveat-Latin.woff2": "891951df5e8b5b0f0bc760d31375405e795c666b5add70437de12d4a6482b33f",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Caveat-OFL.txt": "163a2b400e16916ad3196296c946c526d0efce6baf22a2164269ffc62fb9f671"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "3a1971f6d27ce8c0afd52dbb3ffdc71e9aefbb18fa6c7fd3752e4879e75afd70",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 360,
-    "meanSsim": 0.99835,
-    "minSsim": 0.997926,
-    "p05Ssim": 0.997993,
-    "p95Ssim": 0.999834,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 360,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 360,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/check-list/remocn.mp4",
+    "referenceVideo": "public/previews/check-list/reference.mp4",
     "hyperframesVideo": "public/previews/check-list/hyperframes.mp4",
-    "summary": "parity/check-list-diff/summary.json"
+    "thumbnail": "public/previews/check-list/thumbnail.png",
+    "summary": "parity/check-list-diff/summary.json",
+    "perFrameSsim": "parity/check-list-diff/ssim.log",
+    "hyperframesCheck": "parity/check-list-diff/hyperframes-check.log",
+    "worstFrame": "parity/check-list-diff/worst-frame.png",
+    "referenceAlpha": "parity/check-list-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/check-list-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/check-list-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/check-list-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/check-list/reference.mp4": "bbb8a5626b8980b154f959c0bef44eed3e99bb560a0d33a87bf2618e5797231b",
+    "public/previews/check-list/hyperframes.mp4": "bbb8a5626b8980b154f959c0bef44eed3e99bb560a0d33a87bf2618e5797231b",
+    "public/previews/check-list/thumbnail.png": "5df92c56a0c7cb4969c0c83c64e5d48d5014d88edd55d67424fa774caad675bd",
+    "parity/check-list-diff/summary.json": "8f0566b5fae3c7bfa0d1715a40419f57cc822453724da7c33b31a662749df6c5",
+    "parity/check-list-diff/ssim.log": "81821a4fe68025ad4d50514d5041d41823e787c7b5940cd88a20c1980042b9ff",
+    "parity/check-list-diff/hyperframes-check.log": "d2f77bffb69dd37082d91854dd171a9defb3d303fe8d019db6ba71adf39e829e",
+    "parity/check-list-diff/worst-frame.png": "f2d7f03785b7a7e67ac49fe44da5c40fda854c0ed92b07363dd688e63752328d",
+    "parity/check-list-diff/reference-alpha.framemd5": "169ebc81a9fc5f928ab45a667791714b499844121a56de4004670a9ad3b0091a",
+    "parity/check-list-diff/hyperframes-alpha.framemd5": "169ebc81a9fc5f928ab45a667791714b499844121a56de4004670a9ad3b0091a",
+    "parity/check-list-diff/reference-rgba.framemd5": "7d3b43a7df8ad6bfea273993609b5a7e1debf88fb97469631de053a0bb849447",
+    "parity/check-list-diff/hyperframes-rgba.framemd5": "7d3b43a7df8ad6bfea273993609b5a7e1debf88fb97469631de053a0bb849447"
   }
 }

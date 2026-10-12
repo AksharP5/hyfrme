@@ -2,7 +2,7 @@
   "slug": "handwrite",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/handwrite/index.tsx",
     "config": "registry/remocn/handwrite/config.ts",
     "license": "MIT"
@@ -19,29 +19,83 @@
       "weight": "600",
       "color": "#26242c",
       "align": "center",
-      "step": 3
+      "step": 3,
+      "speed": 1
     },
     "background": "#f1eee7"
   },
+  "filesSha256": {
+    "registry-item.json": "4a400018709cdf57168746fae5513c417bd33f979dac35de4e9d270824eeeac9",
+    "handwrite.html": "79ee2f188300cf6a76047f6dc84da878888bfca5ee98c2132c31d3e381b7d9fc",
+    "handwrite.runtime.js": "3d72a6340df20273141e0f7740beb074bfe5d3024e48584563f623208ee2a5ed",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "Caveat-Latin.woff2": "891951df5e8b5b0f0bc760d31375405e795c666b5add70437de12d4a6482b33f",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Caveat-OFL.txt": "163a2b400e16916ad3196296c946c526d0efce6baf22a2164269ffc62fb9f671"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "a199af940568653d3e1c6f7a48e24d562eefd1d45047a8f37c516fdf621ccc84",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.999048,
-    "minSsim": 0.998934,
-    "p05Ssim": 0.998935,
-    "p95Ssim": 0.999746,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/handwrite/remocn.mp4",
+    "referenceVideo": "public/previews/handwrite/reference.mp4",
     "hyperframesVideo": "public/previews/handwrite/hyperframes.mp4",
-    "summary": "parity/handwrite-diff/summary.json"
+    "thumbnail": "public/previews/handwrite/thumbnail.png",
+    "summary": "parity/handwrite-diff/summary.json",
+    "perFrameSsim": "parity/handwrite-diff/ssim.log",
+    "hyperframesCheck": "parity/handwrite-diff/hyperframes-check.log",
+    "worstFrame": "parity/handwrite-diff/worst-frame.png",
+    "referenceAlpha": "parity/handwrite-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/handwrite-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/handwrite-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/handwrite-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/handwrite/reference.mp4": "e52214509556c6023ac2fe2d4b7000b1c554ab302c4072b9a47c7c1cbb93b014",
+    "public/previews/handwrite/hyperframes.mp4": "e52214509556c6023ac2fe2d4b7000b1c554ab302c4072b9a47c7c1cbb93b014",
+    "public/previews/handwrite/thumbnail.png": "f353614c38dbd81285789feffc5b2db222acc6e1b91ef5e29fa09acdaff047b9",
+    "parity/handwrite-diff/summary.json": "c38069d7cb90acc2a693a754a1caeffaf324f128e7d118e6f20808613c950e44",
+    "parity/handwrite-diff/ssim.log": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/handwrite-diff/hyperframes-check.log": "532f8382020ba47683719d16b2e9f4ff4a20f2fe3335c0a5378cbe6f41fe23c8",
+    "parity/handwrite-diff/worst-frame.png": "f2d7f03785b7a7e67ac49fe44da5c40fda854c0ed92b07363dd688e63752328d",
+    "parity/handwrite-diff/reference-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/handwrite-diff/hyperframes-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/handwrite-diff/reference-rgba.framemd5": "6f79c0e3a9cfa4dccabfed23b483c09c9d2858dc8dee7729673c02f3b318082f",
+    "parity/handwrite-diff/hyperframes-rgba.framemd5": "6f79c0e3a9cfa4dccabfed23b483c09c9d2858dc8dee7729673c02f3b318082f"
   }
 }

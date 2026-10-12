@@ -2,7 +2,7 @@
   "slug": "input",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-ui/input/index.tsx",
     "entry": "components/docs/examples/input-example.tsx",
     "config": "registry/remocn-ui/input/config.ts",
@@ -21,25 +21,77 @@
     },
     "background": "oklch(1 0 0)"
   },
+  "filesSha256": {
+    "registry-item.json": "66916633701bbdcaa36578298dc77ede31edde6b8485042b904bff031915dd5f",
+    "input.html": "176030e89a383692331b6ff677855451ae854cf860965aedf7a3185f95640368",
+    "input.runtime.js": "17259aceecf36696e08fa15f9c1dc41ef06ec6dc1f6b190ec6853f489ec5f425",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "8cc3da3b5e243873558228ed1010a2bd19cc431bd603c8fc984b5eb252ac2dd9",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.999876,
-    "minSsim": 0.999731,
-    "p05Ssim": 0.999765,
-    "p95Ssim": 0.99995,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/input/remocn.mp4",
+    "referenceVideo": "public/previews/input/reference.mp4",
     "hyperframesVideo": "public/previews/input/hyperframes.mp4",
-    "summary": "parity/input-diff/summary.json"
+    "thumbnail": "public/previews/input/thumbnail.png",
+    "summary": "parity/input-diff/summary.json",
+    "perFrameSsim": "parity/input-diff/ssim.log",
+    "hyperframesCheck": "parity/input-diff/hyperframes-check.log",
+    "worstFrame": "parity/input-diff/worst-frame.png",
+    "referenceAlpha": "parity/input-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/input-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/input-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/input-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/input/reference.mp4": "f46baaae67fa633614c82611b7bac56ee14e02dd2cc4e6fe120f7c852fdafecb",
+    "public/previews/input/hyperframes.mp4": "f46baaae67fa633614c82611b7bac56ee14e02dd2cc4e6fe120f7c852fdafecb",
+    "public/previews/input/thumbnail.png": "1dc579e49511330b7a40b7e1be224eb2d2ba6f7631079f7bcecd47df4c2f9e2e",
+    "parity/input-diff/summary.json": "c38069d7cb90acc2a693a754a1caeffaf324f128e7d118e6f20808613c950e44",
+    "parity/input-diff/ssim.log": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/input-diff/hyperframes-check.log": "18551aca16eee63bd669510f7b103eaa202e0e09a3fd8634641d3e6bb1147640",
+    "parity/input-diff/worst-frame.png": "ae77e41a2f4a986577cbf77874460b5912380deb4207705bc694e3f37338a0c3",
+    "parity/input-diff/reference-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/input-diff/hyperframes-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/input-diff/reference-rgba.framemd5": "9095276671199553cb6afe5c45282f5cd60a945750e1586866812b7bc7ef770a",
+    "parity/input-diff/hyperframes-rgba.framemd5": "9095276671199553cb6afe5c45282f5cd60a945750e1586866812b7bc7ef770a"
   }
 }

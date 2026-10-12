@@ -2,7 +2,7 @@
   "slug": "reel",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/reel/index.tsx",
     "entry": "components/docs/examples/reel-example.tsx",
     "config": "registry/remocn/reel/config.ts",
@@ -18,37 +18,93 @@
       "height": 676,
       "radius": 16,
       "step": 20,
-      "reveal": 13
+      "reveal": 13,
+      "speed": 1
     },
     "background": "#0b0b0c"
   },
+  "filesSha256": {
+    "registry-item.json": "e92d7cf0b27e0fa9e23bb273129871b5be75b8c6143d4b90ed7e7c6f863b01bd",
+    "reel.html": "d36275281d0ff20fe876132a2857a21941af2796a82d2d2550d01fe7d0faaca5",
+    "reel.runtime.js": "e216f37273ead1a25b73ed7a514317aff3b417259a17c110ab0a4a2f874e84eb",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "reel/reel-1.jpg": "2985eb3cb64d75b2a1c0cb49bceb88e708828d469786095ed5d4428dea594b91",
+    "reel/reel-2.jpg": "ba55172ae782bd528e6bc6f2d4befa9cfb849547ea0ea506734340d0895c11e5",
+    "reel/reel-3.jpg": "8be244bb32edd9be4779de68e5a7a03f90a87503c3454f3b7ac76dd6a53126e5",
+    "reel/reel-4.jpg": "83c9c153848acbf6d8c03ce123b930b74dc234aa87e8a5b4d04184513671ec46",
+    "reel/reel-5.jpg": "180392924da593816cbd41773c1ff573c5c47acb2f5771909b2463f21b1694ed",
+    "reel/reel-6.jpg": "b260ebca5490a4c923d6f821ef756ed02a6b31276b30f79096065a86bc0152fc"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
-  "status": "verified",
-  "fingerprint": "0c5b7f7a9162c1d5d75b1cdab98c97e85e84a638b8622aca699987afe56ec4b5",
+  "status": "failed",
+  "fingerprint": "c67c7f9beb1ac64163a7fb2402ad30b8fec085a1537875c34b8b0551ffe69dde",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 160,
-    "meanSsim": 0.9994669000000004,
-    "minSsim": 0.997054,
-    "p05Ssim": 0.997054,
+    "meanSsim": 0.9998810562499999,
+    "minSsim": 0.996658,
+    "p05Ssim": 0.999008,
     "p95Ssim": 1,
     "alpha": {
       "frameCount": 160,
       "mismatchedFrames": [],
       "pass": true
     },
-    "pass": true
+    "rgba": {
+      "frameCount": 160,
+      "mismatchedFrames": [
+        1,
+        8,
+        31,
+        43,
+        57,
+        58,
+        60,
+        61,
+        68,
+        72,
+        78,
+        82,
+        84,
+        87,
+        90,
+        92,
+        93,
+        99,
+        100,
+        106,
+        111,
+        116,
+        136,
+        141,
+        142,
+        145,
+        146,
+        150,
+        151,
+        156,
+        159
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
-    "remotionVersion": "4.0.473",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -60,6 +116,21 @@
     "hyperframesCheck": "parity/reel-diff/hyperframes-check.log",
     "worstFrame": "parity/reel-diff/worst-frame.png",
     "referenceAlpha": "parity/reel-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/reel-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/reel-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/reel-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/reel-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/reel/reference.mp4": "cd5d50d65055b5daec8da07e507eaf630a6944ba9b33f1504c68ee2dddf8299a",
+    "public/previews/reel/hyperframes.mp4": "b314821ffd200e9dcc7aed534e660c47e45932e3337e2dd65b465c86e2b059b2",
+    "public/previews/reel/thumbnail.png": "3b2080cda2ccf9657f910a729b65a698f33f170ec1ba321bf05a62ceb3118dff",
+    "parity/reel-diff/summary.json": "ee5c50869aa8dfd294eff70ebebef1918a5b39dbcb2b2e0ff95206614dcaa3e9",
+    "parity/reel-diff/ssim.log": "48a5e2282ee1ca64c4b6a0684399f624c7470a853008da33bbd6d377a452a80a",
+    "parity/reel-diff/hyperframes-check.log": "ff82f5d3c1c8f20fec09f7df1a33a96d542f59721ca35e36e4efe7c7b80aff6b",
+    "parity/reel-diff/worst-frame.png": "b048402ef3088b39a76a418823ee8ba8028123be3d0ec9f1ad72124a634fb07b",
+    "parity/reel-diff/reference-alpha.framemd5": "7f20de6b8a3d83cce3a22460aca451220096bc56fa7eb7a4bc74fe7d22a548ea",
+    "parity/reel-diff/hyperframes-alpha.framemd5": "7f20de6b8a3d83cce3a22460aca451220096bc56fa7eb7a4bc74fe7d22a548ea",
+    "parity/reel-diff/reference-rgba.framemd5": "d145e68c01b0ba8b1beaa656b76614eb0a38fc790fa70a83c5543451c640a19e",
+    "parity/reel-diff/hyperframes-rgba.framemd5": "b8fb2954cef370ded8db3cbe84f9358cdac650761d4f0ac917be3788eff8ec20"
   }
 }

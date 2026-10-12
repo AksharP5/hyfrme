@@ -21,7 +21,7 @@
     "ok": true,
     "errorCount": 0,
     "warningCount": 3,
-    "infoCount": 40,
+    "infoCount": 43,
     "findings": [
       {
         "code": "content_overlap",
@@ -33,9 +33,9 @@
           "left": 444.46,
           "top": 816.4,
           "right": 537.28,
-          "bottom": 845.07,
+          "bottom": 843.51,
           "width": 92.82,
-          "height": 28.66
+          "height": 27.11
         },
         "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3)",
         "text": "Baseline",
@@ -46,11 +46,12 @@
           "x": 444.46,
           "y": 816.4,
           "width": 92.82,
-          "height": 28.66
+          "height": 27.11
         },
         "firstSeen": 38.84,
         "lastSeen": 38.965,
-        "occurrences": 2
+        "occurrences": 2,
+        "heldMs": 125
       },
       {
         "code": "content_overlap",
@@ -79,7 +80,8 @@
         },
         "firstSeen": 38.84,
         "lastSeen": 38.965,
-        "occurrences": 2
+        "occurrences": 2,
+        "heldMs": 125
       },
       {
         "code": "content_overlap",
@@ -108,7 +110,8 @@
         },
         "firstSeen": 38.84,
         "lastSeen": 38.965,
-        "occurrences": 2
+        "occurrences": 2,
+        "heldMs": 125
       },
       {
         "code": "canvas_overflow",
@@ -148,7 +151,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -161,7 +165,7 @@
           "top": 492,
           "right": -379.37,
           "bottom": 560,
-          "width": 201.31,
+          "width": 201.32,
           "height": 68
         },
         "containerSelector": "#root",
@@ -183,12 +187,13 @@
         "bbox": {
           "x": -580.69,
           "y": 492,
-          "width": 201.31,
+          "width": 201.32,
           "height": 68
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -228,7 +233,49 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -47.19,
+          "top": 492,
+          "right": 143.13,
+          "bottom": 560,
+          "width": 190.32,
+          "height": 68
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Canary",
+        "fixHint": "Text is 190px x 68px inside 1720px x 136px and overflows by up to 147px; widen the container to at least ~1867px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "overflow": {
+          "left": 147.19
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": -47.19,
+          "y": 492,
+          "width": 190.32,
+          "height": 68
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -241,7 +288,7 @@
           "top": 492,
           "right": 143.13,
           "bottom": 560,
-          "width": 190.31,
+          "width": 190.32,
           "height": 68
         },
         "containerSelector": "#root",
@@ -263,12 +310,54 @@
         "bbox": {
           "x": -47.19,
           "y": 492,
-          "width": 190.31,
+          "width": 190.32,
           "height": 68
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 13.009,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(10)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 1771.31,
+          "top": 492,
+          "right": 1972.63,
+          "bottom": 560,
+          "width": 201.32,
+          "height": 68
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Staging",
+        "fixHint": "Text is 201px x 68px inside 1720px x 136px and overflows by up to 153px; widen the container to at least ~1873px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 100,
+          "top": 468,
+          "right": 1820,
+          "bottom": 604,
+          "width": 1720,
+          "height": 136
+        },
+        "overflow": {
+          "right": 152.63
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 1771.31,
+          "y": 492,
+          "width": 201.32,
+          "height": 68
+        },
+        "firstSeen": 13.009,
+        "lastSeen": 13.009,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -281,7 +370,7 @@
           "top": 492,
           "right": 1972.63,
           "bottom": 560,
-          "width": 201.31,
+          "width": 201.32,
           "height": 68
         },
         "containerSelector": "#root",
@@ -303,12 +392,13 @@
         "bbox": {
           "x": 1771.31,
           "y": 492,
-          "width": 201.31,
+          "width": 201.32,
           "height": 68
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -348,7 +438,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -361,7 +452,7 @@
           "top": 492,
           "right": 2495.13,
           "bottom": 560,
-          "width": 190.31,
+          "width": 190.32,
           "height": 68
         },
         "containerSelector": "#root",
@@ -383,12 +474,13 @@
         "bbox": {
           "x": 2304.81,
           "y": 492,
-          "width": 190.31,
+          "width": 190.32,
           "height": 68
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -428,7 +520,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -441,7 +534,7 @@
           "top": 492,
           "right": 3028.63,
           "bottom": 560,
-          "width": 201.31,
+          "width": 201.32,
           "height": 68
         },
         "containerSelector": "#root",
@@ -463,12 +556,13 @@
         "bbox": {
           "x": 2827.31,
           "y": 492,
-          "width": 201.31,
+          "width": 201.32,
           "height": 68
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -508,7 +602,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -521,7 +616,7 @@
           "top": 492,
           "right": 3551.13,
           "bottom": 560,
-          "width": 190.31,
+          "width": 190.32,
           "height": 68
         },
         "containerSelector": "#root",
@@ -543,12 +638,13 @@
         "bbox": {
           "x": 3360.81,
           "y": 492,
-          "width": 190.31,
+          "width": 190.32,
           "height": 68
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -588,7 +684,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -601,7 +698,7 @@
           "top": 492,
           "right": 4084.63,
           "bottom": 560,
-          "width": 201.31,
+          "width": 201.32,
           "height": 68
         },
         "containerSelector": "#root",
@@ -623,12 +720,13 @@
         "bbox": {
           "x": 3883.31,
           "y": 492,
-          "width": 201.31,
+          "width": 201.32,
           "height": 68
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -667,7 +765,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -706,7 +805,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -745,7 +845,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -784,7 +885,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -823,7 +925,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -862,7 +965,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -901,7 +1005,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -940,7 +1045,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -979,7 +1085,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -1018,7 +1125,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -1057,7 +1165,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -1096,7 +1205,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -1135,7 +1245,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "escaped_container",
@@ -1172,7 +1283,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "escaped_container",
@@ -1209,7 +1321,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "escaped_container",
@@ -1246,7 +1359,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "escaped_container",
@@ -1283,7 +1397,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "escaped_container",
@@ -1320,7 +1435,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "escaped_container",
@@ -1357,7 +1473,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "escaped_container",
@@ -1394,7 +1511,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "escaped_container",
@@ -1431,7 +1549,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "escaped_container",
@@ -1468,7 +1587,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "escaped_container",
@@ -1505,7 +1625,8 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "escaped_container",
@@ -1542,7 +1663,49 @@
         },
         "firstSeen": 13.009,
         "lastSeen": 13.009,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 33.824,
+        "selector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 165.23,
+          "top": 428,
+          "right": 2911.29,
+          "bottom": 564,
+          "width": 2746.06,
+          "height": 136
+        },
+        "containerSelector": "#workflow-console-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "The test queue is growing — add parallel wor",
+        "fixHint": "Text is 2746px x 136px inside 1920px x 1080px and overflows by up to 991px; widen the container to at least ~2911px or shrink font-size from 26px to ~18px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 991.29
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/workflow-console.html",
+        "bbox": {
+          "x": 165.23,
+          "y": 428,
+          "width": 2746.06,
+          "height": 136
+        },
+        "firstSeen": 33.824,
+        "lastSeen": 33.824,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -1582,7 +1745,8 @@
         },
         "firstSeen": 33.824,
         "lastSeen": 33.824,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -1621,7 +1785,8 @@
         },
         "firstSeen": 33.824,
         "lastSeen": 33.824,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "escaped_container",
@@ -1658,7 +1823,8 @@
         },
         "firstSeen": 33.824,
         "lastSeen": 33.824,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       }
     ],
     "duration": 46.833333333333336,
@@ -1676,7 +1842,7 @@
     "transitionSamples": [],
     "transitionSamplesDropped": 0,
     "tolerance": 2,
-    "totalIssueCount": 43,
+    "totalIssueCount": 46,
     "truncated": false
   },
   "motion": {
@@ -1705,6 +1871,10 @@
     "checked": 26,
     "passed": 26
   },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
   "snapshots": {
     "enabled": false,
     "files": [],
@@ -1712,8 +1882,8 @@
     "findingFiles": []
   },
   "_meta": {
-    "version": "0.8.30",
-    "latestVersion": "0.8.35",
+    "version": "0.8.99",
+    "latestVersion": "0.8.114",
     "updateAvailable": true
   }
 }

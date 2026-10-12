@@ -1,164 +1,414 @@
 import { createHash } from "node:crypto";
-import { createRequire } from "node:module";
-import { spawn, spawnSync } from "node:child_process";
-import { cp, mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
-import { join, resolve } from "node:path";
+import { spawnSync } from "node:child_process";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
+import { createT3V0042Capture, flags } from "./t3-v0042-capture-common.mjs";
 
-const require = createRequire(import.meta.url);
-const { chromium } = require(process.env.HYFRME_PLAYWRIGHT_CORE ?? "playwright-core");
 const root = resolve(import.meta.dirname, "..");
-const release = resolve(root, ".work/t3-v0042-bin/t3-0.0.42-linux-x64");
 const source = resolve(root, "assets/t3-code/v0.0.42");
 const theme = process.env.T3_REFERENCE_THEME ?? "dark";
-if (!new Set(["dark", "light"]).has(theme)) throw new Error("T3_REFERENCE_THEME must be dark or light");
-const originalFixture = resolve(root, ".work/t3-agent-answer-fixture");
-const originalProject = resolve(root, ".work/t3-agent-answer-project");
-const fixture = await mkdtemp(resolve(root, `.work/t3-agent-answer-v0042-${theme}-fixture-`));
-const project = join(fixture, "hyfrme-project");
-const db = resolve(fixture, "userdata/state.sqlite");
+if (!["dark", "light"].includes(theme))
+  throw new Error("T3_REFERENCE_THEME must be dark or light");
 const prefix = `agent-answer-v0042-${theme}`;
-const work = resolve(root, `.work/t3-${prefix}-reference`);
-const reference = resolve(root, `parity/t3-agent-answer-v0042-${theme}-reference.mkv`);
+const baseline = JSON.parse(
+  await readFile(resolve(source, `${prefix}-fixture.json`), "utf8"),
+);
+const output = resolve(process.env.T3_CAPTURE_OUTPUT_DIR ?? source);
+const work = resolve(
+  process.env.T3_CAPTURE_WORK_DIR ??
+    resolve(root, `.work/t3-${prefix}-reference`),
+);
+const reference = resolve(
+  process.env.T3_CAPTURE_REFERENCE ??
+    resolve(root, `parity/t3-agent-answer-v0042-${theme}-reference.mkv`),
+);
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
-const run = (program, args, cwd = root) => {
-  const result = spawnSync(program, args, { cwd, encoding: "utf8", maxBuffer: 32 * 1024 * 1024 });
-  if (result.status !== 0) throw new Error(`${program} failed: ${result.stderr.slice(-2000)}`);
-  return result.stdout.trim();
-};
-const executablePath = process.env.HYFRME_CHROMIUM;
-if (!executablePath || run(resolve(release, "t3"), ["--version"]) !== "t3 v0.0.42" ||
-    run(executablePath, ["--version"]) !== "Google Chrome for Testing 152.0.7977.30") {
-  throw new Error("Expected T3 Code v0.0.42 and the pinned Chrome capture browser");
-}
-await cp(originalFixture, fixture, { recursive: true });
-await cp(originalProject, project, { recursive: true });
-run("sqlite3", [db, `UPDATE projection_projects SET workspace_root='${project.replaceAll("'", "''")}' WHERE title='hyfrme';
-UPDATE projection_threads SET worktree_path='${project.replaceAll("'", "''")}' WHERE project_id=(SELECT project_id FROM projection_projects WHERE title='hyfrme');`]);
-const files = { index: "index.html", css: "assets/main-x9o7QJ8O.css", js: "assets/index-BMH8bO9q.js" };
-const sourceHashes = Object.fromEntries(await Promise.all(Object.entries(files).map(async ([key, path]) =>
-  [key, hash(await readFile(resolve(release, "client", path)))])));
-const server = spawn(resolve(release, "t3"), ["serve", "--mode", "desktop", "--base-dir", fixture,
-  "--port", theme === "dark" ? "4320" : "4321", "--host", "127.0.0.1", "--no-browser"], { cwd: root, stdio: ["ignore", "pipe", "pipe"] });
-let serverOutput = "";
-for (const stream of [server.stdout, server.stderr]) stream.on("data", (chunk) => { serverOutput += chunk; });
-const phases = ["before", "hover", "tooltip", "copied", "clear"];
-const events = { hover: 30, tooltip: 55, copy: 80, clear: 95 };
-const frames = 120;
 const fps = 30;
-const flags = ["--no-sandbox", "--disable-dev-shm-usage", "--font-render-hinting=none", "--force-color-profile=srgb",
-  "--use-gl=angle", "--use-angle=gl-egl", "--enable-gpu-rasterization", "--ignore-gpu-blocklist", "--disable-software-rasterizer"];
-let pairingUrl;
+const frames = 120;
+const fixedDate = "2026-09-25T11:30:00Z";
+const actions = { hover: 30, hoverCopy: 55, copy: 80, pointerExit: 95 };
+const domSampleFrames = {
+  before: 0,
+  hover: 37,
+  tooltip: 79,
+  "copied-entry": 80,
+  copied: 90,
+  ending: 110,
+  clear: 119,
+};
+const phases = Object.keys(domSampleFrames);
+const expectedClipboard =
+  "I found the Logo Enter timing in `registry/blocks/logo-enter/logo-enter.html`. The final pass can extend the duration while keeping the last rendered frame still.";
+const activeThreadTitles = [
+  "Build a logo intro",
+  "Catalog motion audit",
+  "Grouped logo tests",
+  "Review final hold",
+  "Search reveal timing",
+];
+await mkdir(output, { recursive: true });
+await mkdir(work, { recursive: true });
+const capture = await createT3V0042Capture({
+  slug: "t3-agent-answer-clock",
+  theme,
+  seed: "answer",
+  chromium: process.env.HYFRME_CHROMIUM,
+});
+const samples = [];
+const frameHashes = [];
+const interactionTargets = {
+  pointerStart: { x: 800, y: 50 },
+  pointerExit: { x: 800, y: 50 },
+};
+let answerText,
+  clipboardText,
+  threadAges,
+  messageTimes,
+  branchName,
+  effectiveFlags;
 try {
-  for (let attempt = 0; attempt < 120; attempt++) {
-    pairingUrl = serverOutput.match(/Pairing URL: (\S+)/)?.[1];
-    if (pairingUrl) break;
-    if (server.exitCode !== null) throw new Error(`T3 server exited: ${serverOutput.slice(-1600)}`);
-    await new Promise((done) => setTimeout(done, 250));
+  const { page } = capture;
+  const cdp = await page.context().newCDPSession(page);
+  const commandLine = await cdp.send("Browser.getBrowserCommandLine");
+  effectiveFlags = commandLine.arguments.filter(
+    (argument) =>
+      argument.startsWith("--") &&
+      !argument.startsWith("--user-data-dir") &&
+      !argument.startsWith("--remote-debugging"),
+  );
+  await page.context().grantPermissions(["clipboard-read", "clipboard-write"], {
+    origin: new URL(capture.pairingUrl).origin,
+  });
+  const answer = page
+    .locator('[data-timeline-row-kind="message"]')
+    .filter({ hasText: "I found the Logo Enter timing" });
+  await answer.waitFor({ timeout: 12000 });
+  const copy = answer.getByRole("button", { name: "Copy link" });
+  await copy.waitFor({ timeout: 8000 });
+  // Git-status hydration changes the toolbar after the answer first mounts.
+  await page
+    .getByRole("button", { name: "Commit, push & PR", exact: true })
+    .waitFor({ timeout: 12000 });
+  await page.mouse.move(800, 50);
+  await page.waitForTimeout(700);
+  const rows = await page
+    .locator('[data-testid="sidebar-row-card"]')
+    .allTextContents();
+  if (
+    rows.length !== activeThreadTitles.length ||
+    rows.some((text, index) => !text.includes(activeThreadTitles[index]))
+  ) {
+    throw new Error(
+      "Native answer seed differs from the canonical five active threads",
+    );
   }
-  if (!pairingUrl) throw new Error("T3 Code did not produce its local pairing URL");
-  for (const [key, path] of Object.entries(files)) {
-    const response = await fetch(new URL(key === "index" ? "/" : `/${path}`, pairingUrl));
-    if (!response.ok || hash(Buffer.from(await response.arrayBuffer())) !== sourceHashes[key]) throw new Error(`${key} differs from v0.0.42`);
-  }
-  await mkdir(source, { recursive: true });
-  await mkdir(work, { recursive: true });
-  const browser = await chromium.launch({ executablePath, headless: true, args: flags });
-  let answerText;
-  let clipboardText;
-  let threadAges;
-  let messageTimes;
-  const interactionTargets = { pointerStart: { x: 800, y: 50 }, pointerExit: { x: 800, y: 50 } };
-  try {
-    const page = await browser.newPage({ viewport: { width: 1200, height: 659 }, deviceScaleFactor: 1, colorScheme: theme });
-    await page.clock.setFixedTime(new Date("2026-09-25T11:30:00Z"));
-    await page.context().grantPermissions(["clipboard-read", "clipboard-write"], { origin: new URL(pairingUrl).origin });
-    await page.goto(pairingUrl, { waitUntil: "domcontentloaded" });
-    await page.locator('[data-testid="composer-editor"]').waitFor({ timeout: 20000 });
-    if ((await page.evaluate(() => document.documentElement.classList.contains("dark"))) !== (theme === "dark")) throw new Error(`Unexpected ${theme} theme`);
-    const dismissProviderUpdate = async () => {
-      const title = page.getByText("Updates Available: 2 providers", { exact: true });
-      if (!(await title.count())) return;
-      const dismiss = page.getByRole("button", { name: "Dismiss notification" });
-      if (!(await dismiss.count())) throw new Error("Provider update notice has no native dismiss control");
-      await dismiss.first().click();
-      await title.first().waitFor({ state: "detached", timeout: 3000 });
-    };
-    await page.waitForTimeout(750);
-    await dismissProviderUpdate();
-    if (await page.getByText("Updates Available: 2 providers", { exact: true }).count()) throw new Error("Provider update notification remained in the answer fixture");
-    await page.getByText("Build a logo intro", { exact: true }).click();
-    await page.waitForURL(/hyfrme-fixture-logo-intro/);
-    const answer = page.locator('[data-timeline-row-kind="message"]').filter({ hasText: "I found the Logo Enter timing" });
-    await answer.waitFor({ timeout: 12000 });
-    await page.waitForTimeout(1200);
-    await dismissProviderUpdate();
-    if (await page.getByText("Updates Available: 2 providers", { exact: true }).count()) {
-      throw new Error("Provider update notification appeared after entering the seeded answer");
+  threadAges = await page
+    .locator('[data-testid="sidebar-row-card"]')
+    .evaluateAll((rows) =>
+      rows.map((row) =>
+        row
+          .querySelector("span.tabular-nums.text-secondary-label")
+          ?.textContent.trim(),
+      ),
+    );
+  messageTimes = await page
+    .locator('[data-timeline-row-kind="message"]')
+    .evaluateAll((rows) =>
+      rows.map(
+        (row) => row.querySelector("p.tabular-nums")?.textContent.trim() ?? "",
+      ),
+    );
+  answerText = await answer.innerText();
+  branchName = await page
+    .locator('input[id$="-hidden-input"]')
+    .evaluateAll((inputs) =>
+      inputs.map((input) => input.value).find((value) => value !== "all"),
+    );
+  if (!branchName) throw new Error("Native branch selector did not settle");
+  await page.evaluate(() => {
+    if (document.getAnimations().length)
+      throw new Error(
+        "Native answer animations did not settle before capture: " +
+          JSON.stringify(
+            document.getAnimations().map((animation) => ({
+              type: animation.constructor.name,
+              property: animation.transitionProperty,
+              timing: animation.effect.getTiming(),
+              target:
+                animation.effect.target.getAttribute("data-slot") ??
+                String(animation.effect.target.className).slice(0, 100),
+            })),
+          ),
+      );
+    window.__hyfrmeNativeCaptureAnimations = new WeakMap();
+  });
+  // Keep Date fixed for ages while source JS timers and rAF use the video clock.
+  await cdp.send("Animation.enable");
+  await cdp.send("Animation.setPlaybackRate", { playbackRate: 0 });
+  await page.clock.pauseAt(new Date(fixedDate));
+  await page.clock.runFor(0);
+  const ticks = await page.evaluate(() => performance.now());
+  await page.clock.runFor(Math.ceil(ticks / 16) * 16 - ticks);
+  let previousMilliseconds = 0;
+  for (let frame = 0; frame < frames; frame++) {
+    const milliseconds = Math.ceil((frame * 1000) / fps);
+    await page.clock.runFor(milliseconds - previousMilliseconds);
+    previousMilliseconds = milliseconds;
+    if (frame === actions.hover) {
+      await answer.hover();
+      const box = await answer.boundingBox();
+      interactionTargets.answer = {
+        x: box.x + box.width / 2,
+        y: box.y + box.height / 2,
+      };
     }
-    await page.mouse.move(800, 50);
-    await page.evaluate(() => document.fonts.ready);
-    threadAges = await page.locator('[data-testid="sidebar-row-card"]')
-      .evaluateAll((rows) => rows.map((row) => row.querySelector('span.tabular-nums.text-secondary-label')?.textContent.trim()));
-    messageTimes = await page.locator('[data-timeline-row-kind="message"]')
-      .evaluateAll((rows) => rows.map((row) => row.querySelector('p.tabular-nums')?.textContent.trim() ?? ""));
-    answerText = await answer.innerText();
-    const copy = answer.getByRole("button", { name: "Copy link" });
-    await copy.waitFor({ timeout: 8000 });
-    const saved = async (phase) => {
-      const html = (await page.locator("#root").evaluate((element) => element.innerHTML))
-        .replaceAll(fixture, "hyfrme-fixture").replaceAll(project, "hyfrme-project").replaceAll(root, "hyfrme-project");
-      if (/\/home\/|\/tmp\/|127\.0\.0\.1:\d+|auth[_-]?token|session[_-]?token/i.test(html)) throw new Error(`Private path or token in ${phase} DOM`);
-      await writeFile(resolve(source, `${prefix}-${phase}.html`), html);
-      const portal = await page.evaluate(() => [...document.body.children]
-        .filter((element) => element.id !== "root" && element.tagName !== "SCRIPT").map((element) => element.outerHTML).join(""));
-      const safePortal = portal.replaceAll(fixture, "hyfrme-fixture").replaceAll(project, "hyfrme-project").replaceAll(root, "hyfrme-project");
-      if (/\/home\/|\/tmp\/|127\.0\.0\.1:\d+|auth[_-]?token|session[_-]?token/i.test(safePortal)) throw new Error(`Private path or token in ${phase} portal`);
-      await writeFile(resolve(source, `${prefix}-${phase}-portal.html`), safePortal);
-    };
-    await saved("before");
-    for (let frame = 0; frame < frames; frame++) {
-      if (frame === events.hover) {
-        await answer.hover();
-        const box = await answer.boundingBox();
-        if (!box) throw new Error("Native assistant reply has no hover target");
-        interactionTargets.answer = { x: box.x + box.width / 2, y: box.y + box.height / 2 };
-        await page.waitForTimeout(250); await saved("hover");
-      }
-      if (frame === events.tooltip) {
-        await copy.hover();
-        const box = await copy.boundingBox();
-        if (!box) throw new Error("Native Copy link control has no pointer target");
-        interactionTargets.copy = { x: box.x + box.width / 2, y: box.y + box.height / 2 };
-        await page.getByText("Copy to clipboard", { exact: true }).waitFor({ timeout: 4000 });
-        await page.waitForTimeout(120); await saved("tooltip");
-      }
-      if (frame === events.copy) {
-        await copy.click();
-        await page.getByText("Copied!", { exact: true }).waitFor({ timeout: 4000 });
-        clipboardText = await page.evaluate(() => navigator.clipboard.readText());
-        if (clipboardText !== "I found the Logo Enter timing in `registry/blocks/logo-enter/logo-enter.html`. The final pass can extend the duration while keeping the last rendered frame still.") {
-          throw new Error("Native T3 copy control did not put the completed reply on the clipboard");
+    if (frame === actions.hoverCopy) {
+      await copy.hover();
+      const box = await copy.boundingBox();
+      interactionTargets.copy = {
+        x: box.x + box.width / 2,
+        y: box.y + box.height / 2,
+      };
+    }
+    if (frame === actions.copy) {
+      await copy.click();
+      await page
+        .getByText("Copied!", { exact: true })
+        .waitFor({ timeout: 4000 });
+      clipboardText = await page.evaluate(() => navigator.clipboard.readText());
+      if (clipboardText !== expectedClipboard)
+        throw new Error("Native Copy link did not copy the seeded reply");
+    }
+    if (frame === actions.pointerExit) await page.mouse.move(800, 50);
+    const sample = await page.evaluate(
+      async ({ frame, fps, milliseconds }) => {
+        const copy = document
+          .querySelector("[data-assistant-citation-source]")
+          ?.closest('[data-timeline-row-kind="message"]')
+          ?.querySelector('button[aria-label="Copy link"]');
+        const controls = copy?.closest('[class~="opacity-0"]');
+        const tooltip = document.querySelector('[data-slot="tooltip-popup"]');
+        const toast = document.querySelector('[data-slot="toast-popup"]');
+        for (const element of [controls, tooltip, toast].filter(Boolean))
+          getComputedStyle(element).opacity;
+        const animations = [];
+        for (const animation of document.getAnimations()) {
+          let firstFrame =
+            window.__hyfrmeNativeCaptureAnimations.get(animation);
+          if (firstFrame === undefined) {
+            firstFrame = frame;
+            window.__hyfrmeNativeCaptureAnimations.set(animation, firstFrame);
+          }
+          animation.pause();
+          animation.currentTime = ((frame - firstFrame) * 1000) / fps;
+          await animation.ready;
+          const target = animation.effect.target;
+          const timing = animation.effect.getTiming();
+          // Base UI waits for native transition completion before removing a popup.
+          if (
+            animation.currentTime >=
+            animation.effect.getComputedTiming().endTime
+          )
+            animation.finish();
+          animations.push({
+            type: animation.constructor.name,
+            property: animation.transitionProperty ?? null,
+            target:
+              target === controls
+                ? "controls"
+                : target === tooltip
+                  ? "tooltip"
+                  : target === toast
+                    ? "toast"
+                    : (target.getAttribute("data-slot") ?? target.tagName),
+            firstFrame,
+            currentTime: animation.currentTime,
+            duration: timing.duration,
+            easing: timing.easing,
+            keyframes: animation.effect
+              .getKeyframes()
+              .map(({ opacity, scale, transform }) => ({
+                opacity,
+                scale,
+                transform,
+              })),
+          });
         }
-        await page.waitForTimeout(120); await saved("copied");
-      }
-      if (frame === events.clear) {
-        await page.getByText("Copied!", { exact: true }).waitFor({ state: "detached", timeout: 5000 });
-        await page.mouse.move(800, 50); await page.waitForTimeout(250); await saved("clear");
-      }
-      await page.screenshot({ path: resolve(work, `frame-${String(frame).padStart(4, "0")}.png`) });
+        const popup = (element) =>
+          element
+            ? {
+                opacity: getComputedStyle(element).opacity,
+                scale: getComputedStyle(element).scale,
+                rect: JSON.stringify(element.getBoundingClientRect()),
+                origin: getComputedStyle(element).transformOrigin,
+                backdropFilter: getComputedStyle(element).backdropFilter,
+                font: getComputedStyle(element).font,
+                fontSmooth: getComputedStyle(element).webkitFontSmoothing,
+                starting: element.hasAttribute("data-starting-style"),
+                ending: element.hasAttribute("data-ending-style"),
+              }
+            : null;
+        return {
+          frame,
+          milliseconds,
+          copyHovered: copy?.matches(":hover"),
+          copyBackground: copy ? getComputedStyle(copy).backgroundColor : null,
+          controlsOpacity: controls ? getComputedStyle(controls).opacity : null,
+          tooltip: popup(tooltip),
+          toast: popup(toast),
+          animations,
+        };
+      },
+      { frame, fps, milliseconds },
+    );
+    samples.push(sample);
+    for (const [phase, sampleFrame] of Object.entries(domSampleFrames)) {
+      if (frame !== sampleFrame) continue;
+      const html = capture.clean(
+        await page.locator("#root").evaluate((element) => element.innerHTML),
+      );
+      const portal = capture.clean(
+        await page.evaluate(() =>
+          [...document.body.children]
+            .filter(
+              (element) =>
+                element.id !== "root" && element.tagName !== "SCRIPT",
+            )
+            .map((element) => element.outerHTML)
+            .join(""),
+        ),
+      );
+      if (
+        /\/home\/|\/tmp\/|127\.0\.0\.1:\d+|auth[_-]?token|session[_-]?token/i.test(
+          html + portal,
+        )
+      )
+        throw new Error(`Private data in native ${phase} DOM`);
+      await writeFile(resolve(output, `${prefix}-${phase}.html`), html);
+      await writeFile(
+        resolve(output, `${prefix}-${phase}-portal.html`),
+        portal,
+      );
     }
-  } finally { await browser.close(); }
-  const encoded = spawnSync("ffmpeg", ["-hide_banner", "-loglevel", "error", "-y", "-framerate", String(fps), "-i",
-    resolve(work, "frame-%04d.png"), "-c:v", "ffv1", "-level", "3", "-pix_fmt", "gbrp", reference], { encoding: "utf8" });
-  if (encoded.status !== 0) throw new Error(encoded.stderr);
-  const sourceDomHashes = Object.fromEntries(await Promise.all(phases.map(async (phase) => [phase, {
-    root: hash(await readFile(resolve(source, `${prefix}-${phase}.html`))),
-    portal: hash(await readFile(resolve(source, `${prefix}-${phase}-portal.html`))),
-  }])));
-  await writeFile(resolve(source, `${prefix}-fixture.json`), `${JSON.stringify({ sourceTag: "v0.0.42",
-    sourceCommit: "719a76ca1dbf5490f1aa33ffb9966301e02be9a9", sourceHashes,
-    captureBrowser: { version: run(executablePath, ["--version"]), flags }, viewport: { width: 1200, height: 659 },
-    fps, frames, theme, phases, events, interactionTargets, threadAges, messageTimes, answerText, clipboardText, sourceDomHashes,
-    referenceSha256: hash(await readFile(reference)), providerState: "The completed Hyfrme answer is seeded. The native Copy link action ran against the browser clipboard; no AI provider runs." }, null, 2)}\n`);
-  console.log(`Captured v0.0.42 Agent Answer in ${theme}; native copy placed the seeded response on the clipboard.`);
-} finally { server.kill("SIGTERM"); }
+    // Flush the compositor at the same paused source clock before recording.
+    await page.screenshot({
+      clip: { x: 0, y: 0, ...baseline.viewport },
+      scale: "css",
+    });
+    const png = await page.screenshot({
+      clip: { x: 0, y: 0, ...baseline.viewport },
+      scale: "css",
+      path: resolve(work, `frame-${String(frame).padStart(4, "0")}.png`),
+    });
+    frameHashes.push(hash(png));
+  }
+} finally {
+  await capture.stop();
+}
+const encoded = spawnSync(
+  "ffmpeg",
+  [
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-y",
+    "-framerate",
+    String(fps),
+    "-i",
+    resolve(work, "frame-%04d.png"),
+    "-c:v",
+    "ffv1",
+    "-level",
+    "3",
+    "-pix_fmt",
+    "gbrp",
+    reference,
+  ],
+  { encoding: "utf8" },
+);
+if (encoded.status !== 0) throw new Error(encoded.stderr);
+const sourceDomHashes = Object.fromEntries(
+  await Promise.all(
+    phases.map(async (phase) => [
+      phase,
+      {
+        root: hash(await readFile(resolve(output, `${prefix}-${phase}.html`))),
+        portal: hash(
+          await readFile(resolve(output, `${prefix}-${phase}-portal.html`)),
+        ),
+      },
+    ]),
+  ),
+);
+const tooltip = samples.find((sample) => sample.tooltip)?.frame;
+const copiedTimeout = samples.find((sample) => sample.toast?.ending)?.frame;
+const clear = samples.find(
+  (sample) => sample.frame > actions.copy && !sample.toast,
+)?.frame;
+const events = { ...actions, tooltip, copiedTimeout, clear };
+const clock = {
+  method: "native-js-timers-and-css-animation-current-time",
+  animationPlaybackRate: 0,
+  frameStepMilliseconds: 1000 / fps,
+  timerSampling: "ceil(frame * 1000 / fps), rAF aligned at capture start",
+  copiedTimeoutMilliseconds: 1000,
+  samples,
+};
+await writeFile(
+  resolve(work, "capture.json"),
+  JSON.stringify(
+    { sourceCommit: baseline.sourceCommit, theme, events, clock, frameHashes },
+    null,
+    2,
+  ) + "\n",
+);
+if (tooltip === undefined || copiedTimeout === undefined || clear === undefined)
+  throw new Error(
+    "Source tooltip or natural copied timeout did not complete on the frame clock",
+  );
+await writeFile(
+  resolve(output, `${prefix}-fixture.json`),
+  JSON.stringify(
+    {
+      sourceTag: baseline.sourceTag,
+      sourceCommit: baseline.sourceCommit,
+      releaseSha256: capture.base.releaseSha256,
+      sourceHashes: baseline.sourceHashes,
+      captureBrowser: {
+        version: "Google Chrome for Testing 152.0.7977.30",
+        flags,
+        effectiveFlags,
+        animationPlaybackRate: 0,
+        screenshot: {
+          clip: baseline.viewport,
+          scale: "css",
+          captureBeyondViewport: false,
+          compositorFlushes: 1,
+        },
+      },
+      viewport: baseline.viewport,
+      fps,
+      frames,
+      theme,
+      phases,
+      events,
+      interactionTargets,
+      threadAges,
+      messageTimes,
+      answerText,
+      clipboardText,
+      sourceDomHashes,
+      referenceSha256: hash(await readFile(reference)),
+      captureClock: clock,
+      captureSeed: { activeThreadTitles, fixedDate },
+      domSampleFrames,
+      branchName,
+      providerState: baseline.providerState,
+    },
+    null,
+    2,
+  ) + "\n",
+);
+console.log(
+  `Captured ${frames} native Agent Answer ${theme} frames with source JS timers and CSS motion; natural timeout=${copiedTimeout}, clear=${clear}.`,
+);

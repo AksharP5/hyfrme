@@ -2,7 +2,7 @@
   "slug": "shader-caustics",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shader-caustics/index.tsx",
     "config": "registry/remocn/shader-caustics/config.ts",
     "license": "MIT"
@@ -21,25 +21,76 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "8596b23c53b92d99889e2e8181d94cc831bfadebb8ca3886ca1d2979dd6e50c3",
+    "shader-caustics.html": "bb23c45f3158ec7fe8bb76b208efcd579983ed35324aef3c284f73afe47bf755",
+    "shader-caustics.runtime.js": "73b5b477187962e8b08725d6ea0b632d4acccec2761bf1bb5e6d8637b7f37309",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "8d1c32cd1a8a6e387974a19107483aba589c692983757b3178a82cbd7cdd21d1",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.992776,
-    "minSsim": 0.992395,
-    "p05Ssim": 0.992462,
-    "p95Ssim": 0.993317,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/shader-caustics/remocn.mp4",
+    "referenceVideo": "public/previews/shader-caustics/reference.mp4",
     "hyperframesVideo": "public/previews/shader-caustics/hyperframes.mp4",
-    "summary": "parity/shader-caustics-diff/summary.json"
+    "thumbnail": "public/previews/shader-caustics/thumbnail.png",
+    "summary": "parity/shader-caustics-diff/summary.json",
+    "perFrameSsim": "parity/shader-caustics-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-caustics-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-caustics-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-caustics-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-caustics-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shader-caustics-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shader-caustics-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shader-caustics/reference.mp4": "87481a7308752fe3b73b99607fc5e2c5430df6286209e252770fe7f6fc181cce",
+    "public/previews/shader-caustics/hyperframes.mp4": "87481a7308752fe3b73b99607fc5e2c5430df6286209e252770fe7f6fc181cce",
+    "public/previews/shader-caustics/thumbnail.png": "f9757cbc3307c201820e59f2a6422bbc7ce7274e545ff939d8b309cb65797c26",
+    "parity/shader-caustics-diff/summary.json": "ad55b29e05e75e155f68631a7d07dcf33cfd0beba9f35e6e6cb01ccc34051e53",
+    "parity/shader-caustics-diff/ssim.log": "c4fbedb2045d104b60568467b9860d7ee5ffeee1f88dedd0034e5cf393a3221a",
+    "parity/shader-caustics-diff/hyperframes-check.log": "8258343d79654723604d6ad3f137e02961d34e3ad42968c060314f983e44db9e",
+    "parity/shader-caustics-diff/worst-frame.png": "0e7eab92a6ac75342df75cdeacedba677bcdefdb1f7535b2cde6f72133dd64c7",
+    "parity/shader-caustics-diff/reference-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-caustics-diff/hyperframes-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-caustics-diff/reference-rgba.framemd5": "ffbd576899bf141f7dba7d853cf329e11b553a16ae673cdb288e0a9bb4080e77",
+    "parity/shader-caustics-diff/hyperframes-rgba.framemd5": "ffbd576899bf141f7dba7d853cf329e11b553a16ae673cdb288e0a9bb4080e77"
   }
 }

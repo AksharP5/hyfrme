@@ -2,7 +2,7 @@
   "slug": "per-word-crossfade",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/per-word-crossfade/index.tsx",
     "config": "registry/remocn/per-word-crossfade/config.ts",
     "license": "MIT"
@@ -22,25 +22,76 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "c941c194a5c60c34ebb8d7044540fcbf9e809484ebb5d7eda18934c8a32ff4ee",
+    "per-word-crossfade.html": "1e263a8d2b8d0af6778f0219df412c0cf7f40f3850775a211446729c36577750",
+    "per-word-crossfade.runtime.js": "32d17dec087ccf3faf46d9c53d02ddc98f30dfcb8ec5fd261181c4e67447786a",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "42b6c463c086d343fba0f7b3f7210fb754d2e190ea6817c2edca024ef7f69e28",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.997823,
-    "minSsim": 0.997582,
-    "p05Ssim": 0.997708,
-    "p95Ssim": 0.998224,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/per-word-crossfade/remocn.mp4",
+    "referenceVideo": "public/previews/per-word-crossfade/reference.mp4",
     "hyperframesVideo": "public/previews/per-word-crossfade/hyperframes.mp4",
-    "summary": "parity/per-word-crossfade-diff/summary.json"
+    "thumbnail": "public/previews/per-word-crossfade/thumbnail.png",
+    "summary": "parity/per-word-crossfade-diff/summary.json",
+    "perFrameSsim": "parity/per-word-crossfade-diff/ssim.log",
+    "hyperframesCheck": "parity/per-word-crossfade-diff/hyperframes-check.log",
+    "worstFrame": "parity/per-word-crossfade-diff/worst-frame.png",
+    "referenceAlpha": "parity/per-word-crossfade-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/per-word-crossfade-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/per-word-crossfade-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/per-word-crossfade-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/per-word-crossfade/reference.mp4": "add2a3f6985b2305ce3b470aee2fb4097680e7a9b82681c8e88f3a4e82e6f226",
+    "public/previews/per-word-crossfade/hyperframes.mp4": "add2a3f6985b2305ce3b470aee2fb4097680e7a9b82681c8e88f3a4e82e6f226",
+    "public/previews/per-word-crossfade/thumbnail.png": "db9463966c5c6413ef62de4425f6c5b5755ea933871a5b8655053628b8ce4af1",
+    "parity/per-word-crossfade-diff/summary.json": "b836772793766404c0492e741437d4fb40b614cf31be7aace9f9b10b16c85450",
+    "parity/per-word-crossfade-diff/ssim.log": "4638ac3b2b03d74f8b056c3824e13d904997bddfbc1c0f3b8d655822a1eb000b",
+    "parity/per-word-crossfade-diff/hyperframes-check.log": "ffc47b1bbe422d0386141b7d63adfbb7faddb6b47b6edac8bb92b82d2eb5ef81",
+    "parity/per-word-crossfade-diff/worst-frame.png": "8cc978be9d52457e6ee7826838427a88536cfd2d2c78cc77e5cc6f8a5f51d062",
+    "parity/per-word-crossfade-diff/reference-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/per-word-crossfade-diff/hyperframes-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/per-word-crossfade-diff/reference-rgba.framemd5": "1ff410806316f540d7e3ee239a4cb8661f2ceb8dee822db817c1a8756ee5aff4",
+    "parity/per-word-crossfade-diff/hyperframes-rgba.framemd5": "1ff410806316f540d7e3ee239a4cb8661f2ceb8dee822db817c1a8756ee5aff4"
   }
 }

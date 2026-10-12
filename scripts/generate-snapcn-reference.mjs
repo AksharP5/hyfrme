@@ -82,9 +82,9 @@ export async function selectFixtures(args = process.argv.slice(2)) {
 }
 
 let browserPromise;
-export async function verificationBrowser() {
+export async function verificationBrowser({ cpuRasterization = true } = {}) {
   browserPromise ??= (async () => {
-    const path =
+    let path =
       process.env.HYFRME_BROWSER_EXECUTABLE ??
       (
         await run("npx", [
@@ -97,8 +97,22 @@ export async function verificationBrowser() {
         .trim()
         .split("\n")
         .at(-1);
+    if (cpuRasterization) {
+      const wrapper = resolve(root, ".work/verification-browser-cpu");
+      await mkdir(resolve(root, ".work"), { recursive: true });
+      await writeFile(
+        wrapper,
+        `#!/bin/sh\nexec '${path.replaceAll("'", "'\\''")}' "$@" --disable-gpu-rasterization\n`,
+        { mode: 0o755 },
+      );
+      path = wrapper;
+    }
     const { output } = await run(path, ["--version"]);
-    return { path, version: output.trim() };
+    return {
+      path,
+      version: output.trim(),
+      rasterization: cpuRasterization ? "cpu" : "browser-default",
+    };
   })();
   return browserPromise;
 }
@@ -166,7 +180,12 @@ export async function referenceFingerprint(entry) {
     .update(await readFile(import.meta.filename))
     .update(await readFile(resolve(root, "fixtures/snapcn/preview.css")))
     .update(remotionVersion)
-    .update((await verificationBrowser()).version)
+    .update(
+      JSON.stringify({
+        version: (await verificationBrowser()).version,
+        rasterization: (await verificationBrowser()).rasterization,
+      }),
+    )
     .digest("hex");
 }
 

@@ -2,7 +2,7 @@
   "slug": "outline-trace",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/outline-trace/index.tsx",
     "config": "registry/remocn/outline-trace/config.ts",
     "license": "MIT"
@@ -25,13 +25,28 @@
     },
     "background": "#ff4d1a"
   },
+  "filesSha256": {
+    "registry-item.json": "6b167a0497c9b67e88e290c41d121c8e9038971bab09ab3595dd277899a9842f",
+    "outline-trace.html": "f23bf87aa4bf3bd520e07daf7ddfe1e40d469bcd78403ac8ea471e1746c12108",
+    "outline-trace.runtime.js": "fb15cd9abf9b709cc6a5a7527a7a72d05b62113c903f474eb83057b598956828",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "Inter-Latin.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/opentype.js-LICENSE": "a5b87c9bc191e7f9c06b07bd7cbbed3ed846dfdb50e859484b2c245aa1ab2e61",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/Inter-OFL.txt": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "c32e4ef2642a635c77736bd471385606c6d4b055c467da1b684ac6da7917ac7a",
+  "fingerprint": "c1f434260b0fac9f7bc5e698cfbe4c4ba486d9b4d9d9198ee24c5a663dc172b4",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 75,
@@ -44,14 +59,23 @@
       "mismatchedFrames": [],
       "pass": true
     },
+    "rgba": {
+      "frameCount": 75,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -63,6 +87,21 @@
     "hyperframesCheck": "parity/outline-trace-diff/hyperframes-check.log",
     "worstFrame": "parity/outline-trace-diff/worst-frame.png",
     "referenceAlpha": "parity/outline-trace-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/outline-trace-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/outline-trace-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/outline-trace-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/outline-trace-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/outline-trace/reference.mp4": "abbfbe52dcd3cb093ed20853bad9305e36b61d748ef2d1b0abb31fd9335076cb",
+    "public/previews/outline-trace/hyperframes.mp4": "abbfbe52dcd3cb093ed20853bad9305e36b61d748ef2d1b0abb31fd9335076cb",
+    "public/previews/outline-trace/thumbnail.png": "a06e9833e05d07f73ab97d6d1c0137f66297abca71c39ea74a8d601942ad5818",
+    "parity/outline-trace-diff/summary.json": "e0c8c9e1bfb9cecff4b1fb1eb064290b44d838e0707802157ba1a8a551a907fa",
+    "parity/outline-trace-diff/ssim.log": "8b52ef55cb81c0a9c5f763071c72572dec8b473b0544f1e9b6a731a7124f164e",
+    "parity/outline-trace-diff/hyperframes-check.log": "91291109e7086060bd47e6c3cd14af80dd32cfff80e3cd1f6bd9d2424b3f5d09",
+    "parity/outline-trace-diff/worst-frame.png": "b3f00fba8abcc093ee64b21ecacfc95f7c909cd8db1205f4998c8fda85d242b7",
+    "parity/outline-trace-diff/reference-alpha.framemd5": "852e25155c4f8ce6e8ddd025e674406fa0e557a685ec942593579384eb4a9fb4",
+    "parity/outline-trace-diff/hyperframes-alpha.framemd5": "852e25155c4f8ce6e8ddd025e674406fa0e557a685ec942593579384eb4a9fb4",
+    "parity/outline-trace-diff/reference-rgba.framemd5": "6ad747c29aadbbbe81ffefd27c86ee9ed506bda28441c470658a0569c7224cd4",
+    "parity/outline-trace-diff/hyperframes-rgba.framemd5": "6ad747c29aadbbbe81ffefd27c86ee9ed506bda28441c470658a0569c7224cd4"
   }
 }

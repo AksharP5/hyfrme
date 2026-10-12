@@ -2,7 +2,7 @@
   "slug": "spinner",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-ui/spinner/index.tsx",
     "config": "registry/remocn-ui/spinner/config.ts",
     "license": "MIT"
@@ -19,25 +19,76 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "f003aa48fbc8b9fa712c03eeff9765afa87d74e2a8f5941bddaeea034db0b639",
+    "spinner.html": "590fa9087b2b0da5eb44e89c9e9e6e65772c86ef934507c14f4931d63fd43b62",
+    "spinner.runtime.js": "467723233e8356beb1bdaa3751003e9c63f99db4bfd50092483646542a745b39",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "77464f002f1c2278d65547e74efb466eea019a7f591489c75a817eeebba68393",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.999989,
-    "minSsim": 0.999978,
-    "p05Ssim": 0.999982,
-    "p95Ssim": 0.999992,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/spinner/remocn.mp4",
+    "referenceVideo": "public/previews/spinner/reference.mp4",
     "hyperframesVideo": "public/previews/spinner/hyperframes.mp4",
-    "summary": "parity/spinner-diff/summary.json"
+    "thumbnail": "public/previews/spinner/thumbnail.png",
+    "summary": "parity/spinner-diff/summary.json",
+    "perFrameSsim": "parity/spinner-diff/ssim.log",
+    "hyperframesCheck": "parity/spinner-diff/hyperframes-check.log",
+    "worstFrame": "parity/spinner-diff/worst-frame.png",
+    "referenceAlpha": "parity/spinner-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/spinner-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/spinner-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/spinner-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/spinner/reference.mp4": "c9a7948a573e327187cb646ef4472195195e54108eb6b96f16ed23531ffb3a8a",
+    "public/previews/spinner/hyperframes.mp4": "c9a7948a573e327187cb646ef4472195195e54108eb6b96f16ed23531ffb3a8a",
+    "public/previews/spinner/thumbnail.png": "7ef3ea7f6b9db76c195d16973d929d3593e0f8eaa52d0211168e9c09ee64b789",
+    "parity/spinner-diff/summary.json": "c38069d7cb90acc2a693a754a1caeffaf324f128e7d118e6f20808613c950e44",
+    "parity/spinner-diff/ssim.log": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/spinner-diff/hyperframes-check.log": "18551aca16eee63bd669510f7b103eaa202e0e09a3fd8634641d3e6bb1147640",
+    "parity/spinner-diff/worst-frame.png": "4657f0cf221b97a5b0cfea19499b66fd7000e27cb7105465b3bb232e834e9d89",
+    "parity/spinner-diff/reference-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/spinner-diff/hyperframes-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/spinner-diff/reference-rgba.framemd5": "6252f3120e849a470c341f6337c6e42f20b19799e3020c60da3faaf6808276c3",
+    "parity/spinner-diff/hyperframes-rgba.framemd5": "6252f3120e849a470c341f6337c6e42f20b19799e3020c60da3faaf6808276c3"
   }
 }

@@ -2,7 +2,7 @@
   "slug": "spring-settle",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/spring-settle/index.tsx",
     "entry": "components/docs/examples/spring-settle-example.tsx",
     "config": "registry/remocn/spring-settle/config.ts",
@@ -17,17 +17,27 @@
       "enterScale": 1.24,
       "enterStagger": 3,
       "exitScale": 0.84,
-      "exitFrames": 6
+      "exitFrames": 6,
+      "speed": 1
     },
     "background": "#141318"
   },
+  "filesSha256": {
+    "registry-item.json": "cbaee9c331542de1db94dde8dc0fe774a8049b4eab75c9e8328983c3db48aba1",
+    "spring-settle.html": "25e1614fec5857eaa9da444106c4d77971a4a86235061fd01408ba395c36a5f5",
+    "spring-settle.runtime.js": "81dab1c3f395fa8146fbe6021be184cc94e932fcc6cc408ee755da74f074b265",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
-  "status": "verified",
-  "fingerprint": "700c6cdcf3d846ff4ef95b0855d420c7d12e0036d9d3fc2e000a8249db7b6ae9",
+  "status": "failed",
+  "fingerprint": "da9efccb94e7102747d94cebceccf6bd073c540142e49021500d5c671817c2f9",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 213,
@@ -40,14 +50,84 @@
       "mismatchedFrames": [],
       "pass": true
     },
-    "pass": true
+    "rgba": {
+      "frameCount": 213,
+      "mismatchedFrames": [
+        73,
+        81,
+        83,
+        87,
+        89,
+        91,
+        93,
+        95,
+        97,
+        99,
+        101,
+        103,
+        105,
+        107,
+        109,
+        111,
+        113,
+        115,
+        117,
+        119,
+        121,
+        123,
+        125,
+        127,
+        129,
+        131,
+        133,
+        135,
+        137,
+        148,
+        152,
+        154,
+        156,
+        158,
+        160,
+        162,
+        164,
+        166,
+        168,
+        170,
+        172,
+        174,
+        176,
+        178,
+        180,
+        182,
+        184,
+        186,
+        188,
+        190,
+        192,
+        194,
+        196,
+        198,
+        200,
+        202,
+        204,
+        206,
+        208,
+        210
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
     "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -59,6 +139,21 @@
     "hyperframesCheck": "parity/spring-settle-diff/hyperframes-check.log",
     "worstFrame": "parity/spring-settle-diff/worst-frame.png",
     "referenceAlpha": "parity/spring-settle-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/spring-settle-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/spring-settle-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/spring-settle-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/spring-settle-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/spring-settle/reference.mp4": "e6c565474bd9a10b40fe5f1a847cbf01b00fbe5a39727f7232893da0e9de8461",
+    "public/previews/spring-settle/hyperframes.mp4": "951743e3d9a265504ec4a8b1b1908aafbe7fa92a0be61cee1e216ede86b59454",
+    "public/previews/spring-settle/thumbnail.png": "6563ce95ce3c09917b8261669a03ac6ac617275c694fad71e3f323933debbe8b",
+    "parity/spring-settle-diff/summary.json": "095a29da79b80cae715e556091c894a831848746eec46581cb455674c490db73",
+    "parity/spring-settle-diff/ssim.log": "85944c7909fff5dfcd8396cef530fa05e7f0dab8d1a32f214d46d72e27612819",
+    "parity/spring-settle-diff/hyperframes-check.log": "712f9f9cc6e7f1ed0b3e11032dbb9fe7ced8ecd38788603b05df2d5e61b2486a",
+    "parity/spring-settle-diff/worst-frame.png": "4dd9dbbf6e4287a708a90d609a81002ac35c8336a09cca0d6c0542ba0989a029",
+    "parity/spring-settle-diff/reference-alpha.framemd5": "e909624c9a58531724604fdb586ba2a8e9035ddc1ae1af2f4c4b73162bd4e532",
+    "parity/spring-settle-diff/hyperframes-alpha.framemd5": "e909624c9a58531724604fdb586ba2a8e9035ddc1ae1af2f4c4b73162bd4e532",
+    "parity/spring-settle-diff/reference-rgba.framemd5": "124c91497e71d65a1bce809d2347a4aaa8d555be3dc29ffd3b48681618b0dd26",
+    "parity/spring-settle-diff/hyperframes-rgba.framemd5": "b744acb01a1c3ad6632a8d9bcada19940cdef621105d9b47d4f864a30bf9e178"
   }
 }

@@ -2,7 +2,7 @@
   "slug": "outline-fill-track-text",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/outline-fill-track-text/index.tsx",
     "config": "registry/remocn/outline-fill-track-text/config.ts",
     "license": "MIT"
@@ -32,13 +32,25 @@
     },
     "background": "#030012"
   },
+  "filesSha256": {
+    "registry-item.json": "9a80f1af3138112a66548dcc45623dc115ab8c6d31d6e63864ab51baec80eeab",
+    "outline-fill-track-text.html": "46dd5fcca6ec4b063fa16ac2e27be9c0ffd6040ece8b65b2849632001b943372",
+    "outline-fill-track-text.runtime.js": "31946d9755a87a55e7f6d0ca4c443d62cb5ea96de370fcf3a63385ccd8e8bf85",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "93f2155291347051921adaa70097fea3d42217976547be2381538cb583b0f275",
+  "fingerprint": "34ecfd0432a86fab92f75525eb22d17a74f9ad2c70fb1ec01016eff5b3e6f1fb",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 80,
@@ -51,16 +63,22 @@
       "mismatchedFrames": [],
       "pass": true
     },
+    "rgba": {
+      "frameCount": 80,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check reported 1 reviewed source-inherited errors (exit 1); strict render passed",
     "sourceInheritedFindings": [
       {
         "slug": "outline-fill-track-text",
         "origin": {
           "repository": "https://github.com/Remocn/remocn",
-          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
           "source": "registry/remocn/outline-fill-track-text/index.tsx",
           "config": "registry/remocn/outline-fill-track-text/config.ts",
           "license": "MIT"
@@ -70,13 +88,16 @@
           "selector": "#outline-fill-track-text-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(1)",
           "text": "1000000000%"
         },
-        "reason": "The pinned source paints this value as an outline using WebkitTextStroke with transparent text fill, then overlays a clipped filled copy. The inspector does not account for the stroke. Preserve the source outline/fill treatment; RGB SSIM is mean 0.997643/min 0.980352 and all 80 alpha  planes match exactly."
+        "reason": "The source paints the outlined word with transparent fill and a text stroke. The inspector does not recognize that stroke as painted text. The complete inspector finding remains in the parity check log; visual parity is checked separately against every upstream frame."
       }
     ],
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -88,6 +109,21 @@
     "hyperframesCheck": "parity/outline-fill-track-text-diff/hyperframes-check.log",
     "worstFrame": "parity/outline-fill-track-text-diff/worst-frame.png",
     "referenceAlpha": "parity/outline-fill-track-text-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/outline-fill-track-text-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/outline-fill-track-text-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/outline-fill-track-text-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/outline-fill-track-text-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/outline-fill-track-text/reference.mp4": "28013c65063d8209b7c8fd5e123ce25bea7b741801f45c9034d887cde9388017",
+    "public/previews/outline-fill-track-text/hyperframes.mp4": "28013c65063d8209b7c8fd5e123ce25bea7b741801f45c9034d887cde9388017",
+    "public/previews/outline-fill-track-text/thumbnail.png": "c449180f2d14e81f81b11113b79d796e16927ec516e4439d184dd1dbc9448e19",
+    "parity/outline-fill-track-text-diff/summary.json": "d1a5a9d8264e12b9b39249c53492ea13865a57a6207d113d63349eb580a8f578",
+    "parity/outline-fill-track-text-diff/ssim.log": "3cd6a700f4a08cadfe291a25970885731ba75edeebf2f353037977fd686a300f",
+    "parity/outline-fill-track-text-diff/hyperframes-check.log": "19bc41d973488ba07ea23415c7f74f072918202a85e04d3019fc29bf0d50a351",
+    "parity/outline-fill-track-text-diff/worst-frame.png": "dc3b3efdbb12ad748b2c295fce89f622978b4b9eff36023c4c5a1cba25ed6105",
+    "parity/outline-fill-track-text-diff/reference-alpha.framemd5": "047874a42c875c70039fff785a085865e9c8f931f46aaf7e6309079712890ec9",
+    "parity/outline-fill-track-text-diff/hyperframes-alpha.framemd5": "047874a42c875c70039fff785a085865e9c8f931f46aaf7e6309079712890ec9",
+    "parity/outline-fill-track-text-diff/reference-rgba.framemd5": "816646856edafe91325119a98655083e774c5bc9ac78bf9e14ab5fe3ea093686",
+    "parity/outline-fill-track-text-diff/hyperframes-rgba.framemd5": "816646856edafe91325119a98655083e774c5bc9ac78bf9e14ab5fe3ea093686"
   }
 }

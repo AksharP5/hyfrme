@@ -21,8 +21,49 @@
     "ok": true,
     "errorCount": 0,
     "warningCount": 0,
-    "infoCount": 2,
+    "infoCount": 5,
     "findings": [
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 1.75,
+        "selector": "#inline-word-roll-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 684.28,
+          "top": 331.94,
+          "right": 883.11,
+          "bottom": 398.94,
+          "width": 198.83,
+          "height": 67
+        },
+        "containerSelector": "#inline-word-roll-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "quotes?",
+        "fixHint": "Text is 199px x 67px inside 208px x 72px and overflows by up to 3px; increase the container height to at least ~75px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 684.28,
+          "top": 324,
+          "right": 892.34,
+          "bottom": 396,
+          "width": 208.06,
+          "height": 72
+        },
+        "overflow": {
+          "bottom": 2.94
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/inline-word-roll.html",
+        "bbox": {
+          "x": 684.28,
+          "y": 331.94,
+          "width": 198.83,
+          "height": 67
+        },
+        "firstSeen": 1.75,
+        "lastSeen": 1.75,
+        "occurrences": 1,
+        "heldMs": 0
+      },
       {
         "code": "container_overflow",
         "severity": "info",
@@ -60,7 +101,90 @@
         },
         "firstSeen": 1.75,
         "lastSeen": 1.75,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 2.139,
+        "selector": "#inline-word-roll-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 688.16,
+          "top": 277.12,
+          "right": 976.45,
+          "bottom": 344.12,
+          "width": 288.29,
+          "height": 67
+        },
+        "containerSelector": "#inline-word-roll-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "registrants?",
+        "fixHint": "Text is 288px x 67px inside 295px x 72px and overflows by up to 47px; increase the container height to at least ~119px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 688.16,
+          "top": 324,
+          "right": 983.64,
+          "bottom": 396,
+          "width": 295.48,
+          "height": 72
+        },
+        "overflow": {
+          "top": 46.88
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/inline-word-roll.html",
+        "bbox": {
+          "x": 688.16,
+          "y": 277.12,
+          "width": 288.29,
+          "height": 67
+        },
+        "firstSeen": 2.139,
+        "lastSeen": 2.139,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 2.139,
+        "selector": "#inline-word-roll-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 688.16,
+          "top": 349.12,
+          "right": 833.53,
+          "bottom": 416.12,
+          "width": 145.37,
+          "height": 67
+        },
+        "containerSelector": "#inline-word-roll-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "trials?",
+        "fixHint": "Text is 145px x 67px inside 295px x 72px and overflows by up to 20px; increase the container height to at least ~92px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 688.16,
+          "top": 324,
+          "right": 983.64,
+          "bottom": 396,
+          "width": 295.48,
+          "height": 72
+        },
+        "overflow": {
+          "bottom": 20.12
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/inline-word-roll.html",
+        "bbox": {
+          "x": 688.16,
+          "y": 349.12,
+          "width": 145.37,
+          "height": 67
+        },
+        "firstSeen": 2.139,
+        "lastSeen": 2.139,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -99,7 +223,8 @@
         },
         "firstSeen": 2.139,
         "lastSeen": 2.139,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       }
     ],
     "duration": 3.5,
@@ -117,7 +242,7 @@
     "transitionSamples": [],
     "transitionSamplesDropped": 0,
     "tolerance": 2,
-    "totalIssueCount": 2,
+    "totalIssueCount": 5,
     "truncated": false
   },
   "motion": {
@@ -146,6 +271,10 @@
     "checked": 10,
     "passed": 10
   },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
   "snapshots": {
     "enabled": false,
     "files": [],
@@ -153,8 +282,8 @@
     "findingFiles": []
   },
   "_meta": {
-    "version": "0.8.30",
-    "latestVersion": "0.8.32",
+    "version": "0.8.99",
+    "latestVersion": "0.8.114",
     "updateAvailable": true
   }
 }

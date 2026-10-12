@@ -2,7 +2,7 @@
   "slug": "chat-to-preview-layout",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/chat-to-preview-layout/index.tsx",
     "config": "registry/remocn/chat-to-preview-layout/config.ts",
     "license": "MIT"
@@ -19,25 +19,120 @@
     },
     "background": "#0a0a0a"
   },
+  "filesSha256": {
+    "registry-item.json": "77430746b6e0c5dba18e31250e69a3c8ee8b71bfe33f8160f86fb450bbd5b2cb",
+    "chat-to-preview-layout.html": "e7a0ac197a15660806d2695084d1cf19c095a5786b3800d947e5081849c0b800",
+    "chat-to-preview-layout.runtime.js": "27a96c1dead65736bda441db751adcb551cc81ebcd1407bcd2cede3a5755862a",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "8eb0bb09ce1af44e9597fadf3669b70b63fbe3cf2989e6cddc09930c62b3ae34",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.996737,
-    "minSsim": 0.995611,
-    "p05Ssim": 0.996082,
-    "p95Ssim": 0.998531,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check reported 2 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "chat-to-preview-layout",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/chat-to-preview-layout/index.tsx",
+          "config": "registry/remocn/chat-to-preview-layout/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(1) > div > div > div:nth-of-type(2)",
+          "text": "Build me a landing page",
+          "fg": "rgb(255,255,255)",
+          "bg": "rgb(14,165,233)",
+          "ratio": 2.77,
+          "requiredRatio": 4.5,
+          "time": 0.222
+        },
+        "reason": "The pinned DefaultChat user bubble uses white text on #0ea5e9. Preserve the source palette; this native contrast failure remains in the full check log."
+      },
+      {
+        "slug": "chat-to-preview-layout",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/chat-to-preview-layout/index.tsx",
+          "config": "registry/remocn/chat-to-preview-layout/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(1) > div > div > div:nth-of-type(2)",
+          "text": "Build me a landing page",
+          "fg": "rgb(255,255,255)",
+          "bg": "rgb(223,223,223)",
+          "ratio": 1.33,
+          "requiredRatio": 4.5,
+          "time": 1.111
+        },
+        "reason": "The pinned source clips a fixed-width chat column while a white preview fades in and crosses the native user bubble. The contrast inspector samples the partial preview composite at 1.111, not the source bubble blue. Retain this exact native transition finding and full log; every frame still requires exact source parity."
+      }
+    ],
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/chat-to-preview-layout/remocn.mp4",
+    "referenceVideo": "public/previews/chat-to-preview-layout/reference.mp4",
     "hyperframesVideo": "public/previews/chat-to-preview-layout/hyperframes.mp4",
-    "summary": "parity/chat-to-preview-layout-diff/summary.json"
+    "thumbnail": "public/previews/chat-to-preview-layout/thumbnail.png",
+    "summary": "parity/chat-to-preview-layout-diff/summary.json",
+    "perFrameSsim": "parity/chat-to-preview-layout-diff/ssim.log",
+    "hyperframesCheck": "parity/chat-to-preview-layout-diff/hyperframes-check.log",
+    "worstFrame": "parity/chat-to-preview-layout-diff/worst-frame.png",
+    "referenceAlpha": "parity/chat-to-preview-layout-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/chat-to-preview-layout-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/chat-to-preview-layout-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/chat-to-preview-layout-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/chat-to-preview-layout/reference.mp4": "70de0cad868ead2891c96b09ac4d8cd43014a96205c20c297156a4c1718d4b47",
+    "public/previews/chat-to-preview-layout/hyperframes.mp4": "70de0cad868ead2891c96b09ac4d8cd43014a96205c20c297156a4c1718d4b47",
+    "public/previews/chat-to-preview-layout/thumbnail.png": "849083d4d56c6b2d469e28bc41b0ea87069184e7dd75293b68745d361ec9ee97",
+    "parity/chat-to-preview-layout-diff/summary.json": "c38069d7cb90acc2a693a754a1caeffaf324f128e7d118e6f20808613c950e44",
+    "parity/chat-to-preview-layout-diff/ssim.log": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/chat-to-preview-layout-diff/hyperframes-check.log": "43be80695b691e971939021d4483c2669bba0ccedd3030b2c8b17932887a577f",
+    "parity/chat-to-preview-layout-diff/worst-frame.png": "32ff1de12b92e021473b0c2dabcc0f99dde12e79a3763aeb603fd96f46baad3d",
+    "parity/chat-to-preview-layout-diff/reference-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/chat-to-preview-layout-diff/hyperframes-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/chat-to-preview-layout-diff/reference-rgba.framemd5": "65218898cf801b4be3ec9c53f99debc8b0859b85e149903c5a25e8475ea0463f",
+    "parity/chat-to-preview-layout-diff/hyperframes-rgba.framemd5": "65218898cf801b4be3ec9c53f99debc8b0859b85e149903c5a25e8475ea0463f"
   }
 }

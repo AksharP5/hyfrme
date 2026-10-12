@@ -1,3 +1,6 @@
+import { capture } from "../assets/t3-code/v0.0.42/prompt-stash-clock-ready-v5-authority/whole-clock-v5.mjs";
+
+import { paintedState, trackLayers } from "../assets/t3-code/v0.0.42/prompt-stash-clock-ready-v5-authority/diagnostics.mjs";
 import { createHash } from "node:crypto";
 import { spawn, spawnSync } from "node:child_process";
 import { createRequire } from "node:module";
@@ -8,16 +11,26 @@ const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.HYFRME_PLAYWRIGHT_CORE ?? "playwright-core");
 const root = resolve(import.meta.dirname, "..");
 const release = resolve(root, ".work/t3-v0042-bin/t3-0.0.42-linux-x64");
-const source = resolve(root, "assets/t3-code/v0.0.42");
+const originalSource = resolve(root, "assets/t3-code/v0.0.42");
+const requestedOutput = process.env.T3_REFERENCE_OUTPUT;
+const seed = process.env.T3_REFERENCE_SEED;
+if (!requestedOutput || !seed) throw new Error("Set T3_REFERENCE_OUTPUT to a fresh scratch directory and T3_REFERENCE_SEED to the prepared owned synthetic sidebar seed");
+const destination = resolve(requestedOutput);
+const seedPath = resolve(seed);
+const scratch = resolve(root, ".work") + "/";
+if (!destination.startsWith(scratch) || !seedPath.startsWith(scratch) || destination === seedPath || destination.startsWith(seedPath + "/") || seedPath.startsWith(destination + "/")) {
+  throw new Error("Capture output and seed must be separate owned directories under .work");
+}
+await mkdir(destination, { recursive: false });
+const source = resolve(destination, "source");
 const theme = process.env.T3_REFERENCE_THEME ?? "dark";
 if (!["dark", "light"].includes(theme)) throw new Error("T3_REFERENCE_THEME must be dark or light");
 const executablePath = process.env.HYFRME_CHROMIUM;
 if (!executablePath) throw new Error("Set HYFRME_CHROMIUM to the pinned Chrome executable");
-const baseDir = resolve(root, `.work/t3-v0042-prompt-stash-${theme}-fixture`);
+const baseDir = resolve(destination, "backend");
 const prefix = `prompt-stash-v0042-${theme}`;
-const work = resolve(root, `.work/t3-${prefix}-reference`);
-const reference = resolve(root, `parity/t3-prompt-stash-v0042-${theme}-reference.mkv`);
-const base = JSON.parse(await readFile(resolve(source, "brief-v0042-fixture.json"), "utf8"));
+const work = resolve(destination, "frames");
+const base = JSON.parse(await readFile(resolve(originalSource, "brief-v0042-fixture.json"), "utf8"));
 const prompt = "Make a Hyfrme Logo Enter cut with a longer final hold.";
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const version = spawnSync(resolve(release, "t3"), ["--version"], { encoding: "utf8" });
@@ -26,7 +39,25 @@ const chromeVersion = spawnSync(executablePath, ["--version"], { encoding: "utf8
 if (chromeVersion.status !== 0 || chromeVersion.stdout.trim() !== "Google Chrome for Testing 152.0.7977.30") {
   throw new Error("Wrong capture browser");
 }
-await cp(resolve(root, ".work/t3-v0042-sidebar-fixture"), baseDir,
+const authority = resolve(originalSource, "prompt-stash-clock-ready-v5-authority");
+const pins = JSON.parse(await readFile(resolve(authority, "actual-prepared-tool-and-seed-pins.json"), "utf8"))[0];
+const pinPaths = {
+  officialBinary: resolve(release, "t3"),
+  lazyChunk: resolve(release, "client/assets/ChatView-OmV_i9YI.js"),
+  browser: executablePath,
+  clockServer: require.resolve(`${process.env.HYFRME_PLAYWRIGHT_CORE ?? "playwright-core"}/lib/server/clock.js`),
+  clockSource: require.resolve(`${process.env.HYFRME_PLAYWRIGHT_CORE ?? "playwright-core"}/lib/generated/clockSource.js`),
+  capturePolicy: resolve(authority, "whole-clock-v5.mjs"),
+  sidebarGuard: resolve(authority, "sidebar-guard-v5.mjs"),
+  timerPolicy: resolve(authority, "timer-policy.mjs"),
+};
+for (const [key, path] of Object.entries(pinPaths)) {
+  if (hash(await readFile(path)) !== pins.inputs[key].sha256) throw new Error(`Pinned capture input changed: ${key}`);
+}
+if (hash(await readFile(resolve(seedPath, "userdata/state.sqlite"))) !== pins.ownedPreparedDb.sha256) {
+  throw new Error("Owned seed differs from the verified five-active-thread SQLite backup");
+}
+await cp(seedPath, baseDir,
   { recursive: true, errorOnExist: true, force: false });
 const server = spawn(resolve(release, "t3"), ["serve", "--mode", "desktop", "--base-dir", baseDir,
   "--port", theme === "dark" ? "4004" : "4005", "--host", "127.0.0.1", "--no-browser"],
@@ -48,26 +79,32 @@ try {
       throw new Error(`${key} differs from pinned official release`);
     }
   }
+  const lazy=await fetch(new URL('/assets/ChatView-OmV_i9YI.js',pairingUrl));
+  if(!lazy.ok||hash(Buffer.from(await lazy.arrayBuffer()))!=="2fd6770a07873db4e1494ac5486294bc328f2571948d11979bb68368040d70c2")throw Error('Actual native lazy ChatView chunk differs from pin');
   const frames = 120;
   const fps = 30;
   const phases = ["draft", "stashed", "menu", "persisted-menu", "recalled", "direct-stashed", "direct-recalled"];
   const events = { stash: 20, menu: 40, persistedMenu: 60, recall: 80, stashAgain: 100, directRecall: 110 };
   const observed = {};
-  await mkdir(work, { recursive: true });
+  await mkdir(work, { recursive: false });
+  await mkdir(source, { recursive: true });
   const browser = await chromium.launch({ executablePath, headless: true, args: [
     "--no-sandbox", "--disable-dev-shm-usage", "--font-render-hinting=none", "--force-color-profile=srgb",
     "--use-gl=angle", "--use-angle=gl-egl", "--enable-gpu-rasterization", "--ignore-gpu-blocklist", "--disable-software-rasterizer",
   ] });
   try {
     const page = await browser.newPage({ viewport: base.viewport, deviceScaleFactor: 1, colorScheme: theme });
+
+    const states=[];
     await page.clock.setFixedTime(new Date("2026-09-25T11:30:00Z"));
     await page.goto(pairingUrl, { waitUntil: "domcontentloaded" });
+    const layers = await trackLayers(page);
     const editor = page.locator('[data-testid="composer-editor"]');
     await editor.waitFor({ timeout: 20000 });
     await page.locator('[data-testid="sidebar-row-card"]').filter({ hasText: "Build a logo intro" })
       .getByText("Build a logo intro", { exact: true }).click();
     await page.waitForTimeout(900);
-    await page.locator('button[data-slot="toast-close"]').evaluateAll((buttons) => buttons.forEach((button) => button.click()));
+    await page.locator('button[data-slot="toast-close"]').evaluateAll((buttons) => {window.__diagnosticDismissedToasts=buttons.map(button=>button.closest('[data-position]'));if(window.__diagnosticDismissedToasts.some(node=>!node))throw Error('Toast root absent');buttons.forEach(button=>button.click());});
     await page.evaluate(() => document.fonts.ready);
     if ((await page.evaluate(() => document.documentElement.className.includes("dark") ? "dark" : "light")) !== theme) {
       throw new Error(`Official app displayed the wrong ${theme} theme`);
@@ -78,7 +115,7 @@ try {
       const raw = localStorage.getItem("t3code:prompt-stash:v2");
       return raw ? JSON.parse(raw).state.entries : [];
     });
-    const clean = (html) => html.replaceAll(baseDir, "hyfrme-fixture").replaceAll(root, "hyfrme-project");
+    const clean = (html) => html.replaceAll(baseDir, "hyfrme-fixture").replaceAll("/home/akshar/dev/projects/hyfrme/.work/t3-v0042-sidebar-project", "hyfrme-project/.work/t3-v0042-sidebar-project").replaceAll(root, "hyfrme-project");
     const save = async (phase) => {
       const html = clean(await page.locator("#root").evaluate((element) => element.innerHTML));
       if (/\/home\/|auth[_-]?token|session[_-]?token|127\.0\.0\.1:\d+/i.test(html)) {
@@ -107,92 +144,44 @@ try {
     await editor.evaluate((element) => element.blur());
     await page.mouse.move(800, 60);
     await page.waitForTimeout(300);
-    await save("draft");
-    for (let frame = 0; frame < frames; frame++) {
-      if (frame === events.stash) {
-        await page.keyboard.press("Control+s");
-        await page.waitForFunction(() => document.querySelector('[data-testid="composer-editor"]')?.textContent?.trim() === "");
-        await badge.waitFor();
-        await page.waitForTimeout(350);
-        await save("stashed");
-        if (observed.stashed.stashCount !== 1 || observed.stashed.stashedPrompt !== prompt) {
-          throw new Error("Native stash did not write the Hyfrme prompt to durable local storage");
-        }
-      }
-      if (frame === events.menu) {
-        await badge.click();
-        await drawer.waitFor();
-        await page.mouse.move(800, 60);
-        await page.waitForTimeout(200);
-        await save("menu");
-        if (!observed.menu.drawerText.includes(prompt)) throw new Error("Native stash drawer omitted the saved prompt");
-      }
-      if (frame === events.persistedMenu) {
-        await page.reload({ waitUntil: "domcontentloaded" });
-        await editor.waitFor({ timeout: 20000 });
-        await badge.waitFor({ timeout: 5000 });
-        await page.locator('button[data-slot="toast-close"]').evaluateAll((buttons) => buttons.forEach((button) => button.click()));
-        await badge.click();
-        await drawer.waitFor();
-        await page.mouse.move(800, 60);
-        await page.waitForTimeout(250);
-        await save("persisted-menu");
-        if (observed["persisted-menu"].stashCount !== 1 || observed["persisted-menu"].stashedPrompt !== prompt ||
-          !observed["persisted-menu"].drawerText.includes(prompt)) {
-          throw new Error("Native stash did not survive reload");
-        }
-      }
-      if (frame === events.recall) {
-        await page.locator('[data-stash-restore]').first().click();
-        await page.waitForFunction((value) =>
-          document.querySelector('[data-testid="composer-editor"]')?.textContent?.includes(value), prompt);
-        await editor.evaluate((element) => element.blur());
-        await page.mouse.move(800, 60);
-        await page.waitForTimeout(250);
-        await save("recalled");
-        if (observed.recalled.stashCount !== 0 || observed.recalled.editorText !== prompt ||
-          observed.recalled.drawerVisible) throw new Error("Native drawer recall did not consume the entry");
-      }
-      if (frame === events.stashAgain) {
-        await page.keyboard.press("Control+s");
-        await page.waitForFunction(() => document.querySelector('[data-testid="composer-editor"]')?.textContent?.trim() === "");
-        await badge.waitFor();
-        await page.mouse.move(800, 60);
-        await page.waitForTimeout(250);
-        await save("direct-stashed");
-        if (observed["direct-stashed"].stashCount !== 1) throw new Error("Second native stash failed");
-      }
-      if (frame === events.directRecall) {
-        await page.keyboard.press("Control+s");
-        await page.waitForFunction((value) =>
-          document.querySelector('[data-testid="composer-editor"]')?.textContent?.includes(value), prompt);
-        await editor.evaluate((element) => element.blur());
-        await page.mouse.move(800, 60);
-        await page.waitForTimeout(250);
-        await save("direct-recalled");
-        if (observed["direct-recalled"].stashCount !== 0 || observed["direct-recalled"].editorText !== prompt ||
-          observed["direct-recalled"].drawerVisible) throw new Error("Single-entry Ctrl+S did not restore directly");
-      }
-      await page.screenshot({ path: resolve(work, `frame-${String(frame).padStart(4, "0")}.png`) });
+    await page.waitForFunction(()=>window.__diagnosticDismissedToasts.every(node=>!node.isConnected)&&document.querySelectorAll('[data-slot="toast-viewport"] [data-ending-style]').length===0,undefined,{timeout:3000});
+    await writeFile(resolve(source,'initial-toast-readiness.json'),JSON.stringify(await page.evaluate(()=>({performanceNow:performance.now(),dateNow:Date.now(),dismissedCount:window.__diagnosticDismissedToasts.length,allDetached:window.__diagnosticDismissedToasts.every(node=>!node.isConnected),exitingCount:document.querySelectorAll('[data-slot="toast-viewport"] [data-ending-style]').length})),null,2));
+    const baseline = await page.evaluate(()=>({rows:Array.from(document.querySelectorAll('[data-testid="sidebar-row-card"]'),el=>el.textContent),editor:document.querySelector('[data-testid="composer-editor"]').textContent,model:document.querySelector('[data-chat-provider-model-picker-label="true"]')?.textContent,workspace:document.querySelector('[data-composer-shortcut="composer.workspace"]')?.textContent}));
+    if(baseline.rows.length!==5||!baseline.rows[0].includes('Build a logo intro')||baseline.editor!==prompt)throw Error('Native synthetic initial source input drift: '+JSON.stringify(baseline));
+    await writeFile(resolve(source,'baseline.json'),JSON.stringify(baseline,null,2));
+    const expectedDraft = await readFile(resolve(originalSource, `prompt-stash-v0042-${theme}-draft.html`), 'utf8');
+    const actualDraft = clean(await page.locator('#root').evaluate(el=>el.innerHTML));
+    const normalizeIds=html=>{const ids=new Map();return html.replace(/_r_[^_]+_/g,id=>{if(!ids.has(id))ids.set(id,`_r_${ids.size}_`);return ids.get(id);});};
+    let diagnosticExpected = normalizeIds(expectedDraft);
+    const diagnosticActual = normalizeIds(actualDraft);
+    const transitionDeltas = [];
+    diagnosticExpected = diagnosticExpected.replace(/<li\b[^>]*>/g,tag=>{
+      if(!tag.includes('style="transition: transform linear;"'))return tag;
+      const isHeader=tag.includes('data-testid="sidebar-pinned-header"')||tag.includes('data-testid="sidebar-pinned-divider"');
+      const isThread=tag.includes('data-thread-item="true"')&&tag.includes('class="list-none py-0.5 [content-visibility:auto] [contain-intrinsic-size:auto_78px]"');
+      const isSettled=tag.includes('data-testid="sidebar-settled-header"')&&tag.includes('class="list-none mx-0.5 h-8 mt-auto"');
+      if(!isHeader&&!isThread&&!isSettled)return tag;
+      transitionDeltas.push({expected:tag,actual:tag.replace('style="transition: transform linear;"','style=""')});
+      return diagnosticActual.includes(transitionDeltas.at(-1).actual)?transitionDeltas.at(-1).actual:tag;
+    });
+    if(transitionDeltas.length!==8)throw Error('Unexpected diagnostic sidebar transition delta count');
+    const inertTransitions=await page.evaluate(()=>Array.from(document.querySelectorAll('li')).filter(el=>['','transition: transform linear;'].includes(el.getAttribute('style'))&&(el.matches('[data-thread-item="true"]')||['sidebar-pinned-header','sidebar-pinned-divider','sidebar-settled-header'].includes(el.dataset.testid))).map(el=>{const s=getComputedStyle(el);return{duration:s.transitionDuration,delay:s.transitionDelay,transform:s.transform,animations:el.getAnimations().length};}));
+    await writeFile(resolve(source,'inert-live-measurements.json'),JSON.stringify(inertTransitions,null,2));
+    await writeFile(resolve(source,'initial-raw-root.html'),actualDraft);
+    if(inertTransitions.length!==8||inertTransitions.some(x=>x.duration!=='0s'||x.delay!=='0s'||x.transform!=='none'||x.animations!==0))throw Error('Diagnostic transition delta no longer measured inert');
+    await writeFile(resolve(source,'diagnostic-transition-allowance.json'),JSON.stringify({kind:'Only eight explicitly measured inert native serialization deltas; diagnostic only; native CSS unchanged',transitionDeltas,inertTransitions},null,2));
+    if(diagnosticActual!==diagnosticExpected) {
+      await writeFile(resolve(source,'initial-drift.html'),actualDraft);
+      const liTransitions = await page.evaluate(()=>Array.from(document.querySelectorAll('li'),el=>{const s=getComputedStyle(el);return{testId:el.dataset.testid,class:el.className,text:el.textContent,inline:el.getAttribute('style'),rect:el.getBoundingClientRect().toJSON(),property:s.transitionProperty,duration:s.transitionDuration,delay:s.transitionDelay,timing:s.transitionTimingFunction,transform:s.transform,animations:el.getAnimations().map(a=>({type:a.constructor.name,time:a.currentTime,playState:a.playState,timing:a.effect.getComputedTiming()}))};}));
+      await writeFile(resolve(source,'initial-li-transition-measurements.json'),JSON.stringify(liTransitions,null,2));
+      await writeFile(resolve(source,'initial-painted-state.json'),JSON.stringify(await paintedState(page),null,2));
+      await page.screenshot({path:resolve(source,'initial-drift.png')});
+      await writeFile(resolve(source,'initial-layers.json'),JSON.stringify(await layers.collect(),null,2));
+      throw Error('Native initial Prompt root differs from recorded draft beyond generated IDs/known synthetic paths; retained measured li transitions, no normalization');
     }
-  } finally {
-    await browser.close();
-  }
-  const encode = spawnSync("ffmpeg", ["-hide_banner", "-loglevel", "error", "-y", "-framerate", String(fps),
-    "-i", resolve(work, "frame-%04d.png"), "-c:v", "ffv1", "-level", "3", "-pix_fmt", "gbrp", reference],
-  { encoding: "utf8" });
-  if (encode.status !== 0) throw new Error(encode.stderr);
-  const sourceDomHashes = Object.fromEntries(await Promise.all(phases.map(async (phase) =>
-    [phase, hash(await readFile(resolve(source, `${prefix}-${phase}.html`)))])));
-  const portalHashes = Object.fromEntries(await Promise.all(["menu", "persisted-menu"].map(async (phase) =>
-    [phase, hash(await readFile(resolve(source, `${prefix}-${phase}-portal.html`)))])));
-  await writeFile(resolve(source, `${prefix}-fixture.json`), JSON.stringify({
-    sourceTag: "v0.0.42", sourceCommit: "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
-    releaseSha256: base.releaseSha256, sourceHashes: base.sourceHashes,
-    viewport: base.viewport, fps, frames, theme, phases, events, prompt, observed,
-    sourceDomHashes, portalHashes, referenceSha256: hash(await readFile(reference)),
-  }, null, 2) + "\n");
-  console.log(`Captured ${frames} official T3 Code v0.0.42 Prompt Stash ${theme} frames with reload and direct restore.`);
-} finally {
-  server.kill("SIGTERM");
-}
+    await writeFile(resolve(source,'initial-source-guard.json'),JSON.stringify({diagnosticExact:true,normalization:'bijective generated IDs, exact known synthetic workspace paths, and precisely eight measured inert sidebar inline transition deltas; native CSS untouched'},null,2));
+    await save("draft");
+
+    await capture({page,work,source,originalSource,prefix,theme,prompt,fps,frames,events,editor,badge,drawer,stashEntries,save,clean});
+  }finally{await browser.close();}
+}finally{if(server.exitCode===null){const exited=new Promise(resolve=>server.once('exit',resolve));server.kill('SIGTERM');await exited;}}

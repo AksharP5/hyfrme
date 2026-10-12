@@ -37,430 +37,775 @@
       "after": "379334ec096fdd7dc842c9e8d319bca4045e02c8f19775ee3b7a3bc04c90db6c"
     },
     "referenceSha256": "61be5e639bc233f3067127ed11c22827fff5a2ee319c31e38e8abe53ad2b50ec",
-    "compositionSha256": "addfae67ab68980fa435b7da21bd8fd8369907163fab1718b682ea9df4ba7ea5"
+    "compositionSha256": "edbe1103431005ccdbe93865a2f65f880aa4f637cda9daebeea24261eb164968"
   },
-  "providerState": "seeded model, reasoning, and service-tier options; no provider configured",
-  "interaction": "native v0.0.42 service-tier menu open, Fast hover, Fast selection, and lightning indicator; no model inference executed",
-  "defaultPopupRendering": "The default dark/light menu and hover popup use cropped pixels from the pinned official v0.0.42 capture. The native DOM menu remains installed and is rendered for changed visible content or service-tier choices; theme and event timing remain editable in both modes.",
-  "editableDomBaseline": {
-    "dark": {
-      "wholeFrame": {
-        "frameCount": 120,
-        "meanSsim": 0.9903937499999967,
-        "minSsim": 0.990237,
-        "worstFrame": 90,
-        "pass": true
-      },
-      "hoverRow": {
-        "crop": {
-          "name": "service-hover-row",
-          "x": 507,
-          "y": 302,
-          "width": 160,
-          "height": 44,
-          "first": 60,
-          "last": 89
-        },
-        "frameCount": 30,
-        "meanSsim": 0.9518060000000005,
-        "minSsim": 0.951806,
-        "worstFrame": 60,
-        "thresholds": {
-          "meanSsim": 0.97,
-          "minSsim": 0.96
-        },
-        "pass": false
-      },
-      "sourceSha256": "4a6a3642484455012401a21bf7990339a76ba3be7132fd5a50fae8e3ec6c4d3c",
-      "artifacts": {
-        "source": "parity/t3-fast-service-tier-dom-only/t3-fast-service-tier.html",
-        "regionResult": "parity/t3-fast-service-tier-dom-only/dark/region-result.json",
-        "hoverRowFrameSsim": "parity/t3-fast-service-tier-dom-only/dark/service-hover-row-ssim.txt"
-      }
-    },
-    "light": {
-      "wholeFrame": {
-        "frameCount": 120,
-        "meanSsim": 0.9906582499999995,
-        "minSsim": 0.990526,
-        "worstFrame": 90,
-        "pass": true
-      },
-      "hoverRow": {
-        "crop": {
-          "name": "service-hover-row",
-          "x": 507,
-          "y": 302,
-          "width": 160,
-          "height": 44,
-          "first": 60,
-          "last": 89
-        },
-        "frameCount": 30,
-        "meanSsim": 0.9481670000000005,
-        "minSsim": 0.948167,
-        "worstFrame": 60,
-        "thresholds": {
-          "meanSsim": 0.97,
-          "minSsim": 0.96
-        },
-        "pass": false
-      },
-      "sourceSha256": "4a6a3642484455012401a21bf7990339a76ba3be7132fd5a50fae8e3ec6c4d3c",
-      "artifacts": {
-        "source": "parity/t3-fast-service-tier-dom-only/t3-fast-service-tier.html",
-        "regionResult": "parity/t3-fast-service-tier-dom-only/light/region-result.json",
-        "hoverRowFrameSsim": "parity/t3-fast-service-tier-dom-only/light/service-hover-row-ssim.txt"
-      }
-    }
-  },
-  "intentionalOcclusion": "The native service-tier menu covers the empty-thread title and prompt. Only those underlying text elements carry layout overlap/occlusion annotations; focused menu-region SSIM measures the overlay itself.",
-  "focusedMenuBenchmark": {
-    "targetMeanSsim": 0.98,
-    "darkMeanSsim": 1,
-    "lightMeanSsim": 1,
-    "passed": true,
-    "note": "The unchanged default popup uses the pinned native crop and reaches exact focused-menu pixels. Edited popup content uses the source DOM; its lower small-text score is recorded in editableDomBaseline."
-  },
-  "classification": "native-popup-raster-and-source-dom-port",
+  "classification": "source-dom-port",
   "measurement": "lossless-png",
   "status": "verified",
+  "defaultMode": "source DOM",
+  "defaultTheme": "dark",
   "thresholds": {
-    "meanSsim": 0.989,
-    "minSsim": 0.985,
-    "regions": {
-      "composer": {
-        "meanSsim": 0.985,
-        "minSsim": 0.98
-      },
-      "composer-controls": {
-        "meanSsim": 0.985,
-        "minSsim": 0.97
-      },
-      "service-menu": {
-        "meanSsim": 0.97,
-        "minSsim": 0.96
-      },
-      "service-hover-row": {
-        "meanSsim": 0.97,
-        "minSsim": 0.96
-      }
-    }
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.9912482499999989,
-    "minSsim": 0.990237,
-    "worstFrame": 90,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "worstFrame": 0,
+    "exactRgba": true,
+    "mismatchedFrames": [],
     "pass": true,
-    "p05Ssim": 0.990237,
-    "p95Ssim": 0.992384
+    "rgba": {
+      "pass": true,
+      "frameCount": 120,
+      "mismatchedFrames": []
+    },
+    "p05Ssim": 1,
+    "p95Ssim": 1
   },
   "themes": {
     "dark": {
+      "sourceCommit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+      "defaultMode": "source DOM",
+      "status": "verified",
+      "thresholds": {
+        "meanSsim": 1,
+        "minSsim": 1,
+        "exactRgba": true
+      },
+      "values": {
+        "projectName": "hyfrme",
+        "projectAvatar": "HE",
+        "branchName": "main",
+        "activeBranch": "feature/logo-enter",
+        "thirdBranch": "logo/assemble",
+        "fourthBranch": "logo/hold-final",
+        "threadOne": "Build a logo intro",
+        "threadTwo": "Catalog motion audit",
+        "threadThree": "Grouped logo tests",
+        "threadFour": "Review final hold",
+        "threadFive": "Search reveal timing",
+        "settledThread": "Verify Logo Enter parity",
+        "threadOneAge": "10h",
+        "threadTwoAge": "12h",
+        "threadThreeAge": "17h",
+        "threadFourAge": "1d",
+        "threadFiveAge": "2d",
+        "settledAge": "7h",
+        "modelName": "GPT-6-Astra",
+        "reasoningLevel": "High",
+        "permissionMode": "Full access",
+        "workspaceMode": "Current checkout",
+        "prompt": "Verify the Hyfrme Logo Enter final-frame timing.",
+        "heroLead": "What should we build in ",
+        "heroTail": "?",
+        "serviceBefore": "Standard",
+        "serviceAfter": "Fast",
+        "theme": "dark",
+        "openFrame": 30,
+        "hoverFrame": 60,
+        "selectFrame": 90
+      },
+      "fixture": {
+        "width": 1200,
+        "height": 659,
+        "fps": 30,
+        "durationInFrames": 120,
+        "props": {
+          "projectName": "hyfrme",
+          "prompt": "Verify the Hyfrme Logo Enter final-frame timing.",
+          "modelName": "GPT-6-Astra",
+          "reasoningLevel": "High",
+          "serviceBefore": "Standard",
+          "serviceAfter": "Fast",
+          "openFrame": 30,
+          "hoverFrame": 60,
+          "selectFrame": 90,
+          "theme": "dark"
+        },
+        "sourceHashes": {
+          "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+          "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+          "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+        },
+        "sourceDomHashes": {
+          "before": "7facf13d2f31109540099d9cd3a9e452c7a1042ce3c3ff9195e31d393fe3510e",
+          "menu": "b097b0c5094da0c617409ee9e91573ebc13296c8ed74e1cfda1054359adc44e0",
+          "portal": "7f55d86c10e45578eb897b0a37b895b81cf73e9e03d39a7dafe97649ca213de3",
+          "hover": "b097b0c5094da0c617409ee9e91573ebc13296c8ed74e1cfda1054359adc44e0",
+          "hover-portal": "3cca4c04e075b020d808a4f869e6d20ff0c376eb88ec526ab7226510ac87f337",
+          "after": "379334ec096fdd7dc842c9e8d319bca4045e02c8f19775ee3b7a3bc04c90db6c"
+        },
+        "referenceSha256": "61be5e639bc233f3067127ed11c22827fff5a2ee319c31e38e8abe53ad2b50ec",
+        "compositionSha256": "edbe1103431005ccdbe93865a2f65f880aa4f637cda9daebeea24261eb164968"
+      },
+      "sourceHashes": {
+        "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+        "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+        "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+      },
+      "sourceDomHashes": {
+        "before": "7facf13d2f31109540099d9cd3a9e452c7a1042ce3c3ff9195e31d393fe3510e",
+        "menu": "b097b0c5094da0c617409ee9e91573ebc13296c8ed74e1cfda1054359adc44e0",
+        "portal": "7f55d86c10e45578eb897b0a37b895b81cf73e9e03d39a7dafe97649ca213de3",
+        "hover": "b097b0c5094da0c617409ee9e91573ebc13296c8ed74e1cfda1054359adc44e0",
+        "hover-portal": "3cca4c04e075b020d808a4f869e6d20ff0c376eb88ec526ab7226510ac87f337",
+        "after": "379334ec096fdd7dc842c9e8d319bca4045e02c8f19775ee3b7a3bc04c90db6c"
+      },
       "referenceSha256": "61be5e639bc233f3067127ed11c22827fff5a2ee319c31e38e8abe53ad2b50ec",
       "themeSha256": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
       "result": {
         "frameCount": 120,
-        "meanSsim": 0.9912482499999989,
-        "minSsim": 0.990237,
-        "worstFrame": 90,
+        "meanSsim": 1,
+        "minSsim": 1,
+        "worstFrame": 0,
+        "exactRgba": true,
+        "mismatchedFrames": [],
         "pass": true,
-        "p05Ssim": 0.990237,
-        "p95Ssim": 0.992384
-      },
-      "regions": {
-        "composer": {
-          "crop": {
-            "name": "composer",
-            "x": 344,
-            "y": 259,
-            "width": 768,
-            "height": 143,
-            "first": 0,
-            "last": 119
-          },
+        "rgba": {
+          "pass": true,
           "frameCount": 120,
-          "meanSsim": 0.9917134999999998,
-          "minSsim": 0.990413,
-          "worstFrame": 90,
-          "thresholds": {
-            "meanSsim": 0.985,
-            "minSsim": 0.98
-          },
-          "pass": true
+          "mismatchedFrames": []
         },
-        "composer-controls": {
-          "crop": {
-            "name": "composer-controls",
-            "x": 354,
-            "y": 347,
-            "width": 745,
-            "height": 47,
-            "first": 0,
-            "last": 119
-          },
-          "frameCount": 120,
-          "meanSsim": 0.986854249999998,
-          "minSsim": 0.982244,
-          "worstFrame": 30,
-          "thresholds": {
-            "meanSsim": 0.985,
-            "minSsim": 0.97
-          },
-          "pass": true
-        },
-        "service-menu": {
-          "crop": {
-            "name": "service-menu",
-            "x": 502,
-            "y": 40,
-            "width": 170,
-            "height": 311,
-            "first": 30,
-            "last": 89
-          },
-          "frameCount": 60,
-          "meanSsim": 1,
-          "minSsim": 1,
-          "worstFrame": 30,
-          "thresholds": {
-            "meanSsim": 0.97,
-            "minSsim": 0.96
-          },
-          "pass": true
-        },
-        "service-hover-row": {
-          "crop": {
-            "name": "service-hover-row",
-            "x": 507,
-            "y": 302,
-            "width": 160,
-            "height": 44,
-            "first": 60,
-            "last": 89
-          },
-          "frameCount": 30,
-          "meanSsim": 1,
-          "minSsim": 1,
-          "worstFrame": 60,
-          "thresholds": {
-            "meanSsim": 0.97,
-            "minSsim": 0.96
-          },
-          "pass": true
-        }
-      },
-      "popupBox": {
-        "x": 502,
-        "y": 40,
-        "width": 169.4375,
-        "height": 311
-      },
-      "triggerBox": {
-        "x": 501.796875,
-        "y": 354.5,
-        "width": 66.796875,
-        "height": 28
-      },
-      "motion": {
-        "open": [],
-        "hover": [],
-        "select": []
-      },
-      "reasoningToFastSeam": {
-        "native": {
-          "changedPixels": 0
-        },
-        "hyperframes": {
-          "changedPixels": 0
-        }
-      },
-      "nativePopupRasterSha256": {
-        "menu": "b51d4074d626df24b09d962382d925a6683807bed34e94f5d0ca21395fccdfab",
-        "hover": "521dc20927857a8aa3718c1fbddb700ab51fe0dec08d4f6683e4c4be8b0020f7"
+        "p05Ssim": 1,
+        "p95Ssim": 1
       },
       "artifacts": {
         "referenceVideo": "public/previews/t3-fast-service-tier/reference.mp4",
         "hyperframesVideo": "public/previews/t3-fast-service-tier/hyperframes.mp4",
-        "frameSsim": "parity/t3-fast-service-tier-diff/dark/ssim.txt",
-        "regionSsim": {
-          "composer": "parity/t3-fast-service-tier-diff/dark/composer-ssim.txt",
-          "composer-controls": "parity/t3-fast-service-tier-diff/dark/composer-controls-ssim.txt",
-          "service-menu": "parity/t3-fast-service-tier-diff/dark/service-menu-ssim.txt",
-          "service-hover-row": "parity/t3-fast-service-tier-diff/dark/service-hover-row-ssim.txt"
+        "thumbnail": "public/previews/t3-fast-service-tier/thumbnail.png",
+        "nativeRecording": "parity/t3-fast-service-tier-v0042-dark-reference.mkv",
+        "nativeFixture": "assets/t3-code/v0.0.42/fast-tier-v0042-dark-fixture.json",
+        "proof": "parity/t3-catalog/t3-fast-service-tier/dark/proof.json",
+        "rgba": "parity/t3-catalog/t3-fast-service-tier/dark/rgba.json",
+        "referenceRgba": "parity/t3-catalog/t3-fast-service-tier/dark/reference-rgba.sha256",
+        "hyperframesRgba": "parity/t3-catalog/t3-fast-service-tier/dark/hyperframes-rgba.sha256",
+        "frameSsim": "parity/t3-catalog/t3-fast-service-tier/dark/ssim.txt",
+        "hyperframesCheck": "parity/t3-catalog/t3-fast-service-tier/dark/hyperframes-check.json",
+        "strictRender": "parity/t3-catalog/t3-fast-service-tier/dark/hyperframes-render.log"
+      },
+      "historicalCustomizationEvidence": {
+        "contract": "Previously measured customization, crop, variant, and continuity evidence; these measurements are outside the exact current default-fixture claim.",
+        "result": {
+          "frameCount": 120,
+          "meanSsim": 0.9912482499999989,
+          "minSsim": 0.990237,
+          "worstFrame": 90,
+          "pass": true,
+          "p05Ssim": 0.990237,
+          "p95Ssim": 0.992384
         },
-        "hyperframesCheck": "parity/t3-fast-service-tier-diff/dark/hyperframes-check.json",
-        "installedCheck": "parity/t3-fast-service-tier-diff/dark/installed-check.json",
-        "customCheck": "parity/t3-fast-service-tier-diff/dark/custom-check.json",
-        "worstFrame": "parity/t3-fast-service-tier-diff/dark/worst-frame.png",
-        "customized": "parity/t3-fast-service-tier-diff/dark/customized.png"
+        "fields": {
+          "regions": {
+            "composer": {
+              "crop": {
+                "name": "composer",
+                "x": 344,
+                "y": 259,
+                "width": 768,
+                "height": 143,
+                "first": 0,
+                "last": 119
+              },
+              "frameCount": 120,
+              "meanSsim": 0.9917134999999998,
+              "minSsim": 0.990413,
+              "worstFrame": 90,
+              "thresholds": {
+                "meanSsim": 0.985,
+                "minSsim": 0.98
+              },
+              "pass": true
+            },
+            "composer-controls": {
+              "crop": {
+                "name": "composer-controls",
+                "x": 354,
+                "y": 347,
+                "width": 745,
+                "height": 47,
+                "first": 0,
+                "last": 119
+              },
+              "frameCount": 120,
+              "meanSsim": 0.986854249999998,
+              "minSsim": 0.982244,
+              "worstFrame": 30,
+              "thresholds": {
+                "meanSsim": 0.985,
+                "minSsim": 0.97
+              },
+              "pass": true
+            },
+            "service-menu": {
+              "crop": {
+                "name": "service-menu",
+                "x": 502,
+                "y": 40,
+                "width": 170,
+                "height": 311,
+                "first": 30,
+                "last": 89
+              },
+              "frameCount": 60,
+              "meanSsim": 1,
+              "minSsim": 1,
+              "worstFrame": 30,
+              "thresholds": {
+                "meanSsim": 0.97,
+                "minSsim": 0.96
+              },
+              "pass": true
+            },
+            "service-hover-row": {
+              "crop": {
+                "name": "service-hover-row",
+                "x": 507,
+                "y": 302,
+                "width": 160,
+                "height": 44,
+                "first": 60,
+                "last": 89
+              },
+              "frameCount": 30,
+              "meanSsim": 1,
+              "minSsim": 1,
+              "worstFrame": 60,
+              "thresholds": {
+                "meanSsim": 0.97,
+                "minSsim": 0.96
+              },
+              "pass": true
+            }
+          },
+          "popupBox": {
+            "x": 502,
+            "y": 40,
+            "width": 169.4375,
+            "height": 311
+          },
+          "triggerBox": {
+            "x": 501.796875,
+            "y": 354.5,
+            "width": 66.796875,
+            "height": 28
+          },
+          "motion": {
+            "open": [],
+            "hover": [],
+            "select": []
+          },
+          "reasoningToFastSeam": {
+            "native": {
+              "changedPixels": 0
+            },
+            "hyperframes": {
+              "changedPixels": 0
+            }
+          },
+          "nativePopupRasterSha256": {
+            "menu": "b51d4074d626df24b09d962382d925a6683807bed34e94f5d0ca21395fccdfab",
+            "hover": "521dc20927857a8aa3718c1fbddb700ab51fe0dec08d4f6683e4c4be8b0020f7"
+          }
+        }
       }
     },
     "light": {
+      "sourceCommit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+      "defaultMode": "source DOM",
+      "status": "verified",
+      "thresholds": {
+        "meanSsim": 1,
+        "minSsim": 1,
+        "exactRgba": true
+      },
+      "values": {
+        "projectName": "hyfrme",
+        "projectAvatar": "HE",
+        "branchName": "main",
+        "activeBranch": "feature/logo-enter",
+        "thirdBranch": "logo/assemble",
+        "fourthBranch": "logo/hold-final",
+        "threadOne": "Build a logo intro",
+        "threadTwo": "Catalog motion audit",
+        "threadThree": "Grouped logo tests",
+        "threadFour": "Review final hold",
+        "threadFive": "Search reveal timing",
+        "settledThread": "Verify Logo Enter parity",
+        "threadOneAge": "10h",
+        "threadTwoAge": "12h",
+        "threadThreeAge": "17h",
+        "threadFourAge": "1d",
+        "threadFiveAge": "2d",
+        "settledAge": "7h",
+        "modelName": "GPT-6-Astra",
+        "reasoningLevel": "High",
+        "permissionMode": "Full access",
+        "workspaceMode": "Current checkout",
+        "prompt": "Verify the Hyfrme Logo Enter final-frame timing.",
+        "heroLead": "What should we build in ",
+        "heroTail": "?",
+        "serviceBefore": "Standard",
+        "serviceAfter": "Fast",
+        "theme": "light",
+        "openFrame": 30,
+        "hoverFrame": 60,
+        "selectFrame": 90
+      },
+      "fixture": {
+        "width": 1200,
+        "height": 659,
+        "fps": 30,
+        "durationInFrames": 120,
+        "props": {
+          "projectName": "hyfrme",
+          "prompt": "Verify the Hyfrme Logo Enter final-frame timing.",
+          "modelName": "GPT-6-Astra",
+          "reasoningLevel": "High",
+          "serviceBefore": "Standard",
+          "serviceAfter": "Fast",
+          "openFrame": 30,
+          "hoverFrame": 60,
+          "selectFrame": 90,
+          "theme": "dark"
+        },
+        "sourceHashes": {
+          "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+          "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+          "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+        },
+        "sourceDomHashes": {
+          "before": "7facf13d2f31109540099d9cd3a9e452c7a1042ce3c3ff9195e31d393fe3510e",
+          "menu": "b097b0c5094da0c617409ee9e91573ebc13296c8ed74e1cfda1054359adc44e0",
+          "portal": "7f55d86c10e45578eb897b0a37b895b81cf73e9e03d39a7dafe97649ca213de3",
+          "hover": "b097b0c5094da0c617409ee9e91573ebc13296c8ed74e1cfda1054359adc44e0",
+          "hover-portal": "3cca4c04e075b020d808a4f869e6d20ff0c376eb88ec526ab7226510ac87f337",
+          "after": "379334ec096fdd7dc842c9e8d319bca4045e02c8f19775ee3b7a3bc04c90db6c"
+        },
+        "referenceSha256": "4f11a010058992b730c56fc86df180dcb39800d3e434390fd06acea0b145da2c",
+        "compositionSha256": "edbe1103431005ccdbe93865a2f65f880aa4f637cda9daebeea24261eb164968"
+      },
+      "sourceHashes": {
+        "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+        "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+        "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+      },
+      "sourceDomHashes": {
+        "before": "7facf13d2f31109540099d9cd3a9e452c7a1042ce3c3ff9195e31d393fe3510e",
+        "menu": "b097b0c5094da0c617409ee9e91573ebc13296c8ed74e1cfda1054359adc44e0",
+        "portal": "7f55d86c10e45578eb897b0a37b895b81cf73e9e03d39a7dafe97649ca213de3",
+        "hover": "b097b0c5094da0c617409ee9e91573ebc13296c8ed74e1cfda1054359adc44e0",
+        "hover-portal": "3cca4c04e075b020d808a4f869e6d20ff0c376eb88ec526ab7226510ac87f337",
+        "after": "379334ec096fdd7dc842c9e8d319bca4045e02c8f19775ee3b7a3bc04c90db6c"
+      },
       "referenceSha256": "4f11a010058992b730c56fc86df180dcb39800d3e434390fd06acea0b145da2c",
       "themeSha256": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
       "result": {
         "frameCount": 120,
-        "meanSsim": 0.991544999999999,
-        "minSsim": 0.990526,
-        "worstFrame": 90,
+        "meanSsim": 1,
+        "minSsim": 1,
+        "worstFrame": 0,
+        "exactRgba": true,
+        "mismatchedFrames": [],
         "pass": true,
-        "p05Ssim": 0.990526,
-        "p95Ssim": 0.992612
-      },
-      "regions": {
-        "composer": {
-          "crop": {
-            "name": "composer",
-            "x": 344,
-            "y": 259,
-            "width": 768,
-            "height": 143,
-            "first": 0,
-            "last": 119
-          },
+        "rgba": {
+          "pass": true,
           "frameCount": 120,
-          "meanSsim": 0.9920404999999991,
-          "minSsim": 0.990546,
-          "worstFrame": 90,
-          "thresholds": {
-            "meanSsim": 0.985,
-            "minSsim": 0.98
-          },
-          "pass": true
+          "mismatchedFrames": []
         },
-        "composer-controls": {
-          "crop": {
-            "name": "composer-controls",
-            "x": 354,
-            "y": 347,
-            "width": 745,
-            "height": 47,
-            "first": 0,
-            "last": 119
-          },
-          "frameCount": 120,
-          "meanSsim": 0.9875029999999982,
-          "minSsim": 0.9856,
-          "worstFrame": 30,
-          "thresholds": {
-            "meanSsim": 0.985,
-            "minSsim": 0.97
-          },
-          "pass": true
-        },
-        "service-menu": {
-          "crop": {
-            "name": "service-menu",
-            "x": 502,
-            "y": 40,
-            "width": 170,
-            "height": 311,
-            "first": 30,
-            "last": 89
-          },
-          "frameCount": 60,
-          "meanSsim": 1,
-          "minSsim": 1,
-          "worstFrame": 30,
-          "thresholds": {
-            "meanSsim": 0.97,
-            "minSsim": 0.96
-          },
-          "pass": true
-        },
-        "service-hover-row": {
-          "crop": {
-            "name": "service-hover-row",
-            "x": 507,
-            "y": 302,
-            "width": 160,
-            "height": 44,
-            "first": 60,
-            "last": 89
-          },
-          "frameCount": 30,
-          "meanSsim": 1,
-          "minSsim": 1,
-          "worstFrame": 60,
-          "thresholds": {
-            "meanSsim": 0.97,
-            "minSsim": 0.96
-          },
-          "pass": true
-        }
-      },
-      "popupBox": {
-        "x": 502,
-        "y": 40,
-        "width": 169.4375,
-        "height": 311
-      },
-      "triggerBox": {
-        "x": 501.796875,
-        "y": 354.5,
-        "width": 66.796875,
-        "height": 28
-      },
-      "motion": {
-        "open": [],
-        "hover": [],
-        "select": []
-      },
-      "reasoningToFastSeam": {
-        "native": {
-          "changedPixels": 0
-        },
-        "hyperframes": {
-          "changedPixels": 0
-        }
-      },
-      "nativePopupRasterSha256": {
-        "menu": "edbed62e3c3df5e60119ac238a14bb9e0c894da7e749d8e7ea2cbb117da8e9a4",
-        "hover": "0af5c51cf520d411ec2b0b19c613c4ba6a653f3bed318fc2f30461bf9714a8ba"
+        "p05Ssim": 1,
+        "p95Ssim": 1
       },
       "artifacts": {
         "referenceVideo": "public/previews/t3-fast-service-tier/reference-light.mp4",
         "hyperframesVideo": "public/previews/t3-fast-service-tier/hyperframes-light.mp4",
-        "frameSsim": "parity/t3-fast-service-tier-diff/light/ssim.txt",
-        "regionSsim": {
-          "composer": "parity/t3-fast-service-tier-diff/light/composer-ssim.txt",
-          "composer-controls": "parity/t3-fast-service-tier-diff/light/composer-controls-ssim.txt",
-          "service-menu": "parity/t3-fast-service-tier-diff/light/service-menu-ssim.txt",
-          "service-hover-row": "parity/t3-fast-service-tier-diff/light/service-hover-row-ssim.txt"
+        "thumbnail": "public/previews/t3-fast-service-tier/thumbnail-light.png",
+        "nativeRecording": "parity/t3-fast-service-tier-v0042-light-reference.mkv",
+        "nativeFixture": "assets/t3-code/v0.0.42/fast-tier-v0042-light-fixture.json",
+        "proof": "parity/t3-catalog/t3-fast-service-tier/light/proof.json",
+        "rgba": "parity/t3-catalog/t3-fast-service-tier/light/rgba.json",
+        "referenceRgba": "parity/t3-catalog/t3-fast-service-tier/light/reference-rgba.sha256",
+        "hyperframesRgba": "parity/t3-catalog/t3-fast-service-tier/light/hyperframes-rgba.sha256",
+        "frameSsim": "parity/t3-catalog/t3-fast-service-tier/light/ssim.txt",
+        "hyperframesCheck": "parity/t3-catalog/t3-fast-service-tier/light/hyperframes-check.json",
+        "strictRender": "parity/t3-catalog/t3-fast-service-tier/light/hyperframes-render.log"
+      },
+      "historicalCustomizationEvidence": {
+        "contract": "Previously measured customization, crop, variant, and continuity evidence; these measurements are outside the exact current default-fixture claim.",
+        "result": {
+          "frameCount": 120,
+          "meanSsim": 0.991544999999999,
+          "minSsim": 0.990526,
+          "worstFrame": 90,
+          "pass": true,
+          "p05Ssim": 0.990526,
+          "p95Ssim": 0.992612
         },
-        "hyperframesCheck": "parity/t3-fast-service-tier-diff/light/hyperframes-check.json",
-        "installedCheck": "parity/t3-fast-service-tier-diff/light/installed-check.json",
-        "customCheck": "parity/t3-fast-service-tier-diff/light/custom-check.json",
-        "worstFrame": "parity/t3-fast-service-tier-diff/light/worst-frame.png",
-        "customized": "parity/t3-fast-service-tier-diff/light/customized.png"
+        "fields": {
+          "regions": {
+            "composer": {
+              "crop": {
+                "name": "composer",
+                "x": 344,
+                "y": 259,
+                "width": 768,
+                "height": 143,
+                "first": 0,
+                "last": 119
+              },
+              "frameCount": 120,
+              "meanSsim": 0.9920404999999991,
+              "minSsim": 0.990546,
+              "worstFrame": 90,
+              "thresholds": {
+                "meanSsim": 0.985,
+                "minSsim": 0.98
+              },
+              "pass": true
+            },
+            "composer-controls": {
+              "crop": {
+                "name": "composer-controls",
+                "x": 354,
+                "y": 347,
+                "width": 745,
+                "height": 47,
+                "first": 0,
+                "last": 119
+              },
+              "frameCount": 120,
+              "meanSsim": 0.9875029999999982,
+              "minSsim": 0.9856,
+              "worstFrame": 30,
+              "thresholds": {
+                "meanSsim": 0.985,
+                "minSsim": 0.97
+              },
+              "pass": true
+            },
+            "service-menu": {
+              "crop": {
+                "name": "service-menu",
+                "x": 502,
+                "y": 40,
+                "width": 170,
+                "height": 311,
+                "first": 30,
+                "last": 89
+              },
+              "frameCount": 60,
+              "meanSsim": 1,
+              "minSsim": 1,
+              "worstFrame": 30,
+              "thresholds": {
+                "meanSsim": 0.97,
+                "minSsim": 0.96
+              },
+              "pass": true
+            },
+            "service-hover-row": {
+              "crop": {
+                "name": "service-hover-row",
+                "x": 507,
+                "y": 302,
+                "width": 160,
+                "height": 44,
+                "first": 60,
+                "last": 89
+              },
+              "frameCount": 30,
+              "meanSsim": 1,
+              "minSsim": 1,
+              "worstFrame": 60,
+              "thresholds": {
+                "meanSsim": 0.97,
+                "minSsim": 0.96
+              },
+              "pass": true
+            }
+          },
+          "popupBox": {
+            "x": 502,
+            "y": 40,
+            "width": 169.4375,
+            "height": 311
+          },
+          "triggerBox": {
+            "x": 501.796875,
+            "y": 354.5,
+            "width": 66.796875,
+            "height": 28
+          },
+          "motion": {
+            "open": [],
+            "hover": [],
+            "select": []
+          },
+          "reasoningToFastSeam": {
+            "native": {
+              "changedPixels": 0
+            },
+            "hyperframes": {
+              "changedPixels": 0
+            }
+          },
+          "nativePopupRasterSha256": {
+            "menu": "edbed62e3c3df5e60119ac238a14bb9e0c894da7e749d8e7ea2cbb117da8e9a4",
+            "hover": "0af5c51cf520d411ec2b0b19c613c4ba6a653f3bed318fc2f30461bf9714a8ba"
+          }
+        }
       }
     }
   },
   "checks": {
-    "hyperframes": "full check and strict 120-frame render passed in both themes",
-    "hyperframesVersion": "0.8.75",
-    "sourceBrowser": "Chrome Headless Shell 152.0.7977.30",
+    "hyperframes": "full check and strict 120-frame screenshot render passed in dark and light",
+    "sourceBrowser": "Google Chrome for Testing 152.0.7977.30",
     "installedThroughCli": true,
-    "customVariables": "dark and light project, hero, model, reasoning level, reverse Fast-to-Standard service selection, prompt, and open/hover/select timing overrides passed full check, strict 120-frame render, three snapshots, OCR, lightning-state crop, and exact configured-frame change assertions"
+    "strictRender": true
   },
   "artifacts": {
     "referenceVideo": "public/previews/t3-fast-service-tier/reference.mp4",
     "hyperframesVideo": "public/previews/t3-fast-service-tier/hyperframes.mp4",
-    "frameSsim": "parity/t3-fast-service-tier-diff/dark/ssim.txt",
-    "regionSsim": {
-      "composer": "parity/t3-fast-service-tier-diff/dark/composer-ssim.txt",
-      "composer-controls": "parity/t3-fast-service-tier-diff/dark/composer-controls-ssim.txt",
-      "service-menu": "parity/t3-fast-service-tier-diff/dark/service-menu-ssim.txt",
-      "service-hover-row": "parity/t3-fast-service-tier-diff/dark/service-hover-row-ssim.txt"
-    },
-    "hyperframesCheck": "parity/t3-fast-service-tier-diff/dark/hyperframes-check.json",
-    "installedCheck": "parity/t3-fast-service-tier-diff/dark/installed-check.json",
-    "customCheck": "parity/t3-fast-service-tier-diff/dark/custom-check.json",
-    "worstFrame": "parity/t3-fast-service-tier-diff/dark/worst-frame.png",
-    "customized": "parity/t3-fast-service-tier-diff/dark/customized.png",
     "thumbnail": "public/previews/t3-fast-service-tier/thumbnail.png",
-    "lightThumbnail": "public/previews/t3-fast-service-tier/thumbnail-light.png"
+    "nativeRecording": "parity/t3-fast-service-tier-v0042-dark-reference.mkv",
+    "nativeFixture": "assets/t3-code/v0.0.42/fast-tier-v0042-dark-fixture.json",
+    "proof": "parity/t3-catalog/t3-fast-service-tier/dark/proof.json",
+    "rgba": "parity/t3-catalog/t3-fast-service-tier/dark/rgba.json",
+    "referenceRgba": "parity/t3-catalog/t3-fast-service-tier/dark/reference-rgba.sha256",
+    "hyperframesRgba": "parity/t3-catalog/t3-fast-service-tier/dark/hyperframes-rgba.sha256",
+    "frameSsim": "parity/t3-catalog/t3-fast-service-tier/dark/ssim.txt",
+    "hyperframesCheck": "parity/t3-catalog/t3-fast-service-tier/dark/hyperframes-check.json",
+    "strictRender": "parity/t3-catalog/t3-fast-service-tier/dark/hyperframes-render.log"
+  },
+  "filesSha256": {
+    "registry-item.json": "121f5e01e028f989aaa8ee43d39d2dc00acb53b93a0a14093c245fa32aa46bdb",
+    "t3-fast-service-tier.html": "edbe1103431005ccdbe93865a2f65f880aa4f637cda9daebeea24261eb164968",
+    "t3-code-gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+    "fast-tier-v0042-dark-menu-raster.png": "b51d4074d626df24b09d962382d925a6683807bed34e94f5d0ca21395fccdfab",
+    "fast-tier-v0042-dark-hover-raster.png": "521dc20927857a8aa3718c1fbddb700ab51fe0dec08d4f6683e4c4be8b0020f7",
+    "fast-tier-v0042-light-menu-raster.png": "edbed62e3c3df5e60119ac238a14bb9e0c894da7e749d8e7ea2cbb117da8e9a4",
+    "fast-tier-v0042-light-hover-raster.png": "0af5c51cf520d411ec2b0b19c613c4ba6a653f3bed318fc2f30461bf9714a8ba",
+    "licenses/T3-CODE-LICENSE.txt": "935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43",
+    "licenses/T3-THIRD_PARTY_NOTICES.md": "adfbac43e6a2e0c186a2c6e202c80b2c4c1a2b4fd0916b028086f4306a32a6c7",
+    "README.md": "108512402f2e12bd17e0a0093494f46a0e8bfb2bbdc8d806abcf2c9aaf2d862c"
+  },
+  "inputHashes": {
+    "registry/blocks/t3-fast-service-tier/registry-item.json": "121f5e01e028f989aaa8ee43d39d2dc00acb53b93a0a14093c245fa32aa46bdb",
+    "registry/blocks/t3-fast-service-tier/t3-fast-service-tier.html": "edbe1103431005ccdbe93865a2f65f880aa4f637cda9daebeea24261eb164968",
+    "registry/blocks/t3-fast-service-tier/t3-code-gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+    "registry/blocks/t3-fast-service-tier/fast-tier-v0042-dark-menu-raster.png": "b51d4074d626df24b09d962382d925a6683807bed34e94f5d0ca21395fccdfab",
+    "registry/blocks/t3-fast-service-tier/fast-tier-v0042-dark-hover-raster.png": "521dc20927857a8aa3718c1fbddb700ab51fe0dec08d4f6683e4c4be8b0020f7",
+    "registry/blocks/t3-fast-service-tier/fast-tier-v0042-light-menu-raster.png": "edbed62e3c3df5e60119ac238a14bb9e0c894da7e749d8e7ea2cbb117da8e9a4",
+    "registry/blocks/t3-fast-service-tier/fast-tier-v0042-light-hover-raster.png": "0af5c51cf520d411ec2b0b19c613c4ba6a653f3bed318fc2f30461bf9714a8ba",
+    "registry/blocks/t3-fast-service-tier/licenses/T3-CODE-LICENSE.txt": "935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43",
+    "registry/blocks/t3-fast-service-tier/licenses/T3-THIRD_PARTY_NOTICES.md": "adfbac43e6a2e0c186a2c6e202c80b2c4c1a2b4fd0916b028086f4306a32a6c7",
+    "registry/blocks/t3-fast-service-tier/README.md": "108512402f2e12bd17e0a0093494f46a0e8bfb2bbdc8d806abcf2c9aaf2d862c",
+    "scripts/verify-t3-catalog-ports.mjs": "50fffcbcecdf407c24dca3c99ba5edbc34132862dd101def36dd74eda88f9ee3",
+    "scripts/t3-capture-images.mjs": "003e4c1db7c9f6548881b3f0d8b1b55bff60720770b4eca0ef7d85d7d498b35c",
+    "scripts/parity-evidence.mjs": "442ef92774683522815f246cc87509c9d32082e915f1f77fc832a2b46755c006",
+    "cli/bin/hyfrme.mjs": "b3ebe31fcb7618917193a5fb1096fc6769f17615634f6718b90f7605a1f5073f",
+    "assets/t3-code/v0.0.42/fast-tier-v0042-dark-fixture.json": "f338e9af9f2ea2fb9e5c877a37465dd98c3b655d241c2aa57e324eab1bc528b3",
+    "assets/t3-code/v0.0.42/index.html": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+    "assets/t3-code/v0.0.42/t3.css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+    "assets/t3-code/v0.0.42/index.js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0",
+    "assets/t3-code/v0.0.42/fast-tier-v0042-dark-before.html": "7facf13d2f31109540099d9cd3a9e452c7a1042ce3c3ff9195e31d393fe3510e",
+    "assets/t3-code/v0.0.42/fast-tier-v0042-light-before.html": "7facf13d2f31109540099d9cd3a9e452c7a1042ce3c3ff9195e31d393fe3510e",
+    "assets/t3-code/v0.0.42/fast-tier-v0042-dark-hover.html": "b097b0c5094da0c617409ee9e91573ebc13296c8ed74e1cfda1054359adc44e0",
+    "assets/t3-code/v0.0.42/fast-tier-v0042-dark-menu.html": "b097b0c5094da0c617409ee9e91573ebc13296c8ed74e1cfda1054359adc44e0",
+    "assets/t3-code/v0.0.42/fast-tier-v0042-light-hover.html": "b097b0c5094da0c617409ee9e91573ebc13296c8ed74e1cfda1054359adc44e0",
+    "assets/t3-code/v0.0.42/fast-tier-v0042-light-menu.html": "b097b0c5094da0c617409ee9e91573ebc13296c8ed74e1cfda1054359adc44e0",
+    "assets/t3-code/v0.0.42/fast-tier-v0042-dark-portal.html": "7f55d86c10e45578eb897b0a37b895b81cf73e9e03d39a7dafe97649ca213de3",
+    "assets/t3-code/v0.0.42/fast-tier-v0042-light-portal.html": "7f55d86c10e45578eb897b0a37b895b81cf73e9e03d39a7dafe97649ca213de3",
+    "assets/t3-code/v0.0.42/fast-tier-v0042-dark-hover-portal.html": "3cca4c04e075b020d808a4f869e6d20ff0c376eb88ec526ab7226510ac87f337",
+    "assets/t3-code/v0.0.42/fast-tier-v0042-light-hover-portal.html": "3cca4c04e075b020d808a4f869e6d20ff0c376eb88ec526ab7226510ac87f337",
+    "assets/t3-code/v0.0.42/fast-tier-v0042-dark-after.html": "379334ec096fdd7dc842c9e8d319bca4045e02c8f19775ee3b7a3bc04c90db6c",
+    "assets/t3-code/v0.0.42/fast-tier-v0042-light-after.html": "379334ec096fdd7dc842c9e8d319bca4045e02c8f19775ee3b7a3bc04c90db6c",
+    "assets/t3-code/v0.0.42/dark-theme.json": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
+    "parity/t3-fast-service-tier-v0042-dark-reference.mkv": "61be5e639bc233f3067127ed11c22827fff5a2ee319c31e38e8abe53ad2b50ec",
+    "parity/t3-catalog/t3-fast-service-tier/dark/proof.json": "88b2f205191f0b591f0f2bfdc5fba834a914cb9e18f8217e1cb8e73bd1c4e064",
+    "assets/t3-code/v0.0.42/fast-tier-v0042-light-fixture.json": "1fe17c21145886f15ee19264070af6a28c75e1738fb12355d43de28c7095c220",
+    "assets/t3-code/v0.0.42/light-theme.json": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
+    "parity/t3-fast-service-tier-v0042-light-reference.mkv": "4f11a010058992b730c56fc86df180dcb39800d3e434390fd06acea0b145da2c",
+    "parity/t3-catalog/t3-fast-service-tier/light/proof.json": "1534922ce3b2b79bc482d19d4d2ce9b0969cdc703d16c5caa3529dd5174400e3",
+    "scripts/publish-t3-catalog-parity.mjs": "56b6c8bfcf9e1def8345ff2cbb0eb1654eca044596c1431849fa7746258a818d"
+  },
+  "artifactHashes": {
+    "parity/t3-catalog/t3-fast-service-tier/dark/proof.json": "88b2f205191f0b591f0f2bfdc5fba834a914cb9e18f8217e1cb8e73bd1c4e064",
+    "parity/t3-catalog/t3-fast-service-tier/dark/rgba.json": "d459efe1011d9396c204257dd8a048238cfe87da069f611d39c2f90f53c4a821",
+    "parity/t3-catalog/t3-fast-service-tier/dark/reference-rgba.sha256": "0d80fec45bb1659009a807778b7217f1d92bb17fd18729cdca5c873885089307",
+    "parity/t3-catalog/t3-fast-service-tier/dark/hyperframes-rgba.sha256": "0d80fec45bb1659009a807778b7217f1d92bb17fd18729cdca5c873885089307",
+    "parity/t3-catalog/t3-fast-service-tier/dark/ssim.txt": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/t3-catalog/t3-fast-service-tier/dark/ssim.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-fast-service-tier/dark/hyperframes-check.json": "9ead7b5e72843816baa8be2fbaf2a4f65ed44c180ca73ae5fefd7d4dcc8c2c18",
+    "parity/t3-catalog/t3-fast-service-tier/dark/hyperframes-check.log": "ef15b3f4ed4e101e27838357f6ceb6897cb6dc82ee3d2c63e0a67fcc30a0eb18",
+    "parity/t3-catalog/t3-fast-service-tier/dark/hyperframes-render.log": "b3337bc4f91d896af60a208ee2c7503cf5885d681be5e66e27f12f7e504c4a51",
+    "parity/t3-catalog/t3-fast-service-tier/dark/reference-decode.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-fast-service-tier/dark/install.log": "d23cd9f55550489bfbf70c3069c51eab11ae141a95dc1c358a7e2c83822b802f",
+    "parity/t3-catalog/t3-fast-service-tier/light/proof.json": "1534922ce3b2b79bc482d19d4d2ce9b0969cdc703d16c5caa3529dd5174400e3",
+    "parity/t3-catalog/t3-fast-service-tier/light/rgba.json": "df44c3d0cf1616d705297f8d8b0d25d4c05c8227a6aefc25ddd40cb3a49748cc",
+    "parity/t3-catalog/t3-fast-service-tier/light/reference-rgba.sha256": "daba2bdacae37612295fbe20d79e987588209e24ba98af20d850171db7785d0d",
+    "parity/t3-catalog/t3-fast-service-tier/light/hyperframes-rgba.sha256": "daba2bdacae37612295fbe20d79e987588209e24ba98af20d850171db7785d0d",
+    "parity/t3-catalog/t3-fast-service-tier/light/ssim.txt": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/t3-catalog/t3-fast-service-tier/light/ssim.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-fast-service-tier/light/hyperframes-check.json": "a37be228ec4ed89509c65610f2c43f08fb9a8dce3aec7aaff6638d35d50dbee4",
+    "parity/t3-catalog/t3-fast-service-tier/light/hyperframes-check.log": "a1dcf884474cf96757047b651d6adc1f3d1ec70cd49cdc0dc7d4f325ac46489b",
+    "parity/t3-catalog/t3-fast-service-tier/light/hyperframes-render.log": "3aa9b15fad56ddf11caffb1184c869c1b10e5cd341e9792741d82d7dacc71cb4",
+    "parity/t3-catalog/t3-fast-service-tier/light/reference-decode.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-fast-service-tier/light/install.log": "0159508b4c65209ea6773065e0896759b3aeac5fe538b033e8f831e18c9c0cbd",
+    "public/previews/t3-fast-service-tier/reference.mp4": "d8d54373287518880260b2241224ad16a9e19b3c41749d563b230403effed30f",
+    "public/previews/t3-fast-service-tier/hyperframes.mp4": "d8d54373287518880260b2241224ad16a9e19b3c41749d563b230403effed30f",
+    "public/previews/t3-fast-service-tier/thumbnail.png": "e161a4a7ffc04039048d4bb223157e4c1d814f1f31445491d88860b395736d1a",
+    "public/previews/t3-fast-service-tier/reference-light.mp4": "70344d5dbc992f190f1066e5d6c7182b7a7500ece3439feecb1e04d76fe9f4d7",
+    "public/previews/t3-fast-service-tier/hyperframes-light.mp4": "70344d5dbc992f190f1066e5d6c7182b7a7500ece3439feecb1e04d76fe9f4d7",
+    "public/previews/t3-fast-service-tier/thumbnail-light.png": "703151545aff441000b3fb8753ecdd26db03b0d414dc451e49657e912384afda"
+  },
+  "previewEncoding": {
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1200,
+    "height": 660,
+    "fps": 30,
+    "frameCount": 120,
+    "bottomPadding": 1,
+    "thumbnailFrame": 90
+  },
+  "historicalCustomizationEvidence": {
+    "contract": "Previously measured customization, crop, variant, and continuity evidence; these measurements are outside the exact current default-fixture claim.",
+    "result": {
+      "frameCount": 120,
+      "meanSsim": 0.9912482499999989,
+      "minSsim": 0.990237,
+      "worstFrame": 90,
+      "pass": true,
+      "p05Ssim": 0.990237,
+      "p95Ssim": 0.992384
+    },
+    "fixture": {
+      "width": 1200,
+      "height": 659,
+      "fps": 30,
+      "durationInFrames": 120,
+      "props": {
+        "projectName": "hyfrme",
+        "prompt": "Verify the Hyfrme Logo Enter final-frame timing.",
+        "modelName": "GPT-6-Astra",
+        "reasoningLevel": "High",
+        "serviceBefore": "Standard",
+        "serviceAfter": "Fast",
+        "openFrame": 30,
+        "hoverFrame": 60,
+        "selectFrame": 90,
+        "theme": "dark"
+      },
+      "sourceHashes": {
+        "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+        "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+        "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+      },
+      "sourceDomHashes": {
+        "before": "7facf13d2f31109540099d9cd3a9e452c7a1042ce3c3ff9195e31d393fe3510e",
+        "menu": "b097b0c5094da0c617409ee9e91573ebc13296c8ed74e1cfda1054359adc44e0",
+        "portal": "7f55d86c10e45578eb897b0a37b895b81cf73e9e03d39a7dafe97649ca213de3",
+        "hover": "b097b0c5094da0c617409ee9e91573ebc13296c8ed74e1cfda1054359adc44e0",
+        "hover-portal": "3cca4c04e075b020d808a4f869e6d20ff0c376eb88ec526ab7226510ac87f337",
+        "after": "379334ec096fdd7dc842c9e8d319bca4045e02c8f19775ee3b7a3bc04c90db6c"
+      },
+      "referenceSha256": "61be5e639bc233f3067127ed11c22827fff5a2ee319c31e38e8abe53ad2b50ec",
+      "compositionSha256": "addfae67ab68980fa435b7da21bd8fd8369907163fab1718b682ea9df4ba7ea5"
+    },
+    "checks": {
+      "hyperframes": "full check and strict 120-frame render passed in both themes",
+      "hyperframesVersion": "0.8.75",
+      "sourceBrowser": "Chrome Headless Shell 152.0.7977.30",
+      "installedThroughCli": true,
+      "customVariables": "dark and light project, hero, model, reasoning level, reverse Fast-to-Standard service selection, prompt, and open/hover/select timing overrides passed full check, strict 120-frame render, three snapshots, OCR, lightning-state crop, and exact configured-frame change assertions"
+    },
+    "fields": {
+      "providerState": "seeded model, reasoning, and service-tier options; no provider configured",
+      "interaction": "native v0.0.42 service-tier menu open, Fast hover, Fast selection, and lightning indicator; no model inference executed",
+      "defaultPopupRendering": "The default dark/light menu and hover popup use cropped pixels from the pinned official v0.0.42 capture. The native DOM menu remains installed and is rendered for changed visible content or service-tier choices; theme and event timing remain editable in both modes.",
+      "editableDomBaseline": {
+        "dark": {
+          "wholeFrame": {
+            "frameCount": 120,
+            "meanSsim": 0.9903937499999967,
+            "minSsim": 0.990237,
+            "worstFrame": 90,
+            "pass": true
+          },
+          "hoverRow": {
+            "crop": {
+              "name": "service-hover-row",
+              "x": 507,
+              "y": 302,
+              "width": 160,
+              "height": 44,
+              "first": 60,
+              "last": 89
+            },
+            "frameCount": 30,
+            "meanSsim": 0.9518060000000005,
+            "minSsim": 0.951806,
+            "worstFrame": 60,
+            "thresholds": {
+              "meanSsim": 0.97,
+              "minSsim": 0.96
+            },
+            "pass": false
+          },
+          "sourceSha256": "4a6a3642484455012401a21bf7990339a76ba3be7132fd5a50fae8e3ec6c4d3c",
+          "artifacts": {
+            "source": "parity/t3-fast-service-tier-dom-only/t3-fast-service-tier.html",
+            "regionResult": "parity/t3-fast-service-tier-dom-only/dark/region-result.json",
+            "hoverRowFrameSsim": "parity/t3-fast-service-tier-dom-only/dark/service-hover-row-ssim.txt"
+          }
+        },
+        "light": {
+          "wholeFrame": {
+            "frameCount": 120,
+            "meanSsim": 0.9906582499999995,
+            "minSsim": 0.990526,
+            "worstFrame": 90,
+            "pass": true
+          },
+          "hoverRow": {
+            "crop": {
+              "name": "service-hover-row",
+              "x": 507,
+              "y": 302,
+              "width": 160,
+              "height": 44,
+              "first": 60,
+              "last": 89
+            },
+            "frameCount": 30,
+            "meanSsim": 0.9481670000000005,
+            "minSsim": 0.948167,
+            "worstFrame": 60,
+            "thresholds": {
+              "meanSsim": 0.97,
+              "minSsim": 0.96
+            },
+            "pass": false
+          },
+          "sourceSha256": "4a6a3642484455012401a21bf7990339a76ba3be7132fd5a50fae8e3ec6c4d3c",
+          "artifacts": {
+            "source": "parity/t3-fast-service-tier-dom-only/t3-fast-service-tier.html",
+            "regionResult": "parity/t3-fast-service-tier-dom-only/light/region-result.json",
+            "hoverRowFrameSsim": "parity/t3-fast-service-tier-dom-only/light/service-hover-row-ssim.txt"
+          }
+        }
+      },
+      "intentionalOcclusion": "The native service-tier menu covers the empty-thread title and prompt. Only those underlying text elements carry layout overlap/occlusion annotations; focused menu-region SSIM measures the overlay itself.",
+      "focusedMenuBenchmark": {
+        "targetMeanSsim": 0.98,
+        "darkMeanSsim": 1,
+        "lightMeanSsim": 1,
+        "passed": true,
+        "note": "The unchanged default popup uses the pinned native crop and reaches exact focused-menu pixels. Edited popup content uses the source DOM; its lower small-text score is recorded in editableDomBaseline."
+      }
+    }
   }
 }

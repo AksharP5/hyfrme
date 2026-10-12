@@ -2,7 +2,7 @@
   "slug": "shader-gem-smoke",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "32d10122d269bd3f8a1cfbc9bc89c8df4be7ff3c",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shader-gem-smoke/index.tsx",
     "config": "registry/remocn/shader-gem-smoke/config.ts",
     "license": "MIT"
@@ -21,25 +21,77 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "422d19e529485542f32aa61e36883e061bd9fc0819a9e97aa2ce4696e8d84a05",
+    "shader-gem-smoke.html": "e2c263c8eb47d909b162f67fc4de52f5b080cbc6b07b3a40215721fddc2bf002",
+    "shader-gem-smoke.runtime.js": "4a60de4cb4d27e445c2402bfc60c2367feffc01e561d40c273cd1b7786bb703c",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md": "fc408cbbf99a20fbc88c2296a04bac7dadbe7114f2456673de3e5b7986cfd19d"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "49f4457cfeadbd3fa4cb797d700ee22f8893c915a773cd7ff84cbd9a2d98d622",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.996852,
-    "minSsim": 0.996321,
-    "p05Ssim": 0.996459,
-    "p95Ssim": 0.99711,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed; full check runtime, motion, and contrast passed, while the layout sweep reported the known sweep_static WebGL-canvas heuristic"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/shader-gem-smoke/remocn.mp4",
+    "referenceVideo": "public/previews/shader-gem-smoke/reference.mp4",
     "hyperframesVideo": "public/previews/shader-gem-smoke/hyperframes.mp4",
-    "summary": "parity/shader-gem-smoke-diff/summary.json"
+    "thumbnail": "public/previews/shader-gem-smoke/thumbnail.png",
+    "summary": "parity/shader-gem-smoke-diff/summary.json",
+    "perFrameSsim": "parity/shader-gem-smoke-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-gem-smoke-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-gem-smoke-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-gem-smoke-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-gem-smoke-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shader-gem-smoke-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shader-gem-smoke-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shader-gem-smoke/reference.mp4": "77d68f1ddfab22c5f5eb5649f540215a5e66f2fcbe1837ab9847944eeba88515",
+    "public/previews/shader-gem-smoke/hyperframes.mp4": "77d68f1ddfab22c5f5eb5649f540215a5e66f2fcbe1837ab9847944eeba88515",
+    "public/previews/shader-gem-smoke/thumbnail.png": "0f5e7e472fa5165fd34312cd5c2e34c109e90b1d06ae0df8f3d082c9574bd0c9",
+    "parity/shader-gem-smoke-diff/summary.json": "ad55b29e05e75e155f68631a7d07dcf33cfd0beba9f35e6e6cb01ccc34051e53",
+    "parity/shader-gem-smoke-diff/ssim.log": "c4fbedb2045d104b60568467b9860d7ee5ffeee1f88dedd0034e5cf393a3221a",
+    "parity/shader-gem-smoke-diff/hyperframes-check.log": "8258343d79654723604d6ad3f137e02961d34e3ad42968c060314f983e44db9e",
+    "parity/shader-gem-smoke-diff/worst-frame.png": "e9642ed0b8213f4f467f07e3907ad5ecfd4f9ae0ca314bd8ea488038ab28f5ff",
+    "parity/shader-gem-smoke-diff/reference-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-gem-smoke-diff/hyperframes-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-gem-smoke-diff/reference-rgba.framemd5": "a877d9a81df110117a4d373430d6a9838c654bd2b3ae2cb80ce3baaeb672ed9f",
+    "parity/shader-gem-smoke-diff/hyperframes-rgba.framemd5": "a877d9a81df110117a4d373430d6a9838c654bd2b3ae2cb80ce3baaeb672ed9f"
   }
 }

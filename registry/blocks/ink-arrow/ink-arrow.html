@@ -1,10 +1,12 @@
 <!doctype html>
-<html lang="en" data-composition-variables='[{"id":"curvature","type":"number","label":"Curvature","default":0.35},{"id":"strokeWidth","type":"number","label":"Brush width","default":8},{"id":"pressure","type":"number","label":"Opening pressure","default":0.2},{"id":"release","type":"number","label":"Closing pressure","default":1},{"id":"grain","type":"number","label":"Grain","default":1},{"id":"headSize","type":"number","label":"Head size","default":24},{"id":"drawDur","type":"number","label":"Draw frames","default":36},{"id":"headDur","type":"number","label":"Head frames","default":12},{"id":"color","type":"color","label":"Ink color","default":"#26242c"},{"id":"seed","type":"string","label":"Seed","default":"arrow"},{"id":"step","type":"number","label":"Frames / pose","default":3}]'>
+<html lang="en" data-composition-variables='[{"id":"curvature","type":"number","label":"Curvature","default":0.35,"min":-1,"max":1,"step":0.05},{"id":"strokeWidth","type":"number","label":"Brush width","default":8,"min":2,"max":24,"step":1},{"id":"pressure","type":"number","label":"Opening pressure","default":0.2,"min":0.05,"max":1,"step":0.05},{"id":"release","type":"number","label":"Closing pressure","default":1,"min":0.05,"max":1,"step":0.05},{"id":"grain","type":"number","label":"Grain","default":1,"min":0,"max":2,"step":0.1},{"id":"headSize","type":"number","label":"Head size","default":24,"min":8,"max":48,"step":1},{"id":"drawDur","type":"number","label":"Draw frames","default":36,"min":12,"max":90,"step":1},{"id":"headDur","type":"number","label":"Head frames","default":12,"min":4,"max":48,"step":1},{"id":"color","type":"color","label":"Ink color","default":"#26242c"},{"id":"seed","type":"string","label":"Seed","default":"arrow"},{"id":"step","type":"number","label":"Frames / pose","default":3,"min":1,"max":6,"step":1},{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25}]'>
   <head>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <style>
-      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: block; }
+
+      @font-face { font-family: "Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
 
 
 
@@ -13,27 +15,48 @@
       * { box-sizing: border-box; }
       html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #f1eee7; }
       body { --font-geist-sans: "Geist"; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
-      #hyfrme-source-root { position: absolute; inset: 0; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Geist";font-family:"Geist",sans-serif; background:#f1eee7; }
+
+
+#hyfrme-source-root {
+  font-size: 14px;
+  line-height: calc(20 / 14);
+  font-feature-settings: "cv11", "ss01";
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+#hyfrme-source-root, #hyfrme-source-root * {
+  text-rendering: optimizeLegibility;
+}
+
     </style>
   </head>
   <body>
     <div id="root" data-composition-id="ink-arrow" data-start="0" data-duration="5" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
       <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="5" data-track-index="0">
-        <div id="hyfrme-source-root"></div>
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
       </div>
     </div>
     <script src="./ink-arrow.runtime.js"></script>
     <script>
       window.__timelines = window.__timelines || {};
-      const clock = { frame: 0 };
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="ink-arrow"] [data-hyfrme-clock]');
+      clock.frame = 0;
       const timeline = gsap.timeline({ paused: true });
-      timeline.to(clock, {
+      timeline.to('[data-composition-id="ink-arrow"] [data-hyfrme-clock]', {
         frame: 150,
         duration: 5,
         ease: "none",
-        onUpdate: () => window.__hyfrmeRenderFrame(Math.max(0, Math.min(149, Math.round(clock.frame)))),
+        onUpdate: () => renderFrame(Math.max(0, Math.min(149, Math.round(clock.frame)))),
       });
+
       window.__timelines["ink-arrow"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
     </script>
   </body>
 </html>

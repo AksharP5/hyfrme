@@ -11,11 +11,23 @@
 
 
 
+
       * { box-sizing: border-box; }
       html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #141318; }
       body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
       #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#141318; }
 
+
+#hyfrme-source-root {
+  font-size: 14px;
+  line-height: calc(20 / 14);
+  font-feature-settings: "cv11", "ss01";
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+#hyfrme-source-root, #hyfrme-source-root * {
+  text-rendering: optimizeLegibility;
+}
 
     </style>
   </head>
@@ -24,7 +36,7 @@
       <span hidden data-layout-ignore data-hyfrme-clock></span>
 
       <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="2" data-track-index="0">
-        <div id="hyfrme-source-root" data-hyfrme-assets='{"https://fonts.gstatic.com/s/anton/v27/1Ptgg87LROyAm0K0.ttf":"../assets/remocn-additions/Anton-v27.ttf"}'></div>
+        <div id="hyfrme-source-root" data-hyfrme-assets='{"https://fonts.gstatic.com/s/anton/v27/1Ptgg87LROyAm0K0.ttf":"../assets/remocn-additions/Anton-v27.ttf","/assets/remocn-additions/Anton-v27.ttf":"../assets/remocn-additions/Anton-v27.ttf"}'></div>
       </div>
     </div>
     <script src="./stretch-in.runtime.js"></script>

@@ -2,7 +2,7 @@
   "slug": "shader-light-tunnel",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "e3dc260ff1965440d1f64fb65a8c9a9373e78328",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shader-light-tunnel/index.tsx",
     "config": "registry/remocn/shader-light-tunnel/config.ts",
     "license": "MIT"
@@ -22,13 +22,25 @@
     },
     "background": "#05050a"
   },
+  "filesSha256": {
+    "registry-item.json": "242187f61068d24ac38fed48e61981a7987d4b77e37258849e9cbb5c87859840",
+    "shader-light-tunnel.html": "e0b016f476e5f92bf5357f0b84dd899df09ae96b2eb06cb33da577164de30d1d",
+    "shader-light-tunnel.runtime.js": "45d2d1c7251fd4270b76aae296482b2b8914ad9c3f6b6b3bac88c786d719ebc9",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "aa288fb94dc6c4f090e840bc4dad37172f87535ec999c4e11ace258a3f423dea",
+  "fingerprint": "3416d48831b7c3c950b6ad6f95e15d449e162b9d280ed9f5f1a215bb045528c9",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 90,
@@ -41,14 +53,23 @@
       "mismatchedFrames": [],
       "pass": true
     },
+    "rgba": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -60,6 +81,21 @@
     "hyperframesCheck": "parity/shader-light-tunnel-diff/hyperframes-check.log",
     "worstFrame": "parity/shader-light-tunnel-diff/worst-frame.png",
     "referenceAlpha": "parity/shader-light-tunnel-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/shader-light-tunnel-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/shader-light-tunnel-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shader-light-tunnel-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shader-light-tunnel-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shader-light-tunnel/reference.mp4": "b506ba2a910743a205e2ea2fdd24985d072389ab35a690be32eb0e0b230bb4fd",
+    "public/previews/shader-light-tunnel/hyperframes.mp4": "b506ba2a910743a205e2ea2fdd24985d072389ab35a690be32eb0e0b230bb4fd",
+    "public/previews/shader-light-tunnel/thumbnail.png": "6d55f5fb0b55e27b775ffdbeba18af7c0a904d548aaa733949fcc8fde873b3f0",
+    "parity/shader-light-tunnel-diff/summary.json": "b836772793766404c0492e741437d4fb40b614cf31be7aace9f9b10b16c85450",
+    "parity/shader-light-tunnel-diff/ssim.log": "4638ac3b2b03d74f8b056c3824e13d904997bddfbc1c0f3b8d655822a1eb000b",
+    "parity/shader-light-tunnel-diff/hyperframes-check.log": "889b900b78f1eb1ea40db105decf9e0896627c06b7a1f8840648d6dfe3b119b7",
+    "parity/shader-light-tunnel-diff/worst-frame.png": "4ce6fecbf5d9f2c57e7fbb9559735c2f38c85a531cd05d30f5b4ab9213f6706f",
+    "parity/shader-light-tunnel-diff/reference-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/shader-light-tunnel-diff/hyperframes-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/shader-light-tunnel-diff/reference-rgba.framemd5": "b4869fc3d50e9a29275fd5a222ab6f06a817dd616cbeac5cc0810178875a1300",
+    "parity/shader-light-tunnel-diff/hyperframes-rgba.framemd5": "b4869fc3d50e9a29275fd5a222ab6f06a817dd616cbeac5cc0810178875a1300"
   }
 }

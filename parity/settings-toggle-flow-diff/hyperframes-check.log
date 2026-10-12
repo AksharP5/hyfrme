@@ -1,0 +1,147 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": false,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 0,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 3.473,
+        "selector": "#settings-toggle-flow-source-root > div:nth-of-type(1) > div:nth-of-type(5)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 700,
+          "top": 381,
+          "right": 748.66,
+          "bottom": 399,
+          "width": 48.66,
+          "height": 18
+        },
+        "containerSelector": "#settings-toggle-flow-source-root > div:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "text": "Volume",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/settings-toggle-flow.html",
+        "bbox": {
+          "x": 700,
+          "y": 381,
+          "width": 48.66,
+          "height": 18
+        },
+        "firstSeen": 3.473,
+        "lastSeen": 4.589,
+        "occurrences": 11,
+        "heldMs": 1116.0000000000005
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 4.148,
+        "selector": "#settings-toggle-flow-source-root > div:nth-of-type(1) > div:nth-of-type(5)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 700,
+          "top": 381,
+          "right": 748.66,
+          "bottom": 399,
+          "width": 48.66,
+          "height": 18
+        },
+        "containerSelector": "#settings-toggle-flow-source-root > div:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "text": "Volume",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/settings-toggle-flow.html",
+        "bbox": {
+          "x": 700,
+          "y": 381,
+          "width": 48.66,
+          "height": 18
+        },
+        "firstSeen": 4.148,
+        "lastSeen": 4.148,
+        "occurrences": 1,
+        "heldMs": 0
+      }
+    ],
+    "duration": 10.666666666666666,
+    "samples": [
+      0.593,
+      1.778,
+      2.963,
+      4.148,
+      5.333,
+      6.519,
+      7.704,
+      8.889,
+      10.074
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 2,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.593,
+      2.963,
+      5.333,
+      7.704,
+      10.074
+    ],
+    "checked": 0,
+    "passed": 0
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.99",
+    "latestVersion": "0.8.140",
+    "updateAvailable": true
+  }
+}

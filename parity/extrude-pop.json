@@ -2,7 +2,7 @@
   "slug": "extrude-pop",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/extrude-pop/index.tsx",
     "config": "registry/remocn/extrude-pop/config.ts",
     "license": "MIT"
@@ -22,21 +22,38 @@
     },
     "background": "#141318"
   },
+  "filesSha256": {
+    "registry-item.json": "e12406ca38c77c754cebb34188dac151d61243a9fde2e32565ec56d24f76103a",
+    "extrude-pop.html": "c84820fca8979a18aba2a2c9d971de1476558997a4e1b2889007ea1c31ea93de",
+    "extrude-pop.runtime.js": "57bb59abf630fe269964dc3048ba28baba8f4597a084715c8d1699cccbb42934",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "22fb61906bba185c34272ba55f82d180b071d0855237400f803cfa90e5dfa367",
+  "fingerprint": "3bacef6ce184d34af8d2407196076c2403e4c44d6e562b276692641cd9b17848",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.9998126444444436,
-    "minSsim": 0.999181,
-    "p05Ssim": 0.999779,
-    "p95Ssim": 0.999946,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
     "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 90,
       "mismatchedFrames": [],
       "pass": true
@@ -44,11 +61,15 @@
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -60,6 +81,21 @@
     "hyperframesCheck": "parity/extrude-pop-diff/hyperframes-check.log",
     "worstFrame": "parity/extrude-pop-diff/worst-frame.png",
     "referenceAlpha": "parity/extrude-pop-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/extrude-pop-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/extrude-pop-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/extrude-pop-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/extrude-pop-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/extrude-pop/reference.mp4": "20148d5e548ccd1b03828c512a386bd75d8956d9ab981d5f5f2491846daf1e9c",
+    "public/previews/extrude-pop/hyperframes.mp4": "20148d5e548ccd1b03828c512a386bd75d8956d9ab981d5f5f2491846daf1e9c",
+    "public/previews/extrude-pop/thumbnail.png": "a9f161982b384c9c1c5244db022bd5a72c38ec0c527fc0c38527707ab6a80f93",
+    "parity/extrude-pop-diff/summary.json": "b836772793766404c0492e741437d4fb40b614cf31be7aace9f9b10b16c85450",
+    "parity/extrude-pop-diff/ssim.log": "4638ac3b2b03d74f8b056c3824e13d904997bddfbc1c0f3b8d655822a1eb000b",
+    "parity/extrude-pop-diff/hyperframes-check.log": "b5c469864fb34084e67425c217b5bdb1db7b42b62e77b61024692919c4f354c6",
+    "parity/extrude-pop-diff/worst-frame.png": "accda6f5ec1be2bda8d63e0c89ade760963f0ab13d05829b318545428110c8fa",
+    "parity/extrude-pop-diff/reference-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/extrude-pop-diff/hyperframes-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/extrude-pop-diff/reference-rgba.framemd5": "57673f5129a9b8a85a2c66f481668cbc8c5355ae536ded95ff5db3666be6f43f",
+    "parity/extrude-pop-diff/hyperframes-rgba.framemd5": "57673f5129a9b8a85a2c66f481668cbc8c5355ae536ded95ff5db3666be6f43f"
   }
 }

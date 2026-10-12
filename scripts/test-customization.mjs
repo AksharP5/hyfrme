@@ -190,6 +190,13 @@ test("angle sliders preserve negative defaults and allow either direction", asyn
     const bounds = numberBounds(variable, { tags: [] });
     assert(bounds.min <= variable.default);
     assert(bounds.max > 0);
-    assert.equal(bounds.step, 1);
+    assert.equal(bounds.step, variable.step ?? 1);
   }
+  assert.deepEqual(
+    numberBounds(
+      { id: "angle", type: "number", label: "Angle", default: -7 },
+      { tags: [] },
+    ),
+    { min: -14, max: 14, step: 1 },
+  );
 });

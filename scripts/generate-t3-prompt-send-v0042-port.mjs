@@ -1,5 +1,6 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
@@ -119,9 +120,14 @@ const html = `<!doctype html>
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-stage[hidden] { display:none !important; }
   .t3-state[hidden] { display: none !important; }
-  .t3-pixel-capture { position: absolute; inset: 0; z-index: 100; pointer-events: none; background-repeat: no-repeat; background-size: 14400px 659px; background-position: 0 0; }
+  /* Captured frames already include native tooltips at z-index 140. */
+  .t3-pixel-capture { position: absolute; inset: 0; z-index: 200; pointer-events: none; width: 1200px; height: 659px; }
   .t3-pixel-capture[hidden] { display: none !important; }
   .base-ui-disable-scrollbar { scrollbar-width: none; }
   .base-ui-disable-scrollbar::-webkit-scrollbar { display: none; }
@@ -129,18 +135,18 @@ const html = `<!doctype html>
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
 ${["dark", "light"].flatMap((theme) => phases[theme].map((phase, index) => `<div class="${theme} t3-stage t3-state" data-t3-theme="${theme}" data-t3-state="${phase}" style="${stageThemes[theme].replaceAll('"', "&quot;")}"${theme === "light" || (theme === "dark" && index > 0) ? " hidden" : ""}>${states[theme][phase]}</div>`)).join("\n")}
-${["dark", "light"].flatMap((theme) => sprites[theme].map((_, row) =>
-  `<div class="t3-pixel-capture" data-t3-pixel-theme="${theme}" data-t3-pixel-row="${row}" style="background-image:url(compositions/t3-prompt-send-capture-${theme}-${String(row).padStart(2, "0")}.webp)" hidden></div>`
-)).join("\n")}
+<canvas data-layout-ignore class="t3-pixel-capture" width="1200" height="659" hidden></canvas>
 </div>
 <script src="t3-code-gsap.min.js"></script>
 <script>
 window.__timelines = window.__timelines || {};
 const defaults = ${scriptJson(defaults)};
 const options = { ...defaults, ...(window.__hyperframes?.getVariables() ?? {}) };
+const pixelMode = options.renderMode === 'pixel-verified' && Object.entries(defaults).every(([key, value]) => key === 'theme' || key === 'renderMode' || options[key] === value);
 const stages = [...document.querySelectorAll('#root .t3-stage')];
 for (const stage of stages) {
   for (const [key, value] of Object.entries(${scriptJson(fontTheme)})) stage.style.setProperty(key, value);
@@ -184,6 +190,11 @@ for (const stage of stages) {
     if (target && target !== stage) target.dataset.t3CapturedOpacity = String(visual.messageOpacity);
   }
 }
+const capture = document.querySelector('canvas.t3-pixel-capture');
+const captureContext = capture.getContext('2d');
+if (!captureContext) throw new Error('Native frame capture requires Canvas 2D');
+captureContext.imageSmoothingEnabled = false;
+let captureImages = [];
 const clock = { frame: 0 };
 function draw() {
   const frame = Math.min(119, Math.max(0, Math.round(clock.frame)));
@@ -194,27 +205,34 @@ function draw() {
   if (!phase && frame >= completeFrame) phase = 'complete';
   if (!phase) phase = 'active';
   for (const stage of stages) {
-    stage.hidden = stage.dataset.t3Theme !== theme || stage.dataset.t3State !== phase;
+    stage.hidden = pixelMode || stage.dataset.t3Theme !== theme || stage.dataset.t3State !== phase;
     if (!stage.hidden) {
       for (const element of stage.querySelectorAll('[data-t3-scroll-top]')) element.scrollTop = Number(element.dataset.t3ScrollTop);
       const opacityTarget = stage.querySelector('[data-t3-captured-opacity]');
       if (opacityTarget) opacityTarget.style.opacity = opacityTarget.dataset.t3CapturedOpacity;
     }
   }
-  const usePixelCapture = options.renderMode === 'pixel-verified';
-  const captureRow = Math.floor(frame / 12);
-  for (const capture of document.querySelectorAll('[data-t3-pixel-theme]')) {
-    const active = usePixelCapture && capture.dataset.t3PixelTheme === theme && Number(capture.dataset.t3PixelRow) === captureRow;
-    capture.hidden = !active;
-    if (active) {
-      capture.style.backgroundPosition = '-' + ((frame % 12) * 1200) + 'px 0px';
-    }
-  }
+  const row = Math.floor(frame / 12);
+  capture.hidden = !pixelMode;
+  if (pixelMode && captureImages[row]) captureContext.drawImage(captureImages[row], (frame % 12) * 1200, 0, 1200, 659, 0, 0, 1200, 659);
 }
 draw();
-const timeline = gsap.timeline({ paused: true });
-timeline.to(clock, { frame: 120, duration: 4, ease: 'none', onUpdate: draw });
-window.__timelines['${name}'] = timeline;
+const captureReady = pixelMode
+  ? Promise.all(${scriptJson(['dark', 'light'].map((theme) => Array.from({ length: 10 }, (_, row) => `compositions/${name}-capture-${theme}-${String(row).padStart(2, '0')}.webp`)))}[options.theme === 'light' ? 1 : 0].map(async (source) => {
+      const image = new Image();
+      image.src = source;
+      await image.decode();
+      return image;
+    }))
+  : Promise.resolve([]);
+window.__hyfrmeReady = captureReady.then((images) => {
+  captureImages = images;
+  draw();
+  const timeline = gsap.timeline({ paused: true });
+  timeline.to(clock, { frame: 120, duration: 4, ease: 'none', onUpdate: draw });
+  window.__timelines['${name}'] = timeline;
+  window.__hfForceTimelineRebind?.();
+});
 </script>
 </template>
 </body>
@@ -249,7 +267,7 @@ await writeFile(resolve(output, "registry-item.json"), `${JSON.stringify({
 }, null, 2)}\n`);
 await writeFile(resolve(output, "README.md"), `# T3 Code: Prompt Send
 
-This four-second block reproduces official T3 Code v0.0.42 at 1200 × 659 and 30 fps in dark and light. The default pixel-verified mode replays the lossless native frame capture in ten lightweight strips. Choose editable DOM mode before editing text, project, workspace, thread, or event variables. It drafts a Hyfrme Logo Enter request, sends it through the native composer, follows thread creation and Thinking, and ends with the live ${fixture.providerState.match(/live ([^ ]+)/)?.[1] ?? "provider"} turn captured in the reference session.
+This four-second block reproduces official T3 Code v0.0.42 at 1200 × 659 and 30 fps in dark and light. The default pixel-verified mode replays the lossless native frame capture through one persistent canvas with synchronous frame draws from ten lossless strips. Editing text, project, workspace, thread, or event timing automatically uses editable DOM. Unchanged content and timing retain the native recording in either theme; editable DOM mode can also be selected explicitly. It drafts a Hyfrme Logo Enter request, sends it through the native composer, follows thread creation and Thinking, and ends with the live ${fixture.providerState.match(/live ([^ ]+)/)?.[1] ?? "provider"} turn captured in the reference session.
 
 Project, thread list, prompt, response, message time, agent labels, model, permission, workspace, theme, and event frames are editable. Set matching values on adjacent T3 Code blocks for a continuous workspace. The default action and answer were captured live; edited text renders from DOM. Source: https://github.com/pingdotgg/t3code/tree/${fixture.sourceCommit}. The installed files include the T3 Code MIT license. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.
 `);

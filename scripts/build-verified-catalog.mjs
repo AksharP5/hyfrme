@@ -1,5 +1,7 @@
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { assertExactCompiledParity } from "./compiled-parity.mjs";
+import { assertVerifiedBlockFiles } from "./parity-evidence.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const iconFixtures = JSON.parse(
@@ -39,7 +41,6 @@ const t3Items = blockItems.filter((item) => item.tags?.includes("t3-code"));
 const orderedNames = [
   ...originalItems.map((item) => item.name).sort(),
   ...t3Items.map((item) => item.name).sort(),
-  "soft-blur-in",
   ...textFixtures.map((entry) => entry.slug),
   ...coreFixtures.map((entry) => entry.slug),
   ...primitiveFixtures.map((entry) => entry.slug),
@@ -59,6 +60,15 @@ for (const name of orderedNames) {
   if (!proof) continue;
   const parity = JSON.parse(proof);
   if (parity.status !== "verified" || parity.result?.pass !== true) continue;
+  if (parity.classification === "compiled-source-port") {
+    assertExactCompiledParity(parity);
+    const manifest = blockItems.find((item) => item.name === name);
+    await assertVerifiedBlockFiles(
+      resolve(blockDirectory, name),
+      manifest,
+      parity.filesSha256,
+    );
+  }
   items.push({ name, type: "hyperframes:block" });
 }
 

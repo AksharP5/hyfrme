@@ -2,7 +2,7 @@
   "slug": "push-through",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/push-through/index.tsx",
     "entry": "components/docs/examples/push-through-example.tsx",
     "config": "registry/remocn/push-through/config.ts",
@@ -15,29 +15,100 @@
     "durationInFrames": 112,
     "props": {
       "zoom": 2.4,
-      "blur": 14
+      "blur": 14,
+      "speed": 1
     },
     "background": "#141318"
   },
+  "filesSha256": {
+    "registry-item.json": "cd7ad3541229b1f2c2da46206197fc1d50142fb188e68d1cb2488be5d85f8210",
+    "push-through.html": "329209f4a5fba46d7acfac9cd912213d5ee849be5073046f4b8e630ec505d065",
+    "push-through.runtime.js": "9389f0bd4c08accae3c70d7f1b745bfb4f3bfdb0752f460046b2a8936eafe97f",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
-  "status": "verified",
+  "measurement": "lossless-png",
+  "status": "failed",
+  "fingerprint": "6cc8a39404b80781e22e88251048d920a7b2c9d188926971bce4c620caf77c4b",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 112,
-    "meanSsim": 0.997501,
-    "minSsim": 0.996383,
-    "p05Ssim": 0.99664,
-    "p95Ssim": 0.999159,
-    "pass": true
+    "meanSsim": 0.9999846696428573,
+    "minSsim": 0.999757,
+    "p05Ssim": 0.999845,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 112,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 112,
+      "mismatchedFrames": [
+        44,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        62,
+        63,
+        64
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/push-through/remocn.mp4",
+    "referenceVideo": "public/previews/push-through/reference.mp4",
     "hyperframesVideo": "public/previews/push-through/hyperframes.mp4",
-    "summary": "parity/push-through-diff/summary.json"
+    "thumbnail": "public/previews/push-through/thumbnail.png",
+    "summary": "parity/push-through-diff/summary.json",
+    "perFrameSsim": "parity/push-through-diff/ssim.log",
+    "hyperframesCheck": "parity/push-through-diff/hyperframes-check.log",
+    "worstFrame": "parity/push-through-diff/worst-frame.png",
+    "referenceAlpha": "parity/push-through-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/push-through-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/push-through-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/push-through-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/push-through/reference.mp4": "ced597c1212cec4e07d01d2b38f7336295ce92219ab66945024f4e17cf7d2f9b",
+    "public/previews/push-through/hyperframes.mp4": "4d3e648f857535e8814ae0e4aa7a084d2ad21bb0f517cfc9c11d45fb9a9ee2f8",
+    "public/previews/push-through/thumbnail.png": "d1d3b16a3686287dffffcbad67a2ef6490a6c373506da0356fa6b74113f3e2a6",
+    "parity/push-through-diff/summary.json": "fed2e3d93cafb8066ecdac7d6e4411fbe94df3d895e1310f65d5b618fcf7ffb5",
+    "parity/push-through-diff/ssim.log": "25c6f524cfad6906ec1909c58d9761efe82ba7f0d04aba2dab13d263b901c23d",
+    "parity/push-through-diff/hyperframes-check.log": "84b137318ea0ea21753c9ff1cb6526c43c7bc350b82a115eba32afc013ab59fb",
+    "parity/push-through-diff/worst-frame.png": "6558b92d68858d0e88c9deeea43667e9760223203d8b63cb0843d76a02e12e34",
+    "parity/push-through-diff/reference-alpha.framemd5": "5198e1666082f7f8ffa772ce264337853dc8ac0fc27e4d0cec5a9f5665c17454",
+    "parity/push-through-diff/hyperframes-alpha.framemd5": "5198e1666082f7f8ffa772ce264337853dc8ac0fc27e4d0cec5a9f5665c17454",
+    "parity/push-through-diff/reference-rgba.framemd5": "c636d286deae48be83128719415f55a27f76acaf78d29339c7eafe9f373dacc1",
+    "parity/push-through-diff/hyperframes-rgba.framemd5": "a9f0ca3c50299051eb83f7ea65c0a3441b2636ac5bc23be68746b0d7077b6479"
   }
 }

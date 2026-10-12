@@ -2,7 +2,7 @@
   "slug": "stripe-type",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/stripe-type/index.tsx",
     "config": "registry/remocn/stripe-type/config.ts",
     "license": "MIT"
@@ -26,21 +26,40 @@
     },
     "background": "#2b3bff"
   },
+  "filesSha256": {
+    "registry-item.json": "9d4397a0419843e9e48c0e72b025a972f21407793f9540504d28694d0c9605d2",
+    "stripe-type.html": "28f181cd9f01cc69da7ea1cf332b1439083b88eb5f801490dc7f2806fecb041f",
+    "stripe-type.runtime.js": "08ec666bd3362505ad3c32aa0ca28355d890e5eed500434d68fbbae468d24a5d",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "Inter-Latin.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/Inter-OFL.txt": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "446521b8cde5b089a4c61f131718ecab6d9225bf7fb4f0aad025f67d97f29091",
+  "fingerprint": "6fec8b6148941c80a8dfc7f68068ecb58c522bf0139f4ac8a1b5145e1f20d109",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 100,
-    "meanSsim": 0.9908632999999996,
-    "minSsim": 0.986202,
-    "p05Ssim": 0.986616,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
     "p95Ssim": 1,
     "alpha": {
+      "frameCount": 100,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 100,
       "mismatchedFrames": [],
       "pass": true
@@ -48,13 +67,14 @@
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check reported 1 reviewed source-inherited errors (exit 1); strict render passed",
     "sourceInheritedFindings": [
       {
         "slug": "stripe-type",
         "origin": {
           "repository": "https://github.com/Remocn/remocn",
-          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
           "source": "registry/remocn/stripe-type/index.tsx",
           "config": "registry/remocn/stripe-type/config.ts",
           "license": "MIT"
@@ -62,13 +82,16 @@
         "finding": {
           "code": "content_overlap"
         },
-        "reason": "The source layers the headline and striped type treatment in the same display zone. The single inspector hit is the intended typographic overlap; all 100 frames pass parity (mean/min SSIM 0.990863/0.986202) with exact alpha."
+        "reason": "The source animates layered text through hard stripe clips. The inspector reports overlap between those intended layers. The complete inspector finding remains in the parity check log; visual parity is checked separately against every upstream frame."
       }
     ],
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -80,6 +103,21 @@
     "hyperframesCheck": "parity/stripe-type-diff/hyperframes-check.log",
     "worstFrame": "parity/stripe-type-diff/worst-frame.png",
     "referenceAlpha": "parity/stripe-type-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/stripe-type-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/stripe-type-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/stripe-type-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/stripe-type-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/stripe-type/reference.mp4": "0f76d44bfae310aad4acbf95223509d1c7a14bb4ee37afc117a9a4bd6059bd61",
+    "public/previews/stripe-type/hyperframes.mp4": "0f76d44bfae310aad4acbf95223509d1c7a14bb4ee37afc117a9a4bd6059bd61",
+    "public/previews/stripe-type/thumbnail.png": "147ebbfe661b8fd55942ea99f3a39ffea1f1f7bd8c630044333cd94daa388d79",
+    "parity/stripe-type-diff/summary.json": "fa82c25c31adc9e19a6584c3ec9334d4f3e0235e8d5eae2f1afd6c757108a452",
+    "parity/stripe-type-diff/ssim.log": "56672b2c92229915a0dd393cc8a60627dbdc8ce3eba9f6efc2ed3a64381e3a73",
+    "parity/stripe-type-diff/hyperframes-check.log": "b6f6e3f803340623b79fd958d0d9b6b876c62e4681f853a7c08d0076d3f53301",
+    "parity/stripe-type-diff/worst-frame.png": "8eec7390fc4e95c549f6622c576a7044b4c4340d7b1d517292c8ee513ef3b9e7",
+    "parity/stripe-type-diff/reference-alpha.framemd5": "a2937ec0be21934918c79b7fbd71e3b549036e98282df13982dd5a56ed01cea8",
+    "parity/stripe-type-diff/hyperframes-alpha.framemd5": "a2937ec0be21934918c79b7fbd71e3b549036e98282df13982dd5a56ed01cea8",
+    "parity/stripe-type-diff/reference-rgba.framemd5": "0a73c132d11e0e65e4ddcf259792db5a00fb14ae585fb11d4ffc760e30d80948",
+    "parity/stripe-type-diff/hyperframes-rgba.framemd5": "0a73c132d11e0e65e4ddcf259792db5a00fb14ae585fb11d4ffc760e30d80948"
   }
 }

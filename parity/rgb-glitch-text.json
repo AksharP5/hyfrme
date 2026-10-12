@@ -2,7 +2,7 @@
   "slug": "rgb-glitch-text",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/rgb-glitch-text/index.tsx",
     "config": "registry/remocn/rgb-glitch-text/config.ts",
     "license": "MIT"
@@ -25,25 +25,76 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "1790ceb115277ca4111a62d850d95ad07522a041257fb013c319a58d363845c5",
+    "rgb-glitch-text.html": "eac9cb9b74dd122770c8e119b05b2b2613c09ff706e7508b34f2689f3ed53392",
+    "rgb-glitch-text.runtime.js": "37532f76fc9ecf635f048f18fe4e1f2e253968d7daa50b74b7a01c93a1783161",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "7cdc634009ca589682b1d63b02ce769c0053b7da751538bf432c98d13e563a83",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.993592,
-    "minSsim": 0.98936,
-    "p05Ssim": 0.98993,
-    "p95Ssim": 0.994022,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/rgb-glitch-text/remocn.mp4",
+    "referenceVideo": "public/previews/rgb-glitch-text/reference.mp4",
     "hyperframesVideo": "public/previews/rgb-glitch-text/hyperframes.mp4",
-    "summary": "parity/rgb-glitch-text-diff/summary.json"
+    "thumbnail": "public/previews/rgb-glitch-text/thumbnail.png",
+    "summary": "parity/rgb-glitch-text-diff/summary.json",
+    "perFrameSsim": "parity/rgb-glitch-text-diff/ssim.log",
+    "hyperframesCheck": "parity/rgb-glitch-text-diff/hyperframes-check.log",
+    "worstFrame": "parity/rgb-glitch-text-diff/worst-frame.png",
+    "referenceAlpha": "parity/rgb-glitch-text-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/rgb-glitch-text-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/rgb-glitch-text-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/rgb-glitch-text-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/rgb-glitch-text/reference.mp4": "9ad57cab58b67d54351e2b360af51c82f49a4553a73514b072a0ff5508907ecd",
+    "public/previews/rgb-glitch-text/hyperframes.mp4": "9ad57cab58b67d54351e2b360af51c82f49a4553a73514b072a0ff5508907ecd",
+    "public/previews/rgb-glitch-text/thumbnail.png": "17a9ed569cee741335e64b8530ef2e0f6de10b9af9feb3841fb78be114668ecb",
+    "parity/rgb-glitch-text-diff/summary.json": "b836772793766404c0492e741437d4fb40b614cf31be7aace9f9b10b16c85450",
+    "parity/rgb-glitch-text-diff/ssim.log": "4638ac3b2b03d74f8b056c3824e13d904997bddfbc1c0f3b8d655822a1eb000b",
+    "parity/rgb-glitch-text-diff/hyperframes-check.log": "fb68681bf753e517d225de60a88c66120b9c29c8ea28a81f040c7b9ae5f05d05",
+    "parity/rgb-glitch-text-diff/worst-frame.png": "f357db562a6bbb18f3129025f559e3d98b1e1bd868c80ec86aa2ec25c3356a6d",
+    "parity/rgb-glitch-text-diff/reference-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/rgb-glitch-text-diff/hyperframes-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/rgb-glitch-text-diff/reference-rgba.framemd5": "52e321f5b462272d228bcc7e54d1bd34541bd6bd98f05da4dc6508d9fa7bc879",
+    "parity/rgb-glitch-text-diff/hyperframes-rgba.framemd5": "52e321f5b462272d228bcc7e54d1bd34541bd6bd98f05da4dc6508d9fa7bc879"
   }
 }

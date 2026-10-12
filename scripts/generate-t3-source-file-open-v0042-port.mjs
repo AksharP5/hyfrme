@@ -1,11 +1,14 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
+import { readNativeSourceCode, nativeSourceCodeRuntime } from "./t3-native-source-code.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
 const name = "t3-source-file-open";
 const output = resolve(root, ".work/t3-source-file-open-v0042-candidate");
 const themes = ["dark", "light"];
+const nativeCode = await readNativeSourceCode(root);
 const phases = ["files", "registry", "blocks", "logo-enter", "opened"];
 const baseFixture = JSON.parse(await readFile(resolve(source, "file-surface-fixture.json"), "utf8"));
 const fixtures = Object.fromEntries(await Promise.all(themes.map(async (theme) => [
@@ -24,6 +27,12 @@ const captures = await Promise.all(themes.flatMap((theme) => phases.map(async (p
 })));
 for (const theme of themes) {
   const fixture = fixtures[theme];
+  const motion = fixture.rowAnimations.opened;
+  if (motion.length !== 1 || motion[0].duration !== 150 || motion[0].easing !== "ease" ||
+      motion[0].keyframes.length !== 2 || motion[0].keyframes.some((keyframe, index) =>
+        keyframe.offset !== index || keyframe.opacity !== String(index) || keyframe.easing !== "linear" || keyframe.composite !== "auto")) {
+    throw new Error(`${theme} native file-open guide motion differs`);
+  }
   if (fixture.sourceTag !== "v0.0.42" || fixture.frames !== 120 || fixture.fps !== 30 ||
       fixture.theme !== theme || fixture.viewport.width !== 1200 || fixture.viewport.height !== 659) {
     throw new Error(`${theme} source-file-open fixture does not match the v0.0.42 desktop contract`);
@@ -89,15 +98,19 @@ const html = `<!doctype html>
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { ${stageTheme} position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-state[hidden] { display: none !important; }
   .t3-state:not([hidden]) { display: contents; }
   .base-ui-disable-scrollbar { scrollbar-width: none; }
   .base-ui-disable-scrollbar::-webkit-scrollbar { display: none; }
-  .t3-stage [style*="t3-mobile-draft-headline"] h1 { transform: translateY(1px); }
   @font-face { font-family: "Apple Color Emoji"; src: local("Apple Color Emoji"); }
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
   <div class="dark t3-stage"><svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">${symbol}</svg>${stages}</div>
@@ -128,11 +141,6 @@ for (const [index, state] of states.entries()) {
       sheet.replaceSync(css);
       return sheet;
     });
-    if (host.tagName === 'DIFFS-CONTAINER') {
-      const alignment = document.createElement('style');
-      alignment.textContent = '[data-code] { position: relative; top: -1px; }';
-      root.append(alignment);
-    }
     roots.push(root);
   }
 }
@@ -215,19 +223,27 @@ for (const state of states.filter((item) => item.dataset.t3Phase === 'opened')) 
   }
 }
 const active = states.filter((state) => state.dataset.t3Theme === options.theme);
+${nativeSourceCodeRuntime}
 const clock = { frame: 0 };
-function nativeEase(progress) {
-  const x = Math.min(1, Math.max(0, progress));
-  const cubic = (time, first, second) => 3 * (1 - time) ** 2 * time * first + 3 * (1 - time) * time ** 2 * second + time ** 3;
-  let low = 0;
-  let high = 1;
-  for (let index = 0; index < 16; index++) {
-    const middle = (low + high) / 2;
-    if (cubic(middle, 0.25, 0.25) < x) low = middle;
-    else high = middle;
-  }
-  return cubic((low + high) / 2, 0.1, 1);
+const guideMotion = ${scriptJson(Object.fromEntries(themes.map(theme => [theme, fixtures[theme].rowAnimations.opened[0]])))};
+const guideRoot = active[4].querySelector('file-tree-container')?.shadowRoot;
+const guidePath = [options.folderOne, options.folderTwo, options.folderThree].join('/') + '/';
+const guide = [...(guideRoot?.querySelectorAll('[data-item-section="spacing-item"]') ?? [])]
+  .find(item => item.dataset.ancestorPath === guidePath);
+if (!guide) throw new Error('Native file-open indent guide is missing');
+if (guidePath !== [defaults.folderOne, defaults.folderTwo, defaults.folderThree].join('/') + '/') {
+  const guideRule = guideRoot.querySelector('style[data-file-tree-guide-style]')?.sheet?.cssRules[0];
+  if (!guideRule || guideRule.style.opacity !== '1') throw new Error('Native selected indent guide rule differs');
+  guideRule.selectorText = '[data-item-section="spacing-item"][data-ancestor-path="' + CSS.escape(guidePath) + '"]';
 }
+const guideAnimation = new Animation(new KeyframeEffect(guide, guideMotion[options.theme].keyframes, {
+  duration: guideMotion[options.theme].duration,
+  easing: guideMotion[options.theme].easing,
+  fill: 'backwards',
+}), document.timeline);
+guideAnimation.pause();
+guideAnimation.currentTime = 0;
+
 function draw() {
   const frame = Math.round(clock.frame);
   const starts = [0, Number(options.registryFrame), Number(options.blocksFrame), Number(options.logoEnterFrame), Number(options.openFileFrame)];
@@ -244,8 +260,7 @@ function draw() {
         label.setAttribute('data-layout-allow-occlusion', '');
       }
     }
-    const guide = active[4].querySelector('file-tree-container')?.shadowRoot?.querySelector('[data-item-section="spacing-item"][data-ancestor-path="' + [options.folderOne, options.folderTwo, options.folderThree].join('/') + '/"]');
-    if (guide) guide.style.opacity = String(nativeEase((frame - starts[4]) / 4.5));
+    guideAnimation.currentTime = Math.max(0, (frame - starts[4]) * 1000 / 30);
   }
 }
 draw();
@@ -268,9 +283,11 @@ for (const [from, to] of [
   ["source-file-open-pierre-trees-notice.md", "PIERRE-TREES-NOTICE.md"],
   ["source-file-open-pierre-diffs-license.md", "PIERRE-DIFFS-LICENSE.md"],
 ]) await copyFile(resolve(root, "assets/t3-code/v0.0.35", from), resolve(output, "licenses", to));
+for (const theme of themes) await copyFile(resolve(source, nativeCode.themes[theme].asset), resolve(output, nativeCode.themes[theme].asset));
 const files = [
   { path: `${name}.html`, target: `compositions/${name}.html`, type: "hyperframes:composition" },
   { path: "t3-code-gsap.min.js", target: "compositions/t3-code-gsap.min.js", type: "hyperframes:asset" },
+  ...themes.map(theme => ({ path: nativeCode.themes[theme].asset, target: `compositions/${nativeCode.themes[theme].asset}`, type: "hyperframes:asset" })),
   ...["T3-CODE-LICENSE.txt", "T3-THIRD_PARTY_NOTICES.md", "PIERRE-TREES-LICENSE.md", "PIERRE-TREES-NOTICE.md", "PIERRE-DIFFS-LICENSE.md"].map((file) => ({
     path: `licenses/${file}`, target: `THIRD_PARTY_LICENSES/t3-code/${file}`, type: "hyperframes:asset",
   })),
@@ -284,5 +301,5 @@ await writeFile(resolve(output, "registry-item.json"), JSON.stringify({
   author: "Hyfrme", authorUrl: "https://github.com/AksharP5/hyfrme", license: "MIT",
   dimensions: fixtures.dark.viewport, duration: 4, files,
 }, null, 2) + "\n");
-await writeFile(resolve(output, "README.md"), `# T3 Code: Source File Open\n\nThis four-second block reproduces the official T3 Code v0.0.42 Files tree and HTML source viewer at 1200 × 659 and 30 fps in dark and light themes. The fixture opens the native file row, then selects “Show HTML source” because HTML otherwise opens as a rendered page.\n\nProject, thread, folder, filename, selected source text, theme, and interaction frames are HyperFrames variables. The seeded local Hyfrme project and source file are explicitly labeled; no provider or GitHub execution occurs. Source: https://github.com/pingdotgg/t3code/tree/${fixtures.dark.sourceCommit}. The installed block includes the T3 Code and Pierre attribution and license files.\n`);
+await writeFile(resolve(output, "README.md"), `# T3 Code: Source File Open\n\nThis four-second block reproduces the official T3 Code v0.0.42 Files tree and HTML source viewer at 1200 × 659 and 30 fps in dark and light themes. The fixture opens the native file row, then selects “Show HTML source” because HTML otherwise opens as a rendered page.\n\nProject, thread, folder, filename, selected source text, theme, and interaction frames are HyperFrames variables. The seeded local Hyfrme project and source file are explicitly labeled; no provider or GitHub execution occurs. The unchanged default source viewer uses a 283 × 256 native code-region image. Any content or timing edit restores the editable source DOM and loads no code-region image. Source: https://github.com/pingdotgg/t3code/tree/${fixtures.dark.sourceCommit}. The installed block includes the T3 Code and Pierre attribution and license files.\n`);
 console.log(`Generated ${name} from dual-theme T3 Code v0.0.42 fixtures.`);

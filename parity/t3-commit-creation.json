@@ -24,30 +24,91 @@
       "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
     },
     "captureAtlas": "parity/t3-commit-creation-v0042-atlas.json",
-    "compositionSha256": "55bc7a7fd90bce2408dbffd80580bad4b94f22e996d292322c46678ea71f59ff"
+    "compositionSha256": "bc7b7df7c6d54779542b5b5e267e7eda417cfc1f37a81a1aa77749fc48b84124",
+    "referenceSha256": "7e5d8d6bdfc7abedec40d26c7e825873c28e97ebdb57196c5f496577b8f36d4f"
   },
-  "interaction": "Native v0.0.42 creates a local commit for one real Hyfrme Logo Enter change through T3 Code's Git review dialog. The isolated repository has no remote.",
-  "providerState": "Hyfrme project and Git changes are isolated fixtures; no AI provider, GitHub account, or external remote is used.",
-  "classification": "source-dom-port with lossless native-frame default",
-  "measurement": "lossless PNG; every native capture strip round-trips at SSIM 1.0",
+  "classification": "source-dom-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "defaultMode": "pixel-verified",
+  "defaultTheme": "dark",
   "thresholds": {
-    "meanSsim": 0.985,
-    "minSsim": 0.98
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
     "meanSsim": 1,
     "minSsim": 1,
-    "p05Ssim": 1,
-    "p95Ssim": 1,
     "worstFrame": 0,
-    "pass": true
+    "exactRgba": true,
+    "mismatchedFrames": [],
+    "pass": true,
+    "rgba": {
+      "pass": true,
+      "frameCount": 120,
+      "mismatchedFrames": []
+    },
+    "p05Ssim": 1,
+    "p95Ssim": 1
   },
   "themes": {
     "dark": {
       "sourceCommit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
-      "referenceSha256": "7e5d8d6bdfc7abedec40d26c7e825873c28e97ebdb57196c5f496577b8f36d4f",
+      "defaultMode": "pixel-verified",
+      "status": "verified",
+      "thresholds": {
+        "meanSsim": 1,
+        "minSsim": 1,
+        "exactRgba": true
+      },
+      "values": {
+        "projectName": "hyfrme",
+        "branchName": "feature/logo-enter",
+        "selectedThread": "Build a logo intro",
+        "otherThread": "Catalog motion audit",
+        "userMessage": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+        "replyBeforeFile": "I found the Logo Enter timing in",
+        "replyFile": "logo-enter.html",
+        "replyAfterFile": ". The final pass can extend the duration while keeping the last rendered frame still.",
+        "workedDuration": "2m",
+        "changedFile": "registry/blocks/logo-enter/logo-enter.html",
+        "commitMessage": "Tighten Hyfrme logo hold",
+        "insertions": "4",
+        "deletions": "1",
+        "composerPlaceholder": "Enable a provider in Settings to send a message",
+        "providerStatus": "No provider available",
+        "permissionMode": "Full access",
+        "workspaceMode": "Worktree",
+        "theme": "dark",
+        "renderMode": "pixel-verified",
+        "menuFrame": 20,
+        "dialogFrame": 30,
+        "typedFrame": 55,
+        "committedFrame": 85
+      },
+      "fixture": {
+        "width": 1200,
+        "height": 659,
+        "fps": 30,
+        "durationInFrames": 120,
+        "props": {
+          "theme": "dark",
+          "menu": 20,
+          "dialog": 30,
+          "typed": 55,
+          "committed": 85
+        },
+        "sourceHashes": {
+          "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+          "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+          "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+        },
+        "captureAtlas": "parity/t3-commit-creation-v0042-atlas.json",
+        "compositionSha256": "bc7b7df7c6d54779542b5b5e267e7eda417cfc1f37a81a1aa77749fc48b84124",
+        "referenceSha256": "7e5d8d6bdfc7abedec40d26c7e825873c28e97ebdb57196c5f496577b8f36d4f"
+      },
       "sourceHashes": {
         "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
         "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
@@ -60,37 +121,167 @@
         "typed": "d7c40d34bbc7142cee5a477603e21f8bd6a158bc21a43bc1518a641e6d500a90",
         "committed": "b6bf6277f93c0374c3fc569f6c090555d034d5da37d2ab279f9d7d9ba475ad0a"
       },
+      "referenceSha256": "7e5d8d6bdfc7abedec40d26c7e825873c28e97ebdb57196c5f496577b8f36d4f",
       "themeSha256": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
       "result": {
         "frameCount": 120,
         "meanSsim": 1,
         "minSsim": 1,
-        "p05Ssim": 1,
-        "p95Ssim": 1,
         "worstFrame": 0,
-        "pass": true
-      },
-      "providerState": "Hyfrme project and Git changes are isolated fixtures; no AI provider, GitHub account, or external remote is used.",
-      "events": {
-        "menu": 20,
-        "dialog": 30,
-        "typed": 55,
-        "committed": 85
+        "exactRgba": true,
+        "mismatchedFrames": [],
+        "pass": true,
+        "rgba": {
+          "pass": true,
+          "frameCount": 120,
+          "mismatchedFrames": []
+        },
+        "p05Ssim": 1,
+        "p95Ssim": 1
       },
       "artifacts": {
-        "nativeRecording": "parity/t3-commit-creation-v0042-dark-reference.mkv",
         "referenceVideo": "public/previews/t3-commit-creation/reference.mp4",
         "hyperframesVideo": "public/previews/t3-commit-creation/hyperframes.mp4",
-        "frameSsim": "parity/t3-commit-creation-diff/dark/ssim.txt",
-        "hyperframesCheck": "parity/t3-commit-creation-diff/dark/hyperframes-check.json",
-        "installedCheck": "parity/t3-commit-creation-diff/dark/installed-check.json",
-        "customCheck": "parity/t3-commit-creation-diff/dark/custom-check.json",
-        "customized": "parity/t3-commit-creation-diff/dark/customized-state.png"
+        "thumbnail": "public/previews/t3-commit-creation/thumbnail.png",
+        "nativeRecording": "parity/t3-commit-creation-v0042-dark-reference.mkv",
+        "nativeFixture": "assets/t3-code/v0.0.42/commit-creation-v0042-dark-fixture.json",
+        "proof": "parity/t3-catalog/t3-commit-creation/dark/proof.json",
+        "rgba": "parity/t3-catalog/t3-commit-creation/dark/rgba.json",
+        "referenceRgba": "parity/t3-catalog/t3-commit-creation/dark/reference-rgba.sha256",
+        "hyperframesRgba": "parity/t3-catalog/t3-commit-creation/dark/hyperframes-rgba.sha256",
+        "frameSsim": "parity/t3-catalog/t3-commit-creation/dark/ssim.txt",
+        "hyperframesCheck": "parity/t3-catalog/t3-commit-creation/dark/hyperframes-check.json",
+        "strictRender": "parity/t3-catalog/t3-commit-creation/dark/hyperframes-render.log"
+      },
+      "historicalCustomizationEvidence": {
+        "contract": "Previously measured customization, crop, variant, and continuity evidence; these measurements are outside the exact current default-fixture claim.",
+        "result": {
+          "frameCount": 120,
+          "meanSsim": 1,
+          "minSsim": 1,
+          "p05Ssim": 1,
+          "p95Ssim": 1,
+          "worstFrame": 0,
+          "pass": true
+        },
+        "fields": {
+          "providerState": "Hyfrme project and Git changes are isolated fixtures; no AI provider, GitHub account, or external remote is used.",
+          "events": {
+            "menu": 20,
+            "dialog": 30,
+            "typed": 55,
+            "committed": 85
+          },
+          "defaultMode": "pixel-verified",
+          "thresholds": {
+            "meanSsim": 1,
+            "minSsim": 1,
+            "exactRgba": true
+          },
+          "values": {
+            "projectName": "hyfrme",
+            "branchName": "feature/logo-enter",
+            "selectedThread": "Build a logo intro",
+            "otherThread": "Catalog motion audit",
+            "userMessage": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+            "replyBeforeFile": "I found the Logo Enter timing in",
+            "replyFile": "logo-enter.html",
+            "replyAfterFile": ". The final pass can extend the duration while keeping the last rendered frame still.",
+            "workedDuration": "2m",
+            "changedFile": "registry/blocks/logo-enter/logo-enter.html",
+            "commitMessage": "Tighten Hyfrme logo hold",
+            "insertions": "4",
+            "deletions": "1",
+            "composerPlaceholder": "Enable a provider in Settings to send a message",
+            "providerStatus": "No provider available",
+            "permissionMode": "Full access",
+            "workspaceMode": "Worktree",
+            "theme": "dark",
+            "renderMode": "pixel-verified",
+            "menuFrame": 20,
+            "dialogFrame": 30,
+            "typedFrame": 55,
+            "committedFrame": 85
+          }
+        },
+        "fixture": {
+          "width": 1200,
+          "height": 659,
+          "fps": 30,
+          "durationInFrames": 120,
+          "props": {
+            "theme": "dark",
+            "menu": 20,
+            "dialog": 30,
+            "typed": 55,
+            "committed": 85
+          },
+          "sourceHashes": {
+            "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+            "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+            "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+          },
+          "captureAtlas": "parity/t3-commit-creation-v0042-atlas.json",
+          "compositionSha256": "bc7b7df7c6d54779542b5b5e267e7eda417cfc1f37a81a1aa77749fc48b84124",
+          "referenceSha256": "7e5d8d6bdfc7abedec40d26c7e825873c28e97ebdb57196c5f496577b8f36d4f"
+        }
       }
     },
     "light": {
       "sourceCommit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
-      "referenceSha256": "555e74580c33f76745c57670b503b5062dd83a148d94bb9abb9f1c6e894cd1d9",
+      "defaultMode": "pixel-verified",
+      "status": "verified",
+      "thresholds": {
+        "meanSsim": 1,
+        "minSsim": 1,
+        "exactRgba": true
+      },
+      "values": {
+        "projectName": "hyfrme",
+        "branchName": "feature/logo-enter",
+        "selectedThread": "Build a logo intro",
+        "otherThread": "Catalog motion audit",
+        "userMessage": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+        "replyBeforeFile": "I found the Logo Enter timing in",
+        "replyFile": "logo-enter.html",
+        "replyAfterFile": ". The final pass can extend the duration while keeping the last rendered frame still.",
+        "workedDuration": "2m",
+        "changedFile": "registry/blocks/logo-enter/logo-enter.html",
+        "commitMessage": "Tighten Hyfrme logo hold",
+        "insertions": "4",
+        "deletions": "1",
+        "composerPlaceholder": "Enable a provider in Settings to send a message",
+        "providerStatus": "No provider available",
+        "permissionMode": "Full access",
+        "workspaceMode": "Worktree",
+        "theme": "light",
+        "renderMode": "pixel-verified",
+        "menuFrame": 20,
+        "dialogFrame": 30,
+        "typedFrame": 55,
+        "committedFrame": 85
+      },
+      "fixture": {
+        "width": 1200,
+        "height": 659,
+        "fps": 30,
+        "durationInFrames": 120,
+        "props": {
+          "theme": "dark",
+          "menu": 20,
+          "dialog": 30,
+          "typed": 55,
+          "committed": 85
+        },
+        "sourceHashes": {
+          "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+          "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+          "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+        },
+        "captureAtlas": "parity/t3-commit-creation-v0042-atlas.json",
+        "compositionSha256": "bc7b7df7c6d54779542b5b5e267e7eda417cfc1f37a81a1aa77749fc48b84124",
+        "referenceSha256": "555e74580c33f76745c57670b503b5062dd83a148d94bb9abb9f1c6e894cd1d9"
+      },
       "sourceHashes": {
         "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
         "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
@@ -103,52 +294,341 @@
         "typed": "84ab98bed8a6cae8b241c3404b3cd7fb42dc42923d3ba6fdd275391464637662",
         "committed": "8bbcc80dcef2401cc5f6aabdb179f2ae116e8bf2f494b9c78a68a70332294372"
       },
+      "referenceSha256": "555e74580c33f76745c57670b503b5062dd83a148d94bb9abb9f1c6e894cd1d9",
       "themeSha256": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
       "result": {
         "frameCount": 120,
         "meanSsim": 1,
         "minSsim": 1,
-        "p05Ssim": 1,
-        "p95Ssim": 1,
         "worstFrame": 0,
-        "pass": true
+        "exactRgba": true,
+        "mismatchedFrames": [],
+        "pass": true,
+        "rgba": {
+          "pass": true,
+          "frameCount": 120,
+          "mismatchedFrames": []
+        },
+        "p05Ssim": 1,
+        "p95Ssim": 1
       },
-      "providerState": "Hyfrme project and Git changes are isolated fixtures; no AI provider, GitHub account, or external remote is used.",
-      "events": {
+      "artifacts": {
+        "referenceVideo": "public/previews/t3-commit-creation/reference-light.mp4",
+        "hyperframesVideo": "public/previews/t3-commit-creation/hyperframes-light.mp4",
+        "thumbnail": "public/previews/t3-commit-creation/thumbnail-light.png",
+        "nativeRecording": "parity/t3-commit-creation-v0042-light-reference.mkv",
+        "nativeFixture": "assets/t3-code/v0.0.42/commit-creation-v0042-light-fixture.json",
+        "proof": "parity/t3-catalog/t3-commit-creation/light/proof.json",
+        "rgba": "parity/t3-catalog/t3-commit-creation/light/rgba.json",
+        "referenceRgba": "parity/t3-catalog/t3-commit-creation/light/reference-rgba.sha256",
+        "hyperframesRgba": "parity/t3-catalog/t3-commit-creation/light/hyperframes-rgba.sha256",
+        "frameSsim": "parity/t3-catalog/t3-commit-creation/light/ssim.txt",
+        "hyperframesCheck": "parity/t3-catalog/t3-commit-creation/light/hyperframes-check.json",
+        "strictRender": "parity/t3-catalog/t3-commit-creation/light/hyperframes-render.log"
+      },
+      "historicalCustomizationEvidence": {
+        "contract": "Previously measured customization, crop, variant, and continuity evidence; these measurements are outside the exact current default-fixture claim.",
+        "result": {
+          "frameCount": 120,
+          "meanSsim": 1,
+          "minSsim": 1,
+          "p05Ssim": 1,
+          "p95Ssim": 1,
+          "worstFrame": 0,
+          "pass": true
+        },
+        "fields": {
+          "providerState": "Hyfrme project and Git changes are isolated fixtures; no AI provider, GitHub account, or external remote is used.",
+          "events": {
+            "menu": 20,
+            "dialog": 30,
+            "typed": 55,
+            "committed": 85
+          },
+          "defaultMode": "pixel-verified",
+          "thresholds": {
+            "meanSsim": 1,
+            "minSsim": 1,
+            "exactRgba": true
+          },
+          "values": {
+            "projectName": "hyfrme",
+            "branchName": "feature/logo-enter",
+            "selectedThread": "Build a logo intro",
+            "otherThread": "Catalog motion audit",
+            "userMessage": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+            "replyBeforeFile": "I found the Logo Enter timing in",
+            "replyFile": "logo-enter.html",
+            "replyAfterFile": ". The final pass can extend the duration while keeping the last rendered frame still.",
+            "workedDuration": "2m",
+            "changedFile": "registry/blocks/logo-enter/logo-enter.html",
+            "commitMessage": "Tighten Hyfrme logo hold",
+            "insertions": "4",
+            "deletions": "1",
+            "composerPlaceholder": "Enable a provider in Settings to send a message",
+            "providerStatus": "No provider available",
+            "permissionMode": "Full access",
+            "workspaceMode": "Worktree",
+            "theme": "light",
+            "renderMode": "pixel-verified",
+            "menuFrame": 20,
+            "dialogFrame": 30,
+            "typedFrame": 55,
+            "committedFrame": 85
+          }
+        },
+        "fixture": {
+          "width": 1200,
+          "height": 659,
+          "fps": 30,
+          "durationInFrames": 120,
+          "props": {
+            "theme": "dark",
+            "menu": 20,
+            "dialog": 30,
+            "typed": 55,
+            "committed": 85
+          },
+          "sourceHashes": {
+            "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+            "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+            "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+          },
+          "captureAtlas": "parity/t3-commit-creation-v0042-atlas.json",
+          "compositionSha256": "bc7b7df7c6d54779542b5b5e267e7eda417cfc1f37a81a1aa77749fc48b84124",
+          "referenceSha256": "555e74580c33f76745c57670b503b5062dd83a148d94bb9abb9f1c6e894cd1d9"
+        }
+      }
+    }
+  },
+  "checks": {
+    "hyperframes": "full check and strict 120-frame screenshot render passed in dark and light",
+    "sourceBrowser": "Google Chrome for Testing 152.0.7977.30",
+    "installedThroughCli": true,
+    "strictRender": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/t3-commit-creation/reference.mp4",
+    "hyperframesVideo": "public/previews/t3-commit-creation/hyperframes.mp4",
+    "thumbnail": "public/previews/t3-commit-creation/thumbnail.png",
+    "nativeRecording": "parity/t3-commit-creation-v0042-dark-reference.mkv",
+    "nativeFixture": "assets/t3-code/v0.0.42/commit-creation-v0042-dark-fixture.json",
+    "proof": "parity/t3-catalog/t3-commit-creation/dark/proof.json",
+    "rgba": "parity/t3-catalog/t3-commit-creation/dark/rgba.json",
+    "referenceRgba": "parity/t3-catalog/t3-commit-creation/dark/reference-rgba.sha256",
+    "hyperframesRgba": "parity/t3-catalog/t3-commit-creation/dark/hyperframes-rgba.sha256",
+    "frameSsim": "parity/t3-catalog/t3-commit-creation/dark/ssim.txt",
+    "hyperframesCheck": "parity/t3-catalog/t3-commit-creation/dark/hyperframes-check.json",
+    "strictRender": "parity/t3-catalog/t3-commit-creation/dark/hyperframes-render.log"
+  },
+  "filesSha256": {
+    "registry-item.json": "ad4939e751e0ae67e40b9e3784fb596669d81600693e13aa0214f834bbdc6b5f",
+    "t3-commit-creation.html": "bc7b7df7c6d54779542b5b5e267e7eda417cfc1f37a81a1aa77749fc48b84124",
+    "t3-code-gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+    "commit-creation-v0042-dark-capture-00.webp": "f767d3f120f1106e725c2b7dddea8b2da0edf0ceb8ddd3bfb2607cc99b116ed2",
+    "commit-creation-v0042-dark-capture-01.webp": "4a2849b3e3bc6f4a731e9eea9f73f493fc4c8ddf51551cde05a4c73be6d78e42",
+    "commit-creation-v0042-dark-capture-02.webp": "b7d73ad20fdeb19c1e01bc2696c18a84e6555f4cde03a0f04b148c40dfba3cab",
+    "commit-creation-v0042-dark-capture-03.webp": "933e3aeef65ce33d288644cb0a20c659e7227d6d99436ca63780861f7e2409f7",
+    "commit-creation-v0042-dark-capture-04.webp": "1768b469d5ec191bb4920d1594f151066ba1ac49c5e0936789339e714090c211",
+    "commit-creation-v0042-dark-capture-05.webp": "d6d158707ce85a0dd552af84f223a93a495a0736b8bd301539f7faed334efdd1",
+    "commit-creation-v0042-dark-capture-06.webp": "d6d158707ce85a0dd552af84f223a93a495a0736b8bd301539f7faed334efdd1",
+    "commit-creation-v0042-dark-capture-07.webp": "70fd1717e92c2ac2318798e38e603c09ed08cec965136d274c43f13826704874",
+    "commit-creation-v0042-dark-capture-08.webp": "25768a291a705e131839722a0ecf1dbed50d989b2609815d91fb5a6308e4602f",
+    "commit-creation-v0042-dark-capture-09.webp": "25768a291a705e131839722a0ecf1dbed50d989b2609815d91fb5a6308e4602f",
+    "commit-creation-v0042-light-capture-00.webp": "ad9d805b38a1e0a7c633bcd8414ef4de7dd17ea5a0adba07d29626c68fbe0a28",
+    "commit-creation-v0042-light-capture-01.webp": "2dc6ed36fc236f40f0dfcfe68ddde1e9339c1ab6f9be23cf193a9a2ea604f058",
+    "commit-creation-v0042-light-capture-02.webp": "bbcef3fcdd6c801c4e9510a535bfc477f3b57a88a8024be3712197ad7fb7c6e1",
+    "commit-creation-v0042-light-capture-03.webp": "04f1ec398a9f3eb4f0ebd00a33ef0620ef2a34c1292b7b2023db3039ab6a3b63",
+    "commit-creation-v0042-light-capture-04.webp": "132ebbc8526d1d544364498e72c1375233589f3e30aaf6a69972adc7aff50c4e",
+    "commit-creation-v0042-light-capture-05.webp": "6bc7b538abd30a756b0d18d173d77673fa165ef38762a695a225985e21bae2c2",
+    "commit-creation-v0042-light-capture-06.webp": "6bc7b538abd30a756b0d18d173d77673fa165ef38762a695a225985e21bae2c2",
+    "commit-creation-v0042-light-capture-07.webp": "24313ed5c45f132ef9803b6801671c09f6ee08c0ccba75c8dedeafd7f1f3e803",
+    "commit-creation-v0042-light-capture-08.webp": "90bef4a04b19b613b77d7743b19ca9d95090101b60158cba36299ccc7646340d",
+    "commit-creation-v0042-light-capture-09.webp": "90bef4a04b19b613b77d7743b19ca9d95090101b60158cba36299ccc7646340d",
+    "licenses/T3-CODE-LICENSE.txt": "935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43",
+    "licenses/T3-THIRD_PARTY_NOTICES.md": "adfbac43e6a2e0c186a2c6e202c80b2c4c1a2b4fd0916b028086f4306a32a6c7",
+    "licenses/VSCODE-ICONS-LICENSE.txt": "c0878418702a1c58790ffbe6b0a4663e62dfd76b693face439a516c80b7514e8",
+    "README.md": "4acbc09ead3b3eb7a528bdf93deafbbfff2f6228f53db88a840847974afe7b6c"
+  },
+  "inputHashes": {
+    "registry/blocks/t3-commit-creation/registry-item.json": "ad4939e751e0ae67e40b9e3784fb596669d81600693e13aa0214f834bbdc6b5f",
+    "registry/blocks/t3-commit-creation/t3-commit-creation.html": "bc7b7df7c6d54779542b5b5e267e7eda417cfc1f37a81a1aa77749fc48b84124",
+    "registry/blocks/t3-commit-creation/t3-code-gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-dark-capture-00.webp": "f767d3f120f1106e725c2b7dddea8b2da0edf0ceb8ddd3bfb2607cc99b116ed2",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-dark-capture-01.webp": "4a2849b3e3bc6f4a731e9eea9f73f493fc4c8ddf51551cde05a4c73be6d78e42",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-dark-capture-02.webp": "b7d73ad20fdeb19c1e01bc2696c18a84e6555f4cde03a0f04b148c40dfba3cab",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-dark-capture-03.webp": "933e3aeef65ce33d288644cb0a20c659e7227d6d99436ca63780861f7e2409f7",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-dark-capture-04.webp": "1768b469d5ec191bb4920d1594f151066ba1ac49c5e0936789339e714090c211",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-dark-capture-05.webp": "d6d158707ce85a0dd552af84f223a93a495a0736b8bd301539f7faed334efdd1",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-dark-capture-06.webp": "d6d158707ce85a0dd552af84f223a93a495a0736b8bd301539f7faed334efdd1",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-dark-capture-07.webp": "70fd1717e92c2ac2318798e38e603c09ed08cec965136d274c43f13826704874",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-dark-capture-08.webp": "25768a291a705e131839722a0ecf1dbed50d989b2609815d91fb5a6308e4602f",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-dark-capture-09.webp": "25768a291a705e131839722a0ecf1dbed50d989b2609815d91fb5a6308e4602f",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-light-capture-00.webp": "ad9d805b38a1e0a7c633bcd8414ef4de7dd17ea5a0adba07d29626c68fbe0a28",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-light-capture-01.webp": "2dc6ed36fc236f40f0dfcfe68ddde1e9339c1ab6f9be23cf193a9a2ea604f058",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-light-capture-02.webp": "bbcef3fcdd6c801c4e9510a535bfc477f3b57a88a8024be3712197ad7fb7c6e1",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-light-capture-03.webp": "04f1ec398a9f3eb4f0ebd00a33ef0620ef2a34c1292b7b2023db3039ab6a3b63",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-light-capture-04.webp": "132ebbc8526d1d544364498e72c1375233589f3e30aaf6a69972adc7aff50c4e",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-light-capture-05.webp": "6bc7b538abd30a756b0d18d173d77673fa165ef38762a695a225985e21bae2c2",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-light-capture-06.webp": "6bc7b538abd30a756b0d18d173d77673fa165ef38762a695a225985e21bae2c2",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-light-capture-07.webp": "24313ed5c45f132ef9803b6801671c09f6ee08c0ccba75c8dedeafd7f1f3e803",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-light-capture-08.webp": "90bef4a04b19b613b77d7743b19ca9d95090101b60158cba36299ccc7646340d",
+    "registry/blocks/t3-commit-creation/commit-creation-v0042-light-capture-09.webp": "90bef4a04b19b613b77d7743b19ca9d95090101b60158cba36299ccc7646340d",
+    "registry/blocks/t3-commit-creation/licenses/T3-CODE-LICENSE.txt": "935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43",
+    "registry/blocks/t3-commit-creation/licenses/T3-THIRD_PARTY_NOTICES.md": "adfbac43e6a2e0c186a2c6e202c80b2c4c1a2b4fd0916b028086f4306a32a6c7",
+    "registry/blocks/t3-commit-creation/licenses/VSCODE-ICONS-LICENSE.txt": "c0878418702a1c58790ffbe6b0a4663e62dfd76b693face439a516c80b7514e8",
+    "registry/blocks/t3-commit-creation/README.md": "4acbc09ead3b3eb7a528bdf93deafbbfff2f6228f53db88a840847974afe7b6c",
+    "scripts/verify-t3-catalog-ports.mjs": "50fffcbcecdf407c24dca3c99ba5edbc34132862dd101def36dd74eda88f9ee3",
+    "scripts/t3-capture-images.mjs": "003e4c1db7c9f6548881b3f0d8b1b55bff60720770b4eca0ef7d85d7d498b35c",
+    "scripts/parity-evidence.mjs": "442ef92774683522815f246cc87509c9d32082e915f1f77fc832a2b46755c006",
+    "cli/bin/hyfrme.mjs": "b3ebe31fcb7618917193a5fb1096fc6769f17615634f6718b90f7605a1f5073f",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-fixture.json": "d0344bfa4602e88af078feeb6426a8aa7663465322769092f9c463eb73a657da",
+    "assets/t3-code/v0.0.42/index.html": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+    "assets/t3-code/v0.0.42/t3.css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+    "assets/t3-code/v0.0.42/index.js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-before.html": "043949dfd5676972ea3641e75eb491b73e9cfcf1553abdc5e8136314e531b363",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-menu.html": "9ba6eaa3a1943dd4346a02f851d58c9275abd581b37db537e28b40b3f518c9c0",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-dialog.html": "d7c40d34bbc7142cee5a477603e21f8bd6a158bc21a43bc1518a641e6d500a90",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-typed.html": "d7c40d34bbc7142cee5a477603e21f8bd6a158bc21a43bc1518a641e6d500a90",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-committed.html": "b6bf6277f93c0374c3fc569f6c090555d034d5da37d2ab279f9d7d9ba475ad0a",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-menu-portal.html": "aeb474f7b7f0ca540d77c7316d135d9c643316ec7b798abcbf4797e1f96efe72",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-menu-portal.html": "aeb474f7b7f0ca540d77c7316d135d9c643316ec7b798abcbf4797e1f96efe72",
+    "assets/t3-code/v0.0.42/git-push-v0042-dark-menu-portal.html": "aeb474f7b7f0ca540d77c7316d135d9c643316ec7b798abcbf4797e1f96efe72",
+    "assets/t3-code/v0.0.42/git-push-v0042-light-menu-portal.html": "aeb474f7b7f0ca540d77c7316d135d9c643316ec7b798abcbf4797e1f96efe72",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-dialog-portal.html": "a0a214ec56aadb17196bdb0cf4faf6ddd4d209faa6c4d0c1ed05082e78bb7527",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-dialog-portal.html": "a0a214ec56aadb17196bdb0cf4faf6ddd4d209faa6c4d0c1ed05082e78bb7527",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-typed-portal.html": "5e3a72207a887bf26569ada9a574c4ebabb7ae96e448d55ca0dfd4f8b2b4958d",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-typed-portal.html": "5e3a72207a887bf26569ada9a574c4ebabb7ae96e448d55ca0dfd4f8b2b4958d",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-capture-00.webp": "f767d3f120f1106e725c2b7dddea8b2da0edf0ceb8ddd3bfb2607cc99b116ed2",
+    "assets/t3-code/v0.0.42/diff-review-v0042-dark-capture-00.webp": "f767d3f120f1106e725c2b7dddea8b2da0edf0ceb8ddd3bfb2607cc99b116ed2",
+    "assets/t3-code/v0.0.42/git-push-v0042-dark-capture-00.webp": "f767d3f120f1106e725c2b7dddea8b2da0edf0ceb8ddd3bfb2607cc99b116ed2",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-capture-01.webp": "4a2849b3e3bc6f4a731e9eea9f73f493fc4c8ddf51551cde05a4c73be6d78e42",
+    "assets/t3-code/v0.0.42/git-push-v0042-dark-capture-01.webp": "4a2849b3e3bc6f4a731e9eea9f73f493fc4c8ddf51551cde05a4c73be6d78e42",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-capture-02.webp": "b7d73ad20fdeb19c1e01bc2696c18a84e6555f4cde03a0f04b148c40dfba3cab",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-capture-03.webp": "933e3aeef65ce33d288644cb0a20c659e7227d6d99436ca63780861f7e2409f7",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-capture-04.webp": "1768b469d5ec191bb4920d1594f151066ba1ac49c5e0936789339e714090c211",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-capture-05.webp": "d6d158707ce85a0dd552af84f223a93a495a0736b8bd301539f7faed334efdd1",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-capture-06.webp": "d6d158707ce85a0dd552af84f223a93a495a0736b8bd301539f7faed334efdd1",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-capture-07.webp": "70fd1717e92c2ac2318798e38e603c09ed08cec965136d274c43f13826704874",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-capture-08.webp": "25768a291a705e131839722a0ecf1dbed50d989b2609815d91fb5a6308e4602f",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-dark-capture-09.webp": "25768a291a705e131839722a0ecf1dbed50d989b2609815d91fb5a6308e4602f",
+    "assets/t3-code/v0.0.42/dark-theme.json": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
+    "parity/t3-commit-creation-v0042-atlas.json": "23c6cedf2dcf83adc87b5355d8aaa1822ca3c4ee0e44ccc89683ecaaee2fc746",
+    "parity/t3-commit-creation-v0042-dark-reference.mkv": "7e5d8d6bdfc7abedec40d26c7e825873c28e97ebdb57196c5f496577b8f36d4f",
+    "parity/t3-catalog/t3-commit-creation/dark/proof.json": "84196f34dfcda897cd26a365e2a0501ba99d9ef2f2f38994766b9f359764e6e2",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-fixture.json": "b79101d44fb9fa532893ac50eef9fdfaba7ce6c7fb271fdc3b58d6b5c564ba86",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-before.html": "d4cf61e6e57e49ad761815fea0389b527d2fecf856d8c89573c409af7cedeca7",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-menu.html": "0375ffd9b04909849c87a5301c13480ca0361d57f88ce1b8780c74d99fd78032",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-dialog.html": "84ab98bed8a6cae8b241c3404b3cd7fb42dc42923d3ba6fdd275391464637662",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-typed.html": "84ab98bed8a6cae8b241c3404b3cd7fb42dc42923d3ba6fdd275391464637662",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-committed.html": "8bbcc80dcef2401cc5f6aabdb179f2ae116e8bf2f494b9c78a68a70332294372",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-capture-00.webp": "ad9d805b38a1e0a7c633bcd8414ef4de7dd17ea5a0adba07d29626c68fbe0a28",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-capture-01.webp": "2dc6ed36fc236f40f0dfcfe68ddde1e9339c1ab6f9be23cf193a9a2ea604f058",
+    "assets/t3-code/v0.0.42/git-push-v0042-light-capture-01.webp": "2dc6ed36fc236f40f0dfcfe68ddde1e9339c1ab6f9be23cf193a9a2ea604f058",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-capture-02.webp": "bbcef3fcdd6c801c4e9510a535bfc477f3b57a88a8024be3712197ad7fb7c6e1",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-capture-03.webp": "04f1ec398a9f3eb4f0ebd00a33ef0620ef2a34c1292b7b2023db3039ab6a3b63",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-capture-04.webp": "132ebbc8526d1d544364498e72c1375233589f3e30aaf6a69972adc7aff50c4e",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-capture-05.webp": "6bc7b538abd30a756b0d18d173d77673fa165ef38762a695a225985e21bae2c2",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-capture-06.webp": "6bc7b538abd30a756b0d18d173d77673fa165ef38762a695a225985e21bae2c2",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-capture-07.webp": "24313ed5c45f132ef9803b6801671c09f6ee08c0ccba75c8dedeafd7f1f3e803",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-capture-08.webp": "90bef4a04b19b613b77d7743b19ca9d95090101b60158cba36299ccc7646340d",
+    "assets/t3-code/v0.0.42/commit-creation-v0042-light-capture-09.webp": "90bef4a04b19b613b77d7743b19ca9d95090101b60158cba36299ccc7646340d",
+    "assets/t3-code/v0.0.42/light-theme.json": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
+    "parity/t3-commit-creation-v0042-light-reference.mkv": "555e74580c33f76745c57670b503b5062dd83a148d94bb9abb9f1c6e894cd1d9",
+    "parity/t3-catalog/t3-commit-creation/light/proof.json": "d660c16cad99a24831bfaff78f8452d60a284adeb38055c452e5dd01ceb95dfa",
+    "scripts/publish-t3-catalog-parity.mjs": "56b6c8bfcf9e1def8345ff2cbb0eb1654eca044596c1431849fa7746258a818d"
+  },
+  "artifactHashes": {
+    "parity/t3-catalog/t3-commit-creation/dark/proof.json": "84196f34dfcda897cd26a365e2a0501ba99d9ef2f2f38994766b9f359764e6e2",
+    "parity/t3-catalog/t3-commit-creation/dark/rgba.json": "6afea18a3195d506be03332d92798ff5dfac0b074602f6f163eb222ff91f37fa",
+    "parity/t3-catalog/t3-commit-creation/dark/reference-rgba.sha256": "a2b08f59414b1af2806997353d4806f1a812295c98e6789af2fa45118d07e911",
+    "parity/t3-catalog/t3-commit-creation/dark/hyperframes-rgba.sha256": "a2b08f59414b1af2806997353d4806f1a812295c98e6789af2fa45118d07e911",
+    "parity/t3-catalog/t3-commit-creation/dark/ssim.txt": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/t3-catalog/t3-commit-creation/dark/ssim.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-commit-creation/dark/hyperframes-check.json": "8f14a2d59b5b8d99ec1533412ee47a557fe39f80fea21928082008ff721a58dc",
+    "parity/t3-catalog/t3-commit-creation/dark/hyperframes-check.log": "a78e2d7e8b3067f0f398543fd87dfbc495adb1e0c5325671fc4d177fd44c9a26",
+    "parity/t3-catalog/t3-commit-creation/dark/hyperframes-render.log": "ff0ed5521db09ef23e4613d62a3772e09f925f7f8b1b00b820405987eb5ad53f",
+    "parity/t3-catalog/t3-commit-creation/dark/reference-decode.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-commit-creation/dark/install.log": "58643af56779053db17b97ed0136f3a136767f4f534ed0385416a97adb4ff322",
+    "parity/t3-catalog/t3-commit-creation/light/proof.json": "d660c16cad99a24831bfaff78f8452d60a284adeb38055c452e5dd01ceb95dfa",
+    "parity/t3-catalog/t3-commit-creation/light/rgba.json": "296e748b2beb12a90051b6d69c5d7ed5086aef7a444fcf95b0c2b3d432ad5f59",
+    "parity/t3-catalog/t3-commit-creation/light/reference-rgba.sha256": "7fce8313b3ac0b8ac9efc4ca6905586392f3a1ddb4104c244883805932260e2d",
+    "parity/t3-catalog/t3-commit-creation/light/hyperframes-rgba.sha256": "7fce8313b3ac0b8ac9efc4ca6905586392f3a1ddb4104c244883805932260e2d",
+    "parity/t3-catalog/t3-commit-creation/light/ssim.txt": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/t3-catalog/t3-commit-creation/light/ssim.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-commit-creation/light/hyperframes-check.json": "cc7ebcf15588dc9ce890dfd9f55bdf332c988b06bd57897e1b02dd1d4523ce7b",
+    "parity/t3-catalog/t3-commit-creation/light/hyperframes-check.log": "1de16e26766248d933830ff38ded1424bd7406c46bdc39226682a9ee7e19ae23",
+    "parity/t3-catalog/t3-commit-creation/light/hyperframes-render.log": "17a7fe8d5a081c728e43b4c65358ff8d54166270e1cf3f7c25e8b10efb6207d8",
+    "parity/t3-catalog/t3-commit-creation/light/reference-decode.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/t3-catalog/t3-commit-creation/light/install.log": "bfc0b468f9566ffc93b0f5fbc7d24e8986da64c95c4de5d109d8184d0da532c3",
+    "public/previews/t3-commit-creation/reference.mp4": "6dadebcff65a015128f89b4df72422eeb2786595b04aa3d641c8c41a2fa21f0d",
+    "public/previews/t3-commit-creation/hyperframes.mp4": "6dadebcff65a015128f89b4df72422eeb2786595b04aa3d641c8c41a2fa21f0d",
+    "public/previews/t3-commit-creation/thumbnail.png": "021068f25afba13a0517bb0bff83d2f592f509865317282aa0e720b9e22033bb",
+    "public/previews/t3-commit-creation/reference-light.mp4": "af39416955df577f3d5f7404a38e72c5bcc624e8f5289d86d0bd91a9256b48f2",
+    "public/previews/t3-commit-creation/hyperframes-light.mp4": "af39416955df577f3d5f7404a38e72c5bcc624e8f5289d86d0bd91a9256b48f2",
+    "public/previews/t3-commit-creation/thumbnail-light.png": "2a983e017ad38b3f09173df7fc5d45f9ad1324a49dd0a012c7970bc4a3f9045e"
+  },
+  "previewEncoding": {
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1200,
+    "height": 660,
+    "fps": 30,
+    "frameCount": 120,
+    "bottomPadding": 1,
+    "thumbnailFrame": 90
+  },
+  "historicalCustomizationEvidence": {
+    "contract": "Previously measured customization, crop, variant, and continuity evidence; these measurements are outside the exact current default-fixture claim.",
+    "result": {
+      "frameCount": 120,
+      "meanSsim": 1,
+      "minSsim": 1,
+      "p05Ssim": 1,
+      "p95Ssim": 1,
+      "worstFrame": 0,
+      "pass": true
+    },
+    "fixture": {
+      "width": 1200,
+      "height": 659,
+      "fps": 30,
+      "durationInFrames": 120,
+      "props": {
+        "theme": "dark",
         "menu": 20,
         "dialog": 30,
         "typed": 55,
         "committed": 85
       },
-      "artifacts": {
-        "nativeRecording": "parity/t3-commit-creation-v0042-light-reference.mkv",
-        "referenceVideo": "public/previews/t3-commit-creation/reference-light.mp4",
-        "hyperframesVideo": "public/previews/t3-commit-creation/hyperframes-light.mp4",
-        "frameSsim": "parity/t3-commit-creation-diff/light/ssim.txt",
-        "hyperframesCheck": "parity/t3-commit-creation-diff/light/hyperframes-check.json",
-        "installedCheck": "parity/t3-commit-creation-diff/light/installed-check.json",
-        "customCheck": "parity/t3-commit-creation-diff/light/custom-check.json",
-        "customized": "parity/t3-commit-creation-diff/light/customized-state.png"
-      }
+      "sourceHashes": {
+        "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+        "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+        "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+      },
+      "captureAtlas": "parity/t3-commit-creation-v0042-atlas.json",
+      "compositionSha256": "55bc7a7fd90bce2408dbffd80580bad4b94f22e996d292322c46678ea71f59ff"
+    },
+    "checks": {
+      "hyperframes": "full checks and strict 120-frame renders passed in dark and light",
+      "hyperframesVersion": "0.8.75",
+      "sourceBrowser": "Google Chrome for Testing 152.0.7977.30",
+      "installedThroughCli": true,
+      "customVariables": "Editable DOM mode changed Hyfrme project, branch, thread and reply copy, changed file and diff counts, commit message, theme, and every Git phase time; full checks, visible-text assertions, and strict 120-frame renders passed in both themes."
+    },
+    "fields": {
+      "previewEncoding": {
+        "codec": "h264",
+        "pixelFormat": "yuv420p",
+        "width": 1200,
+        "height": 660,
+        "fps": 30,
+        "frameCount": 120,
+        "bottomPadding": 1,
+        "thumbnailFrame": 90
+      },
+      "interaction": "Native v0.0.42 creates a local commit for one real Hyfrme Logo Enter change through T3 Code's Git review dialog. The isolated repository has no remote.",
+      "providerState": "Hyfrme project and Git changes are isolated fixtures; no AI provider, GitHub account, or external remote is used."
     }
-  },
-  "checks": {
-    "hyperframes": "full checks and strict 120-frame renders passed in dark and light",
-    "hyperframesVersion": "0.8.75",
-    "sourceBrowser": "Google Chrome for Testing 152.0.7977.30",
-    "installedThroughCli": true,
-    "customVariables": "Editable DOM mode changed Hyfrme project, branch, thread and reply copy, changed file and diff counts, commit message, theme, and every Git phase time; full checks, visible-text assertions, and strict 120-frame renders passed in both themes."
-  },
-  "artifacts": {
-    "nativeRecording": "parity/t3-commit-creation-v0042-dark-reference.mkv",
-    "referenceVideo": "public/previews/t3-commit-creation/reference.mp4",
-    "hyperframesVideo": "public/previews/t3-commit-creation/hyperframes.mp4",
-    "frameSsim": "parity/t3-commit-creation-diff/dark/ssim.txt",
-    "hyperframesCheck": "parity/t3-commit-creation-diff/dark/hyperframes-check.json",
-    "installedCheck": "parity/t3-commit-creation-diff/dark/installed-check.json",
-    "customCheck": "parity/t3-commit-creation-diff/dark/custom-check.json",
-    "customized": "parity/t3-commit-creation-diff/dark/customized-state.png",
-    "thumbnail": "public/previews/t3-commit-creation/thumbnail.png",
-    "lightThumbnail": "public/previews/t3-commit-creation/thumbnail-light.png"
   }
 }

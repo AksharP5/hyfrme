@@ -2,7 +2,7 @@
   "slug": "type-wall",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/type-wall/index.tsx",
     "config": "registry/remocn/type-wall/config.ts",
     "license": "MIT"
@@ -24,13 +24,29 @@
     },
     "background": "#2b3bff"
   },
+  "filesSha256": {
+    "registry-item.json": "c6a3c2af1a5cfa55638be84fad00f3dc0a9b328e9a31259c22d7b2d6965614db",
+    "type-wall.html": "044bed3a52af7447dd2329512cb168a446b681a6b91801a217a4edccd9d65447",
+    "type-wall.runtime.js": "14e2ddaecd7e4600a22e393c702d51e0acd178f026ced4fcc9b4c9807eef4156",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "Inter-Latin.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "Anton-Latin.woff2": "d0fa07ff63dd60cbc0e2f58e29c802dca2a5ae0276c999f59c6111ab7bbaec3b",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/Inter-OFL.txt": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+    "licenses/Anton-OFL.txt": "ee5c1d7bc0e6ffea6ebcee9b0da885895bb32eb09e728daed6ce507c89544688"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "e3522af3628742c0c3b1b4f72b570b9ccd6203d841039a97de9539f45be8c441",
+  "fingerprint": "e71cecda71a510a7399f1b7533f68acaf72bc98601a8321314f44ad7fae14d4c",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 150,
@@ -43,14 +59,23 @@
       "mismatchedFrames": [],
       "pass": true
     },
+    "rgba": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -62,6 +87,21 @@
     "hyperframesCheck": "parity/type-wall-diff/hyperframes-check.log",
     "worstFrame": "parity/type-wall-diff/worst-frame.png",
     "referenceAlpha": "parity/type-wall-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/type-wall-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/type-wall-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/type-wall-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/type-wall-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/type-wall/reference.mp4": "e86461cb3b84d4d8148c745e23be73ca0004ef97134f563f162533b364e58074",
+    "public/previews/type-wall/hyperframes.mp4": "e86461cb3b84d4d8148c745e23be73ca0004ef97134f563f162533b364e58074",
+    "public/previews/type-wall/thumbnail.png": "375fae03da2d0bac6b54700fb1b560956be8b98378fd768a5809580763c54d3c",
+    "parity/type-wall-diff/summary.json": "ad55b29e05e75e155f68631a7d07dcf33cfd0beba9f35e6e6cb01ccc34051e53",
+    "parity/type-wall-diff/ssim.log": "c4fbedb2045d104b60568467b9860d7ee5ffeee1f88dedd0034e5cf393a3221a",
+    "parity/type-wall-diff/hyperframes-check.log": "7d5faab811806886b9f1859182741b7521df286fcaa41de0bf9811778dc56cc7",
+    "parity/type-wall-diff/worst-frame.png": "8eec7390fc4e95c549f6622c576a7044b4c4340d7b1d517292c8ee513ef3b9e7",
+    "parity/type-wall-diff/reference-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/type-wall-diff/hyperframes-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/type-wall-diff/reference-rgba.framemd5": "6257f4318f368427dadcbf2fc3238d629dbe3a8962b84997c7420a8aaeb768d6",
+    "parity/type-wall-diff/hyperframes-rgba.framemd5": "6257f4318f368427dadcbf2fc3238d629dbe3a8962b84997c7420a8aaeb768d6"
   }
 }

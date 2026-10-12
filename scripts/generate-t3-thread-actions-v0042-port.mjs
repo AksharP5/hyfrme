@@ -1,5 +1,6 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
@@ -18,6 +19,7 @@ if (!htmlIcon) throw new Error("The official T3 HTML icon symbol is missing");
 const phases = ["before", "menu", "snooze", "after"];
 const states = await Promise.all(["dark", "light"].map(async (variant) => Promise.all(phases.map(async (phase) => {
   let html = await readFile(resolve(source, `thread-actions-${variant}-${phase}.html`), "utf8");
+  if (phase === "before") html = html.replaceAll('data-message-role="user"', 'data-message-role="user" data-t3-native-hover');
   html = html.replace(/(<span[^>]*class="[^"]*\[text-box:trim-both_cap_alphabetic\][^"]*")/g, "$1 data-layout-ignore");
   if (phase === "menu" || phase === "snooze") html = html.replace("<main ", "<main data-layout-ignore ");
   return html;
@@ -83,18 +85,25 @@ const html = `<!doctype html>
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-stage[hidden] { display: none !important; }
   .t3-state[hidden] { display: none !important; }
   .t3-state:not([hidden]) { display: contents; }
+  .t3-stage [data-t3-native-hover] .opacity-0.transition-opacity { opacity: 1; }
+  .t3-stage * { transition: none; }
   .base-ui-disable-scrollbar { scrollbar-width: none; }
   .base-ui-disable-scrollbar::-webkit-scrollbar { display: none; }
   @font-face { font-family: "Apple Color Emoji"; src: local("Apple Color Emoji"); }
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
-<svg data-layout-ignore aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">${htmlIcon}</svg>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
+<svg data-layout-ignore aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">${htmlIcon}</svg>
   <div class="dark t3-stage" style='${escapeAttribute(stageThemes[0])}'>
     <div class="t3-state" data-t3-state="before">${states[0][0]}</div>
     <div class="t3-state" data-t3-state="menu" data-layout-ignore hidden>${states[0][1]}${portals[0][0]}</div>
@@ -142,16 +151,12 @@ const rowMotion = sections.map((variant) => [variant[1], variant[2]].map((sectio
   actions.style.transition = 'none';
   return { age, actions };
 }));
-const hoverAnimations = sections.map((variant, themeIndex) => {
+const transitions = ${scriptJson(nativeTransitions)};
+const snoozeTriggers = sections.map(variant => {
   const snooze = [...variant[2].querySelectorAll('.dropdown-glass[data-level="0"] button')]
-    .find((element) => element.textContent.trim() === options.menuItem4);
+    .find(element => element.textContent.trim() === options.menuItem4);
   if (!snooze) throw new Error('Snooze menu trigger missing');
-  return ${scriptJson(nativeTransitions)}[themeIndex].submenu.filter((item) => item.label === 'Snooze').map((item) => {
-    const keyframes = item.keyframes.map(({ computedOffset, composite, ...frame }) => frame);
-    const animation = snooze.animate(keyframes, { duration: item.durationMs, easing: item.easing, fill: 'both' });
-    animation.pause();
-    return animation;
-  });
+  return snooze;
 });
 const ageKeys = ['thread1Age', 'thread2Age', 'thread3Age', 'thread4Age', 'thread5Age'];
 for (const section of sections.flat()) {
@@ -181,6 +186,45 @@ for (const section of sections.flat()) {
   }
 }
 const clock = { frame: 0 };
+const effects = new Map();
+const propertyOf = record => Object.keys(record.keyframes[0]).find(key => !['offset', 'computedOffset', 'easing', 'composite'].includes(key));
+const cssProperty = property => property.replace(/[A-Z]/g, letter => '-' + letter.toLowerCase());
+function seekSourceEffects(records, frame, start) {
+  const grouped = new Map();
+  for (const { target, record } of records) {
+    if (!grouped.has(target)) grouped.set(target, []);
+    grouped.get(target).push(record);
+  }
+  const ready = [];
+  for (const [target, motions] of grouped) {
+    const finishFrame = start + (motions.some(motion => motion.sourceUserOpacity) ? 6 : 5);
+    let animations = effects.get(target);
+    if (animations && frame < finishFrame && animations.some(animation => animation.playState === 'idle')) animations = undefined;
+    if (!animations) {
+      target.style.transitionProperty = 'none';
+      for (const motion of motions) target.style[propertyOf(motion)] = motion.keyframes[0][propertyOf(motion)];
+      getComputedStyle(target).opacity;
+      target.style.transitionProperty = motions.map(motion => cssProperty(propertyOf(motion))).join(',');
+      target.style.transitionDuration = motions.map(motion => motion.durationMs + 'ms').join(',');
+      target.style.transitionTimingFunction = motions.map(motion => motion.easing).join(',');
+      for (const motion of motions) target.style[propertyOf(motion)] = motion.keyframes.at(-1)[propertyOf(motion)];
+      getComputedStyle(target).opacity;
+      animations = target.getAnimations().filter(animation => animation instanceof CSSTransition && motions.some(motion => cssProperty(propertyOf(motion)) === animation.transitionProperty));
+      if (animations.length !== motions.length) throw new Error('Native Thread Actions CSS transition did not start');
+      for (const animation of animations) animation.pause();
+      effects.set(target, animations);
+    }
+    for (const animation of animations) {
+      if (frame >= finishFrame) animation.cancel();
+      else {
+        animation.pause();
+        animation.currentTime = Math.max(0, (frame - start) * 1000 / 30);
+        ready.push(animation.ready);
+      }
+    }
+  }
+  return ready;
+}
 function draw() {
   const frame = Math.round(clock.frame);
   const openFrame = Number(options.openFrame);
@@ -189,40 +233,41 @@ function draw() {
   const phase = frame < openFrame ? 0 : frame < submenuFrame ? 1 : frame < closeFrame ? 2 : 3;
   for (const [index, stage] of stages.entries()) stage.hidden = (index === 1) !== (options.theme === 'light');
   for (const variant of sections) for (let index = 0; index < variant.length; index++) variant[index].hidden = index !== phase;
-  const ease = (start) => {
-    const progress = Math.max(0, Math.min(1, (frame - start) * 1000 / (30 * 150)));
-    let low = 0, high = 1;
-    for (let index = 0; index < 20; index++) {
-      const middle = (low + high) / 2;
-      const inverse = 1 - middle;
-      const x = 3 * inverse * inverse * middle * 0.4 + 3 * inverse * middle * middle * 0.2 + middle * middle * middle;
-      if (x < progress) low = middle; else high = middle;
+  const themeIndex = options.theme === 'light' ? 1 : 0;
+  const visible = sections[themeIndex][phase];
+  for (const [target, animations] of effects) {
+    if (visible.contains(target)) continue;
+    for (const animation of animations) animation.cancel();
+    effects.delete(target);
+  }
+  const ready = [];
+  if (phase === 1 || phase === 2) {
+    const row = rowMotion[themeIndex][phase - 1];
+    row.age.style.position = phase === 1 ? 'absolute' : 'static';
+    row.age.style.right = '0';
+    row.actions.style.position = phase === 1 ? 'static' : 'absolute';
+    const event = phase === 1 ? 'open' : 'submenu';
+    const start = phase === 1 ? openFrame : submenuFrame;
+    const source = transitions[themeIndex][event];
+    ready.push(...seekSourceEffects(source.map(record => ({ record, target: record.label === 'Snooze' ? snoozeTriggers[themeIndex] : record.target.startsWith('pointer-events-none group-has-') ? row.age : row.actions })), frame, start));
+    if (phase === 1) {
+      const messages = [...visible.querySelectorAll('[data-message-role="user"] .opacity-0.transition-opacity')];
+      ready.push(...seekSourceEffects(messages.map(target => ({ target, record: { sourceUserOpacity: true, durationMs: 200, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', keyframes: [{ opacity: '1' }, { opacity: '0' }] } })), frame, openFrame));
     }
-    const t = (low + high) / 2;
-    const inverse = 1 - t;
-    return 3 * inverse * t * t + t * t * t;
-  };
-  for (const variant of rowMotion) {
-    const opening = ease(openFrame);
-    variant[0].age.style.opacity = String(1 - opening);
-    variant[0].age.style.position = 'absolute';
-    variant[0].age.style.right = '0';
-    variant[0].actions.style.opacity = String(opening);
-    variant[0].actions.style.position = 'static';
-    const leaving = ease(submenuFrame);
-    variant[1].age.style.opacity = String(leaving);
-    variant[1].age.style.position = 'static';
-    variant[1].actions.style.opacity = String(1 - leaving);
-    variant[1].actions.style.position = 'absolute';
   }
-  for (const animations of hoverAnimations) for (const animation of animations) {
-    animation.currentTime = Math.max(0, Math.min(150, (frame - submenuFrame) * 1000 / 30));
-  }
+  const pending = Promise.all(ready);
+  window.__hyfrmeReady = pending;
+  return pending;
 }
 draw();
 const timeline = gsap.timeline({ paused: true });
 timeline.to(clock, { frame: 120, duration: 4, ease: 'none', onUpdate: draw });
 window.__timelines['${name}'] = timeline;
+window.addEventListener('hf-seek', event => {
+  const pending = Promise.resolve().then(draw);
+  window.__hyfrmeReady = pending;
+  event.detail?.waitUntil?.(pending);
+});
 </script>
 </template>
 </body>
@@ -251,7 +296,7 @@ await writeFile(resolve(output, "registry-item.json"), `${JSON.stringify({
 }, null, 2)}\n`);
 await writeFile(resolve(output, "README.md"), `# T3 Code: Thread Actions
 
-This four-second, 1200 × 659 block reproduces T3 Code v${fixture.sourceTag.slice(1)} at 30 fps in desktop dark and light themes. Right-clicking the selected thread's sidebar row opens its native action menu beside that row, then hovering Snooze reveals its submenu. The project and conversation are seeded local Hyfrme data; the menu interactions are live captures of the official app.
+This four-second, 1200 × 659 block reproduces T3 Code v${fixture.sourceTag.slice(1)} at 30 fps in desktop dark and light themes. Right-clicking the selected thread's sidebar row opens its native action menu beside that row, then hovering Snooze reveals its submenu. The project and conversation are seeded local Hyfrme data; the menu interactions are live captures of the official app. The user metadata uses its source 200ms opacity transition. The pointer starts over the user message and leaves at the right-click event. Sidebar controls and Snooze hover use the recorded native CSS property transitions, paused and sought with the source clock; the capture cancels them five frames after each event.
 
 Customize theme, project, selected thread, conversation, sidebar, footer, menu copy, and opening, submenu, and closing frames through HyperFrames variables. Match project, branch, and thread values with adjacent T3 Code blocks for continuity. Source: https://github.com/pingdotgg/t3code/tree/${fixture.sourceCommit}. The installed files include T3 Code's MIT license and third-party icon notice. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.
 `);

@@ -1,5 +1,6 @@
 import { readFile, mkdir, writeFile, copyFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const sourceDir = resolve(root, "assets/t3-code/v0.0.42");
@@ -114,12 +115,17 @@ const html = `<!doctype html>
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { ${stageTheme} position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
   .base-ui-disable-scrollbar { scrollbar-width: none; }
+  /* Keep native interactions while frame time owns opacity and inherited visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale; }
   .base-ui-disable-scrollbar::-webkit-scrollbar { display: none; }
   @font-face { font-family: "Apple Color Emoji"; src: local("Apple Color Emoji"); }
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="t3-brief-to-prompt" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
   <div class="dark t3-stage">${shell}</div>
@@ -181,14 +187,30 @@ const paragraph = editor.querySelector('p');
 const placeholder = editor.parentElement.querySelector('.pointer-events-none.absolute');
 const submit = editor.closest('form').querySelector('button[type="submit"]');
 const clock = { frame: 0 };
+const submitFadeFrames = 4.5;
+const firstTypedFrame = Math.ceil(options.typingStart + Math.max(1, options.typingEnd - options.typingStart) / (2 * options.prompt.length));
+function submitEase(progress) {
+  if (progress <= 0) return 0;
+  if (progress >= 1) return 1;
+  let position = progress;
+  for (let index = 0; index < 8; index++) {
+    const x = 3 * (1 - position) ** 2 * position * 0.4 + 3 * (1 - position) * position ** 2 * 0.2 + position ** 3;
+    const derivative = 3 * (1 - position) ** 2 * 0.4 + 6 * (1 - position) * position * (0.2 - 0.4) + 3 * position ** 2 * (1 - 0.2);
+    position = Math.max(0, Math.min(1, position - (x - progress) / Math.max(0.0001, derivative)));
+  }
+  return 3 * (1 - position) * position ** 2 + position ** 3;
+}
 function draw() {
   const frame = Math.round(clock.frame);
   const progress = Math.max(0, Math.min(1, (frame - options.typingStart) / Math.max(1, options.typingEnd - options.typingStart)));
   const count = Math.round(options.prompt.length * progress);
+  // Native opacity transitions composite only while the 150ms fade is active.
+  submit.style.willChange = count > 0 && frame < firstTypedFrame + submitFadeFrames ? 'opacity' : '';
   if (count === 0) {
     paragraph.innerHTML = '<br>';
     placeholder.hidden = false;
     submit.disabled = true;
+    submit.style.opacity = '0.3';
     return;
   }
   let span = paragraph.querySelector('[data-lexical-text]');
@@ -200,10 +222,11 @@ function draw() {
   span.textContent = options.prompt.slice(0, count);
   placeholder.hidden = true;
   submit.disabled = false;
+  submit.style.opacity = String(0.3 + 0.7 * submitEase((frame - firstTypedFrame) / submitFadeFrames));
 }
 draw();
 const timeline = gsap.timeline({ paused: true });
-timeline.to(clock, { frame: 119, duration: 4, ease: 'none', onUpdate: draw });
+timeline.to(clock, { frame: 120, duration: 4, ease: 'none', onUpdate: draw });
 window.__timelines['t3-brief-to-prompt'] = timeline;
 </script>
 </template>

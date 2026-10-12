@@ -4,6 +4,11 @@ import { resolve } from "node:path";
 import { isDeepStrictEqual } from "node:util";
 import { build } from "esbuild";
 import { parseHyperframesVariables } from "./hyperframes-variables.mjs";
+import { assertExactCompiledParity } from "./compiled-parity.mjs";
+import {
+  assertExactFrameHashes,
+  assertVerifiedBlockFiles,
+} from "./parity-evidence.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const readJson = async (path) => JSON.parse(await readFile(path, "utf8"));
@@ -12,6 +17,44 @@ const ensure = async (path, label) => {
     await access(path);
   } catch {
     throw new Error(`Missing ${label}: ${path}`);
+  }
+};
+const assertArtifactHashes = async (parity, canonicalIcon = false) => {
+  const deferred = canonicalIcon
+    ? new Set(["referenceVideo", "hyperframesVideo", "thumbnail"])
+    : new Set();
+  const actual = Object.fromEntries(
+    await Promise.all(
+      Object.entries(parity.artifacts)
+        .filter(([key]) => !deferred.has(key))
+        .map(async ([, path]) => [
+          path,
+          createHash("sha256")
+            .update(await readFile(resolve(root, path)))
+            .digest("hex"),
+        ]),
+    ),
+  );
+  if (!isDeepStrictEqual(actual, parity.artifactHashes))
+    throw new Error(
+      `${parity.slug}: parity artifacts changed after verification`,
+    );
+};
+const assertPortableHashes = async (recorded) => {
+  if (!recorded || !Object.keys(recorded).length)
+    throw new Error("Missing portable parity file hashes");
+  for (const [path, checksum] of Object.entries(recorded)) {
+    if (
+      !/^(assets|registry|catalog|parity|public|scripts|cli)\//.test(path) ||
+      path.split("/").includes("..") ||
+      !/^[a-f0-9]{64}$/.test(checksum)
+    )
+      throw new Error(`Invalid parity file hash: ${path}`);
+    const actual = createHash("sha256")
+      .update(await readFile(resolve(root, path)))
+      .digest("hex");
+    if (actual !== checksum)
+      throw new Error(`Verified parity file changed: ${path}`);
   }
 };
 
@@ -40,6 +83,14 @@ const registry = await readJson(resolve(root, "registry", "registry.json"));
 const upstreamInventory = await readJson(
   resolve(root, "catalog", "upstream-inventory.json"),
 );
+const compiledPorts = new Set([
+  ...upstreamInventory.items
+    .filter((item) => item.visual)
+    .map((item) => item.name),
+  ...(await readJson(resolve(root, "catalog/snapcn-fixtures.json"))).map(
+    (item) => item.slug,
+  ),
+]);
 const htmlInCanvasItems = new Set(
   upstreamInventory.items
     .filter(
@@ -227,6 +278,28 @@ for (const item of registry.items) {
     );
   }
 
+  if (
+    compiledPorts.has(item.name) ||
+    parity.classification === "compiled-source-port"
+  ) {
+    assertExactCompiledParity(parity);
+    await assertVerifiedBlockFiles(
+      blockDirectory,
+      manifest,
+      parity.filesSha256,
+    );
+    await assertArtifactHashes(parity, manifest.tags?.includes("icon"));
+    await assertExactFrameHashes(
+      resolve(root, parity.artifacts.referenceRgba),
+      resolve(root, parity.artifacts.hyperframesRgba),
+      {
+        width: parity.fixture.width,
+        height: parity.fixture.height,
+        frameCount: parity.fixture.durationInFrames,
+      },
+    );
+  }
+
   if (parity.classification === "source-dom-port") {
     const composition = manifest.files.find(
       (file) => file.type === "hyperframes:composition",
@@ -271,6 +344,63 @@ for (const item of registry.items) {
     }
   }
 
+  if (manifest.tags?.includes("t3-code")) {
+    await assertVerifiedBlockFiles(
+      blockDirectory,
+      manifest,
+      parity.filesSha256,
+    );
+    if (
+      parity.thresholds?.exactRgba !== true ||
+      parity.thresholds.meanSsim !== 1 ||
+      parity.thresholds.minSsim !== 1 ||
+      parity.result.exactRgba !== true ||
+      parity.result.meanSsim !== 1 ||
+      parity.result.minSsim !== 1
+    )
+      throw new Error(`${item.name}: exact T3 default parity is incomplete`);
+    await assertPortableHashes(parity.inputHashes);
+    await assertPortableHashes(parity.artifactHashes);
+    for (const theme of ["dark", "light"]) {
+      const record = parity.themes?.[theme];
+      const proofPath = `parity/t3-catalog/${item.name}/${theme}/proof.json`;
+      if (
+        record?.artifacts?.proof !== proofPath ||
+        !parity.artifactHashes[proofPath] ||
+        record.values?.theme !== theme ||
+        record.result?.exactRgba !== true ||
+        record.result.pass !== true ||
+        record.result.meanSsim !== 1 ||
+        record.result.minSsim !== 1 ||
+        record.result.frameCount !== parity.fixture.durationInFrames
+      )
+        throw new Error(`${item.name}: exact ${theme} T3 proof is incomplete`);
+      const proof = await readJson(resolve(root, proofPath));
+      if (
+        proof.status !== "verified" ||
+        proof.theme !== theme ||
+        proof.slug !== item.name ||
+        proof.result?.pass !== true ||
+        proof.result.exactRgba !== true ||
+        proof.referenceSha256 !== record.referenceSha256 ||
+        proof.sourceCommit !== parity.origin.commit ||
+        !isDeepStrictEqual(proof.filesSha256, parity.filesSha256)
+      )
+        throw new Error(
+          `${item.name}: ${theme} T3 proof does not match the shipped block`,
+        );
+      await assertExactFrameHashes(
+        resolve(root, record.artifacts.referenceRgba),
+        resolve(root, record.artifacts.hyperframesRgba),
+        {
+          width: parity.fixture.width,
+          height: parity.fixture.height,
+          frameCount: parity.fixture.durationInFrames,
+        },
+      );
+    }
+  }
+
   if (manifest.tags?.includes("icon")) {
     const showcase = parity.showcase;
     const hasHighDensityFixture =
@@ -279,13 +409,26 @@ for (const item of registry.items) {
       showcase.fixture.scale === 8;
     const hasPassingShowcase =
       showcase?.result?.pass === true &&
-      showcase.result.meanSsim >= parity.thresholds.meanSsim;
+      showcase.result.meanSsim === 1 &&
+      showcase.result.minSsim === 1 &&
+      showcase.result.rgba?.pass === true &&
+      showcase.result.rgba.frameCount === parity.fixture.durationInFrames;
 
     if (!hasHighDensityFixture || !hasPassingShowcase) {
       throw new Error(
         `${item.name}: icon catalog previews require a passing 384x384 showcase`,
       );
     }
+    await assertExactFrameHashes(
+      resolve(root, showcase.artifacts.referenceRgba),
+      resolve(root, showcase.artifacts.hyperframesRgba),
+      {
+        width: showcase.fixture.width,
+        height: showcase.fixture.height,
+        frameCount: showcase.fixture.durationInFrames,
+      },
+    );
+    await assertArtifactHashes(showcase);
   }
 
   if (original) {

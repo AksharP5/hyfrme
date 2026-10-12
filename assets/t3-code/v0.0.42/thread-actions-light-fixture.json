@@ -70,7 +70,7 @@
     "This evening (6:00 PM)",
     "Tomorrow (9:00 AM)",
     "Next week (Mon 9:00 AM)",
-    "Custom…"
+    "Custom\u2026"
   ],
   "transitions": {
     "open": [
@@ -233,5 +233,43 @@
     "menu": "0986d8e2c7385496aaa509c3efc8088a200473b27f0cc4bfba8fa1c3494b4437",
     "snooze": "4ae5d07ec9f0b8a6b556b11820abe81a7bed8556d86ca99a7002b9709671e066"
   },
-  "referenceSha256": "fbf934e8d28cac958c15f26a2a2cf4854b9339488343b17a08d207fc435d8a44"
+  "referenceSha256": "bc4b74908d48e34dd2e4de93af224ef9165fe801f782ba4ef82433c6181fbf04",
+  "reference": "parity/t3-thread-actions-v0042-user-clock-v2-light-reference.mkv",
+  "userTransitions": [
+    {
+      "target": "flex w-full max-w-[80%] items-center justify-end pe-1 text-xs tabular-nums opacity-0 transition-opacity duration-200 pointer-coarse:opacity-",
+      "row": null,
+      "label": null,
+      "menuLevel": null,
+      "durationMs": 200,
+      "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "1",
+          "computedOffset": 0
+        },
+        {
+          "offset": 1,
+          "easing": "linear",
+          "composite": "auto",
+          "opacity": "0",
+          "computedOffset": 1
+        }
+      ]
+    }
+  ],
+  "capturePolicy": {
+    "sidebar": "Original five-frame manual-clock policy unchanged",
+    "user": "Only source user metadata opacity CSSTransition; exact200ms cubic-bezier(.4,0,.2,1); currentTime=(frame-open)*1000/30; cancel only at200ms endpoint",
+    "initialization": "Exact eight scoped LI empty/transform-linear zero-duration serialization difference, retained raw evidence; old rects unobserved"
+  },
+  "captureProvenanceSha256": "44e4174ec79017d73f389068f1aba1f6fcaa301fcb6d13acc548e385f94c2276",
+  "captureAuthority": {
+    "recording": "parity/t3-thread-actions-v0042-user-clock-v2-light-reference.mkv",
+    "recordingSha256": "bc4b74908d48e34dd2e4de93af224ef9165fe801f782ba4ef82433c6181fbf04",
+    "snapshots": "Original immutable generator snapshots preserved; actual new raw capture DOM/fixture and guarded correspondence archived in capture provenance"
+  }
 }

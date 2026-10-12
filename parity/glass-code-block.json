@@ -2,7 +2,7 @@
   "slug": "glass-code-block",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/glass-code-block/index.tsx",
     "config": "registry/remocn/glass-code-block/config.ts",
     "license": "MIT"
@@ -22,27 +22,927 @@
       "showTrafficLights": true,
       "speed": 1
     },
+    "previewBackdrop": {
+      "type": "image",
+      "src": "/bg.jpg"
+    },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "7b681954d03b8813e2edbc5f928422f81dd16fd8345caf576325c7e726a827dd",
+    "glass-code-block.html": "2e2ed54e66a99d3f6bd03c271bb762ad0a6fea4da4ae779ef9ec6bd2ceb5314b",
+    "glass-code-block.runtime.js": "1f8297ffd19bb0bc2f20dd578cf486ca001d2754ffa8c2cc7222126fcc693411",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "GeistMono-Latin.woff2": "af61b969e7f999969f6af576e584ee85dca301a008a76be1251d172d56b9904c",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/GeistMono-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "preview/bg.jpg": "a39fe8e19303cc434c6cb2389be883af307af065d5c8e49110e0af088bf983f1"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "c4af5379ba24941d3b52e50fde386798f4a834aba356d8fa44db8aeb6874f068",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 180,
-    "meanSsim": 0.997421,
-    "minSsim": 0.99731,
-    "p05Ssim": 0.997312,
-    "p95Ssim": 0.99824,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 180,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 180,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check reported 35 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "text": "1",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(82,61,48)",
+          "ratio": 1.03,
+          "requiredRatio": 4.5,
+          "time": 0.333
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(3) > span:nth-of-type(1)",
+          "text": "3",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(73,52,40)",
+          "ratio": 1.11,
+          "requiredRatio": 4.5,
+          "time": 0.333
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(3) > span:nth-of-type(2) > span",
+          "text": "// Generate a hero scene",
+          "fg": "rgb(82,82,91)",
+          "bg": "rgb(83,61,48)",
+          "ratio": 1.31,
+          "requiredRatio": 4.5,
+          "time": 0.333
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "text": "1",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(82,61,48)",
+          "ratio": 1.03,
+          "requiredRatio": 4.5,
+          "time": 1.667
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(3) > span:nth-of-type(1)",
+          "text": "3",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(74,53,40)",
+          "ratio": 1.1,
+          "requiredRatio": 4.5,
+          "time": 1.667
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(3) > span:nth-of-type(2) > span",
+          "text": "// Generate a hero scene",
+          "fg": "rgb(82,82,91)",
+          "bg": "rgb(83,61,48)",
+          "ratio": 1.31,
+          "requiredRatio": 4.5,
+          "time": 1.667
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(4) > span:nth-of-type(1)",
+          "text": "4",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(70,49,38)",
+          "ratio": 1.16,
+          "requiredRatio": 4.5,
+          "time": 1.667
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(5) > span:nth-of-type(1)",
+          "text": "5",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(52,38,30)",
+          "ratio": 1.39,
+          "requiredRatio": 4.5,
+          "time": 1.667
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(6) > span:nth-of-type(1)",
+          "text": "6",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(42,33,27)",
+          "ratio": 1.51,
+          "requiredRatio": 4.5,
+          "time": 1.667
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(7) > span:nth-of-type(1)",
+          "text": "7",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(41,32,27)",
+          "ratio": 1.53,
+          "requiredRatio": 4.5,
+          "time": 1.667
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(8) > span:nth-of-type(1)",
+          "text": "8",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(33,28,24)",
+          "ratio": 1.62,
+          "requiredRatio": 4.5,
+          "time": 1.667
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "text": "1",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(82,61,48)",
+          "ratio": 1.03,
+          "requiredRatio": 4.5,
+          "time": 3
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(3) > span:nth-of-type(1)",
+          "text": "3",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(73,53,41)",
+          "ratio": 1.1,
+          "requiredRatio": 4.5,
+          "time": 3
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(3) > span:nth-of-type(2) > span",
+          "text": "// Generate a hero scene",
+          "fg": "rgb(82,82,91)",
+          "bg": "rgb(83,61,48)",
+          "ratio": 1.31,
+          "requiredRatio": 4.5,
+          "time": 3
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(4) > span:nth-of-type(1)",
+          "text": "4",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(70,50,38)",
+          "ratio": 1.15,
+          "requiredRatio": 4.5,
+          "time": 3
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(5) > span:nth-of-type(1)",
+          "text": "5",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(53,38,30)",
+          "ratio": 1.39,
+          "requiredRatio": 4.5,
+          "time": 3
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(6) > span:nth-of-type(1)",
+          "text": "6",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(43,33,27)",
+          "ratio": 1.5,
+          "requiredRatio": 4.5,
+          "time": 3
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(7) > span:nth-of-type(1)",
+          "text": "7",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(41,32,27)",
+          "ratio": 1.53,
+          "requiredRatio": 4.5,
+          "time": 3
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(8) > span:nth-of-type(1)",
+          "text": "8",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(34,28,24)",
+          "ratio": 1.61,
+          "requiredRatio": 4.5,
+          "time": 3
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "text": "1",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(82,61,48)",
+          "ratio": 1.03,
+          "requiredRatio": 4.5,
+          "time": 4.333
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(3) > span:nth-of-type(1)",
+          "text": "3",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(74,53,40)",
+          "ratio": 1.1,
+          "requiredRatio": 4.5,
+          "time": 4.333
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(3) > span:nth-of-type(2) > span",
+          "text": "// Generate a hero scene",
+          "fg": "rgb(82,82,91)",
+          "bg": "rgb(83,61,48)",
+          "ratio": 1.31,
+          "requiredRatio": 4.5,
+          "time": 4.333
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(4) > span:nth-of-type(1)",
+          "text": "4",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(70,49,38)",
+          "ratio": 1.16,
+          "requiredRatio": 4.5,
+          "time": 4.333
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(5) > span:nth-of-type(1)",
+          "text": "5",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(52,38,30)",
+          "ratio": 1.39,
+          "requiredRatio": 4.5,
+          "time": 4.333
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(6) > span:nth-of-type(1)",
+          "text": "6",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(42,33,27)",
+          "ratio": 1.51,
+          "requiredRatio": 4.5,
+          "time": 4.333
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(7) > span:nth-of-type(1)",
+          "text": "7",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(41,32,27)",
+          "ratio": 1.53,
+          "requiredRatio": 4.5,
+          "time": 4.333
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(8) > span:nth-of-type(1)",
+          "text": "8",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(33,28,24)",
+          "ratio": 1.62,
+          "requiredRatio": 4.5,
+          "time": 4.333
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "text": "1",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(82,61,48)",
+          "ratio": 1.03,
+          "requiredRatio": 4.5,
+          "time": 5.667
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(3) > span:nth-of-type(1)",
+          "text": "3",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(74,53,40)",
+          "ratio": 1.1,
+          "requiredRatio": 4.5,
+          "time": 5.667
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(3) > span:nth-of-type(2) > span",
+          "text": "// Generate a hero scene",
+          "fg": "rgb(82,82,91)",
+          "bg": "rgb(83,61,48)",
+          "ratio": 1.31,
+          "requiredRatio": 4.5,
+          "time": 5.667
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(4) > span:nth-of-type(1)",
+          "text": "4",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(70,49,38)",
+          "ratio": 1.16,
+          "requiredRatio": 4.5,
+          "time": 5.667
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(5) > span:nth-of-type(1)",
+          "text": "5",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(52,38,30)",
+          "ratio": 1.39,
+          "requiredRatio": 4.5,
+          "time": 5.667
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(6) > span:nth-of-type(1)",
+          "text": "6",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(42,33,27)",
+          "ratio": 1.51,
+          "requiredRatio": 4.5,
+          "time": 5.667
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(7) > span:nth-of-type(1)",
+          "text": "7",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(41,32,27)",
+          "ratio": 1.53,
+          "requiredRatio": 4.5,
+          "time": 5.667
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(8) > span:nth-of-type(1)",
+          "text": "8",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(33,28,24)",
+          "ratio": 1.62,
+          "requiredRatio": 4.5,
+          "time": 5.667
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(3) > span:nth-of-type(1)",
+          "text": "3",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(74,53,40)",
+          "ratio": 1.1,
+          "requiredRatio": 4.5,
+          "time": 3
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(4) > span:nth-of-type(1)",
+          "text": "4",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(70,49,38)",
+          "ratio": 1.16,
+          "requiredRatio": 4.5,
+          "time": 3
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(5) > span:nth-of-type(1)",
+          "text": "5",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(52,38,30)",
+          "ratio": 1.39,
+          "requiredRatio": 4.5,
+          "time": 3
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(6) > span:nth-of-type(1)",
+          "text": "6",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(42,33,27)",
+          "ratio": 1.51,
+          "requiredRatio": 4.5,
+          "time": 3
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      },
+      {
+        "slug": "glass-code-block",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/glass-code-block/index.tsx",
+          "config": "registry/remocn/glass-code-block/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(8) > span:nth-of-type(1)",
+          "text": "8",
+          "fg": "rgb(63,63,70)",
+          "bg": "rgb(33,28,24)",
+          "ratio": 1.62,
+          "requiredRatio": 4.5,
+          "time": 3
+        },
+        "reason": "The pinned source uses #3f3f46 line numbers and #52525b comments over its configured photo-backed translucent glass. Preserve that upstream palette. All 180 native RGBA frames match, and these complete contrast findings remain in the full check log."
+      }
+    ],
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/glass-code-block/remocn.mp4",
+    "referenceVideo": "public/previews/glass-code-block/reference.mp4",
     "hyperframesVideo": "public/previews/glass-code-block/hyperframes.mp4",
-    "summary": "parity/glass-code-block-diff/summary.json"
+    "thumbnail": "public/previews/glass-code-block/thumbnail.png",
+    "summary": "parity/glass-code-block-diff/summary.json",
+    "perFrameSsim": "parity/glass-code-block-diff/ssim.log",
+    "hyperframesCheck": "parity/glass-code-block-diff/hyperframes-check.log",
+    "worstFrame": "parity/glass-code-block-diff/worst-frame.png",
+    "referenceAlpha": "parity/glass-code-block-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/glass-code-block-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/glass-code-block-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/glass-code-block-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/glass-code-block/reference.mp4": "958d98c044387b2fa5ed02ff64fa3f991621e0419cf53c7b19023bc52340fc86",
+    "public/previews/glass-code-block/hyperframes.mp4": "958d98c044387b2fa5ed02ff64fa3f991621e0419cf53c7b19023bc52340fc86",
+    "public/previews/glass-code-block/thumbnail.png": "0881e9f15db090bf26f7be4e771c615c555f0beeaa51f0e76431b850713b5082",
+    "parity/glass-code-block-diff/summary.json": "da0a070035c9c7e18d1b4d3a8508a4890f5288e5e208e69e639533653db382b2",
+    "parity/glass-code-block-diff/ssim.log": "33bf02e5c55547904a0901c9803b24a4225e07e1f95699d1c5ea9bfafd5aa44a",
+    "parity/glass-code-block-diff/hyperframes-check.log": "a2d4ab0d449b7da2cd558938f3d459c0e545c00bf07487ecba1640aedca0d90e",
+    "parity/glass-code-block-diff/worst-frame.png": "c2a323b966e8dc89aafc4c4414aaafb400827ea9171c4633bcb268c865bc0996",
+    "parity/glass-code-block-diff/reference-alpha.framemd5": "b71918b5822c020f6c476b9ff3a201418248408324f7c9ed8ef8943c81e0c802",
+    "parity/glass-code-block-diff/hyperframes-alpha.framemd5": "b71918b5822c020f6c476b9ff3a201418248408324f7c9ed8ef8943c81e0c802",
+    "parity/glass-code-block-diff/reference-rgba.framemd5": "01653ce490f9e14e6e61399b0db7ec0594ce82e2aab83f85af2cfdb10fbf9146",
+    "parity/glass-code-block-diff/hyperframes-rgba.framemd5": "01653ce490f9e14e6e61399b0db7ec0594ce82e2aab83f85af2cfdb10fbf9146"
   }
 }

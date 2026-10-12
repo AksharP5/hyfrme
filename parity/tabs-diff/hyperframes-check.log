@@ -1,0 +1,345 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": false,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 2,
+        "selector": "#tabs-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 420,
+          "top": 353,
+          "right": 651.36,
+          "bottom": 371,
+          "width": 231.36,
+          "height": 18
+        },
+        "containerSelector": "#tabs-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "text": "Make changes to your account here.",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/tabs.html",
+        "bbox": {
+          "x": 420,
+          "y": 353,
+          "width": 231.36,
+          "height": 18
+        },
+        "firstSeen": 2,
+        "lastSeen": 2.125,
+        "occurrences": 2,
+        "heldMs": 125
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 3.25,
+        "selector": "#tabs-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 420,
+          "top": 353,
+          "right": 601.66,
+          "bottom": 371,
+          "width": 181.66,
+          "height": 18
+        },
+        "containerSelector": "#tabs-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)",
+        "text": "Change your password here.",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/tabs.html",
+        "bbox": {
+          "x": 420,
+          "y": 353,
+          "width": 181.66,
+          "height": 18
+        },
+        "firstSeen": 3.25,
+        "lastSeen": 3.25,
+        "occurrences": 1,
+        "heldMs": 0
+      }
+    ],
+    "duration": 4,
+    "samples": [
+      0.222,
+      0.667,
+      1.111,
+      1.556,
+      2,
+      2.444,
+      2.889,
+      3.333,
+      3.778
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 2,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": false,
+    "errorCount": 9,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 4.35:1; WCAG AA requires 4.5:1.",
+        "text": "Password",
+        "fg": "rgb(115,115,115)",
+        "bg": "rgb(245,245,245)",
+        "ratio": 4.35,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(112,112,112)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/tabs.html",
+        "bbox": {
+          "x": 568,
+          "y": 300,
+          "width": 144,
+          "height": 32
+        },
+        "time": 0.222
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 4.35:1; WCAG AA requires 4.5:1.",
+        "text": "Settings",
+        "fg": "rgb(115,115,115)",
+        "bg": "rgb(245,245,245)",
+        "ratio": 4.35,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(112,112,112)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/tabs.html",
+        "bbox": {
+          "x": 712,
+          "y": 300,
+          "width": 144,
+          "height": 32
+        },
+        "time": 0.222
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 4.35:1; WCAG AA requires 4.5:1.",
+        "text": "Password",
+        "fg": "rgb(115,115,115)",
+        "bg": "rgb(245,245,245)",
+        "ratio": 4.35,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(112,112,112)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/tabs.html",
+        "bbox": {
+          "x": 568,
+          "y": 300,
+          "width": 144,
+          "height": 32
+        },
+        "time": 1.111
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 4.35:1; WCAG AA requires 4.5:1.",
+        "text": "Settings",
+        "fg": "rgb(115,115,115)",
+        "bg": "rgb(245,245,245)",
+        "ratio": 4.35,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(112,112,112)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/tabs.html",
+        "bbox": {
+          "x": 712,
+          "y": 300,
+          "width": 144,
+          "height": 32
+        },
+        "time": 1.111
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 4.35:1; WCAG AA requires 4.5:1.",
+        "text": "Settings",
+        "fg": "rgb(115,115,115)",
+        "bg": "rgb(245,245,245)",
+        "ratio": 4.35,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(112,112,112)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/tabs.html",
+        "bbox": {
+          "x": 712,
+          "y": 300,
+          "width": 144,
+          "height": 32
+        },
+        "time": 2
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 4.35:1; WCAG AA requires 4.5:1.",
+        "text": "Account",
+        "fg": "rgb(115,115,115)",
+        "bg": "rgb(245,245,245)",
+        "ratio": 4.35,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(112,112,112)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/tabs.html",
+        "bbox": {
+          "x": 424,
+          "y": 300,
+          "width": 144,
+          "height": 32
+        },
+        "time": 2.889
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 4.35:1; WCAG AA requires 4.5:1.",
+        "text": "Settings",
+        "fg": "rgb(115,115,115)",
+        "bg": "rgb(245,245,245)",
+        "ratio": 4.35,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(112,112,112)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/tabs.html",
+        "bbox": {
+          "x": 712,
+          "y": 300,
+          "width": 144,
+          "height": 32
+        },
+        "time": 2.889
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 4.35:1; WCAG AA requires 4.5:1.",
+        "text": "Account",
+        "fg": "rgb(115,115,115)",
+        "bg": "rgb(245,245,245)",
+        "ratio": 4.35,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(112,112,112)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/tabs.html",
+        "bbox": {
+          "x": 424,
+          "y": 300,
+          "width": 144,
+          "height": 32
+        },
+        "time": 3.778
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 4.35:1; WCAG AA requires 4.5:1.",
+        "text": "Password",
+        "fg": "rgb(115,115,115)",
+        "bg": "rgb(245,245,245)",
+        "ratio": 4.35,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(112,112,112)",
+        "large": false,
+        "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/tabs.html",
+        "bbox": {
+          "x": 568,
+          "y": 300,
+          "width": 144,
+          "height": 32
+        },
+        "time": 3.778
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      0.222,
+      1.111,
+      2,
+      2.889,
+      3.778
+    ],
+    "checked": 15,
+    "passed": 6
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.99",
+    "latestVersion": "0.8.140",
+    "updateAvailable": true
+  }
+}

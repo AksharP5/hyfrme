@@ -2,7 +2,7 @@
   "slug": "animated-line-chart",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/animated-line-chart/index.tsx",
     "config": "registry/remocn/animated-line-chart/config.ts",
     "license": "MIT"
@@ -21,25 +21,76 @@
     },
     "background": "#0a0a0a"
   },
+  "filesSha256": {
+    "registry-item.json": "7a2580f05f7b4c89f1c9c3185d23fce6ba66f31b7289584f08ddf73c324c558b",
+    "animated-line-chart.html": "03a59eb5e62e596b5120aedb9816ce2325603a71279e5cb510f13021c99e8339",
+    "animated-line-chart.runtime.js": "2b18a71fb27f93feeb43efe373f45d3d35410991e109571e6db31375c37c4113",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "64f102ba296b1b6682313ff1fcf077266fa8dcc7aad24caf71f75805f3e97ee9",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 90,
-    "meanSsim": 0.998238,
-    "minSsim": 0.997508,
-    "p05Ssim": 0.997512,
-    "p95Ssim": 0.999103,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 90,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/animated-line-chart/remocn.mp4",
+    "referenceVideo": "public/previews/animated-line-chart/reference.mp4",
     "hyperframesVideo": "public/previews/animated-line-chart/hyperframes.mp4",
-    "summary": "parity/animated-line-chart-diff/summary.json"
+    "thumbnail": "public/previews/animated-line-chart/thumbnail.png",
+    "summary": "parity/animated-line-chart-diff/summary.json",
+    "perFrameSsim": "parity/animated-line-chart-diff/ssim.log",
+    "hyperframesCheck": "parity/animated-line-chart-diff/hyperframes-check.log",
+    "worstFrame": "parity/animated-line-chart-diff/worst-frame.png",
+    "referenceAlpha": "parity/animated-line-chart-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/animated-line-chart-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/animated-line-chart-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/animated-line-chart-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/animated-line-chart/reference.mp4": "17866b911eea0773d6fce43292bd10739b2ca005f2aa00a109587a1c1fea625e",
+    "public/previews/animated-line-chart/hyperframes.mp4": "17866b911eea0773d6fce43292bd10739b2ca005f2aa00a109587a1c1fea625e",
+    "public/previews/animated-line-chart/thumbnail.png": "61241e41679b14dcd934f9f527ae932b568a054deb983a85e79145fc1bf36b33",
+    "parity/animated-line-chart-diff/summary.json": "b836772793766404c0492e741437d4fb40b614cf31be7aace9f9b10b16c85450",
+    "parity/animated-line-chart-diff/ssim.log": "4638ac3b2b03d74f8b056c3824e13d904997bddfbc1c0f3b8d655822a1eb000b",
+    "parity/animated-line-chart-diff/hyperframes-check.log": "889b900b78f1eb1ea40db105decf9e0896627c06b7a1f8840648d6dfe3b119b7",
+    "parity/animated-line-chart-diff/worst-frame.png": "a3d472be772295c95d3929535cb25a98430eb26b0382063c46dba9ee282d7682",
+    "parity/animated-line-chart-diff/reference-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/animated-line-chart-diff/hyperframes-alpha.framemd5": "baefbf643c623a0c2037e69f266724e3a9ea1f494c8baafd83ae006f82e8410d",
+    "parity/animated-line-chart-diff/reference-rgba.framemd5": "5c11109223a52490fa0bd3ad3fab9683ae88b49cb4d18279afd92c72863700e7",
+    "parity/animated-line-chart-diff/hyperframes-rgba.framemd5": "5c11109223a52490fa0bd3ad3fab9683ae88b49cb4d18279afd92c72863700e7"
   }
 }

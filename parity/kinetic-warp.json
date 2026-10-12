@@ -2,7 +2,7 @@
   "slug": "kinetic-warp",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/kinetic-warp/index.tsx",
     "config": "registry/remocn/kinetic-warp/config.ts",
     "license": "MIT"
@@ -24,13 +24,33 @@
     },
     "background": "transparent"
   },
+  "filesSha256": {
+    "registry-item.json": "dc61a412e04db38eda4606716aa57180475ae05115d3ff4768f9d4fa49b91675",
+    "kinetic-warp.html": "e331ce601d4b0a4dd2a14398ab0da5c1da4799437e708b7140a80ca8ef61243a",
+    "kinetic-warp.runtime.js": "38611da479724cdde14769a1d58b58b86aaed0bfc5510f87e5b246d82e0d0968",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/PassionOne-OFL.txt": "36c285c5472c625901d4a13da7e31c5ea6126678d31d56cf95572c49f27c8950",
+    "remocn-additions/PassionOne-400-latin-ext.woff2": "6461918ac8577995815edbe636172e85863345e7407d541c3635a30158372d42",
+    "remocn-additions/PassionOne-400-latin.woff2": "eb49ce211df074142d735927bb3e8b655ccf39a7cc444baf02e871bcd47986df",
+    "remocn-additions/PassionOne-700-latin-ext.woff2": "3e948dffc0de428195a647c60e193678e7eddba3f1d3cce68d2c522106b426f9",
+    "remocn-additions/PassionOne-700-latin.woff2": "8cdeeec8046cdeb8b91bffcb1c4d09984d125721d57406b34e0eac76cdaba025",
+    "remocn-additions/PassionOne-900-latin-ext.woff2": "db5c14d2585093728f8f6ecf6700f70467639b769396202cf85a8372a9c405c2",
+    "remocn-additions/PassionOne-900-latin.woff2": "952f87c0d5cd309b81b34650cb955a8c70f0c6d004016f34bffb7471055c90ed",
+    "remocn-additions/PassionOne.css": "10471d2ac79ba90b080af717fa605f425e999298f0db8b46abfe7c792cee912b",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "a4ca22b059fc50476e6c2518ad417192cc58f5e7935e2f005cdac0b3acc97718",
+  "fingerprint": "13f0dcdac90ece94a57b443b136aedbd771eda46237f62bb8bc56d0dc192672a",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
@@ -43,14 +63,23 @@
       "mismatchedFrames": [],
       "pass": true
     },
+    "rgba": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -62,6 +91,21 @@
     "hyperframesCheck": "parity/kinetic-warp-diff/hyperframes-check.log",
     "worstFrame": "parity/kinetic-warp-diff/worst-frame.png",
     "referenceAlpha": "parity/kinetic-warp-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/kinetic-warp-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/kinetic-warp-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/kinetic-warp-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/kinetic-warp-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/kinetic-warp/reference.mp4": "d13ecf47b527569c07d084e6d98ed4d4ce1ade0cb14dd102436994dcbc975164",
+    "public/previews/kinetic-warp/hyperframes.mp4": "d13ecf47b527569c07d084e6d98ed4d4ce1ade0cb14dd102436994dcbc975164",
+    "public/previews/kinetic-warp/thumbnail.png": "1dd88e43a5ae5f06bf0b9c64a84ef0c86bdd79865d5a6f299e02ecb880fb59d3",
+    "parity/kinetic-warp-diff/summary.json": "c38069d7cb90acc2a693a754a1caeffaf324f128e7d118e6f20808613c950e44",
+    "parity/kinetic-warp-diff/ssim.log": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/kinetic-warp-diff/hyperframes-check.log": "9d01dba1a9c8656866a230bc9c9e45a2fc5ecfb92f1f69a3d17e05278623a9ee",
+    "parity/kinetic-warp-diff/worst-frame.png": "32fc2ea0d7012e719a6ec3fa5979f4d9bb9419790a1bc17184a5f076e834dd95",
+    "parity/kinetic-warp-diff/reference-alpha.framemd5": "43ea04bca5e92af384aed4a4e9f547d37f12858a9343ad1e87bba0843859c52f",
+    "parity/kinetic-warp-diff/hyperframes-alpha.framemd5": "43ea04bca5e92af384aed4a4e9f547d37f12858a9343ad1e87bba0843859c52f",
+    "parity/kinetic-warp-diff/reference-rgba.framemd5": "ecaf71bf9c5d1ffb98ff10b31f6b6576311857207575493d836eb806147b4588",
+    "parity/kinetic-warp-diff/hyperframes-rgba.framemd5": "ecaf71bf9c5d1ffb98ff10b31f6b6576311857207575493d836eb806147b4588"
   }
 }

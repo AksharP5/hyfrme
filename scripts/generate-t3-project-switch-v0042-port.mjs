@@ -1,5 +1,6 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
@@ -20,16 +21,18 @@ const sprite = (await readFile(resolve(source, "file-surface-tree.html"), "utf8"
 if (!sprite) throw new Error("Official T3 Code HTML file icon is missing");
 const gsap = await readFile(resolve(root, "registry/blocks/before-after/gsap.min.js"), "utf8");
 const popupPhases = ["menu", "motion-menu", "hyfrme-menu"];
+const dropdownClass = "dropdown-glass relative flex max-h-full min-w-(--anchor-width) origin-(--transform-origin) rounded-lg shadow-[0_16px_40px_-18px_rgb(0_0_0/55%)] transition-[scale,opacity] dark:shadow-[0_18px_44px_-18px_rgb(0_0_0/80%)] max-w-[min(18rem,var(--available-width))] overflow-hidden";
 const states = Object.fromEntries(await Promise.all(["dark", "light"].map(async (theme) => [theme,
   await Promise.all(dark.phases.map(async (phase) => {
     let body = await readFile(resolve(source, `project-switch-v0042-${theme}-${phase}.html`), "utf8");
     body = body.replace('class="h-full max-h-[inherit] overflow-auto', 'data-layout-allow-overflow class="h-full max-h-[inherit] overflow-auto')
       .replace(/(<span[^>]*class="[^"]*\[text-box:trim-both_cap_alphabetic\][^"]*")/g, "$1 data-layout-ignore")
       .replace(/(<span[^>]*class="pointer-events-none absolute[^"]*")/g, "$1 data-layout-allow-overflow");
+    body = body.replaceAll('data-message-role="user"', 'data-message-role="user" data-t3-native-hover');
     if (popupPhases.includes(phase)) {
       body = body.replace('<div class="group/sidebar-wrapper', '<div data-layout-ignore class="group/sidebar-wrapper');
       const portal = await readFile(resolve(source, `project-switch-v0042-${theme}-${phase}-portal.html`), "utf8");
-      body += portal.replace('<div ', '<div data-layout-ignore ');
+      body += `<div class="t3-project-positioner z-[130] select-none" data-slot="combobox-positioner" data-layout-ignore><span class="${dropdownClass}">${portal}</span></div>`;
     }
     return body;
   })),
@@ -86,9 +89,14 @@ const html = `<!doctype html>
 <style>
 #root { position:relative; width:100%; height:100%; overflow:hidden; }
 .t3-stage { position:relative; width:100%; height:100%; overflow:hidden; background:var(--background); color:var(--foreground); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; }
+/* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
 .t3-state[hidden], .t3-stage[hidden], .t3-native-popup[hidden] { display:none !important; }
 .t3-state:not([hidden]) { display:contents; }
-.t3-stage [data-slot="combobox-popup"] { position:absolute; left:9px; top:93px; width:234px; z-index:50; --anchor-width:234px; background:var(--popover); border:1px solid var(--border); border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.2); }
+.t3-project-positioner { position:fixed; top:0; left:0; }
+.t3-stage [data-t3-native-hover] .opacity-0.transition-opacity { opacity:1; }
 .t3-native-popup { position:absolute; left:6px; top:90px; z-index:300; width:240px; height:153px; pointer-events:none; }
 .base-ui-disable-scrollbar { scrollbar-width:none; }
 .base-ui-disable-scrollbar::-webkit-scrollbar { display:none; }
@@ -96,6 +104,7 @@ const html = `<!doctype html>
 @font-face { font-family:"Segoe UI Emoji"; src:local("Segoe UI Emoji"); }
 @font-face { font-family:"Segoe UI Symbol"; src:local("Segoe UI Symbol"); }
 @font-face { font-family:"SFMono-Regular"; src:local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
 <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" data-layout-ignore>${sprite}</svg>
@@ -168,6 +177,23 @@ for (const stage of stages) {
     }
   }
 }
+for (const stage of stages) {
+  const stageRect = stage.getBoundingClientRect();
+  for (const section of stage.querySelectorAll('[data-t3-state]')) {
+    const positioner = section.querySelector('.t3-project-positioner');
+    if (!positioner) continue;
+    const trigger = section.querySelector('[role="combobox"][aria-label^="Filter threads by project"]');
+    if (!trigger) throw new Error('Captured project scope trigger is missing');
+    // Hidden captured phases share the sidebar anchor of their visible source shell.
+    const anchor = stages.find(stage => !stage.hidden)?.querySelector('input[aria-label="Search threads"]')?.closest('div.flex.h-8');
+    if (!anchor) throw new Error('Captured native search-field anchor is missing');
+    const rect = anchor.getBoundingClientRect();
+    positioner.style.transform = 'translate(' + (rect.left - stageRect.left) + 'px, ' + (rect.bottom - stageRect.top + 4) + 'px)';
+    positioner.style.setProperty('--anchor-width', rect.width + 'px');
+    positioner.style.setProperty('--available-width', (1200 - rect.left) + 'px');
+    positioner.style.setProperty('--available-height', (659 - rect.bottom - 4) + 'px');
+  }
+}
 const clock = { frame: 0 };
 function draw() {
   const frame = Math.round(clock.frame);
@@ -219,5 +245,5 @@ await writeFile(resolve(output, "registry-item.json"), JSON.stringify({
     { path: "README.md", target: `compositions/${name}.README.md`, type: "hyperframes:asset" },
   ],
 }, null, 2) + "\n");
-await writeFile(resolve(output, "README.md"), `# T3 Code: Project Scope\n\nThis four-second HyperFrames block reproduces the official T3 Code v0.0.42 desktop sidebar at 1200 × 659 and 30 fps in dark or light mode. The native project combobox opens beneath the sidebar search field, selects hyfrme-motion-lab, and then restores hyfrme. T3 Code retains the chosen scope after reload. The isolated workspace contains two real projects and seeded Hyfrme threads; choosing the scope is a live local action. No AI provider or GitHub account runs.\n\nCustomize project names, avatars, thread and conversation copy, empty state, theme, and all five action frames. The default popup uses cropped official dark/light pixels; edited content uses source DOM. Use matching values with adjacent T3 blocks for a seamless video. Source: https://github.com/pingdotgg/t3code/tree/${dark.sourceCommit}. The installed files include T3 Code's MIT license and Pierre Trees notices for the source icon. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.\n`);
+await writeFile(resolve(output, "README.md"), `# T3 Code: Project Scope\n\nThis four-second HyperFrames block reproduces the official T3 Code v0.0.42 desktop sidebar at 1200 × 659 and 30 fps in dark or light mode. The native project combobox opens beneath the sidebar search field, selects hyfrme-motion-lab, and then restores hyfrme. T3 Code retains the chosen scope after reload. The isolated workspace contains two real projects and seeded Hyfrme threads; choosing the scope is a live local action. No AI provider or GitHub account runs.\n\nCustomize project names, avatars, thread and conversation copy, empty state, theme, and all five action frames. The default popup uses cropped official dark/light pixels; edited content uses source DOM with the captured native glass wrapper. The capture parks the pointer over the user message, so its timestamp and copy control remain visible. Use matching values with adjacent T3 blocks for a seamless video. Source: https://github.com/pingdotgg/t3code/tree/${dark.sourceCommit}. The installed files include T3 Code's MIT license and Pierre Trees notices for the source icon. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.\n`);
 console.log(`Generated ${name} from official v0.0.42 dark/light project-scope states.`);

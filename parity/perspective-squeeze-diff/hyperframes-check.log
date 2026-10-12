@@ -19,9 +19,9 @@
   },
   "layout": {
     "ok": false,
-    "errorCount": 3,
-    "warningCount": 1,
-    "infoCount": 61,
+    "errorCount": 2,
+    "warningCount": 0,
+    "infoCount": 78,
     "findings": [
       {
         "code": "content_overlap",
@@ -31,11 +31,11 @@
         "message": "Two text blocks overlap and may render unreadable.",
         "rect": {
           "left": 310,
-          "top": -89.83,
-          "right": 1946.9,
-          "bottom": 373.14,
-          "width": 1636.9,
-          "height": 462.97
+          "top": 6.71,
+          "right": 970.01,
+          "bottom": 373.3,
+          "width": 660.01,
+          "height": 366.59
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
         "text": "REMOCN",
@@ -44,42 +44,14 @@
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": -89.83,
-          "width": 1636.9,
-          "height": 462.97
+          "y": 6.71,
+          "width": 660.01,
+          "height": 366.59
         },
         "firstSeen": 0,
-        "lastSeen": 7.375,
-        "occurrences": 65
-      },
-      {
-        "code": "content_overlap",
-        "severity": "error",
-        "time": 0,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
-        "message": "Two text blocks overlap and may render unreadable.",
-        "rect": {
-          "left": 310,
-          "top": 293.83,
-          "right": 538.64,
-          "bottom": 404.32,
-          "width": 228.64,
-          "height": 110.49
-        },
-        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
-        "text": "BEST",
-        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
-        "dataAttributes": {},
-        "sourceFile": "compositions/perspective-squeeze.html",
-        "bbox": {
-          "x": 310,
-          "y": 293.83,
-          "width": 228.64,
-          "height": 110.49
-        },
-        "firstSeen": 0,
-        "lastSeen": 7.375,
-        "occurrences": 57
+        "lastSeen": 7.5,
+        "occurrences": 67,
+        "heldMs": 7500
       },
       {
         "code": "content_overlap",
@@ -89,11 +61,11 @@
         "message": "Two text blocks overlap and may render unreadable.",
         "rect": {
           "left": 310,
-          "top": 289.73,
-          "right": 2296.73,
-          "bottom": 774.01,
-          "width": 1986.73,
-          "height": 484.27
+          "top": 391.33,
+          "right": 969.97,
+          "bottom": 720,
+          "width": 659.97,
+          "height": 328.67
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
         "text": "REMOCN",
@@ -102,42 +74,56 @@
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 289.73,
-          "width": 1986.73,
-          "height": 484.27
+          "y": 391.33,
+          "width": 659.97,
+          "height": 328.67
         },
         "firstSeen": 0,
-        "lastSeen": 7.375,
-        "occurrences": 58
+        "lastSeen": 7.5,
+        "occurrences": 59,
+        "heldMs": 5625
       },
       {
-        "code": "content_overlap",
-        "severity": "warning",
-        "time": 1.375,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
-        "message": "Two text blocks overlap and may render unreadable.",
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 0.417,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
         "rect": {
           "left": 310,
-          "top": -35.49,
-          "right": 603.08,
-          "bottom": 467.24,
-          "width": 293.08,
-          "height": 502.72
+          "top": -90,
+          "right": 1946.89,
+          "bottom": 373.3,
+          "width": 1636.89,
+          "height": 463.3
         },
-        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
-        "text": "BEST",
-        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "text": "REMOCN",
+        "fixHint": "Text is 1637px x 463px inside 660px x 385px and overflows by up to 977px; resize the container to at least ~1637px x 481px or shrink font-size from 603px to ~243px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": 6.71,
+          "right": 970.01,
+          "bottom": 391.34,
+          "width": 660.01,
+          "height": 384.62
+        },
+        "overflow": {
+          "right": 976.88,
+          "top": 96.71
+        },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": -35.49,
-          "width": 293.08,
-          "height": 502.72
+          "y": -90,
+          "width": 1636.89,
+          "height": 463.3
         },
-        "firstSeen": 1.375,
-        "lastSeen": 1.625,
-        "occurrences": 3
+        "firstSeen": 0.417,
+        "lastSeen": 0.417,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -147,11 +133,11 @@
         "message": "Text extends outside the composition canvas.",
         "rect": {
           "left": 310,
-          "top": -89.83,
-          "right": 1946.9,
-          "bottom": 373.14,
-          "width": 1636.9,
-          "height": 462.97
+          "top": -90,
+          "right": 1946.89,
+          "bottom": 373.3,
+          "width": 1636.89,
+          "height": 463.3
         },
         "containerSelector": "#root",
         "text": "REMOCN",
@@ -165,20 +151,105 @@
           "height": 720
         },
         "overflow": {
-          "right": 666.9,
-          "top": 89.83
+          "right": 666.89,
+          "top": 90
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": -89.83,
-          "width": 1636.9,
-          "height": 462.97
+          "y": -90,
+          "width": 1636.89,
+          "height": 463.3
         },
         "firstSeen": 0.417,
         "lastSeen": 0.417,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 0.417,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 310,
+          "top": 292.47,
+          "right": 538.61,
+          "bottom": 403.93,
+          "width": 228.61,
+          "height": 111.46
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "text": "BEST",
+        "fixHint": "Text is 229px x 111px inside 660px x 385px and overflows by up to 13px; increase the container height to at least ~397px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": 6.71,
+          "right": 970.01,
+          "bottom": 391.34,
+          "width": 660.01,
+          "height": 384.62
+        },
+        "overflow": {
+          "bottom": 12.59
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 292.47,
+          "width": 228.61,
+          "height": 111.46
+        },
+        "firstSeen": 0.417,
+        "lastSeen": 0.417,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 0.417,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 310,
+          "top": 290.25,
+          "right": 2296.69,
+          "bottom": 773.61,
+          "width": 1986.69,
+          "height": 483.36
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
+        "text": "REMOCN",
+        "fixHint": "Text is 1987px x 483px inside 660px x 364px and overflows by up to 1327px; resize the container to at least ~1987px x 483px or shrink font-size from 603px to ~200px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": 391.33,
+          "right": 969.97,
+          "bottom": 755.32,
+          "width": 659.97,
+          "height": 363.98
+        },
+        "overflow": {
+          "right": 1326.72,
+          "top": 101.08,
+          "bottom": 18.29
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 290.25,
+          "width": 1986.69,
+          "height": 483.36
+        },
+        "firstSeen": 0.417,
+        "lastSeen": 0.417,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -188,11 +259,11 @@
         "message": "Text extends outside the composition canvas.",
         "rect": {
           "left": 310,
-          "top": 289.73,
-          "right": 2296.73,
-          "bottom": 774.01,
-          "width": 1986.73,
-          "height": 484.27
+          "top": 290.25,
+          "right": 2296.69,
+          "bottom": 773.61,
+          "width": 1986.69,
+          "height": 483.36
         },
         "containerSelector": "#root",
         "text": "REMOCN",
@@ -206,20 +277,21 @@
           "height": 720
         },
         "overflow": {
-          "right": 1016.73,
-          "bottom": 54.01
+          "right": 1016.69,
+          "bottom": 53.61
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 289.73,
-          "width": 1986.73,
-          "height": 484.27
+          "y": 290.25,
+          "width": 1986.69,
+          "height": 483.36
         },
         "firstSeen": 0.417,
         "lastSeen": 0.417,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -229,11 +301,11 @@
         "message": "Text extends outside the composition canvas.",
         "rect": {
           "left": 310,
-          "top": 647.9,
-          "right": 522.13,
-          "bottom": 753.38,
-          "width": 212.13,
-          "height": 105.48
+          "top": 646.62,
+          "right": 522.1,
+          "bottom": 753.16,
+          "width": 212.1,
+          "height": 106.54
         },
         "containerSelector": "#root",
         "text": "BEST",
@@ -247,19 +319,20 @@
           "height": 720
         },
         "overflow": {
-          "bottom": 33.38
+          "bottom": 33.16
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 647.9,
-          "width": 212.13,
-          "height": 105.48
+          "y": 646.62,
+          "width": 212.1,
+          "height": 106.54
         },
         "firstSeen": 0.417,
         "lastSeen": 0.417,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -269,11 +342,11 @@
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 310,
-          "top": -89.83,
+          "top": -90,
           "right": 970.01,
-          "bottom": 371.47,
+          "bottom": 371.64,
           "width": 660.01,
-          "height": 461.3
+          "height": 461.64
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -286,19 +359,20 @@
           "height": 384.62
         },
         "overflow": {
-          "top": 96.54
+          "top": 96.71
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": -89.83,
+          "y": -90,
           "width": 660.01,
-          "height": 461.3
+          "height": 461.64
         },
         "firstSeen": 0.417,
         "lastSeen": 0.417,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -308,11 +382,11 @@
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 310,
-          "top": 293.83,
+          "top": 292.47,
           "right": 970.01,
-          "bottom": 404.32,
+          "bottom": 403.93,
           "width": 660.01,
-          "height": 110.49
+          "height": 111.46
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -325,19 +399,20 @@
           "height": 384.62
         },
         "overflow": {
-          "bottom": 12.98
+          "bottom": 12.59
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 293.83,
+          "y": 292.47,
           "width": 660.01,
-          "height": 110.49
+          "height": 111.46
         },
         "firstSeen": 0.417,
         "lastSeen": 0.417,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -347,11 +422,11 @@
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 310,
-          "top": 299.97,
+          "top": 300.44,
           "right": 969.97,
-          "bottom": 735.45,
+          "bottom": 735.09,
           "width": 659.97,
-          "height": 435.48
+          "height": 434.65
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -364,19 +439,20 @@
           "height": 363.98
         },
         "overflow": {
-          "top": 91.36
+          "top": 90.89
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 299.97,
+          "y": 300.44,
           "width": 659.97,
-          "height": 435.48
+          "height": 434.65
         },
         "firstSeen": 0.417,
         "lastSeen": 0.417,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -386,11 +462,11 @@
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 310,
-          "top": 647.9,
+          "top": 646.62,
           "right": 969.97,
-          "bottom": 767.61,
+          "bottom": 767.39,
           "width": 659.97,
-          "height": 119.71
+          "height": 120.77
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -403,48 +479,62 @@
           "height": 363.98
         },
         "overflow": {
-          "bottom": 12.29
+          "bottom": 12.07
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 647.9,
+          "y": 646.62,
           "width": 659.97,
-          "height": 119.71
+          "height": 120.77
         },
         "firstSeen": 0.417,
         "lastSeen": 0.417,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
-        "code": "content_overlap",
+        "code": "text_box_overflow",
         "severity": "info",
-        "time": 0.75,
+        "time": 1.25,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
-        "message": "Two text blocks overlap and may render unreadable.",
+        "message": "Text extends outside its nearest visual/container box.",
         "rect": {
           "left": 310,
-          "top": -176.73,
-          "right": 1608.97,
-          "bottom": 350.74,
-          "width": 1298.97,
-          "height": 527.47
+          "top": -244.02,
+          "right": 1410.7,
+          "bottom": 284.96,
+          "width": 1100.7,
+          "height": 528.98
         },
-        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
         "text": "REMOCN",
-        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "fixHint": "Text is 1101px x 529px inside 660px x 573px and overflows by up to 441px; resize the container to at least ~1101px x 635px or shrink font-size from 603px to ~362px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": -182.03,
+          "right": 970.03,
+          "bottom": 391.35,
+          "width": 660.03,
+          "height": 573.38
+        },
+        "overflow": {
+          "right": 440.67,
+          "top": 61.99
+        },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": -176.73,
-          "width": 1298.97,
-          "height": 527.47
+          "y": -244.02,
+          "width": 1100.7,
+          "height": 528.98
         },
-        "firstSeen": 0.75,
-        "lastSeen": 0.75,
-        "occurrences": 1
+        "firstSeen": 1.25,
+        "lastSeen": 1.25,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -454,11 +544,11 @@
         "message": "Text extends outside the composition canvas.",
         "rect": {
           "left": 310,
-          "top": -244.07,
+          "top": -244.02,
           "right": 1410.7,
-          "bottom": 285.1,
+          "bottom": 284.96,
           "width": 1100.7,
-          "height": 529.17
+          "height": 528.98
         },
         "containerSelector": "#root",
         "text": "REMOCN",
@@ -473,19 +563,61 @@
         },
         "overflow": {
           "right": 130.7,
-          "top": 244.07
+          "top": 244.02
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": -244.07,
+          "y": -244.02,
           "width": 1100.7,
-          "height": 529.17
+          "height": 528.98
         },
         "firstSeen": 1.25,
         "lastSeen": 1.25,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 1.25,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 310,
+          "top": -1.17,
+          "right": 601.32,
+          "bottom": 457.71,
+          "width": 291.32,
+          "height": 458.88
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "text": "BEST",
+        "fixHint": "Text is 291px x 459px inside 660px x 573px and overflows by up to 66px; increase the container height to at least ~640px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": -182.03,
+          "right": 970.03,
+          "bottom": 391.35,
+          "width": 660.03,
+          "height": 573.38
+        },
+        "overflow": {
+          "bottom": 66.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": -1.17,
+          "width": 291.32,
+          "height": 458.88
+        },
+        "firstSeen": 1.25,
+        "lastSeen": 1.25,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -494,12 +626,12 @@
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
         "message": "Text extends outside the composition canvas.",
         "rect": {
-          "left": -1143.8,
-          "top": 235.49,
+          "left": -1144.05,
+          "top": 235.96,
           "right": 310,
-          "bottom": 474.39,
-          "width": 1453.8,
-          "height": 238.9
+          "bottom": 474.12,
+          "width": 1454.05,
+          "height": 238.16
         },
         "containerSelector": "#root",
         "text": "REMOCN",
@@ -513,19 +645,20 @@
           "height": 720
         },
         "overflow": {
-          "left": 1143.8
+          "left": 1144.05
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": -1143.8,
-          "y": 235.49,
-          "width": 1453.8,
-          "height": 238.9
+          "x": -1144.05,
+          "y": 235.96,
+          "width": 1454.05,
+          "height": 238.16
         },
         "firstSeen": 1.25,
         "lastSeen": 1.25,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -535,11 +668,11 @@
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 310,
-          "top": -244.07,
+          "top": -244.02,
           "right": 970.03,
-          "bottom": 218.86,
+          "bottom": 218.64,
           "width": 660.03,
-          "height": 462.93
+          "height": 462.65
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -552,19 +685,20 @@
           "height": 573.38
         },
         "overflow": {
-          "top": 62.04
+          "top": 61.99
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": -244.07,
+          "y": -244.02,
           "width": 660.03,
-          "height": 462.93
+          "height": 462.65
         },
         "firstSeen": 1.25,
         "lastSeen": 1.25,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -574,11 +708,11 @@
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 310,
-          "top": 2.31,
+          "top": -1.17,
           "right": 970.03,
-          "bottom": 459.74,
+          "bottom": 457.71,
           "width": 660.03,
-          "height": 457.42
+          "height": 458.88
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -591,19 +725,20 @@
           "height": 573.38
         },
         "overflow": {
-          "bottom": 68.39
+          "bottom": 66.36
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 2.31,
+          "y": -1.17,
           "width": 660.03,
-          "height": 457.42
+          "height": 458.88
         },
         "firstSeen": 1.25,
         "lastSeen": 1.25,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -613,11 +748,11 @@
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 310,
-          "top": 351.95,
+          "top": 352.69,
           "right": 969.89,
-          "bottom": 582.82,
+          "bottom": 582.2,
           "width": 659.89,
-          "height": 230.87
+          "height": 229.51
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -630,19 +765,20 @@
           "height": 363.94
         },
         "overflow": {
-          "top": 39.38
+          "top": 38.64
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 351.95,
+          "y": 352.69,
           "width": 659.89,
-          "height": 230.87
+          "height": 229.51
         },
         "firstSeen": 1.25,
         "lastSeen": 1.25,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -652,11 +788,11 @@
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 310,
-          "top": 442.08,
+          "top": 440.91,
           "right": 969.89,
-          "bottom": 798.69,
+          "bottom": 797.84,
           "width": 659.89,
-          "height": 356.61
+          "height": 356.92
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -669,48 +805,62 @@
           "height": 363.94
         },
         "overflow": {
-          "bottom": 43.42
+          "bottom": 42.57
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 442.08,
+          "y": 440.91,
           "width": 659.89,
-          "height": 356.61
+          "height": 356.92
         },
         "firstSeen": 1.25,
         "lastSeen": 1.25,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
-        "code": "content_overlap",
+        "code": "text_box_overflow",
         "severity": "info",
-        "time": 2,
+        "time": 2.083,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
-        "message": "Two text blocks overlap and may render unreadable.",
+        "message": "Text extends outside its nearest visual/container box.",
         "rect": {
-          "left": -2612.64,
-          "top": 115.27,
-          "right": 417.79,
-          "bottom": 887.82,
-          "width": 3030.43,
-          "height": 772.55
+          "left": -982.53,
+          "top": 173.74,
+          "right": 441.95,
+          "bottom": 632.72,
+          "width": 1424.48,
+          "height": 458.98
         },
-        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
         "text": "REMOCN",
-        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "fixHint": "Text is 1424px x 459px inside 660px x 606px and overflows by up to 1293px; resize the container to at least ~1953px x 848px or shrink font-size from 603px to ~279px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": -215.16,
+          "right": 969.99,
+          "bottom": 391.33,
+          "width": 659.99,
+          "height": 606.49
+        },
+        "overflow": {
+          "left": 1292.53,
+          "bottom": 241.39
+        },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": -2612.64,
-          "y": 115.27,
-          "width": 3030.43,
-          "height": 772.55
+          "x": -982.53,
+          "y": 173.74,
+          "width": 1424.48,
+          "height": 458.98
         },
-        "firstSeen": 2,
-        "lastSeen": 2,
-        "occurrences": 1
+        "firstSeen": 2.083,
+        "lastSeen": 2.083,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -719,12 +869,12 @@
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
         "message": "Text extends outside the composition canvas.",
         "rect": {
-          "left": -982.45,
-          "top": 174.01,
-          "right": 441.96,
-          "bottom": 632.65,
-          "width": 1424.4,
-          "height": 458.64
+          "left": -982.53,
+          "top": 173.74,
+          "right": 441.95,
+          "bottom": 632.72,
+          "width": 1424.48,
+          "height": 458.98
         },
         "containerSelector": "#root",
         "text": "REMOCN",
@@ -738,19 +888,144 @@
           "height": 720
         },
         "overflow": {
-          "left": 982.45
+          "left": 982.53
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": -982.45,
-          "y": 174.01,
-          "width": 1424.4,
-          "height": 458.64
+          "x": -982.53,
+          "y": 173.74,
+          "width": 1424.48,
+          "height": 458.98
         },
         "firstSeen": 2.083,
         "lastSeen": 2.083,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 2.083,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 375.22,
+          "top": 205.8,
+          "right": 680.89,
+          "bottom": 409.83,
+          "width": 305.67,
+          "height": 204.03
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "text": "BEST",
+        "fixHint": "Text is 306px x 204px inside 660px x 606px and overflows by up to 19px; increase the container height to at least ~625px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": -215.16,
+          "right": 969.99,
+          "bottom": 391.33,
+          "width": 659.99,
+          "height": 606.49
+        },
+        "overflow": {
+          "bottom": 18.5
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 375.22,
+          "y": 205.8,
+          "width": 305.67,
+          "height": 204.03
+        },
+        "firstSeen": 2.083,
+        "lastSeen": 2.083,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 2.083,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 310,
+          "top": 359.79,
+          "right": 1080.13,
+          "bottom": 594.41,
+          "width": 770.13,
+          "height": 234.62
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
+        "text": "REMOCN",
+        "fixHint": "Text is 770px x 235px inside 660px x 531px and overflows by up to 110px; resize the container to at least ~770px x 562px or shrink font-size from 603px to ~517px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": 391.33,
+          "right": 970,
+          "bottom": 922.09,
+          "width": 660,
+          "height": 530.76
+        },
+        "overflow": {
+          "right": 110.13,
+          "top": 31.54
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 359.79,
+          "width": 770.13,
+          "height": 234.62
+        },
+        "firstSeen": 2.083,
+        "lastSeen": 2.083,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 2.083,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 310,
+          "top": 432.66,
+          "right": 764.52,
+          "bottom": 997.81,
+          "width": 454.52,
+          "height": 565.15
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
+        "text": "BEST",
+        "fixHint": "Text is 455px x 565px inside 660px x 531px and overflows by up to 76px; increase the container height to at least ~606px or shrink font-size from 124px to ~116px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": 391.33,
+          "right": 970,
+          "bottom": 922.09,
+          "width": 660,
+          "height": 530.76
+        },
+        "overflow": {
+          "bottom": 75.72
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 432.66,
+          "width": 454.52,
+          "height": 565.15
+        },
+        "firstSeen": 2.083,
+        "lastSeen": 2.083,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -760,11 +1035,11 @@
         "message": "Text extends outside the composition canvas.",
         "rect": {
           "left": 310,
-          "top": 435.08,
-          "right": 764.53,
-          "bottom": 1000.93,
-          "width": 454.53,
-          "height": 565.85
+          "top": 432.66,
+          "right": 764.52,
+          "bottom": 997.81,
+          "width": 454.52,
+          "height": 565.15
         },
         "containerSelector": "#root",
         "text": "BEST",
@@ -778,19 +1053,20 @@
           "height": 720
         },
         "overflow": {
-          "bottom": 280.93
+          "bottom": 277.81
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 435.08,
-          "width": 454.53,
-          "height": 565.85
+          "y": 432.66,
+          "width": 454.52,
+          "height": 565.15
         },
         "firstSeen": 2.083,
         "lastSeen": 2.083,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -799,12 +1075,12 @@
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
-          "left": 283.37,
-          "top": -338.22,
+          "left": 283.01,
+          "top": -340.07,
           "right": 969.98,
-          "bottom": 293.99,
-          "width": 686.61,
-          "height": 632.2
+          "bottom": 293.98,
+          "width": 686.98,
+          "height": 634.05
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -817,20 +1093,21 @@
           "height": 606.49
         },
         "overflow": {
-          "left": 26.63,
-          "top": 123.06
+          "left": 26.99,
+          "top": 124.91
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": 283.37,
-          "y": -338.22,
-          "width": 686.61,
-          "height": 632.2
+          "x": 283.01,
+          "y": -340.07,
+          "width": 686.98,
+          "height": 634.05
         },
         "firstSeen": 2.083,
         "lastSeen": 2.083,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -839,12 +1116,12 @@
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
-          "left": 378.1,
-          "top": 22.35,
+          "left": 375.22,
+          "top": 13.99,
           "right": 969.99,
-          "bottom": 418.58,
-          "width": 591.89,
-          "height": 396.23
+          "bottom": 417.6,
+          "width": 594.78,
+          "height": 403.6
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -857,19 +1134,20 @@
           "height": 606.49
         },
         "overflow": {
-          "bottom": 27.25
+          "bottom": 26.27
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": 378.1,
-          "y": 22.35,
-          "width": 591.89,
-          "height": 396.23
+          "x": 375.22,
+          "y": 13.99,
+          "width": 594.78,
+          "height": 403.6
         },
         "firstSeen": 2.083,
         "lastSeen": 2.083,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -879,11 +1157,11 @@
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 310,
-          "top": 359.8,
+          "top": 359.79,
           "right": 970,
-          "bottom": 594.56,
+          "bottom": 594.41,
           "width": 660,
-          "height": 234.77
+          "height": 234.62
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -896,19 +1174,20 @@
           "height": 530.76
         },
         "overflow": {
-          "top": 31.53
+          "top": 31.54
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 359.8,
+          "y": 359.79,
           "width": 660,
-          "height": 234.77
+          "height": 234.62
         },
         "firstSeen": 2.083,
         "lastSeen": 2.083,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -918,11 +1197,11 @@
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 310,
-          "top": 412.55,
+          "top": 411.38,
           "right": 970,
-          "bottom": 1000.93,
+          "bottom": 997.81,
           "width": 660,
-          "height": 588.38
+          "height": 586.43
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -935,19 +1214,62 @@
           "height": 530.76
         },
         "overflow": {
-          "bottom": 78.84
+          "bottom": 75.72
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 412.55,
+          "y": 411.38,
           "width": 660,
-          "height": 588.38
+          "height": 586.43
         },
         "firstSeen": 2.083,
         "lastSeen": 2.083,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 2.917,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -541.77,
+          "top": 235.66,
+          "right": 506.06,
+          "bottom": 504.73,
+          "width": 1047.83,
+          "height": 269.07
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "text": "REMOCN",
+        "fixHint": "Text is 1048px x 269px inside 660px x 649px and overflows by up to 852px; resize the container to at least ~1512px x 763px or shrink font-size from 603px to ~380px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": -257.99,
+          "right": 970,
+          "bottom": 391.33,
+          "width": 660,
+          "height": 649.32
+        },
+        "overflow": {
+          "left": 851.77,
+          "bottom": 113.4
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": -541.77,
+          "y": 235.66,
+          "width": 1047.83,
+          "height": 269.07
+        },
+        "firstSeen": 2.917,
+        "lastSeen": 2.917,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -956,12 +1278,12 @@
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
         "message": "Text extends outside the composition canvas.",
         "rect": {
-          "left": -542.32,
-          "top": 235.79,
-          "right": 506.14,
-          "bottom": 504.72,
-          "width": 1048.46,
-          "height": 268.93
+          "left": -541.77,
+          "top": 235.66,
+          "right": 506.06,
+          "bottom": 504.73,
+          "width": 1047.83,
+          "height": 269.07
         },
         "containerSelector": "#root",
         "text": "REMOCN",
@@ -975,116 +1297,38 @@
           "height": 720
         },
         "overflow": {
-          "left": 542.32
+          "left": 541.77
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": -542.32,
-          "y": 235.79,
-          "width": 1048.46,
-          "height": 268.93
+          "x": -541.77,
+          "y": 235.66,
+          "width": 1047.83,
+          "height": 269.07
         },
         "firstSeen": 2.917,
         "lastSeen": 2.917,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
-        "code": "canvas_overflow",
-        "severity": "info",
-        "time": 2.917,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
-        "message": "Text extends outside the composition canvas.",
-        "rect": {
-          "left": 310,
-          "top": 442.81,
-          "right": 834.73,
-          "bottom": 1068.19,
-          "width": 524.73,
-          "height": 625.38
-        },
-        "containerSelector": "#root",
-        "text": "BEST",
-        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 0,
-          "top": 0,
-          "right": 1280,
-          "bottom": 720,
-          "width": 1280,
-          "height": 720
-        },
-        "overflow": {
-          "bottom": 348.19
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/perspective-squeeze.html",
-        "bbox": {
-          "x": 310,
-          "y": 442.81,
-          "width": 524.73,
-          "height": 625.38
-        },
-        "firstSeen": 2.917,
-        "lastSeen": 2.917,
-        "occurrences": 1
-      },
-      {
-        "code": "container_overflow",
-        "severity": "info",
-        "time": 2.917,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
-        "message": "Element extends outside a clipping layout container.",
-        "rect": {
-          "left": 247.85,
-          "top": -865.35,
-          "right": 969.99,
-          "bottom": 344.72,
-          "width": 722.14,
-          "height": 1210.07
-        },
-        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
-        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 310,
-          "top": -257.99,
-          "right": 970,
-          "bottom": 391.33,
-          "width": 660,
-          "height": 649.32
-        },
-        "overflow": {
-          "left": 62.15,
-          "top": 607.36
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/perspective-squeeze.html",
-        "bbox": {
-          "x": 247.85,
-          "y": -865.35,
-          "width": 722.14,
-          "height": 1210.07
-        },
-        "firstSeen": 2.917,
-        "lastSeen": 2.917,
-        "occurrences": 1
-      },
-      {
-        "code": "container_overflow",
+        "code": "text_box_overflow",
         "severity": "info",
         "time": 2.917,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
-        "message": "Element extends outside a clipping layout container.",
+        "message": "Text extends outside its nearest visual/container box.",
         "rect": {
-          "left": 438.92,
-          "top": 180.53,
-          "right": 970,
-          "bottom": 405.77,
-          "width": 531.08,
-          "height": 225.24
+          "left": 435.7,
+          "top": 293.92,
+          "right": 713,
+          "bottom": 400.9,
+          "width": 277.3,
+          "height": 106.98
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
-        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "text": "BEST",
+        "fixHint": "Text is 277px x 107px inside 660px x 649px and overflows by up to 10px; increase the container height to at least ~659px, or allow wrapping with max-width/fitTextFontSize.",
         "containerRect": {
           "left": 310,
           "top": -257.99,
@@ -1094,191 +1338,117 @@
           "height": 649.32
         },
         "overflow": {
-          "bottom": 14.44
+          "bottom": 9.57
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": 438.92,
-          "y": 180.53,
-          "width": 531.08,
-          "height": 225.24
+          "x": 435.7,
+          "y": 293.92,
+          "width": 277.3,
+          "height": 106.98
         },
         "firstSeen": 2.917,
         "lastSeen": 2.917,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
-        "code": "container_overflow",
+        "code": "text_box_overflow",
         "severity": "info",
         "time": 2.917,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
-        "message": "Element extends outside a clipping layout container.",
+        "message": "Text extends outside its nearest visual/container box.",
         "rect": {
           "left": 310,
-          "top": 332.04,
-          "right": 970.01,
-          "bottom": 682.68,
-          "width": 660.01,
-          "height": 350.64
-        },
-        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
-        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 310,
-          "top": 391.33,
-          "right": 970.01,
-          "bottom": 989.33,
-          "width": 660.01,
-          "height": 598
-        },
-        "overflow": {
-          "top": 59.29
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/perspective-squeeze.html",
-        "bbox": {
-          "x": 310,
-          "y": 332.04,
-          "width": 660.01,
-          "height": 350.64
-        },
-        "firstSeen": 2.917,
-        "lastSeen": 2.917,
-        "occurrences": 1
-      },
-      {
-        "code": "container_overflow",
-        "severity": "info",
-        "time": 2.917,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
-        "message": "Element extends outside a clipping layout container.",
-        "rect": {
-          "left": 310,
-          "top": 412.96,
-          "right": 970.01,
-          "bottom": 1068.19,
-          "width": 660.01,
-          "height": 655.23
-        },
-        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
-        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 310,
-          "top": 391.33,
-          "right": 970.01,
-          "bottom": 989.33,
-          "width": 660.01,
-          "height": 598
-        },
-        "overflow": {
-          "bottom": 78.86
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/perspective-squeeze.html",
-        "bbox": {
-          "x": 310,
-          "y": 412.96,
-          "width": 660.01,
-          "height": 655.23
-        },
-        "firstSeen": 2.917,
-        "lastSeen": 2.917,
-        "occurrences": 1
-      },
-      {
-        "code": "canvas_overflow",
-        "severity": "info",
-        "time": 3.75,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
-        "message": "Text extends outside the composition canvas.",
-        "rect": {
-          "left": -848.86,
-          "top": 218.97,
-          "right": 543.75,
-          "bottom": 506.03,
-          "width": 1392.61,
-          "height": 287.06
-        },
-        "containerSelector": "#root",
-        "text": "REMOCN",
-        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 0,
-          "top": 0,
-          "right": 1280,
-          "bottom": 720,
-          "width": 1280,
-          "height": 720
-        },
-        "overflow": {
-          "left": 848.86
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/perspective-squeeze.html",
-        "bbox": {
-          "x": -848.86,
-          "y": 218.97,
-          "width": 1392.61,
-          "height": 287.06
-        },
-        "firstSeen": 3.75,
-        "lastSeen": 3.75,
-        "occurrences": 1
-      },
-      {
-        "code": "canvas_overflow",
-        "severity": "info",
-        "time": 3.75,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
-        "message": "Text extends outside the composition canvas.",
-        "rect": {
-          "left": 310,
-          "top": 299.07,
+          "top": 332.09,
           "right": 1028.61,
-          "bottom": 769.18,
+          "bottom": 682.54,
           "width": 718.61,
-          "height": 470.11
+          "height": 350.45
         },
-        "containerSelector": "#root",
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
         "text": "REMOCN",
-        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "fixHint": "Text is 719px x 350px inside 660px x 598px and overflows by up to 59px; resize the container to at least ~719px x 657px or shrink font-size from 603px to ~554px, or allow wrapping with max-width/fitTextFontSize.",
         "containerRect": {
-          "left": 0,
-          "top": 0,
-          "right": 1280,
-          "bottom": 720,
-          "width": 1280,
-          "height": 720
+          "left": 310,
+          "top": 391.33,
+          "right": 970.01,
+          "bottom": 989.33,
+          "width": 660.01,
+          "height": 598
         },
         "overflow": {
-          "bottom": 49.18
+          "right": 58.6,
+          "top": 59.24
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 299.07,
+          "y": 332.09,
           "width": 718.61,
-          "height": 470.11
+          "height": 350.45
         },
-        "firstSeen": 3.75,
-        "lastSeen": 3.75,
-        "occurrences": 1
+        "firstSeen": 2.917,
+        "lastSeen": 2.917,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 2.917,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 310,
+          "top": 441.47,
+          "right": 834.72,
+          "bottom": 1065.67,
+          "width": 524.72,
+          "height": 624.2
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
+        "text": "BEST",
+        "fixHint": "Text is 525px x 624px inside 660px x 598px and overflows by up to 76px; increase the container height to at least ~674px or shrink font-size from 124px to ~119px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": 391.33,
+          "right": 970.01,
+          "bottom": 989.33,
+          "width": 660.01,
+          "height": 598
+        },
+        "overflow": {
+          "bottom": 76.34
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 441.47,
+          "width": 524.72,
+          "height": 624.2
+        },
+        "firstSeen": 2.917,
+        "lastSeen": 2.917,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
         "severity": "info",
-        "time": 3.75,
+        "time": 2.917,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
         "message": "Text extends outside the composition canvas.",
         "rect": {
           "left": 310,
-          "top": 469.2,
-          "right": 834.73,
-          "bottom": 1054.37,
-          "width": 524.73,
-          "height": 585.17
+          "top": 441.47,
+          "right": 834.72,
+          "bottom": 1065.67,
+          "width": 524.72,
+          "height": 624.2
         },
         "containerSelector": "#root",
         "text": "BEST",
@@ -1292,33 +1462,34 @@
           "height": 720
         },
         "overflow": {
-          "bottom": 334.37
+          "bottom": 345.67
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 469.2,
-          "width": 524.73,
-          "height": 585.17
+          "y": 441.47,
+          "width": 524.72,
+          "height": 624.2
         },
-        "firstSeen": 3.75,
-        "lastSeen": 3.75,
-        "occurrences": 1
+        "firstSeen": 2.917,
+        "lastSeen": 2.917,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
         "severity": "info",
-        "time": 3.75,
+        "time": 2.917,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
-          "left": 207.96,
-          "top": -1895.44,
+          "left": 247.54,
+          "top": -870.18,
           "right": 969.99,
-          "bottom": 360.58,
-          "width": 762.03,
-          "height": 2256.02
+          "bottom": 344.69,
+          "width": 722.45,
+          "height": 1214.87
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -1331,34 +1502,35 @@
           "height": 649.32
         },
         "overflow": {
-          "left": 102.04,
-          "top": 1637.45
+          "left": 62.46,
+          "top": 612.19
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": 207.96,
-          "y": -1895.44,
-          "width": 762.03,
-          "height": 2256.02
+          "x": 247.54,
+          "y": -870.18,
+          "width": 722.45,
+          "height": 1214.87
         },
-        "firstSeen": 3.75,
-        "lastSeen": 3.75,
-        "occurrences": 1
+        "firstSeen": 2.917,
+        "lastSeen": 2.917,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
         "severity": "info",
-        "time": 3.75,
+        "time": 2.917,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
-          "left": 487.26,
-          "top": 259.59,
+          "left": 435.7,
+          "top": 174.33,
           "right": 970,
-          "bottom": 403.44,
-          "width": 482.73,
-          "height": 143.85
+          "bottom": 405.23,
+          "width": 534.29,
+          "height": 230.9
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -1371,33 +1543,34 @@
           "height": 649.32
         },
         "overflow": {
-          "bottom": 12.11
+          "bottom": 13.9
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": 487.26,
-          "y": 259.59,
-          "width": 482.73,
-          "height": 143.85
+          "x": 435.7,
+          "y": 174.33,
+          "width": 534.29,
+          "height": 230.9
         },
-        "firstSeen": 3.75,
-        "lastSeen": 3.75,
-        "occurrences": 1
+        "firstSeen": 2.917,
+        "lastSeen": 2.917,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
         "severity": "info",
-        "time": 3.75,
+        "time": 2.917,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 310,
-          "top": 299.07,
+          "top": 332.09,
           "right": 970.01,
-          "bottom": 769.18,
+          "bottom": 682.54,
           "width": 660.01,
-          "height": 470.11
+          "height": 350.45
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -1410,33 +1583,34 @@
           "height": 598
         },
         "overflow": {
-          "top": 92.26
+          "top": 59.24
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 299.07,
+          "y": 332.09,
           "width": 660.01,
-          "height": 470.11
+          "height": 350.45
         },
-        "firstSeen": 3.75,
-        "lastSeen": 3.75,
-        "occurrences": 1
+        "firstSeen": 2.917,
+        "lastSeen": 2.917,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
         "severity": "info",
-        "time": 3.75,
+        "time": 2.917,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 310,
-          "top": 424.05,
+          "top": 412.4,
           "right": 970.01,
-          "bottom": 1054.37,
+          "bottom": 1065.67,
           "width": 660.01,
-          "height": 630.32
+          "height": 653.27
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -1449,33 +1623,76 @@
           "height": 598
         },
         "overflow": {
-          "bottom": 65.04
+          "bottom": 76.34
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 424.05,
+          "y": 412.4,
           "width": 660.01,
-          "height": 630.32
+          "height": 653.27
+        },
+        "firstSeen": 2.917,
+        "lastSeen": 2.917,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 3.75,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -848.94,
+          "top": 218.79,
+          "right": 543.76,
+          "bottom": 506.04,
+          "width": 1392.7,
+          "height": 287.25
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "text": "REMOCN",
+        "fixHint": "Text is 1393px x 287px inside 660px x 649px and overflows by up to 1159px; resize the container to at least ~1819px x 764px or shrink font-size from 603px to ~286px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": -257.99,
+          "right": 970,
+          "bottom": 391.33,
+          "width": 660,
+          "height": 649.32
+        },
+        "overflow": {
+          "left": 1158.94,
+          "bottom": 114.71
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": -848.94,
+          "y": 218.79,
+          "width": 1392.7,
+          "height": 287.25
         },
         "firstSeen": 3.75,
         "lastSeen": 3.75,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
         "severity": "info",
-        "time": 4.583,
+        "time": 3.75,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
         "message": "Text extends outside the composition canvas.",
         "rect": {
-          "left": -721.66,
-          "top": 227.37,
-          "right": 530.54,
-          "bottom": 505.4,
-          "width": 1252.19,
-          "height": 278.03
+          "left": -848.94,
+          "top": 218.79,
+          "right": 543.76,
+          "bottom": 506.04,
+          "width": 1392.7,
+          "height": 287.25
         },
         "containerSelector": "#root",
         "text": "REMOCN",
@@ -1489,33 +1706,117 @@
           "height": 720
         },
         "overflow": {
-          "left": 721.66
+          "left": 848.94
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": -721.66,
-          "y": 227.37,
-          "width": 1252.19,
-          "height": 278.03
+          "x": -848.94,
+          "y": 218.79,
+          "width": 1392.7,
+          "height": 287.25
         },
-        "firstSeen": 4.583,
-        "lastSeen": 4.583,
-        "occurrences": 1
+        "firstSeen": 3.75,
+        "lastSeen": 3.75,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
-        "code": "canvas_overflow",
+        "code": "text_box_overflow",
         "severity": "info",
-        "time": 4.583,
+        "time": 3.75,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 485.52,
+          "top": 322.51,
+          "right": 710.12,
+          "bottom": 399.34,
+          "width": 224.6,
+          "height": 76.83
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "text": "BEST",
+        "fixHint": "Text is 225px x 77px inside 660px x 649px and overflows by up to 8px; increase the container height to at least ~657px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": -257.99,
+          "right": 970,
+          "bottom": 391.33,
+          "width": 660,
+          "height": 649.32
+        },
+        "overflow": {
+          "bottom": 8.01
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 485.52,
+          "y": 322.51,
+          "width": 224.6,
+          "height": 76.83
+        },
+        "firstSeen": 3.75,
+        "lastSeen": 3.75,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 3.75,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
-        "message": "Text extends outside the composition canvas.",
+        "message": "Text extends outside its nearest visual/container box.",
         "rect": {
           "left": 310,
-          "top": 315.1,
+          "top": 299.16,
           "right": 1028.61,
-          "bottom": 737.09,
+          "bottom": 769.02,
           "width": 718.61,
-          "height": 421.99
+          "height": 469.86
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
+        "text": "REMOCN",
+        "fixHint": "Text is 719px x 470px inside 660px x 598px and overflows by up to 92px; resize the container to at least ~719px x 690px or shrink font-size from 603px to ~554px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": 391.33,
+          "right": 970.01,
+          "bottom": 989.33,
+          "width": 660.01,
+          "height": 598
+        },
+        "overflow": {
+          "right": 58.6,
+          "top": 92.17
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 299.16,
+          "width": 718.61,
+          "height": 469.86
+        },
+        "firstSeen": 3.75,
+        "lastSeen": 3.75,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 3.75,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 310,
+          "top": 299.16,
+          "right": 1028.61,
+          "bottom": 769.02,
+          "width": 718.61,
+          "height": 469.86
         },
         "containerSelector": "#root",
         "text": "REMOCN",
@@ -1529,33 +1830,75 @@
           "height": 720
         },
         "overflow": {
-          "bottom": 17.09
+          "bottom": 49.02
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 315.1,
+          "y": 299.16,
           "width": 718.61,
-          "height": 421.99
+          "height": 469.86
         },
-        "firstSeen": 4.583,
-        "lastSeen": 4.583,
-        "occurrences": 1
+        "firstSeen": 3.75,
+        "lastSeen": 3.75,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 3.75,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 310,
+          "top": 468.12,
+          "right": 834.72,
+          "bottom": 1052.53,
+          "width": 524.72,
+          "height": 584.41
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
+        "text": "BEST",
+        "fixHint": "Text is 525px x 584px inside 660px x 598px and overflows by up to 63px; increase the container height to at least ~661px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": 391.33,
+          "right": 970.01,
+          "bottom": 989.33,
+          "width": 660.01,
+          "height": 598
+        },
+        "overflow": {
+          "bottom": 63.2
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 468.12,
+          "width": 524.72,
+          "height": 584.41
+        },
+        "firstSeen": 3.75,
+        "lastSeen": 3.75,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
         "severity": "info",
-        "time": 4.583,
+        "time": 3.75,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
         "message": "Text extends outside the composition canvas.",
         "rect": {
           "left": 310,
-          "top": 460.06,
-          "right": 834.73,
-          "bottom": 1055.34,
-          "width": 524.73,
-          "height": 595.28
+          "top": 468.12,
+          "right": 834.72,
+          "bottom": 1052.53,
+          "width": 524.72,
+          "height": 584.41
         },
         "containerSelector": "#root",
         "text": "BEST",
@@ -1569,33 +1912,34 @@
           "height": 720
         },
         "overflow": {
-          "bottom": 335.34
+          "bottom": 332.53
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 460.06,
-          "width": 524.73,
-          "height": 595.28
+          "y": 468.12,
+          "width": 524.72,
+          "height": 584.41
         },
-        "firstSeen": 4.583,
-        "lastSeen": 4.583,
-        "occurrences": 1
+        "firstSeen": 3.75,
+        "lastSeen": 3.75,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
         "severity": "info",
-        "time": 4.583,
+        "time": 3.75,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
-          "left": 227.9,
-          "top": -1255.41,
+          "left": 207.55,
+          "top": -1913.04,
           "right": 969.99,
-          "bottom": 355.01,
-          "width": 742.1,
-          "height": 1610.42
+          "bottom": 360.59,
+          "width": 762.45,
+          "height": 2273.63
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -1608,34 +1952,35 @@
           "height": 649.32
         },
         "overflow": {
-          "left": 82.1,
-          "top": 997.42
+          "left": 102.45,
+          "top": 1655.05
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": 227.9,
-          "y": -1255.41,
-          "width": 742.1,
-          "height": 1610.42
+          "x": 207.55,
+          "y": -1913.04,
+          "width": 762.45,
+          "height": 2273.63
         },
-        "firstSeen": 4.583,
-        "lastSeen": 4.583,
-        "occurrences": 1
+        "firstSeen": 3.75,
+        "lastSeen": 3.75,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
         "severity": "info",
-        "time": 4.583,
+        "time": 3.75,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
-          "left": 471.54,
-          "top": 236.46,
+          "left": 485.52,
+          "top": 257.13,
           "right": 970,
-          "bottom": 403.61,
-          "width": 498.45,
-          "height": 167.15
+          "bottom": 403.02,
+          "width": 484.48,
+          "height": 145.9
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -1648,33 +1993,34 @@
           "height": 649.32
         },
         "overflow": {
-          "bottom": 12.28
+          "bottom": 11.69
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": 471.54,
-          "y": 236.46,
-          "width": 498.45,
-          "height": 167.15
+          "x": 485.52,
+          "y": 257.13,
+          "width": 484.48,
+          "height": 145.9
         },
-        "firstSeen": 4.583,
-        "lastSeen": 4.583,
-        "occurrences": 1
+        "firstSeen": 3.75,
+        "lastSeen": 3.75,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
         "severity": "info",
-        "time": 4.583,
+        "time": 3.75,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 310,
-          "top": 315.1,
+          "top": 299.16,
           "right": 970.01,
-          "bottom": 737.09,
+          "bottom": 769.02,
           "width": 660.01,
-          "height": 421.99
+          "height": 469.86
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -1687,33 +2033,34 @@
           "height": 598
         },
         "overflow": {
-          "top": 76.23
+          "top": 92.17
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 315.1,
+          "y": 299.16,
           "width": 660.01,
-          "height": 421.99
+          "height": 469.86
         },
-        "firstSeen": 4.583,
-        "lastSeen": 4.583,
-        "occurrences": 1
+        "firstSeen": 3.75,
+        "lastSeen": 3.75,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
         "severity": "info",
-        "time": 4.583,
+        "time": 3.75,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 310,
-          "top": 420.21,
+          "top": 423.6,
           "right": 970.01,
-          "bottom": 1055.34,
+          "bottom": 1052.53,
           "width": 660.01,
-          "height": 635.13
+          "height": 628.94
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -1726,33 +2073,76 @@
           "height": 598
         },
         "overflow": {
-          "bottom": 66.01
+          "bottom": 63.2
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 420.21,
+          "y": 423.6,
           "width": 660.01,
-          "height": 635.13
+          "height": 628.94
+        },
+        "firstSeen": 3.75,
+        "lastSeen": 3.75,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 4.583,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -722.82,
+          "top": 227.2,
+          "right": 530.67,
+          "bottom": 505.42,
+          "width": 1253.49,
+          "height": 278.22
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "text": "REMOCN",
+        "fixHint": "Text is 1253px x 278px inside 660px x 649px and overflows by up to 1033px; resize the container to at least ~1693px x 763px or shrink font-size from 603px to ~317px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": -257.99,
+          "right": 970,
+          "bottom": 391.33,
+          "width": 660,
+          "height": 649.32
+        },
+        "overflow": {
+          "left": 1032.82,
+          "bottom": 114.09
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": -722.82,
+          "y": 227.2,
+          "width": 1253.49,
+          "height": 278.22
         },
         "firstSeen": 4.583,
         "lastSeen": 4.583,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
         "severity": "info",
-        "time": 5.417,
+        "time": 4.583,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
         "message": "Text extends outside the composition canvas.",
         "rect": {
-          "left": -526.39,
-          "top": 241.77,
-          "right": 503.54,
-          "bottom": 504.19,
-          "width": 1029.93,
-          "height": 262.42
+          "left": -722.82,
+          "top": 227.2,
+          "right": 530.67,
+          "bottom": 505.42,
+          "width": 1253.49,
+          "height": 278.22
         },
         "containerSelector": "#root",
         "text": "REMOCN",
@@ -1766,33 +2156,199 @@
           "height": 720
         },
         "overflow": {
-          "left": 526.39
+          "left": 722.82
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": -526.39,
-          "y": 241.77,
-          "width": 1029.93,
-          "height": 262.42
+          "x": -722.82,
+          "y": 227.2,
+          "width": 1253.49,
+          "height": 278.22
         },
-        "firstSeen": 5.417,
-        "lastSeen": 5.417,
-        "occurrences": 1
+        "firstSeen": 4.583,
+        "lastSeen": 4.583,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 4.583,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 469.1,
+          "top": 313.24,
+          "right": 710.3,
+          "bottom": 399.44,
+          "width": 241.2,
+          "height": 86.2
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "text": "BEST",
+        "fixHint": "Text is 241px x 86px inside 660px x 649px and overflows by up to 8px; increase the container height to at least ~657px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": -257.99,
+          "right": 970,
+          "bottom": 391.33,
+          "width": 660,
+          "height": 649.32
+        },
+        "overflow": {
+          "bottom": 8.11
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 469.1,
+          "y": 313.24,
+          "width": 241.2,
+          "height": 86.2
+        },
+        "firstSeen": 4.583,
+        "lastSeen": 4.583,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 4.583,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 310,
+          "top": 315.26,
+          "right": 1028.61,
+          "bottom": 736.92,
+          "width": 718.61,
+          "height": 421.66
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
+        "text": "REMOCN",
+        "fixHint": "Text is 719px x 422px inside 660px x 598px and overflows by up to 76px; resize the container to at least ~719px x 674px or shrink font-size from 603px to ~554px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": 391.33,
+          "right": 970.01,
+          "bottom": 989.33,
+          "width": 660.01,
+          "height": 598
+        },
+        "overflow": {
+          "right": 58.6,
+          "top": 76.07
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 315.26,
+          "width": 718.61,
+          "height": 421.66
+        },
+        "firstSeen": 4.583,
+        "lastSeen": 4.583,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
         "severity": "info",
-        "time": 5.417,
+        "time": 4.583,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 310,
+          "top": 315.26,
+          "right": 1028.61,
+          "bottom": 736.92,
+          "width": 718.61,
+          "height": 421.66
+        },
+        "containerSelector": "#root",
+        "text": "REMOCN",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 16.92
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 315.26,
+          "width": 718.61,
+          "height": 421.66
+        },
+        "firstSeen": 4.583,
+        "lastSeen": 4.583,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 4.583,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 310,
+          "top": 458.91,
+          "right": 834.72,
+          "bottom": 1053.27,
+          "width": 524.72,
+          "height": 594.36
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
+        "text": "BEST",
+        "fixHint": "Text is 525px x 594px inside 660px x 598px and overflows by up to 64px; increase the container height to at least ~662px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": 391.33,
+          "right": 970.01,
+          "bottom": 989.33,
+          "width": 660.01,
+          "height": 598
+        },
+        "overflow": {
+          "bottom": 63.94
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 458.91,
+          "width": 524.72,
+          "height": 594.36
+        },
+        "firstSeen": 4.583,
+        "lastSeen": 4.583,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 4.583,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
         "message": "Text extends outside the composition canvas.",
         "rect": {
           "left": 310,
-          "top": 442.93,
-          "right": 834.73,
-          "bottom": 1057.55,
-          "width": 524.73,
-          "height": 614.61
+          "top": 458.91,
+          "right": 834.72,
+          "bottom": 1053.27,
+          "width": 524.72,
+          "height": 594.36
         },
         "containerSelector": "#root",
         "text": "BEST",
@@ -1806,19 +2362,429 @@
           "height": 720
         },
         "overflow": {
-          "bottom": 337.55
+          "bottom": 333.27
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 442.93,
-          "width": 524.73,
-          "height": 614.61
+          "y": 458.91,
+          "width": 524.72,
+          "height": 594.36
+        },
+        "firstSeen": 4.583,
+        "lastSeen": 4.583,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 4.583,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 227.48,
+          "top": -1265.49,
+          "right": 969.99,
+          "bottom": 355.06,
+          "width": 742.51,
+          "height": 1620.55
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 310,
+          "top": -257.99,
+          "right": 970,
+          "bottom": 391.33,
+          "width": 660,
+          "height": 649.32
+        },
+        "overflow": {
+          "left": 82.52,
+          "top": 1007.5
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 227.48,
+          "y": -1265.49,
+          "width": 742.51,
+          "height": 1620.55
+        },
+        "firstSeen": 4.583,
+        "lastSeen": 4.583,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 4.583,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 469.1,
+          "top": 232.66,
+          "right": 970,
+          "bottom": 403.16,
+          "width": 500.9,
+          "height": 170.51
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 310,
+          "top": -257.99,
+          "right": 970,
+          "bottom": 391.33,
+          "width": 660,
+          "height": 649.32
+        },
+        "overflow": {
+          "bottom": 11.83
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 469.1,
+          "y": 232.66,
+          "width": 500.9,
+          "height": 170.51
+        },
+        "firstSeen": 4.583,
+        "lastSeen": 4.583,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 4.583,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 310,
+          "top": 315.26,
+          "right": 970.01,
+          "bottom": 736.92,
+          "width": 660.01,
+          "height": 421.65
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 310,
+          "top": 391.33,
+          "right": 970.01,
+          "bottom": 989.33,
+          "width": 660.01,
+          "height": 598
+        },
+        "overflow": {
+          "top": 76.07
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 315.26,
+          "width": 660.01,
+          "height": 421.65
+        },
+        "firstSeen": 4.583,
+        "lastSeen": 4.583,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 4.583,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 310,
+          "top": 419.73,
+          "right": 970.01,
+          "bottom": 1053.27,
+          "width": 660.01,
+          "height": 633.54
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 310,
+          "top": 391.33,
+          "right": 970.01,
+          "bottom": 989.33,
+          "width": 660.01,
+          "height": 598
+        },
+        "overflow": {
+          "bottom": 63.94
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 419.73,
+          "width": 660.01,
+          "height": 633.54
+        },
+        "firstSeen": 4.583,
+        "lastSeen": 4.583,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 5.417,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -524.73,
+          "top": 241.59,
+          "right": 503.26,
+          "bottom": 504.21,
+          "width": 1027.99,
+          "height": 262.62
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "text": "REMOCN",
+        "fixHint": "Text is 1028px x 263px inside 660px x 649px and overflows by up to 835px; resize the container to at least ~1495px x 762px or shrink font-size from 603px to ~387px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": -257.99,
+          "right": 970,
+          "bottom": 391.33,
+          "width": 660,
+          "height": 649.32
+        },
+        "overflow": {
+          "left": 834.73,
+          "bottom": 112.88
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": -524.73,
+          "y": 241.59,
+          "width": 1027.99,
+          "height": 262.62
         },
         "firstSeen": 5.417,
         "lastSeen": 5.417,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.417,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -524.73,
+          "top": 241.59,
+          "right": 503.26,
+          "bottom": 504.21,
+          "width": 1027.99,
+          "height": 262.62
+        },
+        "containerSelector": "#root",
+        "text": "REMOCN",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 524.73
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": -524.73,
+          "y": 241.59,
+          "width": 1027.99,
+          "height": 262.62
+        },
+        "firstSeen": 5.417,
+        "lastSeen": 5.417,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 5.417,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 436.25,
+          "top": 294.24,
+          "right": 710.87,
+          "bottom": 399.75,
+          "width": 274.62,
+          "height": 105.51
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "text": "BEST",
+        "fixHint": "Text is 275px x 106px inside 660px x 649px and overflows by up to 8px; increase the container height to at least ~658px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": -257.99,
+          "right": 970,
+          "bottom": 391.33,
+          "width": 660,
+          "height": 649.32
+        },
+        "overflow": {
+          "bottom": 8.42
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 436.25,
+          "y": 294.24,
+          "width": 274.62,
+          "height": 105.51
+        },
+        "firstSeen": 5.417,
+        "lastSeen": 5.417,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 5.417,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 310,
+          "top": 344.71,
+          "right": 1028.61,
+          "bottom": 677.11,
+          "width": 718.61,
+          "height": 332.4
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
+        "text": "REMOCN",
+        "fixHint": "Text is 719px x 332px inside 660px x 598px and overflows by up to 59px; resize the container to at least ~719px x 645px or shrink font-size from 603px to ~554px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": 391.33,
+          "right": 970.01,
+          "bottom": 989.33,
+          "width": 660.01,
+          "height": 598
+        },
+        "overflow": {
+          "right": 58.6,
+          "top": 46.62
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 344.71,
+          "width": 718.61,
+          "height": 332.4
+        },
+        "firstSeen": 5.417,
+        "lastSeen": 5.417,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 5.417,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 310,
+          "top": 441.46,
+          "right": 834.72,
+          "bottom": 1054.96,
+          "width": 524.72,
+          "height": 613.5
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
+        "text": "BEST",
+        "fixHint": "Text is 525px x 614px inside 660px x 598px and overflows by up to 66px; increase the container height to at least ~664px or shrink font-size from 124px to ~121px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": 391.33,
+          "right": 970.01,
+          "bottom": 989.33,
+          "width": 660.01,
+          "height": 598
+        },
+        "overflow": {
+          "bottom": 65.63
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 441.46,
+          "width": 524.72,
+          "height": 613.5
+        },
+        "firstSeen": 5.417,
+        "lastSeen": 5.417,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 5.417,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 310,
+          "top": 441.46,
+          "right": 834.72,
+          "bottom": 1054.96,
+          "width": 524.72,
+          "height": 613.5
+        },
+        "containerSelector": "#root",
+        "text": "BEST",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 334.96
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 441.46,
+          "width": 524.72,
+          "height": 613.5
+        },
+        "firstSeen": 5.417,
+        "lastSeen": 5.417,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -1827,12 +2793,12 @@
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
-          "left": 262.03,
-          "top": -669.51,
+          "left": 261.6,
+          "top": -674.76,
           "right": 969.99,
-          "bottom": 343.62,
-          "width": 707.96,
-          "height": 1013.13
+          "bottom": 343.51,
+          "width": 708.39,
+          "height": 1018.27
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -1845,20 +2811,21 @@
           "height": 649.32
         },
         "overflow": {
-          "left": 47.97,
-          "top": 411.52
+          "left": 48.4,
+          "top": 416.77
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": 262.03,
-          "y": -669.51,
-          "width": 707.96,
-          "height": 1013.13
+          "x": 261.6,
+          "y": -674.76,
+          "width": 708.39,
+          "height": 1018.27
         },
         "firstSeen": 5.417,
         "lastSeen": 5.417,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -1867,12 +2834,12 @@
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
-          "left": 439.17,
-          "top": 181,
+          "left": 436.25,
+          "top": 175.38,
           "right": 970,
-          "bottom": 403.98,
-          "width": 530.83,
-          "height": 222.98
+          "bottom": 403.6,
+          "width": 533.75,
+          "height": 228.22
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -1885,19 +2852,20 @@
           "height": 649.32
         },
         "overflow": {
-          "bottom": 12.65
+          "bottom": 12.27
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": 439.17,
-          "y": 181,
-          "width": 530.83,
-          "height": 222.98
+          "x": 436.25,
+          "y": 175.38,
+          "width": 533.75,
+          "height": 228.22
         },
         "firstSeen": 5.417,
         "lastSeen": 5.417,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -1907,11 +2875,11 @@
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 310,
-          "top": 344.65,
+          "top": 344.71,
           "right": 970.01,
-          "bottom": 677.21,
+          "bottom": 677.11,
           "width": 660.01,
-          "height": 332.56
+          "height": 332.41
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -1924,19 +2892,20 @@
           "height": 598
         },
         "overflow": {
-          "top": 46.68
+          "top": 46.62
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 344.65,
+          "y": 344.71,
           "width": 660.01,
-          "height": 332.56
+          "height": 332.41
         },
         "firstSeen": 5.417,
         "lastSeen": 5.417,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -1946,11 +2915,11 @@
         "message": "Element extends outside a clipping layout container.",
         "rect": {
           "left": 310,
-          "top": 413.01,
+          "top": 412.39,
           "right": 970.01,
-          "bottom": 1057.55,
+          "bottom": 1054.96,
           "width": 660.01,
-          "height": 644.53
+          "height": 642.57
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -1963,73 +2932,76 @@
           "height": 598
         },
         "overflow": {
-          "bottom": 68.22
+          "bottom": 65.63
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 413.01,
+          "y": 412.39,
           "width": 660.01,
-          "height": 644.53
+          "height": 642.57
         },
         "firstSeen": 5.417,
         "lastSeen": 5.417,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
-        "code": "canvas_overflow",
+        "code": "text_box_overflow",
         "severity": "info",
         "time": 6.25,
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
-        "message": "Text extends outside the composition canvas.",
+        "message": "Text extends outside its nearest visual/container box.",
         "rect": {
-          "left": -2321.72,
-          "top": 146.91,
-          "right": 608.47,
-          "bottom": 509.76,
-          "width": 2930.19,
-          "height": 362.85
+          "left": -2323.87,
+          "top": 146.64,
+          "right": 608.51,
+          "bottom": 509.77,
+          "width": 2932.38,
+          "height": 363.13
         },
-        "containerSelector": "#root",
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
         "text": "REMOCN",
-        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "fixHint": "Text is 2932px x 363px inside 660px x 649px and overflows by up to 2634px; resize the container to at least ~3294px x 768px or shrink font-size from 603px to ~136px, or allow wrapping with max-width/fitTextFontSize.",
         "containerRect": {
-          "left": 0,
-          "top": 0,
-          "right": 1280,
-          "bottom": 720,
-          "width": 1280,
-          "height": 720
+          "left": 310,
+          "top": -257.99,
+          "right": 970,
+          "bottom": 391.33,
+          "width": 660,
+          "height": 649.32
         },
         "overflow": {
-          "left": 2321.72
+          "left": 2633.87,
+          "bottom": 118.44
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": -2321.72,
-          "y": 146.91,
-          "width": 2930.19,
-          "height": 362.85
+          "x": -2323.87,
+          "y": 146.64,
+          "width": 2932.38,
+          "height": 363.13
         },
         "firstSeen": 6.25,
         "lastSeen": 6.25,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
         "severity": "info",
         "time": 6.25,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
         "message": "Text extends outside the composition canvas.",
         "rect": {
-          "left": 310,
-          "top": 189.78,
-          "right": 1028.61,
-          "bottom": 960.14,
-          "width": 718.61,
-          "height": 770.35
+          "left": -2323.87,
+          "top": 146.64,
+          "right": 608.51,
+          "bottom": 509.77,
+          "width": 2932.38,
+          "height": 363.13
         },
         "containerSelector": "#root",
         "text": "REMOCN",
@@ -2043,19 +3015,185 @@
           "height": 720
         },
         "overflow": {
-          "bottom": 240.14
+          "left": 2323.87
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": -2323.87,
+          "y": 146.64,
+          "width": 2932.38,
+          "height": 363.13
+        },
+        "firstSeen": 6.25,
+        "lastSeen": 6.25,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 6.25,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 559.71,
+          "top": 362.52,
+          "right": 712.36,
+          "bottom": 400.56,
+          "width": 152.65,
+          "height": 38.04
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "text": "BEST",
+        "fixHint": "Text is 153px x 38px inside 660px x 649px and overflows by up to 9px; increase the container height to at least ~659px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": -257.99,
+          "right": 970,
+          "bottom": 391.33,
+          "width": 660,
+          "height": 649.32
+        },
+        "overflow": {
+          "bottom": 9.23
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 559.71,
+          "y": 362.52,
+          "width": 152.65,
+          "height": 38.04
+        },
+        "firstSeen": 6.25,
+        "lastSeen": 6.25,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 6.25,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 310,
+          "top": 189.98,
+          "right": 1028.61,
+          "bottom": 959.85,
+          "width": 718.61,
+          "height": 769.87
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
+        "text": "REMOCN",
+        "fixHint": "Text is 719px x 770px inside 660px x 598px and overflows by up to 201px; resize the container to at least ~719px x 799px or shrink font-size from 603px to ~468px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": 391.33,
+          "right": 970.01,
+          "bottom": 989.33,
+          "width": 660.01,
+          "height": 598
+        },
+        "overflow": {
+          "right": 58.6,
+          "top": 201.35
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 189.78,
+          "y": 189.98,
           "width": 718.61,
-          "height": 770.35
+          "height": 769.87
         },
         "firstSeen": 6.25,
         "lastSeen": 6.25,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 6.25,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 310,
+          "top": 189.98,
+          "right": 1028.61,
+          "bottom": 959.85,
+          "width": 718.61,
+          "height": 769.87
+        },
+        "containerSelector": "#root",
+        "text": "REMOCN",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 239.85
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 189.98,
+          "width": 718.61,
+          "height": 769.87
+        },
+        "firstSeen": 6.25,
+        "lastSeen": 6.25,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 6.25,
+        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 310,
+          "top": 520.53,
+          "right": 834.72,
+          "bottom": 1062.69,
+          "width": 524.72,
+          "height": 542.16
+        },
+        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
+        "text": "BEST",
+        "fixHint": "Text is 525px x 542px inside 660px x 598px and overflows by up to 73px; increase the container height to at least ~671px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 310,
+          "top": 391.33,
+          "right": 970.01,
+          "bottom": 989.33,
+          "width": 660.01,
+          "height": 598
+        },
+        "overflow": {
+          "bottom": 73.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/perspective-squeeze.html",
+        "bbox": {
+          "x": 310,
+          "y": 520.53,
+          "width": 524.72,
+          "height": 542.16
+        },
+        "firstSeen": 6.25,
+        "lastSeen": 6.25,
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "canvas_overflow",
@@ -2065,11 +3203,11 @@
         "message": "Text extends outside the composition canvas.",
         "rect": {
           "left": 310,
-          "top": 521.25,
-          "right": 834.73,
-          "bottom": 1063.79,
-          "width": 524.73,
-          "height": 542.54
+          "top": 520.53,
+          "right": 834.72,
+          "bottom": 1062.69,
+          "width": 524.72,
+          "height": 542.16
         },
         "containerSelector": "#root",
         "text": "BEST",
@@ -2083,19 +3221,20 @@
           "height": 720
         },
         "overflow": {
-          "bottom": 343.79
+          "bottom": 342.69
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
           "x": 310,
-          "y": 521.25,
-          "width": 524.73,
-          "height": 542.54
+          "y": 520.53,
+          "width": 524.72,
+          "height": 542.16
         },
         "firstSeen": 6.25,
         "lastSeen": 6.25,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       },
       {
         "code": "container_overflow",
@@ -2104,12 +3243,12 @@
         "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
         "message": "Element extends outside a clipping layout container.",
         "rect": {
-          "left": 37.11,
-          "top": 146.91,
+          "left": 36.47,
+          "top": 146.64,
           "right": 970.08,
-          "bottom": 2244.12,
-          "width": 932.97,
-          "height": 2097.21
+          "bottom": 2235.39,
+          "width": 933.61,
+          "height": 2088.75
         },
         "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
         "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
@@ -2122,414 +3261,21 @@
           "height": 649.32
         },
         "overflow": {
-          "left": 272.89,
-          "bottom": 1852.79
+          "left": 273.53,
+          "bottom": 1844.06
         },
         "dataAttributes": {},
         "sourceFile": "compositions/perspective-squeeze.html",
         "bbox": {
-          "x": 37.11,
-          "y": 146.91,
-          "width": 932.97,
-          "height": 2097.21
+          "x": 36.47,
+          "y": 146.64,
+          "width": 933.61,
+          "height": 2088.75
         },
         "firstSeen": 6.25,
         "lastSeen": 6.25,
-        "occurrences": 1
-      },
-      {
-        "code": "container_overflow",
-        "severity": "info",
-        "time": 6.25,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
-        "message": "Element extends outside a clipping layout container.",
-        "rect": {
-          "left": 560.74,
-          "top": 344.48,
-          "right": 970,
-          "bottom": 405.03,
-          "width": 409.26,
-          "height": 60.56
-        },
-        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
-        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 310,
-          "top": -257.99,
-          "right": 970,
-          "bottom": 391.33,
-          "width": 660,
-          "height": 649.32
-        },
-        "overflow": {
-          "bottom": 13.7
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/perspective-squeeze.html",
-        "bbox": {
-          "x": 560.74,
-          "y": 344.48,
-          "width": 409.26,
-          "height": 60.56
-        },
-        "firstSeen": 6.25,
-        "lastSeen": 6.25,
-        "occurrences": 1
-      },
-      {
-        "code": "container_overflow",
-        "severity": "info",
-        "time": 6.25,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
-        "message": "Element extends outside a clipping layout container.",
-        "rect": {
-          "left": 310,
-          "top": 189.78,
-          "right": 970.01,
-          "bottom": 960.14,
-          "width": 660.01,
-          "height": 770.35
-        },
-        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
-        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 310,
-          "top": 391.33,
-          "right": 970.01,
-          "bottom": 989.33,
-          "width": 660.01,
-          "height": 598
-        },
-        "overflow": {
-          "top": 201.55
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/perspective-squeeze.html",
-        "bbox": {
-          "x": 310,
-          "y": 189.78,
-          "width": 660.01,
-          "height": 770.35
-        },
-        "firstSeen": 6.25,
-        "lastSeen": 6.25,
-        "occurrences": 1
-      },
-      {
-        "code": "container_overflow",
-        "severity": "info",
-        "time": 6.25,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
-        "message": "Element extends outside a clipping layout container.",
-        "rect": {
-          "left": 310,
-          "top": 445.92,
-          "right": 970.01,
-          "bottom": 1063.79,
-          "width": 660.01,
-          "height": 617.87
-        },
-        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
-        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 310,
-          "top": 391.33,
-          "right": 970.01,
-          "bottom": 989.33,
-          "width": 660.01,
-          "height": 598
-        },
-        "overflow": {
-          "bottom": 74.46
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/perspective-squeeze.html",
-        "bbox": {
-          "x": 310,
-          "y": 445.92,
-          "width": 660.01,
-          "height": 617.87
-        },
-        "firstSeen": 6.25,
-        "lastSeen": 6.25,
-        "occurrences": 1
-      },
-      {
-        "code": "canvas_overflow",
-        "severity": "info",
-        "time": 7.083,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
-        "message": "Text extends outside the composition canvas.",
-        "rect": {
-          "left": -2602.41,
-          "top": 164.68,
-          "right": 613.71,
-          "bottom": 509.04,
-          "width": 3216.13,
-          "height": 344.36
-        },
-        "containerSelector": "#root",
-        "text": "REMOCN",
-        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 0,
-          "top": 0,
-          "right": 1280,
-          "bottom": 720,
-          "width": 1280,
-          "height": 720
-        },
-        "overflow": {
-          "left": 2602.41
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/perspective-squeeze.html",
-        "bbox": {
-          "x": -2602.41,
-          "y": 164.68,
-          "width": 3216.13,
-          "height": 344.36
-        },
-        "firstSeen": 7.083,
-        "lastSeen": 7.083,
-        "occurrences": 1
-      },
-      {
-        "code": "canvas_overflow",
-        "severity": "info",
-        "time": 7.083,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
-        "message": "Text extends outside the composition canvas.",
-        "rect": {
-          "left": 310,
-          "top": 212.84,
-          "right": 1028.61,
-          "bottom": 978.67,
-          "width": 718.61,
-          "height": 765.82
-        },
-        "containerSelector": "#root",
-        "text": "REMOCN",
-        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 0,
-          "top": 0,
-          "right": 1280,
-          "bottom": 720,
-          "width": 1280,
-          "height": 720
-        },
-        "overflow": {
-          "bottom": 258.67
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/perspective-squeeze.html",
-        "bbox": {
-          "x": 310,
-          "y": 212.84,
-          "width": 718.61,
-          "height": 765.82
-        },
-        "firstSeen": 7.083,
-        "lastSeen": 7.083,
-        "occurrences": 1
-      },
-      {
-        "code": "canvas_overflow",
-        "severity": "info",
-        "time": 7.083,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
-        "message": "Text extends outside the composition canvas.",
-        "rect": {
-          "left": 310,
-          "top": 532.03,
-          "right": 834.73,
-          "bottom": 1027.89,
-          "width": 524.73,
-          "height": 495.87
-        },
-        "containerSelector": "#root",
-        "text": "BEST",
-        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 0,
-          "top": 0,
-          "right": 1280,
-          "bottom": 720,
-          "width": 1280,
-          "height": 720
-        },
-        "overflow": {
-          "bottom": 307.89
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/perspective-squeeze.html",
-        "bbox": {
-          "x": 310,
-          "y": 532.03,
-          "width": 524.73,
-          "height": 495.87
-        },
-        "firstSeen": 7.083,
-        "lastSeen": 7.083,
-        "occurrences": 1
-      },
-      {
-        "code": "container_overflow",
-        "severity": "info",
-        "time": 7.083,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
-        "message": "Element extends outside a clipping layout container.",
-        "rect": {
-          "left": 79.24,
-          "top": 164.68,
-          "right": 970.12,
-          "bottom": 3196.53,
-          "width": 890.88,
-          "height": 3031.85
-        },
-        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
-        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 310,
-          "top": -257.99,
-          "right": 970,
-          "bottom": 391.33,
-          "width": 660,
-          "height": 649.32
-        },
-        "overflow": {
-          "left": 230.76,
-          "bottom": 2805.2
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/perspective-squeeze.html",
-        "bbox": {
-          "x": 79.24,
-          "y": 164.68,
-          "width": 890.88,
-          "height": 3031.85
-        },
-        "firstSeen": 7.083,
-        "lastSeen": 7.083,
-        "occurrences": 1
-      },
-      {
-        "code": "container_overflow",
-        "severity": "info",
-        "time": 7.083,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(2)",
-        "message": "Element extends outside a clipping layout container.",
-        "rect": {
-          "left": 573.24,
-          "top": 356.01,
-          "right": 970,
-          "bottom": 398.76,
-          "width": 396.76,
-          "height": 42.74
-        },
-        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
-        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 310,
-          "top": -257.99,
-          "right": 970,
-          "bottom": 391.33,
-          "width": 660,
-          "height": 649.32
-        },
-        "overflow": {
-          "bottom": 7.43
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/perspective-squeeze.html",
-        "bbox": {
-          "x": 573.24,
-          "y": 356.01,
-          "width": 396.76,
-          "height": 42.74
-        },
-        "firstSeen": 7.083,
-        "lastSeen": 7.083,
-        "occurrences": 1
-      },
-      {
-        "code": "container_overflow",
-        "severity": "info",
-        "time": 7.083,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
-        "message": "Element extends outside a clipping layout container.",
-        "rect": {
-          "left": 310,
-          "top": 212.84,
-          "right": 970.01,
-          "bottom": 978.67,
-          "width": 660.01,
-          "height": 765.82
-        },
-        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
-        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 310,
-          "top": 391.33,
-          "right": 970.01,
-          "bottom": 989.33,
-          "width": 660.01,
-          "height": 598
-        },
-        "overflow": {
-          "top": 178.49
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/perspective-squeeze.html",
-        "bbox": {
-          "x": 310,
-          "y": 212.84,
-          "width": 660.01,
-          "height": 765.82
-        },
-        "firstSeen": 7.083,
-        "lastSeen": 7.083,
-        "occurrences": 1
-      },
-      {
-        "code": "container_overflow",
-        "severity": "info",
-        "time": 7.083,
-        "selector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
-        "message": "Element extends outside a clipping layout container.",
-        "rect": {
-          "left": 310,
-          "top": 450.45,
-          "right": 970.01,
-          "bottom": 1027.89,
-          "width": 660.01,
-          "height": 577.44
-        },
-        "containerSelector": "#perspective-squeeze-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
-        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-        "containerRect": {
-          "left": 310,
-          "top": 391.33,
-          "right": 970.01,
-          "bottom": 989.33,
-          "width": 660.01,
-          "height": 598
-        },
-        "overflow": {
-          "bottom": 38.56
-        },
-        "dataAttributes": {},
-        "sourceFile": "compositions/perspective-squeeze.html",
-        "bbox": {
-          "x": 310,
-          "y": 450.45,
-          "width": 660.01,
-          "height": 577.44
-        },
-        "firstSeen": 7.083,
-        "lastSeen": 7.083,
-        "occurrences": 1
+        "occurrences": 1,
+        "heldMs": 0
       }
     ],
     "duration": 7.5,
@@ -2547,8 +3293,8 @@
     "transitionSamples": [],
     "transitionSamplesDropped": 0,
     "tolerance": 2,
-    "totalIssueCount": 65,
-    "truncated": false
+    "totalIssueCount": 94,
+    "truncated": true
   },
   "motion": {
     "ok": true,
@@ -2576,6 +3322,10 @@
     "checked": 20,
     "passed": 20
   },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
   "snapshots": {
     "enabled": false,
     "files": [],
@@ -2583,8 +3333,8 @@
     "findingFiles": []
   },
   "_meta": {
-    "version": "0.8.30",
-    "latestVersion": "0.8.32",
+    "version": "0.8.99",
+    "latestVersion": "0.8.114",
     "updateAvailable": true
   }
 }

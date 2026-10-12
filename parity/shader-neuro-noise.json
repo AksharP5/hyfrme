@@ -2,7 +2,7 @@
   "slug": "shader-neuro-noise",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shader-neuro-noise/index.tsx",
     "config": "registry/remocn/shader-neuro-noise/config.ts",
     "license": "MIT"
@@ -21,25 +21,77 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "ede17417d7a9f9954c581ea44f99d97367c9d177e08e9740d8f4630e9759c6ab",
+    "shader-neuro-noise.html": "c813d44ba98f367d81f0e31045ae29a0a7b5c26a0cbfdf04a832fd39a7d06b9e",
+    "shader-neuro-noise.runtime.js": "409596c17bed15a499e779ea37fe558d6062f9aa62584f9aaeeee9e52e8f29c2",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md": "fc408cbbf99a20fbc88c2296a04bac7dadbe7114f2456673de3e5b7986cfd19d"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "327441007112574aaf93160713aac57c12fe0098f80fe119632a306cb091af71",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.995704,
-    "minSsim": 0.99554,
-    "p05Ssim": 0.99558,
-    "p95Ssim": 0.995831,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/shader-neuro-noise/remocn.mp4",
+    "referenceVideo": "public/previews/shader-neuro-noise/reference.mp4",
     "hyperframesVideo": "public/previews/shader-neuro-noise/hyperframes.mp4",
-    "summary": "parity/shader-neuro-noise-diff/summary.json"
+    "thumbnail": "public/previews/shader-neuro-noise/thumbnail.png",
+    "summary": "parity/shader-neuro-noise-diff/summary.json",
+    "perFrameSsim": "parity/shader-neuro-noise-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-neuro-noise-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-neuro-noise-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-neuro-noise-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-neuro-noise-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shader-neuro-noise-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shader-neuro-noise-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shader-neuro-noise/reference.mp4": "e52b288ed933d2290ef93f54442e9bd463be22a3bb57cc3eaf055eb15cace942",
+    "public/previews/shader-neuro-noise/hyperframes.mp4": "e52b288ed933d2290ef93f54442e9bd463be22a3bb57cc3eaf055eb15cace942",
+    "public/previews/shader-neuro-noise/thumbnail.png": "d6a76dc1b9df641ad78100289346321aa2b3bd385935a674507fd8056c63f6bc",
+    "parity/shader-neuro-noise-diff/summary.json": "ad55b29e05e75e155f68631a7d07dcf33cfd0beba9f35e6e6cb01ccc34051e53",
+    "parity/shader-neuro-noise-diff/ssim.log": "c4fbedb2045d104b60568467b9860d7ee5ffeee1f88dedd0034e5cf393a3221a",
+    "parity/shader-neuro-noise-diff/hyperframes-check.log": "8258343d79654723604d6ad3f137e02961d34e3ad42968c060314f983e44db9e",
+    "parity/shader-neuro-noise-diff/worst-frame.png": "4a5f1830590ddc4d0b5975782ad04ca76dd6e46fe35c93df260867924f7e6349",
+    "parity/shader-neuro-noise-diff/reference-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-neuro-noise-diff/hyperframes-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-neuro-noise-diff/reference-rgba.framemd5": "92e2ed32419c9b0ff6a7b557d5b968faf25589a3a6e71ae7fd805a72c83ed64f",
+    "parity/shader-neuro-noise-diff/hyperframes-rgba.framemd5": "92e2ed32419c9b0ff6a7b557d5b968faf25589a3a6e71ae7fd805a72c83ed64f"
   }
 }

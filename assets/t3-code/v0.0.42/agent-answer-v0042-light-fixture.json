@@ -1,6 +1,7 @@
 {
   "sourceTag": "v0.0.42",
   "sourceCommit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+  "releaseSha256": "f504e931ee4406bfe76754147cb0e2a0f300d75c6c505a0e174a1e79f65ceea3",
   "sourceHashes": {
     "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
     "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
@@ -18,7 +19,72 @@
       "--enable-gpu-rasterization",
       "--ignore-gpu-blocklist",
       "--disable-software-rasterizer"
-    ]
+    ],
+    "effectiveFlags": [
+      "--disable-field-trial-config",
+      "--disable-background-networking",
+      "--disable-background-timer-throttling",
+      "--disable-backgrounding-occluded-windows",
+      "--disable-back-forward-cache",
+      "--disable-breakpad",
+      "--disable-client-side-phishing-detection",
+      "--disable-component-extensions-with-background-pages",
+      "--disable-component-update",
+      "--no-default-browser-check",
+      "--disable-default-apps",
+      "--disable-dev-shm-usage",
+      "--disable-extensions",
+      "--disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,OptimizationHints",
+      "--enable-features=CDPScreenshotNewSurface",
+      "--allow-pre-commit-input",
+      "--disable-hang-monitor",
+      "--disable-ipc-flooding-protection",
+      "--disable-popup-blocking",
+      "--disable-prompt-on-repost",
+      "--disable-renderer-backgrounding",
+      "--force-color-profile=srgb",
+      "--metrics-recording-only",
+      "--no-first-run",
+      "--password-store=basic",
+      "--use-mock-keychain",
+      "--no-service-autorun",
+      "--export-tagged-pdf",
+      "--disable-search-engine-choice-screen",
+      "--unsafely-disable-devtools-self-xss-warnings",
+      "--edge-skip-compat-layer-relaunch",
+      "--enable-automation",
+      "--disable-infobars",
+      "--disable-search-engine-choice-screen",
+      "--disable-sync",
+      "--enable-unsafe-swiftshader",
+      "--headless",
+      "--hide-scrollbars",
+      "--mute-audio",
+      "--blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4",
+      "--no-sandbox",
+      "--no-sandbox",
+      "--disable-dev-shm-usage",
+      "--font-render-hinting=none",
+      "--force-color-profile=srgb",
+      "--use-gl=angle",
+      "--use-angle=gl-egl",
+      "--enable-gpu-rasterization",
+      "--ignore-gpu-blocklist",
+      "--disable-software-rasterizer",
+      "--no-startup-window",
+      "--ozone-platform=headless",
+      "--allow-pre-commit-input"
+    ],
+    "animationPlaybackRate": 0,
+    "screenshot": {
+      "clip": {
+        "width": 1200,
+        "height": 659
+      },
+      "scale": "css",
+      "captureBeyondViewport": false,
+      "compositorFlushes": 1
+    }
   },
   "viewport": {
     "width": 1200,
@@ -31,14 +97,19 @@
     "before",
     "hover",
     "tooltip",
+    "copied-entry",
     "copied",
+    "ending",
     "clear"
   ],
   "events": {
     "hover": 30,
-    "tooltip": 55,
+    "hoverCopy": 55,
     "copy": 80,
-    "clear": 95
+    "pointerExit": 95,
+    "tooltip": 73,
+    "copiedTimeout": 110,
+    "clear": 116
   },
   "interactionTargets": {
     "pointerStart": {
@@ -62,7 +133,8 @@
     "10h",
     "12h",
     "17h",
-    "1d"
+    "1d",
+    "2d"
   ],
   "messageTimes": [
     "yesterday at 9:22 PM",
@@ -72,39 +144,2585 @@
   "clipboardText": "I found the Logo Enter timing in `registry/blocks/logo-enter/logo-enter.html`. The final pass can extend the duration while keeping the last rendered frame still.",
   "sourceDomHashes": {
     "before": {
-      "root": "fc35bbb486ae600d07200bda2759b88f1279295998d9b8c205b52d6e91cba77e",
+      "root": "17586fe80ae1eebef2bc383b61cd060a322b03440dc4d7930a40a1bbb162fd3a",
       "portal": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84"
     },
     "hover": {
-      "root": "437368cf5c469a4b9a139f316d4d6a6cd9ed4d47ca3523f64b9e988b15d2eac5",
+      "root": "8540469fa93b2e763a3be8e495050b15ee9e60befc388993d987cf6600b7d9a3",
       "portal": "f107b6ccb0c6820599c2f910ecf4559aaf555061d84969a91b691c606065fe84"
     },
     "tooltip": {
-      "root": "d31bcfa732c26bb7b88971d99fc9a827207b5063d5f22b8685c0fcaf31a95421",
-      "portal": "c3e93502d7fbcc5daf76fa4f2c8f3c393869fcc62827494f087d0f1950299ba1"
+      "root": "6637e34bcc5b57419ca8c32cd7c42cb82408a44546c4ce42901d4a636cbab496",
+      "portal": "655c89672d58663802656d3df2df96546bab79031335c5e751e8178816888b4e"
+    },
+    "copied-entry": {
+      "root": "1367342262961e915ca3fe06a2bbae781f62adcc4de492f8895c999204a7d46e",
+      "portal": "fbd2b54a7a3385b5b813932aff6d6bf378a5eb8c579c764292ce0535cee4dd3e"
     },
     "copied": {
-      "root": "a39293ec6fd3404c3f73181df03a7aa63125b174de753094427aa506670a46e0",
-      "portal": "18517448fd4ccbb5d06e1d1f9dec1052b84e81eaf492c2401e498b66f3f1ad61"
+      "root": "1367342262961e915ca3fe06a2bbae781f62adcc4de492f8895c999204a7d46e",
+      "portal": "1d062a29d88980f3a3fecbd0bc809c7bf0984baf5e89764214359103b57d6b12"
+    },
+    "ending": {
+      "root": "8540469fa93b2e763a3be8e495050b15ee9e60befc388993d987cf6600b7d9a3",
+      "portal": "bdc34d539e6bd6a4c9a6ac6d3ce0b08c7a97a0902a3904d0019916671e88be3f"
     },
     "clear": {
-      "root": "437368cf5c469a4b9a139f316d4d6a6cd9ed4d47ca3523f64b9e988b15d2eac5",
+      "root": "8540469fa93b2e763a3be8e495050b15ee9e60befc388993d987cf6600b7d9a3",
       "portal": "a58883f51add470cb4272c47a6c5147050dd4c19ec67b0e6f563e9415e9870f0"
     }
   },
-  "referenceSha256": "dd3806c051e20b031d4e334ecd8da7ad5c981fc949ae9f63fdb3cb2914424d88",
-  "providerState": "The completed Hyfrme answer is seeded. The native Copy link action ran against the browser clipboard; no AI provider runs.",
-  "captureSpriteSha256": {
-    "00": "a7c93d16b371390cd6da799a7c1c087106b9f18ca135b353cfc11b149cf0de4c",
-    "01": "cc203d8a351ce4934afb3df796edea6aa82705012f8c7ad81c9c29a518e4c0b9",
-    "02": "700455d723d0b3f91eaf6bfc7c5f87fbfb2dc44843e8c4cf9b2ce4992f20e68f",
-    "03": "c8d792bd9a57e3ef98912d591a37ae9c538958c59061fc5667da26eaa7126917",
-    "04": "44ee21a825307fd77caf4143d7fda544b1e3389c51b7107739ca4fff8712d59e",
-    "05": "53262599c23e1e73b7b52765918be0b886c63f6e0d5a430883dcccc9ec236937",
-    "06": "a7af08d65ed996380a00e43f30187138c3b4b17a7dc5093df6a62a66f52e9253",
-    "07": "9eef5099ee84b2841d7bd33861909d8218ae64f03b3900e02195fb626bebcf26",
-    "08": "cc203d8a351ce4934afb3df796edea6aa82705012f8c7ad81c9c29a518e4c0b9",
-    "09": "cc203d8a351ce4934afb3df796edea6aa82705012f8c7ad81c9c29a518e4c0b9"
+  "referenceSha256": "036e69fcf92daa41a6fbb6872b9bb8b31f428de7ef4578bff1e90dac925db7f0",
+  "captureClock": {
+    "method": "native-js-timers-and-css-animation-current-time",
+    "animationPlaybackRate": 0,
+    "frameStepMilliseconds": 33.333333333333336,
+    "timerSampling": "ceil(frame * 1000 / fps), rAF aligned at capture start",
+    "copiedTimeoutMilliseconds": 1000,
+    "samples": [
+      {
+        "frame": 0,
+        "milliseconds": 0,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 1,
+        "milliseconds": 34,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 2,
+        "milliseconds": 67,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 3,
+        "milliseconds": 100,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 4,
+        "milliseconds": 134,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 5,
+        "milliseconds": 167,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 6,
+        "milliseconds": 200,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 7,
+        "milliseconds": 234,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 8,
+        "milliseconds": 267,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 9,
+        "milliseconds": 300,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 10,
+        "milliseconds": 334,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 11,
+        "milliseconds": 367,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 12,
+        "milliseconds": 400,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 13,
+        "milliseconds": 434,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 14,
+        "milliseconds": 467,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 15,
+        "milliseconds": 500,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 16,
+        "milliseconds": 534,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 17,
+        "milliseconds": 567,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 18,
+        "milliseconds": 600,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 19,
+        "milliseconds": 634,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 20,
+        "milliseconds": 667,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 21,
+        "milliseconds": 700,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 22,
+        "milliseconds": 734,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 23,
+        "milliseconds": 767,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 24,
+        "milliseconds": 800,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 25,
+        "milliseconds": 834,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 26,
+        "milliseconds": 867,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 27,
+        "milliseconds": 900,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 28,
+        "milliseconds": 934,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 29,
+        "milliseconds": 967,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 30,
+        "milliseconds": 1000,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "controls",
+            "firstFrame": 30,
+            "currentTime": 0,
+            "duration": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 31,
+        "milliseconds": 1034,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0.0851055",
+        "tooltip": null,
+        "toast": null,
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "controls",
+            "firstFrame": 30,
+            "currentTime": 33.333333333333336,
+            "duration": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 32,
+        "milliseconds": 1067,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0.457252",
+        "tooltip": null,
+        "toast": null,
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "controls",
+            "firstFrame": 30,
+            "currentTime": 66.66666666666667,
+            "duration": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 33,
+        "milliseconds": 1100,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0.775561",
+        "tooltip": null,
+        "toast": null,
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "controls",
+            "firstFrame": 30,
+            "currentTime": 100,
+            "duration": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 34,
+        "milliseconds": 1134,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0.920776",
+        "tooltip": null,
+        "toast": null,
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "controls",
+            "firstFrame": 30,
+            "currentTime": 133.33333333333334,
+            "duration": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 35,
+        "milliseconds": 1167,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0.983359",
+        "tooltip": null,
+        "toast": null,
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "controls",
+            "firstFrame": 30,
+            "currentTime": 166.66666666666666,
+            "duration": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 36,
+        "milliseconds": 1200,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "controls",
+            "firstFrame": 30,
+            "currentTime": 200,
+            "duration": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 37,
+        "milliseconds": 1234,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 38,
+        "milliseconds": 1267,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 39,
+        "milliseconds": 1300,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 40,
+        "milliseconds": 1334,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 41,
+        "milliseconds": 1367,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 42,
+        "milliseconds": 1400,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 43,
+        "milliseconds": 1434,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 44,
+        "milliseconds": 1467,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 45,
+        "milliseconds": 1500,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 46,
+        "milliseconds": 1534,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 47,
+        "milliseconds": 1567,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 48,
+        "milliseconds": 1600,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 49,
+        "milliseconds": 1634,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 50,
+        "milliseconds": 1667,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 51,
+        "milliseconds": 1700,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 52,
+        "milliseconds": 1734,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 53,
+        "milliseconds": 1767,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 54,
+        "milliseconds": 1800,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 55,
+        "milliseconds": 1834,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 56,
+        "milliseconds": 1867,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 57,
+        "milliseconds": 1900,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 58,
+        "milliseconds": 1934,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 59,
+        "milliseconds": 1967,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 60,
+        "milliseconds": 2000,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 61,
+        "milliseconds": 2034,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 62,
+        "milliseconds": 2067,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 63,
+        "milliseconds": 2100,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 64,
+        "milliseconds": 2134,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 65,
+        "milliseconds": 2167,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 66,
+        "milliseconds": 2200,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 67,
+        "milliseconds": 2234,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 68,
+        "milliseconds": 2267,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 69,
+        "milliseconds": 2300,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 70,
+        "milliseconds": 2334,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 71,
+        "milliseconds": 2367,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 72,
+        "milliseconds": 2400,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 73,
+        "milliseconds": 2434,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": {
+          "opacity": "0",
+          "scale": "0.98",
+          "rect": "{\"x\":305.4068603515625,\"y\":191.10000610351562,\"width\":109.162841796875,\"height\":25.479995727539062,\"top\":191.10000610351562,\"right\":414.5697021484375,\"bottom\":216.5800018310547,\"left\":305.4068603515625}",
+          "origin": "55.5px 30px",
+          "backdropFilter": "none",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": true,
+          "ending": false
+        },
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 74,
+        "milliseconds": 2467,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": {
+          "opacity": "0",
+          "scale": "0.98",
+          "rect": "{\"x\":305.4068603515625,\"y\":191.10000610351562,\"width\":109.162841796875,\"height\":25.479995727539062,\"top\":191.10000610351562,\"right\":414.5697021484375,\"bottom\":216.5800018310547,\"left\":305.4068603515625}",
+          "origin": "55.5px 30px",
+          "backdropFilter": "none",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "toast": null,
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "tooltip",
+            "firstFrame": 74,
+            "currentTime": 0,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "tooltip",
+            "firstFrame": 74,
+            "currentTime": 0,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "0.98"
+              },
+              {
+                "scale": "none"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 75,
+        "milliseconds": 2500,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": {
+          "opacity": "0.175168",
+          "scale": "0.983503",
+          "rect": "{\"x\":305.2124328613281,\"y\":190.99490356445312,\"width\":109.55307006835938,\"height\":25.571075439453125,\"top\":190.99490356445312,\"right\":414.7655029296875,\"bottom\":216.56597900390625,\"left\":305.2124328613281}",
+          "origin": "55.5px 30px",
+          "backdropFilter": "none",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "toast": null,
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "tooltip",
+            "firstFrame": 74,
+            "currentTime": 33.333333333333336,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "tooltip",
+            "firstFrame": 74,
+            "currentTime": 33.333333333333336,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "0.98"
+              },
+              {
+                "scale": "none"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 76,
+        "milliseconds": 2534,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": {
+          "opacity": "0.695235",
+          "scale": "0.993905",
+          "rect": "{\"x\":304.6351623535156,\"y\":190.682861328125,\"width\":110.711669921875,\"height\":25.841522216796875,\"top\":190.682861328125,\"right\":415.3468322753906,\"bottom\":216.52438354492188,\"left\":304.6351623535156}",
+          "origin": "55.5px 30px",
+          "backdropFilter": "none",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "toast": null,
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "tooltip",
+            "firstFrame": 74,
+            "currentTime": 66.66666666666667,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "tooltip",
+            "firstFrame": 74,
+            "currentTime": 66.66666666666667,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "0.98"
+              },
+              {
+                "scale": "none"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 77,
+        "milliseconds": 2567,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": {
+          "opacity": "0.920776",
+          "scale": "0.998416",
+          "rect": "{\"x\":304.38482666015625,\"y\":190.5475311279297,\"width\":111.214111328125,\"height\":25.95880126953125,\"top\":190.5475311279297,\"right\":415.59893798828125,\"bottom\":216.50633239746094,\"left\":304.38482666015625}",
+          "origin": "55.5px 30px",
+          "backdropFilter": "none",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "toast": null,
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "tooltip",
+            "firstFrame": 74,
+            "currentTime": 100,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "tooltip",
+            "firstFrame": 74,
+            "currentTime": 100,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "0.98"
+              },
+              {
+                "scale": "none"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 78,
+        "milliseconds": 2600,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": {
+          "opacity": "0.992963",
+          "scale": "0.999859",
+          "rect": "{\"x\":304.3046875,\"y\":190.5042266845703,\"width\":111.37493896484375,\"height\":25.996337890625,\"top\":190.5042266845703,\"right\":415.67962646484375,\"bottom\":216.5005645751953,\"left\":304.3046875}",
+          "origin": "55.5px 30px",
+          "backdropFilter": "none",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "toast": null,
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "tooltip",
+            "firstFrame": 74,
+            "currentTime": 133.33333333333334,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "tooltip",
+            "firstFrame": 74,
+            "currentTime": 133.33333333333334,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "0.98"
+              },
+              {
+                "scale": "none"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 79,
+        "milliseconds": 2634,
+        "copyHovered": true,
+        "copyBackground": "oklch(0.967 0.001 286.375)",
+        "controlsOpacity": "1",
+        "tooltip": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":304.296875,\"y\":190.5,\"width\":111.390625,\"height\":26,\"top\":190.5,\"right\":415.6875,\"bottom\":216.5,\"left\":304.296875}",
+          "origin": "55.5px 30px",
+          "backdropFilter": "none",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "toast": null,
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "tooltip",
+            "firstFrame": 74,
+            "currentTime": 150,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "tooltip",
+            "firstFrame": 74,
+            "currentTime": 150,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "0.98"
+              },
+              {
+                "scale": "none"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 80,
+        "milliseconds": 2667,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": {
+          "opacity": "0",
+          "scale": "0.98",
+          "rect": "{\"x\":305.4068603515625,\"y\":191.10000610351562,\"width\":109.162841796875,\"height\":25.479995727539062,\"top\":191.10000610351562,\"right\":414.5697021484375,\"bottom\":216.5800018310547,\"left\":305.4068603515625}",
+          "origin": "55.5px 30px",
+          "backdropFilter": "none",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": true
+        },
+        "toast": {
+          "opacity": "0",
+          "scale": "0.98",
+          "rect": "{\"x\":330.59375,\"y\":191.25999450683594,\"width\":58.1875,\"height\":25.480010986328125,\"top\":191.25999450683594,\"right\":388.78125,\"bottom\":216.74000549316406,\"left\":330.59375}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "toast",
+            "firstFrame": 80,
+            "currentTime": 0,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "toast",
+            "firstFrame": 80,
+            "currentTime": 0,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "0.98"
+              },
+              {
+                "scale": "none"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 81,
+        "milliseconds": 2700,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": {
+          "opacity": "0.175168",
+          "scale": "0.983503",
+          "rect": "{\"x\":330.48974609375,\"y\":191.21446228027344,\"width\":58.3955078125,\"height\":25.571075439453125,\"top\":191.21446228027344,\"right\":388.88525390625,\"bottom\":216.78553771972656,\"left\":330.48974609375}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "toast",
+            "firstFrame": 80,
+            "currentTime": 33.333333333333336,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "toast",
+            "firstFrame": 80,
+            "currentTime": 33.333333333333336,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "0.98"
+              },
+              {
+                "scale": "none"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 82,
+        "milliseconds": 2734,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": {
+          "opacity": "0.695235",
+          "scale": "0.993905",
+          "rect": "{\"x\":330.18096923828125,\"y\":191.07923889160156,\"width\":59.0130615234375,\"height\":25.841522216796875,\"top\":191.07923889160156,\"right\":389.19403076171875,\"bottom\":216.92076110839844,\"left\":330.18096923828125}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "toast",
+            "firstFrame": 80,
+            "currentTime": 66.66666666666667,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "toast",
+            "firstFrame": 80,
+            "currentTime": 66.66666666666667,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "0.98"
+              },
+              {
+                "scale": "none"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 83,
+        "milliseconds": 2767,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": {
+          "opacity": "0.920776",
+          "scale": "0.998416",
+          "rect": "{\"x\":330.0470275878906,\"y\":191.02059936523438,\"width\":59.28094482421875,\"height\":25.95880126953125,\"top\":191.02059936523438,\"right\":389.3279724121094,\"bottom\":216.97940063476562,\"left\":330.0470275878906}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "toast",
+            "firstFrame": 80,
+            "currentTime": 100,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "toast",
+            "firstFrame": 80,
+            "currentTime": 100,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "0.98"
+              },
+              {
+                "scale": "none"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 84,
+        "milliseconds": 2800,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": {
+          "opacity": "0.992963",
+          "scale": "0.999859",
+          "rect": "{\"x\":330.0041809082031,\"y\":191.0018310546875,\"width\":59.36663818359375,\"height\":25.996337890625,\"top\":191.0018310546875,\"right\":389.3708190917969,\"bottom\":216.9981689453125,\"left\":330.0041809082031}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "toast",
+            "firstFrame": 80,
+            "currentTime": 133.33333333333334,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "toast",
+            "firstFrame": 80,
+            "currentTime": 133.33333333333334,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "0.98"
+              },
+              {
+                "scale": "none"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 85,
+        "milliseconds": 2834,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "toast",
+            "firstFrame": 80,
+            "currentTime": 150,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "0"
+              },
+              {
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "toast",
+            "firstFrame": 80,
+            "currentTime": 150,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "0.98"
+              },
+              {
+                "scale": "none"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 86,
+        "milliseconds": 2867,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 87,
+        "milliseconds": 2900,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 88,
+        "milliseconds": 2934,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 89,
+        "milliseconds": 2967,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 90,
+        "milliseconds": 3000,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 91,
+        "milliseconds": 3034,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 92,
+        "milliseconds": 3067,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 93,
+        "milliseconds": 3100,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 94,
+        "milliseconds": 3134,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 95,
+        "milliseconds": 3167,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "1",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "controls",
+            "firstFrame": 95,
+            "currentTime": 0,
+            "duration": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "1"
+              },
+              {
+                "opacity": "0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 96,
+        "milliseconds": 3200,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0.914895",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "controls",
+            "firstFrame": 95,
+            "currentTime": 33.333333333333336,
+            "duration": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "1"
+              },
+              {
+                "opacity": "0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 97,
+        "milliseconds": 3234,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0.542748",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "controls",
+            "firstFrame": 95,
+            "currentTime": 66.66666666666667,
+            "duration": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "1"
+              },
+              {
+                "opacity": "0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 98,
+        "milliseconds": 3267,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0.224439",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "controls",
+            "firstFrame": 95,
+            "currentTime": 100,
+            "duration": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "1"
+              },
+              {
+                "opacity": "0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 99,
+        "milliseconds": 3300,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0.0792242",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "controls",
+            "firstFrame": 95,
+            "currentTime": 133.33333333333334,
+            "duration": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "1"
+              },
+              {
+                "opacity": "0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 100,
+        "milliseconds": 3334,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0.0166414",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "controls",
+            "firstFrame": 95,
+            "currentTime": 166.66666666666666,
+            "duration": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "1"
+              },
+              {
+                "opacity": "0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 101,
+        "milliseconds": 3367,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "controls",
+            "firstFrame": 95,
+            "currentTime": 200,
+            "duration": 200,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "1"
+              },
+              {
+                "opacity": "0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 102,
+        "milliseconds": 3400,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 103,
+        "milliseconds": 3434,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 104,
+        "milliseconds": 3467,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 105,
+        "milliseconds": 3500,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 106,
+        "milliseconds": 3534,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 107,
+        "milliseconds": 3567,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 108,
+        "milliseconds": 3600,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 109,
+        "milliseconds": 3634,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "none",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": false
+        },
+        "animations": []
+      },
+      {
+        "frame": 110,
+        "milliseconds": 3667,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": {
+          "opacity": "1",
+          "scale": "1",
+          "rect": "{\"x\":330,\"y\":191,\"width\":59.375,\"height\":26,\"top\":191,\"right\":389.375,\"bottom\":217,\"left\":330}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": true
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "toast",
+            "firstFrame": 110,
+            "currentTime": 0,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "1"
+              },
+              {
+                "opacity": "0"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "toast",
+            "firstFrame": 110,
+            "currentTime": 0,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "none"
+              },
+              {
+                "scale": "0.98"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 111,
+        "milliseconds": 3700,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": {
+          "opacity": "0.824832",
+          "scale": "0.996497",
+          "rect": "{\"x\":330.10400390625,\"y\":191.04554748535156,\"width\":59.1669921875,\"height\":25.908905029296875,\"top\":191.04554748535156,\"right\":389.27099609375,\"bottom\":216.95445251464844,\"left\":330.10400390625}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": true
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "toast",
+            "firstFrame": 110,
+            "currentTime": 33.333333333333336,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "1"
+              },
+              {
+                "opacity": "0"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "toast",
+            "firstFrame": 110,
+            "currentTime": 33.333333333333336,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "none"
+              },
+              {
+                "scale": "0.98"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 112,
+        "milliseconds": 3734,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": {
+          "opacity": "0.304765",
+          "scale": "0.986095",
+          "rect": "{\"x\":330.41278076171875,\"y\":191.18075561523438,\"width\":58.5494384765625,\"height\":25.63848876953125,\"top\":191.18075561523438,\"right\":388.96221923828125,\"bottom\":216.81924438476562,\"left\":330.41278076171875}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": true
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "toast",
+            "firstFrame": 110,
+            "currentTime": 66.66666666666667,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "1"
+              },
+              {
+                "opacity": "0"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "toast",
+            "firstFrame": 110,
+            "currentTime": 66.66666666666667,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "none"
+              },
+              {
+                "scale": "0.98"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 113,
+        "milliseconds": 3767,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": {
+          "opacity": "0.0792242",
+          "scale": "0.981584",
+          "rect": "{\"x\":330.5467224121094,\"y\":191.23939514160156,\"width\":58.28155517578125,\"height\":25.521194458007812,\"top\":191.23939514160156,\"right\":388.8282775878906,\"bottom\":216.76058959960938,\"left\":330.5467224121094}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": true
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "toast",
+            "firstFrame": 110,
+            "currentTime": 100,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "1"
+              },
+              {
+                "opacity": "0"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "toast",
+            "firstFrame": 110,
+            "currentTime": 100,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "none"
+              },
+              {
+                "scale": "0.98"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 114,
+        "milliseconds": 3800,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": {
+          "opacity": "0.00703733",
+          "scale": "0.980141",
+          "rect": "{\"x\":330.5895690917969,\"y\":191.25816345214844,\"width\":58.19586181640625,\"height\":25.483657836914062,\"top\":191.25816345214844,\"right\":388.7854309082031,\"bottom\":216.7418212890625,\"left\":330.5895690917969}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": true
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "toast",
+            "firstFrame": 110,
+            "currentTime": 133.33333333333334,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "1"
+              },
+              {
+                "opacity": "0"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "toast",
+            "firstFrame": 110,
+            "currentTime": 133.33333333333334,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "none"
+              },
+              {
+                "scale": "0.98"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 115,
+        "milliseconds": 3834,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": {
+          "opacity": "0",
+          "scale": "0.98",
+          "rect": "{\"x\":330.59375,\"y\":191.25999450683594,\"width\":58.1875,\"height\":25.480010986328125,\"top\":191.25999450683594,\"right\":388.78125,\"bottom\":216.74000549316406,\"left\":330.59375}",
+          "origin": "29.6875px 13px",
+          "backdropFilter": "blur(12px) saturate(1.14)",
+          "font": "12px / 16px -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+          "fontSmooth": "antialiased",
+          "starting": false,
+          "ending": true
+        },
+        "animations": [
+          {
+            "type": "CSSTransition",
+            "property": "opacity",
+            "target": "toast",
+            "firstFrame": 110,
+            "currentTime": 150,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "opacity": "1"
+              },
+              {
+                "opacity": "0"
+              }
+            ]
+          },
+          {
+            "type": "CSSTransition",
+            "property": "scale",
+            "target": "toast",
+            "firstFrame": 110,
+            "currentTime": 150,
+            "duration": 150,
+            "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "keyframes": [
+              {
+                "scale": "none"
+              },
+              {
+                "scale": "0.98"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "frame": 116,
+        "milliseconds": 3867,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 117,
+        "milliseconds": 3900,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 118,
+        "milliseconds": 3934,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      },
+      {
+        "frame": 119,
+        "milliseconds": 3967,
+        "copyHovered": false,
+        "copyBackground": "rgba(0, 0, 0, 0)",
+        "controlsOpacity": "0",
+        "tooltip": null,
+        "toast": null,
+        "animations": []
+      }
+    ]
   },
-  "captureSpriteFrameCount": 120
+  "captureSeed": {
+    "activeThreadTitles": [
+      "Build a logo intro",
+      "Catalog motion audit",
+      "Grouped logo tests",
+      "Review final hold",
+      "Search reveal timing"
+    ],
+    "fixedDate": "2026-09-25T11:30:00Z"
+  },
+  "domSampleFrames": {
+    "before": 0,
+    "hover": 37,
+    "tooltip": 79,
+    "copied-entry": 80,
+    "copied": 90,
+    "ending": 110,
+    "clear": 119
+  },
+  "branchName": "fix/catalog-pixel-parity",
+  "providerState": "The completed Hyfrme answer is seeded. The native Copy link action ran against the browser clipboard; no AI provider runs."
 }

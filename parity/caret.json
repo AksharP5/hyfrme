@@ -2,8 +2,9 @@
   "slug": "caret",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-ui/caret/index.tsx",
+    "entry": "registry/remocn-ui/caret/preview.tsx",
     "config": "registry/remocn-ui/caret/config.ts",
     "license": "MIT"
   },
@@ -23,25 +24,77 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "11d9ad8cdcd6932180e9535d13cd50b07f331e1cab464678c119a02bb1098864",
+    "caret.html": "1122c46e2dd64379038bd0b26e8370b9cd1457805eb0dbf1e24e5bdb3a2143ea",
+    "caret.runtime.js": "b70549ff5578496f921f223a43c1cd9c6c217d111b7fad13f9700357cef9653e",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "09b6b82aea4d3913fd7f545100fff877b215aaec18f6a6232a557d4d9049a856",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.999995,
-    "minSsim": 0.999994,
-    "p05Ssim": 0.999994,
-    "p95Ssim": 0.999995,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "0 errors, 0 warnings; runtime and layout passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/caret/remocn.mp4",
+    "referenceVideo": "public/previews/caret/reference.mp4",
     "hyperframesVideo": "public/previews/caret/hyperframes.mp4",
-    "summary": "parity/caret-diff/summary.json"
+    "thumbnail": "public/previews/caret/thumbnail.png",
+    "summary": "parity/caret-diff/summary.json",
+    "perFrameSsim": "parity/caret-diff/ssim.log",
+    "hyperframesCheck": "parity/caret-diff/hyperframes-check.log",
+    "worstFrame": "parity/caret-diff/worst-frame.png",
+    "referenceAlpha": "parity/caret-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/caret-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/caret-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/caret-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/caret/reference.mp4": "e9ca357894b7a99be5c0510c8ce5c265b62629ad3553f0397da43e9af6cd4451",
+    "public/previews/caret/hyperframes.mp4": "e9ca357894b7a99be5c0510c8ce5c265b62629ad3553f0397da43e9af6cd4451",
+    "public/previews/caret/thumbnail.png": "f5f63c7216ea19b1cef3bfa22c34956bcb0c7107e62a6537fb4761f5ac39d10b",
+    "parity/caret-diff/summary.json": "c38069d7cb90acc2a693a754a1caeffaf324f128e7d118e6f20808613c950e44",
+    "parity/caret-diff/ssim.log": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/caret-diff/hyperframes-check.log": "9d01dba1a9c8656866a230bc9c9e45a2fc5ecfb92f1f69a3d17e05278623a9ee",
+    "parity/caret-diff/worst-frame.png": "a81e0a3c8f00714a7f2c4cd75deb9fcc9b76e3a8b24f975ab4d2abe15aba6aa1",
+    "parity/caret-diff/reference-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/caret-diff/hyperframes-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/caret-diff/reference-rgba.framemd5": "e20c2d294979a399e7941510efda1656395ab5b3c53c9694e98fed8cf4ebfc31",
+    "parity/caret-diff/hyperframes-rgba.framemd5": "e20c2d294979a399e7941510efda1656395ab5b3c53c9694e98fed8cf4ebfc31"
   }
 }

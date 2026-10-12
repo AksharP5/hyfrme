@@ -187,9 +187,11 @@ for (const template of selected) {
   };
   if (template.name === "hyperframes-decision-tree") {
     assert.equal(
-      manifest.origin.commit,
-      "daa44fcd753d9055aa3c954ad74f09a4e4389780",
-      "Recheck the real GSAP label value before adapting a new source pin.",
+      template.files.find(
+        (file) => file.path === "compositions/decision_tree.html",
+      )?.sha256,
+      "e647d23a41933f100208a1b3c38d089105441e7daf77f54a61edd8dde06cfa27",
+      "Recheck the real GSAP label value before adapting changed source.",
     );
     record.materialization.compatibility = {
       file: "compositions/decision_tree.html",

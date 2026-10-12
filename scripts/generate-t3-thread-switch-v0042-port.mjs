@@ -1,5 +1,6 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
@@ -12,11 +13,16 @@ const lightFixture = JSON.parse(await readFile(resolve(source, "thread-switch-v0
 if (fixture.sourceCommit !== lightFixture.sourceCommit || fixture.frames !== lightFixture.frames || fixture.fps !== lightFixture.fps) {
   throw new Error("Official dark and light fixture metadata differs");
 }
+const generatedIds = { dark: new Map(), light: new Map() };
 for (const phase of fixture.phases) {
   const [dark, light] = await Promise.all(["dark", "light"].map((appearance) =>
     readFile(resolve(source, `thread-switch-v0042-${appearance}-${phase}.html`), "utf8")));
-  const normalize = (html) => html.replace(/_r_[^_]+_/g, "_r_X_").replace("rgb(255, 163, 89)", "rgb(212, 118, 40)");
-  if (normalize(dark) !== normalize(light)) throw new Error(`Native ${phase} DOM differs beyond theme color and generated IDs`);
+  const normalize = (html, appearance) => html.replace(/_r_[^_]+_/g, (id) => {
+    const ids = generatedIds[appearance];
+    if (!ids.has(id)) ids.set(id, `_r_${ids.size}_`);
+    return ids.get(id);
+  }).replace("rgb(255, 163, 89)", "rgb(212, 118, 40)");
+  if (normalize(dark, "dark") !== normalize(light, "light")) throw new Error(`Native ${phase} DOM differs beyond theme color and generated IDs`);
 }
 const theme = JSON.parse(
   await readFile(resolve(source, "dark-theme.json"), "utf8"),
@@ -144,6 +150,10 @@ const html = `<!doctype html>
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { ${stageTheme} position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-state[hidden] { display: none !important; }
   .t3-state:not([hidden]) { display: contents; }
   .base-ui-disable-scrollbar { scrollbar-width: none; }
@@ -152,6 +162,7 @@ const html = `<!doctype html>
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
   <div class="dark t3-stage"><svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" data-layout-ignore>${sprite}</svg>
@@ -195,6 +206,9 @@ while ((node = walker.nextNode())) {
 const sections = [...stage.querySelectorAll('[data-t3-state]')];
 const ageKeys = ['thread1Age', 'thread2Age', 'thread3Age', 'thread4Age', 'thread5Age'];
 for (const [sectionIndex, section] of sections.entries()) {
+  const metadata = [...section.querySelectorAll('[class~="opacity-0"][class~="group-hover:opacity-100"]')];
+  if (metadata.length !== (sectionIndex === 0 ? 0 : 1)) throw new Error('Native message metadata hover target missing');
+  if (metadata[0]) metadata[0].style.opacity = '1';
   section.querySelectorAll('[data-testid="sidebar-row-card"]').forEach((row, index) => {
     const age = row.querySelector('span.tabular-nums.text-secondary-label');
     if (age && ageKeys[index]) age.textContent = options[ageKeys[index]];

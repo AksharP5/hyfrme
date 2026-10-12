@@ -2,7 +2,7 @@
   "slug": "squiggle",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/squiggle/index.tsx",
     "config": "registry/remocn/squiggle/config.ts",
     "license": "MIT"
@@ -30,13 +30,25 @@
     },
     "background": "#002fa7"
   },
+  "filesSha256": {
+    "registry-item.json": "230c5ae49573670adb71aef6badf5a704eb7298cd6b6f13d2ac19d1549ee7701",
+    "squiggle.html": "f8abe7e0a0a16ea2bc36a99d1ac71a08cd760fa80d4dbdc07d5c550b8d7d3993",
+    "squiggle.runtime.js": "040c0d9328889089b572f2075b88125387a3b6bd45dcf9a301cd90e98c5957b8",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "26e96039d9a8854a3b19efa133f850a441cd372a58c0c176d8e3747e987585c6",
+  "fingerprint": "837a23235ec2509361750214aaadc7ac1c385696abfdea4f7bf840084eb0f0d1",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 80,
@@ -49,14 +61,23 @@
       "mismatchedFrames": [],
       "pass": true
     },
+    "rgba": {
+      "frameCount": 80,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -68,6 +89,21 @@
     "hyperframesCheck": "parity/squiggle-diff/hyperframes-check.log",
     "worstFrame": "parity/squiggle-diff/worst-frame.png",
     "referenceAlpha": "parity/squiggle-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/squiggle-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/squiggle-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/squiggle-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/squiggle-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/squiggle/reference.mp4": "5224e67a594694164642178f4844f52f62a7a8962e701016c42490dd991038dc",
+    "public/previews/squiggle/hyperframes.mp4": "5224e67a594694164642178f4844f52f62a7a8962e701016c42490dd991038dc",
+    "public/previews/squiggle/thumbnail.png": "00e0e2e6e92c62ec06ae5402a207d758398df217a447f8be4496ffbe9069213c",
+    "parity/squiggle-diff/summary.json": "d1a5a9d8264e12b9b39249c53492ea13865a57a6207d113d63349eb580a8f578",
+    "parity/squiggle-diff/ssim.log": "3cd6a700f4a08cadfe291a25970885731ba75edeebf2f353037977fd686a300f",
+    "parity/squiggle-diff/hyperframes-check.log": "93203806d5c891c047da6146ad8c9fb6de7ee604afabdeeb5818274df0ab14a7",
+    "parity/squiggle-diff/worst-frame.png": "4b4edb89768066c9de3488d86cf7d9b2c2c6537f063f42607b8ecfa784edd10a",
+    "parity/squiggle-diff/reference-alpha.framemd5": "047874a42c875c70039fff785a085865e9c8f931f46aaf7e6309079712890ec9",
+    "parity/squiggle-diff/hyperframes-alpha.framemd5": "047874a42c875c70039fff785a085865e9c8f931f46aaf7e6309079712890ec9",
+    "parity/squiggle-diff/reference-rgba.framemd5": "6b8c4b51d8ffd2cfc20b62ac8209aabcffa737866d3513171be9f478b1c1cf36",
+    "parity/squiggle-diff/hyperframes-rgba.framemd5": "6b8c4b51d8ffd2cfc20b62ac8209aabcffa737866d3513171be9f478b1c1cf36"
   }
 }

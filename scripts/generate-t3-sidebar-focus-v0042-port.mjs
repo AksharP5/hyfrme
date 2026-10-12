@@ -1,5 +1,6 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
@@ -120,6 +121,10 @@ const html = `<!doctype html>
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { ${stageTheme} position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-state { display: contents; }
   .base-ui-disable-scrollbar { scrollbar-width: none; }
   .base-ui-disable-scrollbar::-webkit-scrollbar { display: none; }
@@ -127,6 +132,7 @@ const html = `<!doctype html>
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
   <div class="dark t3-stage">
@@ -205,48 +211,57 @@ const moving = sections.slice(1).map((section) => ({
   header: section.querySelector('[data-chat-header="true"]'),
 }));
 const restoringContent = sections[2].querySelector('[data-slot="sidebar-content"]');
-for (const parts of moving) {
-  parts.gap.style.transition = 'none';
-  parts.container.style.transition = 'none';
-  parts.rail.style.transition = 'none';
-  parts.header.style.transition = 'none';
+
+const nativePanelEffects = new Map();
+const restoringRows = [...restoringContent.querySelectorAll('[data-thread-item="true"]')];
+function panelEndpoints(parts, closing) {
+ const width=Number(options.sidebarWidth);
+ return [
+  [parts.gap,'width',closing?width+'px':'0px',closing?'0px':width+'px'],
+  [parts.container,'left',closing?'0px':-width+'px',closing?-width+'px':'0px'],
+  [parts.rail,'right',closing?'-16px':'-8px',closing?'-8px':'-16px'],
+  [parts.rail,'translate',closing?'-50%':'0px',closing?'0px':'-50%'],
+  [parts.header,'padding-left',closing?'20px':'52px',closing?'52px':'20px'],
+ ];
 }
-function nativeEase(progress) {
-  if (progress <= 0) return 0;
-  if (progress >= 1) return 1;
-  let low = 0;
-  let high = 1;
-  for (let index = 0; index < 24; index++) {
-    const curve = (low + high) / 2;
-    const remaining = 1 - curve;
-    const x = 0.6 * remaining * curve * curve + curve * curve * curve;
-    if (x < progress) low = curve;
-    else high = curve;
-  }
-  const curve = (low + high) / 2;
-  const remaining = 1 - curve;
-  return 3 * remaining * curve * curve + curve * curve * curve;
+function seekPanel(parts, closing, elapsed) {
+ const endpoints=panelEndpoints(parts,closing),duration=Number(options.transitionMs);
+ if(duration<=0 || elapsed>=duration) {
+  for(const animation of nativePanelEffects.get(parts)??[]) animation.cancel();
+  nativePanelEffects.delete(parts);
+  for(const[element,property,,to]of endpoints){element.style.transitionProperty='none';element.style.setProperty(property,to);}
+  return Promise.resolve();
+ }
+ let animations=nativePanelEffects.get(parts);
+ if(!animations) {
+  const elements=[...new Set(endpoints.map(([element])=>element))];
+  for(const element of elements) element.style.transitionProperty='none';
+  for(const[element,property,from]of endpoints) element.style.setProperty(property,from);
+  getComputedStyle(parts.gap).width;
+  for(const element of elements){element.style.transitionProperty=endpoints.filter(([target])=>target===element).map(([,property])=>property).join(',');element.style.transitionDuration=duration+'ms';element.style.transitionTimingFunction='cubic-bezier(0, 0, 0.2, 1)';}
+  for(const[element,property,,to]of endpoints) element.style.setProperty(property,to);
+  getComputedStyle(parts.gap).width;
+  animations=elements.flatMap(element=>element.getAnimations().filter(animation=>animation instanceof CSSTransition&&endpoints.some(([target,property])=>target===element&&property===animation.transitionProperty)));
+  if(animations.length!==5) throw new Error('Five native Sidebar CSS transitions required');
+  for(const animation of animations) animation.pause();
+  nativePanelEffects.set(parts,animations);
+ }
+ for(const animation of animations) animation.currentTime=Math.max(0,elapsed);
+ return Promise.all(animations.map(animation=>animation.ready));
 }
 const clock = { frame: 0 };
 function draw() {
-  const frame = Math.round(clock.frame);
-  const collapseFrame = Number(options.collapseFrame);
-  const restoreFrame = Math.max(Number(options.restoreFrame), collapseFrame + 1);
-  const phase = frame < collapseFrame ? 0 : frame < restoreFrame ? 1 : 2;
-  for (let index = 0; index < sections.length; index++) sections[index].style.display = index === phase ? 'contents' : 'none';
-  restoringContent.style.visibility = phase === 2 && Number(options.transitionMs) > 0 && frame === restoreFrame + 1 ? 'hidden' : '';
-  if (phase === 0) return;
-  const elapsed = (frame - (phase === 1 ? collapseFrame : restoreFrame)) * 1000 / 30;
-  const progress = options.transitionMs <= 0 ? 1 : nativeEase(Math.min(1, elapsed / options.transitionMs));
-  const closed = phase === 1 ? progress : 1 - progress;
-  const parts = moving[phase - 1];
-  const width = Number(options.sidebarWidth);
-  parts.gap.style.width = width * (1 - closed) + 'px';
-  parts.container.style.left = -width * closed + 'px';
-  parts.rail.style.right = (-16 + 8 * closed) + 'px';
-  parts.rail.style.translate = (-50 * (1 - closed)) + '%';
-  parts.header.style.paddingLeft = (20 + 32 * closed) + 'px';
+ const frame=Math.round(clock.frame),collapseFrame=Number(options.collapseFrame),restoreFrame=Math.max(Number(options.restoreFrame),collapseFrame+1);
+ const phase=frame<collapseFrame?0:frame<restoreFrame?1:2;
+ for(let index=0;index<sections.length;index++) sections[index].style.display=index===phase?'contents':'none';
+ for(const[parts,animations]of nativePanelEffects) if(parts!==moving[phase-1]){for(const animation of animations) animation.cancel();nativePanelEffects.delete(parts);}
+ // Native content-visibility skips these rows for the first restore sample; the Settled header remains painted.
+ for(const row of restoringRows) row.style.visibility=phase===2&&Number(options.transitionMs)>0&&frame===restoreFrame+1?'hidden':'';
+ const pending=phase===0?Promise.resolve():seekPanel(moving[phase-1],phase===1,(frame-(phase===1?collapseFrame:restoreFrame))*1000/30);
+ window.__hyfrmeReady=pending;
+ return pending;
 }
+document.addEventListener('hf-seek',event=>{const pending=draw();event.detail?.waitUntil?.(pending);});
 draw();
 const timeline = gsap.timeline({ paused: true });
 timeline.to(clock, { frame: 120, duration: 4, ease: 'none', onUpdate: draw });
@@ -313,7 +328,7 @@ await writeFile(
 
 This four-second block reproduces the T3 Code ${fixture.sourceTag} sidebar collapse and restore at 1200 × 659 and 30 fps. It uses pinned official workspace DOM and CSS around a Hyfrme source request in dark or light appearance.
 
-The release-default transitionMs is 0, so the sidebar toggles instantly. Set it to 200 ms to use the Appearance setting's native cubic-bezier(0, 0, 0.2, 1) transition; the official slider ranges from 0 to 400 ms in 25 ms steps. Customize project, branch, thread names and ages, prompt, provider label, reasoning, service tier, permission, workspace, sidebar width, and action frames for a continuous Hyfrme video. Provider/model options in the fixture are seeded; no AI inference runs.
+The release-default transitionMs is 0, so the sidebar toggles instantly. Nonzero durations seek the five official CSS transitions directly with the native cubic-bezier(0, 0, 0.2, 1) curve. The pinned 200 ms captures skip virtualized thread-row contents for the first sampled frame after restore; the source's nonvirtualized Settled header stays visible. This browser content-visibility paint behavior is retained for frame seeking. Set it to 200 ms to use the Appearance setting's native cubic-bezier(0, 0, 0.2, 1) transition; the official slider ranges from 0 to 400 ms in 25 ms steps. Customize project, branch, thread names and ages, prompt, provider label, reasoning, service tier, permission, workspace, sidebar width, and action frames for a continuous Hyfrme video. Provider/model options in the fixture are seeded; no AI inference runs.
 
 Source: https://github.com/pingdotgg/t3code/tree/${fixture.sourceCommit}. The installed files include the T3 Code MIT license. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.
 `,

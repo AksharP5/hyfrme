@@ -2,7 +2,7 @@
   "slug": "shader-dot-orbit",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shader-dot-orbit/index.tsx",
     "config": "registry/remocn/shader-dot-orbit/config.ts",
     "license": "MIT"
@@ -20,25 +20,77 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "9747c388d87a3cfcfa7a457d137fc4f8f1c427f2cc5e4ad70ac5d239531eec0b",
+    "shader-dot-orbit.html": "9fb4454fd03666659288b1cc14343a83baffa7e1984f47b7c2a052f1958278a7",
+    "shader-dot-orbit.runtime.js": "da8721df7455d93834842ecd4fa88a3cdc9f30607719e2988037fd47b17c4bd2",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md": "fc408cbbf99a20fbc88c2296a04bac7dadbe7114f2456673de3e5b7986cfd19d"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "418016872622179482078b86847256bbc2ce10836e89bb0b6d6543fa3faec904",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.996831,
-    "minSsim": 0.996638,
-    "p05Ssim": 0.996659,
-    "p95Ssim": 0.997053,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/shader-dot-orbit/remocn.mp4",
+    "referenceVideo": "public/previews/shader-dot-orbit/reference.mp4",
     "hyperframesVideo": "public/previews/shader-dot-orbit/hyperframes.mp4",
-    "summary": "parity/shader-dot-orbit-diff/summary.json"
+    "thumbnail": "public/previews/shader-dot-orbit/thumbnail.png",
+    "summary": "parity/shader-dot-orbit-diff/summary.json",
+    "perFrameSsim": "parity/shader-dot-orbit-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-dot-orbit-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-dot-orbit-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-dot-orbit-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-dot-orbit-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shader-dot-orbit-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shader-dot-orbit-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shader-dot-orbit/reference.mp4": "731e2ca4abf56d2d0022faed4648ea517c7f7bc4964caf39826d8ea673c05219",
+    "public/previews/shader-dot-orbit/hyperframes.mp4": "731e2ca4abf56d2d0022faed4648ea517c7f7bc4964caf39826d8ea673c05219",
+    "public/previews/shader-dot-orbit/thumbnail.png": "4b71a28c7c55f0eb0f20f1ec314d81e2f50e336ed680354840b6ef58a478b7b4",
+    "parity/shader-dot-orbit-diff/summary.json": "ad55b29e05e75e155f68631a7d07dcf33cfd0beba9f35e6e6cb01ccc34051e53",
+    "parity/shader-dot-orbit-diff/ssim.log": "c4fbedb2045d104b60568467b9860d7ee5ffeee1f88dedd0034e5cf393a3221a",
+    "parity/shader-dot-orbit-diff/hyperframes-check.log": "8258343d79654723604d6ad3f137e02961d34e3ad42968c060314f983e44db9e",
+    "parity/shader-dot-orbit-diff/worst-frame.png": "46187a85d56753db34eade6d16434e9528544ab88116192222678938f1639c3c",
+    "parity/shader-dot-orbit-diff/reference-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-dot-orbit-diff/hyperframes-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-dot-orbit-diff/reference-rgba.framemd5": "87907f5162c555800b9f2522a25fde3874a1fa0fb29f29cae9884619b4468ccd",
+    "parity/shader-dot-orbit-diff/hyperframes-rgba.framemd5": "87907f5162c555800b9f2522a25fde3874a1fa0fb29f29cae9884619b4468ccd"
   }
 }

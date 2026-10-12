@@ -10,15 +10,10 @@ import {
 import { dirname, relative, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
-const { upstream } = JSON.parse(
-  await readFile(
-    resolve(
-      root,
-      process.env.REMOCN_ASSET_MANIFEST ??
-        "assets/remocn-additions/manifest.json",
-    ),
-    "utf8",
-  ),
+const {
+  summary: { upstream },
+} = JSON.parse(
+  await readFile(resolve(root, "catalog/upstream-inventory.json"), "utf8"),
 );
 const source = resolve(
   root,

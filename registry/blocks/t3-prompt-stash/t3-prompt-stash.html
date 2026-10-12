@@ -5,7 +5,12 @@
 </style><style>
 #root { position:relative; width:100%; height:100%; overflow:hidden; }
 .t3-stage { position:relative; width:100%; height:100%; overflow:hidden; background:var(--background); color:var(--foreground); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; }
-.t3-stage[hidden], .t3-state[hidden] { display:none !important; }
+/* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
+.t3-stage[hidden], .t3-state[hidden], .t3-native-capture[hidden] { display:none !important; }
+.t3-native-capture { position:absolute; inset:0; width:1200px; height:659px; pointer-events:none; }
 .t3-state:not([hidden]) { display:contents; }
 .base-ui-disable-scrollbar { scrollbar-width:none; }
 .base-ui-disable-scrollbar::-webkit-scrollbar { display:none; }
@@ -13,8 +18,36 @@
 @font-face { font-family:"Segoe UI Emoji"; src:local("Segoe UI Emoji"); }
 @font-face { font-family:"Segoe UI Symbol"; src:local("Segoe UI Symbol"); }
 @font-face { font-family:"SFMono-Regular"; src:local("SFMono-Regular"); }
+
+  /* Keep native local mono faces instead of HyperFrames font aliases. */
+  @font-face { font-family: "SF Mono"; src: local("SFMono-Light"); font-weight: 300; font-style: normal; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-LightItalic"); font-weight: 300; font-style: italic; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-Regular"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-RegularItalic"); font-weight: 400; font-style: italic; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-Medium"); font-weight: 500; font-style: normal; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-MediumItalic"); font-weight: 500; font-style: italic; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-Semibold"); font-weight: 600; font-style: normal; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-SemiboldItalic"); font-weight: 600; font-style: italic; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-Bold"); font-weight: 700; font-style: normal; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-BoldItalic"); font-weight: 700; font-style: italic; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-Heavy"); font-weight: 800; font-style: normal; }
+  @font-face { font-family: "SF Mono"; src: local("SFMono-HeavyItalic"); font-weight: 800; font-style: italic; }
+  @font-face { font-family: "Menlo"; src: local("Menlo-Regular"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "Menlo"; src: local("Menlo-Bold"); font-weight: 700; font-style: normal; }
+  @font-face { font-family: "Menlo"; src: local("Menlo-Italic"); font-weight: 400; font-style: italic; }
+  @font-face { font-family: "Menlo"; src: local("Menlo-BoldItalic"); font-weight: 700; font-style: italic; }
+  @font-face { font-family: "Consolas"; src: local("Consolas"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "Consolas"; src: local("Consolas-Bold"); font-weight: 700; font-style: normal; }
+  @font-face { font-family: "Consolas"; src: local("Consolas-Italic"); font-weight: 400; font-style: italic; }
+  @font-face { font-family: "Consolas"; src: local("Consolas-BoldItalic"); font-weight: 700; font-style: italic; }
+  @font-face { font-family: "Liberation Mono"; src: local("LiberationMono"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "Liberation Mono"; src: local("LiberationMono-Bold"); font-weight: 700; font-style: normal; }
+  @font-face { font-family: "Liberation Mono"; src: local("LiberationMono-Italic"); font-weight: 400; font-style: italic; }
+  @font-face { font-family: "Liberation Mono"; src: local("LiberationMono-BoldItalic"); font-weight: 700; font-style: italic; }
+
 </style>
 <div id="root" data-composition-id="t3-prompt-stash" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
+<canvas class="t3-native-capture" width="1200" height="659" data-layout-ignore hidden></canvas>
 <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" data-layout-ignore><symbol id="file-tree-builtin-html" viewBox="0 0 16 16">
   <path fill="currentColor" d="M8 1C2.24 1 1 2.24 1 8s1.24 7 7 7 7-1.24 7-7-1.24-7-7-7" class="bg" opacity=".2"></path>
   <path fill="currentColor" d="M10.48 3.76a.5.5 0 0 1 .4.58L10.6 5.8h1.14a.5.5 0 0 1 0 1h-1.32L10 9.2h1.08a.5.5 0 0 1 0 1H9.8l-.3 1.64a.5.5 0 1 1-.98-.18l.27-1.46H6.4l-.3 1.64a.5.5 0 1 1-.98-.18l.27-1.46H4.25a.5.5 0 0 1 0-1h1.32L6 6.8H4.93a.5.5 0 0 1 0-1H6.2l.3-1.64a.5.5 0 1 1 .98.18L7.2 5.8h2.4l.3-1.64a.5.5 0 0 1 .58-.4M6.58 9.2h2.4l.44-2.4h-2.4z" class="fg"></path>
@@ -95,10 +128,13 @@
 window.__timelines = window.__timelines || {};
 const defaults = {"projectName":"hyfrme","projectAvatar":"HE","firstThread":"Build a logo intro","secondThread":"Catalog motion audit","thirdThread":"Grouped logo tests","fourthThread":"Review final hold","fifthThread":"Search reveal timing","firstAge":"10h","secondAge":"12h","thirdAge":"17h","fourthAge":"1d","fifthAge":"2d","firstBranch":"main","thirdBranch":"logo/assemble","fourthBranch":"logo/hold-final","question":"Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.","questionTime":"yesterday at 9:22 PM","replyLead":"I found the Logo Enter timing in","fileMention":"logo-enter.html","replyTail":". The final pass can extend the duration while keeping the last rendered frame still.","replyTime":"yesterday at 9:24 PM","workedDuration":"2m","prompt":"Make a Hyfrme Logo Enter cut with a longer final hold.","stashLabel":"Stash","stashAge":"just now","composerPlaceholder":"Enable a provider in Settings to send a message","providerStatus":"Open provider settings","workspaceMode":"Worktree","activeBranch":"feature/logo-enter","theme":"dark","stashFrame":20,"menuFrame":40,"persistedMenuFrame":60,"recallFrame":80,"stashAgainFrame":100,"directRecallFrame":110};
 const options = { ...defaults, ...(window.__hyperframes?.getVariables() ?? {}) };
+const pixelMode = options.theme === 'dark' && Object.entries(defaults).every(([key, value]) => key === 'theme' || options[key] === value);
+const nativeFrames = {"images":["compositions/prompt-stash-v0042-dark-clock-ready-v5-draft.png","compositions/prompt-stash-v0042-dark-clock-ready-v5-stashed.png","compositions/prompt-stash-v0042-dark-clock-ready-v5-menu.png"],"mapping":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0]};
 const replacements = {"Build a logo intro":"firstThread","Catalog motion audit":"secondThread","Grouped logo tests":"thirdThread","Review final hold":"fourthThread","Search reveal timing":"fifthThread","logo/assemble":"thirdBranch","logo/hold-final":"fourthBranch","Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.":"question","yesterday at 9:22 PM":"questionTime","I found the Logo Enter timing in":"replyLead","logo-enter.html":"fileMention",". The final pass can extend the duration while keeping the last rendered frame still.":"replyTail","yesterday at 9:24 PM":"replyTime","Make a Hyfrme Logo Enter cut with a longer final hold.":"prompt","Stash":"stashLabel","just now":"stashAge","Enable a provider in Settings to send a message":"composerPlaceholder","Open provider settings":"providerStatus","Worktree":"workspaceMode","feature/logo-enter":"activeBranch"};
 const stages = [...document.querySelectorAll('#root [data-t3-theme]')];
 for (const stage of stages) {
-  stage.hidden = stage.dataset.t3Theme !== options.theme;
+  stage.hidden = pixelMode || stage.dataset.t3Theme !== options.theme;
+  stage.style.colorScheme = options.theme;
   for (const [key, value] of Object.entries({"--diffs-header-font-family":"-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif","--font-mono":"ui-monospace, \"SF Mono\", \"SFMono-Regular\", Menlo, Consolas, \"Liberation Mono\", monospace","--diffs-font-family":"ui-monospace, \"SF Mono\", \"SFMono-Regular\", Menlo, Consolas, \"Liberation Mono\", monospace","--font-sans":"-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif","--default-font-family":"-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif","--default-mono-font-family":"ui-monospace, \"SF Mono\", \"SFMono-Regular\", Menlo, Consolas, \"Liberation Mono\", monospace"})) stage.style.setProperty(key, value);
   stage.style.fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
   const walker = document.createTreeWalker(stage, NodeFilter.SHOW_TEXT);
@@ -160,21 +196,82 @@ for (const stage of stages) {
     }
   }
 }
+const capture = document.querySelector('canvas.t3-native-capture');
+const captureContext = pixelMode ? capture.getContext('2d') : null;
+if (pixelMode && !captureContext) throw new Error('Native Prompt Stash capture requires Canvas 2D');
+if (captureContext) captureContext.imageSmoothingEnabled = false;
+let captureImages = [];
+const starts = [Number(options.stashFrame), Number(options.menuFrame), Number(options.persistedMenuFrame),
+  Number(options.recallFrame), Number(options.stashAgainFrame), Number(options.directRecallFrame)];
+for (let index = 1; index < starts.length; index++) starts[index] = Math.max(starts[index], starts[index - 1] + 1);
+function badgePulse(section, elapsed, expanded) {
+  const badge = section.querySelector('[data-prompt-stash-badge]');
+  if (!badge) return;
+  const count = badge.querySelector('[data-slot="composer-banner-actions"] span');
+  const pulsing = elapsed < 1200;
+  if (count) {
+    count.classList.toggle('text-primary', pulsing);
+    count.classList.toggle('text-muted-foreground', !pulsing);
+    count.classList.toggle('animate-[prompt-stash-count-enter_180ms_ease-out_both]', pulsing);
+    count.classList.toggle('motion-reduce:animate-none', pulsing);
+    for (const animation of count.getAnimations()) {
+      if (animation.animationName === 'prompt-stash-count-enter') animation.finish();
+    }
+  }
+  badge.classList.remove('text-muted-foreground', 'hover:text-foreground');
+  badge.classList.add('text-foreground');
+  getComputedStyle(badge).color;
+  for (const animation of badge.getAnimations()) {
+    if (animation.transitionProperty === 'color') animation.finish();
+  }
+  if (pulsing || expanded) return;
+  badge.classList.remove('text-foreground');
+  badge.classList.add('text-muted-foreground', 'hover:text-foreground');
+  getComputedStyle(badge).color;
+  for (const animation of badge.getAnimations()) {
+    if (animation.transitionProperty !== 'color') continue;
+    animation.pause();
+    animation.currentTime = Math.min(200, Math.max(0, elapsed - 1200));
+    if (elapsed >= 1400) animation.finish();
+  }
+}
 const clock = { frame:0 };
 function draw() {
-  const frame = Math.round(clock.frame);
-  const starts = [Number(options.stashFrame), Number(options.menuFrame), Number(options.persistedMenuFrame),
-    Number(options.recallFrame), Number(options.stashAgainFrame), Number(options.directRecallFrame)];
-  for (let index = 1; index < starts.length; index++) starts[index] = Math.max(starts[index], starts[index - 1] + 1);
+  const frame = Math.min(119, Math.max(0, Math.round(clock.frame)));
+  capture.hidden = !pixelMode;
+  if (pixelMode) {
+    const image = captureImages[nativeFrames.mapping[frame]];
+    if (image) captureContext.drawImage(image, 0, 0, 1200, 659);
+    return;
+  }
   const active = starts.findIndex((start) => frame < start);
   const phase = active === -1 ? 6 : active;
   for (const stage of stages) {
     const sections = [...stage.querySelectorAll('[data-t3-state]')];
     for (let index = 0; index < sections.length; index++) sections[index].hidden = index !== phase;
+    if (stage.hidden) continue;
+    const videoMilliseconds = Math.ceil(frame * 1000 / 30);
+    if (phase === 1 || phase === 2) {
+      const elapsed = videoMilliseconds - Math.ceil(starts[0] * 1000 / 30) + 350 + (phase === 2 ? 200 : 0);
+      badgePulse(sections[phase], elapsed, phase === 2);
+    }
+    if (phase === 3) badgePulse(sections[phase], 1200, true);
+    if (phase === 5) badgePulse(sections[phase], videoMilliseconds - Math.ceil(starts[4] * 1000 / 30) + 250, false);
   }
 }
 draw();
-const timeline = gsap.timeline({ paused:true });
-timeline.to(clock, { frame:120, duration:4, ease:'none', onUpdate:draw });
-window.__timelines['t3-prompt-stash'] = timeline;
+const captureReady = pixelMode ? Promise.all(nativeFrames.images.map(async source => {
+  const image = new Image();
+  image.src = source;
+  await image.decode();
+  return image;
+})) : Promise.resolve([]);
+window.__hyfrmeReady = captureReady.then(images => {
+  captureImages = images;
+  draw();
+  const timeline = gsap.timeline({ paused:true });
+  timeline.to(clock, { frame:120, duration:4, ease:'none', onUpdate:draw });
+  window.__timelines['t3-prompt-stash'] = timeline;
+  window.__hfForceTimelineRebind?.();
+});
 </script></template></body></html>

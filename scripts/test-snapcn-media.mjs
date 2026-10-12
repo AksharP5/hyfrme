@@ -24,7 +24,7 @@ runInNewContext(result.outputFiles[0].text, {
   exports: module.exports,
   require: createRequire(import.meta.url),
 });
-const { OffthreadVideo, __configure } = module.exports;
+const { OffthreadVideo, __configure, __setFrame } = module.exports;
 __configure({ fps: 30, durationInFrames: 90 }, {}, "media-test");
 
 for (const muted of [true, false]) {
@@ -48,6 +48,36 @@ for (const muted of [true, false]) {
   assert.match(html, /data-volume="0.3"/);
 }
 
+__configure({ fps: 30, durationInFrames: 240 }, {}, "media-test", {
+  "recording.mp4": { src: "final.png", duration: 5 },
+});
+for (const [frame, ended] of [
+  [149, false],
+  [150, true],
+  [239, true],
+  [0, false],
+]) {
+  __setFrame(frame);
+  const html = renderToStaticMarkup(
+    React.createElement(OffthreadVideo, { src: "recording.mp4", muted: true }),
+  );
+  assert.equal(/<video\b/.test(html), !ended);
+  assert.equal(/<img[^>]*display:none/.test(html), !ended);
+  assert.match(html, /src="final.png"/);
+}
+__setFrame(100);
+assert.match(
+  renderToStaticMarkup(
+    React.createElement(OffthreadVideo, {
+      src: "recording.mp4",
+      muted: true,
+      trimBefore: 10,
+      playbackRate: 1.5,
+    }),
+  ),
+  /<img[^>]*src="final.png"/,
+);
+
 console.log(
-  "Snapcn video preserves audio intent, trim, playback rate and volume.",
+  "Snapcn video preserves audio, trim, rate, volume and the source's final-frame hold when seeking.",
 );

@@ -1,5 +1,7 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { createHash } from "node:crypto";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
@@ -40,6 +42,34 @@ const states = Object.fromEntries(await Promise.all(["dark", "light"].map(async 
     return body;
   })),
 ])));
+
+const nativeStateFile = "commit-review-v0042-native-states.json";
+const nativeStateBytes = await readFile(resolve(source, nativeStateFile));
+const nativeStates = JSON.parse(nativeStateBytes);
+const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
+if (nativeStates.sourceCommit !== dark.sourceCommit || nativeStates.frameCount !== dark.frames) {
+  throw new Error("Native Commit Review state provenance differs from the pinned fixture");
+}
+for (const theme of ["dark", "light"]) {
+  const evidence = nativeStates.themes[theme];
+  if (evidence.fixtureSha256 !== hash(await readFile(resolve(source, evidence.fixture))) ||
+    evidence.referenceSha256 !== fixtures[theme].referenceSha256 || evidence.frames.length !== dark.frames) {
+    throw new Error(`${theme}: native Commit Review state evidence is stale`);
+  }
+  for (const state of evidence.states) {
+    if (hash(await readFile(resolve(source, state.file))) !== state.pngSha256) {
+      throw new Error(`${theme}: native state PNG changed: ${state.file}`);
+    }
+  }
+  for (let frame = 0; frame < dark.frames; frame++) {
+    const record = evidence.frames[frame];
+    const state = evidence.states[record.state];
+    if (record.frame !== frame || !state || frame < state.start || frame > state.end ||
+      record.rgbaSha256 !== state.rgbaSha256 || record.pngSha256 !== state.pngSha256) {
+      throw new Error(`${theme}: native frame ${frame} does not equal its selected state`);
+    }
+  }
+}
 
 const fields = [
   ["projectName", "Project name", "hyfrme"],
@@ -91,6 +121,7 @@ const variables = [
     ? { id, type: "number", label, default: value, min: 0, max: 9999, step: 1 }
     : { id, type: "string", label, default: value }),
   { id: "theme", type: "string", label: "T3 Code appearance", default: "dark", options: ["dark", "light"] },
+  { id: "renderMode", type: "string", label: "Render mode", default: "pixel-verified", options: ["pixel-verified", "editable DOM"] },
   { id: "menuFrame", type: "number", label: "Open Git menu at frame", default: dark.events.menu, min: 1, max: 110, step: 1 },
   { id: "dialogFrame", type: "number", label: "Open review dialog at frame", default: dark.events.dialog, min: 2, max: 115, step: 1 },
   { id: "messageFrame", type: "number", label: "Type commit message at frame", default: dark.events.message, min: 3, max: 119, step: 1 },
@@ -111,33 +142,42 @@ const html = `<!doctype html><html lang="en" data-composition-variables='${escap
 <head><meta charset="utf-8"></head><body><template>
 <style>${css}</style><style>
 #root { position:relative; width:100%; height:100%; overflow:hidden; }
-.t3-stage { position:relative; width:100%; height:100%; overflow:hidden; background:var(--background); color:var(--foreground); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; }
+.t3-stage { position:relative; width:100%; height:100%; overflow:hidden; background:var(--background); color:var(--foreground); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+/* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
+.t3-stage.dark { color-scheme:dark; }
+.t3-stage.light { color-scheme:light; }
 .t3-stage[hidden], .t3-state[hidden], .t3-native-popup[hidden] { display:none !important; }
 .t3-state:not([hidden]) { display:contents; }
+.t3-pixel-capture { position:absolute; inset:0; width:1200px; height:659px; pointer-events:none; }
 .t3-native-popup { position:absolute; left:948px; top:42px; width:168px; height:66px; z-index:10001; pointer-events:none; }
 .base-ui-disable-scrollbar { scrollbar-width:none; }
 .base-ui-disable-scrollbar::-webkit-scrollbar { display:none; }
-.t3-stage [style*="t3-mobile-draft-headline"] h1 { transform:translateY(1px); }
 @font-face { font-family:"Apple Color Emoji"; src:local("Apple Color Emoji"); }
 @font-face { font-family:"Segoe UI Emoji"; src:local("Segoe UI Emoji"); }
 @font-face { font-family:"Segoe UI Symbol"; src:local("Segoe UI Symbol"); }
 @font-face { font-family:"SFMono-Regular"; src:local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
 <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" data-layout-ignore>${sprite}</svg>
 ${["dark", "light"].map((theme) => `<div class="t3-stage ${theme}" data-t3-theme="${theme}" style="${themeStyles[theme].replaceAll('"', '&quot;')}"${theme === "light" ? " hidden" : ""}>
 ${states[theme].map((body, index) => `<div class="t3-state" data-t3-state="${phases[index]}"${index ? " hidden" : ""}>${body}</div>`).join("\n")}
 <img class="t3-native-popup" src="commit-review-v0042-${theme}-menu-crop.png" alt="" aria-hidden="true" data-layout-ignore hidden>
-</div>`).join("\n")}</div>
+</div>`).join("\n")}<canvas data-layout-ignore class="t3-pixel-capture" width="1200" height="659" hidden></canvas></div>
 <script src="t3-code-gsap.min.js"></script><script>
 window.__timelines = window.__timelines || {};
 const defaults = ${scriptJson(defaults)};
 const options = { ...defaults, ...(window.__hyperframes?.getVariables() ?? {}) };
+const pixelMode = options.renderMode === 'pixel-verified' && Object.entries(defaults).every(([key, value]) => key === 'theme' || key === 'renderMode' || options[key] === value);
+const nativeStates = ${scriptJson(Object.fromEntries(Object.entries(nativeStates.themes).map(([theme, evidence]) => [theme, evidence.states.map(({ file, start, end }) => ({ file, url: `compositions/${file}`, start, end }))])))};
 const replacements = ${scriptJson(replacements)};
 const stages = [...document.querySelectorAll('#root [data-t3-theme]')];
-const nativePopupAllowed = Object.keys(defaults).every(key => key === 'theme' || key.endsWith('Frame') || options[key] === defaults[key]);
+const nativePopupAllowed = Object.keys(defaults).every(key => key === 'theme' || key === 'renderMode' || key.endsWith('Frame') || options[key] === defaults[key]);
 for (const stage of stages) {
-  stage.hidden = stage.dataset.t3Theme !== options.theme;
+  stage.hidden = pixelMode || stage.dataset.t3Theme !== options.theme;
   for (const [key, value] of Object.entries(${scriptJson(fontTheme)})) stage.style.setProperty(key, value);
   stage.style.fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
   const walker = document.createTreeWalker(stage, NodeFilter.SHOW_TEXT);
@@ -185,24 +225,32 @@ for (const stage of stages) {
         if (path.textContent.trim() === defaults.changedFile) path.textContent = options.changedFile;
       }
       for (const added of dialog.querySelectorAll('.text-diff-addition')) {
-        if (added.textContent.trim() === '+' + defaults.insertions) added.textContent = '+' + options.insertions;
+        if (added.textContent.trim() === '+' + defaults.insertions) added.replaceChildren(document.createTextNode('+'), document.createTextNode(String(options.insertions)));
       }
       for (const removed of dialog.querySelectorAll('.text-diff-deletion')) {
-        if (removed.textContent.trim() === '-' + defaults.deletions) removed.textContent = '-' + options.deletions;
+        if (removed.textContent.trim() === '-' + defaults.deletions) removed.replaceChildren(document.createTextNode('-'), document.createTextNode(String(options.deletions)));
       }
     }
   }
 }
+const capture = document.querySelector('canvas.t3-pixel-capture');
+const captureContext = capture.getContext('2d');
+if (!captureContext) throw new Error('Native state capture requires Canvas 2D');
+captureContext.imageSmoothingEnabled = false;
+let captureImages = [];
 const clock = { frame: 0 };
 function draw() {
-  const frame = Math.round(clock.frame);
+  const frame = Math.min(119, Math.max(0, Math.round(clock.frame)));
+  capture.hidden = !pixelMode;
+  const stateIndex = nativeStates[options.theme].findIndex(state => frame >= state.start && frame <= state.end);
+  if (pixelMode && captureImages[stateIndex]) captureContext.drawImage(captureImages[stateIndex], 0, 0, 1200, 659);
   const dialogFrame = Math.max(Number(options.dialogFrame), Number(options.menuFrame) + 1);
   const messageFrame = Math.max(Number(options.messageFrame), dialogFrame + 1);
   const phase = frame < options.menuFrame ? 0 : frame < dialogFrame ? 1 : frame < messageFrame ? 2 : 3;
   for (const stage of stages) {
     const sections = [...stage.querySelectorAll('[data-t3-state]')];
     for (let index = 0; index < sections.length; index++) sections[index].hidden = index !== phase;
-    stage.querySelector('.t3-native-popup').hidden = !nativePopupAllowed || phase !== 1;
+    stage.querySelector('.t3-native-popup').hidden = pixelMode || !nativePopupAllowed || phase !== 1;
     if (stage.hidden || phase !== 1) continue;
     const trigger = sections[1].querySelector('[aria-label="Git action options"]');
     const positioner = sections[1].querySelector('[data-slot="menu-positioner"]');
@@ -215,16 +263,31 @@ function draw() {
   }
 }
 draw();
-const timeline = gsap.timeline({ paused: true });
-timeline.to(clock, { frame: 120, duration: 4, ease: 'none', onUpdate: draw });
-window.__timelines['${name}'] = timeline;
+const captureReady = pixelMode
+  ? Promise.all(nativeStates[options.theme].map(async state => {
+      const image = new Image();
+      image.src = state.url;
+      await image.decode();
+      return image;
+    }))
+  : Promise.resolve([]);
+window.__hyfrmeReady = captureReady.then(images => {
+  captureImages = images;
+  draw();
+  const timeline = gsap.timeline({ paused: true });
+  timeline.to(clock, { frame: 120, duration: 4, ease: 'none', onUpdate: draw });
+  window.__timelines['${name}'] = timeline;
+  window.__hfForceTimelineRebind?.();
+});
 </script>
 </template></body></html>`;
 
 await mkdir(resolve(output, "licenses"), { recursive: true });
 await writeFile(resolve(output, `${name}.html`), html);
 await writeFile(resolve(output, "t3-code-gsap.min.js"), gsap);
+await copyFile(resolve(source, nativeStateFile), resolve(output, nativeStateFile));
 for (const theme of ["dark", "light"]) {
+  for (const state of nativeStates.themes[theme].states) await copyFile(resolve(source, state.file), resolve(output, state.file));
   const file = `commit-review-v0042-${theme}-menu-crop.png`;
   await copyFile(resolve(source, file), resolve(output, file));
 }
@@ -248,9 +311,11 @@ await writeFile(resolve(output, "registry-item.json"), JSON.stringify({
     { path: `${name}.html`, target: `compositions/${name}.html`, type: "hyperframes:composition" },
     { path: "t3-code-gsap.min.js", target: "compositions/t3-code-gsap.min.js", type: "hyperframes:asset" },
     ...["dark", "light"].map((theme) => ({ path: `commit-review-v0042-${theme}-menu-crop.png`, target: `compositions/commit-review-v0042-${theme}-menu-crop.png`, type: "hyperframes:asset" })),
+    ...Object.values(nativeStates.themes).flatMap(evidence => evidence.states.map(state => ({ path: state.file, target: `compositions/${state.file}`, type: "hyperframes:asset" }))),
+    { path: nativeStateFile, target: `compositions/${nativeStateFile}`, type: "hyperframes:asset" },
     ...licenseFiles.map((file) => ({ path: `licenses/${file}`, target: `THIRD_PARTY_LICENSES/t3-code/${file}`, type: "hyperframes:asset" })),
     { path: "README.md", target: `compositions/${name}.README.md`, type: "hyperframes:asset" },
   ],
 }, null, 2) + "\n");
-await writeFile(resolve(output, "README.md"), `# T3 Code: Commit Review\n\nThis four-second, 1200 × 659 block reproduces official T3 Code v${dark.sourceTag.slice(1)} at 30 fps in dark and light. The native Git action menu opens on a Hyfrme worktree with one real Logo Enter change (+${dark.insertions}/-${dark.deletions}), then the Commit dialog reviews the file and a draft message. No commit is created. The project, thread history, and provider state are seeded; Git status and dialog opening are live.\n\nCustomize the project, sidebar, branch, file path, diff counts, labels, message, theme, and three action frames through HyperFrames variables. The default Git menu uses official pixels; edited visible content uses source DOM reanchored to the trigger. Match project and thread values with adjacent T3 Code blocks for continuity. Source: https://github.com/pingdotgg/t3code/tree/${dark.sourceCommit}. Installed files include T3 Code's MIT license and third-party notices. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.\n`);
-console.log(`Generated ${name} from four native T3 Code v0.0.42 states in dark and light.`);
+await writeFile(resolve(output, "README.md"), `# T3 Code: Commit Review\n\nThis four-second, 1200 × 659 block reproduces official T3 Code v${dark.sourceTag.slice(1)} at 30 fps in dark and light. The native Git action menu opens on a Hyfrme worktree with one real Logo Enter change (+${dark.insertions}/-${dark.deletions}), then the Commit dialog reviews the file and a draft message. No commit is created. The recording uses seeded project, thread history, and provider state; Git status and dialog opening were live in the isolated source fixture.\n\nCustomize the project, sidebar, branch, file path, diff counts, labels, message, theme, and three action frames through HyperFrames variables. Unchanged content and timing replay the pinned native recording using four dark and five light state images. Every native frame was checked against its selected state; the installed provenance records source and pixel hashes. Changing content or timing automatically uses editable source DOM, including the menu crop where its copy is unchanged. Editable DOM mode can also be selected explicitly; its pixels are not claimed to equal the native app. Match project and thread values with adjacent T3 Code blocks for continuity. Source: https://github.com/pingdotgg/t3code/tree/${dark.sourceCommit}. Installed files include T3 Code's MIT license and third-party notices. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.\n`);
+console.log(`Generated ${name} from nine verified native T3 Code v0.0.42 state images and editable DOM.`);

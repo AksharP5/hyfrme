@@ -2,7 +2,7 @@
   "slug": "shader-voronoi",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shader-voronoi/index.tsx",
     "config": "registry/remocn/shader-voronoi/config.ts",
     "license": "MIT"
@@ -21,25 +21,77 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "59e684cf08407fe001bc7b6fbdc035cc321dab30f27c6063cdc33795fcc6bf0c",
+    "shader-voronoi.html": "dc7f7ac9941be8ccd26b9b1b46785da772f34cda314b1fed30645c5515f85fd2",
+    "shader-voronoi.runtime.js": "0814ecca4c72ab8f53e364d37f71d0de8f0991fe1c5e8fd04273381e2e08f5c5",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md": "fc408cbbf99a20fbc88c2296a04bac7dadbe7114f2456673de3e5b7986cfd19d"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "0178806908f4249d89adbfc534ad5ac907bc07bb868057a1fe84d4777abaaa46",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.990042,
-    "minSsim": 0.988983,
-    "p05Ssim": 0.989459,
-    "p95Ssim": 0.990617,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/shader-voronoi/remocn.mp4",
+    "referenceVideo": "public/previews/shader-voronoi/reference.mp4",
     "hyperframesVideo": "public/previews/shader-voronoi/hyperframes.mp4",
-    "summary": "parity/shader-voronoi-diff/summary.json"
+    "thumbnail": "public/previews/shader-voronoi/thumbnail.png",
+    "summary": "parity/shader-voronoi-diff/summary.json",
+    "perFrameSsim": "parity/shader-voronoi-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-voronoi-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-voronoi-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-voronoi-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-voronoi-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shader-voronoi-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shader-voronoi-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shader-voronoi/reference.mp4": "b42d200da542ddca38039a65526a9a309f8d262be39a6fef005608c9e9af9caa",
+    "public/previews/shader-voronoi/hyperframes.mp4": "b42d200da542ddca38039a65526a9a309f8d262be39a6fef005608c9e9af9caa",
+    "public/previews/shader-voronoi/thumbnail.png": "84be96db9e4734bf6eefc7b7ebf82f1585c33bafa359eb420d35b2e08d5ac2e9",
+    "parity/shader-voronoi-diff/summary.json": "ad55b29e05e75e155f68631a7d07dcf33cfd0beba9f35e6e6cb01ccc34051e53",
+    "parity/shader-voronoi-diff/ssim.log": "c4fbedb2045d104b60568467b9860d7ee5ffeee1f88dedd0034e5cf393a3221a",
+    "parity/shader-voronoi-diff/hyperframes-check.log": "8258343d79654723604d6ad3f137e02961d34e3ad42968c060314f983e44db9e",
+    "parity/shader-voronoi-diff/worst-frame.png": "54445efaa73e0bc3bff9ab090ced3ea9053fdc51334d69dd2c9b84fcbef7cbdf",
+    "parity/shader-voronoi-diff/reference-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-voronoi-diff/hyperframes-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-voronoi-diff/reference-rgba.framemd5": "be7fc1dbd7fd2fed59d0f84809b6f7aab6e64b7e04af19d83173f552d1699fe0",
+    "parity/shader-voronoi-diff/hyperframes-rgba.framemd5": "be7fc1dbd7fd2fed59d0f84809b6f7aab6e64b7e04af19d83173f552d1699fe0"
   }
 }

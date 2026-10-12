@@ -2,7 +2,7 @@
   "slug": "command-menu-item",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-ui/command-menu-item/index.tsx",
     "config": "registry/remocn-ui/command-menu-item/config.ts",
     "license": "MIT"
@@ -16,29 +16,96 @@
       "label": "Settings",
       "icon": "settings",
       "shortcut": "⌘ S",
-      "state": "selected"
+      "state": "selected",
+      "speed": 1
     },
     "background": "oklch(1 0 0)"
   },
+  "filesSha256": {
+    "registry-item.json": "ef626ffde6776a4ac3601d7b1cbe062383a51f5d21721502a611e563f395a3f4",
+    "command-menu-item.html": "e397fceddd4d1e933ca24076bacd8a5883a86beda1f029b043262c5598e5f85c",
+    "command-menu-item.runtime.js": "5ea9853a476829d6b10614b2ba23ee4ceac1709654e3c059ffdb28b680573c4b",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "9796e3e45d35b9b5889b5ea17df3c968bf44832a1ce0323908226ac9b0144556",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.999948,
-    "minSsim": 0.999947,
-    "p05Ssim": 0.999948,
-    "p95Ssim": 0.999948,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 120,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuRequestedMode": "hardware",
+    "browserGpuProbes": {
+      "render": {
+        "logSha256": "71edafb41197a587c5f7d6838071949c5658b22e4fb0874cecebb87dfb3491e4",
+        "observations": [
+          {
+            "mode": "hardware",
+            "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+          }
+        ]
+      }
+    },
+    "captureBackend": "unobserved",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/command-menu-item/remocn.mp4",
+    "referenceVideo": "public/previews/command-menu-item/reference.mp4",
     "hyperframesVideo": "public/previews/command-menu-item/hyperframes.mp4",
-    "summary": "parity/command-menu-item-diff/summary.json"
+    "thumbnail": "public/previews/command-menu-item/thumbnail.png",
+    "summary": "parity/command-menu-item-diff/summary.json",
+    "perFrameSsim": "parity/command-menu-item-diff/ssim.log",
+    "hyperframesCheck": "parity/command-menu-item-diff/hyperframes-check.log",
+    "hyperframesRender": "parity/command-menu-item-diff/hyperframes-render.log",
+    "worstFrame": "parity/command-menu-item-diff/worst-frame.png",
+    "referenceAlpha": "parity/command-menu-item-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/command-menu-item-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/command-menu-item-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/command-menu-item-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/command-menu-item/reference.mp4": "d7fffbed80ab47701189ec103c4577efd687ed52d9442e2c05a64ab5b2fdbef5",
+    "public/previews/command-menu-item/hyperframes.mp4": "d7fffbed80ab47701189ec103c4577efd687ed52d9442e2c05a64ab5b2fdbef5",
+    "public/previews/command-menu-item/thumbnail.png": "4b4cc99571f2ffb861fae257210796840b58e223d054600a15dcfd1cb78d2cf9",
+    "parity/command-menu-item-diff/summary.json": "c38069d7cb90acc2a693a754a1caeffaf324f128e7d118e6f20808613c950e44",
+    "parity/command-menu-item-diff/ssim.log": "0d663888ba3a21df239a5aaeee4bf38db84eef562f53d8a16d0607243e43a35c",
+    "parity/command-menu-item-diff/hyperframes-check.log": "18551aca16eee63bd669510f7b103eaa202e0e09a3fd8634641d3e6bb1147640",
+    "parity/command-menu-item-diff/hyperframes-render.log": "71edafb41197a587c5f7d6838071949c5658b22e4fb0874cecebb87dfb3491e4",
+    "parity/command-menu-item-diff/worst-frame.png": "64fe768fd67929c087badbe97d47bae4f5643ccf9d52d569c638ad25aedb9226",
+    "parity/command-menu-item-diff/reference-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/command-menu-item-diff/hyperframes-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/command-menu-item-diff/reference-rgba.framemd5": "6428e80667e58bd5267c75c6343033ce5c175ca1f8c0326025bb1471df231fb2",
+    "parity/command-menu-item-diff/hyperframes-rgba.framemd5": "6428e80667e58bd5267c75c6343033ce5c175ca1f8c0326025bb1471df231fb2"
   }
 }

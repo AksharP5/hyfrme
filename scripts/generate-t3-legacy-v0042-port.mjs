@@ -1,5 +1,6 @@
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const name = process.argv[2];
@@ -205,9 +206,14 @@ const html = `<!doctype html>
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .t3-stage { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-stage[hidden], .t3-state[hidden] { display: none !important; }
   .t3-state:not([hidden]) { display: contents; }
-  .t3-pixel-capture { position: absolute; inset: 0; z-index: 100; width: 100%; height: 100%; pointer-events: none; }
+  /* Captured frames already include native tooltips at z-index 140. */
+  .t3-pixel-capture { position: absolute; inset: 0; z-index: 200; width: 100%; height: 100%; pointer-events: none; }
   .t3-pixel-capture[hidden] { display: none !important; }
   .base-ui-disable-scrollbar { scrollbar-width: none; }
   .base-ui-disable-scrollbar::-webkit-scrollbar { display: none; }
@@ -215,6 +221,7 @@ const html = `<!doctype html>
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces}
   .t3-terminal-frame { position: relative; overflow: hidden; }
   .t3-terminal-frame > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; }
   .terminal-custom { position: absolute; inset: 0; box-sizing: border-box; overflow: hidden; padding: 9px 5px; background: var(--terminal-background, #111); color: var(--terminal-foreground, #ddd); font: 13px/18px "JetBrains Mono", monospace; white-space: pre-wrap; }
@@ -232,14 +239,15 @@ ${captureMarkup}
 window.__timelines = window.__timelines || {};
 const defaults = ${scriptJson(defaults)};
 const options = { ...defaults, ...(window.__hyperframes?.getVariables() ?? {}) };
+const pixelMode = options.renderMode === 'pixel-verified' && Object.entries(defaults).every(([key, value]) => key === 'theme' || key === 'renderMode' || options[key] === value);
 const themeCss = ${scriptJson(themeCss)};
 const fields = ${scriptJson(profile.fields.map(([id]) => id))};
 const defaultEvents = ${scriptJson(dark.events)};
 const phases = ${scriptJson(dark.phases)};
-const canvasSequence = ${scriptJson({ dark: dark.canvasSequence ?? [], light: light.canvasSequence ?? [] })};
+const canvasSequence = ${scriptJson({ dark: (dark.canvasSequence ?? []).map((asset) => asset ? `compositions/${asset}` : asset), light: (light.canvasSequence ?? []).map((asset) => asset ? `compositions/${asset}` : asset) })};
 const sections = [...document.querySelectorAll('#root .t3-stage')];
 const preloads = [...document.querySelectorAll('[data-t3-preload-theme]')]
-  .filter((image) => image.dataset.t3PreloadTheme === options.theme);
+  .filter((image) => pixelMode && image.dataset.t3PreloadTheme === options.theme);
 const pixelSources = new Map(preloads.map((image) => {
   image.src = image.dataset.t3PreloadSrc;
   return [image.dataset.t3PreloadRow, image];
@@ -307,9 +315,8 @@ function draw() {
   }
   for (const stage of sections) {
     const visible = stage.dataset.t3Theme === options.theme && stage.dataset.t3State === phases[phaseIndex];
-    stage.hidden = !visible || options.renderMode === 'pixel-verified';
+    stage.hidden = !visible || pixelMode;
   }
-  const pixelMode = options.renderMode === 'pixel-verified';
   const row = Math.floor(frame / 12);
   for (const capture of document.querySelectorAll('[data-t3-pixel-theme]')) {
     const active = pixelMode && capture.dataset.t3PixelTheme === options.theme && Number(capture.dataset.t3PixelRow) === row;
@@ -322,7 +329,7 @@ function draw() {
       }
     }
   }
-  if (${profile.terminal ? "true" : "false"} && options.renderMode === 'editable DOM') {
+  if (${profile.terminal ? "true" : "false"} && !pixelMode) {
     const customTerminal = ['terminalPrompt','branchName','command','output'].some((key) => options[key] !== defaults[key]);
     const phase = phases[phaseIndex];
     const sequence = canvasSequence[options.theme] ?? [];
@@ -336,7 +343,7 @@ function draw() {
         const image = wrapper.querySelector('[data-t3-terminal-image]');
         const overlay = wrapper.querySelector('.terminal-custom');
         const asset = sequence[sourceFrame] ?? sequence.at(-1);
-        if (image && asset) image.src = 'compositions/' + asset;
+        if (image && asset) image.src = asset;
         if (image) image.hidden = customTerminal;
         if (overlay) {
           overlay.hidden = !customTerminal;
@@ -357,7 +364,8 @@ const registerTimeline = () => {
   window.__timelines['${name}'] = timeline;
   window.__hfForceTimelineRebind?.();
 };
-Promise.all(preloads.map((image) => image.decode())).then(registerTimeline);
+const captureReady = pixelMode ? Promise.all(preloads.map((image) => image.decode())) : Promise.resolve();
+window.__hyfrmeReady = captureReady.then(registerTimeline);
 </script></template></body></html>
 `;
 
@@ -386,7 +394,7 @@ await writeFile(resolve(output, "README.md"), `# T3 Code: ${profile.title}
 
 This 1200 × 659, 30 fps, four-second block is captured from T3 Code v0.0.42 at commit ${dark.sourceCommit}. ${profile.detail}
 
-Choose pixel-verified mode for the lossless native 120-frame reference or editable DOM mode to change the visible project copy and event timing. ${profile.terminal ? "The native terminal frames are included as stills; edited command text and output use a variable-driven terminal layer." : "The captured DOM states preserve the native controls and portal placement."} Set T3 Code appearance to dark or light. Every displayed fixture uses Hyfrme sample-project content.
+Unchanged content and timing use the lossless native 120-frame reference. Editing content or timing automatically uses editable DOM; editable DOM mode can also be selected explicitly. ${profile.terminal ? "The native terminal frames are included as stills; edited command text and output use a variable-driven terminal layer." : "The captured DOM states preserve the native controls and portal placement."} Set T3 Code appearance to dark or light. Every displayed fixture uses Hyfrme sample-project content.
 
 ${licenseFiles.length ? "Third-party license and notice files are installed with the block. " : ""}GSAP is included locally for deterministic frame seeking. The source application is MIT licensed: https://github.com/pingdotgg/t3code/tree/${dark.sourceCommit}.
 `);

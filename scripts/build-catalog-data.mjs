@@ -1,15 +1,39 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
+import { assertExactCompiledParity } from "./compiled-parity.mjs";
+import { assertVerifiedBlockFiles } from "./parity-evidence.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const blocksDirectory = resolve(root, "registry", "blocks");
 const parityDirectory = resolve(root, "parity");
 const outputPath = resolve(root, "src", "generated", "catalog-data.json");
-const checking = process.argv.includes("--check");
+const args = process.argv.slice(2);
+const checking = args.includes("--check");
+const selected = new Set();
+for (let index = 0; index < args.length; index++) {
+  if (args[index] === "--check") continue;
+  if (
+    args[index] !== "--only" ||
+    !args[index + 1] ||
+    args[index + 1].startsWith("--")
+  )
+    throw new Error(
+      "Usage: build-catalog-data.mjs [--check] [--only name[,name]]",
+    );
+  for (const name of args[++index].split(",")) {
+    if (!name) throw new Error("--only requires an item name");
+    selected.add(name);
+  }
+}
 
 const readJson = async (path) => JSON.parse(await readFile(path, "utf8"));
 const registry = await readJson(resolve(root, "registry/registry.json"));
-const directories = registry.items.map((entry) => entry.name);
+const names = registry.items.map((entry) => entry.name);
+for (const name of selected)
+  if (!names.includes(name)) throw new Error(`Unknown catalog item: ${name}`);
+const directories = selected.size
+  ? names.filter((name) => selected.has(name))
+  : names;
 
 const entries = await Promise.all(
   directories.map(async (name) => {
@@ -21,6 +45,27 @@ const entries = await Promise.all(
     const parity = native
       ? null
       : await readJson(resolve(parityDirectory, `${name}.json`));
+    if (
+      parity &&
+      (parity.status !== "verified" ||
+        parity.result?.pass !== true ||
+        (parity.kind !== "original" &&
+          (typeof (
+            parity.artifacts?.referenceVideo ?? parity.artifacts?.remocnVideo
+          ) !== "string" ||
+            typeof parity.artifacts?.hyperframesVideo !== "string")))
+    )
+      throw new Error(
+        `${name}: catalog generation requires a passing parity proof and preview videos`,
+      );
+    if (parity?.classification === "compiled-source-port") {
+      assertExactCompiledParity(parity);
+      await assertVerifiedBlockFiles(
+        resolve(blocksDirectory, name),
+        item,
+        parity.filesSha256,
+      );
+    }
     const primary =
       item.files.find((file) => file.target === "index.html") ??
       item.files.find(
@@ -95,7 +140,7 @@ const entries = await Promise.all(
 );
 
 entries.sort((left, right) => left.item.title.localeCompare(right.item.title));
-const summaries = entries.map(
+let summaries = entries.map(
   ({
     item,
     sourceRepository,
@@ -121,6 +166,24 @@ const summaries = entries.map(
     sourceRepository,
   }),
 );
+if (selected.size) {
+  const current = await readJson(outputPath);
+  const replacements = new Map(
+    summaries.map((entry) => [entry.item.name, entry]),
+  );
+  summaries = current.map(
+    (entry) => replacements.get(entry.item.name) ?? entry,
+  );
+  const existing = new Set(current.map((entry) => entry.item.name));
+  summaries.push(
+    ...[...replacements.values()].filter(
+      (entry) => !existing.has(entry.item.name),
+    ),
+  );
+  summaries.sort((left, right) =>
+    left.item.title.localeCompare(right.item.title),
+  );
+}
 const output = `${JSON.stringify(summaries, null, 2)}\n`;
 
 if (checking) {
@@ -137,7 +200,7 @@ if (checking) {
   await writeFile(outputPath, output);
 }
 
-if (!checking)
+if (!checking || selected.size)
   await Promise.all(
     entries.map(
       async ({
@@ -155,6 +218,17 @@ if (!checking)
           "catalog.json",
         );
         const details = `${JSON.stringify({ item: { ...item, sourcePath, sourceTarget, compositionId, preview, dimensions: item.dimensions ?? null, duration: item.duration ?? null, origin: item.origin ?? null }, parity })}\n`;
+        if (checking) {
+          const current = await readFile(path, "utf8").catch((error) => {
+            if (error.code === "ENOENT") return "";
+            throw error;
+          });
+          if (current !== details)
+            throw new Error(
+              `${item.name}: catalog details are stale. Run npm run sync:catalog -- --only ${item.name}.`,
+            );
+          return;
+        }
         await mkdir(dirname(path), { recursive: true });
         await writeFile(path, details);
       },

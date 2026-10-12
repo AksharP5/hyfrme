@@ -8,22 +8,25 @@ const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.HYFRME_PLAYWRIGHT_CORE ?? "playwright-core");
 const root = resolve(import.meta.dirname, "..");
 const release = resolve(root, ".work/t3-v0042-bin/t3-0.0.42-linux-x64");
-const source = resolve(root, "assets/t3-code/v0.0.42");
+const originalSource = resolve(root, "assets/t3-code/v0.0.42");
+const source = process.env.T3_REFERENCE_OUTPUT ? resolve(process.env.T3_REFERENCE_OUTPUT,"source") : originalSource;
 const theme = process.env.T3_REFERENCE_THEME ?? "dark";
 if (!["dark", "light"].includes(theme)) throw new Error("T3_REFERENCE_THEME must be dark or light");
-const project = resolve(root, `.work/t3-v0042-return-worktree-${theme}-fixture`);
+const project = resolve(process.env.T3_REFERENCE_PROJECT ?? resolve(root, `.work/t3-v0042-return-worktree-${theme}-fixture`));
 const executablePath = process.env.HYFRME_CHROMIUM;
 if (!executablePath) throw new Error("Set HYFRME_CHROMIUM to the pinned Chrome executable");
 const prefix = `return-worktree-v0042-${theme}`;
-const work = resolve(root, `.work/t3-${prefix}-reference`);
-const reference = resolve(root, `parity/t3-return-worktree-v0042-${theme}-reference.mkv`);
-const base = JSON.parse(await readFile(resolve(source, "brief-v0042-fixture.json"), "utf8"));
+const work = resolve(process.env.T3_REFERENCE_OUTPUT ?? resolve(root, `.work/t3-${prefix}-reference`));
+const reference = process.env.T3_REFERENCE_OUTPUT ? resolve(work,"reference.mkv") : resolve(root, `parity/t3-return-worktree-v0042-${theme}-reference.mkv`);
+const base = JSON.parse(await readFile(resolve(originalSource, "brief-v0042-fixture.json"), "utf8"));
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const version = spawnSync(resolve(release, "t3"), ["--version"], { encoding: "utf8" });
 if (version.status !== 0 || version.stdout.trim() !== "t3 v0.0.42") throw new Error("Wrong T3 Code release");
 const server = spawn(resolve(release, "t3"), ["serve", "--mode", "desktop", "--base-dir", project,
   "--port", theme === "dark" ? "3978" : "3979", "--host", "127.0.0.1", "--no-browser"],
 { cwd: root, stdio: ["ignore", "pipe", "pipe"] });
+let browser;
+try {
 let serverOutput = "";
 for (const stream of [server.stdout, server.stderr]) stream.on("data", (chunk) => { serverOutput += chunk; });
 let pairingUrl;
@@ -50,7 +53,8 @@ const frames = 120;
 const fps = 30;
 const events = { open: 30, hover: 60, select: 90 };
 await mkdir(work, { recursive: true });
-const browser = await chromium.launch({ executablePath, headless: true, args: [
+await mkdir(source, { recursive: true });
+browser = await chromium.launch({ executablePath, headless: true, args: [
   "--no-sandbox", "--disable-dev-shm-usage", "--font-render-hinting=none", "--force-color-profile=srgb",
   "--use-gl=angle", "--use-angle=gl-egl", "--enable-gpu-rasterization", "--ignore-gpu-blocklist", "--disable-software-rasterizer",
 ] });
@@ -79,7 +83,11 @@ try {
   const editor = page.locator('[data-testid="composer-editor"]');
   await editor.waitFor({ timeout: 20000 });
   await page.waitForTimeout(900);
-  await page.locator('button[data-slot="toast-close"]').evaluateAll((buttons) => buttons.forEach((button) => button.click()));
+  await page.locator('button[data-slot="toast-close"]').evaluateAll((buttons) => {
+    window.__hyfrmeDismissedToasts = buttons.map(button => button.closest('[data-position]'));
+    if (window.__hyfrmeDismissedToasts.some(node => !node)) throw new Error('Toast root absent');
+    buttons.forEach(button => button.click());
+  });
   await page.evaluate(() => document.fonts.ready);
   const currentTheme = await page.evaluate(() => document.documentElement.className.includes("dark") ? "dark" : "light");
   if (currentTheme !== theme) throw new Error(`Official app displayed ${currentTheme} under ${theme} capture`);
@@ -92,10 +100,48 @@ try {
   await editor.evaluate((element) => element.blur());
   await page.mouse.move(800, 80);
   await page.waitForTimeout(250);
+  await page.waitForFunction(() => window.__hyfrmeDismissedToasts.every(node => !node.isConnected) && document.querySelectorAll('[data-slot="toast-viewport"] [data-ending-style]').length === 0, undefined, {timeout:3000});
+  await writeFile(resolve(source,'toast-readiness.json'),JSON.stringify(await page.evaluate(()=>({dismissedCount:window.__hyfrmeDismissedToasts.length,allDetached:window.__hyfrmeDismissedToasts.every(node=>!node.isConnected),exitingCount:document.querySelectorAll('[data-slot="toast-viewport"] [data-ending-style]').length})),null,2));
   const popup = page.locator('[data-base-ui-portal]:has([data-slot="select-popup"])').last();
+  const ids = { original:new Map(), captured:new Map() };
+  const normalizeIds = (html, mapping) => html.replace(/_r_[^_]+_/g, token => {
+    if(!mapping.has(token)) mapping.set(token, `_r_${mapping.size}_`);
+    return mapping.get(token);
+  });
+  const normalizePortalOrder = (html, original) => {
+    for(const slot of ['select-positioner','select-popup']) {
+      const pattern = new RegExp('<div\\b[^>]*data-slot="'+slot+'"[^>]*>','g');
+      const originals = [...original.matchAll(pattern)];
+      const captures = [...html.matchAll(pattern)];
+      if(originals.length!==1 || captures.length!==1) throw new Error('Native portal slot multiplicity differs');
+      let tag = captures[0][0];
+      if((tag.match(/ data-open=""/g)||[]).length!==1 || (tag.match(/data-open/g)||[]).length!==1) throw new Error('Native portal open attribute differs');
+      if(slot==='select-positioner') {
+        const expectedStyle = originals[0][0].match(/style="([^"]*)"/)?.[1];
+        const style = tag.match(/style="([^"]*)"/)?.[1];
+        const origins = expectedStyle?.match(/ --transform-origin: [^;]+;/g);
+        if(!style || origins?.length!==1 || (style.match(/--transform-origin:/g)||[]).length!==1) throw new Error('Native transform origin multiplicity differs');
+        const reordered = expectedStyle.replace(origins[0],'') + origins[0];
+        if(style!==expectedStyle && style!==reordered) throw new Error('Native portal style values differ');
+        tag = tag.replace('style="'+style+'"','style="'+expectedStyle+'"');
+      }
+      html = html.replace(captures[0][0],tag.replace(' data-open=""','').replace(/>$/,' data-open="">'));
+    }
+    return html;
+  };
+  const assertSource = async (phase, html) => {
+    if(!process.env.T3_REFERENCE_OUTPUT) return;
+    await writeFile(resolve(source,`${prefix}-${phase}-observed.html`),html);
+    const original = await readFile(resolve(originalSource,`${prefix}-${phase}.html`),'utf8');
+    const expected = phase==='portal' ? normalizePortalOrder(original,original) : original;
+    const captured = phase==='portal' ? normalizePortalOrder(html,original) : html;
+    if(normalizeIds(expected,ids.original)!==normalizeIds(captured,ids.captured)) throw new Error(`Native ${phase} source differs beyond bounded ordering and bijective generated IDs`);
+    await writeFile(resolve(source,'source-id-mapping.json'),JSON.stringify({original:[...ids.original],captured:[...ids.captured]},null,2));
+  };
   const saveDom = async (phase) => {
     const dom = (await page.locator("#root").evaluate((element) => element.innerHTML)).replaceAll(project, "hyfrme-project");
     if (/\/home\/|auth[_-]?token|session[_-]?token|127\.0\.0\.1:\d+/i.test(dom)) throw new Error(`Private data in ${phase} DOM`);
+    await assertSource(phase,dom);
     await writeFile(resolve(source, `${prefix}-${phase}.html`), dom);
   };
   const freeze = async (phase) => {
@@ -133,6 +179,7 @@ try {
       await saveDom("menu");
       const portal = (await popup.evaluate((element) => element.outerHTML)).replaceAll(project, "hyfrme-project");
       if (/\/home\/|auth[_-]?token|session[_-]?token/i.test(portal)) throw new Error("Private data in workspace portal");
+      await assertSource("portal",portal);
       await writeFile(resolve(source, `${prefix}-portal.html`), portal);
     }
     if (frame >= events.open && frame < events.hover) {
@@ -182,3 +229,8 @@ await writeFile(resolve(source, `${prefix}-fixture.json`), JSON.stringify({
   referenceSha256: hash(await readFile(reference)),
 }, null, 2) + "\n");
 console.log(`Captured ${frames} native T3 Code v0.0.42 Return to Worktree ${theme} frames.`);
+
+} finally {
+  if(browser?.isConnected()) await browser.close();
+  server.kill("SIGTERM");
+}

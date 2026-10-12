@@ -19,7 +19,7 @@ async function freePort() {
   return address.port;
 }
 
-export async function createT3V0042Capture({ slug, theme, seed = "composer", chromium }) {
+export async function createT3V0042Capture({ slug, theme, seed = "composer", chromium, initialThread = "Build a logo intro" }) {
   if (!new Set(["dark", "light"]).has(theme)) throw new Error("Capture theme must be dark or light");
   if (!chromium) throw new Error("Set HYFRME_CHROMIUM to the pinned Chrome executable");
   const version = spawnSync(resolve(release, "t3"), ["--version"], { encoding: "utf8" });
@@ -32,6 +32,8 @@ export async function createT3V0042Capture({ slug, theme, seed = "composer", chr
     composer: ["t3-v0042-composer-fixture", "t3-v0042-composer-project"],
     actions: ["t3-v0042-actions-fixture", "t3-v0042-actions-project"],
     pin: ["t3-v0042-pin-fixture", "t3-v0042-pin-project"],
+    sidebar: ["t3-v0042-sidebar-fixture", "t3-v0042-sidebar-project"],
+    answer: ["t3-agent-answer-fixture", "t3-agent-answer-project"],
   };
   const selectedSeed = seeds[seed];
   if (!selectedSeed) throw new Error(`Unknown T3 capture seed: ${seed}`);
@@ -85,8 +87,10 @@ UPDATE projection_threads SET worktree_path='${escapedProject}' WHERE project_id
   await page.locator('[data-testid="composer-editor"]').waitFor({ timeout: 20000 });
   const actualTheme = await page.evaluate(() => document.documentElement.classList.contains("dark") ? "dark" : "light");
   if (actualTheme !== theme) throw new Error(`T3 served ${actualTheme} to the ${theme} fixture`);
-  await page.getByText("Build a logo intro", { exact: true }).click();
-  await page.waitForURL(/hyfrme-fixture-logo-intro/);
+  if (initialThread !== null) {
+    await page.getByText(initialThread, { exact: true }).click();
+    await page.waitForURL(/hyfrme-fixture-logo-intro/);
+  }
   await page.waitForTimeout(500);
   await page.locator('button[data-slot="toast-close"]').evaluateAll((buttons) => buttons.forEach((button) => button.click()));
   await page.evaluate(() => document.fonts.ready);

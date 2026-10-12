@@ -1,0 +1,147 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 1.716,
+        "selector": "#focus-pull-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 451.88,
+          "top": 294.47,
+          "right": 828.12,
+          "bottom": 424.32,
+          "width": 376.24,
+          "height": 129.85
+        },
+        "containerSelector": "#focus-pull-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "text": "Scene A",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/focus-pull.html",
+        "bbox": {
+          "x": 451.88,
+          "y": 294.47,
+          "width": 376.24,
+          "height": 129.85
+        },
+        "firstSeen": 1.716,
+        "lastSeen": 1.961,
+        "occurrences": 4,
+        "heldMs": 245.0000000000001
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 1.9,
+        "selector": "#focus-pull-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 451.88,
+          "top": 294.47,
+          "right": 828.12,
+          "bottom": 424.32,
+          "width": 376.24,
+          "height": 129.85
+        },
+        "containerSelector": "#focus-pull-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Scene A",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/focus-pull.html",
+        "bbox": {
+          "x": 451.88,
+          "y": 294.47,
+          "width": 376.24,
+          "height": 129.85
+        },
+        "firstSeen": 1.9,
+        "lastSeen": 1.9,
+        "occurrences": 1,
+        "heldMs": 0
+      }
+    ],
+    "duration": 3.8,
+    "samples": [
+      0.211,
+      0.633,
+      1.056,
+      1.478,
+      1.9,
+      2.322,
+      2.744,
+      3.167,
+      3.589
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 2,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.211,
+      1.056,
+      1.9,
+      2.744,
+      3.589
+    ],
+    "checked": 6,
+    "passed": 6
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.99",
+    "latestVersion": "0.8.114",
+    "updateAvailable": true
+  }
+}

@@ -8,6 +8,7 @@ ${frameMathSource}
 let frame = 0;
 let config;
 let assets;
+let finalFrames;
 let slug;
 let nextHandle = 0;
 ${scopeSvgIds ? "let instanceId;\n" : ""}const pending = new Map();
@@ -33,7 +34,7 @@ export const continueRender = (handle) => {
   }
 };
 export const __waitForSource = () => pending.size === 0 ? Promise.resolve() : new Promise(resolve => waiting.add(resolve));
-export const __configure = (value, files, name) => {config = value; assets = files; slug = name;};
+export const __configure = (value, files, name, ends = {}) => {config = value; assets = files; slug = name; finalFrames = ends;};
 export const __setFrame = (value) => {frame = value;};
 ${
   scopeSvgIds
@@ -52,15 +53,29 @@ export const Img = ({src, ...props}) => React.createElement('img', {
   ...props, src: staticFile(src), decoding: 'sync',
   'data-hyfrme-image-fallback': typeof props.onError === 'function' ? '' : undefined,
 });
-export const OffthreadVideo = ({src, trimBefore = 0, startFrom = trimBefore, playbackRate = 1, volume, ...props}) => {
+export const OffthreadVideo = ({src, style, trimBefore = 0, startFrom = trimBefore, playbackRate = 1, volume, ...props}) => {
   const id = slug + '-video-' + useId().replace(/[^a-zA-Z0-9_-]/g, '');
-  return React.createElement('video', {
-    ...props, id, src: staticFile(src), preload: 'auto',
+  const resolved = staticFile(src);
+  const final = finalFrames[resolved];
+  const ended = final && (frame * playbackRate + startFrom) / config.fps >= final.duration;
+  // Remotion holds the last source sample, which output-fps extraction can omit.
+  if (ended) return React.createElement('img', {src: final.src, style, decoding: 'sync'});
+  const mediaStyle = {
+    position: 'absolute', inset: 0, width: '100%', height: '100%', maxWidth: 'none',
+    objectFit: style?.objectFit, objectPosition: style?.objectPosition, opacity: 1, filter: 'none',
+  };
+  // Keep source compositing outside the decoded-frame replacement's computed-style copy.
+  return React.createElement('div', {style}, React.createElement('video', {
+    ...props, id, src: resolved, preload: 'auto',
+    style: mediaStyle,
     'data-start': 0, 'data-duration': config.durationInFrames / config.fps,
     'data-track-index': 1, 'data-media-start': startFrom / config.fps,
     'data-playback-rate': playbackRate,
     ...(!props.muted ? {'data-has-audio': true} : {}),
     ...(typeof volume === 'number' ? {'data-volume': volume} : {}),
-  });
+  }), final && React.createElement('img', {
+    src: final.src, decoding: 'sync',
+    style: {...mediaStyle, display: 'none'},
+  }));
 };
 `;

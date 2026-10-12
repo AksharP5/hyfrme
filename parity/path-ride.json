@@ -2,7 +2,7 @@
   "slug": "path-ride",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/path-ride/index.tsx",
     "config": "registry/remocn/path-ride/config.ts",
     "license": "MIT"
@@ -24,21 +24,41 @@
     },
     "background": "#ff4d1a"
   },
+  "filesSha256": {
+    "registry-item.json": "559128498f0bc894e04870742d3ef0f6888022e0656c22f4c150d4238d3aba5f",
+    "path-ride.html": "86f8065cdf49b46a2aae46827f8adc082f711dc95dc0275e47b4dcb6eb5dc213",
+    "path-ride.runtime.js": "7dce72279759c1d475f2032520efe3a3abc321d31dc8ed67b46c8b79a6626ff7",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "Inter-Latin.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/@remotion-paths-LICENSE.md": "2a1fca9c06e25faf5ee59e88cda0b6bd028baf256c8e1f5cb25a0233a095d3b0",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/Inter-OFL.txt": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "0e306a58ebd3dd1bb2abab776fe1a0d3834d24bb60e866b51728f1975b68485f",
+  "fingerprint": "462531e06aac6a86a4636a8e42bdd4326a30b13ae578736a05bb06bc2b0dced1",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 96,
-    "meanSsim": 0.9951568020833316,
-    "minSsim": 0.991322,
-    "p05Ssim": 0.992163,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
     "p95Ssim": 1,
     "alpha": {
+      "frameCount": 96,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 96,
       "mismatchedFrames": [],
       "pass": true
@@ -46,13 +66,14 @@
     "pass": true
   },
   "checks": {
-    "hyperframes": "full check reported 17 reviewed source-inherited errors (exit 1); strict render passed",
+    "canvasMode": "source-capability",
+    "hyperframes": "full check reported 16 reviewed source-inherited errors (exit 1); strict render passed",
     "sourceInheritedFindings": [
       {
         "slug": "path-ride",
         "origin": {
           "repository": "https://github.com/Remocn/remocn",
-          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
           "source": "registry/remocn/path-ride/index.tsx",
           "config": "registry/remocn/path-ride/config.ts",
           "license": "MIT"
@@ -60,13 +81,16 @@
         "finding": {
           "code": "content_overlap"
         },
-        "reason": "The source lays each character along one shared motion path, so adjacent glyph boxes overlap by design. The 17 inspector hits are those per-letter layers; all 96 frames pass parity (mean/min SSIM 0.995157/0.991322) with exact alpha."
+        "reason": "The source positions adjacent glyphs along a curved path; their axis-aligned layout boxes overlap. The complete inspector finding remains in the parity check log; visual parity is checked separately against every upstream frame."
       }
     ],
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -78,6 +102,21 @@
     "hyperframesCheck": "parity/path-ride-diff/hyperframes-check.log",
     "worstFrame": "parity/path-ride-diff/worst-frame.png",
     "referenceAlpha": "parity/path-ride-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/path-ride-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/path-ride-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/path-ride-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/path-ride-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/path-ride/reference.mp4": "3239efd31cc46a232ba39b263dfa46436af9a2e07862fe358fbd5cf9e019298a",
+    "public/previews/path-ride/hyperframes.mp4": "3239efd31cc46a232ba39b263dfa46436af9a2e07862fe358fbd5cf9e019298a",
+    "public/previews/path-ride/thumbnail.png": "d00864df2e0af55eedb6cf0fd07e2277a8409a78d8b6348d4cd487d161e1d219",
+    "parity/path-ride-diff/summary.json": "fd4794706240a743ec0cc92198eec73db7a364cfe13e92f7aae118058743e5b7",
+    "parity/path-ride-diff/ssim.log": "f268c226f4e5f81ad7651b26fdb4a8878ff7558748ad9033f05b4eaee6f2f37b",
+    "parity/path-ride-diff/hyperframes-check.log": "b408341fffaab7d7544c094072ea0f06578abfe6ef337883bc5b66e588e6dff8",
+    "parity/path-ride-diff/worst-frame.png": "b3f00fba8abcc093ee64b21ecacfc95f7c909cd8db1205f4998c8fda85d242b7",
+    "parity/path-ride-diff/reference-alpha.framemd5": "4b822cd9cb7c572f2db4c260f7e742177468e276efadeec439f8f6e89fb21efe",
+    "parity/path-ride-diff/hyperframes-alpha.framemd5": "4b822cd9cb7c572f2db4c260f7e742177468e276efadeec439f8f6e89fb21efe",
+    "parity/path-ride-diff/reference-rgba.framemd5": "4c42973d92f140b0df68e95e13c9f517eb9d36040a56fbb55defb65dc86a9f1f",
+    "parity/path-ride-diff/hyperframes-rgba.framemd5": "4c42973d92f140b0df68e95e13c9f517eb9d36040a56fbb55defb65dc86a9f1f"
   }
 }

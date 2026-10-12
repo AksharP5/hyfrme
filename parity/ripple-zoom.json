@@ -2,7 +2,7 @@
   "slug": "ripple-zoom",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/ripple-zoom/index.tsx",
     "entry": "components/docs/examples/ripple-zoom-example.tsx",
     "config": "registry/remocn/ripple-zoom/config.ts",
@@ -22,25 +22,118 @@
     },
     "background": "#141318"
   },
+  "filesSha256": {
+    "registry-item.json": "945e1f295b4035e1210cd552447509252ad4965ffcf8ba62851ed2680f798c63",
+    "ripple-zoom.html": "8d5442135a56866c208773a656ab44767f29dc7d00a6dec033445283e3c627b0",
+    "ripple-zoom.runtime.js": "11f16ddca34fdc71daa7cf8bae42d74d04ebcfddf43d70df38b97caf6c58fcf2",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md": "fc408cbbf99a20fbc88c2296a04bac7dadbe7114f2456673de3e5b7986cfd19d"
+  },
   "classification": "compiled-source-port",
-  "status": "verified",
+  "measurement": "lossless-png",
+  "status": "failed",
+  "fingerprint": "c2b8b7eecad683fe2d42377ead4ecac5d6bf9300b9adb5b30c1099a9766de12c",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 116,
-    "meanSsim": 0.971219,
-    "minSsim": 0.943704,
-    "p05Ssim": 0.946277,
-    "p95Ssim": 0.99759,
-    "pass": true
+    "meanSsim": 0.9073139137931034,
+    "minSsim": 0.152777,
+    "p05Ssim": 0.168953,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 116,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 116,
+      "mismatchedFrames": [
+        23,
+        25,
+        27,
+        29,
+        31,
+        33,
+        35,
+        37,
+        39,
+        41,
+        43,
+        45,
+        47,
+        50,
+        52,
+        54,
+        56,
+        84
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check reported 1 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "ripple-zoom",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/ripple-zoom/index.tsx",
+          "entry": "components/docs/examples/ripple-zoom-example.tsx",
+          "config": "registry/remocn/ripple-zoom/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "text": "Scene A",
+          "selector": "#ripple-zoom-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "containerSelector": "#ripple-zoom-source-root > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > canvas:nth-of-type(1)",
+          "coveredFraction": 1,
+          "sourceFile": "compositions/ripple-zoom.html"
+        },
+        "reason": "The pinned transition covers Scene A with its entering shader during the authored fade. See registry/remocn/ripple-zoom/index.tsx:36-95. Preserve the source layer order; the original finding remains recorded and every RGBA frame must still match."
+      }
+    ],
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/ripple-zoom/remocn.mp4",
+    "referenceVideo": "public/previews/ripple-zoom/reference.mp4",
     "hyperframesVideo": "public/previews/ripple-zoom/hyperframes.mp4",
-    "summary": "parity/ripple-zoom-diff/summary.json"
+    "thumbnail": "public/previews/ripple-zoom/thumbnail.png",
+    "summary": "parity/ripple-zoom-diff/summary.json",
+    "perFrameSsim": "parity/ripple-zoom-diff/ssim.log",
+    "hyperframesCheck": "parity/ripple-zoom-diff/hyperframes-check.log",
+    "worstFrame": "parity/ripple-zoom-diff/worst-frame.png",
+    "referenceAlpha": "parity/ripple-zoom-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/ripple-zoom-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/ripple-zoom-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/ripple-zoom-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/ripple-zoom/reference.mp4": "b297b9f3836f5f1fda366068a2a9d7e136ddec7b720c07f1d2740019c81e784d",
+    "public/previews/ripple-zoom/hyperframes.mp4": "8d35f1c35ec24b4299a40004d151ddd8cc19e9f6cd9361a0a180bdf636cbf062",
+    "public/previews/ripple-zoom/thumbnail.png": "6281804c8aadb246b45a89c5cb3926b9fe484ab06e8a4d9e12a5dee88cd60214",
+    "parity/ripple-zoom-diff/summary.json": "7a303f03969c65450b5e4f3c2d660b7d8b4a70e967a06d5857cef56ca3b3190e",
+    "parity/ripple-zoom-diff/ssim.log": "23eadce5f1e9044c3d5daf3f778f1800674d3b9e4390280dab038f4bf01e6630",
+    "parity/ripple-zoom-diff/hyperframes-check.log": "b23661df15edb53566e753e088961446b90ab28b246e894cf24c0441f5306805",
+    "parity/ripple-zoom-diff/worst-frame.png": "bbf833b6cb4e23741c3c22e8c387ff439363d77022a73e637c8d7c8e1ed088b2",
+    "parity/ripple-zoom-diff/reference-alpha.framemd5": "adfd21ad9324abcc9e7e316f5491b18ba1c49f3330160e5ec3b693dc6720e2e1",
+    "parity/ripple-zoom-diff/hyperframes-alpha.framemd5": "adfd21ad9324abcc9e7e316f5491b18ba1c49f3330160e5ec3b693dc6720e2e1",
+    "parity/ripple-zoom-diff/reference-rgba.framemd5": "9f4045acb69d688ed2c05eb46f614cfe592d828024c152d008ebc22d4478f76a",
+    "parity/ripple-zoom-diff/hyperframes-rgba.framemd5": "486f0612f195f2142e25c4f7a8ef0b86f749171b1bcf5834b26453cea62427f6"
   }
 }

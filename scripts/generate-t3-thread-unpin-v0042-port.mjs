@@ -1,39 +1,69 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { nativeT3MonoFaces } from "./t3-native-fonts.mjs";
+import { nativeTransitionRuntime } from "./t3-native-transition-runtime.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const source = resolve(root, "assets/t3-code/v0.0.42");
 const name = "t3-thread-unpin";
 const output = resolve(root, ".work/t3-thread-unpin-v0042-candidate");
-const fixture = JSON.parse(await readFile(resolve(source, "thread-unpin-fixture.json"), "utf8"));
-const lightFixture = JSON.parse(await readFile(resolve(source, "thread-unpin-light-fixture.json"), "utf8"));
-if (JSON.stringify(lightFixture.events) !== JSON.stringify(fixture.events)) throw new Error("Dark and light event frames differ");
+const fixture = JSON.parse(
+  await readFile(resolve(source, "thread-unpin-fixture.json"), "utf8"),
+);
+const lightFixture = JSON.parse(
+  await readFile(resolve(source, "thread-unpin-light-fixture.json"), "utf8"),
+);
+if (JSON.stringify(lightFixture.events) !== JSON.stringify(fixture.events))
+  throw new Error("Dark and light event frames differ");
 const rowOffset = (motions, title) => {
   const entry = motions.find(({ row }) => row.includes(title));
   const match = entry?.keyframes[0]?.match(/^translateY\((-?[\d.]+)px\)$/);
-  if (!match || entry.durationMs !== 150) throw new Error(`Native Unpin motion missing for ${title}`);
+  if (!match || entry.durationMs !== 150)
+    throw new Error(`Native Unpin motion missing for ${title}`);
   return Number(match[1]);
 };
 const motionOffsets = [fixture.motion, lightFixture.motion].map((motions) => [
-  rowOffset(motions, fixture.targetThread), rowOffset(motions, "Build a logo intro"),
+  rowOffset(motions, fixture.targetThread),
+  rowOffset(motions, "Build a logo intro"),
 ]);
-const theme = JSON.parse(await readFile(resolve(source, "dark-theme.json"), "utf8"));
-const lightTheme = JSON.parse(await readFile(resolve(source, "light-theme.json"), "utf8"));
-const css = await readFile(resolve(source, "t3.css"), "utf8");
-const gsap = await readFile(resolve(root, "registry/blocks/before-after/gsap.min.js"), "utf8");
-const phases = fixture.phases;
-const states = await Promise.all(phases.map((phase) => readFile(resolve(source, `thread-unpin-${phase}.html`), "utf8")));
-for (let index = 0; index < states.length; index++) {
-  states[index] = states[index].replace(/(<span[^>]*class="[^"]*\[text-box:trim-both_cap_alphabetic\][^"]*")/g, "$1 data-layout-ignore");
-}
-states[0] = states[0].replace(
-  'group-hover:opacity-100"><div class="flex shrink-0 items-center gap-2">',
-  'group-hover:opacity-100" style="opacity:1"><div class="flex shrink-0 items-center gap-2">',
+const theme = JSON.parse(
+  await readFile(resolve(source, "dark-theme.json"), "utf8"),
 );
-for (const index of [1, 3]) states[index] = states[index].replace("<main ", "<main data-layout-ignore ");
-const portals = await Promise.all(["unpin-menu", "pin-menu"].map(async (phase) =>
-  (await readFile(resolve(source, `thread-unpin-${phase}-portal.html`), "utf8"))
-    .replaceAll('<div class="dropdown-glass', '<div data-layout-ignore class="dropdown-glass')));
+const lightTheme = JSON.parse(
+  await readFile(resolve(source, "light-theme.json"), "utf8"),
+);
+const css = await readFile(resolve(source, "t3.css"), "utf8");
+const gsap = await readFile(
+  resolve(root, "registry/blocks/before-after/gsap.min.js"),
+  "utf8",
+);
+const phases = fixture.phases;
+const states = await Promise.all(
+  phases.map((phase) =>
+    readFile(resolve(source, `thread-unpin-${phase}.html`), "utf8"),
+  ),
+);
+for (let index = 0; index < states.length; index++) {
+  states[index] = states[index].replace(
+    /(<span[^>]*class="[^"]*\[text-box:trim-both_cap_alphabetic\][^"]*")/g,
+    "$1 data-layout-ignore",
+  );
+}
+for (const index of [1, 3])
+  states[index] = states[index].replace("<main ", "<main data-layout-ignore ");
+const portals = await Promise.all(
+  ["unpin-menu", "pin-menu"].map(async (phase) =>
+    (
+      await readFile(
+        resolve(source, `thread-unpin-${phase}-portal.html`),
+        "utf8",
+      )
+    ).replaceAll(
+      '<div class="dropdown-glass',
+      '<div data-layout-ignore class="dropdown-glass',
+    ),
+  ),
+);
 
 const fields = [
   ["projectName", "Project name", "hyfrme"],
@@ -54,11 +84,27 @@ const fields = [
   ["fourthAge", "Fourth thread age", "1d"],
   ["fifthAge", "Fifth thread age", "2d"],
   ["settledAge", "Settled thread age", "7h"],
-  ["targetQuestion", "Pinned thread user message", "Which Hyfrme motion blocks need a fresh parity render?"],
-  ["targetReply", "Pinned thread answer", "Logo Enter and Answer Stream should be checked at their final frames. Their pinned reference and Hyfrme output must use matching dimensions, frame rate, and input values."],
-  ["targetQuestionTime", "Pinned thread user message time", "yesterday at 7:24 PM"],
+  [
+    "targetQuestion",
+    "Pinned thread user message",
+    "Which Hyfrme motion blocks need a fresh parity render?",
+  ],
+  [
+    "targetReply",
+    "Pinned thread answer",
+    "Logo Enter and Answer Stream should be checked at their final frames. Their pinned reference and Hyfrme output must use matching dimensions, frame rate, and input values.",
+  ],
+  [
+    "targetQuestionTime",
+    "Pinned thread user message time",
+    "yesterday at 7:24 PM",
+  ],
   ["targetReplyTime", "Pinned thread answer time", "yesterday at 7:26 PM"],
-  ["composerPlaceholder", "Composer placeholder", "Enable a provider in Settings to send a message"],
+  [
+    "composerPlaceholder",
+    "Composer placeholder",
+    "Enable a provider in Settings to send a message",
+  ],
   ["providerStatus", "Provider status", "Open provider settings"],
   ["permissionMode", "Permission", "Full access"],
   ["workspaceMode", "Workspace", "Worktree"],
@@ -74,18 +120,70 @@ const fields = [
   ["deleteAction", "Delete menu action", "Delete"],
 ];
 const variables = [
-  ...fields.map(([id, label, value]) => ({ id, type: "string", label, default: value })),
-  { id: "theme", type: "string", label: "T3 Code appearance", default: "dark", options: ["dark", "light"] },
-  { id: "menuFrame", type: "number", label: "Open Unpin menu at frame", default: fixture.events.menu, min: 0, max: 105, step: 1 },
-  { id: "unpinFrame", type: "number", label: "Unpin thread at frame", default: fixture.events.unpin, min: 1, max: 110, step: 1 },
-  { id: "pinMenuFrame", type: "number", label: "Show Pin action at frame", default: fixture.events.pinMenu, min: 1, max: 119, step: 1 },
+  ...fields.map(([id, label, value]) => ({
+    id,
+    type: "string",
+    label,
+    default: value,
+  })),
+  {
+    id: "theme",
+    type: "string",
+    label: "T3 Code appearance",
+    default: "dark",
+    options: ["dark", "light"],
+  },
+  {
+    id: "menuFrame",
+    type: "number",
+    label: "Open Unpin menu at frame",
+    default: fixture.events.menu,
+    min: 0,
+    max: 105,
+    step: 1,
+  },
+  {
+    id: "unpinFrame",
+    type: "number",
+    label: "Unpin thread at frame",
+    default: fixture.events.unpin,
+    min: 1,
+    max: 110,
+    step: 1,
+  },
+  {
+    id: "pinMenuFrame",
+    type: "number",
+    label: "Show Pin action at frame",
+    default: fixture.events.pinMenu,
+    min: 1,
+    max: 119,
+    step: 1,
+  },
 ];
-const defaults = Object.fromEntries(variables.map(({ id, default: value }) => [id, value]));
-const replacements = Object.fromEntries(fields.map(([id, , value]) => [value, id]));
-const fontTheme = Object.fromEntries(Object.entries(theme).filter(([key]) =>
-  key.includes("font-family") || key === "--font-sans" || key === "--font-mono"));
-const stageTheme = Object.entries(theme).map(([key, value]) => `${key}:${value};`).join("");
-const escapeAttribute = (value) => value.replaceAll("&", "&amp;").replaceAll("'", "&#39;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+const defaults = Object.fromEntries(
+  variables.map(({ id, default: value }) => [id, value]),
+);
+const replacements = Object.fromEntries(
+  fields.map(([id, , value]) => [value, id]),
+);
+const fontTheme = Object.fromEntries(
+  Object.entries(theme).filter(
+    ([key]) =>
+      key.includes("font-family") ||
+      key === "--font-sans" ||
+      key === "--font-mono",
+  ),
+);
+const stageTheme = Object.entries(theme)
+  .map(([key, value]) => `${key}:${value};`)
+  .join("");
+const escapeAttribute = (value) =>
+  value
+    .replaceAll("&", "&amp;")
+    .replaceAll("'", "&#39;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
 const scriptJson = (value) => JSON.stringify(value).replaceAll("</", "<\\/");
 
 const html = `<!doctype html>
@@ -96,7 +194,11 @@ const html = `<!doctype html>
 <style>${css}</style>
 <style>
   #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
-  .t3-stage { ${stageTheme} position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  .t3-stage { ${stageTheme} position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--background); color: var(--foreground); -webkit-font-smoothing: antialiased; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  /* Preserve native T3 typography when HyperFrames compiles the block. */
+  .t3-stage, .t3-stage *:not([text-rendering]) { text-rendering: auto; }
+  /* Native Submit buttons must not animate inherited clip visibility. */
+  .t3-stage button[type="submit"].transition-all { transition-property: background-color, color, box-shadow, transform, scale, opacity; }
   .t3-state[hidden] { display: none !important; }
   .t3-state:not([hidden]) { display: contents; }
   .base-ui-disable-scrollbar { scrollbar-width: none; }
@@ -105,6 +207,7 @@ const html = `<!doctype html>
   @font-face { font-family: "Segoe UI Emoji"; src: local("Segoe UI Emoji"); }
   @font-face { font-family: "Segoe UI Symbol"; src: local("Segoe UI Symbol"); }
   @font-face { font-family: "SFMono-Regular"; src: local("SFMono-Regular"); }
+${nativeT3MonoFaces}
 </style>
 <div id="root" data-composition-id="${name}" data-start="0" data-duration="4" data-fps="30" data-width="1200" data-height="659">
   <div class="dark t3-stage">
@@ -164,6 +267,19 @@ for (const section of [sections[1], sections[3]]) {
     }
   }
 }
+${nativeTransitionRuntime}
+for (const [section, start] of [
+  [sections[1], Number(options.menuFrame)],
+  [sections[3], Math.max(Number(options.pinMenuFrame), Number(options.unpinFrame) + 1, Number(options.menuFrame) + 2)],
+]) {
+  const row = [...section.querySelectorAll('[data-testid="sidebar-row-card"]')]
+    .find((element) => element.textContent.includes(options.targetThread));
+  if (!row) throw new Error('Unpin native hover row missing');
+  for (const element of row.querySelectorAll('[class*="group-hover/sidebar-row:opacity-"]')) {
+    const showing = element.classList.contains('group-hover/sidebar-row:opacity-100');
+    sourceTransition(element, 'opacity', showing ? '0' : '1', showing ? '1' : '0', start, 150);
+  }
+}
 for (const section of sections) {
   for (const editor of section.querySelectorAll('[data-testid="composer-editor"]')) {
     editor.setAttribute('aria-placeholder', options.composerPlaceholder);
@@ -180,7 +296,30 @@ for (const section of sections) {
     }
   }
 }
+// Native row animation preserves the source compositor and easing at every seek.
+const rowOffsets = ${scriptJson(motionOffsets)}[options.theme === 'light' ? 1 : 0];
+const rowAnimations = movingRows.map(({ row, index }) => {
+  const animation = row.animate([{ transform: 'translateY(' + rowOffsets[index] + 'px)' }, { transform: 'translateY(0px)' }], {
+    duration: 150, easing: 'ease-out', delay: Math.max(Number(options.unpinFrame), Number(options.menuFrame) + 1) * 1000 / 30,
+  });
+  animation.pause();
+  animation.currentTime = 0;
+  return animation;
+});
 const clock = { frame: 0 };
+let runtimeSeekCompletion;
+let nativeSeekBound = false;
+let nativeReady = Promise.resolve();
+async function waitForNativeTransitions() {
+  if (runtimeSeekCompletion) await runtimeSeekCompletion();
+  await nativeReady;
+}
+function bindNativeSeekCompletion() {
+  if (nativeSeekBound || typeof window.__hfWaitForSeekCompletion !== 'function') return;
+  nativeSeekBound = true;
+  runtimeSeekCompletion = window.__hfWaitForSeekCompletion;
+  window.__hfWaitForSeekCompletion = waitForNativeTransitions;
+}
 function draw() {
   const frame = Math.round(clock.frame);
   const menuFrame = Number(options.menuFrame);
@@ -188,27 +327,15 @@ function draw() {
   const pinMenuFrame = Math.max(Number(options.pinMenuFrame), unpinFrame + 1);
   const phase = frame < menuFrame ? 0 : frame < unpinFrame ? 1 : frame < pinMenuFrame ? 2 : 3;
   for (let index = 0; index < sections.length; index++) sections[index].hidden = index !== phase;
-  const elapsed = (frame - unpinFrame) * 1000 / 30;
-  const progress = Math.max(0, Math.min(1, elapsed / 150));
-  let low = 0, high = 1;
-  for (let index = 0; index < 20; index++) {
-    const middle = (low + high) / 2;
-    const inverse = 1 - middle;
-    const x = 3 * inverse * middle * middle * 0.58 + middle * middle * middle;
-    if (x < progress) low = middle; else high = middle;
-  }
-  const curveTime = (low + high) / 2;
-  const inverse = 1 - curveTime;
-  const eased = 3 * inverse * curveTime * curveTime + curveTime * curveTime * curveTime;
-  const offsets = ${scriptJson(motionOffsets)}[options.theme === 'light' ? 1 : 0];
-  for (const { row, index } of movingRows) {
-    row.style.transform = progress < 1 ? 'translateY(' + (offsets[index] * (1 - eased)) + 'px)' : '';
-  }
+  for (const animation of rowAnimations) animation.currentTime = frame * 1000 / 30;
+  window.__hyfrmeReady = nativeReady = Promise.all([Promise.all(rowAnimations.map((animation) => animation.ready)), seekNativeTransitions(sections[phase], frame)]);
+  bindNativeSeekCompletion();
 }
 draw();
 const timeline = gsap.timeline({ paused: true });
 timeline.to(clock, { frame: 120, duration: 4, ease: 'none', onUpdate: draw });
 window.__timelines['${name}'] = timeline;
+
 </script>
 </template>
 </body>
@@ -218,22 +345,69 @@ window.__timelines['${name}'] = timeline;
 await mkdir(resolve(output, "licenses"), { recursive: true });
 await writeFile(resolve(output, `${name}.html`), html);
 await writeFile(resolve(output, "t3-code-gsap.min.js"), gsap);
-await copyFile(resolve(root, "parity/t3-gallery/assets/T3-CODE-LICENSE.txt"), resolve(output, "licenses/T3-CODE-LICENSE.txt"));
-await copyFile(resolve(root, "registry/blocks/t3-thread-unpin/licenses/T3-THIRD_PARTY_NOTICES.md"), resolve(output, "licenses/T3-THIRD_PARTY_NOTICES.md"));
-await writeFile(resolve(output, "registry-item.json"), `${JSON.stringify({
-  $schema: "https://hyperframes.heygen.com/schema/registry-item.json",
-  name, type: "hyperframes:block", title: "T3 Code: Thread Unpin",
-  description: "Unpin a Hyfrme thread through T3 Code's real sidebar context menu, then see it return to active ordering and reveal the native Pin action.",
-  tags: ["composition", "app-ui", "t3-code", "thread-unpin", "hyfrme-port"],
-  author: "Hyfrme", authorUrl: "https://github.com/AksharP5/hyfrme", license: "MIT",
-  dimensions: fixture.viewport, duration: fixture.frames / fixture.fps,
-  files: [
-    { path: `${name}.html`, target: `compositions/${name}.html`, type: "hyperframes:composition" },
-    { path: "t3-code-gsap.min.js", target: "compositions/t3-code-gsap.min.js", type: "hyperframes:asset" },
-    { path: "licenses/T3-CODE-LICENSE.txt", target: "THIRD_PARTY_LICENSES/t3-code/T3-CODE-LICENSE.txt", type: "hyperframes:asset" },
-    { path: "licenses/T3-THIRD_PARTY_NOTICES.md", target: "THIRD_PARTY_LICENSES/t3-code/T3-THIRD_PARTY_NOTICES.md", type: "hyperframes:asset" },
-    { path: "README.md", target: `compositions/${name}.README.md`, type: "hyperframes:asset" },
-  ],
-}, null, 2)}\n`);
-await writeFile(resolve(output, "README.md"), `# T3 Code: Thread Unpin\n\nThis four-second, 1200 × 659 block reproduces T3 Code v${fixture.sourceTag.slice(1)} at 30 fps. Right-clicking the pinned row opens its sidebar context menu beside the row. Unpin restores normal ordering and the menu then offers Pin thread.\n\nCustomize project, branch, thread titles and ages, conversation content, composer copy, menu actions, and the three interaction beats through HyperFrames variables. Match the project and thread values with adjacent T3 Code blocks for continuity. Source: https://github.com/pingdotgg/t3code/tree/${fixture.sourceCommit}. Installed files include T3 Code's MIT license and third-party icon notice. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.\n`);
-console.log(`Generated ${name} from four native T3 Code states and two action menu portals.`);
+await copyFile(
+  resolve(root, "parity/t3-gallery/assets/T3-CODE-LICENSE.txt"),
+  resolve(output, "licenses/T3-CODE-LICENSE.txt"),
+);
+await copyFile(
+  resolve(
+    root,
+    "registry/blocks/t3-thread-unpin/licenses/T3-THIRD_PARTY_NOTICES.md",
+  ),
+  resolve(output, "licenses/T3-THIRD_PARTY_NOTICES.md"),
+);
+await writeFile(
+  resolve(output, "registry-item.json"),
+  `${JSON.stringify(
+    {
+      $schema: "https://hyperframes.heygen.com/schema/registry-item.json",
+      name,
+      type: "hyperframes:block",
+      title: "T3 Code: Thread Unpin",
+      description:
+        "Unpin a Hyfrme thread through T3 Code's real sidebar context menu, then see it return to active ordering and reveal the native Pin action.",
+      tags: ["composition", "app-ui", "t3-code", "thread-unpin", "hyfrme-port"],
+      author: "Hyfrme",
+      authorUrl: "https://github.com/AksharP5/hyfrme",
+      license: "MIT",
+      dimensions: fixture.viewport,
+      duration: fixture.frames / fixture.fps,
+      files: [
+        {
+          path: `${name}.html`,
+          target: `compositions/${name}.html`,
+          type: "hyperframes:composition",
+        },
+        {
+          path: "t3-code-gsap.min.js",
+          target: "compositions/t3-code-gsap.min.js",
+          type: "hyperframes:asset",
+        },
+        {
+          path: "licenses/T3-CODE-LICENSE.txt",
+          target: "THIRD_PARTY_LICENSES/t3-code/T3-CODE-LICENSE.txt",
+          type: "hyperframes:asset",
+        },
+        {
+          path: "licenses/T3-THIRD_PARTY_NOTICES.md",
+          target: "THIRD_PARTY_LICENSES/t3-code/T3-THIRD_PARTY_NOTICES.md",
+          type: "hyperframes:asset",
+        },
+        {
+          path: "README.md",
+          target: `compositions/${name}.README.md`,
+          type: "hyperframes:asset",
+        },
+      ],
+    },
+    null,
+    2,
+  )}\n`,
+);
+await writeFile(
+  resolve(output, "README.md"),
+  `# T3 Code: Thread Unpin\n\nThis four-second, 1200 × 659 block reproduces T3 Code v${fixture.sourceTag.slice(1)} at 30 fps. Right-clicking the pinned row opens its sidebar context menu beside the row. Unpin restores normal ordering and the menu then offers Pin thread.\n\nCustomize project, branch, thread titles and ages, conversation content, composer copy, menu actions, and the three interaction beats through HyperFrames variables. Match the project and thread values with adjacent T3 Code blocks for continuity. Source: https://github.com/pingdotgg/t3code/tree/${fixture.sourceCommit}. Installed files include T3 Code's MIT license and third-party icon notice. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.\n`,
+);
+console.log(
+  `Generated ${name} from four native T3 Code states and two action menu portals.`,
+);

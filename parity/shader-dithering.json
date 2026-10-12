@@ -2,7 +2,7 @@
   "slug": "shader-dithering",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shader-dithering/index.tsx",
     "config": "registry/remocn/shader-dithering/config.ts",
     "license": "MIT"
@@ -20,25 +20,77 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "52f9c68da3ae1394e3b89f93dd7ead08cd9c5a6bcd10d9f185a50cec8bb72fdf",
+    "shader-dithering.html": "ad5966950b2c7666d88400908df500daa49af7ea6358ec0b16e9ce075253725b",
+    "shader-dithering.runtime.js": "4df3280d1e803a3bc8d5a62143047dc2e0bd5d3be0fc8796eb42a0ae4a1fa4c5",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md": "fc408cbbf99a20fbc88c2296a04bac7dadbe7114f2456673de3e5b7986cfd19d"
+  },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "0773d794eab154c790e3f1343b8962acc36702005296577d29f092ce4cc0272e",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.988275,
-    "minSsim": 0.987866,
-    "p05Ssim": 0.987898,
-    "p95Ssim": 0.988579,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/shader-dithering/remocn.mp4",
+    "referenceVideo": "public/previews/shader-dithering/reference.mp4",
     "hyperframesVideo": "public/previews/shader-dithering/hyperframes.mp4",
-    "summary": "parity/shader-dithering-diff/summary.json"
+    "thumbnail": "public/previews/shader-dithering/thumbnail.png",
+    "summary": "parity/shader-dithering-diff/summary.json",
+    "perFrameSsim": "parity/shader-dithering-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-dithering-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-dithering-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-dithering-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-dithering-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shader-dithering-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shader-dithering-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shader-dithering/reference.mp4": "a940d4321364e90854f83372d63903631e366f87d3ebd68919f7dc3e10333929",
+    "public/previews/shader-dithering/hyperframes.mp4": "a940d4321364e90854f83372d63903631e366f87d3ebd68919f7dc3e10333929",
+    "public/previews/shader-dithering/thumbnail.png": "2542e4b2cb346ce3308548053aaed666eb2b508ac23c61b5e48379c58f7555a1",
+    "parity/shader-dithering-diff/summary.json": "ad55b29e05e75e155f68631a7d07dcf33cfd0beba9f35e6e6cb01ccc34051e53",
+    "parity/shader-dithering-diff/ssim.log": "c4fbedb2045d104b60568467b9860d7ee5ffeee1f88dedd0034e5cf393a3221a",
+    "parity/shader-dithering-diff/hyperframes-check.log": "8258343d79654723604d6ad3f137e02961d34e3ad42968c060314f983e44db9e",
+    "parity/shader-dithering-diff/worst-frame.png": "88b8db61a7242aadf468578b894ac7b3dcc4d7f4fdb166e0d4ffb32c72fe57db",
+    "parity/shader-dithering-diff/reference-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-dithering-diff/hyperframes-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/shader-dithering-diff/reference-rgba.framemd5": "5980df0d88ab269b07e0b4393c4bcd5d6ce918c9e6916b773c71218a21a3c17d",
+    "parity/shader-dithering-diff/hyperframes-rgba.framemd5": "5980df0d88ab269b07e0b4393c4bcd5d6ce918c9e6916b773c71218a21a3c17d"
   }
 }

@@ -1,5 +1,11 @@
 # Catalog browser audit
 
+These browser checks and sampled comparisons are historical evidence. They do
+not establish current 1:1 parity. Current ports require complete identical RGBA
+frames with matching source and installed-file fingerprints, as described in
+[the porting contract](PORTING.md). The Collection totals below belong to their
+older fixtures; the current six films are awaiting exact re-verification.
+
 ## October 1 follow-up
 
 Malformed component and showcase slugs now render the existing missing-page

@@ -123,6 +123,40 @@ for (const entry of selected) {
           resolveDir: dependencies,
         }));
         api.onLoad(
+          { filter: /snap-cn\/capture-reveal\/index\.tsx$/ },
+          async ({ path }) => {
+            const source = await readFile(path, "utf8");
+            const font = assetManifest.fonts.find(
+              (font) => font.directFontFace && font.slugs?.includes(slug),
+            );
+            const face = 'const FACE = "Capture Reveal DM Sans";';
+            const resolver = "function resolveSrc(src: string): string {";
+            if (
+              !font ||
+              !source.includes(font.source) ||
+              !source.includes(face) ||
+              !source.includes(resolver)
+            )
+              throw new Error(
+                "Pinned Capture Reveal font or media resolver changed.",
+              );
+            return {
+              loader: "tsx",
+              resolveDir: dirname(path),
+              contents: source
+                .replace(
+                  face,
+                  `const FACE = ${JSON.stringify(snapcnFontFamily(font.family))};`,
+                )
+                .replace("url(${FACE_URL})", "url(${staticFile(FACE_URL)})")
+                .replace(
+                  resolver,
+                  `${resolver}\n  const frozen = staticFile(src);\n  if (frozen !== src) return frozen;`,
+                ),
+            };
+          },
+        );
+        api.onLoad(
           { filter: /snap-cn\/check-cycle\/index\.tsx$/ },
           async ({ path }) => {
             const source = await readFile(path, "utf8");
@@ -325,7 +359,7 @@ const slug = ${JSON.stringify(slug)};
 const config = ${JSON.stringify({ width: fixture.width, height: fixture.height, fps: fixture.fps, durationInFrames: fixture.durationInFrames })};
 const container = document.getElementById(slug + '-source-root');
 const assets = JSON.parse(container.dataset.hyfrmeAssets);
-__configure(config, assets, slug);
+__configure(config, assets, slug, JSON.parse(container.dataset.hyfrmeFinalFrames ?? '{}'));
 const props = {...${scriptJson(fixture.props)}, ...window.__hyperframes.getVariables()};
 ${
   [
@@ -484,6 +518,7 @@ window.__hyfrmeReady = ready;
   );
   for (const asset of selectedMedia) {
     addAsset(asset.portPath ?? asset.path);
+    if (asset.finalFrame) addAsset(asset.finalFrame.path);
     if (asset.noticePath)
       addAsset(
         asset.noticePath,
@@ -502,6 +537,17 @@ window.__hyfrmeReady = ready;
       `../assets/snapcn/${assetPath(font.path)}`,
     ]),
   ]);
+  const finalFrames = Object.fromEntries(
+    selectedMedia
+      .filter((asset) => asset.finalFrame)
+      .map((asset) => [
+        media[asset.source],
+        {
+          src: `../assets/snapcn/${asset.finalFrame.path}`,
+          duration: asset.finalFrame.duration,
+        },
+      ]),
+  );
   const packages = new Map();
   packages.set("tailwindcss", resolve(dependencies, "tailwindcss"));
   const emittedInputs = new Set(
@@ -635,7 +681,7 @@ ${fontCss}
   <body>
     <div id="${slug}" data-composition-id="${slug}" data-start="0" data-duration="${duration}" data-fps="${fixture.fps}" data-width="${fixture.width}" data-height="${fixture.height}">
       <span hidden data-layout-ignore data-hyfrme-clock></span>
-      <div id="${slug}-stage" class="clip" data-start="0" data-duration="${duration}" data-track-index="0"><div id="${slug}-source-root" data-hyfrme-assets='${attribute(JSON.stringify(packagedMedia))}' data-hyfrme-fonts='${attribute(JSON.stringify([...new Set(fonts.map((font) => snapcnFontFamily(font.family)))]))}'></div></div>
+      <div id="${slug}-stage" class="clip" data-start="0" data-duration="${duration}" data-track-index="0"><div id="${slug}-source-root" data-hyfrme-assets='${attribute(JSON.stringify(packagedMedia))}'${Object.keys(finalFrames).length ? ` data-hyfrme-final-frames='${attribute(JSON.stringify(finalFrames))}'` : ""} data-hyfrme-fonts='${attribute(JSON.stringify([...new Set(fonts.map((font) => snapcnFontFamily(font.family)))]))}'></div></div>
     </div>
     <script src="./${slug}.runtime.js"></script>
     <script>

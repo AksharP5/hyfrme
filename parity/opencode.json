@@ -2,7 +2,7 @@
   "slug": "opencode",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "92d7d1f2805ca9c05d5d117083e22577ecab70df",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/opencode/index.tsx",
     "config": "registry/remocn/opencode/config.ts",
     "license": "MIT"
@@ -23,26 +23,417 @@
     },
     "background": "#000000"
   },
+  "filesSha256": {
+    "registry-item.json": "66de59f67d08baa01ebc1a3b7a9db46bebb28972bed522d93eb7d06be793a8c0",
+    "opencode.html": "2d2aecd7202c30c508582c148d9586667c05bee3596c31b84ced3d29e2fd8e8c",
+    "opencode.runtime.js": "b175a80a9cf150bb576682d6221fc9087e0408ca2a0818dbd8d5ab20f8f77d67",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "JetBrainsMono-Latin.woff2": "18be452724bfdc236c074ca94a249a7f41a86752c7d04ab258ce9ed5651f6a7e",
+    "licenses/Geist-OFL.txt": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137",
+    "licenses/culori-LICENSE": "5e9ac3317f048184d001bd3814aed28d4874bdcac9da1d001465e52e1a0e8077",
+    "licenses/JetBrainsMono-OFL.txt": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d"
+  },
   "classification": "compiled-source-port",
-  "measurement": "decoded-video",
+  "measurement": "lossless-png",
   "status": "verified",
+  "fingerprint": "df9ddf46b90ec4948dfc595ba1581011daf61bf86269a7c68832f883cb19bc8c",
   "thresholds": {
-    "meanSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 150,
-    "meanSsim": 0.998825,
-    "minSsim": 0.996493,
-    "p05Ssim": 0.998591,
-    "p95Ssim": 0.999867,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
-    "hyperframes": "strict render passed"
+    "canvasMode": "source-capability",
+    "hyperframes": "full check reported 16 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "opencode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/opencode/index.tsx",
+          "config": "registry/remocn/opencode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "text": "Ask anything...",
+          "fg": "rgb(107,107,107)",
+          "bg": "rgb(22,22,22)",
+          "ratio": 3.4,
+          "requiredRatio": 4.5,
+          "time": 1.389
+        },
+        "reason": "Pinned OpenCode explicitly selects THEMES.dark. Its muted #6B6B6B labels use #161616 input background. Preserve this actual upstream palette contrast failure and full check findings; every source frame must still render exactly."
+      },
+      {
+        "slug": "opencode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/opencode/index.tsx",
+          "config": "registry/remocn/opencode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(3)",
+          "text": "Moonshot AI",
+          "fg": "rgb(107,107,107)",
+          "bg": "rgb(22,22,22)",
+          "ratio": 3.4,
+          "requiredRatio": 4.5,
+          "time": 1.389
+        },
+        "reason": "Pinned OpenCode explicitly selects THEMES.dark. Its muted #6B6B6B labels use #161616 input background. Preserve this actual upstream palette contrast failure and full check findings; every source frame must still render exactly."
+      },
+      {
+        "slug": "opencode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/opencode/index.tsx",
+          "config": "registry/remocn/opencode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(2)",
+          "text": "agents",
+          "fg": "rgb(107,107,107)",
+          "bg": "rgb(0,0,0)",
+          "ratio": 3.94,
+          "requiredRatio": 4.5,
+          "time": 1.389
+        },
+        "reason": "Pinned OpenCode explicitly selects THEMES.dark. Its muted #6B6B6B labels use #000000 page background. Preserve this actual upstream palette contrast failure and full check findings; every source frame must still render exactly."
+      },
+      {
+        "slug": "opencode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/opencode/index.tsx",
+          "config": "registry/remocn/opencode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(3) > span:nth-of-type(2) > span:nth-of-type(2)",
+          "text": "commands",
+          "fg": "rgb(107,107,107)",
+          "bg": "rgb(0,0,0)",
+          "ratio": 3.94,
+          "requiredRatio": 4.5,
+          "time": 1.389
+        },
+        "reason": "Pinned OpenCode explicitly selects THEMES.dark. Its muted #6B6B6B labels use #000000 page background. Preserve this actual upstream palette contrast failure and full check findings; every source frame must still render exactly."
+      },
+      {
+        "slug": "opencode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/opencode/index.tsx",
+          "config": "registry/remocn/opencode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "text": "Ask anything...",
+          "fg": "rgb(107,107,107)",
+          "bg": "rgb(22,22,22)",
+          "ratio": 3.4,
+          "requiredRatio": 4.5,
+          "time": 2.5
+        },
+        "reason": "Pinned OpenCode explicitly selects THEMES.dark. Its muted #6B6B6B labels use #161616 input background. Preserve this actual upstream palette contrast failure and full check findings; every source frame must still render exactly."
+      },
+      {
+        "slug": "opencode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/opencode/index.tsx",
+          "config": "registry/remocn/opencode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(3)",
+          "text": "Moonshot AI",
+          "fg": "rgb(107,107,107)",
+          "bg": "rgb(22,22,22)",
+          "ratio": 3.4,
+          "requiredRatio": 4.5,
+          "time": 2.5
+        },
+        "reason": "Pinned OpenCode explicitly selects THEMES.dark. Its muted #6B6B6B labels use #161616 input background. Preserve this actual upstream palette contrast failure and full check findings; every source frame must still render exactly."
+      },
+      {
+        "slug": "opencode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/opencode/index.tsx",
+          "config": "registry/remocn/opencode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(2)",
+          "text": "agents",
+          "fg": "rgb(107,107,107)",
+          "bg": "rgb(0,0,0)",
+          "ratio": 3.94,
+          "requiredRatio": 4.5,
+          "time": 2.5
+        },
+        "reason": "Pinned OpenCode explicitly selects THEMES.dark. Its muted #6B6B6B labels use #000000 page background. Preserve this actual upstream palette contrast failure and full check findings; every source frame must still render exactly."
+      },
+      {
+        "slug": "opencode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/opencode/index.tsx",
+          "config": "registry/remocn/opencode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(3) > span:nth-of-type(2) > span:nth-of-type(2)",
+          "text": "commands",
+          "fg": "rgb(107,107,107)",
+          "bg": "rgb(0,0,0)",
+          "ratio": 3.94,
+          "requiredRatio": 4.5,
+          "time": 2.5
+        },
+        "reason": "Pinned OpenCode explicitly selects THEMES.dark. Its muted #6B6B6B labels use #000000 page background. Preserve this actual upstream palette contrast failure and full check findings; every source frame must still render exactly."
+      },
+      {
+        "slug": "opencode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/opencode/index.tsx",
+          "config": "registry/remocn/opencode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "text": "Ask anything...",
+          "fg": "rgb(107,107,107)",
+          "bg": "rgb(22,22,22)",
+          "ratio": 3.4,
+          "requiredRatio": 4.5,
+          "time": 3.611
+        },
+        "reason": "Pinned OpenCode explicitly selects THEMES.dark. Its muted #6B6B6B labels use #161616 input background. Preserve this actual upstream palette contrast failure and full check findings; every source frame must still render exactly."
+      },
+      {
+        "slug": "opencode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/opencode/index.tsx",
+          "config": "registry/remocn/opencode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(3)",
+          "text": "Moonshot AI",
+          "fg": "rgb(107,107,107)",
+          "bg": "rgb(22,22,22)",
+          "ratio": 3.4,
+          "requiredRatio": 4.5,
+          "time": 3.611
+        },
+        "reason": "Pinned OpenCode explicitly selects THEMES.dark. Its muted #6B6B6B labels use #161616 input background. Preserve this actual upstream palette contrast failure and full check findings; every source frame must still render exactly."
+      },
+      {
+        "slug": "opencode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/opencode/index.tsx",
+          "config": "registry/remocn/opencode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(2)",
+          "text": "agents",
+          "fg": "rgb(107,107,107)",
+          "bg": "rgb(0,0,0)",
+          "ratio": 3.94,
+          "requiredRatio": 4.5,
+          "time": 3.611
+        },
+        "reason": "Pinned OpenCode explicitly selects THEMES.dark. Its muted #6B6B6B labels use #000000 page background. Preserve this actual upstream palette contrast failure and full check findings; every source frame must still render exactly."
+      },
+      {
+        "slug": "opencode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/opencode/index.tsx",
+          "config": "registry/remocn/opencode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(3) > span:nth-of-type(2) > span:nth-of-type(2)",
+          "text": "commands",
+          "fg": "rgb(107,107,107)",
+          "bg": "rgb(0,0,0)",
+          "ratio": 3.94,
+          "requiredRatio": 4.5,
+          "time": 3.611
+        },
+        "reason": "Pinned OpenCode explicitly selects THEMES.dark. Its muted #6B6B6B labels use #000000 page background. Preserve this actual upstream palette contrast failure and full check findings; every source frame must still render exactly."
+      },
+      {
+        "slug": "opencode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/opencode/index.tsx",
+          "config": "registry/remocn/opencode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+          "text": "Ask anything...",
+          "fg": "rgb(107,107,107)",
+          "bg": "rgb(22,22,22)",
+          "ratio": 3.4,
+          "requiredRatio": 4.5,
+          "time": 4.722
+        },
+        "reason": "Pinned OpenCode explicitly selects THEMES.dark. Its muted #6B6B6B labels use #161616 input background. Preserve this actual upstream palette contrast failure and full check findings; every source frame must still render exactly."
+      },
+      {
+        "slug": "opencode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/opencode/index.tsx",
+          "config": "registry/remocn/opencode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(3)",
+          "text": "Moonshot AI",
+          "fg": "rgb(107,107,107)",
+          "bg": "rgb(22,22,22)",
+          "ratio": 3.4,
+          "requiredRatio": 4.5,
+          "time": 4.722
+        },
+        "reason": "Pinned OpenCode explicitly selects THEMES.dark. Its muted #6B6B6B labels use #161616 input background. Preserve this actual upstream palette contrast failure and full check findings; every source frame must still render exactly."
+      },
+      {
+        "slug": "opencode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/opencode/index.tsx",
+          "config": "registry/remocn/opencode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(2)",
+          "text": "agents",
+          "fg": "rgb(107,107,107)",
+          "bg": "rgb(0,0,0)",
+          "ratio": 3.94,
+          "requiredRatio": 4.5,
+          "time": 4.722
+        },
+        "reason": "Pinned OpenCode explicitly selects THEMES.dark. Its muted #6B6B6B labels use #000000 page background. Preserve this actual upstream palette contrast failure and full check findings; every source frame must still render exactly."
+      },
+      {
+        "slug": "opencode",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
+          "source": "registry/remocn/opencode/index.tsx",
+          "config": "registry/remocn/opencode/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure",
+          "selector": "div > div > div > div > div > div > div > div:nth-of-type(3) > span:nth-of-type(2) > span:nth-of-type(2)",
+          "text": "commands",
+          "fg": "rgb(107,107,107)",
+          "bg": "rgb(0,0,0)",
+          "ratio": 3.94,
+          "requiredRatio": 4.5,
+          "time": 4.722
+        },
+        "reason": "Pinned OpenCode explicitly selects THEMES.dark. Its muted #6B6B6B labels use #000000 page background. Preserve this actual upstream palette contrast failure and full check findings; every source frame must still render exactly."
+      }
+    ],
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
   },
   "artifacts": {
-    "remocnVideo": "public/previews/opencode/remocn.mp4",
+    "referenceVideo": "public/previews/opencode/reference.mp4",
     "hyperframesVideo": "public/previews/opencode/hyperframes.mp4",
-    "summary": "parity/opencode-diff/summary.json"
+    "thumbnail": "public/previews/opencode/thumbnail.png",
+    "summary": "parity/opencode-diff/summary.json",
+    "perFrameSsim": "parity/opencode-diff/ssim.log",
+    "hyperframesCheck": "parity/opencode-diff/hyperframes-check.log",
+    "worstFrame": "parity/opencode-diff/worst-frame.png",
+    "referenceAlpha": "parity/opencode-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/opencode-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/opencode-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/opencode-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/opencode/reference.mp4": "1490de79e68d97353a2707211846d8a004327bbc060840cf8b44b0b3c5cb9c11",
+    "public/previews/opencode/hyperframes.mp4": "1490de79e68d97353a2707211846d8a004327bbc060840cf8b44b0b3c5cb9c11",
+    "public/previews/opencode/thumbnail.png": "9742619b12847394dadc24d664cdb1b6b33a2775e182fa2a3ff393c4ba2fd44c",
+    "parity/opencode-diff/summary.json": "ad55b29e05e75e155f68631a7d07dcf33cfd0beba9f35e6e6cb01ccc34051e53",
+    "parity/opencode-diff/ssim.log": "c4fbedb2045d104b60568467b9860d7ee5ffeee1f88dedd0034e5cf393a3221a",
+    "parity/opencode-diff/hyperframes-check.log": "9ab996d5a079ae2f25a0a1c12b9ab0e0297717809e4e9cba95ee1ce9e7f72b7a",
+    "parity/opencode-diff/worst-frame.png": "b45607c3a2a99110c1eba43961122fd381f9ee7b535cefb55c75ba4b65c8fbcc",
+    "parity/opencode-diff/reference-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/opencode-diff/hyperframes-alpha.framemd5": "95ff385f7c0d0a0abdd64fbc243870483fb9fcc57109963b733c6f57146d0231",
+    "parity/opencode-diff/reference-rgba.framemd5": "25462ada400f8d07ddf0920c5155842ac997b89c86f7cdbd3f47b89bb23841c9",
+    "parity/opencode-diff/hyperframes-rgba.framemd5": "25462ada400f8d07ddf0920c5155842ac997b89c86f7cdbd3f47b89bb23841c9"
   }
 }

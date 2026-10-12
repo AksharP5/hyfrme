@@ -2,7 +2,7 @@
   "slug": "gooey-morph",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/gooey-morph/index.tsx",
     "config": "registry/remocn/gooey-morph/config.ts",
     "license": "MIT"
@@ -22,33 +22,68 @@
     },
     "background": "#141318"
   },
+  "filesSha256": {
+    "registry-item.json": "9daf61d2ba1854e49c0f5fa4f65369c2a56e703f6d98e7faca9950924282bdd1",
+    "gooey-morph.html": "d71efc7585acda8a29881e7843b4391b889af4cb48e782f03c6cbed1b66f6f0c",
+    "gooey-morph.runtime.js": "51ad28e2c7b12c8ae4ac57f72e9314604144aae4cd8e95e91d2e1785c7de3fe4",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
-  "status": "verified",
-  "fingerprint": "2b65feb830c55a8a9db35e0f76fef9fdaaaa1e93d183f759f1e0fd105b5d40b7",
+  "status": "failed",
+  "fingerprint": "d56ed31bca7a88a613768056af927c031016f2ea9f385fc7dac9b5950b75e1a9",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 120,
-    "meanSsim": 0.9991397249999989,
-    "minSsim": 0.997476,
-    "p05Ssim": 0.998138,
+    "meanSsim": 0.9999999,
+    "minSsim": 0.999997,
+    "p05Ssim": 0.999999,
     "p95Ssim": 1,
     "alpha": {
       "frameCount": 120,
       "mismatchedFrames": [],
       "pass": true
     },
-    "pass": true
+    "rgba": {
+      "frameCount": 120,
+      "mismatchedFrames": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        69
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -60,6 +95,21 @@
     "hyperframesCheck": "parity/gooey-morph-diff/hyperframes-check.log",
     "worstFrame": "parity/gooey-morph-diff/worst-frame.png",
     "referenceAlpha": "parity/gooey-morph-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/gooey-morph-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/gooey-morph-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/gooey-morph-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/gooey-morph-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/gooey-morph/reference.mp4": "ee3777f879313945b8f02c23574cb576df20d128d5a77964668df41f3a95f79b",
+    "public/previews/gooey-morph/hyperframes.mp4": "c1f9bcd282421fcc3188b97c8fc99dbcbfca08cb00b9d5ad8a63edd1bc727d4c",
+    "public/previews/gooey-morph/thumbnail.png": "2338ba20811673fe215a7ceb7b2ee348dd717611dc8df116ca6dcb45361ace6a",
+    "parity/gooey-morph-diff/summary.json": "45f7d37ed2b5df0808337716d68f92cef37c92282c1ea7f8f41835e12a50772c",
+    "parity/gooey-morph-diff/ssim.log": "4245484833fd9808cf31b353afe6879930abca0743d9efd86ce8c40ea3e5a85c",
+    "parity/gooey-morph-diff/hyperframes-check.log": "8d0c99761e3f85b30dd4b614af36ea44368c5a831557951c1cd192ac1ce4024f",
+    "parity/gooey-morph-diff/worst-frame.png": "99827a38d334ff17cf97f38cc8c3a43dd392d76206d56fbd90a3098eeacff611",
+    "parity/gooey-morph-diff/reference-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/gooey-morph-diff/hyperframes-alpha.framemd5": "b891027d4160fff9a23c551cfaaf8680c301a9032272d0c5f25f1d1940a92d91",
+    "parity/gooey-morph-diff/reference-rgba.framemd5": "312a3aa58b8cfd109c397db8bc5edc1596dc2c97180d92d53176a5088cc78c7c",
+    "parity/gooey-morph-diff/hyperframes-rgba.framemd5": "87beeedfe4ae0b717bda74fcd4f17baf7dd9abb05f109bafa7772d9588865614"
   }
 }

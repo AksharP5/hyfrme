@@ -2,7 +2,7 @@
   "slug": "icon-play",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "ea730a20b4ab09430ee7292aebc847c002375151",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn-icons/icon-play/index.tsx",
     "config": "registry/remocn-icons/icon-play/config.ts",
     "license": "MIT"
@@ -15,54 +15,167 @@
     "props": {
       "animation": "both",
       "loop": false,
-      "speed": 1,
       "size": 48,
       "color": "#171717",
-      "strokeWidth": 2
-    }
+      "strokeWidth": 2,
+      "speed": 1
+    },
+    "background": "#ffffff"
+  },
+  "filesSha256": {
+    "registry-item.json": "1856278fd973ded6de72d15d765be7bf2fbe76b8258c85bc9b7b73fa25749bc6",
+    "icon-play.html": "83503b14856acbf197f05c637fdedea57ff3e1efd6d64b31044636342c83c79c",
+    "licenses/remotion-paths-MIT.md": "2a1fca9c06e25faf5ee59e88cda0b6bd028baf256c8e1f5cb25a0233a095d3b0",
+    "licenses/Lucide-ISC-and-Feather-MIT.txt": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+    "licenses/Bezier-MIT.txt": "ef75f1ff45b2b67cad05fdba4e3200e1f10796e482c4a7b523243008b4a6adc8"
   },
   "classification": "compiled-source-port",
+  "measurement": "lossless-png",
   "status": "verified",
-  "thresholds": {
-    "meanSsim": 0.95
-  },
-  "result": {
-    "frameCount": 60,
-    "meanSsim": 0.992458,
-    "minSsim": 0.986525,
-    "p05Ssim": 0.988344,
-    "p95Ssim": 0.994409,
-    "pass": true
-  },
-  "checks": {
-    "hyperframes": "strict render passed"
-  },
-  "artifacts": {
-    "remocnVideo": "public/previews/icon-play/remocn.mp4",
-    "hyperframesVideo": "public/previews/icon-play/hyperframes.mp4",
-    "summary": "parity/icon-play-diff/summary.json"
-  },
+  "fingerprint": "1895a3ec04bc70dd7216cfcc3977548dc668fb6c2e8d7fbf0b57a9d5fe45b9ff",
   "showcase": {
     "fixture": {
       "width": 384,
       "height": 384,
-      "scale": 8,
+      "fps": 30,
+      "durationInFrames": 60,
       "props": {
         "animation": "both",
         "loop": false,
-        "speed": 1,
         "size": 384,
         "color": "#171717",
-        "strokeWidth": 2
-      }
+        "strokeWidth": 2,
+        "speed": 1
+      },
+      "background": "#ffffff",
+      "scale": 8,
+      "renderScale": 1
     },
+    "measurement": "lossless-png",
+    "fingerprint": "2ebad0072fbc8913ddc6bfc99d8ae41acd79db6562f11891c9ee4b6e3a21c437",
     "result": {
       "frameCount": 60,
-      "meanSsim": 0.983082,
-      "minSsim": 0.867039,
-      "p05Ssim": 0.889688,
-      "p95Ssim": 0.998634,
-      "pass": true
+      "meanSsim": 1,
+      "minSsim": 1,
+      "p05Ssim": 1,
+      "p95Ssim": 1,
+      "alpha": {
+        "frameCount": 60,
+        "mismatchedFrames": [],
+        "pass": true
+      },
+      "rgba": {
+        "frameCount": 60,
+        "mismatchedFrames": [
+          18,
+          19,
+          22,
+          24,
+          33
+        ],
+        "pass": false
+      },
+      "pass": false
+    },
+    "checks": {
+      "canvasMode": "source-capability",
+      "hyperframes": "full check passed; strict render passed",
+      "hyperframesVersion": "0.8.99",
+      "remotionVersion": "4.0.513",
+      "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+      "browserGpuMode": "hardware",
+      "rasterization": "browser-default",
+      "frameCapture": "strict PNG render",
+      "referenceGl": "angle-egl",
+      "installedThroughCli": true
+    },
+    "artifacts": {
+      "referenceVideo": "public/previews/icon-play/reference.mp4",
+      "hyperframesVideo": "public/previews/icon-play/hyperframes.mp4",
+      "thumbnail": "public/previews/icon-play/thumbnail.png",
+      "summary": "parity/remocn-icon-showcases/icon-play-diff/summary.json",
+      "perFrameSsim": "parity/remocn-icon-showcases/icon-play-diff/ssim.log",
+      "hyperframesCheck": "parity/remocn-icon-showcases/icon-play-diff/hyperframes-check.log",
+      "worstFrame": "parity/remocn-icon-showcases/icon-play-diff/worst-frame.png",
+      "referenceAlpha": "parity/remocn-icon-showcases/icon-play-diff/reference-alpha.framemd5",
+      "hyperframesAlpha": "parity/remocn-icon-showcases/icon-play-diff/hyperframes-alpha.framemd5",
+      "referenceRgba": "parity/remocn-icon-showcases/icon-play-diff/reference-rgba.framemd5",
+      "hyperframesRgba": "parity/remocn-icon-showcases/icon-play-diff/hyperframes-rgba.framemd5"
+    },
+    "artifactHashes": {
+      "public/previews/icon-play/reference.mp4": "32e72c3787044b13edd6f4756fb04b49d202e3e8fb1b59425dd150f4841aa156",
+      "public/previews/icon-play/hyperframes.mp4": "ca821fb9d455deabd00d942ea11d3e012cb6999c90d8b09be6a31663369e5c2d",
+      "public/previews/icon-play/thumbnail.png": "c84f54bdd985f0bf938d232a834bc6898d41db28b4cc22c455f0a661b5061605",
+      "parity/remocn-icon-showcases/icon-play-diff/summary.json": "a961bbfcb93ea46725aa93e16b77f3013cdeb8f55454c501e69609313f69aba1",
+      "parity/remocn-icon-showcases/icon-play-diff/ssim.log": "b7aafcc34d8a2a293a4a318402348bfee631c0392fa7dcf1907430af174a4d6f",
+      "parity/remocn-icon-showcases/icon-play-diff/hyperframes-check.log": "a430c67c0d21143b0ae0252d6bee6788ca003fa911404dec67e265731d6881ef",
+      "parity/remocn-icon-showcases/icon-play-diff/worst-frame.png": "cdda9794b535aefe3ae4d7ec6ed50a20746fd154d8276e9c912721f2e32b3a8c",
+      "parity/remocn-icon-showcases/icon-play-diff/reference-alpha.framemd5": "0366453b8f1458ce22ceb778663d11d128b4e66d01b1b8d5abef0c54ce83a89d",
+      "parity/remocn-icon-showcases/icon-play-diff/hyperframes-alpha.framemd5": "0366453b8f1458ce22ceb778663d11d128b4e66d01b1b8d5abef0c54ce83a89d",
+      "parity/remocn-icon-showcases/icon-play-diff/reference-rgba.framemd5": "f7629e70d4578b70774dae4db1b76a79160330798cc610457616dc859288e015",
+      "parity/remocn-icon-showcases/icon-play-diff/hyperframes-rgba.framemd5": "08d691af62dcdefe778a5371a9805f369ab756e915b0be4a3eee19afe9185cca"
     }
+  },
+  "thresholds": {
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
+  },
+  "result": {
+    "frameCount": 60,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 60,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
+      "frameCount": 60,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "canvasMode": "source-capability",
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.99",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/icon-play/reference.mp4",
+    "hyperframesVideo": "public/previews/icon-play/hyperframes.mp4",
+    "thumbnail": "public/previews/icon-play/thumbnail.png",
+    "canonicalReferenceVideo": "parity/icon-play-diff/reference.mp4",
+    "canonicalHyperframesVideo": "parity/icon-play-diff/hyperframes.mp4",
+    "summary": "parity/icon-play-diff/summary.json",
+    "perFrameSsim": "parity/icon-play-diff/ssim.log",
+    "hyperframesCheck": "parity/icon-play-diff/hyperframes-check.log",
+    "worstFrame": "parity/icon-play-diff/worst-frame.png",
+    "referenceAlpha": "parity/icon-play-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/icon-play-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/icon-play-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/icon-play-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "parity/icon-play-diff/reference.mp4": "c38b0fae9570ebc58184963b2cdb874471297256b433d08bbce2b7cb2a8ae157",
+    "parity/icon-play-diff/hyperframes.mp4": "c38b0fae9570ebc58184963b2cdb874471297256b433d08bbce2b7cb2a8ae157",
+    "parity/icon-play-diff/summary.json": "53afe1505ac330e9a858ffe8a5005963ff5f8ba7de9ea1cafc5074fbd19e0c47",
+    "parity/icon-play-diff/ssim.log": "e5de144aa23e764f1d14fe248acd94330063b3ce5a1953536c4766924aff2bf1",
+    "parity/icon-play-diff/hyperframes-check.log": "fc2d2db60575877e37b72766ff1ade519ed8176e2bfe077d05063669899b7ce1",
+    "parity/icon-play-diff/worst-frame.png": "9e494e7891cccdb0686fdfdb87031fcb0cccc5b25f8716d109b895fc8a93e6cd",
+    "parity/icon-play-diff/reference-alpha.framemd5": "f4ba0db340e6caf000b877431070645bae562963aad76ed9fa47ea8bb2d1c449",
+    "parity/icon-play-diff/hyperframes-alpha.framemd5": "f4ba0db340e6caf000b877431070645bae562963aad76ed9fa47ea8bb2d1c449",
+    "parity/icon-play-diff/reference-rgba.framemd5": "4ba080844ebfcba3a5679edafad6fe3006af75dc5dd9771bc461000c38e0c516",
+    "parity/icon-play-diff/hyperframes-rgba.framemd5": "4ba080844ebfcba3a5679edafad6fe3006af75dc5dd9771bc461000c38e0c516"
   }
 }

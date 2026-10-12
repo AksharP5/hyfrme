@@ -2,7 +2,7 @@
   "slug": "sheen-slide-in",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/sheen-slide-in/index.tsx",
     "config": "registry/remocn/sheen-slide-in/config.ts",
     "license": "MIT"
@@ -23,21 +23,38 @@
     },
     "background": "#ffffff"
   },
+  "filesSha256": {
+    "registry-item.json": "ebf0233a19e62cff4d2d1ce98ce0fab6f205115daa586a0687fe841a24c3dfc6",
+    "sheen-slide-in.html": "f5117ee577d627fd0d27a1bc6a0bded582d3a52ca6d4f06d07d0818088426369",
+    "sheen-slide-in.runtime.js": "25bf76898344b01d48bb1a392e5a7e222fa6d118733a4e22047c28aa449102ff",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "08edcc2b99399b5ce783132cc87962b144a73e66faea3d7ce2f94fd9b3877db2",
+  "fingerprint": "bbaada5444ce70696b44870cbd492e1cfd2eb585a68853b2ee42f7688d1feefd",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 70,
-    "meanSsim": 0.9974758142857143,
-    "minSsim": 0.996861,
-    "p05Ssim": 0.996924,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
     "p95Ssim": 1,
     "alpha": {
+      "frameCount": 70,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 70,
       "mismatchedFrames": [],
       "pass": true
@@ -45,13 +62,14 @@
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check reported 1 reviewed source-inherited errors (exit 1); strict render passed",
     "sourceInheritedFindings": [
       {
         "slug": "sheen-slide-in",
         "origin": {
           "repository": "https://github.com/Remocn/remocn",
-          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
           "source": "registry/remocn/sheen-slide-in/index.tsx",
           "config": "registry/remocn/sheen-slide-in/config.ts",
           "license": "MIT"
@@ -62,13 +80,16 @@
           "containerSelector": "#sheen-slide-in-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
           "text": "Introducing"
         },
-        "reason": "The pinned source deliberately overlays the base Introducing text with an aria-hidden span whose transparent fill and background-clip:text paint the moving sheen. It does not obscure the base as an opaque box. Preserve the original layered effect; all 70 frames have matching alpha and RGB SSIM mean 0.997476/min 0.996861. The complete inspector finding remains in the audit."
+        "reason": "The source overlays the base text with an aria-hidden span using transparent fill and background-clip:text. The inspector treats this moving sheen as an opaque box. The complete inspector finding remains in the parity check log; visual parity is checked separately against every upstream frame."
       }
     ],
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -80,6 +101,21 @@
     "hyperframesCheck": "parity/sheen-slide-in-diff/hyperframes-check.log",
     "worstFrame": "parity/sheen-slide-in-diff/worst-frame.png",
     "referenceAlpha": "parity/sheen-slide-in-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/sheen-slide-in-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/sheen-slide-in-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/sheen-slide-in-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/sheen-slide-in-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/sheen-slide-in/reference.mp4": "e7e45bbdca70f7c886dbabeafacfc10c7b2dedb93d10be680924417cb66ca158",
+    "public/previews/sheen-slide-in/hyperframes.mp4": "e7e45bbdca70f7c886dbabeafacfc10c7b2dedb93d10be680924417cb66ca158",
+    "public/previews/sheen-slide-in/thumbnail.png": "f33e0d5f21845fac19bd4b92b35229bdd0b173748f62d650d57b69e4cb34961b",
+    "parity/sheen-slide-in-diff/summary.json": "08539a7214096ef84049087f609345abd158428fbfa9e39be7d6a25cbc4a04d5",
+    "parity/sheen-slide-in-diff/ssim.log": "96458132206082c5ebad840c5869d54e8aaeb4a9a604575fa4f606d0492f59fc",
+    "parity/sheen-slide-in-diff/hyperframes-check.log": "e7fb327c84f3c44b71bb0e9224beea878a1153e8a4c4e5c364988ba226032946",
+    "parity/sheen-slide-in-diff/worst-frame.png": "b6b80f4263bf6c8c16375e4217852feab2c6e68f51a427bd3f5d799e52aa49c4",
+    "parity/sheen-slide-in-diff/reference-alpha.framemd5": "ad55f89cc3201d6aab8436f5752710b9586259586dffa39cb80b41855f9af746",
+    "parity/sheen-slide-in-diff/hyperframes-alpha.framemd5": "ad55f89cc3201d6aab8436f5752710b9586259586dffa39cb80b41855f9af746",
+    "parity/sheen-slide-in-diff/reference-rgba.framemd5": "bc7abb4488c97c531fe6cfdb58b3b6f987b018cb1146d0e30fdea392d6832ba8",
+    "parity/sheen-slide-in-diff/hyperframes-rgba.framemd5": "bc7abb4488c97c531fe6cfdb58b3b6f987b018cb1146d0e30fdea392d6832ba8"
   }
 }

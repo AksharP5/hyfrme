@@ -2,7 +2,7 @@
   "slug": "speed-lines",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/speed-lines/index.tsx",
     "config": "registry/remocn/speed-lines/config.ts",
     "license": "MIT"
@@ -29,13 +29,25 @@
     },
     "background": "#002fa7"
   },
+  "filesSha256": {
+    "registry-item.json": "2b5e7ec56db3bac805f74952f5b55c2ea4ae07220eb1e41a07a84873183e1174",
+    "speed-lines.html": "fa027b08a5981ba5f4d40dc9e45c726ada58ae901e9bce4b05edeffe70cd0234",
+    "speed-lines.runtime.js": "914756bc24b852a07101fb9538a6edd4fea1f9fa2c88bed99704fc10aee6705e",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "c0945eba9b41363234912801ba7e141db021b84e5a79d59abc20bbfe0444a5b6",
+  "fingerprint": "607c73284a3179235dc1da7fbca251d76e186f45c3306c8299ee2acdffcf7e55",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 55,
@@ -48,14 +60,23 @@
       "mismatchedFrames": [],
       "pass": true
     },
+    "rgba": {
+      "frameCount": 55,
+      "mismatchedFrames": [],
+      "pass": true
+    },
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -67,6 +88,21 @@
     "hyperframesCheck": "parity/speed-lines-diff/hyperframes-check.log",
     "worstFrame": "parity/speed-lines-diff/worst-frame.png",
     "referenceAlpha": "parity/speed-lines-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/speed-lines-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/speed-lines-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/speed-lines-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/speed-lines-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/speed-lines/reference.mp4": "b3789c70e805a8d4e7d73a9d292697914cd29ff75a3ecc99f42f0ac8235abbe3",
+    "public/previews/speed-lines/hyperframes.mp4": "b3789c70e805a8d4e7d73a9d292697914cd29ff75a3ecc99f42f0ac8235abbe3",
+    "public/previews/speed-lines/thumbnail.png": "65888064f16cfa18752ea987f2353572ee4264db67ad868086d00a4e3fe53a2e",
+    "parity/speed-lines-diff/summary.json": "0e64a775f083316d8d173585d36616bc91c6e1fa2cfaa23887877b612ad060a7",
+    "parity/speed-lines-diff/ssim.log": "5abd79e8ea89cabf8c3e86b3255bd455057e91b142a47c89a194de2c1b632d35",
+    "parity/speed-lines-diff/hyperframes-check.log": "9e274fa1f22fdb7b5b52c41c05dae4432102f2e39af401b56b76cd559647d81b",
+    "parity/speed-lines-diff/worst-frame.png": "4b4edb89768066c9de3488d86cf7d9b2c2c6537f063f42607b8ecfa784edd10a",
+    "parity/speed-lines-diff/reference-alpha.framemd5": "4e93a60eda47adedb80276c8dd6699335a7d2b82a48359340d96a6990292588b",
+    "parity/speed-lines-diff/hyperframes-alpha.framemd5": "4e93a60eda47adedb80276c8dd6699335a7d2b82a48359340d96a6990292588b",
+    "parity/speed-lines-diff/reference-rgba.framemd5": "f778ea41b453ae34262fb6eef1c5e159284f2de2f41f95f02c98c77a37796183",
+    "parity/speed-lines-diff/hyperframes-rgba.framemd5": "f778ea41b453ae34262fb6eef1c5e159284f2de2f41f95f02c98c77a37796183"
   }
 }

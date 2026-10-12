@@ -122,6 +122,53 @@ for (const asset of [...assets.fonts, ...assets.media]) {
       normalizedVideos.add(asset.portPath);
     }
   }
+  if (asset.finalFrame) {
+    const final = asset.finalFrame;
+    await verifyHash(resolve(assetRoot, final.path), final.sha256);
+    assert.equal(final.sourceSha256, asset.sha256);
+    assert.equal(final.decodedRgbMatchesLastSourceFrame, true);
+    assert.ok(Number.isInteger(final.frame) && final.frame >= 0);
+    assert.ok(final.duration > 0 && final.fps > 0);
+    const sourceRgb = execFileSync(
+      "ffmpeg",
+      [
+        "-v",
+        "error",
+        "-i",
+        resolve(assetRoot, asset.path),
+        "-vf",
+        `select=eq(n\\,${final.frame})`,
+        "-frames:v",
+        "1",
+        "-pix_fmt",
+        "rgb24",
+        "-f",
+        "rawvideo",
+        "-",
+      ],
+      { maxBuffer: 32 * 1024 * 1024 },
+    );
+    const finalRgb = execFileSync(
+      "ffmpeg",
+      [
+        "-v",
+        "error",
+        "-i",
+        resolve(assetRoot, final.path),
+        "-pix_fmt",
+        "rgb24",
+        "-f",
+        "rawvideo",
+        "-",
+      ],
+      { maxBuffer: 32 * 1024 * 1024 },
+    );
+    assert.deepEqual(
+      finalRgb,
+      sourceRgb,
+      `${final.path}: final source sample changed`,
+    );
+  }
   if (asset.license === "Unsplash License") {
     assert.ok(
       asset.author && asset.photographSource,
@@ -315,6 +362,16 @@ for (const fixture of fixtures) {
       resolve(directory, asset.portPath ?? asset.path),
       asset.portSha256 ?? asset.sha256,
     );
+    if (asset.finalFrame) {
+      assert.ok(
+        files.has(asset.finalFrame.path),
+        `${slug}: missing final video sample`,
+      );
+      await verifyHash(
+        resolve(directory, asset.finalFrame.path),
+        asset.finalFrame.sha256,
+      );
+    }
     await packagedLicense(asset.licensePath, asset.licenseSha256);
     if (asset.portPath)
       await packagedLicense(asset.noticePath, asset.noticeSha256);
@@ -387,5 +444,5 @@ for (const fixture of fixtures) {
   }
 }
 console.log(
-  `Snapcn audit passed: ${fixtures.length} blocks, ${new Set([...assets.fonts, ...assets.media].flatMap((asset) => [asset.path, asset.portPath].filter(Boolean))).size} frozen assets, complete licenses and Apache source provenance.`,
+  `Snapcn audit passed: ${fixtures.length} blocks, ${new Set([...assets.fonts, ...assets.media].flatMap((asset) => [asset.path, asset.portPath, asset.finalFrame?.path].filter(Boolean))).size} frozen assets, complete licenses and Apache source provenance.`,
 );

@@ -2,7 +2,7 @@
   "slug": "glyph-anatomy",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/glyph-anatomy/index.tsx",
     "config": "registry/remocn/glyph-anatomy/config.ts",
     "license": "MIT"
@@ -23,13 +23,28 @@
     },
     "background": "#0a0a0a"
   },
+  "filesSha256": {
+    "registry-item.json": "7fbb59307db32bb8f4c3042e8d19dc6f3f88d20eec90e9553ce275ded93c8647",
+    "glyph-anatomy.html": "ffaa1dc6ff639ed1d2fb003b9193943796ec0a646713983d9c2214b35c2fa351",
+    "glyph-anatomy.runtime.js": "0541c8f188630ed784bbfeeba74461b1a26ef3e482646f714608fb19112e0d12",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "Inter-Latin.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/opentype.js-LICENSE": "a5b87c9bc191e7f9c06b07bd7cbbed3ed846dfdb50e859484b2c245aa1ab2e61",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/Inter-OFL.txt": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
-  "status": "verified",
-  "fingerprint": "26ac943cd50cf35f026936288b93e6c0fcb66ef51edb996abce2210486d5e056",
+  "status": "failed",
+  "fingerprint": "7e5b698eafb827c04f9cae75149f03c4a2b740e339d7540d2d4c1c3d1d042674",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 96,
@@ -42,14 +57,33 @@
       "mismatchedFrames": [],
       "pass": true
     },
-    "pass": true
+    "rgba": {
+      "frameCount": 96,
+      "mismatchedFrames": [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        51,
+        52,
+        54
+      ],
+      "pass": false
+    },
+    "pass": false
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check passed; strict render passed",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -61,6 +95,21 @@
     "hyperframesCheck": "parity/glyph-anatomy-diff/hyperframes-check.log",
     "worstFrame": "parity/glyph-anatomy-diff/worst-frame.png",
     "referenceAlpha": "parity/glyph-anatomy-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/glyph-anatomy-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/glyph-anatomy-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/glyph-anatomy-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/glyph-anatomy-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/glyph-anatomy/reference.mp4": "807d2cebd98d6618dfce7f0e5a73481334a6bbe34c2fad490b77b7633ae175c8",
+    "public/previews/glyph-anatomy/hyperframes.mp4": "807d2cebd98d6618dfce7f0e5a73481334a6bbe34c2fad490b77b7633ae175c8",
+    "public/previews/glyph-anatomy/thumbnail.png": "3c267eb6ca74ef47a766431493c88baf8bd426394772bd1fd524785b2c7a2a78",
+    "parity/glyph-anatomy-diff/summary.json": "7bcb238272e302b3f284f6e8d13a02617a4ae82f403b46060e77a9bedf259880",
+    "parity/glyph-anatomy-diff/ssim.log": "12eb9481925935bde70b271aa9eeac1aee6a6bed24034d5cfaece802f94e736a",
+    "parity/glyph-anatomy-diff/hyperframes-check.log": "249cd6247cebc2c362107e6742bb84bea7252794c126b9d53ff65860992bb660",
+    "parity/glyph-anatomy-diff/worst-frame.png": "97f062d3eff6c8ab3b51cec6cb3ced4d8d421b4b721f63e51c1650c4518aa8d3",
+    "parity/glyph-anatomy-diff/reference-alpha.framemd5": "4b822cd9cb7c572f2db4c260f7e742177468e276efadeec439f8f6e89fb21efe",
+    "parity/glyph-anatomy-diff/hyperframes-alpha.framemd5": "4b822cd9cb7c572f2db4c260f7e742177468e276efadeec439f8f6e89fb21efe",
+    "parity/glyph-anatomy-diff/reference-rgba.framemd5": "050f909e01693ab8788566f570a3d4760921430d1b439230a8b0ff2594161f93",
+    "parity/glyph-anatomy-diff/hyperframes-rgba.framemd5": "95d975dfc3eeecea03584a69ceff5de4efc6adf463975637e5e193b35e90447c"
   }
 }

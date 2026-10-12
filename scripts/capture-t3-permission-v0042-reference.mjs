@@ -1,22 +1,30 @@
 import { createHash } from "node:crypto";
 import { spawn, spawnSync } from "node:child_process";
 import { createRequire } from "node:module";
-import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.HYFRME_PLAYWRIGHT_CORE ?? "playwright-core");
 const root = resolve(import.meta.dirname, "..");
 const release = resolve(root, ".work/t3-v0042-bin/t3-0.0.42-linux-x64");
-const source = resolve(root, "assets/t3-code/v0.0.42");
-const baseFixture = JSON.parse(await readFile(resolve(source, "brief-v0042-fixture.json"), "utf8"));
+const originalSource = resolve(root, "assets/t3-code/v0.0.42");
+const captureRoot = process.env.T3_REFERENCE_OUTPUT;
+const project = process.env.T3_REFERENCE_PROJECT;
+if (!captureRoot || !project || !resolve(captureRoot).startsWith(resolve(root, ".work") + "/") || !resolve(project).startsWith(resolve(root, ".work") + "/")) throw new Error("Set owned T3_REFERENCE_OUTPUT and T3_REFERENCE_PROJECT under .work");
+const source = resolve(captureRoot, "source");
+const baseFixture = JSON.parse(await readFile(resolve(originalSource, "brief-v0042-fixture.json"), "utf8"));
 const theme = process.argv[2] ?? "dark";
 if (theme !== "dark" && theme !== "light") throw new Error("Expected dark or light theme");
 const suffix = theme === "light" ? "-light" : "";
 const prefix = `permission-choice${suffix}`;
-const work = resolve(root, `.work/t3-${prefix}-v0042-reference`);
-const baseDir = resolve(root, `.work/t3-${prefix}-v0042-fixture`);
-const reference = resolve(root, `parity/t3-permission-choice-v0042${suffix}-reference.mkv`);
+const work = resolve(captureRoot, "frames");
+const baseDir = resolve(project);
+const reference = resolve(captureRoot, "reference.mkv");
+for (const target of [work, source, reference]) {
+  try { await access(target); } catch (error) { if (error.code === "ENOENT") continue; throw error; }
+  throw new Error(`Preserve existing capture: ${target}`);
+}
 const executablePath = process.env.HYFRME_CHROMIUM;
 if (!executablePath) throw new Error("Set HYFRME_CHROMIUM to Chrome Headless Shell 152");
 const browserVersion = spawnSync(executablePath, ["--version"], { encoding: "utf8" });
@@ -30,8 +38,8 @@ const events = { open: 25, hover: 55, select: 85 };
 const prompt = "Update the Hyfrme logo component source.";
 const permissionBefore = "Full access";
 const permissionAfter = "Auto-accept edits";
-await cp(resolve(root, ".work/t3-v0042-composer-fixture"), baseDir, { recursive: true, force: true });
 await mkdir(work, { recursive: true });
+await mkdir(source, { recursive: true });
 const port = theme === "dark" ? 3923 : 3924;
 const server = spawn(resolve(release, "t3"), ["serve", "--base-dir", baseDir, "--host", "127.0.0.1", "--port", String(port), "--no-browser"],
   { cwd: root, stdio: ["ignore", "pipe", "pipe"] });
@@ -84,7 +92,11 @@ try {
   if (theme === "dark" && !await page.locator("html.dark").count()) throw new Error("Native theme is not dark");
   if (theme === "light" && await page.locator("html.dark").count()) throw new Error("Native theme is not light");
   await page.waitForTimeout(950);
-  await page.locator('button[data-slot="toast-close"]').evaluateAll((buttons) => buttons.forEach((button) => button.click()));
+  await page.locator('button[data-slot="toast-close"]').evaluateAll((buttons) => {
+    window.__hyfrmeDismissedToasts = buttons.map(button => button.closest('[data-position]'));
+    if (window.__hyfrmeDismissedToasts.some(node => !node)) throw new Error('Toast root absent');
+    buttons.forEach(button => button.click());
+  });
   await page.evaluate(() => document.fonts.ready);
   const trigger = page.getByRole("combobox", { name: "Runtime mode" });
   await trigger.waitFor();
@@ -96,6 +108,13 @@ try {
   await editor.evaluate((element) => element.blur());
   await page.mouse.move(800, 80);
   await page.waitForTimeout(250);
+  await page.waitForFunction(() => window.__hyfrmeDismissedToasts.every(node => !node.isConnected) && document.querySelectorAll('[data-slot="toast-viewport"] [data-ending-style]').length === 0, undefined, {timeout:3000});
+  const readiness = await page.evaluate(() => ({dismissedCount:window.__hyfrmeDismissedToasts.length, allDetached:window.__hyfrmeDismissedToasts.every(node=>!node.isConnected), exitingCount:document.querySelectorAll('[data-slot="toast-viewport"] [data-ending-style]').length}));
+  await writeFile(resolve(source, 'toast-readiness.json'), JSON.stringify(readiness,null,2));
+  const baseline = await page.evaluate(() => ({rows:[...document.querySelectorAll('[data-testid="sidebar-row-card"]')].map(row=>row.textContent), shelf:document.querySelector('[data-testid="sidebar-settled-shelf-toggle"]')?.textContent, prompt:document.querySelector('[data-testid="composer-editor"]')?.textContent, permission:document.querySelector('[aria-label="Runtime mode"]')?.textContent,viewport:{width:innerWidth,height:innerHeight}}));
+  const labels = ['Build a logo intro','Catalog motion audit','Grouped logo tests','Review final hold','Search reveal timing'];
+  if (baseline.rows.length!==5 || baseline.rows.some((text,i)=>!text.includes(labels[i])) || !/^Settled\s*\(1\)$/.test(baseline.shelf) || baseline.prompt!==prompt || !baseline.permission.includes(permissionBefore) || baseline.viewport.width!==1200 || baseline.viewport.height!==659) throw new Error('Permission source initial state changed: '+JSON.stringify(baseline));
+  await writeFile(resolve(source,'initial-state-guard.json'),JSON.stringify(baseline,null,2));
   const saveRoot = async (phase) => {
     const html = (await page.locator("#root").evaluate((element) => element.innerHTML))
       .replaceAll(resolve(root, ".work/t3-v0042-composer-project"), "hyfrme-demo");
@@ -170,7 +189,7 @@ try {
 } catch (error) {
   throw new Error(String(error).replace(/http:\/\/127\.0\.0\.1:\d+\/?\S*/g, "[pairing URL redacted]"));
 } finally {
-  await browser?.close();
+  await browser?.close().finally(() => server.kill("SIGTERM"));
   server.kill("SIGTERM");
 }
 const encode = spawnSync("ffmpeg", ["-hide_banner", "-loglevel", "error", "-y", "-framerate", String(fps),

@@ -2,7 +2,7 @@
   "slug": "shadow-sweep-text",
   "origin": {
     "repository": "https://github.com/Remocn/remocn",
-    "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+    "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
     "source": "registry/remocn/shadow-sweep-text/index.tsx",
     "config": "registry/remocn/shadow-sweep-text/config.ts",
     "license": "MIT"
@@ -26,21 +26,38 @@
     },
     "background": "#030012"
   },
+  "filesSha256": {
+    "registry-item.json": "0c531e5bc39077e9b27b4fb5caae1a3a4c4086382f8b9138e66445edcc5a6823",
+    "shadow-sweep-text.html": "fd76aefcfed65f5d7d3ec2fd5c5b91cfdc128289c6324b23345496d4269cceee",
+    "shadow-sweep-text.runtime.js": "4ed06d7f794d2bd1ac90a261628a07ffd8e8592e4a8201e4191688de5e7988e7",
+    "Geist-Latin.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "licenses/Geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "licenses/Remocn-MIT.txt": "9045ed59114eee12264c0d551288d4ab0f77893c1fc211283410c5c24cc579c6",
+    "licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "bdeda08ba6ef2f204d1accf79975f3b44761f972bef302b431d07b898240a333",
+  "fingerprint": "2479bf481f50b0f5bd71397c40706bf88da3b86a8ff852ffb835b9c4c3b48566",
   "thresholds": {
-    "meanSsim": 0.99,
-    "minSsim": 0.95
+    "meanSsim": 1,
+    "minSsim": 1,
+    "exactRgba": true
   },
   "result": {
     "frameCount": 37,
-    "meanSsim": 0.9968561621621619,
-    "minSsim": 0.993069,
-    "p05Ssim": 0.99311,
-    "p95Ssim": 0.999882,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
     "alpha": {
+      "frameCount": 37,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "rgba": {
       "frameCount": 37,
       "mismatchedFrames": [],
       "pass": true
@@ -48,13 +65,14 @@
     "pass": true
   },
   "checks": {
+    "canvasMode": "source-capability",
     "hyperframes": "full check reported 1 reviewed source-inherited errors (exit 1); strict render passed",
     "sourceInheritedFindings": [
       {
         "slug": "shadow-sweep-text",
         "origin": {
           "repository": "https://github.com/Remocn/remocn",
-          "commit": "3e03565f5c0001e143c2ed941eea7c3181f13260",
+          "commit": "8ae853e4c08108105684d4b8cac7f22400840d2a",
           "source": "registry/remocn/shadow-sweep-text/index.tsx",
           "config": "registry/remocn/shadow-sweep-text/config.ts",
           "license": "MIT"
@@ -65,13 +83,16 @@
           "containerSelector": "#shadow-sweep-text-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
           "text": "are abandoned"
         },
-        "reason": "The pinned source intentionally sweeps a blurred radial-gradient shadow across the masked text during entry and exit. The inspector identifies this actual shadow layer as an opaque occluder. Preserve the source effect; all 37 frame alpha plane matches and RGB SSIM is mean 0.996592/min 0.993028. The complete finding remains in the audit."
+        "reason": "The source layers copies of the word to animate its shadows. The inspector treats those intentional text layers as opaque occlusion. The complete inspector finding remains in the parity check log; visual parity is checked separately against every upstream frame."
       }
     ],
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.513",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "browserGpuMode": "hardware",
+    "rasterization": "browser-default",
+    "frameCapture": "strict PNG render",
+    "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
   "artifacts": {
@@ -83,6 +104,21 @@
     "hyperframesCheck": "parity/shadow-sweep-text-diff/hyperframes-check.log",
     "worstFrame": "parity/shadow-sweep-text-diff/worst-frame.png",
     "referenceAlpha": "parity/shadow-sweep-text-diff/reference-alpha.framemd5",
-    "hyperframesAlpha": "parity/shadow-sweep-text-diff/hyperframes-alpha.framemd5"
+    "hyperframesAlpha": "parity/shadow-sweep-text-diff/hyperframes-alpha.framemd5",
+    "referenceRgba": "parity/shadow-sweep-text-diff/reference-rgba.framemd5",
+    "hyperframesRgba": "parity/shadow-sweep-text-diff/hyperframes-rgba.framemd5"
+  },
+  "artifactHashes": {
+    "public/previews/shadow-sweep-text/reference.mp4": "0c40f54362ca2f618aa4e49b5554e54c4fb1868a445c4aee7d3109340e77f106",
+    "public/previews/shadow-sweep-text/hyperframes.mp4": "0c40f54362ca2f618aa4e49b5554e54c4fb1868a445c4aee7d3109340e77f106",
+    "public/previews/shadow-sweep-text/thumbnail.png": "fc1615e1b57dc9bd41e9fd33a349ff2d9b19cc1d599f10985142ea2f631a42e0",
+    "parity/shadow-sweep-text-diff/summary.json": "0a4ff868d180f8a5dce2ff6b99ab23dafdd3938e463304135f042c5da0de0e47",
+    "parity/shadow-sweep-text-diff/ssim.log": "8cbe7a580c629ec2edafcca53964884b8dd469defe8a6a82474d9bc1f1343f36",
+    "parity/shadow-sweep-text-diff/hyperframes-check.log": "8889e9dbb73090a17038134a6f0a66eb43a503e8c67af9df18f42bf3e63aafc5",
+    "parity/shadow-sweep-text-diff/worst-frame.png": "185725d1852eb2cfdf13c42e0b8f8cff81a8049611f661f6c4e87456607776ee",
+    "parity/shadow-sweep-text-diff/reference-alpha.framemd5": "02ffab3ed033833a8897c318216e5552485c5a94f5d844fbc41af4e0994a99b6",
+    "parity/shadow-sweep-text-diff/hyperframes-alpha.framemd5": "02ffab3ed033833a8897c318216e5552485c5a94f5d844fbc41af4e0994a99b6",
+    "parity/shadow-sweep-text-diff/reference-rgba.framemd5": "ead70c52a467b97eec15fb3736e7bfd13a2d35bd1a0261fb879fa11bc24d2a78",
+    "parity/shadow-sweep-text-diff/hyperframes-rgba.framemd5": "ead70c52a467b97eec15fb3736e7bfd13a2d35bd1a0261fb879fa11bc24d2a78"
   }
 }

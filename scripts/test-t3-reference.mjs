@@ -26,7 +26,10 @@ for (const idea of ideas) {
     throw new Error(`T3 Code reference ${idea.id} has no native animation`);
   }
   if (idea.themes.includes("light")) {
-    const lightName = idea.previewVariant === "settingsEnabled200" ? "reference-settings-enabled-light.mp4" : "reference-light.mp4";
+    const variantParity = idea.previewVariant ? JSON.parse(await readFile(resolve(root, "parity", `${idea.block}.json`), "utf8")) : null;
+    const lightPath = variantParity?.themes?.light?.[idea.previewVariant]?.artifacts?.referenceVideo;
+    if (idea.previewVariant && !lightPath) throw new Error(`${idea.block} gallery variant has no declared light preview`);
+    const lightName = lightPath ? lightPath.split("/").at(-1) : "reference-light.mp4";
     if (!renderT3Scene(idea, "light").includes(`/previews/${idea.block}/${lightName}`)) {
       throw new Error(`T3 Code reference ${idea.id} has no light native animation`);
     }
@@ -64,8 +67,10 @@ for (const idea of ideas) {
   const variant = idea.previewVariant === "settingsEnabled200" ? parity.themes?.dark?.settingsEnabled200 : null;
   const referenceSha256 = variant?.referenceSha256 ?? parity.themes?.dark?.referenceSha256 ?? parity.fixture.referenceSha256;
   const sourceNames = variant
-    ? new Set([`${sourcePrefix}-dark-animated-reference.mkv`])
-    : new Set([`${sourcePrefix}-reference.mkv`, `${sourcePrefix}-dark-reference.mkv`]);
+    ? new Set([variant.artifacts?.nativeRecording])
+    : new Set(parity.themes?.dark?.artifacts?.nativeRecording
+      ? [parity.themes.dark.artifacts.nativeRecording]
+      : [`${sourcePrefix}-reference.mkv`, `${sourcePrefix}-dark-reference.mkv`]);
   if (idea.previewVariant && (!variant?.result?.pass || variant.result.frameCount !== 120)) {
     throw new Error(`${idea.block} gallery variant has no verified parity result`);
   }
