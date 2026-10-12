@@ -1,0 +1,5 @@
+# T3 Code: Permission Choice
+
+This four-second block reproduces the T3 Code v0.0.35 permission-choice menu at 1200 × 659 and 30 fps. It opens the native access menu and changes Full access to Auto-accept edits. The full T3 Code workspace remains visible throughout.
+
+Set the same project, branch, thread, age, model, reasoning, and prompt variables on adjacent T3 Code blocks for a continuous workspace. Set the following block's permission mode to this block's permissionAfter value. The menu opens at openFrame and commits the selection at selectFrame. You can customize the option labels, descriptions, workspace copy, and timing. The native heading sits one pixel lower in this capture; set headingOffset to 0 when cutting directly from Reasoning Level to keep the title still. Source: https://github.com/pingdotgg/t3code/tree/f925d639421844f02b3166d29281905dbba6d529. The installed files include the T3 Code MIT license. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.

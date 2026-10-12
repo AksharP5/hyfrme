@@ -1,0 +1,5 @@
+# T3 Code: Return to a Worktree
+
+This four-second block reproduces the official T3 Code v0.0.42 Workspace selector at 1200 × 659 and 30 fps in dark and light. It opens the actual composer control, hovers Previous worktree (main), and selects it. The native footer changes from Current checkout to Current worktree. This is a draft context change into an existing worktree, before a prompt is sent.
+
+Customize the project, thread rows, prompt, model, permission, workspace labels, previous worktree option, branch, theme, and open/hover/select frames. The default menu, hover, and five selection-transition frames use cropped official dark/light captures for close parity; changing visible content switches to editable source DOM. Use matching values on adjacent blocks for a continuous workspace. The project, model, and conversation are seeded; no AI provider executes. Source: https://github.com/pingdotgg/t3code/tree/719a76ca1dbf5490f1aa33ffb9966301e02be9a9. The installed files include the T3 Code MIT license. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.

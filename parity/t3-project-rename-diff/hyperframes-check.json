@@ -1,0 +1,646 @@
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 4,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div data-composition-id=\"t3-project-rename\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id=\"t3-project-rename\"]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-project-rename-verify/project/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "negative_z_index",
+        "severity": "warning",
+        "message": "`z-index: -1` paints the element behind its nearest stacking context's own content. With no stacking-context ancestor that context is the composition root itself, so an opaque background there hides it entirely: in the DOM, laid out, and absent from the picture. A transparent root leaves it visible. Siblings at `z-index: 0` or above are unaffected.",
+        "selector": ":is(.chat-composer-drawer-surface,.chat-composer-top-drawer):before",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-project-rename-verify/project/compositions/t3-project-rename.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Give the element's parent a stacking context - `isolation: isolate` is the cheapest, and `transform`, `filter`, `opacity` below 1, `contain: paint` and `will-change` all work too. The negative-z child then paints above that parent's background and renders normally. Or express paint order through DOM order - an earlier sibling paints behind a later one - and raise the elements that should sit in front rather than lowering this one."
+      },
+      {
+        "code": "negative_z_index",
+        "severity": "warning",
+        "message": "`z-index: -1` paints the element behind its nearest stacking context's own content. With no stacking-context ancestor that context is the composition root itself, so an opaque background there hides it entirely: in the DOM, laid out, and absent from the picture. A transparent root leaves it visible. Siblings at `z-index: 0` or above are unaffected.",
+        "selector": ".chat-composer-context-strip:before",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-project-rename-verify/project/compositions/t3-project-rename.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Give the element's parent a stacking context - `isolation: isolate` is the cheapest, and `transform`, `filter`, `opacity` below 1, `contain: paint` and `will-change` all work too. The negative-z child then paints above that parent's background and renders normally. Or express paint order through DOM order - an earlier sibling paints behind a later one - and raise the elements that should sit in front rather than lowering this one."
+      },
+      {
+        "code": "composition_heavy_overlay_count_high",
+        "severity": "warning",
+        "message": "This composition has 54 elements carrying \"heavy overlay\" CSS (filter:blur, radial-gradient, or clip-path). Field signal: a composition with ~40 such elements — including opacity:0 / visibility:hidden ones — captures solid-black for the first ~half of the render, recovering near the end. Reproduces identically via drawElement, forced screenshot capture, and snapshot, so the capture layer itself is the offender (not encoder/mux). Independent of duration. Presence alone matters; only display:none elements are excluded here.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-project-rename-verify/project/compositions/t3-project-rename.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split this sub-composition further into per-transition mini-compositions and concat the pieces (FFmpeg or the runtime's slideshow) so each capture only sees a small subset of heavy overlays at once. Even hidden overlays (opacity:0 / visibility:hidden) contribute — either remove truly unused ones from the source or scope them into their own per-transition sub-composition. If an overlay is genuinely inert for the whole clip, use display:none so it never enters the render tree. Field ref ts=1784040753 (#hyperframes-cli-feedback)."
+      }
+    ],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 11,
+    "findings": [
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 1.556,
+        "selector": "div.mx-auto.flex",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 280,
+          "top": 52,
+          "right": 1176,
+          "bottom": 1050.75,
+          "width": 896,
+          "height": 998.75
+        },
+        "containerSelector": "div.topbar-scroll-fade.scrollbar-gutter-both",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 256,
+          "top": 52,
+          "right": 1200,
+          "bottom": 659,
+          "width": 944,
+          "height": 607
+        },
+        "overflow": {
+          "bottom": 391.75
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-project-rename.html",
+        "bbox": {
+          "x": 280,
+          "y": 52,
+          "width": 896,
+          "height": 998.75
+        },
+        "firstSeen": 1.556,
+        "lastSeen": 2.889,
+        "occurrences": 4,
+        "heldMs": 1332.9999999999998
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.556,
+        "selector": "h3.text-sm.font-medium",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 320,
+          "top": 668.22,
+          "right": 420.84,
+          "bottom": 684.22,
+          "width": 100.84,
+          "height": 16
+        },
+        "containerSelector": "#root",
+        "text": "Project grouping",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1200,
+          "bottom": 659,
+          "width": 1200,
+          "height": 659
+        },
+        "overflow": {
+          "bottom": 25.22
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-project-rename.html",
+        "bbox": {
+          "x": 320,
+          "y": 668.22,
+          "width": 100.84,
+          "height": 16
+        },
+        "firstSeen": 1.556,
+        "lastSeen": 2.889,
+        "occurrences": 4,
+        "heldMs": 1332.9999999999998
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.556,
+        "selector": "p.max-w-xl.text-\\[13px\\]",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 320,
+          "top": 691.22,
+          "right": 855.97,
+          "bottom": 725.06,
+          "width": 535.97,
+          "height": 33.84
+        },
+        "containerSelector": "#root",
+        "text": "How this checkout joins project groups in the sidebar. Changing it can move you to a different project group.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1200,
+          "bottom": 659,
+          "width": 1200,
+          "height": 659
+        },
+        "overflow": {
+          "bottom": 66.06
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-project-rename.html",
+        "bbox": {
+          "x": 320,
+          "y": 691.22,
+          "width": 535.97,
+          "height": 33.84
+        },
+        "firstSeen": 1.556,
+        "lastSeen": 2.889,
+        "occurrences": 4,
+        "heldMs": 1332.9999999999998
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.556,
+        "selector": "span.flex-1.truncate",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 927.47,
+          "top": 689.06,
+          "right": 1108,
+          "bottom": 705.06,
+          "width": 180.53,
+          "height": 16
+        },
+        "containerSelector": "#root",
+        "text": "Default (Group by repository)",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1200,
+          "bottom": 659,
+          "width": 1200,
+          "height": 659
+        },
+        "overflow": {
+          "bottom": 46.06
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-project-rename.html",
+        "bbox": {
+          "x": 927.47,
+          "y": 689.06,
+          "width": 180.53,
+          "height": 16
+        },
+        "firstSeen": 1.556,
+        "lastSeen": 2.889,
+        "occurrences": 4,
+        "heldMs": 1332.9999999999998
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.556,
+        "selector": "h3.text-base.font-semibold",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 320,
+          "top": 762.91,
+          "right": 378.67,
+          "bottom": 779.91,
+          "width": 58.67,
+          "height": 17
+        },
+        "containerSelector": "#root",
+        "text": "Actions",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1200,
+          "bottom": 659,
+          "width": 1200,
+          "height": 659
+        },
+        "overflow": {
+          "bottom": 120.91
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-project-rename.html",
+        "bbox": {
+          "x": 320,
+          "y": 762.91,
+          "width": 58.67,
+          "height": 17
+        },
+        "firstSeen": 1.556,
+        "lastSeen": 2.889,
+        "occurrences": 4,
+        "heldMs": 1332.9999999999998
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.556,
+        "selector": "p.text-pretty.text-sm",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 320,
+          "top": 785.91,
+          "right": 519.23,
+          "bottom": 801.91,
+          "width": 199.23,
+          "height": 16
+        },
+        "containerSelector": "#root",
+        "text": "Saved and run only in archlinux.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1200,
+          "bottom": 659,
+          "width": 1200,
+          "height": 659
+        },
+        "overflow": {
+          "bottom": 142.91
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-project-rename.html",
+        "bbox": {
+          "x": 320,
+          "y": 785.91,
+          "width": 199.23,
+          "height": 16
+        },
+        "firstSeen": 1.556,
+        "lastSeen": 2.889,
+        "occurrences": 4,
+        "heldMs": 1332.9999999999998
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.556,
+        "selector": "button.\\[\\&_svg\\]\\:-mx-0\\.5.relative",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1071.28,
+          "top": 774.91,
+          "right": 1128,
+          "bottom": 788.91,
+          "width": 56.72,
+          "height": 14
+        },
+        "containerSelector": "#root",
+        "text": "Add action",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1200,
+          "bottom": 659,
+          "width": 1200,
+          "height": 659
+        },
+        "overflow": {
+          "bottom": 129.91
+        },
+        "dataAttributes": {
+          "data-slot": "sidebar-trigger",
+          "data-sidebar": "trigger"
+        },
+        "sourceFile": "compositions/t3-project-rename.html",
+        "bbox": {
+          "x": 1071.28,
+          "y": 774.91,
+          "width": 56.72,
+          "height": 14
+        },
+        "firstSeen": 1.556,
+        "lastSeen": 2.889,
+        "occurrences": 4,
+        "heldMs": 1332.9999999999998
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.556,
+        "selector": "p.px-3.py-2",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 320,
+          "top": 817.91,
+          "right": 565.14,
+          "bottom": 833.91,
+          "width": 245.14,
+          "height": 16
+        },
+        "containerSelector": "#root",
+        "text": "No actions configured for this checkout.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1200,
+          "bottom": 659,
+          "width": 1200,
+          "height": 659
+        },
+        "overflow": {
+          "bottom": 174.91
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-project-rename.html",
+        "bbox": {
+          "x": 320,
+          "y": 817.91,
+          "width": 245.14,
+          "height": 16
+        },
+        "firstSeen": 1.556,
+        "lastSeen": 2.889,
+        "occurrences": 4,
+        "heldMs": 1332.9999999999998
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.556,
+        "selector": "h2.flex.items-center",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 320,
+          "top": 897.91,
+          "right": 379.33,
+          "bottom": 917.91,
+          "width": 59.33,
+          "height": 20
+        },
+        "containerSelector": "#root",
+        "text": "Danger",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1200,
+          "bottom": 659,
+          "width": 1200,
+          "height": 659
+        },
+        "overflow": {
+          "bottom": 258.91
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-project-rename.html",
+        "bbox": {
+          "x": 320,
+          "y": 897.91,
+          "width": 59.33,
+          "height": 20
+        },
+        "firstSeen": 1.556,
+        "lastSeen": 2.889,
+        "occurrences": 4,
+        "heldMs": 1332.9999999999998
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.556,
+        "selector": "h3.text-sm.font-medium",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 320,
+          "top": 949.91,
+          "right": 417.06,
+          "bottom": 965.91,
+          "width": 97.06,
+          "height": 16
+        },
+        "containerSelector": "#root",
+        "text": "Remove project",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1200,
+          "bottom": 659,
+          "width": 1200,
+          "height": 659
+        },
+        "overflow": {
+          "bottom": 306.91
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-project-rename.html",
+        "bbox": {
+          "x": 320,
+          "y": 949.91,
+          "width": 97.06,
+          "height": 16
+        },
+        "firstSeen": 1.556,
+        "lastSeen": 2.889,
+        "occurrences": 4,
+        "heldMs": 1332.9999999999998
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.556,
+        "selector": "p.max-w-xl.text-\\[13px\\]",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 320,
+          "top": 972.91,
+          "right": 726.84,
+          "bottom": 987.91,
+          "width": 406.84,
+          "height": 15
+        },
+        "containerSelector": "#root",
+        "text": "Deletes the project entry and its threads. Files on disk are not touched.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1200,
+          "bottom": 659,
+          "width": 1200,
+          "height": 659
+        },
+        "overflow": {
+          "bottom": 328.91
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-project-rename.html",
+        "bbox": {
+          "x": 320,
+          "y": 972.91,
+          "width": 406.84,
+          "height": 15
+        },
+        "firstSeen": 1.556,
+        "lastSeen": 2.889,
+        "occurrences": 4,
+        "heldMs": 1332.9999999999998
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.556,
+        "selector": "button.\\[--control-icon-color\\:currentColor\\].\\[\\&_svg\\]\\:-mx-0\\.5",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1025.95,
+          "top": 961.33,
+          "right": 1124,
+          "bottom": 977.33,
+          "width": 98.05,
+          "height": 16
+        },
+        "containerSelector": "#root",
+        "text": "Remove project",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1200,
+          "bottom": 659,
+          "width": 1200,
+          "height": 659
+        },
+        "overflow": {
+          "bottom": 318.33
+        },
+        "dataAttributes": {
+          "data-slot": "button"
+        },
+        "sourceFile": "compositions/t3-project-rename.html",
+        "bbox": {
+          "x": 1025.95,
+          "y": 961.33,
+          "width": 98.05,
+          "height": 16
+        },
+        "firstSeen": 1.556,
+        "lastSeen": 2.889,
+        "occurrences": 4,
+        "heldMs": 1332.9999999999998
+      }
+    ],
+    "duration": 4,
+    "samples": [
+      0.222,
+      0.667,
+      1.111,
+      1.556,
+      2,
+      2.444,
+      2.889,
+      3.333,
+      3.778
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 12,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.222,
+      1.111,
+      2,
+      2.889,
+      3.778
+    ],
+    "checked": 0,
+    "passed": 0
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.75",
+    "latestVersion": "0.8.75",
+    "updateAvailable": false
+  }
+}

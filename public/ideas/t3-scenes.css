@@ -1,0 +1,74 @@
+.preview-frame:has(.t3-capture) {
+  aspect-ratio: 1200 / 659;
+  background: #0f0f0f;
+}
+
+.t3-capture {
+  background: #0f0f0f;
+}
+
+.preview-frame:has(.t3-capture.is-light),
+.t3-capture.is-light {
+  background: #fff;
+}
+
+.t3-capture .t3-shot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.t3-shot-b,
+.t3-shot-c {
+  opacity: 0;
+}
+
+.t3-capture .t3-motion {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+
+.t3-capture.is-playing .t3-motion,
+.t3-capture.show-video .t3-motion {
+  opacity: 1;
+}
+
+.t3-capture.is-playing[data-steps="3"] .t3-shot-a {
+  animation: t3-first 4s steps(1, end) both;
+}
+
+.t3-capture.is-playing[data-steps="3"] .t3-shot-b {
+  animation: t3-middle 4s steps(1, end) both;
+}
+
+.t3-capture.is-playing[data-steps="3"] .t3-shot-c {
+  animation: t3-last 4s steps(1, end) both;
+}
+
+@keyframes t3-first {
+  0%, 20% { opacity: 1; }
+  21%, 100% { opacity: 0; }
+}
+
+@keyframes t3-middle {
+  0%, 20% { opacity: 0; }
+  21%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes t3-last {
+  0%, 50% { opacity: 0; }
+  51%, 100% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .t3-capture.is-playing:not(.force-motion) .t3-shot {
+    animation: none;
+  }
+}

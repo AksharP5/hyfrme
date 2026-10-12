@@ -1,20 +1,137 @@
 # Snapcn source and license audit
 
-Snapcn's original ports other than Status Cycle retain commit
-`353803b506dba0cb7ca13bb45b0d099690400815`. Roster Grant and Wordmark Cut use
-`bc5b59f3f0fad9657b338fa62349a55fa33f160f`, checked on September 8, 2026.
-Word Gather, Word Wheel, Channel Thread, Logo Collapse, and Card Rail use
-`1159369742d75d66ae89b3f83d45850861ccc63e`, checked on September 12, 2026.
-Status Cycle uses `0b30e76a3d1e4c9a49390d109a9630b118b1e100`, checked on
-September 17, 2026. Its label roll now takes 0.5 seconds, with 30 frames between
-statuses and a 198-frame fixture. Other component pins remain unchanged.
-All 44 free visual components have fixtures in `catalog/snapcn-fixtures.json`.
+The October 11 refresh pins Check Cycle, Capture Reveal, Font Shuffle,
+Count Grid, Orb Swarm, Screen Recording, Announce Title, Channel Thread, and
+Card Rail to `460783c1af88f20913caa843734353c2eec2c997`. Other original ports
+retain `353803b506dba0cb7ca13bb45b0d099690400815`. Roster Grant and Wordmark Cut
+retain `bc5b59f3f0fad9657b338fa62349a55fa33f160f`. Word Gather, Word Wheel, and
+Logo Collapse retain `1159369742d75d66ae89b3f83d45850861ccc63e`. Status Cycle
+retains `0b30e76a3d1e4c9a49390d109a9630b118b1e100`; Reel Collage retains
+`7fd048cc7eee397a0e6cb1353c1537aefd245e2c`.
+All 49 free visual components have fixtures in `catalog/snapcn-fixtures.json`.
 The source inventory is `catalog/snapcn-upstream.json`.
 
-The 41 entries in the merged preview registry retain its exact control defaults,
-shared speed control, and minimum-speed overrides. Caret, Input, and Pulsing
-Border are published registry components outside that preview map. Their fixtures
-use their individual configs. No private source was accessed.
+The merged preview registry now contains 46 components. Fixtures preserve its
+authored defaults, shared speed control where supported, and minimum-speed
+overrides. Caret, Input, and Pulsing Border remain public registry components
+outside that preview map and use their individual configs. No private source
+was accessed.
+
+## Latest public audit, October 11, 2026
+
+Public main is
+[`460783c1af88f20913caa843734353c2eec2c997`](https://github.com/shadcn-labs/snapcn/commit/460783c1af88f20913caa843734353c2eec2c997).
+The repository moved to `shadcn-labs/snapcn`; previous source URLs redirect.
+The [live registry](https://snapcn.dev/r/registry.json) and authored free registry
+contain 50 items: 49 visual components and one shared runtime. Check Cycle,
+Capture Reveal, and Font Shuffle are new free visual components.
+
+Six existing ports also need behavior or control updates. Count Grid and Orb
+Swarm now take `mode` and derive their page and ink from the shared theme. Orb
+Swarm also turns its measured word tints around for a dark page. Screen
+Recording now applies `speed` to video playback as well as its camera. Announce
+Title adds `inkColor` for the eyebrow and macro shots. Channel Thread replaces
+its parallel conversation strings with one `messages` control. Card Rail
+similarly replaces its parallel card strings with one `cards` control.
+
+The remaining source changes only add `Item` wrappers for upstream Studio
+selection, rewrite root-relative URLs through `staticFile()`, or move existing
+media URLs to `media.snapcn.dev`. Without a Studio host, `Item` returns its child
+unchanged. Hyfrme already resolves local assets and keeps their frozen binaries,
+so those changes do not require new renders or changed fixture pins. The nine
+refreshed ports retain the current upstream source and supported controls; CDN aliases
+resolve to the existing audited media rather than downloading replacement files.
+
+The upstream shared config appends `speed` to the three new components, but
+none has a speed prop or uses that value. Hyfrme omits that ineffective inherited
+control; `omittedControls` records why. Their authored controls remain available.
+
+New direct `FontFace` sources use 15 unmodified, versioned Fontsource binaries.
+Their original OFL license files ship with the blocks. Check Cycle uses Inter
+3.19 from `@fontsource/inter@4.5.15`; Capture Reveal uses the DM Sans variable
+font with its optical size axis. Font Shuffle uses 13 loaded faces for its
+scramble and eleven swaps. Its source comment still names older candidate
+fonts, so the frozen files follow the actual `FACES` table. Both reference and
+port freeze the same direct font URLs. Installed fonts use the existing Hyfrme
+namespace so adjacent components cannot alter each other's font selection.
+
+Capture Reveal's upstream screenshot lives on a remote media CDN and is absent
+from the MIT Git tree. No asset redistribution grant is documented. Its fixture
+uses an original Hyfrme catalog illustration under Hyfrme's MIT license in both
+reference and port. `fixtureOverrides` records the original default and reason;
+the screenshot remains customizable through `src`.
+
+The public Pro catalogue still lists 51 components. All 51 unauthenticated
+component endpoints returned HTTP 402 with `error: "pro_component"`, and no Pro
+source exists in the public Git tree. They remain excluded.
+
+The nine ports pass comparison against all 1,115 source frames at matching
+1280 × 720 dimensions and 30 fps. Every alpha plane matches exactly. Eight
+installed fixtures pass the full HyperFrames check. Announce Title retains the
+same seven reviewed gradient-text inspector findings, with identical measured
+SSIM to its prior port. Its source-inherited exceptions now reference the new pin.
+
+| Component        | Frames | Mean SSIM | Minimum SSIM |
+| ---------------- | -----: | --------: | -----------: |
+| check-cycle      |    136 |  0.999991 |     0.999986 |
+| capture-reveal   |    130 |  0.999743 |     0.999606 |
+| font-shuffle     |    115 |  1.000000 |     0.999998 |
+| count-grid       |     47 |  0.997614 |     0.959545 |
+| orb-swarm        |    160 |  0.999997 |     0.999972 |
+| screen-recording |    139 |  0.999927 |     0.999428 |
+| announce-title   |    170 |  0.996379 |     0.976130 |
+| channel-thread   |    110 |  0.999979 |     0.999946 |
+| card-rail        |    108 |  0.993839 |     0.988421 |
+
+CLI-customized fixtures were also checked and visually inspected. These cover
+dark mode and copy for all new ports, both generic font selectors, the screenshot
+input, the new `messages` and `cards` formats, `inkColor`, and video `speed=2`.
+
+## Public audit, September 29, 2026
+
+Public main remains
+[`f915a5f88771bae15b09f5ef8396d5542fe360ee`](https://github.com/snapcndev/snapcn/commit/f915a5f88771bae15b09f5ef8396d5542fe360ee).
+The [live registry](https://snapcn.dev/r/registry.json) and authored free registry
+both contain 47 items: 46 visual components and one shared runtime. All 46 visuals
+are ported. The site advertises 43 free preview components; Caret, Input, and
+Pulsing Border account for the additional public visuals outside that preview map.
+No authored component source changed after the Orb Swarm port at `98809254`.
+Existing fixture and parity pins remain unchanged.
+
+The latest generated `/r/orb-swarm.json` adds the -12° constellation turn that
+was already present in the authored source at our port pin. Its current embedded
+source matches that pinned authored source apart from an attribution comment.
+This registry rebuild requires no composition change.
+
+The [public Pro index](https://github.com/snapcndev/snapcn/blob/f915a5f88771bae15b09f5ef8396d5542fe360ee/lib/pro-catalogue.json)
+and [live Pro page](https://snapcn.dev/pro) list 51 components. These are omitted
+from the current public `/r/registry.json`; only their names and descriptions
+are public. No Pro source is present in the public Git tree. All 51 unauthenticated
+component endpoints returned HTTP 402 with `error: "pro_component"`.
+The [registry route](https://github.com/snapcndev/snapcn/blob/f915a5f88771bae15b09f5ef8396d5542fe360ee/app/r/%5Bfile%5D/route.ts)
+returns HTTP 200 to the shadcn User-Agent with an empty `files` array and upgrade
+instructions. That response contains no source; Manifesto confirmed this behavior.
+All 51 Pro components remain excluded, and `publishedAudit` records their endpoint
+results separately from the pinned port inventory.
+
+## Reel Collage, September 24, 2026
+
+The [live registry](https://snapcn.dev/r/registry.json) has 45 free visuals.
+[Reel Collage](https://github.com/snapcndev/snapcn/commit/7fd048cc7eee397a0e6cb1353c1537aefd245e2c)
+is the new public source. Its eight reel posters and six collage posters are
+frozen locally. The Status Cycle poster changed since the older ports, so Reel
+Collage bundles the image from its own source pin without changing those ports.
+The Pro catalogue remains excluded because its source is private.
+
+## Orb Swarm, September 27, 2026
+
+The [live registry](https://snapcn.dev/r/registry.json) has 46 free visuals.
+[Orb Swarm](https://github.com/snapcndev/snapcn/commit/98809254aa239edfd04119336ff6a774a2df776d)
+is public and its [`/r/orb-swarm.json` endpoint](https://snapcn.dev/r/orb-swarm.json)
+returns HTTP 200. The pinned source includes the measured -12° constellation
+turn added after the initial component commit. Its Inter Tight 500 Latin font
+is frozen locally under its OFL license. The block uses no external image or
+video assets; Pro sources remain excluded.
 
 ## Published coverage, September 12, 2026
 
@@ -69,8 +186,9 @@ OFL-1.1. Channel Thread reuses two frozen avatar images. Logo Collapse and Card
 Rail use the pinned repository's preview posters, and Logo Collapse reuses its
 logo image. These additions introduce no shader dependency.
 
-The 14 font families use unmodified Latin binaries selected from
-`@remotion/google-fonts@4.0.473` metadata. Twenty-four unique binaries cover all
+The original Google font families use unmodified Latin binaries selected from
+`@remotion/google-fonts@4.0.473` metadata. The October refresh adds direct
+Fontsource faces and a DM Sans fallback; 41 unique binaries cover all
 recorded styles and weights. Each family retains its original license text.
 Ultra is Apache-2.0 and retains Brian J. Bonislawsky's copyright notice. The other
 families use OFL-1.1. Google Sans was checked against Google's official font
@@ -79,7 +197,7 @@ The port uses `Hyfrme Snapcn ...` CSS family aliases to avoid collisions with
 fonts in a host composition. The font binaries and their embedded names remain
 unchanged; public customization labels retain the original family names.
 
-The 89 frozen media files include all 24 follower avatars and 16 Orbit Gallery
+The 93 frozen source media files include all 24 follower avatars and 16 Orbit Gallery
 photographs. Repository media is copied unchanged from the pinned MIT source;
 upstream does not document separate rights or provenance for those individual
 files. This audit records that limitation rather than asserting independent
@@ -140,7 +258,7 @@ The audit covers generated blocks and frozen font/media assets, including the
 original and derived videos. It checks the derived videos' actual
 transfer, matrix, and primaries metadata with `ffprobe` to prevent browser color
 regressions.
-All 608 fixture controls preserve the pinned source defaults, labels, options,
+All 623 fixture controls preserve the pinned source defaults, labels, options,
 and numeric bounds. The config audit also checks the source frame rate,
 dimensions, duration, and background.
 

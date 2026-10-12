@@ -10,6 +10,9 @@ in the browser, and installs the selected source into their project.
 - The website, CLI, registry manifest, and installed files must describe the
   same component names and variables.
 - Keep Hyfrme's own identity while preserving each source's attribution and licenses.
+- Custom Hyfrme components must use Hyfrme-related demo copy throughout, including
+  product names, mock pages, addresses, navigation, and example content. Do not invent
+  unrelated brands or businesses.
 - A port is verified by deterministic renders and SSIM, never by visual
   inspection alone.
 

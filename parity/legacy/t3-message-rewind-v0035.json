@@ -1,0 +1,90 @@
+{
+  "slug": "t3-message-rewind",
+  "origin": {
+    "repository": "https://github.com/pingdotgg/t3code",
+    "commit": "f925d639421844f02b3166d29281905dbba6d529",
+    "source": "apps/web/src/components/chat/MessagesTimeline.tsx, apps/web/src/components/ChatView.tsx, and apps/web/src/components/ConfirmDialogHost.tsx",
+    "license": "MIT; @pierre/trees and @pierre/diffs Apache-2.0"
+  },
+  "fixture": {
+    "width": 1200,
+    "height": 659,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "hoverFrame": 25,
+      "tooltipFrame": 45,
+      "confirmFrame": 65,
+      "cancelFrame": 95
+    },
+    "sourceHashes": {
+      "index": "76dc31527cb322caa7fcd43540428d561294ae70edd6e58a7d4ea219460126b8",
+      "css": "7e8c650997b043793b8b073da6b524f7c7460fd70ced779291bca6b66264005c",
+      "js": "990874e9806303c06edff2bd0b9af98453c64843db74b5a0609974a2d686be07"
+    },
+    "domSha256": {
+      "before": {
+        "root": "9eabc238a6141abcb28f7fadd3e083b5ff26e9ea79cc2e615506474a0d40d781",
+        "portal": "d90a68f88427c40a93cec306fae96bfa938139acbb4de2b9cc48986beda6fe62"
+      },
+      "hover": {
+        "root": "0d1fc691b690b97e24eff139f4afb72408765ba96518e0988ba4df9465b461bc",
+        "portal": "d90a68f88427c40a93cec306fae96bfa938139acbb4de2b9cc48986beda6fe62"
+      },
+      "tooltip": {
+        "root": "5b908048170cd02cba39dd54c7104f7ff7197862e5560cd1ff2b3648cf1fc2bc",
+        "portal": "22744cabd5e91c5d0b59dd7d5c658ae2d07bfe411476a7795f06939a50455dfc"
+      },
+      "confirm": {
+        "root": "0d1fc691b690b97e24eff139f4afb72408765ba96518e0988ba4df9465b461bc",
+        "portal": "55c4eebf3ea7f3073dcb82cf88e2fe173f397f95165cf04bd75c1129e32058f7"
+      },
+      "closed": {
+        "root": "0d1fc691b690b97e24eff139f4afb72408765ba96518e0988ba4df9465b461bc",
+        "portal": "d90a68f88427c40a93cec306fae96bfa938139acbb4de2b9cc48986beda6fe62"
+      }
+    },
+    "referenceSha256": "bae13c86fbb874cac9738eee277fdff97b47b2ed8e0f2e63508864d0c62931ac",
+    "compositionSha256": "68f5bccf32f447e0388e87a4b8ccbdb9bc9dddabbdcfa3d5189747682319d3a5"
+  },
+  "classification": "source-dom-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.989,
+    "minSsim": 0.985
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.9900308333333324,
+    "minSsim": 0.987596,
+    "p05Ssim": 0.987596,
+    "p95Ssim": 0.995944,
+    "worstFrame": 45,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed with no errors; strict render passed",
+    "sourceBrowser": "Google Chrome for Testing 152.0.7977.30",
+    "sourceBrowserFlags": [
+      "--no-sandbox",
+      "--disable-dev-shm-usage",
+      "--font-render-hinting=none",
+      "--force-color-profile=srgb",
+      "--use-gl=angle",
+      "--use-angle=gl-egl",
+      "--enable-gpu-rasterization",
+      "--ignore-gpu-blocklist",
+      "--disable-software-rasterizer"
+    ],
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/t3-message-rewind/reference.mp4",
+    "hyperframesVideo": "public/previews/t3-message-rewind/hyperframes.mp4",
+    "thumbnail": "public/previews/t3-message-rewind/thumbnail.png",
+    "frameSsim": "parity/t3-message-rewind-diff/ssim.txt",
+    "hyperframesCheck": "parity/t3-message-rewind-diff/hyperframes-check.json",
+    "worstFrame": "parity/t3-message-rewind-diff/worst-frame.png"
+  }
+}

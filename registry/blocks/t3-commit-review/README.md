@@ -1,0 +1,5 @@
+# T3 Code: Commit Review
+
+This four-second, 1200 × 659 block reproduces official T3 Code v0.0.42 at 30 fps in dark and light. The native Git action menu opens on a Hyfrme worktree with one real Logo Enter change (+4/-1), then the Commit dialog reviews the file and a draft message. No commit is created. The project, thread history, and provider state are seeded; Git status and dialog opening are live.
+
+Customize the project, sidebar, branch, file path, diff counts, labels, message, theme, and three action frames through HyperFrames variables. The default Git menu uses official pixels; edited visible content uses source DOM reanchored to the trigger. Match project and thread values with adjacent T3 Code blocks for continuity. Source: https://github.com/pingdotgg/t3code/tree/719a76ca1dbf5490f1aa33ffb9966301e02be9a9. Installed files include T3 Code's MIT license and third-party notices. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type SyntheticEvent } from "react";
 
 type ViewMode = "side-by-side" | "wipe";
 
@@ -129,7 +129,7 @@ export function ComparisonPlayer({
     [],
   );
 
-  const handleLoadedMetadata = () => {
+  const handleLoadedMetadata = (event: SyntheticEvent<HTMLVideoElement>) => {
     const referenceDuration = referenceRef.current?.duration;
     const portDuration = portRef.current?.duration;
     const finiteDurations = [referenceDuration, portDuration].filter(
@@ -139,6 +139,10 @@ export function ComparisonPlayer({
     if (finiteDurations.length > 0) {
       setDuration(Math.min(...finiteDurations));
     }
+    event.currentTarget.currentTime = Math.min(
+      currentTime,
+      event.currentTarget.duration,
+    );
   };
 
   const video = (

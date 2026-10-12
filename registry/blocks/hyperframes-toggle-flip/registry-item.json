@@ -1,0 +1,81 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "hyperframes-toggle-flip",
+  "type": "hyperframes:component",
+  "title": "Toggle Flip",
+  "description": "An oversized UI toggle switch that flips with real physicality: thumb overshoot, track color crossfade, and a soft press-compress before release. The reference prop of the ui-props family.",
+  "tags": [
+    "prop",
+    "ui-props",
+    "toggle",
+    "interaction",
+    "reference-prop",
+    "demonstrate",
+    "hyperframes-official"
+  ],
+  "jobs": [
+    "demonstrate"
+  ],
+  "family": "ui-props",
+  "profile": "interaction",
+  "evidence": "fixture; the reference prop",
+  "files": [
+    {
+      "path": "toggle-flip.html",
+      "target": "compositions/components/toggle-flip.html",
+      "type": "hyperframes:snippet"
+    },
+    {
+      "path": "licenses/HyperFrames-LICENSE",
+      "target": "THIRD_PARTY_LICENSES/hyperframes/LICENSE",
+      "type": "hyperframes:asset"
+    }
+  ],
+  "variables": [
+    {
+      "id": "direction",
+      "type": "enum",
+      "role": "content",
+      "label": "Flip direction",
+      "description": "Target end state the flip lands on.",
+      "default": "on",
+      "options": [
+        {
+          "value": "on",
+          "label": "Off → On"
+        },
+        {
+          "value": "off",
+          "label": "On → Off"
+        }
+      ]
+    },
+    {
+      "id": "label",
+      "type": "string",
+      "role": "content",
+      "label": "Caption",
+      "description": "Optional caption under the toggle. Blank hides the line.",
+      "default": "Auto-save"
+    },
+    {
+      "id": "size",
+      "type": "number",
+      "role": "layout",
+      "label": "Size",
+      "description": "Toggle width as a percent of the host box width.",
+      "default": 40,
+      "min": 20,
+      "max": 70,
+      "step": 1,
+      "unit": "%"
+    }
+  ],
+  "license": "Apache-2.0",
+  "origin": {
+    "repository": "https://github.com/heygen-com/hyperframes",
+    "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+    "source": "registry/components/toggle-flip/registry-item.json",
+    "name": "toggle-flip"
+  }
+}

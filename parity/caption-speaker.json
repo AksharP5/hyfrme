@@ -1,0 +1,67 @@
+{
+  "slug": "caption-speaker",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+    "source": "registry/remocn/caption-speaker/index.tsx",
+    "entry": "components/docs/examples/caption-speaker-example.tsx",
+    "config": "registry/remocn/caption-speaker/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 282,
+    "props": {
+      "captions": "So what made you add captions? Most people watch with the sound off. Really? Almost everyone. Captions keep them watching.",
+      "fontSize": 64,
+      "fontWeight": 800,
+      "upcomingOpacity": 0.4,
+      "combineTokensWithinMilliseconds": 1200,
+      "holdMs": 600,
+      "shadow": true
+    },
+    "background": "#262626"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "4ca722abf8969562f7d82fdd881cee631c88bbcff1808e5b8c9ccd1fb1169848",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 282,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 282,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.530",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/caption-speaker/reference.mp4",
+    "hyperframesVideo": "public/previews/caption-speaker/hyperframes.mp4",
+    "thumbnail": "public/previews/caption-speaker/thumbnail.png",
+    "summary": "parity/caption-speaker-diff/summary.json",
+    "perFrameSsim": "parity/caption-speaker-diff/ssim.log",
+    "hyperframesCheck": "parity/caption-speaker-diff/hyperframes-check.log",
+    "worstFrame": "parity/caption-speaker-diff/worst-frame.png",
+    "referenceAlpha": "parity/caption-speaker-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/caption-speaker-diff/hyperframes-alpha.framemd5"
+  }
+}

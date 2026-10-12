@@ -70,8 +70,13 @@ for (const entry of selected) {
       source: resolve(root, "assets/snapcn", local),
     });
   };
+  const mediaBySource = new Map();
+  for (const asset of assetManifest.media ?? []) {
+    if (!mediaBySource.has(asset.source) || asset.slugs?.includes(slug))
+      mediaBySource.set(asset.source, asset);
+  }
   const media = Object.fromEntries(
-    (assetManifest.media ?? []).map((asset) => [
+    [...mediaBySource.values()].map((asset) => [
       asset.source,
       `../assets/snapcn/${assetPath(asset.portPath ?? asset.path)}`,
     ]),
@@ -264,7 +269,11 @@ const config = ${JSON.stringify({ width: fixture.width, height: fixture.height, 
 const container = document.getElementById(slug + '-source-root');
 const assets = JSON.parse(container.dataset.hyfrmeAssets);
 __configure(config, assets, slug);
-const props = {...${scriptJson(fixture.props)}, ...window.__hyperframes.getVariables()};
+const frozenValues = Object.entries(assets).sort(([a], [b]) => b.length - a.length);
+const assetPattern = new RegExp(frozenValues.map(([source]) => source.replace(/\\W/g, '\\\\$&')).join('|'), 'g');
+const props = Object.fromEntries(Object.entries({...${scriptJson(fixture.props)}, ...window.__hyperframes.getVariables()}).map(([key, value]) => [key,
+  typeof value === 'string' ? value.replace(assetPattern, source => assets[source]) : value
+]));
 const component = createRoot(container, {identifierPrefix: container.closest('[data-composition-file]')?.dataset.compositionId ?? slug});
 const renderFrame = (frame) => {
   __setFrame(frame);
@@ -343,11 +352,12 @@ window.__hyfrmeReady = ready;
       )
     ).join("\n") + JSON.stringify(fixture.props);
   const hasVideo = /\bOffthreadVideo\b/.test(sourceText);
-  const selectedMedia = (assetManifest.media ?? []).filter(
+  const selectedMedia = [...mediaBySource.values()].filter(
     (asset) =>
       sourceText.includes(asset.source) ||
       (asset.source.startsWith("/") &&
         sourceText.includes(asset.source.slice(1))) ||
+      asset.slugs?.includes(slug) ||
       (slug === "snapcn-orbit-gallery" &&
         asset.source.startsWith("https://picsum.photos/seed/snap-orbit-")) ||
       (slug === "snapcn-follower-rush" &&
@@ -366,9 +376,13 @@ window.__hyfrmeReady = ready;
         `THIRD_PARTY_LICENSES/snapcn/${assetPath(asset.licensePath).split("/").at(-1)}`,
       );
   }
-  const packagedMedia = Object.fromEntries(
-    selectedMedia.map((asset) => [asset.source, media[asset.source]]),
-  );
+  const packagedMedia = Object.fromEntries([
+    ...selectedMedia.map((asset) => [asset.source, media[asset.source]]),
+    ...fonts.map((font) => [
+      font.source,
+      `../assets/snapcn/${assetPath(font.path)}`,
+    ]),
+  ]);
   const packages = new Map();
   packages.set("tailwindcss", resolve(dependencies, "tailwindcss"));
   for (const path of Object.keys(result.metafile.inputs)) {

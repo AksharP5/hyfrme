@@ -1,5 +1,49 @@
 # Third-party notices
 
+## T3 Code gallery marks and captures
+
+The T3 Code gallery at `public/ideas/` retains unmodified
+OpenAI, Claude, OpenCode, Cursor, Grok, and Antigravity provider SVG marks from
+the [T3 Code harness page](https://t3.codes/harnesses/). They identify the
+providers illustrated in T3 Code. The marks remain the
+property of their respective owners and do not ship with Hyfrme blocks.
+
+The gallery's T3 wordmark is copied from
+[T3Wordmark.tsx](https://github.com/pingdotgg/t3code/blob/f925d639421844f02b3166d29281905dbba6d529/apps/web/src/components/T3Wordmark.tsx).
+The T3 Code frames and recordings at `public/ideas/t3-frames/` and
+`public/ideas/t3-clips/` were captured from an isolated T3 Code v0.0.35
+instance with synthetic Hyfrme content. T3 Code is
+MIT-licensed, Copyright (c) 2026 T3 Tools Inc. Its complete license is
+preserved at public/ideas/assets/T3-CODE-LICENSE.txt.
+
+Installable blocks tagged `t3-code` use captured DOM and styles from that
+same pinned build. Their installed files include the complete T3 Code MIT
+license. The blocks include GSAP 3.14.2 for offline frame control under the
+[GSAP Standard License](https://gsap.com/standard-license/); its source retains
+the copyright notice.
+
+The `t3-visual-context-shelf` block includes a still from Hyfrme's Logo Enter
+port of Remocn. Its installed source preserves the Remocn license alongside
+the T3 Code license.
+
+The `t3-terminal-check` block also includes six captured Ghostty canvas stills
+from the pinned T3 Code interaction. They preserve the terminal text and cursor
+states in the default fixture; editable terminal content is rendered by the
+installed HyperFrames source.
+
+The `t3-file-surface` block includes the native file tree's shadow DOM and
+styles from `@pierre/trees` 1.0.0-beta.4. Its installed files retain the
+package's Apache-2.0 license and NOTICE, plus T3 Code's third-party notices
+for the file icons.
+
+The `t3-source-file-open` block also includes the native source editor's
+shadow DOM and styles from `@pierre/diffs` 1.3.0-beta.10. Its installed files
+retain the Apache-2.0 license for that package, the file tree's license and
+NOTICE, and T3 Code's third-party notices for the file icons.
+
+The `t3-commit-review` block includes T3 Code's native Git review dialog and
+file icon. Its installed files retain T3 Code's third-party icon notice.
+
 ## Remocn source reference
 
 The original 271 Remocn visual ports are derived from pinned Remocn implementations. Of these,
@@ -19,6 +63,12 @@ also includes opentype.js 2.0.0 under MIT.
 
 Copyright (c) 2026 Remocn
 
+The October 11 caption styles and shader presets use commit
+`fd2d3010a8183985553f9ddeb364313d57fb36b9`. Their frozen font sources and exact
+entry points are recorded in `assets/remocn-additions-2026-10-11/manifest.json`.
+Caption paging uses Hyfrme-owned code; the Remotion caption package is used
+only to render the reference.
+
 Licensed under the MIT License. The full upstream license is available at
 <https://github.com/Remocn/remocn/blob/main/LICENSE>.
 
@@ -31,9 +81,14 @@ Snapcn ports derive from `snapcndev/snapcn` at commit
 `353803b506dba0cb7ca13bb45b0d099690400815`. Roster Grant and Wordmark Cut use
 `bc5b59f3f0fad9657b338fa62349a55fa33f160f`. Roster Grant's attributed Lucide
 pointer path retains its ISC notice.
-Word Gather, Word Wheel, Channel Thread, Logo Collapse, and Card Rail use
+Word Gather, Word Wheel, and Logo Collapse use
 `1159369742d75d66ae89b3f83d45850861ccc63e`.
 Status Cycle uses `0b30e76a3d1e4c9a49390d109a9630b118b1e100`.
+Check Cycle, Capture Reveal, Font Shuffle, Announce Title, Channel Thread,
+Card Rail, Count Grid, Orb Swarm, and Screen Recording use
+`460783c1af88f20913caa843734353c2eec2c997`. Capture Reveal's sample illustration
+is original Hyfrme source under MIT; the remote upstream screenshot has no
+documented redistribution grant. The same illustration supplies both renders.
 
 Copyright (c) 2026 Sri Nath (snap-cn).
 
@@ -71,12 +126,18 @@ Each translated film records its exact upstream commit and source path in
 Twenty-seven shader and shader-transition runtimes bundle
 `@paper-design/shaders-react` 0.0.76.
 
-Paper Shaders is licensed under the PolyForm Shield License 1.0.0, not MIT.
+Earlier Remocn shader ports retain the npm archive's PolyForm Shield License 1.0.0.
 Affected registry items declare `MIT + PolyForm Shield 1.0.0`, preserve a
 runtime notice, and install the complete terms at
 `THIRD_PARTY_LICENSES/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md`. The source copy is
 also preserved at
 `assets/licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md`.
+
+The 36 October 11 Remocn shader presets use Apache-2.0 source from commit
+`f9f2a8b2edeb78ec59256c4dc571f5eaf943d798`. Required source files match the
+0.0.76 runtime byte for byte. The frozen files, original licenses and notices,
+hashes, and runtime adaptations are recorded in `assets/remocn-paper-shaders/`.
+Each preset installs the complete Apache license, NOTICE, and provenance record.
 
 ## React and ReactDOM
 
@@ -132,3 +193,17 @@ Version 1.1. Its complete terms are preserved at
 The `github-stars` runtime bundles date-fns 4.1.0 under the MIT License.
 Its complete license installs at `THIRD_PARTY_LICENSES/Date-Fns-MIT.md` and is
 preserved at `assets/licenses/Date-Fns-MIT.md`.
+
+## Official HyperFrames catalog
+
+The `hyperframes-*` blocks, HTML components, and templates are copied from
+[heygen-com/hyperframes at daa44fcd753d9055aa3c954ad74f09a4e4389780](https://github.com/heygen-com/hyperframes/tree/daa44fcd753d9055aa3c954ad74f09a4e4389780/registry).
+The original catalog source is Apache 2.0 licensed. Each item includes the exact
+root license, installed at `THIRD_PARTY_LICENSES/hyperframes/LICENSE`, and its
+per-item third-party license/notice files. Vendored dependencies keep their own
+licenses, including the GSAP Standard License and three.js MIT license. See the
+[pinned upstream credits](https://github.com/heygen-com/hyperframes/blob/daa44fcd753d9055aa3c954ad74f09a4e4389780/CREDITS.md).
+
+Hosted source assets are frozen locally and verified against their content-addressed
+URLs. Original and installed names, file targets, hashes, and collision
+avoidance targets for Whip Pan, Code Morph, and template documentation are recorded in `catalog/hyperframes-upstream.json`.

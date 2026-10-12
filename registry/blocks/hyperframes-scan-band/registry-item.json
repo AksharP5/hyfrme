@@ -1,0 +1,63 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "hyperframes-scan-band",
+  "type": "hyperframes:component",
+  "title": "Scan Band",
+  "description": "A diagonal distortion band sweeps once across a clean wordmark, revealing clipped red and cyan offsets only inside the moving band.",
+  "tags": [
+    "motion-primitive",
+    "typography",
+    "scan",
+    "chromatic",
+    "distortion",
+    "wordmark",
+    "hyperframes-official"
+  ],
+  "jobs": [
+    "reveal"
+  ],
+  "family": "effects",
+  "profile": "sweep",
+  "evidence": "Wave F U6 scan-band build contract",
+  "files": [
+    {
+      "path": "scan-band.html",
+      "target": "compositions/components/scan-band.html",
+      "type": "hyperframes:snippet"
+    },
+    {
+      "path": "licenses/HyperFrames-LICENSE",
+      "target": "THIRD_PARTY_LICENSES/hyperframes/LICENSE",
+      "type": "hyperframes:asset"
+    }
+  ],
+  "variables": [
+    {
+      "id": "wordmark",
+      "type": "string",
+      "role": "content",
+      "label": "Wordmark",
+      "description": "Text displayed by the scan effect.",
+      "default": "HYPERFRAMES"
+    },
+    {
+      "id": "band_angle",
+      "type": "number",
+      "role": "layout",
+      "label": "Band angle",
+      "description": "Diagonal angle of the distortion band in degrees.",
+      "default": 12,
+      "min": -30,
+      "max": 30,
+      "step": 1,
+      "unit": "deg"
+    }
+  ],
+  "license": "Apache-2.0",
+  "origin": {
+    "repository": "https://github.com/heygen-com/hyperframes",
+    "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+    "source": "registry/components/scan-band/registry-item.json",
+    "name": "scan-band"
+  }
+}

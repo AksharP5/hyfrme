@@ -1,0 +1,393 @@
+{
+  "slug": "caption-label-maker",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+    "source": "registry/remocn/caption-label-maker/index.tsx",
+    "entry": "components/docs/examples/caption-label-maker-example.tsx",
+    "config": "registry/remocn/caption-label-maker/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 279,
+    "props": {
+      "captions": "So here's the thing. Most demo videos lose people in the first three seconds. Captions keep them watching, even with the sound off.",
+      "fontSize": 64,
+      "fontWeight": 800,
+      "color": "#ffffff",
+      "tapeColor": "#18181b",
+      "combineTokensWithinMilliseconds": 1000,
+      "holdMs": 600
+    },
+    "background": "#262626"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "eb650433aaa8cce0e71cb1185871895679b7ae0b2109d0e4d0b8f09ebe4c9859",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 279,
+    "meanSsim": 0.999998835125449,
+    "minSsim": 0.99999,
+    "p05Ssim": 0.999991,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 279,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check reported 18 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3)",
+          "text": "S"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(4)",
+          "text": "o"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(6)",
+          "text": "h"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(8) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(9)",
+          "text": "e"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(12) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(13)",
+          "text": "t"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(13) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(14)",
+          "text": "h"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(14) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(15)",
+          "text": "e"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(16) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(17)",
+          "text": "t"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(17) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(18)",
+          "text": "h"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(6)",
+          "text": "t"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(7) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(8)",
+          "text": "d"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(4)",
+          "text": "e"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3)",
+          "text": "C"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(4)",
+          "text": "a"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(5)",
+          "text": "p"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(8) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(9)",
+          "text": "i"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(9) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(10)",
+          "text": "t"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      },
+      {
+        "slug": "caption-label-maker",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+          "source": "registry/remocn/caption-label-maker/index.tsx",
+          "entry": "components/docs/examples/caption-label-maker-example.tsx",
+          "config": "registry/remocn/caption-label-maker/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "text_occluded",
+          "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(16) > span:nth-of-type(1)",
+          "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(17)",
+          "text": "s"
+        },
+        "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.530",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/caption-label-maker/reference.mp4",
+    "hyperframesVideo": "public/previews/caption-label-maker/hyperframes.mp4",
+    "thumbnail": "public/previews/caption-label-maker/thumbnail.png",
+    "summary": "parity/caption-label-maker-diff/summary.json",
+    "perFrameSsim": "parity/caption-label-maker-diff/ssim.log",
+    "hyperframesCheck": "parity/caption-label-maker-diff/hyperframes-check.log",
+    "worstFrame": "parity/caption-label-maker-diff/worst-frame.png",
+    "referenceAlpha": "parity/caption-label-maker-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/caption-label-maker-diff/hyperframes-alpha.framemd5"
+  }
+}

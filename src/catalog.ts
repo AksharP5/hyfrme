@@ -2,6 +2,7 @@ export type RegistryFile = {
   path: string;
   target: string;
   type: string;
+  url?: string;
 };
 
 import catalogData from "./generated/catalog-data.json";
@@ -39,6 +40,16 @@ export const catalogSources = [
     label: "Snapcn",
     repository: "https://github.com/snapcndev/snapcn",
   },
+  {
+    id: "hyperframes",
+    label: "HyperFrames",
+    repository: "https://github.com/heygen-com/hyperframes",
+  },
+  {
+    id: "t3-code",
+    label: "T3 Code",
+    repository: "https://github.com/pingdotgg/t3code",
+  },
 ] as const;
 
 export type CatalogSource = (typeof catalogSources)[number];
@@ -54,7 +65,7 @@ export type CatalogEntry = {
 };
 
 export type CatalogCategory =
-  "all" | "components" | "primitives" | "shaders" | "icons";
+  "all" | "components" | "primitives" | "shaders" | "icons" | "templates";
 
 export type CatalogTaxonomyGroup = {
   id: string;
@@ -98,7 +109,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "split-layouts",
         label: "Split Layouts",
-        slugs: ["chat-to-preview-layout"],
+        slugs: ["chat-to-preview-layout", "before-after"],
       },
       {
         id: "device-frames",
@@ -108,7 +119,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "screen-captures",
         label: "Screen Captures",
-        slugs: ["snapcn-screen-recording"],
+        slugs: ["snapcn-screen-recording", "snapcn-capture-reveal"],
       },
     ],
   },
@@ -144,6 +155,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "shader-text-reveal",
           "snapcn-text-reveal",
           "snapcn-word-gather",
+          "period-drop",
         ],
       },
       {
@@ -157,6 +169,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "outline-fill-track-text",
           "snapcn-text-highlight",
           "snapcn-text-select",
+          "selection-snap",
         ],
       },
       {
@@ -185,6 +198,10 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "perspective-marquee",
           "shadow-sweep-text",
           "snapcn-punch-lines",
+          "echo-stack",
+          "type-repeater",
+          "ring-text",
+          "type-wall",
         ],
       },
       {
@@ -228,12 +245,25 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "type-fossil",
           "snapcn-text-swell",
           "snapcn-text-build",
+          "path-ride",
+          "stripe-type",
         ],
+      },
+      {
+        id: "font-studies",
+        label: "Font Studies",
+        slugs: ["glyph-anatomy", "outline-trace", "snapcn-font-shuffle"],
       },
       {
         id: "captions",
         label: "Captions",
-        slugs: ["snapcn-word-captions", "snapcn-karaoke-captions"],
+        slugs: [
+          "snapcn-word-captions",
+          "snapcn-karaoke-captions",
+          ...catalogData
+            .filter(({ item }) => item.name.startsWith("caption-"))
+            .map(({ item }) => item.name),
+        ],
       },
     ],
   },
@@ -263,11 +293,13 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
         id: "code-cli",
         label: "Code & CLI",
         slugs: [
+          "code-morph",
           "glass-code-block",
           "glass-code-walk",
           "terminal-simulator",
           "terminal-cursor-zoom",
           "snapcn-terminal-simulator",
+          "keystroke",
         ],
       },
       {
@@ -278,7 +310,11 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "workflows",
         label: "Workflows",
-        slugs: ["snapcn-status-cycle", "snapcn-channel-thread"],
+        slugs: [
+          "snapcn-status-cycle",
+          "snapcn-channel-thread",
+          "snapcn-check-cycle",
+        ],
       },
       {
         id: "paper-scrapbook",
@@ -292,8 +328,55 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
     label: "AI",
     description:
       "Chat composers, search prompts, answers, and agent workflows.",
-    featuredSlug: "claude-chat",
+    featuredSlug: "t3-brief-to-prompt",
     groups: [
+      {
+        id: "t3-code",
+        label: "T3 Code",
+        slugs: [
+          "t3-brief-to-prompt",
+          "t3-new-worktree-choice",
+          "t3-return-worktree",
+          "t3-model-swap",
+          "t3-reasoning-level",
+          "t3-fast-service-tier",
+          "t3-permission-choice",
+          "t3-sidebar-focus",
+          "t3-visual-context-shelf",
+          "t3-visual-context-remove",
+          "t3-project-source-picker",
+          "t3-thread-search",
+          "t3-thread-switch",
+          "t3-worked-trace",
+          "t3-thread-actions",
+          "t3-settle-thread",
+          "t3-file-surface",
+          "t3-source-file-open",
+          "t3-terminal-check",
+          "t3-commit-review",
+          "t3-project-action",
+          "t3-prompt-send",
+          "t3-agent-work",
+          "t3-diff-review",
+          "t3-agent-answer",
+          "t3-message-rewind",
+          "t3-thread-pin",
+          "t3-prompt-stash",
+          "t3-thread-rename",
+          "t3-project-action-run",
+          "t3-commit-creation",
+          "t3-thread-snooze",
+          "t3-thread-archive",
+          "t3-git-push",
+          "t3-file-mention",
+          "t3-thread-unpin",
+          "t3-thread-wake",
+          "t3-project-local-open",
+          "t3-thread-mark-unread",
+          "t3-project-switch",
+          "t3-thread-reorder",
+        ],
+      },
       {
         id: "chat-composers",
         label: "Chat Composers",
@@ -302,7 +385,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "coding-agents",
         label: "Agent Workflows",
-        slugs: ["claude-code", "opencode", "snapcn-agent-steps"],
+        slugs: ["claude-code", "opencode", "snapcn-agent-steps", "agent-run"],
       },
       {
         id: "search-prompts",
@@ -419,6 +502,11 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
         slugs: ["simulated-cursor", "cursor-gravity", "snapcn-cursor-track"],
       },
       {
+        id: "motion-accents",
+        label: "Motion Accents",
+        slugs: ["speed-lines", "squiggle", "trim-burst"],
+      },
+      {
         id: "canvas-filters",
         label: "Canvas Filters",
         slugs: [
@@ -455,6 +543,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "ecosystem-constellation",
           "infinite-bento-pan",
           "snapcn-announce-title",
+          "snapcn-orb-swarm",
         ],
       },
       {
@@ -478,7 +567,13 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
           "snapcn-orbit-gallery",
           "snapcn-moodboard-reveal",
           "snapcn-card-rail",
+          "snapcn-reel-collage",
         ],
+      },
+      {
+        id: "motion-graphics",
+        label: "Motion Graphics",
+        slugs: ["bauhaus-build", "mondrian-split", "truchet-flip"],
       },
       {
         id: "data-teams",
@@ -776,11 +871,58 @@ const iconTaxonomy: CatalogTaxonomySection[] = [
   },
 ];
 
+const officialItems = catalogData
+  .filter(
+    (entry) =>
+      entry.sourceRepository === "https://github.com/heygen-com/hyperframes",
+  )
+  .map((entry) => entry.item);
+const officialSections = (
+  type: string,
+  id: string,
+  label: string,
+  description: string,
+): CatalogTaxonomySection[] => {
+  const slugs = officialItems
+    .filter(
+      (item) =>
+        item.type === type &&
+        (type === "hyperframes:component" ||
+          !(item.tags.includes("shader") || item.tags.includes("shaders"))),
+    )
+    .map((item) => item.name);
+  return slugs.length
+    ? [{ id, label, description, featuredSlug: slugs[0], slugs }]
+    : [];
+};
+
 export const catalogTaxonomy: Partial<
   Record<Exclude<CatalogCategory, "all">, CatalogTaxonomySection[]>
 > = {
-  components: componentTaxonomy,
-  primitives: primitiveTaxonomy,
+  components: [
+    ...componentTaxonomy,
+    ...officialSections(
+      "hyperframes:block",
+      "official-motion",
+      "HyperFrames blocks",
+      "Original compositions from the official HyperFrames catalog.",
+    ),
+  ],
+  primitives: [
+    ...primitiveTaxonomy,
+    ...officialSections(
+      "hyperframes:component",
+      "official-components",
+      "HyperFrames components",
+      "Reusable HTML snippets from the official catalog.",
+    ),
+  ],
+  templates: officialSections(
+    "hyperframes:example",
+    "official-templates",
+    "HyperFrames templates",
+    "Complete projects from the official catalog.",
+  ),
   icons: iconTaxonomy,
 };
 
@@ -834,7 +976,7 @@ export const catalog: CatalogEntry[] = catalogData
           await fetchRequired(`${blockRoot}/catalog.json`)
         ).json()) as Awaited<ReturnType<CatalogEntry["loadDetails"]>>,
       loadSource: async () =>
-        (await fetchRequired(`${blockRoot}/${item.name}.html`)).text(),
+        (await fetchRequired(`${blockRoot}/${item.sourcePath}`)).text(),
     };
   })
   .sort((left, right) => left.item.title.localeCompare(right.item.title));
@@ -845,13 +987,16 @@ export const categoryLabels: Record<CatalogCategory, string> = {
   primitives: "Primitives",
   shaders: "Shaders",
   icons: "Icons",
+  templates: "Templates",
 };
 
 export function categoryFor(
   entry: CatalogEntry,
 ): Exclude<CatalogCategory, "all"> {
+  if (entry.item.type === "hyperframes:example") return "templates";
   const taxonomy = taxonomyBySlug.get(entry.item.name);
   if (taxonomy) return taxonomy.category;
+  if (entry.item.type === "hyperframes:component") return "primitives";
   if (entry.item.tags.includes("icon")) return "icons";
   if (
     entry.item.name.startsWith("shader-") ||
@@ -884,6 +1029,7 @@ export function catalogDescriptor(entry: CatalogEntry) {
 
 export function categoryDescription(category: Exclude<CatalogCategory, "all">) {
   return {
+    templates: "Video template",
     icons: "Animated icon",
     shaders: "Shader",
     primitives: "UI primitive",

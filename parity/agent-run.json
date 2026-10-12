@@ -1,0 +1,94 @@
+{
+  "slug": "agent-run",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+    "source": "registry/remocn/agent-run/index.tsx",
+    "config": "registry/remocn/agent-run/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 355,
+    "props": {
+      "theme": "light",
+      "accentColor": "#2563eb",
+      "compression": 3,
+      "seed": 1,
+      "speed": 1
+    },
+    "background": "#ececea"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "f90ee2c4cec735ad638d2dcc7f37058ea587356cebb66ea586b8651cea04c00f",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 355,
+    "meanSsim": 0.9913557661971844,
+    "minSsim": 0.985317,
+    "p05Ssim": 0.985317,
+    "p95Ssim": 0.998511,
+    "alpha": {
+      "frameCount": 355,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check reported 11 reviewed source-inherited errors (exit 1); strict render passed",
+    "sourceInheritedFindings": [
+      {
+        "slug": "agent-run",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "source": "registry/remocn/agent-run/index.tsx",
+          "config": "registry/remocn/agent-run/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "content_overlap"
+        },
+        "reason": "The source dashboard title and running transcript share a card boundary; the single bounding-box collision remains legible in the pinned source and is preserved by the pixel-matched port."
+      },
+      {
+        "slug": "agent-run",
+        "origin": {
+          "repository": "https://github.com/Remocn/remocn",
+          "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+          "source": "registry/remocn/agent-run/index.tsx",
+          "config": "registry/remocn/agent-run/config.ts",
+          "license": "MIT"
+        },
+        "finding": {
+          "code": "contrast_aa_failure"
+        },
+        "reason": "The source uses muted secondary step numbers on white UI surfaces. The 10 contrast hits describe these low-emphasis labels; all 355 frames pass parity (mean/min SSIM 0.991356/0.985317) with exact alpha."
+      }
+    ],
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.513",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/agent-run/reference.mp4",
+    "hyperframesVideo": "public/previews/agent-run/hyperframes.mp4",
+    "thumbnail": "public/previews/agent-run/thumbnail.png",
+    "summary": "parity/agent-run-diff/summary.json",
+    "perFrameSsim": "parity/agent-run-diff/ssim.log",
+    "hyperframesCheck": "parity/agent-run-diff/hyperframes-check.log",
+    "worstFrame": "parity/agent-run-diff/worst-frame.png",
+    "referenceAlpha": "parity/agent-run-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/agent-run-diff/hyperframes-alpha.framemd5"
+  }
+}

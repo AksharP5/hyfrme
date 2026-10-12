@@ -1,0 +1,64 @@
+{
+  "slug": "shader-warp-ocean",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+    "source": "registry/remocn/shader-warp-ocean/index.tsx",
+    "config": "registry/remocn/shader-warp-ocean/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "distortion": 0.3,
+      "swirl": 0.5,
+      "softness": 0.8,
+      "proportion": 0.5
+    },
+    "background": "transparent"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "526bc01e4a318827f3c80d3d3c304034525634b1ef4be78bc524b272d0a9a110",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.530",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/shader-warp-ocean/reference.mp4",
+    "hyperframesVideo": "public/previews/shader-warp-ocean/hyperframes.mp4",
+    "thumbnail": "public/previews/shader-warp-ocean/thumbnail.png",
+    "summary": "parity/shader-warp-ocean-diff/summary.json",
+    "perFrameSsim": "parity/shader-warp-ocean-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-warp-ocean-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-warp-ocean-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-warp-ocean-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-warp-ocean-diff/hyperframes-alpha.framemd5"
+  }
+}

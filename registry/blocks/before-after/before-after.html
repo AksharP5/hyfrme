@@ -1,0 +1,1098 @@
+<!doctype html>
+<html
+  lang="en"
+  data-composition-variables='[{"id":"title","type":"string","label":"Page title","default":"Hyfrme in motion"},{"id":"subtitle","type":"string","label":"Subtitle","default":"Copy. Customize. Render with Hyfrme."},{"id":"value","type":"string","label":"Duration","default":"4 seconds"},{"id":"delta","type":"string","label":"Format label","default":"HTML"},{"id":"beforeLabel","type":"string","label":"Before label","default":"BEFORE"},{"id":"afterLabel","type":"string","label":"After label","default":"AFTER"},{"id":"accent","type":"color","label":"Accent color","default":"#d8ff73"}]'
+>
+  <head>
+    <meta charset="utf-8" />
+    <title>Before / After</title>
+    <script src="../assets/before-after/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: Geist;
+        src: url("../assets/before-after/Geist.woff2");
+        font-weight: 100 900;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        background: #070908;
+      }
+
+      #before-after {
+        --accent: #d8ff73;
+        position: relative;
+        width: 1280px;
+        height: 960px;
+        overflow: hidden;
+        color: #f1f5ed;
+        font-family: Geist, Arial, sans-serif;
+        background: #070908;
+      }
+
+      .atmosphere {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse at 14% 3%, #394038 0%, #181c19 23%, #0b0e0c 48%, #070908 76%),
+          #070908;
+      }
+
+      .top-light {
+        position: absolute;
+        left: -85px;
+        top: -460px;
+        width: 520px;
+        height: 1050px;
+        transform: rotate(-34deg);
+        background: linear-gradient(
+          90deg,
+          transparent 4%,
+          #fff8df10 22%,
+          #fff9e84f 48%,
+          #dff2e425 66%,
+          transparent 92%
+        );
+        mask-image: linear-gradient(180deg, transparent 6%, #000 23%, #000 58%, transparent 96%);
+        filter: blur(31px);
+      }
+
+      .source-light {
+        position: absolute;
+        left: -210px;
+        top: -310px;
+        width: 700px;
+        height: 660px;
+        background: radial-gradient(ellipse, #fff9e53b 0%, #eff8ee11 42%, transparent 70%);
+      }
+
+      .back-halo {
+        position: absolute;
+        left: 204px;
+        top: 170px;
+        width: 900px;
+        height: 610px;
+        border-radius: 46%;
+        background: radial-gradient(ellipse, color-mix(in srgb, var(--accent) 18%, transparent), transparent 68%);
+        filter: blur(34px);
+        opacity: 0.45;
+      }
+
+      .floor {
+        position: absolute;
+        left: 86px;
+        right: 86px;
+        top: 846px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #b5c4b52c 22%, #edf5e54f 50%, #9ba99d24 78%, transparent);
+      }
+
+      .floor-reflection {
+        position: absolute;
+        left: 218px;
+        top: 792px;
+        width: 850px;
+        height: 90px;
+        border-radius: 50%;
+        background: radial-gradient(ellipse, #cfddce22 0%, #6d7d7012 35%, transparent 72%);
+        filter: blur(24px);
+      }
+
+      .eyebrow {
+        position: absolute;
+        left: 100px;
+        top: 76px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #f1f5ed;
+        font-size: 18px;
+        font-weight: 520;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        text-shadow: 0 1px 8px #050705;
+      }
+
+      .eyebrow-mark {
+        width: 26px;
+        height: 1px;
+        background: var(--accent);
+        box-shadow: 0 0 13px color-mix(in srgb, var(--accent) 55%, transparent);
+      }
+
+      .frame-count {
+        position: absolute;
+        right: 100px;
+        top: 79px;
+        color: #7f8981;
+        font-size: 16px;
+        letter-spacing: 0.08em;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .camera {
+        position: absolute;
+        inset: 0;
+        perspective: 1700px;
+        perspective-origin: 50% 44%;
+      }
+
+      .camera-drift {
+        position: absolute;
+        left: 100px;
+        top: 126px;
+        width: 1080px;
+        height: 700px;
+        transform-style: preserve-3d;
+        transform-origin: 52% 48%;
+      }
+
+      .window-frame {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        border: 1px solid #6f7871;
+        border-radius: 23px;
+        background: #121513;
+        box-shadow:
+          0 52px 90px #000c,
+          0 18px 30px #0009,
+          inset 1px 1px 0 #e7f0e64a,
+          inset -1px -1px 0 #020302;
+        backface-visibility: hidden;
+      }
+
+      .window-frame::before {
+        content: "";
+        position: absolute;
+        z-index: 12;
+        inset: 0;
+        border-radius: inherit;
+        border-top: 1px solid #f4f8ee7a;
+        border-left: 1px solid #d7e8dd30;
+        pointer-events: none;
+      }
+
+      .chrome {
+        position: absolute;
+        z-index: 8;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        padding: 0 22px;
+        border-bottom: 1px solid #2e342f;
+        background: linear-gradient(180deg, #2a2f2b 0%, #171b18 48%, #111411 100%);
+        box-shadow: inset 0 1px 0 #ffffff1c;
+      }
+
+      .traffic {
+        display: flex;
+        gap: 9px;
+      }
+
+      .traffic i {
+        display: block;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: #59605b;
+        border: 1px solid #0b0d0c;
+        box-shadow: inset 0 1px 1px #ffffff1f;
+      }
+
+      .traffic i:first-child {
+        background: #ab6e62;
+      }
+
+      .traffic i:nth-child(2) {
+        background: #a9905d;
+      }
+
+      .traffic i:last-child {
+        background: #6f936b;
+      }
+
+      .address {
+        position: absolute;
+        left: 50%;
+        top: 13px;
+        width: 360px;
+        height: 30px;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 1px solid #3a413b;
+        border-radius: 8px;
+        background: #0e110f;
+        color: #aab3ab;
+        font-size: 13px;
+        letter-spacing: 0.01em;
+        box-shadow: inset 0 1px 3px #0008;
+      }
+
+      .address-lock {
+        width: 8px;
+        height: 8px;
+        border: 1px solid #7e8980;
+        border-radius: 2px;
+        position: relative;
+      }
+
+      .address-lock::before {
+        content: "";
+        position: absolute;
+        left: 1px;
+        top: -5px;
+        width: 4px;
+        height: 5px;
+        border: 1px solid #7e8980;
+        border-bottom: 0;
+        border-radius: 4px 4px 0 0;
+      }
+
+      .screen {
+        position: absolute;
+        left: 8px;
+        right: 8px;
+        top: 56px;
+        bottom: 8px;
+        overflow: hidden;
+        border-radius: 0 0 16px 16px;
+        background: #e8ebed;
+        box-shadow: inset 0 0 0 1px #000;
+      }
+
+      .product-state,
+      .after-reveal {
+        position: absolute;
+        inset: 0;
+      }
+
+      .after-reveal {
+        z-index: 3;
+        overflow: hidden;
+        clip-path: inset(0 100% 0 0);
+      }
+
+      .app {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+
+      .before-app {
+        color: #1d2830;
+        background: #edf0f2;
+      }
+
+      .after-app {
+        color: #f2f6ed;
+        background: #0c0f0d;
+      }
+
+      .app-nav {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 67px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid;
+      }
+
+      .before-app .app-nav {
+        padding: 0 25px;
+        border-color: #ccd3d7;
+        background: #f7f8f9;
+      }
+
+      .after-app .app-nav {
+        padding: 0 28px;
+        border-color: #252a26;
+        background: #0d100e;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        font-size: 18px;
+        font-weight: 680;
+        letter-spacing: -0.04em;
+      }
+
+      .brand-symbol {
+        width: 23px;
+        height: 23px;
+        border: 1px solid currentColor;
+        border-radius: 6px 12px 6px 12px;
+        transform: rotate(-8deg);
+      }
+
+      .before-app .brand-symbol {
+        color: #466b85;
+        background: #e5edf2;
+      }
+
+      .after-app .brand-symbol {
+        color: var(--accent);
+        background: color-mix(in srgb, var(--accent) 12%, transparent);
+        box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 28%, transparent);
+      }
+
+      .period {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+      }
+
+      .before-app .period {
+        color: #46535c;
+      }
+
+      .after-app .period {
+        color: #89928a;
+      }
+
+      .avatar {
+        width: 28px;
+        height: 28px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        font-size: 11px;
+        font-weight: 650;
+      }
+
+      .before-app .avatar {
+        color: #fff;
+        background: #627887;
+      }
+
+      .after-app .avatar {
+        color: #151914;
+        background: var(--accent);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 10%, transparent);
+      }
+
+      .sidebar {
+        position: absolute;
+        left: 0;
+        top: 67px;
+        bottom: 0;
+        width: 178px;
+        padding: 24px 17px;
+        border-right: 1px solid;
+      }
+
+      .before-app .sidebar {
+        border-color: #ccd3d7;
+        background: #f7f8f9;
+      }
+
+      .after-app .sidebar {
+        border-color: #252a26;
+        background: #0d100e;
+      }
+
+      .nav-label {
+        padding: 0 12px 12px;
+        font-size: 10px;
+        font-weight: 650;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .before-app .nav-label {
+        color: #46535c;
+      }
+
+      .after-app .nav-label {
+        color: #818b83;
+      }
+
+      .nav-item {
+        height: 39px;
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        margin-bottom: 4px;
+        padding: 0 12px;
+        border-radius: 7px;
+        font-size: 13px;
+        font-weight: 520;
+      }
+
+      .nav-icon {
+        width: 15px;
+        height: 15px;
+        border: 1px solid currentColor;
+        border-radius: 4px;
+        opacity: 0.76;
+      }
+
+      .before-app .nav-item {
+        color: #46535c;
+      }
+
+      .before-app .nav-item.active {
+        color: #294a60;
+        background: #e4ebef;
+      }
+
+      .after-app .nav-item {
+        color: #7b857d;
+      }
+
+      .after-app .nav-item.active {
+        color: #eef4e9;
+        background: #1a1f1a;
+        box-shadow: inset 2px 0 0 var(--accent);
+      }
+
+      .sidebar-foot {
+        position: absolute;
+        left: 29px;
+        right: 29px;
+        bottom: 25px;
+        padding-top: 17px;
+        border-top: 1px solid;
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      .before-app .sidebar-foot {
+        color: #29363e;
+        border-color: #d4dade;
+      }
+
+      .after-app .sidebar-foot {
+        color: #7d877f;
+        border-color: #262c27;
+      }
+
+      .main {
+        position: absolute;
+        left: 178px;
+        right: 0;
+        top: 67px;
+        bottom: 0;
+        padding: 30px 34px;
+      }
+
+      .title-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        height: 64px;
+      }
+
+      .title-row h1 {
+        margin: 0 0 6px;
+        font-size: 24px;
+        font-weight: 640;
+        letter-spacing: -0.045em;
+        line-height: 1;
+      }
+
+      .title-row p {
+        margin: 0;
+        font-size: 12px;
+      }
+
+      .before-app .title-row p {
+        color: #46535c;
+      }
+
+      .after-app .title-row p {
+        color: #7d877e;
+      }
+
+      .state-label {
+        padding: 7px 10px 6px;
+        border: 1px solid;
+        border-radius: 5px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+      }
+
+      .before-app .state-label {
+        color: #46535c;
+        border-color: #c4cdd2;
+        background: #f7f9fa;
+      }
+
+      .after-app .state-label {
+        color: #151914;
+        border-color: var(--accent);
+        background: var(--accent);
+        box-shadow: 0 0 22px color-mix(in srgb, var(--accent) 20%, transparent);
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: 1.55fr 1fr 1fr;
+        gap: 14px;
+        height: 119px;
+      }
+
+      .metric {
+        position: relative;
+        padding: 18px 19px;
+        border: 1px solid;
+        border-radius: 9px;
+      }
+
+      .before-app .metric {
+        border-color: #ccd4d8;
+        background: #f7f8f9;
+        box-shadow: 0 1px 2px #17242b0d;
+      }
+
+      .after-app .metric {
+        border-color: #292f2a;
+        background: #121613;
+        box-shadow: inset 0 1px 0 #ffffff08;
+      }
+
+      .metric-label {
+        margin-bottom: 9px;
+        font-size: 11px;
+      }
+
+      .before-app .metric-label {
+        color: #46535c;
+      }
+
+      .after-app .metric-label {
+        color: #7d877e;
+      }
+
+      .metric-value {
+        font-size: 30px;
+        font-weight: 660;
+        letter-spacing: -0.055em;
+        line-height: 1;
+      }
+
+      .metric:not(.primary) .metric-value {
+        font-size: 23px;
+      }
+
+      .delta {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        padding: 4px 7px;
+        border-radius: 4px;
+        font-size: 10px;
+        font-weight: 650;
+      }
+
+      .before-app .delta {
+        color: #285e42;
+        background: #e3eee7;
+      }
+
+      .after-app .delta {
+        color: var(--accent);
+        background: color-mix(in srgb, var(--accent) 10%, transparent);
+      }
+
+      .chart-panel {
+        position: absolute;
+        left: 34px;
+        right: 34px;
+        top: 231px;
+        bottom: 30px;
+        overflow: hidden;
+        border: 1px solid;
+        border-radius: 10px;
+      }
+
+      .before-app .chart-panel {
+        border-color: #ccd4d8;
+        background: #f7f8f9;
+        box-shadow: 0 1px 2px #17242b0d;
+      }
+
+      .after-app .chart-panel {
+        border-color: #292f2a;
+        background:
+          radial-gradient(ellipse at 62% 18%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 43%),
+          #111512;
+        box-shadow:
+          inset 0 1px 0 #ffffff08,
+          0 14px 35px #0005;
+      }
+
+      .chart-head {
+        height: 57px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        border-bottom: 1px solid;
+      }
+
+      .before-app .chart-head {
+        border-color: #d9dfe2;
+      }
+
+      .after-app .chart-head {
+        border-color: #252b26;
+      }
+
+      .chart-head strong {
+        font-size: 13px;
+        font-weight: 620;
+      }
+
+      .legend {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 10px;
+      }
+
+      .before-app .legend {
+        color: #46535c;
+      }
+
+      .after-app .legend {
+        color: #7c867d;
+      }
+
+      .legend-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+      }
+
+      .before-app .legend-dot {
+        background: #658ca4;
+      }
+
+      .after-app .legend-dot {
+        background: var(--accent);
+        box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 66%, transparent);
+      }
+
+      .chart {
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: 73px;
+        bottom: 18px;
+      }
+
+      .chart-grid {
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          180deg,
+          transparent 0,
+          transparent 45px,
+          currentColor 46px,
+          transparent 47px
+        );
+      }
+
+      .before-app .chart-grid {
+        color: #d9dfe2;
+      }
+
+      .after-app .chart-grid {
+        color: #252b26;
+      }
+
+      .chart svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+
+      .chart-line {
+        fill: none;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .before-app .chart-line {
+        stroke: #658ca4;
+      }
+
+      .after-app .chart-line {
+        stroke: var(--accent);
+        filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 38%, transparent));
+      }
+
+      .area {
+        opacity: 0.22;
+      }
+
+      .before-app .area {
+        fill: #9db7c6;
+      }
+
+      .after-app .area {
+        fill: color-mix(in srgb, var(--accent) 34%, transparent);
+      }
+
+      .chart-point {
+        stroke-width: 2;
+      }
+
+      .before-app .chart-point {
+        fill: #f7f8f9;
+        stroke: #658ca4;
+      }
+
+      .after-app .chart-point {
+        fill: #111512;
+        stroke: var(--accent);
+        filter: drop-shadow(0 0 5px color-mix(in srgb, var(--accent) 48%, transparent));
+      }
+
+      .chart-days {
+        position: absolute;
+        left: 1px;
+        right: 1px;
+        bottom: -9px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 9px;
+      }
+
+      .before-app .chart-days {
+        color: #27343c;
+      }
+
+      .after-app .chart-days {
+        color: #7b867d;
+      }
+
+      .divider {
+        position: absolute;
+        z-index: 6;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 2px;
+        margin-left: -1px;
+        background: #fbfff6;
+        box-shadow:
+          0 0 7px #fff,
+          0 0 20px color-mix(in srgb, var(--accent) 72%, transparent),
+          0 0 54px color-mix(in srgb, var(--accent) 32%, transparent);
+        opacity: 0;
+      }
+
+      .divider::before {
+        content: "";
+        position: absolute;
+        left: -42px;
+        top: 0;
+        width: 86px;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, #fafff00e 43%, #fff7 50%, #fafff00e 57%, transparent);
+        filter: blur(4px);
+      }
+
+      .divider-handle {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 44px;
+        height: 44px;
+        transform: translate(-50%, -50%);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        padding: 0 11px;
+        border: 1px solid #f9fff3;
+        border-radius: 50%;
+        background: #111511;
+        box-shadow:
+          0 9px 22px #000a,
+          0 0 0 4px #ffffff12,
+          0 0 24px color-mix(in srgb, var(--accent) 45%, transparent);
+      }
+
+      .divider-handle i {
+        width: 0;
+        height: 0;
+        border-top: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+      }
+
+      .divider-handle i:first-child {
+        border-right: 5px solid #e9f0e5;
+      }
+
+      .divider-handle i:last-child {
+        justify-self: end;
+        border-left: 5px solid var(--accent);
+      }
+
+      .screen-glass {
+        position: absolute;
+        z-index: 7;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(128deg, #ffffff10, transparent 23%, transparent 72%, #dcefd706);
+        box-shadow:
+          inset 1px 0 0 #d8e6da16,
+          inset -1px 0 0 #df9f4612;
+        pointer-events: none;
+      }
+
+      .specular {
+        position: absolute;
+        z-index: 13;
+        left: -230px;
+        top: -36px;
+        width: 190px;
+        height: 125px;
+        transform: rotate(-20deg);
+        background: linear-gradient(90deg, transparent, #ffffff38, transparent);
+        filter: blur(8px);
+        pointer-events: none;
+      }
+
+      .vignette {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, transparent 62%, #02030258 100%),
+          radial-gradient(ellipse at center, transparent 48%, #02030257 100%);
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="before-after"
+      data-composition-id="before-after"
+      data-width="1280"
+      data-height="960"
+      data-duration="4"
+      data-fps="30"
+    >
+      <div class="atmosphere"></div>
+      <div class="top-light" data-layout-allow-overflow></div>
+      <div class="source-light" data-layout-allow-overflow></div>
+      <div class="back-halo"></div>
+      <div class="floor"></div>
+      <div class="floor-reflection"></div>
+      <div class="eyebrow"><span class="eyebrow-mark"></span><span>Hyfrme originals</span></div>
+      <div class="frame-count">01 / 01</div>
+      <div class="camera">
+        <div class="camera-drift">
+          <div class="window-frame">
+            <div class="chrome">
+              <div class="traffic"><i></i><i></i><i></i></div>
+              <div class="address"><span class="address-lock"></span>hyfrme / before-after</div>
+            </div>
+            <div class="screen">
+              <!-- Both designs share coordinates; complementary clips separate them during the wipe. -->
+              <section class="product-state before-app app" aria-label="Before design"></section>
+              <div class="after-reveal">
+                <section class="product-state after-app app" aria-label="After design"></section>
+              </div>
+              <div class="divider" aria-hidden="true">
+                <div class="divider-handle"><i></i><i></i></div>
+              </div>
+              <div class="screen-glass"></div>
+            </div>
+            <div class="specular" data-layout-allow-overflow></div>
+          </div>
+        </div>
+      </div>
+      <div class="vignette"></div>
+    </div>
+
+    <script>
+      (() => {
+        const variables = window.__hyperframes.getVariables();
+        const root = document.getElementById("before-after");
+        root.style.setProperty("--accent", variables.accent);
+
+        const appMarkup = `<header class="app-nav">
+        <div class="brand"><span class="brand-symbol"></span><span>hyfrme</span></div>
+        <div class="period"><span>Before / After</span><span class="avatar">H</span></div>
+      </header>
+      <aside class="sidebar">
+        <div class="nav-label" data-layout-allow-overlap>Hyfrme library</div>
+        <div class="nav-item active" data-layout-allow-overlap><span class="nav-icon"></span>Originals</div>
+        <div class="nav-item" data-layout-allow-overlap><span class="nav-icon"></span>Components</div>
+        <div class="nav-item" data-layout-allow-overlap><span class="nav-icon"></span>Text</div>
+        <div class="nav-item" data-layout-allow-overlap><span class="nav-icon"></span>Icons</div>
+        <div class="sidebar-foot">Made with Hyfrme<br />Own the source.</div>
+      </aside>
+      <main class="main">
+        <div class="title-row">
+          <div><h1 data-copy="title"></h1><p data-copy="subtitle"></p></div>
+          <span class="state-label"></span>
+        </div>
+        <div class="metrics">
+          <div class="metric primary">
+            <div class="metric-label" data-layout-allow-overlap>Duration</div>
+            <div class="metric-value" data-layout-allow-overlap data-copy="value"></div>
+            <span class="delta" data-copy="delta"></span>
+          </div>
+          <div class="metric">
+            <div class="metric-label" data-layout-allow-overlap>Frame rate</div>
+            <div class="metric-value" data-layout-allow-overlap>30 fps</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label" data-layout-allow-overlap>Frames</div>
+            <div class="metric-value" data-layout-allow-overlap>120</div>
+          </div>
+        </div>
+        <section class="chart-panel">
+          <div class="chart-head"><strong>Motion curve</strong><span class="legend"><i class="legend-dot"></i>Before / After</span></div>
+          <div class="chart">
+            <div class="chart-grid"></div>
+            <svg viewBox="0 0 750 210" preserveAspectRatio="none" aria-hidden="true">
+              <path class="area" d="M0,181 C60,166 88,172 132,145 C176,118 196,138 248,120 C300,102 318,77 372,94 C426,111 443,67 493,72 C543,77 570,49 620,60 C670,71 700,31 750,24 L750,210 L0,210 Z" />
+              <path class="chart-line" d="M0,181 C60,166 88,172 132,145 C176,118 196,138 248,120 C300,102 318,77 372,94 C426,111 443,67 493,72 C543,77 570,49 620,60 C670,71 700,31 750,24" />
+              <circle class="chart-point" cx="493" cy="72" r="5" />
+              <circle class="chart-point" cx="750" cy="24" r="5" />
+            </svg>
+            <div class="chart-days"><span>0s</span><span>0.7s</span><span>1.3s</span><span>2s</span><span>2.7s</span><span>3.3s</span><span>4s</span></div>
+          </div>
+        </section>
+      </main>`;
+        for (const [selector, label] of [
+          [".before-app", variables.beforeLabel],
+          [".after-app", variables.afterLabel],
+        ]) {
+          const app = root.querySelector(selector);
+          app.innerHTML = appMarkup;
+          app.querySelector(".state-label").textContent = label;
+          for (const element of app.querySelectorAll("[data-copy]")) {
+            element.textContent = variables[element.dataset.copy];
+          }
+        }
+
+        const timeline = gsap.timeline({ paused: true });
+        timeline.fromTo(
+          root.querySelector(".window-frame"),
+          { y: 28, scale: 0.992 },
+          { y: 0, scale: 1, duration: 0.68, ease: "expo.out" },
+          0.14,
+        );
+        timeline.fromTo(
+          root.querySelector(".window-frame"),
+          { opacity: 0 },
+          { opacity: 1, duration: 0.18, ease: "expo.out" },
+          0.14,
+        );
+        timeline.fromTo(
+          root.querySelector(".camera-drift"),
+          { scale: 1.038, rotationX: 4.6, rotationY: -5.8, rotationZ: -0.3 },
+          {
+            scale: 0.968,
+            rotationX: 2.2,
+            rotationY: -2.7,
+            rotationZ: 0,
+            duration: 3.35,
+            ease: "power2.inOut",
+          },
+          0.12,
+        );
+        timeline.fromTo(
+          root.querySelector(".eyebrow"),
+          { opacity: 0, x: -18 },
+          { opacity: 1, x: 0, duration: 0.48, ease: "power3.out" },
+          0.18,
+        );
+        timeline.fromTo(
+          root.querySelector(".frame-count"),
+          { opacity: 0 },
+          { opacity: 1, duration: 0.72, ease: "sine.out" },
+          0.32,
+        );
+        timeline.fromTo(
+          root.querySelector(".after-reveal"),
+          { clipPath: "inset(0 100% 0 0)" },
+          {
+            clipPath: "inset(0 0% 0 0)",
+            duration: 2.3,
+            ease: "power2.inOut",
+          },
+          0.82,
+        );
+        timeline.fromTo(
+          root.querySelector(".before-app"),
+          { clipPath: "inset(0 0 0 0%)" },
+          { clipPath: "inset(0 0 0 100%)", duration: 2.3, ease: "power2.inOut" },
+          0.82,
+        );
+        timeline.fromTo(
+          root.querySelector(".divider"),
+          { x: 0 },
+          { x: 1062, duration: 2.3, ease: "power2.inOut" },
+          0.82,
+        );
+        timeline.fromTo(
+          root.querySelector(".divider"),
+          { opacity: 0 },
+          { opacity: 1, duration: 0.22, ease: "power2.out" },
+          0.82,
+        );
+        timeline.to(
+          root.querySelector(".divider"),
+          { opacity: 0, duration: 0.22, ease: "power2.out" },
+          3.12,
+        );
+        timeline.fromTo(
+          root.querySelector(".top-light"),
+          { x: -18, opacity: 0.62 },
+          { x: 52, opacity: 0.92, duration: 4, ease: "sine.inOut" },
+          0,
+        );
+        timeline.fromTo(
+          root.querySelector(".back-halo"),
+          { opacity: 0.24, scale: 0.95 },
+          { opacity: 0.58, scale: 1.04, duration: 3.35, ease: "sine.inOut" },
+          0.12,
+        );
+        timeline.fromTo(
+          root.querySelector(".specular"),
+          { x: -80, opacity: 0.12 },
+          { x: 1180, opacity: 0.48, duration: 3.05, ease: "sine.inOut" },
+          0.26,
+        );
+        timeline.fromTo(
+          root.querySelector(".specular"),
+          { opacity: 0.48 },
+          { opacity: 0, duration: 0.3, ease: "power2.out", immediateRender: false },
+          3.31,
+        );
+        timeline.seek(0);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["before-after"] = timeline;
+      })();
+    </script>
+  </body>
+</html>

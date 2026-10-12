@@ -39,6 +39,10 @@ const run = (command, args, cwd = root) => {
     throw new Error(`${command} exited ${result.status}`);
   return result.stdout.trim();
 };
+const referenceFixture = resolve(
+  root,
+  process.env.REMOCN_REFERENCE_FIXTURE ?? "fixtures/remocn-latest",
+);
 const exists = (path) =>
   lstat(path).catch((error) => {
     if (error.code === "ENOENT") return null;
@@ -72,10 +76,7 @@ if (
 }
 await mkdir(dependencies, { recursive: true });
 for (const file of ["package.json", "package-lock.json"]) {
-  await copyFile(
-    resolve(root, "fixtures/remocn-latest", file),
-    resolve(dependencies, file),
-  );
+  await copyFile(resolve(referenceFixture, file), resolve(dependencies, file));
 }
 run("npm", ["ci", "--no-audit", "--no-fund"], dependencies);
 if (!existing)

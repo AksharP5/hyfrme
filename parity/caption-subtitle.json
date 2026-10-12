@@ -1,0 +1,69 @@
+{
+  "slug": "caption-subtitle",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+    "source": "registry/remocn/caption-subtitle/index.tsx",
+    "entry": "components/docs/examples/caption-subtitle-example.tsx",
+    "config": "registry/remocn/caption-subtitle/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 279,
+    "props": {
+      "captions": "So here's the thing. Most demo videos lose people in the first three seconds. Captions keep them watching, even with the sound off.",
+      "fontSize": 44,
+      "fontWeight": 600,
+      "color": "#ffffff",
+      "combineTokensWithinMilliseconds": 2500,
+      "holdMs": 600,
+      "box": true,
+      "boxColor": "#000000",
+      "boxOpacity": 0.72
+    },
+    "background": "#262626"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "af238d678ae15312d71b0d0a9d03b492b8a2b010cb970befe79ca1d00c538a31",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 279,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 279,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.530",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/caption-subtitle/reference.mp4",
+    "hyperframesVideo": "public/previews/caption-subtitle/hyperframes.mp4",
+    "thumbnail": "public/previews/caption-subtitle/thumbnail.png",
+    "summary": "parity/caption-subtitle-diff/summary.json",
+    "perFrameSsim": "parity/caption-subtitle-diff/ssim.log",
+    "hyperframesCheck": "parity/caption-subtitle-diff/hyperframes-check.log",
+    "worstFrame": "parity/caption-subtitle-diff/worst-frame.png",
+    "referenceAlpha": "parity/caption-subtitle-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/caption-subtitle-diff/hyperframes-alpha.framemd5"
+  }
+}

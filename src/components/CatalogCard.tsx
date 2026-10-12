@@ -14,7 +14,7 @@ export function CatalogCard({ entry }: CatalogCardProps) {
   const [previewing, setPreviewing] = useState(false);
   const category = categoryFor(entry);
   const isIcon = category === "icons";
-  const previewRoot = `/previews/${entry.item.name}`;
+  const { poster, video } = entry.item.preview;
 
   return (
     <a
@@ -30,10 +30,10 @@ export function CatalogCard({ entry }: CatalogCardProps) {
       aria-label={`Open ${entry.item.title}`}
     >
       <span className="catalog-card-preview">
-        {previewing ? (
+        {previewing && video ? (
           <video
-            src={`${previewRoot}/hyperframes.mp4`}
-            poster={`${previewRoot}/thumbnail.webp`}
+            src={video}
+            poster={poster ?? undefined}
             muted
             autoPlay
             loop
@@ -41,8 +41,18 @@ export function CatalogCard({ entry }: CatalogCardProps) {
             preload="metadata"
             aria-hidden="true"
           />
+        ) : poster ? (
+          <img src={poster} alt="" loading="lazy" />
         ) : (
-          <img src={`${previewRoot}/thumbnail.webp`} alt="" loading="lazy" />
+          <span className="source-preview">
+            <span aria-hidden="true">&lt;/&gt;</span>
+            <strong>{entry.item.title}</strong>
+            <small>
+              {entry.item.type === "hyperframes:component"
+                ? "HTML snippet"
+                : "HTML composition"}
+            </small>
+          </span>
         )}
       </span>
       <span className="catalog-card-copy">

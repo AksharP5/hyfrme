@@ -4,7 +4,7 @@ description: >
   Discover, customize, install, and wire Hyfrme motion components into a
   HyperFrames project. Use when building a HyperFrames video or scene that
   needs a ready-made text animation, transition, shader, icon, UI primitive,
-  product-demo block, social card, or data visualization.
+  product-demo block, social card, data visualization, or official template.
 ---
 
 # Hyfrme
@@ -15,7 +15,8 @@ installed source.
 
 ## Prerequisite
 
-Work inside a HyperFrames project containing `hyperframes.json`.
+For component installs, work inside a HyperFrames project containing `hyperframes.json`.
+For a complete official template, use `hyfrme init` as shown below.
 
 ```bash
 npx hyperframes@latest init my-video
@@ -27,7 +28,8 @@ cd my-video
 Browse the visual catalog at <https://hyfrme.vercel.app>. The machine-readable
 registry is at <https://hyfrme.vercel.app/registry/registry.json>.
 
-Use the catalog's source filter to browse Hyfrme originals or Remocn and Snapcn ports. Snapcn block
+Use the catalog's source filter to browse Hyfrme originals, Remocn/Snapcn ports,
+and the official HyperFrames catalog. Official names start with `hyperframes-`. Snapcn block
 names start with `snapcn-`, such as `snapcn-phone-frame`; copy the exact catalog
 name into the install command.
 
@@ -39,6 +41,7 @@ Choose the smallest component that serves the scene:
 | Primitives | Timeline-driven UI states such as buttons, dialogs, menus, inputs, and flows |
 | Shaders    | Full-frame procedural backgrounds and transitions                            |
 | Icons      | Small animated interface and status symbols                                  |
+| Templates  | Complete official HyperFrames projects initialized in a new folder           |
 
 Do not stack components only because they are available. Match motion, palette,
 and density to the composition's existing visual language.
@@ -59,7 +62,8 @@ npx hyfrme@latest add matrix-decode --set 'text=SHIPPED' --set 'color=#22c55e'
 ```
 
 Use `npx hyfrme@latest add --all` only when the project genuinely needs the
-entire catalog; prefer a small set of named components for focused videos.
+set of blocks and reusable components; templates use `init` separately. Prefer
+a small set of named components for focused videos.
 
 Use `--dir <project>` when targeting another directory and `--force` only when
 replacing an existing installation intentionally.
@@ -71,6 +75,27 @@ The CLI:
 3. Validates every `--set` value against the component metadata.
 4. Copies the component and all required assets and licenses.
 5. Prints complete `data-composition-src` markup for the host composition.
+
+## Official components and templates
+
+```bash
+npx hyfrme@latest add hyperframes-data-chart hyperframes-spring-pop
+npx hyfrme@latest init hyperframes-product-promo --dir ./product-promo
+```
+
+Use the registry item's type to choose the install path:
+
+- `hyperframes:block`: `add`, then use the printed composition markup and original ID.
+- `hyperframes:component`: `add`, then paste the installed snippet's markup, styles,
+  and script into the host scene. It has no independent canvas dimensions or duration.
+- `hyperframes:example`: `init` in a chosen project folder, then run
+  `npx hyperframes preview` there. Verify `index.html` and `hyperframes.json` exist.
+
+Template initialization creates missing configuration and refuses conflicting files
+unless `--force` is explicit. Video scaffold templates use the official no-video
+10-second default and remove placeholder media. Decision Tree initialization includes
+a renderer compatibility fallback for its measured label timing. Canonical registry sources and
+licenses remain unchanged.
 
 ## Wire the installed block
 
@@ -100,7 +125,8 @@ preview, usage code, and install command together.
 
 For agent-driven installs, inspect the registry item or installed composition's
 `data-composition-variables` metadata before adding `--set` values. Never invent
-variable names. Per-instance overrides remain available through
+variable names. `--set` supports declared composition variables; edit official CSS
+parameters without such bindings directly in the source. Per-instance overrides remain available through
 `data-variable-values`.
 
 ## Quality and attribution
@@ -111,6 +137,8 @@ variable names. Per-instance overrides remain available through
   to preserve the lossless video extraction used for parity verification.
 - Preserve copied license and attribution files.
 - Hyfrme includes original components and independent ports of Remocn and Snapcn.
+  Official HyperFrames items are copied from pinned native sources with file hashes
+  and original licenses. They do not claim port SSIM.
   Original components have installation and render checks, without an upstream
   parity comparison.
 - Treat the website preview as a selection tool, then run `hyperframes check`

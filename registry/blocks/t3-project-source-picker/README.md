@@ -1,0 +1,5 @@
+# T3 Code: Project Source Picker
+
+This four-second block reproduces T3 Code v0.0.42 in dark or light mode at 1200 × 659 and 30 fps. It starts in the full Hyfrme workspace, opens the real New project source chooser, and closes it with Escape. The chooser shows Local folder, Git URL, GitHub repository, and the native Setup Required states for Azure DevOps, Bitbucket, Forgejo / Gitea, and GitLab in this seeded fixture. No repository account data is embedded.
+
+The default chooser uses a cropped pixel capture from the pinned native dark/light recording. Editing visible text switches the chooser to source DOM so the content remains customizable. Set the same project, branch, thread, age, and composer variables on adjacent T3 Code blocks for a continuous workspace. The chooser opens at openFrame and closes at closeFrame. Source: https://github.com/pingdotgg/t3code/tree/719a76ca1dbf5490f1aa33ffb9966301e02be9a9. The installed files include the T3 Code MIT license. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.

@@ -1,0 +1,44 @@
+{
+  "slug": "t3-diff-review",
+  "status": "superseded-by-verified-port",
+  "source": {
+    "repository": "https://github.com/pingdotgg/t3code",
+    "tag": "v0.0.35",
+    "commit": "f925d639421844f02b3166d29281905dbba6d529",
+    "fixture": "assets/t3-code/v0.0.35/diff-review-fixture.json",
+    "reference": "parity/t3-diff-review-reference.mkv",
+    "referenceSha256": "c223439df1cab42880df7c4138e551070d16f5d8457eaa545d8dcbcea013ee8d"
+  },
+  "capture": {
+    "width": 1200,
+    "height": 659,
+    "fps": 30,
+    "frames": 120,
+    "states": [
+      "full workspace",
+      "surface chooser",
+      "stacked Working tree diff",
+      "split Working tree diff"
+    ]
+  },
+  "candidate": {
+    "sha256": "013030825ebc663205772d56a5acc5e320b62f392676fb4dfcdd47b6a004b0c1",
+    "fullHyperFramesCheck": "passed",
+    "strictRender": "passed",
+    "allFrameMeanSsim": 0.9783451750000023,
+    "allFrameMinSsim": 0.958685,
+    "requiredMeanSsim": 0.989,
+    "requiredMinSsim": 0.985,
+    "published": false,
+    "snapshotAvailable": false,
+    "previousOutput": ".work/t3-diff-review-candidate (overwritten by the verified port)"
+  },
+  "diagnosis": "The Pierre diff code body scores about 0.885 SSIM in a steady split frame while the top bar is pixel-identical. Native CDP resolves Liberation Mono at 13px and devicePixelRatio 1; source and HyperFrames computed font stacks, line metrics, and code geometry match. Explicitly setting Liberation Mono and matching inherited font smoothing did not improve all-frame parity. The candidate remains outside registry/blocks.",
+  "resolution": {
+    "compositionSha256": "ad1517bd69d866aa1edb7cd583209def4a5222c31bebe1001a4629ebecf3e58d",
+    "allFrameMeanSsim": 0.9901371250000012,
+    "allFrameMinSsim": 0.987259,
+    "criticalCodeRegions": "Stacked and split crops have zero differing pixels",
+    "manifest": "parity/t3-diff-review.json"
+  }
+}

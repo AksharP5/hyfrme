@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import type { RegistrySummary } from "../catalog";
 import {
   type CompositionVariable,
   type CustomValues,
   numberBounds,
   optionsFor,
+  parseVariableValue,
 } from "../lib/customization";
 import { CopyButton } from "./CopyButton";
 
@@ -22,6 +24,66 @@ type ControlProps = {
   value: string | number | boolean;
   onChange: (value: string | number | boolean) => void;
 };
+
+function NumberControl({ item, variable, value, onChange }: ControlProps) {
+  const [draft, setDraft] = useState(String(value));
+  const bounds = numberBounds(variable, item);
+
+  useEffect(() => setDraft(String(value)), [value]);
+
+  const commit = () => {
+    const next = parseVariableValue(variable, draft);
+    setDraft(String(next));
+    if (next !== value) onChange(next);
+  };
+
+  return (
+    <label
+      className="control-row control-number"
+      htmlFor={`control-${variable.id}`}
+    >
+      <span className="control-number-heading">
+        <span>{variable.label}</span>
+        <input
+          type="number"
+          value={draft}
+          min={bounds.min}
+          max={bounds.max}
+          step={bounds.step}
+          onChange={(event) => {
+            const raw = event.currentTarget.value;
+            const number = event.currentTarget.valueAsNumber;
+            setDraft(raw);
+            if (
+              Number.isFinite(number) &&
+              number !== value &&
+              number === parseVariableValue(variable, raw)
+            ) {
+              onChange(number);
+            }
+          }}
+          onBlur={commit}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") event.currentTarget.blur();
+          }}
+          aria-label={`${variable.label} value`}
+        />
+      </span>
+      <input
+        id={`control-${variable.id}`}
+        type="range"
+        value={Number(value)}
+        min={bounds.min}
+        max={bounds.max}
+        step={bounds.step}
+        onChange={(event) => {
+          setDraft(event.currentTarget.value);
+          onChange(event.currentTarget.valueAsNumber);
+        }}
+      />
+    </label>
+  );
+}
 
 function VariableControl({ item, variable, value, onChange }: ControlProps) {
   const id = `control-${variable.id}`;
@@ -61,32 +123,13 @@ function VariableControl({ item, variable, value, onChange }: ControlProps) {
   }
 
   if (variable.type === "number") {
-    const bounds = numberBounds(variable, item);
-    const numericValue = Number(value);
     return (
-      <label className="control-row control-number" htmlFor={id}>
-        <span className="control-number-heading">
-          <span>{variable.label}</span>
-          <input
-            type="number"
-            value={numericValue}
-            min={bounds.min}
-            max={bounds.max}
-            step={bounds.step}
-            onChange={(event) => onChange(Number(event.target.value))}
-            aria-label={`${variable.label} value`}
-          />
-        </span>
-        <input
-          id={id}
-          type="range"
-          value={numericValue}
-          min={bounds.min}
-          max={bounds.max}
-          step={bounds.step}
-          onChange={(event) => onChange(Number(event.target.value))}
-        />
-      </label>
+      <NumberControl
+        item={item}
+        variable={variable}
+        value={value}
+        onChange={onChange}
+      />
     );
   }
 
@@ -113,12 +156,23 @@ function VariableControl({ item, variable, value, onChange }: ControlProps) {
   return (
     <label className="control-row control-text" htmlFor={id}>
       <span>{variable.label}</span>
-      <input
-        id={id}
-        type="text"
-        value={String(value)}
-        onChange={(event) => onChange(event.target.value)}
-      />
+      {String(variable.default).includes("\n") ? (
+        <textarea
+          id={id}
+          rows={4}
+          maxLength={variable.maxLength}
+          value={String(value)}
+          onChange={(event) => onChange(event.target.value)}
+        />
+      ) : (
+        <input
+          id={id}
+          type="text"
+          maxLength={variable.maxLength}
+          value={String(value)}
+          onChange={(event) => onChange(event.target.value)}
+        />
+      )}
     </label>
   );
 }

@@ -1,0 +1,628 @@
+@layer base, unsafe;
+@layer base {
+  @layer base, theme, unsafe;
+  @layer base {
+  :host { --trees-accent: var(--trees-accent-override, #009fff); --trees-fg: var(
+      --trees-fg-override,
+      var(--trees-theme-sidebar-fg, light-dark(#6c6c71, #adadb1))
+    ); --trees-fg-muted: var(
+      --trees-fg-muted-override,
+      var(--trees-theme-sidebar-header-fg, light-dark(#84848a, #84848a))
+    ); --trees-bg: var(
+      --trees-bg-override,
+      var(--trees-theme-sidebar-bg, light-dark(#f8f8f8, #141415))
+    ); --trees-bg-muted: var(
+      --trees-bg-muted-override,
+      var(
+        --trees-theme-list-hover-bg,
+        light-dark(
+          color-mix(
+            in lab,
+            var(--trees-accent) var(--trees-bg-alpha-light, 8%),
+            var(--trees-bg)
+          ),
+          color-mix(
+            in lab,
+            var(--trees-accent) var(--trees-bg-alpha-dark, 10%),
+            var(--trees-bg)
+          )
+        )
+      )
+    ); --trees-input-bg: var(
+      --trees-input-bg-override,
+      light-dark(#f8f8f8, #070707)
+    ); --trees-added-light: #16a994; --trees-added-dark: #00cab1; --trees-ignored-light: #adadb1; --trees-ignored-dark: #4a4a4e; --trees-modified-light: #1ca1c7; --trees-modified-dark: #08c0ef; --trees-renamed-light: #d5a910; --trees-renamed-dark: #ffd452; --trees-untracked-light: #16a994; --trees-untracked-dark: #00cab1; --trees-deleted-light: #ff2e3f; --trees-deleted-dark: #ff6762; --trees-border-color: var(
+      --trees-border-color-override,
+      var(--trees-theme-sidebar-border, light-dark(#eeeeef, #070707))
+    ); --trees-indent-guide-bg: var(
+      --trees-indent-guide-bg-override,
+      color-mix(in lab, var(--trees-fg-muted) 25%, transparent)
+    ); --trees-density: var(--trees-density-override, 1); --trees-border-radius: var(
+      --trees-border-radius-override,
+      calc(6px * var(--trees-density))
+    ); --trees-font-family: var(--trees-font-family-override, system-ui); --trees-font-size: var(--trees-font-size-override, 13px); --trees-font-weight-regular: var(--trees-font-weight-regular-override, 400); --trees-font-weight-semibold: var(
+      --trees-font-weight-semibold-override,
+      600
+    ); --trees-focus-ring-color: var(
+      --trees-focus-ring-color-override,
+      var(--trees-theme-focus-ring, var(--trees-accent))
+    ); --trees-focus-ring-width: var(--trees-focus-ring-width-override, 1px); --trees-focus-ring-offset: var(--trees-focus-ring-offset-override, -1px); --trees-search-fg: var(
+      --trees-search-fg-override,
+      var(--trees-theme-input-fg, var(--trees-fg))
+    ); --trees-search-font-weight: var(--trees-search-font-weight-override, 600); --trees-search-bg: var(
+      --trees-search-bg-override,
+      var(--trees-theme-input-bg, var(--trees-input-bg))
+    ); --trees-scrollbar-thumb: var(
+      --trees-scrollbar-thumb-override,
+      var(
+        --trees-theme-scrollbar-thumb,
+        color-mix(in lab, var(--trees-fg) 25%, var(--trees-bg))
+      )
+    ); --trees-selected-fg: var(
+      --trees-selected-fg-override,
+      var(--trees-theme-list-active-selection-fg, var(--trees-fg))
+    ); --trees-selected-bg: var(
+      --trees-selected-bg-override,
+      var(
+        --trees-theme-list-active-selection-bg,
+        light-dark(
+          color-mix(in lab, var(--trees-accent) 12%, var(--trees-bg)),
+          color-mix(in lab, var(--trees-accent) 15%, var(--trees-bg))
+        )
+      )
+    ); --trees-selected-focused-border-color: var(
+      --trees-selected-focused-border-color-override,
+      var(--trees-theme-focus-ring, var(--trees-accent))
+    ); --trees-status-added: var(
+      --trees-status-added-override,
+      var(
+        --trees-theme-git-added-fg,
+        light-dark(var(--trees-added-light), var(--trees-added-dark))
+      )
+    ); --trees-status-ignored: var(
+      --trees-status-ignored-override,
+      var(
+        --trees-theme-git-ignored-fg,
+        light-dark(var(--trees-ignored-light), var(--trees-ignored-dark))
+      )
+    ); --trees-status-modified: var(
+      --trees-status-modified-override,
+      var(
+        --trees-theme-git-modified-fg,
+        light-dark(var(--trees-modified-light), var(--trees-modified-dark))
+      )
+    ); --trees-status-renamed: var(
+      --trees-status-renamed-override,
+      var(
+        --trees-theme-git-renamed-fg,
+        light-dark(var(--trees-renamed-light), var(--trees-renamed-dark))
+      )
+    ); --trees-status-untracked: var(
+      --trees-status-untracked-override,
+      var(
+        --trees-theme-git-untracked-fg,
+        light-dark(var(--trees-untracked-light), var(--trees-untracked-dark))
+      )
+    ); --trees-status-deleted: var(
+      --trees-status-deleted-override,
+      var(
+        --trees-theme-git-deleted-fg,
+        light-dark(var(--trees-deleted-light), var(--trees-deleted-dark))
+      )
+    ); --trees-git-modified-color: var(
+      --trees-git-modified-color-override,
+      var(--trees-status-modified)
+    ); --trees-git-added-color: var(
+      --trees-git-added-color-override,
+      var(--trees-status-added)
+    ); --trees-git-ignored-color: var(
+      --trees-git-ignored-color-override,
+      var(--trees-status-ignored)
+    ); --trees-git-deleted-color: var(
+      --trees-git-deleted-color-override,
+      var(--trees-status-deleted)
+    ); --trees-git-renamed-color: var(
+      --trees-git-renamed-color-override,
+      var(--trees-status-renamed)
+    ); --trees-git-untracked-color: var(
+      --trees-git-untracked-color-override,
+      var(--trees-status-untracked)
+    ); --trees-icon-gray: light-dark(#84848a, #adadb1); --trees-icon-red: light-dark(#d52c36, #ff6762); --trees-icon-vermilion: light-dark(#ff8c5b, #d5512f); --trees-icon-orange: light-dark(#d47628, #ffa359); --trees-icon-yellow: light-dark(#d5a910, #ffd452); --trees-icon-green: light-dark(#199f43, #5ecc71); --trees-icon-teal: light-dark(#17a5af, #64d1db); --trees-icon-cyan: light-dark(#1ca1c7, #68cdf2); --trees-icon-blue: light-dark(#1a85d4, #69b1ff); --trees-icon-indigo: light-dark(#693acf, #9d6afb); --trees-icon-purple: light-dark(#a631be, #d568ea); --trees-icon-pink: light-dark(#d32a61, #ff678d); --trees-icon-mauve: light-dark(#594c5b, #79697b); --trees-file-icon-color-default: var(
+      --trees-file-icon-color,
+      var(--trees-icon-gray)
+    ); --trees-file-icon-color-astro: var(
+      --trees-file-icon-color,
+      var(--trees-icon-purple)
+    ); --trees-file-icon-color-babel: var(
+      --trees-file-icon-color,
+      var(--trees-icon-yellow)
+    ); --trees-file-icon-color-bash: var(
+      --trees-file-icon-color,
+      var(--trees-icon-green)
+    ); --trees-file-icon-color-biome: var(
+      --trees-file-icon-color,
+      var(--trees-icon-blue)
+    ); --trees-file-icon-color-bootstrap: var(
+      --trees-file-icon-color,
+      var(--trees-icon-indigo)
+    ); --trees-file-icon-color-browserslist: var(
+      --trees-file-icon-color,
+      var(--trees-icon-yellow)
+    ); --trees-file-icon-color-bun: var(
+      --trees-file-icon-color,
+      var(--trees-icon-mauve)
+    ); --trees-file-icon-color-c: var(
+      --trees-file-icon-color,
+      var(--trees-icon-blue)
+    ); --trees-file-icon-color-cpp: var(
+      --trees-file-icon-color,
+      var(--trees-icon-blue)
+    ); --trees-file-icon-color-claude: var(
+      --trees-file-icon-color,
+      var(--trees-icon-orange)
+    ); --trees-file-icon-color-css: var(
+      --trees-file-icon-color,
+      var(--trees-icon-indigo)
+    ); --trees-file-icon-color-database: var(
+      --trees-file-icon-color,
+      var(--trees-icon-purple)
+    ); --trees-file-icon-color-docker: var(
+      --trees-file-icon-color,
+      var(--trees-icon-blue)
+    ); --trees-file-icon-color-eslint: var(
+      --trees-file-icon-color,
+      var(--trees-icon-indigo)
+    ); --trees-file-icon-color-git: var(
+      --trees-file-icon-vermilion,
+      var(--trees-icon-vermilion)
+    ); --trees-file-icon-color-go: var(
+      --trees-file-icon-color,
+      var(--trees-icon-cyan)
+    ); --trees-file-icon-color-graphql: var(
+      --trees-file-icon-color,
+      var(--trees-icon-pink)
+    ); --trees-file-icon-color-html: var(
+      --trees-file-icon-color,
+      var(--trees-icon-orange)
+    ); --trees-file-icon-color-image: var(
+      --trees-file-icon-color,
+      var(--trees-icon-pink)
+    ); --trees-file-icon-color-javascript: var(
+      --trees-file-icon-color,
+      var(--trees-icon-yellow)
+    ); --trees-file-icon-color-json: var(
+      --trees-file-icon-color,
+      var(--trees-icon-orange)
+    ); --trees-file-icon-color-markdown: var(
+      --trees-file-icon-color,
+      var(--trees-icon-green)
+    ); --trees-file-icon-color-mcp: var(
+      --trees-file-icon-color,
+      var(--trees-icon-teal)
+    ); --trees-file-icon-color-npm: var(
+      --trees-file-icon-color,
+      var(--trees-icon-red)
+    ); --trees-file-icon-color-oxc: var(
+      --trees-file-icon-cyan,
+      var(--trees-icon-cyan)
+    ); --trees-file-icon-color-postcss: var(
+      --trees-file-icon-color,
+      var(--trees-icon-red)
+    ); --trees-file-icon-color-prettier: var(
+      --trees-file-icon-color,
+      var(--trees-icon-teal)
+    ); --trees-file-icon-color-python: var(
+      --trees-file-icon-color,
+      var(--trees-icon-blue)
+    ); --trees-file-icon-color-react: var(
+      --trees-file-icon-color,
+      var(--trees-icon-cyan)
+    ); --trees-file-icon-color-ruby: var(
+      --trees-file-icon-color,
+      var(--trees-icon-red)
+    ); --trees-file-icon-color-rust: var(
+      --trees-file-icon-color,
+      var(--trees-icon-orange)
+    ); --trees-file-icon-color-sass: var(
+      --trees-file-icon-color,
+      var(--trees-icon-pink)
+    ); --trees-file-icon-color-svg: var(
+      --trees-file-icon-color,
+      var(--trees-icon-orange)
+    ); --trees-file-icon-color-svelte: var(
+      --trees-file-icon-color,
+      var(--trees-icon-red)
+    ); --trees-file-icon-color-svgo: var(
+      --trees-file-icon-color,
+      var(--trees-icon-green)
+    ); --trees-file-icon-color-swift: var(
+      --trees-file-icon-color,
+      var(--trees-icon-orange)
+    ); --trees-file-icon-color-table: var(
+      --trees-file-icon-color,
+      var(--trees-icon-teal)
+    ); --trees-file-icon-color-text: var(
+      --trees-file-icon-color,
+      var(--trees-icon-gray)
+    ); --trees-file-icon-color-tailwind: var(
+      --trees-file-icon-color,
+      var(--trees-icon-cyan)
+    ); --trees-file-icon-color-terraform: var(
+      --trees-file-icon-color,
+      var(--trees-icon-indigo)
+    ); --trees-file-icon-color-typescript: var(
+      --trees-file-icon-color,
+      var(--trees-icon-blue)
+    ); --trees-file-icon-color-vite: var(
+      --trees-file-icon-color,
+      var(--trees-icon-purple)
+    ); --trees-file-icon-color-vscode: var(
+      --trees-file-icon-color,
+      var(--trees-icon-blue)
+    ); --trees-file-icon-color-vue: var(
+      --trees-file-icon-color,
+      var(--trees-icon-green)
+    ); --trees-file-icon-color-wasm: var(
+      --trees-file-icon-color,
+      var(--trees-icon-indigo)
+    ); --trees-file-icon-color-webpack: var(
+      --trees-file-icon-color,
+      var(--trees-icon-blue)
+    ); --trees-file-icon-color-yml: var(
+      --trees-file-icon-color,
+      var(--trees-icon-red)
+    ); --trees-file-icon-color-zig: var(
+      --trees-file-icon-color,
+      var(--trees-icon-orange)
+    ); --trees-file-icon-color-zip: var(
+      --trees-file-icon-color,
+      var(--trees-icon-orange)
+    ); --trees-level-gap: var(
+      --trees-level-gap-override,
+      calc(8px * var(--trees-density))
+    ); --trees-item-padding-x: var(
+      --trees-item-padding-x-override,
+      calc(8px * var(--trees-density))
+    ); --trees-item-margin-x: var(
+      --trees-item-margin-x-override,
+      calc(2px * var(--trees-density))
+    ); --trees-item-row-gap: var(
+      --trees-item-row-gap-override,
+      calc(6px * var(--trees-density))
+    ); --trees-icon-width: var(--trees-icon-width-override, 16px); --trees-icon-nudge: var(
+      --trees-icon-nudge-override,
+      calc(1px * var(--trees-density))
+    ); --trees-row-height: var(--trees-item-height, 30px); --trees-git-lane-width: var(--trees-git-lane-width-override, 12px); --trees-action-lane-width: var(
+      --trees-action-lane-width-override,
+      calc(var(--trees-icon-width) + 2px)
+    ); --trees-context-menu-trigger-inline-offset: calc(
+      var(--trees-padding-inline) + var(--trees-item-padding-x) -
+        var(--trees-focus-ring-width)
+    ); --trees-scrollbar-gutter: var(--trees-scrollbar-gutter-override, 6px); --trees-padding-inline: var(--trees-padding-inline-override, 16px); color-scheme: light dark; display: flex; flex-direction: column; font-size: var(--trees-font-size); color: var(--trees-fg); background-color: var(--trees-bg); --truncate-marker-background-color: var(--trees-bg); --truncate-marker-background-overlay-color: transparent; font-family: var(--trees-font-family); font-weight: var(--trees-font-weight-regular); }
+  :host([data-file-tree-virtualized="true"]) { height: 100%; overflow: hidden; }
+  [data-file-tree-virtualized-wrapper="true"] { height: 100%; overflow: hidden; display: flex; flex-direction: column; }
+  [data-file-tree-virtualized-root="true"] { height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+  [data-file-tree-virtualized-scroll="true"], [data-file-tree-scrollbar-measure="true"] {
+  --trees-scrollbar-thumb-current: transparent; overflow-y: auto; scrollbar-gutter: stable;
+  &:hover { --trees-scrollbar-thumb-current: var(--trees-scrollbar-thumb); }
+  &::-webkit-scrollbar { width: var(--trees-scrollbar-gutter); height: var(--trees-scrollbar-gutter); }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb { background-color: var(--trees-scrollbar-thumb-current); border: 1px solid transparent; background-clip: content-box; border-radius: calc(var(--trees-scrollbar-gutter) / 2); }
+  &::-webkit-scrollbar-corner { background-color: transparent; }
+}
+  [data-file-tree-scrollbar-measure="true"] { position: absolute; top: 0px; left: 0px; visibility: hidden; pointer-events: none; width: 100px; height: 100px; }
+  @supports (-moz-appearance: none) {
+  [data-file-tree-virtualized-scroll="true"], [data-file-tree-scrollbar-measure="true"] { scrollbar-width: thin; scrollbar-color: var(--trees-scrollbar-thumb-current) transparent; }
+}
+  [data-file-tree-virtualized-scroll="true"] { position: relative; overflow-y: auto; flex: 1 1 0px; min-height: 0px; padding-inline: max(
+        calc(var(--trees-padding-inline) - var(--trees-item-margin-x)),
+        0px
+      )
+      /* NOTE(amadeus): We can assume that all Webkit based browser gutters
+       * will align to the value of '--trees-scrollbar-gutter', however if not, then
+       * `--trees-scrollbar-gutter-measured` should correct it. Mostly we are
+       * hoping to avoid SSR alignment jumps if possible. In non-SSR'd environments
+       * `--trees-scrollbar-gutter-measured` should always be immediately available.
+       */
+      max(
+        calc(
+          var(--trees-padding-inline) - var(--trees-item-margin-x) -
+            var(
+              --trees-scrollbar-gutter-measured,
+              var(--trees-scrollbar-gutter)
+            )
+        ),
+        0px
+      ); }
+  @supports (-moz-appearance: none) {
+  [data-file-tree-virtualized-scroll="true"] { padding-inline: max(
+          calc(var(--trees-padding-inline) - var(--trees-item-margin-x)),
+          0px
+        )
+        /* NOTE(amadeus): However on Firefox it can vary a little bit, but most
+         * likely the majority of cases will default to a 0px width scrollbar lets
+         * inherit that first to avoid SSR jumps. In non-SSR'd environments
+         * `--trees-scrollbar-gutter-measured` should always be immediately available.
+         */
+        max(
+          calc(
+            var(--trees-padding-inline) - var(--trees-item-margin-x) -
+              var(--trees-scrollbar-gutter-measured, 0px)
+          ),
+          0px
+        ); }
+}
+  [data-file-tree-sticky-overlay="true"] { position: sticky; top: 0px; height: 0px; z-index: 4; overflow: visible; pointer-events: none; }
+  [data-file-tree-virtualized-root="true"][data-scroll-at-top="true"]:not([data-overlay-reveal]) [data-file-tree-sticky-overlay="true"] { visibility: hidden; }
+  [data-file-tree-sticky-overlay-content="true"] { background-color: var(--trees-bg); position: relative; pointer-events: none; }
+  [data-file-tree-virtualized-list="true"] {
+  background-color: var(--trees-bg); position: relative; min-height: 100%; width: 100%; overflow-anchor: none;
+  &[data-is-scrolling] { pointer-events: none; }
+}
+  [data-file-tree-virtualized-sticky-offset="true"] { contain: size layout; }
+  [data-file-tree-virtualized-sticky="true"] { position: sticky; top: 0px; width: 100%; display: flex; flex-direction: column; isolation: isolate; will-change: transform; }
+  [data-file-tree-search-container] { display: flex; padding: 0px; padding-inline: var(--trees-padding-inline); margin-bottom: var(--trees-item-row-gap); }
+  [data-file-tree-search-input] {
+  --trees-focus-ring-width: 2px; font-family: var(--trees-font-family); font-size: var(--trees-font-size); flex: 1 1 0%; height: var(--trees-row-height); margin-block: 1px; padding-inline: var(--trees-item-padding-x); line-height: var(--trees-row-height); color: var(--trees-search-fg); background-color: var(--trees-search-bg); border: 1px solid var(--trees-border-color); border-radius: var(--trees-border-radius); outline: none;
+  &::placeholder { color: color-mix(
+        in lab,
+        var(--trees-search-fg) 65%,
+        var(--trees-search-bg)
+      ); }
+  &:focus-visible, &[data-file-tree-search-input-fake-focus="true"] { outline: var(--trees-focus-ring-width) solid var(--trees-focus-ring-color); outline-offset: var(--trees-focus-ring-offset); }
+}
+  [role="tree"] { position: relative; display: flex; flex-direction: column; gap: var(--trees-gap-override, 0); }
+  [data-type="item"] {
+  color: inherit; font-family: var(--trees-font-family); font-size: var(--trees-font-size); text-align: start; outline: none; background-color: var(--trees-bg); border-width: medium; border-style: none; border-color: currentcolor; border-image: none; position: relative; padding: 0 var(--trees-item-padding-x); margin: 0 var(--trees-item-margin-x); cursor: pointer; user-select: none; touch-action: manipulation; display: flex; flex: 0 0 var(--trees-row-height); align-items: center; height: var(--trees-row-height); line-height: var(--trees-row-height); gap: var(--trees-item-row-gap); border-radius: var(--trees-border-radius); --truncate-marker-background-color: var(--trees-bg); --truncate-marker-background-overlay-color: transparent; --truncate-marker-block-inset: 0px;
+  &:hover, &[data-item-context-hover="true"] { background-color: var(--trees-bg-muted); --truncate-marker-background-overlay-color: var(--trees-bg-muted); }
+  &[data-item-focused="true"], &:focus-visible {
+  z-index: 2;
+  & [data-item-flattened-subitems] { --truncate-marker-block-inset: var(--trees-focus-ring-width); }
+  &::before { position: absolute; inset: 0px; content: ""; display: block; border-radius: var(--trees-border-radius); outline: var(--trees-focus-ring-width) solid
+          var(--trees-focus-ring-color); outline-offset: var(--trees-focus-ring-offset); pointer-events: none; }
+  &[data-item-selected="true"]::before { outline-color: var(--trees-selected-focused-border-color); }
+}
+  &[data-item-selected="true"] {
+  color: var(--trees-selected-fg); background-color: var(--trees-selected-bg); --truncate-marker-background-overlay-color: var(--trees-selected-bg); z-index: 3;
+  & [data-item-section="icon"] { color: var(--trees-selected-fg); }
+}
+  &[data-item-search-match="true"] { font-weight: var(--trees-search-font-weight); }
+}
+  [data-type="item"][data-file-tree-sticky-row="true"] { pointer-events: auto; }
+  [data-file-tree-virtualized-root="true"][data-is-scrolling] [data-type="item"][data-file-tree-sticky-row="true"] { pointer-events: none; }
+  [data-file-tree-virtualized-root="true"][data-is-scrolling] [data-type="item"][data-file-tree-sticky-row="true"]:hover:not([data-item-selected="true"]), [data-file-tree-virtualized-root="true"][data-is-scrolling] [data-type="item"][data-file-tree-sticky-row="true"][data-item-context-hover="true"]:not([data-item-selected="true"]) { background-color: var(--trees-bg); --truncate-marker-background-overlay-color: transparent; }
+  [data-item-selected="true"]:has(+ [data-item-selected="true"]) { border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; }
+  [data-item-selected="true"] + [data-item-selected="true"] { border-top-left-radius: 0px; border-top-right-radius: 0px; }
+  [data-item-flattened-subitems] { display: inline-flex; align-items: center; gap: 2px; }
+  [data-item-flattened-subitem]:hover, [data-item-flattened-subitem-drag-target="true"] { text-decoration: underline; }
+  [data-item-section="icon"] { flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--trees-fg-muted); fill: currentcolor; width: var(--trees-icon-width); }
+  :where([data-item-section="icon"] > [data-icon-token]) { color: var(--trees-fg-muted); }
+  [data-file-tree-colored-icons="true"] {
+  & [data-icon-token="astro"] { color: var(--trees-file-icon-color-astro); }
+  & [data-icon-token="babel"] { color: var(--trees-file-icon-color-babel); }
+  & [data-icon-token="bash"] { color: var(--trees-file-icon-color-bash); }
+  & [data-icon-token="biome"] { color: var(--trees-file-icon-color-biome); }
+  & [data-icon-token="bootstrap"] { color: var(--trees-file-icon-color-bootstrap); }
+  & [data-icon-token="browserslist"] { color: var(--trees-file-icon-color-browserslist); }
+  & [data-icon-token="bun"] { color: var(--trees-file-icon-color-bun); }
+  & [data-icon-token="c"] { color: var(--trees-file-icon-color-c); }
+  & [data-icon-token="cpp"] { color: var(--trees-file-icon-color-cpp); }
+  & [data-icon-token="claude"] { color: var(--trees-file-icon-color-claude); }
+  & [data-icon-token="css"] { color: var(--trees-file-icon-color-css); }
+  & [data-icon-token="database"] { color: var(--trees-file-icon-color-database); }
+  & [data-icon-token="default"] { color: var(--trees-file-icon-color-default); }
+  & [data-icon-token="docker"] { color: var(--trees-file-icon-color-docker); }
+  & [data-icon-token="eslint"] { color: var(--trees-file-icon-color-eslint); }
+  & [data-icon-token="git"] { color: var(--trees-file-icon-color-git); }
+  & [data-icon-token="go"] { color: var(--trees-file-icon-color-go); }
+  & [data-icon-token="graphql"] { color: var(--trees-file-icon-color-graphql); }
+  & [data-icon-token="html"] { color: var(--trees-file-icon-color-html); }
+  & [data-icon-token="image"] { color: var(--trees-file-icon-color-image); }
+  & [data-icon-token="javascript"] { color: var(--trees-file-icon-color-javascript); }
+  & [data-icon-token="json"] { color: var(--trees-file-icon-color-json); }
+  & [data-icon-token="markdown"] { color: var(--trees-file-icon-color-markdown); }
+  & [data-icon-token="mcp"] { color: var(--trees-file-icon-color-mcp); }
+  & [data-icon-token="npm"] { color: var(--trees-file-icon-color-npm); }
+  & [data-icon-token="oxc"] { color: var(--trees-file-icon-color-oxc); }
+  & [data-icon-token="postcss"] { color: var(--trees-file-icon-color-postcss); }
+  & [data-icon-token="prettier"] { color: var(--trees-file-icon-color-prettier); }
+  & [data-icon-token="python"] { color: var(--trees-file-icon-color-python); }
+  & [data-icon-token="react"] { color: var(--trees-file-icon-color-react); }
+  & [data-icon-token="ruby"] { color: var(--trees-file-icon-color-ruby); }
+  & [data-icon-token="rust"] { color: var(--trees-file-icon-color-rust); }
+  & [data-icon-token="sass"] { color: var(--trees-file-icon-color-sass); }
+  & [data-icon-token="svg"] { color: var(--trees-file-icon-color-svg); }
+  & [data-icon-token="svelte"] { color: var(--trees-file-icon-color-svelte); }
+  & [data-icon-token="svgo"] { color: var(--trees-file-icon-color-svgo); }
+  & [data-icon-token="swift"] { color: var(--trees-file-icon-color-swift); }
+  & [data-icon-token="table"] { color: var(--trees-file-icon-color-table); }
+  & [data-icon-token="text"] { color: var(--trees-file-icon-color-text); }
+  & [data-icon-token="tailwind"] { color: var(--trees-file-icon-color-tailwind); }
+  & [data-icon-token="terraform"] { color: var(--trees-file-icon-color-terraform); }
+  & [data-icon-token="typescript"] { color: var(--trees-file-icon-color-typescript); }
+  & [data-icon-token="vite"] { color: var(--trees-file-icon-color-vite); }
+  & [data-icon-token="vscode"] { color: var(--trees-file-icon-color-vscode); }
+  & [data-icon-token="vue"] { color: var(--trees-file-icon-color-vue); }
+  & [data-icon-token="wasm"] { color: var(--trees-file-icon-color-wasm); }
+  & [data-icon-token="webpack"] { color: var(--trees-file-icon-color-webpack); }
+  & [data-icon-token="yml"] { color: var(--trees-file-icon-color-yml); }
+  & [data-icon-token="zig"] { color: var(--trees-file-icon-color-zig); }
+  & [data-icon-token="zip"] { color: var(--trees-file-icon-color-zip); }
+}
+  [data-icon-name="file-tree-icon-chevron"] {
+  &[data-align-capitals="false"] { transform: translate(0, var(--trees-icon-nudge)); }
+  &[data-align-capitals="true"] { transform: translate(0px, 0px); }
+}
+  [data-item-section="content"] { flex: 0 1 auto; text-align: start; min-width: 0px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+  [data-item-section="decoration"] { flex: 1 1 0px; min-width: 0px; display: flex; justify-content: flex-end; text-align: end; overflow: hidden; color: var(--trees-fg-muted); }
+  [data-item-section="decoration"] > span { min-width: 0px; max-width: 100%; display: inline-flex; align-items: center; justify-content: flex-end; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  [data-item-section="git"], [data-item-section="action"] { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; }
+  [data-item-section="git"] { width: var(--trees-git-lane-width); }
+  [data-item-section="action"] { width: var(--trees-action-lane-width); color: var(--trees-fg-muted); fill: currentcolor; pointer-events: none; }
+  [data-item-section="git"] > span, [data-item-section="action"] > span { width: 100%; display: inline-flex; align-items: center; justify-content: center; }
+  [data-item-action-affordance="decorative"] { opacity: 0.85; }
+  [data-item-rename-input] { appearance: none; width: 100%; min-width: 0px; height: calc(var(--trees-row-height) - 4px); font-family: inherit; font-size: inherit; color: inherit; background-color: transparent; border: 0px; padding-inline: 6px; outline: none; box-sizing: border-box; }
+  [data-item-section="content"]:has([data-item-rename-input]) ~ [data-item-section="action"], [data-item-section="content"]:has([data-item-rename-input]) ~ [data-item-section="decoration"] { display: none; }
+  [aria-expanded="false"][data-item-type="folder"] > [data-item-section="icon"] > [data-icon-name="file-tree-icon-chevron"] {
+  &[data-align-capitals="true"] { transform: rotate(-90deg)
+        translate(
+          calc(var(--trees-icon-nudge) / 2),
+          calc(var(--trees-icon-nudge) / 2)
+        ); }
+  &[data-align-capitals="false"] { transform: rotate(-90deg)
+        translate(
+          calc(var(--trees-icon-nudge) / 2 * -1),
+          calc(var(--trees-icon-nudge) / 2)
+        ); }
+}
+  [data-item-section="spacing"] {
+  display: flex; flex-direction: row; align-items: center; justify-content: center; height: var(--trees-row-height); padding-left: calc(calc(var(--trees-icon-width) / 2) - 0.5px);
+  &:empty { padding-left: 0px; }
+}
+  [data-item-section="spacing-item"] {
+  transform: translateX(-0.25px); display: inline-block; border-left: 1px solid var(--trees-indent-guide-bg); height: 100%; margin-right: calc(var(--trees-level-gap) - 1px); opacity: 0; transition: opacity 150ms;
+  & + & { margin-left: calc(
+        var(--trees-item-row-gap) + calc(var(--trees-icon-width) / 2) - 0.5px
+      ); }
+}
+  :host(:hover) [data-item-section="spacing-item"] { opacity: 0.75; }
+  [data-item-contains-git-change="true"] > [data-item-section="git"] { color: var(--trees-git-modified-color); opacity: 0.5; fill: currentcolor; }
+  [data-item-git-status] {
+  & > :where([data-item-section="icon"]) > :where(:not([data-icon-name="file-tree-icon-chevron"])) { color: var(--trees-item-git-status-color); }
+  & > [data-item-section="content"] { color: var(--trees-item-git-status-color); }
+  & > [data-item-section="git"] { color: var(--trees-item-git-status-color); font-weight: var(--trees-font-weight-semibold); }
+}
+  [data-item-git-status="added"] { --trees-item-git-status-color: var(--trees-git-added-color); }
+  [data-item-git-status="deleted"] { --trees-item-git-status-color: var(--trees-git-deleted-color); }
+  [data-item-git-status="ignored"] {
+  --trees-item-git-status-color: var(--trees-git-ignored-color);
+  & > [data-item-section="icon"] { opacity: 0.5; }
+}
+  [data-item-section="git"] [data-icon-name="file-tree-icon-dot"] { transform: translateY(calc(-50% + 0.65ex)); }
+  [data-item-git-status="modified"] { --trees-item-git-status-color: var(--trees-git-modified-color); }
+  [data-item-git-status="renamed"] { --trees-item-git-status-color: var(--trees-git-renamed-color); }
+  [data-item-git-status="untracked"] { --trees-item-git-status-color: var(--trees-git-untracked-color); }
+  [data-item-drag-target="true"] { background-color: var(--trees-selected-bg); }
+  [data-item-dragging="true"] { opacity: 0.5; }
+  [data-item-section="lock"] { flex: 0 0 auto; margin-left: auto; display: flex; align-items: center; color: var(--trees-fg-muted); }
+  [data-item-section="lock"] svg { display: block; }
+  [data-type="header-slot"] { display: block; flex: 0 0 auto; }
+  [data-type="context-menu-wash"] { position: absolute; inset: 0px; z-index: 3; background-color: transparent; touch-action: none; }
+  [data-type="context-menu-anchor"] {
+  position: absolute; top: 0px; right: var(--trees-context-menu-trigger-inline-offset); z-index: 4; display: none; align-items: center;
+  &[data-visible="true"] { display: flex; }
+}
+  [data-file-tree-virtualized-root="true"][data-is-scrolling] [data-type="context-menu-anchor"] { display: none; }
+  [data-type="context-menu-anchor"] > slot[name="context-menu"] { display: block; width: 0px; min-width: 0px; flex: 0 0 0px; overflow: visible; }
+  [data-type="context-menu-trigger"] { color-scheme: unset; forced-color-adjust: unset; math-depth: unset; position: unset; position-anchor: unset; text-size-adjust: unset; appearance: unset; font-feature-settings: unset; font-kerning: unset; font-language-override: unset; font-optical-sizing: unset; font-palette: unset; font-size-adjust: unset; font-stretch: unset; font-style: unset; font-synthesis: unset; font-variant: unset; font-variation-settings: unset; font-weight: unset; position-area: unset; text-orientation: unset; text-rendering: unset; text-spacing-trim: unset; -webkit-font-smoothing: unset; -webkit-locale: unset; -webkit-text-orientation: unset; -webkit-writing-mode: unset; writing-mode: unset; zoom: unset; accent-color: unset; align-content: unset; place-self: unset; alignment-baseline: unset; anchor-name: unset; anchor-scope: unset; animation-composition: unset; animation: unset; animation-trigger: unset; app-region: unset; aspect-ratio: unset; backdrop-filter: unset; backface-visibility: unset; background: unset; background-blend-mode: unset; baseline-shift: unset; baseline-source: unset; block-size: unset; border-block: unset; border-color: unset; border-bottom-left-radius: unset; border-style: unset; border-collapse: unset; border-end-end-radius: unset; border-end-start-radius: unset; border-image: unset; border-inline: unset; border-shape: unset; border-start-end-radius: unset; border-start-start-radius: unset; border-top-left-radius: unset; inset: unset; box-decoration-break: unset; box-shadow: unset; box-sizing: unset; break-after: unset; break-before: unset; break-inside: unset; buffered-rendering: unset; caption-side: unset; caret-animation: unset; caret-color: unset; caret-shape: unset; clear: unset; clip: unset; clip-path: unset; clip-rule: unset; color-interpolation: unset; color-interpolation-filters: unset; color-rendering: unset; columns: unset; column-fill: unset; gap: unset; rule-break: unset; rule: unset; rule-inset: unset; rule-visibility-items: unset; column-span: unset; contain: unset; contain-intrinsic-block-size: unset; contain-intrinsic-size: unset; contain-intrinsic-inline-size: unset; container: unset; content: unset; content-visibility: unset; corner-shape: unset; corner-block-end-shape: unset; corner-block-start-shape: unset; counter-increment: unset; counter-reset: unset; counter-set: unset; cx: unset; cy: unset; d: unset; dominant-baseline: unset; dynamic-range-limit: unset; empty-cells: unset; field-sizing: unset; fill-opacity: unset; fill-rule: unset; filter: unset; flex: unset; flex-flow: unset; flex-line-count: unset; float: unset; flood-color: unset; flood-opacity: unset; grid: unset; grid-area: unset; hyphenate-character: unset; hyphenate-limit-chars: unset; hyphens: unset; image-orientation: unset; image-rendering: unset; initial-letter: unset; inline-size: unset; inset-block: unset; inset-inline: unset; interactivity: unset; interest-delay: unset; interpolate-size: unset; isolation: unset; justify-items: unset; letter-spacing: unset; lighting-color: unset; line-break: unset; line-height: unset; list-style: unset; margin-block: unset; margin-inline: unset; marker: unset; mask: unset; mask-type: unset; math-shift: unset; math-style: unset; max-block-size: unset; max-height: unset; max-inline-size: unset; max-width: unset; min-block-size: unset; min-height: unset; min-inline-size: unset; min-width: unset; mix-blend-mode: unset; object-fit: unset; object-position: unset; object-view-box: unset; offset: unset; opacity: unset; order: unset; orphans: unset; outline: unset; outline-offset: unset; overflow-anchor: unset; overflow-block: unset; overflow-clip-margin: unset; overflow-inline: unset; overflow-wrap: unset; overflow: unset; overlay: unset; overscroll-behavior-block: unset; overscroll-behavior-inline: unset; overscroll-behavior: unset; padding-block: unset; padding: unset; padding-inline: unset; page: unset; page-margin-safety: unset; page-orientation: unset; paint-order: unset; perspective: unset; perspective-origin: unset; pointer-events: unset; position-try: unset; position-visibility: unset; print-color-adjust: unset; quotes: unset; r: unset; reading-flow: unset; reading-order: unset; resize: unset; rotate: unset; ruby-align: unset; ruby-overhang: unset; ruby-position: unset; rule-overlap: unset; rx: unset; ry: unset; scale: unset; scroll-behavior: unset; scroll-initial-target: unset; scroll-margin-block: unset; scroll-margin: unset; scroll-margin-inline: unset; scroll-marker-group: unset; scroll-padding-block: unset; scroll-padding: unset; scroll-padding-inline: unset; scroll-snap-align: unset; scroll-snap-stop: unset; scroll-snap-type: unset; scroll-target-group: unset; scroll-timeline: unset; scrollbar-color: unset; scrollbar-gutter: unset; scrollbar-width: unset; shape-image-threshold: unset; shape-margin: unset; shape-outside: unset; shape-rendering: unset; size: unset; speak: unset; stop-color: unset; stop-opacity: unset; stroke: unset; stroke-dasharray: unset; stroke-dashoffset: unset; stroke-linecap: unset; stroke-linejoin: unset; stroke-miterlimit: unset; stroke-opacity: unset; stroke-width: unset; tab-size: unset; table-layout: unset; text-align: unset; text-align-last: unset; text-anchor: unset; text-autospace: unset; text-box: unset; text-combine-upright: unset; text-decoration: unset; text-decoration-skip-ink: unset; text-emphasis: unset; text-emphasis-position: unset; text-fit: unset; text-indent: unset; text-justify: unset; text-overflow: unset; text-shadow: unset; text-transform: unset; text-underline-offset: unset; text-underline-position: unset; text-wrap: unset; timeline-scope: unset; timeline-trigger: unset; touch-action: unset; transform: unset; transform-box: unset; transform-origin: unset; transform-style: unset; translate: unset; trigger-scope: unset; user-select: unset; vector-effect: unset; vertical-align: unset; view-timeline: unset; view-transition-class: unset; view-transition-group: unset; view-transition-name: unset; view-transition-scope: unset; visibility: unset; border-spacing: unset; -webkit-box-align: unset; -webkit-box-decoration-break: unset; -webkit-box-direction: unset; -webkit-box-flex: unset; -webkit-box-ordinal-group: unset; -webkit-box-orient: unset; -webkit-box-pack: unset; -webkit-box-reflect: unset; -webkit-line-break: unset; -webkit-line-clamp: unset; -webkit-mask-box-image: unset; -webkit-rtl-ordering: unset; -webkit-ruby-position: unset; -webkit-tap-highlight-color: unset; -webkit-text-combine: unset; -webkit-text-decorations-in-effect: unset; -webkit-text-fill-color: unset; -webkit-text-security: unset; -webkit-text-stroke: unset; -webkit-user-drag: unset; white-space-collapse: unset; widows: unset; will-change: unset; window-drag: unset; word-break: unset; word-spacing: unset; x: unset; y: unset; z-index: unset; align-items: center; justify-content: center; width: var(--trees-action-lane-width); color: var(--trees-fg-muted); fill: currentcolor; cursor: pointer; font-family: var(--trees-font-family); font-size: var(--trees-font-size); border-top-right-radius: var(--trees-border-radius); border-bottom-right-radius: var(--trees-border-radius); margin: var(--trees-focus-ring-width); height: calc(var(--trees-row-height) - var(--trees-focus-ring-width) * 2); border-width: 0px; transition: color 120ms; display: flex; }
+  [data-type="context-menu-trigger"]:hover, [data-type="context-menu-trigger"][aria-expanded="true"] { color: var(--trees-fg); }
+  [data-truncate-container] { margin-top: -1px; margin-bottom: -1px; --truncate-internal-marker-fade-width: var(
+      --truncate-marker-fade-width,
+      2px
+    ); --truncate-internal-marker-gap: var(--truncate-marker-gap, 0px); --truncate-internal-marker-opacity: var(--truncate-marker-opacity, 50%); --truncate-internal-middle-marker-opacity: var(
+      --truncate-middle-marker-opacity,
+      80%
+    ); --truncate-internal-marker-background-color: var(
+      --truncate-marker-background-color,
+      light-dark(white, black)
+    ); --truncate-internal-marker-background-overlay-color: var(
+      --truncate-marker-background-overlay-color,
+      transparent
+    ); --truncate-internal-marker-block-inset: var(
+      --truncate-marker-block-inset,
+      0px
+    ); --truncate-internal-marker-fade-out-duration: var(
+      --truncate-marker-fade-out-duration,
+      0ms
+    ); --truncate-internal-marker-fade-in-duration: var(
+      --truncate-marker-fade-in-duration,
+      100ms
+    ); --truncate-internal-fade-marker-color: var(
+      --truncate-fade-marker-color,
+      #000
+    ); --truncate-internal-fade-marker-width: var(
+      --truncate-fade-marker-width,
+      0.2lh
+    ); --truncate-internal-single-line-height: 1lh; height: var(--truncate-internal-single-line-height); min-width: 0px; overflow: hidden; }
+  [data-truncate-marker] { display: flex; position: absolute; height: var(--truncate-internal-single-line-height); padding-block: var(--truncate-internal-marker-block-inset); box-sizing: border-box; align-items: center; background-clip: content-box; z-index: 2; color: color-mix(
+      in srgb,
+      currentColor var(--truncate-internal-marker-opacity),
+      transparent
+    ); opacity: 0; transition: opacity var(--truncate-internal-marker-fade-out-duration)
+      ease-in-out; }
+  @container measure (height > 1lh) {
+  [data-truncate-marker] { opacity: 1; transition: opacity var(--truncate-internal-marker-fade-in-duration)
+        ease-in-out; }
+}
+  [data-truncate-grid] { display: grid; position: relative; }
+  [data-truncate-content="visible"] { white-space: nowrap; }
+  [data-truncate-content="overflow"] { opacity: 0; pointer-events: none; user-select: none; word-break: break-all; margin-top: calc(-1 * var(--truncate-internal-single-line-height)); }
+  [data-truncate-marker-cell] { container: measure / size; overflow: visible; user-select: none; pointer-events: none; }
+  [data-truncate-container="truncate"] {
+  & [data-truncate-grid] { grid-template-columns: minmax(0px, max-content) 0px; }
+  & [data-truncate-marker] { right: 0px; }
+  & [data-truncate-fade] { margin-right: calc(-2 * var(--truncate-internal-fade-marker-width)); }
+}
+  [data-truncate-container="fruncate"] {
+  & [data-truncate-grid] { grid-template-columns: 0px minmax(0px, max-content) auto; }
+  & [data-truncate-content] { direction: rtl; }
+  & [data-truncate-content] > span { unicode-bidi: plaintext; }
+  & [data-truncate-fade] { margin-left: calc(-2 * var(--truncate-internal-fade-marker-width)); }
+}
+  [data-truncate-variant="default"] {
+  & [data-truncate-marker] { background-color: var(--truncate-internal-marker-background-color); background-image: linear-gradient(
+        var(--truncate-internal-marker-background-overlay-color),
+        var(--truncate-internal-marker-background-overlay-color)
+      ); }
+  & [data-truncate-marker]::after, & [data-truncate-marker]::before { content: ""; position: absolute; width: calc(
+        var(--truncate-internal-marker-fade-width) +
+          var(--truncate-internal-marker-gap)
+      ); inset-block-start: var(--truncate-internal-marker-block-inset); height: max(
+        0px,
+        calc(
+          var(--truncate-internal-single-line-height) -
+            var(--truncate-internal-marker-block-inset) * 2
+        )
+      ); background-color: var(--truncate-internal-marker-background-color); background-image: linear-gradient(
+        var(--truncate-internal-marker-background-overlay-color),
+        var(--truncate-internal-marker-background-overlay-color)
+      ); mask-image: linear-gradient(
+        var(--truncate-internal-fade-dir),
+        #000 0%,
+        #000 var(--truncate-internal-marker-gap),
+        transparent 100%
+      ); }
+  & [data-truncate-marker]::after { --truncate-internal-fade-dir: to right; right: calc(
+        -1 *
+          (
+            var(--truncate-internal-marker-fade-width) +
+              var(--truncate-internal-marker-gap)
+          )
+      ); }
+  & [data-truncate-marker]::before { --truncate-internal-fade-dir: to left; left: calc(
+        -1 *
+          (
+            var(--truncate-internal-marker-fade-width) +
+              var(--truncate-internal-marker-gap)
+          )
+      ); }
+}
+  [data-truncate-variant="fade"] {
+  & [data-truncate-marker] { background: transparent; }
+}
+  [data-truncate-fade] { box-shadow: 0 0 calc(var(--truncate-internal-fade-marker-width) / 2)
+        var(--truncate-internal-fade-marker-color),
+      0 0 var(--truncate-internal-fade-marker-width)
+        var(--truncate-internal-fade-marker-color); width: calc(var(--truncate-internal-fade-marker-width) * 2); height: calc(
+      var(--truncate-internal-single-line-height) -
+        (var(--truncate-internal-fade-marker-width) * 2)
+    ); margin: var(--truncate-internal-fade-marker-width) 0; }
+  [data-truncate-group-container="middle"] {
+  & [data-truncate-container] { --truncate-marker-opacity: var(--truncate-internal-middle-marker-opacity); }
+  display: flex; min-width: 0px;
+  & > div { min-width: 0px; }
+  & > div[data-truncate-segment-priority="1"] { flex: 0 1 max-content; }
+  & > div[data-truncate-segment-priority="2"] { flex: 0 999999 max-content; }
+}
+}
+}

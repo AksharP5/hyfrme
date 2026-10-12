@@ -303,7 +303,7 @@
     "componentName": "AnnounceTitle",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "commit": "460783c1af88f20913caa843734353c2eec2c997",
       "source": "registry/snap-cn/announce-title/index.tsx",
       "config": "registry/snap-cn/announce-title/config.ts",
       "license": "MIT",
@@ -329,6 +329,7 @@
         "glowColor": "#08ff4b",
         "glowStrength": 0.139,
         "taglineColor": "#f2f8ff",
+        "inkColor": "#ffffff",
         "fontFamily": "Default",
         "speed": 1
       },
@@ -411,6 +412,11 @@
         "type": "color",
         "default": "#f2f8ff",
         "label": "Tagline ink"
+      },
+      "inkColor": {
+        "type": "color",
+        "default": "#ffffff",
+        "label": "Shot ink"
       },
       "fontFamily": {
         "type": "select",
@@ -3522,7 +3528,7 @@
     "componentName": "ScreenRecording",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "commit": "460783c1af88f20913caa843734353c2eec2c997",
       "source": "registry/snap-cn/screen-recording/index.tsx",
       "config": "registry/snap-cn/screen-recording/config.ts",
       "license": "MIT",
@@ -3534,7 +3540,7 @@
       "fps": 30,
       "durationInFrames": 139,
       "props": {
-        "src": "/demos/answer-stream.mp4",
+        "src": "https://media.snapcn.dev/demos/answer-stream.mp4",
         "cropTop": 0,
         "cropRight": 0,
         "cropBottom": 0,
@@ -3552,7 +3558,7 @@
     "controls": {
       "src": {
         "type": "image",
-        "default": "/demos/answer-stream.mp4",
+        "default": "https://media.snapcn.dev/demos/answer-stream.mp4",
         "label": "Recording"
       },
       "cropTop": {
@@ -3644,7 +3650,7 @@
     "componentName": "CountGrid",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "commit": "460783c1af88f20913caa843734353c2eec2c997",
       "source": "registry/snap-cn/count-grid/index.tsx",
       "config": "registry/snap-cn/count-grid/config.ts",
       "license": "MIT",
@@ -3659,9 +3665,7 @@
         "from": "5",
         "to": "500",
         "noun": "clips",
-        "inkFrom": "#1F4470",
-        "inkTo": "#2B84E0",
-        "background": "#FDFDFD",
+        "mode": "light",
         "speed": 1
       },
       "background": "#FDFDFD"
@@ -3682,20 +3686,11 @@
         "default": "clips",
         "label": "Noun"
       },
-      "inkFrom": {
-        "type": "color",
-        "default": "#1F4470",
-        "label": "Label ink (left)"
-      },
-      "inkTo": {
-        "type": "color",
-        "default": "#2B84E0",
-        "label": "Label ink (right)"
-      },
-      "background": {
-        "type": "color",
-        "default": "#FDFDFD",
-        "label": "Background"
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": ["light", "dark"],
+        "label": "Mode"
       },
       "speed": {
         "type": "number",
@@ -5925,7 +5920,7 @@
     "componentName": "ChannelThread",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "1159369742d75d66ae89b3f83d45850861ccc63e",
+      "commit": "460783c1af88f20913caa843734353c2eec2c997",
       "source": "registry/snap-cn/channel-thread/index.tsx",
       "config": "registry/snap-cn/channel-thread/config.ts",
       "license": "MIT",
@@ -5937,11 +5932,7 @@
       "fps": 30,
       "durationInFrames": 110,
       "props": {
-        "script": "Launch video by Thursday?|We have nothing shot.;Already done.|Built it out of snapcn.",
-        "people": "rhea 9:41 AM;sam 9:42 AM",
-        "beats": "0,12,60,84",
-        "opens": "0,12,37,72",
-        "avatars": "/avatars/07.jpg|/avatars/13.jpg",
+        "messages": "/avatars/07.jpg > rhea 9:41 AM > Launch video by Thursday? | We have nothing shot. | /avatars/13.jpg > sam 9:42 AM > Already done. | Built it out of snapcn.",
         "mode": "dark",
         "fontFamily": "Default",
         "speed": 1
@@ -5949,30 +5940,10 @@
       "background": "transparent"
     },
     "controls": {
-      "script": {
+      "messages": {
         "type": "text",
-        "default": "Launch video by Thursday?|We have nothing shot.;Already done.|Built it out of snapcn.",
-        "label": "Script (; group, | line)"
-      },
-      "people": {
-        "type": "text",
-        "default": "rhea 9:41 AM;sam 9:42 AM",
-        "label": "Who, and when"
-      },
-      "beats": {
-        "type": "text",
-        "default": "0,12,60,84",
-        "label": "Message lands (frame)"
-      },
-      "opens": {
-        "type": "text",
-        "default": "0,12,37,72",
-        "label": "Row opens (frame)"
-      },
-      "avatars": {
-        "type": "text",
-        "default": "/avatars/07.jpg|/avatars/13.jpg",
-        "label": "Avatar images (| separated)"
+        "default": "/avatars/07.jpg > rhea 9:41 AM > Launch video by Thursday? | We have nothing shot. | /avatars/13.jpg > sam 9:42 AM > Already done. | Built it out of snapcn.",
+        "label": "Messages (avatar > name time > text | …)"
       },
       "mode": {
         "type": "select",
@@ -6115,7 +6086,7 @@
     "componentName": "CardRail",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "1159369742d75d66ae89b3f83d45850861ccc63e",
+      "commit": "460783c1af88f20913caa843734353c2eec2c997",
       "source": "registry/snap-cn/card-rail/index.tsx",
       "config": "registry/snap-cn/card-rail/config.ts",
       "license": "MIT",
@@ -6128,10 +6099,7 @@
       "durationInFrames": 108,
       "props": {
         "heading": "Browse scenes",
-        "images": "/demos/posters/orbit-gallery.webp|/demos/posters/moodboard-reveal.webp|/demos/posters/hero-launch.webp|/demos/posters/phone-frame.webp|/demos/posters/count-grid.webp|/demos/posters/terminal-simulator.webp|/demos/posters/logo-flicker.webp|/demos/posters/laptop-frame.webp|/demos/posters/announce-title.webp",
-        "titles": "Orbit Gallery|Moodboard Reveal|Hero Launch|Phone Frame|Count Grid|Terminal Simulator|Logo Flicker|Laptop Frame|Announce Title",
-        "notes": "Scene · 300 frames|Scene · 150 frames|Scene · 170 frames|Scene · 240 frames|Scene · 47 frames|Scene · 200 frames|Scene · 100 frames|Scene · 240 frames|Scene · 170 frames",
-        "tags": "@snapcn/orbit-gallery|@snapcn/moodboard-reveal|@snapcn/hero-launch|@snapcn/phone-frame|@snapcn/count-grid|@snapcn/terminal-simulator|@snapcn/logo-flicker|@snapcn/laptop-frame|@snapcn/announce-title",
+        "cards": "https://media.snapcn.dev/demos/posters/orbit-gallery.webp > Orbit Gallery > Scene · 300 frames > @snapcn/orbit-gallery | https://media.snapcn.dev/demos/posters/moodboard-reveal.webp > Moodboard Reveal > Scene · 150 frames > @snapcn/moodboard-reveal | https://media.snapcn.dev/demos/posters/hero-launch.webp > Hero Launch > Scene · 170 frames > @snapcn/hero-launch | https://media.snapcn.dev/demos/posters/phone-frame.webp > Phone Frame > Scene · 240 frames > @snapcn/phone-frame | https://media.snapcn.dev/demos/posters/count-grid.webp > Count Grid > Scene · 47 frames > @snapcn/count-grid | https://media.snapcn.dev/demos/posters/terminal-simulator.webp > Terminal Simulator > Scene · 200 frames > @snapcn/terminal-simulator | https://media.snapcn.dev/demos/posters/logo-flicker.webp > Logo Flicker > Scene · 100 frames > @snapcn/logo-flicker | https://media.snapcn.dev/demos/posters/laptop-frame.webp > Laptop Frame > Scene · 240 frames > @snapcn/laptop-frame | https://media.snapcn.dev/demos/posters/announce-title.webp > Announce Title > Scene · 170 frames > @snapcn/announce-title",
         "offset": 0,
         "flicks": 3,
         "every": 30,
@@ -6149,25 +6117,10 @@
         "default": "Browse scenes",
         "label": "Title"
       },
-      "images": {
+      "cards": {
         "type": "text",
-        "default": "/demos/posters/orbit-gallery.webp|/demos/posters/moodboard-reveal.webp|/demos/posters/hero-launch.webp|/demos/posters/phone-frame.webp|/demos/posters/count-grid.webp|/demos/posters/terminal-simulator.webp|/demos/posters/logo-flicker.webp|/demos/posters/laptop-frame.webp|/demos/posters/announce-title.webp",
-        "label": "Pictures (| separated)"
-      },
-      "titles": {
-        "type": "text",
-        "default": "Orbit Gallery|Moodboard Reveal|Hero Launch|Phone Frame|Count Grid|Terminal Simulator|Logo Flicker|Laptop Frame|Announce Title",
-        "label": "Card titles"
-      },
-      "notes": {
-        "type": "text",
-        "default": "Scene · 300 frames|Scene · 150 frames|Scene · 170 frames|Scene · 240 frames|Scene · 47 frames|Scene · 200 frames|Scene · 100 frames|Scene · 240 frames|Scene · 170 frames",
-        "label": "Card small print"
-      },
-      "tags": {
-        "type": "text",
-        "default": "@snapcn/orbit-gallery|@snapcn/moodboard-reveal|@snapcn/hero-launch|@snapcn/phone-frame|@snapcn/count-grid|@snapcn/terminal-simulator|@snapcn/logo-flicker|@snapcn/laptop-frame|@snapcn/announce-title",
-        "label": "Card tags"
+        "default": "https://media.snapcn.dev/demos/posters/orbit-gallery.webp > Orbit Gallery > Scene · 300 frames > @snapcn/orbit-gallery | https://media.snapcn.dev/demos/posters/moodboard-reveal.webp > Moodboard Reveal > Scene · 150 frames > @snapcn/moodboard-reveal | https://media.snapcn.dev/demos/posters/hero-launch.webp > Hero Launch > Scene · 170 frames > @snapcn/hero-launch | https://media.snapcn.dev/demos/posters/phone-frame.webp > Phone Frame > Scene · 240 frames > @snapcn/phone-frame | https://media.snapcn.dev/demos/posters/count-grid.webp > Count Grid > Scene · 47 frames > @snapcn/count-grid | https://media.snapcn.dev/demos/posters/terminal-simulator.webp > Terminal Simulator > Scene · 200 frames > @snapcn/terminal-simulator | https://media.snapcn.dev/demos/posters/logo-flicker.webp > Logo Flicker > Scene · 100 frames > @snapcn/logo-flicker | https://media.snapcn.dev/demos/posters/laptop-frame.webp > Laptop Frame > Scene · 240 frames > @snapcn/laptop-frame | https://media.snapcn.dev/demos/posters/announce-title.webp > Announce Title > Scene · 170 frames > @snapcn/announce-title",
+        "label": "Cards (picture > title > small print > tag | …)"
       },
       "offset": {
         "type": "number",
@@ -6237,5 +6190,401 @@
       }
     },
     "tags": ["snapcn", "scenes"]
+  },
+  {
+    "slug": "snapcn-reel-collage",
+    "catalogFamily": "snapcn",
+    "title": "Reel Collage",
+    "description": "A photo reel between two captions shuts like an eyelid, the copy swaps, and a six-picture collage blooms in around the lines on a peach flush.",
+    "componentName": "ReelCollage",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "7fd048cc7eee397a0e6cb1353c1537aefd245e2c",
+      "source": "registry/snap-cn/reel-collage/index.tsx",
+      "config": "registry/snap-cn/reel-collage/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/reel-collage/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 96,
+      "props": {
+        "topLine": "The videos",
+        "bottomLine": "That you ship",
+        "swapTop": "Especially on",
+        "swapBottom": "Launch day",
+        "slides": [
+          "/demos/posters/orbit-gallery.webp",
+          "/demos/posters/card-rail.webp",
+          "/demos/posters/logo-flicker.webp",
+          "/demos/posters/laptop-frame.webp",
+          "/demos/posters/count-grid.webp",
+          "/demos/posters/status-cycle.webp",
+          "/demos/posters/moodboard-reveal.webp",
+          "/demos/posters/announce-title.webp"
+        ],
+        "collage": [
+          "/demos/posters/phone-frame.webp",
+          "/demos/posters/terminal-simulator.webp",
+          "/demos/posters/roster-grant.webp",
+          "/demos/posters/channel-thread.webp",
+          "/demos/posters/hero-launch.webp",
+          "/demos/posters/follower-rush.webp"
+        ],
+        "background": "#f5f4f2",
+        "glowColor": "#dfe7e3",
+        "flushColor": "#fdc7bc",
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "#f5f4f2"
+    },
+    "controls": {
+      "topLine": {
+        "type": "text",
+        "default": "The videos",
+        "label": "Top caption"
+      },
+      "bottomLine": {
+        "type": "text",
+        "default": "That you ship",
+        "label": "Bottom caption"
+      },
+      "swapTop": {
+        "type": "text",
+        "default": "Especially on",
+        "label": "Swap, first line"
+      },
+      "swapBottom": {
+        "type": "text",
+        "default": "Launch day",
+        "label": "Swap, second line"
+      },
+      "background": {
+        "type": "color",
+        "default": "#f5f4f2",
+        "label": "Page"
+      },
+      "glowColor": {
+        "type": "color",
+        "default": "#dfe7e3",
+        "label": "Glow"
+      },
+      "flushColor": {
+        "type": "color",
+        "default": "#fdc7bc",
+        "label": "Flush",
+        "brand": "accent"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": ["snapcn", "scenes"]
+  },
+  {
+    "slug": "snapcn-orb-swarm",
+    "catalogFamily": "snapcn",
+    "title": "Orb Swarm",
+    "description": "Kinetic typography scene with glass orbs: a sentence told one beat at a time while four orbs burst out of it, split into eight and sixteen, wind into a clockwise vortex, collapse into a knot, pay out as a chain, loop around the closing words and shrink away bead by bead. Every phase was measured frame by frame off a 24fps reference and is replayed on the same clock; the orbs are shaded per pixel into a canvas (a scrolling band texture bowed like latitude lines, a soft glass edge) and the type is drawn into the same canvas four times finer than the frame so its baselines land between pixels.",
+    "componentName": "OrbSwarm",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "commit": "460783c1af88f20913caa843734353c2eec2c997",
+      "source": "registry/snap-cn/orb-swarm/index.tsx",
+      "config": "registry/snap-cn/orb-swarm/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/orb-swarm/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 160,
+      "props": {
+        "script": "one command | what if | every launch | you shipped | got a video | in seconds",
+        "orbColor": "#3577e0",
+        "mode": "light",
+        "softness": 0.7,
+        "fontFamily": "Default",
+        "speed": 1
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "script": {
+        "type": "text",
+        "default": "one command | what if | every launch | you shipped | got a video | in seconds",
+        "label": "Script (| card)"
+      },
+      "orbColor": {
+        "type": "color",
+        "default": "#3577e0",
+        "label": "Orb colour"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": ["light", "dark"],
+        "label": "Mode"
+      },
+      "softness": {
+        "type": "number",
+        "default": 0.7,
+        "min": 0,
+        "max": 2,
+        "step": 0.05,
+        "label": "Type softness"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": ["snapcn", "scenes"]
+  },
+  {
+    "slug": "snapcn-check-cycle",
+    "catalogFamily": "snapcn",
+    "title": "Check Cycle",
+    "description": "Rotating words beside a checkbox: a sentence that finishes itself several ways. \"Create your own\" sits left of a ticked shadcn-style checkbox and the word to its right rolls up out of a slot — Intros, Demos, Launches, Changelogs, Tutorials, And more — then the line steps back a little and rests. Every number came off a recording, frame by frame: the two words in the slot move as one strip on the in-out cubic over exactly half a second, a roll every twenty frames. The type moves by fractions of a pixel instead of the whole-pixel steps a browser snaps text to.",
+    "componentName": "CheckCycle",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "source": "registry/snap-cn/check-cycle/index.tsx",
+      "config": "registry/snap-cn/check-cycle/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/check-cycle/index.tsx",
+      "commit": "460783c1af88f20913caa843734353c2eec2c997"
+    },
+    "tags": ["snapcn", "text"],
+    "controls": {
+      "headline": {
+        "type": "text",
+        "default": "Create your own",
+        "label": "Lead-in"
+      },
+      "words": {
+        "type": "text",
+        "default": "Intros, Demos, Launches, Changelogs, Tutorials, And more",
+        "label": "Words (comma separated)"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": ["light", "dark"],
+        "label": "Theme"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      }
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 136,
+      "props": {
+        "headline": "Create your own",
+        "words": "Intros, Demos, Launches, Changelogs, Tutorials, And more",
+        "mode": "light",
+        "fontFamily": "Default"
+      },
+      "background": "transparent"
+    },
+    "omittedControls": {
+      "speed": "The shared upstream customizer appends speed, but this component has no speed prop and does not use it."
+    }
+  },
+  {
+    "slug": "snapcn-font-shuffle",
+    "catalogFamily": "snapcn",
+    "title": "Font Shuffle",
+    "description": "Launch title animation: the line decodes out of scrambled glyphs set in the wrong typeface, flashes the accent, settles to ink, then the product name cycles through eleven typefaces (mono, light, humanist, pixel, script, slab, condensed, italic, blackletter, wide, bold grotesk) while the line zooms a step closer on each swap. Every beat is a held state measured off a recording frame by frame — timing, masks, layout, zoom and colour.",
+    "componentName": "FontShuffle",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "source": "registry/snap-cn/font-shuffle/index.tsx",
+      "config": "registry/snap-cn/font-shuffle/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/font-shuffle/index.tsx",
+      "commit": "460783c1af88f20913caa843734353c2eec2c997"
+    },
+    "tags": ["snapcn", "text"],
+    "controls": {
+      "lead": {
+        "type": "text",
+        "default": "Introducing",
+        "label": "Lead (stays serif)"
+      },
+      "subject": {
+        "type": "text",
+        "default": "snapcn Pro",
+        "label": "Subject (tries on fonts)"
+      },
+      "accent": {
+        "type": "color",
+        "default": "#9b8ed3",
+        "label": "Accent"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": ["light", "dark"],
+        "label": "Theme"
+      }
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 115,
+      "props": {
+        "lead": "Introducing",
+        "subject": "snapcn Pro",
+        "accent": "#9b8ed3",
+        "mode": "light"
+      },
+      "background": "transparent"
+    },
+    "omittedControls": {
+      "speed": "The shared upstream customizer appends speed, but this component has no speed prop and does not use it."
+    }
+  },
+  {
+    "slug": "snapcn-capture-reveal",
+    "catalogFamily": "snapcn",
+    "title": "Capture Reveal",
+    "description": "Screenshot capture animation: a toast counts \"Capturing selection…\" up to 100% over a browser window, the window drops away and shrinks, the toast pops to \"Copied to clipboard.\" and a two-line headline rises out from behind the window while the cursor glides up. Every curve was measured off a recording frame by frame: the window's drop and shrink share one cubic-bezier, the toast pops on another, the headline rises without scaling or blurring, and type moves by fractions of a pixel.",
+    "componentName": "CaptureReveal",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "source": "registry/snap-cn/capture-reveal/index.tsx",
+      "config": "registry/snap-cn/capture-reveal/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/capture-reveal/index.tsx",
+      "commit": "460783c1af88f20913caa843734353c2eec2c997"
+    },
+    "tags": ["snapcn", "screens"],
+    "controls": {
+      "headline": {
+        "type": "text",
+        "default": "no more | keyframes",
+        "label": "Headline (| breaks a line)"
+      },
+      "capturing": {
+        "type": "text",
+        "default": "Capturing selection...",
+        "label": "Toast while capturing"
+      },
+      "copied": {
+        "type": "text",
+        "default": "Copied to clipboard.",
+        "label": "Toast when done"
+      },
+      "src": {
+        "type": "image",
+        "default": "/stills/hyfrme-catalog.svg",
+        "label": "Screenshot"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": ["light", "dark"],
+        "label": "Theme"
+      },
+      "fontFamily": {
+        "type": "select",
+        "default": "Default",
+        "options": [
+          "Default",
+          "Inter",
+          "Geist",
+          "Space Grotesk",
+          "Outfit",
+          "Montserrat",
+          "Instrument Serif"
+        ],
+        "label": "Font",
+        "brand": "font"
+      }
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 130,
+      "props": {
+        "headline": "no more | keyframes",
+        "capturing": "Capturing selection...",
+        "copied": "Copied to clipboard.",
+        "src": "/stills/hyfrme-catalog.svg",
+        "mode": "light",
+        "fontFamily": "Default"
+      },
+      "background": "transparent"
+    },
+    "fixtureOverrides": {
+      "src": {
+        "upstreamDefault": "https://media.snapcn.dev/stills/capture-reveal-window.webp",
+        "reason": "The upstream screenshot is absent from the MIT repository and has no documented asset grant. Use an original Hyfrme catalog illustration in both reference and port."
+      }
+    },
+    "omittedControls": {
+      "speed": "The shared upstream customizer appends speed, but this component has no speed prop and does not use it."
+    }
   }
 ]

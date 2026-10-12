@@ -1,9 +1,17 @@
 #!/usr/bin/env node
 
-import { access, mkdir, readFile, writeFile } from "node:fs/promises";
-import { dirname, isAbsolute, posix, relative, resolve } from "node:path";
+import {
+  access,
+  lstat,
+  mkdir,
+  readFile,
+  realpath,
+  writeFile,
+} from "node:fs/promises";
+import { dirname, isAbsolute, posix, relative, resolve, sep } from "node:path";
 
 const defaultRegistry = "https://hyfrme.vercel.app/registry";
+const nativeRepository = "https://github.com/heygen-com/hyperframes";
 const registryRoot = (
   process.env.HYFRME_REGISTRY_URL ?? defaultRegistry
 ).replace(/\/$/, "");
@@ -15,6 +23,7 @@ Usage:
   hyfrme add <name>... [--dir <project>] [--force]
   hyfrme add <name> [--set <key=value>]... [--dir <project>] [--force]
   hyfrme add --all [--dir <project>] [--force]
+  hyfrme init <template> [--dir <project>] [--force]
 
 Examples:
   hyfrme add icon-activity
@@ -22,6 +31,7 @@ Examples:
   hyfrme add --all
   hyfrme add soft-blur-in --dir ./my-video
   hyfrme add matrix-decode --set text=HELLO --set fontSize=48
+  hyfrme init hyperframes-product-promo --dir ./my-video
 `;
 
 const fail = (message) => {
@@ -49,7 +59,10 @@ const parseOptions = () => {
     process.exit(0);
   }
 
-  if (args[0] !== "add") fail(`unknown command "${args[0]}"\n\n${usage}`);
+  const command = args[0];
+  if (command !== "add" && command !== "init") {
+    fail(`unknown command "${command}"\n\n${usage}`);
+  }
 
   let directory = ".";
   let force = false;
@@ -98,13 +111,24 @@ const parseOptions = () => {
     fail("--all cannot be combined with component names");
   }
   if (!installAll && names.length === 0) {
-    fail("add requires a component name or --all");
+    fail(
+      command === "init"
+        ? "init requires a template name"
+        : "add requires a component name or --all",
+    );
   }
   if (settings.length > 0 && (installAll || names.length !== 1)) {
     fail("--set can only customize one named component at a time");
   }
+  if (command === "init" && (installAll || names.length !== 1)) {
+    fail("init requires one template name and does not support --all");
+  }
+  if (command === "init" && settings.length > 0) {
+    fail("init does not support --set. Edit the installed template directly.");
+  }
 
   return {
+    command,
     names: [...new Set(names)],
     installAll,
     projectDirectory: resolve(directory),
@@ -161,12 +185,40 @@ const targetFor = (projectDirectory, config, item, file) => {
 
   if (
     !normalized ||
-    relativeTarget.startsWith("..") ||
+    relativeTarget === ".." ||
+    relativeTarget.startsWith(`..${sep}`) ||
     isAbsolute(relativeTarget)
   ) {
     fail(`unsafe target path in ${item.name}: ${file.target}`);
   }
   return target;
+};
+
+const requireSafeTarget = async (projectRoot, target, name, originalTarget) => {
+  let existingPath = target;
+  for (;;) {
+    try {
+      await lstat(existingPath);
+      break;
+    } catch (error) {
+      if (error.code !== "ENOENT") {
+        fail(`could not inspect ${existingPath}: ${error.message}`);
+      }
+      existingPath = dirname(existingPath);
+    }
+  }
+
+  const actualPath = await realpath(existingPath).catch((error) => {
+    fail(`unsafe target path in ${name}: ${originalTarget} (${error.message})`);
+  });
+  const relativeTarget = relative(projectRoot, actualPath);
+  if (
+    relativeTarget === ".." ||
+    relativeTarget.startsWith(`..${sep}`) ||
+    isAbsolute(relativeTarget)
+  ) {
+    fail(`unsafe target path in ${name}: ${originalTarget}`);
+  }
 };
 
 const exists = async (path) => {
@@ -207,7 +259,7 @@ const parseSettings = (settings) =>
 const parseSettingValue = (variable, raw) => {
   if (variable.type === "number") {
     const value = Number(raw);
-    if (!Number.isFinite(value)) {
+    if (raw.trim() === "" || !Number.isFinite(value)) {
       fail(`"${variable.id}" requires a number, received "${raw}"`);
     }
     if (typeof variable.min === "number" && value < variable.min) {
@@ -227,6 +279,20 @@ const parseSettingValue = (variable, raw) => {
       fail(`"${variable.id}" requires true or false, received "${raw}"`);
     }
     return raw === "true";
+  }
+  const options = variable.options?.map((option) =>
+    typeof option === "string" ? option : option.value,
+  );
+  if (options && !options.includes(raw)) {
+    fail(
+      `"${variable.id}" must be one of: ${options.join(", ")}, received "${raw}"`,
+    );
+  }
+  if (
+    typeof variable.maxLength === "number" &&
+    raw.length > variable.maxLength
+  ) {
+    fail(`"${variable.id}" must be at most ${variable.maxLength} characters`);
   }
   return raw;
 };
@@ -404,8 +470,22 @@ ${lintSafeRuntime.replace(/<\/script/gi, "<\\/script")}
     .replace(`<script src='${runtimePath}'></script>`, () => replacement);
 };
 
-const { names, installAll, projectDirectory, force, settings } = parseOptions();
-const config = await readProjectConfig(projectDirectory);
+const { command, names, installAll, projectDirectory, force, settings } =
+  parseOptions();
+if (command === "init") await mkdir(projectDirectory, { recursive: true });
+const configPath = resolve(projectDirectory, "hyperframes.json");
+const needsConfig = command === "init" && !(await exists(configPath));
+const config = needsConfig
+  ? {
+      $schema: "https://hyperframes.heygen.com/schema/hyperframes.json",
+      paths: {
+        blocks: "compositions",
+        components: "compositions/components",
+        assets: "assets",
+      },
+    }
+  : await readProjectConfig(projectDirectory);
+const projectRoot = await realpath(projectDirectory);
 const assetPath = config.paths?.assets ?? "assets";
 const matchesExistingFile = async (path, bytes) => {
   try {
@@ -417,7 +497,9 @@ const matchesExistingFile = async (path, bytes) => {
   }
 };
 
-const prepareComponent = async (name, componentSettings) => {
+const itemCache = new Map();
+const fetchItem = async (name) => {
+  if (itemCache.has(name)) return itemCache.get(name);
   const itemRoot = `${registryRoot}/blocks/${encodeURIComponent(name)}`;
   const item = await fetchJson(
     `${itemRoot}/registry-item.json`,
@@ -425,15 +507,128 @@ const prepareComponent = async (name, componentSettings) => {
   );
 
   if (
+    !item ||
     item.name !== name ||
     !Array.isArray(item.files) ||
-    item.files.length === 0
+    item.files.length === 0 ||
+    item.files.some(
+      (file) =>
+        typeof file?.path !== "string" ||
+        typeof file.target !== "string" ||
+        !file.path ||
+        !file.target,
+    ) ||
+    (item.registryDependencies !== undefined &&
+      (!Array.isArray(item.registryDependencies) ||
+        item.registryDependencies.some(
+          (dependency) =>
+            typeof dependency !== "string" || !/^[a-z0-9-]+$/.test(dependency),
+        )))
   ) {
     fail(`component "${name}" has an invalid registry manifest`);
   }
+  itemCache.set(name, item);
+  return item;
+};
+
+const resolveItems = async (name) => {
+  const resolved = new Map();
+  const visiting = [];
+  const visit = async (current) => {
+    if (resolved.has(current)) return;
+    if (visiting.includes(current)) {
+      fail(
+        `circular registry dependencies: ${[...visiting, current].join(" -> ")}`,
+      );
+    }
+    visiting.push(current);
+    const item = await fetchItem(current);
+    if (
+      item.type === "hyperframes:example" &&
+      (command !== "init" || current !== name)
+    ) {
+      fail(
+        `"${current}" is a project template. Use hyfrme init ${current} --dir <project>.`,
+      );
+    }
+    for (const dependency of item.registryDependencies ?? []) {
+      await visit(dependency);
+    }
+    visiting.pop();
+    resolved.set(current, item);
+  };
+  await visit(name);
+  const item = resolved.get(name);
+  if (command === "init" && item.type !== "hyperframes:example") {
+    fail(`"${name}" is not a project template. Use hyfrme add ${name}.`);
+  }
+  return [...resolved.values()];
+};
+
+const rewriteNativePaths = (source, file, fetched) => {
+  const originalDirectory = posix.dirname(file.target.replaceAll("\\", "/"));
+  const installedFile = fetched.find((download) => download.file === file);
+  const installedDirectory = posix.dirname(
+    relative(projectDirectory, installedFile.target).replaceAll("\\", "/"),
+  );
+  const replacements = new Map();
+  for (const download of fetched) {
+    const original = download.file.target.replaceAll("\\", "/");
+    const installed = relative(projectDirectory, download.target).replaceAll(
+      "\\",
+      "/",
+    );
+    const originalRelative = posix.relative(originalDirectory, original);
+    const installedRelative = posix.relative(installedDirectory, installed);
+    replacements.set(original, installed);
+    replacements.set(`/${original}`, `/${installed}`);
+    replacements.set(originalRelative, installedRelative);
+    replacements.set(`./${originalRelative}`, `./${installedRelative}`);
+    if (download.file.url) replacements.set(download.file.url, installed);
+  }
+  const candidates = [...replacements]
+    .filter(([original, installed]) => original !== installed)
+    .map(([original]) => original.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  if (candidates.length === 0) return source;
+  const reference = new RegExp(
+    `(["'\x60(])(${candidates.join("|")})(?=["'\x60)])`,
+    "g",
+  );
+  return source.replace(
+    reference,
+    (_match, prefix, original) => `${prefix}${replacements.get(original)}`,
+  );
+};
+
+const materializeTemplate = (source, item, file) => {
+  const initialized = source
+    .replace(/<video[^>]*src="__VIDEO_SRC__"[^>]*>[\s\S]*?<\/video>/g, "")
+    .replace(/<video[^>]*src="__VIDEO_SRC__"[^>]*>/g, "")
+    .replace(/<audio[^>]*src="__VIDEO_SRC__"[^>]*>[\s\S]*?<\/audio>/g, "")
+    .replace(/<audio[^>]*src="__VIDEO_SRC__"[^>]*>/g, "")
+    .replaceAll("__VIDEO_DURATION__", "10");
+  if (
+    item.origin?.repository !== nativeRepository ||
+    item.name !== "hyperframes-decision-tree" ||
+    file.path !== "compositions/decision_tree.html"
+  ) {
+    return initialized;
+  }
+  // HyperFrames' GSAP proxy omits labels; this template's hold5 starts at 6.25s.
+  return initialized.replaceAll(
+    'tl.labels["hold5"]',
+    '(tl.labels?.["hold5"] ?? 6.25)',
+  );
+};
+
+const prepareComponent = async (item, componentSettings) => {
+  const { name } = item;
+  const itemRoot = `${registryRoot}/blocks/${encodeURIComponent(name)}`;
 
   const fetched = await Promise.all(
     item.files.map(async (file) => {
+      const target = targetFor(projectDirectory, config, item, file);
+      await requireSafeTarget(projectRoot, target, item.name, file.target);
       const bytes = await fetchBytes(
         `${itemRoot}/${file.path
           .split("/")
@@ -444,10 +639,49 @@ const prepareComponent = async (name, componentSettings) => {
       return {
         bytes,
         file,
-        target: targetFor(projectDirectory, config, item, file),
+        target,
       };
     }),
   );
+
+  if (
+    item.origin?.repository === nativeRepository ||
+    item.type === "hyperframes:example"
+  ) {
+    const customizable =
+      componentSettings.length > 0
+        ? fetched.find(
+            ({ bytes, file }) =>
+              file.path.endsWith(".html") &&
+              /data-composition-variables='/.test(
+                new TextDecoder().decode(bytes),
+              ),
+          )
+        : undefined;
+    if (componentSettings.length > 0 && !customizable) {
+      fail(
+        `component "${name}" has no declared composition variables. Edit native CSS parameters directly in the installed source.`,
+      );
+    }
+    const downloads = fetched.map((download) => {
+      if (!/\.(?:html|css|m?js)$/i.test(download.file.path)) return download;
+      const source = new TextDecoder().decode(download.bytes);
+      const initialized =
+        item.type === "hyperframes:example" &&
+        download.file.path.endsWith(".html")
+          ? materializeTemplate(source, item, download.file)
+          : source;
+      const relocated = rewriteNativePaths(initialized, download.file, fetched);
+      const customized =
+        download === customizable
+          ? customizeSource(relocated, componentSettings, name)
+          : relocated;
+      return customized === source
+        ? download
+        : { ...download, bytes: new TextEncoder().encode(customized) };
+    });
+    return { item, downloads };
+  }
 
   const runtimeDownloads = new Map(
     fetched
@@ -513,7 +747,22 @@ const prepareComponent = async (name, componentSettings) => {
 };
 
 const installComponent = async (name, componentSettings, detailedOutput) => {
-  const { item, downloads } = await prepareComponent(name, componentSettings);
+  const items = await resolveItems(name);
+  const prepared = await Promise.all(
+    items.map((item) =>
+      prepareComponent(item, item.name === name ? componentSettings : []),
+    ),
+  );
+  const { item } = prepared.at(-1);
+  const downloads = prepared.flatMap((component) => component.downloads);
+  if (needsConfig) {
+    await requireSafeTarget(projectRoot, configPath, name, "hyperframes.json");
+    downloads.push({
+      target: configPath,
+      bytes: new TextEncoder().encode(`${JSON.stringify(config, null, 2)}\n`),
+      file: { target: "hyperframes.json", type: "hyperframes:asset" },
+    });
+  }
   const conflicts = [];
   const unchanged = new Set();
 
@@ -540,7 +789,11 @@ const installComponent = async (name, componentSettings, detailedOutput) => {
 
   if (!detailedOutput) return item.title ?? name;
 
-  console.log(`Added ${item.title ?? name}`);
+  console.log(
+    command === "init"
+      ? `Initialized ${item.title ?? name} in ${projectDirectory}`
+      : `Added ${item.title ?? name}`,
+  );
   if (componentSettings.length > 0) {
     console.log(`  customized: ${componentSettings.join(", ")}`);
   }
@@ -548,17 +801,27 @@ const installComponent = async (name, componentSettings, detailedOutput) => {
     console.log(`  ${relative(projectDirectory, download.target)}`);
   }
   if (item.type === "hyperframes:block" && item.dimensions) {
-    const composition = downloads.find(
-      (download) => download.file.type === "hyperframes:composition",
-    );
+    const composition = prepared
+      .at(-1)
+      .downloads.find(
+        (download) => download.file.type === "hyperframes:composition",
+      );
     const compositionPath = composition
       ? relative(projectDirectory, composition.target).replaceAll("\\", "/")
       : `compositions/${item.name}.html`;
+    const compositionId =
+      item.origin?.repository === nativeRepository && composition
+        ? (new TextDecoder()
+            .decode(composition.bytes)
+            .replace(/<!--[\s\S]*?-->/g, "")
+            .match(/\bdata-composition-id=["']([^"']+)["']/)?.[1] ??
+          item.origin.name)
+        : item.name;
     console.log(`
 Use it in your composition:
   <div
-    id="${item.name}"
-    data-composition-id="${item.name}"
+    id="${compositionId}"
+    data-composition-id="${compositionId}"
     data-composition-src="${compositionPath}"
     data-start="0"
     data-duration="${item.duration}"
@@ -566,6 +829,11 @@ Use it in your composition:
     data-width="${item.dimensions.width}"
     data-height="${item.dimensions.height}"
   ></div>`);
+  }
+  if (item.type === "hyperframes:component") {
+    console.log(
+      "\nPaste the installed snippet's markup, styles, and script into your composition. Follow its timeline integration notes.",
+    );
   }
 
   return item.title ?? name;
@@ -588,7 +856,19 @@ const namesToInstall = installAll
       ) {
         fail("Hyfrme registry contains an invalid component name");
       }
-      return [...new Set(registryNames)];
+      const components = registry.items.filter(
+        (item) => item.type !== "hyperframes:example",
+      );
+      if (components.length === 0) {
+        fail("Hyfrme registry has no installable blocks or components");
+      }
+      const templateCount = registry.items.length - components.length;
+      if (templateCount > 0) {
+        console.log(
+          `${templateCount} project templates use hyfrme init <template> --dir <project>.`,
+        );
+      }
+      return [...new Set(components.map((item) => item.name))];
     })()
   : names;
 

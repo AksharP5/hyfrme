@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script src="compositions/t3-code-gsap.min.js"></script>
+    <style>
+      html, body { margin: 0; width: 1200px; height: 659px; overflow: hidden; background: #0a0a0a; }
+      #root { width: 100%; height: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="t3-snooze-wake-sequence" data-start="0" data-duration="8" data-fps="30" data-width="1200" data-height="659">
+      <div id="snooze" data-composition-id="t3-thread-snooze" data-composition-src="compositions/t3-thread-snooze.html" data-start="0" data-duration="4" data-track-index="1" data-width="1200" data-height="659"></div>
+      <div id="wake" data-composition-id="t3-thread-wake" data-composition-src="compositions/t3-thread-wake.html" data-variable-values='{"expandedFrame":0,"menuFrame":0}' data-start="4" data-duration="4" data-track-index="1" data-width="1200" data-height="659"></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["t3-snooze-wake-sequence"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

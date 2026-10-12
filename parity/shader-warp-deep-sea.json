@@ -1,0 +1,64 @@
+{
+  "slug": "shader-warp-deep-sea",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+    "source": "registry/remocn/shader-warp-deep-sea/index.tsx",
+    "config": "registry/remocn/shader-warp-deep-sea/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "distortion": 0.15,
+      "swirl": 0.3,
+      "softness": 1,
+      "proportion": 0.6
+    },
+    "background": "transparent"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "bcb1c52bd72bfaac873880ece5d9d5c71c7aeae292127f3ddbac5e2ec99f81bc",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.530",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/shader-warp-deep-sea/reference.mp4",
+    "hyperframesVideo": "public/previews/shader-warp-deep-sea/hyperframes.mp4",
+    "thumbnail": "public/previews/shader-warp-deep-sea/thumbnail.png",
+    "summary": "parity/shader-warp-deep-sea-diff/summary.json",
+    "perFrameSsim": "parity/shader-warp-deep-sea-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-warp-deep-sea-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-warp-deep-sea-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-warp-deep-sea-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-warp-deep-sea-diff/hyperframes-alpha.framemd5"
+  }
+}

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"text","type":"string","label":"Text","default":"Bold."},{"id":"color","type":"color","label":"Text color","default":"#fafafa"},{"id":"echoColor","type":"color","label":"Echo color","default":"#fafafa"},{"id":"direction","type":"string","label":"Direction","default":"up","options":["up","down"]},{"id":"fontSize","type":"number","label":"Font size","default":170,"min":60,"max":300,"step":2},{"id":"echoes","type":"number","label":"Echoes per side","default":3,"min":1,"max":6,"step":1},{"id":"echoOpacity","type":"number","label":"Echo opacity","default":0.35,"min":0.05,"max":1,"step":0.05},{"id":"cycle","type":"number","label":"Frames per row","default":60,"min":15,"max":240,"step":5},{"id":"speed","type":"number","label":"Speed","default":1,"min":0.25,"max":4,"step":0.25}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+      @font-face { font-family: "Inter"; src: url("../assets/fonts/Inter-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #0a0a0a; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#0a0a0a; }
+      #hyfrme-source-root { transform: translateY(1px); }
+
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="echo-stack" data-start="0" data-duration="4" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="4" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{}'></div>
+      </div>
+    </div>
+    <script src="./echo-stack.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="echo-stack"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="echo-stack"] [data-hyfrme-clock]', {
+        frame: 120,
+        duration: 4,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(119, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["echo-stack"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

@@ -249,6 +249,15 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
   const assets = JSON.parse(
     await readFile(resolve(root, "assets/snapcn/manifest.json"), "utf8"),
   );
+  const mediaBySource = new Map();
+  for (const media of assets.media) {
+    if (
+      !mediaBySource.has(media.source) ||
+      pending.some((entry) => media.slugs?.includes(entry.slug))
+    )
+      mediaBySource.set(media.source, media);
+  }
+  const frozenMedia = [...mediaBySource.values()];
   await mkdir(resolve(project, "fonts"), { recursive: true });
   await mkdir(resolve(project, "public/assets"), { recursive: true });
   await cp(
@@ -256,7 +265,7 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
     resolve(project, "public/assets/snapcn"),
     { recursive: true },
   );
-  for (const media of assets.media.filter((media) =>
+  for (const media of frozenMedia.filter((media) =>
     media.source.startsWith("/"),
   )) {
     const target = resolve(project, "public", `.${media.source}`);
@@ -264,9 +273,17 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
     await cp(resolve(root, "assets/snapcn", media.path), target);
   }
   const mediaLoader = resolve(project, "frozen-media-loader.cjs");
-  const mediaReplacements = assets.media
+  const mediaReplacements = frozenMedia
     .filter((media) => media.source.startsWith("https://"))
     .map((media) => [media.source, `/assets/snapcn/${media.path}`]);
+  mediaReplacements.push(
+    ...assets.fonts
+      .filter((font) => font.sourceKind === "font-face")
+      .map((font) => [
+        font.sourceToken ?? font.source,
+        `/assets/snapcn/${font.path}`,
+      ]),
+  );
   mediaReplacements.push([
     "https://picsum.photos/seed/snap-orbit-${i + 1}/440/560",
     "/assets/snapcn/media/orbit/snap-orbit-${i + 1}.jpg",
@@ -276,7 +293,11 @@ export async function renderReferences(fixtures, { reuse = false } = {}) {
     `const replacements=${JSON.stringify(mediaReplacements)};\nmodule.exports=function(source){for(const [url,path] of replacements)source=source.split(url).join(path);return source;};\n`,
   );
   const fontAliases = {};
-  for (const module of new Set(assets.fonts.map((font) => font.module))) {
+  for (const module of new Set(
+    assets.fonts
+      .filter((font) => font.sourceKind !== "font-face")
+      .map((font) => font.module),
+  )) {
     const original = require(`@remotion/google-fonts/${module}`);
     const info = original.getInfo();
     const fonts = {};

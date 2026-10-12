@@ -1,0 +1,5 @@
+# T3 Code: Project Scope
+
+This four-second HyperFrames block reproduces the official T3 Code v0.0.42 desktop sidebar at 1200 × 659 and 30 fps in dark or light mode. The native project combobox opens beneath the sidebar search field, selects hyfrme-motion-lab, and then restores hyfrme. T3 Code retains the chosen scope after reload. The isolated workspace contains two real projects and seeded Hyfrme threads; choosing the scope is a live local action. No AI provider or GitHub account runs.
+
+Customize project names, avatars, thread and conversation copy, empty state, theme, and all five action frames. The default popup uses cropped official dark/light pixels; edited content uses source DOM. Use matching values with adjacent T3 blocks for a seamless video. Source: https://github.com/pingdotgg/t3code/tree/719a76ca1dbf5490f1aa33ffb9966301e02be9a9. The installed files include T3 Code's MIT license and Pierre Trees notices for the source icon. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.

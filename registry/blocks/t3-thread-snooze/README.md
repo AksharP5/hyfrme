@@ -1,0 +1,5 @@
+# T3 Code: Snooze a Thread
+
+This four-second block reproduces the official T3 Code v0.0.42 sidebar Snooze action in desktop dark and light themes at 1200 × 659 and 30 fps. The selected thread leaves the active cards after the native three-hour preset, navigation advances to the next card, the confirmation toast slides in and closes, the Snoozed shelf expands, and reopening the thread reveals its inline banner. A native reload check confirms Snooze persists until 2026-09-25T21:00:00Z in this deterministic fixture.
+
+The local Hyfrme project and conversation are seeded, and no provider is configured. Project, conversation, thread titles, sidebar ages, theme, toast and banner copy, Snoozed count, and interaction timing are HyperFrames variables. Match these inputs across adjacent T3 Code blocks for seamless clips. Source: https://github.com/pingdotgg/t3code/tree/719a76ca1dbf5490f1aa33ffb9966301e02be9a9. The installed files include T3 Code's MIT license and third-party icon notice. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.

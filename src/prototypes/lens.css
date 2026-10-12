@@ -1,0 +1,440 @@
+.lens-page {
+  --lens-bg: #101110;
+  --lens-text: #f6f7f1;
+  --lens-muted: #a0a69b;
+  --lens-line: #343931;
+  --lens-accent: #c3d989;
+  --lens-selected-text: #1c2411;
+  --lens-panel: #20241d;
+  --lens-panel-text: #d5dbcf;
+  --lens-panel-muted: #9aa48f;
+  --lens-panel-hover: #2a3024;
+  --lens-code: #c8d1bf;
+  color-scheme: dark;
+  min-height: 100dvh;
+  background: var(--lens-bg);
+  color: var(--lens-text);
+  padding-bottom: 120px;
+}
+
+.lens-shell {
+  width: min(100% - 104px, 1512px);
+  margin-inline: auto;
+}
+
+.lens-header {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  border-bottom: 1px solid var(--lens-line);
+}
+
+.lens-header .lens-brand {
+  font-size: 33px;
+  letter-spacing: -2px;
+}
+
+.lens-header .lens-navigation {
+  margin-left: auto;
+  display: flex;
+  gap: 25px;
+  font-size: 13px;
+  color: var(--lens-muted);
+}
+
+.lens-header a,
+.lens-selection a {
+  text-decoration: none;
+}
+
+.lens-intro {
+  padding: 34px 0 30px;
+}
+
+.lens-intro h1 {
+  font-family: "Geist", Arial, sans-serif;
+  font-size: clamp(48px, 4.8vw, 64px);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.065em;
+  margin: 0;
+}
+
+.lens-intro-side {
+  padding-top: 18px;
+}
+
+.lens-intro-side p {
+  max-width: 550px;
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--lens-muted);
+}
+
+.lens-library-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  color: var(--lens-accent);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.lens-gallery {
+  display: flex;
+  gap: 8px;
+  height: clamp(360px, 31vw, 470px);
+}
+
+.lens-panel {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  flex-direction: column;
+  background: var(--lens-panel);
+  overflow: hidden;
+}
+
+.lens-panel.is-selected {
+  flex: 4.4 1 0;
+}
+
+.lens-panel-media {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background: #171915;
+}
+
+.lens-preview {
+  width: 100%;
+  height: 100%;
+}
+
+.lens-preview video,
+.lens-preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lens-poster-button {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  display: block;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.lens-poster-button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+  transition:
+    opacity 180ms ease,
+    transform 240ms ease;
+}
+
+.lens-poster-button:hover img {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.lens-panel-label {
+  border: 0;
+  width: 100%;
+  padding: 20px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  background: var(--lens-panel);
+  color: var(--lens-panel-text);
+  cursor: pointer;
+  min-height: 65px;
+}
+
+.lens-panel-title {
+  font-family: "Geist", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.025em;
+}
+
+.lens-panel-indicator {
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 400;
+  color: var(--lens-panel-muted);
+}
+
+.lens-panel.is-selected .lens-panel-label {
+  background: var(--lens-accent);
+  color: var(--lens-selected-text);
+}
+
+.lens-panel.is-selected .lens-panel-title {
+  font-size: 18px;
+}
+
+.lens-panel.is-selected .lens-panel-indicator {
+  color: var(--lens-selected-text);
+}
+
+.lens-selection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 0 30px;
+  font-size: 13px;
+}
+
+.lens-selection p {
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  color: var(--lens-muted);
+}
+
+.lens-selection a {
+  display: inline-flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.lens-source {
+  border-top: 1px solid var(--lens-line);
+  padding-top: 27px;
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lens-source h2 {
+  margin: 0 0 8px;
+  font-family: "Geist", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.lens-source p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--lens-muted);
+}
+
+.lens-install {
+  max-width: 100%;
+}
+
+.lens-command {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 19px 22px;
+  border: 1px solid var(--lens-line);
+  background: transparent;
+  color: var(--lens-text);
+  cursor: pointer;
+  max-width: 100%;
+  text-align: left;
+}
+
+.lens-command > span {
+  color: var(--lens-accent);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.lens-source .lens-copy-error {
+  margin-top: 8px;
+  max-width: 400px;
+}
+
+.lens-command code {
+  font-size: 12px;
+  color: var(--lens-code);
+  overflow-wrap: anywhere;
+}
+
+.lens-page a:focus-visible,
+.lens-page button:focus-visible {
+  outline: 2px solid var(--lens-accent);
+  outline-offset: 5px;
+}
+
+.lens-panel button:focus-visible {
+  outline-offset: -4px;
+}
+
+.lens-page a:hover {
+  color: var(--lens-accent);
+}
+
+.lens-panel-label:hover {
+  background: var(--lens-panel-hover);
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+  .lens-shell {
+    width: calc(100% - 64px);
+  }
+  .lens-header {
+    gap: 24px;
+  }
+  .lens-header .lens-navigation {
+    gap: 18px;
+  }
+  .lens-intro h1 {
+    font-size: clamp(40px, 5.3vw, 60px);
+  }
+  .lens-intro-side p {
+    font-size: 13px;
+  }
+  .lens-panel-label {
+    padding: 17px 12px;
+  }
+  .lens-panel-title {
+    font-size: 12px;
+  }
+  .lens-panel.is-selected {
+    flex-grow: 3.9;
+  }
+}
+
+@media (max-width: 768px) {
+  .lens-shell {
+    width: calc(100% - 40px);
+  }
+  .lens-header {
+    min-height: 108px;
+    padding: 22px 0 18px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 22px;
+  }
+  .lens-header .lens-brand {
+    font-size: 29px;
+  }
+  .lens-header .lens-navigation {
+    flex: 1 0 100%;
+    order: 3;
+    margin: 0;
+    gap: 17px;
+    font-size: 11px;
+    justify-content: space-between;
+  }
+  .lens-intro {
+    display: block;
+    padding: 34px 0 28px;
+  }
+  .lens-intro h1 {
+    font-size: clamp(42px, 9vw, 58px);
+    letter-spacing: -0.065em;
+  }
+  .lens-intro-side {
+    padding-top: 23px;
+  }
+  .lens-intro-side p {
+    max-width: 330px;
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+  .lens-library-link {
+    font-size: 13px;
+  }
+  .lens-gallery {
+    height: auto;
+    display: grid;
+    gap: 6px;
+  }
+  .lens-panel {
+    display: block;
+  }
+  .lens-panel-media {
+    display: none;
+  }
+  .lens-panel.is-selected .lens-panel-media {
+    display: block;
+    aspect-ratio: 16 / 10;
+  }
+  .lens-panel-label {
+    min-height: 51px;
+    padding: 15px;
+  }
+  .lens-panel-title {
+    font-size: 14px;
+  }
+  .lens-panel.is-selected .lens-panel-title {
+    font-size: 16px;
+  }
+  .lens-selection {
+    padding: 20px 0 25px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 12px;
+  }
+  .lens-selection p {
+    gap: 18px;
+  }
+  .lens-source {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding-top: 24px;
+  }
+  .lens-install {
+    width: 100%;
+  }
+  .lens-command {
+    width: 100%;
+    padding: 17px 14px;
+    gap: 15px;
+  }
+  .lens-command code {
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lens-poster-button img {
+    transition: none;
+  }
+  .lens-poster-button:hover img {
+    transform: none;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .lens-page {
+    --lens-bg: #f4f5f1;
+    --lens-text: #20251d;
+    --lens-muted: #606859;
+    --lens-line: #cbd1c4;
+    --lens-accent: #4e681d;
+    --lens-selected-text: #ffffff;
+    --lens-panel: #dfe3d9;
+    --lens-panel-text: #30372b;
+    --lens-panel-muted: #616d55;
+    --lens-panel-hover: #d2d9c9;
+    --lens-code: #47513e;
+    color-scheme: light;
+  }
+}

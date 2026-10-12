@@ -4,6 +4,8 @@ Copy-paste motion components for [HyperFrames](https://hyperframes.heygen.com/).
 Preview a component, customize it in your browser, and add it to your video with
 one command. The source is yours to edit.
 
+https://github.com/user-attachments/assets/74855edd-7a1a-4291-8d90-ecf137d8511d
+
 [Browse components](https://hyfrme.vercel.app/components) ·
 [See examples](https://hyfrme.vercel.app/showcases)
 
@@ -26,8 +28,11 @@ install command for your version.
 
 ## Customize your components
 
-Every component page provides a live preview and controls for its supported
-variables. You can also set values when installing:
+Component pages provide source, previews, and controls for supported
+composition variables. Official CSS parameters without a declared variable are
+edited directly in the installed source. Shared links keep numbers within the component's declared limits and
+restore defaults for malformed values or unsupported choices. You can also set
+values when installing:
 
 ```bash
 npx hyfrme@latest add screen-lift \
@@ -40,9 +45,13 @@ Your choices become the installed component's defaults. Keep adjusting them in
 HyperFrames, or edit the copied HTML, CSS, and JavaScript directly. Hyfrme is
 not a runtime dependency.
 
-The catalog includes Hyfrme originals and components adapted from Remocn and
-Snapcn. Use the source filters to browse each collection. Snapcn component names
-start with `snapcn-`, such as `snapcn-phone-frame`.
+The catalog includes Hyfrme originals and components adapted from Remocn,
+Snapcn, and T3 Code, plus the complete pinned official HyperFrames catalog. Use the source filters to browse each collection. Snapcn
+component names start with `snapcn-`, such as `snapcn-phone-frame`. T3 Code
+blocks reproduce the full desktop app. The T3 gallery shows whether each pinned
+native reference is v0.0.35 or v0.0.42, and which desktop themes have passed
+frame comparison. Native captures and results are listed in the
+[T3 Code coverage record](docs/T3_CODE_COVERAGE.md).
 
 ## Install more
 
@@ -58,11 +67,33 @@ Choose a different project:
 npx hyfrme@latest add screen-lift --dir ./my-video
 ```
 
-Install the full catalog:
+Install all blocks and reusable components (templates are initialized separately):
 
 ```bash
 npx hyfrme@latest add --all
 ```
+
+## Official HyperFrames catalog and templates
+
+The HyperFrames source filter includes 164 blocks, 222 reusable HTML components,
+and all 8 official templates. Names start with `hyperframes-`:
+
+```bash
+npx hyfrme@latest add hyperframes-data-chart hyperframes-spring-pop
+npx hyfrme@latest init hyperframes-product-promo --dir ./product-promo
+```
+
+Block installs print composition markup. Component installs print guidance for
+pasting the snippet's markup, styles, and script into a scene. Template initialization
+copies a complete project and creates `hyperframes.json` when absent. Four templates
+use the official no-video defaults: a 10-second project with placeholder media removed.
+Decision Tree includes a small renderer compatibility fix in the initialized copy.
+Existing conflicting files require `--force`; unrelated files stay intact.
+
+The import preserves the original HTML, scripts, assets, attribution, and Apache 2.0
+license. Its source hashes are checked against the pinned official catalog. Native
+source copies do not claim a Remocn/Snapcn SSIM comparison. See the
+[official catalog record](docs/HYPERFRAMES_CATALOG.md).
 
 ## Use with your coding agent
 

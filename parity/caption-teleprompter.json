@@ -1,0 +1,71 @@
+{
+  "slug": "caption-teleprompter",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+    "source": "registry/remocn/caption-teleprompter/index.tsx",
+    "entry": "components/docs/examples/caption-teleprompter-example.tsx",
+    "config": "registry/remocn/caption-teleprompter/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 279,
+    "props": {
+      "captions": "So here's the thing. Most demo videos lose people in the first three seconds. Captions keep them watching, even with the sound off.",
+      "fontSize": 64,
+      "fontWeight": 800,
+      "color": "#ffffff",
+      "visibleLines": 3,
+      "pastOpacity": 0.35,
+      "futureOpacity": 0.35,
+      "upcomingOpacity": 0.55,
+      "combineTokensWithinMilliseconds": 1500,
+      "holdMs": 600,
+      "shadow": true
+    },
+    "background": "#262626"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "3cfb7cf7065ddb7210a7fcb5509ded05e1f6ff0f61dd132c1c5d55f3587d660d",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 279,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 279,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.530",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/caption-teleprompter/reference.mp4",
+    "hyperframesVideo": "public/previews/caption-teleprompter/hyperframes.mp4",
+    "thumbnail": "public/previews/caption-teleprompter/thumbnail.png",
+    "summary": "parity/caption-teleprompter-diff/summary.json",
+    "perFrameSsim": "parity/caption-teleprompter-diff/ssim.log",
+    "hyperframesCheck": "parity/caption-teleprompter-diff/hyperframes-check.log",
+    "worstFrame": "parity/caption-teleprompter-diff/worst-frame.png",
+    "referenceAlpha": "parity/caption-teleprompter-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/caption-teleprompter-diff/hyperframes-alpha.framemd5"
+  }
+}

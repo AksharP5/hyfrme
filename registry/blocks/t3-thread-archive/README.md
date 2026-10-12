@@ -1,0 +1,5 @@
+# T3 Code: Thread Archive
+
+This four-second, 1200 × 659 block reproduces official T3 Code v0.0.42 at 30 fps in dark and light. The thread is archived through the native title menu, disappears from the active sidebar, appears in Settings > Archive, and is unarchived. The archive and unarchive actions execute against an isolated local T3 database; the Hyfrme project, conversation, and provider state are seeded. No AI provider or GitHub account runs.
+
+Customize project, branch, thread titles and ages, conversation, draft, Settings copy, menu actions, appearance, and four event frames through HyperFrames variables. The default menu uses cropped official pixels; edited visible content uses source DOM. Match project and thread values with adjacent T3 Code blocks for continuity. Source: https://github.com/pingdotgg/t3code/tree/719a76ca1dbf5490f1aa33ffb9966301e02be9a9. Installed files include T3 Code's MIT license, icon notice, and Apache-2.0 licenses for @pierre/trees and @pierre/diffs, plus the @pierre/trees notice. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.

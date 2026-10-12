@@ -1,0 +1,5 @@
+# T3 Code: Project Action
+
+This four-second HyperFrames block reproduces official T3 Code v0.0.42 at 1200 × 659 and 30 fps in dark and light. Add Action receives a Hyfrme check name, command, and shortcut. Save stores the project-scoped action; the toolbar and Script actions menu retain it after reload. The action persists in the official app; project and thread copy are seeded. No command is run in this block. The browser fixture captures keybinding entry, while only the desktop Electron app persists the keybinding.
+
+Customize the project, sidebar, action name, command, entered keybinding, UI labels, theme, and event frames. Native dialog and saved-action menu crops provide exact default pixels; changing visible values switches these areas to editable DOM. Match values with adjacent T3 Code blocks. Source: https://github.com/pingdotgg/t3code/tree/719a76ca1dbf5490f1aa33ffb9966301e02be9a9. Installed files include T3 Code's MIT license and third-party icon notices. GSAP 3.14.2 is embedded for offline frame control under its Standard License: https://gsap.com/standard-license/.

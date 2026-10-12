@@ -1,0 +1,279 @@
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 4,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div data-composition-id=\"t3-thread-actions\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id=\"t3-thread-actions\"]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-thread-actions-verify/project/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "negative_z_index",
+        "severity": "warning",
+        "message": "`z-index: -1` paints the element behind its nearest stacking context's own content. With no stacking-context ancestor that context is the composition root itself, so an opaque background there hides it entirely: in the DOM, laid out, and absent from the picture. A transparent root leaves it visible. Siblings at `z-index: 0` or above are unaffected.",
+        "selector": ":is(.chat-composer-drawer-surface,.chat-composer-top-drawer):before",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-thread-actions-verify/project/compositions/t3-thread-actions.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Give the element's parent a stacking context - `isolation: isolate` is the cheapest, and `transform`, `filter`, `opacity` below 1, `contain: paint` and `will-change` all work too. The negative-z child then paints above that parent's background and renders normally. Or express paint order through DOM order - an earlier sibling paints behind a later one - and raise the elements that should sit in front rather than lowering this one."
+      },
+      {
+        "code": "negative_z_index",
+        "severity": "warning",
+        "message": "`z-index: -1` paints the element behind its nearest stacking context's own content. With no stacking-context ancestor that context is the composition root itself, so an opaque background there hides it entirely: in the DOM, laid out, and absent from the picture. A transparent root leaves it visible. Siblings at `z-index: 0` or above are unaffected.",
+        "selector": ".chat-composer-context-strip:before",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-thread-actions-verify/project/compositions/t3-thread-actions.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Give the element's parent a stacking context - `isolation: isolate` is the cheapest, and `transform`, `filter`, `opacity` below 1, `contain: paint` and `will-change` all work too. The negative-z child then paints above that parent's background and renders normally. Or express paint order through DOM order - an earlier sibling paints behind a later one - and raise the elements that should sit in front rather than lowering this one."
+      },
+      {
+        "code": "composition_heavy_overlay_count_high",
+        "severity": "warning",
+        "message": "This composition has 47 elements carrying \"heavy overlay\" CSS (filter:blur, radial-gradient, or clip-path). Field signal: a composition with ~40 such elements — including opacity:0 / visibility:hidden ones — captures solid-black for the first ~half of the render, recovering near the end. Reproduces identically via drawElement, forced screenshot capture, and snapshot, so the capture layer itself is the offender (not encoder/mux). Independent of duration. Presence alone matters; only display:none elements are excluded here.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-thread-actions-verify/project/compositions/t3-thread-actions.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split this sub-composition further into per-transition mini-compositions and concat the pieces (FFmpeg or the runtime's slideshow) so each capture only sees a small subset of heavy overlays at once. Even hidden overlays (opacity:0 / visibility:hidden) contribute — either remove truly unused ones from the source or scope them into their own per-transition sub-composition. If an overlay is genuinely inert for the whole clip, use display:none so it never enters the render tree. Field ref ts=1784040753 (#hyperframes-cli-feedback)."
+      }
+    ],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.222,
+        "selector": "span.pointer-events-none.absolute",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 207,
+          "top": 52,
+          "right": 255,
+          "bottom": 100,
+          "width": 48,
+          "height": 48
+        },
+        "containerSelector": "#base-ui-_r_5_",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 215,
+          "top": 60,
+          "right": 247,
+          "bottom": 92,
+          "width": 32,
+          "height": 32
+        },
+        "overflow": {
+          "left": 8,
+          "right": 8,
+          "top": 8,
+          "bottom": 8
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-thread-actions.html",
+        "bbox": {
+          "x": 207,
+          "y": 52,
+          "width": 48,
+          "height": 48
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 3.778,
+        "occurrences": 9,
+        "heldMs": 3556
+      },
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.222,
+        "selector": "span.pointer-events-none.absolute",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 207,
+          "top": 88,
+          "right": 255,
+          "bottom": 136,
+          "width": 48,
+          "height": 48
+        },
+        "containerSelector": "#base-ui-_r_r_",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 215,
+          "top": 96,
+          "right": 247,
+          "bottom": 128,
+          "width": 32,
+          "height": 32
+        },
+        "overflow": {
+          "left": 8,
+          "right": 8,
+          "top": 8,
+          "bottom": 8
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-thread-actions.html",
+        "bbox": {
+          "x": 207,
+          "y": 88,
+          "width": 48,
+          "height": 48
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 3.778,
+        "occurrences": 9,
+        "heldMs": 3556
+      },
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.222,
+        "selector": "div.flex.w-full",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 0,
+          "top": 136,
+          "right": 255,
+          "bottom": 624,
+          "width": 255,
+          "height": 488
+        },
+        "containerSelector": "div.h-full.max-h-\\[inherit\\]",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 136,
+          "right": 255,
+          "bottom": 611,
+          "width": 255,
+          "height": 475
+        },
+        "overflow": {
+          "bottom": 13
+        },
+        "dataAttributes": {
+          "data-sidebar-state": "expanded",
+          "data-slot": "sidebar-wrapper"
+        },
+        "sourceFile": "compositions/t3-thread-actions.html",
+        "bbox": {
+          "x": 0,
+          "y": 136,
+          "width": 255,
+          "height": 488
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 3.778,
+        "occurrences": 9,
+        "heldMs": 3556
+      }
+    ],
+    "duration": 4,
+    "samples": [
+      0.222,
+      0.667,
+      1.111,
+      1.556,
+      2,
+      2.444,
+      2.889,
+      3.333,
+      3.778
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 3,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.222,
+      1.111,
+      2,
+      2.889,
+      3.778
+    ],
+    "checked": 0,
+    "passed": 0
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.75",
+    "latestVersion": "0.8.75",
+    "updateAvailable": false
+  }
+}

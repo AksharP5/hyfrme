@@ -1,0 +1,1331 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": false,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 4,
+    "infoCount": 27,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 1.625,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 422.64,
+          "top": 100.32,
+          "right": 857.36,
+          "bottom": 306.33,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "Bold.",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 100.32,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 1.625,
+        "lastSeen": 3.778,
+        "occurrences": 5
+      },
+      {
+        "code": "escaped_container",
+        "severity": "warning",
+        "time": 0.667,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 422.64,
+          "top": 569.09,
+          "right": 857.36,
+          "bottom": 739.09,
+          "width": 434.72,
+          "height": 170
+        },
+        "containerSelector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Bold.",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 422.64,
+          "top": 276,
+          "right": 857.36,
+          "bottom": 446,
+          "width": 434.72,
+          "height": 170
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 569.09,
+          "width": 434.72,
+          "height": 170
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 2.889,
+        "occurrences": 4
+      },
+      {
+        "code": "escaped_container",
+        "severity": "warning",
+        "time": 1.111,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 422.64,
+          "top": -0.67,
+          "right": 857.36,
+          "bottom": 169.33,
+          "width": 434.72,
+          "height": 170
+        },
+        "containerSelector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Bold.",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 422.64,
+          "top": 276,
+          "right": 857.36,
+          "bottom": 446,
+          "width": 434.72,
+          "height": 170
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": -0.67,
+          "width": 434.72,
+          "height": 170
+        },
+        "firstSeen": 1.111,
+        "lastSeen": 3.778,
+        "occurrences": 5
+      },
+      {
+        "code": "escaped_container",
+        "severity": "warning",
+        "time": 1.111,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 422.64,
+          "top": 534.83,
+          "right": 857.36,
+          "bottom": 704.83,
+          "width": 434.72,
+          "height": 170
+        },
+        "containerSelector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Bold.",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 422.64,
+          "top": 276,
+          "right": 857.36,
+          "bottom": 446,
+          "width": 434.72,
+          "height": 170
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 534.83,
+          "width": 434.72,
+          "height": 170
+        },
+        "firstSeen": 1.111,
+        "lastSeen": 3.778,
+        "occurrences": 3
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 2.25,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 422.64,
+          "top": 415.67,
+          "right": 857.36,
+          "bottom": 621.67,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(7)",
+        "text": "Bold.",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 415.67,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 2.25,
+        "lastSeen": 2.375,
+        "occurrences": 2
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": -152.33,
+          "right": 857.36,
+          "bottom": 53.67,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "top": 152.33
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": -152.33,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": 551.09,
+          "right": 857.36,
+          "bottom": 757.09,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 37.09
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 551.09,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(6)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": 726.95,
+          "right": 857.36,
+          "bottom": 932.95,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 212.95
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 726.95,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.111,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": -197.17,
+          "right": 857.36,
+          "bottom": 8.83,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "top": 197.17
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": -197.17,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 1.111,
+        "lastSeen": 1.111,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.111,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": -18.67,
+          "right": 857.36,
+          "bottom": 187.33,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "top": 18.67
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": -18.67,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 1.111,
+        "lastSeen": 1.111,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.111,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": 516.83,
+          "right": 857.36,
+          "bottom": 722.83,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 2.83
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 516.83,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 1.111,
+        "lastSeen": 1.111,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.111,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": 695.33,
+          "right": 857.36,
+          "bottom": 901.33,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 181.33
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 695.33,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 1.111,
+        "lastSeen": 1.111,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.556,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": -235.85,
+          "right": 857.36,
+          "bottom": -29.85,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "top": 235.85
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": -235.85,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 1.556,
+        "lastSeen": 1.556,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.556,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": -57.35,
+          "right": 857.36,
+          "bottom": 148.65,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "top": 57.35
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": -57.35,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 1.556,
+        "lastSeen": 1.556,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.556,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": 656.65,
+          "right": 857.36,
+          "bottom": 862.65,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 142.65
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 656.65,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 1.556,
+        "lastSeen": 1.556,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": -277.5,
+          "right": 857.36,
+          "bottom": -71.5,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "top": 277.5
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": -277.5,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 2,
+        "lastSeen": 2,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": -99,
+          "right": 857.36,
+          "bottom": 107,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "top": 99
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": -99,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 2,
+        "lastSeen": 2,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": 615,
+          "right": 857.36,
+          "bottom": 821,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 101
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 615,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 2,
+        "lastSeen": 2,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(6)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": 793.5,
+          "right": 857.36,
+          "bottom": 999.5,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 279.5
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 793.5,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 2,
+        "lastSeen": 2,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.444,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": -137.67,
+          "right": 857.36,
+          "bottom": 68.33,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "top": 137.67
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": -137.67,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 2.444,
+        "lastSeen": 2.444,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.444,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": 576.33,
+          "right": 857.36,
+          "bottom": 782.33,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 62.33
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 576.33,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 2.444,
+        "lastSeen": 2.444,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.444,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(6)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": 754.83,
+          "right": 857.36,
+          "bottom": 960.83,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 240.83
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 754.83,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 2.444,
+        "lastSeen": 2.444,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.889,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": -176.35,
+          "right": 857.36,
+          "bottom": 29.65,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "top": 176.35
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": -176.35,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 2.889,
+        "lastSeen": 2.889,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.889,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": 537.65,
+          "right": 857.36,
+          "bottom": 743.65,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 23.65
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 537.65,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 2.889,
+        "lastSeen": 2.889,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 2.889,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(6)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": 716.15,
+          "right": 857.36,
+          "bottom": 922.15,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 202.15
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 716.15,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 2.889,
+        "lastSeen": 2.889,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 3.333,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": -215.03,
+          "right": 857.36,
+          "bottom": -9.03,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "top": 215.03
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": -215.03,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 3.333,
+        "lastSeen": 3.333,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 3.333,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": -36.52,
+          "right": 857.36,
+          "bottom": 169.48,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "top": 36.52
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": -36.52,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 3.333,
+        "lastSeen": 3.333,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 3.333,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": 677.47,
+          "right": 857.36,
+          "bottom": 883.47,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 163.47
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 677.47,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 3.333,
+        "lastSeen": 3.333,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 3.778,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": -256.67,
+          "right": 857.36,
+          "bottom": -50.67,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "top": 256.67
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": -256.67,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 3.778,
+        "lastSeen": 3.778,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 3.778,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": -78.17,
+          "right": 857.36,
+          "bottom": 127.83,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "top": 78.17
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": -78.17,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 3.778,
+        "lastSeen": 3.778,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 3.778,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": 635.83,
+          "right": 857.36,
+          "bottom": 841.83,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 121.83
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 635.83,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 3.778,
+        "lastSeen": 3.778,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 3.778,
+        "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(6)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 422.64,
+          "top": 814.33,
+          "right": 857.36,
+          "bottom": 1020.33,
+          "width": 434.72,
+          "height": 206
+        },
+        "containerSelector": "#root",
+        "text": "Bold.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 300.33
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/echo-stack.html",
+        "bbox": {
+          "x": 422.64,
+          "y": 814.33,
+          "width": 434.72,
+          "height": 206
+        },
+        "firstSeen": 3.778,
+        "lastSeen": 3.778,
+        "occurrences": 1
+      }
+    ],
+    "duration": 4,
+    "samples": [
+      0.222,
+      0.667,
+      1.111,
+      1.556,
+      2,
+      2.444,
+      2.889,
+      3.333,
+      3.778
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 32,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.222,
+      1.111,
+      2,
+      2.889,
+      3.778
+    ],
+    "checked": 18,
+    "passed": 18
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.87",
+    "updateAvailable": true
+  }
+}

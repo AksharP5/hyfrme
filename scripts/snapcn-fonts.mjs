@@ -1,4 +1,5 @@
-import { resolve } from "node:path";
+import { readFile } from "node:fs/promises";
+import { dirname, resolve } from "node:path";
 
 export const snapcnFontFamily = (family) => `Hyfrme Snapcn ${family}`;
 
@@ -26,6 +27,40 @@ function fontProps(type, props) {
   return {
     name: "snapcn-fonts",
     setup(api) {
+      api.onLoad(
+        {
+          filter:
+            /snap-cn\/(check-cycle|capture-reveal|font-shuffle)\/index\.tsx$/,
+        },
+        async ({ path }) => {
+          let source = await readFile(path, "utf8");
+          const direct = fonts.filter(
+            (font) =>
+              font.sourceKind === "font-face" &&
+              source.includes(font.sourceToken ?? font.source),
+          );
+          for (const font of direct) {
+            usedFonts.add(font.module);
+            const token = font.sourceToken ?? font.source;
+            source = source.replaceAll(token, font.source);
+            source = source.replaceAll(
+              JSON.stringify(font.family),
+              JSON.stringify(snapcnFontFamily(font.family)),
+            );
+          }
+          // These sources load FontFace URLs themselves instead of using Google's loader.
+          // Resolve their frozen URLs through the same asset map as images and video.
+          if (direct.length) {
+            source = source.replaceAll("`url(${", "`url(${__hyfrmeFontFile(");
+            source = source.replaceAll(
+              '}) format("woff2")`',
+              ')}) format("woff2")`',
+            );
+            source = `import {staticFile as __hyfrmeFontFile} from "remotion";\n${source}`;
+          }
+          return { loader: "tsx", resolveDir: dirname(path), contents: source };
+        },
+      );
       api.onResolve({ filter: /^@remotion\/google-fonts\// }, ({ path }) => ({
         path: path.split("/").at(-1),
         namespace: "snapcn-font",
@@ -34,9 +69,18 @@ function fontProps(type, props) {
         usedFonts.add(path);
         const font = fonts.find((candidate) => candidate.module === path);
         if (!font) throw new Error(`Missing frozen font: ${path}`);
+        const latin500 = fonts.find(
+          (candidate) =>
+            candidate.module === path &&
+            candidate.style === "normal" &&
+            candidate.weight === "500",
+        );
+        const fontInfo = latin500
+          ? `import {staticFile} from "remotion"; export const getInfo = () => ({fonts:{normal:{"500":{latin:staticFile(${JSON.stringify(latin500.source)})}}}});`
+          : "export const getInfo = () => ({fonts:{}});";
         return {
           loader: "js",
-          contents: `export const fontFamily = ${JSON.stringify(snapcnFontFamily(font.family))}; export const loadFont = () => ({fontFamily, waitUntilDone: () => Promise.resolve()});`,
+          contents: `${fontInfo} export const fontFamily = ${JSON.stringify(snapcnFontFamily(font.family))}; export const loadFont = () => ({fontFamily, waitUntilDone: () => Promise.resolve()});`,
         };
       });
 

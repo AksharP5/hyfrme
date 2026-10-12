@@ -154,11 +154,11 @@ The original 45 UI primitives and flows are verified.
 ## Coverage status
 
 The audited Remocn inventory at
-`7fa2db1cd29dfb36743e54e3d078dd9107c879a2` contains 307 public visual components.
+`fd2d3010a8183985553f9ddeb364313d57fb36b9` contains 393 public visual components.
 The deprecated `progress-steps` and `data-flow-pipes` ports are removed.
-The six helper entries,
-`brush`, `canvas-presentation`, `icons-core`, `remocn-ui`, `scene-motion`, and
-`stop-motion`, do not become catalog blocks.
+The seven helper entries,
+`brush`, `canvas-presentation`, `caption-core`, `icons-core`, `remocn-ui`,
+`scene-motion`, and `stop-motion`, do not become catalog blocks.
 
 Inventory reads the authored family registries referenced by `registry.json`.
 This includes `select-menu`, whose published docs and family registry precede
@@ -288,18 +288,99 @@ layers. Other layout, contrast, and motion findings remain visible. Shared Speed
 controls are omitted when the source does not read them. Kinetic Warp keeps
 its transparent output, with a black website preview behind its white text.
 
+## Remocn September 2026 additions
+
+Remocn main at `7b1e6dadf21243bf6369f1392c8e898b8b40943e` adds 19 registry
+entries. Hyfrme integrates all 19 with full-frame SSIM and exact-alpha
+verification: Code Morph, Ring Text, Type Wall, Agent Run, Bauhaus Build, Echo Stack, Glyph Anatomy, Keystroke,
+Mondrian Split, Outline Trace, Path Ride, Period Drop, Selection Snap, Speed
+Lines, Squiggle, Stripe Type, Trim Burst, Truchet Flip, and Type Repeater.
+Seven retain source-specific inspector findings for intentional overlaps or
+muted source colors; exact origins and reasons are recorded in
+`catalog/remocn-check-exceptions.json`.
+
+Code Morph, Ring Text, and Type Wall now match all 468 frames exactly (SSIM
+mean/minimum 1.0, identical RGBA hashes). Ring Text preserves the source's discrete
+Inter font weights; Type Wall preserves automatic text rasterization; Code Morph's
+reference includes the actual upstream Geist Mono font boundary. Frozen Inter, Anton,
+and Geist Mono sources make the fixtures independent of live font downloads. Exact
+source-palette checker findings remain recorded for Code Morph and Ring Text.
+
+That September audit covered all 326 public Remocn visuals and 46 public Snapcn
+visuals. The October updates below add 67 Remocn and three Snapcn visuals;
+private Pro-only source remains outside the public import.
+
+The source manifest is `assets/remocn-additions-2026-09-28/manifest.json`.
+Reproduce the additions with:
+
+```bash
+export REMOCN_SOURCE=.work/remocn-audit-7b1e6dad
+REMOCN_ASSET_MANIFEST=assets/remocn-additions-2026-09-28/manifest.json npm run setup:remocn-latest
+node scripts/generate-text-ports.mjs --family text --only echo-stack,glyph-anatomy,outline-trace,path-ride,period-drop,selection-snap,stripe-type,type-repeater,ring-text,type-wall
+node scripts/generate-text-ports.mjs --family core --only agent-run,bauhaus-build,keystroke,mondrian-split,speed-lines,squiggle,trim-burst,truchet-flip,code-morph
+node scripts/verify-text-ports.mjs --lossless --only echo-stack,glyph-anatomy,outline-trace,path-ride,period-drop,selection-snap,stripe-type,type-repeater,ring-text,type-wall,agent-run,bauhaus-build,keystroke,mondrian-split,speed-lines,squiggle,trim-burst,truchet-flip
+```
+
+## October 11 Remocn update
+
+Commit `fd2d3010a8183985553f9ddeb364313d57fb36b9` adds 31 transcript-driven
+caption styles and 36 standalone shader presets. The `caption-core` helper
+ships inside caption runtimes rather than becoming a separate catalog block.
+Existing component sources are unchanged.
+
+Caption blocks use the published example scenes, including their placement,
+transcript timing, speaker defaults, and controls. Hyfrme implements the caption
+paging API independently and preserves the source's synchronous word measurement.
+No Remotion runtime is installed with the blocks. The reference fixture pins
+Remotion and its caption package to 4.0.530 in `fixtures/remocn-2026-10-11/`.
+
+Each shader preset preserves its source palette and parameter defaults, including
+speed as a multiplier on the preset's own speed. The runtime bundles only its
+base shader from the frozen Apache-2.0 Paper sources. The explicit frame clock
+replaces wall-clock scheduling; shader source and uniforms remain unchanged.
+See `assets/remocn-paper-shaders/provenance.json` for the source comparison,
+hashes, original licenses, and notices.
+
+All 67 additions are verified across 14,052 frames, with a frame-weighted mean
+SSIM of 0.999737 and a minimum frame SSIM of 0.988197. Alpha matches exactly.
+All 36 shader presets are pixel-exact across 5,400 frames. Fifty-eight blocks
+pass the full HyperFrames check; nine caption styles retain 99 narrowly reviewed
+source layout findings in `catalog/remocn-check-exceptions.json`. Every addition
+also received a visual review of its active frames and worst-frame comparison.
+
+Blush and Ultraviolet inherit a source limitation: their default Blob grain
+shape produces nearly static output. Source and port frames match exactly; their
+parity manifests record the source hashes and frozen shader evidence. An isolated
+Blush source edit to the Wave shape animates and remains pixel-exact across another
+150 frames. Shape is not a published preset control, so use another grain preset
+or edit the installed source. The canonical defaults remain faithful to upstream.
+
+To reproduce only this update:
+
+```bash
+export REMOCN_SOURCE=.work/remocn-fd2d3010a8183985553f9ddeb364313d57fb36b9
+export REMOCN_ASSET_MANIFEST=assets/remocn-additions-2026-10-11/manifest.json
+export REMOCN_REFERENCE_FIXTURE=fixtures/remocn-2026-10-11
+export REMOCN_DEPENDENCIES=.work/remocn-2026-10-11-reference-deps
+npm run setup:remocn-latest
+REMOCN_ADDITIONS=$(node -e 'console.log(Object.keys(require("./assets/remocn-additions-2026-10-11/manifest.json").components).join(","))')
+node scripts/generate-text-ports.mjs --only "$REMOCN_ADDITIONS"
+node scripts/verify-text-ports.mjs --lossless --only "$REMOCN_ADDITIONS"
+```
+
 ## Snapcn workflow
 
-All 39 pinned Snapcn visual components are verified across 5,744 frames. The
-frame-weighted mean SSIM is 0.998594; every component averages at least 0.990681,
-and the lowest individual frame scores 0.957827. Together with the 307 Remocn
-ports, the catalog contains 346 components.
+All 49 pinned Snapcn visual components are verified across 6,814 frames. The
+frame-weighted mean SSIM is 0.998655; every component averages at least 0.990681,
+and the lowest individual frame scores 0.957827. Together with the 393 Remocn
+ports, this makes 442 upstream visual components.
 
-Thirty-three Snapcn blocks pass the full HyperFrames check. Answer Highlight,
-Announce Title, Logo Drift, Follower Rush, Roster Grant, and Wordmark Cut retain narrowly reviewed findings
-from the source's contrast choices, gradient text, or photo overlays. Their
-original appearance is preserved; exact findings and reasons remain in the
-parity manifests and `catalog/snapcn-check-exceptions.json`.
+Forty-one Snapcn blocks pass the full HyperFrames check. Announce Title,
+Answer Highlight, Follower Rush, Logo Drift, Roster Grant, Status Cycle, Word
+Wheel, and Wordmark Cut retain narrowly reviewed findings from source contrast,
+text layout, gradient text, or photo overlays. Their original appearance is
+preserved; exact findings and reasons remain in the parity manifests and
+`catalog/snapcn-check-exceptions.json`.
 
 Snapcn has its own pinned inventory and fixtures under `catalog/snapcn-*.json`.
 Its blocks use `snapcn-` names to preserve existing installations when names

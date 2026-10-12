@@ -69,6 +69,18 @@ for (const entry of entries) {
   assert(taxonomyFor(entry), `${entry.item.name}: missing catalog placement`);
 }
 
+for (const [name, category] of [
+  ["hyperframes-data-chart", "components"],
+  ["hyperframes-spring-pop", "primitives"],
+  ["hyperframes-product-promo", "templates"],
+]) {
+  const entry = catalog.find((entry) => entry.item.name === name);
+  assert(entry, `${name}: official item missing`);
+  assert.equal(entry.source.id, "hyperframes");
+  assert.equal(categoryFor(entry), category);
+  assert(taxonomyFor(entry));
+}
+
 const orbit = taxonomyFor({ item: { name: "snapcn-orbit-gallery" } });
 assert.equal(orbit.section.label, "Scenes");
 assert.equal(orbit.group.label, "Galleries");
@@ -76,16 +88,21 @@ for (const name of ["snapcn-logo-flicker", "logo-enter"]) {
   assert.equal(taxonomyFor({ item: { name } }).section.label, "Logos");
 }
 
-const screenLift = catalog.find((entry) => entry.item.name === "screen-lift");
-assert(screenLift, "Screen Lift must be listed in the catalog");
-assert.equal(screenLift.source.id, "hyfrme");
-assert.equal(taxonomyFor(screenLift).group.id, "device-frames");
-const screenLiftEvidence = JSON.parse(
-  await readFile(resolve(root, "parity/screen-lift.json"), "utf8"),
-);
-assert.equal(screenLiftEvidence.kind, "original");
-assert.equal(screenLiftEvidence.artifacts.referenceVideo, undefined);
-assert.equal(screenLiftEvidence.result.meanSsim, undefined);
+for (const [name, group] of [
+  ["screen-lift", "device-frames"],
+  ["before-after", "split-layouts"],
+]) {
+  const original = catalog.find((entry) => entry.item.name === name);
+  assert(original, `${name}: must be listed in the catalog`);
+  assert.equal(original.source.id, "hyfrme");
+  assert.equal(taxonomyFor(original).group.id, group);
+  const evidence = JSON.parse(
+    await readFile(resolve(root, "parity", `${name}.json`), "utf8"),
+  );
+  assert.equal(evidence.kind, "original");
+  assert.equal(evidence.artifacts.referenceVideo, undefined);
+  assert.equal(evidence.result.meanSsim, undefined);
+}
 
 console.log(
   `Catalog taxonomy passed: ${entries.length} blocks, ${assigned.size} named placements.`,

@@ -1,0 +1,91 @@
+{
+  "slug": "t3-thread-reorder",
+  "origin": {
+    "repository": "https://github.com/pingdotgg/t3code",
+    "commit": "f925d639421844f02b3166d29281905dbba6d529",
+    "source": "apps/web/src/components/Sidebar.tsx, apps/web/src/components/Sidebar.logic.ts, and apps/web/src/state/entities.ts",
+    "license": "MIT; @pierre/trees and @pierre/diffs Apache-2.0"
+  },
+  "fixture": {
+    "width": 1200,
+    "height": 659,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "lifted": 25,
+      "over": 45,
+      "dropped": 65,
+      "persisted": 90
+    },
+    "sourceHashes": {
+      "index": "76dc31527cb322caa7fcd43540428d561294ae70edd6e58a7d4ea219460126b8",
+      "css": "7e8c650997b043793b8b073da6b524f7c7460fd70ced779291bca6b66264005c",
+      "js": "990874e9806303c06edff2bd0b9af98453c64843db74b5a0609974a2d686be07"
+    },
+    "domSha256": {
+      "before": "ae6bd8448fac54ab864ca7f72ee937646b3d703a2a6cde4124688ad1f0bf0bf8",
+      "lifted": "a8ebad27a2a9d03df5d4a7ff9805e3b00839083118fced9bb2f569e100e188a3",
+      "over": "5e12fdd7addce98e8628ad841956e9b9edecbf6ea0df6dd608689dc8e306eb6b",
+      "dropped": "1b2ff196f87e2bd788e788bb132a6e01b1257d837b6d96aa6a2a567560f653d6",
+      "persisted": "94737bfa7e93ae0e92e5db6e75b99c0707451873aeba26d91109cd43a53c02ad"
+    },
+    "orderBefore": [
+      "Build a logo intro",
+      "Catalog motion audit"
+    ],
+    "orderAfter": [
+      "Catalog motion audit",
+      "Build a logo intro"
+    ],
+    "keysBefore": {
+      "Build a logo intro": "h",
+      "Catalog motion audit": "n"
+    },
+    "keysAfter": {
+      "Build a logo intro": "h",
+      "Catalog motion audit": "e"
+    },
+    "referenceSha256": "3aff346eb6f7ad5f74eb74f0e5ba18a02d0d2dc3fc6ac5374908c351f0c25806",
+    "compositionSha256": "f85b1603c896a76e1dc45dde73fdd93f475da5704cb6b7fa1c8d93a33cef9453"
+  },
+  "classification": "source-dom-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.989,
+    "minSsim": 0.985
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.9907953333333335,
+    "minSsim": 0.990757,
+    "p05Ssim": 0.990757,
+    "p95Ssim": 0.99085,
+    "worstFrame": 45,
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed with no errors; strict render passed",
+    "sourceBrowser": "Google Chrome for Testing 152.0.7977.30",
+    "sourceBrowserFlags": [
+      "--no-sandbox",
+      "--disable-dev-shm-usage",
+      "--font-render-hinting=none",
+      "--force-color-profile=srgb",
+      "--use-gl=angle",
+      "--use-angle=gl-egl",
+      "--enable-gpu-rasterization",
+      "--ignore-gpu-blocklist",
+      "--disable-software-rasterizer"
+    ],
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/t3-thread-reorder/reference.mp4",
+    "hyperframesVideo": "public/previews/t3-thread-reorder/hyperframes.mp4",
+    "thumbnail": "public/previews/t3-thread-reorder/thumbnail.png",
+    "frameSsim": "parity/t3-thread-reorder-diff/ssim.txt",
+    "hyperframesCheck": "parity/t3-thread-reorder-diff/hyperframes-check.json",
+    "worstFrame": "parity/t3-thread-reorder-diff/worst-frame.png"
+  }
+}

@@ -61,8 +61,20 @@ const run = (args) =>
   });
 
 for (const [index, item] of items.entries()) {
+  const manifest = JSON.parse(
+    await readFile(
+      resolve(root, "registry/blocks", item.name, "registry-item.json"),
+      "utf8",
+    ),
+  );
+  if (
+    manifest.origin?.repository === "https://github.com/heygen-com/hyperframes"
+  )
+    continue;
   const previewDirectory = resolve(root, "public", "previews", item.name);
-  const representativeTime = representativeTimes.get(item.name);
+  const representativeTime =
+    representativeTimes.get(item.name) ??
+    (item.name.startsWith("caption-") ? 3 : undefined);
   await mkdir(previewDirectory, { recursive: true });
   await run([
     "-y",

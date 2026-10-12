@@ -1,0 +1,343 @@
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div data-composition-id=\"t3-project-action-run\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id=\"t3-project-action-run\"]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-project-action-run-v0042-cli/light/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 20 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-project-action-run-v0042-cli/light/compositions/t3-project-action-run.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      },
+      {
+        "code": "composition_heavy_overlay_count_high",
+        "severity": "warning",
+        "message": "This composition has 94 elements carrying \"heavy overlay\" CSS (filter:blur, radial-gradient, or clip-path). Field signal: a composition with ~40 such elements — including opacity:0 / visibility:hidden ones — captures solid-black for the first ~half of the render, recovering near the end. Reproduces identically via drawElement, forced screenshot capture, and snapshot, so the capture layer itself is the offender (not encoder/mux). Independent of duration. Presence alone matters; only display:none elements are excluded here.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-project-action-run-v0042-cli/light/compositions/t3-project-action-run.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split this sub-composition further into per-transition mini-compositions and concat the pieces (FFmpeg or the runtime's slideshow) so each capture only sees a small subset of heavy overlays at once. Even hidden overlays (opacity:0 / visibility:hidden) contribute — either remove truly unused ones from the source or scope them into their own per-transition sub-composition. If an overlay is genuinely inert for the whole clip, use display:none so it never enters the render tree. Field ref ts=1784040753 (#hyperframes-cli-feedback)."
+      }
+    ],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 5,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.222,
+        "selector": "span.pointer-events-none.absolute",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 153,
+          "top": 48,
+          "right": 201,
+          "bottom": 96,
+          "width": 48,
+          "height": 48
+        },
+        "containerSelector": "#base-ui-_r_6_",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 163,
+          "top": 58,
+          "right": 191,
+          "bottom": 86,
+          "width": 28,
+          "height": 28
+        },
+        "overflow": {
+          "left": 10,
+          "right": 10,
+          "top": 10,
+          "bottom": 10
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-project-action-run.html",
+        "bbox": {
+          "x": 153,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 3.778,
+        "occurrences": 9,
+        "heldMs": 3556
+      },
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.222,
+        "selector": "span.pointer-events-none.absolute",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 181,
+          "top": 48,
+          "right": 229,
+          "bottom": 96,
+          "width": 48,
+          "height": 48
+        },
+        "containerSelector": "#base-ui-_r_c_",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 191,
+          "top": 58,
+          "right": 219,
+          "bottom": 86,
+          "width": 28,
+          "height": 28
+        },
+        "overflow": {
+          "left": 10,
+          "right": 10,
+          "top": 10,
+          "bottom": 10
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-project-action-run.html",
+        "bbox": {
+          "x": 181,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 3.778,
+        "occurrences": 9,
+        "heldMs": 3556
+      },
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.222,
+        "selector": "span.pointer-events-none.absolute",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 209,
+          "top": 48,
+          "right": 257,
+          "bottom": 96,
+          "width": 48,
+          "height": 48
+        },
+        "containerSelector": "#base-ui-_r_e_",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 219,
+          "top": 58,
+          "right": 247,
+          "bottom": 86,
+          "width": 28,
+          "height": 28
+        },
+        "overflow": {
+          "left": 10,
+          "right": 10,
+          "top": 10,
+          "bottom": 10
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-project-action-run.html",
+        "bbox": {
+          "x": 209,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 3.778,
+        "occurrences": 9,
+        "heldMs": 3556
+      },
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.222,
+        "selector": "div.legend-list-content-container",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 282,
+          "top": 52,
+          "right": 1174,
+          "bottom": 697,
+          "width": 892,
+          "height": 645
+        },
+        "containerSelector": "div.scrollbar-gutter-both.h-full",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 256,
+          "top": 52,
+          "right": 1200,
+          "bottom": 659,
+          "width": 944,
+          "height": 607
+        },
+        "overflow": {
+          "bottom": 38
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-project-action-run.html",
+        "bbox": {
+          "x": 282,
+          "y": 52,
+          "width": 892,
+          "height": 645
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.667,
+        "occurrences": 2,
+        "heldMs": 445.00000000000006
+      },
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 1.111,
+        "selector": "div.legend-list-content-container",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 282,
+          "top": 52,
+          "right": 1174,
+          "bottom": 525,
+          "width": 892,
+          "height": 473
+        },
+        "containerSelector": "div.scrollbar-gutter-both.h-full",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 256,
+          "top": 52,
+          "right": 1200,
+          "bottom": 379,
+          "width": 944,
+          "height": 327
+        },
+        "overflow": {
+          "bottom": 146
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-project-action-run.html",
+        "bbox": {
+          "x": 282,
+          "y": 52,
+          "width": 892,
+          "height": 473
+        },
+        "firstSeen": 1.111,
+        "lastSeen": 3.778,
+        "occurrences": 7,
+        "heldMs": 2667
+      }
+    ],
+    "duration": 4,
+    "samples": [
+      0.222,
+      0.667,
+      1.111,
+      1.556,
+      2,
+      2.444,
+      2.889,
+      3.333,
+      3.778
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 5,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.222,
+      1.111,
+      2,
+      2.889,
+      3.778
+    ],
+    "checked": 0,
+    "passed": 0
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.75",
+    "latestVersion": "0.8.78",
+    "updateAvailable": true
+  }
+}

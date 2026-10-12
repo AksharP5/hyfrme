@@ -1,0 +1,91 @@
+{
+  "slug": "shader-grain-gradient-ultraviolet",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+    "source": "registry/remocn/shader-grain-gradient-ultraviolet/index.tsx",
+    "config": "registry/remocn/shader-grain-gradient-ultraviolet/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "softness": 0.5,
+      "intensity": 0.45,
+      "noise": 0.25,
+      "colorBack": "#0d0221"
+    },
+    "background": "transparent"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "de4404707c402c09fbee5ae3bd405b615c0731902a1431f386dfeee47f45d1bc",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.530",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/shader-grain-gradient-ultraviolet/reference.mp4",
+    "hyperframesVideo": "public/previews/shader-grain-gradient-ultraviolet/hyperframes.mp4",
+    "thumbnail": "public/previews/shader-grain-gradient-ultraviolet/thumbnail.png",
+    "summary": "parity/shader-grain-gradient-ultraviolet-diff/summary.json",
+    "perFrameSsim": "parity/shader-grain-gradient-ultraviolet-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-grain-gradient-ultraviolet-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-grain-gradient-ultraviolet-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-grain-gradient-ultraviolet-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-grain-gradient-ultraviolet-diff/hyperframes-alpha.framemd5"
+  },
+  "sourceLimitations": [
+    {
+      "description": "All 150 source frames are byte-identical. Only sparse purple grain appears over the dark backdrop; no animated neon blob appears.",
+      "source": {
+        "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+        "path": "registry/remocn/shader-grain-gradient-ultraviolet/index.tsx",
+        "line": 15,
+        "sha256": "0eed8f2e57d8e7793d5c18f5d7c9aa336fab79d0909a16e790a706fe0ea71431"
+      },
+      "dependency": {
+        "path": "assets/remocn-paper-shaders/shaders/src/shaders/grain-gradient.ts",
+        "lines": [275, 276, 277, 278],
+        "sha256": "eff66641eb3dc05b22a9a2f882d2c109120556a9e8728f86f41fa8f12743b2b9",
+        "code": "clamp(0., 1., length(shape_uv + f1_traj))",
+        "assessment": "The Blob branch passes clamp(value, minimum, maximum) as clamp(0, 1, distance), reversing the intended argument order. It can also put minimum above maximum when distance is below 1. The source and Apache port preserve the same code; the static output is upstream behavior on this NVIDIA render backend.",
+        "glSlSpecification": "https://registry.khronos.org/OpenGL-Refpages/gl4/html/clamp.xhtml"
+      },
+      "measurement": {
+        "sourceFrameCount": 150,
+        "distinctSourcePngHashes": 1,
+        "sourcePngSha256": "f6947cefeb5ab9db6cf81f973185098876088b151bda2d9752954ba6f80fd6a8",
+        "uniqueRgbaColors": 3514,
+        "dominantColor": ["13,2,33,255", 692161]
+      },
+      "controlAdvice": "The authored config and installed variables expose no Shape control. Choose a working grain preset such as Sunrise, Nebula, Orb, Horizon, Tide, Arcade, or Dune, or edit the owned source to use a non-Blob shape."
+    }
+  ]
+}

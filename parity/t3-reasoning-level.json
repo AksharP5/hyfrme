@@ -1,0 +1,368 @@
+{
+  "slug": "t3-reasoning-level",
+  "origin": {
+    "repository": "https://github.com/pingdotgg/t3code",
+    "commit": "719a76ca1dbf5490f1aa33ffb9966301e02be9a9",
+    "source": "apps/web/src/components/chat/TraitsPicker.tsx",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1200,
+    "height": 659,
+    "fps": 30,
+    "durationInFrames": 120,
+    "props": {
+      "projectName": "hyfrme",
+      "prompt": "Verify the Hyfrme Logo Enter final-frame timing.",
+      "modelName": "GPT-6-Astra",
+      "reasoningBefore": "Medium",
+      "reasoningAfter": "High",
+      "openFrame": 30,
+      "hoverFrame": 60,
+      "selectFrame": 90,
+      "theme": "dark"
+    },
+    "sourceHashes": {
+      "index": "2b8881e6359db70fe8b0a4877b38fdc732f80ea4a23a50c78fc4eefd48346222",
+      "css": "e54af3b92d2187948dddc212d8c301c89fb73a8ef6b6191a669ed1dc34cf81a1",
+      "js": "137dadad30cbc18198c8db59b98ccdef23d0b45a1876b29f3fe43f145b0fafa0"
+    },
+    "sourceDomHashes": {
+      "before": "14362f3a9fd949c5b0bcfee832d0aaf2dfeea69bd1c26ab3f638f77a9aac0334",
+      "menu": "82ecc06b7629313b09e157e554fd426a41322501c3ca699942d470f2e714f8fd",
+      "portal": "5b4b610deef39190017cc1e5687b36348dd79714969e16f246488b77081417dc",
+      "hover": "82ecc06b7629313b09e157e554fd426a41322501c3ca699942d470f2e714f8fd",
+      "hover-portal": "99522919a56f4f31c0a558856b4de1992b67ed411bf8a6a6c5a8a8ad52b22739",
+      "after": "ff9298a41f031986f6b83ae33845eb7e135f70bf25448a5b4f3abdac1a1768d3"
+    },
+    "referenceSha256": "fca4cb72db7a70e5b710d8d227a44306f3b579d3c4b9758a77442cd2d4f62996",
+    "compositionSha256": "453a0c2437fa8694993d853c71327e2dcdfe89ca4ffdc785548f643b9b6739e1"
+  },
+  "providerState": "seeded model and reasoning options; no provider configured",
+  "interaction": "native v0.0.42 reasoning menu open, hover, and selection; no model inference executed",
+  "intentionalOcclusion": "The native Reasoning menu covers the empty-thread title and prompt. Only those underlying text elements carry layout overlap/occlusion annotations; focused menu-region SSIM measures the overlay itself.",
+  "focusedMenuBenchmark": {
+    "targetMeanSsim": 0.98,
+    "darkMeanSsim": 0.9743065000000009,
+    "lightMeanSsim": 0.9728465000000006,
+    "passed": false,
+    "note": "The menu remains below the original 0.980 crop target. Native and port computed font family, size, weight, line height, colors, and menu fills match; the native font-smoothing property was restored without changing SSIM. The remaining text-edge difference is unresolved. This crop is not pixel-identical."
+  },
+  "classification": "source-dom-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "thresholds": {
+    "meanSsim": 0.989,
+    "minSsim": 0.985,
+    "regions": {
+      "composer": {
+        "meanSsim": 0.985,
+        "minSsim": 0.98
+      },
+      "composer-controls": {
+        "meanSsim": 0.985,
+        "minSsim": 0.97
+      },
+      "reasoning-menu": {
+        "meanSsim": 0.97,
+        "minSsim": 0.96
+      },
+      "reasoning-hover-row": {
+        "meanSsim": 0.97,
+        "minSsim": 0.96
+      }
+    }
+  },
+  "result": {
+    "frameCount": 120,
+    "meanSsim": 0.9903389833333319,
+    "minSsim": 0.990201,
+    "worstFrame": 0,
+    "pass": true,
+    "p05Ssim": 0.990203,
+    "p95Ssim": 0.990629
+  },
+  "themes": {
+    "dark": {
+      "referenceSha256": "fca4cb72db7a70e5b710d8d227a44306f3b579d3c4b9758a77442cd2d4f62996",
+      "themeSha256": "b194f85b2d13e97eace87af400c70c3c2e6ab8a1d010fb2d362750e42d7bc3fb",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9903389833333319,
+        "minSsim": 0.990201,
+        "worstFrame": 0,
+        "pass": true,
+        "p05Ssim": 0.990203,
+        "p95Ssim": 0.990629
+      },
+      "regions": {
+        "composer": {
+          "crop": {
+            "name": "composer",
+            "x": 344,
+            "y": 259,
+            "width": 768,
+            "height": 143,
+            "first": 0,
+            "last": 119
+          },
+          "frameCount": 120,
+          "meanSsim": 0.989100499999997,
+          "minSsim": 0.986652,
+          "worstFrame": 30,
+          "thresholds": {
+            "meanSsim": 0.985,
+            "minSsim": 0.98
+          },
+          "pass": true
+        },
+        "composer-controls": {
+          "crop": {
+            "name": "composer-controls",
+            "x": 354,
+            "y": 347,
+            "width": 745,
+            "height": 47,
+            "first": 0,
+            "last": 119
+          },
+          "frameCount": 120,
+          "meanSsim": 0.9851789999999997,
+          "minSsim": 0.978198,
+          "worstFrame": 30,
+          "thresholds": {
+            "meanSsim": 0.985,
+            "minSsim": 0.97
+          },
+          "pass": true
+        },
+        "reasoning-menu": {
+          "crop": {
+            "name": "reasoning-menu",
+            "x": 502,
+            "y": 40,
+            "width": 170,
+            "height": 311,
+            "first": 30,
+            "last": 89
+          },
+          "frameCount": 60,
+          "meanSsim": 0.9743065000000009,
+          "minSsim": 0.9743,
+          "worstFrame": 30,
+          "thresholds": {
+            "meanSsim": 0.97,
+            "minSsim": 0.96
+          },
+          "pass": true
+        },
+        "reasoning-hover-row": {
+          "crop": {
+            "name": "reasoning-hover-row",
+            "x": 507,
+            "y": 126,
+            "width": 160,
+            "height": 28,
+            "first": 60,
+            "last": 89
+          },
+          "frameCount": 30,
+          "meanSsim": 0.9900829999999995,
+          "minSsim": 0.990083,
+          "worstFrame": 60,
+          "thresholds": {
+            "meanSsim": 0.97,
+            "minSsim": 0.96
+          },
+          "pass": true
+        }
+      },
+      "popupBox": {
+        "x": 502,
+        "y": 40,
+        "width": 169.4375,
+        "height": 311
+      },
+      "triggerBox": {
+        "x": 501.796875,
+        "y": 354.5,
+        "width": 87.796875,
+        "height": 28
+      },
+      "motion": {
+        "open": [],
+        "hover": [],
+        "select": []
+      },
+      "artifacts": {
+        "referenceVideo": "public/previews/t3-reasoning-level/reference.mp4",
+        "hyperframesVideo": "public/previews/t3-reasoning-level/hyperframes.mp4",
+        "frameSsim": "parity/t3-reasoning-level-diff/dark/ssim.txt",
+        "regionSsim": {
+          "composer": "parity/t3-reasoning-level-diff/dark/composer-ssim.txt",
+          "composer-controls": "parity/t3-reasoning-level-diff/dark/composer-controls-ssim.txt",
+          "reasoning-menu": "parity/t3-reasoning-level-diff/dark/reasoning-menu-ssim.txt",
+          "reasoning-hover-row": "parity/t3-reasoning-level-diff/dark/reasoning-hover-row-ssim.txt"
+        },
+        "hyperframesCheck": "parity/t3-reasoning-level-diff/dark/hyperframes-check.json",
+        "installedCheck": "parity/t3-reasoning-level-diff/dark/installed-check.json",
+        "customCheck": "parity/t3-reasoning-level-diff/dark/custom-check.json",
+        "worstFrame": "parity/t3-reasoning-level-diff/dark/worst-frame.png",
+        "customized": "parity/t3-reasoning-level-diff/dark/customized.png"
+      }
+    },
+    "light": {
+      "referenceSha256": "ebc7afe55eca516906cc585617392a38d2033a559050a2c066ecf07fef67bec6",
+      "themeSha256": "83c7701d9159470f2be2a430ab8deae403a853d83f08aaa12621a42c4dcc4d65",
+      "result": {
+        "frameCount": 120,
+        "meanSsim": 0.9906131750000018,
+        "minSsim": 0.990483,
+        "worstFrame": 0,
+        "pass": true,
+        "p05Ssim": 0.990492,
+        "p95Ssim": 0.99078
+      },
+      "regions": {
+        "composer": {
+          "crop": {
+            "name": "composer",
+            "x": 344,
+            "y": 259,
+            "width": 768,
+            "height": 143,
+            "first": 0,
+            "last": 119
+          },
+          "frameCount": 120,
+          "meanSsim": 0.9894179999999988,
+          "minSsim": 0.987921,
+          "worstFrame": 30,
+          "thresholds": {
+            "meanSsim": 0.985,
+            "minSsim": 0.98
+          },
+          "pass": true
+        },
+        "composer-controls": {
+          "crop": {
+            "name": "composer-controls",
+            "x": 354,
+            "y": 347,
+            "width": 745,
+            "height": 47,
+            "first": 0,
+            "last": 119
+          },
+          "frameCount": 120,
+          "meanSsim": 0.9862232500000008,
+          "minSsim": 0.983143,
+          "worstFrame": 30,
+          "thresholds": {
+            "meanSsim": 0.985,
+            "minSsim": 0.97
+          },
+          "pass": true
+        },
+        "reasoning-menu": {
+          "crop": {
+            "name": "reasoning-menu",
+            "x": 502,
+            "y": 40,
+            "width": 170,
+            "height": 311,
+            "first": 30,
+            "last": 89
+          },
+          "frameCount": 60,
+          "meanSsim": 0.9728465000000006,
+          "minSsim": 0.972839,
+          "worstFrame": 60,
+          "thresholds": {
+            "meanSsim": 0.97,
+            "minSsim": 0.96
+          },
+          "pass": true
+        },
+        "reasoning-hover-row": {
+          "crop": {
+            "name": "reasoning-hover-row",
+            "x": 507,
+            "y": 126,
+            "width": 160,
+            "height": 28,
+            "first": 60,
+            "last": 89
+          },
+          "frameCount": 30,
+          "meanSsim": 0.9887009999999996,
+          "minSsim": 0.988701,
+          "worstFrame": 60,
+          "thresholds": {
+            "meanSsim": 0.97,
+            "minSsim": 0.96
+          },
+          "pass": true
+        }
+      },
+      "popupBox": {
+        "x": 502,
+        "y": 40,
+        "width": 169.4375,
+        "height": 311
+      },
+      "triggerBox": {
+        "x": 501.796875,
+        "y": 354.5,
+        "width": 87.796875,
+        "height": 28
+      },
+      "motion": {
+        "open": [],
+        "hover": [],
+        "select": []
+      },
+      "artifacts": {
+        "referenceVideo": "public/previews/t3-reasoning-level/reference-light.mp4",
+        "hyperframesVideo": "public/previews/t3-reasoning-level/hyperframes-light.mp4",
+        "frameSsim": "parity/t3-reasoning-level-diff/light/ssim.txt",
+        "regionSsim": {
+          "composer": "parity/t3-reasoning-level-diff/light/composer-ssim.txt",
+          "composer-controls": "parity/t3-reasoning-level-diff/light/composer-controls-ssim.txt",
+          "reasoning-menu": "parity/t3-reasoning-level-diff/light/reasoning-menu-ssim.txt",
+          "reasoning-hover-row": "parity/t3-reasoning-level-diff/light/reasoning-hover-row-ssim.txt"
+        },
+        "hyperframesCheck": "parity/t3-reasoning-level-diff/light/hyperframes-check.json",
+        "installedCheck": "parity/t3-reasoning-level-diff/light/installed-check.json",
+        "customCheck": "parity/t3-reasoning-level-diff/light/custom-check.json",
+        "worstFrame": "parity/t3-reasoning-level-diff/light/worst-frame.png",
+        "customized": "parity/t3-reasoning-level-diff/light/customized.png"
+      }
+    }
+  },
+  "checks": {
+    "hyperframes": "full check and strict 120-frame render passed in both themes",
+    "hyperframesVersion": "0.8.75",
+    "sourceBrowser": "Chrome Headless Shell 152.0.7977.30",
+    "installedThroughCli": true,
+    "customVariables": "dark and light project, hero, model, before/after reasoning, prompt, and open/hover/select timing overrides passed full check, strict 120-frame render, three snapshots, OCR, and exact configured-frame change assertions"
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/t3-reasoning-level/reference.mp4",
+    "hyperframesVideo": "public/previews/t3-reasoning-level/hyperframes.mp4",
+    "frameSsim": "parity/t3-reasoning-level-diff/dark/ssim.txt",
+    "regionSsim": {
+      "composer": "parity/t3-reasoning-level-diff/dark/composer-ssim.txt",
+      "composer-controls": "parity/t3-reasoning-level-diff/dark/composer-controls-ssim.txt",
+      "reasoning-menu": "parity/t3-reasoning-level-diff/dark/reasoning-menu-ssim.txt",
+      "reasoning-hover-row": "parity/t3-reasoning-level-diff/dark/reasoning-hover-row-ssim.txt"
+    },
+    "hyperframesCheck": "parity/t3-reasoning-level-diff/dark/hyperframes-check.json",
+    "installedCheck": "parity/t3-reasoning-level-diff/dark/installed-check.json",
+    "customCheck": "parity/t3-reasoning-level-diff/dark/custom-check.json",
+    "worstFrame": "parity/t3-reasoning-level-diff/dark/worst-frame.png",
+    "customized": "parity/t3-reasoning-level-diff/dark/customized.png",
+    "thumbnail": "public/previews/t3-reasoning-level/thumbnail.png",
+    "lightThumbnail": "public/previews/t3-reasoning-level/thumbnail-light.png"
+  }
+}

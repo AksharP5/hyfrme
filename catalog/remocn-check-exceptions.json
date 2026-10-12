@@ -788,7 +788,7 @@
     "finding": {
       "code": "contrast_aa_failure",
       "selector": "div > div > div > div > div > div > div > div > div:nth-of-type(1) > span > span:nth-of-type(2)",
-      "text": "Try: draft an email \u00b7 summarize a doc \u00b7 plan your ",
+      "text": "Try: draft an email · summarize a doc · plan your ",
       "fg": "rgb(163,160,151)",
       "bg": "rgb(246,245,241)",
       "ratio": 2.4,
@@ -808,12 +808,1955 @@
     "finding": {
       "code": "contrast_aa_failure",
       "selector": "div > div > div > div > div > div > div > div > div:nth-of-type(1) > span > span:nth-of-type(2)",
-      "text": "Try: draft an email \u00b7 summarize a doc \u00b7 plan your ",
+      "text": "Try: draft an email · summarize a doc · plan your ",
       "fg": "rgb(163,160,151)",
       "bg": "rgb(255,255,255)",
       "ratio": 2.61,
       "requiredRatio": 4.5
     },
     "reason": "The pinned Claude Chat light theme defines placeholder #A3A097 on a white card (index.tsx:38-44) and applies that color to its default Try prompt (line 312). Its unchanged source palette yields 2.4:1 during entrance and 2.61:1 once settled. All 150 source frames match with exact alpha and RGB SSIM mean 0.996026/min 0.994703; retain the full contrast findings in the audit."
+  },
+  {
+    "slug": "echo-stack",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/echo-stack/index.tsx",
+      "config": "registry/remocn/echo-stack/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+      "containerSelector": "#echo-stack-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(7)",
+      "text": "Bold."
+    },
+    "reason": "The pinned source intentionally layers outlined echo copies behind the bold word. The overlap is the effect itself; the verified port keeps that treatment at 120 frames with mean/min SSIM 0.999952/0.999496 and exact alpha."
+  },
+  {
+    "slug": "path-ride",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/path-ride/index.tsx",
+      "config": "registry/remocn/path-ride/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap"
+    },
+    "reason": "The source lays each character along one shared motion path, so adjacent glyph boxes overlap by design. The 17 inspector hits are those per-letter layers; all 96 frames pass parity (mean/min SSIM 0.995157/0.991322) with exact alpha."
+  },
+  {
+    "slug": "stripe-type",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/stripe-type/index.tsx",
+      "config": "registry/remocn/stripe-type/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap"
+    },
+    "reason": "The source layers the headline and striped type treatment in the same display zone. The single inspector hit is the intended typographic overlap; all 100 frames pass parity (mean/min SSIM 0.990863/0.986202) with exact alpha."
+  },
+  {
+    "slug": "type-repeater",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/type-repeater/index.tsx",
+      "config": "registry/remocn/type-repeater/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap"
+    },
+    "reason": "Repeated filled and outline copies are the core treatment; the 66 overlap hits are intentional source layers."
+  },
+  {
+    "slug": "type-repeater",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/type-repeater/index.tsx",
+      "config": "registry/remocn/type-repeater/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "contrast_aa_failure"
+    },
+    "reason": "The source uses pale repeated type across its orange accent band during the reveal. The 24 contrast hits describe these low-opacity and stroke states; all 100 frames match exactly with exact alpha."
+  },
+  {
+    "slug": "agent-run",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/agent-run/index.tsx",
+      "config": "registry/remocn/agent-run/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap"
+    },
+    "reason": "The source dashboard title and running transcript share a card boundary; the single bounding-box collision remains legible in the pinned source and is preserved by the pixel-matched port."
+  },
+  {
+    "slug": "agent-run",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/agent-run/index.tsx",
+      "config": "registry/remocn/agent-run/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "contrast_aa_failure"
+    },
+    "reason": "The source uses muted secondary step numbers on white UI surfaces. The 10 contrast hits describe these low-emphasis labels; all 355 frames pass parity (mean/min SSIM 0.991356/0.985317) with exact alpha."
+  },
+  {
+    "slug": "code-morph",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/code-morph/index.tsx",
+      "config": "registry/remocn/code-morph/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "contrast_aa_failure",
+      "fg": "rgb(113,113,122)",
+      "bg": "rgb(17,17,19)",
+      "ratio": 3.9,
+      "requiredRatio": 4.5
+    },
+    "reason": "The pinned PALETTES.dark uses #71717a punctuation and #52525b line numbers on #111113. Its translucent line-highlight band produces the other recorded gutter backgrounds. These exact foreground/background contrast samples inherit the source palette; preserve its code styling and keep the complete findings visible in the audit."
+  },
+  {
+    "slug": "code-morph",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/code-morph/index.tsx",
+      "config": "registry/remocn/code-morph/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "contrast_aa_failure",
+      "fg": "rgb(82,82,91)",
+      "bg": "rgb(17,17,19)",
+      "ratio": 2.44,
+      "requiredRatio": 4.5
+    },
+    "reason": "The pinned PALETTES.dark uses #71717a punctuation and #52525b line numbers on #111113. Its translucent line-highlight band produces the other recorded gutter backgrounds. These exact foreground/background contrast samples inherit the source palette; preserve its code styling and keep the complete findings visible in the audit."
+  },
+  {
+    "slug": "code-morph",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/code-morph/index.tsx",
+      "config": "registry/remocn/code-morph/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "contrast_aa_failure",
+      "fg": "rgb(82,82,91)",
+      "bg": "rgb(17,22,27)",
+      "ratio": 2.35,
+      "requiredRatio": 4.5
+    },
+    "reason": "The pinned PALETTES.dark uses #71717a punctuation and #52525b line numbers on #111113. Its translucent line-highlight band produces the other recorded gutter backgrounds. These exact foreground/background contrast samples inherit the source palette; preserve its code styling and keep the complete findings visible in the audit."
+  },
+  {
+    "slug": "code-morph",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/code-morph/index.tsx",
+      "config": "registry/remocn/code-morph/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "contrast_aa_failure",
+      "fg": "rgb(82,82,91)",
+      "bg": "rgb(16,40,53)",
+      "ratio": 1.97,
+      "requiredRatio": 4.5
+    },
+    "reason": "The pinned PALETTES.dark uses #71717a punctuation and #52525b line numbers on #111113. Its translucent line-highlight band produces the other recorded gutter backgrounds. These exact foreground/background contrast samples inherit the source palette; preserve its code styling and keep the complete findings visible in the audit."
+  },
+  {
+    "slug": "ring-text",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/ring-text/index.tsx",
+      "config": "registry/remocn/ring-text/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "contrast_aa_failure",
+      "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span",
+      "text": "T",
+      "fg": "rgb(212,255,31)",
+      "bg": "rgb(212,255,31)",
+      "ratio": 1,
+      "requiredRatio": 3
+    },
+    "reason": "The pinned source paints lime #d4ff1f characters on black #0a0a0a 3D band panels over a lime canvas. This exact first-character finding samples the canvas behind its rotated panel as the background instead of the visible black band. All 180 lossless frames match exactly in RGB and alpha; preserve the source geometry and retain the full contrast finding in the audit."
+  },
+  {
+    "slug": "ring-text",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "7b1e6dadf21243bf6369f1392c8e898b8b40943e",
+      "source": "registry/remocn/ring-text/index.tsx",
+      "config": "registry/remocn/ring-text/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "contrast_aa_failure",
+      "selector": "div > div > div > div > div > div > div > div:nth-of-type(1) > span",
+      "text": "T",
+      "fg": "rgb(212,255,31)",
+      "bg": "rgb(190,228,29)",
+      "ratio": 1.27,
+      "requiredRatio": 3
+    },
+    "reason": "The pinned source paints lime #d4ff1f characters on black #0a0a0a 3D band panels over a lime canvas and dims each letter by its angle. This exact first-character finding samples the rotated panel boundary against the composite canvas. All 180 lossless frames match exactly in RGB and alpha; preserve the source geometry and retain the full contrast finding in the audit."
+  },
+  {
+    "slug": "caption-emoji",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-emoji/index.tsx",
+      "entry": "components/docs/examples/caption-emoji-example.tsx",
+      "config": "registry/remocn/caption-emoji/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-emoji-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1)",
+      "containerSelector": "#caption-emoji-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(2)",
+      "text": "👀"
+    },
+    "reason": "Pinned source registry/remocn/caption-emoji/index.tsx:117,120,127,132. The aria-hidden floating emoji is intentionally positioned above and partly across its word. Screenshot at 6.9s shows the speech bubble above Captions; bounding boxes overlap although the caption remains legible. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-emoji",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-emoji/index.tsx",
+      "entry": "components/docs/examples/caption-emoji-example.tsx",
+      "config": "registry/remocn/caption-emoji/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-emoji-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1)",
+      "containerSelector": "#caption-emoji-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(2)",
+      "text": "⏱️"
+    },
+    "reason": "Pinned source registry/remocn/caption-emoji/index.tsx:117,120,127,132. The aria-hidden floating emoji is intentionally positioned above and partly across its word. Screenshot at 6.9s shows the speech bubble above Captions; bounding boxes overlap although the caption remains legible. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-emoji",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-emoji/index.tsx",
+      "entry": "components/docs/examples/caption-emoji-example.tsx",
+      "config": "registry/remocn/caption-emoji/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-emoji-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-emoji-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "💬"
+    },
+    "reason": "Pinned source registry/remocn/caption-emoji/index.tsx:117,120,127,132. The aria-hidden floating emoji is intentionally positioned above and partly across its word. Screenshot at 6.9s shows the speech bubble above Captions; bounding boxes overlap although the caption remains legible. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-emoji",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-emoji/index.tsx",
+      "entry": "components/docs/examples/caption-emoji-example.tsx",
+      "config": "registry/remocn/caption-emoji/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-emoji-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1)",
+      "containerSelector": "#caption-emoji-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(2)",
+      "text": "🔇"
+    },
+    "reason": "Pinned source registry/remocn/caption-emoji/index.tsx:117,120,127,132. The aria-hidden floating emoji is intentionally positioned above and partly across its word. Screenshot at 6.9s shows the speech bubble above Captions; bounding boxes overlap although the caption remains legible. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "So"
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "here's"
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "the"
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "thing."
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "Most"
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "demo"
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "people"
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "in"
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "first"
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "three"
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(6) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(6) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "seconds."
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "Captions"
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "keep"
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "them"
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "even"
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "with"
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "sound"
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-karaoke",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-karaoke/index.tsx",
+      "entry": "components/docs/examples/caption-karaoke-example.tsx",
+      "config": "registry/remocn/caption-karaoke/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-karaoke-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "text": "off."
+    },
+    "reason": "Pinned source registry/remocn/caption-karaoke/index.tsx:88,93,94,99,102. The colored aria-hidden fill copy is absolutely layered over the white token copy, clipped horizontally by word progress. Screenshot at 3.5s shows intended yellow fill crossing the active word. This is intrinsic duplicate-text layering. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "text": "So"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+      "text": "here's"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+      "text": "the"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1)",
+      "text": "thing."
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "text": "Most"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+      "text": "demo"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+      "text": "videos"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1)",
+      "text": "lose"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "text": "people"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+      "text": "in"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1)",
+      "text": "first"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1)",
+      "text": "three"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(6) > span:nth-of-type(1)",
+      "text": "seconds."
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "text": "Captions"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+      "text": "keep"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+      "text": "them"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1)",
+      "text": "watching,"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "text": "even"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+      "text": "with"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1)",
+      "text": "sound"
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-knockout",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-knockout/index.tsx",
+      "entry": "components/docs/examples/caption-knockout-example.tsx",
+      "config": "registry/remocn/caption-knockout/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-knockout-source-root > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1)",
+      "text": "off."
+    },
+    "reason": "Pinned source registry/remocn/caption-knockout/index.tsx:108,133,144,164,169,173. Transparent HTML text spans measure word geometry while the SVG mask renders the visible punched-out text. Screenshot at 0.5s shows readable knockout text over the moving source stripe background. Auditor flags the transparent measurement copies. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3)",
+      "text": "S"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(4)",
+      "text": "o"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(6)",
+      "text": "h"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(8) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(9)",
+      "text": "e"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(12) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(13)",
+      "text": "t"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(13) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(14)",
+      "text": "h"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(14) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(15)",
+      "text": "e"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(16) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(17)",
+      "text": "t"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(17) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(18)",
+      "text": "h"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(6)",
+      "text": "t"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(7) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(8)",
+      "text": "d"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(4)",
+      "text": "e"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3)",
+      "text": "C"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(4)",
+      "text": "a"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(5)",
+      "text": "p"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(8) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(9)",
+      "text": "i"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(9) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(10)",
+      "text": "t"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-label-maker",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-label-maker/index.tsx",
+      "entry": "components/docs/examples/caption-label-maker-example.tsx",
+      "config": "registry/remocn/caption-label-maker/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_occluded",
+      "selector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(16) > span:nth-of-type(1)",
+      "containerSelector": "#caption-label-maker-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(17)",
+      "text": "s"
+    },
+    "reason": "Pinned source registry/remocn/caption-label-maker/index.tsx:85,89,125,163,170,173. Each letter has its own opaque tape segment; the whole tape rotates slightly. The auditor uses axis-aligned boxes and reports a small covered fraction on neighboring segment/letter geometry, typically 0.04. Screenshot at 0.5s shows readable So he with no visible glyph loss. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-scramble",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-scramble/index.tsx",
+      "entry": "components/docs/examples/caption-scramble-example.tsx",
+      "config": "registry/remocn/caption-scramble/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-scramble-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "text": "here's"
+    },
+    "reason": "Pinned source registry/remocn/caption-scramble/index.tsx:120,124,125,133,137,138. Transparent original-token spans reserve width under the absolutely positioned progressive scrambled replacement. Screenshot at 0.5s shows the active word rendered as partly resolved glyphs while the hidden original is flagged. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-scramble",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-scramble/index.tsx",
+      "entry": "components/docs/examples/caption-scramble-example.tsx",
+      "config": "registry/remocn/caption-scramble/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-scramble-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "text": "first"
+    },
+    "reason": "Pinned source registry/remocn/caption-scramble/index.tsx:120,124,125,133,137,138. Transparent original-token spans reserve width under the absolutely positioned progressive scrambled replacement. Screenshot at 0.5s shows the active word rendered as partly resolved glyphs while the hidden original is flagged. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-scramble",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-scramble/index.tsx",
+      "entry": "components/docs/examples/caption-scramble-example.tsx",
+      "config": "registry/remocn/caption-scramble/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-scramble-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "text": "Captions"
+    },
+    "reason": "Pinned source registry/remocn/caption-scramble/index.tsx:120,124,125,133,137,138. Transparent original-token spans reserve width under the absolutely positioned progressive scrambled replacement. Screenshot at 0.5s shows the active word rendered as partly resolved glyphs while the hidden original is flagged. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-slice",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-slice/index.tsx",
+      "entry": "components/docs/examples/caption-slice-example.tsx",
+      "config": "registry/remocn/caption-slice/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "text": "So"
+    },
+    "reason": "Pinned source registry/remocn/caption-slice/index.tsx:81,83,106,110,111,117,125,131. Transparent tokens reserve upcoming word width; during entrance, top/bottom clipped copies slide into place over a transparent original. Screenshot at 0.5s shows the intended split active word and empty upcoming positions. Overlap errors concern the two clipped halves. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-slice",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-slice/index.tsx",
+      "entry": "components/docs/examples/caption-slice-example.tsx",
+      "config": "registry/remocn/caption-slice/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "text": "here's"
+    },
+    "reason": "Pinned source registry/remocn/caption-slice/index.tsx:81,83,106,110,111,117,125,131. Transparent tokens reserve upcoming word width; during entrance, top/bottom clipped copies slide into place over a transparent original. Screenshot at 0.5s shows the intended split active word and empty upcoming positions. Overlap errors concern the two clipped halves. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-slice",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-slice/index.tsx",
+      "entry": "components/docs/examples/caption-slice-example.tsx",
+      "config": "registry/remocn/caption-slice/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+      "text": "the"
+    },
+    "reason": "Pinned source registry/remocn/caption-slice/index.tsx:81,83,106,110,111,117,125,131. Transparent tokens reserve upcoming word width; during entrance, top/bottom clipped copies slide into place over a transparent original. Screenshot at 0.5s shows the intended split active word and empty upcoming positions. Overlap errors concern the two clipped halves. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-slice",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-slice/index.tsx",
+      "entry": "components/docs/examples/caption-slice-example.tsx",
+      "config": "registry/remocn/caption-slice/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1)",
+      "text": "thing."
+    },
+    "reason": "Pinned source registry/remocn/caption-slice/index.tsx:81,83,106,110,111,117,125,131. Transparent tokens reserve upcoming word width; during entrance, top/bottom clipped copies slide into place over a transparent original. Screenshot at 0.5s shows the intended split active word and empty upcoming positions. Overlap errors concern the two clipped halves. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-slice",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-slice/index.tsx",
+      "entry": "components/docs/examples/caption-slice-example.tsx",
+      "config": "registry/remocn/caption-slice/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(2)",
+      "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(3)",
+      "text": "the"
+    },
+    "reason": "Pinned source registry/remocn/caption-slice/index.tsx:81,83,106,110,111,117,125,131. Transparent tokens reserve upcoming word width; during entrance, top/bottom clipped copies slide into place over a transparent original. Screenshot at 0.5s shows the intended split active word and empty upcoming positions. Overlap errors concern the two clipped halves. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-slice",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-slice/index.tsx",
+      "entry": "components/docs/examples/caption-slice-example.tsx",
+      "config": "registry/remocn/caption-slice/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1)",
+      "text": "lose"
+    },
+    "reason": "Pinned source registry/remocn/caption-slice/index.tsx:81,83,106,110,111,117,125,131. Transparent tokens reserve upcoming word width; during entrance, top/bottom clipped copies slide into place over a transparent original. Screenshot at 0.5s shows the intended split active word and empty upcoming positions. Overlap errors concern the two clipped halves. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-slice",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-slice/index.tsx",
+      "entry": "components/docs/examples/caption-slice-example.tsx",
+      "config": "registry/remocn/caption-slice/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "text": "the"
+    },
+    "reason": "Pinned source registry/remocn/caption-slice/index.tsx:81,83,106,110,111,117,125,131. Transparent tokens reserve upcoming word width; during entrance, top/bottom clipped copies slide into place over a transparent original. Screenshot at 0.5s shows the intended split active word and empty upcoming positions. Overlap errors concern the two clipped halves. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-slice",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-slice/index.tsx",
+      "entry": "components/docs/examples/caption-slice-example.tsx",
+      "config": "registry/remocn/caption-slice/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "text": "first"
+    },
+    "reason": "Pinned source registry/remocn/caption-slice/index.tsx:81,83,106,110,111,117,125,131. Transparent tokens reserve upcoming word width; during entrance, top/bottom clipped copies slide into place over a transparent original. Screenshot at 0.5s shows the intended split active word and empty upcoming positions. Overlap errors concern the two clipped halves. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-slice",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-slice/index.tsx",
+      "entry": "components/docs/examples/caption-slice-example.tsx",
+      "config": "registry/remocn/caption-slice/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1)",
+      "text": "three"
+    },
+    "reason": "Pinned source registry/remocn/caption-slice/index.tsx:81,83,106,110,111,117,125,131. Transparent tokens reserve upcoming word width; during entrance, top/bottom clipped copies slide into place over a transparent original. Screenshot at 0.5s shows the intended split active word and empty upcoming positions. Overlap errors concern the two clipped halves. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-slice",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-slice/index.tsx",
+      "entry": "components/docs/examples/caption-slice-example.tsx",
+      "config": "registry/remocn/caption-slice/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(6) > span:nth-of-type(1)",
+      "text": "seconds."
+    },
+    "reason": "Pinned source registry/remocn/caption-slice/index.tsx:81,83,106,110,111,117,125,131. Transparent tokens reserve upcoming word width; during entrance, top/bottom clipped copies slide into place over a transparent original. Screenshot at 0.5s shows the intended split active word and empty upcoming positions. Overlap errors concern the two clipped halves. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-slice",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-slice/index.tsx",
+      "entry": "components/docs/examples/caption-slice-example.tsx",
+      "config": "registry/remocn/caption-slice/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+      "text": "keep"
+    },
+    "reason": "Pinned source registry/remocn/caption-slice/index.tsx:81,83,106,110,111,117,125,131. Transparent tokens reserve upcoming word width; during entrance, top/bottom clipped copies slide into place over a transparent original. Screenshot at 0.5s shows the intended split active word and empty upcoming positions. Overlap errors concern the two clipped halves. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-slice",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-slice/index.tsx",
+      "entry": "components/docs/examples/caption-slice-example.tsx",
+      "config": "registry/remocn/caption-slice/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+      "text": "them"
+    },
+    "reason": "Pinned source registry/remocn/caption-slice/index.tsx:81,83,106,110,111,117,125,131. Transparent tokens reserve upcoming word width; during entrance, top/bottom clipped copies slide into place over a transparent original. Screenshot at 0.5s shows the intended split active word and empty upcoming positions. Overlap errors concern the two clipped halves. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-slice",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-slice/index.tsx",
+      "entry": "components/docs/examples/caption-slice-example.tsx",
+      "config": "registry/remocn/caption-slice/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1)",
+      "text": "watching,"
+    },
+    "reason": "Pinned source registry/remocn/caption-slice/index.tsx:81,83,106,110,111,117,125,131. Transparent tokens reserve upcoming word width; during entrance, top/bottom clipped copies slide into place over a transparent original. Screenshot at 0.5s shows the intended split active word and empty upcoming positions. Overlap errors concern the two clipped halves. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-slice",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-slice/index.tsx",
+      "entry": "components/docs/examples/caption-slice-example.tsx",
+      "config": "registry/remocn/caption-slice/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1)",
+      "text": "off."
+    },
+    "reason": "Pinned source registry/remocn/caption-slice/index.tsx:81,83,106,110,111,117,125,131. Transparent tokens reserve upcoming word width; during entrance, top/bottom clipped copies slide into place over a transparent original. Screenshot at 0.5s shows the intended split active word and empty upcoming positions. Overlap errors concern the two clipped halves. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-split-flap",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-split-flap/index.tsx",
+      "entry": "components/docs/examples/caption-split-flap-example.tsx",
+      "config": "registry/remocn/caption-split-flap/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-split-flap-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-split-flap-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+      "text": "t"
+    },
+    "reason": "Pinned source registry/remocn/caption-split-flap/index.tsx:86,99,100,124,125,130,138. A tile contains top and bottom clipped letter leaves plus the turning leaf. They occupy the same nominal glyph box by design. Screenshot at 0.5s shows expected split-flap segments while the checker flags bounding-box overlap/occlusion. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-split-flap",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-split-flap/index.tsx",
+      "entry": "components/docs/examples/caption-split-flap-example.tsx",
+      "config": "registry/remocn/caption-split-flap/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-split-flap-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+      "containerSelector": "#caption-split-flap-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+      "text": "E"
+    },
+    "reason": "Pinned source registry/remocn/caption-split-flap/index.tsx:86,99,100,124,125,130,138. A tile contains top and bottom clipped letter leaves plus the turning leaf. They occupy the same nominal glyph box by design. Screenshot at 0.5s shows expected split-flap segments while the checker flags bounding-box overlap/occlusion. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-split-flap",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-split-flap/index.tsx",
+      "entry": "components/docs/examples/caption-split-flap-example.tsx",
+      "config": "registry/remocn/caption-split-flap/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-split-flap-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-split-flap-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+      "text": "t"
+    },
+    "reason": "Pinned source registry/remocn/caption-split-flap/index.tsx:86,99,100,124,125,130,138. A tile contains top and bottom clipped letter leaves plus the turning leaf. They occupy the same nominal glyph box by design. Screenshot at 0.5s shows expected split-flap segments while the checker flags bounding-box overlap/occlusion. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-split-flap",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-split-flap/index.tsx",
+      "entry": "components/docs/examples/caption-split-flap-example.tsx",
+      "config": "registry/remocn/caption-split-flap/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-split-flap-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(5) > span:nth-of-type(2) > span:nth-of-type(1)",
+      "containerSelector": "#caption-split-flap-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(5) > span:nth-of-type(3) > span:nth-of-type(1)",
+      "text": "0"
+    },
+    "reason": "Pinned source registry/remocn/caption-split-flap/index.tsx:86,99,100,124,125,130,138. A tile contains top and bottom clipped letter leaves plus the turning leaf. They occupy the same nominal glyph box by design. Screenshot at 0.5s shows expected split-flap segments while the checker flags bounding-box overlap/occlusion. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-split-flap",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-split-flap/index.tsx",
+      "entry": "components/docs/examples/caption-split-flap-example.tsx",
+      "config": "registry/remocn/caption-split-flap/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-split-flap-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(1)",
+      "containerSelector": "#caption-split-flap-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(3) > span:nth-of-type(3) > span:nth-of-type(1)",
+      "text": "e"
+    },
+    "reason": "Pinned source registry/remocn/caption-split-flap/index.tsx:86,99,100,124,125,130,138. A tile contains top and bottom clipped letter leaves plus the turning leaf. They occupy the same nominal glyph box by design. Screenshot at 0.5s shows expected split-flap segments while the checker flags bounding-box overlap/occlusion. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-stamp",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-stamp/index.tsx",
+      "entry": "components/docs/examples/caption-stamp-example.tsx",
+      "config": "registry/remocn/caption-stamp/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "content_overlap",
+      "selector": "#caption-stamp-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3)",
+      "containerSelector": "#caption-stamp-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(2)",
+      "text": "the"
+    },
+    "reason": "Pinned source registry/remocn/caption-stamp/index.tsx:171,196,210,211,213,226,227. The red rotated stamp scales into place over a fading base copy. At 0.9s its outer pad/rotation crosses the preceding word the; screenshot confirms this is source-defined slam motion rather than incorrect positioning. Exact SSIM is still required before exemption. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-typewriter",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-typewriter/index.tsx",
+      "entry": "components/docs/examples/caption-typewriter-example.tsx",
+      "config": "registry/remocn/caption-typewriter/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-typewriter-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(3)",
+      "text": "ere's"
+    },
+    "reason": "Pinned source registry/remocn/caption-typewriter/index.tsx:81,82,108,109. Unspoken suffix characters use transparent aria-hidden spans to reserve the full token width. Screenshot at 0.5s shows So h while the checker flags the reserved ere's and upcoming words. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-typewriter",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-typewriter/index.tsx",
+      "entry": "components/docs/examples/caption-typewriter-example.tsx",
+      "config": "registry/remocn/caption-typewriter/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-typewriter-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(2)",
+      "text": "the"
+    },
+    "reason": "Pinned source registry/remocn/caption-typewriter/index.tsx:81,82,108,109. Unspoken suffix characters use transparent aria-hidden spans to reserve the full token width. Screenshot at 0.5s shows So h while the checker flags the reserved ere's and upcoming words. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-typewriter",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-typewriter/index.tsx",
+      "entry": "components/docs/examples/caption-typewriter-example.tsx",
+      "config": "registry/remocn/caption-typewriter/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-typewriter-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(2)",
+      "text": "thing."
+    },
+    "reason": "Pinned source registry/remocn/caption-typewriter/index.tsx:81,82,108,109. Unspoken suffix characters use transparent aria-hidden spans to reserve the full token width. Screenshot at 0.5s shows So h while the checker flags the reserved ere's and upcoming words. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-typewriter",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-typewriter/index.tsx",
+      "entry": "components/docs/examples/caption-typewriter-example.tsx",
+      "config": "registry/remocn/caption-typewriter/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-typewriter-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(3)",
+      "text": "s"
+    },
+    "reason": "Pinned source registry/remocn/caption-typewriter/index.tsx:81,82,108,109. Unspoken suffix characters use transparent aria-hidden spans to reserve the full token width. Screenshot at 0.5s shows So h while the checker flags the reserved ere's and upcoming words. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-typewriter",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-typewriter/index.tsx",
+      "entry": "components/docs/examples/caption-typewriter-example.tsx",
+      "config": "registry/remocn/caption-typewriter/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-typewriter-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(2)",
+      "text": "lose"
+    },
+    "reason": "Pinned source registry/remocn/caption-typewriter/index.tsx:81,82,108,109. Unspoken suffix characters use transparent aria-hidden spans to reserve the full token width. Screenshot at 0.5s shows So h while the checker flags the reserved ere's and upcoming words. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-typewriter",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-typewriter/index.tsx",
+      "entry": "components/docs/examples/caption-typewriter-example.tsx",
+      "config": "registry/remocn/caption-typewriter/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-typewriter-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(3)",
+      "text": "rst"
+    },
+    "reason": "Pinned source registry/remocn/caption-typewriter/index.tsx:81,82,108,109. Unspoken suffix characters use transparent aria-hidden spans to reserve the full token width. Screenshot at 0.5s shows So h while the checker flags the reserved ere's and upcoming words. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-typewriter",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-typewriter/index.tsx",
+      "entry": "components/docs/examples/caption-typewriter-example.tsx",
+      "config": "registry/remocn/caption-typewriter/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-typewriter-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(2)",
+      "text": "three"
+    },
+    "reason": "Pinned source registry/remocn/caption-typewriter/index.tsx:81,82,108,109. Unspoken suffix characters use transparent aria-hidden spans to reserve the full token width. Screenshot at 0.5s shows So h while the checker flags the reserved ere's and upcoming words. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-typewriter",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-typewriter/index.tsx",
+      "entry": "components/docs/examples/caption-typewriter-example.tsx",
+      "config": "registry/remocn/caption-typewriter/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-typewriter-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(6) > span:nth-of-type(2)",
+      "text": "seconds."
+    },
+    "reason": "Pinned source registry/remocn/caption-typewriter/index.tsx:81,82,108,109. Unspoken suffix characters use transparent aria-hidden spans to reserve the full token width. Screenshot at 0.5s shows So h while the checker flags the reserved ere's and upcoming words. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-typewriter",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-typewriter/index.tsx",
+      "entry": "components/docs/examples/caption-typewriter-example.tsx",
+      "config": "registry/remocn/caption-typewriter/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-typewriter-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(6) > span:nth-of-type(3)",
+      "text": "."
+    },
+    "reason": "Pinned source registry/remocn/caption-typewriter/index.tsx:81,82,108,109. Unspoken suffix characters use transparent aria-hidden spans to reserve the full token width. Screenshot at 0.5s shows So h while the checker flags the reserved ere's and upcoming words. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-typewriter",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-typewriter/index.tsx",
+      "entry": "components/docs/examples/caption-typewriter-example.tsx",
+      "config": "registry/remocn/caption-typewriter/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-typewriter-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3)",
+      "text": "ons"
+    },
+    "reason": "Pinned source registry/remocn/caption-typewriter/index.tsx:81,82,108,109. Unspoken suffix characters use transparent aria-hidden spans to reserve the full token width. Screenshot at 0.5s shows So h while the checker flags the reserved ere's and upcoming words. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-typewriter",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-typewriter/index.tsx",
+      "entry": "components/docs/examples/caption-typewriter-example.tsx",
+      "config": "registry/remocn/caption-typewriter/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-typewriter-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(2)",
+      "text": "keep"
+    },
+    "reason": "Pinned source registry/remocn/caption-typewriter/index.tsx:81,82,108,109. Unspoken suffix characters use transparent aria-hidden spans to reserve the full token width. Screenshot at 0.5s shows So h while the checker flags the reserved ere's and upcoming words. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-typewriter",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-typewriter/index.tsx",
+      "entry": "components/docs/examples/caption-typewriter-example.tsx",
+      "config": "registry/remocn/caption-typewriter/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-typewriter-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(2)",
+      "text": "them"
+    },
+    "reason": "Pinned source registry/remocn/caption-typewriter/index.tsx:81,82,108,109. Unspoken suffix characters use transparent aria-hidden spans to reserve the full token width. Screenshot at 0.5s shows So h while the checker flags the reserved ere's and upcoming words. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-typewriter",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-typewriter/index.tsx",
+      "entry": "components/docs/examples/caption-typewriter-example.tsx",
+      "config": "registry/remocn/caption-typewriter/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-typewriter-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(2)",
+      "text": "watching,"
+    },
+    "reason": "Pinned source registry/remocn/caption-typewriter/index.tsx:81,82,108,109. Unspoken suffix characters use transparent aria-hidden spans to reserve the full token width. Screenshot at 0.5s shows So h while the checker flags the reserved ere's and upcoming words. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-typewriter",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-typewriter/index.tsx",
+      "entry": "components/docs/examples/caption-typewriter-example.tsx",
+      "config": "registry/remocn/caption-typewriter/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-typewriter-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(3)",
+      "text": "g,"
+    },
+    "reason": "Pinned source registry/remocn/caption-typewriter/index.tsx:81,82,108,109. Unspoken suffix characters use transparent aria-hidden spans to reserve the full token width. Screenshot at 0.5s shows So h while the checker flags the reserved ere's and upcoming words. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
+  },
+  {
+    "slug": "caption-typewriter",
+    "origin": {
+      "repository": "https://github.com/Remocn/remocn",
+      "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+      "source": "registry/remocn/caption-typewriter/index.tsx",
+      "entry": "components/docs/examples/caption-typewriter-example.tsx",
+      "config": "registry/remocn/caption-typewriter/config.ts",
+      "license": "MIT"
+    },
+    "finding": {
+      "code": "text_not_painted",
+      "selector": "#caption-typewriter-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(2)",
+      "text": "off."
+    },
+    "reason": "Pinned source registry/remocn/caption-typewriter/index.tsx:81,82,108,109. Unspoken suffix characters use transparent aria-hidden spans to reserve the full token width. Screenshot at 0.5s shows So h while the checker flags the reserved ere's and upcoming words. Preserve this exact source-defined effect only after reference SSIM passes. The complete finding remains in the full audit."
   }
 ]

@@ -1,0 +1,2641 @@
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 2,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "composition_file_too_large",
+        "severity": "warning",
+        "message": "This HTML composition file has 2495 lines. Smaller sub-compositions are easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-message-rewind-v0042-dark-verify/project/compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split this sub-composition further into smaller .html files, then mount them from the parent with data-composition-src so each file stays small enough to inspect, revise, and validate independently."
+      },
+      {
+        "code": "composition_heavy_overlay_count_high",
+        "severity": "warning",
+        "message": "This composition has 170 elements carrying \"heavy overlay\" CSS (filter:blur, radial-gradient, or clip-path). Field signal: a composition with ~40 such elements — including opacity:0 / visibility:hidden ones — captures solid-black for the first ~half of the render, recovering near the end. Reproduces identically via drawElement, forced screenshot capture, and snapshot, so the capture layer itself is the offender (not encoder/mux). Independent of duration. Presence alone matters; only display:none elements are excluded here.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/akshar/dev/projects/hyfrme/.work/t3-message-rewind-v0042-dark-verify/project/compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split this sub-composition further into per-transition mini-compositions and concat the pieces (FFmpeg or the runtime's slideshow) so each capture only sees a small subset of heavy overlays at once. Even hidden overlays (opacity:0 / visibility:hidden) contribute — either remove truly unused ones from the source or scope them into their own per-transition sub-composition. If an overlay is genuinely inert for the whole clip, use display:none so it never enters the render tree. Field ref ts=1784040753 (#hyperframes-cli-feedback)."
+      }
+    ],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "infoCount": 77,
+    "findings": [
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.222,
+        "selector": "span.pointer-events-none.absolute",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 153,
+          "top": 48,
+          "right": 201,
+          "bottom": 96,
+          "width": 48,
+          "height": 48
+        },
+        "containerSelector": "#base-ui-_r_6_",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 163,
+          "top": 58,
+          "right": 191,
+          "bottom": 86,
+          "width": 28,
+          "height": 28
+        },
+        "overflow": {
+          "left": 10,
+          "right": 10,
+          "top": 10,
+          "bottom": 10
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 153,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 3.778,
+        "occurrences": 5,
+        "heldMs": 889
+      },
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.222,
+        "selector": "span.pointer-events-none.absolute",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 181,
+          "top": 48,
+          "right": 229,
+          "bottom": 96,
+          "width": 48,
+          "height": 48
+        },
+        "containerSelector": "#base-ui-_r_c_",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 191,
+          "top": 58,
+          "right": 219,
+          "bottom": 86,
+          "width": 28,
+          "height": 28
+        },
+        "overflow": {
+          "left": 10,
+          "right": 10,
+          "top": 10,
+          "bottom": 10
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 181,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 3.778,
+        "occurrences": 5,
+        "heldMs": 889
+      },
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.222,
+        "selector": "span.pointer-events-none.absolute",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 209,
+          "top": 48,
+          "right": 257,
+          "bottom": 96,
+          "width": 48,
+          "height": 48
+        },
+        "containerSelector": "#base-ui-_r_e_",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 219,
+          "top": 58,
+          "right": 247,
+          "bottom": 86,
+          "width": 28,
+          "height": 28
+        },
+        "overflow": {
+          "left": 10,
+          "right": 10,
+          "top": 10,
+          "bottom": 10
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 209,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 3.778,
+        "occurrences": 5,
+        "heldMs": 889
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 111.8,
+          "right": 30.91,
+          "bottom": 121.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 21,
+          "y": 111.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 109,
+          "right": 77.69,
+          "bottom": 123,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 41,
+          "y": 109,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 216.97,
+          "top": 109,
+          "right": 237,
+          "bottom": 123,
+          "width": 20.03,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "10h",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 216.97,
+          "y": 109,
+          "width": 20.03,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 132,
+          "right": 123.3,
+          "bottom": 148,
+          "width": 104.3,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "Build a logo intro",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 19,
+          "y": 132,
+          "width": 104.3,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 37,
+          "top": 153,
+          "right": 63.02,
+          "bottom": 167,
+          "width": 26.02,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "main",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 37,
+          "y": 153,
+          "width": 26.02,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 194.8,
+          "right": 30.91,
+          "bottom": 204.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 21,
+          "y": 194.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 192,
+          "right": 77.69,
+          "bottom": 206,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 41,
+          "y": 192,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 216.97,
+          "top": 192,
+          "right": 237,
+          "bottom": 206,
+          "width": 20.03,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "12h",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 216.97,
+          "y": 192,
+          "width": 20.03,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 215,
+          "right": 147.42,
+          "bottom": 231,
+          "width": 128.42,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "Catalog motion audit",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 19,
+          "y": 215,
+          "width": 128.42,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 37,
+          "top": 236,
+          "right": 63.02,
+          "bottom": 250,
+          "width": 26.02,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "main",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 37,
+          "y": 236,
+          "width": 26.02,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 277.8,
+          "right": 30.91,
+          "bottom": 287.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 21,
+          "y": 277.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 275,
+          "right": 77.69,
+          "bottom": 289,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 41,
+          "y": 275,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 216.97,
+          "top": 275,
+          "right": 237,
+          "bottom": 289,
+          "width": 20.03,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "17h",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 216.97,
+          "y": 275,
+          "width": 20.03,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 298,
+          "right": 137.3,
+          "bottom": 314,
+          "width": 118.3,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "Grouped logo tests",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 19,
+          "y": 298,
+          "width": 118.3,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 37,
+          "top": 319,
+          "right": 114.39,
+          "bottom": 333,
+          "width": 77.39,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "logo/assemble",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 37,
+          "y": 319,
+          "width": 77.39,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 360.8,
+          "right": 30.91,
+          "bottom": 370.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 21,
+          "y": 360.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 358,
+          "right": 77.69,
+          "bottom": 372,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 41,
+          "y": 358,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 223.64,
+          "top": 358,
+          "right": 237,
+          "bottom": 372,
+          "width": 13.36,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "1d",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 223.64,
+          "y": 358,
+          "width": 13.36,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 381,
+          "right": 124.84,
+          "bottom": 397,
+          "width": 105.84,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "Review final hold",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 19,
+          "y": 381,
+          "width": 105.84,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 37,
+          "top": 402,
+          "right": 111.72,
+          "bottom": 416,
+          "width": 74.72,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "logo/hold-final",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 37,
+          "y": 402,
+          "width": 74.72,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(8) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 592,
+          "right": 74.36,
+          "bottom": 606,
+          "width": 55.36,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "Settled (2)",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 19,
+          "y": 592,
+          "width": 55.36,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 277.75,
+          "top": 22.33,
+          "right": 286.42,
+          "bottom": 31.08,
+          "width": 8.67,
+          "height": 8.75
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 277.75,
+          "y": 22.33,
+          "width": 8.67,
+          "height": 8.75
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 296,
+          "top": 18,
+          "right": 338.8,
+          "bottom": 34,
+          "width": 42.8,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 296,
+          "y": 18,
+          "width": 42.8,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 350.8,
+          "top": 18,
+          "right": 354.69,
+          "bottom": 34,
+          "width": 3.89,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "/",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 350.8,
+          "y": 18,
+          "width": 3.89,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(3) > button:nth-of-type(1) > h2:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 366.69,
+          "top": 18,
+          "right": 470.98,
+          "bottom": 34,
+          "width": 104.3,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "Build a logo intro",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 366.69,
+          "y": 18,
+          "width": 104.3,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 787.53,
+          "top": 19,
+          "right": 844.25,
+          "bottom": 33,
+          "width": 56.72,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "Add action",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 787.53,
+          "y": 19,
+          "width": 56.72,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 889.75,
+          "top": 19,
+          "right": 919.11,
+          "bottom": 33,
+          "width": 29.36,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "Open",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 889.75,
+          "y": 19,
+          "width": 29.36,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 988.61,
+          "top": 19,
+          "right": 1084,
+          "bottom": 33,
+          "width": 95.39,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "Publish repository",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 988.61,
+          "y": 19,
+          "width": 95.39,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 656.47,
+          "top": 91,
+          "right": 1100,
+          "bottom": 107,
+          "width": 443.53,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 656.47,
+          "y": 91,
+          "width": 443.53,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 348,
+          "top": 172,
+          "right": 1100.44,
+          "bottom": 210.75,
+          "width": 752.44,
+          "height": 38.75
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "I found the Logo Enter timing in . The final pass can extend the duration while keeping the last rendered frame still.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 348,
+          "y": 172,
+          "width": 752.44,
+          "height": 38.75
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1) > a:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 571.45,
+          "top": 173.8,
+          "right": 650.84,
+          "bottom": 187.8,
+          "width": 79.39,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "logo-enter.html",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 571.45,
+          "y": 173.8,
+          "width": 79.39,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 360,
+          "top": 243.5,
+          "right": 434.73,
+          "bottom": 257.5,
+          "width": 74.73,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "1 changed file",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 360,
+          "y": 243.5,
+          "width": 74.73,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 446.73,
+          "top": 242.5,
+          "right": 461.14,
+          "bottom": 258.5,
+          "width": 14.41,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "+1",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 446.73,
+          "y": 242.5,
+          "width": 14.41,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 465.14,
+          "top": 242.5,
+          "right": 479.55,
+          "bottom": 258.5,
+          "width": 14.41,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "-1",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 465.14,
+          "y": 242.5,
+          "width": 14.41,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1039.52,
+          "top": 243.5,
+          "right": 1088,
+          "bottom": 257.5,
+          "width": 48.48,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "Open diff",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 1039.52,
+          "y": 243.5,
+          "width": 48.48,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 408,
+          "top": 285.5,
+          "right": 579.61,
+          "bottom": 299.5,
+          "width": 171.61,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "registry/blocks/logo-enter",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 408,
+          "y": 285.5,
+          "width": 171.61,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1048,
+          "top": 286.63,
+          "right": 1060,
+          "bottom": 299.63,
+          "width": 12,
+          "height": 13
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "+1",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 1048,
+          "y": 286.63,
+          "width": 12,
+          "height": 13
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1080,
+          "top": 286.63,
+          "right": 1092,
+          "bottom": 299.63,
+          "width": 12,
+          "height": 13
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "-1",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 1080,
+          "y": 286.63,
+          "width": 12,
+          "height": 13
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 348,
+          "top": 370,
+          "right": 439.55,
+          "bottom": 386,
+          "width": 91.55,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "Worked for 2m",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 348,
+          "y": 370,
+          "width": 91.55,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > form:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 361,
+          "top": 483,
+          "right": 662.19,
+          "bottom": 499,
+          "width": 301.19,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "Enable a provider in Settings to send a message",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 361,
+          "y": 483,
+          "width": 301.19,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > form:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > button:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 394,
+          "top": 566,
+          "right": 534.86,
+          "bottom": 582,
+          "width": 140.86,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "Open provider settings",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-slot": "button",
+          "data-chat-provider-unavailable": "true"
+        },
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 394,
+          "y": 566,
+          "width": 140.86,
+          "height": 16
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 394,
+          "top": 616,
+          "right": 442.47,
+          "bottom": 630,
+          "width": 48.47,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "Worktree",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-composer-label-motion": "true"
+        },
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 394,
+          "y": 616,
+          "width": 48.47,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.222,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > span:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1035.98,
+          "top": 616,
+          "right": 1062,
+          "bottom": 630,
+          "width": 26.02,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "main",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-composer-label-motion": "true"
+        },
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 1035.98,
+          "y": 616,
+          "width": 26.02,
+          "height": 14
+        },
+        "firstSeen": 0.222,
+        "lastSeen": 0.222,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 111.8,
+          "right": 30.91,
+          "bottom": 121.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 21,
+          "y": 111.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 109,
+          "right": 77.69,
+          "bottom": 123,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 41,
+          "y": 109,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 216.97,
+          "top": 109,
+          "right": 237,
+          "bottom": 123,
+          "width": 20.03,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "10h",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 216.97,
+          "y": 109,
+          "width": 20.03,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 132,
+          "right": 123.3,
+          "bottom": 148,
+          "width": 104.3,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "Build a logo intro",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 19,
+          "y": 132,
+          "width": 104.3,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 37,
+          "top": 153,
+          "right": 63.02,
+          "bottom": 167,
+          "width": 26.02,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "main",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 37,
+          "y": 153,
+          "width": 26.02,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 194.8,
+          "right": 30.91,
+          "bottom": 204.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 21,
+          "y": 194.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 192,
+          "right": 77.69,
+          "bottom": 206,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 41,
+          "y": 192,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 216.97,
+          "top": 192,
+          "right": 237,
+          "bottom": 206,
+          "width": 20.03,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "12h",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 216.97,
+          "y": 192,
+          "width": 20.03,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 215,
+          "right": 147.42,
+          "bottom": 231,
+          "width": 128.42,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "Catalog motion audit",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 19,
+          "y": 215,
+          "width": 128.42,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 37,
+          "top": 236,
+          "right": 63.02,
+          "bottom": 250,
+          "width": 26.02,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "main",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 37,
+          "y": 236,
+          "width": 26.02,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 277.8,
+          "right": 30.91,
+          "bottom": 287.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 21,
+          "y": 277.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 275,
+          "right": 77.69,
+          "bottom": 289,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 41,
+          "y": 275,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 216.97,
+          "top": 275,
+          "right": 237,
+          "bottom": 289,
+          "width": 20.03,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "17h",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 216.97,
+          "y": 275,
+          "width": 20.03,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 298,
+          "right": 137.3,
+          "bottom": 314,
+          "width": 118.3,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "Grouped logo tests",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 19,
+          "y": 298,
+          "width": 118.3,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 37,
+          "top": 319,
+          "right": 114.39,
+          "bottom": 333,
+          "width": 77.39,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "logo/assemble",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 37,
+          "y": 319,
+          "width": 77.39,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 21,
+          "top": 360.8,
+          "right": 30.91,
+          "bottom": 370.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 21,
+          "y": 360.8,
+          "width": 9.91,
+          "height": 10
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 41,
+          "top": 358,
+          "right": 77.69,
+          "bottom": 372,
+          "width": 36.69,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 41,
+          "y": 358,
+          "width": 36.69,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 223.64,
+          "top": 358,
+          "right": 237,
+          "bottom": 372,
+          "width": 13.36,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "1d",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 223.64,
+          "y": 358,
+          "width": 13.36,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 381,
+          "right": 124.84,
+          "bottom": 397,
+          "width": 105.84,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "Review final hold",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 19,
+          "y": 381,
+          "width": 105.84,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 37,
+          "top": 402,
+          "right": 111.72,
+          "bottom": 416,
+          "width": 74.72,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "logo/hold-final",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 37,
+          "y": 402,
+          "width": 74.72,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(8) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 19,
+          "top": 592,
+          "right": 74.36,
+          "bottom": 606,
+          "width": 55.36,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "Settled (2)",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 19,
+          "y": 592,
+          "width": 55.36,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(1) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 277.75,
+          "top": 22.33,
+          "right": 286.42,
+          "bottom": 31.08,
+          "width": 8.67,
+          "height": 8.75
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "HE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 277.75,
+          "y": 22.33,
+          "width": 8.67,
+          "height": 8.75
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 296,
+          "top": 18,
+          "right": 338.8,
+          "bottom": 34,
+          "width": 42.8,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "hyfrme",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 296,
+          "y": 18,
+          "width": 42.8,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 350.8,
+          "top": 18,
+          "right": 354.69,
+          "bottom": 34,
+          "width": 3.89,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "/",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 350.8,
+          "y": 18,
+          "width": 3.89,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > nav:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(3) > button:nth-of-type(1) > h2:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 366.69,
+          "top": 18,
+          "right": 470.98,
+          "bottom": 34,
+          "width": 104.3,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "Build a logo intro",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 366.69,
+          "y": 18,
+          "width": 104.3,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 787.53,
+          "top": 19,
+          "right": 844.25,
+          "bottom": 33,
+          "width": 56.72,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "Add action",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 787.53,
+          "y": 19,
+          "width": 56.72,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 889.75,
+          "top": 19,
+          "right": 919.11,
+          "bottom": 33,
+          "width": 29.36,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "Open",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 889.75,
+          "y": 19,
+          "width": 29.36,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 988.61,
+          "top": 19,
+          "right": 1084,
+          "bottom": 33,
+          "width": 95.39,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "Publish repository",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 988.61,
+          "y": 19,
+          "width": 95.39,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 656.47,
+          "top": 91,
+          "right": 1100,
+          "bottom": 107,
+          "width": 443.53,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "Build a six-second Hyfrme logo intro. Hold the final frame for 18 frames.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 656.47,
+          "y": 91,
+          "width": 443.53,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 348,
+          "top": 172,
+          "right": 1100.44,
+          "bottom": 210.75,
+          "width": 752.44,
+          "height": 38.75
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "I found the Logo Enter timing in . The final pass can extend the duration while keeping the last rendered frame still.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 348,
+          "y": 172,
+          "width": 752.44,
+          "height": 38.75
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1) > a:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 571.45,
+          "top": 173.8,
+          "right": 650.84,
+          "bottom": 187.8,
+          "width": 79.39,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "logo-enter.html",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 571.45,
+          "y": 173.8,
+          "width": 79.39,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 360,
+          "top": 243.5,
+          "right": 434.73,
+          "bottom": 257.5,
+          "width": 74.73,
+          "height": 14
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "1 changed file",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 360,
+          "y": 243.5,
+          "width": 74.73,
+          "height": 14
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 446.73,
+          "top": 242.5,
+          "right": 461.14,
+          "bottom": 258.5,
+          "width": 14.41,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "+1",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 446.73,
+          "y": 242.5,
+          "width": 14.41,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 0.667,
+        "selector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 465.14,
+          "top": 242.5,
+          "right": 479.55,
+          "bottom": 258.5,
+          "width": 14.41,
+          "height": 16
+        },
+        "containerSelector": "#t3-message-rewind > div:nth-of-type(1) > div:nth-of-type(12)",
+        "text": "-1",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/t3-message-rewind.html",
+        "bbox": {
+          "x": 465.14,
+          "y": 242.5,
+          "width": 14.41,
+          "height": 16
+        },
+        "firstSeen": 0.667,
+        "lastSeen": 0.667,
+        "occurrences": 1,
+        "heldMs": 0
+      }
+    ],
+    "duration": 4,
+    "samples": [
+      0.222,
+      0.667,
+      1.111,
+      1.556,
+      2,
+      2.444,
+      2.889,
+      3.333,
+      3.778
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 221,
+    "truncated": true
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.222,
+      1.111,
+      2,
+      2.889,
+      3.778
+    ],
+    "checked": 0,
+    "passed": 0
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.75",
+    "latestVersion": "0.8.78",
+    "updateAvailable": true
+  }
+}

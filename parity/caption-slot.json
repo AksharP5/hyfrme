@@ -1,0 +1,67 @@
+{
+  "slug": "caption-slot",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+    "source": "registry/remocn/caption-slot/index.tsx",
+    "entry": "components/docs/examples/caption-slot-example.tsx",
+    "config": "registry/remocn/caption-slot/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 279,
+    "props": {
+      "captions": "So here's the thing. Most demo videos lose people in the first three seconds. Captions keep them watching, even with the sound off.",
+      "fontSize": 64,
+      "fontWeight": 800,
+      "color": "#ffffff",
+      "combineTokensWithinMilliseconds": 800,
+      "holdMs": 600,
+      "shadow": true
+    },
+    "background": "#262626"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "ef6a9cbc918b4e288681ccecfc920e85551fc1f6be4bf59beccf9a0fbcf7fb8e",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 279,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 279,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.530",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/caption-slot/reference.mp4",
+    "hyperframesVideo": "public/previews/caption-slot/hyperframes.mp4",
+    "thumbnail": "public/previews/caption-slot/thumbnail.png",
+    "summary": "parity/caption-slot-diff/summary.json",
+    "perFrameSsim": "parity/caption-slot-diff/ssim.log",
+    "hyperframesCheck": "parity/caption-slot-diff/hyperframes-check.log",
+    "worstFrame": "parity/caption-slot-diff/worst-frame.png",
+    "referenceAlpha": "parity/caption-slot-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/caption-slot-diff/hyperframes-alpha.framemd5"
+  }
+}

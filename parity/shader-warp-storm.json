@@ -1,0 +1,64 @@
+{
+  "slug": "shader-warp-storm",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+    "source": "registry/remocn/shader-warp-storm/index.tsx",
+    "config": "registry/remocn/shader-warp-storm/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "distortion": 0.3,
+      "swirl": 1,
+      "softness": 1,
+      "proportion": 0.5
+    },
+    "background": "transparent"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "22cbd6064176edabc009e2a2fad7d87ce5f5a09cd2ff5c28c46334dc4db63c5d",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.530",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/shader-warp-storm/reference.mp4",
+    "hyperframesVideo": "public/previews/shader-warp-storm/hyperframes.mp4",
+    "thumbnail": "public/previews/shader-warp-storm/thumbnail.png",
+    "summary": "parity/shader-warp-storm-diff/summary.json",
+    "perFrameSsim": "parity/shader-warp-storm-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-warp-storm-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-warp-storm-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-warp-storm-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-warp-storm-diff/hyperframes-alpha.framemd5"
+  }
+}

@@ -1,0 +1,1055 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": false,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 14,
+    "warningCount": 12,
+    "infoCount": 8,
+    "findings": [
+      {
+        "code": "text_not_painted",
+        "severity": "error",
+        "time": 0.517,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text paints with an effectively transparent fill (-webkit-text-fill-color / color), so its glyphs are invisible.",
+        "rect": {
+          "left": 334.03,
+          "top": 567.2,
+          "right": 419.31,
+          "bottom": 650.2,
+          "width": 85.28,
+          "height": 83
+        },
+        "text": "So",
+        "fixHint": "Set an explicit, opaque `color` on the text — and an explicit `-webkit-text-fill-color` if an ancestor makes the fill transparent. If the transparency is intentional gradient text, add `background-clip: text`.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 334.03,
+          "y": 567.2,
+          "width": 85.28,
+          "height": 83
+        },
+        "firstSeen": 0.517,
+        "lastSeen": 0.517,
+        "occurrences": 1
+      },
+      {
+        "code": "text_not_painted",
+        "severity": "error",
+        "time": 0.517,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text paints with an effectively transparent fill (-webkit-text-fill-color / color), so its glyphs are invisible.",
+        "rect": {
+          "left": 433.47,
+          "top": 567.2,
+          "right": 626.47,
+          "bottom": 650.2,
+          "width": 193,
+          "height": 83
+        },
+        "text": "here's",
+        "fixHint": "Set an explicit, opaque `color` on the text — and an explicit `-webkit-text-fill-color` if an ancestor makes the fill transparent. If the transparency is intentional gradient text, add `background-clip: text`.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 433.47,
+          "y": 567.2,
+          "width": 193,
+          "height": 83
+        },
+        "firstSeen": 0.517,
+        "lastSeen": 0.517,
+        "occurrences": 1
+      },
+      {
+        "code": "text_not_painted",
+        "severity": "error",
+        "time": 0.517,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text paints with an effectively transparent fill (-webkit-text-fill-color / color), so its glyphs are invisible.",
+        "rect": {
+          "left": 640.63,
+          "top": 567.2,
+          "right": 748.14,
+          "bottom": 650.2,
+          "width": 107.52,
+          "height": 83
+        },
+        "text": "the",
+        "fixHint": "Set an explicit, opaque `color` on the text — and an explicit `-webkit-text-fill-color` if an ancestor makes the fill transparent. If the transparency is intentional gradient text, add `background-clip: text`.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 640.63,
+          "y": 567.2,
+          "width": 107.52,
+          "height": 83
+        },
+        "firstSeen": 0.517,
+        "lastSeen": 0.517,
+        "occurrences": 1
+      },
+      {
+        "code": "text_not_painted",
+        "severity": "error",
+        "time": 0.517,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1)",
+        "message": "Text paints with an effectively transparent fill (-webkit-text-fill-color / color), so its glyphs are invisible.",
+        "rect": {
+          "left": 762.3,
+          "top": 567.2,
+          "right": 945.97,
+          "bottom": 650.2,
+          "width": 183.67,
+          "height": 83
+        },
+        "text": "thing.",
+        "fixHint": "Set an explicit, opaque `color` on the text — and an explicit `-webkit-text-fill-color` if an ancestor makes the fill transparent. If the transparency is intentional gradient text, add `background-clip: text`.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 762.3,
+          "y": 567.2,
+          "width": 183.67,
+          "height": 83
+        },
+        "firstSeen": 0.517,
+        "lastSeen": 0.517,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 0.744,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 570.57,
+          "top": 490.41,
+          "right": 678.08,
+          "bottom": 573.41,
+          "width": 107.52,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "the",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 570.57,
+          "y": 490.41,
+          "width": 107.52,
+          "height": 83
+        },
+        "firstSeen": 0.744,
+        "lastSeen": 7.564,
+        "occurrences": 7
+      },
+      {
+        "code": "text_not_painted",
+        "severity": "error",
+        "time": 2.583,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1)",
+        "message": "Text paints with an effectively transparent fill (-webkit-text-fill-color / color), so its glyphs are invisible.",
+        "rect": {
+          "left": 871.25,
+          "top": 567.2,
+          "right": 1007.97,
+          "bottom": 650.2,
+          "width": 136.72,
+          "height": 83
+        },
+        "text": "lose",
+        "fixHint": "Set an explicit, opaque `color` on the text — and an explicit `-webkit-text-fill-color` if an ancestor makes the fill transparent. If the transparency is intentional gradient text, add `background-clip: text`.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 871.25,
+          "y": 567.2,
+          "width": 136.72,
+          "height": 83
+        },
+        "firstSeen": 2.583,
+        "lastSeen": 2.583,
+        "occurrences": 1
+      },
+      {
+        "code": "text_not_painted",
+        "severity": "error",
+        "time": 3.617,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text paints with an effectively transparent fill (-webkit-text-fill-color / color), so its glyphs are invisible.",
+        "rect": {
+          "left": 570.66,
+          "top": 490.41,
+          "right": 678.17,
+          "bottom": 573.41,
+          "width": 107.52,
+          "height": 83
+        },
+        "text": "the",
+        "fixHint": "Set an explicit, opaque `color` on the text — and an explicit `-webkit-text-fill-color` if an ancestor makes the fill transparent. If the transparency is intentional gradient text, add `background-clip: text`.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 570.66,
+          "y": 490.41,
+          "width": 107.52,
+          "height": 83
+        },
+        "firstSeen": 3.617,
+        "lastSeen": 3.617,
+        "occurrences": 1
+      },
+      {
+        "code": "text_not_painted",
+        "severity": "error",
+        "time": 3.617,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text paints with an effectively transparent fill (-webkit-text-fill-color / color), so its glyphs are invisible.",
+        "rect": {
+          "left": 692.33,
+          "top": 490.41,
+          "right": 830.95,
+          "bottom": 573.41,
+          "width": 138.63,
+          "height": 83
+        },
+        "text": "first",
+        "fixHint": "Set an explicit, opaque `color` on the text — and an explicit `-webkit-text-fill-color` if an ancestor makes the fill transparent. If the transparency is intentional gradient text, add `background-clip: text`.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 692.33,
+          "y": 490.41,
+          "width": 138.63,
+          "height": 83
+        },
+        "firstSeen": 3.617,
+        "lastSeen": 3.617,
+        "occurrences": 1
+      },
+      {
+        "code": "text_not_painted",
+        "severity": "error",
+        "time": 3.617,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1)",
+        "message": "Text paints with an effectively transparent fill (-webkit-text-fill-color / color), so its glyphs are invisible.",
+        "rect": {
+          "left": 845.11,
+          "top": 490.41,
+          "right": 1017.36,
+          "bottom": 573.41,
+          "width": 172.25,
+          "height": 83
+        },
+        "text": "three",
+        "fixHint": "Set an explicit, opaque `color` on the text — and an explicit `-webkit-text-fill-color` if an ancestor makes the fill transparent. If the transparency is intentional gradient text, add `background-clip: text`.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 845.11,
+          "y": 490.41,
+          "width": 172.25,
+          "height": 83
+        },
+        "firstSeen": 3.617,
+        "lastSeen": 3.617,
+        "occurrences": 1
+      },
+      {
+        "code": "text_not_painted",
+        "severity": "error",
+        "time": 3.617,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(6) > span:nth-of-type(1)",
+        "message": "Text paints with an effectively transparent fill (-webkit-text-fill-color / color), so its glyphs are invisible.",
+        "rect": {
+          "left": 496.23,
+          "top": 567.2,
+          "right": 783.75,
+          "bottom": 650.2,
+          "width": 287.52,
+          "height": 83
+        },
+        "text": "seconds.",
+        "fixHint": "Set an explicit, opaque `color` on the text — and an explicit `-webkit-text-fill-color` if an ancestor makes the fill transparent. If the transparency is intentional gradient text, add `background-clip: text`.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 496.23,
+          "y": 567.2,
+          "width": 287.52,
+          "height": 83
+        },
+        "firstSeen": 3.617,
+        "lastSeen": 3.617,
+        "occurrences": 1
+      },
+      {
+        "code": "text_not_painted",
+        "severity": "error",
+        "time": 5.683,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text paints with an effectively transparent fill (-webkit-text-fill-color / color), so its glyphs are invisible.",
+        "rect": {
+          "left": 460.81,
+          "top": 567.2,
+          "right": 617.89,
+          "bottom": 650.2,
+          "width": 157.08,
+          "height": 83
+        },
+        "text": "keep",
+        "fixHint": "Set an explicit, opaque `color` on the text — and an explicit `-webkit-text-fill-color` if an ancestor makes the fill transparent. If the transparency is intentional gradient text, add `background-clip: text`.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 460.81,
+          "y": 567.2,
+          "width": 157.08,
+          "height": 83
+        },
+        "firstSeen": 5.683,
+        "lastSeen": 5.683,
+        "occurrences": 1
+      },
+      {
+        "code": "text_not_painted",
+        "severity": "error",
+        "time": 5.683,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text paints with an effectively transparent fill (-webkit-text-fill-color / color), so its glyphs are invisible.",
+        "rect": {
+          "left": 632.05,
+          "top": 567.2,
+          "right": 796.97,
+          "bottom": 650.2,
+          "width": 164.92,
+          "height": 83
+        },
+        "text": "them",
+        "fixHint": "Set an explicit, opaque `color` on the text — and an explicit `-webkit-text-fill-color` if an ancestor makes the fill transparent. If the transparency is intentional gradient text, add `background-clip: text`.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 632.05,
+          "y": 567.2,
+          "width": 164.92,
+          "height": 83
+        },
+        "firstSeen": 5.683,
+        "lastSeen": 5.683,
+        "occurrences": 1
+      },
+      {
+        "code": "text_not_painted",
+        "severity": "error",
+        "time": 5.683,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1)",
+        "message": "Text paints with an effectively transparent fill (-webkit-text-fill-color / color), so its glyphs are invisible.",
+        "rect": {
+          "left": 811.13,
+          "top": 567.2,
+          "right": 1122.56,
+          "bottom": 650.2,
+          "width": 311.44,
+          "height": 83
+        },
+        "text": "watching,",
+        "fixHint": "Set an explicit, opaque `color` on the text — and an explicit `-webkit-text-fill-color` if an ancestor makes the fill transparent. If the transparency is intentional gradient text, add `background-clip: text`.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 811.13,
+          "y": 567.2,
+          "width": 311.44,
+          "height": 83
+        },
+        "firstSeen": 5.683,
+        "lastSeen": 5.683,
+        "occurrences": 1
+      },
+      {
+        "code": "text_not_painted",
+        "severity": "error",
+        "time": 7.75,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1)",
+        "message": "Text paints with an effectively transparent fill (-webkit-text-fill-color / color), so its glyphs are invisible.",
+        "rect": {
+          "left": 916.11,
+          "top": 567.2,
+          "right": 1019.98,
+          "bottom": 650.2,
+          "width": 103.88,
+          "height": 83
+        },
+        "text": "off.",
+        "fixHint": "Set an explicit, opaque `color` on the text — and an explicit `-webkit-text-fill-color` if an ancestor makes the fill transparent. If the transparency is intentional gradient text, add `background-clip: text`.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 916.11,
+          "y": 567.2,
+          "width": 103.88,
+          "height": 83
+        },
+        "firstSeen": 7.75,
+        "lastSeen": 7.75,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 0.372,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 334.01,
+          "top": 567.2,
+          "right": 419.29,
+          "bottom": 650.2,
+          "width": 85.28,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "So",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 334.01,
+          "y": 567.2,
+          "width": 85.28,
+          "height": 83
+        },
+        "firstSeen": 0.372,
+        "lastSeen": 0.517,
+        "occurrences": 3
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 0.517,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 421.41,
+          "top": 567.2,
+          "right": 614.41,
+          "bottom": 650.2,
+          "width": 193,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "here's",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 421.41,
+          "y": 567.2,
+          "width": 193,
+          "height": 83
+        },
+        "firstSeen": 0.517,
+        "lastSeen": 0.62,
+        "occurrences": 2
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 0.868,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 752.4,
+          "top": 567.2,
+          "right": 936.07,
+          "bottom": 650.2,
+          "width": 183.67,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "thing.",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 752.4,
+          "y": 567.2,
+          "width": 183.67,
+          "height": 83
+        },
+        "firstSeen": 0.868,
+        "lastSeen": 0.992,
+        "occurrences": 2
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 1.736,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 257.32,
+          "top": 567.2,
+          "right": 421.35,
+          "bottom": 650.2,
+          "width": 164.03,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "Most",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 257.32,
+          "y": 567.2,
+          "width": 164.03,
+          "height": 83
+        },
+        "firstSeen": 1.736,
+        "lastSeen": 1.86,
+        "occurrences": 2
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 2.356,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 639.35,
+          "top": 567.2,
+          "right": 854.59,
+          "bottom": 650.2,
+          "width": 215.23,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "videos",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 639.35,
+          "y": 567.2,
+          "width": 215.23,
+          "height": 83
+        },
+        "firstSeen": 2.356,
+        "lastSeen": 2.48,
+        "occurrences": 2
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 2.728,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 849.39,
+          "top": 567.2,
+          "right": 986.11,
+          "bottom": 650.2,
+          "width": 136.72,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "lose",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 849.39,
+          "y": 567.2,
+          "width": 136.72,
+          "height": 83
+        },
+        "firstSeen": 2.728,
+        "lastSeen": 2.852,
+        "occurrences": 2
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 3.596,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 688.6,
+          "top": 490.41,
+          "right": 827.22,
+          "bottom": 573.41,
+          "width": 138.63,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "first",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 688.6,
+          "y": 490.41,
+          "width": 138.63,
+          "height": 83
+        },
+        "firstSeen": 3.596,
+        "lastSeen": 3.72,
+        "occurrences": 3
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 4.216,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(6) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 494.19,
+          "top": 567.2,
+          "right": 781.7,
+          "bottom": 650.2,
+          "width": 287.52,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(6) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "seconds.",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 494.19,
+          "y": 567.2,
+          "width": 287.52,
+          "height": 83
+        },
+        "firstSeen": 4.216,
+        "lastSeen": 4.34,
+        "occurrences": 2
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 5.456,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 142.74,
+          "top": 567.2,
+          "right": 431.96,
+          "bottom": 650.2,
+          "width": 289.22,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "Captions",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 142.74,
+          "y": 567.2,
+          "width": 289.22,
+          "height": 83
+        },
+        "firstSeen": 5.456,
+        "lastSeen": 5.58,
+        "occurrences": 2
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 6.2,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 625.35,
+          "top": 567.2,
+          "right": 790.27,
+          "bottom": 650.2,
+          "width": 164.92,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(3) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "them",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 625.35,
+          "y": 567.2,
+          "width": 164.92,
+          "height": 83
+        },
+        "firstSeen": 6.2,
+        "lastSeen": 6.324,
+        "occurrences": 2
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 7.068,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 258.35,
+          "top": 567.2,
+          "right": 413.51,
+          "bottom": 650.2,
+          "width": 155.16,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "even",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 258.35,
+          "y": 567.2,
+          "width": 155.16,
+          "height": 83
+        },
+        "firstSeen": 7.068,
+        "lastSeen": 7.192,
+        "occurrences": 2
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 7.812,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 904.05,
+          "top": 567.2,
+          "right": 1007.93,
+          "bottom": 650.2,
+          "width": 103.88,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "off.",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 904.05,
+          "y": 567.2,
+          "width": 103.88,
+          "height": 83
+        },
+        "firstSeen": 7.812,
+        "lastSeen": 7.936,
+        "occurrences": 2
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 2.108,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 449.67,
+          "top": 567.2,
+          "right": 627.17,
+          "bottom": 650.2,
+          "width": 177.5,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "demo",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 449.67,
+          "y": 567.2,
+          "width": 177.5,
+          "height": 83
+        },
+        "firstSeen": 2.108,
+        "lastSeen": 2.108,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 3.1,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 262.1,
+          "top": 490.41,
+          "right": 482.85,
+          "bottom": 573.41,
+          "width": 220.75,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "people",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 262.1,
+          "y": 490.41,
+          "width": 220.75,
+          "height": 83
+        },
+        "firstSeen": 3.1,
+        "lastSeen": 3.1,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 3.472,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 497.13,
+          "top": 490.41,
+          "right": 556.08,
+          "bottom": 573.41,
+          "width": 58.95,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "in",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 497.13,
+          "y": 490.41,
+          "width": 58.95,
+          "height": 83
+        },
+        "firstSeen": 3.472,
+        "lastSeen": 3.472,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 3.968,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 844.69,
+          "top": 490.41,
+          "right": 1016.94,
+          "bottom": 573.41,
+          "width": 172.25,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "three",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 844.69,
+          "y": 490.41,
+          "width": 172.25,
+          "height": 83
+        },
+        "firstSeen": 3.968,
+        "lastSeen": 3.968,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 6.076,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 460.4,
+          "top": 567.2,
+          "right": 617.47,
+          "bottom": 650.2,
+          "width": 157.08,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "keep",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 460.4,
+          "y": 567.2,
+          "width": 157.08,
+          "height": 83
+        },
+        "firstSeen": 6.076,
+        "lastSeen": 6.076,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 6.448,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 810.44,
+          "top": 567.2,
+          "right": 1121.88,
+          "bottom": 650.2,
+          "width": 311.44,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "watching,",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 810.44,
+          "y": 567.2,
+          "width": 311.44,
+          "height": 83
+        },
+        "firstSeen": 6.448,
+        "lastSeen": 6.448,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 7.316,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 428.24,
+          "top": 567.2,
+          "right": 568.46,
+          "bottom": 650.2,
+          "width": 140.22,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "with",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 428.24,
+          "y": 567.2,
+          "width": 140.22,
+          "height": 83
+        },
+        "firstSeen": 7.316,
+        "lastSeen": 7.316,
+        "occurrences": 1
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 7.564,
+        "selector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 704.03,
+          "top": 567.2,
+          "right": 900.61,
+          "bottom": 650.2,
+          "width": 196.58,
+          "height": 83
+        },
+        "containerSelector": "#caption-slice-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "text": "sound",
+        "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-slice.html",
+        "bbox": {
+          "x": 704.03,
+          "y": 567.2,
+          "width": 196.58,
+          "height": 83
+        },
+        "firstSeen": 7.564,
+        "lastSeen": 7.564,
+        "occurrences": 1
+      }
+    ],
+    "duration": 9.3,
+    "samples": [
+      0.517,
+      1.55,
+      2.583,
+      3.617,
+      4.65,
+      5.683,
+      6.717,
+      7.75,
+      8.783
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 34,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.517,
+      2.583,
+      4.65,
+      6.717,
+      8.783
+    ],
+    "checked": 22,
+    "passed": 22
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.145",
+    "updateAvailable": true
+  }
+}
