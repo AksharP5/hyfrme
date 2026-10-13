@@ -3650,7 +3650,7 @@
     "componentName": "CountGrid",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+      "commit": "afce9f0aa8c9d464409efd1e4d4f227ca4809c04",
       "source": "registry/snap-cn/count-grid/index.tsx",
       "config": "registry/snap-cn/count-grid/config.ts",
       "license": "MIT",
@@ -3665,9 +3665,7 @@
         "from": "5",
         "to": "500",
         "noun": "clips",
-        "inkFrom": "#1F4470",
-        "inkTo": "#2B84E0",
-        "background": "#FDFDFD",
+        "mode": "light",
         "speed": 1
       },
       "background": "#FDFDFD"
@@ -3688,20 +3686,14 @@
         "default": "clips",
         "label": "Noun"
       },
-      "inkFrom": {
-        "type": "color",
-        "default": "#1F4470",
-        "label": "Label ink (left)"
-      },
-      "inkTo": {
-        "type": "color",
-        "default": "#2B84E0",
-        "label": "Label ink (right)"
-      },
-      "background": {
-        "type": "color",
-        "default": "#FDFDFD",
-        "label": "Background"
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Mode"
       },
       "speed": {
         "type": "number",
@@ -3712,7 +3704,10 @@
         "label": "Speed"
       }
     },
-    "tags": ["snapcn", "scenes"]
+    "tags": [
+      "snapcn",
+      "scenes"
+    ]
   },
   {
     "slug": "snapcn-cursor-track",
@@ -6323,7 +6318,7 @@
     "componentName": "OrbSwarm",
     "origin": {
       "repository": "https://github.com/snapcndev/snapcn",
-      "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
+      "commit": "afce9f0aa8c9d464409efd1e4d4f227ca4809c04",
       "source": "registry/snap-cn/orb-swarm/index.tsx",
       "config": "registry/snap-cn/orb-swarm/config.ts",
       "license": "MIT",
@@ -6336,14 +6331,13 @@
       "durationInFrames": 160,
       "props": {
         "script": "one command | what if | every launch | you shipped | got a video | in seconds",
-        "background": "#fcf9ff",
-        "ink": "#000000",
         "orbColor": "#3577e0",
+        "mode": "light",
         "softness": 0.7,
         "fontFamily": "Default",
         "speed": 1
       },
-      "background": "#fcf9ff"
+      "background": "#faf9f6"
     },
     "controls": {
       "script": {
@@ -6351,20 +6345,19 @@
         "default": "one command | what if | every launch | you shipped | got a video | in seconds",
         "label": "Script (| card)"
       },
-      "background": {
-        "type": "color",
-        "default": "#fcf9ff",
-        "label": "Background"
-      },
-      "ink": {
-        "type": "color",
-        "default": "#000000",
-        "label": "Ink"
-      },
       "orbColor": {
         "type": "color",
         "default": "#3577e0",
         "label": "Orb colour"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Mode"
       },
       "softness": {
         "type": "number",
@@ -6398,7 +6391,10 @@
         "label": "Speed"
       }
     },
-    "tags": ["snapcn", "scenes"]
+    "tags": [
+      "snapcn",
+      "scenes"
+    ]
   },
   {
     "slug": "snapcn-check-cycle",

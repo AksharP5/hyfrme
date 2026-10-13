@@ -2,7 +2,7 @@
   "slug": "snapcn-count-grid",
   "origin": {
     "repository": "https://github.com/snapcndev/snapcn",
-    "commit": "353803b506dba0cb7ca13bb45b0d099690400815",
+    "commit": "afce9f0aa8c9d464409efd1e4d4f227ca4809c04",
     "source": "registry/snap-cn/count-grid/index.tsx",
     "config": "registry/snap-cn/count-grid/config.ts",
     "license": "MIT",
@@ -17,9 +17,7 @@
       "from": "5",
       "to": "500",
       "noun": "clips",
-      "inkFrom": "#1F4470",
-      "inkTo": "#2B84E0",
-      "background": "#FDFDFD",
+      "mode": "light",
       "speed": 1
     },
     "background": "#FDFDFD"
@@ -27,16 +25,16 @@
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "5eea6f3cf31bea936ae28f8f7f428c1ee5aea61278bd0352edfb305e506e0f8f",
+  "fingerprint": "9d5e167cb825ad40a9a6e35b487a025177187bd27ef058ee969db553b6da81de",
   "thresholds": {
     "meanSsim": 0.99,
     "minSsim": 0.95
   },
   "result": {
     "frameCount": 47,
-    "meanSsim": 0.9999858510638296,
-    "minSsim": 0.999872,
-    "p05Ssim": 0.999912,
+    "meanSsim": 0.9999587446808511,
+    "minSsim": 0.999543,
+    "p05Ssim": 0.999744,
     "p95Ssim": 1,
     "alpha": {
       "frameCount": 47,
@@ -50,7 +48,19 @@
     "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.473",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
-    "browserGpuMode": "hardware",
+    "browserGpuRequestedMode": "hardware",
+    "browserGpuProbes": {
+      "render": {
+        "logSha256": "1c1ff761ee6cb57d04611d7de91befba6d19e1a0ee31b17b220de8618bee53fe",
+        "observations": [
+          {
+            "mode": "hardware",
+            "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+          }
+        ]
+      }
+    },
+    "captureBackend": "unobserved",
     "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
@@ -61,6 +71,7 @@
     "summary": "parity/snapcn-count-grid-diff/summary.json",
     "perFrameSsim": "parity/snapcn-count-grid-diff/ssim.log",
     "hyperframesCheck": "parity/snapcn-count-grid-diff/hyperframes-check.log",
+    "hyperframesRender": "parity/snapcn-count-grid-diff/hyperframes-render.log",
     "worstFrame": "parity/snapcn-count-grid-diff/worst-frame.png",
     "referenceAlpha": "parity/snapcn-count-grid-diff/reference-alpha.framemd5",
     "hyperframesAlpha": "parity/snapcn-count-grid-diff/hyperframes-alpha.framemd5"

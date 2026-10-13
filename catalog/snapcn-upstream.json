@@ -458,7 +458,7 @@
       "kind": "visual",
       "tier": "snap-cn",
       "source": "registry/snap-cn/count-grid/index.tsx",
-      "sourceSha256": "342b9190fcd76212f032430a993c591e0266fbfa74b70483822cfa12b88b022d",
+      "sourceSha256": "5aac87beee308d9f0fa2235314a6f9c2772bde0549b56e400eaf0520ed5341bd",
       "docs": ["content/docs/scenes/count-grid.mdx"],
       "inPreviewRegistry": true,
       "dependencies": ["remotion", "@remotion/google-fonts"],
@@ -469,7 +469,8 @@
         "state": false,
         "media": true,
         "shader": false
-      }
+      },
+      "commit": "afce9f0aa8c9d464409efd1e4d4f227ca4809c04"
     },
     {
       "name": "cursor-track",
@@ -944,7 +945,7 @@
       "kind": "visual",
       "tier": "snap-cn",
       "source": "registry/snap-cn/orb-swarm/index.tsx",
-      "sourceSha256": "b86b5019124f81ea4c468a0775545cc2c1c3084c2bb1eb523897aec7ce7a3d3d",
+      "sourceSha256": "767d9aba2cfa1b588501c267cbd8d7b1ac02e01915537fde67dc18529b0e5c9b",
       "docs": ["content/docs/scenes/orb-swarm.mdx"],
       "inPreviewRegistry": true,
       "dependencies": ["remotion", "@remotion/google-fonts"],
@@ -956,7 +957,7 @@
         "media": false,
         "shader": false
       },
-      "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3"
+      "commit": "afce9f0aa8c9d464409efd1e4d4f227ca4809c04"
     },
     {
       "name": "check-cycle",
@@ -1004,18 +1005,12 @@
       "kind": "visual",
       "tier": "snap-cn",
       "source": "registry/snap-cn/font-shuffle/index.tsx",
-      "docs": [
-        "content/docs/text/font-shuffle.mdx"
-      ],
+      "docs": ["content/docs/text/font-shuffle.mdx"],
       "inPreviewRegistry": true,
       "commit": "460783c1af88f20913caa843734353c2eec2c997",
       "sourceSha256": "39b55d15f3c9aaa86df3811f34564c0ba088b78924a516312f208a9d90ef4fff",
-      "dependencies": [
-        "remotion"
-      ],
-      "registryDependencies": [
-        "https://snapcn.dev/r/snap-cn-ui.json"
-      ],
+      "dependencies": ["remotion"],
+      "registryDependencies": ["https://snapcn.dev/r/snap-cn-ui.json"],
       "mechanics": {
         "layoutMeasurement": false,
         "effects": true,
@@ -1515,9 +1510,8 @@
     "repository": "https://github.com/shadcn-labs/snapcn",
     "commit": "afce9f0aa8c9d464409efd1e4d4f227ca4809c04",
     "checkedAt": "2026-10-12",
-    "newPublicComponents": [
-      "font-shuffle"
-    ],
-    "note": "The public authored and live registries contain 49 visual components and one shared runtime. Font Shuffle retains its tested 460783c1 source pin; latest substitutions use ES2015 equivalents. Pro gallery entries without public component source are excluded."
+    "newPublicComponents": ["font-shuffle"],
+    "note": "All 49 public visual components are covered. Font Shuffle retains its tested 460783c1 source pin. Count Grid and Orb Swarm now use the audited latest source; other tested fixture pins remain unchanged. The Screen Recording update awaits a released HyperFrames playback-rate fix. Pro gallery entries without public component source are excluded.",
+    "updatedPublicComponents": ["count-grid", "orb-swarm"]
   }
 }

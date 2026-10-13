@@ -386,6 +386,60 @@ for (const fixture of fixtures) {
     );
   }
 }
+const variants = await readJson(
+  resolve(root, "catalog/snapcn-control-variants.json"),
+);
+for (const { slug, props, durationInFrames } of variants) {
+  const entry = fixtures.find((fixture) => fixture.slug === slug);
+  assert.ok(entry, `${slug}: unknown control fixture`);
+  const proof = await readJson(
+    resolve(root, "parity/snapcn-control-variants", `${slug}.json`),
+  );
+  assert.equal(
+    proof.status,
+    "verified",
+    `${slug}: control variant is unverified`,
+  );
+  assert.deepEqual(
+    proof.origin,
+    entry.origin,
+    `${slug}: control variant source changed`,
+  );
+  assert.deepEqual(
+    proof.fixture,
+    {
+      ...entry.fixture,
+      durationInFrames: durationInFrames ?? entry.fixture.durationInFrames,
+      props: { ...entry.fixture.props, ...props },
+    },
+    `${slug}: control variant inputs changed`,
+  );
+  assert.equal(
+    proof.checks.hyperframes,
+    "full check passed; strict render passed",
+    slug,
+  );
+  assert.equal(proof.result.pass, true, slug);
+  assert.equal(proof.result.alpha.pass, true, slug);
+  const scores = [
+    ...(
+      await readFile(resolve(root, proof.artifacts.perFrameSsim), "utf8")
+    ).matchAll(/All:([\d.]+)/g),
+  ].map((match) => Number(match[1]));
+  assert.equal(
+    scores.length,
+    proof.fixture.durationInFrames,
+    `${slug}: incomplete control frames`,
+  );
+  const mean =
+    scores.reduce((total, score) => total + score, 0) / scores.length;
+  assert.ok(Math.abs(mean - proof.result.meanSsim) < 1e-8, slug);
+  assert.ok(
+    mean >= proof.thresholds.meanSsim &&
+      Math.min(...scores) >= proof.thresholds.minSsim,
+    slug,
+  );
+}
 console.log(
   `Snapcn audit passed: ${fixtures.length} blocks, ${new Set([...assets.fonts, ...assets.media].flatMap((asset) => [asset.path, asset.portPath].filter(Boolean))).size} frozen assets, complete licenses and Apache source provenance.`,
 );

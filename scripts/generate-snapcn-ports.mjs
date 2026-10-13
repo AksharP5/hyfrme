@@ -505,8 +505,22 @@ window.__hyfrmeReady = ready;
       )
     ).join("\n") + JSON.stringify(fixture.props);
   const hasVideo = /\bOffthreadVideo\b/.test(sourceText);
-  const selectedMedia = [...mediaBySource.values()].filter(
-    (asset) =>
+  const literalMedia = [
+    "snapcn-count-grid",
+    "snapcn-screen-recording",
+  ].includes(slug);
+  const selectedMedia = [...mediaBySource.values()].filter((asset) => {
+    if (literalMedia) {
+      const sources = asset.source.startsWith("/")
+        ? [asset.source, asset.source.slice(1)]
+        : [asset.source];
+      return sources.some(
+        (source) =>
+          sourceText.includes(JSON.stringify(source)) ||
+          sourceText.includes(`'${source}'`),
+      );
+    }
+    return (
       sourceText.includes(asset.source) ||
       (asset.source.startsWith("/") &&
         sourceText.includes(asset.source.slice(1))) ||
@@ -514,8 +528,9 @@ window.__hyfrmeReady = ready;
       (slug === "snapcn-orbit-gallery" &&
         asset.source.startsWith("https://picsum.photos/seed/snap-orbit-")) ||
       (slug === "snapcn-follower-rush" &&
-        /^\/avatars\/\d+\.jpg$/.test(asset.source)),
-  );
+        /^\/avatars\/\d+\.jpg$/.test(asset.source))
+    );
+  });
   for (const asset of selectedMedia) {
     addAsset(asset.portPath ?? asset.path);
     if (asset.noticePath)

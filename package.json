@@ -67,7 +67,8 @@
     "test:selection-snap-seek": "node scripts/test-selection-snap-seek.mjs",
     "test:gpu-evidence": "node --test scripts/test-browser-gpu-evidence.mjs",
     "test:icon-showcase-history": "node --test scripts/test-icon-showcase-history.mjs",
-    "test:fresh-parity": "node --test scripts/test-fresh-parity-evidence.mjs"
+    "test:fresh-parity": "node --test scripts/test-fresh-parity-evidence.mjs",
+    "verify:snapcn-controls": "node scripts/verify-snapcn-ports.mjs --only snapcn-count-grid,snapcn-orb-swarm --fixture-overrides catalog/snapcn-control-variants.json --output-dir parity/snapcn-control-variants"
   },
   "dependencies": {
     "@vercel/analytics": "2.0.1",

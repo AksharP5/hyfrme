@@ -519,3 +519,27 @@ public install response is a watermarked demo wrapper that ignores props, so it
 is excluded from the copy-paste registry. Existing Count Grid, Orb Swarm, and
 Screen Recording source changes are separate updates to already pinned ports,
 not missing public components.
+
+## October 12 theme updates
+
+Count Grid and Orb Swarm now use the audited `afce9f0a` source. Both expose
+the upstream light/dark mode control. Count Grid freezes the current CDN
+posters and preserves all eight artwork assets. Orb Swarm keeps the source's
+theme colors and transient tint.
+
+All 207 default frames and 207 dark-mode frames pass the full HyperFrames
+0.8.99 check and strict render with exact alpha. Count Grid's default mean
+SSIM is 0.999959 and its dark mean is 0.999982. Orb Swarm matches every frame
+exactly in both modes. The lowest frame score across these fixtures is
+0.999543. Control proofs are retained in `parity/snapcn-control-variants/`
+and checked by `npm run validate:snapcn`.
+
+To reproduce the dark fixtures after preparing the locked Snapcn dependencies
+and exact source checkout, run `npm run verify:snapcn-controls`. The verifier
+uses separate reference renders and CLI-installed control values, leaving the
+default catalog proofs intact.
+
+Screen Recording retains its published pin. Its proposed speed update exposed
+a HyperFrames browser-discovery bug that drops native playback rates during
+export. The update remains pending until a released renderer passes the
+speed-and-trim regression.

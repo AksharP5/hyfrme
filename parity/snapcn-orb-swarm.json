@@ -2,7 +2,7 @@
   "slug": "snapcn-orb-swarm",
   "origin": {
     "repository": "https://github.com/snapcndev/snapcn",
-    "commit": "d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3",
+    "commit": "afce9f0aa8c9d464409efd1e4d4f227ca4809c04",
     "source": "registry/snap-cn/orb-swarm/index.tsx",
     "config": "registry/snap-cn/orb-swarm/config.ts",
     "license": "MIT",
@@ -15,19 +15,18 @@
     "durationInFrames": 160,
     "props": {
       "script": "one command | what if | every launch | you shipped | got a video | in seconds",
-      "background": "#fcf9ff",
-      "ink": "#000000",
       "orbColor": "#3577e0",
+      "mode": "light",
       "softness": 0.7,
       "fontFamily": "Default",
       "speed": 1
     },
-    "background": "#fcf9ff"
+    "background": "#faf9f6"
   },
   "classification": "compiled-source-port",
   "measurement": "lossless-png",
   "status": "verified",
-  "fingerprint": "ecc566b611c25c135d8bec0fc5f7dfb50d2986544c906b66f9a392b2265e21ea",
+  "fingerprint": "5036c3bf8a05d10116f6b49ab50bb402bc26845ae7f35599514399e1f3ac032c",
   "thresholds": {
     "meanSsim": 0.99,
     "minSsim": 0.95
@@ -50,7 +49,19 @@
     "hyperframesVersion": "0.8.99",
     "remotionVersion": "4.0.473",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
-    "browserGpuMode": "hardware",
+    "browserGpuRequestedMode": "hardware",
+    "browserGpuProbes": {
+      "render": {
+        "logSha256": "f09ea29cbb7b3cf96c3a3223912a6f2850910b9c1b138794da67c29509bab9f6",
+        "observations": [
+          {
+            "mode": "hardware",
+            "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+          }
+        ]
+      }
+    },
+    "captureBackend": "unobserved",
     "referenceGl": "angle-egl",
     "installedThroughCli": true
   },
@@ -61,6 +72,7 @@
     "summary": "parity/snapcn-orb-swarm-diff/summary.json",
     "perFrameSsim": "parity/snapcn-orb-swarm-diff/ssim.log",
     "hyperframesCheck": "parity/snapcn-orb-swarm-diff/hyperframes-check.log",
+    "hyperframesRender": "parity/snapcn-orb-swarm-diff/hyperframes-render.log",
     "worstFrame": "parity/snapcn-orb-swarm-diff/worst-frame.png",
     "referenceAlpha": "parity/snapcn-orb-swarm-diff/reference-alpha.framemd5",
     "hyperframesAlpha": "parity/snapcn-orb-swarm-diff/hyperframes-alpha.framemd5"

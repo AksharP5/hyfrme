@@ -17,6 +17,14 @@ import {
   browserGpuProbeEvidence,
 } from "./browser-gpu-evidence.mjs";
 const args = process.argv.slice(2);
+function argument(flag) {
+  const index = args.indexOf(flag);
+  if (index === -1) return;
+  const value = args[index + 1];
+  if (!value || value.startsWith("--"))
+    throw new Error(`${flag} requires a value`);
+  return value;
+}
 const profileIndex = args.indexOf("--source-profile");
 const profile = profileIndex === -1 ? "snapcn" : args[profileIndex + 1];
 if (!["snapcn", "remocn"].includes(profile)) {
@@ -40,24 +48,82 @@ const {
 );
 const label = profile === "remocn" ? "Remocn" : "Snapcn";
 const browserFallback = args.includes("--browser-fallback");
+const overridePath = argument("--fixture-overrides");
+const outputDirectory = argument("--output-dir");
+if (outputDirectory && profile !== "snapcn")
+  throw new Error("--output-dir requires the Snapcn source profile");
+if (overridePath && (profile !== "snapcn" || !outputDirectory))
+  throw new Error("Snapcn fixture overrides require a separate --output-dir");
+if (
+  outputDirectory &&
+  !resolve(root, outputDirectory).startsWith(`${resolve(root, "parity")}${sep}`)
+)
+  throw new Error("--output-dir must be a directory inside parity/");
 if (browserFallback && profile !== "remocn") {
   throw new Error("--browser-fallback requires the Remocn source profile");
 }
-const parityRoot = browserFallback
-  ? "parity/remocn-browser-fallback"
-  : "parity";
-const previewsRoot = browserFallback
-  ? `${parityRoot}/previews`
-  : "public/previews";
+const parityRoot =
+  outputDirectory ??
+  (browserFallback ? "parity/remocn-browser-fallback" : "parity");
+const previewsRoot =
+  browserFallback || outputDirectory
+    ? `${parityRoot}/previews`
+    : "public/previews";
 const workbench = resolve(
   root,
-  browserFallback
-    ? ".work/verify-remocn-browser-fallback"
-    : profile === "remocn"
-      ? ".work/verify-remocn-lossless"
-      : ".work/verify-snapcn",
+  outputDirectory
+    ? `.work/verify-${outputDirectory.replaceAll("/", "-")}`
+    : browserFallback
+      ? ".work/verify-remocn-browser-fallback"
+      : profile === "remocn"
+        ? ".work/verify-remocn-lossless"
+        : ".work/verify-snapcn",
 );
-const fixtures = await selectFixtures(args);
+let fixtures = await selectFixtures(args);
+let fixtureOverrides;
+if (overridePath) {
+  fixtureOverrides = JSON.parse(
+    await readFile(resolve(root, overridePath), "utf8"),
+  );
+  if (
+    !Array.isArray(fixtureOverrides) ||
+    fixtureOverrides.length !== fixtures.length
+  )
+    throw new Error("Expected one fixture override per selected Snapcn port");
+  if (
+    fixtureOverrides.some((value) => !value || typeof value.slug !== "string")
+  )
+    throw new Error("Every fixture override requires a Snapcn slug");
+  fixtures = fixtures.map((entry) => {
+    const overrides = fixtureOverrides.filter(
+      (value) => value.slug === entry.slug,
+    );
+    if (overrides.length !== 1)
+      throw new Error(`${entry.slug}: expected one fixture override`);
+    const { props, durationInFrames = entry.fixture.durationInFrames } =
+      overrides[0];
+    if (
+      !props ||
+      typeof props !== "object" ||
+      Array.isArray(props) ||
+      Object.keys(props).some((key) => !Object.hasOwn(entry.controls, key)) ||
+      !Number.isInteger(durationInFrames) ||
+      durationInFrames < 1
+    )
+      throw new Error(`${entry.slug}: invalid fixture overrides`);
+    return {
+      ...entry,
+      fixture: {
+        ...entry.fixture,
+        durationInFrames,
+        props: { ...entry.fixture.props, ...props },
+      },
+    };
+  });
+}
+const referenceWorkspace = outputDirectory
+  ? resolve(workbench, "reference")
+  : referenceWorkbench;
 const resume = args.includes("--resume");
 const reuseReference = resume || args.includes("--reuse-reference");
 const threshold = 0.99;
@@ -72,7 +138,7 @@ const sourceCheckExceptions = await readFile(
     throw error;
   });
 await mkdir(workbench, { recursive: true });
-if (browserFallback)
+if (browserFallback || outputDirectory)
   await mkdir(resolve(root, parityRoot), { recursive: true });
 
 async function fingerprint(entry) {
@@ -246,7 +312,7 @@ try {
     const project = resolve(directory, "installed");
     const diff = resolve(directory, "diff");
     const referenceFrames = resolve(
-      referenceWorkbench,
+      referenceWorkspace,
       "renders",
       entry.slug,
       "reference-frames",
@@ -264,7 +330,10 @@ try {
     );
     try {
       const inputFingerprint = await fingerprint(entry);
-      await renderReferences([entry], { reuse: reuseReference });
+      await renderReferences([entry], {
+        reuse: reuseReference,
+        workspace: referenceWorkspace,
+      });
       await rm(project, { recursive: true, force: true });
       await rm(portFrames, { recursive: true, force: true });
       await mkdir(project, { recursive: true });
@@ -283,7 +352,16 @@ try {
       );
       const install = await run(
         process.execPath,
-        [resolve(root, "cli/bin/hyfrme.mjs"), "add", slug, "--dir", project],
+        [
+          resolve(root, "cli/bin/hyfrme.mjs"),
+          "add",
+          slug,
+          "--dir",
+          project,
+          ...Object.entries(
+            fixtureOverrides?.find((entry) => entry.slug === slug)?.props ?? {},
+          ).flatMap(([key, value]) => ["--set", `${key}=${value}`]),
+        ],
         { env: { HYFRME_REGISTRY_URL: registryUrl } },
       );
       await writeFile(resolve(directory, "install.log"), install.output);
