@@ -6553,5 +6553,66 @@
       }
     },
     "tags": ["snapcn", "screens"]
+  },
+  {
+    "slug": "snapcn-font-shuffle",
+    "catalogFamily": "snapcn",
+    "title": "Font Shuffle",
+    "description": "Launch title animation: the line decodes out of scrambled glyphs set in the wrong typeface, flashes the accent, settles to ink, then the product name cycles through eleven typefaces (mono, light, humanist, pixel, script, slab, condensed, italic, blackletter, wide, bold grotesk) while the line zooms a step closer on each swap. Every beat is a held state measured off a recording frame by frame — timing, masks, layout, zoom and colour.",
+    "componentName": "FontShuffle",
+    "origin": {
+      "repository": "https://github.com/snapcndev/snapcn",
+      "source": "registry/snap-cn/font-shuffle/index.tsx",
+      "config": "registry/snap-cn/font-shuffle/config.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/font-shuffle/index.tsx",
+      "commit": "460783c1af88f20913caa843734353c2eec2c997"
+    },
+    "tags": [
+      "snapcn",
+      "text"
+    ],
+    "controls": {
+      "lead": {
+        "type": "text",
+        "default": "Introducing",
+        "label": "Lead (stays serif)"
+      },
+      "subject": {
+        "type": "text",
+        "default": "snapcn Pro",
+        "label": "Subject (tries on fonts)"
+      },
+      "accent": {
+        "type": "color",
+        "default": "#9b8ed3",
+        "label": "Accent"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Theme"
+      }
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 115,
+      "props": {
+        "lead": "Introducing",
+        "subject": "snapcn Pro",
+        "accent": "#9b8ed3",
+        "mode": "light"
+      },
+      "background": "transparent"
+    },
+    "omittedControls": {
+      "speed": "The shared upstream customizer appends speed, but this component has no speed prop and does not use it."
+    }
   }
 ]

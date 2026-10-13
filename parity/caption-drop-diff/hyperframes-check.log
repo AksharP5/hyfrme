@@ -1,0 +1,162 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 2,
+    "findings": [
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 8.783,
+        "selector": "#caption-drop-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 259.99,
+          "top": 668.72,
+          "right": 416.46,
+          "bottom": 754.21,
+          "width": 156.47,
+          "height": 85.48
+        },
+        "containerSelector": "#root",
+        "text": "even",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 34.21
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-drop.html",
+        "bbox": {
+          "x": 259.99,
+          "y": 668.72,
+          "width": 156.47,
+          "height": 85.48
+        },
+        "firstSeen": 8.783,
+        "lastSeen": 8.783,
+        "occurrences": 1
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 8.783,
+        "selector": "#caption-drop-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 426.97,
+          "top": 642.52,
+          "right": 569.58,
+          "bottom": 729.63,
+          "width": 142.62,
+          "height": 87.12
+        },
+        "containerSelector": "#root",
+        "text": "with",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "bottom": 9.63
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-drop.html",
+        "bbox": {
+          "x": 426.97,
+          "y": 642.52,
+          "width": 142.62,
+          "height": 87.12
+        },
+        "firstSeen": 8.783,
+        "lastSeen": 8.783,
+        "occurrences": 1
+      }
+    ],
+    "duration": 9.3,
+    "samples": [
+      0.517,
+      1.55,
+      2.583,
+      3.617,
+      4.65,
+      5.683,
+      6.717,
+      7.75,
+      8.783
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 2,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.517,
+      2.583,
+      4.65,
+      6.717,
+      8.783
+    ],
+    "checked": 20,
+    "passed": 20
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.145",
+    "updateAvailable": true
+  }
+}

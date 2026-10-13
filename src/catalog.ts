@@ -254,12 +254,18 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
       {
         id: "font-studies",
         label: "Font Studies",
-        slugs: ["glyph-anatomy", "outline-trace"],
+        slugs: ["glyph-anatomy", "outline-trace", "snapcn-font-shuffle"],
       },
       {
         id: "captions",
         label: "Captions",
-        slugs: ["snapcn-word-captions", "snapcn-karaoke-captions"],
+        slugs: [
+          "snapcn-word-captions",
+          "snapcn-karaoke-captions",
+          ...catalogData
+            .filter(({ item }) => item.name.startsWith("caption-"))
+            .map(({ item }) => item.name),
+        ],
       },
     ],
   },

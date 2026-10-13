@@ -28,12 +28,20 @@ export const workbench = resolve(
     ? ".work/remocn-browser-fallback-reference"
     : ".work/remocn-lossless-reference",
 );
-export const remotionVersion = "4.0.513";
+const referenceFixture = resolve(
+  root,
+  process.env.REMOCN_REFERENCE_FIXTURE ?? "fixtures/remocn-latest",
+);
+const referenceDependencies = JSON.parse(
+  await readFile(resolve(referenceFixture, "package.json"), "utf8"),
+);
+export const remotionVersion = referenceDependencies.dependencies.remotion;
 export const referenceGl = "angle-egl";
 const frozenAssetDirectories = [
   "assets/remocn-additions",
   "assets/remocn-templates-7fa2db1",
   "assets/remocn-additions-2026-09-28",
+  "assets/remocn-additions-2026-10-11",
 ];
 
 async function assertSource(commit) {
@@ -55,14 +63,15 @@ async function assertSource(commit) {
 
 async function assertDependencies() {
   const expected = JSON.parse(
-    await readFile(
-      resolve(root, "fixtures/remocn-latest/package.json"),
-      "utf8",
-    ),
+    await readFile(resolve(referenceFixture, "package.json"), "utf8"),
   );
-  const require = createRequire(resolve(upstream, "package.json"));
   for (const [name, version] of Object.entries(expected.dependencies)) {
-    const installed = require(`${name}/package.json`).version;
+    const installed = JSON.parse(
+      await readFile(
+        resolve(upstream, "node_modules", name, "package.json"),
+        "utf8",
+      ),
+    ).version;
     if (installed !== version) {
       throw new Error(
         `Reference dependency ${name} is ${installed}; expected ${version}`,
@@ -163,9 +172,7 @@ export async function referenceFingerprint(entry) {
     .update(await readFile(resolve(root, "assets/fonts/GeistMono-Latin.woff2")))
     .update(await readFile(import.meta.filename))
     .update(await readFile(resolve(root, "scripts/remocn-canvas.mjs")))
-    .update(
-      await readFile(resolve(root, "fixtures/remocn-latest/package-lock.json")),
-    )
+    .update(await readFile(resolve(referenceFixture, "package-lock.json")))
     .update(remotionVersion)
     .update((await verificationBrowser()).version)
     .digest("hex");

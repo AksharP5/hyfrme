@@ -492,3 +492,30 @@ HyperFrames exports. An installed fixture with a synthetic tone confirms that
 `audio=true` exports audible AAC and `audio=false` exports without audio. The
 media regression in `npm run check` checks audio intent, trim, playback rate,
 and volume at the native video boundary.
+
+## October 12 public catalog check
+
+The public authored and live registries at
+[`afce9f0aa8c9d464409efd1e4d4f227ca4809c04`](https://github.com/shadcn-labs/snapcn/commit/afce9f0aa8c9d464409efd1e4d4f227ca4809c04)
+contain 49 visual components and one shared runtime. Font Shuffle is the only
+new public visual since the previously published 48 ports. The other 48 fixture
+and source pins remain unchanged. The upstream repository now redirects from
+`snapcndev/snapcn` to `shadcn-labs/snapcn`.
+
+Font Shuffle keeps its tested source at
+`460783c1af88f20913caa843734353c2eec2c997`. Its 115-frame fixture passes at
+0.9999999478 mean SSIM and 0.999998 minimum SSIM, with exact alpha and a passing
+full HyperFrames check. It packages 13 unmodified Fontsource faces and their
+OFL-1.1 notices. Lead, subject, accent, and theme are editable; the shared speed
+control is omitted because the source does not use it.
+
+The retained proof is authenticated against the archived producer inputs under
+`parity/upstream-oct11-producer/`. Its render log records one hardware SDK probe;
+the capture backend remains unobserved. Latest source substitutions use ES2015
+equivalents and do not add controls, so the verified pin is preserved.
+
+Agent Compose is a Pro gallery entry without public component source. Its
+public install response is a watermarked demo wrapper that ignores props, so it
+is excluded from the copy-paste registry. Existing Count Grid, Orb Swarm, and
+Screen Recording source changes are separate updates to already pinned ports,
+not missing public components.

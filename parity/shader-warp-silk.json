@@ -1,0 +1,76 @@
+{
+  "slug": "shader-warp-silk",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+    "source": "registry/remocn/shader-warp-silk/index.tsx",
+    "config": "registry/remocn/shader-warp-silk/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "distortion": 0.15,
+      "swirl": 0.6,
+      "softness": 1,
+      "proportion": 0.45
+    },
+    "background": "transparent"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "70de8cba1e62fe26230590adc2dab8d3e8bd577309cc4afae33fd3d22b8bb6ba",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.530",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true,
+    "verificationArchive": "parity/upstream-oct11-producer/manifest.json",
+    "historicalRenderProbe": {
+      "artifact": "parity/shader-warp-silk-diff/hyperframes-render.log",
+      "logSha256": "8e6b585137541c6e0746d8dc02076c0f8c1a4b0fde9b5834dfdf6b93b63d98bf",
+      "observations": [
+        {
+          "mode": "hardware",
+          "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+        }
+      ]
+    },
+    "captureBackend": "unobserved"
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/shader-warp-silk/reference.mp4",
+    "hyperframesVideo": "public/previews/shader-warp-silk/hyperframes.mp4",
+    "thumbnail": "public/previews/shader-warp-silk/thumbnail.png",
+    "summary": "parity/shader-warp-silk-diff/summary.json",
+    "perFrameSsim": "parity/shader-warp-silk-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-warp-silk-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-warp-silk-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-warp-silk-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-warp-silk-diff/hyperframes-alpha.framemd5"
+  }
+}

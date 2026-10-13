@@ -1,0 +1,74 @@
+{
+  "slug": "shader-mesh-gradient-lagoon",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+    "source": "registry/remocn/shader-mesh-gradient-lagoon/index.tsx",
+    "config": "registry/remocn/shader-mesh-gradient-lagoon/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "distortion": 0.7,
+      "swirl": 0.35
+    },
+    "background": "transparent"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "8846dd30b5aef584595f6f1503fa359d0c53521a33e77c4487411e0919306eea",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.530",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true,
+    "verificationArchive": "parity/upstream-oct11-producer/manifest.json",
+    "historicalRenderProbe": {
+      "artifact": "parity/shader-mesh-gradient-lagoon-diff/hyperframes-render.log",
+      "logSha256": "3db8c9cef3cc0bac9d808d3aa5d6fb8866f1b75038fcf69eea9d1dd5350ddbf8",
+      "observations": [
+        {
+          "mode": "hardware",
+          "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+        }
+      ]
+    },
+    "captureBackend": "unobserved"
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/shader-mesh-gradient-lagoon/reference.mp4",
+    "hyperframesVideo": "public/previews/shader-mesh-gradient-lagoon/hyperframes.mp4",
+    "thumbnail": "public/previews/shader-mesh-gradient-lagoon/thumbnail.png",
+    "summary": "parity/shader-mesh-gradient-lagoon-diff/summary.json",
+    "perFrameSsim": "parity/shader-mesh-gradient-lagoon-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-mesh-gradient-lagoon-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-mesh-gradient-lagoon-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-mesh-gradient-lagoon-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-mesh-gradient-lagoon-diff/hyperframes-alpha.framemd5"
+  }
+}

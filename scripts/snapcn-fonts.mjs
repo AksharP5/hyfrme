@@ -1,4 +1,5 @@
-import { resolve } from "node:path";
+import { readFile } from "node:fs/promises";
+import { dirname, resolve } from "node:path";
 
 export const snapcnFontFamily = (family) => `Hyfrme Snapcn ${family}`;
 
@@ -26,6 +27,41 @@ function fontProps(type, props) {
   return {
     name: "snapcn-fonts",
     setup(api) {
+      api.onLoad(
+        { filter: /snap-cn\/font-shuffle\/index\.tsx$/ },
+        async ({ path }) => {
+          let source = await readFile(path, "utf8");
+          const direct = fonts.filter(
+            (font) =>
+              font.directFontFace &&
+              font.slugs?.includes("snapcn-font-shuffle"),
+          );
+          if (
+            !direct.length ||
+            direct.some(
+              (font) => !source.includes(font.sourceToken ?? font.source),
+            )
+          )
+            throw new Error("Pinned Font Shuffle font sources changed.");
+          for (const font of direct) {
+            usedFonts.add(font.module);
+            source = source
+              .replaceAll(font.sourceToken ?? font.source, font.source)
+              .replaceAll(
+                JSON.stringify(font.family),
+                JSON.stringify(snapcnFontFamily(font.family)),
+              );
+          }
+          source = source
+            .replaceAll("`url(${", "`url(${__hyfrmeFontFile(")
+            .replaceAll('}) format("woff2")`', ')}) format("woff2")`');
+          return {
+            loader: "tsx",
+            resolveDir: dirname(path),
+            contents: `import {staticFile as __hyfrmeFontFile} from "remotion";\n${source}`,
+          };
+        },
+      );
       api.onResolve({ filter: /^@remotion\/google-fonts\// }, ({ path }) => ({
         path: path.split("/").at(-1),
         namespace: "snapcn-font",

@@ -1,0 +1,76 @@
+{
+  "slug": "shader-grain-gradient-horizon",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+    "source": "registry/remocn/shader-grain-gradient-horizon/index.tsx",
+    "config": "registry/remocn/shader-grain-gradient-horizon/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "softness": 0.9,
+      "intensity": 0.15,
+      "noise": 0.25,
+      "colorBack": "#0b1d3a"
+    },
+    "background": "transparent"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "c7063c705d6aeeee2835e3a83419c68b58b9057af43985086783ff70f44fdd97",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.530",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true,
+    "verificationArchive": "parity/upstream-oct11-producer/manifest.json",
+    "historicalRenderProbe": {
+      "artifact": "parity/shader-grain-gradient-horizon-diff/hyperframes-render.log",
+      "logSha256": "a9a4e70194394eafbb4404ed9a379cccf5ff4371e8611d1d95d50915f40020b5",
+      "observations": [
+        {
+          "mode": "hardware",
+          "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+        }
+      ]
+    },
+    "captureBackend": "unobserved"
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/shader-grain-gradient-horizon/reference.mp4",
+    "hyperframesVideo": "public/previews/shader-grain-gradient-horizon/hyperframes.mp4",
+    "thumbnail": "public/previews/shader-grain-gradient-horizon/thumbnail.png",
+    "summary": "parity/shader-grain-gradient-horizon-diff/summary.json",
+    "perFrameSsim": "parity/shader-grain-gradient-horizon-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-grain-gradient-horizon-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-grain-gradient-horizon-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-grain-gradient-horizon-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-grain-gradient-horizon-diff/hyperframes-alpha.framemd5"
+  }
+}

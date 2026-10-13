@@ -1,0 +1,166 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": false,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 3,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "text_not_painted",
+        "severity": "error",
+        "time": 0.517,
+        "selector": "#caption-scramble-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text paints with an effectively transparent fill (-webkit-text-fill-color / color), so its glyphs are invisible.",
+        "rect": {
+          "left": 433.47,
+          "top": 567.2,
+          "right": 626.47,
+          "bottom": 650.2,
+          "width": 193,
+          "height": 83
+        },
+        "text": "here's",
+        "fixHint": "Set an explicit, opaque `color` on the text — and an explicit `-webkit-text-fill-color` if an ancestor makes the fill transparent. If the transparency is intentional gradient text, add `background-clip: text`.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-scramble.html",
+        "bbox": {
+          "x": 433.47,
+          "y": 567.2,
+          "width": 193,
+          "height": 83
+        },
+        "firstSeen": 0.517,
+        "lastSeen": 0.517,
+        "occurrences": 1
+      },
+      {
+        "code": "text_not_painted",
+        "severity": "error",
+        "time": 3.617,
+        "selector": "#caption-scramble-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(4) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text paints with an effectively transparent fill (-webkit-text-fill-color / color), so its glyphs are invisible.",
+        "rect": {
+          "left": 692.33,
+          "top": 490.41,
+          "right": 830.95,
+          "bottom": 573.41,
+          "width": 138.63,
+          "height": 83
+        },
+        "text": "first",
+        "fixHint": "Set an explicit, opaque `color` on the text — and an explicit `-webkit-text-fill-color` if an ancestor makes the fill transparent. If the transparency is intentional gradient text, add `background-clip: text`.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-scramble.html",
+        "bbox": {
+          "x": 692.33,
+          "y": 490.41,
+          "width": 138.63,
+          "height": 83
+        },
+        "firstSeen": 3.617,
+        "lastSeen": 3.617,
+        "occurrences": 1
+      },
+      {
+        "code": "text_not_painted",
+        "severity": "error",
+        "time": 5.683,
+        "selector": "#caption-scramble-source-root > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text paints with an effectively transparent fill (-webkit-text-fill-color / color), so its glyphs are invisible.",
+        "rect": {
+          "left": 157.44,
+          "top": 567.2,
+          "right": 446.66,
+          "bottom": 650.2,
+          "width": 289.22,
+          "height": 83
+        },
+        "text": "Captions",
+        "fixHint": "Set an explicit, opaque `color` on the text — and an explicit `-webkit-text-fill-color` if an ancestor makes the fill transparent. If the transparency is intentional gradient text, add `background-clip: text`.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/caption-scramble.html",
+        "bbox": {
+          "x": 157.44,
+          "y": 567.2,
+          "width": 289.22,
+          "height": 83
+        },
+        "firstSeen": 5.683,
+        "lastSeen": 5.683,
+        "occurrences": 1
+      }
+    ],
+    "duration": 9.3,
+    "samples": [
+      0.517,
+      1.55,
+      2.583,
+      3.617,
+      4.65,
+      5.683,
+      6.717,
+      7.75,
+      8.783
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 3,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.517,
+      2.583,
+      4.65,
+      6.717,
+      8.783
+    ],
+    "checked": 21,
+    "passed": 21
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.30",
+    "latestVersion": "0.8.145",
+    "updateAvailable": true
+  }
+}

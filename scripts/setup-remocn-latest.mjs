@@ -28,6 +28,10 @@ const dependencies = resolve(
   root,
   process.env.REMOCN_DEPENDENCIES ?? ".work/remocn-latest-deps",
 );
+const referenceFixture = resolve(
+  root,
+  process.env.REMOCN_REFERENCE_FIXTURE ?? "fixtures/remocn-latest",
+);
 const run = (command, args, cwd = root) => {
   const result = spawnSync(command, args, {
     cwd,
@@ -72,10 +76,7 @@ if (
 }
 await mkdir(dependencies, { recursive: true });
 for (const file of ["package.json", "package-lock.json"]) {
-  await copyFile(
-    resolve(root, "fixtures/remocn-latest", file),
-    resolve(dependencies, file),
-  );
+  await copyFile(resolve(referenceFixture, file), resolve(dependencies, file));
 }
 run("npm", ["ci", "--no-audit", "--no-fund"], dependencies);
 if (!existing)

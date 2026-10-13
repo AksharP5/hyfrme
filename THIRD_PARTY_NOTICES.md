@@ -63,6 +63,11 @@ also includes opentype.js 2.0.0 under MIT.
 
 Copyright (c) 2026 Remocn
 
+The October 11 caption styles and shader presets use commit
+`fd2d3010a8183985553f9ddeb364313d57fb36b9`. Frozen fonts and exact entry points
+are recorded in `assets/remocn-additions-2026-10-11/manifest.json`. Caption paging
+uses Hyfrme-owned code; the Remotion caption package is reference tooling only.
+
 Licensed under the MIT License. The full upstream license is available at
 <https://github.com/Remocn/remocn/blob/main/LICENSE>.
 
@@ -123,6 +128,11 @@ Snapcn's Pulsing Border uses Paper source from Apache-2.0 commit
 required upstream runtime sources. It does not bundle the PolyForm-licensed
 npm archive. Its full Apache license and provenance record install with the block.
 
+Font Shuffle uses MIT source at `460783c1af88f20913caa843734353c2eec2c997`
+and 13 unmodified Fontsource faces under OFL-1.1. Every font's complete license
+installs alongside the block. The tested source pin remains unchanged after
+the October 12 public-catalog audit.
+
 See [the source and license audit](docs/SNAPCN_AUDIT.md) and
 `assets/snapcn/manifest.json` for the complete frozen asset and license inventory.
 
@@ -152,6 +162,13 @@ runtime notice, and install the complete terms at
 `THIRD_PARTY_LICENSES/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md`. The source copy is
 also preserved at
 `assets/licenses/Paper-Shaders-POLYFORM-SHIELD-1.0.0.md`.
+
+The 36 new standalone shader presets instead use unmodified Paper source from
+Apache-2.0 commit `f9f2a8b2edeb78ec59256c4dc571f5eaf943d798`. Their runtimes
+include only the required base shaders. Complete licenses, upstream notices,
+and provenance install at `THIRD_PARTY_LICENSES/paper-shaders/`. The frozen
+sources and hashes are recorded in `assets/remocn-paper-shaders/provenance.json`;
+no PolyForm npm shader archive is bundled in these additions.
 
 ## React and ReactDOM
 
