@@ -1,0 +1,76 @@
+{
+  "slug": "shader-warp-marble",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+    "source": "registry/remocn/shader-warp-marble/index.tsx",
+    "config": "registry/remocn/shader-warp-marble/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "distortion": 0.25,
+      "swirl": 0.9,
+      "softness": 0.4,
+      "proportion": 0.3
+    },
+    "background": "transparent"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "4023fdaea6632d7e94161051f578a5371f8e2021b7ac911403098019caa7c2fd",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.530",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true,
+    "verificationArchive": "parity/upstream-oct11-producer/manifest.json",
+    "historicalRenderProbe": {
+      "artifact": "parity/shader-warp-marble-diff/hyperframes-render.log",
+      "logSha256": "9b33071680b4fc298f96488baa36773317af1bd9b258d26a36bc65bf2f68cd44",
+      "observations": [
+        {
+          "mode": "hardware",
+          "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+        }
+      ]
+    },
+    "captureBackend": "unobserved"
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/shader-warp-marble/reference.mp4",
+    "hyperframesVideo": "public/previews/shader-warp-marble/hyperframes.mp4",
+    "thumbnail": "public/previews/shader-warp-marble/thumbnail.png",
+    "summary": "parity/shader-warp-marble-diff/summary.json",
+    "perFrameSsim": "parity/shader-warp-marble-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-warp-marble-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-warp-marble-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-warp-marble-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-warp-marble-diff/hyperframes-alpha.framemd5"
+  }
+}

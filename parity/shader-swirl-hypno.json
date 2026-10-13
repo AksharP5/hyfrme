@@ -1,0 +1,76 @@
+{
+  "slug": "shader-swirl-hypno",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+    "source": "registry/remocn/shader-swirl-hypno/index.tsx",
+    "config": "registry/remocn/shader-swirl-hypno/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 150,
+    "props": {
+      "speed": 1,
+      "bandCount": 6,
+      "twist": 0.25,
+      "softness": 0,
+      "colorBack": "#0b0b0b"
+    },
+    "background": "transparent"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "bd32b466e5c9df2c5a8741d847dfc59be5e06909f55ffa73b9196845479e9d15",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 150,
+    "meanSsim": 1,
+    "minSsim": 1,
+    "p05Ssim": 1,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 150,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.530",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true,
+    "verificationArchive": "parity/upstream-oct11-producer/manifest.json",
+    "historicalRenderProbe": {
+      "artifact": "parity/shader-swirl-hypno-diff/hyperframes-render.log",
+      "logSha256": "5b24c22fe0cc103212f230d7538fe20eddee83f086256761f65f969de9ed7d0b",
+      "observations": [
+        {
+          "mode": "hardware",
+          "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+        }
+      ]
+    },
+    "captureBackend": "unobserved"
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/shader-swirl-hypno/reference.mp4",
+    "hyperframesVideo": "public/previews/shader-swirl-hypno/hyperframes.mp4",
+    "thumbnail": "public/previews/shader-swirl-hypno/thumbnail.png",
+    "summary": "parity/shader-swirl-hypno-diff/summary.json",
+    "perFrameSsim": "parity/shader-swirl-hypno-diff/ssim.log",
+    "hyperframesCheck": "parity/shader-swirl-hypno-diff/hyperframes-check.log",
+    "worstFrame": "parity/shader-swirl-hypno-diff/worst-frame.png",
+    "referenceAlpha": "parity/shader-swirl-hypno-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/shader-swirl-hypno-diff/hyperframes-alpha.framemd5"
+  }
+}

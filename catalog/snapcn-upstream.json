@@ -8,12 +8,12 @@
   "fixtureSource": "catalog/snapcn-fixtures.json",
   "assetManifest": "assets/snapcn/manifest.json",
   "summary": {
-    "totalRegistryItems": 49,
-    "visualItems": 48,
+    "totalRegistryItems": 50,
+    "visualItems": 49,
     "sharedRuntimeItems": 1,
-    "previewRegistryItems": 45,
+    "previewRegistryItems": 46,
     "sourceFamilies": {
-      "snap-cn": 46,
+      "snap-cn": 47,
       "snap-cn-ui": 2
     },
     "missingFixtures": []
@@ -997,6 +997,32 @@
         "shader": false
       },
       "commit": "f31be8a493cd836bbef36ac4f5a182fc40ee983e"
+    },
+    {
+      "name": "font-shuffle",
+      "slug": "snapcn-font-shuffle",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/font-shuffle/index.tsx",
+      "docs": [
+        "content/docs/text/font-shuffle.mdx"
+      ],
+      "inPreviewRegistry": true,
+      "commit": "460783c1af88f20913caa843734353c2eec2c997",
+      "sourceSha256": "39b55d15f3c9aaa86df3811f34564c0ba088b78924a516312f208a9d90ef4fff",
+      "dependencies": [
+        "remotion"
+      ],
+      "registryDependencies": [
+        "https://snapcn.dev/r/snap-cn-ui.json"
+      ],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": true,
+        "state": true,
+        "media": false,
+        "shader": false
+      }
     }
   ],
   "dependencyLicenseNotes": [
@@ -1484,5 +1510,14 @@
       "publishedJsonSha256": "bae8d7738585db6f13e0f0a3c2cd48ebb6ccbd664c700c093dd5bee5fd033aa7",
       "sourceMatchesGitApartFromAttribution": true
     }
+  },
+  "latestAudit": {
+    "repository": "https://github.com/shadcn-labs/snapcn",
+    "commit": "afce9f0aa8c9d464409efd1e4d4f227ca4809c04",
+    "checkedAt": "2026-10-12",
+    "newPublicComponents": [
+      "font-shuffle"
+    ],
+    "note": "The public authored and live registries contain 49 visual components and one shared runtime. Font Shuffle retains its tested 460783c1 source pin; latest substitutions use ES2015 equivalents. Pro gallery entries without public component source are excluded."
   }
 }

@@ -49,7 +49,7 @@
     "test:preview-errors": "node --test scripts/test-preview-errors.mjs",
     "test:customization": "node --test scripts/test-customization.mjs",
     "test:website": "node --test scripts/test-website.mjs",
-    "test:remocn-registry": "node scripts/test-remocn-registry.mjs",
+    "test:remocn-registry": "node scripts/test-remocn-registry.mjs && node --test scripts/test-remocn-captions.mjs && node scripts/verify-upstream-additions-evidence.mjs",
     "test:snapcn-media": "node scripts/test-snapcn-media.mjs",
     "test:snapcn-alpha": "node scripts/test-snapcn-alpha.mjs",
     "test:frame-math": "node scripts/test-frame-math.mjs",

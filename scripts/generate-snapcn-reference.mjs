@@ -284,7 +284,11 @@ export async function renderReferences(
     ...assets.fonts.filter((font) => font.directFontFace),
   ]
     .filter((media) => media.source.startsWith("https://"))
-    .map((media) => [media.source, `/assets/snapcn/${media.path}`]);
+    .flatMap((media) =>
+      [media.source, media.sourceToken]
+        .filter(Boolean)
+        .map((source) => [source, `/assets/snapcn/${media.path}`]),
+    );
   mediaReplacements.push([
     "https://picsum.photos/seed/snap-orbit-${i + 1}/440/560",
     "/assets/snapcn/media/orbit/snap-orbit-${i + 1}.jpg",

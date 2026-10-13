@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id":"captions","type":"string","label":"Transcript","default":"So here&#39;s the thing. Most demo videos lose people in the first three seconds. Captions keep them watching, even with the sound off."},{"id":"fontSize","type":"number","label":"Font size","default":64,"min":24,"max":140,"step":1},{"id":"fontWeight","type":"number","label":"Font weight","default":800,"min":400,"max":900,"step":100},{"id":"color","type":"color","label":"Text color","default":"#ffffff"},{"id":"tintActive","type":"boolean","label":"Tint active word","default":false},{"id":"activeColor","type":"color","label":"Active color","default":"#facc15"},{"id":"combineTokensWithinMilliseconds","type":"number","label":"Page window (ms)","default":800,"min":0,"max":3000,"step":100},{"id":"holdMs","type":"number","label":"Hold (ms)","default":600,"min":0,"max":2000,"step":50},{"id":"shadow","type":"boolean","label":"Shadow","default":true}]'>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+      @font-face { font-family: "Hyfrme Remocn Geist"; src: url("../assets/fonts/Geist-Latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: block; }
+
+
+
+
+
+
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; margin: 0; overflow: hidden; background: #262626; }
+      body { --font-geist-sans: "Hyfrme Remocn Geist"; font-family: "Hyfrme Remocn Geist", -apple-system, BlinkMacSystemFont, sans-serif; }
+      #hyfrme-source-root { position: absolute; inset: 0; --font-geist-sans:"Hyfrme Remocn Geist";font-family:"Hyfrme Remocn Geist",sans-serif; background:#262626; }
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="caption-cube" data-start="0" data-duration="9.3" data-fps="30" data-width="1280" data-height="720">
+      <span hidden data-layout-ignore data-hyfrme-clock></span>
+
+      <div id="hyfrme-source-stage" class="clip" data-start="0" data-duration="9.3" data-track-index="0">
+        <div id="hyfrme-source-root" data-hyfrme-assets='{"https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2":"../assets/fonts/Geist-Latin.woff2"}'></div>
+      </div>
+    </div>
+    <script src="./caption-cube.runtime.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const renderFrame = window.__hyfrmeRenderFrame;
+      window.__hyfrmeReady.then(() => {
+      const clock = document.querySelector('[data-composition-id="caption-cube"] [data-hyfrme-clock]');
+      clock.frame = 0;
+      const timeline = gsap.timeline({ paused: true });
+      timeline.to('[data-composition-id="caption-cube"] [data-hyfrme-clock]', {
+        frame: 279,
+        duration: 9.3,
+        ease: "none",
+        onUpdate: () => renderFrame(Math.max(0, Math.min(278, Math.round(clock.frame)))),
+      });
+
+      window.__timelines["caption-cube"] = timeline;
+      window.__hfForceTimelineRebind?.();
+      });
+    </script>
+  </body>
+</html>

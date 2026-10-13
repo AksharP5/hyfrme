@@ -42,6 +42,41 @@ if (
 }
 
 const registry = await readJson(resolve(root, "registry", "registry.json"));
+const additions = await readJson(
+  resolve(root, "assets/remocn-additions-2026-10-11/manifest.json"),
+);
+const paperRoot = resolve(root, "assets/remocn-paper-shaders");
+const paper = await readJson(resolve(paperRoot, "provenance.json"));
+if (
+  paper.license !== "Apache-2.0" ||
+  paper.commit !== "f9f2a8b2edeb78ec59256c4dc571f5eaf943d798"
+)
+  throw new Error(
+    "New Remocn presets require the audited Apache Paper source.",
+  );
+for (const [directory, records] of [
+  [root, additions.assets],
+  [
+    paperRoot,
+    [
+      ...paper.files,
+      ...paper.sharedFiles,
+      ...paper.packageLicenses,
+      ...paper.upstreamNotices,
+      paper.notice,
+    ],
+  ],
+]) {
+  for (const record of records) {
+    const path = resolve(directory, record.path);
+    if (
+      createHash("sha256")
+        .update(await readFile(path))
+        .digest("hex") !== record.sha256
+    )
+      throw new Error(`Frozen Remocn source or license changed: ${path}`);
+  }
+}
 const upstreamInventory = await readJson(
   resolve(root, "catalog", "upstream-inventory.json"),
 );
@@ -95,6 +130,26 @@ for (const item of registry.items) {
 
   await ensure(manifestPath, `${item.name} registry manifest`);
   const manifest = await readJson(manifestPath);
+  if (item.name.startsWith("shader-") && additions.components[item.name]) {
+    if (
+      !manifest.license.includes("Apache-2.0") ||
+      manifest.license.includes("PolyForm")
+    )
+      throw new Error(`${item.name}: missing Apache Paper license`);
+    for (const filename of ["LICENSE.txt", "NOTICE.txt", "provenance.json"]) {
+      const file = manifest.files.find(
+        (file) =>
+          file.target === `THIRD_PARTY_LICENSES/paper-shaders/${filename}`,
+      );
+      if (
+        !file ||
+        !(await readFile(resolve(blockDirectory, file.path))).equals(
+          await readFile(resolve(paperRoot, filename)),
+        )
+      )
+        throw new Error(`${item.name}: missing or changed Paper ${filename}`);
+    }
+  }
   if (manifest.origin?.repository === nativeRepository) {
     const record = nativeRecords.get(item.name);
     if (
@@ -301,7 +356,11 @@ for (const item of registry.items) {
       showcase?.fixture?.width === 384 &&
       showcase.fixture.height === 384 &&
       showcase.fixture.scale === 8;
-    const showcaseThreshold = await iconShowcaseThreshold(root, item.name, parity);
+    const showcaseThreshold = await iconShowcaseThreshold(
+      root,
+      item.name,
+      parity,
+    );
     const hasPassingShowcase =
       showcase?.result?.pass === true &&
       showcase.result.meanSsim >= showcaseThreshold;

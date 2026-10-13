@@ -1,0 +1,82 @@
+{
+  "slug": "caption-prosody",
+  "origin": {
+    "repository": "https://github.com/Remocn/remocn",
+    "commit": "fd2d3010a8183985553f9ddeb364313d57fb36b9",
+    "source": "registry/remocn/caption-prosody/index.tsx",
+    "entry": "components/docs/examples/caption-prosody-example.tsx",
+    "config": "registry/remocn/caption-prosody/config.ts",
+    "license": "MIT"
+  },
+  "fixture": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "durationInFrames": 279,
+    "props": {
+      "captions": "So here's the thing. Most demo videos lose people in the first three seconds. Captions keep them watching, even with the sound off.",
+      "fontSize": 64,
+      "fontWeight": 800,
+      "color": "#ffffff",
+      "activeColor": "#facc15",
+      "minScale": 0.75,
+      "maxScale": 1.6,
+      "combineTokensWithinMilliseconds": 1200,
+      "holdMs": 600,
+      "shadow": true
+    },
+    "background": "#262626"
+  },
+  "classification": "compiled-source-port",
+  "measurement": "lossless-png",
+  "status": "verified",
+  "fingerprint": "c23fdcc6a2a9db2098288095dbd3f723c09991bb48046a4afbd8cec726fae648",
+  "thresholds": {
+    "meanSsim": 0.99,
+    "minSsim": 0.95
+  },
+  "result": {
+    "frameCount": 279,
+    "meanSsim": 0.9949181756272394,
+    "minSsim": 0.989011,
+    "p05Ssim": 0.989206,
+    "p95Ssim": 1,
+    "alpha": {
+      "frameCount": 279,
+      "mismatchedFrames": [],
+      "pass": true
+    },
+    "pass": true
+  },
+  "checks": {
+    "hyperframes": "full check passed; strict render passed",
+    "hyperframesVersion": "0.8.30",
+    "remotionVersion": "4.0.530",
+    "browserVersion": "Google Chrome for Testing 152.0.7977.42",
+    "browserGpuMode": "hardware",
+    "installedThroughCli": true,
+    "verificationArchive": "parity/upstream-oct11-producer/manifest.json",
+    "historicalRenderProbe": {
+      "artifact": "parity/caption-prosody-diff/hyperframes-render.log",
+      "logSha256": "5f7648ba98c437e1ebf24a5a28470b62f2f530b1b3d8d575dfe1d57ad4e7f02c",
+      "observations": [
+        {
+          "mode": "hardware",
+          "detail": "WebGL renderer vendor=\"Google Inc. (NVIDIA Corporation)\" renderer=\"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)\""
+        }
+      ]
+    },
+    "captureBackend": "unobserved"
+  },
+  "artifacts": {
+    "referenceVideo": "public/previews/caption-prosody/reference.mp4",
+    "hyperframesVideo": "public/previews/caption-prosody/hyperframes.mp4",
+    "thumbnail": "public/previews/caption-prosody/thumbnail.png",
+    "summary": "parity/caption-prosody-diff/summary.json",
+    "perFrameSsim": "parity/caption-prosody-diff/ssim.log",
+    "hyperframesCheck": "parity/caption-prosody-diff/hyperframes-check.log",
+    "worstFrame": "parity/caption-prosody-diff/worst-frame.png",
+    "referenceAlpha": "parity/caption-prosody-diff/reference-alpha.framemd5",
+    "hyperframesAlpha": "parity/caption-prosody-diff/hyperframes-alpha.framemd5"
+  }
+}

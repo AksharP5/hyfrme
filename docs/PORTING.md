@@ -550,6 +550,61 @@ node scripts/generate-text-ports.mjs --family core --only agent-run,bauhaus-buil
 node scripts/verify-text-ports.mjs --lossless --only echo-stack,glyph-anatomy,outline-trace,path-ride,period-drop,selection-snap,stripe-type,type-repeater,ring-text,type-wall,agent-run,bauhaus-build,keystroke,mondrian-split,speed-lines,squiggle,trim-burst,truchet-flip
 ```
 
+## October 11 Remocn additions
+
+Commit `fd2d3010a8183985553f9ddeb364313d57fb36b9` adds 31 transcript-driven
+caption styles and 36 standalone shader presets. The `caption-core` helper
+ships inside caption runtimes rather than becoming a separate catalog block.
+Existing component sources are unchanged.
+
+Caption blocks use the published example scenes, including their placement,
+transcript timing, speaker defaults, and controls. Hyfrme implements the caption
+paging API independently and preserves the source's synchronous word measurement.
+No Remotion runtime is installed with the blocks. The reference fixture pins
+Remotion and its caption package to 4.0.530 in `fixtures/remocn-2026-10-11/`.
+
+Each shader preset preserves its source palette and parameter defaults, including
+speed as a multiplier on the preset's own speed. The runtime bundles only its
+base shader from the frozen Apache-2.0 Paper sources. The explicit frame clock
+replaces wall-clock scheduling; shader source and uniforms remain unchanged.
+See `assets/remocn-paper-shaders/provenance.json` for the source comparison,
+hashes, original licenses, and notices.
+
+The 67 additions were verified across 14,052 frames, with a frame-weighted mean
+SSIM of 0.999737 and a minimum frame SSIM of 0.988197. Alpha matches exactly.
+All 36 shader presets have lossless SSIM 1.0 and exact alpha across 5,400 frames; their encoded reference and HyperFrames videos are byte-identical. Fifty-eight blocks
+pass the full HyperFrames check; nine caption styles retain 99 narrowly reviewed
+source layout findings in `catalog/remocn-check-exceptions.json`. Every addition
+also received a visual review of its active frames and worst-frame comparison.
+
+Blush and Ultraviolet inherit a source limitation: their default Blob grain
+shape produces nearly static output. Source and port frames match exactly; their
+parity manifests record the source hashes and frozen shader evidence. An isolated
+Blush source edit to the Wave shape animates and remains pixel-exact across another
+150 frames. Shape is not a published preset control, so use another grain preset
+or edit the installed source. The canonical defaults remain faithful to upstream.
+
+To reproduce only this update:
+
+```bash
+export REMOCN_SOURCE=.work/remocn-fd2d3010a8183985553f9ddeb364313d57fb36b9
+export REMOCN_ASSET_MANIFEST=assets/remocn-additions-2026-10-11/manifest.json
+export REMOCN_REFERENCE_FIXTURE=fixtures/remocn-2026-10-11
+export REMOCN_DEPENDENCIES=.work/remocn-2026-10-11-reference-deps
+npm run setup:remocn-latest
+REMOCN_ADDITIONS=$(node -e 'console.log(Object.keys(require("./assets/remocn-additions-2026-10-11/manifest.json").components).join(","))')
+node scripts/generate-text-ports.mjs --only "$REMOCN_ADDITIONS"
+node scripts/verify-text-ports.mjs --lossless --only "$REMOCN_ADDITIONS"
+```
+
+The unchanged ports retain their original verification fingerprints. The original
+producer inputs are archived under `parity/upstream-oct11-producer/`;
+`node scripts/verify-upstream-additions-evidence.mjs` authenticates their source,
+installed-file, per-frame SSIM, alpha, and render-log bindings without claiming a
+new capture. The retained logs each contain one hardware SDK probe. That probe
+is separate from the capture backend, which remains unobserved. Existing ports
+and their verified source pins are preserved.
+
 ## Snapcn workflow
 
 The original 47 pinned Snapcn visual components were verified across 6,569
