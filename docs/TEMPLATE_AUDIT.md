@@ -1,5 +1,32 @@
 # Official template audit
 
+## October 15 refresh
+
+All eight templates were rendered again from
+`c694785df5993191fec42ec84e9d65ea69f98ad8` with released HyperFrames 0.8.159
+and Chrome 152.0.7977.42. Their 3,000 rendered frames, dimensions, fps, duration,
+installed-source hashes, and artifact hashes pass verification. Forty sampled
+frames were inspected for scene mounting and visual completion.
+The current evidence is in
+[`catalog/hyperframes-template-previews.json`](../catalog/hyperframes-template-previews.json).
+
+Decision Tree and Kinetic Type pass the full check with warnings. NYT Graph
+retains a contrast finding. Play Mode retains one CSS/GSAP transform conflict;
+its lint failure skips the browser audits. Product Promo's upstream transform
+fixes now pass lint, exposing seven contrast findings in the full check.
+Swiss Grid retains three automated clipping findings and one contrast finding;
+Vignelli retains a text overlap; Warm Grain retains two contrast findings.
+Successful rendering does not mark those checks as passing or establish that
+every automated finding is a visible defect.
+
+The source changes to four video scaffolds keep sound with their video instead
+of a separate audio element. Their no-video preview fixtures still remove the
+placeholder media. Decision Tree's unchanged source was remeasured with real
+GSAP 3.14.2: `hold5` remains 6.25 seconds. Its compatibility fallback is now
+guarded by the source hash rather than an unrelated repository commit.
+
+## September 30 audit
+
 Rechecked September 30, 2026 with HyperFrames 0.8.99 and Chrome Headless Shell
 152.0.7977.42. The eight template manifests, declared sources/assets, and license
 match all 38 corresponding paths in upstream commit
@@ -11,7 +38,7 @@ and assets as Hyfrme's CLI installation. Decision Tree retains the documented
 renderer label fallback; its real-GSAP value stays unchanged. No Hyfrme-specific
 source regression was found.
 
-## Current results
+### September 30 results
 
 | Template      | Full check                  | Verified result                                                                                                                                              |
 | ------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -60,6 +87,7 @@ reports instead of opening duplicates.
 - [Decision Tree retained selection](template-audit/2026-09-30/decision-tree-selection.png)
 - [Warm Grain statistic contrast](template-audit/2026-09-30/warm-grain-statistic.png)
 
-The earlier preview manifest records its original HyperFrames 0.8.30 checks and
-renders. This audit supplements that historical evidence; it does not relabel
-those media artifacts as 0.8.99 renders or claim passing port comparisons.
+The preview manifest before the October 15 refresh recorded the original
+HyperFrames 0.8.30 checks and renders. The September audit supplemented that
+historical evidence without relabeling those artifacts as 0.8.99 renders or
+claiming passing port comparisons.

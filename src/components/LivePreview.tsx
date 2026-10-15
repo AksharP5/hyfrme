@@ -40,6 +40,9 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [unsupportedGpuItem, setUnsupportedGpuItem] = useState<string | null>(
+    null,
+  );
   const [viewportSize, setViewportSize] = useState({ width: 0, height: 0 });
   const isIcon =
     item.type !== "hyperframes:component" && item.tags.includes("icon");
@@ -49,7 +52,8 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
     [item],
   );
   const sourceFallback = browserFallback && item.tags.includes("remocn-port");
-  const rendered = browserFallback && !sourceFallback;
+  const rendered =
+    (browserFallback && !sourceFallback) || unsupportedGpuItem === item.name;
   const document = useMemo(
     () =>
       rendered
@@ -86,6 +90,16 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
         event.data?.type === "hyfrme-preview-error" &&
         typeof event.data.message === "string"
       ) {
+        if (
+          item.tags.includes("webgpu-shader") &&
+          item.preview.video &&
+          /^shaders: WebGPU unavailable \((unsupported|no-adapter|no-device)\)$/.test(
+            event.data.message,
+          )
+        ) {
+          setUnsupportedGpuItem(item.name);
+          return;
+        }
         setError(event.data.message);
         if (event.data.paused === true) setPaused(true);
       }

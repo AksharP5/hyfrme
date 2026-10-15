@@ -1,0 +1,97 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "hyperframes-glass-hero",
+  "type": "hyperframes:block",
+  "title": "Glass Hero",
+  "description": "A solid glass object rises in front of a giant headline and keeps turning, so the type bends and splits into colour through it.",
+  "tags": [
+    "3d-object",
+    "three-js",
+    "webgl",
+    "glass",
+    "refraction",
+    "hero",
+    "title-card",
+    "hyperframes-official"
+  ],
+  "dimensions": {
+    "width": 1920,
+    "height": 1080
+  },
+  "duration": 5,
+  "files": [
+    {
+      "path": "glass-hero.html",
+      "target": "compositions/glass-hero.html",
+      "type": "hyperframes:composition"
+    },
+    {
+      "path": "licenses/HyperFrames-LICENSE",
+      "target": "THIRD_PARTY_LICENSES/hyperframes/LICENSE",
+      "type": "hyperframes:asset"
+    }
+  ],
+  "variables": [
+    {
+      "id": "headline",
+      "type": "string",
+      "role": "content",
+      "label": "Headline behind the glass",
+      "default": "CLARITY",
+      "maxLength": 12
+    },
+    {
+      "id": "subline",
+      "type": "string",
+      "role": "content",
+      "label": "Subline",
+      "default": "See every detail, nothing in the way.",
+      "maxLength": 48
+    },
+    {
+      "id": "shape",
+      "type": "enum",
+      "role": "style",
+      "label": "Glass shape",
+      "default": "lens",
+      "options": [
+        {
+          "value": "lens",
+          "label": "Lens"
+        },
+        {
+          "value": "ring",
+          "label": "Ring"
+        }
+      ]
+    },
+    {
+      "id": "glass_tint",
+      "type": "color",
+      "role": "style",
+      "label": "Glass tint",
+      "default": "#cfe9ff"
+    },
+    {
+      "id": "type_color",
+      "type": "color",
+      "role": "style",
+      "label": "Headline color",
+      "default": "#f4efe4"
+    },
+    {
+      "id": "background",
+      "type": "color",
+      "role": "style",
+      "label": "Backdrop",
+      "default": "#0b0b0c"
+    }
+  ],
+  "license": "Apache-2.0",
+  "origin": {
+    "repository": "https://github.com/heygen-com/hyperframes",
+    "commit": "c694785df5993191fec42ec84e9d65ea69f98ad8",
+    "source": "registry/blocks/glass-hero/registry-item.json",
+    "name": "glass-hero"
+  }
+}

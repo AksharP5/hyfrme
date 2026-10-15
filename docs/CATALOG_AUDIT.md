@@ -1,5 +1,39 @@
 # Catalog browser audit
 
+## October 15 catalog refresh
+
+The native HyperFrames import now matches all 455 published items at
+`c694785df5993191fec42ec84e9d65ea69f98ad8`, adding 60 items and retiring the
+upstream-deleted Simulated Cursor entry. All 1,679 payloads and 455 manifests
+match their pinned sources. Eleven upstream navigation groups cover every
+non-template native item.
+
+A complete CLI installation added all 932 blocks and snippets into one project.
+Every one of the 1,642 native installed payloads matched its expected hash.
+Hologram uses a distinct filename so it can coexist with the Remocn port.
+Eight native template previews were regenerated and visually inspected;
+their current check findings are recorded in [the template audit](TEMPLATE_AUDIT.md).
+
+All 60 additions passed browser playback checks without preview alerts: 23 live
+previews and 37 rendered fallbacks. The no-WebGPU browser exercised every fallback;
+hardware Chromium separately verified live Liquid Metal, Glass Hero, and
+Extruded Logo. Pendulum Swing, Agent Cursor, and Glass Hero passed pause, replay,
+customization, and reset checks. Caret Swap also passed customization and reset.
+Existing icon, Remocn text, and T3 app previews still advance without alerts.
+
+The preview host now waits for native build readiness and drives shader frames
+through the upstream seek contract. Unsupported WebGPU uses the official default
+video. Native snippets measure against the full composition dimensions, and
+Pendulum Swing uses its documented host tween. These browser adaptations leave
+the installed upstream source unchanged.
+
+The fresh Remocn audit at `fd2d3010a8183985553f9ddeb364313d57fb36b9` finds all
+393 visuals present. Snapcn at `e4d487f3178803e30821d9db5ddd0a8670ce5358`
+has all 49 free visuals present. Its 52 live Pro listings return HTTP 402 and
+have no public component source. The Screen Recording speed refresh remains
+pending a released renderer containing
+[HyperFrames #5528](https://github.com/heygen-com/hyperframes/pull/5528).
+
 ## October 1 follow-up
 
 Malformed component and showcase slugs now render the existing missing-page

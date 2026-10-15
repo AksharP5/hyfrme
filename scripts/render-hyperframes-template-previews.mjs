@@ -15,8 +15,10 @@ import { promisify } from "node:util";
 const root = resolve(import.meta.dirname, "..");
 const work = resolve(root, ".work/hyperframes-template-previews");
 const outputPath = resolve(root, "catalog/hyperframes-template-previews.json");
-const version = "0.8.30";
+const version = "0.8.159";
 const fps = 30;
+const decisionTreeSourceSha256 =
+  "e647d23a41933f100208a1b3c38d089105441e7daf77f54a61edd8dde06cfa27";
 const execute = promisify(execFile);
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const writeJson = (path, value) =>
@@ -108,7 +110,15 @@ const previous = await readFile(outputPath, "utf8")
     if (error.code === "ENOENT") return { items: [] };
     throw error;
   });
-const records = new Map(previous.items.map((item) => [item.name, item]));
+const records = new Map(
+  previous.items
+    .filter(
+      (item) =>
+        item.origin.commit === inventory.summary.upstream.commit &&
+        item.render?.hyperframesVersion === version,
+    )
+    .map((item) => [item.name, item]),
+);
 
 // This is the official init.ts no-video scaffold materialization.
 function materialize(source, name, path) {
@@ -187,9 +197,11 @@ for (const template of selected) {
   };
   if (template.name === "hyperframes-decision-tree") {
     assert.equal(
-      manifest.origin.commit,
-      "daa44fcd753d9055aa3c954ad74f09a4e4389780",
-      "Recheck the real GSAP label value before adapting a new source pin.",
+      template.files.find(
+        (file) => file.path === "compositions/decision_tree.html",
+      )?.sha256,
+      decisionTreeSourceSha256,
+      "Recheck the real GSAP label value before adapting changed source.",
     );
     record.materialization.compatibility = {
       file: "compositions/decision_tree.html",
@@ -197,9 +209,10 @@ for (const template of selected) {
       after: '(tl.labels?.["hold5"] ?? 6.25)',
       reason: "The renderer GSAP proxy does not expose timeline.labels.",
       labelProof: {
+        sourceSha256: decisionTreeSourceSha256,
         gsapVersion: "3.14.2",
         method:
-          "Real GSAP timeline.labels in the installed-source browser fixture",
+          "Real GSAP timeline.labels in the exact imported source, mounted in Chrome",
         labels: {
           hold1: 1,
           hold2: 2.5,

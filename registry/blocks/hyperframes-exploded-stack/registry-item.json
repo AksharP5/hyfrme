@@ -1,0 +1,98 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "hyperframes-exploded-stack",
+  "type": "hyperframes:block",
+  "title": "Exploded Stack",
+  "description": "Isometric layer plates explode apart with a label beside each layer, hold, then collapse back into one stack. Built for architecture and system diagrams.",
+  "tags": [
+    "3d-object",
+    "three-js",
+    "webgl",
+    "isometric",
+    "exploded-view",
+    "layers",
+    "diagram",
+    "architecture",
+    "hyperframes-official"
+  ],
+  "dimensions": {
+    "width": 1920,
+    "height": 1080
+  },
+  "duration": 5,
+  "files": [
+    {
+      "path": "exploded-stack.html",
+      "target": "compositions/exploded-stack.html",
+      "type": "hyperframes:composition"
+    },
+    {
+      "path": "licenses/HyperFrames-LICENSE",
+      "target": "THIRD_PARTY_LICENSES/hyperframes/LICENSE",
+      "type": "hyperframes:asset"
+    }
+  ],
+  "variables": [
+    {
+      "id": "title",
+      "type": "string",
+      "role": "content",
+      "label": "Title",
+      "default": "How a request moves",
+      "maxLength": 32
+    },
+    {
+      "id": "layer_1",
+      "type": "string",
+      "role": "content",
+      "label": "Top layer",
+      "default": "Interface",
+      "maxLength": 22
+    },
+    {
+      "id": "layer_2",
+      "type": "string",
+      "role": "content",
+      "label": "Layer 2",
+      "default": "API gateway",
+      "maxLength": 22
+    },
+    {
+      "id": "layer_3",
+      "type": "string",
+      "role": "content",
+      "label": "Layer 3",
+      "default": "Services",
+      "maxLength": 22
+    },
+    {
+      "id": "layer_4",
+      "type": "string",
+      "role": "content",
+      "label": "Bottom layer",
+      "default": "Data",
+      "maxLength": 22
+    },
+    {
+      "id": "accent",
+      "type": "color",
+      "role": "style",
+      "label": "Accent",
+      "default": "#0a84ff"
+    },
+    {
+      "id": "background",
+      "type": "color",
+      "role": "style",
+      "label": "Backdrop",
+      "default": "#f4f4f5"
+    }
+  ],
+  "license": "Apache-2.0",
+  "origin": {
+    "repository": "https://github.com/heygen-com/hyperframes",
+    "commit": "c694785df5993191fec42ec84e9d65ea69f98ad8",
+    "source": "registry/blocks/exploded-stack/registry-item.json",
+    "name": "exploded-stack"
+  }
+}

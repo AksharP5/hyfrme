@@ -150,6 +150,181 @@ test("an initialization error keeps the preview paused after load", async () => 
   assert.equal(messages[0].message, "Composition initialization failed");
 });
 
+test("native build readiness failures surface instead of leaving a blank preview", async () => {
+  const window = new EventTarget();
+  const messages = [];
+  const frames = [];
+  runInNewContext(bootstrap, {
+    window,
+    document: { querySelectorAll: () => [], body: { style: {} } },
+    parent: {
+      location: { origin: "https://hyfrme.example" },
+      postMessage: (message) => messages.push(message),
+    },
+    frameElement: null,
+    requestAnimationFrame: (callback) => frames.push(callback),
+    console: { error() {} },
+  });
+  window.__hf = {
+    buildReady: {
+      shaders: Promise.reject(
+        new Error("shaders: WebGPU unavailable (no-adapter)"),
+      ),
+    },
+  };
+  window.dispatchEvent(new Event("load"));
+  await new Promise(setImmediate);
+  assert.equal(frames.length, 0);
+  assert.equal(messages.length, 1);
+  assert.equal(messages[0].paused, true);
+  assert.equal(messages[0].message, "shaders: WebGPU unavailable (no-adapter)");
+});
+
+test("native shader preview waits for readiness and serializes seek frames", async () => {
+  const preview = await nativePreview("hyperframes-liquid-metal");
+  const script = preview.match(/<script>([\s\S]*?)<\/script>/)[1];
+  const window = new EventTarget();
+  const frames = [];
+  const seeks = [];
+  const finishes = [];
+  let ready;
+  let clock;
+  let tween;
+  let update;
+  const timeline = {
+    to(target, options) {
+      clock = target;
+      tween = options;
+      return this;
+    },
+    eventCallback(_name, callback) {
+      if (callback) update = callback;
+    },
+    repeat() {
+      return this;
+    },
+    play() {
+      return this;
+    },
+    time: () => clock.time,
+  };
+  runInNewContext(script, {
+    window,
+    gsap: { timeline: () => timeline },
+    document: {
+      querySelector: () => ({}),
+      querySelectorAll: () => [],
+      body: { style: {} },
+    },
+    parent: { location: { origin: "https://hyfrme.example" } },
+    frameElement: null,
+    innerWidth: 822,
+    innerHeight: 461,
+    addEventListener() {},
+    requestAnimationFrame: (callback) => frames.push(callback),
+    CustomEvent: class extends Event {
+      constructor(type, { detail }) {
+        super(type);
+        this.detail = detail;
+      }
+    },
+    console: { error() {} },
+  });
+  window.__hf = {
+    buildReady: {
+      shaders: new Promise((resolve) => {
+        ready = resolve;
+      }),
+    },
+  };
+  window.addEventListener("hf-seek", ({ detail }) => {
+    seeks.push(detail.time);
+    detail.waitUntil(new Promise((resolve) => finishes.push(resolve)));
+  });
+  window.dispatchEvent(new Event("load"));
+  await new Promise(setImmediate);
+  assert.equal(frames.length, 0);
+  ready();
+  await new Promise(setImmediate);
+  frames[0]();
+  assert.equal(window.__timelines["liquid-metal"], timeline);
+  assert.equal(tween.duration, 2);
+  clock.time = 0.25;
+  tween.onUpdate();
+  clock.time = 0.5;
+  tween.onUpdate();
+  clock.time = 0;
+  tween.onUpdate();
+  assert.deepEqual(seeks, [0.25]);
+  finishes.shift()();
+  await new Promise(setImmediate);
+  assert.deepEqual(seeks, [0.25, 0]);
+  finishes.shift()();
+  await new Promise(setImmediate);
+  clock.time = 0.75;
+  tween.onUpdate();
+  assert.deepEqual(seeks, [0.25, 0, 0.75]);
+  finishes.shift()();
+  await new Promise(setImmediate);
+  assert.equal(typeof update, "function");
+});
+
+test("actor snippets mount against composition dimensions before their script runs", async () => {
+  const preview = await nativePreview("hyperframes-agent-cursor");
+  const style = preview.match(/body \{([\s\S]*?)\}/)[1];
+  assert.match(style, /position: relative/);
+  assert.match(style, /margin: 0/);
+  assert.match(style, /width: 1920px/);
+  assert.match(style, /height: 1080px/);
+  assert(preview.indexOf(style) < preview.indexOf("var W = root.clientWidth"));
+});
+
+test("pendulum preview runs the documented host tween without changing installed source", async () => {
+  const preview = await nativePreview("hyperframes-pendulum-swing");
+  const script = preview.match(/<script>([\s\S]*?)<\/script>/)[1];
+  const window = new EventTarget();
+  const frames = [];
+  let tween;
+  const timeline = {
+    fromTo(selector, from, to) {
+      tween = { selector, from, to };
+      return this;
+    },
+    eventCallback() {},
+    repeat() {
+      return this;
+    },
+    play() {},
+    time: () => 0,
+  };
+  runInNewContext(script, {
+    window,
+    gsap: { timeline: () => timeline },
+    document: {
+      querySelector: () => null,
+      querySelectorAll: () => [],
+      body: { style: {} },
+    },
+    frameElement: null,
+    innerWidth: 822,
+    innerHeight: 461,
+    addEventListener() {},
+    requestAnimationFrame: (callback) => frames.push(callback),
+  });
+  window.dispatchEvent(new Event("load"));
+  await new Promise(setImmediate);
+  frames[0]();
+  assert.equal(window.__timelines["pendulum-swing"], timeline);
+  assert.equal(tween.selector, ".hf-catalog-pendulum-swing");
+  assert.equal(tween.from["--hf-swing-angle"], 1);
+  assert.equal(tween.to["--hf-swing-angle"], 0);
+  assert.equal(tween.to.duration, 2.9);
+  assert.equal(tween.to.ease(0), 0);
+  assert(tween.to.ease(0.25) > 1);
+  assert(Math.abs(tween.to.ease(1) - 1) < 1e-12);
+  assert.match(preview, /left: 50%; top: 40%; translate: -50% -50%/);
+});
+
 test("preview mounts the real source template after a documentation example", () => {
   globalThis.window = { location: { origin: "http://localhost:5173" } };
   const preview = buildPreviewDocument(
@@ -214,7 +389,7 @@ for (const name of [
     const dependency =
       '<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>';
     assert(preview.includes(dependency));
-    assert(preview.indexOf(dependency) < preview.indexOf("gsap.timeline("));
+    assert(preview.indexOf(dependency) < preview.lastIndexOf("gsap.timeline("));
   });
 }
 

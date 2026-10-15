@@ -1,0 +1,112 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "name": "hyperframes-cursor-marquee-select",
+  "type": "hyperframes:component",
+  "title": "Marquee Select Cursor",
+  "description": "A cursor drags a selection rectangle across a photo grid; each tile rings and pops a check the frame the rectangle touches it, while a pill counts the selection up.",
+  "tags": [
+    "cursor",
+    "motion-primitive",
+    "select",
+    "marquee",
+    "grid",
+    "product-demo",
+    "hyperframes-official"
+  ],
+  "files": [
+    {
+      "path": "cursor-marquee-select.html",
+      "target": "compositions/components/cursor-marquee-select.html",
+      "type": "hyperframes:snippet"
+    },
+    {
+      "path": "licenses/HyperFrames-LICENSE",
+      "target": "THIRD_PARTY_LICENSES/hyperframes/LICENSE",
+      "type": "hyperframes:asset"
+    }
+  ],
+  "jobs": [
+    "demonstrate"
+  ],
+  "family": "pointers",
+  "profile": "interaction",
+  "syncPoints": [
+    {
+      "id": "press",
+      "phase": "in",
+      "offset": 0.62
+    },
+    {
+      "id": "release",
+      "phase": "in",
+      "offset": 2.1
+    }
+  ],
+  "variables": [
+    {
+      "id": "accent",
+      "type": "color",
+      "role": "style",
+      "label": "Accent",
+      "default": "#0a84ff"
+    },
+    {
+      "id": "start_x",
+      "type": "number",
+      "role": "layout",
+      "label": "Drag start X",
+      "default": 20.5,
+      "min": 0,
+      "max": 100,
+      "step": 0.5,
+      "unit": "%"
+    },
+    {
+      "id": "start_y",
+      "type": "number",
+      "role": "layout",
+      "label": "Drag start Y",
+      "default": 25.5,
+      "min": 0,
+      "max": 100,
+      "step": 0.5,
+      "unit": "%"
+    },
+    {
+      "id": "end_x",
+      "type": "number",
+      "role": "layout",
+      "label": "Drag end X",
+      "default": 57,
+      "min": 0,
+      "max": 100,
+      "step": 0.5,
+      "unit": "%"
+    },
+    {
+      "id": "end_y",
+      "type": "number",
+      "role": "layout",
+      "label": "Drag end Y",
+      "default": 52,
+      "min": 0,
+      "max": 100,
+      "step": 0.5,
+      "unit": "%"
+    },
+    {
+      "id": "pill_label",
+      "type": "string",
+      "role": "content",
+      "label": "Pill label",
+      "default": "selected"
+    }
+  ],
+  "license": "Apache-2.0",
+  "origin": {
+    "repository": "https://github.com/heygen-com/hyperframes",
+    "commit": "c694785df5993191fec42ec84e9d65ea69f98ad8",
+    "source": "registry/components/cursor-marquee-select/registry-item.json",
+    "name": "cursor-marquee-select"
+  }
+}

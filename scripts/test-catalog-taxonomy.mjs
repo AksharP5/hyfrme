@@ -98,7 +98,13 @@ const namesForPages = (pages) =>
   pages
     .map((page) => `hyperframes-${page.split("/").at(-1)}`)
     .filter((name) => available.has(name));
-assert.equal(officialEntries.length, 396);
+const nativeInventory = JSON.parse(
+  await readFile(resolve(root, "catalog/hyperframes-upstream.json"), "utf8"),
+);
+assert.deepEqual(
+  [...available].sort(),
+  nativeInventory.items.map((item) => item.name).sort(),
+);
 for (const [index, upstream] of navigation.groups.entries()) {
   const section = hyperframesTaxonomy[index];
   assert.equal(section.label, upstream.label);
@@ -117,16 +123,14 @@ for (const [index, upstream] of navigation.groups.entries()) {
     assert.deepEqual(section.slugs, namesForPages(upstream.items));
   }
 }
-assert.equal(hyperframesTaxonomy.length, navigation.groups.length + 1);
-assert.deepEqual(hyperframesTaxonomy.at(-1).slugs, [
-  "hyperframes-colorama-wipe",
-]);
+assert.equal(hyperframesTaxonomy.length, navigation.groups.length);
 for (const [name, section, group] of [
   ["hyperframes-caption-highlight", "Text & captions", "Captions"],
   ["hyperframes-mk-callout-highlight", "Text & captions", "Captions"],
   ["hyperframes-code-morph", "Code", "Code Animations"],
   ["hyperframes-terminal-simulator", "Code", "Code Animations"],
   ["hyperframes-spring-pop", "Scenes & demos", "Motion Scenes"],
+  ["hyperframes-colorama-wipe", "Text & captions", "Typography & Text"],
 ]) {
   const taxonomy = taxonomyFor({ item: { name } });
   assert.equal(taxonomy.category, "components");

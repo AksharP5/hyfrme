@@ -372,6 +372,10 @@ export function buildPreviewDocument(
     ? "background: transparent !important;"
     : "";
   const previewScale = transparent ? 0.42 : 1;
+  const needsHostLayout =
+    item.type === "hyperframes:component" ||
+    /\bdata-no-timeline\b/.test(source);
+  const pendulumPreview = item.name === "hyperframes-pendulum-swing";
   const bootstrap = `<script>
 window.__hyperframes = { getVariables: () => (${safeValues}) };
 window.__timelines = {};
@@ -399,13 +403,48 @@ window.addEventListener("load", () => {
     const y = (innerHeight - ${height} * scale) / 2;
     document.body.style.transform = "translate(" + x + "px," + y + "px) scale(" + scale + ")";
   };
-  Promise.resolve(window.__hyfrmeReady).then(() => {
+  Promise.all([window.__hyfrmeReady, ...Object.values(window.__hf?.buildReady || {})]).then(() => {
     fit();
     addEventListener("resize", fit);
     requestAnimationFrame(() => {
       if (runtimeFailed) return;
-      const timeline = window.__timelines?.[${safeName}];
+      let timeline = window.__timelines?.[${safeName}];
+      if (!timeline && document.querySelector("[data-no-timeline]")) {
+        const clock = { time: 0 };
+        let requestedTime = 0;
+        let seeking = false;
+        const seek = () => {
+          requestedTime = clock.time;
+          if (seeking || runtimeFailed) return;
+          seeking = true;
+          const render = async () => {
+            let renderedTime;
+            do {
+              renderedTime = requestedTime;
+              const pending = [];
+              window.dispatchEvent(new CustomEvent("hf-seek", { detail: {
+                time: renderedTime,
+                waitUntil: (promise) => pending.push(promise),
+              } }));
+              await Promise.all(pending);
+            } while (renderedTime !== requestedTime && !runtimeFailed);
+          };
+          void render().catch(runtimeError).finally(() => { seeking = false; });
+        };
+        timeline = gsap.timeline({ paused: true }).to(clock, {
+          time: ${item.duration ?? 2}, duration: ${item.duration ?? 2}, ease: "none", onUpdate: seek,
+        });
+      }
+      if (!timeline && ${pendulumPreview}) {
+        timeline = gsap.timeline({ paused: true }).fromTo(
+          ".hf-catalog-pendulum-swing",
+          { "--hf-swing-angle": 1 },
+          { "--hf-swing-angle": 0, duration: 2.9,
+            ease: (p) => 1 - Math.exp(-2.3 * p) * Math.cos(3.5 * Math.PI * p) },
+        );
+      }
       if (!timeline) return;
+      window.__timelines[${safeName}] = timeline;
       const tracked = new WeakSet();
       const pending = new WeakSet();
       const failed = new WeakSet();
@@ -465,11 +504,13 @@ window.addEventListener("load", () => {
 <style>
 html { width: 100%; height: 100%; overflow: hidden; ${backgroundRule} }
 body {
+  ${needsHostLayout ? "position: relative; margin: 0;" : ""}
   width: ${width}px !important;
   height: ${height}px !important;
   transform-origin: 0 0;
   ${backgroundRule}
 }
+${pendulumPreview ? ".hf-catalog-pendulum-swing { position: absolute; left: 50%; top: 40%; translate: -50% -50%; }" : ""}
 </style>`;
   const activeSource = source
     .replace(/<!--[\s\S]*?-->/g, "")
@@ -478,7 +519,8 @@ body {
     ? activeSource
     : `<!doctype html><html><head><script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script></head><body>${activeSource}</body></html>`;
   const gsapScript =
-    /\bgsap\s*\./.test(documentSource) &&
+    (/\bgsap\s*\./.test(documentSource) ||
+      /\bdata-no-timeline\b/.test(documentSource)) &&
     !/<script\b[^>]*\bsrc\s*=\s*["'][^"']*gsap[^"']*["']/i.test(documentSource)
       ? '<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>'
       : "";
