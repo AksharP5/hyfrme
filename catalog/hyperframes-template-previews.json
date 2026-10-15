@@ -2,13 +2,13 @@
   "summary": {
     "upstream": {
       "repository": "https://github.com/heygen-com/hyperframes",
-      "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+      "commit": "c694785df5993191fec42ec84e9d65ea69f98ad8",
       "registry": "registry/registry.json",
-      "registrySha256": "0692b518795cedb224d138bbce63f7eb1f7babd5f600fa1f72062571c7e467d5",
+      "registrySha256": "6bad0b9dbdf495b807d55a03dd5ca370b6955ddb5b9607102f565cab56ce95c9",
       "licenseSha256": "4259155fb06f127687ee7b0a8a3682d45132db0f2da26cbc0b7a2d1e796436b8"
     },
     "verification": "native-template-render",
-    "hyperframesVersion": "0.8.30",
+    "hyperframesVersion": "0.8.159",
     "browserVersion": "Google Chrome for Testing 152.0.7977.42",
     "totalTemplates": 8,
     "renderedTemplates": 8,
@@ -19,11 +19,11 @@
       "name": "hyperframes-decision-tree",
       "origin": {
         "repository": "https://github.com/heygen-com/hyperframes",
-        "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+        "commit": "c694785df5993191fec42ec84e9d65ea69f98ad8",
         "source": "registry/examples/decision-tree/registry-item.json",
         "name": "decision-tree"
       },
-      "sourceManifestSha256": "f97eb5a05557c8e79bcc0570d29266b37c3eb16f42f518c4b3126f017e491906",
+      "sourceManifestSha256": "df8b18e2d2f1d55adf5ccf70949e240f921d9c3b695c2ce8e5d7727052727a58",
       "dimensions": {
         "width": 1920,
         "height": 1080
@@ -64,8 +64,9 @@
           "after": "(tl.labels?.[\"hold5\"] ?? 6.25)",
           "reason": "The renderer GSAP proxy does not expose timeline.labels.",
           "labelProof": {
+            "sourceSha256": "e647d23a41933f100208a1b3c38d089105441e7daf77f54a61edd8dde06cfa27",
             "gsapVersion": "3.14.2",
-            "method": "Real GSAP timeline.labels in the installed-source browser fixture",
+            "method": "Real GSAP timeline.labels in the exact imported source, mounted in Chrome",
             "labels": {
               "hold1": 1,
               "hold2": 2.5,
@@ -85,6 +86,7 @@
         "result": {
           "ok": true,
           "strict": false,
+          "browserSkipped": false,
           "lint": {
             "ok": true,
             "errorCount": 0,
@@ -170,7 +172,11 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 9.444,
-                "occurrences": 9
+                "occurrences": 9,
+                "heldMs": 0,
+                "times": [
+                  0.556, 1.667, 2.778, 3.889, 5, 6.111, 7.222, 8.333, 9.444
+                ]
               },
               {
                 "code": "canvas_overflow",
@@ -211,20 +217,14 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 3.889,
-                "occurrences": 4
+                "occurrences": 4,
+                "heldMs": 0,
+                "times": [0.556, 1.667, 2.778, 3.889]
               }
             ],
             "duration": 10,
             "samples": [
-              0.556,
-              1.667,
-              2.778,
-              3.889,
-              5,
-              6.111,
-              7.222,
-              8.333,
-              9.444
+              0.556, 1.667, 2.778, 3.889, 5, 6.111, 7.222, 8.333, 9.444
             ],
             "transitionSamples": [],
             "transitionSamplesDropped": 0,
@@ -248,15 +248,13 @@
             "infoCount": 0,
             "findings": [],
             "enabled": true,
-            "samples": [
-              0.556,
-              2.778,
-              5,
-              7.222,
-              9.444
-            ],
+            "samples": [0.556, 2.778, 5, 7.222, 9.444],
             "checked": 37,
             "passed": 37
+          },
+          "hdr": {
+            "autoPromotion": null,
+            "inspection": "available"
           },
           "snapshots": {
             "enabled": false,
@@ -264,35 +262,41 @@
             "times": [],
             "findingFiles": []
           },
+          "saved": {
+            "id": "cb9a67b4-6441-46eb-8ecb-3a36fc9af126",
+            "revision": null,
+            "report": "<project>/.work/hyperframes-template-previews/hyperframes-decision-tree/.hyperframes/artifacts/checks/cb9a67b4-6441-46eb-8ecb-3a36fc9af126.json",
+            "attribution": "unversioned"
+          },
           "_meta": {
-            "version": "0.8.30",
-            "latestVersion": "0.8.94",
-            "updateAvailable": true
+            "version": "0.8.159",
+            "latestVersion": "0.8.159",
+            "updateAvailable": false
           }
         }
       },
       "render": {
         "status": "passed",
         "frameCount": 300,
-        "hyperframesVersion": "0.8.30",
+        "hyperframesVersion": "0.8.159",
         "browserVersion": "Google Chrome for Testing 152.0.7977.42",
         "thumbnailAt": 5
       },
       "artifacts": {
         "video": {
           "path": "public/previews/hyperframes-decision-tree/hyperframes.mp4",
-          "sha256": "60e11902007f012e4f173101f479103608642dde5b4bbccdbea67e2bfecc4efe",
-          "bytes": 457863
+          "sha256": "9c74d12595369b3e5865ba17bb933cd98e1332316baf426fc483a9a8054ec2a7",
+          "bytes": 296338
         },
         "thumbnail": {
           "path": "public/previews/hyperframes-decision-tree/thumbnail.webp",
-          "sha256": "ac3cea5710ffe5b90e473985d6e2c8147d3706593e9c7676c16097cc550e1b34",
-          "bytes": 56914
+          "sha256": "14ae2ce52cf2ace5c0c2c0e07431f79de80f4a352ff5567a012cf1a14857c979",
+          "bytes": 34242
         },
         "fullThumbnail": {
           "path": "public/previews/hyperframes-decision-tree/thumbnail.png",
-          "sha256": "fae25b6b3cecf50f3230c4f1d3c4fbd2357549119cd4f977f3ce5620602f9245",
-          "bytes": 173859
+          "sha256": "82145a33336b2aea3d96650502953782633af50ff90cc31df2221f964ef11788",
+          "bytes": 104280
         }
       }
     },
@@ -300,11 +304,11 @@
       "name": "hyperframes-kinetic-type",
       "origin": {
         "repository": "https://github.com/heygen-com/hyperframes",
-        "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+        "commit": "c694785df5993191fec42ec84e9d65ea69f98ad8",
         "source": "registry/examples/kinetic-type/registry-item.json",
         "name": "kinetic-type"
       },
-      "sourceManifestSha256": "b0ba254073c5443b6345764327335cb8a4f133929756189a201ac7743d670957",
+      "sourceManifestSha256": "5f502a402e3ef9d881800a252288618591c5bf250d6f3acb3e1f2c7e59b5ae9f",
       "dimensions": {
         "width": 1920,
         "height": 1080
@@ -346,6 +350,7 @@
         "result": {
           "ok": true,
           "strict": false,
+          "browserSkipped": false,
           "lint": {
             "ok": true,
             "errorCount": 0,
@@ -365,7 +370,7 @@
             "ok": true,
             "errorCount": 0,
             "warningCount": 1,
-            "infoCount": 7,
+            "infoCount": 6,
             "findings": [
               {
                 "code": "container_overflow",
@@ -402,48 +407,13 @@
                   "width": 1920,
                   "height": 1080
                 },
-                "firstSeen": 2.5,
-                "lastSeen": 14.167,
-                "occurrences": 8
-              },
-              {
-                "code": "container_overflow",
-                "severity": "info",
-                "time": 0.833,
-                "selector": "#white-wipe",
-                "message": "Element extends outside a clipping layout container.",
-                "rect": {
-                  "left": -1920,
-                  "top": 0,
-                  "right": 0,
-                  "bottom": 1080,
-                  "width": 1920,
-                  "height": 1080
-                },
-                "containerSelector": "#graphics-layer > div:nth-of-type(1)",
-                "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-                "containerRect": {
-                  "left": 0,
-                  "top": 0,
-                  "right": 1920,
-                  "bottom": 1080,
-                  "width": 1920,
-                  "height": 1080
-                },
-                "overflow": {
-                  "left": 1920
-                },
-                "dataAttributes": {},
-                "sourceFile": "compositions/main-graphics.html",
-                "bbox": {
-                  "x": -1920,
-                  "y": 0,
-                  "width": 1920,
-                  "height": 1080
-                },
                 "firstSeen": 0.833,
-                "lastSeen": 0.833,
-                "occurrences": 1
+                "lastSeen": 14.167,
+                "occurrences": 9,
+                "heldMs": 0,
+                "times": [
+                  0.833, 2.5, 4.167, 5.833, 7.5, 9.167, 10.833, 12.5, 14.167
+                ]
               },
               {
                 "code": "panel_out_of_canvas",
@@ -483,13 +453,15 @@
                 },
                 "firstSeen": 2.5,
                 "lastSeen": 2.5,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [2.5]
               },
               {
                 "code": "panel_out_of_canvas",
                 "severity": "info",
                 "time": 2.5,
-                "selector": "div.grid-line.horizontal",
+                "selector": "div.swiss-grid > div:nth-of-type(1)",
                 "message": "Painted panel extends outside the composition canvas.",
                 "rect": {
                   "left": 1161.66,
@@ -523,65 +495,93 @@
                 },
                 "firstSeen": 2.5,
                 "lastSeen": 2.5,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [2.5]
               },
               {
-                "code": "content_overlap",
+                "code": "panel_out_of_canvas",
                 "severity": "info",
-                "time": 11.75,
-                "selector": "div.carson-line-1",
-                "message": "Two text blocks overlap and may render unreadable.",
+                "time": 2.5,
+                "selector": "div.swiss-grid > div:nth-of-type(2)",
+                "message": "Painted panel extends outside the composition canvas.",
                 "rect": {
-                  "left": 192,
-                  "top": 227.57,
-                  "right": 988.13,
-                  "bottom": 397.58,
-                  "width": 796.13,
-                  "height": 170
+                  "left": 1161.66,
+                  "top": 540,
+                  "right": 1961.66,
+                  "bottom": 542,
+                  "width": 800,
+                  "height": 2
                 },
-                "containerSelector": "div.wes-text-top",
-                "text": "No timeline .",
-                "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+                "containerSelector": "#root",
+                "text": "",
+                "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 1920,
+                  "bottom": 1080,
+                  "width": 1920,
+                  "height": 1080
+                },
+                "overflow": {
+                  "right": 41.66
+                },
                 "dataAttributes": {},
                 "sourceFile": "compositions/main-graphics.html",
                 "bbox": {
-                  "x": 192,
-                  "y": 227.57,
-                  "width": 796.13,
-                  "height": 170
+                  "x": 1161.66,
+                  "y": 540,
+                  "width": 800,
+                  "height": 2
                 },
-                "firstSeen": 11.75,
-                "lastSeen": 11.75,
-                "occurrences": 1
+                "firstSeen": 2.5,
+                "lastSeen": 2.5,
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [2.5]
               },
               {
-                "code": "content_overlap",
+                "code": "panel_out_of_canvas",
                 "severity": "info",
-                "time": 11.75,
-                "selector": "span.red-dot",
-                "message": "Two text blocks overlap and may render unreadable.",
+                "time": 2.5,
+                "selector": "div.swiss-grid > div:nth-of-type(3)",
+                "message": "Painted panel extends outside the composition canvas.",
                 "rect": {
-                  "left": 828.89,
-                  "top": 187.57,
-                  "right": 918.42,
-                  "bottom": 478.57,
-                  "width": 89.53,
-                  "height": 291
+                  "left": 1161.66,
+                  "top": 640,
+                  "right": 1961.66,
+                  "bottom": 642,
+                  "width": 800,
+                  "height": 2
                 },
-                "containerSelector": "div.wes-text-top",
-                "text": ".",
-                "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+                "containerSelector": "#root",
+                "text": "",
+                "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 1920,
+                  "bottom": 1080,
+                  "width": 1920,
+                  "height": 1080
+                },
+                "overflow": {
+                  "right": 41.66
+                },
                 "dataAttributes": {},
                 "sourceFile": "compositions/main-graphics.html",
                 "bbox": {
-                  "x": 828.89,
-                  "y": 187.57,
-                  "width": 89.53,
-                  "height": 291
+                  "x": 1161.66,
+                  "y": 640,
+                  "width": 800,
+                  "height": 2
                 },
-                "firstSeen": 11.75,
-                "lastSeen": 11.75,
-                "occurrences": 1
+                "firstSeen": 2.5,
+                "lastSeen": 2.5,
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [2.5]
               },
               {
                 "code": "text_occluded",
@@ -611,7 +611,9 @@
                 },
                 "firstSeen": 12.5,
                 "lastSeen": 12.5,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [12.5]
               },
               {
                 "code": "container_overflow",
@@ -650,25 +652,19 @@
                 },
                 "firstSeen": 12.5,
                 "lastSeen": 12.5,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [12.5]
               }
             ],
             "duration": 15,
             "samples": [
-              0.833,
-              2.5,
-              4.167,
-              5.833,
-              7.5,
-              9.167,
-              10.833,
-              12.5,
-              14.167
+              0.833, 2.5, 4.167, 5.833, 7.5, 9.167, 10.833, 12.5, 14.167
             ],
             "transitionSamples": [],
             "transitionSamplesDropped": 0,
             "tolerance": 2,
-            "totalIssueCount": 8,
+            "totalIssueCount": 7,
             "truncated": false
           },
           "motion": {
@@ -687,15 +683,13 @@
             "infoCount": 0,
             "findings": [],
             "enabled": true,
-            "samples": [
-              0.833,
-              4.167,
-              7.5,
-              10.833,
-              14.167
-            ],
+            "samples": [0.833, 4.167, 7.5, 10.833, 14.167],
             "checked": 14,
             "passed": 14
+          },
+          "hdr": {
+            "autoPromotion": null,
+            "inspection": "available"
           },
           "snapshots": {
             "enabled": false,
@@ -703,35 +697,41 @@
             "times": [],
             "findingFiles": []
           },
+          "saved": {
+            "id": "6e443d1c-70cc-4340-9e02-f5e06cca642d",
+            "revision": null,
+            "report": "<project>/.work/hyperframes-template-previews/hyperframes-kinetic-type/.hyperframes/artifacts/checks/6e443d1c-70cc-4340-9e02-f5e06cca642d.json",
+            "attribution": "unversioned"
+          },
           "_meta": {
-            "version": "0.8.30",
-            "latestVersion": "0.8.94",
-            "updateAvailable": true
+            "version": "0.8.159",
+            "latestVersion": "0.8.159",
+            "updateAvailable": false
           }
         }
       },
       "render": {
         "status": "passed",
         "frameCount": 450,
-        "hyperframesVersion": "0.8.30",
+        "hyperframesVersion": "0.8.159",
         "browserVersion": "Google Chrome for Testing 152.0.7977.42",
         "thumbnailAt": 7.5
       },
       "artifacts": {
         "video": {
           "path": "public/previews/hyperframes-kinetic-type/hyperframes.mp4",
-          "sha256": "127916ff626740db66db65c1a5ed94f6911bc224d882c5626d59ace80f77b427",
-          "bytes": 12815606
+          "sha256": "5d530a320cd66aaeb170931d691553a4a81ae524dc0497df716ba98027ea33b1",
+          "bytes": 10129938
         },
         "thumbnail": {
           "path": "public/previews/hyperframes-kinetic-type/thumbnail.webp",
-          "sha256": "cb07a53544ac251eaaa4f98eae8ffed8cc669577c278097e2de134d677ff65e6",
-          "bytes": 359324
+          "sha256": "5a1199c7ab02376b0b426dbc6a567a7d0c32c74f8a52f5d2dcf61fcd0d7a3039",
+          "bytes": 403916
         },
         "fullThumbnail": {
           "path": "public/previews/hyperframes-kinetic-type/thumbnail.png",
-          "sha256": "2e6a7e89bebbccc15b75100db8e877fdc34a071044b073074a9dce3f0c406966",
-          "bytes": 1001329
+          "sha256": "5dcfb472c7dbc5bf47af318bcc0ad0128758a565aa9938c5eefac204d0f5fb58",
+          "bytes": 1198375
         }
       }
     },
@@ -739,11 +739,11 @@
       "name": "hyperframes-nyt-graph",
       "origin": {
         "repository": "https://github.com/heygen-com/hyperframes",
-        "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+        "commit": "c694785df5993191fec42ec84e9d65ea69f98ad8",
         "source": "registry/examples/nyt-graph/registry-item.json",
         "name": "nyt-graph"
       },
-      "sourceManifestSha256": "3742eab5e45fdd4563ec76c1a31feacb8f5d27beeaad44dc2c0655ec86b7db57",
+      "sourceManifestSha256": "f91cf33aa115802cecf6ec84ac05d08237dc621c59d89b51641ef485926f5bc1",
       "dimensions": {
         "width": 1920,
         "height": 1080
@@ -785,6 +785,7 @@
         "result": {
           "ok": false,
           "strict": false,
+          "browserSkipped": false,
           "lint": {
             "ok": true,
             "errorCount": 0,
@@ -825,15 +826,7 @@
             "findings": [],
             "duration": 15,
             "samples": [
-              0.833,
-              2.5,
-              4.167,
-              5.833,
-              7.5,
-              9.167,
-              10.833,
-              12.5,
-              14.167
+              0.833, 2.5, 4.167, 5.833, 7.5, 9.167, 10.833, 12.5, 14.167
             ],
             "transitionSamples": [],
             "transitionSamplesDropped": 0,
@@ -852,7 +845,7 @@
           },
           "contrast": {
             "ok": false,
-            "errorCount": 2,
+            "errorCount": 1,
             "warningCount": 0,
             "infoCount": 0,
             "findings": [
@@ -876,41 +869,18 @@
                   "width": 34.1612548828125,
                   "height": 16.757171630859375
                 },
-                "time": 10.833
-              },
-              {
-                "code": "contrast_aa_failure",
-                "severity": "error",
-                "message": "Contrast is 4.16:1; WCAG AA requires 4.5:1.",
-                "text": "4.2%",
-                "fg": "rgb(50,111,168)",
-                "bg": "rgb(229,228,225)",
-                "ratio": 4.16,
-                "requiredRatio": 4.5,
-                "suggestedColor": "rgb(47,105,159)",
-                "large": false,
-                "selector": "div > div > div > div > svg > g:nth-of-type(6) > text:nth-of-type(6)",
-                "dataAttributes": {},
-                "sourceFile": "compositions/nyt-chart.html",
-                "bbox": {
-                  "x": 1463.939697265625,
-                  "y": 345.9785461425781,
-                  "width": 34.1612548828125,
-                  "height": 16.757171630859375
-                },
-                "time": 14.167
+                "time": 10.833,
+                "times": [10.833, 14.167]
               }
             ],
             "enabled": true,
-            "samples": [
-              0.833,
-              4.167,
-              7.5,
-              10.833,
-              14.167
-            ],
+            "samples": [0.833, 4.167, 7.5, 10.833, 14.167],
             "checked": 89,
             "passed": 87
+          },
+          "hdr": {
+            "autoPromotion": null,
+            "inspection": "available"
           },
           "snapshots": {
             "enabled": false,
@@ -918,35 +888,41 @@
             "times": [],
             "findingFiles": []
           },
+          "saved": {
+            "id": "31b6bbdc-e2a9-4841-87f2-9f82d0e76cac",
+            "revision": null,
+            "report": "<project>/.work/hyperframes-template-previews/hyperframes-nyt-graph/.hyperframes/artifacts/checks/31b6bbdc-e2a9-4841-87f2-9f82d0e76cac.json",
+            "attribution": "unversioned"
+          },
           "_meta": {
-            "version": "0.8.30",
-            "latestVersion": "0.8.94",
-            "updateAvailable": true
+            "version": "0.8.159",
+            "latestVersion": "0.8.159",
+            "updateAvailable": false
           }
         }
       },
       "render": {
         "status": "passed",
         "frameCount": 450,
-        "hyperframesVersion": "0.8.30",
+        "hyperframesVersion": "0.8.159",
         "browserVersion": "Google Chrome for Testing 152.0.7977.42",
         "thumbnailAt": 7.5
       },
       "artifacts": {
         "video": {
           "path": "public/previews/hyperframes-nyt-graph/hyperframes.mp4",
-          "sha256": "54599b263aaff4a0901fcf3fd6d2b533cff80cff3f2bfafe64e1419bedf8f816",
-          "bytes": 239701
+          "sha256": "9cb413c9cd830c37019510802b206c920cee2acb2d6985800eb2caef3f64329b",
+          "bytes": 198694
         },
         "thumbnail": {
           "path": "public/previews/hyperframes-nyt-graph/thumbnail.webp",
-          "sha256": "27e38144782b030bea7710d32ff52073f7bde26d31d3a95a598f63918beb0e1e",
-          "bytes": 37964
+          "sha256": "2551e9c10dfe3a03a29c9d1ad8c2009dbb7794e8183e159f470c5a1fce416724",
+          "bytes": 30890
         },
         "fullThumbnail": {
           "path": "public/previews/hyperframes-nyt-graph/thumbnail.png",
-          "sha256": "71b303d3908df7cadd2c9ad6d3d457ac1c0f4912ca4b746be9512e1fae1cd1c4",
-          "bytes": 143413
+          "sha256": "01f55f07b73b81ce8d2378f86d05f073b5109353740222e5a9702bc6ad297d3e",
+          "bytes": 102017
         }
       }
     },
@@ -954,11 +930,11 @@
       "name": "hyperframes-play-mode",
       "origin": {
         "repository": "https://github.com/heygen-com/hyperframes",
-        "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+        "commit": "c694785df5993191fec42ec84e9d65ea69f98ad8",
         "source": "registry/examples/play-mode/registry-item.json",
         "name": "play-mode"
       },
-      "sourceManifestSha256": "f84bad2afe74d92accba80996cafdb0ef48b5f13b7b79743347a065651bad8fb",
+      "sourceManifestSha256": "ca4ead3bee963b4622fac2397bdf9bd38adbbec746e6ad009cea15c9d9a2795e",
       "dimensions": {
         "width": 1920,
         "height": 1080
@@ -990,8 +966,8 @@
         {
           "path": "index.html",
           "target": "index.html",
-          "sourceSha256": "85b6e3e1c4d5abf26d8ccb59ccfa36f47d3c06d01ae1a7b9446b6e28d606d196",
-          "installedSha256": "2eef372fdbb34677240a9e90eeca280d2135af4626a8b6f1b84df31e46ca1361",
+          "sourceSha256": "8e679a41ab1300b5ac7820466beea05bd72b86a5d434f7078a6e66fca004d096",
+          "installedSha256": "69f346580624b1338ec7fbb0abe65855431d9f8a399530630c4bc90bb95bd927",
           "transformed": true
         },
         {
@@ -1014,10 +990,11 @@
         "result": {
           "ok": false,
           "strict": false,
+          "browserSkipped": true,
           "lint": {
             "ok": false,
             "errorCount": 1,
-            "warningCount": 0,
+            "warningCount": 2,
             "infoCount": 0,
             "findings": [
               {
@@ -1035,6 +1012,38 @@
                 },
                 "time": 0,
                 "fixHint": "Remove `transform: scale(0) rotate(3deg)` from CSS and replace with GSAP properties: scale: 0. Example: tl.fromTo('#moment-3', { scale: 0 }, { scale: 0, ...yourAnimation }). tl.fromTo is exempt from this rule."
+              },
+              {
+                "code": "negative_z_index",
+                "severity": "warning",
+                "message": "`z-index: -1` paints the element behind its nearest stacking context's own content. With no stacking-context ancestor that context is the composition root itself, so an opaque background there hides it entirely: in the DOM, laid out, and absent from the picture. A transparent root leaves it visible. Siblings at `z-index: 0` or above are unaffected.",
+                "selector": "[data-composition-id=\"stats\"] .sticker-bg",
+                "dataAttributes": {},
+                "sourceFile": "<project>/.work/hyperframes-template-previews/hyperframes-play-mode/compositions/stats.html",
+                "bbox": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "time": 0,
+                "fixHint": "Give the element's parent a stacking context - `isolation: isolate` is the cheapest, and `transform`, `filter`, `opacity` below 1, `contain: paint` and `will-change` all work too. The negative-z child then paints above that parent's background and renders normally. Or express paint order through DOM order - an earlier sibling paints behind a later one - and raise the elements that should sit in front rather than lowering this one."
+              },
+              {
+                "code": "negative_z_index",
+                "severity": "warning",
+                "message": "`z-index: -2` paints the element behind its nearest stacking context's own content. With no stacking-context ancestor that context is the composition root itself, so an opaque background there hides it entirely: in the DOM, laid out, and absent from the picture. A transparent root leaves it visible. Siblings at `z-index: 0` or above are unaffected.",
+                "selector": "[data-composition-id=\"stats\"] .shape",
+                "dataAttributes": {},
+                "sourceFile": "<project>/.work/hyperframes-template-previews/hyperframes-play-mode/compositions/stats.html",
+                "bbox": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "time": 0,
+                "fixHint": "Give the element's parent a stacking context - `isolation: isolate` is the cheapest, and `transform`, `filter`, `opacity` below 1, `contain: paint` and `will-change` all work too. The negative-z child then paints above that parent's background and renders normally. Or express paint order through DOM order - an earlier sibling paints behind a later one - and raise the elements that should sit in front rather than lowering this one."
               }
             ],
             "filesScanned": 4
@@ -1080,41 +1089,51 @@
             "checked": 0,
             "passed": 0
           },
+          "hdr": {
+            "autoPromotion": null,
+            "inspection": "available"
+          },
           "snapshots": {
             "enabled": false,
             "files": [],
             "times": [],
             "findingFiles": []
           },
+          "saved": {
+            "id": "37a2a4c1-b7cd-4e22-a532-97b0740a8452",
+            "revision": null,
+            "report": "<project>/.work/hyperframes-template-previews/hyperframes-play-mode/.hyperframes/artifacts/checks/37a2a4c1-b7cd-4e22-a532-97b0740a8452.json",
+            "attribution": "unversioned"
+          },
           "_meta": {
-            "version": "0.8.30",
-            "latestVersion": "0.8.94",
-            "updateAvailable": true
+            "version": "0.8.159",
+            "latestVersion": "0.8.159",
+            "updateAvailable": false
           }
         }
       },
       "render": {
         "status": "passed",
         "frameCount": 300,
-        "hyperframesVersion": "0.8.30",
+        "hyperframesVersion": "0.8.159",
         "browserVersion": "Google Chrome for Testing 152.0.7977.42",
         "thumbnailAt": 5
       },
       "artifacts": {
         "video": {
           "path": "public/previews/hyperframes-play-mode/hyperframes.mp4",
-          "sha256": "8f55ccd084c2a00425eac7deacff78ffdd530f9b98349a783eb0d4417efbe211",
-          "bytes": 2926030
+          "sha256": "9da9b27f3375e9aeabc499d739746802339bfd256550639390a06b208cac66f1",
+          "bytes": 2297629
         },
         "thumbnail": {
           "path": "public/previews/hyperframes-play-mode/thumbnail.webp",
-          "sha256": "edcbec682d9307cac7c1b38e30ab5a4d96644cd8431b24e81057bf076b41585c",
-          "bytes": 94386
+          "sha256": "fa38049f92dc843e7e983f07a3fa0b61d8667c915dd31487e8a6a49a922d7967",
+          "bytes": 73788
         },
         "fullThumbnail": {
           "path": "public/previews/hyperframes-play-mode/thumbnail.png",
-          "sha256": "1dbde6f217c7fb2523f5be8697e58b7a8aec83e639472d84cfc2c29227817fb9",
-          "bytes": 276206
+          "sha256": "345541901ff408e53f73497e4bd0e6c69c84e1ffd72546e65926c8b48ce96e5c",
+          "bytes": 209949
         }
       }
     },
@@ -1122,11 +1141,11 @@
       "name": "hyperframes-product-promo",
       "origin": {
         "repository": "https://github.com/heygen-com/hyperframes",
-        "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+        "commit": "c694785df5993191fec42ec84e9d65ea69f98ad8",
         "source": "registry/examples/product-promo/registry-item.json",
         "name": "product-promo"
       },
-      "sourceManifestSha256": "f89904ced8bd99e3ff6d2b87656373156e17acf217968e04d104e243c9668782",
+      "sourceManifestSha256": "5cc16d430b5b6bdb536bf6e6a9eb1e83992ebb16a329b00973fd320e1cb9f292",
       "dimensions": {
         "width": 1920,
         "height": 1080
@@ -1165,8 +1184,8 @@
         {
           "path": "compositions/scene2-4-canvas.html",
           "target": "compositions/scene2-4-canvas.html",
-          "sourceSha256": "af75a66642890e4806ed03cfca08ead7bad7db18cebf7563e0fff144ba229c3a",
-          "installedSha256": "af75a66642890e4806ed03cfca08ead7bad7db18cebf7563e0fff144ba229c3a",
+          "sourceSha256": "4e9ddf830440b5fefffe0deb78e39923cfeb1d09dcc6d9faea84a1604f5b3ca5",
+          "installedSha256": "4e9ddf830440b5fefffe0deb78e39923cfeb1d09dcc6d9faea84a1604f5b3ca5",
           "transformed": false
         },
         {
@@ -1203,77 +1222,13 @@
         "result": {
           "ok": false,
           "strict": false,
+          "browserSkipped": false,
           "lint": {
-            "ok": false,
-            "errorCount": 4,
+            "ok": true,
+            "errorCount": 0,
             "warningCount": 0,
             "infoCount": 0,
-            "findings": [
-              {
-                "code": "gsap_css_transform_conflict",
-                "severity": "error",
-                "message": "\".dragged-card\" has CSS `transform: scale(0.9)` and a GSAP tween animates x/y/scale. GSAP will overwrite the full CSS transform, discarding any translateX(-50%) centering or CSS scale value.",
-                "selector": ".dragged-card",
-                "dataAttributes": {},
-                "sourceFile": "<project>/.work/hyperframes-template-previews/hyperframes-product-promo/compositions/scene2-4-canvas.html",
-                "bbox": {
-                  "x": 0,
-                  "y": 0,
-                  "width": 0,
-                  "height": 0
-                },
-                "time": 0,
-                "fixHint": "Remove `transform: scale(0.9)` from CSS and replace with GSAP properties: scale: 0.9. Example: tl.fromTo('.dragged-card', { scale: 0.9 }, { scale: 0.9, ...yourAnimation }). tl.fromTo is exempt from this rule."
-              },
-              {
-                "code": "gsap_css_transform_conflict",
-                "severity": "error",
-                "message": "\".stamped-cards\" has CSS `transform: translate(-50%, -50%)` and a GSAP tween animates y. GSAP will overwrite the full CSS transform, discarding any translateX(-50%) centering or CSS scale value.",
-                "selector": ".stamped-cards",
-                "dataAttributes": {},
-                "sourceFile": "<project>/.work/hyperframes-template-previews/hyperframes-product-promo/compositions/scene2-4-canvas.html",
-                "bbox": {
-                  "x": 0,
-                  "y": 0,
-                  "width": 0,
-                  "height": 0
-                },
-                "time": 0,
-                "fixHint": "Remove `transform: translate(-50%, -50%)` from CSS and replace with GSAP properties: xPercent: -50, yPercent: -50. Example: tl.fromTo('.stamped-cards', { xPercent: -50, yPercent: -50 }, { xPercent: -50, yPercent: -50, ...yourAnimation }). tl.fromTo is exempt from this rule."
-              },
-              {
-                "code": "gsap_css_transform_conflict",
-                "severity": "error",
-                "message": "\".checkmark\" has CSS `transform: scale(0)` and a GSAP tween animates scale. GSAP will overwrite the full CSS transform, discarding any translateX(-50%) centering or CSS scale value.",
-                "selector": ".checkmark",
-                "dataAttributes": {},
-                "sourceFile": "<project>/.work/hyperframes-template-previews/hyperframes-product-promo/compositions/scene2-4-canvas.html",
-                "bbox": {
-                  "x": 0,
-                  "y": 0,
-                  "width": 0,
-                  "height": 0
-                },
-                "time": 0,
-                "fixHint": "Remove `transform: scale(0)` from CSS and replace with GSAP properties: scale: 0. Example: tl.fromTo('.checkmark', { scale: 0 }, { scale: 0, ...yourAnimation }). tl.fromTo is exempt from this rule."
-              },
-              {
-                "code": "gsap_css_transform_conflict",
-                "severity": "error",
-                "message": "\".web-frame, .cursor, .dragged-card, .stamped-cards, .comment-container, .assets-panel\" has CSS `transform: translate(-50%, -50%)` and a GSAP tween animates x. GSAP will overwrite the full CSS transform, discarding any translateX(-50%) centering or CSS scale value.",
-                "selector": ".web-frame, .cursor, .dragged-card, .stamped-cards, .comment-container, .assets-panel",
-                "dataAttributes": {},
-                "sourceFile": "<project>/.work/hyperframes-template-previews/hyperframes-product-promo/compositions/scene2-4-canvas.html",
-                "bbox": {
-                  "x": 0,
-                  "y": 0,
-                  "width": 0,
-                  "height": 0
-                },
-                "time": 0,
-                "fixHint": "Remove `transform: translate(-50%, -50%)` from CSS and replace with GSAP properties: xPercent: -50, yPercent: -50. Example: tl.fromTo('.web-frame, .cursor, .dragged-card, .stamped-cards, .comment-container, .assets-panel', { xPercent: -50, yPercent: -50 }, { xPercent: -50, yPercent: -50, ...yourAnimation }). tl.fromTo is exempt from this rule."
-              }
-            ],
+            "findings": [],
             "filesScanned": 4
           },
           "runtime": {
@@ -1286,15 +1241,767 @@
           "layout": {
             "ok": true,
             "errorCount": 0,
-            "warningCount": 0,
-            "infoCount": 0,
-            "findings": [],
-            "duration": 0,
-            "samples": [],
+            "warningCount": 3,
+            "infoCount": 15,
+            "findings": [
+              {
+                "code": "container_overflow",
+                "severity": "warning",
+                "time": 5.556,
+                "selector": "div.dimension-label.width-label",
+                "message": "Element extends outside a clipping layout container.",
+                "rect": {
+                  "left": 935.09,
+                  "top": 61,
+                  "right": 984.91,
+                  "bottom": 86,
+                  "width": 49.81,
+                  "height": 25
+                },
+                "containerSelector": "div.web-frame",
+                "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 240,
+                  "top": 90,
+                  "right": 1680,
+                  "bottom": 990,
+                  "width": 1440,
+                  "height": 900
+                },
+                "overflow": {
+                  "top": 29
+                },
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": 935.09,
+                  "y": 61,
+                  "width": 49.81,
+                  "height": 25
+                },
+                "firstSeen": 5.556,
+                "lastSeen": 12.222,
+                "occurrences": 4,
+                "heldMs": 0,
+                "times": [5.556, 7.778, 10, 12.222]
+              },
+              {
+                "code": "container_overflow",
+                "severity": "warning",
+                "time": 5.556,
+                "selector": "div.dimension-label.height-label",
+                "message": "Element extends outside a clipping layout container.",
+                "rect": {
+                  "left": 1689.78,
+                  "top": 518.28,
+                  "right": 1714.78,
+                  "bottom": 561.72,
+                  "width": 25,
+                  "height": 43.44
+                },
+                "containerSelector": "div.web-frame",
+                "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 240,
+                  "top": 90,
+                  "right": 1680,
+                  "bottom": 990,
+                  "width": 1440,
+                  "height": 900
+                },
+                "overflow": {
+                  "right": 34.78
+                },
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": 1689.78,
+                  "y": 518.28,
+                  "width": 25,
+                  "height": 43.44
+                },
+                "firstSeen": 5.556,
+                "lastSeen": 12.222,
+                "occurrences": 4,
+                "heldMs": 0,
+                "times": [5.556, 7.778, 10, 12.222]
+              },
+              {
+                "code": "container_overflow",
+                "severity": "warning",
+                "time": 10,
+                "selector": "div.comment-bubble",
+                "message": "Nowrap text is wider than its container.",
+                "rect": {
+                  "left": 1000,
+                  "top": 400,
+                  "right": 1240.44,
+                  "bottom": 441,
+                  "width": 240.44,
+                  "height": 41
+                },
+                "containerSelector": "div.comment-container",
+                "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 960,
+                  "top": 420,
+                  "right": 992,
+                  "bottom": 452,
+                  "width": 32,
+                  "height": 32
+                },
+                "overflow": {
+                  "right": 248.44
+                },
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": 1000,
+                  "y": 400,
+                  "width": 240.44,
+                  "height": 41
+                },
+                "firstSeen": 10,
+                "lastSeen": 12.222,
+                "occurrences": 2,
+                "heldMs": 0,
+                "times": [10, 12.222]
+              },
+              {
+                "code": "canvas_overflow",
+                "severity": "info",
+                "time": 3.333,
+                "selector": "div.panel-header",
+                "message": "Text extends outside the composition canvas.",
+                "rect": {
+                  "left": -296,
+                  "top": 24,
+                  "right": -236.52,
+                  "bottom": 45,
+                  "width": 59.48,
+                  "height": 21
+                },
+                "containerSelector": "#root",
+                "text": "Assets",
+                "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 1920,
+                  "bottom": 1080,
+                  "width": 1920,
+                  "height": 1080
+                },
+                "overflow": {
+                  "left": 296
+                },
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": -296,
+                  "y": 24,
+                  "width": 59.48,
+                  "height": 21
+                },
+                "firstSeen": 3.333,
+                "lastSeen": 7.778,
+                "occurrences": 3,
+                "heldMs": 0,
+                "times": [3.333, 5.556, 7.778]
+              },
+              {
+                "code": "canvas_overflow",
+                "severity": "info",
+                "time": 3.333,
+                "selector": "div.asset-list > div:nth-of-type(1) > span:nth-of-type(1)",
+                "message": "Text extends outside the composition canvas.",
+                "rect": {
+                  "left": -284,
+                  "top": 90,
+                  "right": -273.19,
+                  "bottom": 111,
+                  "width": 10.81,
+                  "height": 21
+                },
+                "containerSelector": "#root",
+                "text": "◆",
+                "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 1920,
+                  "bottom": 1080,
+                  "width": 1920,
+                  "height": 1080
+                },
+                "overflow": {
+                  "left": 284
+                },
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": -284,
+                  "y": 90,
+                  "width": 10.81,
+                  "height": 21
+                },
+                "firstSeen": 3.333,
+                "lastSeen": 7.778,
+                "occurrences": 3,
+                "heldMs": 0,
+                "times": [3.333, 5.556, 7.778]
+              },
+              {
+                "code": "canvas_overflow",
+                "severity": "info",
+                "time": 3.333,
+                "selector": "div.asset-list > div:nth-of-type(1) > span:nth-of-type(2)",
+                "message": "Text extends outside the composition canvas.",
+                "rect": {
+                  "left": -261.19,
+                  "top": 92,
+                  "right": -161.78,
+                  "bottom": 109,
+                  "width": 99.41,
+                  "height": 17
+                },
+                "containerSelector": "#root",
+                "text": "Button/Primary",
+                "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 1920,
+                  "bottom": 1080,
+                  "width": 1920,
+                  "height": 1080
+                },
+                "overflow": {
+                  "left": 261.19
+                },
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": -261.19,
+                  "y": 92,
+                  "width": 99.41,
+                  "height": 17
+                },
+                "firstSeen": 3.333,
+                "lastSeen": 7.778,
+                "occurrences": 3,
+                "heldMs": 0,
+                "times": [3.333, 5.556, 7.778]
+              },
+              {
+                "code": "canvas_overflow",
+                "severity": "info",
+                "time": 3.333,
+                "selector": "div.asset-list > div:nth-of-type(2) > span:nth-of-type(1)",
+                "message": "Text extends outside the composition canvas.",
+                "rect": {
+                  "left": -284,
+                  "top": 145,
+                  "right": -273.19,
+                  "bottom": 166,
+                  "width": 10.81,
+                  "height": 21
+                },
+                "containerSelector": "#root",
+                "text": "◆",
+                "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 1920,
+                  "bottom": 1080,
+                  "width": 1920,
+                  "height": 1080
+                },
+                "overflow": {
+                  "left": 284
+                },
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": -284,
+                  "y": 145,
+                  "width": 10.81,
+                  "height": 21
+                },
+                "firstSeen": 3.333,
+                "lastSeen": 7.778,
+                "occurrences": 3,
+                "heldMs": 0,
+                "times": [3.333, 5.556, 7.778]
+              },
+              {
+                "code": "canvas_overflow",
+                "severity": "info",
+                "time": 3.333,
+                "selector": "div.asset-list > div:nth-of-type(2) > span:nth-of-type(2)",
+                "message": "Text extends outside the composition canvas.",
+                "rect": {
+                  "left": -261.19,
+                  "top": 147,
+                  "right": -172.64,
+                  "bottom": 164,
+                  "width": 88.55,
+                  "height": 17
+                },
+                "containerSelector": "#root",
+                "text": "Card/Product",
+                "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 1920,
+                  "bottom": 1080,
+                  "width": 1920,
+                  "height": 1080
+                },
+                "overflow": {
+                  "left": 261.19
+                },
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": -261.19,
+                  "y": 147,
+                  "width": 88.55,
+                  "height": 17
+                },
+                "firstSeen": 3.333,
+                "lastSeen": 7.778,
+                "occurrences": 3,
+                "heldMs": 0,
+                "times": [3.333, 5.556, 7.778]
+              },
+              {
+                "code": "canvas_overflow",
+                "severity": "info",
+                "time": 3.333,
+                "selector": "div.asset-list > div:nth-of-type(3) > span:nth-of-type(1)",
+                "message": "Text extends outside the composition canvas.",
+                "rect": {
+                  "left": -284,
+                  "top": 200,
+                  "right": -273.19,
+                  "bottom": 221,
+                  "width": 10.81,
+                  "height": 21
+                },
+                "containerSelector": "#root",
+                "text": "◆",
+                "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 1920,
+                  "bottom": 1080,
+                  "width": 1920,
+                  "height": 1080
+                },
+                "overflow": {
+                  "left": 284
+                },
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": -284,
+                  "y": 200,
+                  "width": 10.81,
+                  "height": 21
+                },
+                "firstSeen": 3.333,
+                "lastSeen": 7.778,
+                "occurrences": 3,
+                "heldMs": 0,
+                "times": [3.333, 5.556, 7.778]
+              },
+              {
+                "code": "canvas_overflow",
+                "severity": "info",
+                "time": 3.333,
+                "selector": "div.asset-list > div:nth-of-type(3) > span:nth-of-type(2)",
+                "message": "Text extends outside the composition canvas.",
+                "rect": {
+                  "left": -261.19,
+                  "top": 202,
+                  "right": -182.28,
+                  "bottom": 219,
+                  "width": 78.91,
+                  "height": 17
+                },
+                "containerSelector": "#root",
+                "text": "Nav/Header",
+                "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 1920,
+                  "bottom": 1080,
+                  "width": 1920,
+                  "height": 1080
+                },
+                "overflow": {
+                  "left": 261.19
+                },
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": -261.19,
+                  "y": 202,
+                  "width": 78.91,
+                  "height": 17
+                },
+                "firstSeen": 3.333,
+                "lastSeen": 7.778,
+                "occurrences": 3,
+                "heldMs": 0,
+                "times": [3.333, 5.556, 7.778]
+              },
+              {
+                "code": "canvas_overflow",
+                "severity": "info",
+                "time": 3.333,
+                "selector": "div.cursor.engineer-cursor > div:nth-of-type(1)",
+                "message": "Text extends outside the composition canvas.",
+                "rect": {
+                  "left": -80,
+                  "top": 524,
+                  "right": -28.44,
+                  "bottom": 539,
+                  "width": 51.56,
+                  "height": 15
+                },
+                "containerSelector": "#root",
+                "text": "Engineer",
+                "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 1920,
+                  "bottom": 1080,
+                  "width": 1920,
+                  "height": 1080
+                },
+                "overflow": {
+                  "left": 80
+                },
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": -80,
+                  "y": 524,
+                  "width": 51.56,
+                  "height": 15
+                },
+                "firstSeen": 3.333,
+                "lastSeen": 3.333,
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [3.333]
+              },
+              {
+                "code": "canvas_overflow",
+                "severity": "info",
+                "time": 3.333,
+                "selector": "div.cursor.pm-cursor > div:nth-of-type(1)",
+                "message": "Text extends outside the composition canvas.",
+                "rect": {
+                  "left": 2020,
+                  "top": 1124,
+                  "right": 2038.81,
+                  "bottom": 1139,
+                  "width": 18.81,
+                  "height": 15
+                },
+                "containerSelector": "#root",
+                "text": "PM",
+                "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 1920,
+                  "bottom": 1080,
+                  "width": 1920,
+                  "height": 1080
+                },
+                "overflow": {
+                  "right": 118.81,
+                  "bottom": 59
+                },
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": 2020,
+                  "y": 1124,
+                  "width": 18.81,
+                  "height": 15
+                },
+                "firstSeen": 3.333,
+                "lastSeen": 3.333,
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [3.333]
+              },
+              {
+                "code": "text_occluded",
+                "severity": "info",
+                "time": 10,
+                "selector": "h1.hero-heading",
+                "message": "Text is hidden beneath an opaque element.",
+                "rect": {
+                  "left": 539.98,
+                  "top": 387,
+                  "right": 1380,
+                  "bottom": 488,
+                  "width": 840.02,
+                  "height": 101
+                },
+                "containerSelector": "div.comment-bubble",
+                "text": "Design without limits",
+                "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+                "coveredFraction": 0.19,
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": 539.98,
+                  "y": 387,
+                  "width": 840.02,
+                  "height": 101
+                },
+                "firstSeen": 10,
+                "lastSeen": 10,
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [10]
+              },
+              {
+                "code": "container_overflow",
+                "severity": "info",
+                "time": 14.444,
+                "selector": "svg.logo-svg > path:nth-of-type(1)",
+                "message": "Element extends outside a clipping layout container.",
+                "rect": {
+                  "left": 1084.38,
+                  "top": 380,
+                  "right": 1164.38,
+                  "bottom": 460,
+                  "width": 80,
+                  "height": 80
+                },
+                "containerSelector": "svg.logo-svg",
+                "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 880,
+                  "top": 380,
+                  "right": 1040,
+                  "bottom": 620,
+                  "width": 160,
+                  "height": 240
+                },
+                "overflow": {
+                  "right": 124.38
+                },
+                "dataAttributes": {
+                  "data-svg-origin": "80 120"
+                },
+                "sourceFile": "compositions/scene5-logo-outro.html",
+                "bbox": {
+                  "x": 1084.38,
+                  "y": 380,
+                  "width": 80,
+                  "height": 80
+                },
+                "firstSeen": 14.444,
+                "lastSeen": 14.444,
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [14.444]
+              },
+              {
+                "code": "container_overflow",
+                "severity": "info",
+                "time": 14.444,
+                "selector": "svg.logo-svg > path:nth-of-type(2)",
+                "message": "Element extends outside a clipping layout container.",
+                "rect": {
+                  "left": 1295.7,
+                  "top": 380,
+                  "right": 1375.7,
+                  "bottom": 460,
+                  "width": 80,
+                  "height": 80
+                },
+                "containerSelector": "svg.logo-svg",
+                "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 880,
+                  "top": 380,
+                  "right": 1040,
+                  "bottom": 620,
+                  "width": 160,
+                  "height": 240
+                },
+                "overflow": {
+                  "right": 335.7
+                },
+                "dataAttributes": {
+                  "data-svg-origin": "160 120"
+                },
+                "sourceFile": "compositions/scene5-logo-outro.html",
+                "bbox": {
+                  "x": 1295.7,
+                  "y": 380,
+                  "width": 80,
+                  "height": 80
+                },
+                "firstSeen": 14.444,
+                "lastSeen": 14.444,
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [14.444]
+              },
+              {
+                "code": "container_overflow",
+                "severity": "info",
+                "time": 14.444,
+                "selector": "svg.logo-svg > path:nth-of-type(3)",
+                "message": "Element extends outside a clipping layout container.",
+                "rect": {
+                  "left": 1407.25,
+                  "top": 460,
+                  "right": 1487.25,
+                  "bottom": 540,
+                  "width": 80,
+                  "height": 80
+                },
+                "containerSelector": "svg.logo-svg",
+                "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 880,
+                  "top": 380,
+                  "right": 1040,
+                  "bottom": 620,
+                  "width": 160,
+                  "height": 240
+                },
+                "overflow": {
+                  "right": 447.25
+                },
+                "dataAttributes": {
+                  "data-svg-origin": "80 200"
+                },
+                "sourceFile": "compositions/scene5-logo-outro.html",
+                "bbox": {
+                  "x": 1407.25,
+                  "y": 460,
+                  "width": 80,
+                  "height": 80
+                },
+                "firstSeen": 14.444,
+                "lastSeen": 14.444,
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [14.444]
+              },
+              {
+                "code": "container_overflow",
+                "severity": "info",
+                "time": 14.444,
+                "selector": "svg.logo-svg > circle:nth-of-type(1)",
+                "message": "Element extends outside a clipping layout container.",
+                "rect": {
+                  "left": 1757.67,
+                  "top": 460,
+                  "right": 1837.67,
+                  "bottom": 540,
+                  "width": 80,
+                  "height": 80
+                },
+                "containerSelector": "svg.logo-svg",
+                "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 880,
+                  "top": 380,
+                  "right": 1040,
+                  "bottom": 620,
+                  "width": 160,
+                  "height": 240
+                },
+                "overflow": {
+                  "right": 797.67
+                },
+                "dataAttributes": {
+                  "data-svg-origin": "160 200"
+                },
+                "sourceFile": "compositions/scene5-logo-outro.html",
+                "bbox": {
+                  "x": 1757.67,
+                  "y": 460,
+                  "width": 80,
+                  "height": 80
+                },
+                "firstSeen": 14.444,
+                "lastSeen": 14.444,
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [14.444]
+              },
+              {
+                "code": "container_overflow",
+                "severity": "info",
+                "time": 14.444,
+                "selector": "svg.logo-svg > path:nth-of-type(4)",
+                "message": "Element extends outside a clipping layout container.",
+                "rect": {
+                  "left": 2049.17,
+                  "top": 540,
+                  "right": 2129.17,
+                  "bottom": 620,
+                  "width": 80,
+                  "height": 80
+                },
+                "containerSelector": "svg.logo-svg",
+                "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+                "containerRect": {
+                  "left": 880,
+                  "top": 380,
+                  "right": 1040,
+                  "bottom": 620,
+                  "width": 160,
+                  "height": 240
+                },
+                "overflow": {
+                  "right": 1089.17
+                },
+                "dataAttributes": {
+                  "data-svg-origin": "80 280"
+                },
+                "sourceFile": "compositions/scene5-logo-outro.html",
+                "bbox": {
+                  "x": 2049.17,
+                  "y": 540,
+                  "width": 80,
+                  "height": 80
+                },
+                "firstSeen": 14.444,
+                "lastSeen": 14.444,
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [14.444]
+              }
+            ],
+            "duration": 20,
+            "samples": [
+              1.111, 3.333, 5.556, 7.778, 10, 12.222, 14.444, 16.667, 18.889
+            ],
             "transitionSamples": [],
             "transitionSamplesDropped": 0,
             "tolerance": 2,
-            "totalIssueCount": 0,
+            "totalIssueCount": 18,
             "truncated": false
           },
           "motion": {
@@ -1307,15 +2014,273 @@
             "samples": 0
           },
           "contrast": {
-            "ok": true,
-            "errorCount": 0,
-            "warningCount": 0,
+            "ok": false,
+            "errorCount": 7,
+            "warningCount": 4,
             "infoCount": 0,
-            "findings": [],
+            "findings": [
+              {
+                "code": "contrast_aa_failure",
+                "severity": "error",
+                "message": "Contrast is 2.05:1; WCAG AA requires 3:1.",
+                "text": "Get Started",
+                "fg": "rgb(255,255,255)",
+                "bg": "rgb(10,207,131)",
+                "ratio": 2.05,
+                "requiredRatio": 3,
+                "suggestedColor": "rgb(97,97,97)",
+                "large": true,
+                "selector": "div > div:nth-of-type(2) > div > div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": 845.96875,
+                  "y": 604,
+                  "width": 228.046875,
+                  "height": 69
+                },
+                "time": 5.556,
+                "times": [5.556, 10]
+              },
+              {
+                "code": "contrast_aa_failure",
+                "severity": "error",
+                "message": "Contrast is 2.17:1; WCAG AA requires 4.5:1.",
+                "text": "1440",
+                "fg": "rgb(255,255,255)",
+                "bg": "rgb(26,188,254)",
+                "ratio": 2.17,
+                "requiredRatio": 4.5,
+                "suggestedColor": "rgb(67,67,67)",
+                "large": false,
+                "selector": "div > div:nth-of-type(2) > div > div > div:nth-of-type(2) > div:nth-of-type(2)",
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": 935.09375,
+                  "y": 61,
+                  "width": 49.8125,
+                  "height": 25
+                },
+                "time": 5.556,
+                "times": [5.556, 10]
+              },
+              {
+                "code": "contrast_aa_failure",
+                "severity": "error",
+                "message": "Contrast is 2.17:1; WCAG AA requires 4.5:1.",
+                "text": "900",
+                "fg": "rgb(255,255,255)",
+                "bg": "rgb(26,188,254)",
+                "ratio": 2.17,
+                "requiredRatio": 4.5,
+                "suggestedColor": "rgb(67,67,67)",
+                "large": false,
+                "selector": "div > div:nth-of-type(2) > div > div > div:nth-of-type(2) > div:nth-of-type(3)",
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": 1689.78125,
+                  "y": 518.28125,
+                  "width": 25,
+                  "height": 43.4375
+                },
+                "time": 5.556,
+                "times": [5.556, 10]
+              },
+              {
+                "code": "contrast_aa_failure",
+                "severity": "error",
+                "message": "Contrast is 3.88:1; WCAG AA requires 4.5:1.",
+                "text": "Designer",
+                "fg": "rgb(255,255,255)",
+                "bg": "rgb(162,89,255)",
+                "ratio": 3.88,
+                "requiredRatio": 4.5,
+                "suggestedColor": "rgb(25,25,25)",
+                "large": false,
+                "selector": "div > div:nth-of-type(2) > div > div > div:nth-of-type(7) > div",
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": 972,
+                  "y": 560,
+                  "width": 68.203125,
+                  "height": 23
+                },
+                "time": 5.556,
+                "times": [5.556, 10]
+              },
+              {
+                "code": "contrast_aa_failure",
+                "severity": "error",
+                "message": "Contrast is 2.17:1; WCAG AA requires 4.5:1.",
+                "text": "Engineer",
+                "fg": "rgb(255,255,255)",
+                "bg": "rgb(26,188,254)",
+                "ratio": 2.17,
+                "requiredRatio": 4.5,
+                "suggestedColor": "rgb(67,67,67)",
+                "large": false,
+                "selector": "div > div:nth-of-type(2) > div > div > div:nth-of-type(8) > div",
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": 408.5705871582031,
+                  "y": 420.6859130859375,
+                  "width": 67.5625,
+                  "height": 23
+                },
+                "time": 5.556,
+                "times": [5.556, 10]
+              },
+              {
+                "code": "contrast_aa_failure",
+                "severity": "error",
+                "message": "Contrast is 3.57:1; WCAG AA requires 4.5:1.",
+                "text": "PM",
+                "fg": "rgb(255,255,255)",
+                "bg": "rgb(242,78,30)",
+                "ratio": 3.57,
+                "requiredRatio": 4.5,
+                "suggestedColor": "rgb(33,33,33)",
+                "large": false,
+                "selector": "div > div:nth-of-type(2) > div > div > div:nth-of-type(9) > div",
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": 1666.595458984375,
+                  "y": 912.7572021484375,
+                  "width": 34.8125,
+                  "height": 23
+                },
+                "time": 5.556,
+                "times": [5.556, 10]
+              },
+              {
+                "code": "contrast_aa_failure",
+                "severity": "error",
+                "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+                "text": "Three cursors. One file. Zero meetings.",
+                "fg": "rgb(255,255,255)",
+                "bg": "rgb(244,244,244)",
+                "ratio": 1.1,
+                "requiredRatio": 3,
+                "suggestedColor": "rgb(141,141,141)",
+                "large": true,
+                "selector": "#caption-text",
+                "dataAttributes": {},
+                "sourceFile": "index.html",
+                "bbox": {
+                  "x": 525.234375,
+                  "y": 861.006103515625,
+                  "width": 869.515625,
+                  "height": 59
+                },
+                "time": 5.556,
+                "times": [5.556, 10]
+              },
+              {
+                "code": "contrast_aa_failure",
+                "severity": "warning",
+                "message": "Contrast is 3.11:1; WCAG AA requires 4.5:1.",
+                "text": "◆",
+                "fg": "rgb(162,89,255)",
+                "bg": "rgb(54,54,54)",
+                "ratio": 3.11,
+                "requiredRatio": 4.5,
+                "suggestedColor": "rgb(186,132,255)",
+                "large": false,
+                "selector": "div > div:nth-of-type(2) > div > div > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": 36,
+                  "y": 89,
+                  "width": 10.8125,
+                  "height": 23
+                },
+                "time": 10,
+                "times": [10]
+              },
+              {
+                "code": "contrast_aa_failure",
+                "severity": "warning",
+                "message": "Contrast is 3.11:1; WCAG AA requires 4.5:1.",
+                "text": "◆",
+                "fg": "rgb(162,89,255)",
+                "bg": "rgb(54,54,54)",
+                "ratio": 3.11,
+                "requiredRatio": 4.5,
+                "suggestedColor": "rgb(186,132,255)",
+                "large": false,
+                "selector": "div > div:nth-of-type(2) > div > div > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(1)",
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": 36,
+                  "y": 144,
+                  "width": 10.8125,
+                  "height": 23
+                },
+                "time": 10,
+                "times": [10]
+              },
+              {
+                "code": "contrast_aa_failure",
+                "severity": "warning",
+                "message": "Contrast is 3.11:1; WCAG AA requires 4.5:1.",
+                "text": "◆",
+                "fg": "rgb(162,89,255)",
+                "bg": "rgb(54,54,54)",
+                "ratio": 3.11,
+                "requiredRatio": 4.5,
+                "suggestedColor": "rgb(186,132,255)",
+                "large": false,
+                "selector": "div > div:nth-of-type(2) > div > div > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(3) > span:nth-of-type(1)",
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene2-4-canvas.html",
+                "bbox": {
+                  "x": 36,
+                  "y": 199,
+                  "width": 10.8125,
+                  "height": 23
+                },
+                "time": 10,
+                "times": [10]
+              },
+              {
+                "code": "contrast_aa_failure",
+                "severity": "warning",
+                "message": "Contrast is 3.02:1; WCAG AA requires 4.5:1.",
+                "text": "figma.com",
+                "fg": "rgb(102,102,102)",
+                "bg": "rgb(26,26,31)",
+                "ratio": 3.02,
+                "requiredRatio": 4.5,
+                "suggestedColor": "rgb(130,130,130)",
+                "large": false,
+                "selector": "div > div:nth-of-type(3) > div > div > div:nth-of-type(3) > div:nth-of-type(2) > span",
+                "dataAttributes": {},
+                "sourceFile": "compositions/scene5-logo-outro.html",
+                "bbox": {
+                  "x": 912.765625,
+                  "y": 815,
+                  "width": 94.46875,
+                  "height": 21
+                },
+                "time": 18.889,
+                "times": [18.889]
+              }
+            ],
             "enabled": true,
-            "samples": [],
-            "checked": 0,
-            "passed": 0
+            "samples": [1.111, 5.556, 10, 14.444, 18.889],
+            "checked": 26,
+            "passed": 8
+          },
+          "hdr": {
+            "autoPromotion": null,
+            "inspection": "available"
           },
           "snapshots": {
             "enabled": false,
@@ -1323,35 +2288,41 @@
             "times": [],
             "findingFiles": []
           },
+          "saved": {
+            "id": "3f88b2e1-e362-4434-8a61-1c83b3d12ef8",
+            "revision": null,
+            "report": "<project>/.work/hyperframes-template-previews/hyperframes-product-promo/.hyperframes/artifacts/checks/3f88b2e1-e362-4434-8a61-1c83b3d12ef8.json",
+            "attribution": "unversioned"
+          },
           "_meta": {
-            "version": "0.8.30",
-            "latestVersion": "0.8.94",
-            "updateAvailable": true
+            "version": "0.8.159",
+            "latestVersion": "0.8.159",
+            "updateAvailable": false
           }
         }
       },
       "render": {
         "status": "passed",
         "frameCount": 600,
-        "hyperframesVersion": "0.8.30",
+        "hyperframesVersion": "0.8.159",
         "browserVersion": "Google Chrome for Testing 152.0.7977.42",
         "thumbnailAt": 10
       },
       "artifacts": {
         "video": {
           "path": "public/previews/hyperframes-product-promo/hyperframes.mp4",
-          "sha256": "363eefd713505f68b210cc7b8a1cb211d2409ba642d2a428257a903b37e4dafe",
-          "bytes": 1525724
+          "sha256": "24f8260daef0a4037d8f5fd7270dc2af5c97881e2e3e4d7fafc23c14c0425c31",
+          "bytes": 1159674
         },
         "thumbnail": {
           "path": "public/previews/hyperframes-product-promo/thumbnail.webp",
-          "sha256": "9d2c5786913fbf24ec8a453f425f075968acdd10526d907f49770e1a355c9cc2",
-          "bytes": 47846
+          "sha256": "16f7a97d321a05946f8fd304442b2a9cae423267b6097d7d02016eef096b7608",
+          "bytes": 35118
         },
         "fullThumbnail": {
           "path": "public/previews/hyperframes-product-promo/thumbnail.png",
-          "sha256": "7c5d0f6ee55d575da0ca0c0177e0b681460dd184869dca4c101f89b623f5e11e",
-          "bytes": 179101
+          "sha256": "235c06187144989313dc09e7660046b74b55004b7b084b2987b0b2b1e224cbc4",
+          "bytes": 129857
         }
       }
     },
@@ -1359,11 +2330,11 @@
       "name": "hyperframes-swiss-grid",
       "origin": {
         "repository": "https://github.com/heygen-com/hyperframes",
-        "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+        "commit": "c694785df5993191fec42ec84e9d65ea69f98ad8",
         "source": "registry/examples/swiss-grid/registry-item.json",
         "name": "swiss-grid"
       },
-      "sourceManifestSha256": "074803132234c2ed7a08ad4fa90e42f8f6d73e6d5f1381c2f69e067cd5b218c4",
+      "sourceManifestSha256": "ea3a2e38b42c4db9a09df1c2013eca35c5ed4740758f83dbbde8311ca30b9755",
       "dimensions": {
         "width": 1920,
         "height": 1080
@@ -1402,8 +2373,8 @@
         {
           "path": "index.html",
           "target": "index.html",
-          "sourceSha256": "29d0c06406d54f10b6135dfc079a40676f4289a9999bb333987ab07922b466e4",
-          "installedSha256": "6b45c2bd2be622209c84b78fd50de0421ea7a0ca1d0996f29dbd20e5461c5e70",
+          "sourceSha256": "2136a513da2cccf0bbd3e1f14857c3186cf065c77c508037cce37e3acc3484bf",
+          "installedSha256": "2a040bb5ce0035cdcec80581d346cc7f678c53f866685f64934f7c37c50078c4",
           "transformed": true
         },
         {
@@ -1426,6 +2397,7 @@
         "result": {
           "ok": false,
           "strict": false,
+          "browserSkipped": false,
           "lint": {
             "ok": true,
             "errorCount": 0,
@@ -1443,15 +2415,15 @@
           },
           "layout": {
             "ok": false,
-            "errorCount": 6,
+            "errorCount": 3,
             "warningCount": 1,
-            "infoCount": 10,
+            "infoCount": 7,
             "findings": [
               {
                 "code": "clipped_text",
                 "severity": "error",
                 "time": 0.556,
-                "selector": "div.caption-text",
+                "selector": "#group-0 > div:nth-of-type(1)",
                 "message": "Text content is clipped by its own box.",
                 "rect": {
                   "left": 421.72,
@@ -1476,54 +2448,15 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 1.667,
-                "occurrences": 2
-              },
-              {
-                "code": "text_box_overflow",
-                "severity": "error",
-                "time": 0.556,
-                "selector": "div.caption-text",
-                "message": "Text extends outside its nearest visual/container box.",
-                "rect": {
-                  "left": 421.72,
-                  "top": 860,
-                  "right": 1498.27,
-                  "bottom": 947,
-                  "width": 1076.55,
-                  "height": 87
-                },
-                "containerSelector": "div.caption-text",
-                "text": "We asked what you needed.",
-                "fixHint": "Text is 1077px x 87px inside 1077px x 72px and overflows by up to 8px; increase the container height to at least ~87px or shrink font-size from 72px to ~60px, or allow wrapping with max-width/fitTextFontSize.",
-                "containerRect": {
-                  "left": 421.72,
-                  "top": 868,
-                  "right": 1498.27,
-                  "bottom": 940,
-                  "width": 1076.55,
-                  "height": 72
-                },
-                "overflow": {
-                  "top": 8,
-                  "bottom": 7
-                },
-                "dataAttributes": {},
-                "sourceFile": "compositions/captions.html",
-                "bbox": {
-                  "x": 421.72,
-                  "y": 860,
-                  "width": 1076.55,
-                  "height": 87
-                },
-                "firstSeen": 0.556,
-                "lastSeen": 1.667,
-                "occurrences": 2
+                "occurrences": 2,
+                "heldMs": 0,
+                "times": [0.556, 1.667]
               },
               {
                 "code": "clipped_text",
                 "severity": "error",
                 "time": 3.889,
-                "selector": "div.caption-text",
+                "selector": "#group-2 > div:nth-of-type(1)",
                 "message": "Text content is clipped by its own box.",
                 "rect": {
                   "left": 160,
@@ -1549,55 +2482,15 @@
                 },
                 "firstSeen": 3.889,
                 "lastSeen": 5,
-                "occurrences": 2
-              },
-              {
-                "code": "text_box_overflow",
-                "severity": "error",
-                "time": 3.889,
-                "selector": "div.caption-text",
-                "message": "Text extends outside its nearest visual/container box.",
-                "rect": {
-                  "left": 160,
-                  "top": 860,
-                  "right": 1775.73,
-                  "bottom": 947,
-                  "width": 1615.73,
-                  "height": 87
-                },
-                "containerSelector": "div.caption-text",
-                "text": "motion graphics, sixty-two percent said",
-                "fixHint": "Text is 1616px x 87px inside 1600px x 72px and overflows by up to 16px; resize the container to at least ~1616px x 87px or shrink font-size from 72px to ~60px, or allow wrapping with max-width/fitTextFontSize.",
-                "containerRect": {
-                  "left": 160,
-                  "top": 868,
-                  "right": 1760,
-                  "bottom": 940,
-                  "width": 1600,
-                  "height": 72
-                },
-                "overflow": {
-                  "right": 15.73,
-                  "top": 8,
-                  "bottom": 7
-                },
-                "dataAttributes": {},
-                "sourceFile": "compositions/captions.html",
-                "bbox": {
-                  "x": 160,
-                  "y": 860,
-                  "width": 1615.73,
-                  "height": 87
-                },
-                "firstSeen": 3.889,
-                "lastSeen": 5,
-                "occurrences": 2
+                "occurrences": 2,
+                "heldMs": 0,
+                "times": [3.889, 5]
               },
               {
                 "code": "clipped_text",
                 "severity": "error",
                 "time": 6.111,
-                "selector": "div.caption-text",
+                "selector": "#group-3 > div:nth-of-type(1)",
                 "message": "Text content is clipped by its own box.",
                 "rect": {
                   "left": 318.33,
@@ -1622,48 +2515,9 @@
                 },
                 "firstSeen": 6.111,
                 "lastSeen": 7.222,
-                "occurrences": 2
-              },
-              {
-                "code": "text_box_overflow",
-                "severity": "error",
-                "time": 6.111,
-                "selector": "div.caption-text",
-                "message": "Text extends outside its nearest visual/container box.",
-                "rect": {
-                  "left": 318.33,
-                  "top": 860,
-                  "right": 1601.66,
-                  "bottom": 947,
-                  "width": 1283.33,
-                  "height": 87
-                },
-                "containerSelector": "div.caption-text",
-                "text": "static content was costing you",
-                "fixHint": "Text is 1283px x 87px inside 1283px x 72px and overflows by up to 8px; increase the container height to at least ~87px or shrink font-size from 72px to ~60px, or allow wrapping with max-width/fitTextFontSize.",
-                "containerRect": {
-                  "left": 318.33,
-                  "top": 868,
-                  "right": 1601.66,
-                  "bottom": 940,
-                  "width": 1283.33,
-                  "height": 72
-                },
-                "overflow": {
-                  "top": 8,
-                  "bottom": 7
-                },
-                "dataAttributes": {},
-                "sourceFile": "compositions/captions.html",
-                "bbox": {
-                  "x": 318.33,
-                  "y": 860,
-                  "width": 1283.33,
-                  "height": 87
-                },
-                "firstSeen": 6.111,
-                "lastSeen": 7.222,
-                "occurrences": 2
+                "occurrences": 2,
+                "heldMs": 0,
+                "times": [6.111, 7.222]
               },
               {
                 "code": "container_overflow",
@@ -1703,7 +2557,11 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 9.444,
-                "occurrences": 9
+                "occurrences": 9,
+                "heldMs": 0,
+                "times": [
+                  0.556, 1.667, 2.778, 3.889, 5, 6.111, 7.222, 8.333, 9.444
+                ]
               },
               {
                 "code": "canvas_overflow",
@@ -1743,7 +2601,9 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 0.556,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [0.556]
               },
               {
                 "code": "canvas_overflow",
@@ -1783,7 +2643,9 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 0.556,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [0.556]
               },
               {
                 "code": "container_overflow",
@@ -1822,7 +2684,9 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 0.556,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [0.556]
               },
               {
                 "code": "container_overflow",
@@ -1861,13 +2725,15 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 0.556,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [0.556]
               },
               {
                 "code": "clipped_text",
                 "severity": "info",
                 "time": 2.778,
-                "selector": "div.caption-text",
+                "selector": "#group-1 > div:nth-of-type(1)",
                 "message": "Text content is clipped by its own box.",
                 "rect": {
                   "left": 315.03,
@@ -1892,54 +2758,15 @@
                 },
                 "firstSeen": 2.778,
                 "lastSeen": 2.778,
-                "occurrences": 1
-              },
-              {
-                "code": "text_box_overflow",
-                "severity": "info",
-                "time": 2.778,
-                "selector": "div.caption-text",
-                "message": "Text extends outside its nearest visual/container box.",
-                "rect": {
-                  "left": 315.03,
-                  "top": 860,
-                  "right": 1604.97,
-                  "bottom": 947,
-                  "width": 1289.94,
-                  "height": 87
-                },
-                "containerSelector": "div.caption-text",
-                "text": "Forty-seven percent of you said",
-                "fixHint": "Text is 1290px x 87px inside 1290px x 72px and overflows by up to 8px; increase the container height to at least ~87px or shrink font-size from 72px to ~60px, or allow wrapping with max-width/fitTextFontSize.",
-                "containerRect": {
-                  "left": 315.03,
-                  "top": 868,
-                  "right": 1604.97,
-                  "bottom": 940,
-                  "width": 1289.94,
-                  "height": 72
-                },
-                "overflow": {
-                  "top": 8,
-                  "bottom": 7
-                },
-                "dataAttributes": {},
-                "sourceFile": "compositions/captions.html",
-                "bbox": {
-                  "x": 315.03,
-                  "y": 860,
-                  "width": 1289.94,
-                  "height": 87
-                },
-                "firstSeen": 2.778,
-                "lastSeen": 2.778,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [2.778]
               },
               {
                 "code": "clipped_text",
                 "severity": "info",
                 "time": 8.333,
-                "selector": "div.caption-text",
+                "selector": "#group-4 > div:nth-of-type(1)",
                 "message": "Text content is clipped by its own box.",
                 "rect": {
                   "left": 406.02,
@@ -1964,54 +2791,15 @@
                 },
                 "firstSeen": 8.333,
                 "lastSeen": 8.333,
-                "occurrences": 1
-              },
-              {
-                "code": "text_box_overflow",
-                "severity": "info",
-                "time": 8.333,
-                "selector": "div.caption-text",
-                "message": "Text extends outside its nearest visual/container box.",
-                "rect": {
-                  "left": 406.02,
-                  "top": 860,
-                  "right": 1513.97,
-                  "bottom": 947,
-                  "width": 1107.95,
-                  "height": 87
-                },
-                "containerSelector": "div.caption-text",
-                "text": "attention, and three out of",
-                "fixHint": "Text is 1108px x 87px inside 1108px x 72px and overflows by up to 8px; increase the container height to at least ~87px or shrink font-size from 72px to ~60px, or allow wrapping with max-width/fitTextFontSize.",
-                "containerRect": {
-                  "left": 406.02,
-                  "top": 868,
-                  "right": 1513.97,
-                  "bottom": 940,
-                  "width": 1107.95,
-                  "height": 72
-                },
-                "overflow": {
-                  "top": 8,
-                  "bottom": 7
-                },
-                "dataAttributes": {},
-                "sourceFile": "compositions/captions.html",
-                "bbox": {
-                  "x": 406.02,
-                  "y": 860,
-                  "width": 1107.95,
-                  "height": 87
-                },
-                "firstSeen": 8.333,
-                "lastSeen": 8.333,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [8.333]
               },
               {
                 "code": "clipped_text",
                 "severity": "info",
                 "time": 9.444,
-                "selector": "div.caption-text",
+                "selector": "#group-5 > div:nth-of-type(1)",
                 "message": "Text content is clipped by its own box.",
                 "rect": {
                   "left": 493.83,
@@ -2036,66 +2824,19 @@
                 },
                 "firstSeen": 9.444,
                 "lastSeen": 9.444,
-                "occurrences": 1
-              },
-              {
-                "code": "text_box_overflow",
-                "severity": "info",
-                "time": 9.444,
-                "selector": "div.caption-text",
-                "message": "Text extends outside its nearest visual/container box.",
-                "rect": {
-                  "left": 493.83,
-                  "top": 860,
-                  "right": 1426.16,
-                  "bottom": 947,
-                  "width": 932.33,
-                  "height": 87
-                },
-                "containerSelector": "div.caption-text",
-                "text": "four said you know the",
-                "fixHint": "Text is 932px x 87px inside 932px x 72px and overflows by up to 8px; increase the container height to at least ~87px or shrink font-size from 72px to ~60px, or allow wrapping with max-width/fitTextFontSize.",
-                "containerRect": {
-                  "left": 493.83,
-                  "top": 868,
-                  "right": 1426.16,
-                  "bottom": 940,
-                  "width": 932.33,
-                  "height": 72
-                },
-                "overflow": {
-                  "top": 8,
-                  "bottom": 7
-                },
-                "dataAttributes": {},
-                "sourceFile": "compositions/captions.html",
-                "bbox": {
-                  "x": 493.83,
-                  "y": 860,
-                  "width": 932.33,
-                  "height": 87
-                },
-                "firstSeen": 9.444,
-                "lastSeen": 9.444,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [9.444]
               }
             ],
             "duration": 10,
             "samples": [
-              0.556,
-              1.667,
-              2.778,
-              3.889,
-              5,
-              6.111,
-              7.222,
-              8.333,
-              9.444
+              0.556, 1.667, 2.778, 3.889, 5, 6.111, 7.222, 8.333, 9.444
             ],
             "transitionSamples": [],
             "transitionSamplesDropped": 0,
             "tolerance": 2,
-            "totalIssueCount": 17,
+            "totalIssueCount": 11,
             "truncated": false
           },
           "motion": {
@@ -2109,7 +2850,7 @@
           },
           "contrast": {
             "ok": false,
-            "errorCount": 2,
+            "errorCount": 1,
             "warningCount": 2,
             "infoCount": 0,
             "findings": [
@@ -2133,7 +2874,8 @@
                   "width": 327.71875,
                   "height": 112
                 },
-                "time": 2.778
+                "time": 2.778,
+                "times": [2.778]
               },
               {
                 "code": "contrast_aa_failure",
@@ -2155,29 +2897,8 @@
                   "width": 331.140625,
                   "height": 112
                 },
-                "time": 5
-              },
-              {
-                "code": "contrast_aa_failure",
-                "severity": "error",
-                "message": "Contrast is 2.12:1; WCAG AA requires 3:1.",
-                "text": "62%",
-                "fg": "rgb(212,160,23)",
-                "bg": "rgb(242,242,242)",
-                "ratio": 2.12,
-                "requiredRatio": 3,
-                "suggestedColor": "rgb(176,133,19)",
-                "large": true,
-                "selector": "div:nth-of-type(1) > div:nth-of-type(2) > div > div > div:nth-of-type(2) > div:nth-of-type(1)",
-                "dataAttributes": {},
-                "sourceFile": "compositions/graphics.html",
-                "bbox": {
-                  "x": 291.65625,
-                  "y": 303.328125,
-                  "width": 331.140625,
-                  "height": 112
-                },
-                "time": 7.222
+                "time": 5,
+                "times": [5, 7.222]
               },
               {
                 "code": "contrast_aa_failure",
@@ -2199,19 +2920,18 @@
                   "width": 438.046875,
                   "height": 112
                 },
-                "time": 9.444
+                "time": 9.444,
+                "times": [9.444]
               }
             ],
             "enabled": true,
-            "samples": [
-              0.556,
-              2.778,
-              5,
-              7.222,
-              9.444
-            ],
+            "samples": [0.556, 2.778, 5, 7.222, 9.444],
             "checked": 15,
             "passed": 11
+          },
+          "hdr": {
+            "autoPromotion": null,
+            "inspection": "available"
           },
           "snapshots": {
             "enabled": false,
@@ -2219,35 +2939,41 @@
             "times": [],
             "findingFiles": []
           },
+          "saved": {
+            "id": "a2739a5e-ce68-46c4-9aaf-9e2bbd3432cb",
+            "revision": null,
+            "report": "<project>/.work/hyperframes-template-previews/hyperframes-swiss-grid/.hyperframes/artifacts/checks/a2739a5e-ce68-46c4-9aaf-9e2bbd3432cb.json",
+            "attribution": "unversioned"
+          },
           "_meta": {
-            "version": "0.8.30",
-            "latestVersion": "0.8.94",
-            "updateAvailable": true
+            "version": "0.8.159",
+            "latestVersion": "0.8.159",
+            "updateAvailable": false
           }
         }
       },
       "render": {
         "status": "passed",
         "frameCount": 300,
-        "hyperframesVersion": "0.8.30",
+        "hyperframesVersion": "0.8.159",
         "browserVersion": "Google Chrome for Testing 152.0.7977.42",
         "thumbnailAt": 5
       },
       "artifacts": {
         "video": {
           "path": "public/previews/hyperframes-swiss-grid/hyperframes.mp4",
-          "sha256": "8acb018e69a8145524eba9f0ec4dbc26ca06946fda6199b35e4a7f47a3d43768",
-          "bytes": 853897
+          "sha256": "92757d2bac48fd29edea2d3f8587bd7c18eba9b106cfc4303968331f33c097a9",
+          "bytes": 636825
         },
         "thumbnail": {
           "path": "public/previews/hyperframes-swiss-grid/thumbnail.webp",
-          "sha256": "551696c4802455107a656e861448fe9ff0fdc6e422b2e26cbf68d023ffe86ede",
-          "bytes": 92680
+          "sha256": "9265447ee468d64ac171c8fb3d18192180546c4ee7b9e65741852f58433e7e93",
+          "bytes": 68822
         },
         "fullThumbnail": {
           "path": "public/previews/hyperframes-swiss-grid/thumbnail.png",
-          "sha256": "7991a2c24172708788aae9fc47dfc23d21579924c3a45d5df239d3a71512a93f",
-          "bytes": 250175
+          "sha256": "b04b328b1ffa2fbaaaa6802f210f4d0fb4698154a41f9884787584634d3ba590",
+          "bytes": 160502
         }
       }
     },
@@ -2255,11 +2981,11 @@
       "name": "hyperframes-vignelli",
       "origin": {
         "repository": "https://github.com/heygen-com/hyperframes",
-        "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+        "commit": "c694785df5993191fec42ec84e9d65ea69f98ad8",
         "source": "registry/examples/vignelli/registry-item.json",
         "name": "vignelli"
       },
-      "sourceManifestSha256": "9f97dc5d911e85a32e1069be12dc97577e055da73e3f6b4374b4774737f3681c",
+      "sourceManifestSha256": "3ba4fc5a559ee4140bd131d818fd2a2ff113ed640ef8ae9a80ea9f79ab719a6c",
       "dimensions": {
         "width": 1080,
         "height": 1920
@@ -2284,8 +3010,8 @@
         {
           "path": "index.html",
           "target": "index.html",
-          "sourceSha256": "7a9b408e7c3f98b119d9c535b65e1bf6de64ec3cdb769ed77f3bdafa8f2c8f48",
-          "installedSha256": "7801a0a5913b839d7f68c5e2c101f55ecf36ef39140f0ce97e7d2b03399e7706",
+          "sourceSha256": "52b2441166b82290664d2d66a5301704b56a43b8588a2d5b1567f9353913cb9c",
+          "installedSha256": "397d0ddbc48072e6f676c3431b54b34982740b85cca28e2528bdebb0bcc2c3d5",
           "transformed": true
         },
         {
@@ -2308,6 +3034,7 @@
         "result": {
           "ok": false,
           "strict": false,
+          "browserSkipped": false,
           "lint": {
             "ok": true,
             "errorCount": 0,
@@ -2317,15 +3044,15 @@
             "filesScanned": 3
           },
           "runtime": {
-            "ok": false,
-            "errorCount": 2,
-            "warningCount": 0,
+            "ok": true,
+            "errorCount": 0,
+            "warningCount": 1,
             "infoCount": 0,
             "findings": [
               {
-                "code": "http_error",
-                "severity": "error",
-                "message": "404 loading caption-overrides.json",
+                "code": "gsap_tween_tail",
+                "severity": "warning",
+                "message": "In timeline \"main-comp\", a tween on opacity, y of #group-11 ends at 9.679 s, 0.060 s after a later tween on opacity, y ends at 9.619 s. For that tail the earlier tween takes opacity, y back and leaves its own end value on screen, so the later tween's end never shows. End the earlier tween by 9.319 s, or add overwrite: \"auto\" to the later tween.",
                 "selector": "[data-composition-id]",
                 "dataAttributes": {
                   "data-composition-id": "main-comp",
@@ -2341,30 +3068,7 @@
                   "width": 1080,
                   "height": 1920
                 },
-                "time": 0,
-                "url": "http://127.0.0.1:40845/caption-overrides.json"
-              },
-              {
-                "code": "request_failed",
-                "severity": "error",
-                "message": "Failed to load caption-overrides.json: net::ERR_ABORTED",
-                "selector": "[data-composition-id]",
-                "dataAttributes": {
-                  "data-composition-id": "main-comp",
-                  "data-width": "1080",
-                  "data-height": "1920",
-                  "data-start": "0",
-                  "data-duration": "10"
-                },
-                "sourceFile": "index.html",
-                "bbox": {
-                  "x": 0,
-                  "y": 0,
-                  "width": 1080,
-                  "height": 1920
-                },
-                "time": 0,
-                "url": "http://127.0.0.1:40845/caption-overrides.json"
+                "time": 9.619000000000002
               }
             ]
           },
@@ -2372,12 +3076,12 @@
             "ok": false,
             "errorCount": 1,
             "warningCount": 4,
-            "infoCount": 14,
+            "infoCount": 11,
             "findings": [
               {
                 "code": "content_overlap",
                 "severity": "error",
-                "time": 4.75,
+                "time": 5,
                 "selector": "div.large-label",
                 "message": "Two text blocks overlap and may render unreadable.",
                 "rect": {
@@ -2388,9 +3092,9 @@
                   "width": 398.17,
                   "height": 194
                 },
-                "containerSelector": "span.caption-text",
+                "containerSelector": "#group-5 > span:nth-of-type(1)",
                 "text": "STATIC CONTENT",
-                "fixHint": "Give each block its own zone, or mark intentional layering with data-layout-allow-overlap.",
+                "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
                 "dataAttributes": {},
                 "sourceFile": "compositions/overlays.html",
                 "bbox": {
@@ -2401,7 +3105,12 @@
                 },
                 "firstSeen": 4.75,
                 "lastSeen": 7,
-                "occurrences": 16
+                "occurrences": 16,
+                "heldMs": 2250,
+                "times": [
+                  4.75, 4.875, 5, 5.125, 5.25, 5.375, 5.75, 5.875, 6, 6.111,
+                  6.125, 6.5, 6.625, 6.75, 6.875, 7
+                ]
               },
               {
                 "code": "container_overflow",
@@ -2440,7 +3149,9 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 9.444,
-                "occurrences": 7
+                "occurrences": 8,
+                "heldMs": 0,
+                "times": [0.556, 1.667, 3.889, 5, 6.111, 7.222, 8.333, 9.444]
               },
               {
                 "code": "container_overflow",
@@ -2479,7 +3190,9 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 7.222,
-                "occurrences": 7
+                "occurrences": 7,
+                "heldMs": 0,
+                "times": [0.556, 1.667, 2.778, 3.889, 5, 6.111, 7.222]
               },
               {
                 "code": "escaped_container",
@@ -2516,7 +3229,9 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 7.222,
-                "occurrences": 7
+                "occurrences": 7,
+                "heldMs": 0,
+                "times": [0.556, 1.667, 2.778, 3.889, 5, 6.111, 7.222]
               },
               {
                 "code": "container_overflow",
@@ -2553,9 +3268,11 @@
                   "width": 1080,
                   "height": 1920
                 },
-                "firstSeen": 8.333,
+                "firstSeen": 7.222,
                 "lastSeen": 9.444,
-                "occurrences": 2
+                "occurrences": 3,
+                "heldMs": 0,
+                "times": [7.222, 8.333, 9.444]
               },
               {
                 "code": "canvas_overflow",
@@ -2595,7 +3312,9 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 9.444,
-                "occurrences": 7
+                "occurrences": 7,
+                "heldMs": 0,
+                "times": [0.556, 3.889, 5, 6.111, 7.222, 8.333, 9.444]
               },
               {
                 "code": "canvas_overflow",
@@ -2635,7 +3354,9 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 9.444,
-                "occurrences": 7
+                "occurrences": 7,
+                "heldMs": 0,
+                "times": [0.556, 3.889, 5, 6.111, 7.222, 8.333, 9.444]
               },
               {
                 "code": "canvas_overflow",
@@ -2675,7 +3396,9 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 7.222,
-                "occurrences": 7
+                "occurrences": 7,
+                "heldMs": 0,
+                "times": [0.556, 1.667, 2.778, 3.889, 5, 6.111, 7.222]
               },
               {
                 "code": "canvas_overflow",
@@ -2688,7 +3411,7 @@
                   "top": 436,
                   "right": 1400,
                   "bottom": 513,
-                  "width": 300.13,
+                  "width": 300.12,
                   "height": 77
                 },
                 "containerSelector": "#main-composition",
@@ -2710,57 +3433,20 @@
                 "bbox": {
                   "x": 1099.88,
                   "y": 436,
-                  "width": 300.13,
+                  "width": 300.12,
                   "height": 77
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 7.222,
-                "occurrences": 7
-              },
-              {
-                "code": "container_overflow",
-                "severity": "info",
-                "time": 1.667,
-                "selector": "#stat-47",
-                "message": "Element extends outside a clipping layout container.",
-                "rect": {
-                  "left": -5.52,
-                  "top": 1480,
-                  "right": 534.48,
-                  "bottom": 1720,
-                  "width": 540,
-                  "height": 240
-                },
-                "containerSelector": "#overlays-comp > div:nth-of-type(1)",
-                "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-                "containerRect": {
-                  "left": 0,
-                  "top": 0,
-                  "right": 1080,
-                  "bottom": 1920,
-                  "width": 1080,
-                  "height": 1920
-                },
-                "overflow": {
-                  "left": 5.52
-                },
-                "dataAttributes": {},
-                "sourceFile": "compositions/overlays.html",
-                "bbox": {
-                  "x": -5.52,
-                  "y": 1480,
-                  "width": 540,
-                  "height": 240
-                },
-                "firstSeen": 1.667,
-                "lastSeen": 1.667,
-                "occurrences": 1
+                "occurrences": 7,
+                "heldMs": 0,
+                "times": [0.556, 1.667, 2.778, 3.889, 5, 6.111, 7.222]
               },
               {
                 "code": "clipped_text",
                 "severity": "info",
                 "time": 3.889,
-                "selector": "span.caption-text",
+                "selector": "#group-4 > span:nth-of-type(1)",
                 "message": "Text content is clipped by its own box.",
                 "rect": {
                   "left": 80,
@@ -2785,53 +3471,15 @@
                 },
                 "firstSeen": 3.889,
                 "lastSeen": 3.889,
-                "occurrences": 1
-              },
-              {
-                "code": "text_box_overflow",
-                "severity": "info",
-                "time": 3.889,
-                "selector": "span.caption-text",
-                "message": "Text extends outside its nearest visual/container box.",
-                "rect": {
-                  "left": 110,
-                  "top": 1158.61,
-                  "right": 1150.98,
-                  "bottom": 1235.61,
-                  "width": 1040.98,
-                  "height": 77
-                },
-                "containerSelector": "span.caption-text",
-                "text": "graphics, sixty-two percent",
-                "fixHint": "Text is 1041px x 77px inside 920px x 108px and overflows by up to 151px; widen the container to at least ~1071px or shrink font-size from 64px to ~57px, or allow wrapping with max-width/fitTextFontSize.",
-                "containerRect": {
-                  "left": 80,
-                  "top": 1139.61,
-                  "right": 1000,
-                  "bottom": 1248,
-                  "width": 920,
-                  "height": 108.39
-                },
-                "overflow": {
-                  "right": 150.98
-                },
-                "dataAttributes": {},
-                "sourceFile": "compositions/captions.html",
-                "bbox": {
-                  "x": 110,
-                  "y": 1158.61,
-                  "width": 1040.98,
-                  "height": 77
-                },
-                "firstSeen": 3.889,
-                "lastSeen": 3.889,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [3.889]
               },
               {
                 "code": "canvas_overflow",
                 "severity": "info",
                 "time": 3.889,
-                "selector": "span.caption-text",
+                "selector": "#group-4 > span:nth-of-type(1)",
                 "message": "Text extends outside the composition canvas.",
                 "rect": {
                   "left": 110,
@@ -2865,7 +3513,9 @@
                 },
                 "firstSeen": 3.889,
                 "lastSeen": 3.889,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [3.889]
               },
               {
                 "code": "text_occluded",
@@ -2881,7 +3531,7 @@
                   "width": 398.17,
                   "height": 194
                 },
-                "containerSelector": "span.caption-text",
+                "containerSelector": "#group-5 > span:nth-of-type(1)",
                 "text": "Static Content",
                 "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
                 "coveredFraction": 0.39,
@@ -2895,7 +3545,51 @@
                 },
                 "firstSeen": 5,
                 "lastSeen": 5,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [5]
+              },
+              {
+                "code": "text_box_overflow",
+                "severity": "info",
+                "time": 7.222,
+                "selector": "div.large-number",
+                "message": "Text extends outside its nearest visual/container box.",
+                "rect": {
+                  "left": -371.85,
+                  "top": 693,
+                  "right": 544.24,
+                  "bottom": 1013,
+                  "width": 916.09,
+                  "height": 320
+                },
+                "containerSelector": "#overlays-comp > div:nth-of-type(1)",
+                "text": "62%",
+                "fixHint": "Text is 916px x 320px inside 1080px x 1920px and overflows by up to 372px; widen the container to at least ~1452px, or allow wrapping with max-width/fitTextFontSize.",
+                "containerRect": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 1080,
+                  "bottom": 1920,
+                  "width": 1080,
+                  "height": 1920
+                },
+                "overflow": {
+                  "left": 371.85
+                },
+                "dataAttributes": {},
+                "sourceFile": "compositions/overlays.html",
+                "bbox": {
+                  "x": -371.85,
+                  "y": 693,
+                  "width": 916.09,
+                  "height": 320
+                },
+                "firstSeen": 7.222,
+                "lastSeen": 7.222,
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [7.222]
               },
               {
                 "code": "canvas_overflow",
@@ -2934,8 +3628,52 @@
                   "height": 484
                 },
                 "firstSeen": 7.222,
+                "lastSeen": 9.444,
+                "occurrences": 3,
+                "heldMs": 0,
+                "times": [7.222, 8.333, 9.444]
+              },
+              {
+                "code": "text_box_overflow",
+                "severity": "info",
+                "time": 7.222,
+                "selector": "div.large-label",
+                "message": "Text extends outside its nearest visual/container box.",
+                "rect": {
+                  "left": -371.85,
+                  "top": 1130,
+                  "right": 26.32,
+                  "bottom": 1227,
+                  "width": 398.17,
+                  "height": 97
+                },
+                "containerSelector": "#overlays-comp > div:nth-of-type(1)",
+                "text": "Static Content",
+                "fixHint": "Text is 398px x 97px inside 1080px x 1920px and overflows by up to 372px; widen the container to at least ~1452px, or allow wrapping with max-width/fitTextFontSize.",
+                "containerRect": {
+                  "left": 0,
+                  "top": 0,
+                  "right": 1080,
+                  "bottom": 1920,
+                  "width": 1080,
+                  "height": 1920
+                },
+                "overflow": {
+                  "left": 371.85
+                },
+                "dataAttributes": {},
+                "sourceFile": "compositions/overlays.html",
+                "bbox": {
+                  "x": -371.85,
+                  "y": 1130,
+                  "width": 398.17,
+                  "height": 97
+                },
+                "firstSeen": 7.222,
                 "lastSeen": 7.222,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [7.222]
               },
               {
                 "code": "canvas_overflow",
@@ -2974,145 +3712,20 @@
                   "height": 194
                 },
                 "firstSeen": 7.222,
-                "lastSeen": 7.222,
-                "occurrences": 1
-              },
-              {
-                "code": "container_overflow",
-                "severity": "info",
-                "time": 7.222,
-                "selector": "#stat-62",
-                "message": "Element extends outside a clipping layout container.",
-                "rect": {
-                  "left": -461.85,
-                  "top": 0,
-                  "right": 618.15,
-                  "bottom": 1920,
-                  "width": 1080,
-                  "height": 1920
-                },
-                "containerSelector": "#overlays-comp > div:nth-of-type(1)",
-                "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
-                "containerRect": {
-                  "left": 0,
-                  "top": 0,
-                  "right": 1080,
-                  "bottom": 1920,
-                  "width": 1080,
-                  "height": 1920
-                },
-                "overflow": {
-                  "left": 461.85
-                },
-                "dataAttributes": {},
-                "sourceFile": "compositions/overlays.html",
-                "bbox": {
-                  "x": -461.85,
-                  "y": 0,
-                  "width": 1080,
-                  "height": 1920
-                },
-                "firstSeen": 7.222,
-                "lastSeen": 7.222,
-                "occurrences": 1
-              },
-              {
-                "code": "canvas_overflow",
-                "severity": "info",
-                "time": 8.333,
-                "selector": "div.large-number",
-                "message": "Text extends outside the composition canvas.",
-                "rect": {
-                  "left": -990,
-                  "top": 611,
-                  "right": -73.91,
-                  "bottom": 1095,
-                  "width": 916.09,
-                  "height": 484
-                },
-                "containerSelector": "#main-composition",
-                "text": "62%",
-                "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
-                "containerRect": {
-                  "left": 0,
-                  "top": 0,
-                  "right": 1080,
-                  "bottom": 1920,
-                  "width": 1080,
-                  "height": 1920
-                },
-                "overflow": {
-                  "left": 990
-                },
-                "dataAttributes": {},
-                "sourceFile": "compositions/overlays.html",
-                "bbox": {
-                  "x": -990,
-                  "y": 611,
-                  "width": 916.09,
-                  "height": 484
-                },
-                "firstSeen": 8.333,
                 "lastSeen": 9.444,
-                "occurrences": 2
-              },
-              {
-                "code": "canvas_overflow",
-                "severity": "info",
-                "time": 8.333,
-                "selector": "div.large-label",
-                "message": "Text extends outside the composition canvas.",
-                "rect": {
-                  "left": -990,
-                  "top": 1033,
-                  "right": -591.83,
-                  "bottom": 1227,
-                  "width": 398.17,
-                  "height": 194
-                },
-                "containerSelector": "#main-composition",
-                "text": "Static Content",
-                "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
-                "containerRect": {
-                  "left": 0,
-                  "top": 0,
-                  "right": 1080,
-                  "bottom": 1920,
-                  "width": 1080,
-                  "height": 1920
-                },
-                "overflow": {
-                  "left": 990
-                },
-                "dataAttributes": {},
-                "sourceFile": "compositions/overlays.html",
-                "bbox": {
-                  "x": -990,
-                  "y": 1033,
-                  "width": 398.17,
-                  "height": 194
-                },
-                "firstSeen": 8.333,
-                "lastSeen": 9.444,
-                "occurrences": 2
+                "occurrences": 3,
+                "heldMs": 0,
+                "times": [7.222, 8.333, 9.444]
               }
             ],
             "duration": 10,
             "samples": [
-              0.556,
-              1.667,
-              2.778,
-              3.889,
-              5,
-              6.111,
-              7.222,
-              8.333,
-              9.444
+              0.556, 1.667, 2.778, 3.889, 5, 6.111, 7.222, 8.333, 9.444
             ],
             "transitionSamples": [],
             "transitionSamplesDropped": 0,
             "tolerance": 2,
-            "totalIssueCount": 19,
+            "totalIssueCount": 16,
             "truncated": false
           },
           "motion": {
@@ -3131,15 +3744,13 @@
             "infoCount": 0,
             "findings": [],
             "enabled": true,
-            "samples": [
-              0.556,
-              2.778,
-              5,
-              7.222,
-              9.444
-            ],
-            "checked": 16,
-            "passed": 16
+            "samples": [0.556, 2.778, 5, 7.222, 9.444],
+            "checked": 15,
+            "passed": 15
+          },
+          "hdr": {
+            "autoPromotion": null,
+            "inspection": "available"
           },
           "snapshots": {
             "enabled": false,
@@ -3147,35 +3758,41 @@
             "times": [],
             "findingFiles": []
           },
+          "saved": {
+            "id": "2180e50d-8654-403c-9c6e-79d27a8dbb42",
+            "revision": null,
+            "report": "<project>/.work/hyperframes-template-previews/hyperframes-vignelli/.hyperframes/artifacts/checks/2180e50d-8654-403c-9c6e-79d27a8dbb42.json",
+            "attribution": "unversioned"
+          },
           "_meta": {
-            "version": "0.8.30",
-            "latestVersion": "0.8.94",
-            "updateAvailable": true
+            "version": "0.8.159",
+            "latestVersion": "0.8.159",
+            "updateAvailable": false
           }
         }
       },
       "render": {
         "status": "passed",
         "frameCount": 300,
-        "hyperframesVersion": "0.8.30",
+        "hyperframesVersion": "0.8.159",
         "browserVersion": "Google Chrome for Testing 152.0.7977.42",
         "thumbnailAt": 5
       },
       "artifacts": {
         "video": {
           "path": "public/previews/hyperframes-vignelli/hyperframes.mp4",
-          "sha256": "73af8adab29caed5b3bce03754393b6f1fe9f6b7da6d46f0345e2a1133d77c68",
-          "bytes": 1110489
+          "sha256": "fe7d855579999e152536a799f2f8517396bc8080e452127a91401765cc724cc3",
+          "bytes": 831954
         },
         "thumbnail": {
           "path": "public/previews/hyperframes-vignelli/thumbnail.webp",
-          "sha256": "d4f2169aac9bb858b9afa7c268bc3ba12a18c759e2930eb813040acba4852e57",
-          "bytes": 66846
+          "sha256": "133b13a579849e03a0d222f534f3418e604ab13382a4f2f28d329bb8c36a001c",
+          "bytes": 43666
         },
         "fullThumbnail": {
           "path": "public/previews/hyperframes-vignelli/thumbnail.png",
-          "sha256": "4449d12df5b1ce7582d95e630a439cc6e5bfc996f0daf3e1acb0938d3ae7e4be",
-          "bytes": 135400
+          "sha256": "8f6aa2ef987e5c16a4b3fe11d3ac97da3a6d403e5753bf4da2a5a908481864ba",
+          "bytes": 95220
         }
       }
     },
@@ -3183,11 +3800,11 @@
       "name": "hyperframes-warm-grain",
       "origin": {
         "repository": "https://github.com/heygen-com/hyperframes",
-        "commit": "daa44fcd753d9055aa3c954ad74f09a4e4389780",
+        "commit": "c694785df5993191fec42ec84e9d65ea69f98ad8",
         "source": "registry/examples/warm-grain/registry-item.json",
         "name": "warm-grain"
       },
-      "sourceManifestSha256": "54c6e8f8941f7e8034b20d09814781ff756724d85fdc4254353340c35aa08883",
+      "sourceManifestSha256": "d2add430baae052274c9ae2ad1288e57ccae9b82187bc178a5b07b77ffa291e5",
       "dimensions": {
         "width": 1920,
         "height": 1080
@@ -3219,8 +3836,8 @@
         {
           "path": "index.html",
           "target": "index.html",
-          "sourceSha256": "6bd710a18d533c0ba8818d4e55b9e65a65233327330f1447c269edabd2cce5a7",
-          "installedSha256": "a0c4cc728623c90e08e33ee2e49e77fdc3b9936d054f6e6ae7b7e92193a8adb6",
+          "sourceSha256": "11ee960a4cf5d2fc57c4e37a902920eee959ba05b507dcefd74dca2318d56859",
+          "installedSha256": "cd43ec2d5146f291085d1f772487d9c7f36872d55e0b102dca71ac742aa2d355",
           "transformed": true
         },
         {
@@ -3243,6 +3860,7 @@
         "result": {
           "ok": false,
           "strict": false,
+          "browserSkipped": false,
           "lint": {
             "ok": true,
             "errorCount": 0,
@@ -3441,7 +4059,9 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 0.556,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [0.556]
               },
               {
                 "code": "canvas_overflow",
@@ -3481,7 +4101,9 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 0.556,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [0.556]
               },
               {
                 "code": "panel_out_of_canvas",
@@ -3521,20 +4143,14 @@
                 },
                 "firstSeen": 0.556,
                 "lastSeen": 0.556,
-                "occurrences": 1
+                "occurrences": 1,
+                "heldMs": 0,
+                "times": [0.556]
               }
             ],
             "duration": 10,
             "samples": [
-              0.556,
-              1.667,
-              2.778,
-              3.889,
-              5,
-              6.111,
-              7.222,
-              8.333,
-              9.444
+              0.556, 1.667, 2.778, 3.889, 5, 6.111, 7.222, 8.333, 9.444
             ],
             "transitionSamples": [],
             "transitionSamplesDropped": 0,
@@ -3553,8 +4169,8 @@
           },
           "contrast": {
             "ok": false,
-            "errorCount": 2,
-            "warningCount": 2,
+            "errorCount": 1,
+            "warningCount": 1,
             "infoCount": 0,
             "findings": [
               {
@@ -3577,7 +4193,8 @@
                   "width": 614.453125,
                   "height": 60
                 },
-                "time": 0.556
+                "time": 0.556,
+                "times": [0.556]
               },
               {
                 "code": "contrast_aa_failure",
@@ -3599,63 +4216,18 @@
                   "width": 138.521728515625,
                   "height": 100.10108947753906
                 },
-                "time": 5
-              },
-              {
-                "code": "contrast_aa_failure",
-                "severity": "error",
-                "message": "Contrast is 2.86:1; WCAG AA requires 3:1.",
-                "text": "62%",
-                "fg": "rgb(255,255,255)",
-                "bg": "rgb(205,139,55)",
-                "ratio": 2.86,
-                "requiredRatio": 3,
-                "suggestedColor": "rgb(76,76,76)",
-                "large": true,
-                "selector": "div > div:nth-of-type(3) > div > div:nth-of-type(2) > div",
-                "dataAttributes": {},
-                "sourceFile": "compositions/graphics.html",
-                "bbox": {
-                  "x": 890.109375,
-                  "y": 149.5,
-                  "width": 139.765625,
-                  "height": 101
-                },
-                "time": 7.222
-              },
-              {
-                "code": "contrast_aa_failure",
-                "severity": "warning",
-                "message": "Contrast is 1.27:1; WCAG AA requires 3:1.",
-                "text": "four said you know the",
-                "fg": "rgb(245,240,224)",
-                "bg": "rgb(223,214,197)",
-                "ratio": 1.27,
-                "requiredRatio": 3,
-                "suggestedColor": "rgb(124,121,113)",
-                "large": true,
-                "selector": "#caption-text",
-                "dataAttributes": {},
-                "sourceFile": "compositions/captions.html",
-                "bbox": {
-                  "x": 694.359375,
-                  "y": 1010.40625,
-                  "width": 531.265625,
-                  "height": 57.59375
-                },
-                "time": 9.444
+                "time": 5,
+                "times": [5, 7.222]
               }
             ],
             "enabled": true,
-            "samples": [
-              0.556,
-              2.778,
-              5,
-              7.222,
-              9.444
-            ],
+            "samples": [0.556, 2.778, 5, 7.222, 9.444],
             "checked": 9,
-            "passed": 5
+            "passed": 6
+          },
+          "hdr": {
+            "autoPromotion": null,
+            "inspection": "available"
           },
           "snapshots": {
             "enabled": false,
@@ -3663,35 +4235,41 @@
             "times": [],
             "findingFiles": []
           },
+          "saved": {
+            "id": "c8cca47d-8242-4f52-b381-61a74fe7415f",
+            "revision": null,
+            "report": "<project>/.work/hyperframes-template-previews/hyperframes-warm-grain/.hyperframes/artifacts/checks/c8cca47d-8242-4f52-b381-61a74fe7415f.json",
+            "attribution": "unversioned"
+          },
           "_meta": {
-            "version": "0.8.30",
-            "latestVersion": "0.8.94",
-            "updateAvailable": true
+            "version": "0.8.159",
+            "latestVersion": "0.8.159",
+            "updateAvailable": false
           }
         }
       },
       "render": {
         "status": "passed",
         "frameCount": 300,
-        "hyperframesVersion": "0.8.30",
+        "hyperframesVersion": "0.8.159",
         "browserVersion": "Google Chrome for Testing 152.0.7977.42",
         "thumbnailAt": 5
       },
       "artifacts": {
         "video": {
           "path": "public/previews/hyperframes-warm-grain/hyperframes.mp4",
-          "sha256": "9e4dcfdf48cff9409ba2aa8e7325a5e3e92ed891849a144749d244c6499c73fc",
-          "bytes": 6672102
+          "sha256": "c2a04791288121c1900e5ff288352585ceb870a61967c52332ebcc4a37706164",
+          "bytes": 5129176
         },
         "thumbnail": {
           "path": "public/previews/hyperframes-warm-grain/thumbnail.webp",
-          "sha256": "70ab948da3b829e1949590816fce50a9927296df48fda204fe3652cf0cea9ac6",
-          "bytes": 65226
+          "sha256": "321dbc1cfe3c1563993498225a39fd5abab15d4e3e6669e24c5fa9d9287340ef",
+          "bytes": 100718
         },
         "fullThumbnail": {
           "path": "public/previews/hyperframes-warm-grain/thumbnail.png",
-          "sha256": "deccc14780c2b8aef1ee9a99dde2466b9d236c70942a4ca6bd03a7d599d104fe",
-          "bytes": 169865
+          "sha256": "0d22afef4b7441dd710829ef105669a849607bdfefc00783b7d01a6e82049c47",
+          "bytes": 194012
         }
       }
     }

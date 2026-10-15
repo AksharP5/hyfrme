@@ -7,10 +7,10 @@ import { parseHyperframesVariables } from "./hyperframes-variables.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const repository = "https://github.com/heygen-com/hyperframes";
-const commit = "daa44fcd753d9055aa3c954ad74f09a4e4389780";
+const commit = "c694785df5993191fec42ec84e9d65ea69f98ad8";
 const sourceRoot = resolve(
   root,
-  process.env.HYPERFRAMES_SOURCE ?? ".work/hyperframes-daa44fcd",
+  process.env.HYPERFRAMES_SOURCE ?? ".work/hyperframes-c694785d",
 );
 const inventoryPath = resolve(root, "catalog/hyperframes-upstream.json");
 const families = {
@@ -252,7 +252,7 @@ for (const listed of listedItems) {
       if (!fileTypes.has(file.type))
         throw new Error(`Unknown file type in ${source}: ${file.type}.`);
       if (
-        ["whip-pan", "code-morph"].includes(listed.name) &&
+        ["whip-pan", "code-morph", "hologram"].includes(listed.name) &&
         file.target === `compositions/${listed.name}.html`
       ) {
         return { ...file, target: `compositions/${name}.html` };

@@ -74,10 +74,10 @@ npx hyfrme@latest add --all
 
 ## Official HyperFrames catalog and templates
 
-The HyperFrames source filter includes 165 blocks, 223 reusable HTML components,
-and all 8 official templates, grouped as they are upstream. This covers all 394
-published registry entries plus Week in Merges and Simulated Cursor from the official
-website. Names start with `hyperframes-`:
+The HyperFrames source filter includes 210 blocks, 237 reusable HTML components,
+and all 8 official templates, grouped as they are upstream. This covers all 455
+published registry entries, including the shader backgrounds, 3D scenes, and cursor
+components added in October. Names start with `hyperframes-`:
 
 ```bash
 npx hyfrme@latest add hyperframes-data-chart hyperframes-spring-pop

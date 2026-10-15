@@ -1,18 +1,17 @@
 # Official HyperFrames catalog
 
 Hyfrme imports every item published in the official registry at
-`daa44fcd753d9055aa3c954ad74f09a4e4389780`: 164 blocks, 222 HTML components,
-and 8 project templates. It also includes two website-only entries, Week in Merges
-and Simulated Cursor, for 396 official items total. The authoritative import record is
+`c694785df5993191fec42ec84e9d65ea69f98ad8`: 210 blocks, 237 HTML components,
+and 8 project templates, for 455 official items total. The authoritative import record is
 [`catalog/hyperframes-upstream.json`](../catalog/hyperframes-upstream.json).
 
-Rechecked against upstream main at
-[`be80a308023b224b27a6c8739315d1b6598f149c`](https://github.com/heygen-com/hyperframes/commit/be80a308023b224b27a6c8739315d1b6598f149c)
-on October 1, 2026. Imported source paths, registry membership, and catalog
-navigation remain unchanged. All 1,484 native files and eight template manifests
-still match; the new changes affect Studio code and release metadata, including
-the v0.8.101 release. The original source and
-navigation pins are preserved.
+The October 15 refresh adds 60 items, including 36 shader backgrounds, 3D scenes,
+cursor actors and actions, typography, and transitions. It also imports upstream
+corrections to Motion Blur, Shutter Slam, Play Mode, Product Promo, Swiss Grid,
+Vignelli, and Warm Grain. All 1,679 installed files have verified source hashes.
+The old documentation-only Simulated Cursor was removed upstream and is retired
+here; the new Cursors group includes Agent Cursor, Dart Cursor, Magnetic Cursor,
+and cursor action snippets. The Remocn Simulated Cursor port remains available.
 
 ## Browse by upstream group
 
@@ -23,13 +22,9 @@ source to browse only these groups; templates remain a separate collection.
 
 [`catalog/hyperframes-navigation.json`](../catalog/hyperframes-navigation.json)
 freezes the Catalog navigation from upstream `docs/docs.json` at
-`4825f792949282d561cdfe32cdcc7fce1cf2605d`, with its source SHA256. All 394 published
-registry names still match this commit. Week in Merges has an upstream block manifest omitted from the registry index.
-Simulated Cursor has no registry manifest; its installable HTML is copied from the
-named code fence in the official documentation. Hyfrme derives its title, description,
-tags, and variables from that same page and records the page hash and extraction.
-Both are included in their exact upstream groups.
-Colorama Wipe is published but not in upstream navigation; it appears under Other components.
+`c694785df5993191fec42ec84e9d65ea69f98ad8`, with its source SHA256. Its eleven
+groups cover every imported block and component. Week in Merges now appears in
+the published registry, and Colorama Wipe belongs to Typography & Text.
 
 Refresh navigation from an exact upstream commit, then review coverage and run the usual checks:
 
@@ -47,10 +42,12 @@ fetched from those URLs while installing. Original names receive a `hyperframes-
 prefix in Hyfrme. Composition IDs and source-relative paths stay upstream-owned.
 Native copies use hash verification rather than claiming a port SSIM result.
 
-The native Whip Pan and Code Morph compositions use `hyperframes-` filenames
+The native Whip Pan, Code Morph, and Hologram compositions use `hyperframes-` filenames
 to avoid overwriting the existing Remocn ports. Nine root `TEMPLATE.md` files install
 beside their own blocks under `compositions/hyperframes-<name>/`. Original targets
 and reasons are recorded in the import evidence. Other canonical targets remain unchanged; project path configuration is honored at install.
+The shader blocks include upstream's MIT-licensed shader bundle and its notices.
+Identical shared install targets retain identical bytes.
 
 ## Install and preview
 
@@ -73,12 +70,17 @@ source files stay unchanged.
 
 Preview videos for all eight templates are generated locally. Their source and fixture
 hashes, initialization transforms, render settings, and check results are recorded in
-`catalog/hyperframes-template-previews.json`. Two templates pass the full check
-recorded with HyperFrames 0.8.30; six have automated layout, contrast, transform,
-or optional-resource findings. These are check results, not six confirmed upstream
-template defects. The previews do not assert passing port comparisons. Blocks and
+`catalog/hyperframes-template-previews.json`. These records distinguish successful
+renders from full-check results; native sources can retain upstream layout or contrast
+findings. The previews do not assert passing port comparisons. Blocks and
 components retain the official poster/video URLs where published and offer live source
 previews on their detail pages. Items without an official poster display a source tile.
+
+Live shader previews wait for native build readiness and use the official seek
+events. Browsers without WebGPU show the upstream default video with a notice.
+HTML snippets mount at composition dimensions; Pendulum Swing's preview supplies
+the documented 2.9-second host tween. These preview adaptations do not change
+installed source.
 
 Warm Grain's missing-video warning was reproduced on September 30, 2026 with
 HyperFrames 0.8.81 and Chrome 152. The official no-video initializer removes
@@ -86,7 +88,7 @@ HyperFrames 0.8.81 and Chrome 152. The official no-video initializer removes
 `#a-roll`. The resulting six `GSAP target #a-roll not found` warnings disappear
 when a video is supplied. Both fixtures have zero runtime errors; separate contrast
 findings remain. This is an empty-scaffold warning, not a missing installed video
-file. The [current template audit](TEMPLATE_AUDIT.md) rechecks all eight examples
+file. The [September template audit](TEMPLATE_AUDIT.md) rechecked all eight examples
 with HyperFrames 0.8.99, verifies actual official initialization against Hyfrme's
 installed source, and separates confirmed defects from unresolved checker findings.
 It includes supplied-video checks and [upstream report drafts](UPSTREAM_TEMPLATE_REPORTS.md).
@@ -98,9 +100,8 @@ libraries, Google Fonts, a Kinetic Type video, and the Warm Grain paper texture.
 Installing from the registry uses frozen declared assets; rendering these native sources
 can still require network access, as in the official catalog.
 
-The website-only imports were also checked with HyperFrames 0.8.75. Simulated
-Cursor passes the full check in a host fixture using its documented timeline
-integration. Week in Merges passes lint, runtime, and motion checks; its unchanged
+Week in Merges was also checked with HyperFrames 0.8.75. It passes lint, runtime,
+and motion checks; its unchanged
 upstream source retains layout and contrast findings. Source-copy verification does
 not claim those upstream findings have been repaired.
 
@@ -110,7 +111,8 @@ Use an isolated clean checkout at the script's pinned commit. Include `registry/
 `examples/`, `docs/docs.json`, and `docs/catalog/` when using a sparse checkout:
 
 ```bash
-HYPERFRAMES_SOURCE=.work/hyperframes-daa44fcd npm run import:hyperframes
+HYPERFRAMES_SOURCE=.work/hyperframes-c694785d npm run import:hyperframes
+node scripts/sync-hyperframes-navigation.mjs c694785df5993191fec42ec84e9d65ea69f98ad8
 npm run preview:templates
 npm run build:catalog
 npm run sync:registry

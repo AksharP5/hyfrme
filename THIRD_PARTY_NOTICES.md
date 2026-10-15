@@ -228,13 +228,17 @@ preserved at `assets/licenses/Date-Fns-MIT.md`.
 ## Official HyperFrames catalog
 
 The `hyperframes-*` blocks, HTML components, and templates are copied from
-[heygen-com/hyperframes at daa44fcd753d9055aa3c954ad74f09a4e4389780](https://github.com/heygen-com/hyperframes/tree/daa44fcd753d9055aa3c954ad74f09a4e4389780/registry).
+[heygen-com/hyperframes at c694785df5993191fec42ec84e9d65ea69f98ad8](https://github.com/heygen-com/hyperframes/tree/c694785df5993191fec42ec84e9d65ea69f98ad8/registry).
 The original catalog source is Apache 2.0 licensed. Each item includes the exact
 root license, installed at `THIRD_PARTY_LICENSES/hyperframes/LICENSE`, and its
 per-item third-party license/notice files. Vendored dependencies keep their own
 licenses, including the GSAP Standard License and three.js MIT license. See the
-[pinned upstream credits](https://github.com/heygen-com/hyperframes/blob/daa44fcd753d9055aa3c954ad74f09a4e4389780/CREDITS.md).
+[pinned upstream credits](https://github.com/heygen-com/hyperframes/blob/c694785df5993191fec42ec84e9d65ea69f98ad8/CREDITS.md).
+
+The 36 native shader blocks bundle shaders 4.0.0, Copyright (c) 2026 Shader
+Effects Inc., under the MIT license. The complete bundle notices install at
+`compositions/lib/shaders.THIRD-PARTY-LICENSES.txt` beside the shared runtime.
 
 Hosted source assets are frozen locally and verified against their content-addressed
 URLs. Original and installed names, file targets, hashes, and collision
-avoidance targets for Whip Pan, Code Morph, and template documentation are recorded in `catalog/hyperframes-upstream.json`.
+avoidance targets for Whip Pan, Code Morph, Hologram, and template documentation are recorded in `catalog/hyperframes-upstream.json`.

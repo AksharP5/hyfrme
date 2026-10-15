@@ -316,7 +316,8 @@ try {
 
   for (const name of [
     "hyperframes-week-in-merges",
-    "hyperframes-simulated-cursor",
+    "hyperframes-agent-cursor",
+    "hyperframes-liquid-metal",
     "hyperframes-touch-indicator",
     "hyperframes-caption-texture",
     "hyperframes-carousel-circle-1",
@@ -339,6 +340,23 @@ try {
     }
   }
 
+
+  const hologramProject = resolve(nativeTemporary, "holograms");
+  await mkdir(hologramProject);
+  await writeFile(resolve(hologramProject, "hyperframes.json"), "{}\n");
+  await runCli([
+    "add",
+    "hologram",
+    "hyperframes-hologram",
+    "--dir",
+    hologramProject,
+  ]);
+  for (const name of ["hologram", "hyperframes-hologram"]) {
+    assert.deepEqual(
+      await readFile(resolve(hologramProject, "compositions", `${name}.html`)),
+      await readFile(resolve(registry, "blocks", name, "hologram.html")),
+    );
+  }
 
   const touchSource = await readFile(
     resolve(
