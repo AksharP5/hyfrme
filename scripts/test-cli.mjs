@@ -340,23 +340,25 @@ try {
     }
   }
 
-
   const hologramProject = resolve(nativeTemporary, "holograms");
   await mkdir(hologramProject);
   await writeFile(resolve(hologramProject, "hyperframes.json"), "{}\n");
+  await runCli(["add", "hologram", "--dir", hologramProject]);
+  const hologramPath = resolve(hologramProject, "compositions/hologram.html");
+  const installedHologram = await readFile(hologramPath);
   await runCli([
     "add",
-    "hologram",
     "hyperframes-hologram",
     "--dir",
     hologramProject,
   ]);
-  for (const name of ["hologram", "hyperframes-hologram"]) {
-    assert.deepEqual(
-      await readFile(resolve(hologramProject, "compositions", `${name}.html`)),
-      await readFile(resolve(registry, "blocks", name, "hologram.html")),
-    );
-  }
+  assert.deepEqual(await readFile(hologramPath), installedHologram);
+  assert.deepEqual(
+    await readFile(
+      resolve(hologramProject, "compositions/hyperframes-hologram.html"),
+    ),
+    await readFile(resolve(registry, "blocks/hyperframes-hologram/hologram.html")),
+  );
 
   const touchSource = await readFile(
     resolve(
