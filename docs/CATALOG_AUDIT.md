@@ -23,6 +23,11 @@ The library and its native and ported summary chunks load only on catalog routes
 The main JavaScript bundle fell from 1,022 KB to 217 KB, and every emitted chunk
 is below 500 KB. Catalog chunk failures keep the page shell visible and offer Reload.
 
+Copy controls now report denied or unavailable clipboard access and allow retry
+without an unhandled rejection. Source copying uses the same control as commands
+and share links. Media sync reuses uploads after a path rename, and closing a
+hosted registry preview cancels its upstream request and body stream.
+
 ## October 15 catalog refresh
 
 The native HyperFrames import now matches all 455 published items at

@@ -383,6 +383,7 @@ export function buildPreviewDocument(
   const echoSmearPreview = item.name === "hyperframes-echo-smear";
   const bootstrap = `<script>
 window.__hyperframes = { getVariables: () => (${safeValues}) };
+window.__hfVariables = window.__hyperframes.getVariables();
 window.__timelines = {};
 let runtimeFailed = false;
 const previewError = (error, paused = false) => {

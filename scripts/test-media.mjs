@@ -5,6 +5,7 @@ import {
   mkdir,
   readFile,
   readdir,
+  rename,
   rm,
   symlink,
   writeFile,
@@ -266,6 +267,20 @@ test("sync uploads each content hash once and reuses existing uploads without cr
   );
   validateMedia(currentFiles, synced, vercel.redirects);
   assert.equal(synced["/previews/copy/reference.mp4"], synced[original.path]);
+
+  await rm(original.filename);
+  const renamedPath = "/previews/renamed/hyperframes.mp4";
+  await mkdir(dirname(resolve(publicDirectory, `.${renamedPath}`)), {
+    recursive: true,
+  });
+  await rename(duplicate, resolve(publicDirectory, `.${renamedPath}`));
+  const renamed = run();
+  assert.equal(renamed.status, 0, renamed.stderr);
+  assert.doesNotMatch(renamed.stdout, /UPLOAD/);
+  const afterRename = await readMediaManifest(manifestFile);
+  assert.equal(afterRename[renamedPath], synced[original.path]);
+  assert.equal(afterRename[original.path], undefined);
+  assert.equal(afterRename["/previews/copy/reference.mp4"], undefined);
 });
 
 test("contributors build and preview unpublished videos while production rejects them", async (t) => {
@@ -611,6 +626,65 @@ test("hosted registry preview preserves byte ranges and avoids compressed conten
   assert.equal(compressed.headers["Content-Length"], undefined);
   assert.equal(compressed.body, "decoded body");
   assert.equal(upstream.mock.callCount(), 2);
+});
+
+test("aborted hosted registry previews cancel the upstream fetch and body", async (t) => {
+  let middleware;
+  await hostedMedia().configurePreviewServer({
+    middlewares: { use: (handler) => (middleware = handler) },
+  });
+  let upstreamSignal;
+  let bodyController;
+  let bodyCancelled = false;
+  let resolveCancellation;
+  const cancelled = new Promise((resolve) => (resolveCancellation = resolve));
+  t.mock.method(globalThis, "fetch", async (_url, options) => {
+    upstreamSignal = options.signal;
+    return new Response(
+      new ReadableStream({
+        start(controller) {
+          bodyController = controller;
+          controller.enqueue(new TextEncoder().encode("first chunk"));
+        },
+        cancel() {
+          bodyCancelled = true;
+          resolveCancellation();
+        },
+      }),
+    );
+  });
+  let resolveWrite;
+  const written = new Promise((resolve) => (resolveWrite = resolve));
+  const response = new Writable({
+    write(_chunk, _encoding, callback) {
+      callback();
+      resolveWrite();
+    },
+  });
+  response.writeHead = () => {};
+  t.after(() => {
+    response.destroy();
+    if (!bodyCancelled) bodyController.close();
+  });
+  middleware(
+    { url: "/registry/blocks/demo/asset.mp4", method: "GET", headers: {} },
+    response,
+    (error) => assert.fail(error),
+  );
+  await written;
+  response.destroy();
+  let timeout;
+  t.after(() => clearTimeout(timeout));
+  await Promise.race([
+    cancelled,
+    new Promise((_, reject) => {
+      timeout = setTimeout(
+        () => reject(new Error("Upstream body stayed open")),
+        1000,
+      );
+    }),
+  ]);
+  assert.equal(upstreamSignal.aborted, true);
 });
 
 test("registry hosting rejects changed source, removed files, and outdated routes while allowing generated catalog updates", async (t) => {

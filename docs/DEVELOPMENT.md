@@ -333,3 +333,22 @@ change the source registry.
 The editor loads only on component pages, and the comparison player loads when
 its panel opens. Showcase cards load video on hover or keyboard focus. Homepage
 family cards load when visible and respect reduced motion.
+
+Catalog filtering reuses unchanged cards, and browsers defer layout and painting
+inside offscreen cards. All results remain available to page search and keyboard
+navigation. Category and source changes clear section filters in both the URL and
+the displayed results. Navigation scrolls directly to focused items so deferred
+card layouts cannot shift the target during smooth scrolling.
+
+To check comparison playback against a running development server, use an existing
+Puppeteer Core installation and Chromium executable:
+
+```bash
+HYFRME_PUPPETEER_CORE=/absolute/path/to/puppeteer-core.js \
+HYFRME_CHROMIUM=/absolute/path/to/chromium \
+npm run test:comparison-player
+```
+
+Set `HYFRME_TEST_URL` if the server is not at `http://localhost:5173`. The browser
+check delays media loading to verify pause, seek, view changes, and unmounting
+cancel pending playback without affecting a newer request.

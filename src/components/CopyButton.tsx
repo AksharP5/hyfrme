@@ -7,6 +7,7 @@ type CopyButtonProps = {
   className?: string;
   onCopied?: () => void;
   children?: ReactNode;
+  showIcon?: boolean;
 };
 
 export function CopyButton({
@@ -16,8 +17,10 @@ export function CopyButton({
   className,
   onCopied,
   children,
+  showIcon = true,
 }: CopyButtonProps) {
-  const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
+  const copied = status === "copied";
   const timer = useRef<number | null>(null);
 
   useEffect(
@@ -28,11 +31,16 @@ export function CopyButton({
   );
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(value);
-    setCopied(true);
-    onCopied?.();
     if (timer.current !== null) window.clearTimeout(timer.current);
-    timer.current = window.setTimeout(() => setCopied(false), 1600);
+    try {
+      await navigator.clipboard.writeText(value);
+    } catch {
+      setStatus("failed");
+      return;
+    }
+    setStatus("copied");
+    onCopied?.();
+    timer.current = window.setTimeout(() => setStatus("idle"), 1600);
   };
 
   return (
@@ -43,7 +51,9 @@ export function CopyButton({
       aria-live="polite"
       data-copied={copied ? "true" : "false"}
     >
-      {children ? (
+      {status === "failed" ? (
+        <span role="alert">Copy failed. Try again.</span>
+      ) : children ? (
         <>
           {children}
           <span className="sr-only" aria-live="polite">
@@ -52,7 +62,9 @@ export function CopyButton({
         </>
       ) : (
         <>
-          <span aria-hidden="true">{copied ? "✓" : "⧉"}</span>
+          {showIcon ? (
+            <span aria-hidden="true">{copied ? "✓" : "⧉"}</span>
+          ) : null}
           {copied ? copiedLabel : label}
         </>
       )}

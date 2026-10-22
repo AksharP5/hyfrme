@@ -53,7 +53,8 @@ runs the publishing checks. PR CI and production builds always run.
 Sync uploads changed videos to immutable paths containing their SHA-256 hash,
 resumes interrupted uploads, and never removes remote files. Identical videos share
 one upload when their source hashes and delivery encoding recipes match. Existing
-uploads are reused before uploading new content; sync updates their redirects and
+uploads are reused before uploading new content, including when the last local
+path using that content is renamed. Sync updates their redirects and
 manifest together. Unused duplicate uploads become eligible for the normal guarded
 cleanup after deployment. Temporary redirects
 preserve the original video URLs. To inspect a production build locally, run
