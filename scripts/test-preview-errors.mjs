@@ -20,7 +20,7 @@ const catalog = JSON.parse(
   await readFile(resolve(root, "src/generated/catalog-native.json"), "utf8"),
 );
 
-async function nativePreview(name) {
+async function nativePreview(name, values = {}) {
   globalThis.window = { location: { origin: "http://localhost:5173" } };
   const { item } = catalog.find((entry) => entry.item.name === name);
   const manifest = JSON.parse(
@@ -36,10 +36,19 @@ async function nativePreview(name) {
   return buildPreviewDocument(
     source,
     { ...item, files: manifest.files },
-    {},
+    values,
     false,
   );
 }
+
+test("native previews expose customized values through both runtime APIs", async () => {
+  const values = { device: "tablet", cutout: "island", body: "silver" };
+  const preview = await nativePreview("hyperframes-device-frame-stage", values);
+  const window = new EventTarget();
+  runInNewContext(preview.match(/<script>([\s\S]*?)<\/script>/)[1], { window });
+  assert.deepEqual({ ...window.__hfVariables }, values);
+  assert.deepEqual({ ...window.__hyperframes.getVariables() }, values);
+});
 const document = buildPreviewDocument(
   "<html><head></head><body></body></html>",
   {

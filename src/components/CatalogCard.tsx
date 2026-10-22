@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import {
   type CatalogEntry,
   cardDescription,
@@ -11,7 +11,9 @@ type CatalogCardProps = {
   entry: CatalogEntry;
 };
 
-export function CatalogCard({ entry }: CatalogCardProps) {
+export const CatalogCard = memo(function CatalogCard({
+  entry,
+}: CatalogCardProps) {
   const [previewing, setPreviewing] = useState(false);
   const category = categoryFor(entry);
   const isIcon = category === "icons";
@@ -42,4 +44,4 @@ export function CatalogCard({ entry }: CatalogCardProps) {
       </span>
     </a>
   );
-}
+});

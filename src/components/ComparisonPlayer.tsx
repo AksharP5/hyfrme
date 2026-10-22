@@ -11,6 +11,45 @@ type ComparisonPlayerProps = {
 
 const formatTime = (seconds: number) => `${seconds.toFixed(2)}s`;
 
+const waitForVideoEvent = (
+  video: HTMLVideoElement,
+  event: "canplay" | "seeked",
+  signal: AbortSignal,
+  start?: () => void,
+) =>
+  new Promise<void>((resolve, reject) => {
+    const cleanup = () => {
+      video.removeEventListener(event, onReady);
+      video.removeEventListener("error", onError);
+      signal.removeEventListener("abort", onAbort);
+    };
+    const onReady = () => {
+      cleanup();
+      resolve();
+    };
+    const onError = () => {
+      cleanup();
+      reject(video.error ?? new Error("Comparison video failed to load"));
+    };
+    const onAbort = () => {
+      cleanup();
+      reject(signal.reason);
+    };
+
+    if (signal.aborted) return onAbort();
+    if (video.error) return onError();
+
+    video.addEventListener(event, onReady);
+    video.addEventListener("error", onError);
+    signal.addEventListener("abort", onAbort);
+    try {
+      start?.();
+    } catch (error) {
+      cleanup();
+      reject(error);
+    }
+  });
+
 export function ComparisonPlayer({
   referenceLabel,
   referenceSrc,
@@ -20,6 +59,7 @@ export function ComparisonPlayer({
   const referenceRef = useRef<HTMLVideoElement>(null);
   const portRef = useRef<HTMLVideoElement>(null);
   const syncFrameRef = useRef<number | null>(null);
+  const playbackRef = useRef<AbortController | null>(null);
   const [view, setView] = useState<ViewMode>("side-by-side");
   const [playing, setPlaying] = useState(false);
   const [duration, setDuration] = useState(2);
@@ -33,17 +73,20 @@ export function ComparisonPlayer({
     setCurrentTime(boundedTime);
   };
 
-  const waitForPlayable = (video: HTMLVideoElement) => {
+  const waitForPlayable = (video: HTMLVideoElement, signal: AbortSignal) => {
     if (video.readyState >= 3) return Promise.resolve();
-    return new Promise<void>((resolve) => {
-      video.addEventListener("canplay", () => resolve(), { once: true });
-    });
+    return waitForVideoEvent(video, "canplay", signal);
   };
 
-  const seekVideo = (video: HTMLVideoElement, time: number) => {
-    if (Math.abs(video.currentTime - time) < 0.002) return Promise.resolve();
-    return new Promise<void>((resolve) => {
-      video.addEventListener("seeked", () => resolve(), { once: true });
+  const seekVideo = (
+    video: HTMLVideoElement,
+    time: number,
+    signal: AbortSignal,
+  ) => {
+    if (!video.seeking && Math.abs(video.currentTime - time) < 0.002) {
+      return Promise.resolve();
+    }
+    return waitForVideoEvent(video, "seeked", signal, () => {
       video.currentTime = time;
     });
   };
@@ -72,10 +115,9 @@ export function ComparisonPlayer({
   };
 
   const pauseBoth = () => {
+    playbackRef.current?.abort();
+    playbackRef.current = null;
     stopSyncLoop();
-    referenceRef.current?.pause();
-    if (referenceRef.current) referenceRef.current.playbackRate = 1;
-    portRef.current?.pause();
     setPlaying(false);
   };
 
@@ -89,26 +131,44 @@ export function ComparisonPlayer({
     const port = portRef.current;
     if (!reference || !port) return;
 
-    if (playing) {
+    if (playbackRef.current) {
       pauseBoth();
       return;
     }
 
     const targetTime = currentTime >= duration - 0.02 ? 0 : currentTime;
+    const playback = new AbortController();
+    const { signal } = playback;
+    playbackRef.current = playback;
+    signal.addEventListener(
+      "abort",
+      () => {
+        reference.pause();
+        reference.playbackRate = 1;
+        port.pause();
+      },
+      { once: true },
+    );
+    setPlaying(true);
 
     try {
-      await Promise.all([waitForPlayable(reference), waitForPlayable(port)]);
       await Promise.all([
-        seekVideo(reference, targetTime),
-        seekVideo(port, targetTime),
+        waitForPlayable(reference, signal),
+        waitForPlayable(port, signal),
       ]);
+      signal.throwIfAborted();
+      await Promise.all([
+        seekVideo(reference, targetTime, signal),
+        seekVideo(port, targetTime, signal),
+      ]);
+      signal.throwIfAborted();
       setCurrentTime(targetTime);
       await Promise.all([reference.play(), port.play()]);
-      setPlaying(true);
+      signal.throwIfAborted();
       stopSyncLoop();
       syncFrameRef.current = requestAnimationFrame(syncPlayback);
     } catch {
-      pauseBoth();
+      if (playbackRef.current === playback) pauseBoth();
     }
   };
 
@@ -122,8 +182,11 @@ export function ComparisonPlayer({
 
   useEffect(
     () => () => {
+      playbackRef.current?.abort();
+      playbackRef.current = null;
       if (syncFrameRef.current !== null) {
         cancelAnimationFrame(syncFrameRef.current);
+        syncFrameRef.current = null;
       }
     },
     [],

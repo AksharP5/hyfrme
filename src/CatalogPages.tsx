@@ -39,8 +39,8 @@ const catalogBySlug = new Map(
 type SourceFilter = "all" | CatalogSource["id"];
 const sourceFilters = [{ id: "all", label: "All" }, ...catalogSources] as const;
 
-function sourceFromUrl(): SourceFilter {
-  const source = new URLSearchParams(window.location.search).get("source");
+function sourceFromUrl(search = window.location.search): SourceFilter {
+  const source = new URLSearchParams(search).get("source");
   return (
     catalogSources.find((candidate) => candidate.id === source)?.id ?? "all"
   );
@@ -132,10 +132,11 @@ function taxonomyHref(
   return `/components${params.size ? `?${params}` : ""}`;
 }
 
-function categoryFromUrl(): CatalogCategory {
-  const category = new URLSearchParams(window.location.search).get("category");
-  const categories: readonly CatalogCategory[] =
-    visibleCategories(sourceFromUrl());
+function categoryFromUrl(search = window.location.search): CatalogCategory {
+  const category = new URLSearchParams(search).get("category");
+  const categories: readonly CatalogCategory[] = visibleCategories(
+    sourceFromUrl(search),
+  );
   return categories.includes(category as CatalogCategory)
     ? (category as CatalogCategory)
     : "all";
@@ -301,10 +302,11 @@ function LibrarySidebar({
 
 function CatalogPage() {
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState<CatalogCategory>(categoryFromUrl);
-  const [source, setSource] = useState<SourceFilter>(sourceFromUrl);
+  const [search, setSearch] = useState(() => window.location.search);
+  const category = categoryFromUrl(search);
+  const source = sourceFromUrl(search);
   const taxonomySections = taxonomySectionsFor(category, source);
-  const urlParams = new URLSearchParams(window.location.search);
+  const urlParams = new URLSearchParams(search);
   const selectedSection = taxonomySections.find(
     (section) => section.id === urlParams.get("section"),
   );
@@ -349,8 +351,13 @@ function CatalogPage() {
     document.title = "Hyfrme — motion components for HyperFrames";
   }, []);
 
-  const selectCategory = (next: CatalogCategory) => {
-    setCategory(next);
+  const selectFilters = (
+    nextCategory: CatalogCategory,
+    nextSource: SourceFilter,
+  ) => {
+    const categories: readonly CatalogCategory[] =
+      visibleCategories(nextSource);
+    const next = categories.includes(nextCategory) ? nextCategory : "all";
     const url = new URL(window.location.href);
     url.searchParams.delete("section");
     url.searchParams.delete("group");
@@ -359,26 +366,10 @@ function CatalogPage() {
     } else {
       url.searchParams.set("category", next);
     }
+    if (nextSource === "all") url.searchParams.delete("source");
+    else url.searchParams.set("source", nextSource);
     window.history.replaceState(null, "", url);
-  };
-
-  const selectSource = (next: SourceFilter) => {
-    setSource(next);
-    if (
-      next === "hyperframes" &&
-      category !== "all" &&
-      category !== "components" &&
-      category !== "templates"
-    ) {
-      selectCategory("all");
-    }
-    const url = new URL(window.location.href);
-    if (category === "all") url.searchParams.delete("category");
-    url.searchParams.delete("section");
-    url.searchParams.delete("group");
-    if (next === "all") url.searchParams.delete("source");
-    else url.searchParams.set("source", next);
-    window.history.replaceState(null, "", url);
+    setSearch(url.search);
   };
 
   const selectedLabel = selectedGroup
@@ -484,7 +475,7 @@ function CatalogPage() {
           )
             return;
           event.preventDefault();
-          selectCategory(next);
+          selectFilters(next, source);
         }}
       />
       <section className="catalog-page">
@@ -523,7 +514,7 @@ function CatalogPage() {
               type="button"
               key={candidate.id}
               aria-pressed={source === candidate.id}
-              onClick={() => selectSource(candidate.id)}
+              onClick={() => selectFilters(category, candidate.id)}
             >
               {candidate.label}
               <span>
@@ -543,7 +534,7 @@ function CatalogPage() {
               type="button"
               key={candidate}
               aria-pressed={category === candidate}
-              onClick={() => selectCategory(candidate)}
+              onClick={() => selectFilters(candidate, source)}
             >
               {categoryLabel(candidate, source)}
             </button>
@@ -629,8 +620,7 @@ function CatalogPage() {
               type="button"
               onClick={() => {
                 setQuery("");
-                selectCategory("all");
-                selectSource("all");
+                selectFilters("all", "all");
               }}
             >
               Show all components
