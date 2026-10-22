@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.5](https://github.com/AksharP5/hyfrme/compare/v0.5.4...v0.5.5) (2026-10-22)
+
+### Bug Fixes
+
+* Stage installation writes, preserve permissions and concurrent edits, and validate source paths and conflicting destinations ([#75](https://github.com/AksharP5/hyfrme/pull/75)).
+* Limit downloads to eight concurrent requests with 30-second timeouts and use native buffer comparison for unchanged files.
+
 ## [0.5.4](https://github.com/AksharP5/hyfrme/compare/v0.5.3...v0.5.4) (2026-10-01)
 
 
