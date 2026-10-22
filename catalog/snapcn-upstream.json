@@ -8,12 +8,12 @@
   "fixtureSource": "catalog/snapcn-fixtures.json",
   "assetManifest": "assets/snapcn/manifest.json",
   "summary": {
-    "totalRegistryItems": 50,
-    "visualItems": 49,
+    "totalRegistryItems": 52,
+    "visualItems": 51,
     "sharedRuntimeItems": 1,
-    "previewRegistryItems": 46,
+    "previewRegistryItems": 48,
     "sourceFamilies": {
-      "snap-cn": 47,
+      "snap-cn": 49,
       "snap-cn-ui": 2
     },
     "missingFixtures": []
@@ -1018,6 +1018,64 @@
         "media": false,
         "shader": false
       }
+    },
+    {
+      "name": "button-press",
+      "slug": "snapcn-button-press",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/button-press/index.tsx",
+      "sourceSha256": "aedf6a21a45f298a9d5fcd828cdbfc21734f41376efe50b1615d95fe1a8aac09",
+      "docs": [
+        "content/docs/cursor/button-press.mdx"
+      ],
+      "inPreviewRegistry": true,
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "https://snapcn.dev/r/snap-cn-ui.json",
+        "https://snapcn.dev/r/cursor-track.json"
+      ],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      },
+      "commit": "4d2165e661003da0b8ddca6be5bea1d2232507b8"
+    },
+    {
+      "name": "click-type",
+      "slug": "snapcn-click-type",
+      "kind": "visual",
+      "tier": "snap-cn",
+      "source": "registry/snap-cn/click-type/index.tsx",
+      "sourceSha256": "84095b6e04b660eb0b35e1561ac532f4beb7e81379459f066656e4d356b4aaad",
+      "docs": [
+        "content/docs/cursor/click-type.mdx"
+      ],
+      "inPreviewRegistry": true,
+      "dependencies": [
+        "remotion",
+        "@remotion/google-fonts"
+      ],
+      "registryDependencies": [
+        "https://snapcn.dev/r/snap-cn-ui.json",
+        "https://snapcn.dev/r/input.json",
+        "https://snapcn.dev/r/caret.json",
+        "https://snapcn.dev/r/cursor-track.json"
+      ],
+      "mechanics": {
+        "layoutMeasurement": false,
+        "effects": false,
+        "state": false,
+        "media": false,
+        "shader": false
+      },
+      "commit": "4d2165e661003da0b8ddca6be5bea1d2232507b8"
     }
   ],
   "dependencyLicenseNotes": [
@@ -1088,430 +1146,499 @@
       "existingSourceFilesUnchanged": true,
       "previousCommit": "def45f50ff9b7ee7353be0a0bbf636c84b311cc0",
       "controls": 7
+    },
+    {
+      "repository": "https://github.com/shadcn-labs/snapcn",
+      "commit": "4d2165e661003da0b8ddca6be5bea1d2232507b8",
+      "checkedAt": "2026-10-22",
+      "added": [
+        "snapcn-button-press",
+        "snapcn-click-type"
+      ],
+      "existingFixturePinsPreserved": true,
+      "existingFixtureRecordsPreserved": true
     }
   ],
   "publishedAudit": {
-    "checkedAt": "2026-10-07",
-    "checkedAtUtc": "2026-10-08T01:08:47.987697Z",
-    "repository": "https://github.com/snapcndev/snapcn",
-    "commit": "f31be8a493cd836bbef36ac4f5a182fc40ee983e",
+    "checkedAt": "2026-10-22",
+    "checkedAtUtc": "2026-10-22T14:35:54.987Z",
+    "repository": "https://github.com/shadcn-labs/snapcn",
+    "commit": "4d2165e661003da0b8ddca6be5bea1d2232507b8",
     "registryUrl": "https://snapcn.dev/r/registry.json",
-    "registrySha256": "08adf34b2a2a5048119d578e8ec065509772f8cb906a1ebe9a1653e7eee4dbb0",
+    "registrySha256": "a0c93b0993410bc1012938ee0e62e0133de51db0589dc7249ded2a675d8fa8c1",
     "counts": {
-      "totalRegistryItems": 49,
-      "freeVisualItems": 48,
-      "proVisualItems": 0,
+      "totalRegistryItems": 104,
+      "freeVisualItems": 51,
+      "proVisualItems": 52,
       "sharedRuntimeItems": 1,
-      "advertisedProVisualItems": 51
+      "advertisedProVisualItems": 52
     },
-    "publicRegistryExcludesPro": true,
-    "proCatalogueUrl": "https://github.com/snapcndev/snapcn/blob/f31be8a493cd836bbef36ac4f5a182fc40ee983e/lib/pro-catalogue.json",
-    "proCatalogueSha256": "70b3ef8a5c74235dfc66d87fcefb2e2b73cf886182706053bacfea226a2b8884",
-    "freeSourceUnchangedFrom": "def45f50ff9b7ee7353be0a0bbf636c84b311cc0",
-    "freeSourceUnchanged": false,
+    "publicRegistryExcludesPro": false,
+    "proEntriesArePreviewWrappers": true,
+    "previousAudit": "parity/snapcn-button-press-diff/previous-published-audit.json",
     "existingFixturePinsPreserved": true,
+    "newPublicItems": [
+      "button-press",
+      "click-type"
+    ],
+    "newPublicSources": [
+      {
+        "name": "button-press",
+        "source": "registry/snap-cn/button-press/index.tsx",
+        "sourceSha256": "aedf6a21a45f298a9d5fcd828cdbfc21734f41376efe50b1615d95fe1a8aac09",
+        "config": "registry/snap-cn/button-press/config.ts",
+        "configSha256": "7d62b70beb6062c84af4706dc16c3f0630737d9a9e35c199535745cdc62bdb6b",
+        "sourceUrl": "https://snapcn.dev/r/button-press.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "100cebc0a1524318b24f452194faa9c5c29f1b6e72615f14d784c1412737d906",
+        "sourceMatchesGitApartFromAttribution": true,
+        "controls": 6
+      },
+      {
+        "name": "click-type",
+        "source": "registry/snap-cn/click-type/index.tsx",
+        "sourceSha256": "84095b6e04b660eb0b35e1561ac532f4beb7e81379459f066656e4d356b4aaad",
+        "config": "registry/snap-cn/click-type/config.ts",
+        "configSha256": "48c3d56d3674f697b27c2ee5761376914e56205ae0bca4e1748c50344e8a6e91",
+        "sourceUrl": "https://snapcn.dev/r/click-type.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "c1af0fe49fdbcd95f2dfabbef40dcbbd8b349255f8d8276e9c0eb8855f3efcfa",
+        "sourceMatchesGitApartFromAttribution": true,
+        "controls": 6
+      }
+    ],
     "excludedProItems": [
       {
-        "name": "agent-chat",
+        "name": "picker-commit",
         "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/agent-chat.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "agent-open",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/agent-open.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "agent-result",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/agent-result.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "agent-run",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/agent-run.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "agent-tools",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/agent-tools.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "app-reveal",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/app-reveal.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "brief-send",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/brief-send.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "build-out",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/build-out.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "chat-thread",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/chat-thread.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "checkout-push",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/checkout-push.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "comment-storm",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/comment-storm.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "cross-out",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/cross-out.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "files-drop",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/files-drop.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "focus-pull",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/focus-pull.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "gallery-push",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/gallery-push.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "glass-prompt",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/glass-prompt.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "hex-tally",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/hex-tally.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "laptop-open",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/laptop-open.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "lcd-type",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/lcd-type.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "library-flight",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/library-flight.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "lockup-reveal",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/lockup-reveal.json",
-        "httpStatus": 402,
-        "error": "pro_component"
+        "sourceUrl": "https://snapcn.dev/r/picker-commit.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "054fb62bf5680e76a5dd6c1464cacaa8fc314146262d3f4574d19ce5f1896a77",
+        "previewOnly": true
       },
       {
         "name": "manifesto",
         "sourcePresentAtCommit": false,
         "sourceUrl": "https://snapcn.dev/r/manifesto.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "metric-morph",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/metric-morph.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "orbit-flow",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/orbit-flow.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "pack-up",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/pack-up.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "phone-pitch",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/phone-pitch.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "phrase-swarm",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/phrase-swarm.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "picker-commit",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/picker-commit.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "prompt-dive",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/prompt-dive.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "proof-line",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/proof-line.json",
-        "httpStatus": 402,
-        "error": "pro_component"
+        "httpStatus": 200,
+        "publishedJsonSha256": "b5af0f3a7b84d2210b401a797b4b3dd14ca09911ecf753e1c9921ea6750edf8e",
+        "previewOnly": true
       },
       {
         "name": "read-through",
         "sourcePresentAtCommit": false,
         "sourceUrl": "https://snapcn.dev/r/read-through.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "render-wall",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/render-wall.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "say-it",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/say-it.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "scatter-bloom",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/scatter-bloom.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "screen-wall",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/screen-wall.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "sentence-set",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/sentence-set.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "showcase-drift",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/showcase-drift.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "stretch-word",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/stretch-word.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "string-hero",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/string-hero.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "tally-rise",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/tally-rise.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "tap-through",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/tap-through.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "task-stream",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/task-stream.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "thank-you-swarm",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/thank-you-swarm.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "ticker-climb",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/ticker-climb.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "vault-count",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/vault-count.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "version-drop",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/version-drop.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "wall-cut",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/wall-cut.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "wire-feed",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/wire-feed.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "word-montage",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/word-montage.json",
-        "httpStatus": 402,
-        "error": "pro_component"
-      },
-      {
-        "name": "word-rush",
-        "sourcePresentAtCommit": false,
-        "sourceUrl": "https://snapcn.dev/r/word-rush.json",
-        "httpStatus": 402,
-        "error": "pro_component"
+        "httpStatus": 200,
+        "publishedJsonSha256": "7044132d69bd845691780ecb863c7f0756af789b0f7e2889b44fd0f9c6ab9a68",
+        "previewOnly": true
       },
       {
         "name": "word-settle",
         "sourcePresentAtCommit": false,
         "sourceUrl": "https://snapcn.dev/r/word-settle.json",
-        "httpStatus": 402,
-        "error": "pro_component"
+        "httpStatus": 200,
+        "publishedJsonSha256": "10a147fc80020c47410cff76fe77157c3215508035a6add8272904c07768ff58",
+        "previewOnly": true
+      },
+      {
+        "name": "chat-thread",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/chat-thread.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "44be7dcaa42fc5ec42dda18aa1ee124304eefedcd49e962399d45efa3903083f",
+        "previewOnly": true
+      },
+      {
+        "name": "lcd-type",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/lcd-type.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "e54f5e890451afbf29f3cb28c424588b1985e4e8548677ceaef77f99d13f6460",
+        "previewOnly": true
+      },
+      {
+        "name": "say-it",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/say-it.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "28a818209d57a40460758abd582db32a8f8c14087691ee9ba6bd83eb7527167d",
+        "previewOnly": true
+      },
+      {
+        "name": "scatter-bloom",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/scatter-bloom.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "fd7538a5d03caffbd8322b3b6d4082f7e28dc3882f1401090b77a537a6a00c43",
+        "previewOnly": true
+      },
+      {
+        "name": "sentence-set",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/sentence-set.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "0e22b948a5570841193108f1fe40a9b8805a38eaa2b2c3f4f100170b18e1329b",
+        "previewOnly": true
+      },
+      {
+        "name": "showcase-drift",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/showcase-drift.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "23093646db1d667cf0c9f8b97aded96ee97e57356a3aa6b022e211449fb55812",
+        "previewOnly": true
+      },
+      {
+        "name": "agent-run",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/agent-run.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "72d1a2c2fac75b2cad8ba12270e2bd17ec86928efe1d00d84140c5e667d89ee6",
+        "previewOnly": true
+      },
+      {
+        "name": "agent-compose",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/agent-compose.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "994a8027f2765550ddba466f3e62179df1634bff361a51162666a74a39f72971",
+        "previewOnly": true
+      },
+      {
+        "name": "agent-result",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/agent-result.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "0ce096eab9560baa3c86bd1d54e4105c25f66caf6012d9a72c70ded88606dd0b",
+        "previewOnly": true
+      },
+      {
+        "name": "agent-chat",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/agent-chat.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "8047c6f3c48de6b3ed9c87efe83103617dba7a18913beb2bd8a35d261ca9c65f",
+        "previewOnly": true
+      },
+      {
+        "name": "version-drop",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/version-drop.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "0917e3d040236b4a279cebff08e9dc9ec179fcc2903e39346923dacee74e63e2",
+        "previewOnly": true
+      },
+      {
+        "name": "agent-open",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/agent-open.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "88ecec0e6069e42c624e667f9e93a7c4716a7081956be7300f618a1fb5edc6d6",
+        "previewOnly": true
+      },
+      {
+        "name": "phrase-swarm",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/phrase-swarm.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "e4566fd5f7e84f9e7692a4271d7d9968e3a73ab79342747f9c3521df9299f374",
+        "previewOnly": true
+      },
+      {
+        "name": "word-rush",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/word-rush.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "0b885bd9e13c0ccedd0eb89b05c212d6a98dc794b38ebc8082d1650c8dde547a",
+        "previewOnly": true
+      },
+      {
+        "name": "app-reveal",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/app-reveal.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "8acc1f2f6f5867b9e66d3148f87f1a6d13aec8d96517f224e0af32fd743d8496",
+        "previewOnly": true
+      },
+      {
+        "name": "build-out",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/build-out.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "327a888e76a50529efc3982c25aaad4099e6e0ed99521133af0a1c720df15f98",
+        "previewOnly": true
+      },
+      {
+        "name": "stretch-word",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/stretch-word.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "9505e4c520b9fae2722ca92a82884ce02925e59e9bf6602a8849006b72d90bed",
+        "previewOnly": true
+      },
+      {
+        "name": "files-drop",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/files-drop.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "17cd86189d9141a41a73253ce9b210c73e90a00c69a29faf3897901f63c20166",
+        "previewOnly": true
+      },
+      {
+        "name": "focus-pull",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/focus-pull.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "d4caa8576168c0e04db5a8d1d5ffc09b809c368e2cfe195faa9dd49582cdefde",
+        "previewOnly": true
+      },
+      {
+        "name": "gallery-push",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/gallery-push.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "54157a3441856d3a7c71d47059a2ed3e6a63142f284c334d022cafa42a64328d",
+        "previewOnly": true
+      },
+      {
+        "name": "agent-tools",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/agent-tools.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "09145a03a6d92a2b52663338faf9355547033c4a421efc43f45caa137c80057f",
+        "previewOnly": true
+      },
+      {
+        "name": "phone-pitch",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/phone-pitch.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "9641fd3f89c8efe8ab56e3d4fd0dd5d2fc63dd0161a38bf9e3b2ce2cffaa334f",
+        "previewOnly": true
+      },
+      {
+        "name": "comment-storm",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/comment-storm.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "d50ed01799a75b82767b463aa6dc706de2e567857a16007bd622c22425acf391",
+        "previewOnly": true
+      },
+      {
+        "name": "thank-you-swarm",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/thank-you-swarm.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "d672f90afe75c524f7c7dc08f4598d81515198ab116dd8ace3ba3b74b1a551ea",
+        "previewOnly": true
+      },
+      {
+        "name": "hex-tally",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/hex-tally.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "0979bf063dab468f995b479467663efc909a2c67165099fd8b73cfc2395b7e0d",
+        "previewOnly": true
+      },
+      {
+        "name": "brief-send",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/brief-send.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "09e8733835c0196110ea5dc093975d24b53adb71bae9ecd8e9b303de83e1c8a4",
+        "previewOnly": true
+      },
+      {
+        "name": "render-wall",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/render-wall.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "b95be85e71d76ae3cb21a1fc84debea0a7a08c92822a23e46e52f8cb879cd060",
+        "previewOnly": true
+      },
+      {
+        "name": "string-hero",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/string-hero.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "a6482d9bbe1f9380eae59dc06f59e7dac6b3894d73fd498e28ba6d9cb90427c1",
+        "previewOnly": true
+      },
+      {
+        "name": "proof-line",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/proof-line.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "6685774b0bdf26e08d3ec90605084928f0bae15854f2dd134856602a32101d0e",
+        "previewOnly": true
+      },
+      {
+        "name": "ticker-climb",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/ticker-climb.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "09c3ffb7296548d559f21ee546e307f97501a70119e68aeb68d88327440c82b2",
+        "previewOnly": true
+      },
+      {
+        "name": "tap-through",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/tap-through.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "d7e483efb61c944cf0c168c273e51cf479a37c70c4ad3b5611a8ff0c59b525d7",
+        "previewOnly": true
+      },
+      {
+        "name": "cross-out",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/cross-out.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "ca6498d37a7daa8f92c1ddd5c26c922c58cbb5ed80ba590e2e1dc8902bc86003",
+        "previewOnly": true
+      },
+      {
+        "name": "screen-wall",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/screen-wall.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "bd5aeedcab3d09a40042144ef246548a5ed15f4bfc99aeb495ea4a067ea27373",
+        "previewOnly": true
+      },
+      {
+        "name": "laptop-open",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/laptop-open.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "55c611795e7b1e58c007991fa1cd3f9b26c56c6fbaebc63e6530e273ade95067",
+        "previewOnly": true
+      },
+      {
+        "name": "tally-rise",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/tally-rise.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "75678805395902be58b54b40d4e00c54b650f89a79dbcdeb396d90773d43312f",
+        "previewOnly": true
+      },
+      {
+        "name": "lockup-reveal",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/lockup-reveal.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "89d38bf841356dd1065a2458df42204df7fe6deb156e4ae380c8739186bacf72",
+        "previewOnly": true
+      },
+      {
+        "name": "word-montage",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/word-montage.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "6965f06693593324bab7e17ee23868a3ad67f4e948700ecdb7e77b67c5777ea7",
+        "previewOnly": true
+      },
+      {
+        "name": "orbit-flow",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/orbit-flow.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "5642dfa097b2652bf9c82807ffa7c890b4d4d73bd466f743647f5042e966700b",
+        "previewOnly": true
+      },
+      {
+        "name": "checkout-push",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/checkout-push.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "9388ec2636b14d62c539dba533d502aad242586a66d5417df5d14ceeed3d8748",
+        "previewOnly": true
+      },
+      {
+        "name": "metric-morph",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/metric-morph.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "75828b3ebc682a8363c70bb642b6983ec5999491f0dc3275401d7de093271889",
+        "previewOnly": true
+      },
+      {
+        "name": "prompt-dive",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/prompt-dive.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "d919756b5f8f91b2ae81b2333865fd3fe1dd8b010051a8c1e856f8e5f6ea24ee",
+        "previewOnly": true
+      },
+      {
+        "name": "vault-count",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/vault-count.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "80d49f7f9027d8c380acfc4cfec86911475ce747de69d5ce236602594c3a2f3d",
+        "previewOnly": true
+      },
+      {
+        "name": "wall-cut",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/wall-cut.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "bbb77fd7f91a10433baff695b86eb37b4c52b961a415fcedf18edde5a88b228e",
+        "previewOnly": true
+      },
+      {
+        "name": "library-flight",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/library-flight.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "fec52741d72bf171afa9ff859ddbeddab35f0e92e1353b5b22c76bd8b1fe7351",
+        "previewOnly": true
+      },
+      {
+        "name": "wire-feed",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/wire-feed.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "0439dea7df740a4f16d0353828bda8c6d499c33419b0ece4b9f0e85032374faf",
+        "previewOnly": true
+      },
+      {
+        "name": "pack-up",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/pack-up.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "943f992b07fab21aea0f1c957be3088d9ff8f05e04153e1819ebc167359475f5",
+        "previewOnly": true
+      },
+      {
+        "name": "task-stream",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/task-stream.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "0709dc8127f852542c03a6079a452fb1734914f899ef4da8281bb4e62bbf142d",
+        "previewOnly": true
+      },
+      {
+        "name": "glass-prompt",
+        "sourcePresentAtCommit": false,
+        "sourceUrl": "https://snapcn.dev/r/glass-prompt.json",
+        "httpStatus": 200,
+        "publishedJsonSha256": "c942d256bab362607ed2a8146e803d5679dec35ad8d8b01d671be90409585161",
+        "previewOnly": true
       }
     ],
     "unavailableSourceDirectories": [
       "registry/snap-cn-pro/",
       "registry/.private/"
     ],
-    "exclusionReason": "All 51 advertised Pro components have no source in the public Git tree, and their unauthenticated registry endpoints return HTTP 402 pro_component. Pro names and descriptions are public metadata; the MIT license of the public repository does not establish redistribution rights for unavailable private source. No Pro source is bundled.",
-    "accessImplementationUrl": "https://github.com/snapcndev/snapcn/blob/d4419a8c0366c4d6d3bf44d803e54593e8dd4ac3/app/r/%5Bfile%5D/route.ts",
-    "proUrl": "https://snapcn.dev/pro",
-    "shadcnAccess": {
-      "httpStatus": 200,
-      "files": [],
-      "note": "The route returns an empty registry item with upgrade instructions to the shadcn User-Agent; HTTP 200 does not expose Pro source."
-    },
-    "publishedSourceRefreshes": [
-      {
-        "name": "orb-swarm",
-        "source": "registry/snap-cn/orb-swarm/index.tsx",
-        "sourceCommit": "98809254aa239edfd04119336ff6a774a2df776d",
-        "authoredSourceUnchanged": true,
-        "publishedSourceAlreadyPorted": true,
-        "note": "The generated public registry JSON now includes the -12 degree constellation turn already present in the pinned authored source. Its current embedded source differs from that source only by its attribution comment."
-      }
-    ],
-    "existingSourceFilesUnchanged": true,
-    "newPublicItems": ["capture-reveal"],
-    "publishedMetadataRefreshes": {
-      "changedItems": 47,
-      "fields": ["docs"],
-      "embeddedSourcesUnchanged": true
-    },
-    "newPublicSource": {
-      "name": "capture-reveal",
-      "sourceUrl": "https://snapcn.dev/r/capture-reveal.json",
-      "httpStatus": 200,
-      "publishedJsonSha256": "bae8d7738585db6f13e0f0a3c2cd48ebb6ccbd664c700c093dd5bee5fd033aa7",
-      "sourceMatchesGitApartFromAttribution": true
-    }
+    "exclusionReason": "The 52 Pro registry entries expose watermarked video-preview wrappers that ignore component props. Their component implementations are absent from the frozen public Git tree. Preview wrappers and paid videos are not ported or bundled."
   },
   "latestAudit": {
     "repository": "https://github.com/shadcn-labs/snapcn",
-    "commit": "afce9f0aa8c9d464409efd1e4d4f227ca4809c04",
-    "checkedAt": "2026-10-12",
-    "newPublicComponents": ["font-shuffle"],
-    "note": "All 49 public visual components are covered. Font Shuffle retains its tested 460783c1 source pin. Count Grid and Orb Swarm now use the audited latest source; other tested fixture pins remain unchanged. The Screen Recording update awaits a released HyperFrames playback-rate fix. Pro gallery entries without public component source are excluded.",
-    "updatedPublicComponents": ["count-grid", "orb-swarm"]
+    "commit": "4d2165e661003da0b8ddca6be5bea1d2232507b8",
+    "checkedAt": "2026-10-22",
+    "newPublicComponents": [
+      "button-press",
+      "click-type"
+    ],
+    "note": "All 51 public visual components are covered. Button Press and Click Type use this frozen source pin. All 49 existing fixture records and media remain unchanged. The 52 Pro preview wrappers are excluded because they do not expose the component implementations."
   }
 }

@@ -6610,5 +6610,155 @@
     "omittedControls": {
       "speed": "The shared upstream customizer appends speed, but this component has no speed prop and does not use it."
     }
+  },
+  {
+    "slug": "snapcn-button-press",
+    "catalogFamily": "snapcn",
+    "title": "Button Press",
+    "description": "Cursor clicks a button: a cursor walks onto a split action button (label, divider, chevron), it darkens on hover, gives on press, spins while pending and lands on a drawn tick. The deploy, publish or send beat of every launch video. Built on cursor-track.",
+    "componentName": "ButtonPress",
+    "origin": {
+      "repository": "https://github.com/shadcn-labs/snapcn",
+      "commit": "4d2165e661003da0b8ddca6be5bea1d2232507b8",
+      "source": "registry/snap-cn/button-press/index.tsx",
+      "config": "registry/__configs__.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/button-press/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 126,
+      "props": {
+        "label": "Deploy",
+        "pending": "Deploying…",
+        "done": "Deployed",
+        "width": 320,
+        "mode": "light",
+        "speed": 1
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "label": {
+        "type": "text",
+        "default": "Deploy",
+        "label": "Label"
+      },
+      "pending": {
+        "type": "text",
+        "default": "Deploying…",
+        "label": "Pending"
+      },
+      "done": {
+        "type": "text",
+        "default": "Deployed",
+        "label": "Done"
+      },
+      "width": {
+        "type": "number",
+        "default": 320,
+        "min": 160,
+        "max": 600,
+        "step": 10,
+        "label": "Width"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Theme"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "cursor"
+    ]
+  },
+  {
+    "slug": "snapcn-click-type",
+    "catalogFamily": "snapcn",
+    "title": "Click Type",
+    "description": "Click to type: a prompt composer (Prompt Send's glass panel, writing surface and round send button) whose placeholder writes itself while a cursor flies in from the edge and clicks the field, then a hard cut into the field where the real prompt types at the caret and send arms. Two shots of one composer under a constant camera, anchored on the first letter, so the type never scales while it moves. Built on cursor-track.",
+    "componentName": "ClickType",
+    "origin": {
+      "repository": "https://github.com/shadcn-labs/snapcn",
+      "commit": "4d2165e661003da0b8ddca6be5bea1d2232507b8",
+      "source": "registry/snap-cn/click-type/index.tsx",
+      "config": "registry/__configs__.ts",
+      "license": "MIT",
+      "entry": "registry/snap-cn/click-type/index.tsx"
+    },
+    "fixture": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "durationInFrames": 103,
+      "props": {
+        "placeholder": "Describe what you want to build...",
+        "prompt": "Build me a marketing site",
+        "hint": "New suggestion",
+        "accentColor": "#3577e0",
+        "mode": "light",
+        "speed": 1
+      },
+      "background": "transparent"
+    },
+    "controls": {
+      "placeholder": {
+        "type": "text",
+        "default": "Describe what you want to build...",
+        "label": "Placeholder"
+      },
+      "prompt": {
+        "type": "text",
+        "default": "Build me a marketing site",
+        "label": "Prompt"
+      },
+      "hint": {
+        "type": "text",
+        "default": "New suggestion",
+        "label": "Hint"
+      },
+      "accentColor": {
+        "type": "color",
+        "default": "#3577e0",
+        "label": "Wash",
+        "brand": "accent"
+      },
+      "mode": {
+        "type": "select",
+        "default": "light",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "label": "Theme"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1,
+        "min": 0.25,
+        "max": 4,
+        "step": 0.25,
+        "label": "Speed"
+      }
+    },
+    "tags": [
+      "snapcn",
+      "cursor"
+    ]
   }
 ]

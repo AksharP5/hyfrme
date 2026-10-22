@@ -1,6 +1,27 @@
 import { readFile, readdir } from "node:fs/promises";
 import { dirname, relative, resolve } from "node:path";
 
+export function remocnCoverage(items, publishedItems) {
+  const visualNames = new Set(
+    items.filter((item) => item.visual).map((item) => item.name),
+  );
+  const publishedNames = new Set(
+    publishedItems
+      .filter((item) => !item.name.startsWith("snapcn-"))
+      .map((item) => item.name),
+  );
+  return {
+    publishedItems: [...visualNames].filter((name) => publishedNames.has(name))
+      .length,
+    missingItems: [...visualNames]
+      .filter((name) => !publishedNames.has(name))
+      .sort(),
+    extraItems: [...publishedNames]
+      .filter((name) => !visualNames.has(name))
+      .sort(),
+  };
+}
+
 // The generated registry can lag published components. Read its authored inputs.
 export async function readRemocnRegistry(sourceRoot) {
   const registry = JSON.parse(

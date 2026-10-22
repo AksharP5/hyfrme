@@ -2,16 +2,19 @@ import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
 import { createServer } from "node:http";
 import {
+  chmod,
   mkdir,
   mkdtemp,
   readFile,
   readdir,
   rm,
+  stat,
   symlink,
   writeFile,
 } from "node:fs/promises";
-import { extname, resolve } from "node:path";
+import { extname, isAbsolute, relative, resolve, sep } from "node:path";
 import { tmpdir } from "node:os";
+import { pathToFileURL } from "node:url";
 import { promisify } from "node:util";
 import { runInNewContext } from "node:vm";
 
@@ -241,11 +244,26 @@ for (const [name, dependency] of [
 }
 
 let requestCount = 0;
+let activeBulkRequests = 0;
+let peakBulkRequests = 0;
 const server = createServer(async (request, response) => {
   requestCount += 1;
   try {
     const url = new URL(request.url ?? "/", "http://localhost");
     if (registryFixtures.has(url.pathname)) {
+      if (url.pathname === "/blocks/hyperframes-slow/slow.txt") {
+        response.writeHead(200, { "content-type": "text/plain" });
+        response.write("partial");
+        await new Promise((accept) => setTimeout(accept, 300));
+        response.end(" source");
+        return;
+      }
+      if (/\/blocks\/hyperframes-bulk\/file-\d+\.txt$/.test(url.pathname)) {
+        activeBulkRequests += 1;
+        peakBulkRequests = Math.max(peakBulkRequests, activeBulkRequests);
+        await new Promise((accept) => setTimeout(accept, 25));
+        activeBulkRequests -= 1;
+      }
       response.writeHead(200, {
         "content-type": contentTypes[extname(url.pathname)],
       });
@@ -269,7 +287,13 @@ const server = createServer(async (request, response) => {
       return;
     }
     const path = resolve(registry, `.${decodeURIComponent(url.pathname)}`);
-    if (!path.startsWith(registry)) throw new Error("Unsafe registry path");
+    const registryPath = relative(registry, path);
+    if (
+      registryPath === ".." ||
+      registryPath.startsWith(`..${sep}`) ||
+      isAbsolute(registryPath)
+    )
+      throw new Error("Unsafe registry path");
     const body = await readFile(path);
     response.writeHead(200, {
       "content-type": contentTypes[extname(path)] ?? "application/octet-stream",
@@ -281,7 +305,9 @@ const server = createServer(async (request, response) => {
   }
 });
 
-await new Promise((resolveListening) => server.listen(0, resolveListening));
+await new Promise((resolveListening) =>
+  server.listen(0, "127.0.0.1", resolveListening),
+);
 const address = server.address();
 assert(address && typeof address === "object");
 const registryUrl = `http://127.0.0.1:${address.port}`;
@@ -313,6 +339,273 @@ try {
   }
   assert.equal(requestCount, 0);
   assert.deepEqual(await readdir(temporary), []);
+
+  const boundaryProject = resolve(nativeTemporary, "installer-boundaries");
+  await mkdir(boundaryProject);
+  for (const invalidConfig of [
+    null,
+    [],
+    { paths: [] },
+    { paths: { assets: 4 } },
+  ]) {
+    await writeFile(
+      resolve(boundaryProject, "hyperframes.json"),
+      JSON.stringify(invalidConfig),
+    );
+    await assert.rejects(
+      runCli(["add", "boundary", "--dir", boundaryProject]),
+      /invalid project configuration/,
+    );
+  }
+  await writeFile(resolve(boundaryProject, "hyperframes.json"), "{}");
+  for (const path of [
+    "../outside.txt",
+    "/outside.txt",
+    "a/../outside.txt",
+    "a\\outside.txt",
+  ]) {
+    registerNativeFixture(
+      "hyperframes-unsafe-source",
+      "hyperframes:component",
+      [
+        {
+          path,
+          target: "assets/unsafe.txt",
+          type: "hyperframes:asset",
+          body: "unsafe source",
+        },
+      ],
+    );
+    await assert.rejects(
+      runCli(["add", "hyperframes-unsafe-source", "--dir", boundaryProject]),
+      /invalid registry manifest/,
+    );
+  }
+  registerNativeFixture(
+    "hyperframes-duplicate-target",
+    "hyperframes:component",
+    [
+      {
+        path: "one.txt",
+        target: "assets/same.txt",
+        type: "hyperframes:asset",
+        body: "one",
+      },
+      {
+        path: "two.txt",
+        target: "assets/./same.txt",
+        type: "hyperframes:asset",
+        body: "two",
+      },
+    ],
+  );
+  await assert.rejects(
+    runCli([
+      "add",
+      "hyperframes-duplicate-target",
+      "--dir",
+      boundaryProject,
+      "--force",
+    ]),
+    /conflicting registry files.*assets\/same.txt/,
+  );
+  await assert.rejects(readFile(resolve(boundaryProject, "assets/same.txt")), {
+    code: "ENOENT",
+  });
+
+  registerNativeFixture(
+    "hyperframes-bulk",
+    "hyperframes:component",
+    Array.from({ length: 24 }, (_, index) => ({
+      path: `file-${index}.txt`,
+      target: `assets/bulk/file-${index}.txt`,
+      type: "hyperframes:asset",
+      body: `file ${index}`,
+    })),
+  );
+  await runCli(["add", "hyperframes-bulk", "--dir", boundaryProject]);
+  assert(peakBulkRequests > 1, "File downloads should run concurrently");
+  assert(
+    peakBulkRequests <= 8,
+    `Expected at most 8 concurrent downloads, received ${peakBulkRequests}`,
+  );
+
+  registerNativeFixture("hyperframes-slow", "hyperframes:component", [
+    {
+      path: "slow.txt",
+      target: "assets/slow.txt",
+      type: "hyperframes:asset",
+      body: "slow source",
+    },
+  ]);
+  const timeoutModule = resolve(nativeTemporary, "timeout-fetch.mjs");
+  await writeFile(
+    timeoutModule,
+    `
+const fetch = globalThis.fetch;
+globalThis.fetch = (url, options) => fetch(url, {
+  ...options,
+  signal: options?.signal && String(url).endsWith("/slow.txt") ? AbortSignal.timeout(50) : options?.signal,
+});
+`,
+  );
+  await assert.rejects(
+    exec(
+      process.execPath,
+      [
+        "--import",
+        pathToFileURL(timeoutModule).href,
+        resolve(root, "cli/bin/hyfrme.mjs"),
+        "add",
+        "hyperframes-slow",
+        "--dir",
+        boundaryProject,
+      ],
+      { env: { ...process.env, HYFRME_REGISTRY_URL: registryUrl } },
+    ),
+    /could not download slow.txt:.*(?:aborted|timeout)/i,
+  );
+  await assert.rejects(readFile(resolve(boundaryProject, "assets/slow.txt")), {
+    code: "ENOENT",
+  });
+
+  registerNativeFixture("hyperframes-write-failure", "hyperframes:component", [
+    {
+      path: "first.txt",
+      target: "assets/first.txt",
+      type: "hyperframes:asset",
+      body: "replacement",
+    },
+    {
+      path: "second.txt",
+      target: "assets/second.txt",
+      type: "hyperframes:asset",
+      body: "fail-to-stage",
+    },
+  ]);
+  await writeFile(resolve(boundaryProject, "assets/first.txt"), "owned first");
+  await writeFile(
+    resolve(boundaryProject, "assets/second.txt"),
+    "owned second",
+  );
+  const failureModule = resolve(nativeTemporary, "fail-write.mjs");
+  await writeFile(
+    failureModule,
+    `
+import fs from "node:fs/promises";
+import { syncBuiltinESMExports } from "node:module";
+const write = fs.writeFile;
+fs.writeFile = async (path, bytes, ...options) => {
+  if (Buffer.from(bytes).toString() !== "fail-to-stage") return write(path, bytes, ...options);
+  await write(path, "partial");
+  throw Object.assign(new Error("simulated disk full"), { code: "ENOSPC" });
+};
+syncBuiltinESMExports();
+`,
+  );
+  await assert.rejects(
+    exec(
+      process.execPath,
+      [
+        "--import",
+        pathToFileURL(failureModule).href,
+        resolve(root, "cli/bin/hyfrme.mjs"),
+        "add",
+        "hyperframes-write-failure",
+        "--dir",
+        boundaryProject,
+        "--force",
+      ],
+      { env: { ...process.env, HYFRME_REGISTRY_URL: registryUrl } },
+    ),
+    /simulated disk full/,
+  );
+  assert.equal(
+    await readFile(resolve(boundaryProject, "assets/first.txt"), "utf8"),
+    "owned first",
+  );
+  assert.equal(
+    await readFile(resolve(boundaryProject, "assets/second.txt"), "utf8"),
+    "owned second",
+  );
+  assert.deepEqual((await readdir(resolve(boundaryProject, "assets"))).sort(), [
+    "bulk",
+    "first.txt",
+    "second.txt",
+  ]);
+
+  registerNativeFixture("hyperframes-race", "hyperframes:component", [
+    {
+      path: "race.txt",
+      target: "assets/race.txt",
+      type: "hyperframes:asset",
+      body: "registry source",
+    },
+  ]);
+  const raceModule = resolve(nativeTemporary, "race-write.mjs");
+  await writeFile(
+    raceModule,
+    `
+import fs from "node:fs/promises";
+import { syncBuiltinESMExports } from "node:module";
+const link = fs.link;
+fs.link = async (source, destination) => {
+  await fs.writeFile(destination, "concurrent edit", { flag: "wx" });
+  return link(source, destination);
+};
+syncBuiltinESMExports();
+`,
+  );
+  await assert.rejects(
+    exec(
+      process.execPath,
+      [
+        "--import",
+        pathToFileURL(raceModule).href,
+        resolve(root, "cli/bin/hyfrme.mjs"),
+        "add",
+        "hyperframes-race",
+        "--dir",
+        boundaryProject,
+      ],
+      { env: { ...process.env, HYFRME_REGISTRY_URL: registryUrl } },
+    ),
+    /assets\/race.txt already exists/,
+  );
+  const racePath = resolve(boundaryProject, "assets/race.txt");
+  assert.equal(await readFile(racePath, "utf8"), "concurrent edit");
+  await chmod(racePath, 0o700);
+  await runCli([
+    "add",
+    "hyperframes-race",
+    "--dir",
+    boundaryProject,
+    "--force",
+  ]);
+  assert.equal(await readFile(racePath, "utf8"), "registry source");
+  if (process.platform !== "win32")
+    assert.equal((await stat(racePath)).mode & 0o777, 0o700);
+  assert(
+    (await readdir(resolve(boundaryProject, "assets"))).every(
+      (name) => !name.startsWith(".hyfrme-"),
+    ),
+  );
+
+  await symlink(resolve(boundaryProject, "assets"), resolve(boundaryProject, "alias"));
+  for (const [firstTarget, target] of [
+    ["assets/race.txt", "alias/race.txt"],
+    ["assets/future.txt", "assets/future.txt/nested.txt"],
+  ]) {
+    registerNativeFixture("hyperframes-aliased-target", "hyperframes:component", [
+      { path: "one.txt", target: firstTarget, type: "hyperframes:asset", body: "first source" },
+      { path: "two.txt", target, type: "hyperframes:asset", body: "second source" },
+    ]);
+    await assert.rejects(
+      runCli(["add", "hyperframes-aliased-target", "--dir", boundaryProject, "--force"]),
+      /conflicting registry files/,
+    );
+    assert.equal(await readFile(racePath, "utf8"), "registry source");
+  }
 
   for (const name of [
     "hyperframes-week-in-merges",

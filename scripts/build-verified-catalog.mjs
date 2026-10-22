@@ -1,5 +1,6 @@
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { remocnCoverage } from "./remocn-registry.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const iconFixtures = JSON.parse(
@@ -81,6 +82,11 @@ await writeFile(
     2,
   )}\n`,
 );
+
+const inventoryPath = resolve(root, "catalog/upstream-inventory.json");
+const inventory = JSON.parse(await readFile(inventoryPath, "utf8"));
+inventory.summary.coverage = remocnCoverage(inventory.items, items);
+await writeFile(inventoryPath, `${JSON.stringify(inventory, null, 2)}\n`);
 
 console.log(
   `Published ${items.length} verified ports and native official item(s) to registry.json.`,

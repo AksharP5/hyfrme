@@ -47,7 +47,6 @@ if (selected.some((entry) => entry.origin.commit !== commit)) {
   );
 }
 const license = await readFile(resolve(upstream, "LICENSE"), "utf8");
-const banner = `/*!\nPorted from https://github.com/snapcndev/snapcn at ${commit}.\n${license}\n*/`;
 const attribute = (value) =>
   value
     .replaceAll("&", "&amp;")
@@ -473,7 +472,9 @@ window.__hyfrmeReady = ready;
     },
     plugins,
     define: { "process.env.NODE_ENV": '"production"' },
-    banner: { js: banner },
+    banner: {
+      js: `/*!\nPorted from ${entry.origin.repository} at ${commit}.\n${license}\n*/`,
+    },
     metafile: true,
     write: false,
   });

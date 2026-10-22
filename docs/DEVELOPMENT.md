@@ -312,11 +312,23 @@ thumbnails. `npm run generate:thumbnails` runs optimization automatically.
 
 ## Catalog loading
 
-Catalog pages load component summaries. Opening a component loads its HTML and
+The homepage uses generated category counts and loads no catalog metadata.
+Catalog routes load the library and its native and ported summary chunks on demand.
+Opening a component loads its HTML and
 `catalog.json`, which contains registry metadata and verification details.
-`npm run sync:catalog` generates these files under `public/registry/`; `predev`
-and `prebuild` run it automatically. Keep generated catalog files synchronized
-with component manifests.
+`npm run sync:catalog` generates `catalog-native.json`, `catalog-ports.json`,
+and `catalog-counts.json` under `src/generated/`, plus component details under
+`public/registry/`. Counts use the same category rules as the catalog; `npm run check`
+rejects stale summaries or counts. `predev` and `prebuild` run generation automatically.
+Keep generated catalog files synchronized with component manifests.
+
+`npm run build:catalog` also refreshes the Remocn inventory's coverage against
+the current registry, preserving its pinned source and audit evidence. Validation
+rejects stale coverage after adding or retiring catalog entries.
+
+Generated registry copies use copy-on-write where the filesystem supports it,
+with ordinary copies elsewhere. Editing an installed or generated copy does not
+change the source registry.
 
 The editor loads only on component pages, and the comparison player loads when
 its panel opens. Showcase cards load video on hover or keyboard focus. Homepage

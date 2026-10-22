@@ -5,8 +5,13 @@ export type RegistryFile = {
   url?: string;
 };
 
-import catalogData from "./generated/catalog-data.json";
+import nativeCatalog from "./generated/catalog-native.json";
+import portedCatalog from "./generated/catalog-ports.json";
 import hyperframesNavigation from "../catalog/hyperframes-navigation.json";
+import { type CatalogCategory } from "./catalog-categories";
+export { categoryLabels, type CatalogCategory } from "./catalog-categories";
+
+const catalogData = [...nativeCatalog, ...portedCatalog];
 
 export type RegistrySummary = (typeof catalogData)[number]["item"];
 
@@ -40,6 +45,7 @@ export const catalogSources = [
     id: "snapcn",
     label: "Snapcn",
     repository: "https://github.com/snapcndev/snapcn",
+    aliases: ["https://github.com/shadcn-labs/snapcn"],
   },
   {
     id: "hyperframes",
@@ -64,9 +70,6 @@ export type CatalogEntry = {
   }>;
   loadSource: () => Promise<string>;
 };
-
-export type CatalogCategory =
-  "all" | "components" | "primitives" | "shaders" | "icons" | "templates";
 
 export type CatalogTaxonomyGroup = {
   id: string;
@@ -391,6 +394,7 @@ const componentTaxonomy: CatalogTaxonomySection[] = [
         slugs: [
           "search-reveal",
           "snapcn-search-typing",
+          "snapcn-click-type",
           "snapcn-prompt-send",
           "snapcn-prompt-zoom",
         ],
@@ -595,6 +599,7 @@ const primitiveTaxonomy: CatalogTaxonomySection[] = [
         label: "Controls & Input",
         slugs: [
           "button",
+          "snapcn-button-press",
           "checkbox",
           "radio",
           "switch",
@@ -981,7 +986,12 @@ export const catalog: CatalogEntry[] = catalogData
   .map(({ item, sourceRepository }) => {
     const blockRoot = `/registry/blocks/${encodeURIComponent(item.name)}`;
     const source = catalogSources.find(
-      (candidate) => candidate.repository === sourceRepository,
+      (candidate) =>
+        candidate.repository === sourceRepository ||
+        ("aliases" in candidate &&
+          candidate.aliases.some(
+            (repository) => repository === sourceRepository,
+          )),
     );
     if (!source) {
       throw new Error(
@@ -1000,15 +1010,6 @@ export const catalog: CatalogEntry[] = catalogData
     };
   })
   .sort((left, right) => left.item.title.localeCompare(right.item.title));
-
-export const categoryLabels: Record<CatalogCategory, string> = {
-  all: "All",
-  components: "Components",
-  primitives: "Primitives",
-  shaders: "Shaders",
-  icons: "Icons",
-  templates: "Templates",
-};
 
 export function categoryFor(
   entry: CatalogEntry,

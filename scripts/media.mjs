@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { constants, createReadStream } from "node:fs";
 import { cp, readFile, readdir, stat } from "node:fs/promises";
 import { relative, resolve, sep } from "node:path";
 import { Readable } from "node:stream";
@@ -28,20 +29,29 @@ export async function readMediaFiles(publicDirectory) {
   const files = [];
   for (const path of paths) {
     const filename = resolve(publicDirectory, `.${path}`);
-    const content = await readFile(filename);
+    const hash = createHash("sha256");
+    let size = 0;
+    for await (const chunk of createReadStream(filename)) {
+      size += chunk.byteLength;
+      hash.update(chunk);
+    }
     files.push({
       path,
       filename,
-      size: content.byteLength,
-      sha256: createHash("sha256").update(content).digest("hex"),
+      size,
+      sha256: hash.digest("hex"),
     });
   }
   return files;
 }
 
 export function blobPath(file) {
+  return `media/${mediaContentKey(file)}${file.path}`;
+}
+
+export function mediaContentKey(file) {
   const variant = shouldEncodeMedia(file) ? `${encodingVersion}/` : "";
-  return `media/${variant}${file.sha256}${file.path}`;
+  return `${variant}${file.sha256}`;
 }
 
 export function shouldEncodeMedia(file) {
@@ -62,12 +72,12 @@ export async function readMediaManifest(path = manifestPath) {
       /^\/media\/h264-v[1-9]\d*\//,
       "/media/",
     );
-    const sha256 = pathname.split("/")[2];
+    const match = pathname.match(/^\/media\/([a-f0-9]{64})(\/.+)$/);
     if (
       url.protocol !== "https:" ||
       !/^[a-z0-9]+\.public\.blob\.vercel-storage\.com$/.test(url.hostname) ||
-      !/^[a-f0-9]{64}$/.test(sha256 ?? "") ||
-      pathname !== `/media/${sha256}${path}` ||
+      !match ||
+      !isHostedMedia(match[2]) ||
       url.search ||
       url.hash ||
       url.username ||
@@ -89,7 +99,25 @@ export function mediaRedirects(manifest) {
 }
 
 export function matchesMedia(file, url) {
-  return url?.endsWith(`/${blobPath(file)}`) ?? false;
+  if (!url || !URL.canParse(url)) return false;
+  const pathname = new URL(url).pathname;
+  const prefix = `/media/${mediaContentKey(file)}`;
+  return (
+    pathname.startsWith(prefix) && isHostedMedia(pathname.slice(prefix.length))
+  );
+}
+
+export function deduplicateMedia(files, manifest) {
+  const urls = new Map();
+  for (const file of files) {
+    if (matchesMedia(file, manifest[file.path])) {
+      const key = mediaContentKey(file);
+      if (!urls.has(key)) urls.set(key, manifest[file.path]);
+    }
+  }
+  return Object.fromEntries(
+    files.map((file) => [file.path, urls.get(mediaContentKey(file))]),
+  );
 }
 
 export function unusedMedia(blobs, manifests, before) {
@@ -149,6 +177,7 @@ export function validateMedia(files, manifest, redirects) {
 export async function copyPublicWithoutMedia(publicDirectory, outputDirectory) {
   await cp(publicDirectory, outputDirectory, {
     recursive: true,
+    mode: constants.COPYFILE_FICLONE,
     filter: async (source) => {
       const path = `/${relative(publicDirectory, source).split(sep).join("/")}`;
       if (isHostedRegistry(path)) return (await stat(source)).isDirectory();

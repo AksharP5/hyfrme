@@ -139,6 +139,20 @@ for (const [name, section, group] of [
 }
 
 const orbit = taxonomyFor({ item: { name: "snapcn-orbit-gallery" } });
+for (const name of ["snapcn-button-press", "snapcn-click-type"]) {
+  assert.equal(
+    catalog.find((entry) => entry.item.name === name).source.id,
+    "snapcn",
+  );
+}
+assert.equal(
+  taxonomyFor({ item: { name: "snapcn-button-press" } }).group.id,
+  "controls-input",
+);
+assert.equal(
+  taxonomyFor({ item: { name: "snapcn-click-type" } }).section.label,
+  "AI",
+);
 assert.equal(orbit.section.label, "Scenes");
 assert.equal(orbit.group.label, "Galleries");
 for (const name of ["snapcn-logo-flicker", "logo-enter"]) {

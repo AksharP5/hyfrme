@@ -27,6 +27,7 @@ const {
   buildInstallCommand,
   parseCompositionVariables,
   valuesFromUrl,
+  writeValuesToUrl,
   customizedSource,
   numberBounds,
   Customizer,
@@ -49,6 +50,58 @@ const wordWheelVariables = parseCompositionVariables(
 );
 
 globalThis.window = { location: { search: "" } };
+
+test("customizer ignores variable declarations in documentation examples", () => {
+  const source = `<!-- Example: data-composition-variables='[{"id":"example","type":"string","default":"wrong"}]' -->
+    <html data-composition-variables='[{"id":"title","type":"string","default":"Actual"}]'>`;
+  const variables = parseCompositionVariables(source);
+  assert.deepEqual(
+    variables.map(({ id }) => id),
+    ["title"],
+  );
+  window.location.search = "?v.title=Updated&v.example=Ignored";
+  const values = valuesFromUrl(variables);
+  assert.deepEqual(values, { title: "Updated" });
+  assert.equal(
+    buildInstallCommand("hyfrme@latest", "demo", variables, values),
+    "npx hyfrme@latest add demo --set 'title=Updated'",
+  );
+  assert.equal(
+    parseCompositionVariables(customizedSource(source, values))[0].default,
+    "Updated",
+  );
+});
+
+test("URL updates skip unchanged settings and preserve history state", () => {
+  const state = { navigation: "existing" };
+  const writes = [];
+  window.location.href =
+    "https://hyfrme.example/components/demo?category=text#preview";
+  window.history = {
+    state,
+    replaceState(nextState, _title, url) {
+      writes.push({ state: nextState, url: url.href });
+      window.location.href = url.href;
+    },
+  };
+  const variables = [{ id: "title", type: "string", default: "Hello" }];
+  writeValuesToUrl(variables, { title: "Hello" });
+  assert.equal(writes.length, 0);
+  writeValuesToUrl(variables, { title: "Updated" });
+  writeValuesToUrl(variables, { title: "Updated" });
+  assert.deepEqual(writes, [
+    {
+      state,
+      url: "https://hyfrme.example/components/demo?category=text&v.title=Updated#preview",
+    },
+  ]);
+  writeValuesToUrl(variables, { title: "Hello" });
+  assert.equal(writes.length, 2);
+  assert.equal(
+    window.location.href,
+    "https://hyfrme.example/components/demo?category=text#preview",
+  );
+});
 
 test("shared links produce installable numbers within the declared limits", () => {
   window.location.search =

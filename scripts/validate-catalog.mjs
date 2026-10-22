@@ -1,10 +1,11 @@
 import { access, readFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
-import { resolve } from "node:path";
+import { posix, resolve } from "node:path";
 import { isDeepStrictEqual } from "node:util";
 import { build } from "esbuild";
 import { parseHyperframesVariables } from "./hyperframes-variables.mjs";
 import { iconShowcaseThreshold } from "./icon-showcase-history.mjs";
+import { remocnCoverage } from "./remocn-registry.mjs";
 import {
   assertFreshCompiledEvidence,
   hasFreshCompiledEvidence,
@@ -94,6 +95,13 @@ if (!Array.isArray(registry.items) || registry.items.length === 0) {
   throw new Error("registry/registry.json must contain at least one item");
 }
 
+const coverage = remocnCoverage(upstreamInventory.items, registry.items);
+if (!isDeepStrictEqual(upstreamInventory.summary.coverage, coverage)) {
+  throw new Error(
+    "Remocn coverage inventory is stale. Run npm run build:catalog.",
+  );
+}
+
 const [{ text: catalogModuleSource }] = (
   await build({
     entryPoints: [resolve(root, "src", "catalog.ts")],
@@ -123,6 +131,7 @@ if (unclassifiedTypography.length > 0) {
   );
 }
 
+const installedLicenses = new Map();
 for (const item of registry.items) {
   const blockDirectory = resolve(root, "registry", "blocks", item.name);
   const manifestPath = resolve(blockDirectory, "registry-item.json");
@@ -130,6 +139,22 @@ for (const item of registry.items) {
 
   await ensure(manifestPath, `${item.name} registry manifest`);
   const manifest = await readJson(manifestPath);
+  if (item.type !== "hyperframes:example") {
+    for (const file of manifest.files ?? []) {
+      const target = posix.normalize(file.target);
+      if (!target.startsWith("THIRD_PARTY_LICENSES/")) continue;
+      const hash = createHash("sha256")
+        .update(await readFile(resolve(blockDirectory, file.path)))
+        .digest("hex");
+      const previous = installedLicenses.get(target);
+      if (previous && previous.hash !== hash) {
+        throw new Error(
+          `${previous.name} and ${item.name}: conflicting installed license ${target}`,
+        );
+      }
+      installedLicenses.set(target, { name: item.name, hash });
+    }
+  }
   if (item.name.startsWith("shader-") && additions.components[item.name]) {
     if (
       !manifest.license.includes("Apache-2.0") ||
@@ -158,7 +183,8 @@ for (const item of registry.items) {
       record.type !== item.type ||
       record.type !== manifest.type ||
       manifest.name !== item.name ||
-      manifest.origin.commit !== nativeInventory.summary.upstream.commit ||
+      manifest.origin.commit !==
+        (record.origin?.commit ?? nativeInventory.summary.upstream.commit) ||
       manifest.origin.source !== record.upstreamManifest.path ||
       !manifest.tags.includes("hyperframes-official")
     ) {

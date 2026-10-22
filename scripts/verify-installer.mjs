@@ -9,7 +9,7 @@ import {
   stat,
   writeFile,
 } from "node:fs/promises";
-import { extname, resolve } from "node:path";
+import { extname, isAbsolute, relative, resolve, sep } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const registry = resolve(root, "registry");
@@ -33,7 +33,13 @@ const server = createServer(async (request, response) => {
   try {
     const url = new URL(request.url ?? "/", "http://localhost");
     const path = resolve(registry, `.${decodeURIComponent(url.pathname)}`);
-    if (!path.startsWith(registry)) throw new Error("Unsafe registry path");
+    const registryPath = relative(registry, path);
+    if (
+      registryPath === ".." ||
+      registryPath.startsWith(`..${sep}`) ||
+      isAbsolute(registryPath)
+    )
+      throw new Error("Unsafe registry path");
     const body = await readFile(path);
     response.writeHead(200, {
       "content-type": contentTypes[extname(path)] ?? "application/octet-stream",
@@ -174,7 +180,9 @@ await writeFile(
 `,
 );
 
-await new Promise((resolveListening) => server.listen(0, resolveListening));
+await new Promise((resolveListening) =>
+  server.listen(0, "127.0.0.1", resolveListening),
+);
 const address = server.address();
 assert(address && typeof address === "object");
 const registryUrl = `http://127.0.0.1:${address.port}`;

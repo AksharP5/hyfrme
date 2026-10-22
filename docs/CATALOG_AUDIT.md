@@ -1,5 +1,28 @@
 # Catalog browser audit
 
+## October 22 follow-up
+
+The catalog includes all 393 pinned Remocn visuals, 51 public Snapcn visuals,
+and 456 official HyperFrames item names. Button Press and Click Type were added
+from Snapcn commit `4d2165e661003da0b8ddca6be5bea1d2232507b8`. Their 458 default
+and customized dark frames pass SSIM and exact alpha checks. See the
+[Snapcn audit](SNAPCN_AUDIT.md#october-22-public-additions) for inputs and scores.
+
+Echo Smear uses its own source pin at
+`2c1d9d50d239d48862578f574c25de216be02746`. Existing native source bytes and pins
+remain unchanged. Its script-only snippet has a moving preview host; installed
+source retains the exact upstream bytes. Fourteen native items now include the
+18 missing font notices, with separate font provenance recorded in the import.
+
+Rapid customizer edits share one preview reload after 150 ms. URL updates preserve
+history state and skip unchanged values. Media sync reuses identical uploads,
+streams video hashing, and uses copy-on-write for generated copies where supported.
+
+The homepage now loads generated category counts without the catalog's metadata.
+The library and its native and ported summary chunks load only on catalog routes.
+The main JavaScript bundle fell from 1,022 KB to 217 KB, and every emitted chunk
+is below 500 KB. Catalog chunk failures keep the page shell visible and offer Reload.
+
 ## October 15 catalog refresh
 
 The native HyperFrames import now matches all 455 published items at

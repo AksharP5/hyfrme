@@ -1,6 +1,6 @@
 # Snapcn source and license audit
 
-All 48 free visual components have fixtures in `catalog/snapcn-fixtures.json`.
+All 51 free visual components have fixtures in `catalog/snapcn-fixtures.json`.
 The source inventory is `catalog/snapcn-upstream.json`, with a separate source
 pin for each port. Check Cycle and the ten ports in the
 [current refresh](#current-port-refresh) use
@@ -18,6 +18,71 @@ Forty-four ports use the merged preview configs at their recorded source pins,
 including the shared speed control and minimum-speed overrides. Caret, Input,
 and Pulsing Border are published registry components outside that preview map.
 Their fixtures use their individual configs. No private source was accessed.
+
+## October 22 public additions
+
+[Button Press](https://github.com/shadcn-labs/snapcn/blob/4d2165e661003da0b8ddca6be5bea1d2232507b8/registry/snap-cn/button-press/index.tsx)
+and [Click Type](https://github.com/shadcn-labs/snapcn/blob/4d2165e661003da0b8ddca6be5bea1d2232507b8/registry/snap-cn/click-type/index.tsx)
+use frozen commit `4d2165e661003da0b8ddca6be5bea1d2232507b8`. All 49 previous
+fixture records, source pins, media bytes, and parity records remain unchanged.
+Both additions preserve the merged upstream configs, including shared speed,
+and expose six controls each. They reuse existing frozen fonts and their license
+notices. No media or asset-manifest additions are needed.
+
+The live registry contains 104 entries: 51 free visuals, one shared runtime, and
+52 Pro video-preview wrappers. Each unauthenticated Pro response was checked;
+it returns a watermarked `OffthreadVideo` wrapper that ignores component props,
+not the component implementation. Those wrappers and videos are excluded.
+`publishedAudit` records the current inventory and response hashes. Its
+`previousAudit` links to the unchanged October 7 audit, including the earlier
+HTTP 402 responses.
+
+Both default fixtures use 1280×720 at 30 fps. Each was rendered from the pinned
+Remotion source, installed through the actual Hyfrme CLI, checked with
+HyperFrames 0.8.99, and strictly rendered to PNGs before comparing every frame.
+
+| Fixture                       | Frames | Mean SSIM | Minimum SSIM | Exact alpha |
+| ----------------------------- | ------ | --------- | ------------ | ----------- |
+| Button Press                  | 126    | 1.000000  | 1.000000     | Yes         |
+| Click Type                    | 103    | 0.999997  | 0.999958     | Yes         |
+| Button Press, customized dark | 126    | 1.000000  | 1.000000     | Yes         |
+| Click Type, customized dark   | 103    | 0.999998  | 0.999960     | Yes         |
+
+The dark cases change every exposed control, including speed 1.25, Button
+Press's width and three labels, and Click Type's wash and three text values.
+Their exact inputs are retained in each default diff directory's
+`control-inputs.json`; their full-duration proofs are in
+`parity/snapcn-button-press-controls/` and `parity/snapcn-click-type-controls/`.
+
+All four full checks pass with zero errors and no lint, runtime, motion, or
+contrast findings. The source's intentional label crossfade and cropped
+close-up retain layout warnings in the unmodified check logs. No checker
+exceptions or acceptance thresholds were added. Default reports retain the
+source/config closure hashes, installed file hashes, per-frame SSIM and alpha
+hashes, strict-render logs, comparison images, local videos, and thumbnails.
+Hardware rendering was requested and the separate SDK probe observed hardware;
+the actual capture backend remains unobserved.
+
+With the exact checkout and locked reference dependencies prepared, reproduce
+the defaults with:
+
+```bash
+export TMPDIR="$PWD/.work/tmp"
+export SNAPCN_SOURCE="$PWD/.work/snapcn-4d2165e661003da0b8ddca6be5bea1d2232507b8"
+node scripts/generate-snapcn-ports.mjs --only snapcn-button-press,snapcn-click-type
+node scripts/verify-snapcn-ports.mjs --only snapcn-button-press,snapcn-click-type
+```
+
+Reproduce the customized fixtures without replacing the defaults with:
+
+```bash
+node scripts/verify-snapcn-ports.mjs --only snapcn-button-press \
+  --fixture-overrides parity/snapcn-button-press-diff/control-inputs.json \
+  --output-dir parity/snapcn-button-press-controls
+node scripts/verify-snapcn-ports.mjs --only snapcn-click-type \
+  --fixture-overrides parity/snapcn-click-type-diff/control-inputs.json \
+  --output-dir parity/snapcn-click-type-controls
+```
 
 ## October 7 addition
 
