@@ -3,6 +3,7 @@ import { constants, createReadStream } from "node:fs";
 import { cp, readFile, readdir, stat } from "node:fs/promises";
 import { relative, resolve, sep } from "node:path";
 import { Readable } from "node:stream";
+import { pipeline } from "node:stream/promises";
 import {
   isHostedRegistry,
   readRegistrySource,
@@ -115,6 +116,12 @@ export function deduplicateMedia(files, manifest) {
       if (!urls.has(key)) urls.set(key, manifest[file.path]);
     }
   }
+  for (const url of Object.values(manifest)) {
+    const key = new URL(url).pathname.match(
+      /^\/media\/((?:h264-v[1-9]\d*\/)?[a-f0-9]{64})\//,
+    )?.[1];
+    if (key && !urls.has(key)) urls.set(key, url);
+  }
   return Object.fromEntries(
     files.map((file) => [file.path, urls.get(mediaContentKey(file))]),
   );
@@ -220,10 +227,14 @@ export function hostedMedia() {
           return;
         }
         if (!isHostedRegistry(path)) return next();
+        const controller = new AbortController();
+        const abort = () => controller.abort();
+        response.once("close", abort);
         fetch(
           `${registryOrigin(registrySource)}${path.slice("/registry".length)}`,
           {
             method: request.method,
+            signal: controller.signal,
             headers: {
               "Accept-Encoding": "identity",
               ...(request.headers.range
@@ -232,7 +243,7 @@ export function hostedMedia() {
             },
           },
         )
-          .then((upstream) => {
+          .then(async (upstream) => {
             const headers = {
               "Content-Type": registryContentType(path),
               "Cache-Control": "public, max-age=0, must-revalidate",
@@ -247,11 +258,12 @@ export function hostedMedia() {
             }
             response.writeHead(upstream.status, headers);
             if (!upstream.body) return response.end();
-            Readable.fromWeb(upstream.body)
-              .on("error", (error) => response.destroy(error))
-              .pipe(response);
+            await pipeline(Readable.fromWeb(upstream.body), response);
           })
-          .catch(next);
+          .catch((error) => {
+            if (!controller.signal.aborted) next(error);
+          })
+          .finally(() => response.off("close", abort));
       });
     },
     async writeBundle() {
