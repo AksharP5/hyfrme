@@ -94,11 +94,9 @@ export function ComponentEditor({
   }, [entry]);
 
   const changeValue = (id: string, value: string | number | boolean) => {
-    setValues((current) => {
-      const next = { ...current, [id]: value };
-      writeValuesToUrl(variables, next);
-      return next;
-    });
+    const next = { ...values, [id]: value };
+    writeValuesToUrl(variables, next);
+    setValues(next);
   };
 
   const resetValues = () => {

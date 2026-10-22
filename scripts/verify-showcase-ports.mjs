@@ -8,12 +8,13 @@ const root = resolve(import.meta.dirname, "..");
 const catalog = JSON.parse(
   await readFile(resolve(root, "catalog", "showcases.json"), "utf8"),
 );
-const componentCatalog = JSON.parse(
-  await readFile(
-    resolve(root, "src", "generated", "catalog-data.json"),
-    "utf8",
-  ),
-);
+const componentCatalog = (
+  await Promise.all(
+    ["catalog-native.json", "catalog-ports.json"].map(async (name) =>
+      JSON.parse(await readFile(resolve(root, "src/generated", name), "utf8")),
+    ),
+  )
+).flat();
 const componentNames = new Set(
   componentCatalog.map((entry) => entry.item.name),
 );

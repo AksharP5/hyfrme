@@ -9,6 +9,7 @@ const result = await build({
   stdin: {
     contents: `
       export { App } from "./src/App";
+      export { CatalogPages } from "./src/CatalogPages";
       export { InstallPanel } from "./src/components/InstallPanel";
       export { LivePreview } from "./src/components/LivePreview";
       export { createElement } from "react";
@@ -24,10 +25,16 @@ const result = await build({
   },
   write: false,
 });
-const { App, InstallPanel, LivePreview, createElement, renderToStaticMarkup } =
-  await import(
-    `data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString("base64")}`
-  );
+const {
+  App,
+  CatalogPages,
+  InstallPanel,
+  LivePreview,
+  createElement,
+  renderToStaticMarkup,
+} = await import(
+  `data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString("base64")}`
+);
 
 test("canvas previews preserve upstream browser fallbacks and customized inputs", async () => {
   const item = JSON.parse(
@@ -77,7 +84,11 @@ test("malformed component and showcase links render the missing-page fallback", 
       globalThis.window = {
         location: { pathname: `/${collection}/${slug}`, search: "" },
       };
-      const page = renderToStaticMarkup(createElement(App));
+      const page = renderToStaticMarkup(
+        createElement(collection === "components" ? CatalogPages : App, {
+          cliPackage: "hyfrme@latest",
+        }),
+      );
       assert.match(page, /That component is not here\./);
       assert.match(page, /Browse all components/);
     }
@@ -97,10 +108,60 @@ test("valid encoded slugs still resolve their catalog pages", () => {
       },
       localStorage: { getItem: () => null },
     };
-    const page = renderToStaticMarkup(createElement(App));
+    const page = renderToStaticMarkup(
+      createElement(pathname.startsWith("/components/") ? CatalogPages : App, {
+        cliPackage: "hyfrme@latest",
+      }),
+    );
     assert(page.includes(heading));
     assert(!page.includes("That component is not here."));
   }
+});
+
+test("homepage startup excludes the catalog, its metadata, and the editor", async () => {
+  const result = await build({
+    entryPoints: [resolve(root, "src/main.tsx")],
+    bundle: true,
+    splitting: true,
+    format: "esm",
+    platform: "browser",
+    minify: true,
+    metafile: true,
+    write: false,
+    outdir: resolve(root, ".work/website-bundle-test"),
+    loader: { ".css": "empty" },
+  });
+  const outputs = result.metafile.outputs;
+  const entry = Object.entries(outputs).find(
+    ([, output]) => output.entryPoint === "src/main.tsx",
+  );
+  assert(entry, "Missing browser entry point");
+  const visited = new Set();
+  const inputs = new Set();
+  const visit = (path) => {
+    if (visited.has(path)) return;
+    visited.add(path);
+    const output = outputs[path];
+    for (const input of Object.keys(output.inputs)) inputs.add(input);
+    for (const dependency of output.imports) {
+      if (dependency.kind === "import-statement" && !dependency.external)
+        visit(dependency.path);
+    }
+  };
+  visit(entry[0]);
+  for (const input of inputs) {
+    assert(
+      !/src\/(?:catalog\.ts|CatalogPages\.tsx|generated\/catalog-(?:native|ports)\.json|components\/ComponentEditor\.tsx)$/.test(
+        input,
+      ),
+      `Loaded catalog code during homepage startup: ${input}`,
+    );
+  }
+  const bytes = [...visited].reduce(
+    (total, path) => total + outputs[path].bytes,
+    0,
+  );
+  assert(bytes < 350_000, `Homepage startup JavaScript grew to ${bytes} bytes`);
 });
 
 test("installation stays usable when browser storage is denied", () => {

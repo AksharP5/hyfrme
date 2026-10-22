@@ -32,7 +32,9 @@ function decodeHtmlAttribute(value: string) {
 }
 
 export function parseCompositionVariables(source: string) {
-  const match = source.match(/data-composition-variables='([^']*)'/);
+  const match = source
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .match(/data-composition-variables='([^']*)'/);
   if (!match) return [];
   try {
     const parsed: unknown = JSON.parse(decodeHtmlAttribute(match[1]));
@@ -151,7 +153,9 @@ export function writeValuesToUrl(
     if (value === variable.default) url.searchParams.delete(key);
     else url.searchParams.set(key, String(value));
   }
-  window.history.replaceState(null, "", url);
+  if (url.href !== window.location.href) {
+    window.history.replaceState(window.history.state, "", url);
+  }
 }
 
 function shellQuote(value: string) {
@@ -376,6 +380,7 @@ export function buildPreviewDocument(
     item.type === "hyperframes:component" ||
     /\bdata-no-timeline\b/.test(source);
   const pendulumPreview = item.name === "hyperframes-pendulum-swing";
+  const echoSmearPreview = item.name === "hyperframes-echo-smear";
   const bootstrap = `<script>
 window.__hyperframes = { getVariables: () => (${safeValues}) };
 window.__timelines = {};
@@ -442,6 +447,17 @@ window.addEventListener("load", () => {
           { "--hf-swing-angle": 0, duration: 2.9,
             ease: (p) => 1 - Math.exp(-2.3 * p) * Math.cos(3.5 * Math.PI * p) },
         );
+      }
+      if (!timeline && ${echoSmearPreview}) {
+        timeline = gsap.timeline({ paused: true })
+          .fromTo(
+            ".hf-catalog-echo-smear",
+            { x: ${width * 0.15}, rotation: -25 },
+            { x: ${width * 0.75}, rotation: 155, duration: 0.6, ease: "power3.inOut" },
+            0.3,
+          )
+          .set(document.body, {}, ${item.duration ?? 2});
+        window.attachEchoSmear(".hf-catalog-echo-smear", timeline, { maxEchoes: 24 });
       }
       if (!timeline) return;
       window.__timelines[${safeName}] = timeline;
@@ -511,13 +527,17 @@ body {
   ${backgroundRule}
 }
 ${pendulumPreview ? ".hf-catalog-pendulum-swing { position: absolute; left: 50%; top: 40%; translate: -50% -50%; }" : ""}
+${echoSmearPreview ? `.hf-catalog-echo-smear { position: absolute; left: 0; top: ${height * 0.425}px; width: 160px; height: 160px; border-radius: 24px; background: #ff935c; }` : ""}
 </style>`;
   const activeSource = source
     .replace(/<!--[\s\S]*?-->/g, "")
     .replace(/<template(?:\s[^>]*)?>([\s\S]*?)<\/template>/i, "$1");
+  const previewSource = echoSmearPreview
+    ? `<div class="hf-catalog-echo-smear" aria-hidden="true"></div>${activeSource}`
+    : activeSource;
   const documentSource = /<head(?:\s[^>]*)?>/i.test(activeSource)
     ? activeSource
-    : `<!doctype html><html><head><script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script></head><body>${activeSource}</body></html>`;
+    : `<!doctype html><html><head><script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script></head><body>${previewSource}</body></html>`;
   const gsapScript =
     (/\bgsap\s*\./.test(documentSource) ||
       /\bdata-no-timeline\b/.test(documentSource)) &&

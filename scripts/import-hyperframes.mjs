@@ -8,6 +8,9 @@ import { parseHyperframesVariables } from "./hyperframes-variables.mjs";
 const root = resolve(import.meta.dirname, "..");
 const repository = "https://github.com/heygen-com/hyperframes";
 const commit = "c694785df5993191fec42ec84e9d65ea69f98ad8";
+const additionalSources = [
+  { name: "echo-smear", commit: "2c1d9d50d239d48862578f574c25de216be02746" },
+];
 const sourceRoot = resolve(
   root,
   process.env.HYPERFRAMES_SOURCE ?? ".work/hyperframes-c694785d",
@@ -23,6 +26,61 @@ const fileTypes = new Set([
   "hyperframes:snippet",
   "hyperframes:asset",
 ]);
+const fontRepository = "https://github.com/google/fonts";
+const fontCommit = "45e3d5269e4a17d823f6d84470bc084dc5ae46f6";
+const bundledFontNotices = [
+  {
+    font: /(?:^|\/)Caveat-[^/]+\.woff2$/i,
+    notices: [
+      {
+        name: "Caveat-OFL.txt",
+        path: "ofl/caveat/OFL.txt",
+        sha256:
+          "1f9d81d094273d82f3898a1ee8b598a717d050ecbf5ff7bede105b704880157b",
+      },
+    ],
+  },
+  {
+    font: /(?:^|\/)BarlowCondensed-[^/]+\.woff2$/i,
+    notices: [
+      {
+        name: "BarlowCondensed-OFL.txt",
+        path: "ofl/barlowcondensed/OFL.txt",
+        sha256:
+          "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
+      },
+    ],
+  },
+  {
+    font: /(?:^|\/)courier-prime-[^/]+\.woff2$/i,
+    notices: [
+      {
+        name: "CourierPrime-OFL.txt",
+        path: "ofl/courierprime/OFL.txt",
+        sha256:
+          "9a755af092b494944c99f471be6fddd19b006a448fefdc4717e4ee0aa09a97b0",
+      },
+    ],
+  },
+  {
+    font: /(?:^|\/)permanent-marker-[^/]+\.woff2$/i,
+    notices: [
+      {
+        name: "PermanentMarker-LICENSE.txt",
+        path: "apache/permanentmarker/LICENSE.txt",
+        sha256:
+          "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      },
+      {
+        name: "PermanentMarker-NOTICE.txt",
+        path: "apache/permanentmarker/METADATA.pb",
+        extraction: "fonts.copyright, followed by LF",
+        sha256:
+          "e8e63e247cafe697bb66b6ba3cde21877edf2d7cccd85fd92197e891573e34bc",
+      },
+    ],
+  },
+];
 const legalFile = /(?:^|[._-])(?:licen[cs]e|notice|copying|ofl)(?:[._-]|$)/i;
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const git = (...args) =>
@@ -35,6 +93,20 @@ if (git("status", "--porcelain=v1", "--untracked-files=no").trim()) {
   throw new Error("HyperFrames checkout has modified tracked files.");
 }
 const tracked = new Set(git("ls-files", "-z").split("\0").filter(Boolean));
+const trackedCommits = new Map([[commit, tracked]]);
+function trackedAt(sourceCommit) {
+  if (!trackedCommits.has(sourceCommit)) {
+    trackedCommits.set(
+      sourceCommit,
+      new Set(
+        git("ls-tree", "-r", "--name-only", "-z", sourceCommit)
+          .split("\0")
+          .filter(Boolean),
+      ),
+    );
+  }
+  return trackedCommits.get(sourceCommit);
+}
 
 function requireRelativePath(path) {
   if (
@@ -49,10 +121,20 @@ function requireRelativePath(path) {
   return path;
 }
 
-async function sourceBytes(path) {
+async function sourceBytes(path, sourceCommit = commit) {
   requireRelativePath(path);
-  if (!tracked.has(path))
+  if (!trackedAt(sourceCommit).has(path))
     throw new Error(`Upstream file is not tracked: ${path}.`);
+  if (sourceCommit !== commit) {
+    if (!git("ls-tree", sourceCommit, "--", path).startsWith("100644 blob "))
+      throw new Error(`Upstream path is not a regular file: ${path}.`);
+    return execFileSync("git", [
+      "-C",
+      sourceRoot,
+      "show",
+      `${sourceCommit}:${path}`,
+    ]);
+  }
   const absolute = resolve(sourceRoot, path);
   if (!(await lstat(absolute)).isFile()) {
     throw new Error(`Upstream path is not a regular file: ${path}.`);
@@ -118,8 +200,24 @@ const registryBytes = await sourceBytes("registry/registry.json");
 const registry = JSON.parse(registryBytes);
 if (!Array.isArray(registry.items))
   throw new Error("Upstream registry has no items.");
+const registryItems = [...registry.items];
+for (const additional of additionalSources) {
+  const bytes = await sourceBytes("registry/registry.json", additional.commit);
+  const published = JSON.parse(bytes).items.find(
+    (item) => item.name === additional.name,
+  );
+  if (!published)
+    throw new Error(
+      `Additional upstream item is not published: ${additional.name}.`,
+    );
+  registryItems.push({
+    ...published,
+    sourceCommit: additional.commit,
+    registrySha256: sha256(bytes),
+  });
+}
 const names = new Set();
-for (const item of registry.items) {
+for (const item of registryItems) {
   if (
     !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(item.name) ||
     !families[item.type] ||
@@ -197,7 +295,7 @@ for (const page of catalogPages(
   });
   names.add(name);
 }
-const listedItems = [...registry.items, ...documentationItems];
+const listedItems = [...registryItems, ...documentationItems];
 const licenseBytes = await sourceBytes("LICENSE");
 const items = [];
 
@@ -205,11 +303,22 @@ for (const listed of listedItems) {
   const name = `hyperframes-${listed.name}`;
   const directory = `registry/${families[listed.type]}/${listed.name}`;
   const source = listed.source ?? `${directory}/registry-item.json`;
+  const sourceCommit = listed.sourceCommit ?? commit;
+  const sourceTracked = trackedAt(sourceCommit);
+  const origin = {
+    repository,
+    commit: sourceCommit,
+    source,
+    name: listed.name,
+  };
   const localDirectory = `registry/blocks/${name}`;
   const record = {
     name,
     originalName: listed.name,
     type: listed.type,
+    ...(sourceCommit !== commit
+      ? { origin, registrySha256: listed.registrySha256 }
+      : {}),
     ...(listed.catalogPage
       ? { catalogPage: `docs/${listed.catalogPage}` }
       : {}),
@@ -218,7 +327,7 @@ for (const listed of listedItems) {
     missingFiles: [],
   };
   try {
-    const manifestBytes = await sourceBytes(source);
+    const manifestBytes = await sourceBytes(source, sourceCommit);
     const original = listed.manifest ?? JSON.parse(manifestBytes);
     if (
       original.name !== listed.name ||
@@ -265,7 +374,7 @@ for (const listed of listedItems) {
       }
       return { ...file };
     });
-    const legalPaths = [...tracked]
+    const legalPaths = [...sourceTracked]
       .filter(
         (path) =>
           path.startsWith(`${directory}/`) &&
@@ -283,7 +392,7 @@ for (const listed of listedItems) {
     }
     const rootNotices = [
       "LICENSE",
-      ...(tracked.has("NOTICE") ? ["NOTICE"] : []),
+      ...(sourceTracked.has("NOTICE") ? ["NOTICE"] : []),
     ];
     for (const notice of rootNotices) {
       const path = `licenses/HyperFrames-${notice}`;
@@ -310,7 +419,7 @@ for (const listed of listedItems) {
           ? await hostedBytes(file.url, localPath)
           : extractedSnippet
             ? listed.snippet
-            : await sourceBytes(path);
+            : await sourceBytes(path, sourceCommit);
         const originalTarget = original.files.find(
           (candidate) => candidate.path === file.path,
         )?.target;
@@ -341,6 +450,41 @@ for (const listed of listedItems) {
         return { localPath, bytes, provenance };
       }),
     );
+    const fontNotices = bundledFontNotices
+      .filter(({ font }) => original.files.some((file) => font.test(file.path)))
+      .flatMap(({ notices }) => notices);
+    for (const notice of fontNotices) {
+      const file = {
+        path: `licenses/${notice.name}`,
+        target: `THIRD_PARTY_LICENSES/hyperframes/fonts/${notice.name}`,
+        type: "hyperframes:asset",
+      };
+      if (files.some((entry) => entry.path === file.path))
+        throw new Error(`Font notice path collision in ${name}: ${file.path}.`);
+      const sourcePath = `assets/fonts/hyperframes/${notice.name}`;
+      const bytes = await readFile(resolve(root, sourcePath));
+      if (sha256(bytes) !== notice.sha256)
+        throw new Error(
+          `Bundled font notice digest does not match: ${sourcePath}.`,
+        );
+      files.push(file);
+      payloads.push({
+        localPath: resolve(root, localDirectory, file.path),
+        bytes,
+        provenance: {
+          ...file,
+          source: {
+            repository: fontRepository,
+            commit: fontCommit,
+            path: notice.path,
+            localPath: sourcePath,
+            ...(notice.extraction ? { extraction: notice.extraction } : {}),
+          },
+          sha256: notice.sha256,
+          bytes: bytes.length,
+        },
+      });
+    }
     const primary =
       files.find((file) => file.target === "index.html") ??
       files.find(
@@ -370,7 +514,7 @@ for (const listed of listedItems) {
             ),
           }
         : {}),
-      origin: { repository, commit, source, name: listed.name },
+      origin,
       files,
     };
     const localManifestBytes = Buffer.from(
@@ -419,7 +563,7 @@ const summary = {
     licenseSha256: sha256(licenseBytes),
   },
   verification: "native-source-copy",
-  totalRegistryItems: registry.items.length,
+  totalRegistryItems: registryItems.length,
   totalCatalogItems: listedItems.length,
   documentationItems: documentationItems.map(({ name, catalogPage }) => ({
     name,
@@ -433,10 +577,15 @@ const summary = {
       count +
       item.files.filter(
         (file) =>
-          file.source.path !== "LICENSE" && file.source.path !== "NOTICE",
+          !file.source.repository &&
+          file.source.path !== "LICENSE" &&
+          file.source.path !== "NOTICE",
       ).length,
     0,
   ),
+  supplementalFontNotices: imported
+    .flatMap((item) => item.files)
+    .filter((file) => file.source.repository === fontRepository).length,
   installedFiles: imported.reduce(
     (count, item) => count + item.files.length,
     0,

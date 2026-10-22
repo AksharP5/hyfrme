@@ -229,6 +229,8 @@ preserved at `assets/licenses/Date-Fns-MIT.md`.
 
 The `hyperframes-*` blocks, HTML components, and templates are copied from
 [heygen-com/hyperframes at c694785df5993191fec42ec84e9d65ea69f98ad8](https://github.com/heygen-com/hyperframes/tree/c694785df5993191fec42ec84e9d65ea69f98ad8/registry).
+Echo Smear uses the same Apache 2.0 license and retains the exact snippet from
+[2c1d9d50d239d48862578f574c25de216be02746](https://github.com/heygen-com/hyperframes/tree/2c1d9d50d239d48862578f574c25de216be02746/registry/components/echo-smear).
 The original catalog source is Apache 2.0 licensed. Each item includes the exact
 root license, installed at `THIRD_PARTY_LICENSES/hyperframes/LICENSE`, and its
 per-item third-party license/notice files. Vendored dependencies keep their own
@@ -238,6 +240,12 @@ licenses, including the GSAP Standard License and three.js MIT license. See the
 The 36 native shader blocks bundle shaders 4.0.0, Copyright (c) 2026 Shader
 Effects Inc., under the MIT license. The complete bundle notices install at
 `compositions/lib/shaders.THIRD-PARTY-LICENSES.txt` beside the shared runtime.
+
+Native handwritten, BILD lower-third, Notes Reveal, and Marker Checklist items
+also install the notices for their bundled fonts. Caveat, Barlow Condensed, and
+Courier Prime use OFL-1.1; Permanent Marker uses Apache-2.0. The frozen notices
+are preserved in `assets/fonts/hyperframes/`, with their Google Fonts source
+commit and hashes recorded in `catalog/hyperframes-upstream.json`.
 
 Hosted source assets are frozen locally and verified against their content-addressed
 URLs. Original and installed names, file targets, hashes, and collision

@@ -17,7 +17,7 @@ const { buildPreviewDocument } = await import(
 );
 const root = resolve(import.meta.dirname, "..");
 const catalog = JSON.parse(
-  await readFile(resolve(root, "src/generated/catalog-data.json"), "utf8"),
+  await readFile(resolve(root, "src/generated/catalog-native.json"), "utf8"),
 );
 
 async function nativePreview(name) {
@@ -323,6 +323,78 @@ test("pendulum preview runs the documented host tween without changing installed
   assert(tween.to.ease(0.25) > 1);
   assert(Math.abs(tween.to.ease(1) - 1) < 1e-12);
   assert.match(preview, /left: 50%; top: 40%; translate: -50% -50%/);
+});
+
+test("echo smear previews animate a host and attach the effect before timeline registration", async () => {
+  globalThis.window = { location: { origin: "http://localhost:5173" } };
+  const directory = resolve(root, "registry/blocks/hyperframes-echo-smear");
+  const manifest = JSON.parse(
+    await readFile(resolve(directory, "registry-item.json"), "utf8"),
+  );
+  const source = await readFile(resolve(directory, "echo-smear.html"), "utf8");
+  const preview = buildPreviewDocument(
+    source,
+    {
+      ...manifest,
+      compositionId: manifest.origin.name,
+      sourcePath: "echo-smear.html",
+      dimensions: null,
+      duration: null,
+    },
+    {},
+    false,
+  );
+  assert.match(preview, /<div class="hf-catalog-echo-smear"/);
+  const script = preview.match(/<script>([\s\S]*?)<\/script>/)[1];
+  const window = new EventTarget();
+  const frames = [];
+  const actions = [];
+  const body = { style: {} };
+  const timeline = {
+    fromTo(selector, from, to) {
+      assert.equal(selector, ".hf-catalog-echo-smear");
+      assert.notEqual(from.x, to.x);
+      assert.notEqual(from.rotation, to.rotation);
+      actions.push("animate");
+      return this;
+    },
+    set(target, _values, at) {
+      assert.equal(target, body);
+      assert.equal(at, 2);
+      actions.push("extend");
+      return this;
+    },
+    eventCallback() {},
+    repeat() {
+      return this;
+    },
+    play() {
+      assert.equal(window.__timelines["echo-smear"], timeline);
+      actions.push("play");
+    },
+    time: () => 0,
+  };
+  window.attachEchoSmear = (selector, attached, options) => {
+    assert.equal(selector, ".hf-catalog-echo-smear");
+    assert.equal(attached, timeline);
+    assert.equal(window.__timelines["echo-smear"], undefined);
+    assert.equal(options.maxEchoes, 24);
+    actions.push("attach");
+  };
+  runInNewContext(script, {
+    window,
+    gsap: { timeline: () => timeline },
+    document: { querySelector: () => null, querySelectorAll: () => [], body },
+    frameElement: null,
+    innerWidth: 822,
+    innerHeight: 461,
+    addEventListener() {},
+    requestAnimationFrame: (callback) => frames.push(callback),
+  });
+  window.dispatchEvent(new Event("load"));
+  await new Promise(setImmediate);
+  frames[0]();
+  assert.deepEqual(actions, ["animate", "extend", "attach", "play"]);
 });
 
 test("preview mounts the real source template after a documentation example", () => {

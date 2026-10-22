@@ -2,13 +2,26 @@
 
 import {
   access,
+  chmod,
+  link,
   lstat,
   mkdir,
+  mkdtemp,
   readFile,
   realpath,
+  rename,
+  rm,
   writeFile,
 } from "node:fs/promises";
-import { dirname, isAbsolute, posix, relative, resolve, sep } from "node:path";
+import {
+  basename,
+  dirname,
+  isAbsolute,
+  posix,
+  relative,
+  resolve,
+  sep,
+} from "node:path";
 
 const defaultRegistry = "https://hyfrme.vercel.app/registry";
 const nativeRepository = "https://github.com/heygen-com/hyperframes";
@@ -42,7 +55,26 @@ const fail = (message) => {
 const readProjectConfig = async (projectDirectory) => {
   const configPath = resolve(projectDirectory, "hyperframes.json");
   try {
-    return JSON.parse(await readFile(configPath, "utf8"));
+    const config = JSON.parse(await readFile(configPath, "utf8"));
+    if (
+      !config ||
+      typeof config !== "object" ||
+      Array.isArray(config) ||
+      (config.paths !== undefined &&
+        (!config.paths ||
+          typeof config.paths !== "object" ||
+          Array.isArray(config.paths) ||
+          ["blocks", "components", "assets"].some((key) => {
+            const path = config.paths[key];
+            return (
+              path !== undefined &&
+              (typeof path !== "string" || !path.trim() || path.includes("\0"))
+            );
+          })))
+    ) {
+      fail(`invalid project configuration in ${configPath}`);
+    }
+    return config;
   } catch (error) {
     if (error?.code === "ENOENT") {
       fail(
@@ -140,13 +172,29 @@ const parseOptions = () => {
   };
 };
 
+let activeDownloads = 0;
+const waitingDownloads = [];
 const fetchBytes = async (url, label) => {
-  const response = await fetch(url);
-  if (!response.ok) {
-    if (response.status === 404) fail(`${label} was not found`);
-    fail(`could not download ${label} (${response.status})`);
+  if (activeDownloads === 8) {
+    await new Promise((accept) => waitingDownloads.push(accept));
+  } else {
+    activeDownloads += 1;
   }
-  return new Uint8Array(await response.arrayBuffer());
+  try {
+    const response = await fetch(url, { signal: AbortSignal.timeout(30_000) });
+    if (!response.ok) {
+      await response.body?.cancel();
+      if (response.status === 404) fail(`${label} was not found`);
+      fail(`could not download ${label} (${response.status})`);
+    }
+    return Buffer.from(await response.arrayBuffer());
+  } catch (error) {
+    fail(`could not download ${label}: ${error.message}`);
+  } finally {
+    const next = waitingDownloads.shift();
+    if (next) next();
+    else activeDownloads -= 1;
+  }
 };
 
 const fetchJson = async (url, label) => {
@@ -205,14 +253,16 @@ const requireSafeTarget = async (projectRoot, target, name, originalTarget) => {
       break;
     } catch (error) {
       if (error.code !== "ENOENT") {
-        fail(`could not inspect ${existingPath}: ${error.message}`);
+        throw new Error(`could not inspect ${existingPath}: ${error.message}`);
       }
       existingPath = dirname(existingPath);
     }
   }
 
   const actualPath = await realpath(existingPath).catch((error) => {
-    fail(`unsafe target path in ${name}: ${originalTarget} (${error.message})`);
+    throw new Error(
+      `unsafe target path in ${name}: ${originalTarget} (${error.message})`,
+    );
   });
   const relativeTarget = relative(projectRoot, actualPath);
   if (
@@ -220,11 +270,14 @@ const requireSafeTarget = async (projectRoot, target, name, originalTarget) => {
     relativeTarget.startsWith(`..${sep}`) ||
     isAbsolute(relativeTarget)
   ) {
-    fail(`unsafe target path in ${name}: ${originalTarget}`);
+    throw new Error(`unsafe target path in ${name}: ${originalTarget}`);
   }
   if (existingPath === target && !(await lstat(actualPath)).isFile()) {
-    fail(`cannot install ${originalTarget} in ${name}: target is not a file`);
+    throw new Error(
+      `cannot install ${originalTarget} in ${name}: target is not a file`,
+    );
   }
+  return resolve(actualPath, relative(existingPath, target));
 };
 
 const exists = async (path) => {
@@ -556,9 +609,7 @@ const projectRoot = await realpath(projectDirectory);
 const assetPath = config.paths?.assets ?? "assets";
 const matchesExistingFile = async (path, bytes) => {
   try {
-    const current = new Uint8Array(await readFile(path));
-    if (current.length !== bytes.length) return false;
-    return current.every((byte, index) => byte === bytes[index]);
+    return (await readFile(path)).equals(bytes);
   } catch {
     return false;
   }
@@ -583,7 +634,13 @@ const fetchItem = async (name) => {
         typeof file?.path !== "string" ||
         typeof file.target !== "string" ||
         !file.path ||
-        !file.target,
+        !file.target ||
+        file.path.includes("\\") ||
+        file.path.includes("\0") ||
+        file.target.includes("\0") ||
+        file.path
+          .split("/")
+          .some((part) => !part || part === "." || part === ".."),
     ) ||
     (item.registryDependencies !== undefined &&
       (!Array.isArray(item.registryDependencies) ||
@@ -711,7 +768,12 @@ const prepareComponent = async (item, componentSettings) => {
   const fetched = await Promise.all(
     item.files.map(async (file) => {
       const target = targetFor(projectDirectory, config, item, file);
-      await requireSafeTarget(projectRoot, target, item.name, file.target);
+      const destination = await requireSafeTarget(
+        projectRoot,
+        target,
+        item.name,
+        file.target,
+      );
       const bytes = await fetchBytes(
         `${itemRoot}/${file.path
           .split("/")
@@ -723,6 +785,7 @@ const prepareComponent = async (item, componentSettings) => {
         bytes,
         file,
         target,
+        destination,
       };
     }),
   );
@@ -789,7 +852,7 @@ const prepareComponent = async (item, componentSettings) => {
       }),
   );
 
-  const downloads = fetched.map(({ bytes, file, target }) => {
+  const downloads = fetched.map(({ bytes, file, target, destination }) => {
     const isComposition = file.type === "hyperframes:composition";
     const isRuntime = file.path.endsWith(".runtime.js");
     let output = bytes;
@@ -825,6 +888,7 @@ const prepareComponent = async (item, componentSettings) => {
       bytes: output,
       file,
       target,
+      destination,
     };
   });
 
@@ -839,15 +903,45 @@ const installComponent = async (name, componentSettings, detailedOutput) => {
     ),
   );
   const { item } = prepared.at(-1);
-  const downloads = prepared.flatMap((component) => component.downloads);
+  const allDownloads = prepared.flatMap((component) => component.downloads);
   if (needsConfig) {
-    await requireSafeTarget(projectRoot, configPath, name, "hyperframes.json");
-    downloads.push({
+    const destination = await requireSafeTarget(
+      projectRoot,
+      configPath,
+      name,
+      "hyperframes.json",
+    );
+    allDownloads.push({
       target: configPath,
+      destination,
       bytes: new TextEncoder().encode(`${JSON.stringify(config, null, 2)}\n`),
       file: { target: "hyperframes.json", type: "hyperframes:asset" },
     });
   }
+  const destinations = new Map();
+  for (const download of allDownloads) {
+    const previous = destinations.get(download.destination);
+    if (previous && Buffer.compare(previous.bytes, download.bytes) !== 0) {
+      fail(
+        `conflicting registry files target ${relative(projectDirectory, download.target)}`,
+      );
+    }
+    destinations.set(download.destination, download);
+  }
+  for (const destination of destinations.keys()) {
+    for (
+      let parent = dirname(destination);
+      parent !== dirname(parent);
+      parent = dirname(parent)
+    ) {
+      if (destinations.has(parent)) {
+        fail(
+          `conflicting registry files target ${relative(projectDirectory, parent)}`,
+        );
+      }
+    }
+  }
+  const downloads = [...destinations.values()];
   const conflicts = [];
   const unchanged = new Set();
 
@@ -866,10 +960,78 @@ const installComponent = async (name, componentSettings, detailedOutput) => {
     );
   }
 
-  for (const download of downloads) {
-    if (unchanged.has(download.target)) continue;
-    await mkdir(dirname(download.target), { recursive: true });
-    await writeFile(download.target, download.bytes);
+  const stagingDirectories = new Map();
+  const staged = [];
+  try {
+    for (const download of downloads) {
+      if (unchanged.has(download.target)) continue;
+      const destination = await requireSafeTarget(
+        projectRoot,
+        download.target,
+        name,
+        download.file.target,
+      );
+      if (destination !== download.destination) {
+        throw new Error(
+          `target path changed during installation: ${relative(projectDirectory, download.target)}`,
+        );
+      }
+      const directory = dirname(download.destination);
+      await mkdir(directory, { recursive: true });
+      if (!stagingDirectories.has(directory)) {
+        stagingDirectories.set(
+          directory,
+          await mkdtemp(resolve(directory, ".hyfrme-")),
+        );
+      }
+      const path = resolve(
+        stagingDirectories.get(directory),
+        basename(download.destination),
+      );
+      const existingMode = await lstat(download.destination)
+        .then((info) => info.mode & 0o777)
+        .catch((error) => {
+          if (error.code === "ENOENT") return undefined;
+          throw error;
+        });
+      await writeFile(path, download.bytes, { mode: existingMode });
+      if (existingMode !== undefined) await chmod(path, existingMode);
+      staged.push({ ...download, path });
+    }
+    for (const download of staged) {
+      const destination = await requireSafeTarget(
+        projectRoot,
+        download.target,
+        name,
+        download.file.target,
+      );
+      if (destination !== download.destination) {
+        throw new Error(
+          `target path changed during installation: ${relative(projectDirectory, download.target)}`,
+        );
+      }
+      if (force) {
+        await rename(download.path, download.destination);
+        continue;
+      }
+      // Linking publishes a complete file without replacing a concurrent install or edit.
+      await link(download.path, download.destination).catch(async (error) => {
+        if (error.code === "EEXIST") {
+          if (await matchesExistingFile(download.destination, download.bytes))
+            return;
+          throw new Error(
+            `${relative(projectDirectory, download.target)} already exists. Re-run with --force to replace it.`,
+          );
+        }
+        throw error;
+      });
+    }
+  } finally {
+    await Promise.all(
+      [...stagingDirectories.values()].map((directory) =>
+        rm(directory, { recursive: true, force: true }),
+      ),
+    );
   }
 
   if (!detailedOutput) return item.title ?? name;
@@ -932,7 +1094,7 @@ const namesToInstall = installAll
         `${registryRoot}/registry.json`,
         "Hyfrme registry",
       );
-      if (!Array.isArray(registry.items) || registry.items.length === 0) {
+      if (!Array.isArray(registry?.items) || registry.items.length === 0) {
         fail("Hyfrme registry has no installable components");
       }
       const registryNames = registry.items.map((item) => item?.name);
@@ -960,11 +1122,15 @@ const namesToInstall = installAll
   : names;
 
 if (namesToInstall.length === 1) {
-  await installComponent(namesToInstall[0], settings, true);
+  await installComponent(namesToInstall[0], settings, true).catch((error) =>
+    fail(error.message),
+  );
 } else {
   console.log(`Adding ${namesToInstall.length} Hyfrme components…`);
   for (const [index, name] of namesToInstall.entries()) {
-    const title = await installComponent(name, [], false);
+    const title = await installComponent(name, [], false).catch((error) =>
+      fail(error.message),
+    );
     console.log(`  ${index + 1}/${namesToInstall.length} ${title}`);
   }
   console.log(`Added ${namesToInstall.length} Hyfrme components.`);

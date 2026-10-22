@@ -4,7 +4,7 @@ import { dirname, resolve } from "node:path";
 const root = resolve(import.meta.dirname, "..");
 const blocksDirectory = resolve(root, "registry", "blocks");
 const parityDirectory = resolve(root, "parity");
-const outputPath = resolve(root, "src", "generated", "catalog-data.json");
+const outputDirectory = resolve(root, "src", "generated");
 const checking = process.argv.includes("--check");
 
 const readJson = async (path) => JSON.parse(await readFile(path, "utf8"));
@@ -128,20 +128,34 @@ const summaries = entries.map(
     sourceRepository,
   }),
 );
-const output = `${JSON.stringify(summaries, null, 2)}\n`;
-
-if (checking) {
-  const current = await readFile(outputPath, "utf8").catch((error) => {
-    if (error.code === "ENOENT") return "";
-    throw error;
-  });
-  if (current !== output)
-    throw new Error(
-      "src/generated/catalog-data.json is stale. Run npm run sync:catalog.",
-    );
-} else {
-  await mkdir(resolve(root, "src", "generated"), { recursive: true });
-  await writeFile(outputPath, output);
+for (const [name, native] of [
+  ["catalog-native.json", true],
+  ["catalog-ports.json", false],
+]) {
+  const path = resolve(outputDirectory, name);
+  const output = `${JSON.stringify(
+    summaries.filter(
+      (entry) =>
+        (entry.sourceRepository ===
+          "https://github.com/heygen-com/hyperframes") ===
+        native,
+    ),
+    null,
+    2,
+  )}\n`;
+  if (checking) {
+    const current = await readFile(path, "utf8").catch((error) => {
+      if (error.code === "ENOENT") return "";
+      throw error;
+    });
+    if (current !== output)
+      throw new Error(
+        `src/generated/${name} is stale. Run npm run sync:catalog.`,
+      );
+  } else {
+    await mkdir(outputDirectory, { recursive: true });
+    await writeFile(path, output);
+  }
 }
 
 if (!checking)

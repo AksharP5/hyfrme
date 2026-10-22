@@ -28,7 +28,9 @@ import {
 import {
   blobPath,
   copyPublicWithoutMedia,
+  deduplicateMedia,
   hostedMedia,
+  matchesMedia,
   mediaRedirects,
   readMediaFiles,
   readMediaManifest,
@@ -148,6 +150,123 @@ async function fixture(t) {
   );
   return { directory, publicDirectory, files, manifest };
 }
+
+test("identical videos reuse published content without accepting stale hashes or encoding recipes", async (t) => {
+  const { directory, files, manifest } = await fixture(t);
+  const original = files[0];
+  const duplicate = { ...original, path: "/previews/copy/reference.mp4" };
+  const missing = {
+    ...original,
+    path: "/previews/new/hyperframes.mp4",
+    sha256: "f".repeat(64),
+  };
+  const duplicateFiles = [...files, duplicate, missing];
+  const existing = {
+    ...manifest,
+    [duplicate.path]: `https://test.public.blob.vercel-storage.com/${blobPath(duplicate)}`,
+  };
+  const shared = deduplicateMedia(duplicateFiles, existing);
+  assert.equal(shared[duplicate.path], manifest[original.path]);
+  assert.equal(shared[missing.path], undefined);
+  assert.equal(matchesMedia(duplicate, shared[duplicate.path]), true);
+  assert.equal(matchesMedia(missing, shared[duplicate.path]), false);
+  assert.equal(
+    matchesMedia({ ...duplicate, size: 5_000_000 }, shared[duplicate.path]),
+    false,
+  );
+
+  const ready = deduplicateMedia([...files, duplicate], existing);
+  const path = resolve(directory, "shared-media.json");
+  await writeFile(path, JSON.stringify(ready));
+  const parsed = await readMediaManifest(path);
+  validateMedia([...files, duplicate], parsed, mediaRedirects(parsed));
+
+  const showcase = {
+    ...original,
+    path: "/showcases/large.mp4",
+    size: 5_000_000,
+  };
+  const preview = { ...showcase, path: "/previews/large/hyperframes.mp4" };
+  const variants = {
+    [showcase.path]: `https://test.public.blob.vercel-storage.com/${blobPath(showcase)}`,
+  };
+  assert.equal(
+    deduplicateMedia([showcase, preview], variants)[preview.path],
+    undefined,
+  );
+});
+
+test("sync uploads each content hash once and reuses existing uploads without credentials", async (t) => {
+  const { directory, publicDirectory, files, manifest } = await fixture(t);
+  const original = files[0];
+  const duplicate = resolve(publicDirectory, "previews/copy/reference.mp4");
+  await mkdir(dirname(duplicate), { recursive: true });
+  await cp(original.filename, duplicate);
+  await mkdir(resolve(directory, "scripts"));
+  for (const name of [
+    "sync-media.mjs",
+    "media.mjs",
+    "encode-media.mjs",
+    "registry-hosting.mjs",
+  ]) {
+    await cp(
+      resolve(root, "scripts", name),
+      resolve(directory, "scripts", name),
+    );
+  }
+  await mkdir(resolve(directory, "src/generated"), { recursive: true });
+  const manifestFile = resolve(directory, "src/generated/media.json");
+  await writeFile(manifestFile, JSON.stringify(manifest));
+  await writeFile(
+    resolve(directory, "vercel.json"),
+    JSON.stringify({ redirects: [] }),
+  );
+  const stub = resolve(directory, "node_modules/@vercel/blob");
+  await mkdir(stub, { recursive: true });
+  await writeFile(
+    resolve(stub, "package.json"),
+    JSON.stringify({ type: "module", exports: "./index.js" }),
+  );
+  await writeFile(
+    resolve(stub, "index.js"),
+    `
+    export class BlobNotFoundError extends Error {}
+    export async function head() { throw new BlobNotFoundError(); }
+    export async function put(path) {
+      console.log("UPLOAD", path);
+      return { url: "https://test.public.blob.vercel-storage.com/" + path };
+    }
+  `,
+  );
+  const run = (token = "") =>
+    spawnSync(
+      process.execPath,
+      [resolve(directory, "scripts/sync-media.mjs")],
+      {
+        cwd: directory,
+        encoding: "utf8",
+        env: { ...process.env, BLOB_READ_WRITE_TOKEN: token },
+      },
+    );
+  const reused = run();
+  assert.equal(reused.status, 0, reused.stderr);
+  let synced = await readMediaManifest(manifestFile);
+  assert.equal(synced["/previews/copy/reference.mp4"], synced[original.path]);
+  assert.doesNotMatch(reused.stdout, /UPLOAD/);
+
+  await writeFile(original.filename, "new identical render");
+  await cp(original.filename, duplicate);
+  const uploaded = run("fixture-token");
+  assert.equal(uploaded.status, 0, uploaded.stderr);
+  assert.equal(uploaded.stdout.match(/UPLOAD/g)?.length, 1);
+  synced = await readMediaManifest(manifestFile);
+  const currentFiles = await readMediaFiles(publicDirectory);
+  const vercel = JSON.parse(
+    await readFile(resolve(directory, "vercel.json"), "utf8"),
+  );
+  validateMedia(currentFiles, synced, vercel.redirects);
+  assert.equal(synced["/previews/copy/reference.mp4"], synced[original.path]);
+});
 
 test("contributors build and preview unpublished videos while production rejects them", async (t) => {
   const { directory, files } = await fixture(t);

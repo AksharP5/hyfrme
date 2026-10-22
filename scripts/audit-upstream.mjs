@@ -2,7 +2,7 @@ import { spawnSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { dirname, relative, resolve } from "node:path";
-import { readRemocnRegistry } from "./remocn-registry.mjs";
+import { readRemocnRegistry, remocnCoverage } from "./remocn-registry.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const explicitSource = process.env.REMOCN_SOURCE !== undefined;
@@ -183,23 +183,13 @@ const countBy = (values, key) =>
       ]),
   );
 
+const coverage = remocnCoverage(items, publishedRegistry.items ?? []);
 const visualNames = new Set(
   items.filter((item) => item.visual).map((item) => item.name),
 );
 const publishedNames = new Set(
-  publishedRegistry.items
-    ?.filter((item) => !item.name.startsWith("snapcn-"))
-    .map((item) => item.name) ?? [],
+  (publishedRegistry.items ?? []).map((item) => item.name),
 );
-const publishedCount = [...visualNames].filter((name) =>
-  publishedNames.has(name),
-).length;
-const missingNames = [...visualNames]
-  .filter((name) => !publishedNames.has(name))
-  .sort();
-const extraNames = [...publishedNames]
-  .filter((name) => !visualNames.has(name))
-  .sort();
 
 const summary = {
   upstream: {
@@ -214,11 +204,7 @@ const summary = {
     "family",
   ),
   byTranslationClass: countBy(items, "translationClass"),
-  coverage: {
-    publishedItems: publishedCount,
-    missingItems: missingNames,
-    extraItems: extraNames,
-  },
+  coverage,
   blockerItems: items
     .filter((item) => item.lint.blockers > 0)
     .map((item) => item.name),
@@ -287,14 +273,14 @@ authored registry manifests and the official Remotion-to-HyperFrames source lint
 
 ## Verified progress
 
-- ${publishedCount}/${visualNames.size} visual ports published in the local verified registry.
+- ${coverage.publishedItems}/${visualNames.size} visual ports published in the local verified registry.
 - ${publishedIconCount}/${iconNames.size} animated icons published.
 - ${publishedTextCount}/${textNames.size} typography/effect ports published.
 - ${publishedCoreCount}/${coreNames.size} composition/data ports published.
 - ${publishedPrimitiveCount}/${primitiveNames.size} UI primitive ports published.
-${standaloneNames.size > 0 ? `- ${publishedStandaloneCount}/${standaloneNames.size} standalone visual ports published (${[...standaloneNames].map((name) => `\`${name}\``).join(", ")}).\n` : ""}- ${missingNames.length} visual items remain.
-- ${extraNames.filter((name) => !name.startsWith("hyperframes-")).length} local-only registry items.
-- ${extraNames.filter((name) => name.startsWith("hyperframes-")).length} native official HyperFrames items (separate source import).
+${standaloneNames.size > 0 ? `- ${publishedStandaloneCount}/${standaloneNames.size} standalone visual ports published (${[...standaloneNames].map((name) => `\`${name}\``).join(", ")}).\n` : ""}- ${coverage.missingItems.length} visual items remain.
+- ${coverage.extraItems.filter((name) => !name.startsWith("hyperframes-")).length} local-only registry items.
+- ${coverage.extraItems.filter((name) => name.startsWith("hyperframes-")).length} native official HyperFrames items (separate source import).
 
 | Translation class | Count |
 | --- | ---: |

@@ -1,0 +1,325 @@
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (NVIDIA Corporation)" renderer="ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060/PCIe/SSE2, OpenGL ES 3.2)")
+{
+  "ok": true,
+  "strict": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 2
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 4,
+    "infoCount": 2,
+    "findings": [
+      {
+        "code": "container_overflow",
+        "severity": "warning",
+        "time": 0.954,
+        "selector": "#snapcn-click-type-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -163.9,
+          "top": -226.9,
+          "right": 2268.1,
+          "bottom": 1141.1,
+          "width": 2432,
+          "height": 1368
+        },
+        "containerSelector": "#snapcn-click-type-source-root > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "left": 163.9,
+          "right": 988.1,
+          "top": 226.9,
+          "bottom": 421.1
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-click-type.html",
+        "bbox": {
+          "x": -163.9,
+          "y": -226.9,
+          "width": 2432,
+          "height": 1368
+        },
+        "firstSeen": 0.954,
+        "lastSeen": 3.243,
+        "occurrences": 7,
+        "heldMs": 2288.9999999999995
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "warning",
+        "time": 0.954,
+        "selector": "#snapcn-click-type-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 178.1,
+          "top": 210.1,
+          "right": 1926.1,
+          "bottom": 704.1,
+          "width": 1748,
+          "height": 494
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 646.1
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-click-type.html",
+        "bbox": {
+          "x": 178.1,
+          "y": 210.1,
+          "width": 1748,
+          "height": 494
+        },
+        "firstSeen": 0.954,
+        "lastSeen": 3.243,
+        "occurrences": 7,
+        "heldMs": 2288.9999999999995
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "warning",
+        "time": 0.954,
+        "selector": "#snapcn-click-type-source-root > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 191.4,
+          "top": 223.4,
+          "right": 1912.8,
+          "bottom": 690.8,
+          "width": 1721.4,
+          "height": 467.4
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "overflow": {
+          "right": 632.8
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-click-type.html",
+        "bbox": {
+          "x": 191.4,
+          "y": 223.4,
+          "width": 1721.4,
+          "height": 467.4
+        },
+        "firstSeen": 0.954,
+        "lastSeen": 3.243,
+        "occurrences": 7,
+        "heldMs": 2288.9999999999995
+      },
+      {
+        "code": "escaped_container",
+        "severity": "warning",
+        "time": 1.717,
+        "selector": "#snapcn-click-type-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -163.9,
+          "top": -226.9,
+          "right": 2268.1,
+          "bottom": 1141.1,
+          "width": 2432,
+          "height": 1368
+        },
+        "containerSelector": "#snapcn-click-type-source-root > div:nth-of-type(1)",
+        "text": "Build a landing page Try this prompt",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-click-type.html",
+        "bbox": {
+          "x": -163.9,
+          "y": -226.9,
+          "width": 2432,
+          "height": 1368
+        },
+        "firstSeen": 1.717,
+        "lastSeen": 3.243,
+        "occurrences": 5,
+        "heldMs": 1525.9999999999998
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 0.954,
+        "selector": "#snapcn-click-type-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -163.9,
+          "top": -226.9,
+          "right": 2268.1,
+          "bottom": 1141.1,
+          "width": 2432,
+          "height": 1368
+        },
+        "containerSelector": "#snapcn-click-type-source-root > div:nth-of-type(1)",
+        "text": "Try this prompt",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-click-type.html",
+        "bbox": {
+          "x": -163.9,
+          "y": -226.9,
+          "width": 2432,
+          "height": 1368
+        },
+        "firstSeen": 0.954,
+        "lastSeen": 0.954,
+        "occurrences": 1,
+        "heldMs": 0
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 1.335,
+        "selector": "#snapcn-click-type-source-root > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -163.9,
+          "top": -226.9,
+          "right": 2268.1,
+          "bottom": 1141.1,
+          "width": 2432,
+          "height": 1368
+        },
+        "containerSelector": "#snapcn-click-type-source-root > div:nth-of-type(1)",
+        "text": "Build a lan Try this prompt",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/snapcn-click-type.html",
+        "bbox": {
+          "x": -163.9,
+          "y": -226.9,
+          "width": 2432,
+          "height": 1368
+        },
+        "firstSeen": 1.335,
+        "lastSeen": 1.335,
+        "occurrences": 1,
+        "heldMs": 0
+      }
+    ],
+    "duration": 3.433333333333333,
+    "samples": [
+      0.191,
+      0.572,
+      0.954,
+      1.335,
+      1.717,
+      2.098,
+      2.48,
+      2.861,
+      3.243
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 6,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.191,
+      0.954,
+      1.717,
+      2.48,
+      3.243
+    ],
+    "checked": 9,
+    "passed": 9
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "_meta": {
+    "version": "0.8.99",
+    "latestVersion": "0.8.185",
+    "updateAvailable": true
+  }
+}

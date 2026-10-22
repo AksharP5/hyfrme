@@ -39,6 +39,7 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
+  const [previewValues, setPreviewValues] = useState(values);
   const [error, setError] = useState<string | null>(null);
   const [unsupportedGpuItem, setUnsupportedGpuItem] = useState<string | null>(
     null,
@@ -54,12 +55,23 @@ export function LivePreview({ item, source, values }: LivePreviewProps) {
   const sourceFallback = browserFallback && item.tags.includes("remocn-port");
   const rendered =
     (browserFallback && !sourceFallback) || unsupportedGpuItem === item.name;
+  useEffect(() => {
+    const timer = window.setTimeout(() => setPreviewValues(values), 150);
+    return () => window.clearTimeout(timer);
+  }, [values]);
+
   const document = useMemo(
     () =>
       rendered
         ? ""
-        : buildPreviewDocument(source, item, values, isIcon, nativeViewport),
-    [isIcon, item, source, values, rendered, nativeViewport],
+        : buildPreviewDocument(
+            source,
+            item,
+            previewValues,
+            isIcon,
+            nativeViewport,
+          ),
+    [isIcon, item, source, previewValues, rendered, nativeViewport],
   );
 
   useEffect(() => {

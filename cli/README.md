@@ -63,5 +63,11 @@ rejected before any files are changed, including with `--force`. Decision Tree
 initialization includes a
 renderer compatibility fallback for its measured label timing.
 
+Downloads use at most eight requests at once, with a 30 second timeout per request.
+Hyfrme stages a component's files before publishing them, so a failed download or
+staging write preserves existing sources. Each file is published atomically;
+multiple file replacements are not a single transaction. Existing file permissions
+are preserved, and concurrent edits require `--force` to replace.
+
 `--set` accepts declared composition variables, including enum options and string
 length limits. Edit CSS parameters without declared variables directly in the source.

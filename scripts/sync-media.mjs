@@ -5,8 +5,10 @@ import { BlobNotFoundError, head, put } from "@vercel/blob";
 import { mediaContent } from "./encode-media.mjs";
 import {
   blobPath,
+  deduplicateMedia,
   isHostedMedia,
   manifestPath,
+  mediaContentKey,
   matchesMedia,
   mediaRedirects,
   readMediaFiles,
@@ -16,8 +18,8 @@ import {
 
 const envPath = resolve(root, ".env.local");
 if (existsSync(envPath)) process.loadEnvFile(envPath);
-const manifest = await readMediaManifest();
 const files = await readMediaFiles(resolve(root, "public"));
+const manifest = deduplicateMedia(files, await readMediaManifest());
 const vercelPath = resolve(root, "vercel.json");
 const vercel = JSON.parse(await readFile(vercelPath, "utf8"));
 const otherRedirects = (vercel.redirects ?? []).filter(
@@ -37,7 +39,14 @@ if (changed.length && !process.env.BLOB_READ_WRITE_TOKEN) {
   );
 }
 
+const uploads = new Map();
 for (const file of changed) {
+  const key = mediaContentKey(file);
+  const shared = uploads.get(key);
+  if (shared) {
+    manifest[file.path] = shared;
+    continue;
+  }
   const pathname = blobPath(file);
   const blob = await head(pathname).catch(async (error) => {
     if (!(error instanceof BlobNotFoundError)) throw error;
@@ -50,6 +59,7 @@ for (const file of changed) {
     });
   });
   manifest[file.path] = blob.url;
+  uploads.set(key, blob.url);
   // Checkpoint uploads so an interrupted sync resumes without re-uploading files.
   await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
   console.log(`Synced ${file.path}`);
@@ -62,5 +72,5 @@ await writeFile(manifestPath, `${JSON.stringify(current, null, 2)}\n`);
 vercel.redirects = [...mediaRedirects(current), ...otherRedirects];
 await writeFile(vercelPath, `${JSON.stringify(vercel, null, 2)}\n`);
 console.log(
-  `Media ready: ${files.length} videos, ${changed.length} synced. Commit src/generated/media.json and vercel.json.`,
+  `Media ready: ${files.length} videos, ${uploads.size} synced, ${new Set(Object.values(current)).size} stored files. Commit src/generated/media.json and vercel.json.`,
 );
