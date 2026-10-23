@@ -330,9 +330,15 @@ Generated registry copies use copy-on-write where the filesystem supports it,
 with ordinary copies elsewhere. Editing an installed or generated copy does not
 change the source registry.
 
+`npm run sync:registry` also updates `registry/file-hashes.json` from the listed
+source files. Bulk CLI installs use these hashes to reuse identical installed
+files. Commit the index with registry changes; `npm run check` rejects stale
+hashes, and production publishing includes the index in the registry source pin.
+
 The editor loads only on component pages, and the comparison player loads when
 its panel opens. Showcase cards load video on hover or keyboard focus. Homepage
-family cards load when visible and respect reduced motion.
+featured and family cards load when visible and respect reduced motion. Hidden
+mobile featured cards do not load video.
 
 Catalog filtering reuses unchanged cards, and browsers defer layout and painting
 inside offscreen cards. All results remain available to page search and keyboard
@@ -352,3 +358,6 @@ npm run test:comparison-player
 Set `HYFRME_TEST_URL` if the server is not at `http://localhost:5173`. The browser
 check delays media loading to verify pause, seek, view changes, and unmounting
 cancel pending playback without affecting a newer request.
+
+With the same browser prerequisites, `npm run test:landing-playback` checks reduced
+motion, preference changes, mobile video loading, and offscreen playback.

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { createHash } from "node:crypto";
 import {
   access,
   chmod,
@@ -174,7 +175,7 @@ const parseOptions = () => {
 
 let activeDownloads = 0;
 const waitingDownloads = [];
-const fetchBytes = async (url, label) => {
+const fetchBytes = async (url, label, optional = false) => {
   if (activeDownloads === 8) {
     await new Promise((accept) => waitingDownloads.push(accept));
   } else {
@@ -184,6 +185,7 @@ const fetchBytes = async (url, label) => {
     const response = await fetch(url, { signal: AbortSignal.timeout(30_000) });
     if (!response.ok) {
       await response.body?.cancel();
+      if (optional && response.status === 404) return undefined;
       if (response.status === 404) fail(`${label} was not found`);
       fail(`could not download ${label} (${response.status})`);
     }
@@ -197,13 +199,34 @@ const fetchBytes = async (url, label) => {
   }
 };
 
-const fetchJson = async (url, label) => {
-  const bytes = await fetchBytes(url, label);
+const fetchJson = async (url, label, optional = false) => {
+  const bytes = await fetchBytes(url, label, optional);
+  if (bytes === undefined) return undefined;
   try {
     return JSON.parse(new TextDecoder().decode(bytes));
   } catch {
     fail(`${label} returned invalid JSON`);
   }
+};
+
+const fetchFileHashes = async () => {
+  const hashes = await fetchJson(
+    `${registryRoot}/file-hashes.json`,
+    "registry file hashes",
+    true,
+  );
+  if (hashes === undefined) return undefined;
+  if (
+    !hashes ||
+    typeof hashes !== "object" ||
+    Array.isArray(hashes) ||
+    Object.values(hashes).some(
+      (hash) => typeof hash !== "string" || !/^[a-f0-9]{64}$/.test(hash),
+    )
+  ) {
+    fail("registry file hashes returned an invalid SHA-256 index");
+  }
+  return hashes;
 };
 
 const targetFor = (projectDirectory, config, item, file) => {
@@ -761,7 +784,7 @@ const materializeTemplate = (source, item, file) => {
   );
 };
 
-const prepareComponent = async (item, componentSettings) => {
+const prepareComponent = async (item, componentSettings, fileHashes) => {
   const { name } = item;
   const itemRoot = `${registryRoot}/blocks/${encodeURIComponent(name)}`;
 
@@ -774,13 +797,22 @@ const prepareComponent = async (item, componentSettings) => {
         item.name,
         file.target,
       );
-      const bytes = await fetchBytes(
-        `${itemRoot}/${file.path
-          .split("/")
-          .map((segment) => encodeURIComponent(segment))
-          .join("/")}`,
-        file.path,
-      );
+      const expectedHash = fileHashes?.[`blocks/${name}/${file.path}`];
+      const existing = expectedHash
+        ? await readFile(destination).catch(() => undefined)
+        : undefined;
+      const matchesHash =
+        existing !== undefined &&
+        createHash("sha256").update(existing).digest("hex") === expectedHash;
+      const bytes = matchesHash
+        ? existing
+        : await fetchBytes(
+            `${itemRoot}/${file.path
+              .split("/")
+              .map((segment) => encodeURIComponent(segment))
+              .join("/")}`,
+            file.path,
+          );
       return {
         bytes,
         file,
@@ -899,7 +931,11 @@ const installComponent = async (name, componentSettings, detailedOutput) => {
   const items = await resolveItems(name);
   const prepared = await Promise.all(
     items.map((item) =>
-      prepareComponent(item, item.name === name ? componentSettings : []),
+      prepareComponent(
+        item,
+        item.name === name ? componentSettings : [],
+        fileHashes,
+      ),
     ),
   );
   const { item } = prepared.at(-1);
@@ -1120,6 +1156,9 @@ const namesToInstall = installAll
       return [...new Set(components.map((item) => item.name))];
     })()
   : names;
+
+const fileHashes =
+  namesToInstall.length > 1 ? await fetchFileHashes() : undefined;
 
 if (namesToInstall.length === 1) {
   await installComponent(namesToInstall[0], settings, true).catch((error) =>

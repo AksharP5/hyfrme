@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { PreviewVideo } from "./PreviewVideo";
 
 export type LandingFamily = {
   title: string;
@@ -16,43 +16,6 @@ type FamilyCardProps = {
 };
 
 export function FamilyCard({ family }: FamilyCardProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const src = family.previewVideo;
-    let visible = false;
-
-    const syncPlayback = () => {
-      if (visible && !reducedMotion.matches) {
-        if (video.getAttribute("src") !== src) video.src = src;
-        void video.play().catch(() => undefined);
-      } else {
-        video.pause();
-      }
-    };
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        visible = entry.isIntersecting && entry.intersectionRatio >= 0.35;
-        syncPlayback();
-      },
-      { threshold: [0, 0.35] },
-    );
-
-    observer.observe(video);
-    reducedMotion.addEventListener("change", syncPlayback);
-
-    return () => {
-      observer.disconnect();
-      reducedMotion.removeEventListener("change", syncPlayback);
-      video.pause();
-    };
-  }, [family.previewVideo]);
-
   return (
     <a
       className={`family-card${
@@ -62,15 +25,7 @@ export function FamilyCard({ family }: FamilyCardProps) {
       aria-label={`Explore ${family.title}`}
     >
       <span className="family-card-preview">
-        <video
-          ref={videoRef}
-          poster={family.previewPoster}
-          muted
-          loop
-          playsInline
-          preload="none"
-          aria-hidden="true"
-        />
+        <PreviewVideo src={family.previewVideo} poster={family.previewPoster} />
         <img
           src={family.previewPoster}
           alt={family.previewAlt}
