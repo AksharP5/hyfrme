@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.6](https://github.com/AksharP5/hyfrme/compare/v0.5.5...v0.5.6) (2026-10-23)
+
+
+### Performance Improvements
+
+* cut unnecessary installer and preview downloads ([#79](https://github.com/AksharP5/hyfrme/issues/79)) ([14b7845](https://github.com/AksharP5/hyfrme/commit/14b78454c83a121cfd3c77d41977c8843a446fc5))
+
 ## [0.5.5](https://github.com/AksharP5/hyfrme/compare/v0.5.4...v0.5.5) (2026-10-22)
 
 ### Bug Fixes
