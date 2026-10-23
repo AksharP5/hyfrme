@@ -1,4 +1,5 @@
 import { CopyButton } from "./CopyButton";
+import { PreviewVideo } from "./PreviewVideo";
 
 type LandingHeroProps = {
   installCommand: string;
@@ -76,15 +77,9 @@ export function LandingHero({ installCommand }: LandingHeroProps) {
             key={component.name}
             aria-label={`Open ${component.title}`}
           >
-            <video
+            <PreviewVideo
               src={`/previews/${component.name}/hyperframes.mp4`}
               poster={`/previews/${component.name}/thumbnail.webp`}
-              muted
-              autoPlay
-              loop
-              playsInline
-              preload="metadata"
-              aria-hidden="true"
             />
             <span>
               <small>{component.label}</small>

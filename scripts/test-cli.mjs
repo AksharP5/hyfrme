@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
+import { createHash } from "node:crypto";
 import { createServer } from "node:http";
 import {
   chmod,
@@ -21,6 +22,9 @@ import { runInNewContext } from "node:vm";
 const exec = promisify(execFile);
 const root = resolve(import.meta.dirname, "..");
 const registry = resolve(root, "registry");
+const fileHashes = JSON.parse(
+  await readFile(resolve(registry, "file-hashes.json"), "utf8"),
+);
 const temporary = await mkdtemp(resolve(tmpdir(), "hyfrme-cli-"));
 const allTemporary = await mkdtemp(resolve(tmpdir(), "hyfrme-cli-all-"));
 const linkedTemporary = await mkdtemp(resolve(tmpdir(), "hyfrme-cli-linked-"));
@@ -114,6 +118,9 @@ const registerNativeFixture = (name, type, files, metadata = {}) => {
   );
   for (const file of files) {
     registryFixtures.set(`/blocks/${name}/${file.path}`, file.body);
+    fileHashes[`blocks/${name}/${file.path}`] = createHash("sha256")
+      .update(file.body)
+      .digest("hex");
   }
 };
 
@@ -244,12 +251,26 @@ for (const [name, dependency] of [
 }
 
 let requestCount = 0;
+const requestsByPath = new Map();
+const bytesByPath = new Map();
+let hashIndexStatus = 200;
 let activeBulkRequests = 0;
 let peakBulkRequests = 0;
 const server = createServer(async (request, response) => {
   requestCount += 1;
   try {
     const url = new URL(request.url ?? "/", "http://localhost");
+    requestsByPath.set(
+      url.pathname,
+      (requestsByPath.get(url.pathname) ?? 0) + 1,
+    );
+    const end = (body) => {
+      bytesByPath.set(
+        url.pathname,
+        (bytesByPath.get(url.pathname) ?? 0) + Buffer.byteLength(body),
+      );
+      response.end(body);
+    };
     if (registryFixtures.has(url.pathname)) {
       if (url.pathname === "/blocks/hyperframes-slow/slow.txt") {
         response.writeHead(200, { "content-type": "text/plain" });
@@ -265,9 +286,17 @@ const server = createServer(async (request, response) => {
         activeBulkRequests -= 1;
       }
       response.writeHead(200, {
-        "content-type": contentTypes[extname(url.pathname)],
+        "content-type":
+          contentTypes[extname(url.pathname)] ?? "application/octet-stream",
       });
-      response.end(registryFixtures.get(url.pathname));
+      end(registryFixtures.get(url.pathname));
+      return;
+    }
+    if (url.pathname === "/file-hashes.json") {
+      response.writeHead(hashIndexStatus, {
+        "content-type": "application/json",
+      });
+      end(hashIndexStatus === 200 ? JSON.stringify(fileHashes) : "Unavailable");
       return;
     }
     if (url.pathname === "/registry.json") {
@@ -298,7 +327,7 @@ const server = createServer(async (request, response) => {
     response.writeHead(200, {
       "content-type": contentTypes[extname(path)] ?? "application/octet-stream",
     });
-    response.end(body);
+    end(body);
   } catch {
     response.writeHead(404);
     response.end("Not found");
@@ -339,6 +368,161 @@ try {
   }
   assert.equal(requestCount, 0);
   assert.deepEqual(await readdir(temporary), []);
+
+  const shaderNames = ["hyperframes-aurora", "hyperframes-blob"];
+  const shaderRequests = () =>
+    shaderNames.reduce(
+      (total, name) =>
+        total +
+        (requestsByPath.get(`/blocks/${name}/lib/shaders.iife.js`) ?? 0),
+      0,
+    );
+  const createProject = async (name, config = {}) => {
+    const project = resolve(nativeTemporary, name);
+    await mkdir(project);
+    await writeFile(
+      resolve(project, "hyperframes.json"),
+      JSON.stringify(config),
+    );
+    return project;
+  };
+  const assertShaderFiles = async (project) => {
+    for (const name of shaderNames) {
+      const itemDirectory = resolve(registry, "blocks", name);
+      const item = JSON.parse(
+        await readFile(resolve(itemDirectory, "registry-item.json"), "utf8"),
+      );
+      for (const file of item.files) {
+        assert.deepEqual(
+          await readFile(resolve(project, file.target)),
+          await readFile(resolve(itemDirectory, file.path)),
+        );
+      }
+    }
+  };
+
+  const shaderProject = await createProject("shared-shaders");
+  requestsByPath.clear();
+  bytesByPath.clear();
+  await runCli(["add", ...shaderNames, "--dir", shaderProject]);
+  assert.equal(requestsByPath.get("/file-hashes.json"), 1);
+  assert.equal(shaderRequests(), 1);
+  await assertShaderFiles(shaderProject);
+  console.log(
+    `Shared shader install: ${shaderRequests()} shader request, ${[...requestsByPath.values()].reduce((sum, count) => sum + count, 0)} total requests, ${[...bytesByPath.values()].reduce((sum, bytes) => sum + bytes, 0)} response bytes.`,
+  );
+
+  const oldRegistryProject = await createProject("old-registry");
+  hashIndexStatus = 404;
+  requestsByPath.clear();
+  bytesByPath.clear();
+  await runCli(["add", ...shaderNames, "--dir", oldRegistryProject]);
+  assert.equal(requestsByPath.get("/file-hashes.json"), 1);
+  assert.equal(shaderRequests(), 2);
+  await assertShaderFiles(oldRegistryProject);
+  console.log(
+    `Registry without hashes: ${shaderRequests()} shader requests, ${[...requestsByPath.values()].reduce((sum, count) => sum + count, 0)} total requests, ${[...bytesByPath.values()].reduce((sum, bytes) => sum + bytes, 0)} response bytes.`,
+  );
+  hashIndexStatus = 200;
+
+  requestsByPath.clear();
+  await runCli(["add", shaderNames[0], "--dir", shaderProject]);
+  assert.equal(requestsByPath.get("/file-hashes.json"), undefined);
+
+  const shaderPath = resolve(shaderProject, "compositions/lib/shaders.iife.js");
+  const modifiedShader = Buffer.from("my edited shader\0\xff", "latin1");
+  await writeFile(shaderPath, modifiedShader);
+  requestsByPath.clear();
+  await assert.rejects(
+    runCli(["add", ...shaderNames, "--dir", shaderProject]),
+    /shaders\.iife\.js already exists/,
+  );
+  assert.equal(shaderRequests(), 1);
+  assert.deepEqual(await readFile(shaderPath), modifiedShader);
+  requestsByPath.clear();
+  await runCli(["add", ...shaderNames, "--dir", shaderProject, "--force"]);
+  assert.equal(shaderRequests(), 1);
+  await assertShaderFiles(shaderProject);
+
+  const sharedProject = await createProject("different-shared-files");
+  const sharedNames = ["hyperframes-shared-a", "hyperframes-shared-b"];
+  const sharedBodies = [Buffer.from([0, 255, 1]), Buffer.from([0, 254, 2])];
+  for (const [index, name] of sharedNames.entries()) {
+    registerNativeFixture(name, "hyperframes:component", [
+      {
+        path: "shared.bin",
+        target: "assets/shared.bin",
+        type: "hyperframes:asset",
+        body: sharedBodies[index],
+      },
+    ]);
+  }
+  for (const force of [false, true]) {
+    requestsByPath.clear();
+    const install = runCli([
+      "add",
+      ...sharedNames,
+      "--dir",
+      sharedProject,
+      ...(force ? ["--force"] : []),
+    ]);
+    if (force) await install;
+    else await assert.rejects(install, /assets\/shared\.bin already exists/);
+    assert.equal(requestsByPath.get(`/blocks/${sharedNames[1]}/shared.bin`), 1);
+    assert.deepEqual(
+      await readFile(resolve(sharedProject, "assets/shared.bin")),
+      sharedBodies[force ? 1 : 0],
+    );
+  }
+
+  const transformedProject = await createProject("transformed-shared-files", {
+    paths: { assets: "media" },
+  });
+  await runCli([
+    "add",
+    "hyperframes-native-block",
+    "--dir",
+    transformedProject,
+  ]);
+  const transformedPath = resolve(
+    transformedProject,
+    "compositions/native.runtime.js",
+  );
+  const transformed = await readFile(transformedPath);
+  assert.notDeepEqual(transformed, Buffer.from(nativeRuntimeSource));
+  requestsByPath.clear();
+  await runCli([
+    "add",
+    "hyperframes-native-block",
+    "hyperframes-native-component",
+    "--dir",
+    transformedProject,
+  ]);
+  assert.equal(
+    requestsByPath.get("/blocks/hyperframes-native-block/native.runtime.js"),
+    1,
+  );
+  assert.deepEqual(await readFile(transformedPath), transformed);
+
+  const unavailableIndexProject = await createProject("unavailable-index");
+  hashIndexStatus = 500;
+  await assert.rejects(
+    runCli(["add", ...shaderNames, "--dir", unavailableIndexProject]),
+    /could not download registry file hashes \(500\)/,
+  );
+  hashIndexStatus = 200;
+  registryFixtures.set(
+    "/file-hashes.json",
+    JSON.stringify({ file: "invalid" }),
+  );
+  await assert.rejects(
+    runCli(["add", ...shaderNames, "--dir", unavailableIndexProject]),
+    /registry file hashes returned an invalid SHA-256 index/,
+  );
+  registryFixtures.delete("/file-hashes.json");
+  assert.deepEqual(await readdir(unavailableIndexProject), [
+    "hyperframes.json",
+  ]);
 
   const boundaryProject = resolve(nativeTemporary, "installer-boundaries");
   await mkdir(boundaryProject);
@@ -880,7 +1064,6 @@ syncBuiltinESMExports();
     assert(imageSrc.startsWith(`${blocks}/`));
     await readFile(resolve(project, imageSrc));
   }
-
 
   await writeFile(
     resolve(temporary, "hyperframes.json"),

@@ -10,7 +10,7 @@
     "build": "tsc --noEmit && vite build",
     "build:production": "npm run build -- --mode hosted",
     "preview": "vite preview",
-    "check": "node scripts/build-catalog-data.mjs --check && node scripts/build-catalog-stats.mjs --check && npm run validate && npm run test:hyperframes-font-notices && npm run validate:t3-sequence && npm run test:t3-reference && npm run test:t3-agent-answer-preview && npm run validate:snapcn && npm run verify:showcases && npm run test:cli && npm run test:media && npm run test:gpu-evidence && npm run test:fresh-parity && npm run test:icon-showcase-history && npm run test:taxonomy && npm run test:remocn-registry && npm run test:snapcn-media && npm run test:snapcn-alpha && npm run test:snapcn-generation && npm run test:selection-snap-seek && npm run test:frame-math && npm run test:preview-errors && npm run test:customization && npm run test:website && npm run check:commands && tsc --noEmit",
+    "check": "node scripts/build-catalog-data.mjs --check && node scripts/build-catalog-stats.mjs --check && node scripts/registry-file-hashes.mjs --check && npm run validate && npm run test:hyperframes-font-notices && npm run validate:t3-sequence && npm run test:t3-reference && npm run test:t3-agent-answer-preview && npm run validate:snapcn && npm run verify:showcases && npm run test:cli && npm run test:media && npm run test:gpu-evidence && npm run test:fresh-parity && npm run test:icon-showcase-history && npm run test:taxonomy && npm run test:remocn-registry && npm run test:snapcn-media && npm run test:snapcn-alpha && npm run test:snapcn-generation && npm run test:selection-snap-seek && npm run test:frame-math && npm run test:preview-errors && npm run test:customization && npm run test:website && npm run check:commands && tsc --noEmit",
     "check:commands": "node scripts/check-install-commands.mjs",
     "validate": "node scripts/validate-catalog.mjs",
     "validate:t3-sequence": "node scripts/validate-t3-sequence.mjs",
@@ -50,6 +50,7 @@
     "test:customization": "node --test scripts/test-customization.mjs",
     "test:website": "node --test scripts/test-website.mjs",
     "test:comparison-player": "node scripts/test-comparison-player.mjs",
+    "test:landing-playback": "node scripts/test-landing-playback.mjs",
     "test:remocn-registry": "node scripts/test-remocn-registry.mjs && node --test scripts/test-remocn-captions.mjs && node scripts/verify-upstream-additions-evidence.mjs",
     "test:snapcn-media": "node scripts/test-snapcn-media.mjs",
     "test:snapcn-alpha": "node scripts/test-snapcn-alpha.mjs",
@@ -87,6 +88,6 @@
     "esbuild": "0.28.1",
     "prettier": "3.9.5",
     "typescript": "7.0.2",
-    "vite": "8.1.5"
+    "vite": "8.1.6"
   }
 }

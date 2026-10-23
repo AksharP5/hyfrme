@@ -64,6 +64,10 @@ initialization includes a
 renderer compatibility fallback for its measured label timing.
 
 Downloads use at most eight requests at once, with a 30 second timeout per request.
+Bulk installs use the registry's SHA-256 index to reuse installed files whose raw
+bytes match the requested source. Modified or transformed files are downloaded
+normally and keep the same conflict checks. Registries without an index remain
+supported, and single-item installs do not request it.
 Hyfrme stages a component's files before publishing them, so a failed download or
 staging write preserves existing sources. Each file is published atomically;
 multiple file replacements are not a single transaction. Existing file permissions
