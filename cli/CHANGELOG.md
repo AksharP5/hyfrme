@@ -5,7 +5,7 @@
 
 ### Performance Improvements
 
-* cut unnecessary installer and preview downloads ([#79](https://github.com/AksharP5/hyfrme/issues/79)) ([14b7845](https://github.com/AksharP5/hyfrme/commit/14b78454c83a121cfd3c77d41977c8843a446fc5))
+* Bulk installs reuse identical shared files. Full-catalog file downloads fall from 6,194 to 2,306, saving 129 MB including the hash index. Installed files remain byte-identical. ([#79](https://github.com/AksharP5/hyfrme/pull/79))
 
 ## [0.5.5](https://github.com/AksharP5/hyfrme/compare/v0.5.4...v0.5.5) (2026-10-22)
 
