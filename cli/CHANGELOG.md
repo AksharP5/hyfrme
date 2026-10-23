@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.6](https://github.com/AksharP5/hyfrme/compare/v0.5.5...v0.5.6) (2026-10-23)
+
+
+### Performance Improvements
+
+* Bulk installs reuse identical shared files. Full-catalog file downloads fall from 6,194 to 2,306, saving 129 MB including the hash index. Installed files remain byte-identical. ([#79](https://github.com/AksharP5/hyfrme/pull/79))
+
 ## [0.5.5](https://github.com/AksharP5/hyfrme/compare/v0.5.4...v0.5.5) (2026-10-22)
 
 ### Bug Fixes
